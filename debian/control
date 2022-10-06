@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Simon Long <simon@raspberrypi.com>
 Build-Depends: debhelper-compat (= 13), meson, wayfire-dev, wayland-protocols, libgtkmm-3.0-dev (>= 3.24),
  libwf-config-dev (>= 0.7.0), libpulse-dev, libgtk-layer-shell-dev, libglib2.0-dev (>= 2.74.0),
- libwlroots-dev, libglm-dev
+ libwlroots-dev, libglm-dev, libxml2-dev, libasound2-dev
 Standards-Version: 4.5.1
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Browser: https://salsa.debian.org/debian/wf-shell
