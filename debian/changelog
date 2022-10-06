@@ -1,0 +1,5 @@
+wf-shell (0.1) unstable; urgency=medium
+
+  * Initial release based on code from wf-shell GitHub
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 05 Oct 2022 09:19:10 +0100

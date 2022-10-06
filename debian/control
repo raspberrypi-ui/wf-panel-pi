@@ -1,0 +1,19 @@
+Source: wf-shell
+Section: unknown
+Priority: optional
+Maintainer: Simon Long <simon@raspberrypi.com>
+Build-Depends: debhelper-compat (= 13), meson, wayfire-dev, wayland-protocols, libgtkmm-3.0-dev (>= 3.24),
+ libwf-config-dev (>= 0.7.0), libpulse-dev, libgtk-layer-shell-dev, libglib2.0-dev (>= 2.74.0),
+ libwlroots-dev, libglm-dev
+Standards-Version: 4.5.1
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Browser: https://salsa.debian.org/debian/wf-shell
+Vcs-Git: https://github.com/WayfireWM/wf-shell.git
+Rules-Requires-Root: no
+
+Package: wf-shell
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, wayfire, libwayland-client0,
+ libgtkmm-3.0-1v5 (>=3.24), libwf-config1 (>= 0.7.0), libpulse0, libgtk-layer-shell0
+Description: Desktop shell for Wayfire
+ Wayfire desktop shell with Raspberry Pi modifications
