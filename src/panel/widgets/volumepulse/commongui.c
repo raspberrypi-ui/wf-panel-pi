@@ -116,7 +116,7 @@ static void popup_window_show (GtkWidget *p)
     gtk_widget_set_name (vol->popup_window, "panelpopup");
     gtk_window_set_decorated (GTK_WINDOW (vol->popup_window), FALSE);
 
-    gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window), 5);
+    gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window), 0);
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (vol->popup_window), TRUE);
     gtk_window_set_skip_pager_hint (GTK_WINDOW (vol->popup_window), TRUE);
     gtk_window_set_type_hint (GTK_WINDOW (vol->popup_window), GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU);
@@ -128,7 +128,7 @@ static void popup_window_show (GtkWidget *p)
     gtk_container_add (GTK_CONTAINER (vol->popup_window), scrolledwindow);
     gtk_widget_set_can_focus (scrolledwindow, FALSE);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow), GTK_SHADOW_NONE);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow), GTK_SHADOW_IN);
 
     /* Create a viewport as the child of the scrolled window. */
     GtkWidget *viewport = gtk_viewport_new (NULL, NULL);
@@ -136,8 +136,6 @@ static void popup_window_show (GtkWidget *p)
     gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_NONE);
     gtk_widget_show (viewport);
 
-    gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window), 0);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow), GTK_SHADOW_IN);
     /* Create a vertical box as the child of the viewport. */
     GtkWidget *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_add (GTK_CONTAINER (viewport), box);

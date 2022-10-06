@@ -425,6 +425,16 @@ static GtkWidget *volumepulse_constructor (LXPanel *panel, config_setting_t *set
     vol->profiles_dialog = NULL;
     vol->conn_dialog = NULL;
 
+    vol->pipewire = !system ("ps ax | grep pipewire-pulse | grep -qv grep");
+    if (vol->pipewire)
+    {
+        DEBUG ("using pipewire");
+    }
+    else
+    {
+        DEBUG ("using pulseaudio");
+    }
+
     /* Delete any old ALSA config */
     vsystem ("rm -f ~/.asoundrc");
 

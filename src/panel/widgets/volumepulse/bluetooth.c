@@ -40,7 +40,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define BT_SERV_HSP             "00001108"
 #define BT_SERV_HFP             "0000111E"
 
-#define BT_PULSE_RETRIES    25000
+#define BT_PULSE_RETRIES    125000
 
 typedef enum {
     CONNECT,
@@ -384,6 +384,7 @@ static gboolean bt_get_profile (gpointer user_data)
     VolumePulsePlugin *vol = (VolumePulsePlugin *) user_data;
     bt_operation_t *btop = (bt_operation_t *) vol->bt_ops->data;
     char *paname, *pacard, *msg;
+    int res;
 
     // some devices take a very long time to be valid PulseAudio cards after connection
     pacard = bt_to_pa_name (btop->device, "card", NULL);
@@ -406,7 +407,11 @@ static gboolean bt_get_profile (gpointer user_data)
     else
     {
         DEBUG ("Bluetooth device found by PulseAudio with profile %s", vol->pa_profile);
-        if (!pulse_set_profile (vol, pacard, btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" : "headset_head_unit"))
+        if (vol->pipewire)
+            res = pulse_set_profile (vol, pacard, btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp-sink" :  "headset-head-unit");
+        else
+            res = pulse_set_profile (vol, pacard, btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" :  "headset_head_unit");
+        if (!res)
         {
             DEBUG ("Failed to set device profile : %s", vol->pa_error_msg);
             msg = g_strdup_printf (_("Could not set profile for device : %s"), vol->pa_error_msg);
@@ -426,7 +431,10 @@ static gboolean bt_get_profile (gpointer user_data)
 
             if (btop->direction != OUTPUT)
             {
-                paname = bt_to_pa_name (btop->device, "source", "headset_head_unit");
+                if (vol->pipewire)
+                    paname = bt_to_pa_name (btop->device, "input", "headset-head-unit");
+                else
+                    paname = bt_to_pa_name (btop->device, "source", "headset_head_unit");
                 pulse_change_source (vol, paname);
                 vsystem ("echo %s > ~/.btin", btop->device);
                 g_free (paname);
@@ -434,7 +442,10 @@ static gboolean bt_get_profile (gpointer user_data)
 
             if (btop->direction != INPUT)
             {
-                paname = bt_to_pa_name (btop->device, "sink", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" : "headset_head_unit");
+                if (vol->pipewire)
+                    paname = bt_to_pa_name (btop->device, "output", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp-sink" : "headset-head-unit");
+                else
+                    paname = bt_to_pa_name (btop->device, "sink", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" : "headset_head_unit");
                 pulse_change_sink (vol, paname);
                 vsystem ("echo %s > ~/.btout", btop->device);
                 g_free (paname);

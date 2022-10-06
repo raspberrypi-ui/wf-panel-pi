@@ -48,6 +48,7 @@ typedef struct {
     GtkWidget *plugin;                  /* Back pointer to widget */
     LXPanel *panel;                     /* Back pointer to panel */
     config_setting_t *settings;         /* Plugin settings */
+    gboolean pipewire;                  /* Pipewire running? */
 
     /* graphics */
     GtkWidget *tray_icon;               /* Displayed icon */
