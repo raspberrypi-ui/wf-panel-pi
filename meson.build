@@ -21,6 +21,8 @@ wfconfig       = dependency('wf-config', version: '>=0.7.0') #TODO fallback subm
 gtklayershell  = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
 libpulse       = dependency('libpulse', required : get_option('pulse'))
 libgvc         = subproject('gvc', default_options: ['static=true'], required : get_option('pulse'))
+menu_cache     = dependency('libmenu-cache')
+libfm          = dependency('libfm-gtk3')
 
 if get_option('wayland-logout') == true
   wayland_logout = subproject('wayland-logout')

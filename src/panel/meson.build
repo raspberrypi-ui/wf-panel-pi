@@ -10,6 +10,8 @@ widget_sources = ['widgets/battery.cpp',
                   'widgets/volumepulse/commongui.c',
                   'widgets/volumepulse/pulse.c',
                   'widgets/volumepulse/bluetooth.c',
+                  'widgets/smenu.cpp',
+                  'widgets/smenu/menu.c',
                   'widgets/window-list/window-list.cpp',
                   'widgets/window-list/toplevel.cpp',
                   'widgets/notifications/daemon.cpp',
@@ -17,7 +19,7 @@ widget_sources = ['widgets/battery.cpp',
                   'widgets/notifications/notification-info.cpp',
                   'widgets/notifications/notification-center.cpp']
 
-deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell]
+deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm]
 
 if libpulse.found()
   widget_sources += 'widgets/volume.cpp'

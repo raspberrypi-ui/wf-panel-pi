@@ -61,24 +61,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unistd.h>
 #include <fcntl.h>
 
-#include "plugin.h"
+#include <gtk-layer-shell/gtk-layer-shell.h>
 
-typedef struct {
-    LXPanel *panel;
-    config_setting_t *settings;
-    GtkWidget *plugin, *img, *menu;
-    GtkWidget *swin, *srch, *stv, *scr;
-    GtkListStore *applist;
-    char *icon;
-    int padding;
-    int height;
-    int rheight;
-    gboolean fixed;
+#include "../lxutils.h"
+//#include "plugin.h"
+#include "menu.h"
 
-    MenuCache* menu_cache;
-    gpointer reload_notify;
-    FmDndSrc *ds;
-} MenuPlugin;
+#define MENU_ICON_SPACE 6
 
 GQuark sys_menu_item_quark = 0;
 
@@ -88,9 +77,9 @@ typedef struct {
     void (*cmd)(void);
 } Command;
 
-extern void restart (void);
-extern void gtk_run (void);
-extern void logout (void);
+void restart (void) {};
+void gtk_run (void) {};
+void logout (void) {};
 
 static Command commands[] = {
     { "run", N_("Run"), gtk_run },
@@ -98,6 +87,31 @@ static Command commands[] = {
     { "logout", N_("Logout"), logout },
     { NULL, NULL },
 };
+
+
+/* Open a specified path in a file manager. */
+static gboolean _open_dir_in_file_manager (GAppLaunchContext* ctx, GList* folder_infos,
+                                          gpointer user_data, GError** err)
+{
+    FmFileInfo *fi = folder_infos->data; /* only first is used */
+    GAppInfo *app = g_app_info_get_default_for_type("inode/directory", TRUE);
+    GFile *gf;
+    gboolean ret;
+
+    if (app == NULL)
+    {
+        g_set_error_literal(err, G_SHELL_ERROR, G_SHELL_ERROR_EMPTY_STRING,
+                            _("No file manager is configured."));
+        return FALSE;
+    }
+    gf = fm_path_to_gfile(fm_file_info_get_path(fi));
+    folder_infos = g_list_prepend(NULL, gf);
+    ret = fm_app_info_launch(app, folder_infos, ctx, err);
+    g_list_free(folder_infos);
+    g_object_unref(gf);
+    g_object_unref(app);
+    return ret;
+}
 
 
 /* Search box */
@@ -216,7 +230,7 @@ static gboolean handle_search_keypress (GtkWidget *widget, GdkEventKey *event, g
                                 {
                                     gtk_tree_model_get (model, &iter, 2, &str, -1);
                                     fpath = fm_path_new_for_str (str);
-                                    lxpanel_launch_path (m->panel, fpath);
+                                    fm_launch_path_simple (NULL, NULL, fpath, _open_dir_in_file_manager, NULL);
                                     fm_path_unref (fpath);
                                 }
 
@@ -246,7 +260,7 @@ static void handle_list_select (GtkTreeView *tv, GtkTreePath *path, GtkTreeViewC
     {
         gtk_tree_model_get (mod, &iter, 2, &str, -1);
         fpath = fm_path_new_for_str (str);
-        lxpanel_launch_path (m->panel, fpath);
+        fm_launch_path_simple (NULL, NULL, fpath, _open_dir_in_file_manager, NULL);
         fm_path_unref (fpath);
     }
 
@@ -276,10 +290,11 @@ static gboolean handle_search_button_press (GtkWidget *widget, GdkEventButton *e
 static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
-    int x, y;
+    //int x, y;
 
-    lxpanel_plugin_popup_set_position_helper (m->panel, m->plugin, m->swin, &x, &y);
-    gdk_window_move (gtk_widget_get_window (m->swin), x, y);
+    //lxpanel_plugin_popup_set_position_helper (m->panel, m->plugin, m->swin, &x, &y);
+    //gdk_window_move (gtk_widget_get_window (m->swin), x, y);
+    position_popup (m->swin, m->plugin, m->bottom);
 }
 
 static void do_search (MenuPlugin *m, GdkEventKey *event)
@@ -297,7 +312,7 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (m->swin), TRUE);
     g_signal_connect (m->swin, "map-event", G_CALLBACK (handle_search_mapped), m);
     g_signal_connect (m->swin, "button-press-event", G_CALLBACK (handle_search_button_press), m);
-    if (!m->fixed && panel_is_at_bottom (m->panel)) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
+    if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
 
     /* add a box */
     box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
@@ -312,9 +327,9 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     m->scr = gtk_scrolled_window_new (NULL, NULL);
 
     /* put in box in the appropriate order */
-    if (!m->fixed && panel_is_at_bottom (m->panel)) gtk_box_pack_start (GTK_BOX (box), m->scr, FALSE, FALSE, 0);
+    if (!m->fixed && m->bottom) gtk_box_pack_start (GTK_BOX (box), m->scr, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (box), m->srch, FALSE, FALSE, 0);
-    if (m->fixed || !panel_is_at_bottom (m->panel)) gtk_box_pack_start (GTK_BOX (box), m->scr, FALSE, FALSE, 0);
+    if (m->fixed || !m->bottom) gtk_box_pack_start (GTK_BOX (box), m->scr, FALSE, FALSE, 0);
 
     /* create the filtered list for the tree view */
     slist = GTK_TREE_MODEL_SORT (gtk_tree_model_sort_new_with_model (GTK_TREE_MODEL (m->applist)));
@@ -346,7 +361,9 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     m->height = gtk_widget_get_allocated_height (m->menu) - gtk_widget_get_allocated_height (m->srch);
 
     /* size and move */
-    lxpanel_plugin_popup_set_position_helper (m->panel, m->plugin, m->swin, &x, &y);
+    //lxpanel_plugin_popup_set_position_helper (m->panel, m->plugin, m->swin, &x, &y);
+    position_popup (m->swin, m->plugin, m->bottom);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m->swin), TRUE);
     gtk_widget_show_all (m->swin);
     gtk_window_present_with_time (GTK_WINDOW (m->swin), gdk_event_get_time ((GdkEvent *) event));
     gdk_window_move (gtk_widget_get_window (m->swin), x, y);
@@ -390,7 +407,7 @@ static void handle_menu_item_activate (GtkMenuItem *mi, MenuPlugin *m)
 {
     FmFileInfo *fi = g_object_get_qdata (G_OBJECT (mi), sys_menu_item_quark);
 
-    lxpanel_launch_path (m->panel, fm_file_info_get_path (fi));
+    fm_launch_path_simple (NULL, NULL, fm_file_info_get_path (fi), _open_dir_in_file_manager, NULL);
 }
 
 static void handle_menu_item_add_to_desktop (GtkMenuItem* item, GtkWidget* mi)
@@ -508,7 +525,7 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
 
         fm_icon = fm_file_info_get_icon (fi);
         if (fm_icon == NULL) fm_icon = fm_icon_from_name ("application-x-executable");
-        icon = fm_pixbuf_from_icon_with_fallback (fm_icon, panel_get_safe_icon_size (m->panel), "application-x-executable");
+        icon = fm_pixbuf_from_icon_with_fallback (fm_icon, m->icon_size, "application-x-executable");
         gtk_image_set_from_pixbuf (GTK_IMAGE (img), icon);
 
         if (menu_cache_item_get_type (item) == MENU_CACHE_TYPE_APP)
@@ -643,7 +660,7 @@ static void handle_reload_menu (MenuCache* cache, gpointer user_data)
     reload_system_menu (m, GTK_MENU (m->menu));
 }
 
-static void read_system_menu (GtkMenu *menu, MenuPlugin *m, config_setting_t *s)
+static void read_system_menu (GtkMenu *menu, MenuPlugin *m)
 {
     if (m->menu_cache == NULL)
     {
@@ -676,31 +693,33 @@ static void handle_run_command (GtkWidget *widget, gpointer data)
 static void handle_menu_hidden (GtkWidget *self, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), FALSE);
     if (m->swin && !gtk_widget_is_visible (m->swin)) m->swin = NULL;
 }
 
-static GtkWidget *read_menu_item (MenuPlugin *m, config_setting_t *s)
+static GtkWidget *read_menu_item (MenuPlugin *m, char *fname, char *cmd)
 {
-    const gchar *name, *fname, *action, *cmd;
+    //const gchar *name, *fname, *action, *cmd;
+    const gchar *name, *action = NULL;
     Command *cmd_entry = NULL;
     char *tmp;
     GtkWidget *item, *box, *label, *img;
     GdkPixbuf *pixbuf;
 
+#if 0
     name = fname = action = cmd = NULL;
-
     config_setting_lookup_string (s, "name", &name);
     config_setting_lookup_string (s, "image", &fname);
     config_setting_lookup_string (s, "action", &action);
+#endif
 
-    if (config_setting_lookup_string (s, "command", &cmd))
-    {
+    //if (config_setting_lookup_string (s, "command", &cmd))
+    //{
         for (cmd_entry = commands; cmd_entry->name; cmd_entry++)
         {
             if (!g_ascii_strcasecmp (cmd, cmd_entry->name)) break;
         }
-    }
-
+    //}
     item = gtk_menu_item_new ();
     box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, MENU_ICON_SPACE);
     gtk_container_add (GTK_CONTAINER (item), box);
@@ -728,8 +747,8 @@ static GtkWidget *read_menu_item (MenuPlugin *m, config_setting_t *s)
     if (fname)
     {
         img = gtk_image_new ();
-        pixbuf = gtk_icon_theme_load_icon (panel_get_icon_theme (m->panel), fname,
-            panel_get_safe_icon_size (m->panel), GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+        pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), fname,
+            m->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
         if (pixbuf)
         {
             gtk_image_set_from_pixbuf (GTK_IMAGE (img), pixbuf);
@@ -748,7 +767,7 @@ static gboolean create_menu (MenuPlugin *m)
 {
     GtkWidget *mi;
     const gchar *str;
-    config_setting_t *list, *s;
+    //config_setting_t *list, *s;
     guint i;
 
     m->menu = gtk_menu_new ();
@@ -757,6 +776,23 @@ static gboolean create_menu (MenuPlugin *m)
     g_signal_connect (m->menu, "key-press-event", G_CALLBACK (handle_key_presses), m);
     g_signal_connect (m->menu, "hide", G_CALLBACK (handle_menu_hidden), m);
 
+    read_system_menu (GTK_MENU (m->menu), m);
+
+    mi = gtk_separator_menu_item_new ();
+    gtk_widget_set_name (mi, "sysmenu");
+    gtk_widget_show (mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (m->menu), mi);
+
+    mi = read_menu_item (m, "system-run", "run");
+    gtk_widget_set_name (mi, "sysmenu");
+    gtk_widget_show (mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (m->menu), mi);
+
+    mi = read_menu_item (m, "system-shutdown", "logout");
+    gtk_widget_set_name (mi, "sysmenu");
+    gtk_widget_show (mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (m->menu), mi);
+#if 0
     list = config_setting_add (m->settings, "", PANEL_CONF_TYPE_LIST);
     for (i = 0; (s = config_setting_get_elem (list, i)) != NULL; i++)
     {
@@ -783,22 +819,49 @@ static gboolean create_menu (MenuPlugin *m)
         gtk_widget_show (mi);
         gtk_menu_shell_append (GTK_MENU_SHELL (m->menu), mi);
     }
+#endif
+    return TRUE;
+}
+
+static gboolean show_menu (MenuPlugin *m)
+{
+    gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+    return FALSE;
+}
+
+static gboolean menu_button_release_event (GtkWidget *widget, GdkEventButton *event, MenuPlugin *m)
+{
     return TRUE;
 }
 
 /* Handler for menu button click */
-static gboolean menu_button_press_event (GtkWidget *widget, GdkEventButton *event, LXPanel *panel)
+static gboolean menu_button_press_event (GtkWidget *widget, GdkEventButton *event, MenuPlugin *m)
 {
-    MenuPlugin *m = lxpanel_plugin_get_data (widget);
+    //MenuPlugin *m = lxpanel_plugin_get_data (widget);
 
     if (event->button == 1)
     {
-        gtk_menu_popup_at_widget (GTK_MENU (m->menu), widget, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+        gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), TRUE);
+        g_signal_connect (m->menu, "button-release-event", G_CALLBACK (menu_button_release_event), m);
+        // this is hacky - the best alternative is to hang on the "draw" signal on m->plugin, but that's flakey
+        g_timeout_add (100, show_menu, m);
+
         return TRUE;
     }
     return FALSE;
 }
 
+void menu_update_display (MenuPlugin *m)
+{
+    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), m->icon, m->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+    if (pixbuf)
+    {
+        gtk_image_set_from_pixbuf (GTK_IMAGE (m->img), pixbuf);
+        g_object_unref (pixbuf);
+    }
+}
+
+#if 0
 /* Handler for control message from system */
 static void menu_show_menu (GtkWidget *p)
 {
@@ -857,15 +920,17 @@ static void menu_destructor (gpointer user_data)
     g_free (m->icon);
     g_free (m);
 }
-
+#endif
 /* Plugin constructor */
-static GtkWidget *menu_constructor (LXPanel *panel, config_setting_t *settings)
+void menu_init (MenuPlugin *m)
 {
     /* Allocate and initialize plugin context */
-    MenuPlugin *m = g_new0 (MenuPlugin, 1);
-    config_setting_t *s;
+    //MenuPlugin *m = g_new0 (MenuPlugin, 1);
+    //config_setting_t *s;
     int val;
     const char *fname;
+
+    fm_init (NULL);
 
 #ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
@@ -874,10 +939,10 @@ static GtkWidget *menu_constructor (LXPanel *panel, config_setting_t *settings)
 #endif
 
     /* Allocate top level widget and set into plugin widget pointer. */
-    m->panel = panel;
-    m->settings = settings;
-    m->plugin = gtk_button_new ();
-    lxpanel_plugin_set_data (m->plugin, m, menu_destructor);
+    //m->panel = panel;
+    //m->settings = settings;
+    //m->plugin = gtk_button_new ();
+    //lxpanel_plugin_set_data (m->plugin, m, menu_destructor);
 
     /* Allocate icon as a child of top level */
     m->img = gtk_image_new ();
@@ -886,7 +951,9 @@ static GtkWidget *menu_constructor (LXPanel *panel, config_setting_t *settings)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (m->plugin), GTK_RELIEF_NONE);
+    g_signal_connect (m->plugin, "button-press-event", G_CALLBACK (menu_button_press_event), m);
 
+#if 0
     /* Check if configuration exists */
     settings = config_setting_add (settings, "", PANEL_CONF_TYPE_LIST);
     if (config_setting_get_elem (settings, 0) == NULL)
@@ -921,6 +988,10 @@ static GtkWidget *menu_constructor (LXPanel *panel, config_setting_t *settings)
         m->fixed = TRUE;
     else
         m->fixed = FALSE;
+#endif
+    m->icon = g_strdup ("start-here");
+    m->padding = 4;
+    m->fixed = FALSE;
 
     m->applist = gtk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING);
     m->ds = fm_dnd_src_new (NULL);
@@ -941,9 +1012,10 @@ static GtkWidget *menu_constructor (LXPanel *panel, config_setting_t *settings)
 
     /* Show the widget and return */
     gtk_widget_show_all (m->plugin);
-    return m->plugin;
+    //return m->plugin;
 }
 
+#if 0
 /* Handler to make changes from configure dialog */
 static gboolean menu_apply_config (gpointer user_data)
 {
@@ -988,3 +1060,4 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk = {
     .show_system_menu = menu_show_menu,
     .gettext_package = GETTEXT_PACKAGE
 };
+#endif

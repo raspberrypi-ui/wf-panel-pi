@@ -25,6 +25,7 @@
 #include "widgets/volume.hpp"
 #endif
 #include "widgets/volumepulse.hpp"
+#include "widgets/smenu.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/notifications/notification-center.hpp"
 
@@ -213,6 +214,8 @@ class WayfirePanel::impl
         }
         if (name == "volumepulse")
             return Widget(new WayfireVolumepulse());
+        if (name == "smenu")
+            return Widget(new WayfireSmenu());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
         if (name == "notifications")
