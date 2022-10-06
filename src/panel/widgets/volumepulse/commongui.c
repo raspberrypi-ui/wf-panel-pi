@@ -29,13 +29,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pulse.h"
 #include "bluetooth.h"
 
+#include "../lxutils.h"
+
 #include "commongui.h"
 
 /*----------------------------------------------------------------------------*/
 /* Static function prototypes                                                 */
 /*----------------------------------------------------------------------------*/
 
-static void popup_window_show (GtkWidget *p);
+static void popup_window_show (VolumePulsePlugin *vol);
 static void popup_window_scale_changed (GtkRange *range, VolumePulsePlugin *vol);
 static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol);
 static gboolean popup_mapped (GtkWidget *widget, GdkEvent *event, VolumePulsePlugin *vol);
@@ -106,20 +108,21 @@ void close_widget (GtkWidget **wid)
 
 /* Create the pop-up volume window */
 
-static void popup_window_show (GtkWidget *p)
+static void popup_window_show (VolumePulsePlugin *vol)
 {
-    VolumePulsePlugin *vol = lxpanel_plugin_get_data (p);
-    gint x, y;
+    //VolumePulsePlugin *vol = lxpanel_plugin_get_data (p);
 
     /* Create a new window. */
-    vol->popup_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    vol->popup_window = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_widget_set_name (vol->popup_window, "panelpopup");
     gtk_window_set_decorated (GTK_WINDOW (vol->popup_window), FALSE);
 
     gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window), 0);
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (vol->popup_window), TRUE);
     gtk_window_set_skip_pager_hint (GTK_WINDOW (vol->popup_window), TRUE);
-    gtk_window_set_type_hint (GTK_WINDOW (vol->popup_window), GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU);
+    gtk_window_set_type_hint (GTK_WINDOW (vol->popup_window), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
+
+    position_popup (vol->popup_window, vol->plugin, vol->bottom);
 
     /* Create a scrolled window as the child of the top level window. */
     GtkWidget *scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
@@ -159,11 +162,11 @@ static void popup_window_show (GtkWidget *p)
     gtk_widget_set_can_focus (vol->popup_mute_check, FALSE);
 
     /* Show the window - need to draw the window in order to allow the plugin position helper to get its size */
-    gtk_window_set_position (GTK_WINDOW (vol->popup_window), GTK_WIN_POS_MOUSE);
+    //gtk_window_set_position (GTK_WINDOW (vol->popup_window), GTK_WIN_POS_MOUSE);
     gtk_widget_show_all (vol->popup_window);
-    gtk_widget_hide (vol->popup_window);
-    lxpanel_plugin_popup_set_position_helper (vol->panel, vol->plugin, vol->popup_window, &x, &y);
-    gdk_window_move (gtk_widget_get_window (vol->popup_window), x, y);
+    //gtk_widget_hide (vol->popup_window);
+    //lxpanel_plugin_popup_set_position_helper (vol->plugin, vol->popup_window, &x, &y);
+    //gdk_window_move (gtk_widget_get_window (vol->popup_window), x, y);
     gtk_window_present (GTK_WINDOW (vol->popup_window));
 
     /* Connect the function which hides the window when the mouse is clicked outside it */
@@ -347,7 +350,7 @@ gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *even
     {
         case 1: /* left-click - show or hide volume popup */
                 if (vol->popup_window) close_widget (&vol->popup_window);
-                else popup_window_show (vol->plugin);
+                else popup_window_show (vol);
                 break;
 
         case 2: /* middle-click - toggle mute */
@@ -357,7 +360,7 @@ gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *even
         case 3: /* right-click - show device list */
                 close_widget (&vol->popup_window);
                 menu_show (vol);
-                gtk_menu_popup_at_widget (GTK_MENU (vol->menu_devices), vol->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
+                gtk_menu_popup_at_widget (GTK_MENU (vol->menu_devices), widget, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
                 break;
     }
 
@@ -393,6 +396,7 @@ void volumepulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePul
 /* Plugin structure                                                           */
 /*----------------------------------------------------------------------------*/
 
+#if 0
 /* Callback when panel configuration changes */
 
 void volumepulse_configuration_changed (LXPanel *panel, GtkWidget *plugin)
@@ -471,6 +475,7 @@ void volumepulse_destructor (gpointer user_data)
     /* Deallocate all memory. */
     g_free (vol);
 }
+#endif
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

@@ -24,6 +24,7 @@
 #ifdef HAVE_PULSE
 #include "widgets/volume.hpp"
 #endif
+#include "widgets/volumepulse.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/notifications/notification-center.hpp"
 
@@ -210,6 +211,8 @@ class WayfirePanel::impl
             " is not available." << std::endl;
 #endif
         }
+        if (name == "volumepulse")
+            return Widget(new WayfireVolumepulse());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
         if (name == "notifications")

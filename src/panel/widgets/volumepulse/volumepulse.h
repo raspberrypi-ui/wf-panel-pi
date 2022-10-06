@@ -34,7 +34,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk/gtk.h>
 #include <pulse/pulseaudio.h>
 
-#include "plugin.h"
+//#include "plugin.h"
+
+#define PACKAGE_DATA_DIR "/usr/share/lxpanel"
+#define GETTEXT_PACKAGE "lxplug_volumepulse"
 
 #define DEBUG_ON
 #ifdef DEBUG_ON
@@ -45,9 +48,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 typedef struct {
     /* plugin */
-    GtkWidget *plugin;                  /* Back pointer to widget */
-    LXPanel *panel;                     /* Back pointer to panel */
-    config_setting_t *settings;         /* Plugin settings */
+    GtkWidget *plugin;                  /* Pointer to widget */
+    //LXPanel *panel;                   /* Back pointer to panel */
+    //config_setting_t *settings;       /* Plugin settings */
+
+    int icon_size;                      /* Variables used under wf-panel */
+    gboolean bottom;
+
     gboolean pipewire;                  /* Pipewire running? */
 
     /* graphics */
@@ -73,7 +80,7 @@ typedef struct {
 
     /* PulseAudio interface */
     pa_threaded_mainloop *pa_mainloop;  /* Controller loop variable */
-    pa_context *pa_context;             /* Controller context */
+    pa_context *pa_cont;                /* Controller context */
     pa_context_state_t pa_state;        /* Current controller state */
     char *pa_default_sink;              /* Current default sink name */
     char *pa_default_source;            /* Current default source name */
@@ -102,6 +109,9 @@ extern void menu_show (VolumePulsePlugin *vol);
 extern void menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name);
 extern void profiles_dialog_add_combo (VolumePulsePlugin *vol, GtkListStore *ls, GtkWidget *dest, int sel, const char *label, const char *name);
 extern void volumepulse_update_display (VolumePulsePlugin *vol);
+extern void hdmi_init (VolumePulsePlugin *vol);
+extern void volumepulse_init (VolumePulsePlugin *vol);
+
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

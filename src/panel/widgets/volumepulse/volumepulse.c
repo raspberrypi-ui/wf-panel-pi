@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Helpers */
 static int get_value (const char *fmt, ...);
-static void hdmi_init (VolumePulsePlugin *vol);
+//static void hdmi_init (VolumePulsePlugin *vol);
 static const char *device_display_name (VolumePulsePlugin *vol, const char *name);
 
 /* Menu popup */
@@ -70,7 +70,7 @@ static int get_value (const char *fmt, ...)
 
 /* Find number of HDMI devices and device names */
 
-static void hdmi_init (VolumePulsePlugin *vol)
+void hdmi_init (VolumePulsePlugin *vol)
 {
     int i, m;
 
@@ -362,7 +362,13 @@ void volumepulse_update_display (VolumePulsePlugin *vol)
         else if (level > 0) icon = "audio-volume-low";
         else icon = "audio-volume-silent";
     }
-    lxpanel_plugin_set_taskbar_icon (vol->panel, vol->tray_icon, icon);
+
+    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon, vol->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+    if (pixbuf)
+    {
+        gtk_image_set_from_pixbuf (GTK_IMAGE (vol->tray_icon), pixbuf);
+        g_object_unref (pixbuf);
+    }
 
     /* update popup window controls */
     if (vol->popup_window)
@@ -390,10 +396,10 @@ void volumepulse_update_display (VolumePulsePlugin *vol)
 
 /* Plugin constructor */
 
-static GtkWidget *volumepulse_constructor (LXPanel *panel, config_setting_t *settings)
+void volumepulse_init (VolumePulsePlugin *vol)
 {
     /* Allocate and initialize plugin context */
-    VolumePulsePlugin *vol = g_new0 (VolumePulsePlugin, 1);
+    //VolumePulsePlugin *vol = g_new0 (VolumePulsePlugin, 1);
 
 #ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
@@ -402,10 +408,10 @@ static GtkWidget *volumepulse_constructor (LXPanel *panel, config_setting_t *set
 #endif
 
     /* Allocate top level widget and set into plugin widget pointer */
-    vol->panel = panel;
-    vol->settings = settings;
-    vol->plugin = gtk_button_new ();
-    lxpanel_plugin_set_data (vol->plugin, vol, volumepulse_destructor);
+    //vol->panel = panel;
+    //vol->settings = settings;
+    //vol->plugin = gtk_button_new ();
+    //lxpanel_plugin_set_data (vol->plugin, vol, volumepulse_destructor);
 
     /* Allocate icon as a child of top level */
     vol->tray_icon = gtk_image_new ();
@@ -449,9 +455,10 @@ static GtkWidget *volumepulse_constructor (LXPanel *panel, config_setting_t *set
 
     /* Show the widget and return */
     gtk_widget_show_all (vol->plugin);
-    return vol->plugin;
+    //return vol->plugin;
 }
 
+#if 0
 FM_DEFINE_MODULE (lxpanel_gtk, volumepulse)
 
 /* Plugin descriptor */
@@ -465,6 +472,6 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk =
     .control = volumepulse_control_msg,
     .gettext_package = GETTEXT_PACKAGE
 };
-
+#endif
 /* End of file */
 /*----------------------------------------------------------------------------*/
