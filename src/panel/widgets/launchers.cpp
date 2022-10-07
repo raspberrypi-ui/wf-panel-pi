@@ -113,7 +113,7 @@ void WfLauncherButton::set_size(int size)
 bool WfLauncherButton::initialize(std::string name, std::string icon, std::string label)
 {
     launcher_name = name;
-    base_size = WfOption<int> {"panel/launchers_size"} / LAUNCHERS_ICON_SCALE;
+    base_size = WfOption<int> {"panel/icon_size"};
     if (icon == "none")
     {
         auto dl = new DesktopLauncherInfo();
@@ -137,10 +137,11 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
     evbox.add(image);
     evbox.signal_button_press_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_click));
     evbox.signal_button_release_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_click));
-    evbox.signal_enter_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_enter));
-    evbox.signal_leave_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_leave));
+    //evbox.signal_enter_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_enter));
+    //evbox.signal_leave_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_leave));
+    evbox.set_relief (Gtk::RELIEF_NONE);
 
-    evbox.signal_draw().connect(sigc::mem_fun(this, &WfLauncherButton::on_draw));
+    //evbox.signal_draw().connect(sigc::mem_fun(this, &WfLauncherButton::on_draw));
     evbox.signal_map().connect([=] () {
         set_size(base_size);
     });

@@ -8,9 +8,10 @@
 #include <gtkmm/image.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/eventbox.h>
+#include <gtkmm/button.h>
 #include <wayfire/util/duration.hpp>
 
-#define LAUNCHERS_ICON_SCALE 1.42
+#define LAUNCHERS_ICON_SCALE 1.0
 
 struct LauncherInfo
 {
@@ -40,7 +41,7 @@ struct WfLauncherButton
     int32_t base_size;
 
     Gtk::Image image;
-    Gtk::EventBox evbox;
+    Gtk::Button evbox;
     LauncherInfo *info = NULL;
     LauncherAnimation current_size{wf::create_option(1000), 0, 0};
 
