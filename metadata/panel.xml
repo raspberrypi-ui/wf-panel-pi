@@ -76,7 +76,7 @@
 	</option>
 	<option name="background_color" type="string">
 		<_short>Background Color</_short>
-		<default>$EDECEB</default>
+		<default>#EDECEBFF</default>
 	</option>
 	</group>
 	<group>
