@@ -23,6 +23,7 @@ void WayfireSmenu::init (Gtk::HBox *container)
     /* Setup structure */
     m = &data;
     m->plugin = (GtkWidget *)((*plugin).gobj());
+    m->icon_size = icon_size / LAUNCHERS_ICON_SCALE;
 
     /* Initialise the plugin */
     menu_init (m);
