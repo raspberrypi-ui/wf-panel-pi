@@ -276,7 +276,7 @@ class WayfireToplevel::impl
     {
         this->app_id = app_id;
         IconProvider::set_image_from_icon(image, app_id,
-            24, button.get_scale_factor());
+            window_list->get_icon_size(), button.get_scale_factor());
     }
 
     void send_rectangle_hint()

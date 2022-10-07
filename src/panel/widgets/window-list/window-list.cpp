@@ -78,7 +78,6 @@ void WayfireWindowListBox::forall_vfunc(gboolean value, GtkCallback callback, gp
 void WayfireWindowListBox::on_size_allocate(Gtk::Allocation& alloc)
 {
     HBox::on_size_allocate(alloc);
-
     if (top_widget)
     {
         auto alloc = top_widget->get_allocation();
@@ -261,6 +260,8 @@ void WayfireWindowList::handle_toplevel_closed(zwlr_foreign_toplevel_handle_v1 *
     /* Recalculate button size */
     set_button_width(get_target_button_width());
 }
+
+int WayfireWindowList::get_icon_size() { return icon_size; }
 
 WayfireWindowList::WayfireWindowList(WayfireOutput *output)
 {

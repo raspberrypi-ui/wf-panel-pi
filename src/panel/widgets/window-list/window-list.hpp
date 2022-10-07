@@ -58,6 +58,8 @@ class WayfireWindowListBox : public Gtk::HBox
 
 class WayfireWindowList : public WayfireWidget
 {
+    WfOption <int> icon_size {"panel/icon_size"};
+
     public:
     std::map<zwlr_foreign_toplevel_handle_v1*,
         std::unique_ptr<WayfireToplevel>> toplevels;
@@ -73,6 +75,7 @@ class WayfireWindowList : public WayfireWidget
     void handle_toplevel_manager(zwlr_foreign_toplevel_manager_v1 *manager);
     void handle_toplevel_closed(zwlr_foreign_toplevel_handle_v1 *handle);
     void handle_new_toplevel(zwlr_foreign_toplevel_handle_v1 *handle);
+    int get_icon_size ();
 
     wayfire_config *get_config();
 
