@@ -1,6 +1,5 @@
 #include <glibmm.h>
 #include "smenu.hpp"
-#include "launchers.hpp"
 
 void WayfireSmenu::bar_pos_changed_cb (void)
 {
@@ -10,7 +9,7 @@ void WayfireSmenu::bar_pos_changed_cb (void)
 
 void WayfireSmenu::icon_size_changed_cb (void)
 {
-    m->icon_size = icon_size / LAUNCHERS_ICON_SCALE;
+    m->icon_size = icon_size;
     menu_update_display (m);
 }
 
@@ -23,7 +22,7 @@ void WayfireSmenu::init (Gtk::HBox *container)
     /* Setup structure */
     m = &data;
     m->plugin = (GtkWidget *)((*plugin).gobj());
-    m->icon_size = icon_size / LAUNCHERS_ICON_SCALE;
+    m->icon_size = icon_size;
 
     /* Initialise the plugin */
     menu_init (m);

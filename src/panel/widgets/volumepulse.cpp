@@ -1,6 +1,5 @@
 #include <glibmm.h>
 #include "volumepulse.hpp"
-#include "launchers.hpp"
 
 extern "C" {
 #include "volumepulse/pulse.h"
@@ -16,7 +15,7 @@ void WayfireVolumepulse::bar_pos_changed_cb (void)
 
 void WayfireVolumepulse::icon_size_changed_cb (void)
 {
-    vol->icon_size = icon_size / LAUNCHERS_ICON_SCALE;
+    vol->icon_size = icon_size;
     volumepulse_update_display (vol);
 }
 

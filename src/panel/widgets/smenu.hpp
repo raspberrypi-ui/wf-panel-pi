@@ -12,7 +12,7 @@ class WayfireSmenu : public WayfireWidget
 {
     std::unique_ptr <Gtk::Button> plugin;
 
-    WfOption <int> icon_size {"panel/launchers_size"};
+    WfOption <int> icon_size {"panel/icon_size"};
     WfOption <std::string> bar_pos {"panel/position"};
 
     /* plugin */
