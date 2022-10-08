@@ -22,6 +22,8 @@
 
 #define ACTIVE_AP_TAG "active-ap"
 
+#define PACKAGE_DATA_DIR "/usr/share/lxpanel"
+
 static void wifi_dialog_response_cb (GtkDialog *dialog, gint response, gpointer user_data);
 
 static NMAccessPoint *update_active_ap (NMDevice *device, NMDeviceState state, NMApplet *applet);

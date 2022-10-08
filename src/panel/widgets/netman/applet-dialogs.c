@@ -18,6 +18,8 @@
 #include "utils.h"
 #include "nma-bar-code-widget.h"
 
+#define VERSION "0.1"
+
 
 static void
 info_dialog_show_error (const char *err)

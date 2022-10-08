@@ -18,6 +18,8 @@
 #include "nm-access-point.h"
 #include "mobile-helpers.h"
 
+#include "../lxutils.h"
+
 typedef struct {
 	GtkWidget * ssid;
 	GtkWidget * strength;
@@ -112,9 +114,9 @@ update_icon (NMNetworkMenuItem *item, NMApplet *applet)
 		icon_name = mobile_helper_get_quality_icon_name (priv->int_strength);
 
 #ifdef LXPANEL_PLUGIN
-    lxpanel_plugin_set_menu_icon (applet->panel, priv->strength, icon_name);
-	lxpanel_plugin_set_menu_icon (applet->panel, priv->encrypted, priv->is_encrypted ? "network-wireless-encrypted" : NULL);
-	lxpanel_plugin_set_menu_icon (applet->panel, priv->fiveg, priv->int_freq > 2500 ? "5g" : NULL);
+    set_menu_icon (priv->strength, icon_name, applet->icon_size);
+	set_menu_icon (priv->encrypted, priv->is_encrypted ? "network-wireless-encrypted" : NULL, applet->icon_size);
+	set_menu_icon (priv->fiveg, priv->int_freq > 2500 ? "5g" : NULL, applet->icon_size);
 #else
 	scale = gtk_widget_get_scale_factor (GTK_WIDGET (item));
 	icon_size = 24;
