@@ -36,10 +36,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <config.h>
 #endif
 #include <glib/gi18n.h>
+#include <glib-object.h>
 
-#include "plugin.h"
+
+//#include "plugin.h"
 #include "nm-default.h"
 #include "applet.h"
+
 
 /* Private context for plugin */
 
@@ -48,6 +51,7 @@ extern void status_icon_size_changed_cb (NMApplet *applet);
 extern void status_icon_activate_cb (NMApplet *applet);
 extern void finalize (NMApplet *applet);
 
+#if 0
 /* Handler for system config changed message from panel */
 static void nm_configuration_changed (LXPanel *panel, GtkWidget *p)
 {
@@ -57,11 +61,12 @@ static void nm_configuration_changed (LXPanel *panel, GtkWidget *p)
     else
         gtk_widget_hide (nm->plugin);
 }
+#endif
 
 /* Handler for menu button click */
-static gboolean nm_button_press_event (GtkWidget *widget, GdkEventButton *event, LXPanel *panel)
+static gboolean nm_button_press_event (GtkWidget *widget, GdkEventButton *event, NMApplet *nm)
 {
-    NMApplet *nm = lxpanel_plugin_get_data (widget);
+    //NMApplet *nm = lxpanel_plugin_get_data (widget);
 
     if (event->button == 1)
     {
@@ -71,6 +76,7 @@ static gboolean nm_button_press_event (GtkWidget *widget, GdkEventButton *event,
     else return FALSE;
 }
 
+#if 0
 /* Handler for control message */
 static gboolean nm_control_msg (GtkWidget *plugin, const char *cmd)
 {
@@ -94,12 +100,12 @@ static void nm_destructor (gpointer user_data)
     finalize (nm);
     g_free (nm);
 }
-
+#endif
 /* Plugin constructor. */
-static GtkWidget *nm_constructor (LXPanel *panel, config_setting_t *settings)
+void netman_init (NMApplet *nm)
 {
     /* Allocate and initialize plugin context */
-    NMApplet *nm = g_new0 (NMApplet, 1);
+    //NMApplet *nm = g_new0 (NMApplet, 1);
 
 #ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
@@ -108,10 +114,10 @@ static GtkWidget *nm_constructor (LXPanel *panel, config_setting_t *settings)
 #endif
 
     /* Allocate top level widget and set into plugin widget pointer. */
-    nm->panel = panel;
-    nm->settings = settings;
-    nm->plugin = gtk_button_new ();
-    lxpanel_plugin_set_data (nm->plugin, nm, nm_destructor);
+    //nm->panel = panel;
+    //nm->settings = settings;
+    //nm->plugin = gtk_button_new ();
+    //lxpanel_plugin_set_data (nm->plugin, nm, nm_destructor);
 
     /* Allocate icon as a child of top level */
     nm->status_icon = gtk_image_new ();
@@ -119,9 +125,10 @@ static GtkWidget *nm_constructor (LXPanel *panel, config_setting_t *settings)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (nm->plugin), GTK_RELIEF_NONE);
+    g_signal_connect (nm->plugin, "button-press-event", G_CALLBACK (nm_button_press_event), nm);
 
     /* Set up variables */
-    nm->icon_size = panel_get_safe_icon_size (panel);
+    //nm->icon_size = panel_get_safe_icon_size (panel);
 
     if (system ("ps ax | grep NetworkManager | grep -qv grep"))
     {
@@ -136,9 +143,9 @@ static GtkWidget *nm_constructor (LXPanel *panel, config_setting_t *settings)
 
     /* Show the widget and return */
     gtk_widget_show_all (nm->plugin);
-    return nm->plugin;
+    //return nm->plugin;
 }
-
+#if 0
 FM_DEFINE_MODULE (lxpanel_gtk, netman)
 
 /* Plugin descriptor. */
@@ -151,3 +158,5 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk = {
     .control = nm_control_msg,
     .gettext_package = GETTEXT_PACKAGE
 };
+#endif
+

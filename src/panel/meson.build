@@ -12,6 +12,24 @@ widget_sources = ['widgets/battery.cpp',
                   'widgets/volumepulse/bluetooth.c',
                   'widgets/smenu.cpp',
                   'widgets/smenu/menu.c',
+                  'widgets/netman.cpp',
+                  'widgets/netman/netman.c',
+	            'widgets/netman/ap-menu-item.c',
+	            'widgets/netman/applet.c',
+	            'widgets/netman/applet-device-bt.c',
+	            'widgets/netman/applet-device-wifi.c',
+#	            'widgets/netman/applet-vpn-request.c',
+	            'widgets/netman/mb-menu-item.c',
+	            'widgets/netman/applet-agent.c',
+	            'widgets/netman/applet-device-ethernet.c',
+	            'widgets/netman/applet-dialogs.c',
+	            'widgets/netman/ethernet-dialog.c',
+	            'widgets/netman/mobile-helpers.c',
+	            'widgets/netman/utils.c',
+	            'widgets/netman/eap-method.c',
+	            'widgets/netman/nm-utils/nm-compat.c',
+	            'widgets/netman/nm-utils/nm-shared-utils.c',
+	            'widgets/netman/netman-resources.c',
                   'widgets/window-list/window-list.cpp',
                   'widgets/window-list/toplevel.cpp',
                   'widgets/notifications/daemon.cpp',
@@ -19,7 +37,7 @@ widget_sources = ['widgets/battery.cpp',
                   'widgets/notifications/notification-info.cpp',
                   'widgets/notifications/notification-center.cpp']
 
-deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm]
+deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify]
 
 if libpulse.found()
   widget_sources += 'widgets/volume.cpp'

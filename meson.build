@@ -23,6 +23,10 @@ libpulse       = dependency('libpulse', required : get_option('pulse'))
 libgvc         = subproject('gvc', default_options: ['static=true'], required : get_option('pulse'))
 menu_cache     = dependency('libmenu-cache')
 libfm          = dependency('libfm-gtk3')
+netman	       = dependency('libnm')
+nma	       = dependency('libnma')
+secret	       = dependency('libsecret-1')
+notify	       = dependency('libnotify')
 
 if get_option('wayland-logout') == true
   wayland_logout = subproject('wayland-logout')

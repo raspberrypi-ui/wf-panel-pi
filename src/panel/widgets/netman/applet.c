@@ -32,6 +32,8 @@
 #include "applet-vpn-request.h"
 #include "utils.h"
 
+#include "../lxutils.h"
+
 #if WITH_WWAN
 # include "applet-device-broadband.h"
 #endif
@@ -45,6 +47,9 @@ gboolean with_agent = TRUE;
 extern gboolean with_agent;
 #endif
 extern gboolean with_appindicator;
+
+#define BINDIR "/usr/bin"
+#define ICONDIR "/usr/share/lxpanel/data/icons"
 
 G_DEFINE_TYPE (NMApplet, nma, G_TYPE_APPLICATION)
 
@@ -702,7 +707,7 @@ static void
 applet_clear_notify (NMApplet *applet)
 {
 #ifdef LXPANEL_PLUGIN
-	lxpanel_notify_clear (applet->notification);
+	//lxpanel_notify_clear (applet->notification);
 #else
 	if (applet->notification == NULL)
 		return;
@@ -761,7 +766,7 @@ applet_do_notify (NMApplet *applet,
 
 #ifdef LXPANEL_PLUGIN
 	escaped = utils_escape_notify_message (message);
-	applet->notification = lxpanel_notify (applet->panel, escaped);
+	//applet->notification = lxpanel_notify (applet->panel, escaped);
 	g_free (escaped);
 #else
 	if (INDICATOR_ENABLED (applet)) {
@@ -1572,12 +1577,12 @@ static int add_hotspots (const GPtrArray *all_devices, const GPtrArray *all_conn
 		gtk_box_pack_start (GTK_BOX (hbox), lbl, TRUE, TRUE, 0);
 
 		icon = gtk_image_new ();
-		lxpanel_plugin_set_menu_icon (applet->panel, icon, "network-wireless-hotspot");
+		set_menu_icon (icon, "network-wireless-hotspot", applet->icon_size);
 		gtk_box_pack_end (GTK_BOX (hbox), icon, FALSE, TRUE, 0);
 
 		sec = gtk_image_new ();
 		NMSettingWirelessSecurity *s_sec = nm_connection_get_setting_wireless_security (con);
-		if (s_sec) lxpanel_plugin_set_menu_icon (applet->panel, sec, "network-wireless-encrypted");
+		if (s_sec) set_menu_icon ( sec, "network-wireless-encrypted", applet->icon_size);
 		gtk_box_pack_end (GTK_BOX (hbox), sec, FALSE, TRUE, 0);
 
 		g_signal_connect (item, "activate", G_CALLBACK (activate_hotspot), applet);
@@ -3471,7 +3476,7 @@ applet_agent_get_secrets_cb (AppletAgent *agent,
 
 	s_con = nm_connection_get_setting_connection (connection);
 	g_return_if_fail (s_con != NULL);
-
+#if 0 //!!!!!
 	/* VPN secrets get handled a bit differently */
 	if (!strcmp (nm_setting_connection_get_connection_type (s_con), NM_SETTING_VPN_SETTING_NAME)) {
 		req = applet_secrets_request_new (applet_vpn_request_get_secrets_size (),
@@ -3489,7 +3494,7 @@ applet_agent_get_secrets_cb (AppletAgent *agent,
 		applet->secrets_reqs = g_slist_prepend (applet->secrets_reqs, req);
 		return;
 	}
-
+#endif
 	dclass = get_device_class_from_connection (connection, applet);
 	if (!dclass) {
 		error = g_error_new (NM_SECRET_AGENT_ERROR,
@@ -3699,7 +3704,7 @@ status_icon_size_changed_cb (GtkStatusIcon *icon,
 #endif
 {
 #ifdef LXPANEL_PLUGIN
-	int size = panel_get_safe_icon_size (applet->panel);
+	int size = applet->icon_size;
 #endif
 	g_debug ("%s(): status icon size %d requested", __func__, size);
 
@@ -3752,7 +3757,7 @@ status_icon_activate_cb (GtkStatusIcon *icon, NMApplet *applet)
 
 	/* Display the new menu */
 #ifdef LXPANEL_PLUGIN
-	gtk_menu_popup_at_widget (GTK_MENU (applet->menu), applet->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+	gtk_menu_popup_at_widget (GTK_MENU (applet->menu), applet->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_SOUTH_WEST, NULL);
 #else
 	gtk_menu_popup (GTK_MENU (applet->menu), NULL, NULL,
 	                gtk_status_icon_position_menu, icon,

@@ -35,7 +35,7 @@
 
 #define LXPANEL_PLUGIN
 #ifdef LXPANEL_PLUGIN
-#include "plugin.h"
+//#include "plugin.h"
 #endif
 
 #define NM_TYPE_APPLET              (nma_get_type())
@@ -76,11 +76,12 @@ typedef struct NMADeviceClass NMADeviceClass;
 typedef struct {
 #ifdef LXPANEL_PLUGIN
     GtkWidget *plugin;              /* Back pointer to widget */
-    LXPanel *panel;                 /* Back pointer to panel */
-    config_setting_t *settings;     /* Plugin settings */
+    //LXPanel *panel;                 /* Back pointer to panel */
+    //config_setting_t *settings;     /* Plugin settings */
     GSList *ap_list;
     gboolean active;
 #endif
+	gboolean bottom;
 	GApplication parent;
 
 	NMClient *nm_client;
@@ -158,7 +159,7 @@ typedef struct {
 
 	GtkBuilder *    info_dialog_ui;
 #ifdef LXPANEL_PLUGIN
-	int notification;
+	//int notification;
 #else
 	NotifyNotification* notification;
 #endif
@@ -328,5 +329,7 @@ void applet_add_default_connection_item (NMDevice *device,
                                          gboolean sensitive,
                                          GtkWidget *menu,
                                          NMApplet *applet);
+
+extern void netman_init (NMApplet *m);
 
 #endif

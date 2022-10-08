@@ -19,7 +19,7 @@
 	</option>
 	<option name="widgets_right" type="string">
 		<_short>Widgets Right</_short>
-		<default>volumepulse network clock</default>
+		<default>volumepulse netman clock</default>
 	</option>
 	<option name="icon_size" type="int">
 		<_short>Icon Size</_short>
