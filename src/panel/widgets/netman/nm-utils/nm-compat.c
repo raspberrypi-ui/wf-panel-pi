@@ -18,7 +18,7 @@
  * (C) Copyright 2017 Red Hat, Inc.
  */
 
-#include "nm-default.h"
+#include "../nm-default.h"
 
 #include "nm-compat.h"
 

@@ -18,7 +18,7 @@
  * (C) Copyright 2016 Red Hat, Inc.
  */
 
-#include "nm-default.h"
+#include "../nm-default.h"
 
 #include "nm-shared-utils.h"
 

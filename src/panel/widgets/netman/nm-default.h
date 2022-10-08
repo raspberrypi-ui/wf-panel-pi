@@ -59,6 +59,6 @@
 
 #include <NetworkManager.h>
 
-#include "nm-libnm-compat.h"
+#include "nm-utils/nm-libnm-compat.h"
 
 #endif /* __NM_DEFAULT_H__ */
