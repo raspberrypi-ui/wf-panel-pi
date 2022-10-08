@@ -40,6 +40,8 @@
 #define _nm_fallthrough
 #endif
 
+#define typeof __typeof__
+
 /*****************************************************************************/
 
 #ifdef thread_local
@@ -1304,5 +1306,6 @@ nm_close (int fd)
 	nm_assert (r != -1 || fd < 0 || errno != EBADF);
 	return r;
 }
+
 
 #endif /* __NM_MACROS_INTERNAL_H__ */
