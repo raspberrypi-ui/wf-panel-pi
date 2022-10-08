@@ -362,13 +362,7 @@ void volumepulse_update_display (VolumePulsePlugin *vol)
         else if (level > 0) icon = "audio-volume-low";
         else icon = "audio-volume-silent";
     }
-
-    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon, vol->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
-    if (pixbuf)
-    {
-        gtk_image_set_from_pixbuf (GTK_IMAGE (vol->tray_icon), pixbuf);
-        g_object_unref (pixbuf);
-    }
+    set_bar_icon (GTK_IMAGE (vol->tray_icon), icon, vol->icon_size);
 
     /* update popup window controls */
     if (vol->popup_window)
