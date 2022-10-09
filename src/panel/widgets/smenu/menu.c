@@ -67,6 +67,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#include "plugin.h"
 #include "menu.h"
 
+const char *logout_cmd = "lxde-pi-shutdown-helper";
+
 #define MENU_ICON_SPACE 6
 
 GQuark sys_menu_item_quark = 0;
@@ -77,9 +79,21 @@ typedef struct {
     void (*cmd)(void);
 } Command;
 
+extern void gtk_run (void);
 void restart (void) {};
-void gtk_run (void) {};
-void logout (void) {};
+void logout (MenuPlugin *m)
+{
+    const char* l_logout_cmd = logout_cmd;
+    /* If LXSession is running, _LXSESSION_PID will be set */
+    if( ! l_logout_cmd && getenv("_LXSESSION_PID") )
+        l_logout_cmd = "lxsession-logout";
+
+    if( l_logout_cmd )
+        fm_launch_command_simple(NULL, NULL, 0, l_logout_cmd, NULL);
+    else
+        fm_show_error(NULL, NULL, _("Logout command is not set"));
+}
+
 
 static Command commands[] = {
     { "run", N_("Run"), gtk_run },
