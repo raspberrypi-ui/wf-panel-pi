@@ -41,7 +41,7 @@
 #define NM_TYPE_APPLET              (nma_get_type())
 #define NM_APPLET(object)           (G_TYPE_CHECK_INSTANCE_CAST((object), NM_TYPE_APPLET, NMApplet))
 #define NM_APPLET_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), NM_TYPE_APPLET, NMAppletClass))
-#define NM_IS_APPLET(object)        (G_TYPE_CHECK_INSTANCE_TYPE((object), NM_TYPE_APPLET))
+#define NM_IS_APPLET(object)        (TRUE) //!!!!
 #define NM_IS_APPLET_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE((klass), NM_TYPE_APPLET))
 #define NM_APPLET_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), NM_TYPE_APPLET, NMAppletClass))
 
