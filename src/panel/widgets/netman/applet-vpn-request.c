@@ -20,8 +20,10 @@
 #include <errno.h>
 
 #include "nma-vpn-password-dialog.h"
-#include "nm-utils/nm-compat.h"
-#include "nm-utils/nm-shared-utils.h"
+#include "nm-compat.h"
+#include "nm-shared-utils.h"
+
+extern char **environ;
 
 /*****************************************************************************/
 

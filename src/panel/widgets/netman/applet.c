@@ -3476,7 +3476,7 @@ applet_agent_get_secrets_cb (AppletAgent *agent,
 
 	s_con = nm_connection_get_setting_connection (connection);
 	g_return_if_fail (s_con != NULL);
-#if 0 //!!!!!
+
 	/* VPN secrets get handled a bit differently */
 	if (!strcmp (nm_setting_connection_get_connection_type (s_con), NM_SETTING_VPN_SETTING_NAME)) {
 		req = applet_secrets_request_new (applet_vpn_request_get_secrets_size (),
@@ -3494,7 +3494,7 @@ applet_agent_get_secrets_cb (AppletAgent *agent,
 		applet->secrets_reqs = g_slist_prepend (applet->secrets_reqs, req);
 		return;
 	}
-#endif
+
 	dclass = get_device_class_from_connection (connection, applet);
 	if (!dclass) {
 		error = g_error_new (NM_SECRET_AGENT_ERROR,
