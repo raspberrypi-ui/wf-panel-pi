@@ -16,7 +16,7 @@
 #include <netinet/ether.h>
 
 #include "nm-utils.h"
-#include "nm-utils/nm-shared-utils.h"
+#include "nm-shared-utils.h"
 
 /*
  * utils_ether_addr_valid

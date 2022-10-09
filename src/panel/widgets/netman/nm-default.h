@@ -45,7 +45,7 @@
 #include <stdlib.h>
 #include <glib.h>
 
-#include "nm-utils/nm-macros-internal.h"
+#include "nm-macros-internal.h"
 
 #include <nm-version.h>
 
@@ -59,6 +59,6 @@
 
 #include <NetworkManager.h>
 
-#include "nm-utils/nm-libnm-compat.h"
+#include "nm-libnm-compat.h"
 
 #endif /* __NM_DEFAULT_H__ */
