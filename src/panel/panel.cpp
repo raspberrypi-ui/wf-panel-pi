@@ -27,6 +27,7 @@
 #include "widgets/volumepulse.hpp"
 #include "widgets/smenu.hpp"
 #include "widgets/netman.hpp"
+#include "widgets/bluetooth.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/notifications/notification-center.hpp"
 
@@ -219,6 +220,8 @@ class WayfirePanel::impl
             return Widget(new WayfireSmenu());
         if (name == "netman")
             return Widget(new WayfireNetman());
+        if (name == "bluetooth")
+            return Widget(new WayfireBluetooth());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
         if (name == "notifications")

@@ -32,11 +32,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
+#include <glib.h>
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
 #include <gio/gio.h>
 
-#include "plugin.h"
+#include "../lxutils.h"
+//#include "plugin.h"
+#include "bluetooth.h"
 
 #define DEBUG_ON
 #ifdef DEBUG_ON
@@ -47,12 +51,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define DEBUG_VAR(fmt,var,args...)
 #endif
 
+#define GETTEXT_PACKAGE "lxplug_bluetooth"
+#define PACKAGE_DATA_DIR "/usr/share/lxpanel"
+
 #define AP_MOUSE    0x01
 #define AP_KEYBOARD 0x02
 
 /* Name table for cached icons */
-
-#define ICON_CACHE_SIZE 13
 
 const gchar *icon_names[ICON_CACHE_SIZE] =
 {
@@ -70,40 +75,6 @@ const gchar *icon_names[ICON_CACHE_SIZE] =
     "system",
     "dialog-question"
 };
-
-/* Plug-in global data */
-
-typedef struct {
-    GtkWidget *plugin;              /* Back pointer to the widget */
-    LXPanel *panel;                 /* Back pointer to panel */
-    GtkWidget *tray_icon;           /* Displayed image */
-    config_setting_t *settings;     /* Plugin settings */
-    GtkWidget *menu;                /* Popup menu */
-    GtkListStore *pair_list;
-    GtkListStore *unpair_list;
-    GtkTreeModelFilter *filter_list; /* Filtered device list used in connect dialog */
-    GtkTreeModelSort *sorted_list;  /* Sorted device list used in connect dialog */
-    gchar *selection;               /* Connect dialog selected item */
-    GDBusConnection *busconnection;
-    GDBusObjectManager *objmanager;
-    GDBusProxy *agentmanager;
-    GDBusProxy *adapter;
-    guint agentobj;
-    gchar *pairing_object;
-    gchar *device_name;
-    gchar *device_path;
-    GtkWidget *list_dialog, *list, *list_ok;
-    GtkWidget *pair_dialog, *pair_label, *pair_entry, *pair_ok, *pair_cancel;
-    GtkWidget *conn_dialog, *conn_label, *conn_ok, *conn_cancel;
-    GtkEntryBuffer *pinbuf;
-    GDBusMethodInvocation *invocation;
-    gulong ok_instance;
-    gulong cancel_instance;
-    guint flash_timer;
-    guint flash_state;
-    GdkPixbuf *icon_ref[ICON_CACHE_SIZE];
-    guint hid_autopair;
-} BluetoothPlugin;
 
 typedef enum {
     DIALOG_REMOVE,
@@ -311,13 +282,13 @@ static void toggle_bt (GtkWidget *widget, gpointer user_data)
         system ("/usr/sbin/rfkill block bluetooth");
         if (bt->flash_timer) g_source_remove (bt->flash_timer);
         bt->flash_timer = 0;
-        lxpanel_plugin_set_taskbar_icon (bt->panel, bt->tray_icon, "preferences-system-bluetooth-inactive");
+        set_bar_icon (bt->tray_icon, "preferences-system-bluetooth-inactive", bt->icon_size);
     }
     else
     {
         system ("/usr/sbin/rfkill unblock bluetooth");
         set_powered (bt, TRUE);
-        lxpanel_plugin_set_taskbar_icon (bt->panel, bt->tray_icon, "preferences-system-bluetooth");
+        set_bar_icon (bt->tray_icon, "preferences-system-bluetooth", bt->icon_size);
     }
 }
 
@@ -702,7 +673,7 @@ static void cb_interface_properties (GDBusObjectManagerClient *manager, GDBusObj
         if (g_variant_get_boolean (var) == FALSE)
         {
             bt->flash_timer = 0;
-            lxpanel_plugin_set_taskbar_icon (bt->panel, bt->tray_icon, "preferences-system-bluetooth");
+            set_bar_icon (bt->tray_icon, "preferences-system-bluetooth", bt->icon_size);
         }
         else bt->flash_timer = g_timeout_add (500, flash_icon, bt);
 
@@ -1746,7 +1717,7 @@ static gboolean flash_icon (gpointer user_data)
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
 
     if (bt->flash_timer == 0) return FALSE;
-    lxpanel_plugin_set_taskbar_icon (bt->panel, bt->tray_icon, bt->flash_state ? "preferences-system-bluetooth-active" : "preferences-system-bluetooth");
+    set_bar_icon (bt->tray_icon, bt->flash_state ? "preferences-system-bluetooth-active" : "preferences-system-bluetooth", bt->icon_size);
     bt->flash_state ^= 1;
     return TRUE;
 }
@@ -1766,7 +1737,7 @@ static void handle_menu_discover (GtkWidget *widget, gpointer user_data)
         set_discoverable (bt, FALSE);
         if (bt->flash_timer) g_source_remove (bt->flash_timer);
         bt->flash_timer = 0;
-        lxpanel_plugin_set_taskbar_icon (bt->panel, bt->tray_icon, "preferences-system-bluetooth");
+        set_bar_icon (bt->tray_icon, "preferences-system-bluetooth", bt->icon_size);
     }
 }
 
@@ -1779,7 +1750,7 @@ static gboolean add_to_menu (GtkTreeModel *model, GtkTreePath *tpath, GtkTreeIte
     int count;
  
     gtk_tree_model_get (model, iter, 0, &path, 1, &name, -1);
-    item = lxpanel_plugin_new_menu_item (bt->panel, name, 0, NULL);
+    item = new_menu_item (name, 0, NULL, bt->icon_size);
 
     // create a submenu for each paired device
     submenu = gtk_menu_new ();
@@ -1789,16 +1760,16 @@ static gboolean add_to_menu (GtkTreeModel *model, GtkTreePath *tpath, GtkTreeIte
     icon = gtk_image_new ();
     if (is_connected (bt, path))
     {
-        lxpanel_plugin_set_menu_icon (bt->panel, icon, "bluetooth-online");
+        set_menu_icon (icon, "bluetooth-online", bt->icon_size);
         smi = gtk_menu_item_new_with_label (_("Disconnect..."));
     }
     else
     {
-        lxpanel_plugin_set_menu_icon (bt->panel, icon, "bluetooth-offline");
+        set_menu_icon (icon, "bluetooth-offline", bt->icon_size);
         smi = gtk_menu_item_new_with_label (_("Connect..."));
     }
 
-    lxpanel_plugin_update_menu_icon (item, icon);
+    update_menu_icon (item, icon);
 
     // use the widget name of the menu item to store the unique path of the paired device
     gtk_widget_set_name (smi, path);
@@ -1831,7 +1802,7 @@ static gboolean add_to_menu (GtkTreeModel *model, GtkTreePath *tpath, GtkTreeIte
     // loop forward from the first element, comparing against the new label
     while (l)
     {
-        if (g_strcmp0 (name, lxpanel_plugin_get_menu_label (GTK_WIDGET (l->data))) < 0) break;
+        if (g_strcmp0 (name, get_menu_label (GTK_WIDGET (l->data))) < 0) break;
         count++;
         l = l->next;
     }
@@ -1968,7 +1939,7 @@ static void init_icon_cache (BluetoothPlugin *bt)
 
     for (i = 0; i < ICON_CACHE_SIZE; i++)
     {
-        bt->icon_ref[i] = gtk_icon_theme_load_icon (panel_get_icon_theme (bt->panel), icon_names[i], 32, 0, NULL);
+        bt->icon_ref[i] = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon_names[i], 32, 0, NULL);
     }
 }
 
@@ -2093,10 +2064,10 @@ static void update_icon (BluetoothPlugin *bt)
         return;
     }
 
-    if (bt_state == 0) lxpanel_plugin_set_taskbar_icon (bt->panel, bt->tray_icon, "preferences-system-bluetooth-inactive");
+    if (bt_state == 0) set_bar_icon (bt->tray_icon, "preferences-system-bluetooth-inactive", bt->icon_size);
     else
     {
-        lxpanel_plugin_set_taskbar_icon (bt->panel, bt->tray_icon, "preferences-system-bluetooth");
+        set_bar_icon (bt->tray_icon, "preferences-system-bluetooth", bt->icon_size);
         if (is_discoverable (bt) && !bt->flash_timer) bt->flash_timer = g_timeout_add (500, flash_icon, bt);
     }
     gtk_widget_show_all (bt->plugin);
@@ -2104,20 +2075,20 @@ static void update_icon (BluetoothPlugin *bt)
 }
 
 /* Handler for menu button click */
-static gboolean bluetooth_button_press_event (GtkWidget *widget, GdkEventButton *event, LXPanel *panel)
+static gboolean bluetooth_button_press_event (GtkWidget *widget, GdkEventButton *event, BluetoothPlugin *bt)
 {
-    BluetoothPlugin *bt = lxpanel_plugin_get_data (widget);
+    //BluetoothPlugin *bt = lxpanel_plugin_get_data (widget);
 
     /* Show or hide the popup menu on left-click */
     if (event->button == 1)
     {
         show_menu (bt);
-        gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
+        gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_SOUTH_WEST, (GdkEvent *) event);
         return TRUE;
     }
     else return FALSE;
 }
-
+#if 0
 /* Handler for system config changed message from panel */
 static void bluetooth_configuration_changed (LXPanel *panel, GtkWidget *widget)
 {
@@ -2154,12 +2125,13 @@ static void bluetooth_destructor (gpointer user_data)
     /* Deallocate memory */
     g_free (bt);
 }
-
+#endif
 /* Plugin constructor. */
-static GtkWidget *bluetooth_constructor (LXPanel *panel, config_setting_t *settings)
+//static GtkWidget *bluetooth_constructor (LXPanel *panel, config_setting_t *settings)
+void bt_init (BluetoothPlugin *bt)
 {
     /* Allocate and initialize plugin context */
-    BluetoothPlugin *bt = g_new0 (BluetoothPlugin, 1);
+    //BluetoothPlugin *bt = g_new0 (BluetoothPlugin, 1);
     int val;
 
 #ifdef ENABLE_NLS
@@ -2169,19 +2141,20 @@ static GtkWidget *bluetooth_constructor (LXPanel *panel, config_setting_t *setti
 #endif
 
     /* Allocate top level widget and set into plugin widget pointer. */
-    bt->panel = panel;
-    bt->settings = settings;
-    bt->plugin = gtk_button_new ();
-    lxpanel_plugin_set_data (bt->plugin, bt, bluetooth_destructor);
+    //bt->panel = panel;
+    //bt->settings = settings;
+    //bt->plugin = gtk_button_new ();
+    //lxpanel_plugin_set_data (bt->plugin, bt, bluetooth_destructor);
 
     /* Allocate icon as a child of top level */
     bt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (bt->plugin), bt->tray_icon);
-    lxpanel_plugin_set_taskbar_icon (panel, bt->tray_icon, "preferences-system-bluetooth-inactive");
+    set_bar_icon (bt->tray_icon, "preferences-system-bluetooth-inactive", bt->icon_size);
     gtk_widget_set_tooltip_text (bt->tray_icon, _("Manage Bluetooth devices"));
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (bt->plugin), GTK_RELIEF_NONE);
+    g_signal_connect (bt->plugin, "button-press-event", G_CALLBACK (bluetooth_button_press_event), bt);
 
     /* Set up variables */
     bt->pair_list = gtk_list_store_new (7, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_UINT, G_TYPE_UINT, GDK_TYPE_PIXBUF, G_TYPE_STRING);
@@ -2197,6 +2170,7 @@ static GtkWidget *bluetooth_constructor (LXPanel *panel, config_setting_t *setti
 
     // Enable autopairing if in the wizard, but not if wizard started for user change only
     bt->hid_autopair = 0;
+#if 0
     if (config_setting_lookup_int (settings, "autopair", &val))
     {
         if (val == 1)
@@ -2208,6 +2182,7 @@ static GtkWidget *bluetooth_constructor (LXPanel *panel, config_setting_t *setti
             }
         }
     }
+#endif
 
     /* Load icon cache */
     init_icon_cache (bt);
@@ -2217,9 +2192,9 @@ static GtkWidget *bluetooth_constructor (LXPanel *panel, config_setting_t *setti
 
     /* Show the widget and return */
     gtk_widget_show_all (bt->plugin);
-    return bt->plugin;
+    //return bt->plugin;
 }
-
+#if 0
 FM_DEFINE_MODULE (lxpanel_gtk, bluetooth)
 
 /* Plugin descriptor. */
@@ -2232,3 +2207,4 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk = {
     .control = bluetooth_control_msg,
     .gettext_package = GETTEXT_PACKAGE
 };
+#endif
