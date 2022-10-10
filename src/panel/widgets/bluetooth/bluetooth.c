@@ -2075,18 +2075,10 @@ static void update_icon (BluetoothPlugin *bt)
 }
 
 /* Handler for menu button click */
-static gboolean bluetooth_button_press_event (GtkWidget *widget, GdkEventButton *event, BluetoothPlugin *bt)
+static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt)
 {
-    //BluetoothPlugin *bt = lxpanel_plugin_get_data (widget);
-
-    /* Show or hide the popup menu on left-click */
-    if (event->button == 1)
-    {
-        show_menu (bt);
-        gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_SOUTH_WEST, (GdkEvent *) event);
-        return TRUE;
-    }
-    else return FALSE;
+    show_menu (bt);
+    gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_SOUTH_WEST, NULL);
 }
 #if 0
 /* Handler for system config changed message from panel */
@@ -2154,7 +2146,7 @@ void bt_init (BluetoothPlugin *bt)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (bt->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (bt->plugin, "button-press-event", G_CALLBACK (bluetooth_button_press_event), bt);
+    g_signal_connect (bt->plugin, "clicked", G_CALLBACK (bluetooth_button_press_event), bt);
 
     /* Set up variables */
     bt->pair_list = gtk_list_store_new (7, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_UINT, G_TYPE_UINT, GDK_TYPE_PIXBUF, G_TYPE_STRING);

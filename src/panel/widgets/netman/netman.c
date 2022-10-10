@@ -64,16 +64,9 @@ static void nm_configuration_changed (LXPanel *panel, GtkWidget *p)
 #endif
 
 /* Handler for menu button click */
-static gboolean nm_button_press_event (GtkWidget *widget, GdkEventButton *event, NMApplet *nm)
+static void nm_button_press_event (GtkButton *button, NMApplet *nm)
 {
-    //NMApplet *nm = lxpanel_plugin_get_data (widget);
-
-    if (event->button == 1)
-    {
-        status_icon_activate_cb (nm);
-        return TRUE;
-    }
-    else return FALSE;
+    status_icon_activate_cb (nm);
 }
 
 #if 0
@@ -125,7 +118,7 @@ void netman_init (NMApplet *nm)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (nm->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (nm->plugin, "button-press-event", G_CALLBACK (nm_button_press_event), nm);
+    g_signal_connect (nm->plugin, "clicked", G_CALLBACK (nm_button_press_event), nm);
 
     /* Set up variables */
     //nm->icon_size = panel_get_safe_icon_size (panel);

@@ -843,26 +843,12 @@ static gboolean show_menu (MenuPlugin *m)
     return FALSE;
 }
 
-static gboolean menu_button_release_event (GtkWidget *widget, GdkEventButton *event, MenuPlugin *m)
-{
-    return TRUE;
-}
-
 /* Handler for menu button click */
-static gboolean menu_button_press_event (GtkWidget *widget, GdkEventButton *event, MenuPlugin *m)
+static void menu_button_press_event (GtkButton *button, MenuPlugin *m)
 {
-    //MenuPlugin *m = lxpanel_plugin_get_data (widget);
-
-    if (event->button == 1)
-    {
-        gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), TRUE);
-        g_signal_connect (m->menu, "button-release-event", G_CALLBACK (menu_button_release_event), m);
-        // this is hacky - the best alternative is to hang on the "draw" signal on m->plugin, but that's flakey
-        g_timeout_add (100, show_menu, m);
-
-        return TRUE;
-    }
-    return FALSE;
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), TRUE);
+    // this is hacky - the best alternative is to hang on the "draw" signal on m->plugin, but that's flakey
+    g_timeout_add (100, show_menu, m);
 }
 
 void menu_update_display (MenuPlugin *m)
@@ -965,7 +951,7 @@ void menu_init (MenuPlugin *m)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (m->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (m->plugin, "button-press-event", G_CALLBACK (menu_button_press_event), m);
+    g_signal_connect (m->plugin, "clicked", G_CALLBACK (menu_button_press_event), m);
 
 #if 0
     /* Check if configuration exists */
