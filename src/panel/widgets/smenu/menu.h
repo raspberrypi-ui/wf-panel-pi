@@ -9,10 +9,8 @@
 #include <menu-cache.h>
 #include <libfm/fm-gtk.h>
 
+#include "../lxutils.h"
 //#include "plugin.h"
-
-#define PACKAGE_DATA_DIR "/usr/share/lxpanel"
-#define GETTEXT_PACKAGE "lxplug_menu"
 
 
 typedef struct {

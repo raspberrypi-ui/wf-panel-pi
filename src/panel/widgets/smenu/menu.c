@@ -61,15 +61,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unistd.h>
 #include <fcntl.h>
 
-#include <gtk-layer-shell/gtk-layer-shell.h>
-
 #include "../lxutils.h"
-//#include "plugin.h"
 #include "menu.h"
+//#include "plugin.h"
 
 const char *logout_cmd = "lxde-pi-shutdown-helper";
 
-#define MENU_ICON_SPACE 6
 
 GQuark sys_menu_item_quark = 0;
 

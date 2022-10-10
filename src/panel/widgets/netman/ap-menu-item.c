@@ -18,8 +18,6 @@
 #include "nm-access-point.h"
 #include "mobile-helpers.h"
 
-#include "../lxutils.h"
-
 typedef struct {
 	GtkWidget * ssid;
 	GtkWidget * strength;

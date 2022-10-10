@@ -362,7 +362,7 @@ void volumepulse_update_display (VolumePulsePlugin *vol)
         else if (level > 0) icon = "audio-volume-low";
         else icon = "audio-volume-silent";
     }
-    set_bar_icon (GTK_IMAGE (vol->tray_icon), icon, vol->icon_size);
+    set_taskbar_icon (GTK_IMAGE (vol->tray_icon), icon, vol->icon_size);
 
     /* update popup window controls */
     if (vol->popup_window)

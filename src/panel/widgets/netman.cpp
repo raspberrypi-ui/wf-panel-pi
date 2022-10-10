@@ -10,7 +10,7 @@ void WayfireNetman::bar_pos_changed_cb (void)
 void WayfireNetman::icon_size_changed_cb (void)
 {
     nm->icon_size = icon_size;
-    //netman_update_display (nm);
+    netman_update_display (nm);
 }
 
 void WayfireNetman::init (Gtk::HBox *container)

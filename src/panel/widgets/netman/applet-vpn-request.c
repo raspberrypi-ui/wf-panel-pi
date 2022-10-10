@@ -23,8 +23,6 @@
 #include "nm-compat.h"
 #include "nm-shared-utils.h"
 
-extern char **environ;
-
 /*****************************************************************************/
 
 typedef struct {

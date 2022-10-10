@@ -1,6 +1,5 @@
 #define ICON_CACHE_SIZE 13
 
-
 /* Plug-in global data */
 
 typedef struct {
@@ -38,3 +37,4 @@ typedef struct {
 } BluetoothPlugin;
 
 extern void bt_init (BluetoothPlugin *bt);
+extern void bt_update_display (BluetoothPlugin *bt);

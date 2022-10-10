@@ -22,7 +22,7 @@ void position_popup (GtkWindow *popup, GtkWidget *plugin, gboolean bottom)
 }
 
 
-void set_bar_icon (GtkWidget *image, const char *icon, int size)
+void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
 {
     GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon,
         size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);

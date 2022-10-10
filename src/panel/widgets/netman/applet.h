@@ -35,6 +35,7 @@
 
 #define LXPANEL_PLUGIN
 #ifdef LXPANEL_PLUGIN
+#include "../lxutils.h"
 //#include "plugin.h"
 #endif
 
@@ -330,6 +331,7 @@ void applet_add_default_connection_item (NMDevice *device,
                                          GtkWidget *menu,
                                          NMApplet *applet);
 
-extern void netman_init (NMApplet *m);
+extern void netman_init (NMApplet *nm);
+extern void netman_update_display (NMApplet *nm);
 
 #endif

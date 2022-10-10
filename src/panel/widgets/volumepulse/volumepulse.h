@@ -34,10 +34,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk/gtk.h>
 #include <pulse/pulseaudio.h>
 
+#include "../lxutils.h"
 //#include "plugin.h"
-
-#define PACKAGE_DATA_DIR "/usr/share/lxpanel"
-#define GETTEXT_PACKAGE "lxplug_volumepulse"
 
 #define DEBUG_ON
 #ifdef DEBUG_ON

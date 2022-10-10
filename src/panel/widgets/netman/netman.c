@@ -36,13 +36,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <config.h>
 #endif
 #include <glib/gi18n.h>
-#include <glib-object.h>
-
 
 //#include "plugin.h"
 #include "nm-default.h"
 #include "applet.h"
-
 
 /* Private context for plugin */
 
@@ -51,20 +48,18 @@ extern void status_icon_size_changed_cb (NMApplet *applet);
 extern void status_icon_activate_cb (NMApplet *applet);
 extern void finalize (NMApplet *applet);
 
-#if 0
 /* Handler for system config changed message from panel */
-static void nm_configuration_changed (LXPanel *panel, GtkWidget *p)
+void netman_update_display (NMApplet *nm)
 {
-    NMApplet *nm = lxpanel_plugin_get_data (p);
+    //NMApplet *nm = lxpanel_plugin_get_data (p);
     if (nm->active)
         status_icon_size_changed_cb (nm);
     else
         gtk_widget_hide (nm->plugin);
 }
-#endif
 
 /* Handler for menu button click */
-static void nm_button_press_event (GtkButton *button, NMApplet *nm)
+static void netman_button_press_event (GtkButton *button, NMApplet *nm)
 {
     status_icon_activate_cb (nm);
 }
@@ -118,7 +113,7 @@ void netman_init (NMApplet *nm)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (nm->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (nm->plugin, "clicked", G_CALLBACK (nm_button_press_event), nm);
+    g_signal_connect (nm->plugin, "clicked", G_CALLBACK (netman_button_press_event), nm);
 
     /* Set up variables */
     //nm->icon_size = panel_get_safe_icon_size (panel);

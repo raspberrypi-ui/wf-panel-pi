@@ -32,8 +32,6 @@
 #include "applet-vpn-request.h"
 #include "utils.h"
 
-#include "../lxutils.h"
-
 #if WITH_WWAN
 # include "applet-device-broadband.h"
 #endif
@@ -1582,7 +1580,7 @@ static int add_hotspots (const GPtrArray *all_devices, const GPtrArray *all_conn
 
 		sec = gtk_image_new ();
 		NMSettingWirelessSecurity *s_sec = nm_connection_get_setting_wireless_security (con);
-		if (s_sec) set_menu_icon ( sec, "network-wireless-encrypted", applet->icon_size);
+		if (s_sec) set_menu_icon (sec, "network-wireless-encrypted", applet->icon_size);
 		gtk_box_pack_end (GTK_BOX (hbox), sec, FALSE, TRUE, 0);
 
 		g_signal_connect (item, "activate", G_CALLBACK (activate_hotspot), applet);
@@ -3757,7 +3755,7 @@ status_icon_activate_cb (GtkStatusIcon *icon, NMApplet *applet)
 
 	/* Display the new menu */
 #ifdef LXPANEL_PLUGIN
-	gtk_menu_popup_at_widget (GTK_MENU (applet->menu), applet->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_SOUTH_WEST, NULL);
+	gtk_menu_popup_at_widget (GTK_MENU (applet->menu), applet->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
 #else
 	gtk_menu_popup (GTK_MENU (applet->menu), NULL, NULL,
 	                gtk_status_icon_position_menu, icon,

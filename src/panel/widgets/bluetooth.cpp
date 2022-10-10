@@ -10,7 +10,7 @@ void WayfireBluetooth::bar_pos_changed_cb (void)
 void WayfireBluetooth::icon_size_changed_cb (void)
 {
     bt->icon_size = icon_size;
-    //bluetooth_update_display (bt);
+    bt_update_display (bt);
 }
 
 void WayfireBluetooth::init (Gtk::HBox *container)
