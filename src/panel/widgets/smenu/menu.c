@@ -61,7 +61,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unistd.h>
 #include <fcntl.h>
 
-#include "../lxutils.h"
 #include "menu.h"
 //#include "plugin.h"
 
@@ -317,13 +316,13 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     gint x, y;
 
     /* create the window */
-    m->swin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    m->swin = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_window_set_decorated (GTK_WINDOW (m->swin), FALSE);
     gtk_window_set_type_hint (GTK_WINDOW (m->swin), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (m->swin), TRUE);
     g_signal_connect (m->swin, "map-event", G_CALLBACK (handle_search_mapped), m);
     g_signal_connect (m->swin, "button-press-event", G_CALLBACK (handle_search_button_press), m);
-    if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
+    //if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
 
     /* add a box */
     box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);

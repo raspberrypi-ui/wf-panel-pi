@@ -2,16 +2,11 @@
 #include <config.h>
 #endif
 
-#include <glib.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
 #include <menu-cache.h>
 #include <libfm/fm-gtk.h>
 
 #include "../lxutils.h"
-//#include "plugin.h"
-
 
 typedef struct {
     //LXPanel *panel;
@@ -31,7 +26,6 @@ typedef struct {
     gpointer reload_notify;
     FmDndSrc *ds;
 } MenuPlugin;
-
 
 extern void menu_init (MenuPlugin *m);
 extern void menu_update_display (MenuPlugin *m);
