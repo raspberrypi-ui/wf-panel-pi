@@ -29,8 +29,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pulse.h"
 #include "bluetooth.h"
 
-#include "../lxutils.h"
-
 #include "commongui.h"
 
 /*----------------------------------------------------------------------------*/

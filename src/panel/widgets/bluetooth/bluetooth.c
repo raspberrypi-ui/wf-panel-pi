@@ -36,7 +36,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gio/gio.h>
 
-#include "../lxutils.h"
 #include "bluetooth.h"
 //#include "plugin.h"
 
