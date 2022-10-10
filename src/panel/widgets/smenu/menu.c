@@ -300,11 +300,10 @@ static gboolean handle_search_button_press (GtkWidget *widget, GdkEventButton *e
 static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
-    //int x, y;
+    int x, y;
 
     //lxpanel_plugin_popup_set_position_helper (m->panel, m->plugin, m->swin, &x, &y);
-    //gdk_window_move (gtk_widget_get_window (m->swin), x, y);
-    position_popup (m->swin, m->plugin, m->bottom);
+    gdk_window_move (gtk_widget_get_window (m->swin), x, y);
 }
 
 static void do_search (MenuPlugin *m, GdkEventKey *event)
