@@ -39,6 +39,8 @@
 //#include "plugin.h"
 #endif
 
+#define G_DISABLE_CHECKS
+
 #define NM_TYPE_APPLET              (nma_get_type())
 #define NM_APPLET(object)           (G_TYPE_CHECK_INSTANCE_CAST((object), NM_TYPE_APPLET, NMApplet))
 #define NM_APPLET_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), NM_TYPE_APPLET, NMAppletClass))
