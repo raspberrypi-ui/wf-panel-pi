@@ -77,12 +77,11 @@ typedef struct NMADeviceClass NMADeviceClass;
 typedef struct {
 	GApplication parent;
 #ifdef LXPANEL_PLUGIN
-    GtkWidget *plugin;              /* Back pointer to widget */
-    //LXPanel *panel;                 /* Back pointer to panel */
-    //config_setting_t *settings;     /* Plugin settings */
-    gboolean active;
-#endif
+	GtkWidget *plugin;              /* Back pointer to widget */
+	gboolean active;
 	gboolean bottom;
+	GtkWidget *vpn_menu;
+#endif
 
 	NMClient *nm_client;
 	AppletAgent *agent;
@@ -133,16 +132,13 @@ typedef struct {
 	guint           update_menu_id;
 
 #ifdef LXPANEL_PLUGIN
-	GtkWidget * status_icon;
+	GtkWidget *     status_icon;
 #else
 	GtkStatusIcon * status_icon;
 #endif
 
 	GtkWidget *     menu;
 	GtkWidget *     context_menu;
-#ifdef LXPANEL_PLUGIN
-	GtkWidget *		vpn_menu;
-#endif
 
 	GtkWidget *     notifications_enabled_item;
 	guint           notifications_enabled_toggled_id;
@@ -158,11 +154,7 @@ typedef struct {
 	GtkWidget *     connections_menu_item;
 
 	GtkBuilder *    info_dialog_ui;
-#ifdef LXPANEL_PLUGIN
-	//int notification;
-#else
 	NotifyNotification* notification;
-#endif
 
 	/* Tracker objects for secrets requests */
 	GSList *        secrets_reqs;
