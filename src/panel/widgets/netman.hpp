@@ -16,7 +16,6 @@ class WayfireNetman : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
 
     /* plugin */
-    NMApplet data;
     NMApplet *nm;
 
   public:

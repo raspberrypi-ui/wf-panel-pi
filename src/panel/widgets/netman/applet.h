@@ -75,6 +75,7 @@ typedef struct NMADeviceClass NMADeviceClass;
  *
  */
 typedef struct {
+	GApplication parent;
 #ifdef LXPANEL_PLUGIN
     GtkWidget *plugin;              /* Back pointer to widget */
     //LXPanel *panel;                 /* Back pointer to panel */
@@ -83,7 +84,6 @@ typedef struct {
     gboolean active;
 #endif
 	gboolean bottom;
-	GApplication parent;
 
 	NMClient *nm_client;
 	AppletAgent *agent;

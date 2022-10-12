@@ -20,7 +20,7 @@ void WayfireNetman::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    nm = &data;
+    nm = (NMApplet *) g_object_new (NM_TYPE_APPLET, NULL);
     nm->plugin = (GtkWidget *)((*plugin).gobj());
     nm->icon_size = icon_size;
 
