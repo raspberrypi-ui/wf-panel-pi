@@ -2040,6 +2040,7 @@ static void show_menu (BluetoothPlugin *bt)
 static void update_icon (BluetoothPlugin *bt)
 {
     int bt_state;
+    if (!bt->objmanager) return;
 
     bt_state = bt_enabled ();
     bt_state = bt_enabled ();   // not a bug - poll a few times to allow to settle...
@@ -2057,7 +2058,6 @@ static void update_icon (BluetoothPlugin *bt)
         gtk_widget_set_sensitive (bt->plugin, FALSE);
         return;
     }
-
     if (bt_state == 0) set_taskbar_icon (bt->tray_icon, "preferences-system-bluetooth-inactive", bt->icon_size);
     else
     {
