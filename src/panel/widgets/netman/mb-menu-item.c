@@ -14,6 +14,10 @@
 
 #include "mb-menu-item.h"
 
+G_DEFINE_TYPE (NMMbMenuItem, nm_mb_menu_item, GTK_TYPE_MENU_ITEM);
+
+#define NM_MB_MENU_ITEM_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_MB_MENU_ITEM, NMMbMenuItemPrivate))
+
 typedef struct {
 	GtkWidget *strength;
 	GtkWidget *detail;
@@ -23,10 +27,6 @@ typedef struct {
 	char *desc_string;
 	guint32    int_strength;
 } NMMbMenuItemPrivate;
-
-G_DEFINE_TYPE_WITH_CODE (NMMbMenuItem, nm_mb_menu_item, GTK_TYPE_MENU_ITEM, G_ADD_PRIVATE (NMMbMenuItem));
-
-#define NM_MB_MENU_ITEM_GET_PRIVATE(o) ((NMMbMenuItemPrivate *) nm_mb_menu_item_get_instance_private ((NMMbMenuItem *) o))
 
 static const char *
 get_tech_name (guint32 tech)
@@ -223,6 +223,8 @@ static void
 nm_mb_menu_item_class_init (NMMbMenuItemClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	g_type_class_add_private (klass, sizeof (NMMbMenuItemPrivate));
 
 	/* virtual methods */
 	object_class->finalize = finalize;

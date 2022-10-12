@@ -20,6 +20,5 @@ void nma_menu_add_create_network_item (GtkWidget *menu, NMApplet *applet);
 
 #ifdef LXPANEL_PLUGIN
 void nma_menu_add_create_hotspot_item (GtkWidget *menu, NMApplet *applet);
-void clear_aps (NMApplet *applet);
 #endif
 #endif /* __APPLET_DEVICE_WIFI_H__ */

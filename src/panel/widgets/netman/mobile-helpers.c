@@ -23,7 +23,7 @@ mobile_helper_get_status_pixbuf (guint32 quality,
                                  guint32 access_tech,
                                  NMApplet *applet)
 {
-	GdkPixbuf *pixbuf, *qual_pixbuf;
+	GdkPixbuf *pixbuf, *qual_pixbuf, *tmp;
 
 	if (!quality_valid)
 		quality = 0;

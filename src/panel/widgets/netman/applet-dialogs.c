@@ -20,7 +20,6 @@
 
 #define VERSION "0.1"
 
-
 static void
 info_dialog_show_error (const char *err)
 {

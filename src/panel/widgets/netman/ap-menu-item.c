@@ -18,37 +18,33 @@
 #include "nm-access-point.h"
 #include "mobile-helpers.h"
 
+#ifdef LXPANEL_PLUGIN
+G_DEFINE_TYPE (NMNetworkMenuItem, nm_network_menu_item, GTK_TYPE_CHECK_MENU_ITEM);
+#else
+G_DEFINE_TYPE (NMNetworkMenuItem, nm_network_menu_item, GTK_TYPE_MENU_ITEM);
+#endif
+
+#define NM_NETWORK_MENU_ITEM_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_NETWORK_MENU_ITEM, NMNetworkMenuItemPrivate))
+
 typedef struct {
 	GtkWidget * ssid;
 	GtkWidget * strength;
-#ifdef LXPANEL_PLUGIN
-	GtkWidget * encrypted;
-	GtkWidget * fiveg;
-#endif
 	GtkWidget * hbox;
 
 	char *      ssid_string;
 	guint32     int_strength;
-#ifdef LXPANEL_PLUGIN
-	guint32     int_freq;
-#endif
 	gchar *     hash;
 	GSList *    dupes;
 	gboolean    has_connections;
 	gboolean    is_adhoc;
 	gboolean    is_encrypted;
 #ifdef LXPANEL_PLUGIN
+	GtkWidget * encrypted;
+	GtkWidget * fiveg;
+	guint32     int_freq;
 	gboolean    is_hotspot;
 #endif
 } NMNetworkMenuItemPrivate;
-
-#ifdef LXPANEL_PLUGIN
-G_DEFINE_TYPE_WITH_CODE (NMNetworkMenuItem, nm_network_menu_item, GTK_TYPE_CHECK_MENU_ITEM, G_ADD_PRIVATE (NMNetworkMenuItem));
-#else
-G_DEFINE_TYPE_WITH_CODE (NMNetworkMenuItem, nm_network_menu_item, GTK_TYPE_MENU_ITEM), G_ADD_PRIVATE (NMNetworkMenuItem);
-#endif
-
-#define NM_NETWORK_MENU_ITEM_GET_PRIVATE(o) ((NMNetworkMenuItemPrivate *) nm_network_menu_item_get_instance_private ((NMNetworkMenuItem *) o))
 
 /******************************************************************/
 
@@ -112,7 +108,7 @@ update_icon (NMNetworkMenuItem *item, NMApplet *applet)
 		icon_name = mobile_helper_get_quality_icon_name (priv->int_strength);
 
 #ifdef LXPANEL_PLUGIN
-    set_menu_icon (priv->strength, icon_name, applet->icon_size);
+    	set_menu_icon (priv->strength, icon_name, applet->icon_size);
 	set_menu_icon (priv->encrypted, priv->is_encrypted ? "network-wireless-encrypted" : NULL, applet->icon_size);
 	set_menu_icon (priv->fiveg, priv->int_freq > 2500 ? "5g" : NULL, applet->icon_size);
 #else
@@ -407,6 +403,8 @@ static void
 nm_network_menu_item_class_init (NMNetworkMenuItemClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	g_type_class_add_private (klass, sizeof (NMNetworkMenuItemPrivate));
 
 	/* virtual methods */
 	object_class->finalize = finalize;
