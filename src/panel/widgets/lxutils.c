@@ -24,6 +24,7 @@ void position_popup (GtkWindow *popup, GtkWidget *plugin, gboolean bottom)
 
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
 {
+    if (!icon) return;
     GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon,
         size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)
@@ -36,6 +37,7 @@ void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
 
 void set_menu_icon (GtkWidget *image, const char *icon, int size)
 {
+    if (!icon) return;
     GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon,
         size > 32 ? 24 : 16, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)

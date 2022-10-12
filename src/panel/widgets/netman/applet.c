@@ -3104,6 +3104,7 @@ static char *get_tooltip (NMApplet *applet)
 		if (NM_IS_VPN_CONNECTION (aconn)) continue;
 
 		// get the standard tooltip for the device, state and connection
+		icon_name = NULL;
 		out = NULL;
 		if (dclass) dclass->get_icon (device, state, connection, NULL, &icon_name, &out, applet);
 
