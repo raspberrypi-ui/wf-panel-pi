@@ -3990,8 +3990,6 @@ applet_startup (GApplication *app, gpointer user_data)
 #ifndef LXPANEL_PLUGIN
 	g_application_hold (G_APPLICATION (applet));
 #endif
-
-	applet->ap_list = NULL;
 }
 
 #ifdef LXPANEL_PLUGIN
@@ -4001,9 +3999,6 @@ static void finalize (GObject *object)
 #endif
 {
 #ifdef LXPANEL_PLUGIN
-	// clear the current access point list and related handlers
-	clear_aps (applet);
-
 	// disconnect all device handlers
 	const GPtrArray *devices = nm_client_get_devices (applet->nm_client);
 	for (int i = 0; devices && (i < devices->len); i++)
