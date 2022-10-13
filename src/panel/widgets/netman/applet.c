@@ -3992,11 +3992,9 @@ static void finalize (GObject *object)
 	nm_clear_g_source (&applet->update_icon_id);
 	nm_clear_g_source (&applet->wifi_scan_id);
 
-#ifndef LXPANEL_PLUGIN
 #ifdef WITH_APPINDICATOR
 	g_clear_object (&applet->app_indicator);
 #endif /* WITH_APPINDICATOR */
-#endif
 	nm_clear_g_source (&applet->update_menu_id);
 
 #ifndef LXPANEL_PLUGIN
@@ -4011,12 +4009,10 @@ static void finalize (GObject *object)
 	while (g_slist_length (applet->secrets_reqs))
 		applet_secrets_request_free ((SecretsRequest *) applet->secrets_reqs->data);
 
-#ifndef LXPANEL_PLUGIN
 	if (applet->notification) {
 		notify_notification_close (applet->notification, NULL);
 		g_object_unref (applet->notification);
 	}
-#endif
 
 	g_clear_object (&applet->info_dialog_ui);
 	g_clear_object (&applet->gsettings);
