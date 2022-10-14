@@ -1,12 +1,6 @@
 #include <glibmm.h>
 #include "volumepulse.hpp"
 
-extern "C" {
-#include "volumepulse/pulse.h"
-#include "volumepulse/commongui.h"
-#include "volumepulse/bluetooth.h"
-}
-
 void WayfireVolumepulse::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") vol->bottom = TRUE;

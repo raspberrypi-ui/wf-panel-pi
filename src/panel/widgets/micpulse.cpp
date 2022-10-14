@@ -1,12 +1,6 @@
 #include <glibmm.h>
 #include "micpulse.hpp"
 
-extern "C" {
-#include "volumepulse/pulse.h"
-#include "volumepulse/commongui.h"
-#include "volumepulse/bluetooth.h"
-}
-
 void WayfireMicpulse::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") vol->bottom = TRUE;
