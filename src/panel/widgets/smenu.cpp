@@ -13,6 +13,12 @@ void WayfireSmenu::icon_size_changed_cb (void)
     menu_update_display (m);
 }
 
+gboolean set_icon (MenuPlugin *m)
+{
+    menu_update_display (m);
+    return FALSE;
+}
+
 void WayfireSmenu::init (Gtk::HBox *container)
 {
     /* Create the button */
@@ -23,17 +29,15 @@ void WayfireSmenu::init (Gtk::HBox *container)
     m = &data;
     m->plugin = (GtkWidget *)((*plugin).gobj());
     m->icon_size = icon_size;
+    g_idle_add (G_SOURCE_FUNC (set_icon), m);
+    bar_pos_changed_cb ();
 
     /* Initialise the plugin */
     menu_init (m);
 
-    /* Setup icon size callback and force an update of the icon */
+    /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireSmenu::icon_size_changed_cb));
-    icon_size_changed_cb ();
-
-    /* Setup bar position callback */
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireSmenu::bar_pos_changed_cb));
-    bar_pos_changed_cb ();
 }
 
 WayfireSmenu::~WayfireSmenu()

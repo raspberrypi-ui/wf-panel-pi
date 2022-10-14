@@ -13,6 +13,12 @@ void WayfireBluetooth::icon_size_changed_cb (void)
     bt_update_display (bt);
 }
 
+gboolean set_icon (BluetoothPlugin *bt)
+{
+    bt_update_display (bt);
+    return FALSE;
+}
+
 void WayfireBluetooth::init (Gtk::HBox *container)
 {
     /* Create the button */
@@ -22,17 +28,16 @@ void WayfireBluetooth::init (Gtk::HBox *container)
     /* Setup structure */
     bt = &data;
     bt->plugin = (GtkWidget *)((*plugin).gobj());
+    bt->icon_size = icon_size;
+    g_idle_add (G_SOURCE_FUNC (set_icon), bt);
+    bar_pos_changed_cb ();
 
     /* Initialise the plugin */
     bt_init (bt);
 
-    /* Setup icon size callback and force an update of the icon */
+    /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireBluetooth::icon_size_changed_cb));
-    icon_size_changed_cb ();
-
-    /* Setup bar position callback */
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireBluetooth::bar_pos_changed_cb));
-    bar_pos_changed_cb ();
 }
 
 WayfireBluetooth::~WayfireBluetooth()

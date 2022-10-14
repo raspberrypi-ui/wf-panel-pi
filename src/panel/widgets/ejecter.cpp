@@ -13,6 +13,12 @@ void WayfireEjecter::icon_size_changed_cb (void)
     ej_update_display (ej);
 }
 
+gboolean set_icon (EjecterPlugin *ej)
+{
+    ej_update_display (ej);
+    return FALSE;
+}
+
 void WayfireEjecter::init (Gtk::HBox *container)
 {
     /* Create the button */
@@ -22,17 +28,16 @@ void WayfireEjecter::init (Gtk::HBox *container)
     /* Setup structure */
     ej = &data;
     ej->plugin = (GtkWidget *)((*plugin).gobj());
+    ej->icon_size = icon_size;
+    g_idle_add (G_SOURCE_FUNC (set_icon), ej);
+    bar_pos_changed_cb ();
 
     /* Initialise the plugin */
     ej_init (ej);
 
-    /* Setup icon size callback and force an update of the icon */
+    /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireEjecter::icon_size_changed_cb));
-    icon_size_changed_cb ();
-
-    /* Setup bar position callback */
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireEjecter::bar_pos_changed_cb));
-    bar_pos_changed_cb ();
 }
 
 WayfireEjecter::~WayfireEjecter()

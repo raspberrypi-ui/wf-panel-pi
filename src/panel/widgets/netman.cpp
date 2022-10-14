@@ -13,6 +13,12 @@ void WayfireNetman::icon_size_changed_cb (void)
     netman_update_display (nm);
 }
 
+gboolean set_icon (NMApplet *nm)
+{
+    netman_update_display (nm);
+    return FALSE;
+}
+
 void WayfireNetman::init (Gtk::HBox *container)
 {
     /* Create the button */
@@ -23,17 +29,15 @@ void WayfireNetman::init (Gtk::HBox *container)
     nm = (NMApplet *) g_object_new (NM_TYPE_APPLET, NULL);
     nm->plugin = (GtkWidget *)((*plugin).gobj());
     nm->icon_size = icon_size;
+    g_idle_add (G_SOURCE_FUNC (set_icon), nm);
+    bar_pos_changed_cb ();
 
     /* Initialise the plugin */
     netman_init (nm);
 
-    /* Setup icon size callback and force an update of the icon */
+    /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireNetman::icon_size_changed_cb));
-    icon_size_changed_cb ();
-
-    /* Setup bar position callback */
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireNetman::bar_pos_changed_cb));
-    bar_pos_changed_cb ();
 }
 
 WayfireNetman::~WayfireNetman()
