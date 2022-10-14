@@ -121,7 +121,7 @@ static const char *device_display_name (VolumePulsePlugin *vol, const char *name
 /* Device select menu                                                         */
 /*----------------------------------------------------------------------------*/
 
-void menu_show (VolumePulsePlugin *vol)
+void vol_menu_show (VolumePulsePlugin *vol)
 {
     GtkWidget *mi;
     GList *items;
@@ -153,7 +153,7 @@ void menu_show (VolumePulsePlugin *vol)
 
 /* Add a device entry to the menu */
 
-void menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name)
+void vol_menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name)
 {
     GList *list, *l;
     int count;
@@ -346,7 +346,7 @@ static gboolean profiles_dialog_delete (GtkWidget *wid, GdkEvent *event, VolumeP
 
 /* Update icon and tooltip */
 
-void volumepulse_update_display (VolumePulsePlugin *vol)
+void volpulse_update_display (VolumePulsePlugin *vol)
 {
     /* read current mute and volume status */
     gboolean mute = pulse_get_mute (vol);

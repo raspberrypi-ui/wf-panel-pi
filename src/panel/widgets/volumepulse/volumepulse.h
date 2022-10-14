@@ -44,6 +44,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define DEBUG(fmt,args...)
 #endif
 
+#define volumepulse_update_display(vol) do { if (vol->input_control) micpulse_update_display (vol); else volpulse_update_display (vol); } while (0)
+#define menu_show(vol) do { if (vol->input_control) mic_menu_show (vol); else vol_menu_show (vol); } while (0)
+#define menu_add_item(vol,label,name) do { if (vol->input_control) mic_menu_add_item (vol, label, name); else vol_menu_add_item (vol, label, name); } while (0)
+
+#ifndef VOLUMEPULSE_STRUCT
+#define VOLUMEPULSE_STRUCT
+
 typedef struct {
     /* plugin */
     GtkWidget *plugin;                  /* Pointer to widget */
@@ -101,14 +108,20 @@ typedef struct {
     int bt_profile_count;               /* Counter for polling read of profile on connection */
 } VolumePulsePlugin;
 
+#endif
+
 /* Functions in volumepulse.c needed in other modules */
 
-extern void menu_show (VolumePulsePlugin *vol);
-extern void menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name);
+extern void vol_menu_show (VolumePulsePlugin *vol);
+extern void mic_menu_show (VolumePulsePlugin *vol);
+extern void vol_menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name);
+extern void mic_menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name);
 extern void profiles_dialog_add_combo (VolumePulsePlugin *vol, GtkListStore *ls, GtkWidget *dest, int sel, const char *label, const char *name);
-extern void volumepulse_update_display (VolumePulsePlugin *vol);
+extern void volpulse_update_display (VolumePulsePlugin *vol);
+extern void micpulse_update_display (VolumePulsePlugin *vol);
 extern void hdmi_init (VolumePulsePlugin *vol);
 extern void volumepulse_init (VolumePulsePlugin *vol);
+extern void micpulse_init (VolumePulsePlugin *vol);
 
 
 /* End of file */

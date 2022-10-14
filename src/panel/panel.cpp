@@ -25,6 +25,7 @@
 #include "widgets/volume.hpp"
 #endif
 #include "widgets/volumepulse.hpp"
+#include "widgets/micpulse.hpp"
 #include "widgets/smenu.hpp"
 #include "widgets/netman.hpp"
 #include "widgets/bluetooth.hpp"
@@ -216,6 +217,8 @@ class WayfirePanel::impl
         }
         if (name == "volumepulse")
             return Widget(new WayfireVolumepulse());
+        if (name == "micpulse")
+            return Widget(new WayfireMicpulse());
         if (name == "smenu")
             return Widget(new WayfireSmenu());
         if (name == "netman")

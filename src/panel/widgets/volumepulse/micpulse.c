@@ -38,7 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Device select menu                                                         */
 /*----------------------------------------------------------------------------*/
 
-void menu_show (VolumePulsePlugin *vol)
+void mic_menu_show (VolumePulsePlugin *vol)
 {
     // create the menu
     menu_create (vol);
@@ -53,7 +53,7 @@ void menu_show (VolumePulsePlugin *vol)
 
 /* Add a device entry to the menu */
 
-void menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name)
+void mic_menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name)
 {
     GList *list, *l;
     int count;
@@ -99,22 +99,12 @@ void menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name)
 }
 
 /*----------------------------------------------------------------------------*/
-/* Profiles dialog                                                            */
-/*----------------------------------------------------------------------------*/
-
-/* Global called by other files - needs to exist, but does nothing on a plugin without a profile dialog */
-
-void profiles_dialog_add_combo (VolumePulsePlugin *vol, GtkListStore *ls, GtkWidget *dest, int sel, const char *label, const char *name)
-{
-}
-
-/*----------------------------------------------------------------------------*/
 /* Plugin handlers and graphics                                               */
 /*----------------------------------------------------------------------------*/
 
 /* Update icon and tooltip */
 
-void volumepulse_update_display (VolumePulsePlugin *vol)
+void micpulse_update_display (VolumePulsePlugin *vol)
 {
     pulse_count_devices (vol);
     if (vol->pa_devices + bluetooth_count_devices (vol, TRUE))
@@ -134,7 +124,7 @@ void volumepulse_update_display (VolumePulsePlugin *vol)
     if (mute) level = 0;
 
     /* update icon */
-    lxpanel_plugin_set_taskbar_icon (vol->panel, vol->tray_icon, mute ? "audio-input-mic-muted" : "audio-input-microphone");
+    set_taskbar_icon (vol->tray_icon, mute ? "audio-input-mic-muted" : "audio-input-microphone", vol->icon_size);
 
     /* update popup window controls */
     if (vol->popup_window)
@@ -162,10 +152,10 @@ void volumepulse_update_display (VolumePulsePlugin *vol)
 
 /* Plugin constructor */
 
-static GtkWidget *volumepulse_constructor (LXPanel *panel, config_setting_t *settings)
+void micpulse_init (VolumePulsePlugin *vol)
 {
     /* Allocate and initialize plugin context */
-    VolumePulsePlugin *vol = g_new0 (VolumePulsePlugin, 1);
+    //VolumePulsePlugin *vol = g_new0 (VolumePulsePlugin, 1);
 
 #ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
@@ -174,10 +164,10 @@ static GtkWidget *volumepulse_constructor (LXPanel *panel, config_setting_t *set
 #endif
 
     /* Allocate top level widget and set into plugin widget pointer */
-    vol->panel = panel;
-    vol->settings = settings;
-    vol->plugin = gtk_button_new ();
-    lxpanel_plugin_set_data (vol->plugin, vol, volumepulse_destructor);
+    //vol->panel = panel;
+    //vol->settings = settings;
+    //vol->plugin = gtk_button_new ();
+    //lxpanel_plugin_set_data (vol->plugin, vol, volumepulse_destructor);
 
     /* Allocate icon as a child of top level */
     vol->tray_icon = gtk_image_new ();
@@ -214,9 +204,10 @@ static GtkWidget *volumepulse_constructor (LXPanel *panel, config_setting_t *set
 
     /* Show the widget and return */
     gtk_widget_show_all (vol->plugin);
-    return vol->plugin;
+    //return vol->plugin;
 }
 
+#if 0
 FM_DEFINE_MODULE (lxpanel_gtk, micpulse)
 
 /* Plugin descriptor */
@@ -230,6 +221,6 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk =
     .control = volumepulse_control_msg,
     .gettext_package = GETTEXT_PACKAGE
 };
-
+#endif
 /* End of file */
 /*----------------------------------------------------------------------------*/
