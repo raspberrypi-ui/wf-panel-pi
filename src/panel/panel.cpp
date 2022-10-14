@@ -29,6 +29,7 @@
 #include "widgets/smenu.hpp"
 #include "widgets/netman.hpp"
 #include "widgets/bluetooth.hpp"
+#include "widgets/ejecter.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/notifications/notification-center.hpp"
 
@@ -225,6 +226,8 @@ class WayfirePanel::impl
             return Widget(new WayfireNetman());
         if (name == "bluetooth")
             return Widget(new WayfireBluetooth());
+        if (name == "ejecter")
+            return Widget(new WayfireEjecter());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
         if (name == "notifications")

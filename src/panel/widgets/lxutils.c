@@ -34,7 +34,6 @@ void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
     }
 }
 
-
 void set_menu_icon (GtkWidget *image, const char *icon, int size)
 {
     if (!icon) return;
@@ -93,4 +92,10 @@ const char *get_menu_label (GtkWidget *item)
         children = children->next;
     }
     return "";
+}
+
+void append_menu_icon (GtkWidget *item, GtkWidget *image)
+{
+    GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
+    gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
 }

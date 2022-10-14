@@ -36,7 +36,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gio/gio.h>
 
-#include "plugin.h"
+#include "ejecter.h"
+//#include "plugin.h"
 
 #define DEBUG_ON
 #ifdef DEBUG_ON
@@ -46,23 +47,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
 
 /* Plug-in global data */
-
-typedef struct {
-
-    GtkWidget *plugin;              /* Back pointer to the widget */
-    LXPanel *panel;                 /* Back pointer to panel */
-    GtkWidget *tray_icon;           /* Displayed image */
-    config_setting_t *settings;     /* Plugin settings */
-    GtkWidget *popup;               /* Popup message */
-    GtkWidget *alignment;           /* Alignment object in popup message */
-    GtkWidget *box;                 /* Vbox in popup message */
-    GtkWidget *menu;                /* Popup menu */
-    GtkWidget *empty;               /* Menuitem shown when no devices */
-    GVolumeMonitor *monitor;
-    gboolean autohide;
-    GList *ejdrives;
-    guint hide_timer;
-} EjecterPlugin;
 
 typedef struct {
     EjecterPlugin *ej;
@@ -104,7 +88,7 @@ static gboolean was_ejected (EjecterPlugin *ej, GDrive *drive)
         if (el->drv == drive)
         {
             ejected = TRUE;
-            if (el->seq != -1) lxpanel_notify_clear (el->seq);
+            //!!!! if (el->seq != -1) lxpanel_notify_clear (el->seq);
             ej->ejdrives = g_list_remove (ej->ejdrives, el);
             g_free (el);
         }
@@ -183,8 +167,8 @@ static void handle_drive_out (GtkWidget *widget, GDrive *drive, gpointer data)
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("DRIVE REMOVED %s", g_drive_get_name (drive));
 
-    if (!was_ejected (ej, drive))
-        lxpanel_notify (ej->panel, _("Drive was removed without ejecting\nPlease use menu to eject before removal"));
+    //!!!!if (!was_ejected (ej, drive))
+    //    lxpanel_notify (ej->panel, _("Drive was removed without ejecting\nPlease use menu to eject before removal"));
 
     if (ej->menu && gtk_widget_get_visible (ej->menu)) show_menu (ej);
     update_icon (ej);
@@ -213,13 +197,14 @@ static void eject_done (GObject *source_object, GAsyncResult *res, gpointer data
     {
         DEBUG ("EJECT COMPLETE");
         buffer = g_strdup_printf (_("%s has been ejected\nIt is now safe to remove the device"), g_drive_get_name (drv));
-        add_seq_for_drive (ej, drv, lxpanel_notify (ej->panel, buffer));
+        add_seq_for_drive (ej, drv, 0);
+        //!!!!add_seq_for_drive (ej, drv, lxpanel_notify (ej->panel, buffer));
     }
     else
     {
         DEBUG ("EJECT FAILED");
         buffer = g_strdup_printf (_("Failed to eject %s\n%s"), g_drive_get_name (drv), err->message);
-        lxpanel_notify (ej->panel, buffer);
+        //!!!!lxpanel_notify (ej->panel, buffer);
     }
     g_free (buffer);
 }
@@ -289,7 +274,7 @@ static void show_menu (EjecterPlugin *ej)
     if (count)
     {
         gtk_widget_show_all (ej->menu);
-        gtk_menu_popup_at_widget (GTK_MENU (ej->menu), ej->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+        gtk_menu_popup_at_widget (GTK_MENU (ej->menu), ej->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
     }
 }
 
@@ -328,12 +313,12 @@ static GtkWidget *create_menuitem (EjecterPlugin *ej, GDrive *d)
     strcat (buffer, ")");
     icon = gtk_image_new_from_gicon (g_drive_get_icon (d), GTK_ICON_SIZE_BUTTON);
 
-    item = lxpanel_plugin_new_menu_item (ej->panel, buffer, 40, NULL);
-    lxpanel_plugin_update_menu_icon (item, icon);
+    item = new_menu_item (buffer, 40, NULL, ej->icon_size);
+    update_menu_icon (item, icon);
 
     eject = gtk_image_new ();
-    lxpanel_plugin_set_menu_icon (ej->panel, eject, "media-eject");
-    lxpanel_plugin_append_menu_icon (item, eject);
+    set_menu_icon (eject, "media-eject", ej->icon_size);
+    append_menu_icon (item, eject);
 
     gtk_widget_show_all (item);
 
@@ -341,28 +326,23 @@ static GtkWidget *create_menuitem (EjecterPlugin *ej, GDrive *d)
 }
 
 /* Handler for menu button click */
-static gboolean ejecter_button_press_event (GtkWidget *widget, GdkEventButton *event, LXPanel *panel)
+static void ejecter_button_press_event (GtkWidget *widget, EjecterPlugin * ej)
 {
-    EjecterPlugin * ej = lxpanel_plugin_get_data (widget);
+    //EjecterPlugin * ej = lxpanel_plugin_get_data (widget);
 
     /* Show or hide the popup menu on left-click */
-    if (event->button == 1)
-    {
-        show_menu (ej);
-        return TRUE;
-    }
-    else return FALSE;
+    show_menu (ej);
 }
 
 /* Handler for system config changed message from panel */
-static void ejecter_configuration_changed (LXPanel *panel, GtkWidget *p)
+void ej_update_display (EjecterPlugin * ej)
 {
-    EjecterPlugin * ej = lxpanel_plugin_get_data (p);
+    //EjecterPlugin * ej = lxpanel_plugin_get_data (p);
 
-    lxpanel_plugin_set_taskbar_icon (panel, ej->tray_icon, "media-eject");
+    set_taskbar_icon (ej->tray_icon, "media-eject", ej->icon_size);
     update_icon (ej);
 }
-
+#if 0
 /* Handler for control message */
 static gboolean ejecter_control_msg (GtkWidget *plugin, const char *cmd)
 {
@@ -396,12 +376,13 @@ static void ejecter_destructor (gpointer user_data)
     /* Deallocate memory */
     g_free (ej);
 }
-
+#endif
 /* Plugin constructor. */
-static GtkWidget *ejecter_constructor (LXPanel *panel, config_setting_t *settings)
+//static GtkWidget *ejecter_constructor (LXPanel *panel, config_setting_t *settings)
+void ej_init (EjecterPlugin *ej)
 {
     /* Allocate and initialize plugin context */
-    EjecterPlugin *ej = g_new0 (EjecterPlugin, 1);
+    //EjecterPlugin *ej = g_new0 (EjecterPlugin, 1);
     int val;
 
 #ifdef ENABLE_NLS
@@ -411,27 +392,29 @@ static GtkWidget *ejecter_constructor (LXPanel *panel, config_setting_t *setting
 #endif
 
     /* Allocate top level widget and set into plugin widget pointer. */
-    ej->panel = panel;
-    ej->settings = settings;
-    ej->plugin = gtk_button_new ();
-    lxpanel_plugin_set_data (ej->plugin, ej, ejecter_destructor);
+    //ej->panel = panel;
+    //ej->settings = settings;
+    //ej->plugin = gtk_button_new ();
+    //lxpanel_plugin_set_data (ej->plugin, ej, ejecter_destructor);
 
     /* Allocate icon as a child of top level */
     ej->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (ej->plugin), ej->tray_icon);
-    lxpanel_plugin_set_taskbar_icon (panel, ej->tray_icon, "media-eject");
+    set_taskbar_icon (ej->tray_icon, "media-eject", ej->icon_size);
     gtk_widget_set_tooltip_text (ej->tray_icon, _("Select a drive in menu to eject safely"));
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (ej->plugin), GTK_RELIEF_NONE);
+    g_signal_connect (ej->plugin, "clicked", G_CALLBACK (ejecter_button_press_event), ej);
 
     /* Set up variables */
-    if (config_setting_lookup_int (settings, "AutoHide", &val))
-    {
-        if (val == 1) ej->autohide = TRUE;
-        else ej->autohide = FALSE;
-    }
-    else ej->autohide = FALSE;
+    //if (config_setting_lookup_int (settings, "AutoHide", &val))
+    //{
+    //    if (val == 1) ej->autohide = TRUE;
+    //    else ej->autohide = FALSE;
+    //}
+    //else ej->autohide = FALSE;
+    ej->autohide = TRUE;
 
     ej->popup = NULL;
     ej->menu = NULL;
@@ -450,9 +433,9 @@ static GtkWidget *ejecter_constructor (LXPanel *panel, config_setting_t *setting
 
     /* Show the widget and return. */
     gtk_widget_show_all (ej->plugin);
-    return ej->plugin;
+    //return ej->plugin;
 }
-
+#if 0
 static gboolean ejecter_apply_configuration (gpointer user_data)
 {
     EjecterPlugin *ej = lxpanel_plugin_get_data ((GtkWidget *) user_data);
@@ -486,3 +469,4 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk = {
     .control = ejecter_control_msg,
     .gettext_package = GETTEXT_PACKAGE
 };
+#endif
