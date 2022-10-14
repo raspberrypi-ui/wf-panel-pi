@@ -184,7 +184,7 @@ void WayfireWindowList::init(Gtk::HBox *container)
     scrolled_window.add(box);
     scrolled_window.set_propagate_natural_width(true);
     container->pack_start(scrolled_window, true, true);
-    scrolled_window.set_policy (Gtk::POLICY_NEVER, Gtk::POLICY_NEVER);
+    scrolled_window.set_policy (Gtk::POLICY_EXTERNAL, Gtk::POLICY_EXTERNAL);
     scrolled_window.show_all();
 }
 
