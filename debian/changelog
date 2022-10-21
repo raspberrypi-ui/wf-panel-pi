@@ -1,3 +1,10 @@
+wf-shell (0.2) bullseye; urgency=medium
+
+  * First set of Raspberry Pi customisations - plugins and basic config
+  * wf-background removed and replaced with shell script to launch pcmanfm
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 21 Oct 2022 14:20:39 +0100
+
 wf-shell (0.1) unstable; urgency=medium
 
   * Initial release based on code from wf-shell GitHub

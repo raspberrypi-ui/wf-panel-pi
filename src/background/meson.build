@@ -1,3 +1,1 @@
-executable('wf-background', ['background.cpp'],
-        dependencies: [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell],
-        install: true)
+install_data('wf-background', install_dir : '/usr/bin')
