@@ -38,8 +38,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static void popup_window_show (VolumePulsePlugin *vol);
 static void popup_window_scale_changed (GtkRange *range, VolumePulsePlugin *vol);
 static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol);
-static gboolean popup_mapped (GtkWidget *widget, GdkEvent *event, VolumePulsePlugin *vol);
-static gboolean popup_button_press (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol);
+static gboolean popup_focus_out (GtkWidget *widget, GdkEventFocus event, gpointer user_data);
+static void popup_destroyed (GtkWidget *widget, VolumePulsePlugin *vol);
 
 /*----------------------------------------------------------------------------*/
 /* Generic helper functions                                                   */
@@ -120,8 +120,6 @@ static void popup_window_show (VolumePulsePlugin *vol)
     gtk_window_set_skip_pager_hint (GTK_WINDOW (vol->popup_window), TRUE);
     gtk_window_set_type_hint (GTK_WINDOW (vol->popup_window), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
 
-    position_popup (vol->popup_window, vol->plugin, vol->bottom);
-
     /* Create a scrolled window as the child of the top level window. */
     GtkWidget *scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
     gtk_container_set_border_width (GTK_CONTAINER (scrolledwindow), 0);
@@ -159,17 +157,18 @@ static void popup_window_show (VolumePulsePlugin *vol)
     vol->mute_check_handler = g_signal_connect (vol->popup_mute_check, "toggled", G_CALLBACK (popup_window_mute_toggled), vol);
     gtk_widget_set_can_focus (vol->popup_mute_check, FALSE);
 
-    /* Show the window - need to draw the window in order to allow the plugin position helper to get its size */
-    //gtk_window_set_position (GTK_WINDOW (vol->popup_window), GTK_WIN_POS_MOUSE);
-    gtk_widget_show_all (vol->popup_window);
-    //gtk_widget_hide (vol->popup_window);
-    //lxpanel_plugin_popup_set_position_helper (vol->plugin, vol->popup_window, &x, &y);
-    //gdk_window_move (gtk_widget_get_window (vol->popup_window), x, y);
-    gtk_window_present (GTK_WINDOW (vol->popup_window));
+    /* Set callbacks to hide the window */
+    g_signal_connect_after (G_OBJECT (vol->popup_window), "destroy", G_CALLBACK (popup_destroyed), vol);
+    g_signal_connect (G_OBJECT (vol->popup_window), "focus-out-event", G_CALLBACK (popup_focus_out), 0);
 
-    /* Connect the function which hides the window when the mouse is clicked outside it */
-    g_signal_connect (G_OBJECT (vol->popup_window), "map-event", G_CALLBACK (popup_mapped), vol);
-    g_signal_connect (G_OBJECT (vol->popup_window), "button-press-event", G_CALLBACK (popup_button_press), vol);
+    /* Layer shell setup */
+    position_popup (vol->popup_window, vol->plugin, vol->bottom);
+    gtk_layer_set_layer (GTK_WINDOW (vol->popup_window), GTK_LAYER_SHELL_LAYER_OVERLAY);
+    gtk_layer_set_keyboard_mode (GTK_WINDOW (vol->popup_window), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
+
+    /* Show the window */
+    gtk_widget_show_all (vol->popup_window);
+    gtk_window_present (GTK_WINDOW (vol->popup_window));
 }
 
 /* Handler for "value_changed" signal on popup window vertical scale */
@@ -196,21 +195,17 @@ static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol
 
 /* Handler for "focus-out" signal on popup window */
 
-static gboolean popup_mapped (GtkWidget *widget, GdkEvent *event, VolumePulsePlugin *vol)
+static gboolean popup_focus_out (GtkWidget *widget, GdkEventFocus event, gpointer user_data)
 {
-    gdk_seat_grab (gdk_display_get_default_seat (gdk_display_get_default ()), gtk_widget_get_window (widget), GDK_SEAT_CAPABILITY_ALL_POINTING, TRUE, NULL, NULL, NULL, NULL);
+    gtk_widget_destroy (widget);
     return FALSE;
 }
 
-static gboolean popup_button_press (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol)
+/* Handler for "destroy" signal on popup window */
+
+static void popup_destroyed (GtkWidget *widget, VolumePulsePlugin *vol)
 {
-    int x, y;
-    gtk_window_get_size (GTK_WINDOW (widget), &x, &y);
-    if (event->x < 0 || event->y < 0 || event->x > x || event->y > y)
-    {
-        close_widget (&vol->popup_window);
-        gdk_seat_ungrab (gdk_display_get_default_seat (gdk_display_get_default ()));
-    }
+    vol->popup_window = NULL;
     return FALSE;
 }
 
