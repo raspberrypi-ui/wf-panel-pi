@@ -306,6 +306,15 @@ static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointe
     gdk_window_move (gtk_widget_get_window (m->swin), x, y);
 }
 
+static void handle_search_hidden (GtkWidget *widget, gpointer user_data)
+{
+    MenuPlugin *m = (MenuPlugin *) user_data;
+
+    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)));
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), FALSE);
+    if (m->swin && !gtk_widget_is_visible (m->swin)) m->swin = NULL;
+}
+
 static void do_search (MenuPlugin *m, GdkEventKey *event)
 {
     GtkCellRenderer *prend, *trend;
@@ -319,6 +328,7 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     gtk_window_set_decorated (GTK_WINDOW (m->swin), FALSE);
     gtk_window_set_type_hint (GTK_WINDOW (m->swin), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (m->swin), TRUE);
+    g_signal_connect (m->menu, "hide", G_CALLBACK (handle_search_hidden), m);
     g_signal_connect (m->swin, "map-event", G_CALLBACK (handle_search_mapped), m);
     g_signal_connect (m->swin, "button-press-event", G_CALLBACK (handle_search_button_press), m);
     //if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
@@ -699,13 +709,6 @@ static void handle_run_command (GtkWidget *widget, gpointer data)
     cmd ();
 }
 
-static void handle_menu_hidden (GtkWidget *self, gpointer user_data)
-{
-    MenuPlugin *m = (MenuPlugin *) user_data;
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), FALSE);
-    if (m->swin && !gtk_widget_is_visible (m->swin)) m->swin = NULL;
-}
-
 static GtkWidget *read_menu_item (MenuPlugin *m, char *fname, char *cmd)
 {
     //const gchar *name, *fname, *action, *cmd;
@@ -783,7 +786,6 @@ static gboolean create_menu (MenuPlugin *m)
     gtk_menu_set_reserve_toggle_size (GTK_MENU (m->menu), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (m->menu), 0);
     g_signal_connect (m->menu, "key-press-event", G_CALLBACK (handle_key_presses), m);
-    g_signal_connect (m->menu, "hide", G_CALLBACK (handle_menu_hidden), m);
 
     read_system_menu (GTK_MENU (m->menu), m);
 
