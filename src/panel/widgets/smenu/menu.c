@@ -832,18 +832,10 @@ static gboolean create_menu (MenuPlugin *m)
     return TRUE;
 }
 
-static gboolean show_menu (MenuPlugin *m)
-{
-    gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
-    return FALSE;
-}
-
 /* Handler for menu button click */
 static void menu_button_press_event (GtkButton *button, MenuPlugin *m)
 {
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), TRUE);
-    // this is hacky - the best alternative is to hang on the "draw" signal on m->plugin, but that's flakey
-    g_timeout_add (100, show_menu, m);
+    show_menu_with_kbd (m->plugin, m->menu);
 }
 
 void menu_update_display (MenuPlugin *m)
