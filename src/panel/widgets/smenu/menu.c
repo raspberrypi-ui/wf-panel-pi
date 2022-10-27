@@ -128,6 +128,7 @@ static gboolean _open_dir_in_file_manager (GAppLaunchContext* ctx, GList* folder
 
 static void destroy_search (MenuPlugin *m)
 {
+    gtk_layer_set_keyboard_mode (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
     g_signal_handlers_disconnect_matched (m->swin, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, m);
     g_signal_handlers_disconnect_matched (m->srch, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, m);
     g_signal_handlers_disconnect_matched (m->stv, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, m);
@@ -160,9 +161,9 @@ static void resize_search (MenuPlugin *m)
 {
     GtkTreePath *path;
     GdkRectangle rect;
-    int nrows;
+    int nrows, height = m->height - gtk_widget_get_allocated_height (m->srch);
 
-    if (m->fixed) nrows = m->height;
+    if (m->fixed) nrows = height;
     else
     {
         /* update the stored row height if current height is bigger */
@@ -174,11 +175,11 @@ static void resize_search (MenuPlugin *m)
         /* calculate the height in pixels from the number of rows */
         nrows = gtk_tree_model_iter_n_children (gtk_tree_view_get_model (GTK_TREE_VIEW (m->stv)), NULL);
         nrows *= (m->rheight + 2);
-        if (nrows > m->height) nrows = m->height;
+        if (nrows > height) nrows = height;
     }
 
     /* set the size of the scrolled window and then redraw the window */
-    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (m->scr), GTK_POLICY_NEVER, nrows < m->height ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (m->scr), GTK_POLICY_NEVER, nrows < height ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC);
     gtk_widget_set_size_request (m->scr, -1, nrows);
     gtk_window_resize (GTK_WINDOW (m->swin), 1, 1);
 }
@@ -244,6 +245,7 @@ static gboolean handle_search_keypress (GtkWidget *widget, GdkEventKey *event, g
                                     fm_path_unref (fpath);
                                 }
 
+        case GDK_KEY_Super_L :
         case GDK_KEY_Escape :   destroy_search (m);
                                 return TRUE;
 
@@ -306,13 +308,6 @@ static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointe
     gdk_window_move (gtk_widget_get_window (m->swin), x, y);
 }
 
-static void handle_search_hidden (GtkWidget *widget, gpointer user_data)
-{
-    MenuPlugin *m = (MenuPlugin *) user_data;
-
-    if (m->swin && !gtk_widget_is_visible (m->swin)) m->swin = NULL;
-}
-
 static void do_search (MenuPlugin *m, GdkEventKey *event)
 {
     GtkCellRenderer *prend, *trend;
@@ -321,14 +316,15 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     GtkWidget *box;
     gint x, y;
 
+    /* set desired height of search window */
+    m->height = gtk_widget_get_allocated_height (m->menu);
+    gtk_widget_hide (m->menu);
+
     /* create the window */
     m->swin = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_window_set_decorated (GTK_WINDOW (m->swin), FALSE);
     gtk_window_set_type_hint (GTK_WINDOW (m->swin), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
     gtk_window_set_skip_taskbar_hint (GTK_WINDOW (m->swin), TRUE);
-    g_signal_connect (m->menu, "hide", G_CALLBACK (handle_search_hidden), m);
-    g_signal_connect (m->swin, "map-event", G_CALLBACK (handle_search_mapped), m);
-    g_signal_connect (m->swin, "button-press-event", G_CALLBACK (handle_search_button_press), m);
     //if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
 
     /* add a box */
@@ -370,22 +366,13 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (m->stv), FALSE);
     gtk_tree_view_set_enable_search (GTK_TREE_VIEW (m->stv), FALSE);
 
-    /* realise the window to set sizes */
-    gtk_widget_show_all (m->swin);
-    gtk_widget_hide (m->swin);
-
-    /* set desired height of search window */
-    m->height = gtk_widget_get_allocated_height (m->menu) - gtk_widget_get_allocated_height (m->srch);
-
     /* size and move */
-    //lxpanel_plugin_popup_set_position_helper (m->panel, m->plugin, m->swin, &x, &y);
     position_popup (m->swin, m->plugin, m->bottom);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m->swin), TRUE);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), FALSE);
     gtk_widget_show_all (m->swin);
-    gtk_window_present_with_time (GTK_WINDOW (m->swin), gdk_event_get_time ((GdkEvent *) event));
-    gdk_window_move (gtk_widget_get_window (m->swin), x, y);
+    gtk_window_present (GTK_WINDOW (m->swin));
     gtk_widget_grab_focus (m->srch);
-    gtk_widget_hide (m->menu);
 
     /* initialise the text entry */
     append_to_entry (m->srch, event->keyval);
@@ -835,7 +822,8 @@ static gboolean create_menu (MenuPlugin *m)
 /* Handler for menu button click */
 static void menu_button_press_event (GtkButton *button, MenuPlugin *m)
 {
-    gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+    if (m->swin) destroy_search (m);
+    else gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
 }
 
 void menu_update_display (MenuPlugin *m)
