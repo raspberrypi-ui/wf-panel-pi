@@ -310,8 +310,6 @@ static void handle_search_hidden (GtkWidget *widget, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
 
-    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)));
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), FALSE);
     if (m->swin && !gtk_widget_is_visible (m->swin)) m->swin = NULL;
 }
 
@@ -837,7 +835,7 @@ static gboolean create_menu (MenuPlugin *m)
 /* Handler for menu button click */
 static void menu_button_press_event (GtkButton *button, MenuPlugin *m)
 {
-    show_menu_with_kbd (m->plugin, m->menu);
+    gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
 }
 
 void menu_update_display (MenuPlugin *m)

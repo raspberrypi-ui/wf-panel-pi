@@ -326,7 +326,7 @@ static void show_menu (UpdaterPlugin *up)
     gtk_menu_shell_append (GTK_MENU_SHELL (up->menu), item);
 
     gtk_widget_show_all (up->menu);
-    show_menu_with_kbd (up->plugin, up->menu);
+    gtk_menu_popup_at_widget (GTK_MENU (up->menu), up->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
 }
 
 static void hide_menu (UpdaterPlugin *up)

@@ -6,7 +6,6 @@
 #define PACKAGE_DATA_DIR "/usr/share/lxpanel"
 #define MENU_ICON_SPACE 6
 
-extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
 extern void position_popup (GtkWindow *popup, GtkWidget *plugin, gboolean bottom);
 extern void set_taskbar_icon (GtkWidget *image, const char *icon, int size);
 extern void set_menu_icon (GtkWidget *image, const char *icon, int size);
