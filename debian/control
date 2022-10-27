@@ -3,7 +3,7 @@ Section: unknown
 Priority: optional
 Maintainer: Simon Long <simon@raspberrypi.com>
 Build-Depends: debhelper-compat (= 13), meson, wayfire-dev, wayland-protocols, libgtkmm-3.0-dev (>= 3.24),
- libwf-config-dev (>= 0.7.0), libpulse-dev, libgtk-layer-shell-dev, libglib2.0-dev (>= 2.74.0),
+ libwf-config-dev (>= 0.7.0), libpulse-dev, libgtk-layer-shell-dev (>= 0.6.0), libglib2.0-dev (>= 2.74.0),
  libwlroots-dev, libglm-dev, libxml2-dev, libasound2-dev, libmenu-cache-dev, libfm-gtk-dev,
  libwnck-3-dev, libsecret-1-dev (>= 0.18), libnm-dev (>= 1.15), libnma-dev (>= 1.8.30-1+rpt1),
  libnotify-dev (>= 0.7), libpackagekit-glib2-dev, libgtk-3-dev (>= 3.24)
@@ -16,7 +16,7 @@ Rules-Requires-Root: no
 Package: wf-shell
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, wayfire, libwayland-client0,
- libgtkmm-3.0-1v5 (>=3.24), libwf-config1 (>= 0.7.0), libpulse0, libgtk-layer-shell0,
+ libgtkmm-3.0-1v5 (>=3.24), libwf-config1 (>= 0.7.0), libpulse0, libgtk-layer-shell0 (>= 0.6.0),
  libgtk-3-0 (>= 3.24), libfm-modules, eject, lxmenu-data, packagekit, raspi-config
 Description: Desktop shell for Wayfire
  Wayfire desktop shell with Raspberry Pi modifications
