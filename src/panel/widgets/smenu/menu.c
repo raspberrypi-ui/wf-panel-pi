@@ -40,6 +40,32 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* Auto-hiding the search box when clicking outside
+ *
+ * This ought to be possible, but isn't as far as I can tell - or at least
+ * I have not yet been able to get it to work...
+ *
+ * The only way to detect a click outside is by listening to the focus-out signal.
+ * In order for this to work, keyboard focus for the layer in question must
+ * be set to ON_DEMAND; NONE means it never has focus, and EXCLUSIVE means
+ * it never loses it. So far, so good.
+ *
+ * The problem is that if the search window has focus set to ON_DEMAND, it
+ * doesn't get focus when it is opened - you need to click the mouse in the
+ * search bar - and even worse, whenever the resize handler is called, it loses
+ * focus, with the resultant call to focus-out (which of course then destroys
+ * the window...)
+ *
+ * I cannot as yet find a way to fix either of these - if there was a mechanism
+ * to force an ON_DEMAND layer to take keyboard focus, that could be used
+ * to fix both problems, but nothing I have tried seems to do that.
+ *
+ * May need to revisit in future - similar issue with volume scale plugins, but
+ * they are already set up to destroy on focus-out, as the resize issue does not
+ * affect them; you just need to click in them once before clicking outside.
+ *
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -368,8 +394,8 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
 
     /* size and move */
     position_popup (m->swin, m->plugin, m->bottom);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m->swin), TRUE);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), FALSE);
+    gtk_layer_set_keyboard_mode (GTK_WINDOW (m->swin), GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
+    gtk_layer_set_keyboard_mode (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), GTK_LAYER_SHELL_KEYBOARD_MODE_NONE);
     gtk_widget_show_all (m->swin);
     gtk_window_present (GTK_WINDOW (m->swin));
     gtk_widget_grab_focus (m->srch);
