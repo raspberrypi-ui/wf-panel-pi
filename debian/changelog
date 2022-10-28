@@ -1,3 +1,9 @@
+wf-shell (0.3) bullseye; urgency=medium
+
+  * Add keyboard support in menus
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 28 Oct 2022 08:56:42 +0100
+
 wf-shell (0.2) bullseye; urgency=medium
 
   * First set of Raspberry Pi customisations - plugins and basic config
