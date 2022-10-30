@@ -153,6 +153,8 @@ class WayfirePanel::impl
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 
+        gtk_widget_set_name (GTK_WIDGET (window->gobj()), "PanelToplevel");
+
         bg_color.set_callback(on_window_color_updated);
         on_window_color_updated(); // set initial color
 
