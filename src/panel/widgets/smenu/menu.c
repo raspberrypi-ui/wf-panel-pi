@@ -860,6 +860,7 @@ void menu_update_display (MenuPlugin *m)
         gtk_image_set_from_pixbuf (GTK_IMAGE (m->img), pixbuf);
         g_object_unref (pixbuf);
     }
+    gtk_widget_set_size_request (m->img, m->icon_size + 2 * m->padding, -1);
 }
 
 #if 0
