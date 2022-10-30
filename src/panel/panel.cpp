@@ -97,6 +97,7 @@ class WayfirePanel::impl
         window->set_auto_exclusive_zone(!autohide_opt);
     };
 
+#if 0
     WfOption<std::string> bg_color{"panel/background_color"};
     std::function<void()> on_window_color_updated = [=] ()
     {
@@ -138,6 +139,7 @@ class WayfirePanel::impl
         if ((std::string)panel_layer == "background")
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BACKGROUND);
     };
+#endif
 
     WfOption<int> minimal_panel_height{"panel/minimal_height"};
     WfOption<std::string> css_path{"panel/css_path"};
@@ -146,17 +148,18 @@ class WayfirePanel::impl
     {
         window = std::make_unique<WayfireAutohidingWindow> (output, "panel");
         window->set_size_request(1, minimal_panel_height);
-        panel_layer.set_callback(set_panel_layer);
-        set_panel_layer(); // initial setting
+        //panel_layer.set_callback(set_panel_layer);
+        //set_panel_layer(); // initial setting
 
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
+        gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
 
         gtk_widget_set_name (GTK_WIDGET (window->gobj()), "PanelToplevel");
 
-        bg_color.set_callback(on_window_color_updated);
-        on_window_color_updated(); // set initial color
+        //bg_color.set_callback(on_window_color_updated);
+        //on_window_color_updated(); // set initial color
 
         autohide_opt.set_callback(autohide_opt_updated);
         autohide_opt_updated(); // set initial autohide status
