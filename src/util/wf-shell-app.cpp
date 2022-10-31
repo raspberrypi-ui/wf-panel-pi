@@ -1,4 +1,5 @@
 #include "wf-shell-app.hpp"
+#include <fcntl.h>
 #include <glibmm/main.h>
 #include <sys/inotify.h>
 #include <gdk/gdkwayland.h>
@@ -99,6 +100,7 @@ void WayfireShellApp::on_activate()
     std::vector<std::string> xmldirs(1, METADATA_DIR);
 
     // setup config
+    close (open (get_config_file ().c_str(), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
     this->config = wf::config::build_configuration(
         xmldirs, SYSCONF_DIR "/wayfire/wf-shell-defaults.ini",
         get_config_file());
