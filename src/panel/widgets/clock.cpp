@@ -8,6 +8,8 @@ void WayfireClock::init(Gtk::HBox *container)
     button->add(label);
     button->show();
     label.show();
+    label.set_margin_start (4);
+    label.set_margin_end (4);
 
     update_label();
 
@@ -31,7 +33,7 @@ void WayfireClock::on_calendar_shown()
 {
     auto now = Glib::DateTime::create_now_local();
 
-    /* GDateTime uses month in 1-12 format while GClender uses 0-11  */
+    /* GDateTime uses month in 1-12 format while GCalender uses 0-11  */
     calendar.select_month(now.get_month() - 1, now.get_year());
     calendar.select_day(now.get_day_of_month());
 }
