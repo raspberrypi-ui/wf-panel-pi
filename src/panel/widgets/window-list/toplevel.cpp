@@ -34,6 +34,7 @@ class WayfireToplevel::impl
     std::vector<zwlr_foreign_toplevel_handle_v1 *> children;
     uint32_t state;
 
+    WfOption <int> icon_size {"panel/icon_size"};
     Gtk::Button button;
     Gtk::HBox button_contents;
     Gtk::Image image;
@@ -68,6 +69,8 @@ class WayfireToplevel::impl
             .connect(sigc::mem_fun(this, &WayfireToplevel::impl::on_scale_update));
         button.signal_button_press_event().connect(
             sigc::mem_fun(this, &WayfireToplevel::impl::on_button_press_event));
+
+        icon_size.set_callback (sigc::mem_fun (*this, &WayfireToplevel::impl::on_scale_update));
 
         minimize.set_label("Minimize");
         maximize.set_label("Maximize");
