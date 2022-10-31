@@ -186,6 +186,13 @@ void WayfireWindowList::init(Gtk::HBox *container)
     container->pack_start(scrolled_window, true, true);
     scrolled_window.set_policy (Gtk::POLICY_EXTERNAL, Gtk::POLICY_EXTERNAL);
     scrolled_window.show_all();
+
+    max_task_width.set_callback (sigc::mem_fun (*this, &WayfireWindowList::task_width_changed_cb));
+}
+
+void WayfireWindowList::task_width_changed_cb (void)
+{
+    set_button_width (max_task_width);
 }
 
 void WayfireWindowList::set_button_width(int width)
