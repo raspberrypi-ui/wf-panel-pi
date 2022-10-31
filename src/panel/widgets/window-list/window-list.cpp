@@ -190,7 +190,7 @@ void WayfireWindowList::init(Gtk::HBox *container)
 
 void WayfireWindowList::set_button_width(int width)
 {
-    std::cout << "set width " << width << std::endl;
+    //std::cout << "set width " << width << std::endl;
     for (auto& toplevel : toplevels)
     {
         if (toplevel.second)
@@ -200,6 +200,7 @@ void WayfireWindowList::set_button_width(int width)
 
 int WayfireWindowList::get_default_button_width()
 {
+    return max_task_width;
     return DEFAULT_SIZE_PC *
         WayfirePanelApp::get().panel_for_wl_output(output->wo)->get_window()
         .get_allocated_width();
@@ -214,7 +215,7 @@ int WayfireWindowList::get_target_button_width()
     {
         target_width = std::min(target_width,
             scrolled_window.get_allocated_width() / num_children);
-        std::cout << "target button " << scrolled_window.get_allocated_width() << std::endl;
+        //std::cout << "target button " << scrolled_window.get_allocated_width() << std::endl;
     }
 
     return target_width;

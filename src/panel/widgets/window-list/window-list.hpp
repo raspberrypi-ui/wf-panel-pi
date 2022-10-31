@@ -59,6 +59,7 @@ class WayfireWindowListBox : public Gtk::HBox
 class WayfireWindowList : public WayfireWidget
 {
     WfOption <int> icon_size {"panel/icon_size"};
+    WfOption <int> max_task_width {"panel/max_task_width"};
 
     public:
     std::map<zwlr_foreign_toplevel_handle_v1*,

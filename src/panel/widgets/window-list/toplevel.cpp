@@ -58,6 +58,7 @@ class WayfireToplevel::impl
         button_contents.set_halign(Gtk::ALIGN_START);
         button.add(button_contents);
         button.set_tooltip_text("none");
+        button.show_all ();
 
         button.signal_clicked().connect_notify(
             sigc::mem_fun(this, &WayfireToplevel::impl::on_clicked));

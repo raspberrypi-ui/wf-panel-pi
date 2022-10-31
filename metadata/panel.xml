@@ -25,6 +25,10 @@
 		<_short>Icon Size</_short>
 		<default>32</default>
 	</option>
+	<option name="max_task_width" type="int">
+		<_short>Max Task Width</_short>
+		<default>200</default>
+	</option>
 	<option name="minimal_height" type="int">
 		<_short>Minimal Height</_short>
 		<default>24</default>
