@@ -11,7 +11,7 @@
 	</option>
 	<option name="widgets_left" type="string">
 		<_short>Widgets Left</_short>
-		<default>smenu launchers window-list</default>
+		<default>smenu spacing4 launchers spacing8 window-list</default>
 	</option>
 	<option name="widgets_center" type="string">
 		<_short>Widgets Center</_short>
@@ -19,7 +19,7 @@
 	</option>
 	<option name="widgets_right" type="string">
 		<_short>Widgets Right</_short>
-		<default>ejecter updater bluetooth netman volumepulse micpulse clock</default>
+		<default>ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse micpulse spacing2 clock spacing4</default>
 	</option>
 	<option name="icon_size" type="int">
 		<_short>Icon Size</_short>
