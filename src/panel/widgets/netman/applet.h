@@ -323,5 +323,6 @@ void applet_add_default_connection_item (NMDevice *device,
 
 extern void netman_init (NMApplet *nm);
 extern void netman_update_display (NMApplet *nm);
+extern gboolean nm_control_msg (NMApplet *nm, const char *cmd);
 
 #endif

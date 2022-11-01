@@ -13,6 +13,11 @@ void WayfireBluetooth::icon_size_changed_cb (void)
     bt_update_display (bt);
 }
 
+void WayfireBluetooth::command (const char *cmd)
+{
+    bluetooth_control_msg (bt, cmd);
+}
+
 gboolean set_icon (BluetoothPlugin *bt)
 {
     bt_update_display (bt);

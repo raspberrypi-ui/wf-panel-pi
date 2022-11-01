@@ -40,3 +40,4 @@ typedef struct {
 
 extern void bt_init (BluetoothPlugin *bt);
 extern void bt_update_display (BluetoothPlugin *bt);
+extern gboolean bluetooth_control_msg (BluetoothPlugin *bt, const char *cmd);

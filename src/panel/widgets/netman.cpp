@@ -13,6 +13,11 @@ void WayfireNetman::icon_size_changed_cb (void)
     netman_update_display (nm);
 }
 
+void WayfireNetman::command (const char *cmd)
+{
+    nm_control_msg (nm, cmd);
+}
+
 gboolean set_icon (NMApplet *nm)
 {
     netman_update_display (nm);

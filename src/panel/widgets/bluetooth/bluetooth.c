@@ -2083,11 +2083,10 @@ void bt_update_display (BluetoothPlugin *bt)
     update_icon (bt);
 }
 
-#if 0
 /* Handler for control message */
-static gboolean bluetooth_control_msg (GtkWidget *plugin, const char *cmd)
+gboolean bluetooth_control_msg (BluetoothPlugin *bt, const char *cmd)
 {
-    BluetoothPlugin *bt = lxpanel_plugin_get_data (plugin);
+    //BluetoothPlugin *bt = lxpanel_plugin_get_data (plugin);
 
     if (!g_strcmp0 (cmd, "apstop"))
     {
@@ -2098,12 +2097,13 @@ static gboolean bluetooth_control_msg (GtkWidget *plugin, const char *cmd)
     if (!g_strcmp0 (cmd, "menu"))
     {
         show_menu (bt);
-        gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+        gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
     }
 
     return TRUE;
 }
 
+#if 0
 /* Plugin destructor. */
 static void bluetooth_destructor (gpointer user_data)
 {

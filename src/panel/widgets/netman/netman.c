@@ -64,21 +64,20 @@ static void netman_button_press_event (GtkButton *button, NMApplet *nm)
     status_icon_activate_cb (nm);
 }
 
-#if 0
 /* Handler for control message */
-static gboolean nm_control_msg (GtkWidget *plugin, const char *cmd)
+gboolean nm_control_msg (NMApplet *nm, const char *cmd)
 {
-    NMApplet *nm = lxpanel_plugin_get_data (plugin);
+    //NMApplet *nm = lxpanel_plugin_get_data (plugin);
 
     if (!g_strcmp0 (cmd, "menu"))
     {
         if (nm_client_get_nm_running (nm->nm_client)) status_icon_activate_cb (nm);
-        else system ("lxpanelctl command dhcpcdui menu");
     }
 
     return TRUE;
 }
 
+#if 0
 /* Plugin destructor. */
 static void nm_destructor (gpointer user_data)
 {
