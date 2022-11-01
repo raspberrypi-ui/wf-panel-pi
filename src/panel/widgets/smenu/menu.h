@@ -29,4 +29,4 @@ typedef struct {
 
 extern void menu_init (MenuPlugin *m);
 extern void menu_update_display (MenuPlugin *m);
-extern void menu_command (MenuPlugin *m);
+extern void menu_show_menu (MenuPlugin *m);

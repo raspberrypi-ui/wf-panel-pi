@@ -863,21 +863,16 @@ void menu_update_display (MenuPlugin *m)
     gtk_widget_set_size_request (m->img, m->icon_size + 2 * m->padding, -1);
 }
 
-void menu_command (MenuPlugin *m)
+/* Handler for control message from system */
+void menu_show_menu (MenuPlugin *m)
 {
-    gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+    //MenuPlugin *m = lxpanel_plugin_get_data (p);
+
+    if (m->swin) destroy_search (m);
+    else gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
 }
 
 #if 0
-/* Handler for control message from system */
-static void menu_show_menu (GtkWidget *p)
-{
-    MenuPlugin *m = lxpanel_plugin_get_data (p);
-
-    if (m->swin) destroy_search (m);
-    else gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
-}
-
 /* Handler for system config changed message from panel */
 static void menu_panel_configuration_changed (LXPanel *panel, GtkWidget *p)
 {

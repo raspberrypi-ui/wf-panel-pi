@@ -15,7 +15,7 @@ void WayfireSmenu::icon_size_changed_cb (void)
 
 void WayfireSmenu::command (const char *cmd)
 {
-    if (!g_strcmp0 (cmd, "menu")) menu_command (m);
+    if (!g_strcmp0 (cmd, "menu")) menu_show_menu (m);
 }
 
 gboolean set_icon (MenuPlugin *m)
