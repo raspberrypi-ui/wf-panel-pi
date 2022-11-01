@@ -487,12 +487,11 @@ void WayfirePanelApp::create(int argc, char **argv)
     if (instance)
         throw std::logic_error("Running WayfirePanelApp twice!");
 
-    instance = std::unique_ptr<WayfireShellApp>(new WayfirePanelApp{argc, argv});
-
     introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
     guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
         on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
 
+    instance = std::unique_ptr<WayfireShellApp>(new WayfirePanelApp{argc, argv});
     instance->run();
 
     g_bus_unown_name (owner_id);
