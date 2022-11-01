@@ -22,5 +22,6 @@ typedef struct {
 
 extern void updater_init (UpdaterPlugin *up);
 extern void updater_update_display (UpdaterPlugin *up);
+extern gboolean updater_control_msg (UpdaterPlugin *up, const char *cmd);
 
 

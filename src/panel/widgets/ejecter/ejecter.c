@@ -342,11 +342,11 @@ void ej_update_display (EjecterPlugin * ej)
     set_taskbar_icon (ej->tray_icon, "media-eject", ej->icon_size);
     update_icon (ej);
 }
-#if 0
+
 /* Handler for control message */
-static gboolean ejecter_control_msg (GtkWidget *plugin, const char *cmd)
+gboolean ejecter_control_msg (EjecterPlugin *ej, const char *cmd)
 {
-    EjecterPlugin *ej = lxpanel_plugin_get_data (plugin);
+    //EjecterPlugin *ej = lxpanel_plugin_get_data (plugin);
 
     DEBUG ("Eject command device %s\n", cmd);
 
@@ -367,7 +367,7 @@ static gboolean ejecter_control_msg (GtkWidget *plugin, const char *cmd)
     g_list_free_full (drives, g_object_unref);
     return TRUE;
 }
-
+#if 0
 /* Plugin destructor. */
 static void ejecter_destructor (gpointer user_data)
 {

@@ -505,11 +505,11 @@ void updater_update_display (UpdaterPlugin *up)
 {
     set_taskbar_icon (up->tray_icon, "update-avail", up->icon_size);
 }
-#if 0
+
 /* Handler for control message from panel */
-static gboolean updater_control_msg (GtkWidget *plugin, const char *cmd)
+gboolean updater_control_msg (UpdaterPlugin *up, const char *cmd)
 {
-    UpdaterPlugin *up = lxpanel_plugin_get_data (plugin);
+    //UpdaterPlugin *up = lxpanel_plugin_get_data (plugin);
 
     if (!strncmp (cmd, "check", 5))
     {
@@ -520,7 +520,7 @@ static gboolean updater_control_msg (GtkWidget *plugin, const char *cmd)
 
     return FALSE;
 }
-
+#if 0
 /* Handler to open config dialog */
 static GtkWidget *updater_configure (LXPanel *panel, GtkWidget *p)
 {

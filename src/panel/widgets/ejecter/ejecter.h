@@ -23,3 +23,4 @@ typedef struct {
 
 extern void ej_init (EjecterPlugin *ej);
 extern void ej_update_display (EjecterPlugin *ej);
+extern gboolean ejecter_control_msg (EjecterPlugin *ej, const char *cmd);

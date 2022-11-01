@@ -13,6 +13,11 @@ void WayfireUpdater::icon_size_changed_cb (void)
     updater_update_display (up);
 }
 
+void WayfireUpdater::command (const char *cmd)
+{
+    updater_control_msg (up, cmd);
+}
+
 gboolean set_icon (UpdaterPlugin *up)
 {
     updater_update_display (up);

@@ -13,6 +13,11 @@ void WayfireEjecter::icon_size_changed_cb (void)
     ej_update_display (ej);
 }
 
+void WayfireEjecter::command (const char *cmd)
+{
+    ejecter_control_msg (ej, cmd);
+}
+
 gboolean set_icon (EjecterPlugin *ej)
 {
     ej_update_display (ej);
