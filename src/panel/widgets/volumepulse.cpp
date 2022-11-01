@@ -13,6 +13,11 @@ void WayfireVolumepulse::icon_size_changed_cb (void)
     volpulse_update_display (vol);
 }
 
+void WayfireVolumepulse::command (const char *cmd)
+{
+    volumepulse_control_msg (vol, cmd);
+}
+
 gboolean vol_set_icon (VolumePulsePlugin *vol)
 {
     volpulse_update_display (vol);

@@ -13,6 +13,11 @@ void WayfireMicpulse::icon_size_changed_cb (void)
     micpulse_update_display (vol);
 }
 
+void WayfireMicpulse::command (const char *cmd)
+{
+    volumepulse_control_msg (vol, cmd);
+}
+
 gboolean mic_set_icon (VolumePulsePlugin *vol)
 {
     micpulse_update_display (vol);

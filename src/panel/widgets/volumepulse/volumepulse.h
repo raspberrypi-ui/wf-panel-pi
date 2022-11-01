@@ -122,6 +122,7 @@ extern void micpulse_update_display (VolumePulsePlugin *vol);
 extern void hdmi_init (VolumePulsePlugin *vol);
 extern void volumepulse_init (VolumePulsePlugin *vol);
 extern void micpulse_init (VolumePulsePlugin *vol);
+extern gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd);
 
 
 /* End of file */

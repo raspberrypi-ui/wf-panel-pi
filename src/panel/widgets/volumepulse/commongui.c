@@ -382,12 +382,13 @@ void volumepulse_configuration_changed (LXPanel *panel, GtkWidget *plugin)
 
     volumepulse_update_display (vol);
 }
+#endif
 
 /* Callback when control message arrives */
 
-gboolean volumepulse_control_msg (GtkWidget *plugin, const char *cmd)
+gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd)
 {
-    VolumePulsePlugin *vol = lxpanel_plugin_get_data (plugin);
+    //VolumePulsePlugin *vol = lxpanel_plugin_get_data (plugin);
 
     if (!strncmp (cmd, "mute", 4))
     {
@@ -435,6 +436,7 @@ gboolean volumepulse_control_msg (GtkWidget *plugin, const char *cmd)
     return FALSE;
 }
 
+#if 0
 /* Plugin destructor */
 
 void volumepulse_destructor (gpointer user_data)
