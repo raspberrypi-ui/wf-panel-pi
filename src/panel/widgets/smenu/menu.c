@@ -863,6 +863,11 @@ void menu_update_display (MenuPlugin *m)
     gtk_widget_set_size_request (m->img, m->icon_size + 2 * m->padding, -1);
 }
 
+void menu_command (MenuPlugin *m)
+{
+    gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+}
+
 #if 0
 /* Handler for control message from system */
 static void menu_show_menu (GtkWidget *p)

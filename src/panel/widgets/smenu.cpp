@@ -13,6 +13,11 @@ void WayfireSmenu::icon_size_changed_cb (void)
     menu_update_display (m);
 }
 
+void WayfireSmenu::command (const char *cmd)
+{
+    if (!g_strcmp0 (cmd, "menu")) menu_command (m);
+}
+
 gboolean set_icon (MenuPlugin *m)
 {
     menu_update_display (m);

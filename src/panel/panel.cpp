@@ -52,47 +52,47 @@ static const gchar introspection_xml[] =
   "  </interface>"
   "</node>";
 
-static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
-{
-    if (g_strcmp0 (method_name, "command") == 0)
-    {
-        const gchar *plugin, *command;
-        g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        printf ("DBus command received %s %s\n", plugin, command);
-    }
-}
-
-static GVariant * handle_get_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GError **error, gpointer user_data)
-{
-    return NULL;
-}
-
-static gboolean handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
-{
-    return TRUE;
-}
-
-static const GDBusInterfaceVTable interface_vtable =
+const GDBusInterfaceVTable WayfirePanelApp::interface_vtable =
 {
   handle_method_call,
   handle_get_property,
   handle_set_property
 };
 
-static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+void WayfirePanelApp::handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
+{
+    if (g_strcmp0 (method_name, "command") == 0)
+    {
+        const gchar *plugin, *command;
+        g_variant_get (parameters, "(&s&s)", &plugin, &command);
+        get().on_command (plugin, command);
+    }
+}
+
+GVariant *WayfirePanelApp::handle_get_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *property_name, GError **error, gpointer user_data)
+{
+    return NULL;
+}
+
+gboolean WayfirePanelApp::handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
+{
+    return TRUE;
+}
+
+void WayfirePanelApp::on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
 {
     g_dbus_connection_register_object (connection, "/org/wayfire/wfpanel", introspection_data->interfaces[0],
-        &interface_vtable, NULL, NULL, NULL);
+        &interface_vtable, user_data, NULL, NULL);
 }
 
-static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+void WayfirePanelApp::on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
 {
 }
 
-static void on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
+void WayfirePanelApp::on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
 {
 }
 
@@ -417,12 +417,23 @@ class WayfirePanel::impl
         for (auto& w : center_widgets)
             w->handle_config_reload();
     }
+
+    void message_widget (const char *name, const char *cmd)
+    {
+        for (auto& w : left_widgets)
+            if (name == w->widget_name) w->command (cmd);
+        for (auto& w : right_widgets)
+            if (name == w->widget_name) w->command (cmd);
+        for (auto& w : center_widgets)
+            if (name == w->widget_name) w->command (cmd);
+    }
 };
 
 WayfirePanel::WayfirePanel(WayfireOutput *output) : pimpl(new impl(output)) { }
 wl_surface *WayfirePanel::get_wl_surface() { return pimpl->get_wl_surface(); }
 Gtk::Window& WayfirePanel::get_window() { return pimpl->get_window(); }
 void WayfirePanel::handle_config_reload() { return pimpl->handle_config_reload(); }
+void WayfirePanel::handle_command_message (const char *plugin, const char *cmd) { pimpl->message_widget (plugin, cmd); }
 
 class WayfirePanelApp::impl
 {
@@ -434,6 +445,12 @@ void WayfirePanelApp::on_config_reload()
 {
     for (auto& p : priv->panels)
         p.second->handle_config_reload();
+}
+
+void WayfirePanelApp::on_command (const char *plugin, const char *command)
+{
+    for (auto& p : priv->panels)
+        p.second->handle_command_message (plugin, command);
 }
 
 void WayfirePanelApp::handle_new_output(WayfireOutput *output)
@@ -471,7 +488,15 @@ void WayfirePanelApp::create(int argc, char **argv)
         throw std::logic_error("Running WayfirePanelApp twice!");
 
     instance = std::unique_ptr<WayfireShellApp>(new WayfirePanelApp{argc, argv});
+
+    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
+    guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
+        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+
     instance->run();
+
+    g_bus_unown_name (owner_id);
+    g_dbus_node_info_unref (introspection_data);
 }
 
 WayfirePanelApp::~WayfirePanelApp() = default;
@@ -480,14 +505,7 @@ WayfirePanelApp::WayfirePanelApp(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
-        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
-
     WayfirePanelApp::create(argc, argv);
-
-    g_bus_unown_name (owner_id);
-    g_dbus_node_info_unref (introspection_data);
 
     return 0;
 }
