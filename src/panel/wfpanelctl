@@ -1,0 +1,3 @@
+#!/bin/sh
+
+dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:$2

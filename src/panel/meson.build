@@ -56,3 +56,5 @@ endif
 executable('wf-panel', ['panel.cpp'] + widget_sources,
         dependencies: deps,
         install: true)
+	
+install_data('wfpanelctl', install_dir : '/usr/bin')
