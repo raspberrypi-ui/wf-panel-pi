@@ -36,6 +36,67 @@
 
 #include "wf-autohide-window.hpp"
 
+/* Minimal DBus interface for commands to plugins */
+
+static GDBusNodeInfo *introspection_data = NULL;
+
+static const gchar introspection_xml[] =
+  "<node>"
+  "  <interface name='org.wayfire.wfpanel'>"
+  "    <annotation name='org.wayfire.wfpanel.Annotation' value='OnInterface'/>"
+  "    <method name='command'>"
+  "      <annotation name='org.wayfire.wfpanel.Annotation' value='OnMethod'/>"
+  "      <arg type='s' name='plugin' direction='in'/>"
+  "      <arg type='s' name='command' direction='in'/>"
+  "    </method>"
+  "  </interface>"
+  "</node>";
+
+static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
+{
+    if (g_strcmp0 (method_name, "command") == 0)
+    {
+        const gchar *plugin, *command;
+        g_variant_get (parameters, "(&s&s)", &plugin, &command);
+        printf ("DBus command received %s %s\n", plugin, command);
+    }
+}
+
+static GVariant * handle_get_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *property_name, GError **error, gpointer user_data)
+{
+    return NULL;
+}
+
+static gboolean handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
+{
+    return TRUE;
+}
+
+static const GDBusInterfaceVTable interface_vtable =
+{
+  handle_method_call,
+  handle_get_property,
+  handle_set_property
+};
+
+static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+    g_dbus_connection_register_object (connection, "/org/wayfire/wfpanel", introspection_data->interfaces[0],
+        &interface_vtable, NULL, NULL, NULL);
+}
+
+static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+}
+
+static void on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+}
+
+
 struct WayfirePanelZwfOutputCallbacks
 {
     std::function<void()> enter_fullscreen;
@@ -419,6 +480,14 @@ WayfirePanelApp::WayfirePanelApp(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
+    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
+    guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
+        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+
     WayfirePanelApp::create(argc, argv);
+
+    g_bus_unown_name (owner_id);
+    g_dbus_node_info_unref (introspection_data);
+
     return 0;
 }
