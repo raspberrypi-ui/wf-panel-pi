@@ -1,3 +1,9 @@
+wf-shell (0.4) UNRELEASED; urgency=medium
+
+  * Notifications, control messages, themeing
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 02 Nov 2022 11:44:05 +0000
+
 wf-shell (0.3) bullseye; urgency=medium
 
   * Add keyboard support in menus
