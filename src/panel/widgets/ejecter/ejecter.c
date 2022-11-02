@@ -273,7 +273,7 @@ static void show_menu (EjecterPlugin *ej)
     if (count)
     {
         gtk_widget_show_all (ej->menu);
-        gtk_menu_popup_at_widget (GTK_MENU (ej->menu), ej->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+        show_menu_with_kbd (ej->plugin, ej->menu);
     }
 }
 

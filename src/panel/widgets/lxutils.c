@@ -3,6 +3,30 @@
 
 #define MENU_ICON_SPACE 6
 
+GtkWidget *m_button, *m_menu;
+gulong m_handle;
+
+static void menu_hidden (GtkWidget *menu, gpointer user_data)
+{
+    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m_button)));
+    gtk_layer_set_keyboard_interactivity (panel, FALSE);
+}
+
+static void committed (GdkWindow *win, gpointer user_data)
+{
+    g_signal_handler_disconnect (win, m_handle);
+    g_signal_connect (m_menu, "hide", G_CALLBACK (menu_hidden), NULL);
+    gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+}
+
+void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
+{
+    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (button)));
+    m_button = button;
+    m_menu = menu;
+    gtk_layer_set_keyboard_interactivity (panel, TRUE);
+    m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), NULL);
+}
 
 void position_popup (GtkWindow *popup, GtkWidget *plugin, gboolean bottom)
 {

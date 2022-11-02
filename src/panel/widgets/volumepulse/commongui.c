@@ -337,7 +337,7 @@ gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *even
         case 3: /* right-click - show device list */
                 close_widget (&vol->popup_window);
                 menu_show (vol);
-                gtk_menu_popup_at_widget (GTK_MENU (vol->menu_devices), widget, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
+                show_menu_with_kbd (vol->plugin, vol->menu_devices);
                 break;
     }
 

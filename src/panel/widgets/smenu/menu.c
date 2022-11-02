@@ -271,7 +271,6 @@ static gboolean handle_search_keypress (GtkWidget *widget, GdkEventKey *event, g
                                     fm_path_unref (fpath);
                                 }
 
-        case GDK_KEY_Super_L :
         case GDK_KEY_Escape :   destroy_search (m);
                                 return TRUE;
 
@@ -414,11 +413,6 @@ static gboolean handle_key_presses (GtkWidget *widget, GdkEventKey *event, gpoin
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
 
-    if (event->keyval == GDK_KEY_Super_L)
-    {
-        gtk_menu_popdown (GTK_MENU (m->menu));
-        return TRUE;
-    }
     if ((event->keyval >= 'a' && event->keyval <= 'z') ||
         (event->keyval >= 'A' && event->keyval <= 'Z'))
     {
@@ -849,7 +843,7 @@ static gboolean create_menu (MenuPlugin *m)
 static void menu_button_press_event (GtkButton *button, MenuPlugin *m)
 {
     if (m->swin) destroy_search (m);
-    else gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+    else show_menu_with_kbd (m->plugin, m->menu);
 }
 
 void menu_update_display (MenuPlugin *m)
@@ -867,9 +861,9 @@ void menu_update_display (MenuPlugin *m)
 void menu_show_menu (MenuPlugin *m)
 {
     //MenuPlugin *m = lxpanel_plugin_get_data (p);
-
-    if (m->swin) destroy_search (m);
-    else gtk_menu_popup_at_widget (GTK_MENU (m->menu), m->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+    if (gtk_widget_is_visible (m->menu)) gtk_menu_popdown (GTK_MENU (m->menu));
+    else if (m->swin) destroy_search (m);
+    else show_menu_with_kbd (m->plugin, m->menu);
 }
 
 #if 0

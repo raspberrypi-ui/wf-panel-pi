@@ -2072,7 +2072,7 @@ static void update_icon (BluetoothPlugin *bt)
 static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt)
 {
     show_menu (bt);
-    gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_SOUTH_WEST, NULL);
+    show_menu_with_kbd (bt->plugin, bt->menu);
 }
 
 /* Handler for system config changed message from panel */
@@ -2097,7 +2097,7 @@ gboolean bluetooth_control_msg (BluetoothPlugin *bt, const char *cmd)
     if (!g_strcmp0 (cmd, "menu"))
     {
         show_menu (bt);
-        gtk_menu_popup_at_widget (GTK_MENU (bt->menu), bt->plugin, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+        show_menu_with_kbd (bt->plugin, bt->menu);
     }
 
     return TRUE;
