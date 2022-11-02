@@ -5,6 +5,7 @@
 #include <wayland-client.h>
 #include <gtkmm/window.h>
 
+#include "widget.hpp"
 #include "wf-shell-app.hpp"
 
 class WayfirePanel

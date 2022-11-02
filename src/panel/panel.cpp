@@ -377,6 +377,9 @@ class WayfirePanel::impl
 
     WayfirePanelZwfOutputCallbacks callbacks;
 
+    WfOption <int> notify_timeout {"panel/notify_timeout"};
+    WfOption <bool> notifications {"panel/notifications"};
+
     public:
     impl(WayfireOutput *output)
     {
@@ -390,6 +393,7 @@ class WayfirePanel::impl
             zwf_output_v2_add_listener(output->output, &output_impl, NULL);
             zwf_output_v2_set_user_data(output->output, &callbacks);
         }
+        lxpanel_notify_init (notifications, notify_timeout);
     }
 
     ~impl()
@@ -410,6 +414,7 @@ class WayfirePanel::impl
 
     void handle_config_reload()
     {
+        lxpanel_notify_init (notifications, notify_timeout);
         for (auto& w : left_widgets)
             w->handle_config_reload();
         for (auto& w : right_widgets)

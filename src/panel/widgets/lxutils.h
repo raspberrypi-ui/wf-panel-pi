@@ -13,7 +13,7 @@ extern GtkWidget *new_menu_item (const char *text, int maxlen, const char *iconn
 extern void update_menu_icon (GtkWidget *item, GtkWidget *image);
 extern const char *get_menu_label (GtkWidget *item);
 extern void append_menu_icon (GtkWidget *item, GtkWidget *image);
-extern void lxpanel_notify_init (void);
+extern void lxpanel_notify_init (gboolean enable, gint timeout);
 extern int lxpanel_notify (const char *message);
 extern void lxpanel_notify_clear (int seq);
 

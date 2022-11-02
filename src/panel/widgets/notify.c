@@ -51,12 +51,12 @@ typedef struct {
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
+static gboolean notifications;
+static gint notify_timeout;
+
 static GList *nwins = NULL;         /* List of current notifications */
 static int nseq = 0;                /* Sequence number for notifications */
 static gint interval_timer = 0;     /* Used to show windows one at a time */
-
-static gint notify_timeout = 15;
-gboolean notifications = TRUE;
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -216,8 +216,11 @@ static gboolean show_next (void)
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void lxpanel_notify_init (void)
+void lxpanel_notify_init (gboolean enable, gint timeout)
 {
+    notifications = enable;
+    notify_timeout = timeout;
+
     // set timer for initial display of notifications
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
