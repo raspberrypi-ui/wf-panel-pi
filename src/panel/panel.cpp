@@ -420,6 +420,12 @@ class WayfirePanel::impl
 
     void message_widget (const char *name, const char *cmd)
     {
+        if (!g_strcmp0 (name, "notify"))
+        {
+            lxpanel_notify (cmd);
+            return;
+        }
+
         for (auto& w : left_widgets)
             if (name == w->widget_name) w->command (cmd);
         for (auto& w : right_widgets)

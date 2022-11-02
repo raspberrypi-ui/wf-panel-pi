@@ -1066,12 +1066,16 @@ applet_menu_item_create_device_item_helper (NMDevice *device,
 static void
 applet_clear_notify (NMApplet *applet)
 {
+#ifdef LXPANEL_PLUGIN
+	lxpanel_notify_clear (applet->notification);
+#else
 	if (applet->notification == NULL)
 		return;
 
 	notify_notification_close (applet->notification, NULL);
 	g_object_unref (applet->notification);
 	applet->notification = NULL;
+#endif
 }
 
 static gboolean
@@ -1108,27 +1112,29 @@ applet_do_notify (NMApplet *applet,
                   NotifyActionCallback action1_cb,
                   gpointer action1_user_data)
 {
-#ifdef LXPANEL_PLUGIN
-	return;
-#endif
+#ifndef LXPANEL_PLUGIN
 	NotifyNotification *notify;
 	GError *error = NULL;
+#endif
 	char *escaped;
 
 	g_return_if_fail (applet != NULL);
 	g_return_if_fail (summary != NULL);
 	g_return_if_fail (message != NULL);
 
+#ifdef LXPANEL_PLUGIN
+	escaped = utils_escape_notify_message (message);
+	applet->notification = lxpanel_notify (escaped);
+	g_free (escaped);
+#else
 	if (INDICATOR_ENABLED (applet)) {
 #ifdef WITH_APPINDICATOR
 		if (app_indicator_get_status (applet->app_indicator) == APP_INDICATOR_STATUS_PASSIVE)
 			return;
 #endif  /* WITH_APPINDICATOR */
-#ifndef LXPANEL_PLUGIN
 	} else {
 		if (!gtk_status_icon_is_embedded (applet->status_icon))
 			return;
-#endif
 	}
 
 	/* if we're not acting as a secret agent, don't notify either */
@@ -1169,6 +1175,7 @@ applet_do_notify (NMApplet *applet,
 		           error && error->message ? error->message : "(unknown)");
 		g_clear_error (&error);
 	}
+#endif
 }
 
 static void
