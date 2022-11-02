@@ -855,6 +855,15 @@ void menu_update_display (MenuPlugin *m)
         g_object_unref (pixbuf);
     }
     gtk_widget_set_size_request (m->img, m->icon_size + 2 * m->padding, -1);
+
+    if (m->menu) gtk_widget_destroy (m->menu);
+    if (m->menu_cache)
+    {
+        menu_cache_remove_reload_notify (m->menu_cache, m->reload_notify);
+        menu_cache_unref (m->menu_cache);
+        m->menu_cache = NULL;
+    }
+    create_menu (m);
 }
 
 /* Handler for control message from system */
