@@ -1,3 +1,9 @@
+wf-shell (0.5) bullseye; urgency=medium
+
+  * Multiple monitor support
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 14 Nov 2022 14:44:11 +0000
+
 wf-shell (0.4) bullseye; urgency=medium
 
   * Notifications, control messages, themeing
