@@ -41,6 +41,10 @@
 		<_short>Autohide Duration</_short>
 		<default>300</default>
 	</option>
+	<option name="monitor" type="int">
+		<_short>Monitor for Panel</_short>
+		<default>0</default>
+	</option>
 	<option name="position" type="string">
 		<_short>Panel Position</_short>
 		<default>top</default>

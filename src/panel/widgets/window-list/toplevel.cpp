@@ -432,7 +432,7 @@ class WayfireToplevel::impl
             return;
         }
         auto& container = window_list->box;
-        if (window_list->output->wo == output)
+        if (1 /*window_list->output->wo == output*/)
         {
             container.add(button);
             container.show_all();
@@ -444,7 +444,7 @@ class WayfireToplevel::impl
     void handle_output_leave(wl_output *output)
     {
         auto& container = window_list->box;
-        if (window_list->output->wo == output)
+        if (1 /*window_list->output->wo == output*/)
             container.remove(button);
     }
 };

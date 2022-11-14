@@ -205,6 +205,8 @@ class WayfirePanel::impl
     WfOption<int> minimal_panel_height{"panel/minimal_height"};
     WfOption<std::string> css_path{"panel/css_path"};
 
+    WfOption<int> monitor_num{"panel/monitor"};
+
     void create_window()
     {
         window = std::make_unique<WayfireAutohidingWindow> (output, "panel");
@@ -216,6 +218,8 @@ class WayfirePanel::impl
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
         gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
+
+        monitor_num.set_callback (set_monitor);
 
         gtk_widget_set_name (GTK_WIDGET (window->gobj()), "PanelToplevel");
 
@@ -438,6 +442,21 @@ class WayfirePanel::impl
         for (auto& w : center_widgets)
             if (name == w->widget_name) w->command (cmd);
     }
+
+    std::function<void()> set_monitor = [=] ()
+    {
+        int try_mon = monitor_num;
+        while (try_mon >= 0)
+        {
+            GdkMonitor *mon = gdk_display_get_monitor (gdk_display_get_default (), try_mon);
+            if (mon)
+            {
+                gtk_layer_set_monitor (window->gobj(), mon);
+                return;
+            }
+            try_mon--;
+        }
+    };
 };
 
 WayfirePanel::WayfirePanel(WayfireOutput *output) : pimpl(new impl(output)) { }
@@ -445,45 +464,41 @@ wl_surface *WayfirePanel::get_wl_surface() { return pimpl->get_wl_surface(); }
 Gtk::Window& WayfirePanel::get_window() { return pimpl->get_window(); }
 void WayfirePanel::handle_config_reload() { return pimpl->handle_config_reload(); }
 void WayfirePanel::handle_command_message (const char *plugin, const char *cmd) { pimpl->message_widget (plugin, cmd); }
+void WayfirePanel::set_monitor () { pimpl->set_monitor (); }
 
 class WayfirePanelApp::impl
 {
   public:
-    std::map<WayfireOutput*, std::unique_ptr<WayfirePanel> > panels;
+    std::unique_ptr<WayfirePanel> panel = NULL;
 };
 
 void WayfirePanelApp::on_config_reload()
 {
-    for (auto& p : priv->panels)
-        p.second->handle_config_reload();
+    if (priv->panel)
+        priv->panel->handle_config_reload();
 }
 
 void WayfirePanelApp::on_command (const char *plugin, const char *command)
 {
-    for (auto& p : priv->panels)
-        p.second->handle_command_message (plugin, command);
+    if (priv->panel)
+        priv->panel->handle_command_message (plugin, command);
 }
 
 void WayfirePanelApp::handle_new_output(WayfireOutput *output)
 {
-    priv->panels[output] = std::unique_ptr<WayfirePanel> (
-        new WayfirePanel(output));
+    if (!priv->panel)
+        priv->panel = std::unique_ptr<WayfirePanel> (new WayfirePanel (output));
+    priv->panel->set_monitor ();
 }
 
 WayfirePanel* WayfirePanelApp::panel_for_wl_output(wl_output *output)
 {
-    for (auto& p : priv->panels)
-    {
-        if (p.first->wo == output)
-            return p.second.get();
-    }
-
-    return nullptr;
+    return priv->panel.get();
 }
 
 void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
 {
-    priv->panels.erase(output);
+    priv->panel->set_monitor ();
 }
 
 WayfirePanelApp& WayfirePanelApp::get()
