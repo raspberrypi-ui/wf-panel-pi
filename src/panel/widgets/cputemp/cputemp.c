@@ -43,11 +43,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdlib.h>
 #include <glib/gi18n.h>
 
-#include "plugin.h"
+#include "cputemp.h"
+//#include "plugin.h"
 
-#define BORDER_SIZE 2
+#define BORDER_SIZE 1
 
-#define MAX_NUM_SENSORS             10
 
 #define PROC_THERMAL_DIRECTORY      "/proc/acpi/thermal_zone/"
 #define PROC_THERMAL_TEMPF          "temperature"
@@ -58,40 +58,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define SYSFS_THERMAL_TEMPF         "temp"
 
 
-typedef gint (*GetTempFunc) (char const *);
-
-/* Private context for plugin */
-
-typedef struct
-{
-    GdkRGBA foreground_color;			    /* Foreground colour for drawing area */
-    GdkRGBA background_color;			    /* Background colour for drawing area */
-    GdkRGBA low_throttle_color;			    /* Colour for bars with ARM freq cap */
-    GdkRGBA high_throttle_color;			/* Colour for bars with throttling */
-    GtkWidget *plugin;                      /* Back pointer to the widget */
-    LXPanel *panel;                         /* Back pointer to panel */
-    GtkWidget *da;				            /* Drawing area */
-    cairo_surface_t *pixmap;				/* Pixmap to be drawn on drawing area */
-    guint timer;				            /* Timer for periodic update */
-    float *stats_cpu;			            /* Ring buffer of temperature values */
-    int *stats_throttle;                    /* Ring buffer of throttle status */
-    unsigned int ring_cursor;			    /* Cursor for ring buffer */
-    guint pixmap_width;				        /* Width of drawing area pixmap; also size of ring buffer; does not include border size */
-    guint pixmap_height;			        /* Height of drawing area pixmap; does not include border size */
-    int lower_temp;                         /* Temperature of bottom of graph */
-    int upper_temp;                         /* Temperature of top of graph */
-    int numsensors;
-    char *sensor_array[MAX_NUM_SENSORS];
-    GetTempFunc get_temperature[MAX_NUM_SENSORS];
-    gint temperature[MAX_NUM_SENSORS];
-    config_setting_t *settings;
-    gboolean ispi;
-} CPUTempPlugin;
 
 static void redraw_pixmap (CPUTempPlugin * c);
 static gboolean cpu_update (CPUTempPlugin * c);
 static gboolean draw (GtkWidget * widget, cairo_t * cr, CPUTempPlugin * c);
-static void cpu_destructor (gpointer user_data);
+//static void cpu_destructor (gpointer user_data);
 
 static gboolean is_pi (void)
 {
@@ -413,12 +384,13 @@ static gboolean cpu_update (CPUTempPlugin *c)
 }
 
 /* Handler for configure_event on drawing area. */
-static void cpu_configuration_changed (LXPanel *panel, GtkWidget *p)
+//static void cpu_configuration_changed (LXPanel *panel, GtkWidget *p)
+void cputemp_update_display (CPUTempPlugin *c)
 {
-    CPUTempPlugin *c = lxpanel_plugin_get_data (p);
+    //CPUTempPlugin *c = lxpanel_plugin_get_data (p);
 
     /* Allocate pixmap and statistics buffer without border pixels. */
-    guint new_pixmap_height = panel_get_icon_size (panel) - (BORDER_SIZE << 1);
+    guint new_pixmap_height = c->icon_size - (BORDER_SIZE << 1);
     guint new_pixmap_width = (new_pixmap_height * 3) >> 1;
     if (new_pixmap_width < 50) new_pixmap_width = 50;
     if ((new_pixmap_width > 0) && (new_pixmap_height > 0))
@@ -426,8 +398,8 @@ static void cpu_configuration_changed (LXPanel *panel, GtkWidget *p)
         /* If statistics buffer does not exist or it changed size, reallocate and preserve existing data. */
         if ((c->stats_cpu == NULL) || (new_pixmap_width != c->pixmap_width))
         {
-            float *new_stats_cpu = g_new0 (typeof (*c->stats_cpu), new_pixmap_width);
-            int *new_stats_throttle = g_new0 (typeof (*c->stats_throttle), new_pixmap_width);
+            float *new_stats_cpu = g_new0 (float, new_pixmap_width);
+            int *new_stats_throttle = g_new0 (int, new_pixmap_width);
             if (c->stats_cpu != NULL)
             {
                 if (new_pixmap_width > c->pixmap_width)
@@ -499,10 +471,10 @@ static gboolean draw (GtkWidget * widget, cairo_t * cr, CPUTempPlugin * c)
 }
 
 /* Plugin constructor. */
-static GtkWidget *cpu_constructor (LXPanel *panel, config_setting_t *settings)
+void cputemp_init (CPUTempPlugin *c)
 {
     /* Allocate and initialize plugin context */
-    CPUTempPlugin *c = g_new0 (CPUTempPlugin, 1);
+    //CPUTempPlugin *c = g_new0 (CPUTempPlugin, 1);
     const char *str;
     int val;
 
@@ -513,10 +485,10 @@ static GtkWidget *cpu_constructor (LXPanel *panel, config_setting_t *settings)
 #endif
 
     /* Allocate top level widget and set into plugin widget pointer. */
-    c->panel = panel;
-    c->settings = settings;
-    c->plugin = gtk_event_box_new ();
-    lxpanel_plugin_set_data (c->plugin, c, cpu_destructor);
+    //c->panel = panel;
+    //c->settings = settings;
+    //c->plugin = gtk_event_box_new ();
+    //lxpanel_plugin_set_data (c->plugin, c, cpu_destructor);
 
     /* Allocate icon as a child of top level */
     c->da = gtk_image_new ();
@@ -525,58 +497,69 @@ static GtkWidget *cpu_constructor (LXPanel *panel, config_setting_t *settings)
     /* Set up variables */
     c->ispi = is_pi ();
 
-    if (config_setting_lookup_string (settings, "Foreground", &str))
-    {
-        if (!gdk_rgba_parse (&c->foreground_color, str))
-            gdk_rgba_parse (&c->foreground_color, "dark gray");
-    } else gdk_rgba_parse (&c->foreground_color, "dark gray");
+    //if (config_setting_lookup_string (settings, "Foreground", &str))
+    //{
+    //    if (!gdk_rgba_parse (&c->foreground_color, str))
+    //        gdk_rgba_parse (&c->foreground_color, "dark gray");
+    //} else 
+    gdk_rgba_parse (&c->foreground_color, "dark gray");
 
-    if (config_setting_lookup_string (settings, "Background", &str))
-    {
-        if (!gdk_rgba_parse (&c->background_color, str))
-            gdk_rgba_parse (&c->background_color, "light gray");
-    } else gdk_rgba_parse (&c->background_color, "light gray");
+    //if (config_setting_lookup_string (settings, "Background", &str))
+    //{
+    //    if (!gdk_rgba_parse (&c->background_color, str))
+    //        gdk_rgba_parse (&c->background_color, "light gray");
+    //} else 
+    gdk_rgba_parse (&c->background_color, "light gray");
 
-    if (config_setting_lookup_string (settings, "Throttle1", &str))
-    {
-        if (!gdk_rgba_parse (&c->low_throttle_color, str))
-            gdk_rgba_parse (&c->low_throttle_color, "orange");
-    } else gdk_rgba_parse (&c->low_throttle_color, "orange");
+    //if (config_setting_lookup_string (settings, "Throttle1", &str))
+    //{
+    //    if (!gdk_rgba_parse (&c->low_throttle_color, str))
+    //        gdk_rgba_parse (&c->low_throttle_color, "orange");
+    //} else 
+    gdk_rgba_parse (&c->low_throttle_color, "orange");
 
-    if (config_setting_lookup_string (settings, "Throttle2", &str))
-    {
-        if (!gdk_rgba_parse (&c->high_throttle_color, str))
-            gdk_rgba_parse (&c->high_throttle_color, "red");
-    } else gdk_rgba_parse (&c->high_throttle_color, "red");
+    //if (config_setting_lookup_string (settings, "Throttle2", &str))
+    //{
+    //    if (!gdk_rgba_parse (&c->high_throttle_color, str))
+    //        gdk_rgba_parse (&c->high_throttle_color, "red");
+    //} else 
+    gdk_rgba_parse (&c->high_throttle_color, "red");
 
-    if (config_setting_lookup_int (settings, "LowTemp", &val))
-    {
-        if (val >= 0 && val <= 100) c->lower_temp = val;
-        else c->lower_temp = 40;
-    }
-    else c->lower_temp = 40;
+    //if (config_setting_lookup_int (settings, "LowTemp", &val))
+    //{
+    //    if (val >= 0 && val <= 100) c->lower_temp = val;
+    //    else c->lower_temp = 40;
+    //}
+    //else 
+    c->lower_temp = 40;
 
-    if (config_setting_lookup_int (settings, "HighTemp", &val))
-    {
-        if (val >= 0 && val <= 150 && val > c->lower_temp) c->upper_temp = val;
-        else c->upper_temp = 90;
-    }
-    else c->upper_temp = 90;
+    //if (config_setting_lookup_int (settings, "HighTemp", &val))
+    //{
+    //    if (val >= 0 && val <= 150 && val > c->lower_temp) c->upper_temp = val;
+    //    else c->upper_temp = 90;
+    //}
+    //else 
+    c->upper_temp = 90;
 
     /* Find the system thermal sensors */
     check_sensors (c);
 
     /* Connect signals. */
-    g_signal_connect(G_OBJECT (c->da), "draw", G_CALLBACK (draw), (gpointer) c);
+    g_signal_connect (G_OBJECT (c->da), "draw", G_CALLBACK (draw), (gpointer) c);
 
     /* Connect a timer to refresh the statistics. */
     c->timer = g_timeout_add (1500, (GSourceFunc) cpu_update, (gpointer) c);
 
     /* Show the widget and return. */
     gtk_widget_show_all (c->plugin);
-    return c->plugin;
+    //return c->plugin;
 }
-
+/* Handler for control message from panel */
+gboolean cputemp_control_msg (CPUTempPlugin *up, const char *cmd)
+{
+    return FALSE;
+}
+#if 0
 /* Plugin destructor. */
 static void cpu_destructor (gpointer user_data)
 {
@@ -636,3 +619,4 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk = {
     .reconfigure = cpu_configuration_changed,
     .gettext_package = GETTEXT_PACKAGE
 };
+#endif

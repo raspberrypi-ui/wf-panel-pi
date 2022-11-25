@@ -31,6 +31,7 @@
 #include "widgets/bluetooth.hpp"
 #include "widgets/ejecter.hpp"
 #include "widgets/updater.hpp"
+#include "widgets/cputemp.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/notifications/notification-center.hpp"
 
@@ -302,6 +303,8 @@ class WayfirePanel::impl
             return Widget(new WayfireEjecter());
         if (name == "updater")
             return Widget(new WayfireUpdater());
+        if (name == "cputemp")
+            return Widget(new WayfireCPUTemp());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
         if (name == "notifications")
