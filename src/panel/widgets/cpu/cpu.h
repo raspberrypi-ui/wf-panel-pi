@@ -5,9 +5,12 @@
 /* Plug-in global data                                                        */
 /*----------------------------------------------------------------------------*/
 
-#define MAX_NUM_SENSORS 10
+typedef unsigned long long CPUTick;		/* Value from /proc/stat */
 
-typedef gint (*GetTempFunc) (char const *);
+struct cpu_stat
+{
+    CPUTick u, n, s, i;				/* User, nice, system, idle */
+};
 
 /* Private context for plugin */
 
@@ -18,12 +21,8 @@ typedef struct
     gboolean bottom;
     PluginGraph graph;
     guint timer;				            /* Timer for periodic update */
-    int numsensors;
-    char *sensor_array[MAX_NUM_SENSORS];
-    GetTempFunc get_temperature[MAX_NUM_SENSORS];
-    gint temperature[MAX_NUM_SENSORS];
-    gboolean ispi;
-} CPUTempPlugin;
+    struct cpu_stat previous_cpu_stat;		/* Previous value of cpu_stat */
+} CPUPlugin;
 
-extern void cputemp_init (CPUTempPlugin *up);
-extern void cputemp_update_display (CPUTempPlugin *up);
+extern void cpu_init (CPUPlugin *up);
+extern void cpu_update_display (CPUPlugin *up);

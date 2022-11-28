@@ -15,7 +15,6 @@ void WayfireCPUTemp::icon_size_changed_cb (void)
 
 void WayfireCPUTemp::command (const char *cmd)
 {
-    cputemp_control_msg (cput, cmd);
 }
 
 gboolean set_icon (CPUTempPlugin *cput)
