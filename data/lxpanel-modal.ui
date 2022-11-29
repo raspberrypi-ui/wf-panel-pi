@@ -9,6 +9,7 @@
     <property name="modal">True</property>
     <property name="window-position">center-always</property>
     <property name="default-width">340</property>
+    <property name="default-height">0</property>
     <property name="destroy-with-parent">True</property>
     <property name="skip-taskbar-hint">True</property>
     <property name="skip-pager-hint">True</property>
