@@ -1,7 +1,7 @@
 #include <gtkmm/menu.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
-#include <gtkmm/button.h>
+#include <gtkmm/togglebutton.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/gesturedrag.h>
 #include <giomm/desktopappinfo.h>
@@ -35,7 +35,7 @@ class WayfireToplevel::impl
     uint32_t state;
 
     WfOption <int> icon_size {"panel/icon_size"};
-    Gtk::Button button;
+    Gtk::ToggleButton button;
     Gtk::HBox button_contents;
     Gtk::Image image;
     Gtk::Label label;
@@ -103,6 +103,7 @@ class WayfireToplevel::impl
     double grab_start_x, grab_start_y;
     double grab_abs_start_x;
     bool drag_exceeds_threshold;
+    bool mute_clicks = false;
 
     void on_drag_begin(double _x, double _y)
     {
@@ -232,6 +233,8 @@ class WayfireToplevel::impl
 
     void on_clicked()
     {
+        if (mute_clicks) return;
+
         /* If the button was dragged, we don't want to register the click.
          * Subsequent clicks should be handled though. */
         if (ignore_next_click)
@@ -447,6 +450,16 @@ class WayfireToplevel::impl
         if (1 /*window_list->output->wo == output*/)
             container.remove(button);
     }
+
+    void set_toggle_state ()
+    {
+        if (button.get_active () != this->state)
+        {
+            mute_clicks = true;
+            button.set_active (this->state);
+            mute_clicks = false;
+        }
+    }
 };
 
 
@@ -459,6 +472,7 @@ std::vector<zwlr_foreign_toplevel_handle_v1 *>& WayfireToplevel::get_children() 
 zwlr_foreign_toplevel_handle_v1 * WayfireToplevel::get_parent() { return pimpl->get_parent(); }
 void WayfireToplevel::set_parent(zwlr_foreign_toplevel_handle_v1 *parent) { return pimpl->set_parent(parent); }
 uint32_t WayfireToplevel::get_state() { return pimpl->get_state(); }
+void WayfireToplevel::update_toggle () { pimpl->set_toggle_state (); }
 WayfireToplevel::~WayfireToplevel() = default;
 
 using toplevel_t = zwlr_foreign_toplevel_handle_v1*;
@@ -515,6 +529,7 @@ static void handle_toplevel_state(void *data, toplevel_t, wl_array *state)
 
     auto impl = static_cast<WayfireToplevel::impl*> (data);
     impl->set_state(flags);
+    impl->window_list->update_toggle_states ();
 }
 
 static void handle_toplevel_done(void *data, toplevel_t)

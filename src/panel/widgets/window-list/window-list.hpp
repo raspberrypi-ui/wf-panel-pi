@@ -77,6 +77,7 @@ class WayfireWindowList : public WayfireWidget
     void handle_toplevel_closed(zwlr_foreign_toplevel_handle_v1 *handle);
     void handle_new_toplevel(zwlr_foreign_toplevel_handle_v1 *handle);
     int get_icon_size ();
+    void update_toggle_states ();
 
     wayfire_config *get_config();
 

@@ -270,6 +270,15 @@ void WayfireWindowList::handle_toplevel_closed(zwlr_foreign_toplevel_handle_v1 *
     set_button_width(get_target_button_width());
 }
 
+void WayfireWindowList::update_toggle_states (void)
+{
+    // loop through toplevels
+    for (auto& toplevel : toplevels)
+    {
+        if (toplevel.second) toplevel.second->update_toggle ();
+    }
+}
+
 int WayfireWindowList::get_icon_size() { return icon_size; }
 
 WayfireWindowList::WayfireWindowList(WayfireOutput *output)

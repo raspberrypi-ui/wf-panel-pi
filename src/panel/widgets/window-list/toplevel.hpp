@@ -27,6 +27,7 @@ class WayfireToplevel
     WayfireToplevel(WayfireWindowList *window_list, zwlr_foreign_toplevel_handle_v1 *handle);
 
     uint32_t get_state();
+    void update_toggle ();
     void set_width(int pixels);
     zwlr_foreign_toplevel_handle_v1 * get_parent();
     void set_parent(zwlr_foreign_toplevel_handle_v1 *);
