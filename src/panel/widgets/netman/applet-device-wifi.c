@@ -627,6 +627,7 @@ static void disconnect_prompt (WifiMenuItemInfo *info, const char *name)
 
 	gtk_widget_set_name (disc_dlg, nm_object_get_path (NM_OBJECT (info->device)));
 	gtk_widget_show (disc_dlg);
+	gtk_window_set_decorated (GTK_WINDOW (disc_dlg), FALSE);
 	g_free (buffer);
 }
 #endif

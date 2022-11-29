@@ -3,7 +3,6 @@
 #include <gtk-layer-shell/gtk-layer-shell.h>
 
 #define GETTEXT_PACKAGE "wf-panel"
-#define PACKAGE_DATA_DIR "/usr/share/lxpanel"
 #define MENU_ICON_SPACE 6
 
 extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);

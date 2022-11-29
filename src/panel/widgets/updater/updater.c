@@ -371,6 +371,7 @@ static void message (char *msg, int prog)
     }
     else if (prog == -1) gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
     gtk_widget_show (msg_dlg);
+    gtk_window_set_decorated (GTK_WINDOW (msg_dlg), FALSE);
 }
 
 static gboolean close_msg (GtkButton *button, gpointer data)

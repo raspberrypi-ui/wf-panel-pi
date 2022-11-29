@@ -46,11 +46,13 @@ add_project_arguments(['-Wno-pedantic', '-Wno-unused-parameter', '-Wno-parenthes
 resource_dir = join_paths(get_option('prefix'), 'share', 'wayfire')
 metadata_dir = join_paths(resource_dir, 'metadata', 'wf-shell')
 sysconf_dir = join_paths(get_option('prefix'), get_option('sysconfdir'))
+ui_dir = join_paths(resource_dir, 'ui')
 
 icon_dir = join_paths(get_option('prefix'), 'share', 'wayfire', 'icons')
 add_project_arguments('-DICONDIR="' + icon_dir + '"', language : 'cpp')
 add_project_arguments('-DMETADATA_DIR="' + metadata_dir + '"', language : 'cpp')
 add_project_arguments('-DSYSCONF_DIR="' + sysconf_dir + '"', language : 'cpp')
+add_project_arguments('-DPACKAGE_DATA_DIR="' + resource_dir + '"', language : 'c')
 
 subdir('metadata')
 subdir('proto')

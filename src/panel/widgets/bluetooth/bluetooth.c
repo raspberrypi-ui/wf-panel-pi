@@ -1285,7 +1285,6 @@ static void show_pairing_dialog (BluetoothPlugin *bt, PAIR_STATE state, const gc
             gtk_widget_hide (bt->pair_entry);
             gtk_widget_hide (bt->pair_ok);
             connect_cancel (bt, G_CALLBACK (handle_cancel_pair));
-            gtk_widget_show (bt->pair_dialog);
             break;
 
         case STATE_PAIR_FAIL:
@@ -1387,6 +1386,7 @@ static void show_pairing_dialog (BluetoothPlugin *bt, PAIR_STATE state, const gc
 
     g_free (buffer);
     gtk_widget_show (bt->pair_dialog);
+    gtk_window_set_decorated (GTK_WINDOW (bt->pair_dialog), FALSE);
 }
 
 /* Functions to manage pair and remove dialogs */
@@ -1602,6 +1602,7 @@ static void show_connect_dialog (BluetoothPlugin *bt, DIALOG_TYPE type, CONN_STA
             }
 
             gtk_widget_show (bt->conn_dialog);
+            gtk_window_set_decorated (GTK_WINDOW (bt->conn_dialog), FALSE);
             break;
 
         case STATE_FAIL:
