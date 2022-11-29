@@ -1,4 +1,4 @@
-wf-shell (0.6) UNRELEASED; urgency=medium
+wf-shell (0.6) bullseye; urgency=medium
 
   * Add CPU monitoring plugins; fix some graphical glitches with icons
 
