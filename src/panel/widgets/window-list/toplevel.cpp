@@ -456,7 +456,7 @@ class WayfireToplevel::impl
         if (button.get_active () != this->state)
         {
             mute_clicks = true;
-            button.set_active (this->state);
+            button.set_active (this->state & 0x01);
             mute_clicks = false;
         }
     }
