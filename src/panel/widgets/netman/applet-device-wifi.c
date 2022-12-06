@@ -205,7 +205,7 @@ nma_menu_add_hidden_network_item (GtkWidget *menu, NMApplet *applet)
 	GtkWidget *label;
 
 	menu_item = gtk_menu_item_new ();
-	label = gtk_label_new_with_mnemonic (_("_Connect to Hidden Wi-Fi Network…"));
+	label = gtk_label_new (_("Connect to Hidden Wi-Fi Network…"));
 #ifdef LXPANEL_PLUGIN
 	gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 	gtk_label_set_yalign (GTK_LABEL (label), 0.5);
@@ -261,7 +261,7 @@ nma_menu_add_create_network_item (GtkWidget *menu, NMApplet *applet)
 	GtkWidget *label;
 
 	menu_item = gtk_menu_item_new ();
-	label = gtk_label_new_with_mnemonic (_("Create _New Wi-Fi Network…"));
+	label = gtk_label_new (_("Create New Wi-Fi Network…"));
 #ifdef LXPANEL_PLUGIN
 	gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 	gtk_label_set_yalign (GTK_LABEL (label), 0.5);
@@ -302,7 +302,7 @@ nma_menu_add_create_hotspot_item (GtkWidget *menu, NMApplet *applet)
 	GtkWidget *label;
 
 	menu_item = gtk_menu_item_new ();
-	label = gtk_label_new_with_mnemonic (_("Create Wi-Fi _Hotspot…"));
+	label = gtk_label_new (_("Create Wi-Fi Hotspot…"));
 	gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 	gtk_label_set_yalign (GTK_LABEL (label), 0.5);
 	gtk_container_add (GTK_CONTAINER (menu_item), label);
@@ -1047,7 +1047,7 @@ wifi_add_menu_item (NMDevice *device,
 			GtkWidget *subitem, *submenu;
 			GSList *sorted_subitems;
 
-			subitem = gtk_menu_item_new_with_mnemonic (_("More networks"));
+			subitem = gtk_menu_item_new_with_label (_("More networks"));
 			submenu = gtk_menu_new ();
 			gtk_menu_item_set_submenu (GTK_MENU_ITEM (subitem), submenu);
 
