@@ -37,8 +37,7 @@
 
 /* always include these headers for our internal source files. */
 
-#ifndef ___CONFIG_H__
-#define ___CONFIG_H__
+#ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 

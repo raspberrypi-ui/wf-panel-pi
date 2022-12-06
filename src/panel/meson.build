@@ -52,12 +52,7 @@ widget_sources = ['widgets/battery.cpp',
                   'widgets/notifications/notification-center.cpp',
 		  'widgets/notify.c']
 
-deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit]
-
-if libpulse.found()
-  widget_sources += 'widgets/volume.cpp'
-  deps += [libpulse, libgvc]
-endif
+deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse]
 
 executable('wf-panel', ['panel.cpp'] + widget_sources,
         dependencies: deps,

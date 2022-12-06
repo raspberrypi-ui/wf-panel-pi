@@ -1,2 +1,0 @@
-#!/bin/sh
-pcmanfm --desktop --wayland --profile LXDE-pi

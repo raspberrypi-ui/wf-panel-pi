@@ -281,15 +281,6 @@ class WayfirePanel::impl
             return Widget(new WayfireNetworkInfo());
         if (name == "battery")
             return Widget(new WayfireBatteryInfo());
-        if (name == "volume") {
-#ifdef HAVE_PULSE
-            return Widget(new WayfireVolume());
-#else
-#warning "Pulse not found, volume widget will not be available."
-        std::cerr << "Built without pulse support, volume widget "
-            " is not available." << std::endl;
-#endif
-        }
         if (name == "volumepulse")
             return Widget(new WayfireVolumepulse());
         if (name == "micpulse")
