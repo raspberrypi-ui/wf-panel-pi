@@ -38,6 +38,8 @@
 
 #include "wf-autohide-window.hpp"
 
+#include <libfm/fm-gtk.h>
+
 /* Minimal DBus interface for commands to plugins */
 
 static GDBusNodeInfo *introspection_data = NULL;
@@ -527,6 +529,8 @@ WayfirePanelApp::WayfirePanelApp(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
+    fm_gtk_init (NULL);
+
     WayfirePanelApp::create(argc, argv);
 
     return 0;
