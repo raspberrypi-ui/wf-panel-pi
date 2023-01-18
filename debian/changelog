@@ -1,3 +1,9 @@
+wf-shell (0.9) bullseye; urgency=medium
+
+  * Initialise file manager at startup to load libraries
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 18 Jan 2023 13:43:06 +0000
+
 wf-shell (0.8) bullseye; urgency=medium
 
   * Remove dock and background components
