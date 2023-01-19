@@ -1,0 +1,4194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: lxpanel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"PO-Revision-Date: 2009-07-23 20:11+0200\n"
+"Last-Translator: Muhammad Ali Makki <makki.ma@gmail.com>\n"
+"Language-Team: Urdu <makki.ma@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.1.0\n"
+"X-Pootle-Revision: 0\n"
+"X-Pootle-Path: /ur/lxpanel/po/ur.po\n"
+"X-Poedit-Language: Urdu\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Country: PAKISTAN\n"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#, c-format
+msgid "Pairing failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#, fuzzy, c-format
+msgid "Pairing successful - connecting..."
+msgstr "وائیرلیس نیٹ ورک اتصال '%s' تیار کیا جارہا ہے..."
+
+#
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#, fuzzy, c-format
+msgid "Connection successful"
+msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connection failed - %s"
+msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#, c-format
+msgid "Please enter code '%s' on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#, c-format
+msgid "Please confirm that '%s' is showing the code '%s' to pair"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#, c-format
+msgid "Please enter PIN code shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#, c-format
+msgid "Please enter passcode shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#, fuzzy, c-format
+msgid "Waiting for response from Bluetooth device..."
+msgstr "Es wird auf die Benutzerauthentifizierung auf Gerät »%s« gewartet …"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#, c-format
+msgid "'%s' has requested a pairing. Do you accept the request?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
+#, c-format
+msgid ""
+"Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#, c-format
+msgid ""
+"Pairing successful - this device has no services which can be used with "
+"Raspberry Pi"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#, c-format
+msgid "Do you want to unpair '%s'?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#, c-format
+msgid "Removing pairing with '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#, fuzzy, c-format
+msgid "Removal failed - %s"
+msgstr "Entfernen der Verbindung ist fehlgeschlagen: %s."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connecting to '%s'..."
+msgstr "Verbinden mit %s …"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnecting from '%s'..."
+msgstr "Trennen von %s …"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnection failed - %s"
+msgstr "Hinzufügen der Verbindung ist fehlgeschlagen: %s."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
+#, fuzzy
+msgid "Use the audio menu to connect to this device"
+msgstr "وائیرلیس نیٹ ورک سے متصل ہونے کے لیے اس آئکن پر کلک کریں"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+msgid "No usable services on this device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#, fuzzy
+msgid "Disconnect..."
+msgstr "غیر متصل"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#, fuzzy
+msgid "Connect..."
+msgstr "_متصل ہوں"
+
+#. add the remove option to the submenu
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+msgid "Remove..."
+msgstr ""
+
+#. warn if no BT hardware detected
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+msgid "No Bluetooth adapter found"
+msgstr ""
+
+#. add enable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+msgid "Turn On Bluetooth"
+msgstr ""
+
+#. add disable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+msgid "Turn Off Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+msgid "Stop Discoverable"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+msgid "Make Discoverable"
+msgstr ""
+
+#. add and remove dialogs
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#, fuzzy
+msgid "Add Device..."
+msgstr "کوئی بھی ڈیوائس"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+msgid "Manage Bluetooth devices"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
+msgid "Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+msgid "Manages Bluetooth devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:171
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:199
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:205
+#, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:402
+msgid "Select a drive in menu to eject safely"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:451
+#: ../src/panel/widgets/ejecter/ejecter.c:461
+msgid "Ejecter"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:453
+msgid "Hide icon when no devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:462
+msgid "Ejects mounted drives"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:77
+msgid "ad-hoc"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:82
+msgid "secure."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:74
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+#, fuzzy
+msgid "Failed to activate connection"
+msgstr "Verbindung konnte nicht aktualisiert werden"
+
+#: ../src/panel/widgets/netman/applet.c:75
+#: ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837
+#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+#, fuzzy
+msgid "Unknown error"
+msgstr "نامعلوم"
+
+#
+#: ../src/panel/widgets/netman/applet.c:78
+#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:875
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+#, fuzzy
+msgid "Connection failure"
+msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn Off Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn On Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:282
+#, c-format
+msgid ""
+"%s\n"
+"IPv4 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:299
+#, c-format
+msgid ""
+"%s\n"
+"IPv6 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:781
+#, fuzzy
+msgid "Failed to add/activate connection"
+msgstr "Verbindung konnte nicht aktualisiert werden"
+
+#: ../src/panel/widgets/netman/applet.c:835
+#, fuzzy
+msgid "Device disconnect failed"
+msgstr "غیر متصل"
+
+#: ../src/panel/widgets/netman/applet.c:840
+#, fuzzy
+msgid "Disconnect failure"
+msgstr "غیر متصل"
+
+#
+#: ../src/panel/widgets/netman/applet.c:870
+#, fuzzy
+msgid "Connection activation failed"
+msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#: ../src/panel/widgets/netman/applet.c:1209
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+#, fuzzy
+msgid "Don’t show this message again"
+msgstr "یہ پیغام دوبارہ مت دکھائیں"
+
+#: ../src/panel/widgets/netman/applet.c:1310
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” disconnected because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' منقطع ہوگیا کیونکہ نیٹ ورک اتصال میں مداخلت کی گئی."
+
+#: ../src/panel/widgets/netman/applet.c:1312
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ نیٹ ورک اتصال میں مداخلت کی گئی."
+
+#: ../src/panel/widgets/netman/applet.c:1314
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ وی پی این سروس غیر متوقعہ طور پر بند "
+"ہوگئی."
+
+#: ../src/panel/widgets/netman/applet.c:1316
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service returned invalid "
+"configuration."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ وی پی این سروس نے ناموزوں وضع کاری "
+"لوٹائی ہے."
+
+#: ../src/panel/widgets/netman/applet.c:1318
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the connection attempt timed out."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ اتصال قائم کرنے کی کوششوں کا وقت "
+"تمام ہوگیا."
+
+#: ../src/panel/widgets/netman/applet.c:1320
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service did not start in time."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ وی پی این سروس وقت پر نہیں چلی."
+
+#: ../src/panel/widgets/netman/applet.c:1322
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ وی پی این سروس چلنے میں ناکام ہوگئی."
+
+#: ../src/panel/widgets/netman/applet.c:1324
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because there were no valid VPN secrets."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ کوئی موزوں وی پی این سیکرٹس نہیں ہیں."
+
+#: ../src/panel/widgets/netman/applet.c:1326
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because of invalid VPN secrets."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا جی کی وجہ نا موزوں وی پی این سیکرٹس ہیں."
+
+#: ../src/panel/widgets/netman/applet.c:1331
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed."
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا."
+
+#: ../src/panel/widgets/netman/applet.c:1358
+#, c-format
+msgid ""
+"VPN connection has been successfully established.\n"
+"\n"
+"%s\n"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:1360
+msgid "VPN connection has been successfully established.\n"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:1362
+msgid "VPN Login Message"
+msgstr "وی پی این لاگ ان پیغام"
+
+#
+#: ../src/panel/widgets/netman/applet.c:1370
+#: ../src/panel/widgets/netman/applet.c:1410
+msgid "VPN Connection Failed"
+msgstr "وی پی این اتصال ناکام"
+
+#: ../src/panel/widgets/netman/applet.c:1414
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' ناکام ہوگیا کیونکہ وی پی این سروس چلنے میں ناکام "
+"ہوگئی.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1417
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"وی پی این اتصال '%s' چلنے میں ناکام.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1741
+#, fuzzy
+msgid "device not ready (firmware missing)"
+msgstr "ڈیوائس تیار نہیں ہے"
+
+#: ../src/panel/widgets/netman/applet.c:1743
+msgid "device not ready"
+msgstr "ڈیوائس تیار نہیں ہے"
+
+#. Notify user of unmanaged or unavailable device
+#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
+msgid "disconnected"
+msgstr "غیر متصل"
+
+#: ../src/panel/widgets/netman/applet.c:1769
+msgid "Disconnect"
+msgstr "غیر متصل"
+
+#: ../src/panel/widgets/netman/applet.c:1783
+msgid "device not managed"
+msgstr "ڈیوائس کی ادارت نہیں کی گئی"
+
+#: ../src/panel/widgets/netman/applet.c:1864
+msgid "No network devices available"
+msgstr "کوئی نیٹ ورک ڈیوائس دستیاب نہیں ہے"
+
+#: ../src/panel/widgets/netman/applet.c:1917
+#, fuzzy
+msgid "Advanced Options"
+msgstr "<b>اعلی</b>"
+
+#: ../src/panel/widgets/netman/applet.c:1919
+msgid "VPN Connections"
+msgstr "VPN-Verbindungen"
+
+#: ../src/panel/widgets/netman/applet.c:1973
+#, fuzzy
+msgid "Configure VPN…"
+msgstr "وی پی این _وضع کریں..."
+
+#: ../src/panel/widgets/netman/applet.c:1977
+#, fuzzy
+msgid "Add a VPN connection…"
+msgstr "Neue VPN-Verbindung erstellen"
+
+#. 'Connection Information' item
+#: ../src/panel/widgets/netman/applet.c:1989
+#: ../src/panel/widgets/netman/applet.c:2393
+msgid "Connection Information"
+msgstr "اتصال کی معلومات"
+
+#. 'Edit Connections...' item
+#: ../src/panel/widgets/netman/applet.c:1997
+#: ../src/panel/widgets/netman/applet.c:2401
+#, fuzzy
+msgid "Edit Connections…"
+msgstr "اتصال مدون کریں..."
+
+#: ../src/panel/widgets/netman/applet.c:2112
+#, fuzzy
+msgid "NetworkManager is not running…"
+msgstr "Der Netzwerk-Manager läuft zur Zeit nicht"
+
+#: ../src/panel/widgets/netman/applet.c:2118
+#, fuzzy
+msgid "Wi-Fi country is not set"
+msgstr "میرا ملک فہرست میں نہیں ہے"
+
+#: ../src/panel/widgets/netman/applet.c:2119
+msgid "Click here to set Wi-Fi country"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:2127
+#: ../src/panel/widgets/netman/applet.c:3222
+msgid "Networking disabled"
+msgstr "نیٹ ورکنگ معطل ہے"
+
+#. 'Enable Networking' item
+#: ../src/panel/widgets/netman/applet.c:2351
+#, fuzzy
+msgid "Enable Networking"
+msgstr "_نیٹ ورکنگ فعال کریں"
+
+#. 'Enable Wi-Fi' item
+#: ../src/panel/widgets/netman/applet.c:2360
+#, fuzzy
+msgid "Enable Wi-Fi"
+msgstr "_وائیرلیس فعال کریں"
+
+#. 'Enable Mobile Broadband' item
+#: ../src/panel/widgets/netman/applet.c:2369
+#, fuzzy
+msgid "Enable Mobile Broadband"
+msgstr "_موبائل براڈ بینڈ فعال کریں"
+
+#. Toggle notifications item
+#: ../src/panel/widgets/netman/applet.c:2381
+#, fuzzy
+msgid "Enable Notifications"
+msgstr "_اطلاعات فعال کریں"
+
+#: ../src/panel/widgets/netman/applet.c:2415
+#, fuzzy
+msgid "About"
+msgstr "_بابت"
+
+#: ../src/panel/widgets/netman/applet.c:2736
+#, fuzzy, c-format
+msgid "You are now connected to “%s”."
+msgstr "آپ '%s' سے متصل ہیں."
+
+#: ../src/panel/widgets/netman/applet.c:2776
+msgid "Disconnected"
+msgstr "غیر متصل"
+
+#: ../src/panel/widgets/netman/applet.c:2777
+msgid "The network connection has been disconnected."
+msgstr "نیٹ ورک اتصال منقطع کردیا گیا ہے."
+
+#: ../src/panel/widgets/netman/applet.c:3079
+#, fuzzy, c-format
+msgid "Preparing network connection “%s”…"
+msgstr "نیٹ ورک اتصال '%s' تیار کیا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet.c:3082
+#, fuzzy, c-format
+msgid "User authentication required for network connection “%s”…"
+msgstr "نیٹ ورک اتصال '%s' کے لیے صارف کی توثیق درکار ہے."
+
+#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet-device-bt.c:113
+#: ../src/panel/widgets/netman/mobile-helpers.c:605
+#, fuzzy, c-format
+msgid "Requesting a network address for “%s”…"
+msgstr "درخواست برائے نیٹ ورک '%s' بھیجی جارہی ہے..."
+
+#: ../src/panel/widgets/netman/applet.c:3088
+#, fuzzy, c-format
+msgid "Network connection “%s” active"
+msgstr "نیٹ ورک اتصال '%s' فعال ہے"
+
+#: ../src/panel/widgets/netman/applet.c:3165
+#, fuzzy, c-format
+msgid "Starting VPN connection “%s”…"
+msgstr "وی پی این اتصال '%s' چلایا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet.c:3168
+#, fuzzy, c-format
+msgid "User authentication required for VPN connection “%s”…"
+msgstr "وی پی این اتصال '%s' کے لیے صارف کی توثیق درکار ہے..."
+
+#: ../src/panel/widgets/netman/applet.c:3171
+#, fuzzy, c-format
+msgid "Requesting a VPN address for “%s”…"
+msgstr "'%s' کے لیے وی پی این پتہ کی درخواس کی جارہی ہے..."
+
+#: ../src/panel/widgets/netman/applet.c:3174
+#, fuzzy, c-format
+msgid "VPN connection active"
+msgstr "وی پی این اتصال '%s' فعال ہے"
+
+#: ../src/panel/widgets/netman/applet.c:3226
+msgid "No network connection"
+msgstr "کوئی نیٹ ورک اتصال نہیں"
+
+#: ../src/panel/widgets/netman/applet.c:3781
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+#, fuzzy
+msgid "Network"
+msgstr "ن_یٹ ورک:"
+
+#: ../src/panel/widgets/netman/applet.c:3896
+msgid "NetworkManager Applet"
+msgstr "نیٹ ورک منیجر ایپلیٹ"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:147
+msgid "Wrong PUK code; please contact your provider."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:189
+msgid "Wrong PIN code; please contact your provider."
+msgstr ""
+
+#. Start the spinner to show the progress of the unlock
+#: ../src/panel/widgets/netman/applet-device-broadband.c:240
+msgid "Sending unlock code…"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:725
+#: ../src/panel/widgets/netman/applet-dialogs.c:532
+#, c-format
+msgid "Mobile Broadband (%s)"
+msgstr "موبائل براڈ بینڈ (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:727
+msgid "Mobile Broadband"
+msgstr "موبائل براڈ بینڈ"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+msgid "Available"
+msgstr "دستیاب"
+
+#. Default connection item
+#: ../src/panel/widgets/netman/applet-device-broadband.c:793
+#, fuzzy
+msgid "New Mobile Broadband connection…"
+msgstr "نیا موبائل براڈ بینڈ اتصال"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:809
+#: ../src/panel/widgets/netman/applet-device-bt.c:75
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+msgid "Connection Established"
+msgstr "اتصال قائم ہوگیا"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:810
+#, fuzzy
+msgid "You are now connected to the Mobile Broadband network."
+msgstr "آپ اس وقت موبائل براڈ بینڈ نیٹ ورک سے متصل ہیں."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:950
+#: ../src/panel/widgets/netman/applet-device-broadband.c:956
+#, fuzzy
+msgid "Mobile Broadband network."
+msgstr "موبائل براڈ بینڈ نیٹ ورک پاس ورڈ"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:951
+#, fuzzy
+msgid "You are now registered on the home network."
+msgstr "اب آپ وائیرڈ نیٹ ورک سے متصل ہیں."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:957
+#, fuzzy
+msgid "You are now registered on a roaming network."
+msgstr "اب آپ وائیرڈ نیٹ ورک سے متصل ہیں."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:76
+msgid "You are now connected to the mobile broadband network."
+msgstr "آپ اس وقت موبائل براڈ بینڈ نیٹ ورک سے متصل ہیں."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:104
+#: ../src/panel/widgets/netman/mobile-helpers.c:596
+#, fuzzy, c-format
+msgid "Preparing mobile broadband connection “%s”…"
+msgstr "موبائل براڈ بینڈ اتصال '%s' تیار کیا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:107
+#: ../src/panel/widgets/netman/mobile-helpers.c:599
+#, fuzzy, c-format
+msgid "Configuring mobile broadband connection “%s”…"
+msgstr "موبائل براڈ بینڈ اتصال '%s' وضع کیا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:110
+#: ../src/panel/widgets/netman/mobile-helpers.c:602
+#, fuzzy, c-format
+msgid "User authentication required for mobile broadband connection “%s”…"
+msgstr "موبائل براڈ بینڈ اتصال '%s' کے لیے صارف کی توثیق درکار ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:117
+#: ../src/panel/widgets/netman/mobile-helpers.c:624
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active"
+msgstr "موبائل براڈ بینڈ اتصال '%s' فعال ہے"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
+msgid "Auto Ethernet"
+msgstr "خودکار ایتھرنیٹ (Ethernet)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
+#, fuzzy, c-format
+msgid "Ethernet Networks (%s)"
+msgstr "وائیرڈ نیٹ ورکس (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
+#, fuzzy, c-format
+msgid "Ethernet Network (%s)"
+msgstr "وائیرڈ نیٹ ورک (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
+#, fuzzy
+msgid "Ethernet Networks"
+msgstr "وائیرڈ نیٹ ورکس"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
+#, fuzzy
+msgid "Ethernet Network"
+msgstr "وائیرڈ نیٹ ورک"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
+#, fuzzy
+msgid "You are now connected to the ethernet network."
+msgstr "اب آپ وائیرڈ نیٹ ورک سے متصل ہیں."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
+#, fuzzy, c-format
+msgid "Preparing ethernet network connection “%s”…"
+msgstr "وائیرڈ نیٹ ورک اتصال '%s' تیار کیا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
+#, fuzzy, c-format
+msgid "Configuring ethernet network connection “%s”…"
+msgstr "وائیرڈ نیٹ ورک اتصال '%s' وضع کیا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
+#, fuzzy, c-format
+msgid "User authentication required for ethernet network connection “%s”…"
+msgstr "وائیرڈ نیٹ ورک اتصال '%s' کے لیے صارف کی توثیق درکار ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
+#, fuzzy, c-format
+msgid "Requesting an ethernet network address for “%s”…"
+msgstr "وائیرڈ نیٹ ورک پتہ کی درخواست برائے '%s' کی جارہی ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
+#, fuzzy, c-format
+msgid "Ethernet network connection “%s” active"
+msgstr "وائیرڈ نیٹ ورک اتصال '%s' فعال ہے"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
+msgid "DSL authentication"
+msgstr "ڈی ایس ایل DSL توثیق"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:1190
+#: ../src/panel/widgets/netman/mobile-helpers.c:455
+#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2
+msgid "_Cancel"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:1191
+#: ../src/panel/widgets/netman/mobile-helpers.c:456
+#: ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+msgid "_OK"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#, fuzzy
+msgid "Connect to Hidden Wi-Fi Network…"
+msgstr "پوشیدہ وائیرلیس نیٹ ورک سے اتصال قائم کریں"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#, fuzzy
+msgid "Create New Wi-Fi Network…"
+msgstr "نیا وائیرلیس نیٹ ورک بنائیں"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#, fuzzy
+msgid "Create Wi-Fi Hotspot…"
+msgstr "نیا وائیرلیس نیٹ ورک بنائیں"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+msgid "(none)"
+msgstr "(کچھ نہیں)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:567
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+#, fuzzy
+msgid "Failed to add new connection"
+msgstr "نیا اتصال مدون نہیں ہوسکتا"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+msgid "Insufficient privileges."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#, fuzzy, c-format
+msgid "Do you want to disconnect from the wireless network '%s'?"
+msgstr "Sie sind nun mit dem Ad-Hoc-Funknetzwerk »%s« verbunden."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#, fuzzy, c-format
+msgid "Wi-Fi Networks (%s)"
+msgstr "وائیرڈ نیٹ ورکس (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#, fuzzy, c-format
+msgid "Wi-Fi Network (%s)"
+msgstr "وائیرڈ نیٹ ورک (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+#, fuzzy
+msgid "Wi-Fi Network"
+msgid_plural "Wi-Fi Networks"
+msgstr[0] "وائیرڈ نیٹ ورک"
+msgstr[1] "وائیرڈ نیٹ ورک"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+#, fuzzy
+msgid "Wi-Fi is disabled"
+msgstr "وائیرلیس معطل ہے"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+msgid "Wi-Fi is disabled by hardware switch"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+msgid "More networks"
+msgstr "مزید نیٹ ورک"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+#, fuzzy
+msgid "Wi-Fi Networks Available"
+msgstr "وائیرلیس نیٹ ورک دستیاب ہیں"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+#, fuzzy
+msgid "Use the network menu to connect to a Wi-Fi network"
+msgstr "وائیرلیس نیٹ ورک سے متصل ہونے کے لیے اس آئکن پر کلک کریں"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#, fuzzy, c-format
+msgid "You are now connected to the Wi-Fi network “%s”."
+msgstr "اب آپ وائیرلیس نیٹ ورک '%s' سے متصل ہیں."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#, fuzzy, c-format
+msgid "Preparing Wi-Fi network connection “%s”…"
+msgstr "نیٹ ورک اتصال '%s' تیار کیا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#, fuzzy, c-format
+msgid "Configuring Wi-Fi network connection “%s”…"
+msgstr "وائیرڈ نیٹ ورک اتصال '%s' وضع کیا جارہا ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#, fuzzy, c-format
+msgid "User authentication required for Wi-Fi network “%s”…"
+msgstr "وائیرلیس نیٹ ورک '%s' کے لیے صارف کی توثیق درکار ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#, fuzzy, c-format
+msgid "Requesting a Wi-Fi network address for “%s”…"
+msgstr "درخواست برائے نیٹ ورک '%s' بھیجی جارہی ہے..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+msgstr "وائیرلیس نیٹ ورک اتصال '%s' فعال ہے: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+msgstr "وائیرلیس نیٹ ورک اتصال '%s' فعال ہے: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active"
+msgstr "وائیرڈ نیٹ ورک اتصال '%s' فعال ہے"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:29
+msgid "Error displaying connection information:"
+msgstr "اتصال کی معلومات دکھانے میں غلطی:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:61
+msgid "LEAP"
+msgstr "LEAP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:63
+msgid "Dynamic WEP"
+msgstr "حرکی WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:65
+#: ../src/panel/widgets/netman/applet-dialogs.c:237
+#: ../src/panel/widgets/netman/applet-dialogs.c:239
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+#. Create the expander
+#: ../src/panel/widgets/netman/applet-dialogs.c:174
+#, fuzzy
+msgid "More addresses"
+msgstr "_میک MAC پتہ:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:235
+msgid "WEP"
+msgstr "WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:241
+msgid "WPA3"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:245
+#: ../src/panel/widgets/netman/applet-dialogs.c:254
+#, fuzzy
+msgctxt "Wi-Fi/Ethernet security"
+msgid "None"
+msgstr "کچھ نہیں"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:324
+#: ../src/panel/widgets/netman/applet-dialogs.c:597
+#, c-format
+msgid "%u Mb/s"
+msgstr "%u م.ب/s"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:326
+#: ../src/panel/widgets/netman/applet-dialogs.c:599
+#, fuzzy
+msgctxt "Speed"
+msgid "Unknown"
+msgstr "نامعلوم"
+
+#. Address
+#: ../src/panel/widgets/netman/applet-dialogs.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:363
+#, fuzzy
+msgctxt "Address"
+msgid "Unknown"
+msgstr "نامعلوم"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:415
+msgid "IP Address"
+msgstr "آئی پی پتہ"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:364
+msgid "Broadcast Address"
+msgstr "نشریہ پتہ"
+
+#. Prefix
+#: ../src/panel/widgets/netman/applet-dialogs.c:376
+#, fuzzy
+msgctxt "Subnet Mask"
+msgid "Unknown"
+msgstr "نامعلوم"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:377
+msgid "Subnet Mask"
+msgstr "سب-نیٹ ماسک"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Primary DNS"
+msgstr "ابتدائی DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "ثانوی DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "ثانوی DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:518
+#, c-format
+msgid "Ethernet (%s)"
+msgstr "ایتھرنیٹ (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:521
+#, c-format
+msgid "802.11 Wi-Fi (%s)"
+msgstr "802.11 Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:528
+#, c-format
+msgid "GSM (%s)"
+msgstr "GSM (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:530
+#, c-format
+msgid "CDMA (%s)"
+msgstr "CDMA (%s)"
+
+#. --- General ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:538
+#: ../src/panel/widgets/netman/applet-dialogs.c:872
+msgid "General"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:541
+msgid "Interface"
+msgstr "مواجہ"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:556
+msgid "Hardware Address"
+msgstr "ہارڈویئر پتہ"
+
+#. Driver
+#: ../src/panel/widgets/netman/applet-dialogs.c:569
+msgid "Driver"
+msgstr "ڈرائیور"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:602
+msgid "Speed"
+msgstr "رفتار"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:615
+#, fuzzy
+msgid "Security"
+msgstr "سیکورٹی:"
+
+#. --- IPv4 ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:640
+#: ../src/panel/widgets/netman/applet-dialogs.c:902
+msgid "IPv4"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:659
+#: ../src/panel/widgets/netman/applet-dialogs.c:707
+msgid "Default Route"
+msgstr "طے شدہ راؤٹ"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:687
+#: ../src/panel/widgets/netman/applet-dialogs.c:929
+msgid "IPv6"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:728
+msgid "Hotspot"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:746
+#, fuzzy
+msgid "Password"
+msgstr "پاس ورڈ:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:876
+#, fuzzy
+msgid "VPN Type"
+msgstr "Schlüsseltyp:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:881
+#, fuzzy
+msgid "VPN Gateway"
+msgstr "گیٹ وے"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:885
+#, fuzzy
+msgid "VPN Username"
+msgstr "صا_رف کا نام:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:889
+msgid "VPN Banner"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:893
+#, fuzzy
+msgid "Base Connection"
+msgstr "ا_تصال:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:894
+msgid "Unknown"
+msgstr "نامعلوم"
+
+#. Shouldn't really happen but ...
+#: ../src/panel/widgets/netman/applet-dialogs.c:1091
+msgid "No valid active connections found!"
+msgstr "کوئی موزوں فعال اتصال نہیں پائے گئے!"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+#, fuzzy
+msgid ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"and many other community contributors and translators"
+msgstr ""
+"حق اشاعت © 2004-2008 ریڈ ہیٹ, Inc.\n"
+"حق اشاعت © 2005-2008 نوویل, Inc."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+msgid ""
+"Notification area applet for managing your network devices and connections."
+msgstr "آپ کے نیٹ ورک آلوں اور اتصال کی ادارت کے لیے اطلاعی علاقہ ایپلیٹ"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1144
+msgid "NetworkManager Website"
+msgstr "نیٹ ورک منیجر ویب سائٹ"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1148
+msgid "translator-credits"
+msgstr ""
+"محمد علی مکی <makkiabufaris@aol.com>\n"
+"مکی کا بلاگ <http://makki.urducoder.com>\n"
+"اردو کوڈر لینکس فورم <http://www.urducoder.com>"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+#, fuzzy
+msgid ""
+"The NetworkManager Applet could not find some required resources (the .ui "
+"file was not found)."
+msgstr ""
+"نیٹ ورک منیجر ایپلیٹ کچھ درکار وسائل تلاش نہیں کر پا رہا (گلیڈ glade فائل "
+"نہیں مل سکی)."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1163
+msgid "Missing resources"
+msgstr "مفقود وسائل"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1188
+msgid "Mobile broadband network password"
+msgstr "موبائل براڈ بینڈ نیٹ ورک پاس ورڈ"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1197
+#, fuzzy, c-format
+msgid "A password is required to connect to “%s”."
+msgstr "نیٹ ورک '%s' سے اتصال قائم کرنے کے لیے پاس ورڈ درکار ہے."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1220
+msgid "Password:"
+msgstr "پاس ورڈ:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1502
+#, fuzzy
+msgid "SIM PIN unlock required"
+msgstr "پِن PIN کوڈ درکار ہے"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1503
+#, fuzzy
+msgid "SIM PIN Unlock Required"
+msgstr "پِن PIN کوڈ درکار ہے"
+
+#. FIXME: some warning about # of times you can enter incorrect PIN
+#: ../src/panel/widgets/netman/applet-dialogs.c:1505
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PIN code before it can be "
+"used."
+msgstr ""
+
+#. Translators: PIN code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1507
+#, fuzzy
+msgid "PIN code:"
+msgstr "پِن PIN کوڈ درکار ہے"
+
+#. Translators: Show/obscure PIN checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1511
+msgid "Show PIN code"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1513
+#, fuzzy
+msgid "SIM PUK unlock required"
+msgstr "پَک PUK کوڈ درکار ہے"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1514
+#, fuzzy
+msgid "SIM PUK Unlock Required"
+msgstr "پَک PUK کوڈ درکار ہے"
+
+#. FIXME: some warning about # of times you can enter incorrect PUK
+#: ../src/panel/widgets/netman/applet-dialogs.c:1516
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PUK code before it can be "
+"used."
+msgstr ""
+
+#. Translators: PUK code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1518
+#, fuzzy
+msgid "PUK code:"
+msgstr "پَک PUK کوڈ درکار ہے"
+
+#. Translators: New PIN entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1521
+msgid "New PIN code:"
+msgstr ""
+
+#. Translators: New PIN verification entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1523
+msgid "Re-enter new PIN code:"
+msgstr ""
+
+#. Translators: Show/obscure PIN/PUK checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1528
+msgid "Show PIN/PUK codes"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:427
+#, fuzzy
+msgid "Connection had no VPN setting"
+msgstr "اتصال کی معلومات"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:477
+#, fuzzy, c-format
+msgid "Failed to write connection to VPN UI: %s (%d)"
+msgstr "Verbindung konnte nicht aktualisiert werden"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:485
+msgid "Failed to write connection to VPN UI: incomplete write"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#, fuzzy
+msgid "802.1X authentication"
+msgstr "وائیرڈ 802.1X توثیق"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:36
+#: ../src/panel/widgets/netman/mobile-helpers.c:272
+msgid "CDMA"
+msgstr "CDMA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:38
+msgid "EVDO"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:40
+#: ../src/panel/widgets/netman/mobile-helpers.c:270
+msgid "GSM"
+msgstr "GSM"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:42
+msgid "GPRS"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:44
+msgid "EDGE"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:46
+msgid "UMTS"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:48
+msgid "HSDPA"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:50
+msgid "HSUPA"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:52
+msgid "HSPA"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:54
+msgid "HSPA+"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:56
+msgid "LTE"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:103
+msgid "not enabled"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:109
+msgid "not registered"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:127
+#, fuzzy, c-format
+msgid "Home network (%s)"
+msgstr "وائیرڈ نیٹ ورک (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:129
+#, fuzzy, c-format
+msgid "Home network"
+msgstr "مزید نیٹ ورک"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:137
+msgid "searching"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:140
+msgid "registration denied"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:145
+#: ../src/panel/widgets/netman/mb-menu-item.c:151
+#, c-format
+msgid "%s (%s roaming)"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:147
+#: ../src/panel/widgets/netman/mb-menu-item.c:153
+#, c-format
+msgid "%s (roaming)"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:156
+#, fuzzy, c-format
+msgid "Roaming network (%s)"
+msgstr "وائیرڈ نیٹ ورک (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:158
+#, fuzzy, c-format
+msgid "Roaming network"
+msgstr "مزید نیٹ ورک"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:320
+#, c-format
+msgid "PIN code for SIM card “%s” on “%s”"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:453
+msgid "PIN code required"
+msgstr "پِن PIN کوڈ درکار ہے"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:461
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "موبائل براڈ بینڈ ڈیوائس کے لیے پِن PIN کوڈ درکار ہے"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:619
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+msgstr "موبائل براڈ بینڈ اتصال '%s' فعال ہے"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:622
+msgid "roaming"
+msgstr ""
+
+#: ../src/panel/widgets/netman/netman.c:139
+#, fuzzy
+msgid "Network Manager"
+msgstr "نیٹ ورک منیجر"
+
+#: ../src/panel/widgets/netman/netman.c:140
+#, fuzzy
+msgid "Controller for Network Manager"
+msgstr "نیٹ ورک منیجر"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:793
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:800
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:807
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:815
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:824
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:835
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+
+#. The %s is a mobile provider name, eg "T-Mobile"
+#: ../src/panel/widgets/netman/utils.c:160
+#, fuzzy, c-format
+msgid "%s connection"
+msgstr "ڈی ایس ایل اتصال %d"
+
+#: ../src/panel/widgets/netman/utils.c:534
+#, fuzzy
+msgid "PEM certificates (*.pem, *.crt, *.cer)"
+msgstr "DER یا PEM اسناد (*.der, *.pem, *.crt, *.cer)"
+
+#: ../src/panel/widgets/netman/utils.c:546
+#, fuzzy
+msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+msgstr "DER, PEM, or PKCS#12 نجی کلیدیں (*.der, *.pem, *.p12)"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:391
+#: ../src/panel/widgets/smenu/menu.c:121
+msgid "Run"
+msgstr "چلائیں"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:412
+msgid "Enter the command you want to execute:"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:116
+msgid "Logout command is not set"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:122
+msgid "Restart"
+msgstr "دوبارہ چلائیں"
+
+#: ../src/panel/widgets/smenu/menu.c:123
+msgid "Logout"
+msgstr "لاگ آؤٹ"
+
+#: ../src/panel/widgets/smenu/menu.c:140
+msgid "No file manager is configured."
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:489
+msgid "Add to desktop"
+msgstr "ڈیسک ٹاپ میں شامل کریں"
+
+#: ../src/panel/widgets/smenu/menu.c:496
+msgid "Properties"
+msgstr "خصوصیات"
+
+#: ../src/panel/widgets/smenu/menu.c:954
+msgid "Click here to open applications menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1047
+msgid "Menu"
+msgstr "فہرست"
+
+#: ../src/panel/widgets/smenu/menu.c:1048
+msgid "Icon"
+msgstr "آئکن"
+
+#: ../src/panel/widgets/smenu/menu.c:1049
+msgid "Padding"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1050
+msgid "Fixed Size"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1058
+msgid "Menu with Search"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1059
+#, fuzzy
+msgid "Searchable Application Menu"
+msgstr "اطلاقیہ مینیو"
+
+#: ../src/panel/widgets/updater/updater.c:189
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:211
+#, fuzzy
+msgid "No network connection - cannot install updates."
+msgstr "کوئی نیٹ ورک اتصال نہیں"
+
+#: ../src/panel/widgets/updater/updater.c:217
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:320
+msgid "Show Updates..."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:324
+msgid "Install Updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:470
+msgid "Updates are available - click to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:529
+#: ../src/panel/widgets/updater/updater.c:561
+msgid "Updater"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:531
+msgid "Hours between checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:562
+msgid "Checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+msgid "Reconnecting Bluetooth devices..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#, fuzzy, c-format
+msgid "Bluetooth %s device not found"
+msgstr "وائیرڈ اتصال %d"
+
+#. update dialog to show a warning
+#: ../src/panel/widgets/volumepulse/bluetooth.c:405
+msgid "Device not found by PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#, c-format
+msgid "Could not set profile for device : %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#, c-format
+msgid "Failed to connect to Bluetooth device - %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#, c-format
+msgid "Connecting Bluetooth device '%s' as output..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#, c-format
+msgid "Connecting Bluetooth device '%s' as input..."
+msgstr ""
+
+#. if the current default source and sink are both the same device, disconnect it and reconnect to
+#. put it into A2DP rather than HSP
+#: ../src/panel/widgets/volumepulse/bluetooth.c:785
+msgid "Reconnecting Bluetooth input device as output only..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+msgid "Reconnecting Bluetooth device..."
+msgstr ""
+
+#. Create a check button as the child of the vertical box.
+#: ../src/panel/widgets/volumepulse/commongui.c:140
+msgid "Mute"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/commongui.c:231
+msgid "No audio devices found"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:71
+msgid "Input from this device not available in the current profile"
+msgstr ""
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/micpulse.c:144
+msgid "Mic volume"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:216
+msgid "Microphone Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:217
+msgid "Display and control microphones for PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+msgid "HDMI"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+msgid "AV Jack"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+msgid "Device Profiles..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+msgid "Output to this device not available in the current profile"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#, fuzzy
+msgid "Device Profiles"
+msgstr "غیر متصل"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#, fuzzy
+msgid "Device not connected"
+msgstr "غیر متصل"
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+msgid "Volume control"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+msgid "Volume Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+msgid "Display and control volume for PulseAudio"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
+msgid "label"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:1
+#, fuzzy
+msgid "Available Updates"
+msgstr "دستیاب"
+
+#: ../data/lxplug-updater.ui.h:2
+msgid "Close"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:3
+msgid "Install"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:4
+msgid "The following packages can be updated :"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:1
+#, fuzzy
+msgid "Add New Device"
+msgstr "کوئی بھی ڈیوائس"
+
+#: ../data/lxplug-bluetooth.ui.h:3
+msgid "_Pair"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:4
+#, fuzzy
+msgid "Searching for Bluetooth devices..."
+msgstr "Es wird auf die Benutzerauthentifizierung auf Gerät »%s« gewartet …"
+
+#, fuzzy
+#~ msgid "Manage your network connections"
+#~ msgstr "اپنے نیٹ ورک اتصال کی ادارت کریں"
+
+#, fuzzy
+#~ msgid "NetworkManager connection editor"
+#~ msgstr "کوئی نیٹ ورک اتصال نہیں"
+
+#, fuzzy
+#~ msgid "The NetworkManager Developers"
+#~ msgstr "نیٹ ورک منیجر ایپلیٹ"
+
+#, fuzzy
+#~ msgid "Advanced Network Configuration"
+#~ msgstr "VPN-Konfigurationsfehler"
+
+#~ msgid "Manage and change your network connection settings"
+#~ msgstr "اپنے نیٹ ورک اتصال کی تبدیلی اور ادارت کریں"
+
+#, fuzzy
+#~ msgid "_Network name"
+#~ msgstr "_نیٹ ورک کا نام:"
+
+#~ msgid "_VPN Connections"
+#~ msgstr "_وی پی این اتصال"
+
+#~ msgid "Connection _Information"
+#~ msgstr "اتصال کی _معلومات"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add an IP address."
+#~ msgstr ""
+#~ "آئی پی پتے نیٹ ورک پر آپ کے کمپیوٹر کی پہچان ہوتے ہیں.  کوئی آئی پی پتہ "
+#~ "شامل کرنے کے لیے \"شامل کریں\" کے بٹن پر کلک کریں"
+
+#, fuzzy
+#~ msgid "_Delete"
+#~ msgstr "حذف"
+
+#~ msgid "Ig_nore automatically obtained routes"
+#~ msgstr "خودکار حاصل ہونے والے روٹ _نظر انداز کریں"
+
+#, fuzzy
+#~ msgid "_Use this connection only for resources on its network"
+#~ msgstr "یہ ا_تصال صرف اس کے اپنے نیٹ ورک کے وسائل کے لیے استعمال کریں"
+
+#~ msgid ""
+#~ "If enabled, this connection will never be used as the default network "
+#~ "connection."
+#~ msgstr ""
+#~ "اگر فعال کیا گیا تو یہ اتصال کبھی بھی طے شدہ نیٹ ورک اتصال کے طور پر "
+#~ "استعمال نہیں کیا جائے گا."
+
+#, fuzzy
+#~ msgid "C_reate…"
+#~ msgstr "بنائیں..."
+
+#, fuzzy
+#~ msgid "Choose a Connection Type"
+#~ msgstr "Eine UTMS-Verbindung erstellen"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of connection you wish to create.\n"
+#~ "\n"
+#~ "If you are creating a VPN, and the VPN connection you wish to create does "
+#~ "not appear in the list, you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">وی پی این VPN اتصال کی نوعیت منتخب "
+#~ "کریں</span>\n"
+#~ "\n"
+#~ "نئے اتصال کے لیے وی پی این کی نوعیت منتخب کریں.  اگر جو اتصال آپ بنانا "
+#~ "چاہیں فہرست میں موجود نہ ہو تو ممکنہ طور پر آپ کے پاس درست وی پی این پلگ "
+#~ "ان نصب نہیں ہے."
+
+#, fuzzy
+#~ msgid "_Device"
+#~ msgstr "_سروس:"
+
+#, fuzzy
+#~ msgid "Broadcast"
+#~ msgstr "نشریہ پتہ:"
+
+#, fuzzy
+#~ msgid "ARP"
+#~ msgstr "EAP"
+
+#, fuzzy
+#~ msgid "Bonded _connections"
+#~ msgstr "ا_تصال:"
+
+#, fuzzy
+#~ msgid "M_ode"
+#~ msgstr "انداز:"
+
+#, fuzzy
+#~ msgid "_Edit"
+#~ msgstr "تدوین"
+
+#, fuzzy
+#~ msgid "_Interface name"
+#~ msgstr "مواجہ:"
+
+#, fuzzy
+#~ msgid "_Primary"
+#~ msgstr "ابتدائی DNS:"
+
+#~ msgid "bytes"
+#~ msgstr "بائٹس"
+
+#, fuzzy
+#~ msgid "_Priority"
+#~ msgstr "_سیکورٹی:"
+
+#, fuzzy
+#~ msgid "Bridged _connections"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "Enable I_GMP snooping"
+#~ msgstr "_نیٹ ورکنگ فعال کریں"
+
+#, fuzzy
+#~ msgid "_Use Data Center Bridging (DCB) for this connection"
+#~ msgstr "اس اتصال کے لیے 802.1X سیکورٹی استعمال کریں"
+
+#~ msgid "default"
+#~ msgstr "طے شدہ"
+
+#, fuzzy
+#~ msgid "_Username"
+#~ msgstr "صا_رف کا نام:"
+
+#, fuzzy
+#~ msgid "_Service"
+#~ msgstr "_سروس:"
+
+#~ msgid "Sho_w password"
+#~ msgstr "پاس ورڈ د_کھائیں"
+
+#, fuzzy
+#~ msgid "_Password"
+#~ msgstr "_پاس ورڈ:"
+
+#, fuzzy
+#~ msgid "PPP _interface"
+#~ msgstr "مواجہ"
+
+#, fuzzy
+#~ msgid "P_arent interface"
+#~ msgstr "مواجہ:"
+
+#, fuzzy
+#~ msgid "C_laim interface"
+#~ msgstr "مواجہ:"
+
+#~ msgid "Automatic"
+#~ msgstr "خودکار"
+
+#, fuzzy
+#~ msgid "10 Mb/s"
+#~ msgstr "م.ب/س"
+
+#, fuzzy
+#~ msgid "100 Mb/s"
+#~ msgstr "%u م.ب/s"
+
+#~ msgid "Ignore"
+#~ msgstr "نظر انداز کریں"
+
+#~ msgid "Manual"
+#~ msgstr "دستی"
+
+#, fuzzy
+#~ msgid "_Port"
+#~ msgstr "_پورٹ:"
+
+#, fuzzy
+#~ msgid "C_loned MAC address"
+#~ msgstr "_میک MAC پتہ:"
+
+#, fuzzy
+#~ msgid "Wake on LAN"
+#~ msgstr "_نجی کلید پاس ورڈ:"
+
+#, fuzzy
+#~ msgid "De_fault"
+#~ msgstr "طے شدہ"
+
+#, fuzzy
+#~ msgid "_Ignore"
+#~ msgstr "نظر انداز کریں"
+
+#, fuzzy
+#~ msgid "_Broadcast"
+#~ msgstr "نشریہ پتہ:"
+
+#, fuzzy
+#~ msgid "_Wake on LAN password"
+#~ msgstr "_نجی کلید پاس ورڈ:"
+
+#, fuzzy
+#~ msgid "_Speed"
+#~ msgstr "_رفتار:"
+
+#, fuzzy
+#~ msgid "Duple_x"
+#~ msgstr "بھرپور _دو جُزی"
+
+#~ msgid "Yes"
+#~ msgstr "ہاں"
+
+#~ msgid "No"
+#~ msgstr "نہیں"
+
+#, fuzzy
+#~ msgid "All _users may connect to this network"
+#~ msgstr "اب آپ وائیرڈ نیٹ ورک سے متصل ہیں."
+
+#, fuzzy
+#~ msgid "_Metered connection"
+#~ msgstr "ا_تصال:"
+
+#, fuzzy
+#~ msgid "Connect _automatically with priority"
+#~ msgstr "_خودکار متصل ہوں"
+
+#, fuzzy
+#~ msgid "Connected"
+#~ msgstr "_متصل ہوں"
+
+#, fuzzy
+#~ msgid "Device name"
+#~ msgstr "_سروس:"
+
+#, fuzzy
+#~ msgid "Parent device"
+#~ msgstr "ایتھرنیٹ (%s)"
+
+#, fuzzy
+#~ msgid "MTU"
+#~ msgstr "MT_U:"
+
+#, fuzzy
+#~ msgid "Link-Local"
+#~ msgstr "صرف لنک-لوکل"
+
+#~ msgid "Shared to other computers"
+#~ msgstr "دوسرے کمپوٹروں سے شیئر کردہ"
+
+#, fuzzy
+#~ msgid "_Method"
+#~ msgstr "_اسلوب:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The DHCP client identifier allows the network administrator to customize "
+#~ "your computer’s configuration. If you wish to use a DHCP client "
+#~ "identifier, enter it here."
+#~ msgstr ""
+#~ "ڈی ایچ سی پی DHCP موکل شناخت کنندہ نیٹ ورک کے مدیر کو اجازت دیتا ہے کہ وہ "
+#~ "آپ کے کمپیوٹر کی وضع کاری کر سکے. اگر آپ DHCP موکل شناخت کنندہ استعمال "
+#~ "کرنا چاہیں تو اسے یہاں داخل کریں."
+
+#~ msgid ""
+#~ "Domains used when resolving host names. Use commas to separate multiple "
+#~ "domains."
+#~ msgstr ""
+#~ "ڈومین نام جو ہوسٹ ناموں کو حل کرنے کے لیے استعمال ہوں گے. متعدد ڈومینوں "
+#~ "کو کوما سے الگ کریں."
+
+#, fuzzy
+#~ msgid "D_HCP client ID"
+#~ msgstr "DHCP _موکل آئی ڈی:"
+
+#, fuzzy
+#~ msgid "S_earch domains"
+#~ msgstr "_تلاش کے ڈومین:"
+
+#, fuzzy
+#~ msgid "DNS ser_vers"
+#~ msgstr "_ڈی این ایس سرور:"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses."
+#~ msgstr ""
+#~ "ڈومین نیم سروروں کے آئی پی پتے ہوسٹ ناموں کو حل کرنے کے لیے استعمال ہوتے "
+#~ "ہیں. متعدد ڈومین نیم سرور پتوں کو کوما سے الگ کریں."
+
+#~ msgid "_Routes…"
+#~ msgstr "_روٹس..."
+
+#~ msgid "Default"
+#~ msgstr "طے شدہ"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses. Link-local "
+#~ "addresses will be automatically scoped to the connecting interface."
+#~ msgstr ""
+#~ "ڈومین نیم سروروں کے آئی پی پتے ہوسٹ ناموں کو حل کرنے کے لیے استعمال ہوتے "
+#~ "ہیں. متعدد ڈومین نیم سرور پتوں کو کوما سے الگ کریں."
+
+#~ msgid "EAP"
+#~ msgstr "EAP"
+
+#, fuzzy
+#~ msgid "Strict"
+#~ msgstr "میٹرک"
+
+#, fuzzy
+#~ msgid "_Device name"
+#~ msgstr "_سروس:"
+
+#, fuzzy
+#~ msgid "_Parent device"
+#~ msgstr "ایتھرنیٹ (%s)"
+
+#, fuzzy
+#~ msgid "_SCI port"
+#~ msgstr "_درآمد"
+
+#, fuzzy
+#~ msgid "Nu_mber"
+#~ msgstr "_نمبر:"
+
+#, fuzzy
+#~ msgid "_APN"
+#~ msgstr "_APN:"
+
+#, fuzzy
+#~ msgid "N_etwork ID"
+#~ msgstr "ن_یٹ ورک:"
+
+#, fuzzy
+#~ msgid "Change…"
+#~ msgstr "تبدیل کریں..."
+
+#~ msgid "Sho_w passwords"
+#~ msgstr "پاس ورڈ _دکھائیں"
+
+#, fuzzy
+#~ msgid "Authentication"
+#~ msgstr "_توثیق:"
+
+#, fuzzy
+#~ msgid "Allowed methods"
+#~ msgstr "مجاز اسلوب:"
+
+#~ msgid "Configure _Methods…"
+#~ msgstr "ا_سلوب وضع کریں..."
+
+#, fuzzy
+#~ msgid "Compression"
+#~ msgstr "<b>دباؤ</b>"
+
+#~ msgid "_Use point-to-point encryption (MPPE)"
+#~ msgstr "پوائینٹ ٹو پوائینٹ رمز نگاری (MPPE) اس_تعمال کریں"
+
+#~ msgid "_Require 128-bit encryption"
+#~ msgstr "128-بِٹ رمز نگاری _درکار"
+
+#~ msgid "Use _stateful MPPE"
+#~ msgstr "stateful MPPE _استعمال کریں"
+
+#~ msgid "Allow _BSD data compression"
+#~ msgstr "_بی ایس ڈی BSD ڈیٹا دباؤ"
+
+#~ msgid "Allow _Deflate data compression"
+#~ msgstr "_ڈیفلیٹ Deflate ڈیٹا دباؤ کی اجازت دیں"
+
+#~ msgid "Use TCP _header compression"
+#~ msgstr "ٹی سی پی TCP ہیڈر دباؤ استعمال کریں"
+
+#~ msgid "Send PPP _echo packets"
+#~ msgstr "پی پی پی _ایکو پیکٹ ارسال کریں"
+
+#, fuzzy
+#~ msgid "None"
+#~ msgstr "کچھ نہیں"
+
+#, fuzzy
+#~ msgid "Method"
+#~ msgstr "_اسلوب:"
+
+#, fuzzy
+#~ msgid "Ad_vanced…"
+#~ msgstr "<b>اعلی</b>"
+
+#, fuzzy
+#~ msgid "Ethernet port state"
+#~ msgstr "وائیرڈ نیٹ ورکس"
+
+#, fuzzy
+#~ msgid "_Port priority"
+#~ msgstr "_سیکورٹی:"
+
+#, fuzzy
+#~ msgid "_LACP port priority"
+#~ msgstr "_سیکورٹی:"
+
+#, fuzzy
+#~ msgid "LACP port _key"
+#~ msgstr "نجی _کلید:"
+
+#, fuzzy
+#~ msgid "Send _interval"
+#~ msgstr "مواجہ:"
+
+#, fuzzy
+#~ msgid "Edit _JSON configuration"
+#~ msgstr "VPN-Konfigurationsfehler"
+
+#, fuzzy
+#~ msgid "Raw Configuration"
+#~ msgstr "VPN-Konfigurationsfehler"
+
+#, fuzzy
+#~ msgid "Port priority"
+#~ msgstr "_سیکورٹی:"
+
+#, fuzzy
+#~ msgid "From the team device"
+#~ msgstr "ایتھرنیٹ (%s)"
+
+#, fuzzy
+#~ msgid "_Teamed connections"
+#~ msgstr "ا_تصال:"
+
+#, fuzzy
+#~ msgid "Ethernet"
+#~ msgstr "خودکار ایتھرنیٹ (Ethernet)"
+
+#, fuzzy
+#~ msgid "IP"
+#~ msgstr "TKIP"
+
+#, fuzzy
+#~ msgid "TCP"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "_Hardware Address"
+#~ msgstr "ہارڈویئر پتہ:"
+
+#, fuzzy
+#~ msgid "_Hardware address policy"
+#~ msgstr "ہارڈویئر پتہ:"
+
+#, fuzzy
+#~ msgid "_System priority"
+#~ msgstr "_سیکورٹی:"
+
+#, fuzzy
+#~ msgid "Transmission _balancing interval"
+#~ msgstr "ترسیلی قوت:"
+
+#, fuzzy
+#~ msgid "_Transmission balancer"
+#~ msgstr "ترسیلی قوت:"
+
+#, fuzzy
+#~ msgid "_Parent interface"
+#~ msgstr "مواجہ:"
+
+#, fuzzy
+#~ msgid "VLAN inter_face name"
+#~ msgstr "مواجہ:"
+
+#, fuzzy
+#~ msgid "Cloned MAC _address"
+#~ msgstr "_میک MAC پتہ:"
+
+#, fuzzy
+#~ msgid "S_ecurity"
+#~ msgstr "سیکورٹی:"
+
+#~ msgid "mW"
+#~ msgstr "mW"
+
+#, fuzzy
+#~ msgid "Transmission po_wer"
+#~ msgstr "ترسیلی قوت:"
+
+#~ msgid "Mb/s"
+#~ msgstr "م.ب/س"
+
+#, fuzzy
+#~ msgid "_Rate"
+#~ msgstr "_ریٹ:"
+
+#, fuzzy
+#~ msgid "_BSSID"
+#~ msgstr "_BSSID:"
+
+#, fuzzy
+#~ msgid "C_hannel"
+#~ msgstr "_چینل:"
+
+#, fuzzy
+#~ msgid "Ban_d"
+#~ msgstr "ب_ینڈ:"
+
+#, fuzzy
+#~ msgid "_Apply"
+#~ msgstr "اطلاق"
+
+#, fuzzy
+#~ msgid "Allowed _IPs"
+#~ msgstr "مجاز اسلوب:"
+
+#, fuzzy
+#~ msgid "Pre_shared key"
+#~ msgstr "Gemeinsamer Schlüssel (PSK)"
+
+#, fuzzy
+#~ msgid "Sho_w preshared key"
+#~ msgstr "کلید _دکھائیں"
+
+#, fuzzy
+#~ msgid "Private _key"
+#~ msgstr "نجی _کلید:"
+
+#, fuzzy
+#~ msgid "_Show private key"
+#~ msgstr "نجی _کلید:"
+
+#, fuzzy
+#~ msgid "<b>_Peers</b>"
+#~ msgstr "<b>پتے</b>"
+
+#~ msgid "automatic"
+#~ msgstr "خودکار"
+
+#, fuzzy
+#~ msgid "MAC address"
+#~ msgstr "_میک MAC پتہ:"
+
+#, fuzzy
+#~ msgid "HW address"
+#~ msgstr "پتہ"
+
+#, fuzzy
+#~ msgid "invalid hardware address"
+#~ msgstr "ہارڈویئر پتہ:"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add static IP address to be configured in addition to the "
+#~ "automatic ones."
+#~ msgstr ""
+#~ "آئی پی پتے نیٹ ورک پر آپ کے کمپیوٹر کی پہچان ہوتے ہیں.  کوئی آئی پی پتہ "
+#~ "شامل کرنے کے لیے \"شامل کریں\" کے بٹن پر کلک کریں"
+
+#, fuzzy
+#~ msgid "Additional static addresses"
+#~ msgstr "خودکار، صرف پتے"
+
+#, fuzzy
+#~ msgid "Addresses"
+#~ msgstr "پتہ"
+
+#, fuzzy
+#~ msgid "No polkit authorization to perform the action"
+#~ msgstr "PolicyKit-Legitimierung konnte nicht erzeugt werden."
+
+#, fuzzy
+#~ msgid "Allowed Authentication Methods"
+#~ msgstr "<b>جائز توثیقی طریقے</b>"
+
+#~ msgid "_EAP"
+#~ msgstr "_EAP"
+
+#~ msgid "Extensible Authentication Protocol"
+#~ msgstr "وسعت پذیر توثیقی پروٹوکول"
+
+#~ msgid "_PAP"
+#~ msgstr "_PAP"
+
+#~ msgid "Password Authentication Protocol"
+#~ msgstr "پاس ورڈ توثیقی پروٹوکول"
+
+#~ msgid "C_HAP"
+#~ msgstr "C_HAP"
+
+#~ msgid "Challenge Handshake Authentication Protocol"
+#~ msgstr "چلینج ہینڈ شیک توثیقی پروٹوکول"
+
+#~ msgid "_MSCHAP"
+#~ msgstr "_MSCHAP"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol"
+#~ msgstr "مائکروسوفٹ چیلنج ہینڈ شیک توثیقی پروٹوکول"
+
+#~ msgid "MSCHAP v_2"
+#~ msgstr "MSCHAP v_2"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol version 2"
+#~ msgstr "مائکروسوفٹ چیلنج ہینڈ شیک توثیقی پروٹوکول نسخہ 2"
+
+#, fuzzy
+#~ msgid ""
+#~ "In most cases, the provider’s PPP servers will support all authentication "
+#~ "methods. If connections fail, try disabling support for some methods."
+#~ msgstr ""
+#~ "<i>بیشتر حالتوں میں، PPP سرور کا فراہم کار تمام نوعیت کے توثیقی اسلوب کی "
+#~ "معاونت کرے گا.  اگر اتصال ناکام ہوجائے، تو کچھ اسلوبوں کی معاونت معطل کر "
+#~ "کے دیکھیں.</i>"
+
+#, fuzzy
+#~ msgid "WireGuard"
+#~ msgstr "وائیرڈ"
+
+#~ msgid "VPN"
+#~ msgstr "VPN"
+
+#, fuzzy
+#~ msgid "The VPN plugin failed to import the VPN connection correctly: "
+#~ msgstr ""
+#~ "وی پی این پلگ ان وی پی این اتصال کو درست طور پر درآمد کرنے میں ناکام "
+#~ "ہوگیا\n"
+#~ "\n"
+#~ "غلطی: کوئی وی پی این سروس نوعیت نہیں."
+
+#~ msgid "Select file to import"
+#~ msgstr "درآمد کرنے کے لیے فائل منتخب کریں"
+
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "ہارڈویئر پتہ:"
+
+#, fuzzy
+#~ msgid "Import a saved VPN configuration…"
+#~ msgstr "وی پی این اتصال برآمد کریں..."
+
+#~ msgid ""
+#~ "The connection editor dialog could not be initialized due to an unknown "
+#~ "error."
+#~ msgstr "نامعلوم غلطی کی بناء پر اتصال مدون ڈائیلاگ تیار نہیں ہوسکا."
+
+#~ msgid "Could not create new connection"
+#~ msgstr "نیا اتصال نہیں بنایا جاسکتا"
+
+#
+#~ msgid "Connection delete failed"
+#~ msgstr "اتصال حذف کرنے میں ناکامی"
+
+#, c-format
+#~ msgid "Are you sure you wish to delete the connection %s?"
+#~ msgstr "کیا آپ واقعی اتصال %s کو حذف کرنا چاہتے ہیں؟"
+
+#, fuzzy
+#~ msgid "_New Connection"
+#~ msgstr "_وی پی این اتصال"
+
+#~ msgid "Address"
+#~ msgstr "پتہ"
+
+#~ msgid "Netmask"
+#~ msgstr "نیٹ ماسک"
+
+#~ msgid "Gateway"
+#~ msgstr "گیٹ وے"
+
+#~ msgid "Metric"
+#~ msgstr "میٹرک"
+
+#~ msgid "Prefix"
+#~ msgstr "پریفکس"
+
+#, c-format
+#~ msgid "Editing %s"
+#~ msgstr "تدوین %s"
+
+#~ msgid "Editing un-named connection"
+#~ msgstr "بغیر-نام کے اتصال کی تدوین"
+
+#, fuzzy
+#~ msgid "Missing connection name"
+#~ msgstr "اتصال کا _نام:"
+
+#, fuzzy
+#~ msgid "Editor initializing…"
+#~ msgstr "مدون کی تیاری میں غلطی"
+
+#
+#, fuzzy
+#~ msgid "Connection cannot be modified"
+#~ msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#, fuzzy
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "اتصال مدون کو کچھ درکار وسائل نہیں مل رہے (گلیڈ glade فائل نہیں ملی)."
+
+#~ msgid "Authenticate to save this connection for all users of this machine."
+#~ msgstr "اس اتصال کو اس مشین کے تمام صارفین کے لیے محفوظ کرنے کی تصدیق."
+
+#, fuzzy
+#~ msgid "Could not create connection"
+#~ msgstr "نیا اتصال نہیں بنایا جاسکتا"
+
+#~ msgid "Could not edit connection"
+#~ msgstr "اتصال مدون نہیں ہوسکتا"
+
+#, fuzzy
+#~ msgid "Unknown error creating connection editor dialog."
+#~ msgstr "اتصال مدون کا ڈائیلاگ بنانے میں غلطی."
+
+#~ msgid "Error initializing editor"
+#~ msgstr "مدون کی تیاری میں غلطی"
+
+#
+#~ msgid "Connection add failed"
+#~ msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#, fuzzy
+#~ msgid "Connection _name"
+#~ msgstr "اتصال کا _نام:"
+
+#, fuzzy
+#~ msgid "_Export…"
+#~ msgstr "برآمد"
+
+#~ msgid "never"
+#~ msgstr "کبھی نہیں"
+
+#~ msgid "now"
+#~ msgstr "ابھی"
+
+#, c-format
+#~ msgid "%d minute ago"
+#~ msgid_plural "%d minutes ago"
+#~ msgstr[0] "%d منٹ پہلے"
+#~ msgstr[1] "%d منٹ پہلے"
+
+#, c-format
+#~ msgid "%d hour ago"
+#~ msgid_plural "%d hours ago"
+#~ msgstr[0] "%d گھنٹہ پہلے"
+#~ msgstr[1] "%d گھنٹے پہلے"
+
+#, c-format
+#~ msgid "%d day ago"
+#~ msgid_plural "%d days ago"
+#~ msgstr[0] "%d دن پہلے"
+#~ msgstr[1] "%d دنوں پہلے"
+
+#, c-format
+#~ msgid "%d month ago"
+#~ msgid_plural "%d months ago"
+#~ msgstr[0] "%d مہینہ پہلے"
+#~ msgstr[1] "%d مہینوں پہلے"
+
+#, c-format
+#~ msgid "%d year ago"
+#~ msgid_plural "%d years ago"
+#~ msgstr[0] "%d سال پہلے"
+#~ msgstr[1] "%d سال پہلے"
+
+#
+#, fuzzy
+#~ msgid "Connection cannot be deleted"
+#~ msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#, fuzzy
+#~ msgid "Select a connection to edit"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "Select a connection to delete"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#~ msgid "Name"
+#~ msgstr "نام"
+
+#~ msgid "Last Used"
+#~ msgstr "آخری استعمال"
+
+#~ msgid "Edit the selected connection"
+#~ msgstr "منتخب کردہ اتصال مدون کریں"
+
+#~ msgid "Authenticate to edit the selected connection"
+#~ msgstr "منتخب کردہ اتصال کی تدوین کی توثیق"
+
+#~ msgid "Delete the selected connection"
+#~ msgstr "منتخب کردہ اتصال حذف کریں"
+
+#~ msgid "Authenticate to delete the selected connection"
+#~ msgstr "منتخب کردہ اتصال کو حذف کرنے کی توثیق"
+
+#, fuzzy
+#~ msgid "Unrecognized connection type"
+#~ msgstr "موبائل براڈ بینڈ اتصال کی نوعیت معاونت شدہ نہیں ہے."
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to import “%s” connections"
+#~ msgstr "نیا اتصال نہیں بنایا جاسکتا"
+
+#, fuzzy
+#~ msgid "Error importing connection"
+#~ msgstr "Fehler beim Abrufen der VPN-Verbindung »%s«"
+
+#, fuzzy
+#~ msgid "Error creating connection"
+#~ msgstr "اتصال مدون کا ڈائیلاگ بنانے میں غلطی."
+
+#
+#, fuzzy
+#~ msgid "Connection type not specified."
+#~ msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to create “%s” connections"
+#~ msgstr "نیا اتصال نہیں بنایا جاسکتا"
+
+#, fuzzy
+#~ msgid "Error editing connection"
+#~ msgstr "Fehler beim Abrufen der VPN-Verbindung »%s«"
+
+#~ msgid "Network Connections"
+#~ msgstr "نیٹ ورک اتصال"
+
+#, fuzzy
+#~ msgid "Add a new connection"
+#~ msgstr "Neue VPN-Verbindung erstellen"
+
+#~ msgid "802.1X Security"
+#~ msgstr "802.1X سیکورٹی"
+
+#, fuzzy
+#~ msgid "Could not load 802.1X Security user interface."
+#~ msgstr "وائی فائی Wi-Fi سیکورٹی صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Use 802.1_X security for this connection"
+#~ msgstr "اس اتصال کے لیے 802.1X سیکورٹی استعمال کریں"
+
+#, fuzzy
+#~ msgid "Could not load Bluetooth user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "_Personal Area Network"
+#~ msgstr "_Am Netzwerk anmelden"
+
+#, fuzzy
+#~ msgid "_Dial-Up Network"
+#~ msgstr "وائیرلیس نیٹ ورک"
+
+#, fuzzy
+#~ msgid "Could not load bond user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "primary"
+#~ msgstr "ابتدائی DNS:"
+
+#, fuzzy, c-format
+#~ msgid "Bond connection %d"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "Could not load bridge port user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Could not load bridge user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy, c-format
+#~ msgid "Bridge connection %d"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "Could not load DCB user interface."
+#~ msgstr "ڈی ایس ایل DSL صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#~ msgid "Could not load DSL user interface."
+#~ msgstr "ڈی ایس ایل DSL صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "missing parent interface"
+#~ msgstr "مواجہ:"
+
+#, c-format
+#~ msgid "DSL connection %d"
+#~ msgstr "ڈی ایس ایل اتصال %d"
+
+#, fuzzy
+#~ msgid "ignored"
+#~ msgstr "نظر انداز کریں"
+
+#, fuzzy
+#~ msgid "Could not load ethernet user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Ethernet device"
+#~ msgstr "ایتھرنیٹ (%s)"
+
+#, fuzzy, c-format
+#~ msgid "Ethernet connection %d"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "Could not load General user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Could not load InfiniBand user interface."
+#~ msgstr "Wi-Fi صارف مواجہ لوڈ نہیں ہوسکتا"
+
+#, fuzzy, c-format
+#~ msgid "InfiniBand connection %d"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "Could not load IP tunnel user interface."
+#~ msgstr "IPv4 صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy, c-format
+#~ msgid "IP tunnel connection %d"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#~ msgid "Automatic (VPN)"
+#~ msgstr "خودکار (VPN)"
+
+#~ msgid "Automatic (VPN) addresses only"
+#~ msgstr "خودکار (VPN) صرف پتے"
+
+#~ msgid "Automatic, addresses only"
+#~ msgstr "خودکار، صرف پتے"
+
+#~ msgid "Automatic (PPPoE)"
+#~ msgstr "خودکار (PPPoE)"
+
+#~ msgid "Automatic (PPPoE) addresses only"
+#~ msgstr "خودکار (PPPoE) صرف پتے"
+
+#~ msgid "Automatic (DHCP)"
+#~ msgstr "خودکار (DHCP)"
+
+#~ msgid "Automatic (DHCP) addresses only"
+#~ msgstr "خودکار (DHCP) صرف پتے"
+
+#~ msgid "Link-Local Only"
+#~ msgstr "صرف لنک-لوکل"
+
+#, fuzzy
+#~ msgid "Additional DNS ser_vers"
+#~ msgstr "_ڈی این ایس سرور:"
+
+#, fuzzy
+#~ msgid "Additional s_earch domains"
+#~ msgstr "_تلاش کے ڈومین:"
+
+#, c-format
+#~ msgid "Editing IPv4 routes for %s"
+#~ msgstr "تدوین IPv4 روٹس برائے %s"
+
+#~ msgid "IPv4 Settings"
+#~ msgstr "IPv4 ترتیبات"
+
+#~ msgid "Could not load IPv4 user interface."
+#~ msgstr "IPv4 صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Automatic, DHCP only"
+#~ msgstr "خودکار (DHCP)"
+
+#, c-format
+#~ msgid "Editing IPv6 routes for %s"
+#~ msgstr "تدوین IPv6 روٹس برائے %s"
+
+#~ msgid "IPv6 Settings"
+#~ msgstr "IPv6 ترتیبات"
+
+#~ msgid "Could not load IPv6 user interface."
+#~ msgstr "IPv6 صارف مواجہ لوڈ نہیں ہوسکتا"
+
+#, fuzzy
+#~ msgid "Could not load MACsec user interface."
+#~ msgstr "ڈی ایس ایل DSL صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy, c-format
+#~ msgid "MACSEC connection %d"
+#~ msgstr "UTMS-Verbindung %d"
+
+#~ msgid "Could not load mobile broadband user interface."
+#~ msgstr "موبائل براڈ بینڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#~ msgid "Unsupported mobile broadband connection type."
+#~ msgstr "موبائل براڈ بینڈ اتصال کی نوعیت معاونت شدہ نہیں ہے."
+
+#~ msgid "Select Mobile Broadband Provider Type"
+#~ msgstr "موبائل براڈ بینڈ فراہم کُنندہ کی نوعیت منتخب کریں"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the technology your mobile broadband provider uses. If you are "
+#~ "unsure, ask your provider."
+#~ msgstr ""
+#~ "وہ ٹیکنالوجی منتخب کریں جو آپ کا موبائل براڈ بینڈ فراہم کُنندہ استعمال "
+#~ "کرتا ہے. اگر آپ پُر یقین نہیں ہیں، اپنے فراہم کُنندہ سے رابطہ کریں."
+
+#~ msgid ""
+#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgstr ""
+#~ "میرا فراہم کُنندہ _جی ایس ایم پر مبنی ٹیکنالوجی استعمال کرتا ہے (جیسے "
+#~ "GPRS, EDGE, UMTS, HSDPA)"
+
+#~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
+#~ msgstr ""
+#~ "میرا فراہم کُنندہ سی ڈی ایم اے پر مبنی ٹیکنالوجی استعمال کرتا ہے (جیسے "
+#~ "1xRTT, EVDO)"
+
+#~ msgid "PAP"
+#~ msgstr "PAP"
+
+#~ msgid "CHAP"
+#~ msgstr "CHAP"
+
+#~ msgid "MSCHAPv2"
+#~ msgstr "MSCHAPv2"
+
+#~ msgid "MSCHAP"
+#~ msgstr "MSCHAP"
+
+#~ msgid "none"
+#~ msgstr "کچھ نہیں"
+
+#, c-format
+#~ msgid "Editing PPP authentication methods for %s"
+#~ msgstr "تدوین PPP توثیقی اسلوب برائے %s"
+
+#~ msgid "PPP Settings"
+#~ msgstr "PPP ترتیبات"
+
+#~ msgid "Could not load PPP user interface."
+#~ msgstr "پی پی پی PPP صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Could not load proxy user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Could not load team port user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy
+#~ msgid "Could not load team user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy, c-format
+#~ msgid "Team connection %d"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "New connection…"
+#~ msgstr "کوئی نیٹ ورک اتصال نہیں"
+
+#, fuzzy
+#~ msgid "Could not load vlan user interface."
+#~ msgstr "IPv4 صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy, c-format
+#~ msgid "VLAN connection %d"
+#~ msgstr "وی پی این اتصال %d"
+
+#, fuzzy, c-format
+#~ msgid "Could not load editor VPN plugin for “%s” (%s)."
+#~ msgstr "'%s' کے لیے وی پی این پلگ ان سروس نہیں پائی گئی."
+
+#
+#, fuzzy
+#~ msgid "unknown failure"
+#~ msgstr "اتصال کا اضافہ ناکام ہوگیا"
+
+#, fuzzy
+#~ msgid "Could not load VPN user interface."
+#~ msgstr "پی پی پی PPP صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy, c-format
+#~ msgid "Could not find VPN plugin for “%s”."
+#~ msgstr "'%s' کے لیے وی پی این پلگ ان سروس نہیں پائی گئی."
+
+#, c-format
+#~ msgid "VPN connection %d"
+#~ msgstr "وی پی این اتصال %d"
+
+#, fuzzy
+#~ msgid "Choose a VPN Connection Type"
+#~ msgstr "Neue VPN-Verbindungen erstellen - 1 von 2"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of VPN you wish to use for the new connection. If the "
+#~ "type of VPN connection you wish to create does not appear in the list, "
+#~ "you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">وی پی این VPN اتصال کی نوعیت منتخب "
+#~ "کریں</span>\n"
+#~ "\n"
+#~ "نئے اتصال کے لیے وی پی این کی نوعیت منتخب کریں.  اگر جو اتصال آپ بنانا "
+#~ "چاہیں فہرست میں موجود نہ ہو تو ممکنہ طور پر آپ کے پاس درست وی پی این پلگ "
+#~ "ان نصب نہیں ہے."
+
+#, fuzzy
+#~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
+#~ msgstr "WEP 64/128-bit ASCII"
+
+#~ msgid "WEP 128-bit Passphrase"
+#~ msgstr "WEP 128-bit Passphrase"
+
+#~ msgid "Dynamic WEP (802.1X)"
+#~ msgstr "حرکی WEP (802.1X)"
+
+#~ msgid "WPA & WPA2 Personal"
+#~ msgstr "WPA & WPA2 ذاتی"
+
+#~ msgid "WPA & WPA2 Enterprise"
+#~ msgstr "WPA & WPA2 انٹرپرائز"
+
+#, fuzzy
+#~ msgid "WPA3 Personal"
+#~ msgstr "WPA & WPA2 ذاتی"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
+#~ msgstr ""
+#~ "وائی فائی Wi-Fi سیکورٹی صارف مواجہ لوڈ نہیں ہوسکتا، Wi-Fi ترتیاب مفقود ہے."
+
+#, fuzzy
+#~ msgid "Wi-Fi Security"
+#~ msgstr "وائیرلیس سیکورٹی"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface."
+#~ msgstr "وائی فائی Wi-Fi سیکورٹی صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, c-format
+#~ msgid "%u (%u MHz)"
+#~ msgstr "%u (%u MHz)"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi user interface."
+#~ msgstr "Wi-Fi صارف مواجہ لوڈ نہیں ہوسکتا"
+
+#, fuzzy
+#~ msgid "Wi-Fi device"
+#~ msgstr "کوئی بھی ڈیوائس"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi connection %d"
+#~ msgstr "وائیرڈ اتصال %d"
+
+#, fuzzy
+#~ msgid "Allowed IPs"
+#~ msgstr "مجاز اسلوب:"
+
+#, fuzzy
+#~ msgid "Could not load WireGuard user interface."
+#~ msgstr "وائیرڈ صارف مواجہ لوڈ نہیں ہوسکتا."
+
+#, fuzzy, c-format
+#~ msgid "WireGuard connection %d"
+#~ msgstr "وائیرلیس اتصال %d"
+
+#, fuzzy, c-format
+#~ msgid "A file named “%s” already exists."
+#~ msgstr "فائل \"%s\" پہلے ہی موجود ہے."
+
+#~ msgid "_Replace"
+#~ msgstr "_بدل دیں"
+
+#, c-format
+#~ msgid "Do you want to replace %s with the VPN connection you are saving?"
+#~ msgstr ""
+#~ "کیا آپ %s کو اس وی پی این اتصال سے بدلنا چاہتے ہیں جسے آپ محفوظ کرنے "
+#~ "جارہے ہیں؟"
+
+#~ msgid "Cannot export VPN connection"
+#~ msgstr "وی پی این اتصال برآمد نہیں ہوسکتا"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The VPN connection “%s” could not be exported to %s.\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "وی پی این اتصال '%s' برآمد نہیں کیا جاسکتا تا %s\n"
+#~ "\n"
+#~ "غلطی: %s."
+
+#, fuzzy
+#~ msgid "Export VPN connection…"
+#~ msgstr "وی پی این اتصال برآمد کریں..."
+
+#~ msgid "Usage:"
+#~ msgstr "استعمال:"
+
+#~ msgid ""
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+#~ msgstr ""
+#~ "یہ اطلاقیہ نیٹ ورک منیجر کا ایک جُز ہے (https://wiki.gnome.org/Projects/"
+#~ "NetworkManager/)."
+
+#~ msgid ""
+#~ "It is not intended for command-line interaction but instead runs in the "
+#~ "GNOME desktop environment."
+#~ msgstr ""
+#~ "اسے کمانڈ لائن تعامل میں چلانا مقصود نہیں، اس کے برعکس یہ گنوم ڈیسک ٹاپ "
+#~ "ماحول میں چلانے کے لیے ہے."
+
+#~ msgid "GTC"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "Anonymous"
+#~ msgstr "_نامعلوم پہچان:"
+
+#, fuzzy
+#~ msgid "Authenticated"
+#~ msgstr "_توثیق:"
+
+#, fuzzy
+#~ msgid "Anony_mous identity"
+#~ msgstr "_نامعلوم پہچان:"
+
+#, fuzzy
+#~ msgid "_Inner authentication"
+#~ msgstr "داخلی توثیق:"
+
+#~ msgid "MD5"
+#~ msgstr "MD5"
+
+#, fuzzy
+#~ msgid "No CA certificate is _required"
+#~ msgstr "CA _سند:"
+
+#, fuzzy
+#~ msgid "PEAP _version"
+#~ msgstr "_PEAP نسخہ:"
+
+#, fuzzy
+#~ msgid "P_rivate Key Passphrase"
+#~ msgstr "_Passwort:"
+
+#, fuzzy
+#~ msgid "Sh_ow passphrase"
+#~ msgstr "Passphrase anzeigen"
+
+#, fuzzy
+#~ msgid "no user certificate selected"
+#~ msgstr "CA _سند:"
+
+#, fuzzy
+#~ msgid "I_dentity"
+#~ msgstr "شناخت:"
+
+#, fuzzy
+#~ msgid "MSCHAPv2 (no EAP)"
+#~ msgstr "MSCHAPv2"
+
+#, fuzzy
+#~ msgid "no CA certificate selected"
+#~ msgstr "CA _سند:"
+
+#~ msgid "TLS"
+#~ msgstr "TLS"
+
+#~ msgid "Tunneled TLS"
+#~ msgstr "Tunneled TLS"
+
+#~ msgid "Protected EAP (PEAP)"
+#~ msgstr "محفوظ EAP (PEAP)"
+
+#, fuzzy
+#~ msgid "Au_thentication"
+#~ msgstr "_توثیق:"
+
+#, fuzzy
+#~ msgid "missing password"
+#~ msgstr "_نجی کلید پاس ورڈ:"
+
+#, fuzzy
+#~ msgid "_Type"
+#~ msgstr "_نوعیت:"
+
+#~ msgid "Open System"
+#~ msgstr "Offenes System"
+
+#, fuzzy
+#~ msgid "1 (Default)"
+#~ msgstr ""
+#~ "1 (طے-شدہ)\n"
+#~ "2\n"
+#~ "3\n"
+#~ "4"
+
+#, fuzzy
+#~ msgid "_Key"
+#~ msgstr "_کلید:"
+
+#, fuzzy
+#~ msgid "WEP inde_x"
+#~ msgstr "WEP inde_x:"
+
+#~ msgid "Disable connected notifications"
+#~ msgstr "متصل اطلاعات کو معطل کریں"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to a network."
+#~ msgstr ""
+#~ "نیٹ ورک سے اتصال کے دوران اطلاعات کو معطل کرنے کے لیے اسے TRUE کردیں."
+
+#~ msgid "Disable disconnected notifications"
+#~ msgstr "غیر متصل اطلاعات کو معطل کریں"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when disconnecting from a "
+#~ "network."
+#~ msgstr ""
+#~ "نیٹ ورک سے اتصال منقطع کرنے کے دوران اطلاعات کو معطل کرنے کے لیے اسے TRUE "
+#~ "کردیں."
+
+#, fuzzy
+#~ msgid "Disable VPN notifications"
+#~ msgstr "متصل اطلاعات کو معطل کریں"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to or "
+#~ "disconnecting from a VPN."
+#~ msgstr ""
+#~ "نیٹ ورک سے اتصال منقطع کرنے کے دوران اطلاعات کو معطل کرنے کے لیے اسے TRUE "
+#~ "کردیں."
+
+#~ msgid "Suppress networks available notifications"
+#~ msgstr "زیریں نیٹ ورکس دستیابی اطلاعات"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when Wi-Fi networks are "
+#~ "available."
+#~ msgstr ""
+#~ "وائیرلیس نیٹ ورک کی دستیابی پر اطلاعات کو معطل کرنے کے لیے اسے TRUE کردیں."
+
+#~ msgid "Stamp"
+#~ msgstr "مہر"
+
+#~ msgid ""
+#~ "Used to determine whether settings should be migrated to a new version."
+#~ msgstr ""
+#~ "یہ جاننے کے لیے استعمال ہوتا ہے کہ آیا ترتیبات نئے نسخے پر منتقل کی جانی "
+#~ "چاہئیں یا نہیں."
+
+#, fuzzy
+#~ msgid "Disable WiFi Create"
+#~ msgstr "Wi-Fi کو بنانا معطل کریں"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set to true to disable creation of adhoc networks when using the applet."
+#~ msgstr ""
+#~ "ایپلیٹ کے استعمال کے دوران adhoc نیٹ ورک کو بننے سے روکنے کے لیے اسے TRUE "
+#~ "کردیں."
+
+#, fuzzy
+#~ msgid "Ignore CA certificate"
+#~ msgstr "CA سند منتخب کریں"
+
+#, fuzzy
+#~ msgid "No certificate set"
+#~ msgstr "CA _سند:"
+
+#, fuzzy, c-format
+#~ msgid "Choose a key for %s Certificate"
+#~ msgstr "اپنی ذاتی سند منتخب کریں..."
+
+#, fuzzy, c-format
+#~ msgid "%s key _password"
+#~ msgstr "_نجی کلید پاس ورڈ:"
+
+#, fuzzy, c-format
+#~ msgid "Choose %s Certificate"
+#~ msgstr "اپنی ذاتی سند منتخب کریں..."
+
+#, fuzzy, c-format
+#~ msgid "%s _certificate"
+#~ msgstr "_صارف سند:"
+
+#~ msgid "Unlisted"
+#~ msgstr "غیر درج شدہ"
+
+#, fuzzy
+#~ msgid "My plan is not listed…"
+#~ msgstr "میرا پلان درجِ فہرست نہیں ہے..."
+
+#~ msgid "Provider"
+#~ msgstr "فراہم کُنندہ"
+
+#~ msgid "Installed GSM device"
+#~ msgstr "نصب شدہ GSM ڈیوائس"
+
+#~ msgid "Installed CDMA device"
+#~ msgstr "نصب شدہ CDMA ڈیوائس"
+
+#~ msgid "Any device"
+#~ msgstr "کوئی بھی ڈیوائس"
+
+#~ msgid "New Mobile Broadband Connection"
+#~ msgstr "نیا موبائل براڈ بینڈ اتصال"
+
+#~ msgid ""
+#~ "This assistant helps you easily set up a mobile broadband connection to a "
+#~ "cellular (3G) network."
+#~ msgstr ""
+#~ "یہ مددگار سیلولر (3G) نیٹ ورک سے موبائل براڈ بینڈ اتصال مرتب کرنے میں آپ "
+#~ "کی مدد کرے گا."
+
+#~ msgid "You will need the following information:"
+#~ msgstr "آپ کو ذیل کی معلومات درکار ہوں گی:"
+
+#, fuzzy
+#~ msgid "Your broadband provider’s name"
+#~ msgstr "آپ کے براڈ بینڈ فراہم کُنندہ کا نام"
+
+#~ msgid "Your broadband billing plan name"
+#~ msgstr "آپ کے فراہم کُنندہ کے بِلِنگ پلان کا نام"
+
+#~ msgid "(in some cases) Your broadband billing plan APN (Access Point Name)"
+#~ msgstr "(کچھ صورتوں میں) آپ کا براڈ بینڈ بِلِنگ پلان APN (Access Point Name)"
+
+#~ msgid "Create a connection for _this mobile broadband device:"
+#~ msgstr "ا_س موبائل براڈ بینڈ ڈیوائس کے لیے اتصال بنائیں:"
+
+#~ msgid "Set up a Mobile Broadband Connection"
+#~ msgstr "موبائل براڈ بینڈ اتصال مرتب کریں"
+
+#, fuzzy
+#~ msgid "Country or region:"
+#~ msgstr "ممالک فہرست:"
+
+#, fuzzy
+#~ msgid "Choose your Provider’s Country or Region"
+#~ msgstr "اپنے فراہم کُنندہ کا ملک منتخب کریں"
+
+#~ msgid "Select your provider from a _list:"
+#~ msgstr "اپنا فراہم کُنندہ _فہرست میں سے منتخب کریں:"
+
+#, fuzzy
+#~ msgid ""
+#~ "I can’t find my provider and I wish to set up the connection _manually:"
+#~ msgstr ""
+#~ "میں اپنا فراہم کُنندہ تلاش نہیں کر سکا چنانچہ میں اسے _دستی طور پر شامل "
+#~ "کرنا چاہتا ہوں:"
+
+#~ msgid "My provider uses GSM technology (GPRS, EDGE, UMTS, HSPA)"
+#~ msgstr ""
+#~ "میرا فراہم کُنندہ GSM ٹیکنالوجی استعمال کرتا ہے (GPRS, EDGE, UMTS, HSPA)"
+
+#~ msgid "My provider uses CDMA technology (1xRTT, EVDO)"
+#~ msgstr "میرا فراہم کُنندہ CDMA ٹیکنالوجی استعمال کرتا ہے (1xRTT, EVDO)"
+
+#~ msgid "Choose your Provider"
+#~ msgstr "اپنا فراہم کُنندہ منتخب کریں"
+
+#~ msgid "_Select your plan:"
+#~ msgstr "اپنا پلان _منتخب کریں:"
+
+#~ msgid "Selected plan _APN (Access Point Name):"
+#~ msgstr "منتخب کردہ پلان _APN (Access Point Name):"
+
+#, fuzzy
+#~ msgid ""
+#~ "Warning: Selecting an incorrect plan may result in billing issues for "
+#~ "your broadband account or may prevent connectivity.\n"
+#~ "\n"
+#~ "If you are unsure of your plan please ask your provider for your plan’s "
+#~ "APN."
+#~ msgstr ""
+#~ "انتباہ: غلط پلان کے انتخاب سے آپ کے براڈ بینڈ اتصال سے بِلِنگ کے مسائل پیدا "
+#~ "ہوسکتے ہیں یا ممکنہ طور پر آپ کی متصلی بند کی جاسکتی ہے\n"
+#~ "\n"
+#~ "اگر آپ اپنے پلان کے حوالے سے تذبذب کا شکار ہیں تو اپنے فراہم کُنندہ سے "
+#~ "اپنے پلان کے APN کے لیے کہیں."
+
+#~ msgid "Choose your Billing Plan"
+#~ msgstr "اپنا بِلِنگ پلان منتخب کریں"
+
+#~ msgid ""
+#~ "Your mobile broadband connection is configured with the following "
+#~ "settings:"
+#~ msgstr ""
+#~ "آپ کا موبائل براڈ بینڈ اتصال مندرجہ ذیل ترتیبات کے ساتھ وضع کیا گیا ہے:"
+
+#~ msgid "Your Device:"
+#~ msgstr "آپ کی ڈیوائس:"
+
+#~ msgid "Your Provider:"
+#~ msgstr "آپ کا فراہم کُنندہ:"
+
+#~ msgid "Your Plan:"
+#~ msgstr "آپ کا پلان:"
+
+#, fuzzy
+#~ msgid ""
+#~ "A connection will now be made to your mobile broadband provider using the "
+#~ "settings you selected. If the connection fails or you cannot access "
+#~ "network resources, double-check your settings. To modify your mobile "
+#~ "broadband connection settings, choose “Network Connections” from the "
+#~ "System → Preferences menu."
+#~ msgstr ""
+#~ "اب آپ کی منتخب کردہ ترتیبات کو استعمال کرتے ہوئے آپ کے براڈ بینڈ فراہم "
+#~ "کُنندہ سے اتصال قائم کیا جائے گا. اگر تصال ناکام ہوجائے یا آپ نیٹ ورک "
+#~ "وسائل تک رسائی حاصل نہ کرسکیں تو اپنی ترتیبات دوبارہ چیک کریں. اپنے "
+#~ "موبائل براڈ بینڈ اتصال میں تبدیلی کے لیے نظام >> ترجیحات کی فہرست سے "
+#~ "\"نیٹ ورک اتصال\" منتخب کریں."
+
+#~ msgid "Confirm Mobile Broadband Settings"
+#~ msgstr "موبائل براڈ بینڈ کی ترتیبات کی تصدیق کریں"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "(کچھ نہیں)"
+
+#, fuzzy, c-format
+#~ msgid "Certificate in %s"
+#~ msgstr "CA _سند:"
+
+#, fuzzy
+#~ msgid "(Unknown)"
+#~ msgstr "نامعلوم"
+
+#, fuzzy
+#~ msgid "Select"
+#~ msgstr "فائل منتخب کریں"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "gtk-cancel"
+
+#, fuzzy
+#~ msgid "Select from file…"
+#~ msgstr "فائل منتخب کریں"
+
+#, fuzzy, c-format
+#~ msgid "Choose a %s Certificate"
+#~ msgstr "اپنی ذاتی سند منتخب کریں..."
+
+#, fuzzy, c-format
+#~ msgid "%s certificate _password"
+#~ msgstr "_صارف سند:"
+
+#, fuzzy
+#~ msgid "Error opening a session: "
+#~ msgstr "Fehler beim Abrufen der VPN-Verbindung »%s«"
+
+#, fuzzy
+#~ msgid "The password is not required"
+#~ msgstr "نیٹ ورک '%s' سے اتصال قائم کرنے کے لیے پاس ورڈ درکار ہے."
+
+#, fuzzy
+#~ msgid "Sh_ow passwords"
+#~ msgstr "پاس ورڈ _دکھائیں"
+
+#, fuzzy
+#~ msgid "_Tertiary Password:"
+#~ msgstr "_پاس ورڈ:"
+
+#, fuzzy
+#~ msgid "_Secondary Password:"
+#~ msgstr "_پاس ورڈ:"
+
+#~ msgid "_Password:"
+#~ msgstr "_پاس ورڈ:"
+
+#, fuzzy
+#~ msgid "Click to connect"
+#~ msgstr "Verbindung konnte nicht verschoben werden"
+
+#, fuzzy
+#~ msgctxt "Wifi/wired security"
+#~ msgid "None"
+#~ msgstr "کچھ نہیں"
+
+#, fuzzy
+#~ msgid "Dynamic WEP (802.1x)"
+#~ msgstr "حرکی WEP (802.1X)"
+
+#~ msgid "C_reate"
+#~ msgstr "_بنائیں"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Passwords or encryption keys are required to access the Wi-Fi network "
+#~ "“%s”."
+#~ msgstr ""
+#~ "وائیرلیس نیٹ ورک '%s' تک رسائی کے لیے پاس ورڈ یا ترمیزی کلیدیں درکار ہیں."
+
+#, fuzzy
+#~ msgid "Wi-Fi Network Authentication Required"
+#~ msgstr "وائیرلیس نیٹ ورک توثیق درکار"
+
+#, fuzzy
+#~ msgid "Authentication required by Wi-Fi network"
+#~ msgstr "توثیق درکار از وائیرلیس نیٹ ورک"
+
+#, fuzzy
+#~ msgid "Create New Wi-Fi Network"
+#~ msgstr "نیا وائیرلیس نیٹ ورک بنائیں"
+
+#, fuzzy
+#~ msgid "New Wi-Fi network"
+#~ msgstr "نیا وائیرلیس نیٹ ورک"
+
+#, fuzzy
+#~ msgid "Enter a name for the Wi-Fi network you wish to create."
+#~ msgstr "نئے وائیرلیس نیٹ ورک کا نام لکھیں جو آپ بنانا چاہتے ہیں."
+
+#, fuzzy
+#~ msgid "Connect to Hidden Wi-Fi Network"
+#~ msgstr "پوشیدہ وائیرلیس نیٹ ورک سے اتصال قائم کریں"
+
+#, fuzzy
+#~ msgid "Hidden Wi-Fi network"
+#~ msgstr "پوشیدہ وائیرلیس نیٹ ورک"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter the name and security details of the hidden Wi-Fi network you wish "
+#~ "to connect to."
+#~ msgstr ""
+#~ "اس پوشیدہ وائیرلیس نیٹ ورک کا نام اور سیکورٹی تفصیلات داخل کریں جس سے آپ "
+#~ "متصل ہونے چاہتے ہیں."
+
+#, fuzzy
+#~ msgid "Wi-Fi _security"
+#~ msgstr "_وائیرلیس سیکورٹی:"
+
+#, fuzzy
+#~ msgid "C_onnection"
+#~ msgstr "ا_تصال:"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter"
+#~ msgstr "وائیرلیس ا_ڈاپٹر:"
+
+#, fuzzy
+#~ msgid "I can’t find my provider and I wish to enter it _manually:"
+#~ msgstr ""
+#~ "میں اپنا فراہم کُنندہ تلاش نہیں کر سکا چنانچہ میں اسے _دستی طور پر شامل "
+#~ "کرنا چاہتا ہوں:"
+
+#~ msgid "Provider:"
+#~ msgstr "فراہم کُنندہ:"
+
+#, fuzzy
+#~ msgid "Country or Region List:"
+#~ msgstr "ممالک فہرست:"
+
+#, fuzzy
+#~ msgid "Country or region"
+#~ msgstr "ممالک فہرست:"
+
+#, fuzzy
+#~ msgid "Wi-Fi _security:"
+#~ msgstr "_وائیرلیس سیکورٹی:"
+
+#~ msgid "_Network name:"
+#~ msgstr "_نیٹ ورک کا نام:"
+
+#~ msgid "C_onnection:"
+#~ msgstr "ا_تصال:"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter:"
+#~ msgstr "وائیرلیس ا_ڈاپٹر:"
+
+#, fuzzy
+#~ msgid "%s (default)"
+#~ msgstr "طے شدہ"
+
+#, fuzzy
+#~ msgid "Ignored"
+#~ msgstr "نظر انداز کریں"
+
+#~ msgid "Failed to update connection secrets due to an unknown error."
+#~ msgstr "نا معلوم غلطی کی وجہ سے اتصال کے سیکرٹس کی تجدید نہیں ہوسکتی."
+
+#, fuzzy
+#~ msgid "Connection _priority for auto-activation:"
+#~ msgstr "اتصال کی _معلومات"
+
+#~ msgid "DSL"
+#~ msgstr "DSL"
+
+#~ msgid "Cannot import VPN connection"
+#~ msgstr "وی پی این اتصال درآمد نہیں ہوسکتا"
+
+#, fuzzy
+#~ msgid ""
+#~ "The file “%s” could not be read or does not contain recognized VPN "
+#~ "connection information\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "فائل '%s' نہیں پڑھی جاسکتی یا اس میں جانی پہچانی وی پی این اتصال کی "
+#~ "معلومات نہیں ہیں\n"
+#~ "\n"
+#~ "غلطی: %s."
+
+#, fuzzy
+#~ msgid "unknown error"
+#~ msgstr "نامعلوم غلطی ہوئی ہے."
+
+#, fuzzy
+#~ msgid "Active Network Connections"
+#~ msgstr "نیٹ ورک اتصال"
+
+#, fuzzy
+#~ msgid "Choose a Certificate Authority certificate"
+#~ msgstr "سند اتھارٹی سند منتخب کریں..."
+
+#~ msgid "C_A certificate:"
+#~ msgstr "CA _سند:"
+
+#, fuzzy
+#~ msgid "NetworkManager for GNOME"
+#~ msgstr "نیٹ ورک منیجر"
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected because the VPN service stopped."
+#~ msgstr ""
+#~ "\n"
+#~ "وی پی این اتصال '%s' منقطع کردیا گیا کیونکہ وی پی این سروس رک گئی ہے."
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected."
+#~ msgstr ""
+#~ "\n"
+#~ "وی پی این اتصال '%s' منقطع کردیا گیا."
+
+#, fuzzy
+#~ msgid "_Disconnect VPN"
+#~ msgstr "وی پی این _منقطع کریں..."
+
+#~ msgid "NetworkManager is not running..."
+#~ msgstr "نیٹ ورک منیجر نہیں چل رہا..."
+
+#, fuzzy
+#~ msgid "New Mobile Broadband connection..."
+#~ msgstr "نیا موبائل براڈ بینڈ اتصال"
+
+#, fuzzy
+#~ msgid "_Connect to Hidden Wi-Fi Network..."
+#~ msgstr "پوشیدہ وائیرلیس نیٹ ورک سے _متصل ہوں..."
+
+#, fuzzy
+#~ msgid "Create _New Wi-Fi Network..."
+#~ msgstr "_نیا وائیرلیس نیٹ ورک بنائیں..."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Aut_onegotiate"
+#~ msgstr "خودکار-فیصلہ"
+
+#, fuzzy
+#~ msgid "FirewallD is not running."
+#~ msgstr "نیٹ ورک منیجر نہیں چل رہا..."
+
+#~ msgid "New..."
+#~ msgstr "نیا..."
+
+#, fuzzy
+#~ msgid "invalid EAP-TLS CA certificate: %s"
+#~ msgstr "CA _سند:"
+
+#~ msgid "Unencrypted private keys are insecure"
+#~ msgstr "غیر رمز شدہ نجی کلیدیں غیر محفوظ ہیں"
+
+#~ msgid ""
+#~ "The selected private key does not appear to be protected by a password.  "
+#~ "This could allow your security credentials to be compromised.  Please "
+#~ "select a password-protected private key.\n"
+#~ "\n"
+#~ "(You can password-protect your private key with openssl)"
+#~ msgstr ""
+#~ "معلوم ہوتا ہے کہ منتخب کردہ نجی کلید پاس ورد سے محفظ نہیں ہے. یہ آپ کی "
+#~ "حفاظت کے لیے خطرناک ثابت ہوسکتا ہے. براہ مہربانی پاس ورڈ سے محفوظ کردہ "
+#~ "نجی کلید منتخب کریں.\n"
+#~ "\n"
+#~ "(آپ openssl کے ذریعے اپنی نجی کلید کو پاس ورڈ سے محفوظ بنا سکتے ہیں)"
+
+#~ msgid "Choose your private key..."
+#~ msgstr "اپنی نجی کلید منتخب کریں..."
+
+#~ msgid "An instance of nm-applet is already running.\n"
+#~ msgstr "ایک nm-applet پہلے ہی چل رہا ہے.\n"
+
+#~ msgid "Could not acquire the %s service. (%d)\n"
+#~ msgstr "سروس %s حاصل نہیں کی جاسکتی. (%d)\n"
+
+#~ msgid "New Mobile Broadband (CDMA) connection..."
+#~ msgstr "نیا موبائل براڈ بینڈ (CDMA) اتصال..."
+
+#~ msgid "You are now connected to the CDMA network."
+#~ msgstr "اب آپ CDMA نیٹ ورک سے متصل ہیں."
+
+#~ msgid "New Mobile Broadband (GSM) connection..."
+#~ msgstr "نیا موبائل براڈ بینڈ (GSM) اتصال..."
+
+#~ msgid "You are now connected to the GSM network."
+#~ msgstr "اب آپ جی ایس ایم (GSM) نیٹ ورک سے متصل ہیں."
+
+#~ msgid "PUK code is needed for the mobile broadband device"
+#~ msgstr "موبائل براڈ بینڈ ڈیوائس کے لیے پَک PUK کوڈ درکار ہے"
+
+#~ msgid "Wireless Networks (%s)"
+#~ msgstr "وائیرلیس نیٹ ورکس (%s)"
+
+#~ msgid "Wireless Network (%s)"
+#~ msgstr "وائیرلیس نیٹ ورک (%s)"
+
+#~ msgid "Configuring wireless network connection '%s'..."
+#~ msgstr "وائیرلیس نیٹ ورک اتصال '%s' وضع کیا جارہا ہے..."
+
+#~ msgid "Requesting a wireless network address for '%s'..."
+#~ msgstr "وائیرلیس نیٹ ورک پتہ کی درخواست برائے '%s' بھیجی جارہی ہے..."
+
+#~ msgid "Wireless network connection '%s' active"
+#~ msgstr "وائیرلیس نیٹ ورک اتصال '%s' فعال ہے"
+
+#~ msgid "_Help"
+#~ msgstr "_ہدایات"
+
+#~ msgid ""
+#~ "The NetworkManager applet could not find some required resources.  It "
+#~ "cannot continue.\n"
+#~ msgstr ""
+#~ "نیٹ ورک منیجر ایپلیٹ کچھ درکار وسائل تلاش نہیں کر پا رہا. یہ جاری نہیں رہ "
+#~ "سکتا.\n"
+
+#~ msgid ""
+#~ "<span size=\"larger\" weight=\"bold\">Active Network Connections</span>"
+#~ msgstr "<span size=\"larger\" weight=\"bold\">فعال نیٹ ورک اتصال</span>"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Version 0\n"
+#~ "Version 1"
+#~ msgstr ""
+#~ "خودکار\n"
+#~ "نسخہ 0\n"
+#~ "نسخہ 1"
+
+#~ msgid "Don't _warn me again"
+#~ msgstr "مجھے دوبارہ _متنبہ مت کریں"
+
+#~ msgid ""
+#~ "Open System\n"
+#~ "Shared Key"
+#~ msgstr ""
+#~ "کھلا نظام\n"
+#~ "شیئرڈ کلید"
+
+#~ msgid "Other Wireless Network..."
+#~ msgstr "دوسرے وائیرلیس نیٹ ورک..."
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Automatic with manual DNS settings\n"
+#~ "Manual\n"
+#~ "Link-Local\n"
+#~ "Shared to other computers"
+#~ msgstr ""
+#~ "خودکار\n"
+#~ "خودکار بمع دستی DNS ترتیبات\n"
+#~ "دستی\n"
+#~ "ربط-لوکلl\n"
+#~ "دوسرے کمپیوٹروں سے شیئر کردہ"
+
+#~ msgid "_Routes&#x2026;"
+#~ msgstr "_روٹس&#x2026;"
+
+#~ msgid "<b>Basic</b>"
+#~ msgstr "<b>بنیادی</b>"
+
+#~ msgid ""
+#~ "Any\n"
+#~ "3G (UMTS/HSPA)\n"
+#~ "2G (GPRS/EDGE)\n"
+#~ "Prefer 3G (UMTS/HSPA)\n"
+#~ "Prefer 2G (GPRS/EDGE)"
+#~ msgstr ""
+#~ "کوئی\n"
+#~ "3G (UMTS/HSPA)\n"
+#~ "2G (GPRS/EDGE)\n"
+#~ "ترجیحاً 3G (UMTS/HSPA)\n"
+#~ "ترجیحاً 2G (GPRS/EDGE)"
+
+#~ msgid "PI_N:"
+#~ msgstr "PI_N:"
+
+#~ msgid "_Band:"
+#~ msgstr "_بینڈ:"
+
+#~ msgid "<b>Authentication</b>"
+#~ msgstr "<b>توثیق</b>"
+
+#~ msgid "<b>Echo</b>"
+#~ msgstr "<b>ایکو</b>"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "10 Mb/s\n"
+#~ "100 Mb/s\n"
+#~ "1 Gb/s\n"
+#~ "10 Gb/s"
+#~ msgstr ""
+#~ "خودکار\n"
+#~ "10 م.ب/س\n"
+#~ "100 م.ب/س\n"
+#~ "1 گ.ب/س\n"
+#~ "10 گ.ب/س"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Twisted Pair (TP)\n"
+#~ "Attachment Unit Interface (AUI)\n"
+#~ "BNC\n"
+#~ "Media Independent Interface (MII)"
+#~ msgstr ""
+#~ "خودکار\n"
+#~ "گتھے ہوئے پیئر (TP)\n"
+#~ "منسلکاتی اکائی مواجہ (AUI)\n"
+#~ "BNC\n"
+#~ "میڈیا مستقل مواجہ (MII)"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "A (5 GHz)\n"
+#~ "B/G (2.4 GHz)"
+#~ msgstr ""
+#~ "خودکار\n"
+#~ "A (5 GHz)\n"
+#~ "B/G (2.4 GHz)"
+
+#~ msgid ""
+#~ "Infrastructure\n"
+#~ "Ad-hoc"
+#~ msgstr ""
+#~ "ڈھانچہ\n"
+#~ "Ad-hoc"
+
+#~ msgid "_SSID:"
+#~ msgstr "_SSID:"
+
+#~ msgid "Automatic (PPP)"
+#~ msgstr "خودکار (PPP)"
+
+#~ msgid "Automatic (PPP) addresses only"
+#~ msgstr "خودکار (PPP) صرف پتے"
+
+#~ msgid "Wireless"
+#~ msgstr "وائیرلیس"
+
+#~ msgid "WEP 40/128-bit Key"
+#~ msgstr "WEP 40/128-bit Key"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the "
+#~ "NetworkManager applet glade file was not found)."
+#~ msgstr ""
+#~ "اتصال مدون کو کچھ درکار وسائل نہیں مل رہے (نیٹ ورک منیجر ایپلیٹ کی گلیڈ "
+#~ "glade فائل نہیں پائی گئی)."
+
+#~ msgid "Save this connection for all users of this machine."
+#~ msgstr "اس مشین کے تمام صارفین کے لیے یہ اتصال محفوظ کریں."
+
+#~ msgid "Apply..."
+#~ msgstr "اطلاق..."
+
+#~ msgid "A_vailable to all users"
+#~ msgstr "دستیاب برائے تمام صارفین"
+
+#~ msgid "Error editing connection: property '%s' / '%s' invalid: %d"
+#~ msgstr "اتصال کی تدوین میں غلطی: خصوصیت '%s' / '%s' ناموزوں: %d"
+
+#~ msgid "Could not edit imported connection"
+#~ msgstr "درآمد کردہ اتصال مدون نہیں ہوسکتے"
+
+#~ msgid "Edit..."
+#~ msgstr "تدوین..."
+
+#~ msgid "Delete..."
+#~ msgstr "حذف..."
+
+#~ msgid "Access the Internet using your mobile phone"
+#~ msgstr "اپنے موبائل فون سے انٹرنیٹ تک رسائی حاصل کریں"
+
+#~ msgid "Country"
+#~ msgstr "ملک"
+
+#~ msgid "Cannot start VPN connection '%s'"
+#~ msgstr "وی پی این اتصال '%s' شروع نہیں کیا جاسکا"
+
+#~ msgid ""
+#~ "Could not find the authentication dialog for VPN connection type '%s'. "
+#~ "Contact your system administrator."
+#~ msgstr ""
+#~ "وی پی این اتصال نوعیت '%s' کے لیے توثیقی ڈائیلاگ نہیں مل سکا. خشبو لگا کر "
+#~ "اپنے نظام کے مدیر سے رابطہ کریں."
+
+#~ msgid ""
+#~ "There was a problem launching the authentication dialog for VPN "
+#~ "connection type '%s'. Contact your system administrator."
+#~ msgstr ""
+#~ "توثیقی ڈائیلاگ برائے وی پی این اتصال نوعیت '%s' کے لیے چلانے میں مسائل "
+#~ "درپیش ہیں. اپنے نظام کے مدیر سے رابطہ کریں."
+
+#~ msgid "No Certificate Authority certificate chosen"
+#~ msgstr "کوئی سند اتھارٹی سند منتخب نہیں کی گئی"
+
+#~ msgid ""
+#~ "Not using a Certificate Authority (CA) certificate can result in "
+#~ "connections to insecure, rogue wireless networks.  Would you like to "
+#~ "choose a Certificate Authority certificate?"
+#~ msgstr ""
+#~ "سند اتھارٹی (CA) کی سند استعمال نہ کرنے کا نتیجہ غیر محفوظ اتصال یا "
+#~ "وائیرلیس نیٹ ورک کی دھوکہ دہی کی صورت میں نکل سکتا ہے. کیا آپ سند اتھارٹی "
+#~ "کی سند منتخب کرنا چاہتے ہیں؟"
+
+#~ msgid "PU_K:"
+#~ msgstr "PU_K:"
+
+#~ msgid ""
+#~ "Insufficient privileges or unknown error retrieving system connection "
+#~ "secrets."
+#~ msgstr ""
+#~ "Ungenügende Rechte oder unbekannter Fehler beim Auslesen der Passwörter "
+#~ "der Systemverbindungen."
+
+#~ msgid "Could not request secrets from the system settings service."
+#~ msgstr ""
+#~ "Die Passwörter konnten nicht vom Systemeinstellungsdienst erfragt werden."
+
+#~ msgid "Could not connect to D-Bus to request connection secrets."
+#~ msgstr ""
+#~ "Das Verbinden mit D-Bus zum Erfragen der Verbindungspasswörter schlug "
+#~ "fehl."
+
+#~ msgid "Could not create D-Bus proxy for connection secrets."
+#~ msgstr ""
+#~ "Ein D-Bus-Proxy für die Verbindungspasswörter konnte nicht erstellt "
+#~ "werden."
+
+#~ msgid "PolicyKit authorization request was invalid."
+#~ msgstr "PolicyKit-Legitimierungsanfrage war ungültig."
+
+#~ msgid "PolicyKit authorization request was malformed."
+#~ msgstr "PolicyKit-Legitimierungsanfrage war fehlerhaft."
+
+#~ msgid "PolicyKit authorization could not be created; invalid action ID."
+#~ msgstr ""
+#~ "PolicyKit-Legitimierung konnte nicht erzeugt werden, ungültige Aktions-"
+#~ "Kennung."
+
+#~ msgid "Could not obtain required privileges"
+#~ msgstr "Die erforderlichen Rechte konnten nicht erlangt werden"
+
+#~ msgid "Could not delete connection"
+#~ msgstr "Verbindung konnte nicht entfernt werden"
+
+#~ msgid "The connection could not be deleted due to an unknown error."
+#~ msgstr ""
+#~ "Verbindung konnte wegen eines unbekannten Fehlers nicht entfernt werden."
+
+#~ msgid "Could not add connection"
+#~ msgstr "Verbindung konnte nicht hinzugefügt werden"
+
+#~ msgid "The connection could not be added due to an unknown error."
+#~ msgstr ""
+#~ "Verbindung konnte wegen eines unbekannten Fehlers nicht hinzugefügt "
+#~ "werden."
+
+#~ msgid "The connection could not be updated due to an unknown error."
+#~ msgstr ""
+#~ "Verbindung konnte wegen eines unbekannten Fehlers nicht aktualisiert "
+#~ "werden."
+
+#~ msgid "User Name:"
+#~ msgstr "Benutzername:"
+
+#~ msgid "alert text"
+#~ msgstr "Text für Warnmeldungen"
+
+#~ msgid ""
+#~ "<span weight=\"bold\" size=\"larger\">Choose a Mobile Broadband "
+#~ "Connection</span>\n"
+#~ "\n"
+#~ "Select or connect the mobile broadband device you wish to use for the new "
+#~ "connection.  If the device is not available, you may select a generic "
+#~ "connection type."
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Eine mobile Breitbandverbindung "
+#~ "auswählen</span>\n"
+#~ "\n"
+#~ "Wählen Sie ein mobiles Breitbandgerät, das Sie für die neue Verbindung "
+#~ "verwenden möchten, oder schließen Sie dieses an. Wenn kein Gerät "
+#~ "verfügbar ist, wählen Sie einen allgemeinen Verbindungstyp."
+
+#~ msgid "Create a GSM connection"
+#~ msgstr "Eine GSM-Verbindung erstellen"
+
+#~ msgid "GSM connection %d"
+#~ msgstr "GSM-Verbindung %d"
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "Could not add system connection: permission denied."
+#~ msgstr ""
+#~ "Systemweite Verbindung konnte nicht hinzugefügt werden: Zugriff "
+#~ "verweigert."
+
+#~ msgid "Updating connection failed: %s."
+#~ msgstr "Ändern der Verbindung ist fehlgeschlagen: %s."
+
+#~ msgid "Point-to-Point Protocol (PPP)"
+#~ msgstr "Punkt-zu-Punkt-Protokoll (PPP)"
+
+#~ msgid "Dialing mobile broadband device %s..."
+#~ msgstr "Mobiles Breitbandgerät %s wählt …"
+
+#~ msgid "Starting PPP on device %s..."
+#~ msgstr "PPP wird auf Gerät %s gestartet …"
+
+#~ msgid "Preparing device %s for the wired network..."
+#~ msgstr "Vorbereiten des Geräts %s wird für das Kabelnetzwerk …"
+
+#~ msgid "Configuring device %s for the wired network..."
+#~ msgstr "Konfigurieren des Geräts %s für das Kabelnetzwerk …"
+
+#~ msgid "Requesting a network address from the wired network..."
+#~ msgstr "Anfordern einer Netzwerkadresse vom Kabelnetzwerk …"
+
+#~ msgid "Preparing device %s for the wireless network '%s'..."
+#~ msgstr "Vorbereiten des Geräts %s für das Funknetzwerk »%s« …"
+
+#~ msgid "Attempting to join the wireless network '%s'..."
+#~ msgstr "Versuch, dem Funknetzwerk »%s« beizutreten …"
+
+#~ msgid "Waiting for Network Key for the wireless network '%s'..."
+#~ msgstr "Warten auf den Netzwerkschlüssel für das Funknetzwerk »%s« …"
+
+#~ msgid "Connection Editor"
+#~ msgstr "Verbindungseditor"
+
+#~ msgid "System setting"
+#~ msgstr "Systemeinstellungen"
+
+#~ msgid "Passphrase for wireless network %s"
+#~ msgstr "Passphrase für Funknetzwerk %s"
+
+#~ msgid "Connection to the wireless network '%s' failed."
+#~ msgstr "Die Verbindung mit Funknetzwerk »%s« ist fehlgeschlagen."
+
+#~ msgid "Connection to the wired network failed."
+#~ msgstr "Die Verbindung mit dem Kabelnetzwerk ist fehlgeschlagen."
+
+#~ msgid "Could not find some required resources (the glade file)!"
+#~ msgstr ""
+#~ "Einige benötigte Ressourcen wurden nicht gefunden (die Glade-Datei fehlt)."
+
+#~ msgid "Wireless Ethernet (%s)"
+#~ msgstr "Funk-Ethernet (%s)"
+
+#~ msgid ""
+#~ "Copyright © 2004-2005 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2006 Novell, Inc."
+#~ msgstr ""
+#~ "Copyright © 2004-2005 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2006 Novell, Inc."
+
+#~ msgid "VPN Login Failure"
+#~ msgstr "VPN-Anmeldefehler"
+
+#~ msgid "Could not start the VPN connection '%s' due to a login failure."
+#~ msgstr ""
+#~ "VPN-Verbindung »%s« konnte auf Grund eines Anmeldefehlers nicht gestartet "
+#~ "werden."
+
+#~ msgid "VPN Start Failure"
+#~ msgstr "VPN-Startfehler"
+
+#~ msgid ""
+#~ "Could not start the VPN connection '%s' due to a failure launching the "
+#~ "VPN program."
+#~ msgstr ""
+#~ "Die VPN-Verbindung »%s« konnte infolge eines Fehlers beim Starten des VPN-"
+#~ "Programms nicht hergestellt werden."
+
+#~ msgid "The network device \"%s (%s)\" does not support wireless scanning."
+#~ msgstr "Das Netzwerkgerät »%s (%s)« unterstützt keine Funknetzwerksuche."
+
+#~ msgid "The network device \"%s (%s)\" does not support link detection."
+#~ msgstr "Das Netzwerkgerät »%s (%s)« unterstützt keine Link-Erkennung."
+
+#~ msgid "Finishing connection to the wired network..."
+#~ msgstr "Fertigstellen der Verbindung mit dem Kabelnetzwerk …"
+
+#~ msgid "Connected to an Ad-Hoc wireless network"
+#~ msgstr "Verbunden mit einem Ad-Hoc-Funknetzwerk"
+
+#~ msgid "VPN connecting to '%s'"
+#~ msgstr "VPN verbindet zu »%s«"
+
+#~ msgid "_Dial Up Connections"
+#~ msgstr "_Einwahlverbindungen"
+
+#~ msgid "AES-CCMP"
+#~ msgstr "AES-CCMP"
+
+#~ msgid "TTLS"
+#~ msgstr "TTLS"
+
+#~ msgid "WPA Enterprise"
+#~ msgstr "WPA Enterprise"
+
+#~ msgid "Orientation"
+#~ msgstr "Ausrichtung"
+
+#~ msgid "The orientation of the tray."
+#~ msgstr "Die Ausrichtung des Benachrichtigungsfeldes."
+
+#~ msgid " (invalid Unicode)"
+#~ msgstr " (ungültiger Unicode)"
+
+#~ msgid ""
+#~ "By default, the wireless network's name is set to your computer's name, "
+#~ "%s, with no encryption enabled"
+#~ msgstr ""
+#~ "Als Vorgabe wird der Name Ihres Rechners »%s« als Netzwerkname verwendet "
+#~ "und keine Verschlüsselung eingerichtet."
+
+#~ msgid "Error connecting to wireless network"
+#~ msgstr "Fehler beim Verbinden mit dem Funknetzwerk"
+
+#~ msgid ""
+#~ "The requested wireless network requires security capabilities unsupported "
+#~ "by your hardware."
+#~ msgstr ""
+#~ "Dieses Funknetzwerk erfordert Sicherheitsfunktionen, die ihre Hardware "
+#~ "nicht unterstützt."
+
+#~ msgid ""
+#~ "<span weight=\"bold\" size=\"larger\">Passphrase Required by Wireless "
+#~ "Network</span>\n"
+#~ "\n"
+#~ "A passphrase or encryption key is required to access the wireless network "
+#~ "'%s'."
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Passwortgeschütztes Funknetzwerk</"
+#~ "span>\n"
+#~ "\n"
+#~ "Für den Zugang zu dem Funknetzwerk »%s« wird ein Schlüssel oder eine "
+#~ "Passphrase benötigt."
+
+#~ msgid ""
+#~ "<span weight=\"bold\" size=\"larger\">Reduced Network Functionality</"
+#~ "span>\n"
+#~ "\n"
+#~ "%s  It will not be completely functional."
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Eingeschränkte "
+#~ "Netzwerkfunktionalität</span>\n"
+#~ "\n"
+#~ "%s  Es könnte zu Fehlfunktionen kommen."
+
+#~ msgid ""
+#~ "<span weight=\"bold\" size=\"larger\">Wireless Network Login "
+#~ "Confirmation</span>\n"
+#~ "\n"
+#~ "You have chosen to log in to the wireless network '%s'.  If you are sure "
+#~ "that this wireless network is secure, click the checkbox below and "
+#~ "NetworkManager will not require confirmation on subsequent log ins."
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"larger\">Anmeldebestätigung für das "
+#~ "Funknetzwerk</span>\n"
+#~ "\n"
+#~ "Sie haben die Anmeldung am Funknetzwerk »%s« gewählt. Falls Sie sicher "
+#~ "sind, dass dieses Funknetzwerk vertrauenswürdig ist, können Sie die unten "
+#~ "angegebene Option auswählen und der Netzwerk-Manager wird ab sofort keine "
+#~ "Bestätigung mehr für dieses Netzwerk verlangen."
+
+#~ msgid "Client Certificate File:"
+#~ msgstr "Datei mit Client-Zertifikat:"
+
+#~ msgid "Destination Address:"
+#~ msgstr "Zieladresse:"
+
+#~ msgid "Key management:"
+#~ msgstr "Schlüsselverwaltung:"
+
+#~ msgid ""
+#~ "None\n"
+#~ "WEP 128-bit Passphrase\n"
+#~ "WEP 64/128-bit Hex\n"
+#~ "WEP 64/128-bit ASCII\n"
+#~ msgstr ""
+#~ "Keine\n"
+#~ "WEP 128-bit Passphrase\n"
+#~ "WEP 64/128-bit Hex\n"
+#~ "WEP 64/128-bit ASCII\n"
+
+#~ msgid "Passphrase:"
+#~ msgstr "Passphrase:"
+
+#~ msgid "Select the Client Certificate File"
+#~ msgstr "Die Datei mit dem Client-Zertifikat auswählen"
+
+#~ msgid "Select the Private Key File"
+#~ msgstr "Die Datei mit dem geheimen Schlüssel auswählen"
+
+#~ msgid "_Always Trust this Wireless Network"
+#~ msgstr "_Diesem Funknetzwerk immer vertrauen"
+
+#~ msgid "_Fallback on this Network"
+#~ msgstr "Netzwerk ist _Ausweichlösung"
+
+#~ msgid ""
+#~ "No suitable VPN software was found on your system. Contact your system "
+#~ "administrator."
+#~ msgstr ""
+#~ "Die notwendige VPN-Software wurde nicht gefunden. Bitte setzen Sie sich "
+#~ "mit Ihrem Systemadministrator in Verbindung."
+
+#~ msgid ""
+#~ "Cannot find suitable software for VPN connection type '%s' to import the "
+#~ "file '%s'. Contact your system administrator."
+#~ msgstr ""
+#~ "Die notwendige Software für VPN-Verbindungen vom Typ »%s« wurde beim "
+#~ "Import der Datei »%s« nicht gefunden. Bitte setzen Sie sich mit Ihrem "
+#~ "Systemadministrator in Verbindung."
+
+#~ msgid ""
+#~ "Could not find the UI files for VPN connection type '%s'. Contact your "
+#~ "system administrator."
+#~ msgstr ""
+#~ "Die Dateien für die Benutzerschnittstelle für VPN-Verbindungen vom Typ "
+#~ "»%s« wurden nicht gefunden. Bitte setzen Sie sich mit Ihrem "
+#~ "Systemadministrator in Verbindung."
+
+#~ msgid "Delete VPN connection \"%s\"?"
+#~ msgstr "Möchten Sie die VPN-Verbindungen »%s« löschen?"
+
+#~ msgid ""
+#~ "All information about the VPN connection \"%s\" will be lost and you may "
+#~ "need your system administrator to provide information to create a new "
+#~ "connection."
+#~ msgstr ""
+#~ "Alle Informationen über die VPN-Verbindung »%s« werden verloren gehen und "
+#~ "Sie werden Ihren Systemadministrator für das Bereitstellen der "
+#~ "Informationen für eine neue Verbindung benötigen."
+
+#~ msgid "Unable to load"
+#~ msgstr "Konnte nicht geladen werden"
+
+#~ msgid "Cannot find some needed resources (the glade file)!"
+#~ msgstr ""
+#~ "Einige benötigte Ressourcen wurden nicht gefunden (die Glade-Datei fehlt)."
+
+#~ msgid "Export the VPN settings to a file"
+#~ msgstr "Die Verbindungseinstellungen des VPN in eine Datei exportieren"
+
+#~ msgid "Export the selected VPN connection to a file"
+#~ msgstr "Ausgewählte VPN-Verbindung in eine Datei exportieren"
+
+#~ msgid "40-bit WEP"
+#~ msgstr "40-bit WEP"
+
+#~ msgid "104-bit WEP"
+#~ msgstr "104-bit WEP"
+
+#~ msgid "WPA TKIP"
+#~ msgstr "WPA TKIP"
+
+#~ msgid "WPA CCMP"
+#~ msgstr "WPA CCMP"
+
+#~ msgid "WPA2 TKIP"
+#~ msgstr "WPA2 TKIP"
+
+#~ msgid "WPA2 CCMP"
+#~ msgstr "WPA2 CCMP"
+
+#~ msgid "WPA2 Automatic"
+#~ msgstr "WPA2 Automatisch"
+
+#~ msgid ""
+#~ "unable to create netlink socket for monitoring wired ethernet devices - %s"
+#~ msgstr ""
+#~ "Erstellung eines Netlink-Socket zur Überwachung von Kabelnetzwerkgeräten "
+#~ "fehlgeschlagen - %s"
+
+#~ msgid ""
+#~ "unable to bind to netlink socket for monitoring wired ethernet devices - "
+#~ "%s"
+#~ msgstr ""
+#~ "Bindung an den Netlink-Socket zur Überwachung von Kabelnetzwerkgeräten "
+#~ "fehlgeschlagen - %s"
+
+#~ msgid "operation took too long"
+#~ msgstr "Vorgang dauerte zu lange"
+
+#~ msgid "received data from wrong type of sender"
+#~ msgstr "Daten von einem falschen Absendertyp erhalten"
+
+#~ msgid "received data from unexpected sender"
+#~ msgstr "Daten von einem unerwarteten Absender erhalten"
+
+#~ msgid "too much data was sent over socket and some of it was lost"
+#~ msgstr ""
+#~ "Es wurden zu viele Daten über den Socket gesendet und einige davon sind "
+#~ "verloren gegangen"
+
+#~ msgid "error occurred while waiting for data on socket"
+#~ msgstr "Während des Wartens auf Daten am Socket ist ein Fehler aufgetreten"
+
+#~ msgid ""
+#~ "The requested wireless network '%s' does not appear to be in range.  A "
+#~ "different wireless network will be used if any are available."
+#~ msgstr ""
+#~ "Das gewünschte Funknetzwerk »%s« scheint nicht in Reichweite zu sein. "
+#~ "Falls weitere Funknetzwerke verfügbar sind, wird ein anderes verwendet."
+
+#~ msgid "VPN Error"
+#~ msgstr "VPN-Fehler"
+
+#~ msgid "The VPN service said: \"%s\""
+#~ msgstr "Anwort des VPN-Dienstes: »%s«"
+
+#~ msgid "_ASCII Key:"
+#~ msgstr "_ASCII-Schlüssel:"
+
+#~ msgid "_Hex Key:"
+#~ msgstr "_Hexadezimalschlüssel:"
+
+#~ msgid ", with no encryption enabled."
+#~ msgstr ", ohne aktivierte Verschlüsselung."
+
+#~ msgid "ASCII Key:"
+#~ msgstr "ASCII-Schlüssel:"
+
+#~ msgid ""
+#~ "128-bit Passphrase (WEP)\n"
+#~ "ASCII Key (WEP)\n"
+#~ "Hex Key (WEP)"
+#~ msgstr ""
+#~ "128-Bit Passwort (WEP)\n"
+#~ "ASCII-Schlüssel (WEP)\n"
+#~ "Hexadezimalschlüssel (WEP)"
+
+#~ msgid ""
+#~ "128-bit passphrase (WEP)\n"
+#~ "ASCII key (WEP)\n"
+#~ "Hex key (WEP)"
+#~ msgstr ""
+#~ "128-Bit Passwort (WEP)\n"
+#~ "ASCII-Schlüssel (WEP)\n"
+#~ "Hexadezimalschlüssel (WEP)"
+
+#~ msgid "Connect with _encryption enabled"
+#~ msgstr "Mit aktivierter _Verschlüsselung verbinden"
+
+#~ msgid "Wireless _network:"
+#~ msgstr "_Funknetzwerk:"
+
+#~ msgid "_Key type:"
+#~ msgstr "_Schlüsseltyp:"
+
+#~ msgid "Choose which type of VPN connection you wish to create."
+#~ msgstr ""
+#~ "Bitte wählen Sie aus, welche Art VPN-Verbindung Sie erstellen möchten."
+
+#~ msgid "Create VPN Connection - 2 of 2"
+#~ msgstr "Neue VPN-Verbindungen erstellen - 2 von 2"
+
+#~ msgid "Finish Creating VPN Connection"
+#~ msgstr "Erstellen der VPN-Verbindung abschließen"
+
+#~ msgid ""
+#~ "This assistant will guide you through the creation of a connection to a "
+#~ "Virtual Private Network (VPN).\n"
+#~ "\n"
+#~ "It will require some information, such as IP addresses and secrets.  "
+#~ "Please see your system administrator to obtain this information."
+#~ msgstr ""
+#~ "Dieser Assistent wird Sie durch das Erstellen einer neuen VPN-Verbindung "
+#~ "zu einem privaten Netzwerk geleiten.\n"
+#~ "\n"
+#~ "Dazu benötigen Sie eventuell einige Informationen, wie z.B. IP-Adressen "
+#~ "und Passwörter, welche Sie durch Ihren Systemadministrator erhalten."

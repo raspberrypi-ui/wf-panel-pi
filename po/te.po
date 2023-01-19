@@ -1,0 +1,4025 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"PO-Revision-Date: 2012-07-09 18:48+0200\n"
+"Last-Translator: PraveenIlla <mail2ipn@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+"X-Pootle-Revision: 0\n"
+"X-Pootle-Path: /te/lxpanel/po/te.po\n"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#, c-format
+msgid "Pairing failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#, fuzzy, c-format
+msgid "Pairing successful - connecting..."
+msgstr "వైర్‌లేని నెట్వర్కు అనుసంధానము '%s'ను సిద్దపరుస్తోంది..."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#, fuzzy, c-format
+msgid "Connection successful"
+msgstr "అనుసంధానమగుట విఫలం"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connection failed - %s"
+msgstr "అనుసంధానమగుట విఫలం"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#, c-format
+msgid "Please enter code '%s' on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#, c-format
+msgid "Please confirm that '%s' is showing the code '%s' to pair"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#, c-format
+msgid "Please enter PIN code shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#, c-format
+msgid "Please enter passcode shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#, c-format
+msgid "Waiting for response from Bluetooth device..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#, c-format
+msgid "'%s' has requested a pairing. Do you accept the request?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
+#, c-format
+msgid ""
+"Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#, c-format
+msgid ""
+"Pairing successful - this device has no services which can be used with "
+"Raspberry Pi"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#, c-format
+msgid "Do you want to unpair '%s'?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#, c-format
+msgid "Removing pairing with '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#, c-format
+msgid "Removal failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, c-format
+msgid "Disconnecting from '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnection failed - %s"
+msgstr "అననుసంధానమురద్దు విఫలము"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
+#, fuzzy
+msgid "Use the audio menu to connect to this device"
+msgstr "వైర్‌లెస్ నెట్వర్కునకు అనుసంధానమగుటకు నెట్వర్క్ మెనూని ఉపయోగించుము"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+msgid "No usable services on this device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#, fuzzy
+msgid "Disconnect..."
+msgstr "అననుసంధానించుము"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#, fuzzy
+msgid "Connect..."
+msgstr "అనుసంధానించు (_o)"
+
+#. add the remove option to the submenu
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+msgid "Remove..."
+msgstr ""
+
+#. warn if no BT hardware detected
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+msgid "No Bluetooth adapter found"
+msgstr ""
+
+#. add enable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+msgid "Turn On Bluetooth"
+msgstr ""
+
+#. add disable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+msgid "Turn Off Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+msgid "Stop Discoverable"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+msgid "Make Discoverable"
+msgstr ""
+
+#. add and remove dialogs
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#, fuzzy
+msgid "Add Device..."
+msgstr "ఏ పరికరమైనా"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#, fuzzy
+msgid "Manage Bluetooth devices"
+msgstr "బ్లూటూత్ పరికరమును కనుగొనలేక పోయినది."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
+msgid "Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#, fuzzy
+msgid "Manages Bluetooth devices"
+msgstr "బ్లూటూత్ పరికరమును కనుగొనలేక పోయినది."
+
+#: ../src/panel/widgets/ejecter/ejecter.c:171
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:199
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:205
+#, fuzzy, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr "కొత్త అనుసంధానమును సృష్టించడంలో దోషం:%s"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:402
+msgid "Select a drive in menu to eject safely"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:451
+#: ../src/panel/widgets/ejecter/ejecter.c:461
+msgid "Ejecter"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:453
+msgid "Hide icon when no devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:462
+msgid "Ejects mounted drives"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:77
+#, fuzzy
+msgid "ad-hoc"
+msgstr "Ad-hoc"
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:82
+msgid "secure."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:74
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+msgid "Failed to activate connection"
+msgstr "అనుసంధానమును క్రియాత్మకం చేయుటలో విఫలం"
+
+#: ../src/panel/widgets/netman/applet.c:75
+#: ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837
+#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+msgid "Unknown error"
+msgstr "తెలియని దోషము"
+
+#: ../src/panel/widgets/netman/applet.c:78
+#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:875
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+msgid "Connection failure"
+msgstr "అనుసంధానమగుట విఫలం"
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn Off Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn On Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:282
+#, c-format
+msgid ""
+"%s\n"
+"IPv4 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:299
+#, c-format
+msgid ""
+"%s\n"
+"IPv6 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:781
+msgid "Failed to add/activate connection"
+msgstr "అనుసంధానమును సృష్టించడం/క్రియాత్మకం చేయుటలో విఫలమైనది"
+
+#: ../src/panel/widgets/netman/applet.c:835
+msgid "Device disconnect failed"
+msgstr "పరికరము అననుసంధానమురద్దు అగుటలో విఫలము"
+
+#: ../src/panel/widgets/netman/applet.c:840
+msgid "Disconnect failure"
+msgstr "అననుసంధానమురద్దు విఫలము"
+
+#: ../src/panel/widgets/netman/applet.c:870
+msgid "Connection activation failed"
+msgstr "అనుసంధానం క్రియాత్మకంలో విఫలమైంది"
+
+#: ../src/panel/widgets/netman/applet.c:1209
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+#, fuzzy
+msgid "Don’t show this message again"
+msgstr "ఈ సందేశమును మరలా చూపవద్దు"
+
+#: ../src/panel/widgets/netman/applet.c:1310
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” disconnected because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' అననుసంధానించబడింది యెంచేతంటే నెట్వర్కు అనుసంధానము ఆటంకపరచబడింది."
+
+#: ../src/panel/widgets/netman/applet.c:1312
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే నెట్వర్కు అనుసంధానము ఆటంకపరచబడింది."
+
+#: ../src/panel/widgets/netman/applet.c:1314
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే VPN సేవ అనుకోకుండా ఆపివేయబడింది."
+
+#: ../src/panel/widgets/netman/applet.c:1316
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service returned invalid "
+"configuration."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే VPN సేవ చెల్లని ఆకృతీకరణను తిప్పియిచ్చింది."
+
+#: ../src/panel/widgets/netman/applet.c:1318
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the connection attempt timed out."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే అనుసంధానపు ప్రయత్నం సమయం ముగిసింది."
+
+#: ../src/panel/widgets/netman/applet.c:1320
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service did not start in time."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే VPN సేవ సమయం లోపల ప్రారంభంకాలేదు."
+
+#: ../src/panel/widgets/netman/applet.c:1322
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే VPN సేవ ప్రారంభమవుటలో విఫలమైంది."
+
+#: ../src/panel/widgets/netman/applet.c:1324
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because there were no valid VPN secrets."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే అక్కడ చెల్లునటువంటి VPN రహస్యాలు లేవు."
+
+#: ../src/panel/widgets/netman/applet.c:1326
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because of invalid VPN secrets."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే చెల్లని VPN రహస్యాలు."
+
+#: ../src/panel/widgets/netman/applet.c:1331
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed."
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది."
+
+#: ../src/panel/widgets/netman/applet.c:1358
+#, c-format
+msgid ""
+"VPN connection has been successfully established.\n"
+"\n"
+"%s\n"
+msgstr ""
+"VPN కనెక్షన్ విజయవంతంగా స్థాపించబడింది.\n"
+"\n"
+"%s\n"
+
+#: ../src/panel/widgets/netman/applet.c:1360
+msgid "VPN connection has been successfully established.\n"
+msgstr "VPN కనెక్షన్ విజయవంతంగా స్థాపించబడింది.\n"
+
+#: ../src/panel/widgets/netman/applet.c:1362
+msgid "VPN Login Message"
+msgstr "VPN లాగిన్ సందేశము"
+
+#: ../src/panel/widgets/netman/applet.c:1370
+#: ../src/panel/widgets/netman/applet.c:1410
+msgid "VPN Connection Failed"
+msgstr "VPN అనుసంధానము విఫలమైంది"
+
+#: ../src/panel/widgets/netman/applet.c:1414
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' విఫలమైంది యెంచేతంటే VPN సేవ ప్రారంభమగుటలో విఫలమైంది.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1417
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"VPN అనుసంధానము '%s' ప్రారంభమగుటలో విఫలమైంది.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1741
+msgid "device not ready (firmware missing)"
+msgstr "పరికరము సిద్దముకాలేదు (ఫర్మువేర్ తప్పిపోయినది)"
+
+#: ../src/panel/widgets/netman/applet.c:1743
+msgid "device not ready"
+msgstr "పరికరము సిద్దముకాలేదు"
+
+#. Notify user of unmanaged or unavailable device
+#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
+msgid "disconnected"
+msgstr "అననుసంధానించబడింది"
+
+#: ../src/panel/widgets/netman/applet.c:1769
+msgid "Disconnect"
+msgstr "అననుసంధానించుము"
+
+#: ../src/panel/widgets/netman/applet.c:1783
+msgid "device not managed"
+msgstr "పరికరము నిర్వహించబడలేదు"
+
+#: ../src/panel/widgets/netman/applet.c:1864
+msgid "No network devices available"
+msgstr "ఎటువంటి నెట్వర్కు పరికరములు అందుబాటులోలేవు"
+
+#: ../src/panel/widgets/netman/applet.c:1917
+#, fuzzy
+msgid "Advanced Options"
+msgstr "అధునాతనం"
+
+#: ../src/panel/widgets/netman/applet.c:1919
+#, fuzzy
+msgid "VPN Connections"
+msgstr "_VPN అనుసంధానములు"
+
+#: ../src/panel/widgets/netman/applet.c:1973
+#, fuzzy
+msgid "Configure VPN…"
+msgstr "VPN ఆకృతీకరించుము... (_C)"
+
+#: ../src/panel/widgets/netman/applet.c:1977
+#, fuzzy
+msgid "Add a VPN connection…"
+msgstr "_VPN అనుసంధానములు"
+
+#. 'Connection Information' item
+#: ../src/panel/widgets/netman/applet.c:1989
+#: ../src/panel/widgets/netman/applet.c:2393
+msgid "Connection Information"
+msgstr "అనుసంధానము సమాచారము"
+
+#. 'Edit Connections...' item
+#: ../src/panel/widgets/netman/applet.c:1997
+#: ../src/panel/widgets/netman/applet.c:2401
+#, fuzzy
+msgid "Edit Connections…"
+msgstr "అనుసంధానములను సవరించు..."
+
+#: ../src/panel/widgets/netman/applet.c:2112
+#, fuzzy
+msgid "NetworkManager is not running…"
+msgstr "నెట్‌వర్క్ మ్యానేజర్ నడుచుటలేదు..."
+
+#: ../src/panel/widgets/netman/applet.c:2118
+#, fuzzy
+msgid "Wi-Fi country is not set"
+msgstr "నా దేశము జాబితాచేసి లేదు"
+
+#: ../src/panel/widgets/netman/applet.c:2119
+msgid "Click here to set Wi-Fi country"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:2127
+#: ../src/panel/widgets/netman/applet.c:3222
+msgid "Networking disabled"
+msgstr "నెట్వర్కింగ్ అచేతనమైంది"
+
+#. 'Enable Networking' item
+#: ../src/panel/widgets/netman/applet.c:2351
+#, fuzzy
+msgid "Enable Networking"
+msgstr "నెట్వర్కింగ్ చేతనముచేయుము (_N)"
+
+#. 'Enable Wi-Fi' item
+#: ../src/panel/widgets/netman/applet.c:2360
+#, fuzzy
+msgid "Enable Wi-Fi"
+msgstr "వైర్‌లేని విధం చేతనముచేయుము (_W)"
+
+#. 'Enable Mobile Broadband' item
+#: ../src/panel/widgets/netman/applet.c:2369
+#, fuzzy
+msgid "Enable Mobile Broadband"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్‌ను చేతనముచేయుము (_M)"
+
+#. Toggle notifications item
+#: ../src/panel/widgets/netman/applet.c:2381
+#, fuzzy
+msgid "Enable Notifications"
+msgstr "సూచన ప్రకటనలను చేతనముచేయుము (_o)"
+
+#: ../src/panel/widgets/netman/applet.c:2415
+#, fuzzy
+msgid "About"
+msgstr "గురించి (_A)"
+
+#: ../src/panel/widgets/netman/applet.c:2736
+#, fuzzy, c-format
+msgid "You are now connected to “%s”."
+msgstr "మీరు '%s'కు అనుసంధానించబడినారు."
+
+#: ../src/panel/widgets/netman/applet.c:2776
+msgid "Disconnected"
+msgstr "అననుసంధానించబడింది"
+
+#: ../src/panel/widgets/netman/applet.c:2777
+msgid "The network connection has been disconnected."
+msgstr "నెట్వర్కు అనుసంధానము అననుసంధానించబడింది."
+
+#: ../src/panel/widgets/netman/applet.c:3079
+#, fuzzy, c-format
+msgid "Preparing network connection “%s”…"
+msgstr "నెట్వర్కు అనుసంధానము '%s' సిద్దముచేయుచున్నది..."
+
+#: ../src/panel/widgets/netman/applet.c:3082
+#, fuzzy, c-format
+msgid "User authentication required for network connection “%s”…"
+msgstr "నెట్వర్కు అనుసంధానము '%s' కొరకు వినియోగదారి దృవీకరణము అవసరము..."
+
+#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet-device-bt.c:113
+#: ../src/panel/widgets/netman/mobile-helpers.c:605
+#, fuzzy, c-format
+msgid "Requesting a network address for “%s”…"
+msgstr "'%s' కొరకు నెట్వర్కు చిరునామాను అభ్యర్ధిస్తోంది..."
+
+#: ../src/panel/widgets/netman/applet.c:3088
+#, fuzzy, c-format
+msgid "Network connection “%s” active"
+msgstr "నెట్వర్కు అనుసంధానము '%s' క్రియాశీలము"
+
+#: ../src/panel/widgets/netman/applet.c:3165
+#, fuzzy, c-format
+msgid "Starting VPN connection “%s”…"
+msgstr "VPN అనుసంధానము '%s'ను ప్రారంభించుచున్నది..."
+
+#: ../src/panel/widgets/netman/applet.c:3168
+#, fuzzy, c-format
+msgid "User authentication required for VPN connection “%s”…"
+msgstr "VPN అనుసంధానము '%s' కొరకు వినియోగదారి దృవీకరణము అవసరమైంది..."
+
+#: ../src/panel/widgets/netman/applet.c:3171
+#, fuzzy, c-format
+msgid "Requesting a VPN address for “%s”…"
+msgstr "'%s' కొరకు VPN చిరునామాను అభ్యర్దించుచున్నది..."
+
+#: ../src/panel/widgets/netman/applet.c:3174
+#, fuzzy, c-format
+msgid "VPN connection active"
+msgstr "VPN అనుసంధానము '%s' క్రియాశీలం"
+
+#: ../src/panel/widgets/netman/applet.c:3226
+msgid "No network connection"
+msgstr "నెట్వర్కు అనుసంధానము లేదు"
+
+#: ../src/panel/widgets/netman/applet.c:3781
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "నెట్‌వర్క్"
+
+#: ../src/panel/widgets/netman/applet.c:3896
+msgid "NetworkManager Applet"
+msgstr "నెట్‌వర్క్ మ్యానేజర్ ఆప్లెట్"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:147
+msgid "Wrong PUK code; please contact your provider."
+msgstr "తప్పయిన PUK కోడ్; దయచేసి మీ వుత్పాదకుని సంప్రదించుము."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:189
+msgid "Wrong PIN code; please contact your provider."
+msgstr "తప్పయిన PIN కోడ్; దయచేసి మీ వుత్పాదకుని సంప్రదించుము."
+
+#. Start the spinner to show the progress of the unlock
+#: ../src/panel/widgets/netman/applet-device-broadband.c:240
+#, fuzzy
+msgid "Sending unlock code…"
+msgstr "అన్‌లాక్ కోడ్‌ను పంపుచున్నది..."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:725
+#: ../src/panel/widgets/netman/applet-dialogs.c:532
+#, c-format
+msgid "Mobile Broadband (%s)"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:727
+msgid "Mobile Broadband"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+msgid "Available"
+msgstr "అందుబాటులోవుంది"
+
+#. Default connection item
+#: ../src/panel/widgets/netman/applet-device-broadband.c:793
+#, fuzzy
+msgid "New Mobile Broadband connection…"
+msgstr "కొత్త మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:809
+#: ../src/panel/widgets/netman/applet-device-bt.c:75
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+msgid "Connection Established"
+msgstr "అనుసంధానము యేర్పరచబడింది"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:810
+#, fuzzy
+msgid "You are now connected to the Mobile Broadband network."
+msgstr "మీరు యిప్పుడు మొబైల్ బ్రాడ్‌బ్యాండ్ నెట్వర్కునకు అనుసంధానించబడి వున్నారు."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:950
+#: ../src/panel/widgets/netman/applet-device-broadband.c:956
+#, fuzzy
+msgid "Mobile Broadband network."
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ నెట్వర్కు సంకేతపదము"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:951
+msgid "You are now registered on the home network."
+msgstr "మీరు యిప్పుడు హోమ్ నెట్వర్కునకు రిజిస్టరైనారు."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:957
+msgid "You are now registered on a roaming network."
+msgstr "మీరు యిప్పుడు రోమింగ్  నెట్వర్కునకు రిజిస్టరైనారు."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:76
+msgid "You are now connected to the mobile broadband network."
+msgstr "మీరు యిప్పుడు మొబైల్ బ్రాడ్‌బ్యాండ్ నెట్వర్కునకు అనుసంధానించబడి వున్నారు."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:104
+#: ../src/panel/widgets/netman/mobile-helpers.c:596
+#, fuzzy, c-format
+msgid "Preparing mobile broadband connection “%s”…"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము '%s' ప్రిపేర్ చేయబడుతోంది..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:107
+#: ../src/panel/widgets/netman/mobile-helpers.c:599
+#, fuzzy, c-format
+msgid "Configuring mobile broadband connection “%s”…"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము '%s' ఆకృతీకరించబడుతోంది..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:110
+#: ../src/panel/widgets/netman/mobile-helpers.c:602
+#, fuzzy, c-format
+msgid "User authentication required for mobile broadband connection “%s”…"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము '%s' కొరకు వినియోగదారి దృవీకరణము అవసరమైంది..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:117
+#: ../src/panel/widgets/netman/mobile-helpers.c:624
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము '%s' క్రియాశీలము"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
+msgid "Auto Ethernet"
+msgstr "స్వయంచాలక ఈథర్‌నెట్"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
+#, fuzzy, c-format
+msgid "Ethernet Networks (%s)"
+msgstr "వైర్‌తో నెట్వర్క్సు (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
+#, fuzzy, c-format
+msgid "Ethernet Network (%s)"
+msgstr "వైర్‌తో నెట్వర్కు (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
+#, fuzzy
+msgid "Ethernet Networks"
+msgstr "వైర్‌తో నెట్వర్క్సు"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
+#, fuzzy
+msgid "Ethernet Network"
+msgstr "వైర్‌తో నెట్వర్కు"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
+#, fuzzy
+msgid "You are now connected to the ethernet network."
+msgstr "మీరు యిప్పుడు వైర్ నెట్వర్కునకు అనుసంధానించబడినారు."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
+#, fuzzy, c-format
+msgid "Preparing ethernet network connection “%s”…"
+msgstr "వైర్ నెట్వర్కు అనుసంధానమును సిద్దపరుస్తోంది '%s'..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
+#, fuzzy, c-format
+msgid "Configuring ethernet network connection “%s”…"
+msgstr "వైర్ నెట్వర్కు అనుసంధానము '%s'ను ఆకృతీకరిస్తోంది..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
+#, fuzzy, c-format
+msgid "User authentication required for ethernet network connection “%s”…"
+msgstr "వైర్ నెట్వర్కు అనుసంధానము '%s' కొరకు వినియోగదారి ధృవీకరణము అవసరమైంది..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
+#, fuzzy, c-format
+msgid "Requesting an ethernet network address for “%s”…"
+msgstr "'%s' కొరకు వైర్ నెట్వర్కు చిరునామాను అభ్యర్దిస్తోంది..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
+#, fuzzy, c-format
+msgid "Ethernet network connection “%s” active"
+msgstr "వైర్ నెట్వర్కు అనుసంధానము '%s' క్రియాశీలం"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
+msgid "DSL authentication"
+msgstr "DSL దృవీకరణము"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:1190
+#: ../src/panel/widgets/netman/mobile-helpers.c:455
+#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2
+msgid "_Cancel"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:1191
+#: ../src/panel/widgets/netman/mobile-helpers.c:456
+#: ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+msgid "_OK"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#, fuzzy
+msgid "Connect to Hidden Wi-Fi Network…"
+msgstr "మరుగునవున్న వైరులేని నెట్వర్కునకు అనుసంధానించు"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#, fuzzy
+msgid "Create New Wi-Fi Network…"
+msgstr "కొత్త వైరులేని నెట్వర్కు సృష్టించుము"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#, fuzzy
+msgid "Create Wi-Fi Hotspot…"
+msgstr "కొత్త వైరులేని నెట్వర్కు సృష్టించుము"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+msgid "(none)"
+msgstr "(ఏదీకాదు)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:567
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+msgid "Failed to add new connection"
+msgstr "కొత్త అనుసంధానమును జతచేయుటలో విఫలము"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+msgid "Insufficient privileges."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#, fuzzy, c-format
+msgid "Do you want to disconnect from the wireless network '%s'?"
+msgstr "వైర్‌లెస్ నెట్వర్కునకు అనుసంధానమగుటకు ఈ ప్రతిమపైన నొక్కుము"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#, fuzzy, c-format
+msgid "Wi-Fi Networks (%s)"
+msgstr "వైర్‌తో నెట్వర్క్సు (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#, fuzzy, c-format
+msgid "Wi-Fi Network (%s)"
+msgstr "వైర్‌తో నెట్వర్కు (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+#, fuzzy
+msgid "Wi-Fi Network"
+msgid_plural "Wi-Fi Networks"
+msgstr[0] "వైర్‌తో నెట్వర్కు"
+msgstr[1] "వైర్‌తో నెట్వర్కు"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+#, fuzzy
+msgid "Wi-Fi is disabled"
+msgstr "WiMAX అచేతనమైంది"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+#, fuzzy
+msgid "Wi-Fi is disabled by hardware switch"
+msgstr "WIMAX హార్డ్వేరు స్విచ్ వల్ల నిరుపయోగమైబడినది"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+msgid "More networks"
+msgstr "మరిన్ని నెట్వర్కులు"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+#, fuzzy
+msgid "Wi-Fi Networks Available"
+msgstr "వైర్‌లెస్ నెట్వర్కులు అందుబాటులోవున్నాయి"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+#, fuzzy
+msgid "Use the network menu to connect to a Wi-Fi network"
+msgstr "వైర్‌లెస్ నెట్వర్కునకు అనుసంధానమగుటకు నెట్వర్క్ మెనూని ఉపయోగించుము"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#, fuzzy, c-format
+msgid "You are now connected to the Wi-Fi network “%s”."
+msgstr "మీరు యిప్పుడు వై-ఫై నెట్వర్కు '%s'కు అనుసంధానించబడినారు."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#, fuzzy, c-format
+msgid "Preparing Wi-Fi network connection “%s”…"
+msgstr "నెట్వర్కు అనుసంధానము '%s' సిద్దముచేయుచున్నది..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#, fuzzy, c-format
+msgid "Configuring Wi-Fi network connection “%s”…"
+msgstr "వైర్ నెట్వర్కు అనుసంధానము '%s'ను ఆకృతీకరిస్తోంది..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#, fuzzy, c-format
+msgid "User authentication required for Wi-Fi network “%s”…"
+msgstr "వైర్‌లేని నెట్వర్కు '%s' కొరకు వినియోగదారి దృవీకరణము అవసరమైంది..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#, fuzzy, c-format
+msgid "Requesting a Wi-Fi network address for “%s”…"
+msgstr "'%s' కొరకు నెట్వర్కు చిరునామాను అభ్యర్ధిస్తోంది..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+msgstr "వైర్‌లేని నెట్వర్కు అనుసంధానము '%s' క్రియాశీలము: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+msgstr "వైర్‌లేని నెట్వర్కు అనుసంధానము '%s' క్రియాశీలము: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active"
+msgstr "వైర్ నెట్వర్కు అనుసంధానము '%s' క్రియాశీలం"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:29
+msgid "Error displaying connection information:"
+msgstr "అనుసంధానము సమాచారమును ప్రదర్శించుటలో దోషము:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:61
+msgid "LEAP"
+msgstr "LEAP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:63
+msgid "Dynamic WEP"
+msgstr "గతిక WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:65
+#: ../src/panel/widgets/netman/applet-dialogs.c:237
+#: ../src/panel/widgets/netman/applet-dialogs.c:239
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+#. Create the expander
+#: ../src/panel/widgets/netman/applet-dialogs.c:174
+#, fuzzy
+msgid "More addresses"
+msgstr "చిరునామాలు"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:235
+msgid "WEP"
+msgstr "WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:241
+msgid "WPA3"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:245
+#: ../src/panel/widgets/netman/applet-dialogs.c:254
+#, fuzzy
+msgctxt "Wi-Fi/Ethernet security"
+msgid "None"
+msgstr "ఏదీకాదు"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:324
+#: ../src/panel/widgets/netman/applet-dialogs.c:597
+#, c-format
+msgid "%u Mb/s"
+msgstr "%u Mb/s"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:326
+#: ../src/panel/widgets/netman/applet-dialogs.c:599
+msgctxt "Speed"
+msgid "Unknown"
+msgstr "తెలియదు"
+
+#. Address
+#: ../src/panel/widgets/netman/applet-dialogs.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:363
+msgctxt "Address"
+msgid "Unknown"
+msgstr "తెలియదు"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:415
+msgid "IP Address"
+msgstr "IP చిరునామా"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:364
+msgid "Broadcast Address"
+msgstr "బ్రాడ్‌కాస్ట్ చిరునామా"
+
+#. Prefix
+#: ../src/panel/widgets/netman/applet-dialogs.c:376
+msgctxt "Subnet Mask"
+msgid "Unknown"
+msgstr "తెలియదు"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:377
+msgid "Subnet Mask"
+msgstr "సబ్‌నెట్ మాస్క్"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Primary DNS"
+msgstr "ప్రాధమిక DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "ద్వితీయ DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "టర్నరీ DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:518
+#, c-format
+msgid "Ethernet (%s)"
+msgstr "ఈథర్‌నెట్ (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:521
+#, c-format
+msgid "802.11 Wi-Fi (%s)"
+msgstr "802.11 Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:528
+#, c-format
+msgid "GSM (%s)"
+msgstr "GSM (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:530
+#, c-format
+msgid "CDMA (%s)"
+msgstr "CDMA (%s)"
+
+#. --- General ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:538
+#: ../src/panel/widgets/netman/applet-dialogs.c:872
+msgid "General"
+msgstr "సాధారణం"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:541
+msgid "Interface"
+msgstr "అంతరవర్తి"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:556
+msgid "Hardware Address"
+msgstr "హార్డువేర్ చిరునామా"
+
+#. Driver
+#: ../src/panel/widgets/netman/applet-dialogs.c:569
+msgid "Driver"
+msgstr "డ్రైవర్"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:602
+msgid "Speed"
+msgstr "వేగము"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:615
+#, fuzzy
+msgid "Security"
+msgstr "రక్షణ:"
+
+#. --- IPv4 ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:640
+#: ../src/panel/widgets/netman/applet-dialogs.c:902
+msgid "IPv4"
+msgstr "IPv4"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:659
+#: ../src/panel/widgets/netman/applet-dialogs.c:707
+msgid "Default Route"
+msgstr "అప్రమేయ రూట్"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:687
+#: ../src/panel/widgets/netman/applet-dialogs.c:929
+msgid "IPv6"
+msgstr "IPv6"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:728
+msgid "Hotspot"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:746
+#, fuzzy
+msgid "Password"
+msgstr "సంకేతపదము:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:876
+msgid "VPN Type"
+msgstr "VPN రకము "
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:881
+msgid "VPN Gateway"
+msgstr "VPN గేట్‌వే"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:885
+msgid "VPN Username"
+msgstr "VPN వినియోగదారినామము "
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:889
+msgid "VPN Banner"
+msgstr "VPN ధ్వజము "
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:893
+msgid "Base Connection"
+msgstr "పీఠము అనుసంధానము "
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:894
+msgid "Unknown"
+msgstr "తెలియదు"
+
+#. Shouldn't really happen but ...
+#: ../src/panel/widgets/netman/applet-dialogs.c:1091
+msgid "No valid active connections found!"
+msgstr "ఎటువంటి చెల్లునటువంటి క్రియాశీల అనుసంధానములు కనబడలేదు!"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+#, fuzzy
+msgid ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"and many other community contributors and translators"
+msgstr ""
+"కాపీరైట్ © 2004-2008 Red Hat, Inc.\n"
+"కాపీరైట్ © 2005-2008 Novell, Inc.మరియు వేరే చాలా సంస్థ అనువాదులు"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+msgid ""
+"Notification area applet for managing your network devices and connections."
+msgstr "మీ నెట్వర్కు పరికరములను మరియు అనుసంధానములను నిర్వహించుటకు ప్రకటన ప్రాంత ఆప్లెట్."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1144
+msgid "NetworkManager Website"
+msgstr "నెట్‌వర్క్ మ్యానేజర్ వెబ్‌సైట్"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1148
+msgid "translator-credits"
+msgstr "కృష్ణబా"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+msgid ""
+"The NetworkManager Applet could not find some required resources (the .ui "
+"file was not found)."
+msgstr "నెట్‌వర్క్ మ్యానేజర్ ఆప్లెట్ కొన్ని అవసరమైన వనరులను కనుగొనలేకపోయింది(.ui ఫైలు కనుగొనబడలేదు)."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1163
+msgid "Missing resources"
+msgstr "వనరులు తప్పిపోయినవి"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1188
+msgid "Mobile broadband network password"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ నెట్వర్కు సంకేతపదము"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1197
+#, fuzzy, c-format
+msgid "A password is required to connect to “%s”."
+msgstr "'%s'కు అనుసంధానమగుటకు వొక సంకేతపదము అవసరమైంది."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1220
+msgid "Password:"
+msgstr "సంకేతపదము:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1502
+msgid "SIM PIN unlock required"
+msgstr "SIM PIN అన్‌లాక్ అవసరమైంది"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1503
+msgid "SIM PIN Unlock Required"
+msgstr "SIM PIN అన్‌లాక్ అవసరమైంది"
+
+#. FIXME: some warning about # of times you can enter incorrect PIN
+#: ../src/panel/widgets/netman/applet-dialogs.c:1505
+#, fuzzy, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PIN code before it can be "
+"used."
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ పరికరము '%s'ను వుపయోగించుటకు ముందుగా దానికి SIM PIN అవసరము."
+
+#. Translators: PIN code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1507
+msgid "PIN code:"
+msgstr "PIN కోడ్:"
+
+#. Translators: Show/obscure PIN checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1511
+msgid "Show PIN code"
+msgstr "పిన్  కోడ్ చూపుము"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1513
+msgid "SIM PUK unlock required"
+msgstr "SIM PUK అన్‌లాక్ అవసరమైంది"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1514
+msgid "SIM PUK Unlock Required"
+msgstr "SIM PUK అన్‌లాక్ అవసరమైంది"
+
+#. FIXME: some warning about # of times you can enter incorrect PUK
+#: ../src/panel/widgets/netman/applet-dialogs.c:1516
+#, fuzzy, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PUK code before it can be "
+"used."
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ పరికరము '%s'ను వుపయోగించుటకు ముందుగా దానికి SIM PUK కోడ్ అవసరము."
+
+#. Translators: PUK code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1518
+msgid "PUK code:"
+msgstr "PUK కోడ్:"
+
+#. Translators: New PIN entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1521
+msgid "New PIN code:"
+msgstr "కొత్త PIN కోడ్:"
+
+#. Translators: New PIN verification entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1523
+msgid "Re-enter new PIN code:"
+msgstr "కొత్త PIN కోడ్‌ను మరలా-ప్రవేశపెట్టుము:"
+
+#. Translators: Show/obscure PIN/PUK checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1528
+msgid "Show PIN/PUK codes"
+msgstr "PIN/PUK కోడ్ లను చూపుము"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:427
+#, fuzzy
+msgid "Connection had no VPN setting"
+msgstr "అనుసంధానము సమాచారము"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:477
+#, fuzzy, c-format
+msgid "Failed to write connection to VPN UI: %s (%d)"
+msgstr "కొత్త  PAN అనుసంధానమును సృష్టించలేక పోయింది: %s"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:485
+msgid "Failed to write connection to VPN UI: incomplete write"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#, fuzzy
+msgid "802.1X authentication"
+msgstr "వైరు‌గల 802.1X ధృవీకరణము"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:36
+#: ../src/panel/widgets/netman/mobile-helpers.c:272
+msgid "CDMA"
+msgstr "CDMA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:38
+msgid "EVDO"
+msgstr "EVDO"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:40
+#: ../src/panel/widgets/netman/mobile-helpers.c:270
+msgid "GSM"
+msgstr "GSM"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:42
+msgid "GPRS"
+msgstr "GPRS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:44
+msgid "EDGE"
+msgstr "EDGE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:46
+msgid "UMTS"
+msgstr "UMTS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:48
+msgid "HSDPA"
+msgstr "HSDPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:50
+msgid "HSUPA"
+msgstr "HSUPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:52
+msgid "HSPA"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:54
+#, fuzzy
+msgid "HSPA+"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:56
+msgid "LTE"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:103
+msgid "not enabled"
+msgstr "చేతనము కాబడలేదు"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:109
+msgid "not registered"
+msgstr "నమోదుకాలేదు"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:127
+#, c-format
+msgid "Home network (%s)"
+msgstr "హోమ్ నెట్వర్కు (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:129
+#, c-format
+msgid "Home network"
+msgstr "హోమ్ నెట్వర్కు"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:137
+msgid "searching"
+msgstr "శోధించుచున్నది"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:140
+msgid "registration denied"
+msgstr "నమోదీకరణ తిరస్కరించబడినది"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:145
+#: ../src/panel/widgets/netman/mb-menu-item.c:151
+#, c-format
+msgid "%s (%s roaming)"
+msgstr "%s (%s రోమింగ్)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:147
+#: ../src/panel/widgets/netman/mb-menu-item.c:153
+#, c-format
+msgid "%s (roaming)"
+msgstr "%s (రోమింగ్)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:156
+#, c-format
+msgid "Roaming network (%s)"
+msgstr "రోమింగ్ నెట్వర్కు (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:158
+#, c-format
+msgid "Roaming network"
+msgstr "రోమింగ్ నెట్వర్కు"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:320
+#, fuzzy, c-format
+msgid "PIN code for SIM card “%s” on “%s”"
+msgstr "'%s' పై '%s'సిమ్ కార్డ్ కొరకు పిన్ కోడ్ "
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:453
+msgid "PIN code required"
+msgstr "PIN కోడ్ అవసరమైంది"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:461
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ పరికరము కొరకు PIN కోడ్ అవసరమైంది"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:619
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+msgstr "మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము '%s' క్రియాశీలముగా వుంది: (%d%%%s%s)"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:622
+msgid "roaming"
+msgstr "రోమింగ్"
+
+#: ../src/panel/widgets/netman/netman.c:139
+#, fuzzy
+msgid "Network Manager"
+msgstr "నెట్వర్కు నిర్వాహిక"
+
+#: ../src/panel/widgets/netman/netman.c:140
+#, fuzzy
+msgid "Controller for Network Manager"
+msgstr "నెట్వర్కు నిర్వాహిక"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:793
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:800
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:807
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:815
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:824
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:835
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+
+#. The %s is a mobile provider name, eg "T-Mobile"
+#: ../src/panel/widgets/netman/utils.c:160
+#, fuzzy, c-format
+msgid "%s connection"
+msgstr "పీఠము అనుసంధానము :"
+
+#: ../src/panel/widgets/netman/utils.c:534
+#, fuzzy
+msgid "PEM certificates (*.pem, *.crt, *.cer)"
+msgstr "DER లేదా PEM ధృవీకరణపత్రములు (*.der, *.pem, *.crt, *.cer)"
+
+#: ../src/panel/widgets/netman/utils.c:546
+#, fuzzy
+msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+msgstr "DER, PEM, లేదా PKCS#12 వ్యక్తిగత కీలు (*.der, *.pem, *.p12)"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:391
+#: ../src/panel/widgets/smenu/menu.c:121
+msgid "Run"
+msgstr "నడుపు"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:412
+msgid "Enter the command you want to execute:"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:116
+msgid "Logout command is not set"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:122
+msgid "Restart"
+msgstr "పునఃప్రారంభించు"
+
+#: ../src/panel/widgets/smenu/menu.c:123
+msgid "Logout"
+msgstr "లాగౌట్"
+
+#: ../src/panel/widgets/smenu/menu.c:140
+msgid "No file manager is configured."
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:489
+msgid "Add to desktop"
+msgstr "డెస్క్‍టాపుకి జతచేయి"
+
+#: ../src/panel/widgets/smenu/menu.c:496
+msgid "Properties"
+msgstr "గుణములు"
+
+#: ../src/panel/widgets/smenu/menu.c:954
+msgid "Click here to open applications menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1047
+msgid "Menu"
+msgstr "మెను"
+
+#: ../src/panel/widgets/smenu/menu.c:1048
+msgid "Icon"
+msgstr "ప్రతీక"
+
+#: ../src/panel/widgets/smenu/menu.c:1049
+msgid "Padding"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1050
+msgid "Fixed Size"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1058
+msgid "Menu with Search"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1059
+#, fuzzy
+msgid "Searchable Application Menu"
+msgstr "అనువర్తన మెను"
+
+#: ../src/panel/widgets/updater/updater.c:189
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:211
+#, fuzzy
+msgid "No network connection - cannot install updates."
+msgstr "నెట్వర్కు అనుసంధానము లేదు"
+
+#: ../src/panel/widgets/updater/updater.c:217
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:320
+msgid "Show Updates..."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:324
+msgid "Install Updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:470
+msgid "Updates are available - click to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:529
+#: ../src/panel/widgets/updater/updater.c:561
+msgid "Updater"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:531
+msgid "Hours between checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:562
+msgid "Checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#, fuzzy
+msgid "Reconnecting Bluetooth devices..."
+msgstr "బ్లూటూత్ పరికరమును కనుగొనలేక పోయినది."
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#, fuzzy, c-format
+msgid "Bluetooth %s device not found"
+msgstr "వైరుగల అనుసంధానము %d"
+
+#. update dialog to show a warning
+#: ../src/panel/widgets/volumepulse/bluetooth.c:405
+msgid "Device not found by PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#, c-format
+msgid "Could not set profile for device : %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#, fuzzy, c-format
+msgid "Failed to connect to Bluetooth device - %s"
+msgstr "ఫోన్‌నకు అనుసంధానమగుటకు విఫలమైంది."
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#, c-format
+msgid "Connecting Bluetooth device '%s' as output..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#, fuzzy, c-format
+msgid "Connecting Bluetooth device '%s' as input..."
+msgstr "బ్లూటూత్ పరికరమును కనుగొనలేక పోయినది."
+
+#. if the current default source and sink are both the same device, disconnect it and reconnect to
+#. put it into A2DP rather than HSP
+#: ../src/panel/widgets/volumepulse/bluetooth.c:785
+msgid "Reconnecting Bluetooth input device as output only..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#, fuzzy
+msgid "Reconnecting Bluetooth device..."
+msgstr "బ్లూటూత్ పరికరమును కనుగొనలేక పోయినది."
+
+#. Create a check button as the child of the vertical box.
+#: ../src/panel/widgets/volumepulse/commongui.c:140
+msgid "Mute"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/commongui.c:231
+msgid "No audio devices found"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:71
+msgid "Input from this device not available in the current profile"
+msgstr ""
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/micpulse.c:144
+msgid "Mic volume"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:216
+msgid "Microphone Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:217
+msgid "Display and control microphones for PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+msgid "HDMI"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+msgid "AV Jack"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+msgid "Device Profiles..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+msgid "Output to this device not available in the current profile"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#, fuzzy
+msgid "Device Profiles"
+msgstr "పరికరము అననుసంధానమురద్దు అగుటలో విఫలము"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#, fuzzy
+msgid "Device not connected"
+msgstr "పరికరము అననుసంధానమురద్దు అగుటలో విఫలము"
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+msgid "Volume control"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+msgid "Volume Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+msgid "Display and control volume for PulseAudio"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
+#, fuzzy
+msgid "label"
+msgstr "లేబుల్"
+
+#: ../data/lxplug-updater.ui.h:1
+#, fuzzy
+msgid "Available Updates"
+msgstr "అందుబాటులోవుంది"
+
+#: ../data/lxplug-updater.ui.h:2
+msgid "Close"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:3
+msgid "Install"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:4
+msgid "The following packages can be updated :"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:1
+#, fuzzy
+msgid "Add New Device"
+msgstr "ఏ పరికరమైనా"
+
+#: ../data/lxplug-bluetooth.ui.h:3
+msgid "_Pair"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:4
+#, fuzzy
+msgid "Searching for Bluetooth devices..."
+msgstr "బ్లూటూత్ పరికరమును కనుగొనలేక పోయినది."
+
+#~ msgid "Manage your network connections"
+#~ msgstr "మీ నెట్వర్కు అనుసంధానములను నిర్వహించు"
+
+#, fuzzy
+#~ msgid "NetworkManager connection editor"
+#~ msgstr "నెట్వర్కు అనుసంధానము లేదు"
+
+#, fuzzy
+#~ msgid "The NetworkManager Developers"
+#~ msgstr "నెట్‌వర్క్ మ్యానేజర్ ఆప్లెట్"
+
+#, fuzzy
+#~ msgid "Advanced Network Configuration"
+#~ msgstr "క్రియాశీల నెట్వర్కు అనుసంధానములు"
+
+#~ msgid "Manage and change your network connection settings"
+#~ msgstr "మీ నెట్వర్కు అనుసంధానము అమర్పులను నిర్వహించండి మరియు మార్చండి"
+
+#, fuzzy
+#~ msgid "_Network name"
+#~ msgstr "నెట్వర్కు పేరు (_N):"
+
+#~ msgid "Connection _Information"
+#~ msgstr "అనుసంధానము సమాచారము (_I)"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add an IP address."
+#~ msgstr ""
+#~ "IP చిరునామాలు మీ కంప్యూటర్‌ను నెట్వర్కునందు గుర్తించినవి.  IP చిరునామాను జతచేయుటకు \"జతచేయి\" "
+#~ "బటన్ వత్తుము."
+
+#~ msgid "_Delete"
+#~ msgstr "తొలగించు (_D)"
+
+#~ msgid "Ig_nore automatically obtained routes"
+#~ msgstr "స్వయంచాలకంగా పొందినటువంటి రూట్లను వదిలివేయుము (_n)"
+
+#~ msgid "_Use this connection only for resources on its network"
+#~ msgstr "ఈ నెట్వర్కు నందలి వనరులకొరకు ఈ అనుసంధానమును మాత్రమే వుపయోగించుము (_U)"
+
+#~ msgid ""
+#~ "If enabled, this connection will never be used as the default network "
+#~ "connection."
+#~ msgstr ""
+#~ "చేతనపరచినట్లైతే, ఈ అనుసంధానము యెప్పుడూకూడా అప్రమేయ నెట్వర్కు అనుసంధానమువలె వుపయోగించబడదు."
+
+#, fuzzy
+#~ msgid "C_reate…"
+#~ msgstr "సృష్టించుము..."
+
+#, fuzzy
+#~ msgid "Choose a Connection Type"
+#~ msgstr "VPN అనుసంధానము విధమును  ఎంచుకొనుము"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of connection you wish to create.\n"
+#~ "\n"
+#~ "If you are creating a VPN, and the VPN connection you wish to create does "
+#~ "not appear in the list, you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "కొత్త అనుసంధానము కొరకు మీరు వుపయోగించాలి అనుకొనుచున్న VPN రకమును యెంపికచేయుము  మీరు "
+#~ "సృష్టించాలని అనుకొనుచున్న VPN అనుసంధానము రకము జాబితానందు కనిపించకపోతే, మీరు సరైన VPN "
+#~ "ప్లగ్‌యిన్ సంస్థాపన కలిగివుండక పోవచ్చును."
+
+#, fuzzy
+#~ msgid "_Device"
+#~ msgstr "సేవ (_S):"
+
+#~ msgid "Round-robin"
+#~ msgstr "రౌండ్-రాబిన్"
+
+#~ msgid "Active backup"
+#~ msgstr "క్రియాశీల బ్యాకప్"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "Broadcast"
+#~ msgstr "బ్రాడ్‌కాస్ట్"
+
+#~ msgid "802.3ad"
+#~ msgstr "802.3ad"
+
+#~ msgid "Adaptive transmit load balancing"
+#~ msgstr "అడాప్టివ్ ట్రాన్స్‌మిట్ లోడ్ బాలెన్సింగ్"
+
+#~ msgid "Adaptive load balancing"
+#~ msgstr "అడాప్టివ్ లోడ్ బాలెన్సింగ్"
+
+#~ msgid "MII (recommended)"
+#~ msgstr "MII (సిఫార్సుచేసిన)"
+
+#~ msgid "ARP"
+#~ msgstr "ARP"
+
+#, fuzzy
+#~ msgid "Bonded _connections"
+#~ msgstr "బాండెడ్ అనుసంధానములు (_c):"
+
+#, fuzzy
+#~ msgid "M_ode"
+#~ msgstr "రీతి (_o):"
+
+#~ msgid "_Edit"
+#~ msgstr "సవరించు (_E)"
+
+#, fuzzy
+#~ msgid "Monitoring _frequency"
+#~ msgstr "మానిటరింగ్ ఫ్రీక్వెన్సీ (_f):"
+
+#~ msgid "ms"
+#~ msgstr "మిసె"
+
+#, fuzzy
+#~ msgid "_Interface name"
+#~ msgstr "ఇంటర్ఫేస్ పేరు (_I):"
+
+#, fuzzy
+#~ msgid "_Link Monitoring"
+#~ msgstr "లింక్ మానిటరింగ్ (_L):"
+
+#, fuzzy
+#~ msgid "ARP _targets"
+#~ msgstr "ARP లక్ష్యాలు (_t):"
+
+#~ msgid ""
+#~ "An IP address, or a comma-separated list of IP addresses, to look for "
+#~ "when checking the link status."
+#~ msgstr ""
+#~ "లింక్ స్థితిని పరిశీలిస్తున్నప్పుడు చూడటానికి, ఒక ఐపి చిరునామా, లేదా కామాతో-వేరుచేసిన ఐపి చిరునామాల జాబితా."
+
+#, fuzzy
+#~ msgid "Link _up delay"
+#~ msgstr "లింక్ అప్ ఆలస్యం (_u):"
+
+#, fuzzy
+#~ msgid "Link _down delay"
+#~ msgstr "లింక్ డౌన్ ఆలస్యం (_d):"
+
+#, fuzzy
+#~ msgid "_Primary"
+#~ msgstr "ప్రాధమిక DNS:"
+
+#, fuzzy
+#~ msgid "_MTU"
+#~ msgstr "MTU(_M):"
+
+#~ msgid "bytes"
+#~ msgstr "బైట్లు"
+
+#, fuzzy
+#~ msgid "_Priority"
+#~ msgstr "రక్షణ(_e):"
+
+#, fuzzy
+#~ msgid "Bridged _connections"
+#~ msgstr "పీఠము అనుసంధానము :"
+
+#, fuzzy
+#~ msgid "_Forward delay"
+#~ msgstr "లింక్ డౌన్ ఆలస్యం (_d):"
+
+#, fuzzy
+#~ msgid "Enable I_GMP snooping"
+#~ msgstr "నెట్వర్కింగ్ చేతనముచేయుము (_N)"
+
+#, fuzzy
+#~ msgid "_Use Data Center Bridging (DCB) for this connection"
+#~ msgstr "ఈ అనుసంధానము కొరకు 802.1_X రక్షణ వుపయోగించుము"
+
+#~ msgid "default"
+#~ msgstr "అప్రమేయ"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgid "_Username"
+#~ msgstr "వాడుకరిపేరు (_U):"
+
+#, fuzzy
+#~ msgid "_Service"
+#~ msgstr "సేవ (_S):"
+
+#~ msgid "Sho_w password"
+#~ msgstr "సంకేతపదమును చూపుము (_w)"
+
+#, fuzzy
+#~ msgid "_Password"
+#~ msgstr "సంకేతపదము (_P):"
+
+#, fuzzy
+#~ msgid "PPP _interface"
+#~ msgstr "అంతరవర్తి"
+
+#, fuzzy
+#~ msgid "P_arent interface"
+#~ msgstr "పేరెంట్ ఇంటర్ఫేస్ (_P):"
+
+#, fuzzy
+#~ msgid "C_laim interface"
+#~ msgstr "పేరెంట్ ఇంటర్ఫేస్ (_P):"
+
+#~ msgid "Automatic"
+#~ msgstr "స్వయంచాలకంగా"
+
+#~ msgid "Twisted Pair (TP)"
+#~ msgstr "పురి జత(TP)"
+
+#~ msgid "Attachment Unit Interface (AUI)"
+#~ msgstr "అటాచ్ మెంట్ యూనిట్ ఇంటర్ఫేస్(AUI)"
+
+#~ msgid "BNC"
+#~ msgstr "BNC"
+
+#~ msgid "Media Independent Interface (MII)"
+#~ msgstr "మధ్యస్థత  స్వతంత్రమైన సంవిధానం(MII)"
+
+#~ msgid "10 Mb/s"
+#~ msgstr "10 Mb/s"
+
+#~ msgid "100 Mb/s"
+#~ msgstr "100 Mb/s"
+
+#~ msgid "1 Gb/s"
+#~ msgstr "1 Gb/s"
+
+#~ msgid "10 Gb/s"
+#~ msgstr "10 Gb/s"
+
+#~ msgid "Ignore"
+#~ msgstr "వదిలివేయి"
+
+#~ msgid "Manual"
+#~ msgstr "మానవీయం"
+
+#, fuzzy
+#~ msgid "_Port"
+#~ msgstr "పోర్ట్ (_P):"
+
+#, fuzzy
+#~ msgid "C_loned MAC address"
+#~ msgstr "క్లోన్ చేయబడిన MAC చిరునామా (_l):"
+
+#, fuzzy
+#~ msgid "Wake on LAN"
+#~ msgstr "వ్యక్తిగత కీ సంకేతపదము (_P):"
+
+#, fuzzy
+#~ msgid "De_fault"
+#~ msgstr "అప్రమేయ"
+
+#, fuzzy
+#~ msgid "_Ignore"
+#~ msgstr "వదిలివేయి"
+
+#, fuzzy
+#~ msgid "_Broadcast"
+#~ msgstr "బ్రాడ్‌కాస్ట్ చిరునామా:"
+
+#, fuzzy
+#~ msgid "_Wake on LAN password"
+#~ msgstr "వ్యక్తిగత కీ సంకేతపదము (_P):"
+
+#, fuzzy
+#~ msgid "_Speed"
+#~ msgstr "వేగము (_S):"
+
+#, fuzzy
+#~ msgid "Duple_x"
+#~ msgstr "పూర్తి డప్లెక్స్ (_x)"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "ఏదీకాదు"
+
+#, fuzzy
+#~ msgid "All _users may connect to this network"
+#~ msgstr "మీరు యిప్పుడు వైర్ నెట్వర్కునకు అనుసంధానించబడినారు."
+
+#, fuzzy
+#~ msgid "Automatically connect to _VPN"
+#~ msgstr "స్వయచాలకంగా ఈ పరికరమును అన్‌లాక్ చేయు"
+
+#, fuzzy
+#~ msgid "_Metered connection"
+#~ msgstr "పీఠము అనుసంధానము :"
+
+#, fuzzy
+#~ msgid "Connect _automatically with priority"
+#~ msgstr "స్వయంచాలకంగా అనుసంధానించుము (_a)"
+
+#~ msgid "Datagram"
+#~ msgstr "డాటాగ్రామ్"
+
+#~ msgid "Connected"
+#~ msgstr "అనుసంధానించెను"
+
+#, fuzzy
+#~ msgid "_Transport mode"
+#~ msgstr "బదిలీ తీరు (_T):"
+
+#, fuzzy
+#~ msgid "Device name"
+#~ msgstr "పరికరం పేరు + సంఖ్య"
+
+#, fuzzy
+#~ msgid "Parent device"
+#~ msgstr "ఈథర్‌నెట్ (%s)"
+
+#, fuzzy
+#~ msgid "MTU"
+#~ msgstr "MTU(_M):"
+
+#~ msgid "Automatic with manual DNS settings"
+#~ msgstr "నిర్దేశిక DNS అమరికలు తో స్వయం చాలకం "
+
+#~ msgid "Link-Local"
+#~ msgstr "లింకు-స్థానిక "
+
+#~ msgid "Shared to other computers"
+#~ msgstr "ఇంతర కంప్యూటర్లకు భాగస్వామ్యపరచబడింది"
+
+#, fuzzy
+#~ msgid "_Method"
+#~ msgstr "విధానము (_M):"
+
+#, fuzzy
+#~ msgid ""
+#~ "The DHCP client identifier allows the network administrator to customize "
+#~ "your computer’s configuration. If you wish to use a DHCP client "
+#~ "identifier, enter it here."
+#~ msgstr ""
+#~ "మీ కంప్యూటర్ యొక్క ఆకృతీకరణను మలచుటకు DHCP క్లైంట్ గుర్తింపుదారి నెట్వర్కు నిర్వహణాధికారిని "
+#~ "అనుమతించును.  మీరు DHCP క్లైంట్ గుర్తింపుదారిని వుపయోగించవలెనంటే, దానిని యిచట ప్రవేశపెట్టుము."
+
+#~ msgid ""
+#~ "Domains used when resolving host names. Use commas to separate multiple "
+#~ "domains."
+#~ msgstr ""
+#~ "హోస్ట్ నామములను పరిష్కరించునప్పుడు వుపయోగించిన డొమైన్స్. బహుళ డొమైన్లను వేరుచేయుటు కామాలను "
+#~ "వుపయోగించుము."
+
+#, fuzzy
+#~ msgid "D_HCP client ID"
+#~ msgstr "D_HCP క్లైంట్ ID:"
+
+#, fuzzy
+#~ msgid "S_earch domains"
+#~ msgstr "శోధించుము (_S) ఈ డొమైన్లను: "
+
+#, fuzzy
+#~ msgid "DNS ser_vers"
+#~ msgstr "_DNS సేవికలు:"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses."
+#~ msgstr ""
+#~ "డొమైన్ నేమ్ సర్వర్ల యొక్క IP చిరునామాలు హోస్టు నామములను పరిష్కరించుటకు వుపయోగించబడెను. బహుళ "
+#~ "డొమైన్ నేమ్ సర్వర్ చిరునామాలను వేరుచేయుటకు కామాలను వుపయోగించుము."
+
+#~ msgid "Require IPv_4 addressing for this connection to complete"
+#~ msgstr "ఈ అనుసంధానము పూర్తిచేయుటకు IPv_4 చిరునామీకరణ అవసరము"
+
+#~ msgid ""
+#~ "When connecting to IPv6-capable networks, allows the connection to "
+#~ "complete if IPv4 configuration fails but IPv6 configuration succeeds."
+#~ msgstr ""
+#~ "IPv6-సామర్ధ్యపు నెట్వర్కులకు అనుసంధానమగునప్పుడు, IPv4 ఆకృతీకరణ విఫలమైతే అనుసంధానము "
+#~ "పూర్తి అగుటకు అనుమతించును అయితే IPv6 సఫలమైతే."
+
+#~ msgid "_Routes…"
+#~ msgstr "దారులు...(_R)"
+
+#~ msgid "Default"
+#~ msgstr "అప్రమేయ"
+
+#~ msgid "Disabled"
+#~ msgstr "అచేతనమైన"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses. Link-local "
+#~ "addresses will be automatically scoped to the connecting interface."
+#~ msgstr ""
+#~ "డొమైన్ నేమ్ సర్వర్ల యొక్క IP చిరునామాలు హోస్టు నామములను పరిష్కరించుటకు వుపయోగించబడెను. బహుళ "
+#~ "డొమైన్ నేమ్ సర్వర్ చిరునామాలను వేరుచేయుటకు కామాలను వుపయోగించుము."
+
+#~ msgid "Require IPv_6 addressing for this connection to complete"
+#~ msgstr "ఈ అనుసంధానము పూర్తగుటకు IPv_6 చిరునామీకరణ అవసరము"
+
+#~ msgid ""
+#~ "When connecting to IPv4-capable networks, allows the connection to "
+#~ "complete if IPv6 configuration fails but IPv4 configuration succeeds."
+#~ msgstr ""
+#~ "IPv4-capable నెట్వర్కులకు అనుసంధానమగునప్పుడు, IPv6 ఆకృతీకరణ విఫలమైతే అనుసంధానము "
+#~ "పూర్తగుట అనుమతించును అయితే IPv4 ఆకృతీకరణ సఫలమైతే."
+
+#~ msgid "EAP"
+#~ msgstr "EAP"
+
+#, fuzzy
+#~ msgid "Strict"
+#~ msgstr "మెట్రిక్"
+
+#, fuzzy
+#~ msgid "_Device name"
+#~ msgstr "పరికరం పేరు + సంఖ్య"
+
+#, fuzzy
+#~ msgid "_Parent device"
+#~ msgstr "ఈథర్‌నెట్ (%s)"
+
+#, fuzzy
+#~ msgid "_SCI port"
+#~ msgstr "దిగుమతి (_I)"
+
+#~ msgid "Basic"
+#~ msgstr "ప్రాథమికం"
+
+#, fuzzy
+#~ msgid "Nu_mber"
+#~ msgstr "సంఖ్య (_m):"
+
+#, fuzzy
+#~ msgid "_APN"
+#~ msgstr "_APN:"
+
+#, fuzzy
+#~ msgid "N_etwork ID"
+#~ msgstr "నెట్వర్కు ID (_e):"
+
+#, fuzzy
+#~ msgid "Change…"
+#~ msgstr "మార్చు..."
+
+#, fuzzy
+#~ msgid "P_IN"
+#~ msgstr "పిన్ (_I):"
+
+#~ msgid "Allow _roaming if home network is not available"
+#~ msgstr "హోమ్ నెట్వర్కు అందుబాటులో లేకపోతే రోమింగ్‌ను అనుమతించుము(_r)"
+
+#~ msgid "Sho_w passwords"
+#~ msgstr "సంకేతపదములను చూపుము (_w)"
+
+#~ msgid "Authentication"
+#~ msgstr "ధృవీకరణ "
+
+#, fuzzy
+#~ msgid "Allowed methods"
+#~ msgstr "అనుమతించిన విధానాలు:"
+
+#~ msgid "Configure _Methods…"
+#~ msgstr "విధానాలను ఆకృతీకరించుము (_M)"
+
+#~ msgid "Compression"
+#~ msgstr "కుదింపు"
+
+#~ msgid "_Use point-to-point encryption (MPPE)"
+#~ msgstr "పాయింట్-నుండి-పాయింట్ ఎన్క్రిప్షన్ వుపయోగించుము (MPPE) (_U)"
+
+#~ msgid "_Require 128-bit encryption"
+#~ msgstr "128-బిట్ ఎన్క్రిప్షన్ అవసరము (_R)"
+
+#~ msgid "Use _stateful MPPE"
+#~ msgstr "స్థితివంత MPPE వుపయోగించుము (_s)"
+
+#~ msgid "Allow _BSD data compression"
+#~ msgstr "_BSD డాటా కుదింపును అనుమతించుము"
+
+#~ msgid "Allow _Deflate data compression"
+#~ msgstr "డిఫ్లేట్ డాటా కుదింపును అనుమతించుము (_D)"
+
+#~ msgid "Use TCP _header compression"
+#~ msgstr "TCP పీఠిక(హెడర్) కుదింపును వుపయోగించుము"
+
+#~ msgid "Echo"
+#~ msgstr "ప్రతిధ్వని"
+
+#~ msgid "Send PPP _echo packets"
+#~ msgstr "PPP _echo ప్యాకెట్లను పంపుము"
+
+#, fuzzy
+#~ msgid "None"
+#~ msgstr "ఏదీకాదు"
+
+#, fuzzy
+#~ msgid "Method"
+#~ msgstr "విధానము (_M):"
+
+#, fuzzy
+#~ msgid "Ad_vanced…"
+#~ msgstr "అధునాతనం"
+
+#, fuzzy
+#~ msgid "Ethernet port state"
+#~ msgstr "వైర్‌తో నెట్వర్క్సు"
+
+#, fuzzy
+#~ msgid "_Port priority"
+#~ msgstr "రక్షణ(_e):"
+
+#, fuzzy
+#~ msgid "_LACP port priority"
+#~ msgstr "రక్షణ(_e):"
+
+#, fuzzy
+#~ msgid "LACP port _key"
+#~ msgstr "వ్యక్తిగత కీ (_k):"
+
+#, fuzzy
+#~ msgid "_Up delay"
+#~ msgstr "లింక్ అప్ ఆలస్యం (_u):"
+
+#, fuzzy
+#~ msgid "_Down delay"
+#~ msgstr "లింక్ డౌన్ ఆలస్యం (_d):"
+
+#, fuzzy
+#~ msgid "Send _interval"
+#~ msgstr "పేరెంట్ ఇంటర్ఫేస్ (_P):"
+
+#, fuzzy
+#~ msgid "_Source host"
+#~ msgstr "ARP లక్ష్యాలు (_t):"
+
+#, fuzzy
+#~ msgid "_Target host"
+#~ msgstr "ARP లక్ష్యాలు (_t):"
+
+#, fuzzy
+#~ msgid "Port priority"
+#~ msgstr "రక్షణ(_e):"
+
+#, fuzzy
+#~ msgid "From the team device"
+#~ msgstr "ఈథర్‌నెట్ (%s)"
+
+#, fuzzy
+#~ msgid "_Teamed connections"
+#~ msgstr "పీఠము అనుసంధానము :"
+
+#, fuzzy
+#~ msgid "Ethernet"
+#~ msgstr "స్వయంచాలక ఈథర్‌నెట్"
+
+#~ msgid "VLAN"
+#~ msgstr "VLAN"
+
+#, fuzzy
+#~ msgid "IP"
+#~ msgstr "IPv4"
+
+#, fuzzy
+#~ msgid "TCP"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "_Hardware Address"
+#~ msgstr "హార్డువేర్ చిరునామా:"
+
+#, fuzzy
+#~ msgid "_Hardware address policy"
+#~ msgstr "హార్డువేర్ చిరునామా:"
+
+#, fuzzy
+#~ msgid "_System priority"
+#~ msgstr "రక్షణ(_e):"
+
+#, fuzzy
+#~ msgid "Transmission _balancing interval"
+#~ msgstr "బదిలీకరణ శక్తి (_w):"
+
+#, fuzzy
+#~ msgid "_Transmission balancer"
+#~ msgstr "బదిలీకరణ శక్తి (_w):"
+
+#, fuzzy
+#~ msgid "_Parent interface"
+#~ msgstr "పేరెంట్ ఇంటర్ఫేస్ (_P):"
+
+#, fuzzy
+#~ msgid "VLAN inter_face name"
+#~ msgstr "ఇంటర్ఫేస్ పేరు (_I):"
+
+#, fuzzy
+#~ msgid "Cloned MAC _address"
+#~ msgstr "క్లోన్ చేయబడిన MAC చిరునామా (_l):"
+
+#, fuzzy
+#~ msgid "VLAN _id"
+#~ msgstr "VLAN _id:"
+
+#~ msgid "Device name + number"
+#~ msgstr "పరికరం పేరు + సంఖ్య"
+
+#~ msgid "\"vlan\" + number"
+#~ msgstr "\"vlan\" + సంఖ్య"
+
+#, fuzzy
+#~ msgid "S_ecurity"
+#~ msgstr "రక్షణ(_e):"
+
+#~ msgid "A (5 GHz)"
+#~ msgstr "A (5 GHz)"
+
+#~ msgid "B/G (2.4 GHz)"
+#~ msgstr "B/G (2.4 GHz)"
+
+#~ msgid "Ad-hoc"
+#~ msgstr "Ad-hoc"
+
+#~ msgid "mW"
+#~ msgstr "mW"
+
+#, fuzzy
+#~ msgid "Transmission po_wer"
+#~ msgstr "బదిలీకరణ శక్తి (_w):"
+
+#~ msgid "Mb/s"
+#~ msgstr "Mb/s"
+
+#, fuzzy
+#~ msgid "_Rate"
+#~ msgstr "రేటు (_R):"
+
+#, fuzzy
+#~ msgid "_BSSID"
+#~ msgstr "_BSSID:"
+
+#, fuzzy
+#~ msgid "C_hannel"
+#~ msgstr "ప్రసారమార్గము (_h):"
+
+#, fuzzy
+#~ msgid "Ban_d"
+#~ msgstr "బాండ్ (_d):"
+
+#, fuzzy
+#~ msgid "SS_ID"
+#~ msgstr "SSID(_I):"
+
+#, fuzzy
+#~ msgid "_Apply"
+#~ msgstr "ఆపాదించు"
+
+#, fuzzy
+#~ msgid "Allowed _IPs"
+#~ msgstr "అనుమతించిన విధానాలు:"
+
+#, fuzzy
+#~ msgid "Pre_shared key"
+#~ msgstr "భాగస్వామ్య కీ"
+
+#, fuzzy
+#~ msgid "Sho_w preshared key"
+#~ msgstr "కీను చూపుము (_w)"
+
+#, fuzzy
+#~ msgid "Private _key"
+#~ msgstr "వ్యక్తిగత కీ (_k):"
+
+#, fuzzy
+#~ msgid "_Show private key"
+#~ msgstr "వ్యక్తిగత కీ (_k):"
+
+#, fuzzy
+#~ msgid "<b>_Peers</b>"
+#~ msgstr "<b>చిరునామాలు</b>"
+
+#~ msgid "automatic"
+#~ msgstr "స్వయంచాలకం"
+
+#, fuzzy
+#~ msgid ""
+#~ "The MAC address entered here will be used as hardware address for the "
+#~ "network device this connection is activated on. This feature is known as "
+#~ "MAC cloning or spoofing. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "ఇక్కడ యిచ్చినటువంటి MAC చిరునామా ఈ అనుసంధానము క్రియాశీలపరచబడిన నెట్వర్కు పరికరము కొరకు "
+#~ "హార్డువేర్ చిరునామాగా వుపయోగించబడును. ఈ విశేషతను MAC క్లోనింగ్ లేదా స్పూఫింగ్‌గా తెలుపుబడుతోంది.  "
+#~ "ఉదా: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid "MAC address"
+#~ msgstr "చిరునామా"
+
+#, fuzzy
+#~ msgid "HW address"
+#~ msgstr "చిరునామా"
+
+#, fuzzy
+#~ msgid "invalid hardware address"
+#~ msgstr "హార్డువేర్ చిరునామా:"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add static IP address to be configured in addition to the "
+#~ "automatic ones."
+#~ msgstr ""
+#~ "IP చిరునామాలు మీ కంప్యూటర్‌ను నెట్వర్కునందు గుర్తించినవి.  IP చిరునామాను జతచేయుటకు \"జతచేయి\" "
+#~ "బటన్ వత్తుము."
+
+#, fuzzy
+#~ msgid "Additional static addresses"
+#~ msgstr "స్వయంచాలక, చిరునామాలు మాత్రమే"
+
+#~ msgid "Addresses"
+#~ msgstr "చిరునామాలు"
+
+#~ msgid "Allowed Authentication Methods"
+#~ msgstr "<b>అనుమతించిన ధృవీకరణ విధానములు</b>"
+
+#~ msgid "_EAP"
+#~ msgstr "_EAP"
+
+#~ msgid "Extensible Authentication Protocol"
+#~ msgstr "పోడిగించదగు ఆథెంటికేషన్ ప్రోటోకాల్"
+
+#~ msgid "_PAP"
+#~ msgstr "_PAP"
+
+#~ msgid "Password Authentication Protocol"
+#~ msgstr "సంకేతపదము ధృవీకరణ నిభందన"
+
+#~ msgid "C_HAP"
+#~ msgstr "C_HAP"
+
+#~ msgid "Challenge Handshake Authentication Protocol"
+#~ msgstr "ఛాలెంజ్ హాండ్‌షేక్ ఆథెంటికేషన్ ప్రోటోకాల్"
+
+#~ msgid "_MSCHAP"
+#~ msgstr "_MSCHAP"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol"
+#~ msgstr "మైక్రోసాఫ్ట్ ఛాలెంజ్ హాండ్‌షేక్ ఆథెంటికేషన్ ప్రోటోకాల్"
+
+#~ msgid "MSCHAP v_2"
+#~ msgstr "MSCHAP v_2"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol version 2"
+#~ msgstr "మైక్రోసాఫ్టు ఛాలెంజ్ హాండ్‌షేక్ ఆథెంటికేషన్ ప్రొటోకాల్ వర్షన్ 2"
+
+#, fuzzy
+#~ msgid ""
+#~ "In most cases, the provider’s PPP servers will support all authentication "
+#~ "methods. If connections fail, try disabling support for some methods."
+#~ msgstr ""
+#~ "చాలా సందర్భాలలో, ఉత్పాదకుల PPP సేవికలు అన్ని దృవీకరణ విధానాలను మద్దతిస్తాయి. ఒకవేళ అనుసంధానములు "
+#~ "విఫలమైతే, కొన్ని విధానాలకు మద్దతును అచేతనముచేయుటకు ప్రయత్నించుము."
+
+#~ msgid "InfiniBand"
+#~ msgstr "ఇన్ఫిబాండ్"
+
+#~ msgid "Bond"
+#~ msgstr "బాండ్"
+
+#~ msgid "Bridge"
+#~ msgstr "బ్రిడ్జి"
+
+#, fuzzy
+#~ msgid "WireGuard"
+#~ msgstr "వైరుగలవిధం"
+
+#~ msgid "VPN"
+#~ msgstr "VPN"
+
+#, fuzzy
+#~ msgid "The VPN plugin failed to import the VPN connection correctly: "
+#~ msgstr ""
+#~ "VPN అనుసంధానమును సరిగా దిగుమతి చేయుటలో VPN ప్లగ్‌యిన్ విఫలమైంది\n"
+#~ "\n"
+#~ "దోషము: VPN సేవా రకములేదు."
+
+#~ msgid "Select file to import"
+#~ msgstr "దిగుమతి చేయుటకు ఫైలును యెంపికచేయుము"
+
+#~ msgid "Hardware"
+#~ msgstr "హార్డువేర్"
+
+#~ msgid "Virtual"
+#~ msgstr "వర్చ్యువల్"
+
+#, fuzzy
+#~ msgid "Import a saved VPN configuration…"
+#~ msgstr "భద్రపరచిన VPN ఆకృతీకరణను దిగుమతిచేయి..."
+
+#~ msgid ""
+#~ "The connection editor dialog could not be initialized due to an unknown "
+#~ "error."
+#~ msgstr "తెలియని దోషము కారణంగా అనుసంధానము సరికూర్పరి డైలాగ్ సిద్దపరచబడలేక పోయింది."
+
+#~ msgid "Could not create new connection"
+#~ msgstr "కొత్త అనుసంధానమును సృష్టించలేక పోయింది"
+
+#~ msgid "Connection delete failed"
+#~ msgstr "అనుసంధానము తొలగింపు విఫలమైంది"
+
+#, c-format
+#~ msgid "Are you sure you wish to delete the connection %s?"
+#~ msgstr "మీరు ఖచ్చితంగా అనుసంధానము %sను తొలగించుదామని అనుకొనుచున్నారా?"
+
+#, fuzzy
+#~ msgid "_New Connection"
+#~ msgstr "_VPN అనుసంధానములు"
+
+#~ msgid "Address"
+#~ msgstr "చిరునామా"
+
+#~ msgid "Netmask"
+#~ msgstr "నెట్‌మాస్క్"
+
+#~ msgid "Gateway"
+#~ msgstr "గేట్‌వే"
+
+#~ msgid "Metric"
+#~ msgstr "మెట్రిక్"
+
+#~ msgid "Prefix"
+#~ msgstr "ప్రిఫిక్స్"
+
+#, c-format
+#~ msgid "Editing %s"
+#~ msgstr "సరికూర్చుచున్నది %s"
+
+#~ msgid "Editing un-named connection"
+#~ msgstr "పేరు-లేని అనుసంధానమును సరికూర్చుచున్నది"
+
+#, fuzzy
+#~ msgid "Missing connection name"
+#~ msgstr "అనుసంధానము పేరు (_n):"
+
+#, fuzzy
+#~ msgid "Editor initializing…"
+#~ msgstr "సరికూర్పరి సిద్దపరచుటలో దోషము"
+
+#, fuzzy
+#~ msgid "Connection cannot be modified"
+#~ msgstr "అనుసంధానం జతచేయుట విఫలమైంది"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "అనుసంధానము సరికూర్పరి అవసరమైన కొన్ని వనరులను కనుగొనలేక పోయింది (గ్లేడ్ ఫైలు కనుగొనబడలేదు)."
+
+#~ msgid "_Save"
+#~ msgstr "భద్రపరుచు (_S)"
+
+#~ msgid "Save any changes made to this connection."
+#~ msgstr "ఈ అనుసంధానమునకు చేసిన యే మార్పులనైనా దాయుము."
+
+#~ msgid "Authenticate to save this connection for all users of this machine."
+#~ msgstr "ఈ మిషన్‌యొక్క వినియోగదారులందరికి ఈ అనుసంధానమును దాయుటకు దృవీకరించుము."
+
+#~ msgid "Could not create connection"
+#~ msgstr "అనుసంధానమును సృష్టించలేక పోయింది"
+
+#~ msgid "Could not edit connection"
+#~ msgstr "అనుసంధానమును సరికూర్చలేక పోయింది"
+
+#~ msgid "Unknown error creating connection editor dialog."
+#~ msgstr "అనుసంధానము సరికూర్పరి డైలాగును సృష్టించుటలో తెలియని దోషము."
+
+#~ msgid "Error initializing editor"
+#~ msgstr "సరికూర్పరి సిద్దపరచుటలో దోషము"
+
+#~ msgid "Connection add failed"
+#~ msgstr "అనుసంధానం జతచేయుట విఫలమైంది"
+
+#, fuzzy
+#~ msgid ""
+#~ "Security labels may prevent some files from being used with certificate "
+#~ "authentication."
+#~ msgstr "EAP ప్రమాణీకరణ లో CA సర్టిఫికేట్ల గురించి హెచ్చరికలు డిసేబుల్ నిజమైతే  ఇది  సెట్ చెయ్యండి."
+
+#, fuzzy
+#~ msgid "Connection _name"
+#~ msgstr "అనుసంధానము పేరు (_n):"
+
+#, fuzzy
+#~ msgid "_Export…"
+#~ msgstr "ఎగుమతి... (_E)"
+
+#, fuzzy
+#~ msgid "_Relabel"
+#~ msgstr "లేబుల్"
+
+#~ msgid "never"
+#~ msgstr "ఎప్పటికికాదు"
+
+#~ msgid "now"
+#~ msgstr "ఇప్పుడు"
+
+#, c-format
+#~ msgid "%d minute ago"
+#~ msgid_plural "%d minutes ago"
+#~ msgstr[0] "%d నిముషం క్రితం"
+#~ msgstr[1] "%d నిముషాల క్రితం"
+
+#, c-format
+#~ msgid "%d hour ago"
+#~ msgid_plural "%d hours ago"
+#~ msgstr[0] "%d గంట క్రితం"
+#~ msgstr[1] "%d గంటల క్రితం"
+
+#, c-format
+#~ msgid "%d day ago"
+#~ msgid_plural "%d days ago"
+#~ msgstr[0] "%d రోజు క్రితం"
+#~ msgstr[1] "%d రోజుల క్రితం"
+
+#, c-format
+#~ msgid "%d month ago"
+#~ msgid_plural "%d months ago"
+#~ msgstr[0] "%d నెల క్రితం"
+#~ msgstr[1] "%d నెలల క్రితం"
+
+#, c-format
+#~ msgid "%d year ago"
+#~ msgid_plural "%d years ago"
+#~ msgstr[0] "%d సంవత్సరం క్రితం"
+#~ msgstr[1] "%d సంవత్సరాల క్రితం"
+
+#, fuzzy
+#~ msgid "Connection cannot be deleted"
+#~ msgstr "అనుసంధానం జతచేయుట విఫలమైంది"
+
+#, fuzzy
+#~ msgid "Select a connection to edit"
+#~ msgstr "వైరుగల అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid "Select a connection to delete"
+#~ msgstr "వైరుగల అనుసంధానము %d"
+
+#~ msgid "Name"
+#~ msgstr "పేరు"
+
+#~ msgid "Last Used"
+#~ msgstr "చివరిగా వుపయోగించిన"
+
+#~ msgid "Edit the selected connection"
+#~ msgstr "ఎంపికచేసిన అనుసంధానమును సరికూర్చుము"
+
+#~ msgid "Authenticate to edit the selected connection"
+#~ msgstr "ఎంపికచేసిన అనుసంధానమును సరికూర్చుటకు దృవీకరించుము"
+
+#~ msgid "Delete the selected connection"
+#~ msgstr "ఎంపికచేసిన అనుసంధానమును తొలగించుము"
+
+#~ msgid "Authenticate to delete the selected connection"
+#~ msgstr "ఎంపికచేసిన అనుసంధానమును తొలగించుటకు ధృవీకరించుము"
+
+#, fuzzy
+#~ msgid "Unrecognized connection type"
+#~ msgstr "మద్దతీయనటువంటి మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము రకము."
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to import “%s” connections"
+#~ msgstr "'%s' అనుసంధానమును ఎలా  సృష్టించలేక పోయింది"
+
+#, fuzzy
+#~ msgid "Error importing connection"
+#~ msgstr "అనుసంధానమును సరికూర్చుటలో దోషం "
+
+#~ msgid "Error creating connection"
+#~ msgstr "అనుసంధానము  సృష్టించుటలో దోషము."
+
+#, fuzzy
+#~ msgid "Connection type not specified."
+#~ msgstr "అనుసంధానం జతచేయుట విఫలమైంది"
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to create “%s” connections"
+#~ msgstr "'%s' అనుసంధానమును ఎలా  సృష్టించలేక పోయింది"
+
+#~ msgid "Error editing connection"
+#~ msgstr "అనుసంధానమును సరికూర్చుటలో దోషం "
+
+#, fuzzy, c-format
+#~ msgid "Did not find a connection with UUID “%s”"
+#~ msgstr "UUID '%s' తో ఒక సంభందం కనుగొన బడలేదు"
+
+#~ msgid "Network Connections"
+#~ msgstr "నెట్వర్కు అనుసంధానములు"
+
+#, fuzzy
+#~ msgid "Add a new connection"
+#~ msgstr "_VPN అనుసంధానములు"
+
+#~ msgid "802.1X Security"
+#~ msgstr "802.1X రక్షణ"
+
+#, fuzzy
+#~ msgid "Could not load 802.1X Security user interface."
+#~ msgstr "Wi-Fi రక్షణ వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#~ msgid "Use 802.1_X security for this connection"
+#~ msgstr "ఈ అనుసంధానము కొరకు 802.1_X రక్షణ వుపయోగించుము"
+
+#, fuzzy
+#~ msgid "Could not load Bluetooth user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid "_Personal Area Network"
+#~ msgstr "నెట్వర్కింగ్ చేతనముచేయుము (_N)"
+
+#, fuzzy
+#~ msgid "_Dial-Up Network"
+#~ msgstr "వైర్‌లేని నెట్వర్కు"
+
+#~ msgid "Could not load bond user interface."
+#~ msgstr "బాండ్ వాడుకరి ఇంటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid "primary"
+#~ msgstr "ప్రాధమిక DNS:"
+
+#, c-format
+#~ msgid "Bond connection %d"
+#~ msgstr "బాండ్ అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid "Could not load bridge port user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid "Could not load bridge user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy, c-format
+#~ msgid "Bridge connection %d"
+#~ msgstr "వైరుగల అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid "Could not load DCB user interface."
+#~ msgstr "DSL వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేక పోయింది."
+
+#~ msgid "Could not load DSL user interface."
+#~ msgstr "DSL వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేక పోయింది."
+
+#, fuzzy
+#~ msgid "missing parent interface"
+#~ msgstr "పేరెంట్ ఇంటర్ఫేస్ (_P):"
+
+#, c-format
+#~ msgid "DSL connection %d"
+#~ msgstr "DSL అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “em1”, "
+#~ "“3C:97:0E:42:1A:19”, “em1 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "ఇక్కడ ప్రవేశపెట్టిన శాశ్వత MAC చిరునామా ద్వారా తెలుపబడిన నెట్వర్కు పరికరమునకు ఈ ఐచ్చికము ఈ "
+#~ "అనుసంధానమును లాక్ చేయును. ఉదాహరణ: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid "ignored"
+#~ msgstr "వదిలివేయినది"
+
+#, fuzzy
+#~ msgid "Could not load ethernet user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid "Ethernet device"
+#~ msgstr "ఈథర్‌నెట్ (%s)"
+
+#, fuzzy
+#~ msgid "cloned MAC"
+#~ msgstr "క్లోన్ చేయబడిన MAC చిరునామా (_l):"
+
+#, fuzzy, c-format
+#~ msgid "Ethernet connection %d"
+#~ msgstr "వైరుగల అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid "Could not load General user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “ib0”, "
+#~ "“80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65”, “ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)”"
+#~ msgstr ""
+#~ "ఇక్కడ ప్రవేశపెట్టిన శాశ్వత MAC చిరునామా ద్వారా తెలుపబడిన నెట్వర్కు పరికరమునకు ఈ ఐచ్చికము ఈ "
+#~ "అనుసంధానమును లాక్ చేయును. ఉదాహరణ: 00:11:22:33:44:55"
+
+#~ msgid "Could not load InfiniBand user interface."
+#~ msgstr "ఇన్ఫిబాండ్ వాడుకరి యింటర్ఫేస్‌ను లోడుచేయలేక పోయింది."
+
+#, c-format
+#~ msgid "InfiniBand connection %d"
+#~ msgstr "ఇన్ఫిబాండ్ అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid "Could not load IP tunnel user interface."
+#~ msgstr "IPv4 వినియోగదారి యింటర్ఫేస్ లోడుచేయలేక పోయింది."
+
+#, fuzzy, c-format
+#~ msgid "IP tunnel connection %d"
+#~ msgstr "వైరుగల అనుసంధానము %d"
+
+#~ msgid "Automatic (VPN)"
+#~ msgstr "స్వయంచాలక (VPN)"
+
+#~ msgid "Automatic (VPN) addresses only"
+#~ msgstr "స్వయంచాలక (VPN) చిరునామా మాత్రమే"
+
+#~ msgid "Automatic, addresses only"
+#~ msgstr "స్వయంచాలక, చిరునామాలు మాత్రమే"
+
+#~ msgid "Automatic (PPPoE)"
+#~ msgstr "స్వయంచాలక (PPPoE)"
+
+#~ msgid "Automatic (PPPoE) addresses only"
+#~ msgstr "స్వయంచాలక (PPPoE) చిరునామా మాత్రమే"
+
+#~ msgid "Automatic (DHCP)"
+#~ msgstr "స్వయంచాలక (DHCP)"
+
+#~ msgid "Automatic (DHCP) addresses only"
+#~ msgstr "స్వయంచాలక (DHCP) చిరునామా మాత్రమే"
+
+#~ msgid "Link-Local Only"
+#~ msgstr "లింకు-స్థానిక మాత్రమే"
+
+#, fuzzy
+#~ msgid "Additional DNS ser_vers"
+#~ msgstr "అదనపు _DNS సేవికలు:"
+
+#, fuzzy
+#~ msgid "Additional s_earch domains"
+#~ msgstr "అదనపు శోధించుము (_S) ఈ డొమైన్లను: "
+
+#, c-format
+#~ msgid "Editing IPv4 routes for %s"
+#~ msgstr "%s కొరకు IPv4 రూట్లు సరికూర్చుచున్నది"
+
+#~ msgid "IPv4 Settings"
+#~ msgstr "IPv4 అమరికలు"
+
+#~ msgid "Could not load IPv4 user interface."
+#~ msgstr "IPv4 వినియోగదారి యింటర్ఫేస్ లోడుచేయలేక పోయింది."
+
+#~ msgid "Automatic, DHCP only"
+#~ msgstr "స్వయంచాలక ,DHCP మాత్రమే"
+
+#, c-format
+#~ msgid "Editing IPv6 routes for %s"
+#~ msgstr "%s కొరకు IPv6 రూట్లు సరికూర్చుట"
+
+#~ msgid "IPv6 Settings"
+#~ msgstr "IPv6 అమరికలు"
+
+#~ msgid "Could not load IPv6 user interface."
+#~ msgstr "IPv6 వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేక పోయింది."
+
+#, fuzzy
+#~ msgid "Could not load MACsec user interface."
+#~ msgstr "DSL వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేక పోయింది."
+
+#, fuzzy, c-format
+#~ msgid "MACSEC connection %d"
+#~ msgstr "DSL అనుసంధానము %d"
+
+#, c-format
+#~ msgid "%s slave %d"
+#~ msgstr "%s స్లేవ్ %d"
+
+#~ msgid "Could not load mobile broadband user interface."
+#~ msgstr "మొబైల్ బ్రాడ్‌బాండ్ వినియోగదారి యింటర్ఫేస్ లోడుచేయలేక పోయింది."
+
+#~ msgid "Unsupported mobile broadband connection type."
+#~ msgstr "మద్దతీయనటువంటి మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము రకము."
+
+#~ msgid "Select Mobile Broadband Provider Type"
+#~ msgstr "మొబైల్ బ్రాడ్‌బాండ్ ఉత్పాదకుని రకమును యెంపికచేయుము"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the technology your mobile broadband provider uses. If you are "
+#~ "unsure, ask your provider."
+#~ msgstr ""
+#~ "మీ మొబైల్ బ్రాడ్‌బాండ్ ఉత్పాదకుడు వుపయోగించు సాంకేతికతను యెంపికచేయుము.  మీకు నిర్ధారణ లేకపోతే, మీ "
+#~ "ఉత్పాదకుడిని అడగండి."
+
+#~ msgid ""
+#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgstr ""
+#~ "నా ఉత్పాదకుడు _GSM-ఆధారిత సాంకేతికతను వాడుచున్నాడు (అనగా GPRS, EDGE, UMTS, HSDPA)"
+
+#~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
+#~ msgstr "నా ఉత్పాదకుడు C_DMA-ఆధారిత సాంకేతికతను వుపయోగించుచున్నాడు (అనగా 1xRTT, EVDO)"
+
+#~ msgid "PAP"
+#~ msgstr "PAP"
+
+#~ msgid "CHAP"
+#~ msgstr "CHAP"
+
+#~ msgid "MSCHAPv2"
+#~ msgstr "MSCHAPv2"
+
+#~ msgid "MSCHAP"
+#~ msgstr "MSCHAP"
+
+#~ msgid "none"
+#~ msgstr "ఏదీకాదు"
+
+#, c-format
+#~ msgid "Editing PPP authentication methods for %s"
+#~ msgstr "%s కొరకు PPP ధృవీకరణ విధానములను సరికూర్చుచున్నది"
+
+#~ msgid "PPP Settings"
+#~ msgstr "PPP అమరికలు"
+
+#~ msgid "Could not load PPP user interface."
+#~ msgstr "PPP వినియోగదారి యింటర్ఫేస్ లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid "Could not load proxy user interface."
+#~ msgstr "బాండ్ వాడుకరి ఇంటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid "Could not load team port user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid "Could not load team user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy, c-format
+#~ msgid "Team connection %d"
+#~ msgstr "వైరుగల అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid "New connection…"
+#~ msgstr "నెట్వర్కు అనుసంధానము లేదు"
+
+#, fuzzy
+#~ msgid "Could not load vlan user interface."
+#~ msgstr "IPv4 వినియోగదారి యింటర్ఫేస్ లోడుచేయలేక పోయింది."
+
+#, c-format
+#~ msgid "VLAN connection %d"
+#~ msgstr "VLAN అనుసంధానము %d"
+
+#, fuzzy, c-format
+#~ msgid "Could not load editor VPN plugin for “%s” (%s)."
+#~ msgstr "'%s' కొరకు VPN ప్లగ్‌యిన్ సేవను కనుగొనలేక పోయింది."
+
+#, fuzzy
+#~ msgid "unknown failure"
+#~ msgstr "అనుసంధానమగుట విఫలం"
+
+#~ msgid "Could not load VPN user interface."
+#~ msgstr "VPN వినియోగదారి యింటర్ఫేస్ లోడుచేయలేకపోయింది."
+
+#, fuzzy, c-format
+#~ msgid "Could not find VPN plugin for “%s”."
+#~ msgstr "'%s' కొరకు VPN ప్లగ్‌యిన్ సేవను కనుగొనలేక పోయింది."
+
+#, c-format
+#~ msgid "VPN connection %d"
+#~ msgstr "VPN అనుసంధానము %d"
+
+#~ msgid "Choose a VPN Connection Type"
+#~ msgstr "VPN అనుసంధానము విధమును  ఎంచుకొనుము"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of VPN you wish to use for the new connection. If the "
+#~ "type of VPN connection you wish to create does not appear in the list, "
+#~ "you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "కొత్త అనుసంధానము కొరకు మీరు వుపయోగించాలి అనుకొనుచున్న VPN రకమును యెంపికచేయుము  మీరు "
+#~ "సృష్టించాలని అనుకొనుచున్న VPN అనుసంధానము రకము జాబితానందు కనిపించకపోతే, మీరు సరైన VPN "
+#~ "ప్లగ్‌యిన్ సంస్థాపన కలిగివుండక పోవచ్చును."
+
+#~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
+#~ msgstr "WEP 40/128-bit Key (Hex లేదా ASCII)"
+
+#~ msgid "WEP 128-bit Passphrase"
+#~ msgstr "WEP 128-bit సంకేతపదము"
+
+#~ msgid "Dynamic WEP (802.1X)"
+#~ msgstr "గతిక(డైనమిక్) WEP (802.1X)"
+
+#~ msgid "WPA & WPA2 Personal"
+#~ msgstr "WPA & WPA2 వ్యక్తిగత"
+
+#~ msgid "WPA & WPA2 Enterprise"
+#~ msgstr "WPA & WPA2 ఎంటర్‌ప్రైజ్"
+
+#, fuzzy
+#~ msgid "WPA3 Personal"
+#~ msgstr "WPA & WPA2 వ్యక్తిగత"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
+#~ msgstr "Wi-Fi రక్షణ వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది; Wi-Fi అమరిక తప్పిపోయింది."
+
+#, fuzzy
+#~ msgid "Wi-Fi Security"
+#~ msgstr "వైర్‌లేనివిధానికి రక్షణ"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface."
+#~ msgstr "Wi-Fi రక్షణ వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the Wi-Fi access point (AP) "
+#~ "specified by the BSSID entered here. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "ఈ ఐచ్చికము ఈ అనుసంధానమును BSSID ద్వారా ప్రవేశపెట్టబడిన వైర్‌లెస్ యాక్సిస్ పాయింట్ (AP)కు లాక్ "
+#~ "చేయును. Example: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “wlan0”, "
+#~ "“3C:97:0E:42:1A:19”, “wlan0 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "ఇక్కడ ప్రవేశపెట్టిన శాశ్వత MAC చిరునామా ద్వారా తెలుపబడిన నెట్వర్కు పరికరమునకు ఈ ఐచ్చికము ఈ "
+#~ "అనుసంధానమును లాక్ చేయును. ఉదాహరణ: 00:11:22:33:44:55"
+
+#, c-format
+#~ msgid "%u (%u MHz)"
+#~ msgstr "%u (%u MHz)"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi user interface."
+#~ msgstr "Wi-Fi వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేక పోయింది."
+
+#, fuzzy
+#~ msgid "Wi-Fi device"
+#~ msgstr "ఏ పరికరమైనా"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi connection %d"
+#~ msgstr "వైరుగల అనుసంధానము %d"
+
+#, fuzzy
+#~ msgid "Allowed IPs"
+#~ msgstr "అనుమతించిన విధానాలు:"
+
+#, fuzzy
+#~ msgid "Could not load WireGuard user interface."
+#~ msgstr "వైరుగల వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#, fuzzy, c-format
+#~ msgid "WireGuard connection %d"
+#~ msgstr "వైరులేని అనుసంధానము %d"
+
+#, fuzzy, c-format
+#~ msgid "A file named “%s” already exists."
+#~ msgstr "\"%s\" నామముతో వొక ఫైలు యిప్పటికేవుంది."
+
+#~ msgid "_Replace"
+#~ msgstr "పునఃస్థాపించు (_R)"
+
+#, c-format
+#~ msgid "Do you want to replace %s with the VPN connection you are saving?"
+#~ msgstr "మీరు దాయుచున్న VPN అనుసంధానముతో మీరు %sను పునఃస్థాపించుదామని అనుకొనుచున్నారా?"
+
+#~ msgid "Cannot export VPN connection"
+#~ msgstr "VPN అనుసంధానమును ఎగుమతిచేయలేదు"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The VPN connection “%s” could not be exported to %s.\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "VPN అనుసంధానము '%s' అనునది %sకు ఎగుమతి కాలేకపోయింది.\n"
+#~ "\n"
+#~ "దోషము: %s."
+
+#, fuzzy
+#~ msgid "Export VPN connection…"
+#~ msgstr "VPN అనుసంధానమును ఎగుమతిచేయుము..."
+
+#~ msgid "_Unlock"
+#~ msgstr "అన్‌లాక్ (_U)"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "స్వయచాలకంగా ఈ పరికరమును అన్‌లాక్ చేయు"
+
+#~ msgid "Usage:"
+#~ msgstr "వినియోగము:"
+
+#~ msgid ""
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+#~ msgstr ""
+#~ "ఈ ప్రోగ్రామ్ నెట్‌వర్క్ మ్యానేజర్ యొక్క అంతర్భాగము (https://wiki.gnome.org/Projects/"
+#~ "NetworkManager/)."
+
+#~ msgid ""
+#~ "It is not intended for command-line interaction but instead runs in the "
+#~ "GNOME desktop environment."
+#~ msgstr ""
+#~ "ఇది కమాండ్-లైన్ యింటరాక్షన్ కొరకు వుద్దేశించినది కాదు అయితే బదులుగా GNOME డెస్కుటాప్ వాతావరణంనందు "
+#~ "నడుపవచ్చును."
+
+#~ msgid "GTC"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "Choose a PAC file"
+#~ msgstr "ఒక PAC దస్త్రమును ఎంచుకొనుము"
+
+#~ msgid "PAC files (*.pac)"
+#~ msgstr "PAC ఫైళ్ళు (*.PAC)"
+
+#~ msgid "All files"
+#~ msgstr "అన్ని ఫైళ్ళు"
+
+#~ msgid "Anonymous"
+#~ msgstr " గుర్తింపులేని"
+
+#~ msgid "Authenticated"
+#~ msgstr "ధృవీకరణ "
+
+#~ msgid "Both"
+#~ msgstr "రెండింటినీ"
+
+#, fuzzy
+#~ msgid "Anony_mous identity"
+#~ msgstr "పేరులేను గుర్తింపు (_m):"
+
+#, fuzzy
+#~ msgid "PAC _file"
+#~ msgstr "PAC ఫైలు (_f):"
+
+#, fuzzy
+#~ msgid "_Inner authentication"
+#~ msgstr "లోపలి దృవీకరణము (_I):"
+
+#~ msgid "Allow automatic PAC pro_visioning"
+#~ msgstr "PAC అవకాశాన్ని స్వయంచాలకంగా అనుమతించు(_v)"
+
+#~ msgid "MD5"
+#~ msgstr "MD5"
+
+#~ msgid "Version 0"
+#~ msgstr "ముద్రణ 0"
+
+#~ msgid "Version 1"
+#~ msgstr "ముద్రణ 1"
+
+#~ msgid "No CA certificate is _required"
+#~ msgstr "CA ధృవీకరణపత్రము అవసరంలేదు (_r)"
+
+#, fuzzy
+#~ msgid "PEAP _version"
+#~ msgstr "PEAP వర్షన్(_v):"
+
+#, fuzzy
+#~ msgid "P_rivate Key Passphrase"
+#~ msgstr "WEP 128-bit సంకేతపదము"
+
+#, fuzzy
+#~ msgid "Sh_ow passphrase"
+#~ msgstr "సంకేతపదములను చూపుము (_w)"
+
+#, fuzzy
+#~ msgid "no user certificate selected"
+#~ msgstr "CA ధృవీకరణపత్రము అవసరంలేదు (_r):"
+
+#, fuzzy
+#~ msgid "I_dentity"
+#~ msgstr "గుర్తింపు (_d):"
+
+#, fuzzy
+#~ msgid "MSCHAPv2 (no EAP)"
+#~ msgstr "MSCHAPv2"
+
+#, fuzzy
+#~ msgid "no CA certificate selected"
+#~ msgstr "CA ధృవీకరణపత్రము అవసరంలేదు (_r):"
+
+#~ msgid "TLS"
+#~ msgstr "TLS"
+
+#~ msgid "FAST"
+#~ msgstr "FAST"
+
+#~ msgid "Tunneled TLS"
+#~ msgstr "టన్నెల్డ్ TLS"
+
+#~ msgid "Protected EAP (PEAP)"
+#~ msgstr "సురక్షిత EAP (PEAP)"
+
+#, fuzzy
+#~ msgid "Au_thentication"
+#~ msgstr "ధృవీకరణ (_t):"
+
+#, fuzzy
+#~ msgid "missing password"
+#~ msgstr "వ్యక్తిగత కీ సంకేతపదము (_P):"
+
+#, fuzzy
+#~ msgid "_Type"
+#~ msgstr "రకము (_T):"
+
+#~ msgid "Open System"
+#~ msgstr "తెరిచిన సిస్టమ్"
+
+#~ msgid "1 (Default)"
+#~ msgstr "1 (అప్రమేయ)"
+
+#, fuzzy
+#~ msgid "_Key"
+#~ msgstr "కీ (_K):"
+
+#, fuzzy
+#~ msgid "WEP inde_x"
+#~ msgstr "WEP విషయసూచిక (_x):"
+
+#~ msgid "Disable connected notifications"
+#~ msgstr "అనుసంధానము నోటీసులను అచేతనముచేయుము"
+
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to a network."
+#~ msgstr ""
+#~ "నెట్వర్కునకు అనుసంధానమవుచున్నప్పుడు నోటీసులను అచేతనము చేయుటకు దీనిని TRUE గా అమర్చండి. "
+
+#~ msgid "Disable disconnected notifications"
+#~ msgstr "అననుసంధానపు నోటీసులను అచేతనముచేయుము"
+
+#~ msgid ""
+#~ "Set this to true to disable notifications when disconnecting from a "
+#~ "network."
+#~ msgstr ""
+#~ "నెట్వర్కునుండి అననుసంధానము అవుచున్నప్పుడు నోటీసులను అచేతనము చేయుటకు దీనిని TRUE గా "
+#~ "అమర్చుము. "
+
+#~ msgid "Disable VPN notifications"
+#~ msgstr "VPN ప్రకటనలను డిసేబుల్ చెయ్యి "
+
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to or "
+#~ "disconnecting from a VPN."
+#~ msgstr ""
+#~ "VPN నుండి అననుసంధానము అవుచున్నప్పుడు నోటీసులను అచేతనము చేయుటకు దీనిని TRUE గా "
+#~ "అమర్చుము. "
+
+#~ msgid "Suppress networks available notifications"
+#~ msgstr "నెట్వర్కులు అందుబాటులోవున్నాయి నోటీసు అణిచివేయుము"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when Wi-Fi networks are "
+#~ "available."
+#~ msgstr ""
+#~ "వైర్‌లెస్ నెట్వర్కులు అందుబాటులో వున్నప్పుడు నోటీసులను అచేతనము చేయుటకు దీనిని TRUE గా అమర్చండి. "
+
+#~ msgid "Stamp"
+#~ msgstr "స్టాంప్"
+
+#~ msgid ""
+#~ "Used to determine whether settings should be migrated to a new version."
+#~ msgstr "అమరికలు కొత్త వర్షన్‌కు మైగ్రేట్ కావాలా అనేది నిర్ణయించుటకు వుపయోగించబడుతుంది."
+
+#, fuzzy
+#~ msgid "Disable WiFi Create"
+#~ msgstr "Wi-Fi సృష్టించుట అచేతనము చేయుము"
+
+#~ msgid ""
+#~ "Set to true to disable creation of adhoc networks when using the applet."
+#~ msgstr ""
+#~ "అప్లెట్‌ను వుపయోగించునప్పుడు తాత్కాలిక  నెట్వర్కుల సృష్టీకరణను అచేతనము చేయుటకు TRUE వుంచండి."
+
+#~ msgid "Ignore CA certificate"
+#~ msgstr "CA ధృవీకరణపత్రమును విస్మరించు "
+
+#~ msgid ""
+#~ "Set this to true to disable warnings about CA certificates in EAP "
+#~ "authentication."
+#~ msgstr "EAP ప్రమాణీకరణ లో CA సర్టిఫికేట్ల గురించి హెచ్చరికలు డిసేబుల్ నిజమైతే  ఇది  సెట్ చెయ్యండి."
+
+#~ msgid ""
+#~ "Set this to true to disable warnings about CA certificates in phase 2 of "
+#~ "EAP authentication."
+#~ msgstr "EAP ప్రామాణిక దశ 2 లో CA సర్టిఫికేట్ల గురించి హెచ్చరికలు డిసేబుల్ నిజమైతే సెట్ చెయ్యండి."
+
+#, fuzzy
+#~ msgid "No certificate set"
+#~ msgstr "CA ధృవీకరణపత్రము అవసరంలేదు (_r):"
+
+#, fuzzy, c-format
+#~ msgid "Choose a key for %s Certificate"
+#~ msgstr "CA ధృవీకరణపత్రమును యెంచుకొనుము"
+
+#, fuzzy, c-format
+#~ msgid "%s key _password"
+#~ msgstr "వ్యక్తిగత కీ సంకేతపదము (_P):"
+
+#, fuzzy, c-format
+#~ msgid "Choose %s Certificate"
+#~ msgstr "CA ధృవీకరణపత్రమును యెంచుకొనుము"
+
+#, fuzzy, c-format
+#~ msgid "%s _certificate"
+#~ msgstr "వినియోగదారి దృవీకరణపత్రము (_U):"
+
+#~ msgid "Unlisted"
+#~ msgstr "జాబితాచేయని"
+
+#, fuzzy
+#~ msgid "My plan is not listed…"
+#~ msgstr "నా ప్లాను జాబితాచేసి లేదు..."
+
+#~ msgid "Provider"
+#~ msgstr "ఉత్పాదకుడు"
+
+#~ msgid "Installed GSM device"
+#~ msgstr "సంస్థాపించిన GSM పరికరము"
+
+#~ msgid "Installed CDMA device"
+#~ msgstr "సంస్థాపించిన CDMA పరికరము"
+
+#~ msgid "Any device"
+#~ msgstr "ఏ పరికరమైనా"
+
+#~ msgid "New Mobile Broadband Connection"
+#~ msgstr "కొత్త మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము"
+
+#~ msgid ""
+#~ "This assistant helps you easily set up a mobile broadband connection to a "
+#~ "cellular (3G) network."
+#~ msgstr ""
+#~ "సెల్యులార్ (3G) నెట్వర్కునకు మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానమును సులువుగా అమర్చుటకు ఈ సహాయకి మీకు "
+#~ "తోడ్పడుతుంది."
+
+#~ msgid "You will need the following information:"
+#~ msgstr "మీకు ఈ క్రింది సమాచారము అవసరమౌతుంది:"
+
+#, fuzzy
+#~ msgid "Your broadband provider’s name"
+#~ msgstr "మీ బ్రాడ్‌బాండ్ ఉత్పాదకుని నామము"
+
+#~ msgid "Your broadband billing plan name"
+#~ msgstr "మీ బ్రాడ్‌బాండ్ బిల్లింగ్ ప్లాన్ నామము"
+
+#~ msgid "(in some cases) Your broadband billing plan APN (Access Point Name)"
+#~ msgstr "కొన్ని సంధర్బాలలో) మీ బ్రాడ్‌బాండ్ బిల్లింగ్ ప్లాన్ APN (యాక్సిస్ పాయింట్ నామము)"
+
+#~ msgid "Create a connection for _this mobile broadband device:"
+#~ msgstr "ఈ మొబైల్ బ్రాడ్‌బాండ్ పరికరము కొరకు అనుసంధానమును సృష్టించుము (_t):"
+
+#~ msgid "Set up a Mobile Broadband Connection"
+#~ msgstr "మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానమును అమర్చుము"
+
+#, fuzzy
+#~ msgid "Country or region:"
+#~ msgstr "దేశము లేదా ప్రాంతం  జాబితా"
+
+#, fuzzy
+#~ msgid "Choose your Provider’s Country or Region"
+#~ msgstr "మీ ఉత్పాదకునియొక్క దేశములేదా ప్రాంతమును యెంచుకొనుము"
+
+#~ msgid "Select your provider from a _list:"
+#~ msgstr "జాబితానుండి మీ ఉత్పాదకునిని యెంపికచేయుము (_l):"
+
+#, fuzzy
+#~ msgid ""
+#~ "I can’t find my provider and I wish to set up the connection _manually:"
+#~ msgstr ""
+#~ "నేను నా ఉత్పాదకునిని కనుగొనలేక పోయాను మరియు నేను దానిని మానవీయంగా ప్రవేశపెడుదామని అనుకొనుచున్నాను "
+#~ "(_m):"
+
+#~ msgid "My provider uses GSM technology (GPRS, EDGE, UMTS, HSPA)"
+#~ msgstr "నా ఉత్పాదకుడు GSM సాంకేతికతను వుపయోగించుతున్నాడు (GPRS, EDGE, UMTS, HSPA)"
+
+#~ msgid "My provider uses CDMA technology (1xRTT, EVDO)"
+#~ msgstr "నా ఉత్పాదకుడు CDMA సాంకేతికతను వుపయోగించుతున్నాడు (1xRTT, EVDO)"
+
+#~ msgid "Choose your Provider"
+#~ msgstr "మీ ఉత్పాదకునిని యెంచుకొనుము"
+
+#~ msgid "_Select your plan:"
+#~ msgstr "మీ ప్లాన్ యెంపికచేయుము (_S):"
+
+#~ msgid "Selected plan _APN (Access Point Name):"
+#~ msgstr "ఎంపికచేసిన ప్లాన్ _APN (యాక్సిస్ పాయింట్ నేమ్):"
+
+#, fuzzy
+#~ msgid ""
+#~ "Warning: Selecting an incorrect plan may result in billing issues for "
+#~ "your broadband account or may prevent connectivity.\n"
+#~ "\n"
+#~ "If you are unsure of your plan please ask your provider for your plan’s "
+#~ "APN."
+#~ msgstr ""
+#~ "హెచ్చరిక: సరికాని ప్లాను యెంచుకొనుట మీ బ్రాండ్‌బాండ్ ఖాతా బిల్లింగ్ అసౌకర్యాలకు కారణం కావచ్చును లేదా "
+#~ "అనుసంధానతను నిరోధించవచ్చును.\n"
+#~ "\n"
+#~ "మీరు మీ ప్లాన్ పట్ల నిర్ధారణతో లేకపోతే మీ ప్లానుయొక్క APN కొరకు దయచేసి మీ ఉత్పాదకునిని అడుగండి."
+
+#~ msgid "Choose your Billing Plan"
+#~ msgstr "మీ బిల్లింగ్ ప్లానును యెంచుకొనుము"
+
+#~ msgid ""
+#~ "Your mobile broadband connection is configured with the following "
+#~ "settings:"
+#~ msgstr "మీ మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము క్రింది అమరికలతో ఆకృతీకరించబడింది:"
+
+#~ msgid "Your Device:"
+#~ msgstr "మీ పరికరము:"
+
+#~ msgid "Your Provider:"
+#~ msgstr "మీ ఉత్పాదకుడు:"
+
+#~ msgid "Your Plan:"
+#~ msgstr "మీ ప్లాన్:"
+
+#, fuzzy
+#~ msgid ""
+#~ "A connection will now be made to your mobile broadband provider using the "
+#~ "settings you selected. If the connection fails or you cannot access "
+#~ "network resources, double-check your settings. To modify your mobile "
+#~ "broadband connection settings, choose “Network Connections” from the "
+#~ "System → Preferences menu."
+#~ msgstr ""
+#~ "మీరు యెంపికచేసిన అమర్పులను వుపయోగించుతూ వొక అనుసంధానము యిప్పుడు మీ మొబైల్ బ్రాడ్‌బాండ్ ఉత్పాదకునికి "
+#~ "చేయబడుతుంది.  ఒకవేళ అనుసంధానము విఫలమయినా లేదా మీరు నెట్వర్కు వనరులను వుపయోగించలేకపోయినా, మీ "
+#~ "అమర్పులను వొకటికిరెండుసార్లు పరిశీలించండి.  మీ మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము అమరికలను మార్చుటకు, "
+#~ "సిస్టమ్ >> అభీష్టాలు మెనూనుండి \"నెట్వర్కు అనుసంధానాలు\" యెంచుకొనుము."
+
+#~ msgid "Confirm Mobile Broadband Settings"
+#~ msgstr "మొబైల్ బ్రాడ్‌బాండ్ అమరికలను నిర్ధారించుము"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "(ఏదీకాదు)"
+
+#, fuzzy, c-format
+#~ msgid "Certificate in %s"
+#~ msgstr "C_A ధృవీకరణపత్రము:"
+
+#, fuzzy
+#~ msgid "(Unknown)"
+#~ msgstr "తెలియదు"
+
+#, fuzzy, c-format
+#~ msgid "Choose a %s Certificate"
+#~ msgstr "CA ధృవీకరణపత్రమును యెంచుకొనుము"
+
+#, fuzzy, c-format
+#~ msgid "%s certificate _password"
+#~ msgstr "వినియోగదారి దృవీకరణపత్రము (_U):"
+
+#, fuzzy
+#~ msgid "Error opening a session: "
+#~ msgstr "అనుసంధానమును సరికూర్చుటలో దోషం "
+
+#, fuzzy
+#~ msgid "_Unlock token"
+#~ msgstr "అన్‌లాక్ (_U)"
+
+#, fuzzy
+#~ msgid "Ask for this password every time"
+#~ msgstr "ఈ సంకేతపదము కొరకు ప్రతిసారి ఆడుగుము (_k)"
+
+#, fuzzy
+#~ msgid "The password is not required"
+#~ msgstr "'%s'కు అనుసంధానమగుటకు వొక సంకేతపదము అవసరమైంది."
+
+#, fuzzy
+#~ msgid "Sh_ow passwords"
+#~ msgstr "సంకేతపదములను చూపుము (_w)"
+
+#, fuzzy
+#~ msgid "_Tertiary Password:"
+#~ msgstr "సంకేతపదము (_P):"
+
+#, fuzzy
+#~ msgid "_Secondary Password:"
+#~ msgstr "సంకేతపదము (_P):"
+
+#~ msgid "_Password:"
+#~ msgstr "సంకేతపదము (_P):"
+
+#, fuzzy
+#~ msgid "Click to connect"
+#~ msgstr "అననుసంధానించుము"
+
+#~ msgctxt "Wifi/wired security"
+#~ msgid "None"
+#~ msgstr "ఏదీకాదు"
+
+#, fuzzy
+#~ msgid "Dynamic WEP (802.1x)"
+#~ msgstr "గతిక(డైనమిక్) WEP (802.1X)"
+
+#~ msgid "C_reate"
+#~ msgstr "సృష్టించుము (_r)"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Passwords or encryption keys are required to access the Wi-Fi network "
+#~ "“%s”."
+#~ msgstr ""
+#~ "వైరులేని నెట్వర్కు '%s'ను యాక్సిస్ చేసుకొనుటకు సంకేతపదములు లేదా ఎన్క్రిప్షన్ కీలు అవసరము."
+
+#, fuzzy
+#~ msgid "Wi-Fi Network Authentication Required"
+#~ msgstr "వైరులేని నెట్వర్కు ధృవీకరణము అవసరమైంది"
+
+#, fuzzy
+#~ msgid "Authentication required by Wi-Fi network"
+#~ msgstr "వైరులేని నెట్వర్కుద్వారా ధృవీకరణము అవసరమైంది"
+
+#, fuzzy
+#~ msgid "Create New Wi-Fi Network"
+#~ msgstr "కొత్త వైరులేని నెట్వర్కు సృష్టించుము"
+
+#, fuzzy
+#~ msgid "New Wi-Fi network"
+#~ msgstr "కొత్త వైరులేని నెట్వర్కు"
+
+#, fuzzy
+#~ msgid "Enter a name for the Wi-Fi network you wish to create."
+#~ msgstr "మీరు సృష్టించాలని అనుకొనుచున్న వైరులేని నెట్వర్కునకు వొక నామమును ప్రవేశపెట్టుము."
+
+#, fuzzy
+#~ msgid "Connect to Hidden Wi-Fi Network"
+#~ msgstr "మరుగునవున్న వైరులేని నెట్వర్కునకు అనుసంధానించు"
+
+#, fuzzy
+#~ msgid "Hidden Wi-Fi network"
+#~ msgstr "మరుగునవున్న వైరులేని నెట్వర్కు"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter the name and security details of the hidden Wi-Fi network you wish "
+#~ "to connect to."
+#~ msgstr ""
+#~ "మీరు అనుసంధానం కావాలనుకొన్న మరుగునవుండు వైరులేని నెట్వర్కుయొక్క రక్షణ వివరములను మరియు "
+#~ "నామమును ప్రవేశపెట్టుము."
+
+#, fuzzy
+#~ msgid "Wi-Fi _security"
+#~ msgstr "వైర్‌లెస్ రక్షణ (_W):"
+
+#, fuzzy
+#~ msgid "C_onnection"
+#~ msgstr "అనుసంధానము (_n):"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter"
+#~ msgstr "వైర్‌లెస్ ఎడాప్టర్ (_a):"
+
+#, fuzzy
+#~ msgid "I can’t find my provider and I wish to enter it _manually:"
+#~ msgstr ""
+#~ "నేను నా ఉత్పాదకునిని కనుగొనలేక పోయాను మరియు నేను దానిని మానవీయంగా ప్రవేశపెడుదామని అనుకొనుచున్నాను "
+#~ "(_m):"
+
+#~ msgid "Provider:"
+#~ msgstr "ఉత్పాదకుడు:"
+
+#~ msgid "Country or Region List:"
+#~ msgstr "దేశము లేదా ప్రాంతం  జాబితా:"
+
+#~ msgid "Country or region"
+#~ msgstr "దేశము లేదా ప్రాంతం  జాబితా"
+
+#, fuzzy
+#~ msgid "Wi-Fi _security:"
+#~ msgstr "వైర్‌లెస్ రక్షణ (_W):"
+
+#~ msgid "_Network name:"
+#~ msgstr "నెట్వర్కు పేరు (_N):"
+
+#~ msgid "C_onnection:"
+#~ msgstr "అనుసంధానము (_n):"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter:"
+#~ msgstr "వైర్‌లెస్ ఎడాప్టర్ (_a):"
+
+#~ msgid "%s (default)"
+#~ msgstr "%s (అప్రమేయ)"
+
+#~ msgid "Ignored"
+#~ msgstr "వదిలివేయినది"
+
+#~ msgid "Failed to update connection secrets due to an unknown error."
+#~ msgstr "తెలియని దోషము కారణంగా అనుసంధానము రహస్యాలు నవీకరించుటకు విఫలమైంది."
+
+#, fuzzy
+#~ msgid "2:"
+#~ msgstr "2"
+
+#, fuzzy
+#~ msgid "3:"
+#~ msgstr "3"
+
+#, fuzzy
+#~ msgid "4:"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgid "Connection _priority for auto-activation:"
+#~ msgstr "అనుసంధానము సమాచారము (_I)"
+
+#~ msgid "DSL"
+#~ msgstr "DSL"
+
+#~ msgid "Cannot import VPN connection"
+#~ msgstr "VPN అనుసంధానమును దిగుమతి చేయలేకపోయింది"
+
+#, fuzzy
+#~ msgid ""
+#~ "The file “%s” could not be read or does not contain recognized VPN "
+#~ "connection information\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "ఫైలు '%s' చదువబడలేక పోయింది లేదా గుర్తించదగు VPN అనుసంధానపు సమాచారమును కలిగిలేదు\n"
+#~ "\n"
+#~ "దోషము: %s"
+
+#, fuzzy
+#~ msgid "unknown error"
+#~ msgstr "తెలియని దోషము"
+
+#, fuzzy
+#~ msgid "Choose a Certificate Authority certificate"
+#~ msgstr "ధృవీకరణపత్ర అధికారికం ధృవీకరణపత్రమును యెంచుకొనుము..."
+
+#~ msgid "C_A certificate:"
+#~ msgstr "C_A ధృవీకరణపత్రము:"
+
+#, fuzzy
+#~ msgid "NetworkManager for GNOME"
+#~ msgstr "నెట్వర్కు నిర్వాహిక"
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected because the VPN service stopped."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN అనుసంధానము '%s' అననుసంధానించబడింది యెంచేతంటే VPN సేవ ఆపివేయబడింది."
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN అనుసంధానము '%s' అననుసంధానించబడింది."
+
+#~ msgid "_Disconnect VPN"
+#~ msgstr "VPN అననుసంధానించుము (_D)"
+
+#, fuzzy
+#~ msgid "New Mobile Broadband connection..."
+#~ msgstr "కొత్త మొబైల్ బ్రాడ్‌బాండ్ అనుసంధానము"
+
+#, fuzzy
+#~ msgid "_Connect to Hidden Wi-Fi Network..."
+#~ msgstr "మరుగునవున్న వైర్‌లేని నెట్వర్కుకు అనుసంధానమవ్వు... (_C)"
+
+#, fuzzy
+#~ msgid "Create _New Wi-Fi Network..."
+#~ msgstr "కొత్త వైర్‌లేని నెట్వర్కును సృష్టించుము... (_N)"
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Aut_onegotiate"
+#~ msgstr "స్వయంచాలకబదలాయింపు (_o)"
+
+#, fuzzy
+#~ msgid "FirewallD is not running."
+#~ msgstr "నెట్‌వర్క్ మ్యానేజర్ నడుచుటలేదు..."
+
+#~ msgid "New..."
+#~ msgstr "కొత్త..."
+
+#, fuzzy
+#~ msgid "invalid EAP-TLS CA certificate: %s"
+#~ msgstr "C_A ధృవీకరణపత్రము:"
+
+#~ msgid "Unencrypted private keys are insecure"
+#~ msgstr "ఎన్క్రిప్టుచేయని వ్యక్తిగత కీలు సురక్షితంకావు"
+
+#~ msgid ""
+#~ "The selected private key does not appear to be protected by a password.  "
+#~ "This could allow your security credentials to be compromised.  Please "
+#~ "select a password-protected private key.\n"
+#~ "\n"
+#~ "(You can password-protect your private key with openssl)"
+#~ msgstr ""
+#~ "ఎంపికకాబడిన వ్యక్తిగత కీ సంకేతపదము చేత రక్షించబడుచున్నట్లు అనిపించుట లేదు.  దీనివలన మీ రక్షణ "
+#~ "వివరములు రాజీపడ(లోబడ)గలవు.  దయచేసి సంకేతపదముతో-రక్షించబడు వ్యక్తిగత కీను యెంపికచేసుకొనుము.\n"
+#~ "\n"
+#~ "(మీరు మీ వ్యక్తిగత కీను openssl సంకేతపదము-రక్షణతో రక్షించుకొనగలరు)"
+
+#~ msgid "Choose your personal certificate..."
+#~ msgstr "మీ వ్యక్తిగత ధృవీకరణపత్రమును యెంచుకొనుము..."
+
+#~ msgid "Choose your private key..."
+#~ msgstr "మీ వ్యక్తిగత కీను యెంచుకొనుము..."
+
+#~ msgid "New Mobile Broadband (CDMA) connection..."
+#~ msgstr "కొత్త మొబైల్ బ్రాడ్‌బాండ్ (CDMA) అనుసంధానము..."
+
+#~ msgid "You are now connected to the CDMA network."
+#~ msgstr "మీరు CDMA నెట్వర్కునకు అనుసంధానించబడినారు."
+
+#~ msgid "CDMA network."
+#~ msgstr "సిడియంఏ నెట్వర్కు."
+
+#~ msgid "New Mobile Broadband (GSM) connection..."
+#~ msgstr "కొత్త మొబైల్ బ్రాడ్‌బాండ్ (GSM) అనుసంధానము..."
+
+#~ msgid "You are now connected to the GSM network."
+#~ msgstr "మీరు యిప్పడు GSM నెట్వర్కునకు అనుసంధానించబడినారు."
+
+#~ msgid "GSM network."
+#~ msgstr "GSM నెట్వర్కు"
+
+#~ msgid "Wireless Networks (%s)"
+#~ msgstr "వైర్‌లేని నెట్వర్కులు (%s)"
+
+#~ msgid "Wireless Network (%s)"
+#~ msgstr "వైర్‌లేని నెట్వర్కు (%s)"
+
+#~ msgid "wireless is disabled"
+#~ msgstr "వైర్‌లేని విధం అచేతనమైంది"
+
+#~ msgid "wireless is disabled by hardware switch"
+#~ msgstr "వైర్‌లేని విధం హార్డ్ వేరు స్విచ్ తో అచేతనమైంది"
+
+#~ msgid "Configuring wireless network connection '%s'..."
+#~ msgstr "వైర్‌లేని నెట్వర్కు అనుసంధానము '%s'ను ఆకృతీకరిస్తోంది..."
+
+#~ msgid "Requesting a wireless network address for '%s'..."
+#~ msgstr "'%s' కొరకు వైర్‌లేని నెట్వర్కు చిరునామా అభ్యర్ధించుచున్నది..."
+
+#~ msgid "Wireless network connection '%s' active"
+#~ msgstr "వైర్‌లేని నెట్వర్కు అనుసంధానము '%s' క్రియాశీలం"
+
+#~ msgid "WiMAX Mobile Broadband (%s)"
+#~ msgstr "WiMAX మొబైల్ బ్రాడ్‌బాండ్ (%s)"
+
+#~ msgid "WiMAX Mobile Broadband"
+#~ msgstr "WiMAX మొబైల్ బ్రాడ్‌బాండ్"
+
+#~ msgid "You are now connected to the WiMAX network."
+#~ msgstr "మీరు WiMAX నెట్వర్కునకు అనుసంధానించబడినారు."
+
+#~ msgid "%d dB"
+#~ msgstr "%d dB"
+
+#~ msgctxt "WiMAX CINR"
+#~ msgid "unknown"
+#~ msgstr "తెలియదు"
+
+#~ msgctxt "WiMAX Base Station ID"
+#~ msgid "unknown"
+#~ msgstr "తెలియదు"
+
+#~ msgid "WiMAX (%s)"
+#~ msgstr "WiMAX (%s)"
+
+#~ msgid "CINR:"
+#~ msgstr "సీఐయన్ ఆర్:"
+
+#~ msgid "BSID:"
+#~ msgstr "BSID:"
+
+#~ msgid "Enable WiMA_X Mobile Broadband"
+#~ msgstr "WiMAX మొబైల్ బ్రాడ్‌బాండ్‌ను చేతనముచేయుము (_M)"
+
+#~ msgid "_Help"
+#~ msgstr "సహాయము (_H)"
+
+#~ msgid "Any"
+#~ msgstr "ఏవైనా"
+
+#~ msgid "3G (UMTS/HSPA)"
+#~ msgstr "3G (UMTS/HSPA)"
+
+#~ msgid "2G (GPRS/EDGE)"
+#~ msgstr "2G (GPRS/EDGE)"
+
+#~ msgid "Prefer 3G (UMTS/HSPA)"
+#~ msgstr "3G (UMTS/HSPA) ప్రాధాన్యపరుచు"
+
+#~ msgid "Prefer 2G (GPRS/EDGE)"
+#~ msgstr "2G (GPRS/EDGE) ప్రాధాన్యపరుచు"
+
+#~ msgid "_Device MAC address:"
+#~ msgstr "పరికరము MAC చిరునామా (_D):"
+
+#~ msgid "Infrastructure"
+#~ msgstr "నిర్మాణము"
+
+#~ msgid "Automatic (PPP)"
+#~ msgstr "స్వయంచాలక (PPP)"
+
+#~ msgid "Automatic (PPP) addresses only"
+#~ msgstr "స్వయంచాలక (PPP) చిరునామా మాత్రమే"
+
+#~ msgid "Could not load Wired Security security user interface."
+#~ msgstr "వయరు రక్షణ వినియోగదారి యింటర్ఫేస్‌ను లోడుచేయలేకపోయింది."
+
+#~ msgid "Wireless"
+#~ msgstr "వైరులేనివిధం"
+
+#~ msgid "_Save..."
+#~ msgstr "భద్రపరుచు (_S)"
+
+#~ msgid "A_vailable to all users"
+#~ msgstr "వినియోగదారులందరికి అందుబాటులోవుంది"
+
+#~ msgid "Error saving connection"
+#~ msgstr "అనుసంధానము సమాచారమును దాచుటలో దోషము"
+
+#~ msgid "The property '%s' / '%s' is invalid: %d"
+#~ msgstr " లక్షణము '%s' / '%s' చెల్లదు: %d"
+
+#~ msgid "An unknown error occurred."
+#~ msgstr "ఒక తెలియని దోషము సంభవించినది."
+
+#~ msgid "Could not edit new connection"
+#~ msgstr "కొత్త అనుసంధానమును సరికూర్చలేకపోయింది"
+
+#~ msgid "Could not edit imported connection"
+#~ msgstr "దిగుమతిచేసిన అనుసంధానమును సరికూర్చలేకపోయింది"
+
+#~ msgid "No VPN plugin available. Please install one to enable this button."
+#~ msgstr "VPN ప్లగిన్ లభ్యత లేదు. ఈ మీటను ఉపయోగించుటకు, దయచేసి ఒక ప్లగిన్ ను స్థాపించండి"
+
+#~ msgid "_Edit..."
+#~ msgstr "సవరించు...(_E)"
+
+#~ msgid "_Delete..."
+#~ msgstr "తొలగించుము...(_D)"
+
+#~ msgid "Don't know how to edit '%s' connections"
+#~ msgstr "'%s'అనుసంధానమును ఎలా సరికూర్చాలో తెలియుటలేదు"
+
+#~ msgid "Your phone is now ready to use!"
+#~ msgstr "మీ ఫోన్ యిప్పుడు వుపయోగించుటకు సిద్దముగావుంది!"
+
+#~ msgid "%s Network"
+#~ msgstr "%s నెట్వర్కు"
+
+#~ msgid "Error: %s"
+#~ msgstr "దోషము: %s"
+
+#~ msgid "Mobile wizard was canceled"
+#~ msgstr "మొబైల్ విజార్డ్ రద్దుచేయబడినది"
+
+#~ msgid "Unknown phone device type (not GSM or CDMA)"
+#~ msgstr "తెలియని ఫోన్ పరికరము రకము (GSM కాదు CDMA కాదు)"
+
+#~ msgid "unexpectedly disconnected from the phone."
+#~ msgstr "ఫోన్‌నుండి అనుకొకుండా అననుసంధానమైంది."
+
+#~ msgid "timed out detecting phone details."
+#~ msgstr "ఫోన్ వివరములను గుర్తించుటలో సమయం మించినది."
+
+#~ msgid "Detecting phone configuration..."
+#~ msgstr "ఫోన్ ఆకృతీకరణను గుర్తించుచున్నది..."
+
+#~ msgid ""
+#~ "The default Bluetooth adapter must be enabled before setting up a Dial-Up-"
+#~ "Networking connection."
+#~ msgstr ""
+#~ "డయిల్-అప్-నెట్వర్కింగ్ అనుసంధానమును అమర్చుటకు ముందుగా అప్రమేయ బ్లూటూత్ యెడాప్టర్ తప్పక చేతనము "
+#~ "చేయబడవలెను."
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (failed to connect to D-Bus: %s)."
+#~ msgstr "బ్లూటూత్ ఆకృతీకరణ సాధ్యం కాదు (D-Busకు అనుసంధానమగుటలో విఫలమైంది: %s)."
+
+#~ msgid "Bluetooth configuration not possible (failed to create D-Bus proxy)."
+#~ msgstr "బ్లూటూత్ ఆకృతీకరణ సాధ్యం కాదు (D-Bus ప్రోక్సీ సృష్టించుటలో విఫలమైంది)."
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (error finding NetworkManager: %s)."
+#~ msgstr "బ్లూటూత్ ఆకృతీకరణ సాధ్యం కాదు (NetworkManagerను కనుగొనుటలో దోషము: %s)."
+
+#~ msgid "Use your mobile phone as a network device (PAN/NAP)"
+#~ msgstr "మీ మొబైల్ ఫోన్‌ను నెట్వర్కు పరికరము వలె వుపయోగించుము (PAN/NAP)"
+
+#~ msgid "Access the Internet using your mobile phone (DUN)"
+#~ msgstr "మీ మొబైల్ ఫోన్ వుపయోగించి యింటర్నెట్‌ను యాక్సెస్ చేయుము (DUN)"
+
+#~ msgid "WiMAX"
+#~ msgstr "WiMAX"
+
+#~ msgid "No Certificate Authority certificate chosen"
+#~ msgstr "ఎటువంటి దృవీకరణపత్ర అధికారిక ధృవీకరణపత్రము యెంచుకొనబడలేదు"
+
+#~ msgid ""
+#~ "Not using a Certificate Authority (CA) certificate can result in "
+#~ "connections to insecure, rogue wireless networks.  Would you like to "
+#~ "choose a Certificate Authority certificate?"
+#~ msgstr ""
+#~ "ధృవీకరణపత్ర అధికారికం (CA) ధృవీకరణపత్రము వుపయోగించకపోవుట వలన అనుసంధానములు రక్షణలేకుండా "
+#~ "అవుతాయి, మోసపూరిత వైరులేని నెట్వర్కులు.  మీరు ధృవీకరణపత్ర అధికారికం ధృవీకరణపత్రమును "
+#~ "యెంచుకొనుటకు యిష్టపడతారా?"
+
+#~ msgid "_Security:"
+#~ msgstr "రక్షణ (_S):"
+
+#~ msgid "United Kingdom"
+#~ msgstr "యునైటెడ్ కింగ్‌డమ్"
+
+#~ msgid "An instance of nm-applet is already running.\n"
+#~ msgstr "nm-applet యొక్క వొక సంభవం యిప్పటికే నడుచుచున్నది.\n"
+
+#~ msgid "Could not acquire the %s service. (%d)\n"
+#~ msgstr "%s సేవను పొందలేక పోయింది. (%d)\n"
+
+#~ msgid "PUK code required"
+#~ msgstr "PUK కోడ్ అవసరమైంది"
+
+#~ msgid "PUK code is needed for the mobile broadband device"
+#~ msgstr "మొబైల్ బ్రాడ్‌బాండ్ పరికరము కొరకు PUK కోడ్ అవసరమైంది"
+
+#~ msgctxt "No wired security used"
+#~ msgid "None"
+#~ msgstr "ఏదీకాదు"
+
+#~ msgctxt "Unknown/unrecognized wired or wifi security"
+#~ msgid "Unknown"
+#~ msgstr "తెలియని"
+
+#~ msgid ""
+#~ "<span size=\"larger\" weight=\"bold\">Active Network Connections</span>"
+#~ msgstr ""
+#~ "<span size=\"larger\" weight=\"bold\">క్రియాశీల నెట్వర్కు అనుసంధానములు</span>"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Version 0\n"
+#~ "Version 1"
+#~ msgstr ""
+#~ "స్వయంచాలక\n"
+#~ "వర్షన్ 0\n"
+#~ "వర్షన్ 1"
+
+#~ msgid "Other Wireless Network..."
+#~ msgstr "ఇతర వైర్‌లెస్ నెట్వర్కు..."
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Automatic with manual DNS settings\n"
+#~ "Manual\n"
+#~ "Link-Local\n"
+#~ "Shared to other computers"
+#~ msgstr ""
+#~ "స్వయంచాలక\n"
+#~ "స్వయంచాలకం DNS అమరికలతో\n"
+#~ "మానవీయ\n"
+#~ "లింకు-స్థానిక\n"
+#~ "యితర కంప్యూటర్లకు భాగస్వామ్యం ఈయబడింది"
+
+#~ msgid "_Routes&#x2026;"
+#~ msgstr "_Routes&#x2026;"
+
+#~ msgid "<b>Basic</b>"
+#~ msgstr "<b>ప్రాధమిక</b>"
+
+#~ msgid ""
+#~ "Any\n"
+#~ "3G (UMTS/HSPA)\n"
+#~ "2G (GPRS/EDGE)\n"
+#~ "Prefer 3G (UMTS/HSPA)\n"
+#~ "Prefer 2G (GPRS/EDGE)"
+#~ msgstr ""
+#~ "ఏదైని\n"
+#~ "3G (UMTS/HSPA)\n"
+#~ "2G (GPRS/EDGE)\n"
+#~ "అభీష్ట 3G (UMTS/HSPA)\n"
+#~ "అభీష్ట 2G (GPRS/EDGE)"
+
+#~ msgid "<b>Authentication</b>"
+#~ msgstr "<b>ధృవీకరణము</b>"
+
+#~ msgid "<b>Echo</b>"
+#~ msgstr "<b>Echo</b>"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "10 Mb/s\n"
+#~ "100 Mb/s\n"
+#~ "1 Gb/s\n"
+#~ "10 Gb/s"
+#~ msgstr ""
+#~ "స్వయంచాలక\n"
+#~ "10 Mb/s\n"
+#~ "100 Mb/s\n"
+#~ "1 Gb/s\n"
+#~ "10 Gb/s"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Twisted Pair (TP)\n"
+#~ "Attachment Unit Interface (AUI)\n"
+#~ "BNC\n"
+#~ "Media Independent Interface (MII)"
+#~ msgstr ""
+#~ "స్వయంచాలక\n"
+#~ "ట్విస్టెడ్ పెయిర్ (TP)\n"
+#~ "ఎటాచ్‌మెంట్ యూనిట్ యింటర్ఫేస్ (AUI)\n"
+#~ "BNC\n"
+#~ "మీడియా యిండిపెండెంట్ యింటర్ఫేస్ (MII)"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "A (5 GHz)\n"
+#~ "B/G (2.4 GHz)"
+#~ msgstr ""
+#~ "స్వయంచాలక\n"
+#~ "A (5 GHz)\n"
+#~ "B/G (2.4 GHz)"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the "
+#~ "NetworkManager applet glade file was not found)."
+#~ msgstr ""
+#~ "అనుసంధానము సరికూర్పరి అవసరమైన కొన్ని వనరులను కనుగొనలేక పోయింది (NetworkManager గ్లేడ్ ఫైలు "
+#~ "కనబడలేదు)."
+
+#~ msgid "Apply..."
+#~ msgstr "ఆపాదించు..."
+
+#~ msgid "could not connect to the system bus."
+#~ msgstr "సిస్టమ్ బస్‌నకు అనుసంధానము కాలేక పోయినది."
+
+#~ msgid "Country"
+#~ msgstr "దేశము"
+
+#~ msgid "Cannot start VPN connection '%s'"
+#~ msgstr "VPN అనుసంధానము '%s'ను ప్రారంభించలేదు"
+
+#~ msgid ""
+#~ "Could not find the authentication dialog for VPN connection type '%s'. "
+#~ "Contact your system administrator."
+#~ msgstr ""
+#~ "VPN అనుసంధానము రకము '%s' కొరకు ధృవీకరణ డైలాగును కనుగొనలేక పోయింది. మీ సిస్టమ్ నిర్వహణాధికారిని "
+#~ "సంప్రదించండి."
+
+#~ msgid ""
+#~ "There was a problem launching the authentication dialog for VPN "
+#~ "connection type '%s'. Contact your system administrator."
+#~ msgstr ""
+#~ "VPN అనుసంధానము రకము '%s' కొరకు ధృవీకరణ డైలాగును ఆరంభించుటలో సమస్యవుంది. మీ సిస్టమ్ "
+#~ "నిర్వహణాధికారిని సంప్రదించండి."

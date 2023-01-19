@@ -1,0 +1,4059 @@
+# Brazilian Portuguese translation of lxpanel package.
+# Copyright (C) 2006 The LXDE Team.
+# This file is distributed under the same license as the lxpanel package.
+# Fábio Antunes <fabio.antunes@hotmail.com>, 2008.
+# Henrique P. Machado <zehrique@ubuntu.com>, 2008-2009.
+# Og Maciel <ogmaciel@gnome.org>, 2009.
+# Sérgio Cipolla <secipolla@gmail.com>, 2010-2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: lxpanel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"PO-Revision-Date: 2015-05-25 15:16+0000\n"
+"Last-Translator: Felipe Braga <fbobraga@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.7.0-alpha1\n"
+"X-Pootle-Revision: 2483\n"
+"X-Pootle-Path: /pt_BR/lxpanel/po/pt_BR.po\n"
+"X-POOTLE-MTIME: 1432566999.000000\n"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#, c-format
+msgid "Pairing failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#, c-format
+msgid "Pairing successful - connecting..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#, fuzzy, c-format
+msgid "Connection successful"
+msgstr "Falha de conexão"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connection failed - %s"
+msgstr "Falha de conexão"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#, c-format
+msgid "Please enter code '%s' on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#, c-format
+msgid "Please confirm that '%s' is showing the code '%s' to pair"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#, c-format
+msgid "Please enter PIN code shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#, c-format
+msgid "Please enter passcode shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#, c-format
+msgid "Waiting for response from Bluetooth device..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#, c-format
+msgid "'%s' has requested a pairing. Do you accept the request?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
+#, c-format
+msgid ""
+"Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#, c-format
+msgid ""
+"Pairing successful - this device has no services which can be used with "
+"Raspberry Pi"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#, c-format
+msgid "Do you want to unpair '%s'?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#, c-format
+msgid "Removing pairing with '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#, c-format
+msgid "Removal failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, c-format
+msgid "Disconnecting from '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnection failed - %s"
+msgstr "Falha ao desconectar"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
+#, fuzzy
+msgid "Use the audio menu to connect to this device"
+msgstr "Use o menu de rede para se conectar a uma rede Wi-Fi"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+msgid "No usable services on this device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#, fuzzy
+msgid "Disconnect..."
+msgstr "Desconectar"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#, fuzzy
+msgid "Connect..."
+msgstr "C_onectar"
+
+#. add the remove option to the submenu
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+msgid "Remove..."
+msgstr ""
+
+#. warn if no BT hardware detected
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+#, fuzzy
+msgid "No Bluetooth adapter found"
+msgstr "Tipo de Bluetooth"
+
+#. add enable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+#, fuzzy
+msgid "Turn On Bluetooth"
+msgstr "Bluetooth"
+
+#. add disable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+#, fuzzy
+msgid "Turn Off Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+msgid "Stop Discoverable"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+msgid "Make Discoverable"
+msgstr ""
+
+#. add and remove dialogs
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#, fuzzy
+msgid "Add Device..."
+msgstr "dispositivo"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#, fuzzy
+msgid "Manage Bluetooth devices"
+msgstr "dispositivo Bluetooth inválido (%s)"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#, fuzzy
+msgid "Manages Bluetooth devices"
+msgstr "dispositivo Bluetooth inválido (%s)"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:171
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:199
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:205
+#, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:402
+msgid "Select a drive in menu to eject safely"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:451
+#: ../src/panel/widgets/ejecter/ejecter.c:461
+msgid "Ejecter"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:453
+msgid "Hide icon when no devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:462
+msgid "Ejects mounted drives"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:77
+msgid "ad-hoc"
+msgstr "ad-hoc"
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:82
+msgid "secure."
+msgstr "seguro."
+
+#: ../src/panel/widgets/netman/applet.c:74
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+msgid "Failed to activate connection"
+msgstr "Falha ao ativar conexão"
+
+#: ../src/panel/widgets/netman/applet.c:75
+#: ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837
+#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+msgid "Unknown error"
+msgstr "Erro desconhecido"
+
+#: ../src/panel/widgets/netman/applet.c:78
+#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:875
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+msgid "Connection failure"
+msgstr "Falha de conexão"
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn Off Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn On Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:282
+#, c-format
+msgid ""
+"%s\n"
+"IPv4 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:299
+#, c-format
+msgid ""
+"%s\n"
+"IPv6 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:781
+msgid "Failed to add/activate connection"
+msgstr "Falha ao adicionar/ativar conexão"
+
+#: ../src/panel/widgets/netman/applet.c:835
+msgid "Device disconnect failed"
+msgstr "Desconexão de dispositivo falhou"
+
+#: ../src/panel/widgets/netman/applet.c:840
+msgid "Disconnect failure"
+msgstr "Falha ao desconectar"
+
+#: ../src/panel/widgets/netman/applet.c:870
+msgid "Connection activation failed"
+msgstr "Ativação da conexão falhou"
+
+#: ../src/panel/widgets/netman/applet.c:1209
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+msgid "Don’t show this message again"
+msgstr "Não mostrar esta mensagem novamente"
+
+#: ../src/panel/widgets/netman/applet.c:1310
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” disconnected because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"A conexão VPN “%s” desconectou porque a conexão de rede foi interrompida."
+
+#: ../src/panel/widgets/netman/applet.c:1312
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque a conexão de rede foi interrompida."
+
+#: ../src/panel/widgets/netman/applet.c:1314
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque o serviço de VPN parou inesperadamente."
+
+#: ../src/panel/widgets/netman/applet.c:1316
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service returned invalid "
+"configuration."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque o serviço VPN retornou uma configuração "
+"inválida."
+
+#: ../src/panel/widgets/netman/applet.c:1318
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the connection attempt timed out."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque esgotou o tempo de tentativas de conexão."
+
+#: ../src/panel/widgets/netman/applet.c:1320
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service did not start in time."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque o serviço VPN não iniciou a tempo."
+
+#: ../src/panel/widgets/netman/applet.c:1322
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque o serviço VPN falhou ao iniciar."
+
+#: ../src/panel/widgets/netman/applet.c:1324
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because there were no valid VPN secrets."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque não haviam segredos VPN válidos."
+
+#: ../src/panel/widgets/netman/applet.c:1326
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because of invalid VPN secrets."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou por causa de chaves VPN inválidas."
+
+#: ../src/panel/widgets/netman/applet.c:1331
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed."
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou."
+
+#: ../src/panel/widgets/netman/applet.c:1358
+#, c-format
+msgid ""
+"VPN connection has been successfully established.\n"
+"\n"
+"%s\n"
+msgstr ""
+"A conexão VPN foi estabelecida com sucesso.\n"
+"\n"
+"%s\n"
+
+#: ../src/panel/widgets/netman/applet.c:1360
+msgid "VPN connection has been successfully established.\n"
+msgstr "A conexão VPN foi estabelecida com sucesso.\n"
+
+#: ../src/panel/widgets/netman/applet.c:1362
+msgid "VPN Login Message"
+msgstr "Mensagem de login VPN"
+
+#: ../src/panel/widgets/netman/applet.c:1370
+#: ../src/panel/widgets/netman/applet.c:1410
+msgid "VPN Connection Failed"
+msgstr "A conexão VPN falhou"
+
+#: ../src/panel/widgets/netman/applet.c:1414
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou porque o serviço VPN falhou ao iniciar.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1417
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"A conexão VPN “%s” falhou ao iniciar.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1741
+msgid "device not ready (firmware missing)"
+msgstr "dispositivo não está pronto (faltando firmware)"
+
+#: ../src/panel/widgets/netman/applet.c:1743
+msgid "device not ready"
+msgstr "dispositivo não está pronto"
+
+#. Notify user of unmanaged or unavailable device
+#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
+msgid "disconnected"
+msgstr "desconectado"
+
+#: ../src/panel/widgets/netman/applet.c:1769
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: ../src/panel/widgets/netman/applet.c:1783
+msgid "device not managed"
+msgstr "dispositivo não gerenciado"
+
+#: ../src/panel/widgets/netman/applet.c:1864
+msgid "No network devices available"
+msgstr "Nenhum dispositivo de rede disponível"
+
+#: ../src/panel/widgets/netman/applet.c:1917
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Opções avançadas de equipe"
+
+#: ../src/panel/widgets/netman/applet.c:1919
+#, fuzzy
+msgid "VPN Connections"
+msgstr "Conexões _VPN"
+
+#: ../src/panel/widgets/netman/applet.c:1973
+#, fuzzy
+msgid "Configure VPN…"
+msgstr "_Configurar VPN…"
+
+#: ../src/panel/widgets/netman/applet.c:1977
+#, fuzzy
+msgid "Add a VPN connection…"
+msgstr "_Adicionar uma conexão VPN…"
+
+#. 'Connection Information' item
+#: ../src/panel/widgets/netman/applet.c:1989
+#: ../src/panel/widgets/netman/applet.c:2393
+msgid "Connection Information"
+msgstr "Informações da conexão"
+
+#. 'Edit Connections...' item
+#: ../src/panel/widgets/netman/applet.c:1997
+#: ../src/panel/widgets/netman/applet.c:2401
+msgid "Edit Connections…"
+msgstr "Editar conexões…"
+
+#: ../src/panel/widgets/netman/applet.c:2112
+msgid "NetworkManager is not running…"
+msgstr "O gerenciador de redes não está em execução…"
+
+#: ../src/panel/widgets/netman/applet.c:2118
+#, fuzzy
+msgid "Wi-Fi country is not set"
+msgstr "Conexão Wi-Fi %d"
+
+#: ../src/panel/widgets/netman/applet.c:2119
+msgid "Click here to set Wi-Fi country"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:2127
+#: ../src/panel/widgets/netman/applet.c:3222
+msgid "Networking disabled"
+msgstr "Rede desabilitada"
+
+#. 'Enable Networking' item
+#: ../src/panel/widgets/netman/applet.c:2351
+#, fuzzy
+msgid "Enable Networking"
+msgstr "_Habilitar rede"
+
+#. 'Enable Wi-Fi' item
+#: ../src/panel/widgets/netman/applet.c:2360
+#, fuzzy
+msgid "Enable Wi-Fi"
+msgstr "Habilitar _Wi-Fi"
+
+#. 'Enable Mobile Broadband' item
+#: ../src/panel/widgets/netman/applet.c:2369
+#, fuzzy
+msgid "Enable Mobile Broadband"
+msgstr "Habilitar banda larga _móvel"
+
+#. Toggle notifications item
+#: ../src/panel/widgets/netman/applet.c:2381
+#, fuzzy
+msgid "Enable Notifications"
+msgstr "Habilitar n_otificações"
+
+#: ../src/panel/widgets/netman/applet.c:2415
+#, fuzzy
+msgid "About"
+msgstr "_Sobre"
+
+#: ../src/panel/widgets/netman/applet.c:2736
+#, c-format
+msgid "You are now connected to “%s”."
+msgstr "Você agora está conectado a “%s”."
+
+#: ../src/panel/widgets/netman/applet.c:2776
+msgid "Disconnected"
+msgstr "Desconectado"
+
+#: ../src/panel/widgets/netman/applet.c:2777
+msgid "The network connection has been disconnected."
+msgstr "A conexão de rede foi desconectada."
+
+#: ../src/panel/widgets/netman/applet.c:3079
+#, c-format
+msgid "Preparing network connection “%s”…"
+msgstr "Preparando conexão de rede “%s”…"
+
+#: ../src/panel/widgets/netman/applet.c:3082
+#, c-format
+msgid "User authentication required for network connection “%s”…"
+msgstr "Autenticação necessária pela conexão de rede “%s”…"
+
+#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet-device-bt.c:113
+#: ../src/panel/widgets/netman/mobile-helpers.c:605
+#, c-format
+msgid "Requesting a network address for “%s”…"
+msgstr "Requisitando um endereço de rede para “%s”…"
+
+#: ../src/panel/widgets/netman/applet.c:3088
+#, c-format
+msgid "Network connection “%s” active"
+msgstr "Conexão de rede “%s” está ativa"
+
+#: ../src/panel/widgets/netman/applet.c:3165
+#, c-format
+msgid "Starting VPN connection “%s”…"
+msgstr "Iniciando conexão VPN “%s”…"
+
+#: ../src/panel/widgets/netman/applet.c:3168
+#, c-format
+msgid "User authentication required for VPN connection “%s”…"
+msgstr "Autenticação necessária pela conexão VPN “%s”…"
+
+#: ../src/panel/widgets/netman/applet.c:3171
+#, c-format
+msgid "Requesting a VPN address for “%s”…"
+msgstr "Requisitando um endereço de rede VPN para “%s”…"
+
+#: ../src/panel/widgets/netman/applet.c:3174
+#, c-format
+msgid "VPN connection active"
+msgstr "Conexão VPN ativa"
+
+#: ../src/panel/widgets/netman/applet.c:3226
+msgid "No network connection"
+msgstr "Nenhuma conexão de rede"
+
+#: ../src/panel/widgets/netman/applet.c:3781
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "Rede"
+
+#: ../src/panel/widgets/netman/applet.c:3896
+msgid "NetworkManager Applet"
+msgstr "Miniaplicativo gerenciador de redes"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:147
+msgid "Wrong PUK code; please contact your provider."
+msgstr "Código PUK errado, por favor entre em contato com seu provedor."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:189
+msgid "Wrong PIN code; please contact your provider."
+msgstr "Código PIN errado, por favor entre em contato com seu provedor."
+
+#. Start the spinner to show the progress of the unlock
+#: ../src/panel/widgets/netman/applet-device-broadband.c:240
+msgid "Sending unlock code…"
+msgstr "Enviando código do desbloqueio…"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:725
+#: ../src/panel/widgets/netman/applet-dialogs.c:532
+#, c-format
+msgid "Mobile Broadband (%s)"
+msgstr "Banda larga móvel (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:727
+msgid "Mobile Broadband"
+msgstr "Banda larga móvel"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+msgid "Available"
+msgstr "Disponível"
+
+#. Default connection item
+#: ../src/panel/widgets/netman/applet-device-broadband.c:793
+msgid "New Mobile Broadband connection…"
+msgstr "Nova conexão de banda larga móvel…"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:809
+#: ../src/panel/widgets/netman/applet-device-bt.c:75
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+msgid "Connection Established"
+msgstr "Conexão estabelecida"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:810
+msgid "You are now connected to the Mobile Broadband network."
+msgstr "Você agora está conectado à rede de banda larga móvel."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:950
+#: ../src/panel/widgets/netman/applet-device-broadband.c:956
+msgid "Mobile Broadband network."
+msgstr "Rede de banda larga móvel."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:951
+msgid "You are now registered on the home network."
+msgstr "Você agora está conectado à rede doméstica."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:957
+msgid "You are now registered on a roaming network."
+msgstr "Você agora está conectado em uma rede em roaming."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:76
+msgid "You are now connected to the mobile broadband network."
+msgstr "Você agora está conectado à rede de banda larga móvel."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:104
+#: ../src/panel/widgets/netman/mobile-helpers.c:596
+#, c-format
+msgid "Preparing mobile broadband connection “%s”…"
+msgstr "Preparando conexão de banda larga móvel “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:107
+#: ../src/panel/widgets/netman/mobile-helpers.c:599
+#, c-format
+msgid "Configuring mobile broadband connection “%s”…"
+msgstr "Configurando conexão de banda larga móvel “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:110
+#: ../src/panel/widgets/netman/mobile-helpers.c:602
+#, c-format
+msgid "User authentication required for mobile broadband connection “%s”…"
+msgstr "Autenticação necessária pela conexão de banda larga móvel “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:117
+#: ../src/panel/widgets/netman/mobile-helpers.c:624
+#, c-format
+msgid "Mobile broadband connection “%s” active"
+msgstr "Conexão de banda larga móvel “%s” ativa"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
+msgid "Auto Ethernet"
+msgstr "Ethernet automática"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
+#, c-format
+msgid "Ethernet Networks (%s)"
+msgstr "Redes ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
+#, c-format
+msgid "Ethernet Network (%s)"
+msgstr "Rede ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
+msgid "Ethernet Networks"
+msgstr "Redes ethernet"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
+msgid "Ethernet Network"
+msgstr "Rede ethernet"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
+msgid "You are now connected to the ethernet network."
+msgstr "Você agora está conectado à rede ethernet."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
+#, c-format
+msgid "Preparing ethernet network connection “%s”…"
+msgstr "Preparando conexão de rede ethernet “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
+#, c-format
+msgid "Configuring ethernet network connection “%s”…"
+msgstr "Configurando conexão de rede ethernet “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
+#, c-format
+msgid "User authentication required for ethernet network connection “%s”…"
+msgstr "Autenticação necessária pela conexão de rede ethernet “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
+#, c-format
+msgid "Requesting an ethernet network address for “%s”…"
+msgstr "Requisitando um endereço na rede ethernet “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
+#, c-format
+msgid "Ethernet network connection “%s” active"
+msgstr "Conexão de rede ethernet “%s” ativa"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
+msgid "DSL authentication"
+msgstr "Autenticação DSL"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:1190
+#: ../src/panel/widgets/netman/mobile-helpers.c:455
+#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:1191
+#: ../src/panel/widgets/netman/mobile-helpers.c:456
+#: ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+msgid "_OK"
+msgstr "_OK"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#, fuzzy
+msgid "Connect to Hidden Wi-Fi Network…"
+msgstr "_Conectar a rede Wi-Fi oculta…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#, fuzzy
+msgid "Create New Wi-Fi Network…"
+msgstr "Criar _nova rede Wi-Fi…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#, fuzzy
+msgid "Create Wi-Fi Hotspot…"
+msgstr "Criar _nova rede Wi-Fi…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+msgid "(none)"
+msgstr "(nenhum)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:567
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+msgid "Failed to add new connection"
+msgstr "Falha ao adicionar nova conexão"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+msgid "Insufficient privileges."
+msgstr "Privilégios insuficientes."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#, fuzzy, c-format
+msgid "Do you want to disconnect from the wireless network '%s'?"
+msgstr "Você agora está conectado à rede Wi-Fi “%s”."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#, c-format
+msgid "Wi-Fi Networks (%s)"
+msgstr "Redes Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#, c-format
+msgid "Wi-Fi Network (%s)"
+msgstr "Rede Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+msgid "Wi-Fi Network"
+msgid_plural "Wi-Fi Networks"
+msgstr[0] "Rede Wi-Fi"
+msgstr[1] "Rede Wi-Fi"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+msgid "Wi-Fi is disabled"
+msgstr "Wi-Fi está desabilitado"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+msgid "Wi-Fi is disabled by hardware switch"
+msgstr "Wi-Fi desabilitado por hardware"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+msgid "More networks"
+msgstr "Mais redes"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+msgid "Wi-Fi Networks Available"
+msgstr "Redes Wi-Fi disponíveis"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+msgid "Use the network menu to connect to a Wi-Fi network"
+msgstr "Use o menu de rede para se conectar a uma rede Wi-Fi"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#, c-format
+msgid "You are now connected to the Wi-Fi network “%s”."
+msgstr "Você agora está conectado à rede Wi-Fi “%s”."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#, c-format
+msgid "Preparing Wi-Fi network connection “%s”…"
+msgstr "Preparando conexão de rede Wi-Fi “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#, c-format
+msgid "Configuring Wi-Fi network connection “%s”…"
+msgstr "Configurando conexão de rede Wi-Fi “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#, c-format
+msgid "User authentication required for Wi-Fi network “%s”…"
+msgstr "Autenticação necessária pela rede Wi-Fi “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#, c-format
+msgid "Requesting a Wi-Fi network address for “%s”…"
+msgstr "Requisitando um endereço de rede Wi-Fi para “%s”…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+msgstr "Conexão de rede Wi-Fi “%s” ativa: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#, c-format
+msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+msgstr "Conexão de rede Wi-Fi “%s” ativa: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#, c-format
+msgid "Wi-Fi network connection “%s” active"
+msgstr "Conexão de rede Wi-Fi “%s” ativa"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:29
+msgid "Error displaying connection information:"
+msgstr "Erro ao exibir informações de conexão:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:61
+msgid "LEAP"
+msgstr "LEAP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:63
+msgid "Dynamic WEP"
+msgstr "WEP Dinâmico"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:65
+#: ../src/panel/widgets/netman/applet-dialogs.c:237
+#: ../src/panel/widgets/netman/applet-dialogs.c:239
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+#. Create the expander
+#: ../src/panel/widgets/netman/applet-dialogs.c:174
+msgid "More addresses"
+msgstr "Mais endereços"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:235
+msgid "WEP"
+msgstr "WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:241
+msgid "WPA3"
+msgstr "WPA3"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:245
+#: ../src/panel/widgets/netman/applet-dialogs.c:254
+msgctxt "Wi-Fi/Ethernet security"
+msgid "None"
+msgstr "Nenhuma"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:324
+#: ../src/panel/widgets/netman/applet-dialogs.c:597
+#, c-format
+msgid "%u Mb/s"
+msgstr "%u Mb/s"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:326
+#: ../src/panel/widgets/netman/applet-dialogs.c:599
+msgctxt "Speed"
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#. Address
+#: ../src/panel/widgets/netman/applet-dialogs.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:363
+msgctxt "Address"
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:415
+msgid "IP Address"
+msgstr "Endereço IP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:364
+msgid "Broadcast Address"
+msgstr "Endereço de broadcast"
+
+#. Prefix
+#: ../src/panel/widgets/netman/applet-dialogs.c:376
+msgctxt "Subnet Mask"
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:377
+msgid "Subnet Mask"
+msgstr "Máscara de sub-rede"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Primary DNS"
+msgstr "DNS primário"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Secondary DNS"
+msgstr "DNS secundário"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Tertiary DNS"
+msgstr "DNS terciário"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:518
+#, c-format
+msgid "Ethernet (%s)"
+msgstr "Ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:521
+#, c-format
+msgid "802.11 Wi-Fi (%s)"
+msgstr "802.11 Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:528
+#, c-format
+msgid "GSM (%s)"
+msgstr "GSM (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:530
+#, c-format
+msgid "CDMA (%s)"
+msgstr "CDMA (%s)"
+
+#. --- General ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:538
+#: ../src/panel/widgets/netman/applet-dialogs.c:872
+msgid "General"
+msgstr "Geral"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:541
+msgid "Interface"
+msgstr "Interface"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:556
+msgid "Hardware Address"
+msgstr "Endereço de hardware"
+
+#. Driver
+#: ../src/panel/widgets/netman/applet-dialogs.c:569
+msgid "Driver"
+msgstr "Driver"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:602
+msgid "Speed"
+msgstr "Velocidade"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:615
+msgid "Security"
+msgstr "Segurança"
+
+#. --- IPv4 ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:640
+#: ../src/panel/widgets/netman/applet-dialogs.c:902
+msgid "IPv4"
+msgstr "IPv4"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:659
+#: ../src/panel/widgets/netman/applet-dialogs.c:707
+msgid "Default Route"
+msgstr "Rota padrão"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:687
+#: ../src/panel/widgets/netman/applet-dialogs.c:929
+msgid "IPv6"
+msgstr "IPv6"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:728
+msgid "Hotspot"
+msgstr "Ponto de acesso"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:746
+msgid "Password"
+msgstr "Senha"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:876
+msgid "VPN Type"
+msgstr "Tipo de VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:881
+msgid "VPN Gateway"
+msgstr "Gateway de VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:885
+msgid "VPN Username"
+msgstr "Nome de usuário de VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:889
+msgid "VPN Banner"
+msgstr "Mensagem VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:893
+msgid "Base Connection"
+msgstr "Conexão base"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:894
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#. Shouldn't really happen but ...
+#: ../src/panel/widgets/netman/applet-dialogs.c:1091
+msgid "No valid active connections found!"
+msgstr "Nenhuma conexão ativa e válida localizada!"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+msgid ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"and many other community contributors and translators"
+msgstr ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"e muitos outros contribuidores e tradutores da comunidade"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+msgid ""
+"Notification area applet for managing your network devices and connections."
+msgstr ""
+"Miniaplicativo de área de notificação para gerenciamento dos seus "
+"dispositivos de rede e conexões."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1144
+msgid "NetworkManager Website"
+msgstr "Site do Gerenciador de redes"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1148
+msgid "translator-credits"
+msgstr ""
+"Raphael Higino <In memoriam>\n"
+"Djavan Fagundes <dnoway@gmail.com>\n"
+"César Veiga <tombs@linuxmail.org>\n"
+"Fabrício Godoy <skarllot@gmail.com>\n"
+"Leonardo Ferreira Fontenelle <leonardof@gnome.org>\n"
+"Gabriel Speckhahn <gabspeck@gmail.com>\n"
+"Florêncio Neves <florencioneves@gmail.com>\n"
+"Enrico Nicoletto <liverig@gmail.com>\n"
+"Rafael Fontenelle <rafaelff@gnome.org>"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+msgid ""
+"The NetworkManager Applet could not find some required resources (the .ui "
+"file was not found)."
+msgstr ""
+"Não foi possível ao miniaplicativo Gerenciador de redes localizar alguns "
+"recursos necessários (o arquivo .ui não foi encontrado)."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1163
+msgid "Missing resources"
+msgstr "Recursos em falta"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1188
+msgid "Mobile broadband network password"
+msgstr "Senha de rede de banda larga móvel"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1197
+#, c-format
+msgid "A password is required to connect to “%s”."
+msgstr "Uma senha é necessária para conectar-se a “%s”."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1220
+msgid "Password:"
+msgstr "Senha:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1502
+msgid "SIM PIN unlock required"
+msgstr "É necessário informar o código SIM PIN do desbloqueio"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1503
+msgid "SIM PIN Unlock Required"
+msgstr "É necessário informar o código SIM PIN do Desbloqueio"
+
+#. FIXME: some warning about # of times you can enter incorrect PIN
+#: ../src/panel/widgets/netman/applet-dialogs.c:1505
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PIN code before it can be "
+"used."
+msgstr ""
+"O dispositivo de banda larga móvel “%s” requer um código SIM PIN antes que "
+"ele possa ser usado."
+
+#. Translators: PIN code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1507
+msgid "PIN code:"
+msgstr "Código PIN:"
+
+#. Translators: Show/obscure PIN checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1511
+msgid "Show PIN code"
+msgstr "Exibir código PIN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1513
+msgid "SIM PUK unlock required"
+msgstr "É necessário informar o código SIM PUK de desbloqueio"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1514
+msgid "SIM PUK Unlock Required"
+msgstr "É necessário informar o código SIM PUK de Desbloqueio"
+
+#. FIXME: some warning about # of times you can enter incorrect PUK
+#: ../src/panel/widgets/netman/applet-dialogs.c:1516
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PUK code before it can be "
+"used."
+msgstr ""
+"O dispositivo de banda larga móvel “%s” requer um código SIM PUK antes que "
+"possa ser usado."
+
+#. Translators: PUK code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1518
+msgid "PUK code:"
+msgstr "Código PUK:"
+
+#. Translators: New PIN entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1521
+msgid "New PIN code:"
+msgstr "Novo código PIN:"
+
+#. Translators: New PIN verification entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1523
+msgid "Re-enter new PIN code:"
+msgstr "Re-inserir o novo código PIN:"
+
+#. Translators: Show/obscure PIN/PUK checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1528
+msgid "Show PIN/PUK codes"
+msgstr "Mostrar códigos PIN/PUK"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:427
+msgid "Connection had no VPN setting"
+msgstr "A conexão tinha nenhuma configuração VPN"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:477
+#, c-format
+msgid "Failed to write connection to VPN UI: %s (%d)"
+msgstr "Falha ao escrever conexão com a interface do usuário VPN: %s (%d)"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:485
+msgid "Failed to write connection to VPN UI: incomplete write"
+msgstr ""
+"Falha ao escrever conexão com a interface do usuário VPN: escrita incompleta"
+
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87
+msgid "802.1X authentication"
+msgstr "Autenticação 802.1x"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:36
+#: ../src/panel/widgets/netman/mobile-helpers.c:272
+msgid "CDMA"
+msgstr "CDMA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:38
+msgid "EVDO"
+msgstr "EVDO"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:40
+#: ../src/panel/widgets/netman/mobile-helpers.c:270
+msgid "GSM"
+msgstr "GSM"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:42
+msgid "GPRS"
+msgstr "GPRS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:44
+msgid "EDGE"
+msgstr "EDGE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:46
+msgid "UMTS"
+msgstr "UMTS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:48
+msgid "HSDPA"
+msgstr "HSDPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:50
+msgid "HSUPA"
+msgstr "HSUPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:52
+msgid "HSPA"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:54
+msgid "HSPA+"
+msgstr "HSPA+"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:56
+msgid "LTE"
+msgstr "LTE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:103
+msgid "not enabled"
+msgstr "não habilitado"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:109
+msgid "not registered"
+msgstr "não registrado"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:127
+#, c-format
+msgid "Home network (%s)"
+msgstr "Rede doméstica (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:129
+#, c-format
+msgid "Home network"
+msgstr "Rede doméstica"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:137
+msgid "searching"
+msgstr "buscando"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:140
+msgid "registration denied"
+msgstr "registro negado"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:145
+#: ../src/panel/widgets/netman/mb-menu-item.c:151
+#, c-format
+msgid "%s (%s roaming)"
+msgstr "%s (%s roaming)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:147
+#: ../src/panel/widgets/netman/mb-menu-item.c:153
+#, c-format
+msgid "%s (roaming)"
+msgstr "%s (roaming)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:156
+#, c-format
+msgid "Roaming network (%s)"
+msgstr "Rede em roaming (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:158
+#, c-format
+msgid "Roaming network"
+msgstr "Rede em roaming"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:320
+#, c-format
+msgid "PIN code for SIM card “%s” on “%s”"
+msgstr "Código PIN para o cartão SIM “%s” em “%s”"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:453
+msgid "PIN code required"
+msgstr "É necessário informar o código PIN"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:461
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "É necessário o código PIN para o dispositivo de banda larga móvel"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:619
+#, c-format
+msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+msgstr "Conexão de banda larga móvel “%s” ativa: (%d%%%s%s)"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:622
+msgid "roaming"
+msgstr "roaming"
+
+#: ../src/panel/widgets/netman/netman.c:139
+#, fuzzy
+msgid "Network Manager"
+msgstr "NetworkManager"
+
+#: ../src/panel/widgets/netman/netman.c:140
+#, fuzzy
+msgid "Controller for Network Manager"
+msgstr "NetworkManager"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:793
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr "a classe de objeto “%s” não possui uma propriedade chamada “%s”"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:800
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr "a propriedade “%s” da classe de objeto “%s” não é gravável"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:807
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+"a propriedade de construtor “%s” para objeto “%s” não pode ser definido após "
+"construção"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:815
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+"“%s:%s” não é um nome de propriedade válida; “%s” não é um subtipo de GObject"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:824
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+"não foi possível definir a propriedade “%s” de tipo “%s” a partir do valor "
+"de tipo “%s”"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:835
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+"o valor “%s” de tipo “%s” é inválido ou fora do intervalo da propriedade "
+"“%s” de tipo “%s”"
+
+#. The %s is a mobile provider name, eg "T-Mobile"
+#: ../src/panel/widgets/netman/utils.c:160
+#, c-format
+msgid "%s connection"
+msgstr "Conexão %s"
+
+#: ../src/panel/widgets/netman/utils.c:534
+msgid "PEM certificates (*.pem, *.crt, *.cer)"
+msgstr "Certificados PEM (*.pem, *.crt, *.cer)"
+
+#: ../src/panel/widgets/netman/utils.c:546
+msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+msgstr "Chaves privadas DER, PEM ou PKCS#12 (*.der, *.pem, *.p12, *.key)"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:391
+#: ../src/panel/widgets/smenu/menu.c:121
+msgid "Run"
+msgstr "Executar"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:412
+msgid "Enter the command you want to execute:"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:116
+msgid "Logout command is not set"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:122
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: ../src/panel/widgets/smenu/menu.c:123
+msgid "Logout"
+msgstr "Desconectar"
+
+#: ../src/panel/widgets/smenu/menu.c:140
+msgid "No file manager is configured."
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:489
+msgid "Add to desktop"
+msgstr "Adicionar à área de trabalho"
+
+#: ../src/panel/widgets/smenu/menu.c:496
+msgid "Properties"
+msgstr "Propriedades"
+
+#: ../src/panel/widgets/smenu/menu.c:954
+msgid "Click here to open applications menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1047
+msgid "Menu"
+msgstr "Menu"
+
+#: ../src/panel/widgets/smenu/menu.c:1048
+msgid "Icon"
+msgstr "Ícone"
+
+#: ../src/panel/widgets/smenu/menu.c:1049
+msgid "Padding"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1050
+msgid "Fixed Size"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1058
+msgid "Menu with Search"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1059
+#, fuzzy
+msgid "Searchable Application Menu"
+msgstr "Menu de aplicativos"
+
+#: ../src/panel/widgets/updater/updater.c:189
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:211
+#, fuzzy
+msgid "No network connection - cannot install updates."
+msgstr "Nenhuma conexão de rede"
+
+#: ../src/panel/widgets/updater/updater.c:217
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:320
+msgid "Show Updates..."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:324
+msgid "Install Updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:470
+msgid "Updates are available - click to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:529
+#: ../src/panel/widgets/updater/updater.c:561
+msgid "Updater"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:531
+msgid "Hours between checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:562
+msgid "Checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#, fuzzy
+msgid "Reconnecting Bluetooth devices..."
+msgstr "dispositivo Bluetooth inválido (%s)"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#, fuzzy, c-format
+msgid "Bluetooth %s device not found"
+msgstr "Conexão Bluetooth %d"
+
+#. update dialog to show a warning
+#: ../src/panel/widgets/volumepulse/bluetooth.c:405
+msgid "Device not found by PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#, c-format
+msgid "Could not set profile for device : %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#, fuzzy, c-format
+msgid "Failed to connect to Bluetooth device - %s"
+msgstr "dispositivo Bluetooth inválido (%s)"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#, c-format
+msgid "Connecting Bluetooth device '%s' as output..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#, fuzzy, c-format
+msgid "Connecting Bluetooth device '%s' as input..."
+msgstr "dispositivo Bluetooth inválido (%s)"
+
+#. if the current default source and sink are both the same device, disconnect it and reconnect to
+#. put it into A2DP rather than HSP
+#: ../src/panel/widgets/volumepulse/bluetooth.c:785
+msgid "Reconnecting Bluetooth input device as output only..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#, fuzzy
+msgid "Reconnecting Bluetooth device..."
+msgstr "dispositivo Bluetooth inválido (%s)"
+
+#. Create a check button as the child of the vertical box.
+#: ../src/panel/widgets/volumepulse/commongui.c:140
+msgid "Mute"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/commongui.c:231
+msgid "No audio devices found"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:71
+msgid "Input from this device not available in the current profile"
+msgstr ""
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/micpulse.c:144
+msgid "Mic volume"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:216
+msgid "Microphone Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:217
+msgid "Display and control microphones for PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+msgid "HDMI"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+msgid "AV Jack"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+msgid "Device Profiles..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+msgid "Output to this device not available in the current profile"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#, fuzzy
+msgid "Device Profiles"
+msgstr "Desconexão de dispositivo falhou"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#, fuzzy
+msgid "Device not connected"
+msgstr "Desconexão de dispositivo falhou"
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+#, fuzzy
+msgid "Volume control"
+msgstr "Controle de fluxo"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+msgid "Volume Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+msgid "Display and control volume for PulseAudio"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
+#, fuzzy
+msgid "label"
+msgstr "Re-rotular"
+
+#: ../data/lxplug-updater.ui.h:1
+#, fuzzy
+msgid "Available Updates"
+msgstr "Disponível"
+
+#: ../data/lxplug-updater.ui.h:2
+#, fuzzy
+msgid "Close"
+msgstr "_Fechar"
+
+#: ../data/lxplug-updater.ui.h:3
+msgid "Install"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:4
+msgid "The following packages can be updated :"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:1
+#, fuzzy
+msgid "Add New Device"
+msgstr "dispositivo"
+
+#: ../data/lxplug-bluetooth.ui.h:3
+msgid "_Pair"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:4
+#, fuzzy
+msgid "Searching for Bluetooth devices..."
+msgstr "dispositivo Bluetooth inválido (%s)"
+
+#~ msgid "Manage your network connections"
+#~ msgstr "Controle suas conexões de rede"
+
+#~ msgid "NetworkManager connection editor"
+#~ msgstr "Editor de conexão NetworkManager"
+
+#~ msgid ""
+#~ "NetworkManager is a system service for managing and configuring your "
+#~ "network connections and devices."
+#~ msgstr ""
+#~ "NetworkManager é um serviço de sistema para gerenciamento e configuração "
+#~ "de seus dispositivos e conexões de rede."
+
+#~ msgid ""
+#~ "The nm-connection-editor program works with NetworkManager to create and "
+#~ "edit existing connection profiles for NetworkManager."
+#~ msgstr ""
+#~ "O programa nm-connection-editor funciona com NetworkManager para criar e "
+#~ "editar perfis de conexão existentes para NetworkManager."
+
+#~ msgid "The NetworkManager Developers"
+#~ msgstr "Os desenvolvedores do NetworkManager"
+
+#~ msgid "Advanced Network Configuration"
+#~ msgstr "Configuração avançada de rede"
+
+#~ msgid "Manage and change your network connection settings"
+#~ msgstr "Gerencie e altere suas configurações de conexão de rede"
+
+#~ msgid "_Network name"
+#~ msgstr "_Nome da rede"
+
+#~ msgid "Connection _Information"
+#~ msgstr "_Informações da conexão"
+
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add an IP address."
+#~ msgstr ""
+#~ "Endereços IP identificam o seu computador na rede. Clique no botão "
+#~ "“Adicionar” para adicionar um endereço IP."
+
+#~ msgid "_Add"
+#~ msgstr "_Adicionar"
+
+#~ msgid "_Delete"
+#~ msgstr "E_xcluir"
+
+#~ msgid "Ig_nore automatically obtained routes"
+#~ msgstr "Ig_norar automaticamente rotas obtidas"
+
+#~ msgid "_Use this connection only for resources on its network"
+#~ msgstr "_Usar esta conexão apenas para recursos nesta rede"
+
+#~ msgid ""
+#~ "If enabled, this connection will never be used as the default network "
+#~ "connection."
+#~ msgstr ""
+#~ "Se habilitado, esta conexão nunca será usada como a conexão de rede "
+#~ "padrão."
+
+#~ msgid "C_reate…"
+#~ msgstr "C_riar…"
+
+#~ msgid "Choose a Connection Type"
+#~ msgstr "Escolha um tipo de conexão"
+
+#~ msgid ""
+#~ "Select the type of connection you wish to create.\n"
+#~ "\n"
+#~ "If you are creating a VPN, and the VPN connection you wish to create does "
+#~ "not appear in the list, you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "Selecione o tipo de conexão que você deseja criar.\n"
+#~ "\n"
+#~ "Se você está criando uma VPN e a conexão VPN que você deseja criar não "
+#~ "aparecer na lista, você pode não ter o plug-in de VPN correto instalado."
+
+#~ msgid "_Device"
+#~ msgstr "_Dispositivo"
+
+#~ msgid "Round-robin"
+#~ msgstr "Round-robin"
+
+#~ msgid "Active backup"
+#~ msgstr "Backup ativo"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "Broadcast"
+#~ msgstr "Broadcast"
+
+#~ msgid "802.3ad"
+#~ msgstr "802.3ad"
+
+#~ msgid "Adaptive transmit load balancing"
+#~ msgstr "Balanceamento de carga de transmissão adaptativa"
+
+#~ msgid "Adaptive load balancing"
+#~ msgstr "Balanceamento de carga adaptativa"
+
+#~ msgid "MII (recommended)"
+#~ msgstr "MII (recomendado)"
+
+#~ msgid "ARP"
+#~ msgstr "ARP"
+
+# Ethernet Bonding = Port trunking = Link Aggregation = IEEE 802.3ad
+#~ msgid "Bonded _connections"
+#~ msgstr "_Conexões agregadas"
+
+#~ msgid "M_ode"
+#~ msgstr "M_odo"
+
+#~ msgid "_Edit"
+#~ msgstr "_Editar"
+
+#~ msgid "Monitoring _frequency"
+#~ msgstr "_Frequência de monitoramento"
+
+#~ msgid "ms"
+#~ msgstr "ms"
+
+#~ msgid "_Interface name"
+#~ msgstr "Nome da _interface"
+
+#~ msgid "_Link Monitoring"
+#~ msgstr "Monitoramento de _link"
+
+#~ msgid "ARP _targets"
+#~ msgstr "ARP al_vos"
+
+#~ msgid ""
+#~ "An IP address, or a comma-separated list of IP addresses, to look for "
+#~ "when checking the link status."
+#~ msgstr ""
+#~ "Um endereço IP ou uma lista de endereços IP separada por vírgulas, para "
+#~ "procurar ao verificar o status do link."
+
+#~ msgid "Link _up delay"
+#~ msgstr "Atraso para c_onectar"
+
+#~ msgid "Link _down delay"
+#~ msgstr "Atraso para _desconectar"
+
+#~ msgid "_Primary"
+#~ msgstr "_Primário"
+
+#~ msgid ""
+#~ "The interface name of the primary device. If set, this device will always "
+#~ "be the active slave when it is available."
+#~ msgstr ""
+#~ "O nome da interface do dispositivo primário. Se definido, o dispositivo "
+#~ "sempre será o escravo ativo quando estiver disponível."
+
+#~ msgid "_MTU"
+#~ msgstr "_MTU"
+
+#~ msgid "bytes"
+#~ msgstr "bytes"
+
+#~ msgid "Path _cost"
+#~ msgstr "_Custo de caminho"
+
+#~ msgid "_Priority"
+#~ msgstr "_Prioridade"
+
+#~ msgid "_Hairpin mode"
+#~ msgstr "Modo _Hairpin"
+
+#~ msgid "Bridged _connections"
+#~ msgstr "_Conexões em ponte"
+
+#~ msgid "_Forward delay"
+#~ msgstr "Atraso de _envio"
+
+# HELLO é a mensagem de para manutenção da VPN entre os seus gateway. Desconheço tradução apropriada para este nome, da mesma forma que para ACK, SYN, NONCE e por aí vai. Por esse motivo, mantive "hello" - Rafael
+#~ msgid "_Hello time"
+#~ msgstr "Tempo de saudação (_hello)"
+
+#~ msgid "STP forwarding delay, in seconds"
+#~ msgstr "Atraso de encaminhamento de STP, em segundos"
+
+#~ msgid "s"
+#~ msgstr "s"
+
+#~ msgid "STP hello time, in seconds"
+#~ msgstr "Tempo de saudação de STP, em segundos"
+
+#~ msgid "Enable I_GMP snooping"
+#~ msgstr "Habilitar sondagem I_GMP"
+
+#~ msgid ""
+#~ "Controls whether IGMP snooping is enabled for this bridge. Note that if "
+#~ "snooping was automatically disabled due to hash collisions, the system "
+#~ "may refuse to enable the feature until the collisions are resolved."
+#~ msgstr ""
+#~ "Controla se a sondagem IGMP está habilitado para esta ponte. Observe que "
+#~ "se a sondagem foi automaticamente desativado devido a colisões de hash, o "
+#~ "sistema pode se recusar a habilitar o recurso até que as colisões sejam "
+#~ "resolvidas."
+
+#~ msgid "Enable _STP (Spanning Tree Protocol)"
+#~ msgstr "Habilitar _STP (Spanning Tree Protocol)"
+
+#~ msgid ""
+#~ "Controls whether Spanning Tree Protocol (STP) is enabled for this bridge"
+#~ msgstr ""
+#~ "Controle se Spanning Tree Protocol (STP) está habilitada para essa ponte"
+
+#~ msgid ""
+#~ "STP priority for this bridge. Lower values are “better”; the lowest "
+#~ "priority bridge will be elected the root bridge."
+#~ msgstr ""
+#~ "A prioridade STP para essa ponte. Valores menores são “melhores”; a ponte "
+#~ "com prioridade mais baixa será eleita como a ponte raiz."
+
+#~ msgid "_Max age"
+#~ msgstr "Tempo _máximo de expiração"
+
+#~ msgid "STP maximum message age, in seconds"
+#~ msgstr "Tempo máximo de mensagem de STP, em segundos"
+
+#~ msgid "_Aging time"
+#~ msgstr "Tempo de _vencimento"
+
+#~ msgid "The Ethernet MAC address aging time, in seconds"
+#~ msgstr "O tempo vencimento endereço MAC de Ethernet, em segundos"
+
+#~ msgid "Group _forward mask"
+#~ msgstr "Máscara de _encaminhamento de grupo"
+
+#~ msgid ""
+#~ "A mask of 16 bits, each corresponding to a group address in the range "
+#~ "from 01:80:C2:00:00:00 to 01:80:C2:00:00:0F that must be forwarded. The "
+#~ "mask can’t have bits 0, 1 or 2 set because they are used for STP, MAC "
+#~ "pause frames and LACP."
+#~ msgstr ""
+#~ "Uma máscara de 16 bits, cada correspondente para um endereço de grupo no "
+#~ "intervalo de 01:80:C2:00:00:00 a 01:80:C2:00:00:0F que deve ser "
+#~ "encaminhado. A máscara não pode ter bits 0, 1 ou 2 definidos porque eles "
+#~ "são usados para STP, quadros de pausa MAC e LACP."
+
+#~ msgid "_Use Data Center Bridging (DCB) for this connection"
+#~ msgstr "_Usar Data Center Bridging (DCB) para esta conexão"
+
+#~ msgid "FCoE"
+#~ msgstr "FCoE"
+
+#~ msgid "iSCSI"
+#~ msgstr "iSCSI"
+
+#~ msgid "FIP"
+#~ msgstr "FIP"
+
+#~ msgid "Feature"
+#~ msgstr "Recursos"
+
+#~ msgid "Enable"
+#~ msgstr "Habilitar"
+
+#~ msgid "Advertise"
+#~ msgstr "Anunciar"
+
+#~ msgid "Willing"
+#~ msgstr "Vontade"
+
+#~ msgid "Priority"
+#~ msgstr "Prioridade"
+
+#~ msgid "Options…"
+#~ msgstr "Opções…"
+
+#~ msgid "Priority Groups"
+#~ msgstr "Grupos de prioridade"
+
+#~ msgid "default"
+#~ msgstr "padrão"
+
+#~ msgid "Fabric"
+#~ msgstr "Fábrica"
+
+#~ msgid "VN2VN"
+#~ msgstr "VN2VN"
+
+#~ msgid "Priority Flow Control"
+#~ msgstr "Controle de fluxo de prioridade"
+
+#~ msgid ""
+#~ "Enable or disable priority pause transmission for each User Priority."
+#~ msgstr ""
+#~ "Habilite ou desabilite transmissão de pausa de prioridade para cada "
+#~ "prioridade de usuário."
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "Traffic Class"
+#~ msgstr "Classe de tráfego"
+
+#~ msgid "Strict Bandwidth"
+#~ msgstr "Largura de banda estrita"
+
+#~ msgid "Priority Bandwidth"
+#~ msgstr "Largura de banda da prioridade"
+
+#~ msgid "Group Bandwidth"
+#~ msgstr "Largura de banda do grupo"
+
+#~ msgid "Group ID"
+#~ msgstr "ID do grupo"
+
+#~ msgid "Enter the priority group ID for each User Priority."
+#~ msgstr "Digite o ID de grupo de prioridade para cada prioridade de usuário."
+
+#~ msgid ""
+#~ "Enter the allowed link bandwidth percent each Priority Group may use. The "
+#~ "sum of all groups must total 100%."
+#~ msgstr ""
+#~ "Digite a percentagem permitida de largura de banda de link que cada grupo "
+#~ "de prioridade pode usar. O somatório de todos os grupos devem resultar "
+#~ "num total de 100%."
+
+#~ msgid ""
+#~ "Enter the percentage of priority group bandwidth each user priority may "
+#~ "use."
+#~ msgstr ""
+#~ "Digite a percentagem de largura de banda de grupo de prioridade que cada "
+#~ "prioridade de usuário pode usar."
+
+#~ msgid "Enable or disable strict bandwidth for each user priority."
+#~ msgstr ""
+#~ "Habilite ou desabilite largura de banda estrita para cada prioridade de "
+#~ "usuário."
+
+#~ msgid "Enter the traffic class for each user priority."
+#~ msgstr "Digite a classe de tráfego para cada prioridade de usuário."
+
+#~ msgid "_Username"
+#~ msgstr "Nome de _usuário"
+
+#~ msgid "Username used to authenticate with the PPPoE service."
+#~ msgstr "Nome de usuário usado para autenticar com o serviço PPPoE."
+
+#~ msgid ""
+#~ "Only initiate sessions with access concentrators that provide the "
+#~ "specified service. For most providers this should be left blank."
+#~ msgstr ""
+#~ "Inicia apenas sessões com concentradores de acesso que fornecem o serviço "
+#~ "especificado. Para a maioria dos fornecedores, isso deve ser mantido "
+#~ "vazio."
+
+#~ msgid "_Service"
+#~ msgstr "_Serviço"
+
+#~ msgid "Sho_w password"
+#~ msgstr "_Mostrar senha"
+
+#~ msgid "Password used to authenticate with the PPPoE service."
+#~ msgstr "Senha usada para autenticar com o serviço PPPoE."
+
+#~ msgid "_Password"
+#~ msgstr "Se_nha"
+
+#~ msgid "PPP _interface"
+#~ msgstr "_Interface PPP"
+
+#~ msgid "P_arent interface"
+#~ msgstr "Interface p_ai"
+
+#~ msgid "An arbitrary name to assign to the newly created PPP interface."
+#~ msgstr "Um nome arbitrário para atribuir à recém-criada interface PPP."
+
+#~ msgid "The interface on which the PPP connection will be established."
+#~ msgstr "A interface na qual a conexão PPP será estabelecida."
+
+#~ msgid "C_laim interface"
+#~ msgstr "_Reivindicar interface"
+
+#~ msgid ""
+#~ "If selected, the connection will take exclusive control of the interface "
+#~ "and it won’t be possible to activate another connection on it. Note that "
+#~ "the option can only be used for Ethernet interfaces. nm-applet is able to "
+#~ "activate the connection only if this option is selected."
+#~ msgstr ""
+#~ "Se selecionada, a conexão assumirá o controle exclusivo da interface e "
+#~ "não será possível ativar outra conexão nela. Observe que a opção só pode "
+#~ "ser usada para interfaces Ethernet. O nm-applet é capaz de ativar a "
+#~ "conexão somente se esta opção estiver selecionada."
+
+#~ msgid "Automatic"
+#~ msgstr "Automático"
+
+#~ msgid "Twisted Pair (TP)"
+#~ msgstr "Par trançado (TP)"
+
+#~ msgid "Attachment Unit Interface (AUI)"
+#~ msgstr "Unidade de interferência anexa (AUI)"
+
+#~ msgid "BNC"
+#~ msgstr "BNC"
+
+#~ msgid "Media Independent Interface (MII)"
+#~ msgstr "Interface de mídia independente (MII)"
+
+#~ msgid "10 Mb/s"
+#~ msgstr "10 Mb/s"
+
+#~ msgid "100 Mb/s"
+#~ msgstr "100 Mb/s"
+
+#~ msgid "1 Gb/s"
+#~ msgstr "1 Gb/s"
+
+#~ msgid "10 Gb/s"
+#~ msgstr "10 Gb/s"
+
+#~ msgid "Half"
+#~ msgstr "Half"
+
+#~ msgid "Full"
+#~ msgstr "Full"
+
+#~ msgid "Ignore"
+#~ msgstr "Ignorar"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "_Port"
+#~ msgstr "_Porta"
+
+#~ msgid "C_loned MAC address"
+#~ msgstr "Endereço MAC c_lonado"
+
+#~ msgid "Wake on LAN"
+#~ msgstr "Wake on LAN"
+
+#~ msgid "De_fault"
+#~ msgstr "Pa_drão"
+
+#~ msgid "_Ignore"
+#~ msgstr "_Ignorar"
+
+# Phy refere-se à camada física do modelo OSI. Por ser uma abreviação comum,
+# mantivo o termo original -- Rafael Fontenelle
+#~ msgid "_Phy"
+#~ msgstr "_Phy"
+
+#~ msgid "_Unicast"
+#~ msgstr "_Unicast"
+
+#~ msgid "Mul_ticast"
+#~ msgstr "Mul_ticast"
+
+#~ msgid "_Broadcast"
+#~ msgstr "_Broadcast"
+
+#~ msgid "_Arp"
+#~ msgstr "_Arp"
+
+#~ msgid "Ma_gic"
+#~ msgstr "Má_gico"
+
+# Wake on Lan = WoL, padrão normalmente usado assim mesmo em Português
+#~ msgid "_Wake on LAN password"
+#~ msgstr "Senha de _Wake on LAN"
+
+#~ msgid ""
+#~ "Wake-on-LAN password (an Ethernet MAC). It is only valid for magic "
+#~ "packets."
+#~ msgstr ""
+#~ "Senha para Wake-on-Lan (um MAC de Ethernet). É válido apenas para pacotes "
+#~ "mágicos."
+
+#~ msgid "Lin_k negotiation"
+#~ msgstr "Negociação de lin_k"
+
+#~ msgid ""
+#~ "Device link negotiation. If “Manual” is chosen, “Speed” and “Duplex” "
+#~ "values will be forced without checking the device compatibility. If "
+#~ "unsure, leave here “Ignore” or pick “Automatic”."
+#~ msgstr ""
+#~ "Negociação de link de dispositivo. Se “Manual” for escolhido, os valores "
+#~ "de “Velocidade” e “Duplex” serão forçados sem verificar a compatibilidade "
+#~ "do dispositivo. Se não tiver certeza, mantenha “Ignorar” ou escolha "
+#~ "“Automático”."
+
+#~ msgid "_Speed"
+#~ msgstr "_Velocidade"
+
+#~ msgid ""
+#~ "Speed value for static link negotiation, required only when “Ignore” and "
+#~ "“Automatic” options are not selected. Before specifying a speed value be "
+#~ "sure your device supports it."
+#~ msgstr ""
+#~ "O valor da velocidade para negociação de link estática, exigido apenas "
+#~ "quando as opções “Ignorar” e “Automático” não estiverem selecionadas. "
+#~ "Antes de especificar um valor de velocidade, certifique-se de que seu "
+#~ "dispositivo oferece suporte a isso."
+
+#~ msgid "Duple_x"
+#~ msgstr "Duple_x"
+
+#~ msgid ""
+#~ "Duplex value for static link negotiation, required only when “Ignore” and "
+#~ "“Automatic” options are not selected. Before specifying a duplex mode be "
+#~ "sure your device supports it."
+#~ msgstr ""
+#~ "O valor do duplex para negociação de link estática, exigido apenas quando "
+#~ "as opções “Ignorar” e “Automático” não estiverem selecionadas. Antes de "
+#~ "especificar um modo duplex, certifique-se de que seu dispositivo oferece "
+#~ "suporte a isso."
+
+#~ msgid "Yes"
+#~ msgstr "Sim"
+
+#~ msgid "No"
+#~ msgstr "Não"
+
+#~ msgid "All _users may connect to this network"
+#~ msgstr "Todos os _usuários podem conectar a esta rede"
+
+#~ msgid "Automatically connect to _VPN"
+#~ msgstr "Conectar automaticamente a _VPN"
+
+#~ msgid "Firewall _zone"
+#~ msgstr "_Zona do firewall"
+
+# "metered" é uma conexão com recursos limitados, como dados 4G, que deve-se restrigir para evitar excessos e sobretaxa.
+#~ msgid "_Metered connection"
+#~ msgstr "Conexão _limitada"
+
+# "metered" é uma conexão com recursos limitados, como dados 4G, que deve-se restrigir para evitar excessos e sobretaxa.
+#~ msgid ""
+#~ "NetworkManager indicates to applications whether the connection is "
+#~ "metered and therefore data usage should be restricted. Select which value "
+#~ "(“Yes” or “No”) to indicate to applications, or “Automatic” to use a "
+#~ "default value based on the connection type and other heuristics."
+#~ msgstr ""
+#~ "O NetworkManager indica aos aplicativos se a conexão é limitada e, "
+#~ "portanto, o uso de dados deve ser restrito. Selecione qual valor (“Sim” "
+#~ "ou “Não”) para indicar aos aplicativos ou “Automático” para usar um valor "
+#~ "padrão com base no tipo de conexão e outras heurísticas."
+
+#~ msgid "Connect _automatically with priority"
+#~ msgstr "Conectar _automaticamente com prioridade"
+
+#~ msgid ""
+#~ "Connection priority for automatic activation. Connections with higher "
+#~ "numbers are preferred when selecting profiles for automatic activation. "
+#~ "Default value is 0."
+#~ msgstr ""
+#~ "Prioridade da conexão para ativação automática. Conexões om números mais "
+#~ "altos são preferidos a selecionar perfis para ativação automática. Valor "
+#~ "padrão é 0."
+
+#~ msgid "Datagram"
+#~ msgstr "Datagrama"
+
+#~ msgid "Connected"
+#~ msgstr "Conectado"
+
+#~ msgid "_Transport mode"
+#~ msgstr "Modo _transporte"
+
+#~ msgid "IPIP"
+#~ msgstr "IPIP"
+
+#~ msgid "GRE"
+#~ msgstr "GRE"
+
+#~ msgid "SIT"
+#~ msgstr "SIT"
+
+#~ msgid "ISATAP"
+#~ msgstr "ISATAP"
+
+#~ msgid "VTI"
+#~ msgstr "VTI"
+
+#~ msgid "IP6IP6"
+#~ msgstr "IP6IP6"
+
+#~ msgid "IPIP6"
+#~ msgstr "IPIP6"
+
+#~ msgid "IP6GRE"
+#~ msgstr "IP6GRE"
+
+#~ msgid "VTI6"
+#~ msgstr "VTI6"
+
+#~ msgid "Device name"
+#~ msgstr "Nome do dispositivo"
+
+#~ msgid "Parent device"
+#~ msgstr "Dispositivo pai"
+
+#~ msgid "Mode"
+#~ msgstr "Modo"
+
+#~ msgid "Local IP"
+#~ msgstr "IP local"
+
+#~ msgid "Remote IP"
+#~ msgstr "IP remoto"
+
+#~ msgid "Input key"
+#~ msgstr "Chave de entrada"
+
+#~ msgid "Output key"
+#~ msgstr "Chave de saída"
+
+#~ msgid "MTU"
+#~ msgstr "MTU"
+
+#~ msgid "Automatic with manual DNS settings"
+#~ msgstr "Automático com configurações de DNS manual"
+
+#~ msgid "Link-Local"
+#~ msgstr "Conexão local"
+
+#~ msgid "Shared to other computers"
+#~ msgstr "Compartilhado com outros computadores"
+
+#~ msgid "_Method"
+#~ msgstr "_Método"
+
+#~ msgid ""
+#~ "The DHCP client identifier allows the network administrator to customize "
+#~ "your computer’s configuration. If you wish to use a DHCP client "
+#~ "identifier, enter it here."
+#~ msgstr ""
+#~ "O identificador de cliente DHCP permite que o administrador da rede "
+#~ "personalize as configurações de seu computador. Se você deseja usar um "
+#~ "identificador de cliente DHCP, digite aqui."
+
+#~ msgid ""
+#~ "Domains used when resolving host names. Use commas to separate multiple "
+#~ "domains."
+#~ msgstr ""
+#~ "Domínios usados para resolver nomes de máquinas. Usar vírgulas para "
+#~ "separar múltiplos domínios."
+
+#~ msgid "D_HCP client ID"
+#~ msgstr "ID do cliente D_HCP"
+
+#~ msgid "S_earch domains"
+#~ msgstr "Pe_squisar domínios"
+
+#~ msgid "DNS ser_vers"
+#~ msgstr "Servidores _DNS"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses."
+#~ msgstr ""
+#~ "Endereço IP de servidores de nome de domínio usados para resolver nomes "
+#~ "de máquinas. Usar vírgulas para separar múltiplos endereços de servidor "
+#~ "de nome de domínio."
+
+#~ msgid "Require IPv_4 addressing for this connection to complete"
+#~ msgstr "Requer endereçamento de IPv_4 para que esta conexão seja concluída"
+
+#~ msgid ""
+#~ "When connecting to IPv6-capable networks, allows the connection to "
+#~ "complete if IPv4 configuration fails but IPv6 configuration succeeds."
+#~ msgstr ""
+#~ "Ao conectar às redes Ipv6 cabeadas, permite que a conexão seja concluída "
+#~ "se a configuração do Ipv4 falhar, mas a IPv6 for bem sucedida."
+
+#~ msgid "_Routes…"
+#~ msgstr "_Rotas…"
+
+#~ msgid "Default"
+#~ msgstr "Padrão"
+
+#~ msgid "Disabled"
+#~ msgstr "Desativado"
+
+#~ msgid "Enabled (prefer public address)"
+#~ msgstr "Ativado (preferir endereço público)"
+
+#~ msgid "Enabled (prefer temporary address)"
+#~ msgstr "Ativado (preferir endereço temporário)"
+
+#~ msgid "EUI64"
+#~ msgstr "EUI64"
+
+#~ msgid "Stable privacy"
+#~ msgstr "Privacidade estável"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses. Link-local "
+#~ "addresses will be automatically scoped to the connecting interface."
+#~ msgstr ""
+#~ "Endereços IP de servidores de nome de domínio usados para resolver nomes "
+#~ "de máquinas. Use vírgulas para separar múltiplos endereços de servidor de "
+#~ "nome de domínio. Endereços de conexões locais serão inseridas "
+#~ "automaticamente no escopo de interface de conectividade."
+
+#~ msgid "IPv6 _privacy extensions"
+#~ msgstr "Extensões de _privacidade IPv6"
+
+#~ msgid ""
+#~ "If enabled, it makes the kernel generate a temporary IPv6 address in "
+#~ "addition to the public one generated from MAC address. This enhances "
+#~ "privacy, but could cause problems in some applications. If set to "
+#~ "\"Default\", the value from NetworkManager global configuration is used. "
+#~ "If that is also unset, use the kernel default value read from file \"/"
+#~ "proc/sys/net/ipv6/conf/default/use_tempaddr\""
+#~ msgstr ""
+#~ "Se habilitado, isso faz o kernel gerar um endereço IPv6 temporário além "
+#~ "do público gerado a partir do endereço MAC. Isso melhora a privacidade, "
+#~ "mas pode causar problemas em alguns aplicativos. Se estiver definido como "
+#~ "\"Padrão\", é usado o valor da configuração global do NetworkManager. Se "
+#~ "isso também não estiver definido, use o valor padrão do kernel lido do "
+#~ "arquivo \"/proc/sys/net/ipv6/conf/default/use_tempaddr\""
+
+#~ msgid "IPv6 address _generation mode"
+#~ msgstr "Modo de _geração de endereço IPv6"
+
+#~ msgid "Require IPv_6 addressing for this connection to complete"
+#~ msgstr "Requer endereçamento do IPv_6 para que esta conexão seja concluída"
+
+#~ msgid ""
+#~ "When connecting to IPv4-capable networks, allows the connection to "
+#~ "complete if IPv6 configuration fails but IPv4 configuration succeeds."
+#~ msgstr ""
+#~ "Ao conectar às redes IPv4 cabeadas, permite que a conexão seja concluída "
+#~ "se a configuração do Ipv6 falhar, mas a IPv4 for bem sucedida."
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "EAP"
+#~ msgstr "EAP"
+
+#~ msgid "Check"
+#~ msgstr "Verificar"
+
+#~ msgid "Strict"
+#~ msgstr "Estrita"
+
+#~ msgid "_Device name"
+#~ msgstr "Nome do _dispositivo"
+
+#~ msgid "The name of the MACsec device."
+#~ msgstr "O nome do dispositivo MACsec."
+
+#~ msgid "_Parent device"
+#~ msgstr "Dispositivo _pai"
+
+#~ msgid ""
+#~ "The parent interface name or parent connection UUID from which this "
+#~ "MACSEC interface should be created."
+#~ msgstr ""
+#~ "O nome da interface pai ou UUID de conexão pai a partir do qual essa "
+#~ "interface MACSEC deve ser criada."
+
+#~ msgid ""
+#~ "The parent interface name or parent connection UUID from which this "
+#~ "MACsec interface should be created"
+#~ msgstr ""
+#~ "O nome da interface pai ou UUID de conexão pai a partir da qual essa "
+#~ "interface MACsec deve ser criada"
+
+#~ msgid "Keys"
+#~ msgstr "Chaves"
+
+#~ msgid "_Mode"
+#~ msgstr "_Modo"
+
+#~ msgid ""
+#~ "Specifies how the CAK (Connectivity Association Key) for MKA (MACsec Key "
+#~ "Agreement) is obtained. For the EAP mode, fill the parameters in the "
+#~ "802.1X security page"
+#~ msgstr ""
+#~ "Especifica como a CAK (Chave Associação Conectividade ou Connectivity "
+#~ "Association Key) para MKA (Acordo de chave MACsec ou MACsec Key "
+#~ "Agreement) é obtida. Para o modo EAP, preenche os parâmetros na página de "
+#~ "segurança 802.1X"
+
+#~ msgid "C_AK"
+#~ msgstr "C_AK"
+
+#~ msgid "The pre-shared Connectivity Association Key"
+#~ msgstr "A chave associação conectividade pré-compartilhada"
+
+#~ msgid "C_KN"
+#~ msgstr "C_KN"
+
+#~ msgid " The pre-shared Connectivity-association Key Name"
+#~ msgstr " O nome de chave associação conectividade pré-compartilhada"
+
+#~ msgid "Parameters"
+#~ msgstr "Parâmetros"
+
+#~ msgid "_Validation"
+#~ msgstr "_Validação"
+
+#~ msgid "Specifies the validation mode for incoming frames"
+#~ msgstr "Especifica o modo de validação para quadros recebidos"
+
+#~ msgid "_SCI port"
+#~ msgstr "Porta _SCI"
+
+#~ msgid "The port component of the SCI (Secure Channel Identifier)"
+#~ msgstr ""
+#~ "O componente porta do SCI (Identificador da chave segura ou Secure "
+#~ "Channel Identifier)"
+
+#~ msgid "_Encrypt"
+#~ msgstr "_Criptografar"
+
+#~ msgid "Whether the transmitted traffic must be encrypted"
+#~ msgstr "Se o tráfego transmitido deve ser criptografado"
+
+#~ msgid "Basic"
+#~ msgstr "Básico"
+
+#~ msgid "Nu_mber"
+#~ msgstr "_Número"
+
+#~ msgid "Advanced"
+#~ msgstr "Avançado"
+
+#~ msgid "_APN"
+#~ msgstr "_APN"
+
+#~ msgid "N_etwork ID"
+#~ msgstr "ID da R_ede"
+
+#~ msgid "Change…"
+#~ msgstr "Mudar…"
+
+#~ msgid "P_IN"
+#~ msgstr "P_IN"
+
+#~ msgid "Allow _roaming if home network is not available"
+#~ msgstr "Permitir _roaming se a rede doméstica não estiver disponível"
+
+#~ msgid "Sho_w passwords"
+#~ msgstr "_Mostrar senhas"
+
+#~ msgid "Authentication"
+#~ msgstr "Autenticação"
+
+#~ msgid "Allowed methods"
+#~ msgstr "Métodos permitidos"
+
+#~ msgid "Configure _Methods…"
+#~ msgstr "Configurar _métodos…"
+
+#~ msgid "Compression"
+#~ msgstr "Compactação"
+
+#~ msgid "_Use point-to-point encryption (MPPE)"
+#~ msgstr "_Usar criptografia ponto-a-ponto (MPPE)"
+
+#~ msgid "_Require 128-bit encryption"
+#~ msgstr "Exigi_r criptografia de 128 bits"
+
+#~ msgid "Use _stateful MPPE"
+#~ msgstr "U_sar especificação completa MPPE"
+
+#~ msgid "Allow _BSD data compression"
+#~ msgstr "Permitir compactação de dados _BSD"
+
+#~ msgid "Allow _Deflate data compression"
+#~ msgstr "Permitir compactação de dados _deflate (zip)"
+
+#~ msgid "Use TCP _header compression"
+#~ msgstr "Usar compactação de cabeçal_ho TCP"
+
+#~ msgid "Echo"
+#~ msgstr "Echo"
+
+#~ msgid "Send PPP _echo packets"
+#~ msgstr "Enviar pacotes de _eco PPP"
+
+#~ msgid "None"
+#~ msgstr "Nenhuma"
+
+#~ msgid "For browser only"
+#~ msgstr "Para navegador apenas"
+
+#~ msgid "Use this proxy configuration for only browser clients/schemes."
+#~ msgstr ""
+#~ "Use essa configuração de proxy para apenas navegadores clientes/esquemas."
+
+#~ msgid "PAC URL"
+#~ msgstr "PAC URL"
+
+#~ msgid "PAC script"
+#~ msgstr "PAC script"
+
+#~ msgid "URL from where the PAC script is to be obtained."
+#~ msgstr "URL por meio da qual o script PAC deve ser obtido."
+
+#~ msgid "Import script from a file…"
+#~ msgstr "Importar script de um arquivo…"
+
+#~ msgid "Method"
+#~ msgstr "Método"
+
+#~ msgid "Ad_vanced…"
+#~ msgstr "A_vançado…"
+
+#~ msgid "Set by master"
+#~ msgstr "Definido por mestre"
+
+#~ msgid "Ethernet port state"
+#~ msgstr "Estado da porta Ethernet"
+
+#~ msgid "ARP (IPv4)"
+#~ msgstr "ARP (IPv4)"
+
+#~ msgid "NDP (IPv6)"
+#~ msgstr "NDP (IPv6)"
+
+#~ msgid "_Queue ID"
+#~ msgstr "ID da _fila"
+
+#~ msgid ""
+#~ "Number of bursts of unsolicited NAs and gratuitous ARP packets sent after "
+#~ "port is enabled or disabled."
+#~ msgstr ""
+#~ "Número de rajadas de NAs não solicitados e pacotes ARP gratuitos enviados "
+#~ "após a porta estar habilitada ou desabilitada."
+
+#~ msgid "ID of queue which this port should be mapped to."
+#~ msgstr "ID da fila para a qual esta porta deve estar mapeada."
+
+#~ msgid "Active-Backup runner options"
+#~ msgstr "Opções do executor backup-ativo"
+
+#~ msgid "_Port priority"
+#~ msgstr "Prioridade da _porta"
+
+#~ msgid ""
+#~ "Value is positive number in milliseconds. Specifies an interval between "
+#~ "bursts of notify-peer packets."
+#~ msgstr ""
+#~ "O valor é um número positivo em milissegundos. Especifica um intervalo "
+#~ "entre rajadas de pacotes de notificação da outra ponta."
+
+#~ msgid "Port priority. The higher number means higher priority."
+#~ msgstr ""
+#~ "Prioridade da porta. O número mais alto significa uma prioridade mais "
+#~ "alta."
+
+#~ msgid "Port _sticky"
+#~ msgstr "Porta afi_xada"
+
+#~ msgid "Do not unselect the port if a better one becomes available."
+#~ msgstr "Não desmarque a porta se uma melhor se tornar disponível."
+
+#~ msgid "LACP runner options"
+#~ msgstr "Opções do executor LACP"
+
+#~ msgid "_LACP port priority"
+#~ msgstr "Prioridade de porta _LACP"
+
+#~ msgid "LACP port _key"
+#~ msgstr "C_have de porta LACP"
+
+#~ msgid ""
+#~ "Number of bursts of multicast group rejoin requests sent after port is "
+#~ "enabled or disabled."
+#~ msgstr ""
+#~ "Número de rajadas de requisições multicasts de reingresso em grupo "
+#~ "enviadas após porta ser habilitada ou desabilitada."
+
+#~ msgid ""
+#~ "Port priority according to LACP standard. The lower number means higher "
+#~ "priority."
+#~ msgstr ""
+#~ "Prioridade da porta de acordo com o padrão do LACP. O número mais baixo "
+#~ "significa prioridade mais alta."
+
+#~ msgid ""
+#~ "Value is positive number in milliseconds. Specifies an interval between "
+#~ "bursts of multicast group rejoin requests."
+#~ msgstr ""
+#~ "O valor é um número positivo em milissegundos. Especifica um intervalo "
+#~ "entre rajadas de requisições multicasts de reingresso em grupo."
+
+#~ msgid ""
+#~ "Port key according to LACP standard. It is only possible to aggregate "
+#~ "ports with the same key."
+#~ msgstr ""
+#~ "Chave de porta de acordo com o padrão do LACP. É possível agregar portas "
+#~ "com a mesma chave."
+
+#~ msgid "_Link watcher"
+#~ msgstr "Monitorador de _link"
+
+#~ msgid "_Up delay"
+#~ msgstr "Atraso para conec_tar"
+
+#~ msgid "_Down delay"
+#~ msgstr "Atraso para _desconectar"
+
+#~ msgid "Send _interval"
+#~ msgstr "_Intervalo de envio"
+
+#~ msgid "Delay _before first send"
+#~ msgstr "Atraso a_ntes do primeiro envio"
+
+#~ msgid "_Maximum missed replies"
+#~ msgstr "_Máximo de respostas perdidas"
+
+#~ msgid "_Source host"
+#~ msgstr "Host de o_rigem"
+
+#~ msgid "_Target host"
+#~ msgstr "Host al_vo"
+
+#~ msgid ""
+#~ "Maximum number of missed replies. If this number is exceeded, link is "
+#~ "reported as down."
+#~ msgstr ""
+#~ "Número máximo de respostas perdidas. Se esse número for excedido, o link "
+#~ "é relatado como desconectado."
+
+#~ msgid ""
+#~ "Hostname to be converted to IP address which will be filled into ARP "
+#~ "request as source address."
+#~ msgstr ""
+#~ "Nome de máquina a ser convertido em endereço IP que será preenchido na "
+#~ "requisição ARP como endereço de origem."
+
+#~ msgid ""
+#~ "Hostname to be converted to IP address which will be filled into request "
+#~ "as destination address."
+#~ msgstr ""
+#~ "Nome de máquina a ser convertido em endereço IP que será preenchido na "
+#~ "requisição como endereço de destino."
+
+#~ msgid "Ignore invalid packets from _active ports"
+#~ msgstr "Ignorar pacotes inválidos de portas _ativas"
+
+#~ msgid ""
+#~ "Validate received ARP packets on active ports. If this is not checked, "
+#~ "all incoming ARP packets will be considered as a good reply."
+#~ msgstr ""
+#~ "Valida pacotes ARP recebidos em portas ativas. Se isso não estiver "
+#~ "marcado, todos pacotes ARP recebidos serão considerados como reposta boa."
+
+#~ msgid "Ignore invalid packets from i_nactive ports"
+#~ msgstr "Ignorar pacotes inválidos de portas i_nativas"
+
+#~ msgid ""
+#~ "Validate received ARP packets on inactive ports. If this is not checked, "
+#~ "all incoming ARP packets will be considered as a good reply."
+#~ msgstr ""
+#~ "Valida pacotes ARP recebidos em portas inativas. Se isso não estiver "
+#~ "marcado, todos pacotes ARP recebidos serão considerados como reposta boa."
+
+#~ msgid "S_end on inactive ports"
+#~ msgstr "_Enviar em portas inativas"
+
+#~ msgid ""
+#~ "By default, ARP requests are sent on active ports only. This option "
+#~ "allows sending even on inactive ports."
+#~ msgstr ""
+#~ "Por padrão, requisições ARP são enviadas apenas em portas ativas. Essa "
+#~ "opção permite enviar até mesmo em portas inativas."
+
+#~ msgid ""
+#~ "The delay between the link coming up and the runner being notified about "
+#~ "it."
+#~ msgstr ""
+#~ "O atraso entre o link ficar “up” e o executor ser notificado sobre isso."
+
+#~ msgid ""
+#~ "The delay between the link going down and the runner being notified about "
+#~ "it."
+#~ msgstr ""
+#~ "O atraso entre o link ficar “down” e o executor ser notificado sobre isso."
+
+#~ msgid "The interval between requests being sent."
+#~ msgstr "O intervalo entre requisições sendo enviadas."
+
+#~ msgid ""
+#~ "The delay between link watch initialization and the first request being "
+#~ "sent."
+#~ msgstr ""
+#~ "O atraso entre inicialização de monitoramento do link e a primeira "
+#~ "requisição ser enviada."
+
+#~ msgid "The link watcher to be used."
+#~ msgstr "O monitorador de link a ser usado."
+
+#~ msgid "Link Watcher"
+#~ msgstr "Monitorador de link"
+
+#~ msgid "Im_port team configuration from a file…"
+#~ msgstr "Im_portar uma configuração de equipe de um arquivo…"
+
+#~ msgid "Edit _JSON configuration"
+#~ msgstr "Editar configuração _JSON"
+
+#~ msgid "Raw Configuration"
+#~ msgstr "Configuração não tratada"
+
+#~ msgid "Highest priority"
+#~ msgstr "Prioridade mais alta"
+
+#~ msgid "Highest priority (stable)"
+#~ msgstr "Prioridade mais alta (estável)"
+
+#~ msgid "Bandwidth"
+#~ msgstr "Largura de banda"
+
+#~ msgid "Highest number of ports"
+#~ msgstr "Número de portas mais alto"
+
+#~ msgid "Port priority"
+#~ msgstr "Prioridade da porta"
+
+#~ msgid "From the team device"
+#~ msgstr "Do dispositivo de equipe"
+
+#~ msgid "From the active port"
+#~ msgstr "Da porta ativa"
+
+#~ msgid "From active to team device"
+#~ msgstr "Da ativa para dispositivo de equipe"
+
+# Ethernet Bonding = Port trunking = Link Aggregation = IEEE 802.3ad
+#~ msgid "_Teamed connections"
+#~ msgstr "_Conexões de equipe"
+
+#~ msgid "Load balance"
+#~ msgstr "Balanceamento de carga"
+
+#~ msgid "LACP"
+#~ msgstr "LACP"
+
+#~ msgid "Ethernet"
+#~ msgstr "Ethernet"
+
+#~ msgid "VLAN"
+#~ msgstr "VLAN"
+
+#~ msgid "IP"
+#~ msgstr "IP"
+
+#~ msgid "Any L3 protocol"
+#~ msgstr "Qualquer protocolo L3"
+
+#~ msgid "TCP"
+#~ msgstr "TCP"
+
+#~ msgid "UDP"
+#~ msgstr "UDP"
+
+#~ msgid "SCTP"
+#~ msgstr "SCTP"
+
+#~ msgid "Any L4 protocol"
+#~ msgstr "Qualquer protocolo L4"
+
+#~ msgid "_Peer notification count"
+#~ msgstr "Contador de notificação da _ponta"
+
+#~ msgid "Peer _notification interval"
+#~ msgstr "Intervalo entre _notificações da ponta"
+
+#~ msgid "_Multicast rejoin count"
+#~ msgstr "Contador de reingresso _multicast"
+
+#~ msgid "Multicast _rejoin interval"
+#~ msgstr "Intervalo entre _reingressos multicast"
+
+#~ msgid "_Hardware Address"
+#~ msgstr "Endereço de _hardware"
+
+#~ msgid ""
+#~ "Desired hardware address of new team device. Usual MAC address format is "
+#~ "accepted."
+#~ msgstr ""
+#~ "Endereço de hardware desejado para novo dispositivo de equipe. Formato de "
+#~ "endereço MAC usual é aceito."
+
+#~ msgid "_Runner"
+#~ msgstr "E_xecutor"
+
+#~ msgid "_Hardware address policy"
+#~ msgstr "Política de endereço de _hardware"
+
+#~ msgid "Name of runner to be used."
+#~ msgstr "Nome do executor a ser usado."
+
+#~ msgid ""
+#~ "This defines the policy of how hardware addresses of team device and port "
+#~ "devices should be set during the team lifetime."
+#~ msgstr ""
+#~ "Define a política de como endereços de hardware de dispositivo de equipe "
+#~ "e dispositivos de porta devem ser definidos durante o tempo de vida de "
+#~ "equipe."
+
+#~ msgid "Send LACPDU frames _periodically"
+#~ msgstr "Enviar quadros LACPDU _periodicamente"
+
+#~ msgid ""
+#~ "If checked, LACPDU frames are sent along the configured links "
+#~ "periodically. If not, it acts as “speak when spoken to”."
+#~ msgstr ""
+#~ "Se marcado, quadros LACPDU são enviados periodicamente junto com os links "
+#~ "configurados. Se não, age como “fale apenas quando for solicitado”."
+
+#~ msgid "Send a LACPDU frame _every second"
+#~ msgstr "Enviar um quadro LACPDU a cada s_egundo"
+
+#~ msgid ""
+#~ "Option specifies the rate at which our link partner is asked to transmit "
+#~ "LACPDU packets. If checked, packets will be sent once per second. "
+#~ "Otherwise they will be sent every 30 seconds."
+#~ msgstr ""
+#~ "A opção especifica a taxa na qual seu parceiro de link é solicitado "
+#~ "transmitir pacotes LACPDU. Se marcado, os pacotes serão enviados um a "
+#~ "cada segundo. Do contrário, eles serão enviados a cada 30 segundos."
+
+#~ msgid "_System priority"
+#~ msgstr "Prioridade do _sistema"
+
+#~ msgid "_Minimum ports"
+#~ msgstr "_Mínimo de portas"
+
+#~ msgid "_Aggregator selection policy"
+#~ msgstr "Política de seleção de _agregador"
+
+#~ msgid "System priority, value can be 0 – 65535."
+#~ msgstr "Prioridade do sistema; valor pode ser 0 – 65535."
+
+#~ msgid ""
+#~ "Specifies the minimum number of ports that must be active before "
+#~ "asserting carrier in the master interface, value can be 1 – 255."
+#~ msgstr ""
+#~ "Especifica o número mínimo de portas que deve estar ativa antes de "
+#~ "declarar a portadora na intervalo mestre; valor pode ser 1 – 255."
+
+#~ msgid "This selects the policy of how the aggregators will be selected."
+#~ msgstr "Seleciona a política de como os agregadores serão selecionados."
+
+#~ msgid ""
+#~ "List of fragment types (strings) which should be used for packet Tx hash "
+#~ "computation."
+#~ msgstr ""
+#~ "Lista os tipos de fragmentos (strings) que devem ser usados para "
+#~ "computação de hash de Tx de pacote."
+
+#~ msgid "_Fields for transmission hash"
+#~ msgstr "Campos _de hash de transmissão"
+
+#~ msgid "In tenths of a second. Periodic interval between rebalancing."
+#~ msgstr "Em décimos de segundo. Intervalo periódico entre rebalanceamento."
+
+#~ msgid ""
+#~ "Name of active Tx balancer. Active Tx balancing is disabled by default."
+#~ msgstr ""
+#~ "Nome do balanceador de Tx ativo. Balanceamento de Tx ativo está "
+#~ "desabilitado por padrão."
+
+#~ msgid "Transmission _balancing interval"
+#~ msgstr "Intervalo entre _balanceamento de transmissão"
+
+#~ msgid "_Transmission balancer"
+#~ msgstr "Balanceador de _transmissão"
+
+#~ msgid "Runner"
+#~ msgstr "Executor"
+
+#~ msgid "_Parent interface"
+#~ msgstr "Interface _pai"
+
+#~ msgid "VLAN inter_face name"
+#~ msgstr "Nome da inter_face VLAN"
+
+#~ msgid "Cloned MAC _address"
+#~ msgstr "Endereço MAC clon_ado"
+
+#~ msgid "VLAN _id"
+#~ msgstr "VLAN _id"
+
+#~ msgid "Flags"
+#~ msgstr "Opções"
+
+#~ msgid "_Reorder headers"
+#~ msgstr "_Reordenar cabeçalhos"
+
+#~ msgid "_GVRP"
+#~ msgstr "_GVRP"
+
+#~ msgid "_Loose binding"
+#~ msgstr "Ligação _solta"
+
+#~ msgid "M_VRP"
+#~ msgstr "M_VRP"
+
+#~ msgid "Device name + number"
+#~ msgstr "Nome de dispositivo + número"
+
+#~ msgid "\"vlan\" + number"
+#~ msgstr "“vlan” + número"
+
+#~ msgid "S_ecurity"
+#~ msgstr "S_egurança"
+
+#~ msgid "A (5 GHz)"
+#~ msgstr "A (5 GHz)"
+
+#~ msgid "B/G (2.4 GHz)"
+#~ msgstr "B/G (2.4 GHz)"
+
+#~ msgid "Client"
+#~ msgstr "Cliente"
+
+#~ msgid "Ad-hoc"
+#~ msgstr "Ad-hoc"
+
+#~ msgid "mW"
+#~ msgstr "mW"
+
+#~ msgid "Transmission po_wer"
+#~ msgstr "Potê_ncia de transmissão"
+
+#~ msgid "Mb/s"
+#~ msgstr "Mb/s"
+
+#~ msgid "_Rate"
+#~ msgstr "_Taxa"
+
+#~ msgid "_BSSID"
+#~ msgstr "_BSSID"
+
+#~ msgid "C_hannel"
+#~ msgstr "C_anal"
+
+#~ msgid "Ban_d"
+#~ msgstr "Fai_xa"
+
+#~ msgid "SS_ID"
+#~ msgstr "SS_ID"
+
+#~ msgid "Edit WireGuard peer"
+#~ msgstr "Editar ponta WireGuard"
+
+#~ msgid "_Apply"
+#~ msgstr "_Aplicar"
+
+#~ msgid "_Public key"
+#~ msgstr "Chave _pública"
+
+#~ msgid "Allowed _IPs"
+#~ msgstr "_IPs permitidos"
+
+#~ msgid "_Endpoint"
+#~ msgstr "_Extremidade"
+
+#~ msgid "Pre_shared key"
+#~ msgstr "Chave _compartilhada"
+
+#~ msgid "Persistent _keepalive"
+#~ msgstr "_Keepalive persistente"
+
+#~ msgid "A base64 public key calculated by 'wg pubkey' from a private key."
+#~ msgstr ""
+#~ "Uma chave pública de base64 calculada por “wg pubkey” a partir de uma "
+#~ "chave privada."
+
+#~ msgid ""
+#~ "Comma-separated list of IP (v4 or v6) addresses with CIDR masks from "
+#~ "which incoming traffic for this peer is allowed and to which outgoing "
+#~ "traffic for this peer is directed."
+#~ msgstr ""
+#~ "Lista separada por vírgulas de endereços IP (v4 ou v6) com máscaras CIDR "
+#~ "a partir dos quais o tráfego de entrada para este par é permitido e para "
+#~ "o qual o tráfego de saída para este par é direcionado."
+
+#~ msgid ""
+#~ "An endpoint IP or hostname, followed by a colon, and then a port number."
+#~ msgstr ""
+#~ "Um IP de extremidade ou nome de máquina, seguido por dois pontos e, a "
+#~ "seguir, um número de porta."
+
+#~ msgid ""
+#~ "A base64 preshared key generated by 'wg genpsk'. Optional, and may be "
+#~ "omitted. Adds an additional layer of symmetric-key cryptography to be "
+#~ "mixed into the already existing public-key cryptography, for post-quantum "
+#~ "resistance."
+#~ msgstr ""
+#~ "Uma chave pré-compartilhada de base64 gerada por “wg genpsk”. Opcional e "
+#~ "pode ser omitido. Adiciona uma camada adicional de criptografia de chave "
+#~ "simétrica para ser misturada à criptografia de chave pública já "
+#~ "existente, para resistência pós-quântica."
+
+#~ msgid ""
+#~ "How often to send an authenticated empty packet to the peer for the "
+#~ "purpose of keeping a stateful firewall or NAT mapping valid. This is "
+#~ "optional and not recommended outside of specific setups."
+#~ msgstr ""
+#~ "A frequência de envio de um pacote vazio autenticado ao par com o "
+#~ "objetivo de manter válido um firewall stateful ou mapeamento NAT. Isso é "
+#~ "opcional e não recomendado fora de configurações específicas."
+
+#~ msgid "seconds"
+#~ msgstr "segundos"
+
+#~ msgid "Sho_w preshared key"
+#~ msgstr "Mostrar c_have pré-compartilhada"
+
+#~ msgid "The name of the wireguard interface to create."
+#~ msgstr "O nome da interface wireguard a ser criada."
+
+#~ msgid "Private _key"
+#~ msgstr "Chave _privada"
+
+#~ msgid "The 256 bit private key in base64 encoding"
+#~ msgstr "A chave privada de 256 bits na codificação base64"
+
+#~ msgid "_Listen port"
+#~ msgstr "Porta para _escutar"
+
+#~ msgid ""
+#~ "A port to listen on. If set to 'automatic', the port will be chosen "
+#~ "randomly when the interface comes up."
+#~ msgstr ""
+#~ "Uma porta para escutar. Se definido como “automatic”, a porta será "
+#~ "escolhida aleatoriamente quando a interface for ativada."
+
+#~ msgid "_Fwmark"
+#~ msgstr "_Fwmark"
+
+#~ msgid "Add peer _routes"
+#~ msgstr "Adicionar _rotas para a ponta"
+
+#~ msgid ""
+#~ "Whether to automatically add routes for the AllowedIPs ranges of the peers"
+#~ msgstr ""
+#~ "Se deve adicionar rotas automaticamente para os intervalos de AllowedIPs "
+#~ "das pontas"
+
+#~ msgid ""
+#~ "A 32-bit fwmark for outgoing packets. Leave it to 'off' to disable fwmark."
+#~ msgstr ""
+#~ "Um fwmark de 32 bits para pacotes de saída. Deixe em “off” para "
+#~ "desabilitar fwmark."
+
+#~ msgid "_Show private key"
+#~ msgstr "_Mostrar chave privada"
+
+#~ msgid "<b>_Peers</b>"
+#~ msgstr "<b>_Pontas</b>"
+
+#~ msgid "automatic"
+#~ msgstr "automático"
+
+#~ msgid "off"
+#~ msgstr "desligado"
+
+#~ msgid "unspecified error"
+#~ msgstr "erro não especificado"
+
+#~ msgid "Preserve"
+#~ msgstr "Preservar"
+
+#~ msgid "Permanent"
+#~ msgstr "Permanente"
+
+#~ msgid "Random"
+#~ msgstr "Aleatório"
+
+#~ msgid "Stable"
+#~ msgstr "Estável"
+
+#~ msgid ""
+#~ "The MAC address entered here will be used as hardware address for the "
+#~ "network device this connection is activated on. This feature is known as "
+#~ "MAC cloning or spoofing. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "O endereço MAC informado aqui será usado como um endereço de hardware "
+#~ "para o dispositivo de rede da conexão ativada. Esta funcionalidade é "
+#~ "conhecida como clonagem de MAC ou spoofing. Exemplo: 00:11:22:33:44:55"
+
+#~ msgid "MAC address"
+#~ msgstr "Endereço MAC"
+
+#~ msgid "HW address"
+#~ msgstr "Endereço de HW"
+
+#, c-format
+#~ msgid "invalid %s for %s (%s)"
+#~ msgstr "%s inválido para %s (%s)"
+
+#, c-format
+#~ msgid "invalid %s (%s)"
+#~ msgstr "%s inválido (%s)"
+
+#, c-format
+#~ msgid "invalid interface-name for %s (%s): "
+#~ msgstr "nome de interface inválido para %s (%s): "
+
+#, c-format
+#~ msgid "invalid interface-name (%s): "
+#~ msgstr "nome de interface inválido (%s): "
+
+#~ msgid "can’t parse device name"
+#~ msgstr "não foi possível analisar nome do dispositivo"
+
+#~ msgid "invalid hardware address"
+#~ msgstr "endereço de hardware inválido"
+
+#, c-format
+#~ msgid "invalid %s (%s): "
+#~ msgstr "%s inválido (%s): "
+
+#, c-format
+#~ msgid "invalid %s (%s) "
+#~ msgstr "%s inválido (%s) "
+
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add static IP address to be configured in addition to the "
+#~ "automatic ones."
+#~ msgstr ""
+#~ "Endereços IP identificam o seu computador na rede. Clique no botão "
+#~ "“Adicionar” para adicionar um endereço IP estático a ser configurado em "
+#~ "adição aos automáticos."
+
+#~ msgid ""
+#~ "The IP address identify your computer on the network and determines the "
+#~ "address range distributed to other computers. Click the “Add” button to "
+#~ "add an IP address. If no address is provided, range will be determined "
+#~ "automatically."
+#~ msgstr ""
+#~ "O endereço IP identifica o seu computador na rede e determina o intervalo "
+#~ "de endereços distribuídos a outros computadores. Clique no botão "
+#~ "“Adicionar” para adicionar um endereço IP. Se nenhum endereço for "
+#~ "fornecido, intervalo será determinado automaticamente."
+
+#~ msgid "Additional static addresses"
+#~ msgstr "Endereços estáticos adicionais"
+
+#~ msgid "Addresses"
+#~ msgstr "Endereços"
+
+#~ msgid "Address (optional)"
+#~ msgstr "Endereço (opcional)"
+
+#~ msgid "No polkit authorization to perform the action"
+#~ msgstr "Nenhuma autorização polkit para realizar a ação"
+
+#~ msgid "Allowed Authentication Methods"
+#~ msgstr "Métodos de autenticação permitidos"
+
+#~ msgid "_EAP"
+#~ msgstr "_EAP"
+
+#~ msgid "Extensible Authentication Protocol"
+#~ msgstr "Extensible Authentication Protocol"
+
+#~ msgid "_PAP"
+#~ msgstr "_PAP"
+
+#~ msgid "Password Authentication Protocol"
+#~ msgstr "Protocolo de autenticação por senha"
+
+#~ msgid "C_HAP"
+#~ msgstr "C_HAP"
+
+#~ msgid "Challenge Handshake Authentication Protocol"
+#~ msgstr "Challenge Handshake Authentication Protocol"
+
+#~ msgid "_MSCHAP"
+#~ msgstr "_MSCHAP"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol"
+
+#~ msgid "MSCHAP v_2"
+#~ msgstr "MSCHAP v_2"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol version 2"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol versão 2"
+
+#~ msgid ""
+#~ "In most cases, the provider’s PPP servers will support all authentication "
+#~ "methods. If connections fail, try disabling support for some methods."
+#~ msgstr ""
+#~ "Na maioria dos casos, os provedores PPP suportarão todos os métodos de "
+#~ "autenticação. Se a conexão falhar, tente desabilitar alguns métodos."
+
+#~ msgid "Wi-Fi"
+#~ msgstr "Wi-Fi"
+
+#~ msgid "DSL/PPPoE"
+#~ msgstr "DSL/PPPoE"
+
+#~ msgid "InfiniBand"
+#~ msgstr "InfiniBand"
+
+#~ msgid "Bond"
+#~ msgstr "Agregação"
+
+# Link agreggation = Team Network
+#~ msgid "Team"
+#~ msgstr "Equipe"
+
+#~ msgid "Bridge"
+#~ msgstr "Ponte"
+
+#~ msgid "IP tunnel"
+#~ msgstr "Encapsulamento de IP"
+
+#~ msgid "MACsec"
+#~ msgstr "MACsec"
+
+#~ msgid "WireGuard"
+#~ msgstr "WireGuard"
+
+#~ msgid "VPN"
+#~ msgstr "VPN"
+
+#~ msgid "No VPN service type."
+#~ msgstr "Nenhum tipo de serviço VPN."
+
+#~ msgid "The VPN plugin failed to import the VPN connection correctly: "
+#~ msgstr "O plug-in de VPN falhou na importação correta da conexão VPN: "
+
+#~ msgid "Select file to import"
+#~ msgstr "Seleciona o arquivo a ser importado"
+
+#~ msgid "_Open"
+#~ msgstr "_Abrir"
+
+#~ msgid "Hardware"
+#~ msgstr "Hardware"
+
+#~ msgid "Virtual"
+#~ msgstr "Virtual"
+
+#~ msgid "Import a saved VPN configuration…"
+#~ msgstr "Importar uma configuração de VPN salva…"
+
+#~ msgid ""
+#~ "The connection editor dialog could not be initialized due to an unknown "
+#~ "error."
+#~ msgstr ""
+#~ "O diálogo de edição de conexões não pode ser inicializado devido a um "
+#~ "erro desconhecido."
+
+#~ msgid "Could not create new connection"
+#~ msgstr "Não foi possível criar a conexão"
+
+#~ msgid "Connection delete failed"
+#~ msgstr "A exclusão da conexão falhou"
+
+#, c-format
+#~ msgid "Are you sure you wish to delete the connection %s?"
+#~ msgstr "Você tem certeza que deseja excluir a conexão %s?"
+
+#~ msgid "_New Connection"
+#~ msgstr "_Nova conexão"
+
+#~ msgid "_Quit"
+#~ msgstr "_Sair"
+
+#~ msgid "Address"
+#~ msgstr "Endereço"
+
+#~ msgid "Netmask"
+#~ msgstr "Máscara de rede"
+
+#~ msgid "Gateway"
+#~ msgstr "Gateway"
+
+#~ msgid "Metric"
+#~ msgstr "Métrica"
+
+#~ msgid "Prefix"
+#~ msgstr "Prefixo"
+
+#, c-format
+#~ msgid "Editing %s"
+#~ msgstr "Editando %s"
+
+#~ msgid "Editing un-named connection"
+#~ msgstr "Editando conexão sem nome"
+
+#~ msgid "Missing connection name"
+#~ msgstr "Faltando nome da conexão"
+
+# iniciar ou inicializar?
+# Resp.: assunto controverso... O dic. Houaiss recomenda "iniciar", mas registra
+# também "inicializar", que é adotado pelo Vocabulário Padrão. Já tivemos uma
+# discussão muito pouco produtiva sobre essa controvérsia.
+#~ msgid "Editor initializing…"
+#~ msgstr "Erro de inicialização…"
+
+#~ msgid "Connection cannot be modified"
+#~ msgstr "A conexão não pôde ser modificada"
+
+#, c-format
+#~ msgid "Invalid setting %s: %s"
+#~ msgstr "Configuração inválida %s: %s"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "O editor de conexão não pôde localizar alguns recursos necessários (o "
+#~ "arquivo .ui não foi localizado)."
+
+#~ msgid "_Save"
+#~ msgstr "_Salvar"
+
+#~ msgid "Save any changes made to this connection."
+#~ msgstr "Salvar qualquer alteração feita nesta conexão."
+
+#~ msgid "Authenticate to save this connection for all users of this machine."
+#~ msgstr ""
+#~ "Autenticar para salvar esta conexão para todos os usuários desta máquina."
+
+#~ msgid "Could not create connection"
+#~ msgstr "Não foi possível criar uma conexão"
+
+#~ msgid "Could not edit connection"
+#~ msgstr "Não foi possível editar a conexão"
+
+#~ msgid "Unknown error creating connection editor dialog."
+#~ msgstr "Erro desconhecido ao criar o diálogo de edição de conexão."
+
+#~ msgid ""
+#~ "Warning: the connection contains some properties not supported by the "
+#~ "editor. They will be cleared upon save."
+#~ msgstr ""
+#~ "Aviso: a conexão contém algumas propriedades as quais o editor não possui "
+#~ "suporte. Elas serão limpadas ao salvar."
+
+# iniciar ou inicializar?
+# Resp.: assunto controverso... O dic. Houaiss recomenda "iniciar", mas registra
+# também "inicializar", que é adotado pelo Vocabulário Padrão. Já tivemos uma
+# discussão muito pouco produtiva sobre essa controvérsia.
+#~ msgid "Error initializing editor"
+#~ msgstr "Erro ao iniciar o editor"
+
+#~ msgid "Connection add failed"
+#~ msgstr "A criação da conexão falhou"
+
+#~ msgid "Fix"
+#~ msgstr "Corrigir"
+
+#~ msgid ""
+#~ "Security labels may prevent some files from being used with certificate "
+#~ "authentication."
+#~ msgstr ""
+#~ "Rótulos de segurança podem evitar que alguns arquivos seja usados com "
+#~ "autenticação com certificado."
+
+#~ msgid "Connection _name"
+#~ msgstr "_Nome da conexão"
+
+#~ msgid "_Export…"
+#~ msgstr "_Exportar…"
+
+#~ msgid "File Relabel"
+#~ msgstr "Re-rotulagem de arquivo"
+
+#~ msgid "_Relabel"
+#~ msgstr "_Re-rotular"
+
+#~ msgid ""
+#~ "The following files are not labelled for use with certificate "
+#~ "authentication. Do you wish to adjust the labels?"
+#~ msgstr ""
+#~ "Os arquivos a seguir não estão rotulados para usar com autenticação de "
+#~ "com certificado. você deseja ajustar os rótulos?"
+
+#~ msgid "Filename"
+#~ msgstr "Nome do arquivo"
+
+#~ msgid "never"
+#~ msgstr "nunca"
+
+#~ msgid "now"
+#~ msgstr "agora"
+
+#, c-format
+#~ msgid "%d minute ago"
+#~ msgid_plural "%d minutes ago"
+#~ msgstr[0] "%d minuto atrás"
+#~ msgstr[1] "%d minutos atrás"
+
+#, c-format
+#~ msgid "%d hour ago"
+#~ msgid_plural "%d hours ago"
+#~ msgstr[0] "%d hora atrás"
+#~ msgstr[1] "%d horas atrás"
+
+#, c-format
+#~ msgid "%d day ago"
+#~ msgid_plural "%d days ago"
+#~ msgstr[0] "%d dia atrás"
+#~ msgstr[1] "%d dias atrás"
+
+#, c-format
+#~ msgid "%d month ago"
+#~ msgid_plural "%d months ago"
+#~ msgstr[0] "%d mês atrás"
+#~ msgstr[1] "%d meses atrás"
+
+#, c-format
+#~ msgid "%d year ago"
+#~ msgid_plural "%d years ago"
+#~ msgstr[0] "%d ano atrás"
+#~ msgstr[1] "%d anos atrás"
+
+#~ msgid "Connection cannot be deleted"
+#~ msgstr "A conexão não pôde ser excluída"
+
+#~ msgid "Select a connection to edit"
+#~ msgstr "Selecione uma conexão para editar"
+
+#~ msgid "Select a connection to delete"
+#~ msgstr "Selecione uma conexão para excluir"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Last Used"
+#~ msgstr "Usada em"
+
+#~ msgid "Edit the selected connection"
+#~ msgstr "Edita a conexão selecionada"
+
+#~ msgid "Authenticate to edit the selected connection"
+#~ msgstr "Autentique-se para editar a conexão selecionada"
+
+#~ msgid "Delete the selected connection"
+#~ msgstr "Excluir a conexão selecionada"
+
+#~ msgid "Authenticate to delete the selected connection"
+#~ msgstr "Autentique-se para excluir a conexão selecionada"
+
+#~ msgid "Unrecognized connection type"
+#~ msgstr "Tipo de conexão não reconhecida"
+
+#, c-format
+#~ msgid "Don’t know how to import “%s” connections"
+#~ msgstr "Não foi possível importar as conexões “%s”"
+
+#~ msgid "Error importing connection"
+#~ msgstr "Erro ao importar conexão"
+
+#~ msgid "Error creating connection"
+#~ msgstr "Erro ao criar conexão"
+
+#~ msgid "Connection type not specified."
+#~ msgstr "Tipo de conexão não especificada."
+
+#~ msgid "No VPN plugins are installed."
+#~ msgstr "Nenhum plug-in de VPN está instalado."
+
+#, c-format
+#~ msgid "Don’t know how to create “%s” connections"
+#~ msgstr "Não foi possível criar as conexões “%s”"
+
+#~ msgid "Error editing connection"
+#~ msgstr "Erro editando conexão"
+
+#, c-format
+#~ msgid "Did not find a connection with UUID “%s”"
+#~ msgstr "Não é possível localizar a conexão com UUID “%s”"
+
+#~ msgid "Network Connections"
+#~ msgstr "Conexões de rede"
+
+#~ msgid "Add a new connection"
+#~ msgstr "Adicionar uma nova conexão"
+
+#~ msgid "802.1X Security"
+#~ msgstr "Segurança 802.1X"
+
+#~ msgid "Could not load 802.1X Security user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de segurança 802.1X."
+
+#~ msgid "Use 802.1_X security for this connection"
+#~ msgstr "Usar protocolo de segurança 802.1_X para esta conexão"
+
+#~ msgid "MAC address of the Bluetooth device. Example: 00:11:22:33:44:55"
+#~ msgstr "Endereço MAC do dispositivo Bluetooth. Exemplo: 00:11:22:33:44:55"
+
+#~ msgid "Could not load Bluetooth user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de Bluetooth."
+
+#~ msgid "Select the type of the Bluetooth connection profile."
+#~ msgstr "Selecione o tipo do perfil de conexão Bluetooth."
+
+#~ msgid "_Personal Area Network"
+#~ msgstr "Rede _Pessoal"
+
+#~ msgid "_Dial-Up Network"
+#~ msgstr "Rede _discada"
+
+#~ msgid "Could not load bond user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de agregação."
+
+#~ msgid "primary"
+#~ msgstr "primário"
+
+#, c-format
+#~ msgid "Bond connection %d"
+#~ msgstr "Conexão de agregação %d"
+
+# traduzir bridge para ponte?
+#~ msgid "Bridge Port"
+#~ msgstr "Porta da ponte"
+
+#~ msgid "Could not load bridge port user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de porta da ponte."
+
+#~ msgid "Could not load bridge user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de ponte."
+
+#, c-format
+#~ msgid "Bridge connection %d"
+#~ msgstr "Conexão de ponte %d"
+
+#~ msgid "DCB"
+#~ msgstr "DCB"
+
+#~ msgid "Could not load DCB user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de DCB."
+
+#~ msgid "Could not load DSL user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica para DSL."
+
+#~ msgid "missing parent interface"
+#~ msgstr "Faltando interface pai"
+
+#, c-format
+#~ msgid "DSL connection %d"
+#~ msgstr "Conexão DSL %d"
+
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “em1”, "
+#~ "“3C:97:0E:42:1A:19”, “em1 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "Esta opção bloqueia esta conexão para o dispositivo de rede especificado "
+#~ "pelo nome da interface, MAC permanente ou ambos. Exemplos: “em1”, "
+#~ "“3C:97:0E:42:1A:19”, “em1 (3C:97:0E:42:1A:19)”"
+
+#~ msgid "ignored"
+#~ msgstr "ignorado"
+
+#~ msgid "Could not load ethernet user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de ethernet."
+
+#~ msgid "Ethernet device"
+#~ msgstr "Dispositivo Ethernet"
+
+#~ msgid "cloned MAC"
+#~ msgstr "MAC clonado"
+
+#~ msgid "Wake-on-LAN password"
+#~ msgstr "Senha de Wake-on-LAN"
+
+#, c-format
+#~ msgid "Ethernet connection %d"
+#~ msgstr "Conexão Ethernet %d"
+
+#~ msgid ""
+#~ "The zone defines the trust level of the connection. Default is not a "
+#~ "regular zone, selecting it results in the use of the default zone set in "
+#~ "the firewall. Only usable if firewalld is active."
+#~ msgstr ""
+#~ "A zona define o nível de confiança da conexão. O padrão não é uma zona "
+#~ "comum, de forma que selecionar isso resulta no uso da zona padrão "
+#~ "definida no firewall. Usável apenas se firewalld estiver ativo."
+
+#~ msgid "Could not load General user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica geral."
+
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “ib0”, "
+#~ "“80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65”, “ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)”"
+#~ msgstr ""
+#~ "Essa opção bloqueia essa conexão para o dispositivo de rede especificado "
+#~ "por seu nome de interface, MAC permanente ou ambos. Exemplos: “ib0”, "
+#~ "“80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65”, “ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)”"
+
+#~ msgid "Could not load InfiniBand user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica do InfiniBand."
+
+#~ msgid "infiniband device"
+#~ msgstr "dispositivo infiniband"
+
+#, c-format
+#~ msgid "InfiniBand connection %d"
+#~ msgstr "Conexão InfiniBand %d"
+
+#~ msgid "Could not load IP tunnel user interface."
+#~ msgstr ""
+#~ "Não foi possível carregar a interface gráfica para encapsulamento de IP."
+
+#, c-format
+#~ msgid "IP tunnel connection %d"
+#~ msgstr "Conexão de encapsulamento de IP %d"
+
+#~ msgid "Automatic (VPN)"
+#~ msgstr "Automático (VPN)"
+
+#~ msgid "Automatic (VPN) addresses only"
+#~ msgstr "Somente endereços (VPN) automáticos"
+
+#~ msgid "Automatic, addresses only"
+#~ msgstr "Automático, somente endereços"
+
+#~ msgid "Automatic (PPPoE)"
+#~ msgstr "Automático (PPPoE)"
+
+#~ msgid "Automatic (PPPoE) addresses only"
+#~ msgstr "Somente endereços (PPPoE) automáticos"
+
+#~ msgid "Automatic (DHCP)"
+#~ msgstr "Automático (DHCP)"
+
+#~ msgid "Automatic (DHCP) addresses only"
+#~ msgstr "Somente endereços (DHCP) automáticos"
+
+#~ msgid "Link-Local Only"
+#~ msgstr "Apenas conexão local"
+
+#~ msgid "Additional DNS ser_vers"
+#~ msgstr "Servidores _DNS adicionais"
+
+#~ msgid "Additional s_earch domains"
+#~ msgstr "Pe_squisar domínios adicionais"
+
+#, c-format
+#~ msgid "Editing IPv4 routes for %s"
+#~ msgstr "Editando rotas IPv4 para %s"
+
+#~ msgid "IPv4 Settings"
+#~ msgstr "Configurações IPv4"
+
+#~ msgid "Could not load IPv4 user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica para IPv4."
+
+#, c-format
+#~ msgid "IPv4 address “%s” invalid"
+#~ msgstr "Endereço IPv4 “%s” inválido"
+
+#, c-format
+#~ msgid "IPv4 address netmask “%s” invalid"
+#~ msgstr "Máscara de rede de endereço IPv4 “%s” inválida"
+
+#, c-format
+#~ msgid "IPv4 gateway “%s” invalid"
+#~ msgstr "Gateway IPv4 “%s” inválido"
+
+#, c-format
+#~ msgid "IPv4 DNS server “%s” invalid"
+#~ msgstr "Servidor DNS IPv4 “%s” inválido"
+
+#~ msgid "Automatic, DHCP only"
+#~ msgstr "Automático, somente DHCP"
+
+#, c-format
+#~ msgid "Editing IPv6 routes for %s"
+#~ msgstr "Editando rotas IPv6 para %s"
+
+#~ msgid "IPv6 Settings"
+#~ msgstr "Configurações IPv6"
+
+#~ msgid "Could not load IPv6 user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica para IPv6."
+
+#, c-format
+#~ msgid "IPv6 address “%s” invalid"
+#~ msgstr "Endereço IPv6 “%s” inválido"
+
+#, c-format
+#~ msgid "IPv6 prefix “%s” invalid"
+#~ msgstr "Prefixo IPv6 “%s” inválido"
+
+#, c-format
+#~ msgid "IPv6 gateway “%s” invalid"
+#~ msgstr "Gateway IPv6 “%s” inválido"
+
+#, c-format
+#~ msgid "IPv6 DNS server “%s” invalid"
+#~ msgstr "Servidor DNS IPv6 “%s” inválido"
+
+#~ msgid "Could not load MACsec user interface."
+#~ msgstr "Não foi possível carregar a interface de usuário MACsec."
+
+#, c-format
+#~ msgid "MACSEC connection %d"
+#~ msgstr "Conexão MACSEC %d"
+
+#~ msgid "Duplicate slaves"
+#~ msgstr "Duplicar escravos"
+
+#, c-format
+#~ msgid "Slaves “%s” and “%s” both apply to device “%s”"
+#~ msgstr "Ambos os escravos “%s” e “%s” se aplicam ao dispositivo “%s”"
+
+#, c-format
+#~ msgid ""
+#~ "Slaves “%s” and “%s” apply to different virtual ports (“%s” and “%s”) of "
+#~ "the same physical device."
+#~ msgstr ""
+#~ "Os escravos “%s” e “%s” se aplicam a portas virtuais diferentes (“%s” e "
+#~ "“%s”) do mesmo dispositivo físico."
+
+#, c-format
+#~ msgid "%s slave %d"
+#~ msgstr "%s escravo %d"
+
+#~ msgid "Could not load mobile broadband user interface."
+#~ msgstr ""
+#~ "Não foi possível carregar a interface gráfica para banda larga móvel."
+
+#~ msgid "Unsupported mobile broadband connection type."
+#~ msgstr "Tipo de conexão de banda larga móvel não suportada."
+
+#~ msgid "Select Mobile Broadband Provider Type"
+#~ msgstr "Escolha o tipo de provedor da banda larga móvel"
+
+#~ msgid ""
+#~ "Select the technology your mobile broadband provider uses. If you are "
+#~ "unsure, ask your provider."
+#~ msgstr ""
+#~ "Escolha a tecnologia que seu provedor de banda larga móvel usa. Se você "
+#~ "não tem certeza, pergunte a seu provedor."
+
+#~ msgid ""
+#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgstr "Meu provedor usa tecnologia _GSM (ex.: 3G, GPRS, EDGE, UMTS, HSDPA)"
+
+#~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
+#~ msgstr "Meu provedor usa tecnologias baseadas em C_DMA (ex.: 1xRTT, EVDO)"
+
+#~ msgid "PAP"
+#~ msgstr "PAP"
+
+#~ msgid "CHAP"
+#~ msgstr "CHAP"
+
+#~ msgid "MSCHAPv2"
+#~ msgstr "MSCHAPv2"
+
+#~ msgid "MSCHAP"
+#~ msgstr "MSCHAP"
+
+#~ msgid "none"
+#~ msgstr "nenhum"
+
+#, c-format
+#~ msgid "Editing PPP authentication methods for %s"
+#~ msgstr "Editando métodos de autenticação PPP para %s"
+
+#~ msgid "PPP Settings"
+#~ msgstr "Configurações PPP"
+
+#~ msgid "Could not load PPP user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica para PPP."
+
+#~ msgid "Proxy"
+#~ msgstr "Proxy"
+
+#~ msgid "Could not load proxy user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de proxy."
+
+#~ msgid "Error: file doesn’t contain a valid JSON configuration"
+#~ msgstr "Erro: o arquivo não contém uma configuração válido de JSON"
+
+#~ msgid "Team Port"
+#~ msgstr "Porta de equipe"
+
+#~ msgid "Could not load team port user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de porta de equipe."
+
+#~ msgid "Could not load team user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de equipe."
+
+#, c-format
+#~ msgid "Team connection %d"
+#~ msgstr "Conexão de equipe %d"
+
+#, c-format
+#~ msgid "%s (via “%s”)"
+#~ msgstr "%s (através de “%s”)"
+
+#~ msgid "New connection…"
+#~ msgstr "Nova conexão…"
+
+#~ msgid "Could not load vlan user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica para vlan."
+
+#~ msgid "vlan parent"
+#~ msgstr "vlan pai"
+
+#, c-format
+#~ msgid "VLAN connection %d"
+#~ msgstr "Conexão VLAN %d"
+
+#, c-format
+#~ msgid "Could not load editor VPN plugin for “%s” (%s)."
+#~ msgstr ""
+#~ "Não foi possível carregar o editor do plug-in de VPN para “%s” (%s)."
+
+#~ msgid "unknown failure"
+#~ msgstr "falha desconhecida"
+
+#~ msgid "Could not load VPN user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica para VPN."
+
+#, c-format
+#~ msgid "Could not find VPN plugin for “%s”."
+#~ msgstr "Não foi possível localizar o plug-in de VPN para “%s”."
+
+#, c-format
+#~ msgid "VPN connection %d"
+#~ msgstr "Conexão VPN %d"
+
+#~ msgid "Choose a VPN Connection Type"
+#~ msgstr "Escolha o tipo de conexão VPN"
+
+#~ msgid ""
+#~ "Select the type of VPN you wish to use for the new connection. If the "
+#~ "type of VPN connection you wish to create does not appear in the list, "
+#~ "you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "Selecione o tipo de VPN que você deseja usar para a nova conexão. Se o "
+#~ "tipo de conexão VPN não estiver disponível, talvez você não tenha "
+#~ "instalado o plug-in correto de VPN."
+
+#~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
+#~ msgstr "Chave WEP de 40/128 bits ASCII (Hexadecimal ou ASCII)"
+
+#~ msgid "WEP 128-bit Passphrase"
+#~ msgstr "Frase secreta do WEP de 128 bits"
+
+#~ msgid "Dynamic WEP (802.1X)"
+#~ msgstr "WEP dinâmico (802.1X)"
+
+#~ msgid "WPA & WPA2 Personal"
+#~ msgstr "WPA & WPA2 pessoal"
+
+#~ msgid "WPA & WPA2 Enterprise"
+#~ msgstr "WPA & WPA2 empresas"
+
+#~ msgid "WPA3 Personal"
+#~ msgstr "WPA3 pessoal"
+
+#~ msgid "Enhanced Open"
+#~ msgstr "Enhanced Open"
+
+#~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
+#~ msgstr ""
+#~ "Não foi possível carregar a interface gráfica para segurança Wi-Fi; "
+#~ "faltando a configuração Wi-Fi."
+
+#~ msgid "Wi-Fi Security"
+#~ msgstr "Segurança Wi-Fi"
+
+#~ msgid "Could not load Wi-Fi security user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de segurança Wi-Fi."
+
+#~ msgid "missing SSID"
+#~ msgstr "faltando SSID"
+
+#~ msgid "Security not compatible with Ad-Hoc mode"
+#~ msgstr "Segurança incompatível com o modo Ad-Hoc"
+
+#~ msgid ""
+#~ "This option locks this connection to the Wi-Fi access point (AP) "
+#~ "specified by the BSSID entered here. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "Esta opção bloqueia esta conexão ao ponto de acesso Wi-Fi (AP) "
+#~ "especificado pelo BSSID digitado aqui. Exemplo: 00:11:22:33:44:55"
+
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “wlan0”, "
+#~ "“3C:97:0E:42:1A:19”, “wlan0 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "Esta opção bloqueia esta conexão para o dispositivo de rede especificado "
+#~ "pelo nome da interface, MAC permanente ou ambos. Exemplos:“wlan0”, "
+#~ "“3C:97:0E:42:1A:19”, “wlan0 (3C:97:0E:42:1A:19)”"
+
+#, c-format
+#~ msgid "%u (%u MHz)"
+#~ msgstr "%u (%u MHz)"
+
+#~ msgid "Could not load Wi-Fi user interface."
+#~ msgstr "Não foi possível carregar a interface gráfica de Wi-Fi."
+
+#~ msgid "bssid"
+#~ msgstr "bssid"
+
+#~ msgid "Wi-Fi device"
+#~ msgstr "Dispositivo Wi-Fi"
+
+#~ msgid "Public key"
+#~ msgstr "Chave pública"
+
+#~ msgid "Allowed IPs"
+#~ msgstr "IPs permitidos"
+
+#~ msgid "Could not load WireGuard user interface."
+#~ msgstr "Não foi possível carregar a interface de usuário de WireGuard."
+
+#, c-format
+#~ msgid "WireGuard connection %d"
+#~ msgstr "Conexão de WireGuard %d"
+
+#, c-format
+#~ msgid "A file named “%s” already exists."
+#~ msgstr "Já existe um arquivo chamado “%s”."
+
+#~ msgid "_Replace"
+#~ msgstr "Substitui_r"
+
+#, c-format
+#~ msgid "Do you want to replace %s with the VPN connection you are saving?"
+#~ msgstr ""
+#~ "Você deseja substituir %s com a conexão de VPN que você está salvando?"
+
+#~ msgid "Cannot export VPN connection"
+#~ msgstr "Não foi possível importar conexão VPN"
+
+#, c-format
+#~ msgid ""
+#~ "The VPN connection “%s” could not be exported to %s.\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "Não foi possível exportar a conexão VPN “%s” para %s.\n"
+#~ "\n"
+#~ "Erro: %s."
+
+#~ msgid "Export VPN connection…"
+#~ msgstr "Exportar conexão VPN…"
+
+#~ msgid "_Unlock"
+#~ msgstr "_Desbloquear"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Desbloquear automaticamente este dispositivo"
+
+#~ msgid "Usage:"
+#~ msgstr "Uso:"
+
+#~ msgid ""
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+#~ msgstr ""
+#~ "Este programa é um componente do NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+
+#~ msgid ""
+#~ "It is not intended for command-line interaction but instead runs in the "
+#~ "GNOME desktop environment."
+#~ msgstr ""
+#~ "Não é designado a interação de linha de comando mas executa no ambiente "
+#~ "de desktop do GNOME."
+
+#~ msgid "nm-device-wireless"
+#~ msgstr "nm-device-wireless"
+
+#~ msgid "preferences-system-network"
+#~ msgstr "preferences-system-network"

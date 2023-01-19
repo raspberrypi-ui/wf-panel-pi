@@ -1,0 +1,4072 @@
+# translation of network-manager-applet.master.ta.po to Tamil
+# Tamil translation of network-manager-applet.
+# Copyright (C) 2009 network-manager-applet's COPYRIGHT HOLDER
+# This file is distributed under the same license as the network-manager-applet package.
+#
+# ifelix <ifelix25@gmail.com>, 2009.
+# I. Felix <ifelix@redhat.com>, 2009, 2010.
+# I Felix <ifelix@redhat.com>, 2010, 2011.
+# Dr.T.Vasudevan <agnihot3@gmail.com>, 2011, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: network-manager-applet.master.ta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"PO-Revision-Date: 2012-02-27 13:19+0530\n"
+"Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\\n\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"X-Generator: Lokalize 1.1\n"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#, c-format
+msgid "Pairing failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#, fuzzy, c-format
+msgid "Pairing successful - connecting..."
+msgstr "'%s'காக ஒயர்லெஸ் பிணையம் தயாராகிறதுடுகிறது..."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#, fuzzy, c-format
+msgid "Connection successful"
+msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connection failed - %s"
+msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#, c-format
+msgid "Please enter code '%s' on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#, c-format
+msgid "Please confirm that '%s' is showing the code '%s' to pair"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#, c-format
+msgid "Please enter PIN code shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#, c-format
+msgid "Please enter passcode shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#, c-format
+msgid "Waiting for response from Bluetooth device..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#, c-format
+msgid "'%s' has requested a pairing. Do you accept the request?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
+#, c-format
+msgid ""
+"Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#, c-format
+msgid ""
+"Pairing successful - this device has no services which can be used with "
+"Raspberry Pi"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#, c-format
+msgid "Do you want to unpair '%s'?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#, c-format
+msgid "Removing pairing with '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#, c-format
+msgid "Removal failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, c-format
+msgid "Disconnecting from '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnection failed - %s"
+msgstr "துண்டிக்கபட்டது"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
+#, fuzzy
+msgid "Use the audio menu to connect to this device"
+msgstr "ஒரு ஒயர்லெஸ் பிணையத்தை இணைப்பதற்கு இந்த பிணைய பட்டியை பயன்படுத்துக"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+msgid "No usable services on this device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#, fuzzy
+msgid "Disconnect..."
+msgstr "துண்டி"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#, fuzzy
+msgid "Connect..."
+msgstr "இணை (_o)"
+
+#. add the remove option to the submenu
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+msgid "Remove..."
+msgstr ""
+
+#. warn if no BT hardware detected
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+msgid "No Bluetooth adapter found"
+msgstr ""
+
+#. add enable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+msgid "Turn On Bluetooth"
+msgstr ""
+
+#. add disable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+msgid "Turn Off Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+msgid "Stop Discoverable"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+msgid "Make Discoverable"
+msgstr ""
+
+#. add and remove dialogs
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#, fuzzy
+msgid "Add Device..."
+msgstr "ஏதாவது சாதனம்"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#, fuzzy
+msgid "Manage Bluetooth devices"
+msgstr "ஃப்ளூடூத் சாதனத்தை தேட முடியவில்லை."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
+msgid "Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#, fuzzy
+msgid "Manages Bluetooth devices"
+msgstr "ஃப்ளூடூத் சாதனத்தை தேட முடியவில்லை."
+
+#: ../src/panel/widgets/ejecter/ejecter.c:171
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:199
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:205
+#, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:402
+msgid "Select a drive in menu to eject safely"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:451
+#: ../src/panel/widgets/ejecter/ejecter.c:461
+msgid "Ejecter"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:453
+msgid "Hide icon when no devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:462
+msgid "Ejects mounted drives"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:77
+#, fuzzy
+msgid "ad-hoc"
+msgstr "தற்காலிக"
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:82
+msgid "secure."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:74
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+#, fuzzy
+msgid "Failed to activate connection"
+msgstr "பான் (PAN) இணைப்பை உருவாக்க முடியவில்லை: %s"
+
+#: ../src/panel/widgets/netman/applet.c:75
+#: ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837
+#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+#, fuzzy
+msgid "Unknown error"
+msgstr "தெரியாத"
+
+#: ../src/panel/widgets/netman/applet.c:78
+#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:875
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+#, fuzzy
+msgid "Connection failure"
+msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn Off Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn On Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:282
+#, c-format
+msgid ""
+"%s\n"
+"IPv4 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:299
+#, c-format
+msgid ""
+"%s\n"
+"IPv6 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:781
+#, fuzzy
+msgid "Failed to add/activate connection"
+msgstr "பான் (PAN) இணைப்பை உருவாக்க முடியவில்லை: %s"
+
+#: ../src/panel/widgets/netman/applet.c:835
+#, fuzzy
+msgid "Device disconnect failed"
+msgstr "துணைடிக்கப்பட்டது"
+
+#: ../src/panel/widgets/netman/applet.c:840
+#, fuzzy
+msgid "Disconnect failure"
+msgstr "துண்டிக்கபட்டது"
+
+#: ../src/panel/widgets/netman/applet.c:870
+#, fuzzy
+msgid "Connection activation failed"
+msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#: ../src/panel/widgets/netman/applet.c:1209
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+#, fuzzy
+msgid "Don’t show this message again"
+msgstr "இந்த செய்தியை மீண்டும் காட்டாதே"
+
+#: ../src/panel/widgets/netman/applet.c:1310
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” disconnected because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' துண்டிக்கப்பட்டது ஏனெனில் பிணைய இணைப்பில் தடங்கல் ஏற்பட்டது."
+
+#: ../src/panel/widgets/netman/applet.c:1312
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது ஏனெனில் பிணைய இணைப்பு தடங்கல் செய்கிறது."
+
+#: ../src/panel/widgets/netman/applet.c:1314
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது ஏனெனில் VPN சேவை எதிர்பாரமல் நிறுத்தப்பட்டது."
+
+#: ../src/panel/widgets/netman/applet.c:1316
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service returned invalid "
+"configuration."
+msgstr ""
+"\n"
+"The VPN connection '%s' failed because the VPN service returned invalid "
+"configuration."
+
+#: ../src/panel/widgets/netman/applet.c:1318
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the connection attempt timed out."
+msgstr ""
+"\n"
+"The VPN connection '%s' failed because the connection attempt timed out."
+
+#: ../src/panel/widgets/netman/applet.c:1320
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service did not start in time."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது ஏனெனில் VPN சேவை நேரத்திற்கு துவக்கவில்லை."
+
+#: ../src/panel/widgets/netman/applet.c:1322
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது ஏனெனில் VPN சேவை துவக்கவில்லை."
+
+#: ../src/panel/widgets/netman/applet.c:1324
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because there were no valid VPN secrets."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது ஏனெனில் அங்கே சரியான VPNரகசியங்கள் இல்லை.."
+
+#: ../src/panel/widgets/netman/applet.c:1326
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because of invalid VPN secrets."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது ஏனெனில் தவறான VPN ரகசியங்கள்."
+
+#: ../src/panel/widgets/netman/applet.c:1331
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed."
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது."
+
+#: ../src/panel/widgets/netman/applet.c:1358
+#, c-format
+msgid ""
+"VPN connection has been successfully established.\n"
+"\n"
+"%s\n"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:1360
+msgid "VPN connection has been successfully established.\n"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:1362
+msgid "VPN Login Message"
+msgstr "VPN உட்புகும் செய்தி"
+
+#: ../src/panel/widgets/netman/applet.c:1370
+#: ../src/panel/widgets/netman/applet.c:1410
+msgid "VPN Connection Failed"
+msgstr "VPN இணைப்பு தோல்வியுற்றது"
+
+#: ../src/panel/widgets/netman/applet.c:1414
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s' தோல்வியுற்றது ஏனெனில் VPN சேவை துவங்குவதில் தோல்வி.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1417
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"VPN இணைப்பு '%s'ஐ துவக்க முடியவில்லை.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1741
+msgid "device not ready (firmware missing)"
+msgstr "சாதனம் தயாராக இல்லை (தளநிரல் இல்லை)"
+
+#: ../src/panel/widgets/netman/applet.c:1743
+msgid "device not ready"
+msgstr "சாதனம் தயாராக இல்லை"
+
+#. Notify user of unmanaged or unavailable device
+#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
+msgid "disconnected"
+msgstr "துணைடிக்கப்பட்டது"
+
+#: ../src/panel/widgets/netman/applet.c:1769
+msgid "Disconnect"
+msgstr "துண்டி"
+
+#: ../src/panel/widgets/netman/applet.c:1783
+msgid "device not managed"
+msgstr "சாதனம் மேலாண்மை செய்யப்படவில்லை"
+
+#: ../src/panel/widgets/netman/applet.c:1864
+msgid "No network devices available"
+msgstr "பிணைய சாதனம் கிடைக்கப்பெறவில்லை"
+
+#: ../src/panel/widgets/netman/applet.c:1917
+#, fuzzy
+msgid "Advanced Options"
+msgstr "மேம்பட்ட"
+
+#: ../src/panel/widgets/netman/applet.c:1919
+#, fuzzy
+msgid "VPN Connections"
+msgstr "_VPN இணைப்புகள்"
+
+#: ../src/panel/widgets/netman/applet.c:1973
+#, fuzzy
+msgid "Configure VPN…"
+msgstr " VPNஐ கட்டமைக்கவும் (_C)..."
+
+#: ../src/panel/widgets/netman/applet.c:1977
+#, fuzzy
+msgid "Add a VPN connection…"
+msgstr "_VPN இணைப்புகள்"
+
+#. 'Connection Information' item
+#: ../src/panel/widgets/netman/applet.c:1989
+#: ../src/panel/widgets/netman/applet.c:2393
+msgid "Connection Information"
+msgstr "இணைப்பு தகவல்"
+
+#. 'Edit Connections...' item
+#: ../src/panel/widgets/netman/applet.c:1997
+#: ../src/panel/widgets/netman/applet.c:2401
+#, fuzzy
+msgid "Edit Connections…"
+msgstr "இணைப்புகளை திருத்தவும்..."
+
+#: ../src/panel/widgets/netman/applet.c:2112
+#, fuzzy
+msgid "NetworkManager is not running…"
+msgstr "பிணைய மேலாளர் இயக்கத்தில் இல்லை..."
+
+#: ../src/panel/widgets/netman/applet.c:2118
+#, fuzzy
+msgid "Wi-Fi country is not set"
+msgstr "எனது நாடு பட்டியலிடப்படவில்லை"
+
+#: ../src/panel/widgets/netman/applet.c:2119
+msgid "Click here to set Wi-Fi country"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:2127
+#: ../src/panel/widgets/netman/applet.c:3222
+msgid "Networking disabled"
+msgstr "பிணைய செயல்நீக்கப்பட்டது"
+
+#. 'Enable Networking' item
+#: ../src/panel/widgets/netman/applet.c:2351
+#, fuzzy
+msgid "Enable Networking"
+msgstr "பிணையம் செயல்படுகிறது (_N)"
+
+#. 'Enable Wi-Fi' item
+#: ../src/panel/widgets/netman/applet.c:2360
+#, fuzzy
+msgid "Enable Wi-Fi"
+msgstr "ஒயர்லெஸ் செயல்படுகிறது (_W)"
+
+#. 'Enable Mobile Broadband' item
+#: ../src/panel/widgets/netman/applet.c:2369
+#, fuzzy
+msgid "Enable Mobile Broadband"
+msgstr "மொபைல் பிராட்பேண்டை செயற்படுத்தவும் (_M)"
+
+#. Toggle notifications item
+#: ../src/panel/widgets/netman/applet.c:2381
+#, fuzzy
+msgid "Enable Notifications"
+msgstr "அறிவிப்புகளை செயற்படுத்தவும் (_o)"
+
+#: ../src/panel/widgets/netman/applet.c:2415
+#, fuzzy
+msgid "About"
+msgstr "பற்றி (_A)"
+
+#: ../src/panel/widgets/netman/applet.c:2736
+#, fuzzy, c-format
+msgid "You are now connected to “%s”."
+msgstr "நீங்கள் இப்போது '%s'உடன் இணைப்படுகிறார்கள்."
+
+#: ../src/panel/widgets/netman/applet.c:2776
+msgid "Disconnected"
+msgstr "துண்டிக்கபட்டது"
+
+#: ../src/panel/widgets/netman/applet.c:2777
+msgid "The network connection has been disconnected."
+msgstr "பிணைய இணைப்பு துண்டிக்கப்படும்."
+
+#: ../src/panel/widgets/netman/applet.c:3079
+#, fuzzy, c-format
+msgid "Preparing network connection “%s”…"
+msgstr "பிணைய இணைப்பு '%s' தயாராகிறது..."
+
+#: ../src/panel/widgets/netman/applet.c:3082
+#, fuzzy, c-format
+msgid "User authentication required for network connection “%s”…"
+msgstr "பிணைய இணைப்பு '%s'காக பயனர் அங்கீகாரம் தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet-device-bt.c:113
+#: ../src/panel/widgets/netman/mobile-helpers.c:605
+#, fuzzy, c-format
+msgid "Requesting a network address for “%s”…"
+msgstr "ஒரு பிணைய முகவரி '%s'காக தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet.c:3088
+#, fuzzy, c-format
+msgid "Network connection “%s” active"
+msgstr "பிணைய இணைப்பு '%s' செயல்படுகிறது"
+
+#: ../src/panel/widgets/netman/applet.c:3165
+#, fuzzy, c-format
+msgid "Starting VPN connection “%s”…"
+msgstr "VPN இணைப்பு '%s'துவங்குகிறது..."
+
+#: ../src/panel/widgets/netman/applet.c:3168
+#, fuzzy, c-format
+msgid "User authentication required for VPN connection “%s”…"
+msgstr "VPN இணைப்பு '%s'காக பயனர் அங்கீகாரம் தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet.c:3171
+#, fuzzy, c-format
+msgid "Requesting a VPN address for “%s”…"
+msgstr "'%s'காக ஒரு VPN முகவரி தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet.c:3174
+#, fuzzy, c-format
+msgid "VPN connection active"
+msgstr "VPN இணைப்பு '%s' செயல்படுகிறது"
+
+#: ../src/panel/widgets/netman/applet.c:3226
+msgid "No network connection"
+msgstr "பிணைய இணைப்பு இல்லை"
+
+#: ../src/panel/widgets/netman/applet.c:3781
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "பிணையம்"
+
+#: ../src/panel/widgets/netman/applet.c:3896
+msgid "NetworkManager Applet"
+msgstr "பிணைய மேலாளர் அப்லெட்"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:147
+msgid "Wrong PUK code; please contact your provider."
+msgstr "தவறான PUK குறியீடு; உங்கள் வழங்கியை தொடர்பு கொள்ளவும்."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:189
+msgid "Wrong PIN code; please contact your provider."
+msgstr "தவறான PIN குறியீடு; உங்கள் வழங்கியை தொடர்பு கொள்ளவும்."
+
+#. Start the spinner to show the progress of the unlock
+#: ../src/panel/widgets/netman/applet-device-broadband.c:240
+#, fuzzy
+msgid "Sending unlock code…"
+msgstr "பூட்டுநீக்கிய குறியீட்டை அனுப்புகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:725
+#: ../src/panel/widgets/netman/applet-dialogs.c:532
+#, c-format
+msgid "Mobile Broadband (%s)"
+msgstr "மொபைல் பிராட்பேண்டு (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:727
+msgid "Mobile Broadband"
+msgstr "மொபைல் பிராட்பேண்டு"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+msgid "Available"
+msgstr "கிடைக்கக்கூடி"
+
+#. Default connection item
+#: ../src/panel/widgets/netman/applet-device-broadband.c:793
+#, fuzzy
+msgid "New Mobile Broadband connection…"
+msgstr "புதிய மொபைல் பிராட்பேண்டு இணைப்பு"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:809
+#: ../src/panel/widgets/netman/applet-device-bt.c:75
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+msgid "Connection Established"
+msgstr "இணைப்பு ஸ்தாபிக்கப்படுகிறது"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:810
+#, fuzzy
+msgid "You are now connected to the Mobile Broadband network."
+msgstr "இப்போது மொபைல் ப்ராட்பேண்ட் பிணையத்தோடு இணைக்கப்படுகிறது."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:950
+#: ../src/panel/widgets/netman/applet-device-broadband.c:956
+#, fuzzy
+msgid "Mobile Broadband network."
+msgstr "மொபைல் பிராட்பேண்டு பிணையத்தின் கடவுச்சொல்"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:951
+msgid "You are now registered on the home network."
+msgstr "இப்போது நீங்கள் வீட்டு வலைப்பின்னலுடன் பதிவு செய்யப்படுகிறீர்கள்"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:957
+msgid "You are now registered on a roaming network."
+msgstr "இப்போது நீங்கள்  அலையும் வலைப்பின்னலுடன் பதிவு செய்யப்படுகிறீர்கள்."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:76
+msgid "You are now connected to the mobile broadband network."
+msgstr "இப்போது மொபைல் ப்ராட்பேண்ட் பிணையத்தோடு இணைக்கப்படுகிறது."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:104
+#: ../src/panel/widgets/netman/mobile-helpers.c:596
+#, fuzzy, c-format
+msgid "Preparing mobile broadband connection “%s”…"
+msgstr "Preparing mobile broadband connection '%s'..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:107
+#: ../src/panel/widgets/netman/mobile-helpers.c:599
+#, fuzzy, c-format
+msgid "Configuring mobile broadband connection “%s”…"
+msgstr "கட்டமைக்கப்பட்ட மொபைல் பிராட்பேண்டுஇணைப்பு '%s'..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:110
+#: ../src/panel/widgets/netman/mobile-helpers.c:602
+#, fuzzy, c-format
+msgid "User authentication required for mobile broadband connection “%s”…"
+msgstr "'%s'ன் மொபைல் பிராட்பேண்டு இணைப்புக்கு பயனர் அங்கீகாரம் தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:117
+#: ../src/panel/widgets/netman/mobile-helpers.c:624
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active"
+msgstr "மொபைல் பிராட்பேண்டு இணைப்பு '%s' செயல்பாட்டிலுள்ளது"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
+msgid "Auto Ethernet"
+msgstr "தானியக்கி ஈதர்நெட்"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
+#, fuzzy, c-format
+msgid "Ethernet Networks (%s)"
+msgstr "ஒயர்டு பிணையங்கள் (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
+#, fuzzy, c-format
+msgid "Ethernet Network (%s)"
+msgstr "ஒயர்டு பிணையம் (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
+#, fuzzy
+msgid "Ethernet Networks"
+msgstr "ஒயர்டு பிணையங்கள்"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
+#, fuzzy
+msgid "Ethernet Network"
+msgstr "ஒயர்டு பிணையம்"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
+#, fuzzy
+msgid "You are now connected to the ethernet network."
+msgstr "இப்போது ஒயர்டு பிணையத்தோடு இணைக்கப்படுகிறது."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
+#, fuzzy, c-format
+msgid "Preparing ethernet network connection “%s”…"
+msgstr "ஒயர்டு பிணைய இணைப்பிற்கு '%s' தயாராகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
+#, fuzzy, c-format
+msgid "Configuring ethernet network connection “%s”…"
+msgstr "கட்டமைக்கப்பட்ட ஒயர்டு பிணைய இணைப்பு '%s'..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
+#, fuzzy, c-format
+msgid "User authentication required for ethernet network connection “%s”…"
+msgstr "'%s'ன் ஒயர்டு பிணைய இணைப்புக்கு பயனர் அங்கீகாரம் தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
+#, fuzzy, c-format
+msgid "Requesting an ethernet network address for “%s”…"
+msgstr "'%s'காக ஒரு ஒயர்டு பிணைய முகவரி தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
+#, fuzzy, c-format
+msgid "Ethernet network connection “%s” active"
+msgstr "ஒயர்டு பிணைய இணைப்பு '%s' செயலிபடுகிறது"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
+msgid "DSL authentication"
+msgstr "DSL அங்கீகாரம்"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:1190
+#: ../src/panel/widgets/netman/mobile-helpers.c:455
+#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2
+msgid "_Cancel"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:1191
+#: ../src/panel/widgets/netman/mobile-helpers.c:456
+#: ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+msgid "_OK"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#, fuzzy
+msgid "Connect to Hidden Wi-Fi Network…"
+msgstr "மறைக்கப்பட்ட ஒயர்லெஸ் பிணையத்தை இணைக்கவும்"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#, fuzzy
+msgid "Create New Wi-Fi Network…"
+msgstr "புதிய ஒர்லெஸ் பிணையத்தை உருவாக்கவும்"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#, fuzzy
+msgid "Create Wi-Fi Hotspot…"
+msgstr "புதிய ஒர்லெஸ் பிணையத்தை உருவாக்கவும்"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+msgid "(none)"
+msgstr "(ஒன்றுமில்லை)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:567
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+#, fuzzy
+msgid "Failed to add new connection"
+msgstr "புதிய இணைப்பை திருத்த முடியவில்லை"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+msgid "Insufficient privileges."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#, fuzzy, c-format
+msgid "Do you want to disconnect from the wireless network '%s'?"
+msgstr "ஒரு ஒயர்லெஸ் பிணையத்தை இணைப்பதற்கு இந்த சின்னத்தை கிளிக் செய்யவும்"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#, fuzzy, c-format
+msgid "Wi-Fi Networks (%s)"
+msgstr "ஒயர்டு பிணையங்கள் (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#, fuzzy, c-format
+msgid "Wi-Fi Network (%s)"
+msgstr "ஒயர்டு பிணையம் (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+#, fuzzy
+msgid "Wi-Fi Network"
+msgid_plural "Wi-Fi Networks"
+msgstr[0] "ஒயர்டு பிணையம்"
+msgstr[1] "ஒயர்டு பிணையம்"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+#, fuzzy
+msgid "Wi-Fi is disabled"
+msgstr "வைமாக்ஸ்  ஐ செயல்நீக்கு"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+#, fuzzy
+msgid "Wi-Fi is disabled by hardware switch"
+msgstr "வன்பொருள் மாற்றியால் வைமாக்ஸ் செயல்நீக்கப்பட்டது"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+msgid "More networks"
+msgstr "நிறைய பிணையங்கள்"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+#, fuzzy
+msgid "Wi-Fi Networks Available"
+msgstr "ஒயர்லெஸ் பிணையங்கள் இருக்கிறது"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+#, fuzzy
+msgid "Use the network menu to connect to a Wi-Fi network"
+msgstr "ஒரு ஒயர்லெஸ் பிணையத்தை இணைப்பதற்கு இந்த பிணைய பட்டியை பயன்படுத்துக"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#, fuzzy, c-format
+msgid "You are now connected to the Wi-Fi network “%s”."
+msgstr "இப்போது நீங்கள் Wi-Fi பிணையம் '%s' உடன் இணைக்கப்பட்டுள்ளீர்கள்."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#, fuzzy, c-format
+msgid "Preparing Wi-Fi network connection “%s”…"
+msgstr "பிணைய இணைப்பு '%s' தயாராகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#, fuzzy, c-format
+msgid "Configuring Wi-Fi network connection “%s”…"
+msgstr "கட்டமைக்கப்பட்ட ஒயர்டு பிணைய இணைப்பு '%s'..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#, fuzzy, c-format
+msgid "User authentication required for Wi-Fi network “%s”…"
+msgstr "'%s'ன் ஒயர்லெஸ் பிணைய இணைப்புக்கு பயனர் அங்கீகாரம் தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#, fuzzy, c-format
+msgid "Requesting a Wi-Fi network address for “%s”…"
+msgstr "ஒரு பிணைய முகவரி '%s'காக தேவைப்படுகிறது..."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+msgstr "ஒயர்லெஸ் பிணைய இணைப்பு '%s' செயல்படுகிறது: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+msgstr "ஒயர்லெஸ் பிணைய இணைப்பு '%s' செயல்படுகிறது: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active"
+msgstr "ஒயர்டு பிணைய இணைப்பு '%s' செயலிபடுகிறது"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:29
+msgid "Error displaying connection information:"
+msgstr "பிழை காட்டும் இணைப்பு தகவல்:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:61
+msgid "LEAP"
+msgstr "LEAP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:63
+msgid "Dynamic WEP"
+msgstr "மாறும்           WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:65
+#: ../src/panel/widgets/netman/applet-dialogs.c:237
+#: ../src/panel/widgets/netman/applet-dialogs.c:239
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+#. Create the expander
+#: ../src/panel/widgets/netman/applet-dialogs.c:174
+#, fuzzy
+msgid "More addresses"
+msgstr "முகவரிகள்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:235
+msgid "WEP"
+msgstr "WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:241
+msgid "WPA3"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:245
+#: ../src/panel/widgets/netman/applet-dialogs.c:254
+#, fuzzy
+msgctxt "Wi-Fi/Ethernet security"
+msgid "None"
+msgstr "ஒன்றுமில்லை"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:324
+#: ../src/panel/widgets/netman/applet-dialogs.c:597
+#, c-format
+msgid "%u Mb/s"
+msgstr "%u Mb/s"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:326
+#: ../src/panel/widgets/netman/applet-dialogs.c:599
+msgctxt "Speed"
+msgid "Unknown"
+msgstr "தெரியாத"
+
+#. Address
+#: ../src/panel/widgets/netman/applet-dialogs.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:363
+msgctxt "Address"
+msgid "Unknown"
+msgstr "தெரியாத"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:415
+msgid "IP Address"
+msgstr "IP முகவரி"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:364
+msgid "Broadcast Address"
+msgstr "ஒளிப்பரப்பு முகவரி"
+
+#. Prefix
+#: ../src/panel/widgets/netman/applet-dialogs.c:376
+msgctxt "Subnet Mask"
+msgid "Unknown"
+msgstr "தெரியாத"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:377
+msgid "Subnet Mask"
+msgstr "துணை இணைய மறைப்பு"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Primary DNS"
+msgstr "முதன்மை DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "இரண்டாவது DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "மூன்றாவது DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:518
+#, c-format
+msgid "Ethernet (%s)"
+msgstr "ஈதர்நெட் (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:521
+#, c-format
+msgid "802.11 Wi-Fi (%s)"
+msgstr "802.11 Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:528
+#, c-format
+msgid "GSM (%s)"
+msgstr "GSM (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:530
+#, c-format
+msgid "CDMA (%s)"
+msgstr "CDMA (%s)"
+
+#. --- General ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:538
+#: ../src/panel/widgets/netman/applet-dialogs.c:872
+msgid "General"
+msgstr "பொதுவான"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:541
+msgid "Interface"
+msgstr "முகப்பு"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:556
+msgid "Hardware Address"
+msgstr "வன்பொருள் முகவரி"
+
+#. Driver
+#: ../src/panel/widgets/netman/applet-dialogs.c:569
+msgid "Driver"
+msgstr "இயக்கி"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:602
+msgid "Speed"
+msgstr "வேகம்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:615
+#, fuzzy
+msgid "Security"
+msgstr "பாதுகாப்பு:"
+
+#. --- IPv4 ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:640
+#: ../src/panel/widgets/netman/applet-dialogs.c:902
+msgid "IPv4"
+msgstr "ஐபிவி4"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:659
+#: ../src/panel/widgets/netman/applet-dialogs.c:707
+msgid "Default Route"
+msgstr "முன்னிருப்பு வழி"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:687
+#: ../src/panel/widgets/netman/applet-dialogs.c:929
+msgid "IPv6"
+msgstr "ஐபிவி 6"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:728
+msgid "Hotspot"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:746
+#, fuzzy
+msgid "Password"
+msgstr "கடவுச்சொல்:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:876
+msgid "VPN Type"
+msgstr "விபிஎன் வகை"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:881
+msgid "VPN Gateway"
+msgstr "விபிஎன் நுழைவாயில்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:885
+msgid "VPN Username"
+msgstr "விபிஎன் பயனர் பெயர்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:889
+msgid "VPN Banner"
+msgstr "விபிஎன் அறிவிப்பு பலகை"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:893
+msgid "Base Connection"
+msgstr "அடிப்படை இணைப்பு"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:894
+msgid "Unknown"
+msgstr "தெரியாத"
+
+#. Shouldn't really happen but ...
+#: ../src/panel/widgets/netman/applet-dialogs.c:1091
+msgid "No valid active connections found!"
+msgstr "சரியான செயல்பாட்டிலுள்ள இணைப்புகள் காணப்படுவில்லை!"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+#, fuzzy
+msgid ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"and many other community contributors and translators"
+msgstr ""
+"Copyright © 2004-2011 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"மேலும் பல சமுதாய பங்களிப்பாளர்கள் மொழி பெயர்ப்பாளர்கள்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+msgid ""
+"Notification area applet for managing your network devices and connections."
+msgstr "உங்கள் பிணைய சாதனங்கள் மற்றும் இணைப்புகளை நிர்வகிக்கும் அறிவிப்பு பகுதி ஆப்லெட்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1144
+msgid "NetworkManager Website"
+msgstr "பிணைய மேலாளர் இணையத்தளம்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1148
+msgid "translator-credits"
+msgstr "மொழிபெயர்ப்பாளர்-சன்மானம்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+msgid ""
+"The NetworkManager Applet could not find some required resources (the .ui "
+"file was not found)."
+msgstr ""
+"பிணைய மேலாளர் அப்லெட் தேவையான மூலங்களைக் கண்டு பிடிக்க முடியவில்லை. (.ui கோப்பு "
+"காணப்படவில்லை)."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1163
+msgid "Missing resources"
+msgstr "விடிபட்ட மூலங்கள்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1188
+msgid "Mobile broadband network password"
+msgstr "மொபைல் பிராட்பேண்டு பிணையத்தின் கடவுச்சொல்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1197
+#, fuzzy, c-format
+msgid "A password is required to connect to “%s”."
+msgstr "'%s'ஐ இணைப்பதற்கு ஒரு கடவுச்சொல் தேவைப்படுகிறது."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1220
+msgid "Password:"
+msgstr "கடவுச்சொல்:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1502
+msgid "SIM PIN unlock required"
+msgstr "SIM PIN பூட்டைநீக்க தேவைப்படுகிறது"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1503
+msgid "SIM PIN Unlock Required"
+msgstr "SIM PIN பூட்டைநீக்க தேவைப்படுகிறது"
+
+#. FIXME: some warning about # of times you can enter incorrect PIN
+#: ../src/panel/widgets/netman/applet-dialogs.c:1505
+#, fuzzy, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PIN code before it can be "
+"used."
+msgstr ""
+"பயன்படுத்தும் முன் மொபைல் ப்ராட்பாண்ட் சாதனம் '%s'க்கு ஒரு SIM PIN குறியீடு "
+"தேவைப்படுகிறது."
+
+#. Translators: PIN code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1507
+msgid "PIN code:"
+msgstr "PIN குறியீடு:"
+
+#. Translators: Show/obscure PIN checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1511
+msgid "Show PIN code"
+msgstr "PIN குறியீடு காட்டவும்"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1513
+msgid "SIM PUK unlock required"
+msgstr "SIM PUK பூட்டைநீக்க தேவைப்படுகிறது"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1514
+msgid "SIM PUK Unlock Required"
+msgstr "SIM PUK பூட்டுநீக்க தேவைப்படுகிறது"
+
+#. FIXME: some warning about # of times you can enter incorrect PUK
+#: ../src/panel/widgets/netman/applet-dialogs.c:1516
+#, fuzzy, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PUK code before it can be "
+"used."
+msgstr ""
+"பயன்படுத்தும் முன் மொபைல் ப்ராட்பாண்ட் சாதனம் '%s'க்கு ஒரு SIM PUK குறியீடு "
+"தேவைப்படுகிறது."
+
+#. Translators: PUK code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1518
+msgid "PUK code:"
+msgstr "PUK குறியீடு:"
+
+#. Translators: New PIN entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1521
+msgid "New PIN code:"
+msgstr "புதிய PIN குறியீடு:"
+
+#. Translators: New PIN verification entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1523
+msgid "Re-enter new PIN code:"
+msgstr "புதிய PIN குறியீட்டை மீண்டும்-உள்ளிடவும்:"
+
+#. Translators: Show/obscure PIN/PUK checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1528
+msgid "Show PIN/PUK codes"
+msgstr "PIN /PUK குறியீடு காட்டவும்"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:427
+#, fuzzy
+msgid "Connection had no VPN setting"
+msgstr "இணைப்பு தகவல்"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:477
+#, fuzzy, c-format
+msgid "Failed to write connection to VPN UI: %s (%d)"
+msgstr "டன் (DUN) இணைப்பை உருவாக்க முடியவில்லை: %s"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:485
+msgid "Failed to write connection to VPN UI: incomplete write"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#, fuzzy
+msgid "802.1X authentication"
+msgstr "ஒயர்டு 802.1X அங்கீகாரம்"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:36
+#: ../src/panel/widgets/netman/mobile-helpers.c:272
+msgid "CDMA"
+msgstr "CDMA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:38
+msgid "EVDO"
+msgstr "EVDO"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:40
+#: ../src/panel/widgets/netman/mobile-helpers.c:270
+msgid "GSM"
+msgstr "ஜிஎஸ்எம்(GSM)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:42
+msgid "GPRS"
+msgstr "GPRS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:44
+msgid "EDGE"
+msgstr "EDGE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:46
+msgid "UMTS"
+msgstr "UMTS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:48
+msgid "HSDPA"
+msgstr "HSDPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:50
+msgid "HSUPA"
+msgstr "HSUPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:52
+msgid "HSPA"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:54
+#, fuzzy
+msgid "HSPA+"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:56
+msgid "LTE"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:103
+msgid "not enabled"
+msgstr "செயல்படுத்தப்படவில்லை"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:109
+msgid "not registered"
+msgstr "பதிவு செய்யப்படவில்லை"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:127
+#, c-format
+msgid "Home network (%s)"
+msgstr "முகப்பு பிணையம் (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:129
+#, c-format
+msgid "Home network"
+msgstr "இல்ல பிணையம்"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:137
+msgid "searching"
+msgstr "தேடுகிறது"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:140
+msgid "registration denied"
+msgstr "பதிவுசெய்தல் மறுக்கப்பட்டது"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:145
+#: ../src/panel/widgets/netman/mb-menu-item.c:151
+#, c-format
+msgid "%s (%s roaming)"
+msgstr "%s (%s ரோமிங்)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:147
+#: ../src/panel/widgets/netman/mb-menu-item.c:153
+#, c-format
+msgid "%s (roaming)"
+msgstr "%s (ரோமிங்)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:156
+#, c-format
+msgid "Roaming network (%s)"
+msgstr "ரோமிங் பிணையம் (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:158
+#, c-format
+msgid "Roaming network"
+msgstr "ரோமிங் பிணையம்"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:320
+#, fuzzy, c-format
+msgid "PIN code for SIM card “%s” on “%s”"
+msgstr "சிம் கார்ட் '%s' ( '%s' இல்) க்கு PIN கோட்"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:453
+msgid "PIN code required"
+msgstr "PIN குறியீடு தேவைப்படுகிறது"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:461
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "PIN குறியீடு மொபைல் பிராட்பேண்டு சாதனத்திற்கு தேவைப்படுகிறது"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:619
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+msgstr "மொபைல் பிராட்பேண்டு இணைப்பு '%s' செயல்பாட்டிலுள்ளது : (%d%%%s%s)"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:622
+msgid "roaming"
+msgstr "ரோமிங் "
+
+#: ../src/panel/widgets/netman/netman.c:139
+#, fuzzy
+msgid "Network Manager"
+msgstr "பிணைய மேலாளர்"
+
+#: ../src/panel/widgets/netman/netman.c:140
+#, fuzzy
+msgid "Controller for Network Manager"
+msgstr "பிணைய மேலாளர்"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:793
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:800
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:807
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:815
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:824
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:835
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+
+#. The %s is a mobile provider name, eg "T-Mobile"
+#: ../src/panel/widgets/netman/utils.c:160
+#, fuzzy, c-format
+msgid "%s connection"
+msgstr "அடிப்படை இணைப்பு:"
+
+#: ../src/panel/widgets/netman/utils.c:534
+#, fuzzy
+msgid "PEM certificates (*.pem, *.crt, *.cer)"
+msgstr "DER அல்லது PEM சான்றிதழ்கள் (*.der, *.pem, *.crt, *.cer)"
+
+#: ../src/panel/widgets/netman/utils.c:546
+#, fuzzy
+msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+msgstr "DER, PEM, or PKCS#12 தனிப்பட்ட விசைகள் (*.der, *.pem, *.p12)"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:391
+#: ../src/panel/widgets/smenu/menu.c:121
+msgid "Run"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/gtk-run.c:412
+msgid "Enter the command you want to execute:"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:116
+msgid "Logout command is not set"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:122
+msgid "Restart"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:123
+msgid "Logout"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:140
+msgid "No file manager is configured."
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:489
+msgid "Add to desktop"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:496
+msgid "Properties"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:954
+msgid "Click here to open applications menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1047
+msgid "Menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1048
+msgid "Icon"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1049
+msgid "Padding"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1050
+msgid "Fixed Size"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1058
+msgid "Menu with Search"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1059
+msgid "Searchable Application Menu"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:189
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:211
+#, fuzzy
+msgid "No network connection - cannot install updates."
+msgstr "பிணைய இணைப்பு இல்லை"
+
+#: ../src/panel/widgets/updater/updater.c:217
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:320
+msgid "Show Updates..."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:324
+msgid "Install Updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:470
+msgid "Updates are available - click to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:529
+#: ../src/panel/widgets/updater/updater.c:561
+msgid "Updater"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:531
+msgid "Hours between checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:562
+msgid "Checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#, fuzzy
+msgid "Reconnecting Bluetooth devices..."
+msgstr "ஃப்ளூடூத் சாதனத்தை தேட முடியவில்லை."
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#, fuzzy, c-format
+msgid "Bluetooth %s device not found"
+msgstr "ஒயர்டு இணைப்பு %d"
+
+#. update dialog to show a warning
+#: ../src/panel/widgets/volumepulse/bluetooth.c:405
+msgid "Device not found by PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#, c-format
+msgid "Could not set profile for device : %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#, fuzzy, c-format
+msgid "Failed to connect to Bluetooth device - %s"
+msgstr "ஃபோனுக்கு இணைக்க முடியவில்லை."
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#, c-format
+msgid "Connecting Bluetooth device '%s' as output..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#, fuzzy, c-format
+msgid "Connecting Bluetooth device '%s' as input..."
+msgstr "ஃப்ளூடூத் சாதனத்தை தேட முடியவில்லை."
+
+#. if the current default source and sink are both the same device, disconnect it and reconnect to
+#. put it into A2DP rather than HSP
+#: ../src/panel/widgets/volumepulse/bluetooth.c:785
+msgid "Reconnecting Bluetooth input device as output only..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#, fuzzy
+msgid "Reconnecting Bluetooth device..."
+msgstr "ஃப்ளூடூத் சாதனத்தை தேட முடியவில்லை."
+
+#. Create a check button as the child of the vertical box.
+#: ../src/panel/widgets/volumepulse/commongui.c:140
+msgid "Mute"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/commongui.c:231
+msgid "No audio devices found"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:71
+msgid "Input from this device not available in the current profile"
+msgstr ""
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/micpulse.c:144
+msgid "Mic volume"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:216
+msgid "Microphone Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:217
+msgid "Display and control microphones for PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+msgid "HDMI"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+msgid "AV Jack"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+msgid "Device Profiles..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+msgid "Output to this device not available in the current profile"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#, fuzzy
+msgid "Device Profiles"
+msgstr "துணைடிக்கப்பட்டது"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#, fuzzy
+msgid "Device not connected"
+msgstr "துணைடிக்கப்பட்டது"
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+msgid "Volume control"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+msgid "Volume Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+msgid "Display and control volume for PulseAudio"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
+#, fuzzy
+msgid "label"
+msgstr "லேபில்"
+
+#: ../data/lxplug-updater.ui.h:1
+#, fuzzy
+msgid "Available Updates"
+msgstr "கிடைக்கக்கூடி"
+
+#: ../data/lxplug-updater.ui.h:2
+msgid "Close"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:3
+msgid "Install"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:4
+msgid "The following packages can be updated :"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:1
+#, fuzzy
+msgid "Add New Device"
+msgstr "ஏதாவது சாதனம்"
+
+#: ../data/lxplug-bluetooth.ui.h:3
+msgid "_Pair"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:4
+#, fuzzy
+msgid "Searching for Bluetooth devices..."
+msgstr "ஃப்ளூடூத் சாதனத்தை தேட முடியவில்லை."
+
+#~ msgid "Manage your network connections"
+#~ msgstr "உங்களது பிணையத்தின் இணைப்புகளை மேலாண்மை செய்க"
+
+#, fuzzy
+#~ msgid "NetworkManager connection editor"
+#~ msgstr "பிணைய இணைப்பு இல்லை"
+
+#, fuzzy
+#~ msgid "The NetworkManager Developers"
+#~ msgstr "பிணைய மேலாளர் அப்லெட்"
+
+#, fuzzy
+#~ msgid "Advanced Network Configuration"
+#~ msgstr "செயலிலுள்ள பிணைய இணைப்புகள்"
+
+#~ msgid "Manage and change your network connection settings"
+#~ msgstr "உங்களின் பிணைய இணைப்பு அமைவுகளை மேலாண்மை மற்றும் மாற்றவும்"
+
+#, fuzzy
+#~ msgid "_Network name"
+#~ msgstr "பிணைய பெயர் (_N):"
+
+#~ msgid "Connection _Information"
+#~ msgstr "இணைப்பு தகவல் (_I)"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add an IP address."
+#~ msgstr ""
+#~ "IP பிணையத்தில் உங்களது கணினி முகவரிகள் அடையாளம்.  \"Add\" பட்டனுடன் சேர்த்துஒரு IP "
+#~ "முகவரியை கிளிக் செய்யவும்."
+
+#~ msgid "_Delete"
+#~ msgstr "_D அழி"
+
+#~ msgid "Ig_nore automatically obtained routes"
+#~ msgstr "தானாக ஏற்படும் வழிகளிலிருந்து புறக்கணிக்கவும் (_n)"
+
+#~ msgid "_Use this connection only for resources on its network"
+#~ msgstr "_U மூலங்களின் பிணையத்திற்கு மட்டும் இந்த இணைப்பை பயன்படுத்தவும் "
+
+#~ msgid ""
+#~ "If enabled, this connection will never be used as the default network "
+#~ "connection."
+#~ msgstr ""
+#~ "பெறமுடிந்தால், முன்னிருப்பு பிணைய இணைப்புக்கு இந்த இணைப்பை ஒருபோதும்  பயன்படுத்த "
+#~ "முடியாது."
+
+#, fuzzy
+#~ msgid "C_reate…"
+#~ msgstr "உருவாக்கு..."
+
+#, fuzzy
+#~ msgid "Choose a Connection Type"
+#~ msgstr "VPN இணைப்பு வகை ஒன்றை தேர்ந்தெடுக்கவும்"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of connection you wish to create.\n"
+#~ "\n"
+#~ "If you are creating a VPN, and the VPN connection you wish to create does "
+#~ "not appear in the list, you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "புதிய இணைப்புக்கு நீங்கள் விரும்பும் VPN இணைப்பு வகை ஒன்றை தேர்ந்தெடுக்கவும்.  நீங்கள் "
+#~ "உருவாக்க விரும்பும் VPN இணைப்பு வகை பட்டியலில் தெரியவில்லை எனில், நீங்கள் சரியான VPN "
+#~ "சொருகியை நிறுவவில்லை."
+
+#, fuzzy
+#~ msgid "_Device"
+#~ msgstr "சேவை (_S):"
+
+#~ msgid "Round-robin"
+#~ msgstr "ரவுன்ட்-ராபின்"
+
+#~ msgid "Active backup"
+#~ msgstr "செயல்மிகு மறுபிரதி"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "Broadcast"
+#~ msgstr "ஒளிப்பரப்பு"
+
+#~ msgid "802.3ad"
+#~ msgstr "802.3ad"
+
+#~ msgid "Adaptive transmit load balancing"
+#~ msgstr "சரிசெய்துகொள்ளும் பரப்பல் சுமை சமநிலைப்படுத்தல்"
+
+#~ msgid "Adaptive load balancing"
+#~ msgstr "சரிசெய்துகொள்ளும் சுமை சமநிலைப்படுத்தல்"
+
+#~ msgid "MII (recommended)"
+#~ msgstr "MII (பரிந்துரைக்கப்படுவது)"
+
+#~ msgid "ARP"
+#~ msgstr "ARP"
+
+#, fuzzy
+#~ msgid "Bonded _connections"
+#~ msgstr "பிணைப்பு இணைப்புகள் (_c):"
+
+#, fuzzy
+#~ msgid "M_ode"
+#~ msgstr "முறைமை (_o):"
+
+#~ msgid "_Edit"
+#~ msgstr "_E திருத்து"
+
+#, fuzzy
+#~ msgid "Monitoring _frequency"
+#~ msgstr "கண்காணிப்பு இடைவேளை (_f):"
+
+#~ msgid "ms"
+#~ msgstr "ms"
+
+#, fuzzy
+#~ msgid "_Interface name"
+#~ msgstr "இடைமுகப் பெயர் (_I):"
+
+#, fuzzy
+#~ msgid "_Link Monitoring"
+#~ msgstr "இணைப்பு கண்காணிப்பு (_L):"
+
+#, fuzzy
+#~ msgid "ARP _targets"
+#~ msgstr "ARP இலக்குகள் (_t):"
+
+#~ msgid ""
+#~ "An IP address, or a comma-separated list of IP addresses, to look for "
+#~ "when checking the link status."
+#~ msgstr ""
+#~ "இணைப்பு நிலையைச் சோதிக்கும் போது தேடிப்பார்க்க வேண்டிய ஒரு IP முகவரி அல்லது "
+#~ "காற்புள்ளிகளால் பிரித்த IP முகவரிகளின் பட்டியல்."
+
+#, fuzzy
+#~ msgid "Link _up delay"
+#~ msgstr "இணைப்பு செயல்நிலை தாமதம் (_u):"
+
+#, fuzzy
+#~ msgid "Link _down delay"
+#~ msgstr "இணைப்பு செயலிலா நிலை தாமதம் (_d):"
+
+#, fuzzy
+#~ msgid "_Primary"
+#~ msgstr "முதன்மை DNS:"
+
+#, fuzzy
+#~ msgid "_MTU"
+#~ msgstr "_MTU:"
+
+#~ msgid "bytes"
+#~ msgstr "பைட்டுகள்"
+
+#, fuzzy
+#~ msgid "_Priority"
+#~ msgstr "_e பாதுகாப்பு:"
+
+#, fuzzy
+#~ msgid "Bridged _connections"
+#~ msgstr "அடிப்படை இணைப்பு:"
+
+#, fuzzy
+#~ msgid "_Forward delay"
+#~ msgstr "இணைப்பு செயலிலா நிலை தாமதம் (_d):"
+
+#, fuzzy
+#~ msgid "Enable I_GMP snooping"
+#~ msgstr "பிணையம் செயல்படுகிறது (_N)"
+
+#, fuzzy
+#~ msgid "_Use Data Center Bridging (DCB) for this connection"
+#~ msgstr "இந்த இணைப்புக்காக 802.1_X பாதுகாப்பை பயன்படுத்துக"
+
+#~ msgid "default"
+#~ msgstr "முன்னிருப்பு"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgid "_Username"
+#~ msgstr "பயனர் பெயர் (_U) "
+
+#, fuzzy
+#~ msgid "_Service"
+#~ msgstr "சேவை (_S):"
+
+#~ msgid "Sho_w password"
+#~ msgstr "கடவுச்சொல்லைக் காட்டு (_w)"
+
+#, fuzzy
+#~ msgid "_Password"
+#~ msgstr "கடவுச்சொல் (_P):"
+
+#, fuzzy
+#~ msgid "PPP _interface"
+#~ msgstr "முகப்பு"
+
+#, fuzzy
+#~ msgid "P_arent interface"
+#~ msgstr "தாய் இடைமுகம் (_P):"
+
+#, fuzzy
+#~ msgid "C_laim interface"
+#~ msgstr "தாய் இடைமுகம் (_P):"
+
+#~ msgid "Automatic"
+#~ msgstr "தானாக"
+
+#~ msgid "Twisted Pair (TP)"
+#~ msgstr "திருப்பிய ஜோடி (டிபி)"
+
+#~ msgid "Attachment Unit Interface (AUI)"
+#~ msgstr "இணைப்பு பொருள் இடைமுகம் (AUI)"
+
+#~ msgid "BNC"
+#~ msgstr "பிஎன்சி (BNC)"
+
+#~ msgid "Media Independent Interface (MII)"
+#~ msgstr "ஊடக சார்பில்லா இடைமுகம் (எம்ஐஐ)"
+
+#~ msgid "10 Mb/s"
+#~ msgstr "10 Mb/s"
+
+#~ msgid "100 Mb/s"
+#~ msgstr "100 Mb/s"
+
+#~ msgid "1 Gb/s"
+#~ msgstr "1 Gb/s"
+
+#~ msgid "10 Gb/s"
+#~ msgstr "10 Gb/s"
+
+#~ msgid "Ignore"
+#~ msgstr "தவிர்"
+
+#~ msgid "Manual"
+#~ msgstr "கைமுறை"
+
+#, fuzzy
+#~ msgid "_Port"
+#~ msgstr "துறை (_P):"
+
+#, fuzzy
+#~ msgid "C_loned MAC address"
+#~ msgstr "_l நகல் மேக்(MAC) முகவரி:"
+
+#, fuzzy
+#~ msgid "Wake on LAN"
+#~ msgstr "தனிப்பட்ட விசை கடவுச்சொல் (_P):"
+
+#, fuzzy
+#~ msgid "De_fault"
+#~ msgstr "முன்னிருப்பு"
+
+#, fuzzy
+#~ msgid "_Ignore"
+#~ msgstr "தவிர்"
+
+#, fuzzy
+#~ msgid "_Broadcast"
+#~ msgstr "ஒளிப்பரப்பு முகவரி:"
+
+#, fuzzy
+#~ msgid "_Wake on LAN password"
+#~ msgstr "தனிப்பட்ட விசை கடவுச்சொல் (_P):"
+
+#, fuzzy
+#~ msgid "_Speed"
+#~ msgstr "வேகம் (_S):"
+
+#, fuzzy
+#~ msgid "Duple_x"
+#~ msgstr "முழு இரட்டை (_x)"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "ஒன்றுமில்லை"
+
+#, fuzzy
+#~ msgid "All _users may connect to this network"
+#~ msgstr "இப்போது ஒயர்டு பிணையத்தோடு இணைக்கப்படுகிறது."
+
+#, fuzzy
+#~ msgid "Automatically connect to _VPN"
+#~ msgstr "தானியங்கியாக இந்த சாதனத்தை பூட்டு திறக்கவும்"
+
+#, fuzzy
+#~ msgid "_Metered connection"
+#~ msgstr "அடிப்படை இணைப்பு:"
+
+#, fuzzy
+#~ msgid "Connect _automatically with priority"
+#~ msgstr "தானாக இணைக்கவும் (_a)"
+
+#~ msgid "Datagram"
+#~ msgstr "தரவுப்படம்"
+
+#~ msgid "Connected"
+#~ msgstr "இணைக்கப்பட்டது"
+
+#, fuzzy
+#~ msgid "_Transport mode"
+#~ msgstr "டிரான்ஸ்போர்ட் முறை (_T):"
+
+#, fuzzy
+#~ msgid "Device name"
+#~ msgstr "சாதன பெயர் + எண்"
+
+#, fuzzy
+#~ msgid "Parent device"
+#~ msgstr "ஈதர்நெட் (%s)"
+
+#, fuzzy
+#~ msgid "MTU"
+#~ msgstr "_MTU:"
+
+#~ msgid "Automatic with manual DNS settings"
+#~ msgstr "தானியங்கி கைமுறை டிஎன்எஸ் அமைப்புகளுடன் "
+
+#~ msgid "Link-Local"
+#~ msgstr "இணைப்பு-உள்ளமை "
+
+#~ msgid "Shared to other computers"
+#~ msgstr "மற்ற கணினிகள்ளுடன் பகிரப்பட்டது"
+
+#, fuzzy
+#~ msgid "_Method"
+#~ msgstr "முறை (_M):"
+
+#, fuzzy
+#~ msgid ""
+#~ "The DHCP client identifier allows the network administrator to customize "
+#~ "your computer’s configuration. If you wish to use a DHCP client "
+#~ "identifier, enter it here."
+#~ msgstr ""
+#~ "இந்த DHCP கிளையன் அடையாளப்படுத்தி ஒரு பிணைய நிர்வாகியை தனிபயனாக்க அனுமதிக்கிறது. "
+#~ "நீங்கள் ஒரு DHCP கிளையன் அடையாளப்படுத்தியை இங்கே உள்ளிட பயன்படுத்தவும்."
+
+#~ msgid ""
+#~ "Domains used when resolving host names. Use commas to separate multiple "
+#~ "domains."
+#~ msgstr ""
+#~ "புரவலன் பெயர்களை தீர்க்கும் போது பயன்படுத்தப்பட்ட டொமைன்கள். பல டொமைன்களை அரைப்புள்ளியால் "
+#~ "பிரிக்கவும்."
+
+#, fuzzy
+#~ msgid "D_HCP client ID"
+#~ msgstr "D_HCP கிளையன்ட் குறியீடு:"
+
+#, fuzzy
+#~ msgid "S_earch domains"
+#~ msgstr "_e செயற்களத்தை தேடவும்"
+
+#, fuzzy
+#~ msgid "DNS ser_vers"
+#~ msgstr "_DNS சேவையகங்கள்:"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses."
+#~ msgstr ""
+#~ "புரவலன் பெயர்களை தீர்க்க ஐபி முகவரிகள் பயன்படுத்தப்பட்டுள்ளது. பல டொமைன்களின் பெயர் "
+#~ "சேவையக முகவரிகளை அரைப்புள்ளியால் பிரிக்கவும்."
+
+#~ msgid "Require IPv_4 addressing for this connection to complete"
+#~ msgstr "இந்த இணைப்பை முழுமையாக்க IPv4 முகவரி தேவை"
+
+#~ msgid ""
+#~ "When connecting to IPv6-capable networks, allows the connection to "
+#~ "complete if IPv4 configuration fails but IPv6 configuration succeeds."
+#~ msgstr ""
+#~ "IPv4 கட்டமைப்பு தோல்வியடைந்து ஆனால் IPv6 வெற்றியடைந்தால், IPv6-திறன் நெட்வொர்க்குடன் "
+#~ "இணைக்கும் போது இணைப்பை முடிக்க அனுமதிக்கிறது."
+
+#~ msgid "_Routes…"
+#~ msgstr "வழிகள் (_R)…"
+
+#~ msgid "Default"
+#~ msgstr "முன்னிருப்பு"
+
+#~ msgid "Disabled"
+#~ msgstr "செயல்நீக்கப்பட்டது"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses. Link-local "
+#~ "addresses will be automatically scoped to the connecting interface."
+#~ msgstr ""
+#~ "புரவலன் பெயர்களை தீர்க்க ஐபி முகவரிகள் பயன்படுத்தப்பட்டுள்ளது. பல டொமைன்களின் பெயர் "
+#~ "சேவையக முகவரிகளை அரைப்புள்ளியால் பிரிக்கவும்."
+
+#~ msgid "Require IPv_6 addressing for this connection to complete"
+#~ msgstr "இந்த இணைப்பை முழுமையாக்க IPv6 முகவரி தேவை"
+
+#~ msgid ""
+#~ "When connecting to IPv4-capable networks, allows the connection to "
+#~ "complete if IPv6 configuration fails but IPv4 configuration succeeds."
+#~ msgstr ""
+#~ "IPv6 கட்டமைப்பு தோல்வியடைந்து ஆனால் IPv4 கட்டமைப்பு வெற்றியடைந்தால், IPv4-திறன் "
+#~ "நெட்வொர்க்குடன் இணைக்கும் போது, இணைப்பை முடிக்க அனுமதிக்கிறது."
+
+#~ msgid "EAP"
+#~ msgstr "EAP"
+
+#, fuzzy
+#~ msgid "Strict"
+#~ msgstr "மெட்ரிக்"
+
+#, fuzzy
+#~ msgid "_Device name"
+#~ msgstr "சாதன பெயர் + எண்"
+
+#, fuzzy
+#~ msgid "_Parent device"
+#~ msgstr "ஈதர்நெட் (%s)"
+
+#, fuzzy
+#~ msgid "_SCI port"
+#~ msgstr "இறக்குமதி (_I)"
+
+#~ msgid "Basic"
+#~ msgstr "அடிப்படை"
+
+#, fuzzy
+#~ msgid "Nu_mber"
+#~ msgstr "எண் (_m):"
+
+#, fuzzy
+#~ msgid "_APN"
+#~ msgstr "_APN:"
+
+#, fuzzy
+#~ msgid "N_etwork ID"
+#~ msgstr "பிணையம் ID (_e) :"
+
+#, fuzzy
+#~ msgid "Change…"
+#~ msgstr "மாற்று..."
+
+#, fuzzy
+#~ msgid "P_IN"
+#~ msgstr "P_IN:"
+
+#~ msgid "Allow _roaming if home network is not available"
+#~ msgstr "_r இல்ல பிணையம் கிடைக்கவில்லையெனில் ரோமிங்கை அனுமதிக்கவும்"
+
+#~ msgid "Sho_w passwords"
+#~ msgstr "கடவுச்சொற்களைக் காட்டு (_w)"
+
+#~ msgid "Authentication"
+#~ msgstr "அங்கீகாரம்"
+
+#, fuzzy
+#~ msgid "Allowed methods"
+#~ msgstr "அனுமதிக்கப்பட்ட முறைகள்:"
+
+#~ msgid "Configure _Methods…"
+#~ msgstr "முறைகள் கட்டமைக்கப்பட்டது (_M)…"
+
+#~ msgid "Compression"
+#~ msgstr "சுருக்கம்"
+
+#~ msgid "_Use point-to-point encryption (MPPE)"
+#~ msgstr "பாயிண்ட் டு பாயிண்ட் மறைகுறியாக்கத்தை பயன்படுத்து (_U) (MPPE)"
+
+#~ msgid "_Require 128-bit encryption"
+#~ msgstr "128-பிட் மறைகுறியாக்கம் தேவைப்படுகிறது (_R)"
+
+#~ msgid "Use _stateful MPPE"
+#~ msgstr "நிலையான MPPE பயன்படுத்தவும் (_s)"
+
+#~ msgid "Allow _BSD data compression"
+#~ msgstr "_BSD தரவு அழுத்தம் அனுமதிக்கிறது"
+
+#~ msgid "Allow _Deflate data compression"
+#~ msgstr "_Deflate தரவு குறுக்கத்தை அனுமதி"
+
+#~ msgid "Use TCP _header compression"
+#~ msgstr "TCP தலைப்பு அழுத்தத்தை பயன்படுத்து (_h)"
+
+#~ msgid "Echo"
+#~ msgstr "எதிரொலி"
+
+#~ msgid "Send PPP _echo packets"
+#~ msgstr "PPP எகோ பாக்கெட்டுகளை அனுப்பு (_e)"
+
+#, fuzzy
+#~ msgid "None"
+#~ msgstr "ஒன்றுமில்லை"
+
+#, fuzzy
+#~ msgid "Method"
+#~ msgstr "முறை (_M):"
+
+#, fuzzy
+#~ msgid "Ad_vanced…"
+#~ msgstr "மேம்பட்ட"
+
+#, fuzzy
+#~ msgid "Ethernet port state"
+#~ msgstr "ஒயர்டு பிணையங்கள்"
+
+#, fuzzy
+#~ msgid "_Port priority"
+#~ msgstr "_e பாதுகாப்பு:"
+
+#, fuzzy
+#~ msgid "_LACP port priority"
+#~ msgstr "_e பாதுகாப்பு:"
+
+#, fuzzy
+#~ msgid "LACP port _key"
+#~ msgstr "தனிப்பட்ட விசை ( _k):"
+
+#, fuzzy
+#~ msgid "_Up delay"
+#~ msgstr "இணைப்பு செயல்நிலை தாமதம் (_u):"
+
+#, fuzzy
+#~ msgid "_Down delay"
+#~ msgstr "இணைப்பு செயலிலா நிலை தாமதம் (_d):"
+
+#, fuzzy
+#~ msgid "Send _interval"
+#~ msgstr "தாய் இடைமுகம் (_P):"
+
+#, fuzzy
+#~ msgid "_Source host"
+#~ msgstr "ARP இலக்குகள் (_t):"
+
+#, fuzzy
+#~ msgid "_Target host"
+#~ msgstr "ARP இலக்குகள் (_t):"
+
+#, fuzzy
+#~ msgid "Port priority"
+#~ msgstr "_e பாதுகாப்பு:"
+
+#, fuzzy
+#~ msgid "From the team device"
+#~ msgstr "ஈதர்நெட் (%s)"
+
+#, fuzzy
+#~ msgid "_Teamed connections"
+#~ msgstr "அடிப்படை இணைப்பு:"
+
+#, fuzzy
+#~ msgid "Ethernet"
+#~ msgstr "தானியக்கி ஈதர்நெட்"
+
+#~ msgid "VLAN"
+#~ msgstr "VLAN"
+
+#, fuzzy
+#~ msgid "IP"
+#~ msgstr "ஐபிவி4"
+
+#, fuzzy
+#~ msgid "TCP"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "_Hardware Address"
+#~ msgstr "வன்பொருள் முகவரி:"
+
+#, fuzzy
+#~ msgid "_Hardware address policy"
+#~ msgstr "வன்பொருள் முகவரி:"
+
+#, fuzzy
+#~ msgid "_System priority"
+#~ msgstr "_e பாதுகாப்பு:"
+
+#, fuzzy
+#~ msgid "Transmission _balancing interval"
+#~ msgstr "மாற்றப்படும் பவர் (_w):"
+
+#, fuzzy
+#~ msgid "_Transmission balancer"
+#~ msgstr "மாற்றப்படும் பவர் (_w):"
+
+#, fuzzy
+#~ msgid "_Parent interface"
+#~ msgstr "தாய் இடைமுகம் (_P):"
+
+#, fuzzy
+#~ msgid "VLAN inter_face name"
+#~ msgstr "இடைமுகப் பெயர் (_I):"
+
+#, fuzzy
+#~ msgid "Cloned MAC _address"
+#~ msgstr "_l நகல் மேக்(MAC) முகவரி:"
+
+#, fuzzy
+#~ msgid "VLAN _id"
+#~ msgstr "VLAN _id:"
+
+#~ msgid "Device name + number"
+#~ msgstr "சாதன பெயர் + எண்"
+
+#~ msgid "\"vlan\" + number"
+#~ msgstr "\"vlan\" + எண்"
+
+#, fuzzy
+#~ msgid "S_ecurity"
+#~ msgstr "_e பாதுகாப்பு:"
+
+#~ msgid "A (5 GHz)"
+#~ msgstr "A (5 GHz)"
+
+#~ msgid "B/G (2.4 GHz)"
+#~ msgstr "B/G (2.4 GHz)"
+
+#~ msgid "Ad-hoc"
+#~ msgstr "தற்காலிக"
+
+#~ msgid "mW"
+#~ msgstr "mW"
+
+#, fuzzy
+#~ msgid "Transmission po_wer"
+#~ msgstr "மாற்றப்படும் பவர் (_w):"
+
+#~ msgid "Mb/s"
+#~ msgstr "Mb/s"
+
+#, fuzzy
+#~ msgid "_Rate"
+#~ msgstr "விகிதம்: (_R)"
+
+#, fuzzy
+#~ msgid "_BSSID"
+#~ msgstr "_BSSID:"
+
+#, fuzzy
+#~ msgid "C_hannel"
+#~ msgstr "சேனல் (_h):"
+
+#, fuzzy
+#~ msgid "Ban_d"
+#~ msgstr "பிணைப்பு (_d):"
+
+#, fuzzy
+#~ msgid "SS_ID"
+#~ msgstr "SS_ID:"
+
+#, fuzzy
+#~ msgid "_Apply"
+#~ msgstr "பயன்படுத்து"
+
+#, fuzzy
+#~ msgid "Allowed _IPs"
+#~ msgstr "அனுமதிக்கப்பட்ட முறைகள்:"
+
+#, fuzzy
+#~ msgid "Pre_shared key"
+#~ msgstr "பகிரப்பட்ட விசை"
+
+#, fuzzy
+#~ msgid "Sho_w preshared key"
+#~ msgstr "விசையை காட்டு (_w)"
+
+#, fuzzy
+#~ msgid "Private _key"
+#~ msgstr "தனிப்பட்ட விசை ( _k):"
+
+#, fuzzy
+#~ msgid "_Show private key"
+#~ msgstr "தனிப்பட்ட விசை ( _k):"
+
+#, fuzzy
+#~ msgid "<b>_Peers</b>"
+#~ msgstr "<b>முகவரிகள்</b>"
+
+#~ msgid "automatic"
+#~ msgstr "தானாக"
+
+#, fuzzy
+#~ msgid ""
+#~ "The MAC address entered here will be used as hardware address for the "
+#~ "network device this connection is activated on. This feature is known as "
+#~ "MAC cloning or spoofing. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "இங்கு உள்ளிட்ட மாக் முகவரி இந்த வலை சாதனத்துக்கு முகவரியாக இந்த செயல்படும் இணைப்பில் "
+#~ "பயன்படுத்தப்படும். இந்த நடத்தை மாக் க்ளொனிங் அல்லது ஸ்பூஃபிங் எனபப்டும். எ-கா: "
+#~ "00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid "MAC address"
+#~ msgstr "முகவரி"
+
+#, fuzzy
+#~ msgid "HW address"
+#~ msgstr "முகவரி"
+
+#, fuzzy
+#~ msgid "invalid hardware address"
+#~ msgstr "வன்பொருள் முகவரி:"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add static IP address to be configured in addition to the "
+#~ "automatic ones."
+#~ msgstr ""
+#~ "IP பிணையத்தில் உங்களது கணினி முகவரிகள் அடையாளம்.  \"Add\" பட்டனுடன் சேர்த்துஒரு IP "
+#~ "முகவரியை கிளிக் செய்யவும்."
+
+#, fuzzy
+#~ msgid "Additional static addresses"
+#~ msgstr "தானியக்கி முகவரிகள் மட்டுமே"
+
+#~ msgid "Addresses"
+#~ msgstr "முகவரிகள்"
+
+#~ msgid "Allowed Authentication Methods"
+#~ msgstr "அனுமதிக்கப்பட்டஅங்கீகார முறைகள் "
+
+#~ msgid "_EAP"
+#~ msgstr "_EAP"
+
+#~ msgid "Extensible Authentication Protocol"
+#~ msgstr "Extensible Authentication Protocol"
+
+#~ msgid "_PAP"
+#~ msgstr "_PAP"
+
+#~ msgid "Password Authentication Protocol"
+#~ msgstr "கடவுச்சொல் அங்கீகார நெறிமுறை"
+
+#~ msgid "C_HAP"
+#~ msgstr "C_HAP"
+
+#~ msgid "Challenge Handshake Authentication Protocol"
+#~ msgstr "Challenge Handshake Authentication Protocol"
+
+#~ msgid "_MSCHAP"
+#~ msgstr "_MSCHAP"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol"
+
+#~ msgid "MSCHAP v_2"
+#~ msgstr "MSCHAP v_2"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol version 2"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol version 2"
+
+#, fuzzy
+#~ msgid ""
+#~ "In most cases, the provider’s PPP servers will support all authentication "
+#~ "methods. If connections fail, try disabling support for some methods."
+#~ msgstr ""
+#~ "பல சமயங்களில், வழங்குபவர் PPP சேவையகங்கள் எல்லா அங்கீகார முறைகளுக்கும் துணைபுரியும்.  "
+#~ "இணைப்பு தோல்வியுற்றால், சில முறைகளுக்காவது துணையை நீக்கி முயற்சிக்கவும்."
+
+#~ msgid "InfiniBand"
+#~ msgstr "இன்ஃபினிபேன்ட்"
+
+#~ msgid "Bond"
+#~ msgstr "பிணைப்பு"
+
+#~ msgid "Bridge"
+#~ msgstr "பிரிட்ஜ்"
+
+#, fuzzy
+#~ msgid "WireGuard"
+#~ msgstr "ஒயர்டு"
+
+#~ msgid "VPN"
+#~ msgstr "VPN"
+
+#, fuzzy
+#~ msgid "The VPN plugin failed to import the VPN connection correctly: "
+#~ msgstr ""
+#~ "VPN கூடுதல் இணைப்பை சரியாக VPN இணைப்பை இறக்க முடியவில்லை\n"
+#~ "\n"
+#~ "பிழை: VPN சேவை வகை இல்லை."
+
+#~ msgid "Select file to import"
+#~ msgstr "இறக்க கோப்பை தேர்ந்தெடுக்கவும்"
+
+#~ msgid "Hardware"
+#~ msgstr "வன்பொருள்"
+
+#~ msgid "Virtual"
+#~ msgstr "மெய்நிகர்"
+
+#, fuzzy
+#~ msgid "Import a saved VPN configuration…"
+#~ msgstr "சேமிக்கப்பட்ட ஒரு VPN அமைவாக்கத்தை இறக்கு..."
+
+#~ msgid ""
+#~ "The connection editor dialog could not be initialized due to an unknown "
+#~ "error."
+#~ msgstr "தெரியாத பிழையால் இணைப்பு எடிட்டர் உரையாடலை நிறுவ முடியவில்லை."
+
+#~ msgid "Could not create new connection"
+#~ msgstr "புதிய இணைப்பை உருவாக்க முடியவில்லை"
+
+#~ msgid "Connection delete failed"
+#~ msgstr "இணைப்பை அழிக்க முடியவில்லை"
+
+#, c-format
+#~ msgid "Are you sure you wish to delete the connection %s?"
+#~ msgstr " %s இணைப்பை அழிக்க நீங்கள் விரும்புகிறீர்களா?"
+
+#, fuzzy
+#~ msgid "_New Connection"
+#~ msgstr "_VPN இணைப்புகள்"
+
+#~ msgid "Address"
+#~ msgstr "முகவரி"
+
+#~ msgid "Netmask"
+#~ msgstr "நெட்மாஸ்க்"
+
+#~ msgid "Gateway"
+#~ msgstr "நுழைவாயில்"
+
+#~ msgid "Metric"
+#~ msgstr "மெட்ரிக்"
+
+#~ msgid "Prefix"
+#~ msgstr "முன்பொருத்தம்"
+
+#, c-format
+#~ msgid "Editing %s"
+#~ msgstr "%sஐ திருத்துகிறது"
+
+#~ msgid "Editing un-named connection"
+#~ msgstr "பெயரிடப்படாத இணைப்பை திருத்துகிறது"
+
+#, fuzzy
+#~ msgid "Missing connection name"
+#~ msgstr "இணைப்பு பெயர் (_n):"
+
+#, fuzzy
+#~ msgid "Editor initializing…"
+#~ msgstr "பிழையை நிறுவும் எடிட்டர்"
+
+#, fuzzy
+#~ msgid "Connection cannot be modified"
+#~ msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "இணைப்பு எடிட்டர் தேவையான மூலங்களை கண்டுபிடிக்க முடியவில்லை (.ui கோப்பு "
+#~ "காணப்படவில்லை)."
+
+#~ msgid "_Save"
+#~ msgstr "_S சேமிக்கவும்"
+
+#~ msgid "Save any changes made to this connection."
+#~ msgstr "இந்த இணைப்புக்கு செய்த மாற்றங்களை சேமிக்கவும்."
+
+#~ msgid "Authenticate to save this connection for all users of this machine."
+#~ msgstr "இந்த கணினியில் அனைத்து பயனர்கள் இணைப்பையும் சேமிக்க அங்கீகரிக்கவும்."
+
+#~ msgid "Could not create connection"
+#~ msgstr "இணைப்பை உருவாக்க முடியவில்லை"
+
+#~ msgid "Could not edit connection"
+#~ msgstr "இணைப்பை திருத்த முடியவில்லை"
+
+#~ msgid "Unknown error creating connection editor dialog."
+#~ msgstr "இணைப்புத் திருத்தி உரையாடலை உருவாக்குவதில் அறியாத பிழை ஏற்பட்டது."
+
+#~ msgid "Error initializing editor"
+#~ msgstr "பிழையை நிறுவும் எடிட்டர்"
+
+#~ msgid "Connection add failed"
+#~ msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#, fuzzy
+#~ msgid "Connection _name"
+#~ msgstr "இணைப்பு பெயர் (_n):"
+
+#, fuzzy
+#~ msgid "_Export…"
+#~ msgstr "ஏற்றுமதி... (_E)"
+
+#, fuzzy
+#~ msgid "_Relabel"
+#~ msgstr "லேபில்"
+
+#~ msgid "never"
+#~ msgstr "இல்லை"
+
+#~ msgid "now"
+#~ msgstr "இப்போது"
+
+#, c-format
+#~ msgid "%d minute ago"
+#~ msgid_plural "%d minutes ago"
+#~ msgstr[0] "%d நிமிடம் முன்"
+#~ msgstr[1] "%d நிமிடங்களுக்கு முன்"
+
+#, c-format
+#~ msgid "%d hour ago"
+#~ msgid_plural "%d hours ago"
+#~ msgstr[0] "%d மணி முன்"
+#~ msgstr[1] "%d மணி முன்"
+
+#, c-format
+#~ msgid "%d day ago"
+#~ msgid_plural "%d days ago"
+#~ msgstr[0] "%d நாள் முன்"
+#~ msgstr[1] "%d நாள் முன்"
+
+#, c-format
+#~ msgid "%d month ago"
+#~ msgid_plural "%d months ago"
+#~ msgstr[0] "%d மாதம் முன்"
+#~ msgstr[1] "%d மாதம் முன்"
+
+#, c-format
+#~ msgid "%d year ago"
+#~ msgid_plural "%d years ago"
+#~ msgstr[0] "%d வருடத்திற்கு முன்"
+#~ msgstr[1] "%d வருடங்களுக்கு முன்"
+
+#, fuzzy
+#~ msgid "Connection cannot be deleted"
+#~ msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#, fuzzy
+#~ msgid "Select a connection to edit"
+#~ msgstr "ஒயர்டு இணைப்பு %d"
+
+#, fuzzy
+#~ msgid "Select a connection to delete"
+#~ msgstr "ஒயர்டு இணைப்பு %d"
+
+#~ msgid "Name"
+#~ msgstr "பெயர்"
+
+#~ msgid "Last Used"
+#~ msgstr "கடைசியில் பயன்படுத்தப்பட்டது"
+
+#~ msgid "Edit the selected connection"
+#~ msgstr "தேர்ந்தெடுக்கப்பட்ட இணைப்பை திருத்தவும்"
+
+#~ msgid "Authenticate to edit the selected connection"
+#~ msgstr "தேர்ந்தெடுக்கப்பட்ட இணைப்பை திருத்த அங்கீகாரம்"
+
+#~ msgid "Delete the selected connection"
+#~ msgstr "தேர்ந்தெடுக்கப்பட்ட இணைப்பை அழிக்கவும்"
+
+#~ msgid "Authenticate to delete the selected connection"
+#~ msgstr "தேர்ந்தெடுக்கப்பட்ட இணைப்பை அழிக்க அங்கீகாரம்"
+
+#, fuzzy
+#~ msgid "Unrecognized connection type"
+#~ msgstr "துணைபுரியாத மொபைல் பிராட்பேண்டை இணைப்பு வகை. முடியவில்லை."
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to import “%s” connections"
+#~ msgstr "'%s' இணைப்பை உருவாக்குவது எப்படி என்று தெரியவில்லை"
+
+#, fuzzy
+#~ msgid "Error importing connection"
+#~ msgstr "இணைப்பை திருத்தும்போது பிழை"
+
+#~ msgid "Error creating connection"
+#~ msgstr "இணைப்பை உருவாக்குவதில் பிழை."
+
+#, fuzzy
+#~ msgid "Connection type not specified."
+#~ msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to create “%s” connections"
+#~ msgstr "'%s' இணைப்பை உருவாக்குவது எப்படி என்று தெரியவில்லை"
+
+#~ msgid "Error editing connection"
+#~ msgstr "இணைப்பை திருத்தும்போது பிழை"
+
+#, fuzzy, c-format
+#~ msgid "Did not find a connection with UUID “%s”"
+#~ msgstr " UUID '%s' உடன் இணைப்பை காணவில்லை."
+
+#~ msgid "Network Connections"
+#~ msgstr "பிணைய இணைப்புகள்"
+
+#, fuzzy
+#~ msgid "Add a new connection"
+#~ msgstr "_VPN இணைப்புகள்"
+
+#~ msgid "802.1X Security"
+#~ msgstr "802.1X பாதுகாப்பு"
+
+#, fuzzy
+#~ msgid "Could not load 802.1X Security user interface."
+#~ msgstr "Wi-Fi பாதுகாப்பு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#~ msgid "Use 802.1_X security for this connection"
+#~ msgstr "இந்த இணைப்புக்காக 802.1_X பாதுகாப்பை பயன்படுத்துக"
+
+#, fuzzy
+#~ msgid "Could not load Bluetooth user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "_Personal Area Network"
+#~ msgstr "பிணையம் செயல்படுகிறது (_N)"
+
+#, fuzzy
+#~ msgid "_Dial-Up Network"
+#~ msgstr "ஒயர்லெஸ் பிணையங்கள்ஒயர்லெஸ் பிணையங்கள்ஒயர்லெஸ் பிணையங்கள்"
+
+#~ msgid "Could not load bond user interface."
+#~ msgstr "பிணைப்பு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "primary"
+#~ msgstr "முதன்மை DNS:"
+
+#, c-format
+#~ msgid "Bond connection %d"
+#~ msgstr "பிணைப்பு இணைப்பு %d"
+
+#, fuzzy
+#~ msgid "Could not load bridge port user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Could not load bridge user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy, c-format
+#~ msgid "Bridge connection %d"
+#~ msgstr "ஒயர்டு இணைப்பு %d"
+
+#, fuzzy
+#~ msgid "Could not load DCB user interface."
+#~ msgstr "DSL பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#~ msgid "Could not load DSL user interface."
+#~ msgstr "DSL பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "missing parent interface"
+#~ msgstr "தாய் இடைமுகம் (_P):"
+
+#, c-format
+#~ msgid "DSL connection %d"
+#~ msgstr "DSL இணைப்பு %d"
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “em1”, "
+#~ "“3C:97:0E:42:1A:19”, “em1 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "இந்த விருப்பம் இந்த இணைப்பை பிணைய சாதனத்துடன் இங்கே உள்ளிடப்பட்ட நிரந்தர MAC "
+#~ "முகவரியுடன்  பூட்டுகிறது.  எடுத்துக்காட்டு: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid "ignored"
+#~ msgstr "உதாசீனம் செய்யப்பட்டது"
+
+#, fuzzy
+#~ msgid "Could not load ethernet user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Ethernet device"
+#~ msgstr "ஈதர்நெட் (%s)"
+
+#, fuzzy
+#~ msgid "cloned MAC"
+#~ msgstr "_l நகல் மேக்(MAC) முகவரி:"
+
+#, fuzzy, c-format
+#~ msgid "Ethernet connection %d"
+#~ msgstr "ஒயர்டு இணைப்பு %d"
+
+#, fuzzy
+#~ msgid "Could not load General user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “ib0”, "
+#~ "“80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65”, “ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)”"
+#~ msgstr ""
+#~ "இந்த விருப்பம் இந்த இணைப்பை பிணைய சாதனத்துடன் இங்கே உள்ளிடப்பட்ட நிரந்தர MAC "
+#~ "முகவரியுடன்  பூட்டுகிறது.  எடுத்துக்காட்டு: 00:11:22:33:44:55"
+
+#~ msgid "Could not load InfiniBand user interface."
+#~ msgstr "இன்ஃபினிபேன்ட் பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, c-format
+#~ msgid "InfiniBand connection %d"
+#~ msgstr "இன்ஃபினிபேன்ட் இணைப்பு %d"
+
+#, fuzzy
+#~ msgid "Could not load IP tunnel user interface."
+#~ msgstr "IPv4 பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy, c-format
+#~ msgid "IP tunnel connection %d"
+#~ msgstr "ஒயர்டு இணைப்பு %d"
+
+#~ msgid "Automatic (VPN)"
+#~ msgstr "தானாக (VPN)"
+
+#~ msgid "Automatic (VPN) addresses only"
+#~ msgstr "தானியக்கி (VPN) முகவரிகள் மட்டுமே"
+
+#~ msgid "Automatic, addresses only"
+#~ msgstr "தானியக்கி முகவரிகள் மட்டுமே"
+
+#~ msgid "Automatic (PPPoE)"
+#~ msgstr "தானாக (PPPoE)"
+
+#~ msgid "Automatic (PPPoE) addresses only"
+#~ msgstr "தானியக்கி (PPPoE) முகவரிகள் மட்டுமே"
+
+#~ msgid "Automatic (DHCP)"
+#~ msgstr "தானாக (DHCP)"
+
+#~ msgid "Automatic (DHCP) addresses only"
+#~ msgstr "தானியக்கி (DHCP) முகவரிகள் மட்டுமே "
+
+#~ msgid "Link-Local Only"
+#~ msgstr "இணைப்பு-உள்ளமை மட்டும்"
+
+#, fuzzy
+#~ msgid "Additional DNS ser_vers"
+#~ msgstr "_DNS சேவையகங்கள்:"
+
+#, fuzzy
+#~ msgid "Additional s_earch domains"
+#~ msgstr "_e செயற்களத்தை தேடவும்"
+
+#, c-format
+#~ msgid "Editing IPv4 routes for %s"
+#~ msgstr "IPv4 வழிகள் %sகாக திருத்துகிறது"
+
+#~ msgid "IPv4 Settings"
+#~ msgstr "IPv4 அமைவுகள்"
+
+#~ msgid "Could not load IPv4 user interface."
+#~ msgstr "IPv4 பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#~ msgid "Automatic, DHCP only"
+#~ msgstr "தானாக, (DHCP) மட்டும்"
+
+#, c-format
+#~ msgid "Editing IPv6 routes for %s"
+#~ msgstr "IPv6 வழிகள் %sகாக திருத்துகிறது"
+
+#~ msgid "IPv6 Settings"
+#~ msgstr "IPv6 அமைவுகள்"
+
+#~ msgid "Could not load IPv6 user interface."
+#~ msgstr "IPv6 பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Could not load MACsec user interface."
+#~ msgstr "DSL பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy, c-format
+#~ msgid "MACSEC connection %d"
+#~ msgstr "DSL இணைப்பு %d"
+
+#, c-format
+#~ msgid "%s slave %d"
+#~ msgstr "%s ஸ்லேவ் %d"
+
+#~ msgid "Could not load mobile broadband user interface."
+#~ msgstr "மொபைல் பிராட்பேண்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#~ msgid "Unsupported mobile broadband connection type."
+#~ msgstr "துணைபுரியாத மொபைல் பிராட்பேண்டை இணைப்பு வகை. முடியவில்லை."
+
+#~ msgid "Select Mobile Broadband Provider Type"
+#~ msgstr "மொபைல் பிராட்பேண்டு வழங்குபவர் வகையை தேர்ந்தெடுக்கவும்"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the technology your mobile broadband provider uses. If you are "
+#~ "unsure, ask your provider."
+#~ msgstr ""
+#~ "உங்கள் வழங்குபவர் பயன்படுத்தும் டெக்னாலஜியை உங்களது பிராட்பேண்டு மொபைலுக்கு "
+#~ "தேர்ந்தெடுக்கவும்.உங்களுக்கு தெரியவில்லை என்றால், அவரைக் கேட்டவும்."
+
+#~ msgid ""
+#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgstr ""
+#~ "எனது வழங்குபவர் _GSM-தொடர்புடைய டெக்னாலஜியைப் பயன்படுத்துகிறார் (எ.கா. GPRS, "
+#~ "EDGE, UMTS, HSDPA)"
+
+#~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
+#~ msgstr ""
+#~ "எனது வழங்குபவர் C_DMA-தொடர்புடைய டெக்னாலஜியைப் பயன்படுத்துகிறார் (எ.கா. 1xRTT, "
+#~ "EVDO)"
+
+#~ msgid "PAP"
+#~ msgstr "PAP"
+
+#~ msgid "CHAP"
+#~ msgstr "CHAP"
+
+#~ msgid "MSCHAPv2"
+#~ msgstr "MSCHAPv2"
+
+#~ msgid "MSCHAP"
+#~ msgstr "MSCHAP"
+
+#~ msgid "none"
+#~ msgstr "ஒன்றுமில்லை"
+
+#, c-format
+#~ msgid "Editing PPP authentication methods for %s"
+#~ msgstr "PPP அங்கீகாரம் முறைகள் %sகாக திருத்தப்படுகிறது"
+
+#~ msgid "PPP Settings"
+#~ msgstr "PPP அமைவுகள்"
+
+#~ msgid "Could not load PPP user interface."
+#~ msgstr "PPP பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Could not load proxy user interface."
+#~ msgstr "பிணைப்பு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Could not load team port user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Could not load team user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy, c-format
+#~ msgid "Team connection %d"
+#~ msgstr "ஒயர்டு இணைப்பு %d"
+
+#, fuzzy
+#~ msgid "New connection…"
+#~ msgstr "பிணைய இணைப்பு இல்லை"
+
+#, fuzzy
+#~ msgid "Could not load vlan user interface."
+#~ msgstr "IPv4 பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, c-format
+#~ msgid "VLAN connection %d"
+#~ msgstr "VLAN இணைப்பு %d"
+
+#, fuzzy, c-format
+#~ msgid "Could not load editor VPN plugin for “%s” (%s)."
+#~ msgstr "VPN கூடுதல் இணைப்பு சேவை '%s'காக தேட முடியவில்லை."
+
+#, fuzzy
+#~ msgid "unknown failure"
+#~ msgstr "இணைப்பை சேர்க்க முடியவில்லை"
+
+#~ msgid "Could not load VPN user interface."
+#~ msgstr "VPN பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy, c-format
+#~ msgid "Could not find VPN plugin for “%s”."
+#~ msgstr "VPN கூடுதல் இணைப்பு சேவை '%s'காக தேட முடியவில்லை."
+
+#, c-format
+#~ msgid "VPN connection %d"
+#~ msgstr "VPN இணைப்பு %d"
+
+#~ msgid "Choose a VPN Connection Type"
+#~ msgstr "VPN இணைப்பு வகை ஒன்றை தேர்ந்தெடுக்கவும்"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of VPN you wish to use for the new connection. If the "
+#~ "type of VPN connection you wish to create does not appear in the list, "
+#~ "you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "புதிய இணைப்புக்கு நீங்கள் விரும்பும் VPN இணைப்பு வகை ஒன்றை தேர்ந்தெடுக்கவும்.  நீங்கள் "
+#~ "உருவாக்க விரும்பும் VPN இணைப்பு வகை பட்டியலில் தெரியவில்லை எனில், நீங்கள் சரியான VPN "
+#~ "சொருகியை நிறுவவில்லை."
+
+#~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
+#~ msgstr "WEP 40/128-பிட் விசை (ஹெக்ஸ் அல்லது ஆஸ்கி)"
+
+#~ msgid "WEP 128-bit Passphrase"
+#~ msgstr "WEP 128-பிட் கடவுச்சொல்"
+
+#~ msgid "Dynamic WEP (802.1X)"
+#~ msgstr "மாறும் WEP (802.1X)"
+
+#~ msgid "WPA & WPA2 Personal"
+#~ msgstr "WPA & WPA2 தனிப்பட்ட"
+
+#~ msgid "WPA & WPA2 Enterprise"
+#~ msgstr "WPA & WPA2 கடவுச்சொல்"
+
+#, fuzzy
+#~ msgid "WPA3 Personal"
+#~ msgstr "WPA & WPA2 தனிப்பட்ட"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
+#~ msgstr ""
+#~ "Wi-Fi பாதுகாப்பு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை; விடுபட்ட Wi-Fi அமைவுகள்."
+
+#, fuzzy
+#~ msgid "Wi-Fi Security"
+#~ msgstr "ஒயர்லெஸ் பாதுகாப்பு"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface."
+#~ msgstr "Wi-Fi பாதுகாப்பு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the Wi-Fi access point (AP) "
+#~ "specified by the BSSID entered here. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "இந்த விருப்பம் இந்த இணைப்பை வயர்லெஸ் அணுகல் புள்ளி (AP) இங்கே உள்ளிடப்பட்ட BSSIDயுடன்  "
+#~ "பூட்டுகிறது.  எடுத்துக்காட்டு: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “wlan0”, "
+#~ "“3C:97:0E:42:1A:19”, “wlan0 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "இந்த விருப்பம் இந்த இணைப்பை பிணைய சாதனத்துடன் இங்கே உள்ளிடப்பட்ட நிரந்தர MAC "
+#~ "முகவரியுடன்  பூட்டுகிறது.  எடுத்துக்காட்டு: 00:11:22:33:44:55"
+
+#, c-format
+#~ msgid "%u (%u MHz)"
+#~ msgstr "%u (%u MHz)"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi user interface."
+#~ msgstr "Wi-Fi பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Wi-Fi device"
+#~ msgstr "ஏதாவது சாதனம்"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi connection %d"
+#~ msgstr "ஒயர்டு இணைப்பு %d"
+
+#, fuzzy
+#~ msgid "Allowed IPs"
+#~ msgstr "அனுமதிக்கப்பட்ட முறைகள்:"
+
+#, fuzzy
+#~ msgid "Could not load WireGuard user interface."
+#~ msgstr "ஒயர்டு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#, fuzzy, c-format
+#~ msgid "WireGuard connection %d"
+#~ msgstr "ஒயர்லெஸ் இணைப்பு %d"
+
+#, fuzzy, c-format
+#~ msgid "A file named “%s” already exists."
+#~ msgstr "\"%s\" என பெயரிடப்பட்ட கோப்பு ஏற்கனவே உள்ளது."
+
+#~ msgid "_Replace"
+#~ msgstr "மாற்று (_R)"
+
+#, c-format
+#~ msgid "Do you want to replace %s with the VPN connection you are saving?"
+#~ msgstr "VPN இணைப்புடன் %s ஐ இடமாற்ற நீங்கள் விரும்புகிறீர்களா?"
+
+#~ msgid "Cannot export VPN connection"
+#~ msgstr "VPN இணைப்பை ஏற்ற முடியவல்லை"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The VPN connection “%s” could not be exported to %s.\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "VPN இணைப்பு '%s' ஆனது %sஐ ஏற்றுமதி செய்ய முடியாது.\n"
+#~ "\n"
+#~ "பிழை: %s."
+
+#, fuzzy
+#~ msgid "Export VPN connection…"
+#~ msgstr "VPN இணைப்பை ஏற்றவும்..."
+
+#~ msgid "_Unlock"
+#~ msgstr "பூட்டுநீக்கு (_U)"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "தானியங்கியாக இந்த சாதனத்தை பூட்டு திறக்கவும்"
+
+#~ msgid "Usage:"
+#~ msgstr "பயன்பாடு:"
+
+#~ msgid ""
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+#~ msgstr ""
+#~ "இது NetworkManager இன் நிரல் ஆகும் (https://wiki.gnome.org/Projects/"
+#~ "NetworkManager/)."
+
+#~ msgid ""
+#~ "It is not intended for command-line interaction but instead runs in the "
+#~ "GNOME desktop environment."
+#~ msgstr ""
+#~ "கட்டளை வரி கலந்துரையாடலுக்கு நோக்கமில்லை ஆனால் அதற்கு பதிலாக GNOME பணிமேடை சூழலை "
+#~ "இயக்குகிறது."
+
+#~ msgid "GTC"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "Choose a PAC file"
+#~ msgstr "ஒரு PAC கோப்பினை தேர்ந்தெடுக்கவும்..."
+
+#~ msgid "PAC files (*.pac)"
+#~ msgstr "PAC கோப்புகள் (*.pac)"
+
+#~ msgid "All files"
+#~ msgstr "எல்லா கோப்புகள்"
+
+#~ msgid "Anonymous"
+#~ msgstr "பெயரில்லாத அடையாளம்"
+
+#~ msgid "Authenticated"
+#~ msgstr "அங்கீகரித்த"
+
+#~ msgid "Both"
+#~ msgstr "இரண்டும்"
+
+#, fuzzy
+#~ msgid "Anony_mous identity"
+#~ msgstr "பெயரில்லாத அடையாளம் (_m):"
+
+#, fuzzy
+#~ msgid "PAC _file"
+#~ msgstr "PAC _ கோப்பு:"
+
+#, fuzzy
+#~ msgid "_Inner authentication"
+#~ msgstr "_I உள் அங்கீகாரம்:"
+
+#~ msgid "Allow automatic PAC pro_visioning"
+#~ msgstr "_v தானியங்கி PAC  ஏற்பாடு"
+
+#~ msgid "MD5"
+#~ msgstr "MD5"
+
+#~ msgid "Version 0"
+#~ msgstr "பதிப்பு 0"
+
+#~ msgid "Version 1"
+#~ msgstr "பதிப்பு 1"
+
+#~ msgid "No CA certificate is _required"
+#~ msgstr "CA சான்றிதழ் தேவையில்லை (_r)"
+
+#, fuzzy
+#~ msgid "PEAP _version"
+#~ msgstr "_v PEAP பதிப்பு:"
+
+#, fuzzy
+#~ msgid "P_rivate Key Passphrase"
+#~ msgstr "WEP 128-பிட் கடவுச்சொல்"
+
+#, fuzzy
+#~ msgid "Sh_ow passphrase"
+#~ msgstr "கடவுச்சொற்களைக் காட்டு (_w)"
+
+#, fuzzy
+#~ msgid "no user certificate selected"
+#~ msgstr "CA சான்றிதழ் தேவையில்லை (_r)"
+
+#, fuzzy
+#~ msgid "I_dentity"
+#~ msgstr "அடையாளம்(_d):"
+
+#, fuzzy
+#~ msgid "MSCHAPv2 (no EAP)"
+#~ msgstr "MSCHAPv2"
+
+#, fuzzy
+#~ msgid "no CA certificate selected"
+#~ msgstr "CA சான்றிதழ் தேவையில்லை (_r)"
+
+#~ msgid "TLS"
+#~ msgstr "TLS"
+
+#~ msgid "FAST"
+#~ msgstr "FAST"
+
+#~ msgid "Tunneled TLS"
+#~ msgstr "Tunneled TLS"
+
+#~ msgid "Protected EAP (PEAP)"
+#~ msgstr "பாதுகாக்கப்பட்ட EAP (PEAP)"
+
+#, fuzzy
+#~ msgid "Au_thentication"
+#~ msgstr "_t அங்கீகாரம்:"
+
+#, fuzzy
+#~ msgid "missing password"
+#~ msgstr "தனிப்பட்ட விசை கடவுச்சொல் (_P):"
+
+#, fuzzy
+#~ msgid "_Type"
+#~ msgstr "வகை (_T):"
+
+#~ msgid "Open System"
+#~ msgstr "திறந்த கணினி"
+
+#~ msgid "1 (Default)"
+#~ msgstr "1 (முன்னிருப்பு)"
+
+#, fuzzy
+#~ msgid "_Key"
+#~ msgstr "விசை (_K):"
+
+#, fuzzy
+#~ msgid "WEP inde_x"
+#~ msgstr "WEP அட்டவணை (_x):"
+
+#~ msgid "Disable connected notifications"
+#~ msgstr "செயல்படுத்தாத இணைக்கப்பட்ட அறிவிப்புகள்"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to a network."
+#~ msgstr ""
+#~ "Set this to TRUE to disable notifications when connecting to a network."
+
+#~ msgid "Disable disconnected notifications"
+#~ msgstr "செயல்படுத்தாத இணைக்கப்படாத அறிவிப்புகள்"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when disconnecting from a "
+#~ "network."
+#~ msgstr ""
+#~ "Set this to TRUE to disable notifications when disconnecting from a "
+#~ "network."
+
+#, fuzzy
+#~ msgid "Disable VPN notifications"
+#~ msgstr "செயல்படுத்தாத இணைக்கப்பட்ட அறிவிப்புகள்"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to or "
+#~ "disconnecting from a VPN."
+#~ msgstr ""
+#~ "Set this to TRUE to disable notifications when disconnecting from a "
+#~ "network."
+
+#~ msgid "Suppress networks available notifications"
+#~ msgstr "கிடைக்கக்கூடிய அறிவிப்புகளின் பிணையத்தை குறைக்கிறது"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when Wi-Fi networks are "
+#~ "available."
+#~ msgstr ""
+#~ "Set this to TRUE to disable notifications when wireless networks are "
+#~ "available."
+
+#~ msgid "Stamp"
+#~ msgstr "முத்திரை"
+
+#~ msgid ""
+#~ "Used to determine whether settings should be migrated to a new version."
+#~ msgstr ""
+#~ "Used to determine whether settings should be migrated to a new version."
+
+#, fuzzy
+#~ msgid "Disable WiFi Create"
+#~ msgstr "செயல்நீக்க Wi-Fiஐ உருவாக்கு"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set to true to disable creation of adhoc networks when using the applet."
+#~ msgstr ""
+#~ "அப்லெட்டைப் பயன்படுத்தும் போது சரி என்பதற்கு செயல்நீக்க உருவாக்கமான  adhoc பிணையங்களை "
+#~ "அமைக்கவும்."
+
+#, fuzzy
+#~ msgid "Ignore CA certificate"
+#~ msgstr "CA சான்றிதழை தேர்ந்தெடுக்கவும்"
+
+#, fuzzy
+#~ msgid "No certificate set"
+#~ msgstr "CA சான்றிதழ் தேவையில்லை (_r)"
+
+#, fuzzy, c-format
+#~ msgid "Choose a key for %s Certificate"
+#~ msgstr "உங்கள் தனிப்பட்ட சான்றிதழை தேர்ந்தெடுக்கவும்..."
+
+#, fuzzy, c-format
+#~ msgid "%s key _password"
+#~ msgstr "தனிப்பட்ட விசை கடவுச்சொல் (_P):"
+
+#, fuzzy, c-format
+#~ msgid "Choose %s Certificate"
+#~ msgstr "உங்கள் தனிப்பட்ட சான்றிதழை தேர்ந்தெடுக்கவும்..."
+
+#, fuzzy, c-format
+#~ msgid "%s _certificate"
+#~ msgstr "பயனர் சான்றிதழ் (_U):"
+
+#~ msgid "Unlisted"
+#~ msgstr "பட்டியலிடப்படாத"
+
+#, fuzzy
+#~ msgid "My plan is not listed…"
+#~ msgstr "எனது திட்டம் பட்டியலிடப்படவில்லை..."
+
+#~ msgid "Provider"
+#~ msgstr "வழங்குபவர்"
+
+#~ msgid "Installed GSM device"
+#~ msgstr "GSM சாதனம் நிறுவப்பட்டது"
+
+#~ msgid "Installed CDMA device"
+#~ msgstr "CDMA சாதனம் நிறுவபட்டது"
+
+#~ msgid "Any device"
+#~ msgstr "ஏதாவது சாதனம்"
+
+#~ msgid "New Mobile Broadband Connection"
+#~ msgstr "புதிய மொபைல் பிராட்பேண்டு இணைப்பு"
+
+#~ msgid ""
+#~ "This assistant helps you easily set up a mobile broadband connection to a "
+#~ "cellular (3G) network."
+#~ msgstr ""
+#~ "ஒரு செல்லுலார் (3G) பிணையத்துடன் மொபைல் பிராட்பேண்டு இணைப்பைஅமைக்க உங்களுக்கு "
+#~ "உதவியாளர் உதவிபுரிவார்."
+
+#~ msgid "You will need the following information:"
+#~ msgstr "பின்வரும் தகவல் உங்களுக்கு தேவை:"
+
+#, fuzzy
+#~ msgid "Your broadband provider’s name"
+#~ msgstr "உங்கள் பிராட்பேண்டு வழங்குபவர்கள் பெயர்"
+
+#~ msgid "Your broadband billing plan name"
+#~ msgstr "உங்கள் பிராட்பேண்டு பில்லிங் திட்டப் பெயர்"
+
+#~ msgid "(in some cases) Your broadband billing plan APN (Access Point Name)"
+#~ msgstr ""
+#~ "(ஒரு சில சமயங்களில்) உங்களது பிராட்பேண்டுபில்லிங் திட்டம் APN (Access Point Name)"
+
+#~ msgid "Create a connection for _this mobile broadband device:"
+#~ msgstr "இந்த மொபைல் பிராட்பேண்டு சாதன இணைப்பை உருவாக்கவும் (_t):"
+
+#~ msgid "Set up a Mobile Broadband Connection"
+#~ msgstr "மொபைல் பிராட்பேண்டு இணைப்பை அமைக்கவும்"
+
+#, fuzzy
+#~ msgid "Country or region:"
+#~ msgstr "நாடு அல்லது மாநிலம் "
+
+#, fuzzy
+#~ msgid "Choose your Provider’s Country or Region"
+#~ msgstr "உங்களின் வழங்குபவரின் நாடு அல்லது மாநிலம் தேர்ந்தெடுக்கவும்"
+
+#~ msgid "Select your provider from a _list:"
+#~ msgstr "ஒரு பட்டியலிருந்து உங்கள் வழங்குபவரை தேர்ந்தெடுக்கவும் (_l):"
+
+#, fuzzy
+#~ msgid ""
+#~ "I can’t find my provider and I wish to set up the connection _manually:"
+#~ msgstr ""
+#~ "எனது வழங்குபவரை தேட முடியவில்லை மற்றும் கைமுறையாக அதை உள்ளிட விரும்புகிறேன் (_m):"
+
+#~ msgid "My provider uses GSM technology (GPRS, EDGE, UMTS, HSPA)"
+#~ msgstr ""
+#~ "எனது வழங்குபவர் GSM டெக்னாலஜியை பயன்படுத்துகிறார் (GPRS, EDGE, UMTS, HSPA)"
+
+#~ msgid "My provider uses CDMA technology (1xRTT, EVDO)"
+#~ msgstr "எனது வழங்குபவர் CDMA டெக்னாலஜியை பயன்படுத்துகிறார் (1xRTT, EVDO)"
+
+#~ msgid "Choose your Provider"
+#~ msgstr "உங்கள் வழங்குபவரை தேர்ந்தெடுக்கவும்"
+
+#~ msgid "_Select your plan:"
+#~ msgstr "உங்கள் திட்டத்தை தேர்ந்தெடுக்கவும் (_S):"
+
+#~ msgid "Selected plan _APN (Access Point Name):"
+#~ msgstr "தேர்ந்தெடுக்கப்பட்ட திட்டம் _APN (Access Point Name):"
+
+#, fuzzy
+#~ msgid ""
+#~ "Warning: Selecting an incorrect plan may result in billing issues for "
+#~ "your broadband account or may prevent connectivity.\n"
+#~ "\n"
+#~ "If you are unsure of your plan please ask your provider for your plan’s "
+#~ "APN."
+#~ msgstr ""
+#~ "எச்சரிக்கை: ஒரு தவறான திட்டத்தை தேர்ந்தெடுப்பது உங்கள் ப்ராட்பேண்ட் கணக்கில் தவறான பில்லை "
+#~ "கொடுக்கலாம் அல்லது இணைப்பை துண்டிக்கலாம்.\n"
+#~ "\n"
+#~ "உங்கள் திட்டத்தை பற்றி எதுவும் தெரியவில்லையெனில் உங்கள் திட்டத்தின் APNஐ வழங்குநரிடம் "
+#~ "கேட்கவும்."
+
+#~ msgid "Choose your Billing Plan"
+#~ msgstr "பில்லிங் திட்டத்தை தேர்ந்தெடுக்கவும்"
+
+#~ msgid ""
+#~ "Your mobile broadband connection is configured with the following "
+#~ "settings:"
+#~ msgstr "பின்வரும் அமைவுகள் உங்கள் மொபைல் பிராட்பேண்டு இணைப்பு கட்டமைக்கப்படுகிறது:"
+
+#~ msgid "Your Device:"
+#~ msgstr "உங்கள் சாதனம்:"
+
+#~ msgid "Your Provider:"
+#~ msgstr "உங்கள் வழங்குபவர்:"
+
+#~ msgid "Your Plan:"
+#~ msgstr "உங்கள் திட்டம்:"
+
+#, fuzzy
+#~ msgid ""
+#~ "A connection will now be made to your mobile broadband provider using the "
+#~ "settings you selected. If the connection fails or you cannot access "
+#~ "network resources, double-check your settings. To modify your mobile "
+#~ "broadband connection settings, choose “Network Connections” from the "
+#~ "System → Preferences menu."
+#~ msgstr ""
+#~ " A connection will now be made to your mobile broadband provider using "
+#~ "the settings you selected.  If the connection fails or you cannot access "
+#~ "network resources, double-check your settings.  To modify your mobile "
+#~ "broadband connection settings, choose \"Network Connections\" from the "
+#~ "System >> Preferences menu."
+
+#~ msgid "Confirm Mobile Broadband Settings"
+#~ msgstr "மொபைல் பிராட்பேண்டு அமைவுகளை உறுதி செய்யவும்"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "(ஒன்றுமில்லை)"
+
+#, fuzzy, c-format
+#~ msgid "Certificate in %s"
+#~ msgstr "C_A சான்றிதழ்:"
+
+#, fuzzy
+#~ msgid "(Unknown)"
+#~ msgstr "தெரியாத"
+
+#, fuzzy
+#~ msgid "Select"
+#~ msgstr "ஒரு கோப்பினை தேர்ந்தெடு"
+
+#, fuzzy
+#~ msgid "Select from file…"
+#~ msgstr "ஒரு கோப்பினை தேர்ந்தெடு"
+
+#, fuzzy, c-format
+#~ msgid "Choose a %s Certificate"
+#~ msgstr "உங்கள் தனிப்பட்ட சான்றிதழை தேர்ந்தெடுக்கவும்..."
+
+#, fuzzy, c-format
+#~ msgid "%s certificate _password"
+#~ msgstr "பயனர் சான்றிதழ் (_U):"
+
+#, fuzzy
+#~ msgid "Error opening a session: "
+#~ msgstr "இணைப்பை திருத்தும்போது பிழை"
+
+#, fuzzy
+#~ msgid "_Unlock token"
+#~ msgstr "பூட்டுநீக்கு (_U)"
+
+#, fuzzy
+#~ msgid "Ask for this password every time"
+#~ msgstr "ஒவ்வொரு முறையும் இந்த கடவுச்சொல்லைக் கேட்கவும் (_k)"
+
+#, fuzzy
+#~ msgid "The password is not required"
+#~ msgstr "'%s'ஐ இணைப்பதற்கு ஒரு கடவுச்சொல் தேவைப்படுகிறது."
+
+#, fuzzy
+#~ msgid "Sh_ow passwords"
+#~ msgstr "கடவுச்சொற்களைக் காட்டு (_w)"
+
+#, fuzzy
+#~ msgid "_Tertiary Password:"
+#~ msgstr "கடவுச்சொல் (_P):"
+
+#, fuzzy
+#~ msgid "_Secondary Password:"
+#~ msgstr "கடவுச்சொல் (_P):"
+
+#~ msgid "_Password:"
+#~ msgstr "கடவுச்சொல் (_P):"
+
+#, fuzzy
+#~ msgid "Click to connect"
+#~ msgstr "துண்டி"
+
+#~ msgctxt "Wifi/wired security"
+#~ msgid "None"
+#~ msgstr "ஒன்றுமில்லை"
+
+#, fuzzy
+#~ msgid "Dynamic WEP (802.1x)"
+#~ msgstr "மாறும் WEP (802.1X)"
+
+#~ msgid "C_reate"
+#~ msgstr "உருவாக்கு (_r)"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Passwords or encryption keys are required to access the Wi-Fi network "
+#~ "“%s”."
+#~ msgstr ""
+#~ "கடவுச்சொல் அல்லது மறைகுறியாக்க விசைகள் ஒயர்லெஸ் பிணைய '%s'ஐ அணுகுவதற்கு "
+#~ "தேவைப்படுகிறது."
+
+#, fuzzy
+#~ msgid "Wi-Fi Network Authentication Required"
+#~ msgstr "ஒயர்லெஸ் பிணைய அங்கீகாரம் தேவைப்படுகிறது"
+
+#, fuzzy
+#~ msgid "Authentication required by Wi-Fi network"
+#~ msgstr "அங்கீகார ஒயர்லெஸ் பிணையம் தேவைப்படுகிறது"
+
+#, fuzzy
+#~ msgid "Create New Wi-Fi Network"
+#~ msgstr "புதிய ஒர்லெஸ் பிணையத்தை உருவாக்கவும்"
+
+#, fuzzy
+#~ msgid "New Wi-Fi network"
+#~ msgstr "புதிய ஒயர்லெஸ் பிணையம்"
+
+#, fuzzy
+#~ msgid "Enter a name for the Wi-Fi network you wish to create."
+#~ msgstr "ஒயர்லெஸ் பிணையத்தை உருவாக்க ஒரு பெயரை உள்ளிடவும்."
+
+#, fuzzy
+#~ msgid "Connect to Hidden Wi-Fi Network"
+#~ msgstr "மறைக்கப்பட்ட ஒயர்லெஸ் பிணையத்தை இணைக்கவும்"
+
+#, fuzzy
+#~ msgid "Hidden Wi-Fi network"
+#~ msgstr "மறைக்கட்ட ஒழர்லெஸ் பிணையம்"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter the name and security details of the hidden Wi-Fi network you wish "
+#~ "to connect to."
+#~ msgstr ""
+#~ "நீங்கள் இணைக்க விரும்பினால் மறைக்கப்பட்ட ஒயர்லெஸ் பிணையத்திற்கு பெயர் மற்றும்பாதுகாப்பு "
+#~ "விவரங்களை உள்ளிடவும்."
+
+#, fuzzy
+#~ msgid "Wi-Fi _security"
+#~ msgstr "ஒயர்லெஸ் பாதுகாப்பு (_W):"
+
+#, fuzzy
+#~ msgid "C_onnection"
+#~ msgstr "இணைப்பு (_n):"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter"
+#~ msgstr "ஒயர்லெஸ் அடாப்படர் (_a):"
+
+#, fuzzy
+#~ msgid "I can’t find my provider and I wish to enter it _manually:"
+#~ msgstr ""
+#~ "எனது வழங்குபவரை தேட முடியவில்லை மற்றும் கைமுறையாக அதை உள்ளிட விரும்புகிறேன் (_m):"
+
+#~ msgid "Provider:"
+#~ msgstr "வழங்குபவர்:"
+
+#~ msgid "Country or Region List:"
+#~ msgstr "நாடு அல்லது மாநிலப் பட்டியல்:"
+
+#~ msgid "Country or region"
+#~ msgstr "நாடு அல்லது மாநிலம் "
+
+#, fuzzy
+#~ msgid "Wi-Fi _security:"
+#~ msgstr "ஒயர்லெஸ் பாதுகாப்பு (_W):"
+
+#~ msgid "_Network name:"
+#~ msgstr "பிணைய பெயர் (_N):"
+
+#~ msgid "C_onnection:"
+#~ msgstr "இணைப்பு (_n):"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter:"
+#~ msgstr "ஒயர்லெஸ் அடாப்படர் (_a):"
+
+#, fuzzy
+#~ msgid "%s (default)"
+#~ msgstr "1 (முன்னிருப்பு)"
+
+#~ msgid "Ignored"
+#~ msgstr "உதாசீனம் செய்யப்பட்டது"
+
+#~ msgid "Failed to update connection secrets due to an unknown error."
+#~ msgstr "தெரியாத பிழையால் இணைப்பு ரகசியங்களை மேம்படுத்த முடியவில்லை."
+
+#, fuzzy
+#~ msgid "2:"
+#~ msgstr "2"
+
+#, fuzzy
+#~ msgid "3:"
+#~ msgstr "3"
+
+#, fuzzy
+#~ msgid "4:"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgid "Connection _priority for auto-activation:"
+#~ msgstr "இணைப்பு தகவல் (_I)"
+
+#~ msgid "DSL"
+#~ msgstr "DSL"
+
+#~ msgid "Cannot import VPN connection"
+#~ msgstr "VPN இணைப்பை இறக்க முடியவில்லை"
+
+#, fuzzy
+#~ msgid ""
+#~ "The file “%s” could not be read or does not contain recognized VPN "
+#~ "connection information\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "கோப்பு '%s'ஐ வாசிக்க முடியவில்லை அல்லது அங்கீகரிக்கப்பட்ட VPN இணைப்புத் தகவலை "
+#~ "பெற்றிருக்கவில்லை \n"
+#~ "\n"
+#~ "பிழை: %s."
+
+#, fuzzy
+#~ msgid "unknown error"
+#~ msgstr "தெரியாத"
+
+#, fuzzy
+#~ msgid "Choose a Certificate Authority certificate"
+#~ msgstr "அங்கீகார சான்றிதழைத் தேர்ந்தெடு..."
+
+#~ msgid "C_A certificate:"
+#~ msgstr "C_A சான்றிதழ்:"
+
+#, fuzzy
+#~ msgid "NetworkManager for GNOME"
+#~ msgstr "பிணைய மேலாளர்"
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected because the VPN service stopped."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN இணைப்பு '%s' VPN சேவை நிறுத்தப்பட்டதால் துண்டிக்கப்பட்டது."
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN இணைப்பு '%s' துண்டிக்கப்படுட்டது."
+
+#~ msgid "_Disconnect VPN"
+#~ msgstr "VPNஐ துணைடிக்கவும் (_D)"
+
+#, fuzzy
+#~ msgid "New Mobile Broadband connection..."
+#~ msgstr "புதிய மொபைல் பிராட்பேண்டு இணைப்பு"
+
+#, fuzzy
+#~ msgid "_Connect to Hidden Wi-Fi Network..."
+#~ msgstr "மறைக்கப்பட்ட ஒயர்லெஸ் பிணையத்துடன் இணைக்கவும் (_C)..."
+
+#, fuzzy
+#~ msgid "Create _New Wi-Fi Network..."
+#~ msgstr "புதிய ஒயர்லெஸ்பிணையத்தை உருவாக்கவும் (_N)..."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Aut_onegotiate"
+#~ msgstr "தானாக மாற்றக்கூடிய (_o)"
+
+#, fuzzy
+#~ msgid "FirewallD is not running."
+#~ msgstr "பிணைய மேலாளர் இயக்கத்தில் இல்லை..."
+
+#~ msgid "New..."
+#~ msgstr "புதிய..."
+
+#, fuzzy
+#~ msgid "invalid EAP-TLS CA certificate: %s"
+#~ msgstr "C_A சான்றிதழ்:"
+
+#~ msgid "Unencrypted private keys are insecure"
+#~ msgstr "மறைகுறியாக்கப்படாத தனிபட்ட விசைகள் பாதுகாப்பில்லாதது"
+
+#~ msgid ""
+#~ "The selected private key does not appear to be protected by a password.  "
+#~ "This could allow your security credentials to be compromised.  Please "
+#~ "select a password-protected private key.\n"
+#~ "\n"
+#~ "(You can password-protect your private key with openssl)"
+#~ msgstr ""
+#~ "The selected private key does not appear to be protected by a password.  "
+#~ "This could allow your security credentials to be compromised.  Please "
+#~ "select a password-protected private key.\n"
+#~ "\n"
+#~ "(You can password-protect your private key with openssl)"
+
+#~ msgid "Choose your private key..."
+#~ msgstr "உங்கள் தனிப்பட்ட விசையை தேர்ந்தெடுக்கவும்..."
+
+#~ msgid "New Mobile Broadband (CDMA) connection..."
+#~ msgstr "புதிய மொபைல் பிராட்பேண்டு (CDMA) இணைப்பு..."
+
+#~ msgid "You are now connected to the CDMA network."
+#~ msgstr "இப்போது நீங்கள் CDMA பிணையத்தோடு இணைக்கப்பட்டுள்ளீர்கள்."
+
+#~ msgid "CDMA network."
+#~ msgstr "சிடிஎம்ஏ வலைப்பின்னல்"
+
+#~ msgid "New Mobile Broadband (GSM) connection..."
+#~ msgstr "புதிய மொபைல் பிராட்பேண்டு (GSM) இணைப்பு..."
+
+#~ msgid "You are now connected to the GSM network."
+#~ msgstr "இப்போது நீங்கள் GSM பிணையத்தோடு இணைக்கப்படுகிறது."
+
+#~ msgid "GSM network."
+#~ msgstr "ஜிஎஸ்எம் வலைப்பின்னல்"
+
+#~ msgid "Wireless Networks (%s)"
+#~ msgstr "ஒயர்லெஸ் பிணையங்கள் (%s)"
+
+#~ msgid "Wireless Network (%s)"
+#~ msgstr "ஒயர்லெஸ் பிணையங்கள் (%s)"
+
+#~ msgid "wireless is disabled"
+#~ msgstr "ஒயர்லெஸை செயல்நீக்கு"
+
+#~ msgid "wireless is disabled by hardware switch"
+#~ msgstr "ஒயர்லெஸ் வன்பொருள் மாற்றியால் செயல்நீக்கப்பட்டது"
+
+#~ msgid "Configuring wireless network connection '%s'..."
+#~ msgstr "'%s' ஒயர்லெஸ் பிணைய இணைப்பு கட்டமைக்கிறது..."
+
+#~ msgid "Requesting a wireless network address for '%s'..."
+#~ msgstr "'%s'காக ஒரு ஒயர்லெஸ் பிணைய முகவரி தேவைப்படுகிறது..."
+
+#~ msgid "Wireless network connection '%s' active"
+#~ msgstr "ஒயர்லெஸ் பிணைய இணைப்பு '%s' செயல்படுகிறது"
+
+#~ msgid "WiMAX Mobile Broadband (%s)"
+#~ msgstr "வைமாக்ஸ் மொபைல் அகலப்பட்டை(%s)"
+
+#~ msgid "WiMAX Mobile Broadband"
+#~ msgstr "வைமாக்ஸ் மொபைல் அகலப்பட்டை"
+
+#~ msgid "You are now connected to the WiMAX network."
+#~ msgstr "இப்போது நீங்கள் வைமாக்ஸ்  பிணையத்தோடு இணைக்கப்பட்டுள்ளீர்கள்."
+
+#~ msgid "%d dB"
+#~ msgstr "%d dB"
+
+#~ msgctxt "WiMAX Base Station ID"
+#~ msgid "unknown"
+#~ msgstr "தெரியாத"
+
+#~ msgid "WiMAX (%s)"
+#~ msgstr "வைமாக்ஸ் (%s)"
+
+#~ msgid "CINR:"
+#~ msgstr "CINR:"
+
+#~ msgid "BSID:"
+#~ msgstr "BSID:"
+
+#~ msgid "Enable WiMA_X Mobile Broadband"
+#~ msgstr "_X வைமாக்ஸ் மொபைல் பிராட்பேண்டை செயற்படுத்தவும் "
+
+#~ msgid "_Help"
+#~ msgstr "உதவி (_H)"
+
+#~ msgid "2G (GPRS/EDGE)"
+#~ msgstr "2 ஜி (ஜிபிஆர்எஸ்/எட்ஜ்)"
+
+#~ msgid "3G (UMTS/HSPA)"
+#~ msgstr "3ஜி (யூஎம்டிஎஸ்/ஹெச்எஸ்பிஏ)"
+
+#~ msgid "Any"
+#~ msgstr "ஏதாவது"
+
+#~ msgid "Prefer 2G (GPRS/EDGE)"
+#~ msgstr "2 ஜி (ஜிபிஆர்எஸ்/எட்ஜ்) ஐ விரும்புகிறேன்"
+
+#~ msgid "Prefer 3G (UMTS/HSPA)"
+#~ msgstr "3ஜி (யூஎம்டிஎஸ்/ஹெச்எஸ்பிஏ) ஐ விரும்புகிறேன்"
+
+#~ msgid "_Device MAC address:"
+#~ msgstr "_D சாதன MAC முகவரி:"
+
+#~ msgid "Infrastructure"
+#~ msgstr "கட்டுமானம்"
+
+#~ msgid "Automatic (PPP)"
+#~ msgstr "தானாக (PPP)"
+
+#~ msgid "Automatic (PPP) addresses only"
+#~ msgstr "தானியக்கி (PPP) முகவரிகள் மட்டுமே"
+
+#~ msgid "Could not load Wired Security security user interface."
+#~ msgstr "கம்பியுள்ள பாதுகாப்பு பயனர் இடைமுகத்தை ஏற்ற முடியவில்லை."
+
+#~ msgid "Wireless"
+#~ msgstr "கம்பியில்லா"
+
+#~ msgid "_Save..."
+#~ msgstr "_S சேமிக்கவும்..."
+
+#~ msgid "A_vailable to all users"
+#~ msgstr "அனைத்து பயனர்களுக்கும் கிடைக்கப் பெறும"
+
+#~ msgid "Error saving connection"
+#~ msgstr "இணைப்பு சேமிக்கும் போது பிழை"
+
+#~ msgid "The property '%s' / '%s' is invalid: %d"
+#~ msgstr "பண்பு '%s' / '%s' செல்லுபடியாகாதது: %d"
+
+#~ msgid "An unknown error occurred."
+#~ msgstr "ஒரு தெரியாத பிழை ஏற்பட்டுவிட்டது."
+
+#~ msgid "Could not edit imported connection"
+#~ msgstr "இறக்கப்பட்ட இணைப்பை திருத்த முடியவில்லை"
+
+#~ msgid "No VPN plugin available. Please install one to enable this button."
+#~ msgstr "விபிஎன் சொருகி ஏதும் கிடைக்கவில்லை. ஒன்றை இந்த பொத்தானை செயலாக்க  நிறுவவும்."
+
+#~ msgid "_Edit..."
+#~ msgstr "_E திருத்து..."
+
+#~ msgid "_Delete..."
+#~ msgstr "_D அழி..."
+
+#~ msgid "Don't know how to edit '%s' connections"
+#~ msgstr "'%s' இணைப்பை திருத்துவது எப்படி என்று தெரியவில்லை"
+
+#~ msgid "Your phone is now ready to use!"
+#~ msgstr "உங்கள் ஃபோன் இப்போது பயன்படுத்துவதற்கு தயாராக உள்ளது!"
+
+#~ msgid "%s Network"
+#~ msgstr "%s பிணையம்"
+
+#~ msgid "Error: %s"
+#~ msgstr "பிழை: %s"
+
+#~ msgid "Mobile wizard was canceled"
+#~ msgstr "மொபைல் பார்வை ரத்துசெய்யப்பட்டது"
+
+#~ msgid "Unknown phone device type (not GSM or CDMA)"
+#~ msgstr "தெரியாத ஃபோன் சாதன வகை ( GSM இல்லை அல்லது CDMA)"
+
+#~ msgid "unexpectedly disconnected from the phone."
+#~ msgstr "எதிர்பாராமல் ஃபோனிலிருந்து துண்டிக்கப்பட்டது."
+
+#~ msgid "timed out detecting phone details."
+#~ msgstr "ஃபோன் விவரங்களை தேடுவதற்கு நேரம் முடிந்தது."
+
+#~ msgid "Detecting phone configuration..."
+#~ msgstr "ஃபோன் கட்டமைப்பை தேடுகிறது..."
+
+#~ msgid ""
+#~ "The default Bluetooth adapter must be enabled before setting up a Dial-Up-"
+#~ "Networking connection."
+#~ msgstr ""
+#~ "டயல்-அப்-பிணைய இணைப்பு அமைவிற்கு முன் முன்னிருப்பு ஃப்ளூடூத் அடாப்படர் செயல்படுதப்பட "
+#~ "வேண்டும்."
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (failed to connect to D-Bus: %s)."
+#~ msgstr "ப்ளூடூத் கட்டமைப்பு சாத்தியமில்லை (D-Busஉடன் இணைக்க முடியவில்லை: %s)."
+
+#~ msgid "Bluetooth configuration not possible (failed to create D-Bus proxy)."
+#~ msgstr "ப்ளூடூத் கட்டமைப்பு சாத்தியமில்லை (D-Bus ப்ராக்ஸியை உருவாக்க முடியவில்லை)."
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (error finding NetworkManager: %s)."
+#~ msgstr ""
+#~ "ப்ளூடூத் கட்டமைப்பு சாத்தியமில்லை (NetworkManagerஐ கண்டுபிடிப்பதில் பிழை: %s)."
+
+#~ msgid "Use your mobile phone as a network device (PAN/NAP)"
+#~ msgstr "ஒரு பிணைய சாதனமாக உங்கள் மொபைல் ஃபோனை பயன்படுத்தவும் (PAN/NAP)"
+
+#~ msgid "Access the Internet using your mobile phone (DUN)"
+#~ msgstr "உங்களது மொபைல் போனுக்கு பயன்படுத்துகிற இணையத்தை அணுகுகிறது (DUN)"
+
+#~ msgid "WiMAX"
+#~ msgstr "வைமாக்ஸ் "
+
+#~ msgid "No Certificate Authority certificate chosen"
+#~ msgstr "இங்கீகார சான்றிதழ் தேர்ந்தெடுக்கப்படவில்லை"
+
+#~ msgid ""
+#~ "Not using a Certificate Authority (CA) certificate can result in "
+#~ "connections to insecure, rogue wireless networks.  Would you like to "
+#~ "choose a Certificate Authority certificate?"
+#~ msgstr ""
+#~ " Not using a Certificate Authority (CA) certificate can result in "
+#~ "connections to insecure, rogue wireless networks.  Would you like to "
+#~ "choose a Certificate Authority certificate?"
+
+#~ msgid "PI_N:"
+#~ msgstr "PI_N:"
+
+#~ msgid "MT_U:"
+#~ msgstr "MT_U:"
+
+#~ msgid "_SSID:"
+#~ msgstr "_SSID:"
+
+#~ msgid "_Security:"
+#~ msgstr "பாதுகாப்பு (_S):"
+
+#~ msgid "United Kingdom"
+#~ msgstr "ஐக்கிய அரசு"
+
+#~ msgid "An instance of nm-applet is already running.\n"
+#~ msgstr "nm-அப்லெட்டின் ஒரு எடுத்துக்காட்டு ஏற்கனவே இயங்கிக் கொண்டிருக்கிறது.\n"
+
+#~ msgid "Could not acquire the %s service. (%d)\n"
+#~ msgstr "%s சேவையை பெற முடியவில்லை. (%d)\n"
+
+#~ msgid "PUK code required"
+#~ msgstr "PUK குறியீடு தேவைப்படுகிறது"
+
+#~ msgid "PUK code is needed for the mobile broadband device"
+#~ msgstr "PUK குறியீடு மொபைல் பிராட்பேண்டு சாதனத்திற்கு தேவைப்படுகிறது"
+
+#~ msgctxt "No wired security used"
+#~ msgid "None"
+#~ msgstr "ஒன்றுமில்லை"
+
+#~ msgctxt "Unknown/unrecognized wired or wifi security"
+#~ msgid "Unknown"
+#~ msgstr "தெரியாத"
+
+#~ msgid ""
+#~ "<span size=\"larger\" weight=\"bold\">Active Network Connections</span>"
+#~ msgstr ""
+#~ "<span size=\"larger\" weight=\"bold\">பிணைய இணைப்புகள் செயல்படுகிறது</span>"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Version 0\n"
+#~ "Version 1"
+#~ msgstr ""
+#~ "தானாக\n"
+#~ "பதிப்பு 0\n"
+#~ "பதிப்பு 1"
+
+#~ msgid "Other Wireless Network..."
+#~ msgstr "மற்ற ஒயர்லெஸ் பிணையம்..."
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Automatic with manual DNS settings\n"
+#~ "Manual\n"
+#~ "Link-Local\n"
+#~ "Shared to other computers"
+#~ msgstr ""
+#~ "தானாக\n"
+#~ "கைமுறையடன் தானியக்கி DNS அமைவுகள்\n"
+#~ "கைமுறை\n"
+#~ "இணைப்பு-உள்ளமை\n"
+#~ "மற்ற கணினிகளுடன் பகிரப்பட்டது"
+
+#~ msgid "_Routes&#x2026;"
+#~ msgstr "வழிகள் (_R)&#x2026;"
+
+#~ msgid "<b>Basic</b>"
+#~ msgstr "<b>அடிப்படை</b>"
+
+#~ msgid ""
+#~ "Any\n"
+#~ "3G (UMTS/HSPA)\n"
+#~ "2G (GPRS/EDGE)\n"
+#~ "Prefer 3G (UMTS/HSPA)\n"
+#~ "Prefer 2G (GPRS/EDGE)"
+#~ msgstr ""
+#~ "ஏதேனும்\n"
+#~ "3G (UMTS/HSPA)\n"
+#~ "2G (GPRS/EDGE)\n"
+#~ "Prefer 3G (UMTS/HSPA)\n"
+#~ "Prefer 2G (GPRS/EDGE)"
+
+#~ msgid "<b>Authentication</b>"
+#~ msgstr "<b>உறுதிப்படுத்து</b>"
+
+#~ msgid "<b>Echo</b>"
+#~ msgstr "<b>எகோ</b>"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "10 Mb/s\n"
+#~ "100 Mb/s\n"
+#~ "1 Gb/s\n"
+#~ "10 Gb/s"
+#~ msgstr ""
+#~ "தானாகc\n"
+#~ "10 Mb/s\n"
+#~ "100 Mb/s\n"
+#~ "1 Gb/s\n"
+#~ "10 Gb/s"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "Twisted Pair (TP)\n"
+#~ "Attachment Unit Interface (AUI)\n"
+#~ "BNC\n"
+#~ "Media Independent Interface (MII)"
+#~ msgstr ""
+#~ "தானாக\n"
+#~ "Twisted Pair (TP)\n"
+#~ "Attachment Unit Interface (AUI)\n"
+#~ "BNC\n"
+#~ "Media Independent Interface (MII)"
+
+#~ msgid ""
+#~ "Automatic\n"
+#~ "A (5 GHz)\n"
+#~ "B/G (2.4 GHz)"
+#~ msgstr ""
+#~ "தானாக\n"
+#~ "A (5 GHz)\n"
+#~ "B/G (2.4 GHz)"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the "
+#~ "NetworkManager applet glade file was not found)."
+#~ msgstr ""
+#~ "இணைப்பு எடிட்டர் தேவையான மூலங்களை தேடவில்லை (பிணைய மேலாளர் அப்லெட் க்ளேடு கோப்பு "
+#~ "காணப்படவில்லை)."
+
+#~ msgid "Save this connection for all users of this machine."
+#~ msgstr "இந்த கணினியில் அனைத்து பயனர்கள் இணைப்பையும் சேமிக்கவும்."
+
+#~ msgid "Apply..."
+#~ msgstr "செயல்படுத்து..."
+
+#~ msgid "could not connect to the system bus."
+#~ msgstr "கணினி பஸ்க்கு இணைக்க முடியவில்லை."
+
+#~ msgid "Country"
+#~ msgstr "நாடு"
+
+#~ msgid "Cannot start VPN connection '%s'"
+#~ msgstr "VPN இணைப்பு '%s'ஐ துவக்க முடியவில்லை"
+
+#~ msgid ""
+#~ "Could not find the authentication dialog for VPN connection type '%s'. "
+#~ "Contact your system administrator."
+#~ msgstr ""
+#~ "VPN இணைப்பு வகை '%s'க்கு உரையாடல் அங்கீகாரத்தை தேட முடியவில்லை. உங்கள் கணினி "
+#~ "நிர்வாகியை தொடர்பு கொள்ளவும்."
+
+#~ msgid ""
+#~ "There was a problem launching the authentication dialog for VPN "
+#~ "connection type '%s'. Contact your system administrator."
+#~ msgstr ""
+#~ "அங்கீகரிக்கப்பட்ட உரையாடல் VPN கான இணைப்பு வகை '%s'ஐ கண்டுபிடிப்பதில் ஒரு சிக்கலை "
+#~ "ஏற்பட்டது. உங்களது கணினி நிர்வாகியை தொடர்பு கொள்ளவும்."
+
+#~ msgid ""
+#~ "The NetworkManager applet could not find some required resources.  It "
+#~ "cannot continue.\n"
+#~ msgstr "பிணைய மேலாளர் அப்லெட் தேவையான மூலங்களைத் தேடவில்லை. இது தொடர முடியாது.\n"
+
+#~ msgid "_Band:"
+#~ msgstr "பிணைப்பு (_B):"

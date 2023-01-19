@@ -1,0 +1,4226 @@
+# Indonesian translations for lxpanel package.
+# Copyright (C) YEAR THE lxpanel'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lxpanel package.
+# Andhika Padmawan <andhika.padmawan@gmail.com>, Rahman Yusri Aftian <aftian@yahoo.com>, 2009.
+# Andika Triwidada <andika@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: lxpanel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"PO-Revision-Date: 2018-02-19 02:52+0000\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
+"X-Pootle-Revision: 0\n"
+"X-Pootle-Path: /id/lxpanel/po/id.po\n"
+"X-POOTLE-MTIME: 1519008728.685182\n"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#, c-format
+msgid "Pairing failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#, c-format
+msgid "Pairing successful - connecting..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#, fuzzy, c-format
+msgid "Connection successful"
+msgstr "Kegagalan koneksi"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connection failed - %s"
+msgstr "Kegagalan koneksi"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#, c-format
+msgid "Please enter code '%s' on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#, c-format
+msgid "Please confirm that '%s' is showing the code '%s' to pair"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#, c-format
+msgid "Please enter PIN code shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#, c-format
+msgid "Please enter passcode shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#, c-format
+msgid "Waiting for response from Bluetooth device..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#, c-format
+msgid "'%s' has requested a pairing. Do you accept the request?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
+#, c-format
+msgid ""
+"Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#, c-format
+msgid ""
+"Pairing successful - this device has no services which can be used with "
+"Raspberry Pi"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#, c-format
+msgid "Do you want to unpair '%s'?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#, c-format
+msgid "Removing pairing with '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#, c-format
+msgid "Removal failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, c-format
+msgid "Disconnecting from '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnection failed - %s"
+msgstr "Pemutusan gagal"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
+#, fuzzy
+msgid "Use the audio menu to connect to this device"
+msgstr "Gunakan menu jaringan untuk menyambung ke jaringan Wi-Fi"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+msgid "No usable services on this device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#, fuzzy
+msgid "Disconnect..."
+msgstr "Putuskan"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#, fuzzy
+msgid "Connect..."
+msgstr "_Sambung"
+
+#. add the remove option to the submenu
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+msgid "Remove..."
+msgstr ""
+
+#. warn if no BT hardware detected
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+#, fuzzy
+msgid "No Bluetooth adapter found"
+msgstr "Tipe Bluetooth"
+
+#. add enable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+#, fuzzy
+msgid "Turn On Bluetooth"
+msgstr "Bluetooth"
+
+#. add disable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+#, fuzzy
+msgid "Turn Off Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+msgid "Stop Discoverable"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+msgid "Make Discoverable"
+msgstr ""
+
+#. add and remove dialogs
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#, fuzzy
+msgid "Add Device..."
+msgstr "perangkat"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#, fuzzy
+msgid "Manage Bluetooth devices"
+msgstr "perangkat Bluetooth tak valid (%s)"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#, fuzzy
+msgid "Manages Bluetooth devices"
+msgstr "perangkat Bluetooth tak valid (%s)"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:171
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:199
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:205
+#, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:402
+msgid "Select a drive in menu to eject safely"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:451
+#: ../src/panel/widgets/ejecter/ejecter.c:461
+msgid "Ejecter"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:453
+msgid "Hide icon when no devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:462
+msgid "Ejects mounted drives"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:77
+msgid "ad-hoc"
+msgstr "ad-hoc"
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:82
+msgid "secure."
+msgstr "aman."
+
+#: ../src/panel/widgets/netman/applet.c:74
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+msgid "Failed to activate connection"
+msgstr "Gagal mengaktifkan koneksi"
+
+#: ../src/panel/widgets/netman/applet.c:75
+#: ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837
+#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+msgid "Unknown error"
+msgstr "Galat tak dikenal"
+
+#: ../src/panel/widgets/netman/applet.c:78
+#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:875
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+msgid "Connection failure"
+msgstr "Kegagalan koneksi"
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn Off Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn On Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:282
+#, c-format
+msgid ""
+"%s\n"
+"IPv4 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:299
+#, c-format
+msgid ""
+"%s\n"
+"IPv6 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:781
+msgid "Failed to add/activate connection"
+msgstr "Gagal menambah/mengaktifkan koneksi"
+
+#: ../src/panel/widgets/netman/applet.c:835
+msgid "Device disconnect failed"
+msgstr "Pemutusan perangkat gagal"
+
+#: ../src/panel/widgets/netman/applet.c:840
+msgid "Disconnect failure"
+msgstr "Pemutusan gagal"
+
+#: ../src/panel/widgets/netman/applet.c:870
+msgid "Connection activation failed"
+msgstr "Aktivasi koneksi gagal"
+
+#: ../src/panel/widgets/netman/applet.c:1209
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+msgid "Don’t show this message again"
+msgstr "Jangan tunjukkan pesan ini lagi"
+
+#: ../src/panel/widgets/netman/applet.c:1310
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” disconnected because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" terputus karena koneksi jaringan terinterupsi."
+
+#: ../src/panel/widgets/netman/applet.c:1312
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena koneksi jaringan terinterupsi."
+
+#: ../src/panel/widgets/netman/applet.c:1314
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena layanan VPN berhenti tak disangka-sangka."
+
+#: ../src/panel/widgets/netman/applet.c:1316
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service returned invalid "
+"configuration."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena layanan VPN mengembalikan konfigurasi yang "
+"tidak benar."
+
+#: ../src/panel/widgets/netman/applet.c:1318
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the connection attempt timed out."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena batas waktu percobaan koneksi habis."
+
+#: ../src/panel/widgets/netman/applet.c:1320
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service did not start in time."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena layanan VPN tidak mulai pada waktunya."
+
+#: ../src/panel/widgets/netman/applet.c:1322
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena layanan VPN gagal dijalankan."
+
+#: ../src/panel/widgets/netman/applet.c:1324
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because there were no valid VPN secrets."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena tidak ada kode rahasia VPN yang valid."
+
+#: ../src/panel/widgets/netman/applet.c:1326
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because of invalid VPN secrets."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena kode rahasia VPN yang tidak valid."
+
+#: ../src/panel/widgets/netman/applet.c:1331
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed."
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal."
+
+#: ../src/panel/widgets/netman/applet.c:1358
+#, c-format
+msgid ""
+"VPN connection has been successfully established.\n"
+"\n"
+"%s\n"
+msgstr ""
+"Koneksi VPN telah sukses dijalin.\n"
+"\n"
+"%s\n"
+
+#: ../src/panel/widgets/netman/applet.c:1360
+msgid "VPN connection has been successfully established.\n"
+msgstr "Koneksi VPN telah sukses dijalin.\n"
+
+#: ../src/panel/widgets/netman/applet.c:1362
+msgid "VPN Login Message"
+msgstr "Pesan Login VPN"
+
+#: ../src/panel/widgets/netman/applet.c:1370
+#: ../src/panel/widgets/netman/applet.c:1410
+msgid "VPN Connection Failed"
+msgstr "Koneksi VPN Gagal"
+
+#: ../src/panel/widgets/netman/applet.c:1414
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal karena layanan VPN gagal dijalankan.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1417
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"Koneksi VPN \"%s\" gagal dijalankan.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1741
+msgid "device not ready (firmware missing)"
+msgstr "perangkat tak siap (tak ada firmware)"
+
+#: ../src/panel/widgets/netman/applet.c:1743
+msgid "device not ready"
+msgstr "perangkat tak siap"
+
+#. Notify user of unmanaged or unavailable device
+#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
+msgid "disconnected"
+msgstr "terputus"
+
+#: ../src/panel/widgets/netman/applet.c:1769
+msgid "Disconnect"
+msgstr "Putuskan"
+
+#: ../src/panel/widgets/netman/applet.c:1783
+msgid "device not managed"
+msgstr "perangkat tidak dikelola"
+
+#: ../src/panel/widgets/netman/applet.c:1864
+msgid "No network devices available"
+msgstr "Tak ada perangkat jaringan yang tersedia"
+
+#: ../src/panel/widgets/netman/applet.c:1917
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Opsi Tingkat Lanjut Team"
+
+#: ../src/panel/widgets/netman/applet.c:1919
+#, fuzzy
+msgid "VPN Connections"
+msgstr "Koneksi _VPN"
+
+#: ../src/panel/widgets/netman/applet.c:1973
+#, fuzzy
+msgid "Configure VPN…"
+msgstr "Mena_ta VPN…"
+
+#: ../src/panel/widgets/netman/applet.c:1977
+#, fuzzy
+msgid "Add a VPN connection…"
+msgstr "Men_ambah suatu koneksi VPN…"
+
+#. 'Connection Information' item
+#: ../src/panel/widgets/netman/applet.c:1989
+#: ../src/panel/widgets/netman/applet.c:2393
+msgid "Connection Information"
+msgstr "Informasi Koneksi"
+
+#. 'Edit Connections...' item
+#: ../src/panel/widgets/netman/applet.c:1997
+#: ../src/panel/widgets/netman/applet.c:2401
+msgid "Edit Connections…"
+msgstr "Sunting Koneksi…"
+
+#: ../src/panel/widgets/netman/applet.c:2112
+msgid "NetworkManager is not running…"
+msgstr "NetworkManager tidak sedang berjalan…"
+
+#: ../src/panel/widgets/netman/applet.c:2118
+#, fuzzy
+msgid "Wi-Fi country is not set"
+msgstr "Koneksi Wi-Fi %d"
+
+#: ../src/panel/widgets/netman/applet.c:2119
+msgid "Click here to set Wi-Fi country"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:2127
+#: ../src/panel/widgets/netman/applet.c:3222
+msgid "Networking disabled"
+msgstr "Fungsi jaringan dimatikan"
+
+#. 'Enable Networking' item
+#: ../src/panel/widgets/netman/applet.c:2351
+#, fuzzy
+msgid "Enable Networking"
+msgstr "Fungsika_n Jaringan"
+
+#. 'Enable Wi-Fi' item
+#: ../src/panel/widgets/netman/applet.c:2360
+#, fuzzy
+msgid "Enable Wi-Fi"
+msgstr "Fungsikan Ni_rkabel"
+
+#. 'Enable Mobile Broadband' item
+#: ../src/panel/widgets/netman/applet.c:2369
+#, fuzzy
+msgid "Enable Mobile Broadband"
+msgstr "Fungsikan _Data Seluler"
+
+#. Toggle notifications item
+#: ../src/panel/widgets/netman/applet.c:2381
+#, fuzzy
+msgid "Enable Notifications"
+msgstr "Fungsikan N_otifikasi"
+
+#: ../src/panel/widgets/netman/applet.c:2415
+#, fuzzy
+msgid "About"
+msgstr "Tent_ang"
+
+#: ../src/panel/widgets/netman/applet.c:2736
+#, c-format
+msgid "You are now connected to “%s”."
+msgstr "Anda sekarang tersambung ke \"%s\"."
+
+#: ../src/panel/widgets/netman/applet.c:2776
+msgid "Disconnected"
+msgstr "Terputus"
+
+#: ../src/panel/widgets/netman/applet.c:2777
+msgid "The network connection has been disconnected."
+msgstr "Koneksi jaringan terputus."
+
+#: ../src/panel/widgets/netman/applet.c:3079
+#, c-format
+msgid "Preparing network connection “%s”…"
+msgstr "Menyiapkan koneksi jaringan \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet.c:3082
+#, c-format
+msgid "User authentication required for network connection “%s”…"
+msgstr "Autentikasi pengguna diperlukan untuk koneksi jaringan \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet-device-bt.c:113
+#: ../src/panel/widgets/netman/mobile-helpers.c:605
+#, c-format
+msgid "Requesting a network address for “%s”…"
+msgstr "Meminta alamat jaringan untuk \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet.c:3088
+#, c-format
+msgid "Network connection “%s” active"
+msgstr "Koneksi jaringan \"%s\" aktif"
+
+#: ../src/panel/widgets/netman/applet.c:3165
+#, c-format
+msgid "Starting VPN connection “%s”…"
+msgstr "Memulai koneksi VPN \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet.c:3168
+#, c-format
+msgid "User authentication required for VPN connection “%s”…"
+msgstr "Autentikasi pengguna diperlukan untuk koneksi VPN \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet.c:3171
+#, c-format
+msgid "Requesting a VPN address for “%s”…"
+msgstr "Meminta alamat VPN untuk \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet.c:3174
+#, c-format
+msgid "VPN connection active"
+msgstr "Koneksi VPN aktif"
+
+#: ../src/panel/widgets/netman/applet.c:3226
+msgid "No network connection"
+msgstr "Tak ada koneksi jaringan"
+
+#: ../src/panel/widgets/netman/applet.c:3781
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "Jaringan"
+
+#: ../src/panel/widgets/netman/applet.c:3896
+msgid "NetworkManager Applet"
+msgstr "Aplet NetworkManager"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:147
+msgid "Wrong PUK code; please contact your provider."
+msgstr "PUK salah; silakan kontak operator Anda."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:189
+msgid "Wrong PIN code; please contact your provider."
+msgstr "PIN salah; silakan kontak operator Anda."
+
+#. Start the spinner to show the progress of the unlock
+#: ../src/panel/widgets/netman/applet-device-broadband.c:240
+msgid "Sending unlock code…"
+msgstr "Mengirim kode pembuka…"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:725
+#: ../src/panel/widgets/netman/applet-dialogs.c:532
+#, c-format
+msgid "Mobile Broadband (%s)"
+msgstr "Data Seluler (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:727
+msgid "Mobile Broadband"
+msgstr "Data Seluler"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+msgid "Available"
+msgstr "Tersedia"
+
+#. Default connection item
+#: ../src/panel/widgets/netman/applet-device-broadband.c:793
+msgid "New Mobile Broadband connection…"
+msgstr "Koneksi Data Seluler baru…"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:809
+#: ../src/panel/widgets/netman/applet-device-bt.c:75
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+msgid "Connection Established"
+msgstr "Koneksi Terjalin"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:810
+msgid "You are now connected to the Mobile Broadband network."
+msgstr "Anda kini tersambung ke jaringan Data Seluler."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:950
+#: ../src/panel/widgets/netman/applet-device-broadband.c:956
+msgid "Mobile Broadband network."
+msgstr "Jaringan Data Seluler."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:951
+msgid "You are now registered on the home network."
+msgstr "Anda kini terdaftar ke jaringan rumah."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:957
+msgid "You are now registered on a roaming network."
+msgstr "Anda kini terdaftar ke jaringan roaming."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:76
+msgid "You are now connected to the mobile broadband network."
+msgstr "Anda kini tersambung ke jaringan data seluler."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:104
+#: ../src/panel/widgets/netman/mobile-helpers.c:596
+#, c-format
+msgid "Preparing mobile broadband connection “%s”…"
+msgstr "Menyiapkan koneksi data seluler \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:107
+#: ../src/panel/widgets/netman/mobile-helpers.c:599
+#, c-format
+msgid "Configuring mobile broadband connection “%s”…"
+msgstr "Mengatur koneksi data seluler \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:110
+#: ../src/panel/widgets/netman/mobile-helpers.c:602
+#, c-format
+msgid "User authentication required for mobile broadband connection “%s”…"
+msgstr "Autentikasi pengguna dibutuhkan untuk koneksi data seluler \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:117
+#: ../src/panel/widgets/netman/mobile-helpers.c:624
+#, c-format
+msgid "Mobile broadband connection “%s” active"
+msgstr "Koneksi data seluler \"%s\" aktif"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
+msgid "Auto Ethernet"
+msgstr "Ethernet Otomatis"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
+#, c-format
+msgid "Ethernet Networks (%s)"
+msgstr "Jaringan Ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
+#, c-format
+msgid "Ethernet Network (%s)"
+msgstr "Jaringan Ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
+msgid "Ethernet Networks"
+msgstr "Jaringan Ethernet"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
+msgid "Ethernet Network"
+msgstr "Jaringan Ethernet"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
+msgid "You are now connected to the ethernet network."
+msgstr "Anda sekarang tersambung ke jaringan ethernet."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
+#, c-format
+msgid "Preparing ethernet network connection “%s”…"
+msgstr "Menyiapkan koneksi jaringan ethernet \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
+#, c-format
+msgid "Configuring ethernet network connection “%s”…"
+msgstr "Mengatur koneksi jaringan ethernet \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
+#, c-format
+msgid "User authentication required for ethernet network connection “%s”…"
+msgstr ""
+"Autentikasi pengguna diperlukan untuk koneksi jaringan ethernet \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
+#, c-format
+msgid "Requesting an ethernet network address for “%s”…"
+msgstr "Meminta alamat jaringan ethernet untuk \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
+#, c-format
+msgid "Ethernet network connection “%s” active"
+msgstr "Koneksi jaringan ethernet \"%s\" aktif"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
+msgid "DSL authentication"
+msgstr "Autentikasi DSL"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:1190
+#: ../src/panel/widgets/netman/mobile-helpers.c:455
+#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:1191
+#: ../src/panel/widgets/netman/mobile-helpers.c:456
+#: ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+msgid "_OK"
+msgstr "_OK"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#, fuzzy
+msgid "Connect to Hidden Wi-Fi Network…"
+msgstr "_Sambungkan ke Jaringan Wi-Fi Tersembunyi…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#, fuzzy
+msgid "Create New Wi-Fi Network…"
+msgstr "Buat Jari_ngan Wi-Fi Baru…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#, fuzzy
+msgid "Create Wi-Fi Hotspot…"
+msgstr "Buat Jari_ngan Wi-Fi Baru…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+msgid "(none)"
+msgstr "(tidak ada)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:567
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+msgid "Failed to add new connection"
+msgstr "Gagal menambahkan koneksi baru"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+msgid "Insufficient privileges."
+msgstr "Privilese tidak cukup."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#, fuzzy, c-format
+msgid "Do you want to disconnect from the wireless network '%s'?"
+msgstr "Anda sekarang tersambung ke jaringan Wi-Fi \"%s\"."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#, c-format
+msgid "Wi-Fi Networks (%s)"
+msgstr "Jaringan Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#, c-format
+msgid "Wi-Fi Network (%s)"
+msgstr "Jaringan Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+msgid "Wi-Fi Network"
+msgid_plural "Wi-Fi Networks"
+msgstr[0] "Jaringan Wi-Fi"
+msgstr[1] "Jaringan Wi-Fi"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+msgid "Wi-Fi is disabled"
+msgstr "Wi-Fi dinonaktifkan"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+msgid "Wi-Fi is disabled by hardware switch"
+msgstr "Wi-Fi dinonaktifkan oleh saklar perangkat keras"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+msgid "More networks"
+msgstr "Jaringan lain"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+msgid "Wi-Fi Networks Available"
+msgstr "Jaringan Wi-Fi Tersedia"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+msgid "Use the network menu to connect to a Wi-Fi network"
+msgstr "Gunakan menu jaringan untuk menyambung ke jaringan Wi-Fi"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#, c-format
+msgid "You are now connected to the Wi-Fi network “%s”."
+msgstr "Anda sekarang tersambung ke jaringan Wi-Fi \"%s\"."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#, c-format
+msgid "Preparing Wi-Fi network connection “%s”…"
+msgstr "Menyiapkan koneksi jaringan Wi-Fi \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#, c-format
+msgid "Configuring Wi-Fi network connection “%s”…"
+msgstr "Mengatur koneksi jaringan Wi-Fi \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#, c-format
+msgid "User authentication required for Wi-Fi network “%s”…"
+msgstr "Autentikasi pengguna diperlukan untuk jaringan Wi-Fi \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#, c-format
+msgid "Requesting a Wi-Fi network address for “%s”…"
+msgstr "Meminta alamat jaringan Wi-Fi untuk \"%s\"…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+msgstr "Koneksi jaringan Wi-Fi \"%s\" aktif: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#, c-format
+msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+msgstr "Koneksi jaringan Wi-Fi \"%s\" aktif: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#, c-format
+msgid "Wi-Fi network connection “%s” active"
+msgstr "Koneksi jaringan Wi-Fi \"%s\" aktif"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:29
+msgid "Error displaying connection information:"
+msgstr "Galat menampilkan informasi koneksi:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:61
+msgid "LEAP"
+msgstr "LEAP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:63
+msgid "Dynamic WEP"
+msgstr "WEP Dinamis"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:65
+#: ../src/panel/widgets/netman/applet-dialogs.c:237
+#: ../src/panel/widgets/netman/applet-dialogs.c:239
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+#. Create the expander
+#: ../src/panel/widgets/netman/applet-dialogs.c:174
+msgid "More addresses"
+msgstr "Lebih banyak alamat"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:235
+msgid "WEP"
+msgstr "WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:241
+msgid "WPA3"
+msgstr "WPA3"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:245
+#: ../src/panel/widgets/netman/applet-dialogs.c:254
+msgctxt "Wi-Fi/Ethernet security"
+msgid "None"
+msgstr "Nihil"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:324
+#: ../src/panel/widgets/netman/applet-dialogs.c:597
+#, c-format
+msgid "%u Mb/s"
+msgstr "%u Mb/s"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:326
+#: ../src/panel/widgets/netman/applet-dialogs.c:599
+msgctxt "Speed"
+msgid "Unknown"
+msgstr "Tak dikenal"
+
+#. Address
+#: ../src/panel/widgets/netman/applet-dialogs.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:363
+msgctxt "Address"
+msgid "Unknown"
+msgstr "Tak dikenal"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:415
+msgid "IP Address"
+msgstr "Alamat IP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:364
+msgid "Broadcast Address"
+msgstr "Alamat Broadcast"
+
+#. Prefix
+#: ../src/panel/widgets/netman/applet-dialogs.c:376
+msgctxt "Subnet Mask"
+msgid "Unknown"
+msgstr "Tak dikenal"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:377
+msgid "Subnet Mask"
+msgstr "Mask Subnet"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Primary DNS"
+msgstr "DNS primer"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Secondary DNS"
+msgstr "DNS sekunder"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Tertiary DNS"
+msgstr "DNS tersier"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:518
+#, c-format
+msgid "Ethernet (%s)"
+msgstr "Ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:521
+#, c-format
+msgid "802.11 Wi-Fi (%s)"
+msgstr "Wi-Fi 802.11 (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:528
+#, c-format
+msgid "GSM (%s)"
+msgstr "GSM (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:530
+#, c-format
+msgid "CDMA (%s)"
+msgstr "CDMA (%s)"
+
+#. --- General ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:538
+#: ../src/panel/widgets/netman/applet-dialogs.c:872
+msgid "General"
+msgstr "Umum"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:541
+msgid "Interface"
+msgstr "Antarmuka"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:556
+msgid "Hardware Address"
+msgstr "Alamat Perangkat Keras"
+
+#. Driver
+#: ../src/panel/widgets/netman/applet-dialogs.c:569
+msgid "Driver"
+msgstr "Driver"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:602
+msgid "Speed"
+msgstr "Kecepatan"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:615
+msgid "Security"
+msgstr "Keamanan"
+
+#. --- IPv4 ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:640
+#: ../src/panel/widgets/netman/applet-dialogs.c:902
+msgid "IPv4"
+msgstr "IPv4"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:659
+#: ../src/panel/widgets/netman/applet-dialogs.c:707
+msgid "Default Route"
+msgstr "Rute Utama"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:687
+#: ../src/panel/widgets/netman/applet-dialogs.c:929
+msgid "IPv6"
+msgstr "IPv6"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:728
+msgid "Hotspot"
+msgstr "Hotspot"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:746
+msgid "Password"
+msgstr "Kata Sandi"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:876
+msgid "VPN Type"
+msgstr "Tipe VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:881
+msgid "VPN Gateway"
+msgstr "Gateway VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:885
+msgid "VPN Username"
+msgstr "Nama Pengguna VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:889
+msgid "VPN Banner"
+msgstr "Banner VPN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:893
+msgid "Base Connection"
+msgstr "Koneksi Dasar"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:894
+msgid "Unknown"
+msgstr "Tak dikenal"
+
+#. Shouldn't really happen but ...
+#: ../src/panel/widgets/netman/applet-dialogs.c:1091
+msgid "No valid active connections found!"
+msgstr "Tak ditemukan koneksi aktif yang valid!"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+msgid ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"and many other community contributors and translators"
+msgstr ""
+"Hak cipta © 2004-2017 Red Hat, Inc.\n"
+"Hak cipta © 2005-2008 Novell, Inc.\n"
+"dan banyak penerjemah dan para kontributor komunitas"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+msgid ""
+"Notification area applet for managing your network devices and connections."
+msgstr ""
+"Aplet wilayah pemberitahuan untuk mengelola perangkat dan koneksi jaringan "
+"Anda."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1144
+msgid "NetworkManager Website"
+msgstr "Situs Web NetworkManager"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1148
+msgid "translator-credits"
+msgstr ""
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018.\n"
+"Andika Triwidada <andika@gmail.com>, 2018-2020."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+msgid ""
+"The NetworkManager Applet could not find some required resources (the .ui "
+"file was not found)."
+msgstr ""
+"Aplet NetworkManager tidak dapat menemukan beberapa sumberdaya yang "
+"diperlukan (berkas .ui tidak ditemukan)."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1163
+msgid "Missing resources"
+msgstr "Sumber daya hilang"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1188
+msgid "Mobile broadband network password"
+msgstr "Sandi jaringan data seluler"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1197
+#, c-format
+msgid "A password is required to connect to “%s”."
+msgstr "Diperlukan sandi untuk tersambung pada \"%s\"."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1220
+msgid "Password:"
+msgstr "Sandi:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1502
+msgid "SIM PIN unlock required"
+msgstr "Perlu PIN SIM"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1503
+msgid "SIM PIN Unlock Required"
+msgstr "Perlu PIN SIM"
+
+#. FIXME: some warning about # of times you can enter incorrect PIN
+#: ../src/panel/widgets/netman/applet-dialogs.c:1505
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PIN code before it can be "
+"used."
+msgstr ""
+"Perangkat data seluler \"%s\" memerlukan kode PIN sebelum dapat dipakai."
+
+#. Translators: PIN code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1507
+msgid "PIN code:"
+msgstr "Kode PIN:"
+
+#. Translators: Show/obscure PIN checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1511
+msgid "Show PIN code"
+msgstr "Tampilkan kode PIN"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1513
+msgid "SIM PUK unlock required"
+msgstr "Perlu PUK SIM"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1514
+msgid "SIM PUK Unlock Required"
+msgstr "Perlu PUK SIM"
+
+#. FIXME: some warning about # of times you can enter incorrect PUK
+#: ../src/panel/widgets/netman/applet-dialogs.c:1516
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PUK code before it can be "
+"used."
+msgstr ""
+"Perangkat data seluler \"%s\" memerlukan kode PUK sebelum dapat dipakai."
+
+#. Translators: PUK code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1518
+msgid "PUK code:"
+msgstr "Kode PUK:"
+
+#. Translators: New PIN entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1521
+msgid "New PIN code:"
+msgstr "Kode PIN baru:"
+
+#. Translators: New PIN verification entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1523
+msgid "Re-enter new PIN code:"
+msgstr "Masukkan lagi kode PIN baru:"
+
+#. Translators: Show/obscure PIN/PUK checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1528
+msgid "Show PIN/PUK codes"
+msgstr "Tampilkan kode PIN/PUK"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:427
+msgid "Connection had no VPN setting"
+msgstr "Koneksi tidak memiliki pengaturan VPN"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:477
+#, c-format
+msgid "Failed to write connection to VPN UI: %s (%d)"
+msgstr "Gagal menulis koneksi ke UI VPN: %s (%d)"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:485
+msgid "Failed to write connection to VPN UI: incomplete write"
+msgstr "Gagal menulis koneksi ke UI VPN: tidak lengkap menulis"
+
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87
+msgid "802.1X authentication"
+msgstr "Autentikasi 802.1X"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:36
+#: ../src/panel/widgets/netman/mobile-helpers.c:272
+msgid "CDMA"
+msgstr "CDMA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:38
+msgid "EVDO"
+msgstr "EVDO"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:40
+#: ../src/panel/widgets/netman/mobile-helpers.c:270
+msgid "GSM"
+msgstr "GSM"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:42
+msgid "GPRS"
+msgstr "GPRS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:44
+msgid "EDGE"
+msgstr "EDGE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:46
+msgid "UMTS"
+msgstr "UMTS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:48
+msgid "HSDPA"
+msgstr "HSDPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:50
+msgid "HSUPA"
+msgstr "HSUPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:52
+msgid "HSPA"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:54
+msgid "HSPA+"
+msgstr "HSPA+"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:56
+msgid "LTE"
+msgstr "LTE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:103
+msgid "not enabled"
+msgstr "tak diaktifkan"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:109
+msgid "not registered"
+msgstr "tak terdaftar"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:127
+#, c-format
+msgid "Home network (%s)"
+msgstr "Jaringan rumah (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:129
+#, c-format
+msgid "Home network"
+msgstr "Jaringan rumah"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:137
+msgid "searching"
+msgstr "sedang mencari"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:140
+msgid "registration denied"
+msgstr "registrasi ditolak"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:145
+#: ../src/panel/widgets/netman/mb-menu-item.c:151
+#, c-format
+msgid "%s (%s roaming)"
+msgstr "%s (%s roaming)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:147
+#: ../src/panel/widgets/netman/mb-menu-item.c:153
+#, c-format
+msgid "%s (roaming)"
+msgstr "%s (roaming)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:156
+#, c-format
+msgid "Roaming network (%s)"
+msgstr "Jaringan roaming (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:158
+#, c-format
+msgid "Roaming network"
+msgstr "Jaringan roaming"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:320
+#, c-format
+msgid "PIN code for SIM card “%s” on “%s”"
+msgstr "Kode PIN bagi kartu SIM \"%s\" pada \"%s\""
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:453
+msgid "PIN code required"
+msgstr "Perlu kode PIN"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:461
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "Kode PIN dibutuhkan untuk perangkat data seluler"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:619
+#, c-format
+msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+msgstr "Koneksi data seluler \"%s\" aktif: (%d%%%s%s)"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:622
+msgid "roaming"
+msgstr "roaming"
+
+#: ../src/panel/widgets/netman/netman.c:139
+#, fuzzy
+msgid "Network Manager"
+msgstr "NetworkManager"
+
+#: ../src/panel/widgets/netman/netman.c:140
+#, fuzzy
+msgid "Controller for Network Manager"
+msgstr "NetworkManager"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:793
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr "kelas objek '%s' tidak punya properti bernama '%s'"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:800
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr "properti '%s' dari kelas objek '%s' tidak dapat ditulisi"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:807
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+"properti construct \"%s\" bagi objek '%s' tak bisa ditata setelah konstruksi"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:815
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr "'%s::%s' bukan nama properti yang valid; '%s' bukan sub tipe GObject"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:824
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr "tidak bisa menata properti '%s' bertipe '%s' dari nilai bertipe '%s'"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:835
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+"nilai \"%s\" bertipe '%s' tidak valid atau di luar jangkauan untuk properti "
+"'%s' bertipe '%s'"
+
+#. The %s is a mobile provider name, eg "T-Mobile"
+#: ../src/panel/widgets/netman/utils.c:160
+#, c-format
+msgid "%s connection"
+msgstr "Koneksi %s"
+
+#: ../src/panel/widgets/netman/utils.c:534
+msgid "PEM certificates (*.pem, *.crt, *.cer)"
+msgstr "Sertifikat PEM  (*.pem, *.crt, *.cer)"
+
+#: ../src/panel/widgets/netman/utils.c:546
+msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+msgstr "Kunci privat DER, PEM, atau PKCS#12 (*.der, *.pem, *.p12, *.key)"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:391
+#: ../src/panel/widgets/smenu/menu.c:121
+msgid "Run"
+msgstr "Jalankan"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:412
+msgid "Enter the command you want to execute:"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:116
+msgid "Logout command is not set"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:122
+msgid "Restart"
+msgstr "Start Ulang"
+
+#: ../src/panel/widgets/smenu/menu.c:123
+msgid "Logout"
+msgstr "Log keluar"
+
+#: ../src/panel/widgets/smenu/menu.c:140
+msgid "No file manager is configured."
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:489
+msgid "Add to desktop"
+msgstr "Tambah ke desktop"
+
+#: ../src/panel/widgets/smenu/menu.c:496
+msgid "Properties"
+msgstr "Properti"
+
+#: ../src/panel/widgets/smenu/menu.c:954
+msgid "Click here to open applications menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1047
+msgid "Menu"
+msgstr "Menu"
+
+#: ../src/panel/widgets/smenu/menu.c:1048
+msgid "Icon"
+msgstr "Ikon"
+
+#: ../src/panel/widgets/smenu/menu.c:1049
+msgid "Padding"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1050
+msgid "Fixed Size"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1058
+msgid "Menu with Search"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1059
+#, fuzzy
+msgid "Searchable Application Menu"
+msgstr "Menu Aplikasi"
+
+#: ../src/panel/widgets/updater/updater.c:189
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:211
+#, fuzzy
+msgid "No network connection - cannot install updates."
+msgstr "Tak ada koneksi jaringan"
+
+#: ../src/panel/widgets/updater/updater.c:217
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:320
+msgid "Show Updates..."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:324
+msgid "Install Updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:470
+msgid "Updates are available - click to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:529
+#: ../src/panel/widgets/updater/updater.c:561
+msgid "Updater"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:531
+msgid "Hours between checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:562
+msgid "Checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#, fuzzy
+msgid "Reconnecting Bluetooth devices..."
+msgstr "perangkat Bluetooth tak valid (%s)"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#, fuzzy, c-format
+msgid "Bluetooth %s device not found"
+msgstr "Koneksi Bluetooth %d"
+
+#. update dialog to show a warning
+#: ../src/panel/widgets/volumepulse/bluetooth.c:405
+msgid "Device not found by PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#, c-format
+msgid "Could not set profile for device : %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#, fuzzy, c-format
+msgid "Failed to connect to Bluetooth device - %s"
+msgstr "perangkat Bluetooth tak valid (%s)"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#, c-format
+msgid "Connecting Bluetooth device '%s' as output..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#, fuzzy, c-format
+msgid "Connecting Bluetooth device '%s' as input..."
+msgstr "perangkat Bluetooth tak valid (%s)"
+
+#. if the current default source and sink are both the same device, disconnect it and reconnect to
+#. put it into A2DP rather than HSP
+#: ../src/panel/widgets/volumepulse/bluetooth.c:785
+msgid "Reconnecting Bluetooth input device as output only..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#, fuzzy
+msgid "Reconnecting Bluetooth device..."
+msgstr "perangkat Bluetooth tak valid (%s)"
+
+#. Create a check button as the child of the vertical box.
+#: ../src/panel/widgets/volumepulse/commongui.c:140
+msgid "Mute"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/commongui.c:231
+msgid "No audio devices found"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:71
+msgid "Input from this device not available in the current profile"
+msgstr ""
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/micpulse.c:144
+msgid "Mic volume"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:216
+msgid "Microphone Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:217
+msgid "Display and control microphones for PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+msgid "HDMI"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+msgid "AV Jack"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+msgid "Device Profiles..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+msgid "Output to this device not available in the current profile"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#, fuzzy
+msgid "Device Profiles"
+msgstr "Pemutusan perangkat gagal"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#, fuzzy
+msgid "Device not connected"
+msgstr "Pemutusan perangkat gagal"
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+#, fuzzy
+msgid "Volume control"
+msgstr "Kendali Alir"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+msgid "Volume Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+msgid "Display and control volume for PulseAudio"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
+#, fuzzy
+msgid "label"
+msgstr "Label ulang"
+
+#: ../data/lxplug-updater.ui.h:1
+#, fuzzy
+msgid "Available Updates"
+msgstr "Tersedia"
+
+#: ../data/lxplug-updater.ui.h:2
+#, fuzzy
+msgid "Close"
+msgstr "_Tutup"
+
+#: ../data/lxplug-updater.ui.h:3
+msgid "Install"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:4
+msgid "The following packages can be updated :"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:1
+#, fuzzy
+msgid "Add New Device"
+msgstr "perangkat"
+
+#: ../data/lxplug-bluetooth.ui.h:3
+msgid "_Pair"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:4
+#, fuzzy
+msgid "Searching for Bluetooth devices..."
+msgstr "perangkat Bluetooth tak valid (%s)"
+
+#~ msgid "Manage your network connections"
+#~ msgstr "Mengelola koneksi jaringan Anda"
+
+#~ msgid "NetworkManager connection editor"
+#~ msgstr "Penyunting koneksi NetworkManager"
+
+#~ msgid ""
+#~ "NetworkManager is a system service for managing and configuring your "
+#~ "network connections and devices."
+#~ msgstr ""
+#~ "NetworkManager adalah sebuah layanan sistem untuk mengelola dan menata "
+#~ "perangkat dan koneksi jaringan Anda."
+
+#~ msgid ""
+#~ "The nm-connection-editor program works with NetworkManager to create and "
+#~ "edit existing connection profiles for NetworkManager."
+#~ msgstr ""
+#~ "Program nm-connection-editor bekerja dengan NetworkManager untuk membuat "
+#~ "dan menyunting profil koneksi yang ada untuk NetworkManager."
+
+#~ msgid "The NetworkManager Developers"
+#~ msgstr "Para Pengembang NetworkManager"
+
+#~ msgid "Advanced Network Configuration"
+#~ msgstr "Konfigurasi Jaringan Tingkat Lanjut"
+
+#~ msgid "Manage and change your network connection settings"
+#~ msgstr "Kelola dan ubah tatanan koneksi jaringan Anda"
+
+#~ msgid "_Network name"
+#~ msgstr "_Nama jaringan"
+
+#~ msgid "Connection _Information"
+#~ msgstr "_Informasi Koneksi"
+
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add an IP address."
+#~ msgstr ""
+#~ "Alamat IP menandai komputer Anda pada jaringan. Klik tombol \"Tambah\" "
+#~ "untuk menambah suatu alamat IP."
+
+#~ msgid "_Add"
+#~ msgstr "T_ambah"
+
+#~ msgid "_Delete"
+#~ msgstr "_Hapus"
+
+#~ msgid "Ig_nore automatically obtained routes"
+#~ msgstr "Abaika_n route yang diperoleh secara otomatis"
+
+#~ msgid "_Use this connection only for resources on its network"
+#~ msgstr "G_unakan koneksi ini hanya untuk sumber daya pada jaringannya"
+
+#~ msgid ""
+#~ "If enabled, this connection will never be used as the default network "
+#~ "connection."
+#~ msgstr ""
+#~ "Bila diaktifkan, koneksi ini tidak akan pernah bisa digunakan sebagai "
+#~ "koneksi jaringan baku."
+
+#~ msgid "C_reate…"
+#~ msgstr "_Buat…"
+
+#~ msgid "Choose a Connection Type"
+#~ msgstr "Pilih Tipe Koneksi"
+
+#~ msgid ""
+#~ "Select the type of connection you wish to create.\n"
+#~ "\n"
+#~ "If you are creating a VPN, and the VPN connection you wish to create does "
+#~ "not appear in the list, you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "Pilih tipe koneksi yang ingin Anda buat.\n"
+#~ "\n"
+#~ "Bila Anda membuat suatu VPN, dan koneksi VPN yang ingin Anda buat tidak "
+#~ "muncul pada daftar, mungkin Anda belum memasang plugin VPN yang tepat."
+
+#~ msgid "_Device"
+#~ msgstr "_Peranti"
+
+#~ msgid "Round-robin"
+#~ msgstr "Round-robin"
+
+#~ msgid "Active backup"
+#~ msgstr "Cadangan aktif"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "Broadcast"
+#~ msgstr "Broadcast"
+
+#~ msgid "802.3ad"
+#~ msgstr "802.3ad"
+
+#~ msgid "Adaptive transmit load balancing"
+#~ msgstr "Penyeimbangan beban pancar adaptif"
+
+#~ msgid "Adaptive load balancing"
+#~ msgstr "Penyeimbangan beban adaptif"
+
+#~ msgid "MII (recommended)"
+#~ msgstr "MII (disarankan)"
+
+#~ msgid "ARP"
+#~ msgstr "ARP"
+
+#~ msgid "Bonded _connections"
+#~ msgstr "_Koneksi bond"
+
+#~ msgid "M_ode"
+#~ msgstr "M_ode"
+
+#~ msgid "_Edit"
+#~ msgstr "_Sunting"
+
+#~ msgid "Monitoring _frequency"
+#~ msgstr "_Frekuensi pemantauan"
+
+#~ msgid "ms"
+#~ msgstr "ms"
+
+#~ msgid "_Interface name"
+#~ msgstr "Nama _antarmuka"
+
+#~ msgid "_Link Monitoring"
+#~ msgstr "Pemantauan _Link"
+
+#~ msgid "ARP _targets"
+#~ msgstr "_Target ARP"
+
+#~ msgid ""
+#~ "An IP address, or a comma-separated list of IP addresses, to look for "
+#~ "when checking the link status."
+#~ msgstr ""
+#~ "Suatu alamat IP, atau daftar alamat IP yang dipisah koma, untuk dicari "
+#~ "ketika memeriksa status link."
+
+#~ msgid "Link _up delay"
+#~ msgstr "T_undaan link menyala"
+
+#~ msgid "Link _down delay"
+#~ msgstr "Tun_daan link mati"
+
+#~ msgid "_Primary"
+#~ msgstr "_Primer"
+
+#~ msgid ""
+#~ "The interface name of the primary device. If set, this device will always "
+#~ "be the active slave when it is available."
+#~ msgstr ""
+#~ "Nama antar muka dari perangkat primer. Bila diisi, perangkat ini akan "
+#~ "selalu menjadi slave aktif ketika tersedia."
+
+#~ msgid "_MTU"
+#~ msgstr "_MTU"
+
+#~ msgid "bytes"
+#~ msgstr "bita"
+
+#~ msgid "Path _cost"
+#~ msgstr "Bi_aya path"
+
+#~ msgid "_Priority"
+#~ msgstr "_Prioritas"
+
+#~ msgid "_Hairpin mode"
+#~ msgstr "Mode _hairpin"
+
+#~ msgid "Bridged _connections"
+#~ msgstr "Koneksi _bridge"
+
+#~ msgid "_Forward delay"
+#~ msgstr "Tundaan _forward"
+
+#~ msgid "_Hello time"
+#~ msgstr "Waktu _hello"
+
+#~ msgid "STP forwarding delay, in seconds"
+#~ msgstr "Tundaan penerusan STP, dalam detik"
+
+#~ msgid "s"
+#~ msgstr "s"
+
+#~ msgid "STP hello time, in seconds"
+#~ msgstr "Tundaan waktu hello, dalam detik"
+
+#~ msgid "Enable I_GMP snooping"
+#~ msgstr "Fungsikan snooping I_GMP"
+
+#~ msgid ""
+#~ "Controls whether IGMP snooping is enabled for this bridge. Note that if "
+#~ "snooping was automatically disabled due to hash collisions, the system "
+#~ "may refuse to enable the feature until the collisions are resolved."
+#~ msgstr ""
+#~ "Mengendalikan apakah snooping IGMP difungsikan bagi bridge ini. "
+#~ "Perhatikan bahwa bila snooping dinonaktifkan secara otomatis karena "
+#~ "tabrakan hash, sistem mungkin menolak memfungsikan fitur sampai tabrakan "
+#~ "dipecahkan."
+
+#~ msgid "Enable _STP (Spanning Tree Protocol)"
+#~ msgstr "Fungsikan _STP (Spanning Tree Protocol)"
+
+#~ msgid ""
+#~ "Controls whether Spanning Tree Protocol (STP) is enabled for this bridge"
+#~ msgstr ""
+#~ "Mengendalikan apakah Spanning Tree Protocol (STP) difungsikan bagi bridge "
+#~ "ini"
+
+#~ msgid ""
+#~ "STP priority for this bridge. Lower values are “better”; the lowest "
+#~ "priority bridge will be elected the root bridge."
+#~ msgstr ""
+#~ "Prioritas STP untuk bridge ini. Nilai lebih rendah \"lebih baik\"; bridge "
+#~ "dengan prioritas terrendah akan diangkat sebagai bridge root."
+
+#~ msgid "_Max age"
+#~ msgstr "Usia _maks"
+
+#~ msgid "STP maximum message age, in seconds"
+#~ msgstr "Usia pesan STP maksimum, dalam detik"
+
+#~ msgid "_Aging time"
+#~ msgstr "Waktu penu_aan"
+
+#~ msgid "The Ethernet MAC address aging time, in seconds"
+#~ msgstr "Waktu penuaan alamat MAC Ethernet, dalam detik"
+
+#~ msgid "Group _forward mask"
+#~ msgstr "Mask _penerusan grup"
+
+#~ msgid ""
+#~ "A mask of 16 bits, each corresponding to a group address in the range "
+#~ "from 01:80:C2:00:00:00 to 01:80:C2:00:00:0F that must be forwarded. The "
+#~ "mask can’t have bits 0, 1 or 2 set because they are used for STP, MAC "
+#~ "pause frames and LACP."
+#~ msgstr ""
+#~ "Mask 16 bit, masing-masing terkait ke suatu alamat grup dalam rentang "
+#~ "dari 01:80:C2:00:00:00 sampai 01:80:C2:00:00:0F yang mesti diteruskan. "
+#~ "Bit 0, 1, atau 2 mask tidak boleh diisi 1 karena mereka dipakai untuk "
+#~ "STP, bingkai jeda MAC, dan LACP."
+
+#~ msgid "_Use Data Center Bridging (DCB) for this connection"
+#~ msgstr "G_unakan Data Center Bridging (DCB) untuk koneksi ini"
+
+#~ msgid "FCoE"
+#~ msgstr "FCoE"
+
+#~ msgid "iSCSI"
+#~ msgstr "iSCSI"
+
+#~ msgid "FIP"
+#~ msgstr "FIP"
+
+#~ msgid "Feature"
+#~ msgstr "Fitur"
+
+#~ msgid "Enable"
+#~ msgstr "Fungsikan"
+
+#~ msgid "Advertise"
+#~ msgstr "Umumkan"
+
+#~ msgid "Willing"
+#~ msgstr "Bersedia"
+
+#~ msgid "Priority"
+#~ msgstr "Prioritas"
+
+#~ msgid "Options…"
+#~ msgstr "Opsi…"
+
+#~ msgid "Priority Groups"
+#~ msgstr "Grup Prioritas"
+
+#~ msgid "default"
+#~ msgstr "baku"
+
+#~ msgid "Fabric"
+#~ msgstr "Fabric"
+
+#~ msgid "VN2VN"
+#~ msgstr "VN2VN"
+
+#~ msgid "Priority Flow Control"
+#~ msgstr "Kendali Alir Prioritas"
+
+#~ msgid ""
+#~ "Enable or disable priority pause transmission for each User Priority."
+#~ msgstr ""
+#~ "Fungsikan atau matikan transmisi jeda prioritas bagi setiap Prioritas "
+#~ "Pengguna."
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "Traffic Class"
+#~ msgstr "Kelas Trafik"
+
+#~ msgid "Strict Bandwidth"
+#~ msgstr "Lebar Pita Ketat"
+
+#~ msgid "Priority Bandwidth"
+#~ msgstr "Lebar Pita Prioritas"
+
+#~ msgid "Group Bandwidth"
+#~ msgstr "Lebar Pita Grup"
+
+#~ msgid "Group ID"
+#~ msgstr "ID Grup"
+
+#~ msgid "Enter the priority group ID for each User Priority."
+#~ msgstr "Masukkan ID grup prioritas bagi setiap Prioritas Pengguna."
+
+#~ msgid ""
+#~ "Enter the allowed link bandwidth percent each Priority Group may use. The "
+#~ "sum of all groups must total 100%."
+#~ msgstr ""
+#~ "Masukkan persen lebar pita saluran yang boleh dipakai oleh setiap Grup "
+#~ "Prioritas. Jumlah dari semua grup mesti 100%."
+
+#~ msgid ""
+#~ "Enter the percentage of priority group bandwidth each user priority may "
+#~ "use."
+#~ msgstr ""
+#~ "Masukkan persentase dari lebar pita grup prioritas yang boleh dipakai "
+#~ "oleh setiap prioritas pengguna."
+
+#~ msgid "Enable or disable strict bandwidth for each user priority."
+#~ msgstr ""
+#~ "Fungsikan atau matikan lebar pita ketat bagi setiap prioritas pengguna."
+
+#~ msgid "Enter the traffic class for each user priority."
+#~ msgstr "Masukkan kelas trafik bagi setiap prioritas pengguna."
+
+#~ msgid "_Username"
+#~ msgstr "Nama Pengg_una"
+
+#~ msgid "Username used to authenticate with the PPPoE service."
+#~ msgstr "Nama pengguna digunakan untuk mengautentikasi dengan layanan PPPoE."
+
+#~ msgid ""
+#~ "Only initiate sessions with access concentrators that provide the "
+#~ "specified service. For most providers this should be left blank."
+#~ msgstr ""
+#~ "Hanya memulai sesi dengan konsentrator akses yang menyediakan layanan "
+#~ "yang ditentukan. Bagi sebagian besar penyedia, ini harus dibiarkan kosong."
+
+#~ msgid "_Service"
+#~ msgstr "_Layanan"
+
+#~ msgid "Sho_w password"
+#~ msgstr "Tampilkan _sandi"
+
+#~ msgid "Password used to authenticate with the PPPoE service."
+#~ msgstr "Kata sandi digunakan untuk mengautentikasi dengan layanan PPPoE."
+
+#~ msgid "_Password"
+#~ msgstr "_Sandi"
+
+#~ msgid "PPP _interface"
+#~ msgstr "A_ntarmuka PPP"
+
+#~ msgid "P_arent interface"
+#~ msgstr "_Antarmuka induk"
+
+#~ msgid "An arbitrary name to assign to the newly created PPP interface."
+#~ msgstr "Nama sebarang untuk diberikan pada antarmuka PPP yang baru dibuat."
+
+#~ msgid "The interface on which the PPP connection will be established."
+#~ msgstr "Antarmuka koneksi PPP akan terbentuk."
+
+#~ msgid "C_laim interface"
+#~ msgstr "Antarmuka k_laim"
+
+#~ msgid ""
+#~ "If selected, the connection will take exclusive control of the interface "
+#~ "and it won’t be possible to activate another connection on it. Note that "
+#~ "the option can only be used for Ethernet interfaces. nm-applet is able to "
+#~ "activate the connection only if this option is selected."
+#~ msgstr ""
+#~ "Jika dipilih, koneksi akan mengambil kontrol eksklusif antarmuka dan "
+#~ "tidak mungkin mengaktifkan koneksi lain di dalamnya. Perhatikan bahwa "
+#~ "opsi hanya dapat digunakan untuk antarmuka Ethernet. nm-applet hanya "
+#~ "dapat mengaktifkan koneksi jika opsi ini dipilih."
+
+#~ msgid "Automatic"
+#~ msgstr "Otomatis"
+
+#~ msgid "Twisted Pair (TP)"
+#~ msgstr "Twisted Pair (TP)"
+
+#~ msgid "Attachment Unit Interface (AUI)"
+#~ msgstr "Attachment Unit Interface (AUI)"
+
+#~ msgid "BNC"
+#~ msgstr "BNC"
+
+#~ msgid "Media Independent Interface (MII)"
+#~ msgstr "Media Independent Interface (MII)"
+
+#~ msgid "10 Mb/s"
+#~ msgstr "10 Mb/s"
+
+#~ msgid "100 Mb/s"
+#~ msgstr "100 Mb/s"
+
+#~ msgid "1 Gb/s"
+#~ msgstr "1 Gb/s"
+
+#~ msgid "10 Gb/s"
+#~ msgstr "10 Gb/s"
+
+#~ msgid "Half"
+#~ msgstr "Separuh"
+
+#~ msgid "Full"
+#~ msgstr "Penuh"
+
+#~ msgid "Ignore"
+#~ msgstr "Abaikan"
+
+#~ msgid "Manual"
+#~ msgstr "Atur sendiri"
+
+#~ msgid "_Port"
+#~ msgstr "_Port"
+
+#~ msgid "C_loned MAC address"
+#~ msgstr "Alamat MAC _klon"
+
+#~ msgid "Wake on LAN"
+#~ msgstr "Wake on LAN"
+
+#~ msgid "De_fault"
+#~ msgstr "_Baku"
+
+#~ msgid "_Ignore"
+#~ msgstr "Aba_ikan"
+
+#~ msgid "_Phy"
+#~ msgstr "_Phy"
+
+#~ msgid "_Unicast"
+#~ msgstr "_Unicast"
+
+#~ msgid "Mul_ticast"
+#~ msgstr "Mul_ticast"
+
+#~ msgid "_Broadcast"
+#~ msgstr "_Broadcast"
+
+#~ msgid "_Arp"
+#~ msgstr "_Arp"
+
+#~ msgid "Ma_gic"
+#~ msgstr "Ma_gic"
+
+#~ msgid "_Wake on LAN password"
+#~ msgstr "Sandi _Wake on LAN"
+
+#~ msgid ""
+#~ "Wake-on-LAN password (an Ethernet MAC). It is only valid for magic "
+#~ "packets."
+#~ msgstr ""
+#~ "Sandi Wake-on-LAN (suatu MAC Ethernet). Ini hanya valid untuk paket ajaib."
+
+#~ msgid "Lin_k negotiation"
+#~ msgstr "Negosiasi _koneksi"
+
+#~ msgid ""
+#~ "Device link negotiation. If “Manual” is chosen, “Speed” and “Duplex” "
+#~ "values will be forced without checking the device compatibility. If "
+#~ "unsure, leave here “Ignore” or pick “Automatic”."
+#~ msgstr ""
+#~ "Negosiasi koneksi perangkat. Bila \"Manual\" yang dipilih, nilai "
+#~ "\"Kecepatan\" dan \"Dupleks\" akan dipaksa tanpa memeriksa kompatibilitas "
+#~ "perangkat. Bila tidak yakin, biarkan \"Abaikan\" di sini atau pilih "
+#~ "\"Otomatis\"."
+
+#~ msgid "_Speed"
+#~ msgstr "Kecepatan"
+
+#~ msgid ""
+#~ "Speed value for static link negotiation, required only when “Ignore” and "
+#~ "“Automatic” options are not selected. Before specifying a speed value be "
+#~ "sure your device supports it."
+#~ msgstr ""
+#~ "Nilai kecepatan bagi negosiasi koneksi statik, diperlukan hanya ketika "
+#~ "opsi \"Abaikan\" dan \"Otomatis\" tidak dipilih. Sebelum menyatakan suatu "
+#~ "nilai kecepatan, pastikan bahwa perangkat Anda mendukungnya."
+
+#~ msgid "Duple_x"
+#~ msgstr "Duple_ks"
+
+#~ msgid ""
+#~ "Duplex value for static link negotiation, required only when “Ignore” and "
+#~ "“Automatic” options are not selected. Before specifying a duplex mode be "
+#~ "sure your device supports it."
+#~ msgstr ""
+#~ "Nilai dupleks bagi negosiasi koneksi statik, diperlukan hanya ketika opsi "
+#~ "\"Abaikan\" dan \"Otomatis\" tidak dipilih. Sebelum menyatakan suatu mode "
+#~ "dupleks pastikan bahwa perangkat Anda mendukungnya."
+
+#~ msgid "Yes"
+#~ msgstr "Ya"
+
+#~ msgid "No"
+#~ msgstr "Tidak"
+
+#~ msgid "All _users may connect to this network"
+#~ msgstr "Semua pengg_una boleh menyambung ke jaringan ini"
+
+#~ msgid "Automatically connect to _VPN"
+#~ msgstr "Otomatis tersambung ke _VPN"
+
+#~ msgid "Firewall _zone"
+#~ msgstr "_Zona firewall"
+
+#~ msgid "_Metered connection"
+#~ msgstr "Ko_neksi terukur"
+
+#~ msgid ""
+#~ "NetworkManager indicates to applications whether the connection is "
+#~ "metered and therefore data usage should be restricted. Select which value "
+#~ "(“Yes” or “No”) to indicate to applications, or “Automatic” to use a "
+#~ "default value based on the connection type and other heuristics."
+#~ msgstr ""
+#~ "NetworkManager menunjukkan aplikasi apakah koneksi terukur dan oleh "
+#~ "karena itu penggunaan data harus dibatasi. Pilih nilai mana (\"Ya\" atau "
+#~ "\"Tidak\") untuk menunjukkan aplikasi, atau \"Otomatis\" untuk "
+#~ "menggunakan nilai bawaan berdasarkan jenis koneksi dan heuristik lainnya."
+
+#~ msgid "Connect _automatically with priority"
+#~ msgstr "Sambungkan secara otom_atis dengan prioritas"
+
+#~ msgid ""
+#~ "Connection priority for automatic activation. Connections with higher "
+#~ "numbers are preferred when selecting profiles for automatic activation. "
+#~ "Default value is 0."
+#~ msgstr ""
+#~ "Prioritas koneksi bagi aktivasi otomatis. Koneksi dengan angka lebih "
+#~ "tinggi lebih disukai ketika memilih profil untuk aktivasi otomatis. Nilai "
+#~ "baku adalah 0."
+
+#~ msgid "Datagram"
+#~ msgstr "Datagram"
+
+#~ msgid "Connected"
+#~ msgstr "Terhubung"
+
+#~ msgid "_Transport mode"
+#~ msgstr "Mode _transport"
+
+#~ msgid "IPIP"
+#~ msgstr "IPIP"
+
+#~ msgid "GRE"
+#~ msgstr "GRE"
+
+#~ msgid "SIT"
+#~ msgstr "SIT"
+
+#~ msgid "ISATAP"
+#~ msgstr "ISATAP"
+
+#~ msgid "VTI"
+#~ msgstr "VTI"
+
+#~ msgid "IP6IP6"
+#~ msgstr "IP6IP6"
+
+#~ msgid "IPIP6"
+#~ msgstr "IPIP6"
+
+#~ msgid "IP6GRE"
+#~ msgstr "IP6GRE"
+
+#~ msgid "VTI6"
+#~ msgstr "VTI6"
+
+#~ msgid "Device name"
+#~ msgstr "Nama perangkat"
+
+#~ msgid "Parent device"
+#~ msgstr "Peranti induk"
+
+#~ msgid "Mode"
+#~ msgstr "Mode"
+
+#~ msgid "Local IP"
+#~ msgstr "IP lokal"
+
+#~ msgid "Remote IP"
+#~ msgstr "IP remote"
+
+#~ msgid "Input key"
+#~ msgstr "Kunci masukan"
+
+#~ msgid "Output key"
+#~ msgstr "Kunci keluaran"
+
+#~ msgid "MTU"
+#~ msgstr "MTU"
+
+#~ msgid "Automatic with manual DNS settings"
+#~ msgstr "Otomatis dengan pengaturan DNS manual"
+
+#~ msgid "Link-Local"
+#~ msgstr "Link-Lokal"
+
+#~ msgid "Shared to other computers"
+#~ msgstr "Berbagi dengan komputer lain"
+
+#~ msgid "_Method"
+#~ msgstr "_Metode"
+
+#~ msgid ""
+#~ "The DHCP client identifier allows the network administrator to customize "
+#~ "your computer’s configuration. If you wish to use a DHCP client "
+#~ "identifier, enter it here."
+#~ msgstr ""
+#~ "Identifier klien DHCP memungkinkan administrator jaringan untuk menggubah "
+#~ "konfigurasi komputer Anda. Bila Anda ingin memakai suatu identifier klien "
+#~ "DHCP, masukkan disini."
+
+#~ msgid ""
+#~ "Domains used when resolving host names. Use commas to separate multiple "
+#~ "domains."
+#~ msgstr ""
+#~ "Domain yang digunakan untuk mengurai nama host. Gunakan koma untuk "
+#~ "memisahkan beberapa domain."
+
+#~ msgid "D_HCP client ID"
+#~ msgstr "ID klien D_HCP"
+
+#~ msgid "S_earch domains"
+#~ msgstr "Ranah p_encarian"
+
+#~ msgid "DNS ser_vers"
+#~ msgstr "Ser_ver DNS"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses."
+#~ msgstr ""
+#~ "Alamat IP dari server nama domain dipakai untuk menerjemahkan nama host. "
+#~ "Gunakan koma untuk memisahkan alamat beberapa server nama domain."
+
+#~ msgid "Require IPv_4 addressing for this connection to complete"
+#~ msgstr "Memerlukan pengalamatan IPv_4 agar koneksi ini lengkap"
+
+#~ msgid ""
+#~ "When connecting to IPv6-capable networks, allows the connection to "
+#~ "complete if IPv4 configuration fails but IPv6 configuration succeeds."
+#~ msgstr ""
+#~ "Ketika menyambung ke jaringan yang mampu-IPv6, memungkinkan koneksi "
+#~ "komplit bila konfigurasi IPv4 gagal tetapi konfigurasi IPv6 sukses."
+
+#~ msgid "_Routes…"
+#~ msgstr "_Route…"
+
+#~ msgid "Default"
+#~ msgstr "Baku"
+
+#~ msgid "Disabled"
+#~ msgstr "Dimatikan"
+
+#~ msgid "Enabled (prefer public address)"
+#~ msgstr "Difungsikan (lebih suka alamat publik)"
+
+#~ msgid "Enabled (prefer temporary address)"
+#~ msgstr "Difungsikan (lebih suka alamat sementara)"
+
+#~ msgid "EUI64"
+#~ msgstr "EUI64"
+
+#~ msgid "Stable privacy"
+#~ msgstr "Privasi Stabil"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses. Link-local "
+#~ "addresses will be automatically scoped to the connecting interface."
+#~ msgstr ""
+#~ "Alamat IP dari server nama domain dipakai untuk menerjemahkan nama host. "
+#~ "Gunakan koma untuk memisahkan alamat beberapa server nama domain. Alamat "
+#~ "link-local akan secara otomatis di-scope ke antar muka penyambung."
+
+#~ msgid "IPv6 _privacy extensions"
+#~ msgstr "Ekstensi _privasi IPv6"
+
+#~ msgid ""
+#~ "If enabled, it makes the kernel generate a temporary IPv6 address in "
+#~ "addition to the public one generated from MAC address. This enhances "
+#~ "privacy, but could cause problems in some applications. If set to "
+#~ "\"Default\", the value from NetworkManager global configuration is used. "
+#~ "If that is also unset, use the kernel default value read from file \"/"
+#~ "proc/sys/net/ipv6/conf/default/use_tempaddr\""
+#~ msgstr ""
+#~ "Jika diaktifkan, itu membuat kernel menghasilkan alamat IPv6 sementara "
+#~ "selain alamat publik yang dihasilkan dari alamat MAC. Ini meningkatkan "
+#~ "privasi, tetapi dapat menyebabkan masalah pada beberapa aplikasi. Jika "
+#~ "disetel ke \"Default\", nilai dari konfigurasi global NetworkManager akan "
+#~ "digunakan. Jika itu juga tidak disetel, gunakan nilai default kernel yang "
+#~ "dibaca dari file \"/proc/sys/net/ipv6/conf/default/use_tempaddr\""
+
+#~ msgid "IPv6 address _generation mode"
+#~ msgstr "_Mode pembuatan alamat IPv6"
+
+#~ msgid "Require IPv_6 addressing for this connection to complete"
+#~ msgstr "Memerlukan pengalamatan IPv_6 agar koneksi ini lengkap"
+
+#~ msgid ""
+#~ "When connecting to IPv4-capable networks, allows the connection to "
+#~ "complete if IPv6 configuration fails but IPv4 configuration succeeds."
+#~ msgstr ""
+#~ "Ketika menyambung ke jaringan yang mampu-IPv4, memungkinkan koneksi "
+#~ "komplit bila konfigurasi IPv6 gagal tetapi konfigurasi IPv4 sukses."
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "EAP"
+#~ msgstr "EAP"
+
+#~ msgid "Check"
+#~ msgstr "Periksa"
+
+#~ msgid "Strict"
+#~ msgstr "Ketat"
+
+#~ msgid "_Device name"
+#~ msgstr "Nama pe_rangkat"
+
+#~ msgid "The name of the MACsec device."
+#~ msgstr "Nama perangkat MACsec."
+
+#~ msgid "_Parent device"
+#~ msgstr "_Peranti induk"
+
+#~ msgid ""
+#~ "The parent interface name or parent connection UUID from which this "
+#~ "MACSEC interface should be created."
+#~ msgstr ""
+#~ "Nama antarmuka induk atau koneksi induk UUID dari mana antarmuka MACsec "
+#~ "ini harus dibuat."
+
+#~ msgid ""
+#~ "The parent interface name or parent connection UUID from which this "
+#~ "MACsec interface should be created"
+#~ msgstr ""
+#~ "Nama antarmuka induk atau koneksi induk UUID dari mana antarmuka MACsec "
+#~ "ini harus dibuat"
+
+#~ msgid "Keys"
+#~ msgstr "Kunci"
+
+#~ msgid "_Mode"
+#~ msgstr "_Mode"
+
+#~ msgid ""
+#~ "Specifies how the CAK (Connectivity Association Key) for MKA (MACsec Key "
+#~ "Agreement) is obtained. For the EAP mode, fill the parameters in the "
+#~ "802.1X security page"
+#~ msgstr ""
+#~ "Menentukan bagaimana CAK (Connectivity Association Key) untuk MKA (MACsec "
+#~ "Key Agreement) diperoleh. Untuk mode EAP, isilah parameter di halaman "
+#~ "keamanan 802.1X"
+
+#~ msgid "C_AK"
+#~ msgstr "C_AK"
+
+#~ msgid "The pre-shared Connectivity Association Key"
+#~ msgstr "Kunci Konektivitas Asosiasi pre-shared"
+
+#~ msgid "C_KN"
+#~ msgstr "C_KN"
+
+#~ msgid " The pre-shared Connectivity-association Key Name"
+#~ msgstr " Nama Kunci Konektivitas-asosiasi pre-shared"
+
+#~ msgid "Parameters"
+#~ msgstr "Parameter"
+
+#~ msgid "_Validation"
+#~ msgstr "_Validasi"
+
+#~ msgid "Specifies the validation mode for incoming frames"
+#~ msgstr "Menentukan mode validasi untuk frame masuk"
+
+#~ msgid "_SCI port"
+#~ msgstr "Port _SCI"
+
+#~ msgid "The port component of the SCI (Secure Channel Identifier)"
+#~ msgstr "Komponen port dari SCI (Secure Channel Identifier)"
+
+#~ msgid "_Encrypt"
+#~ msgstr "_Enkripsi"
+
+#~ msgid "Whether the transmitted traffic must be encrypted"
+#~ msgstr "Apakah lalu lintas yang ditransmisikan harus dienkripsi"
+
+#~ msgid "Basic"
+#~ msgstr "Dasar"
+
+#~ msgid "Nu_mber"
+#~ msgstr "No_mor"
+
+#~ msgid "Advanced"
+#~ msgstr "Tingkat Lanjut"
+
+#~ msgid "_APN"
+#~ msgstr "_APN"
+
+#~ msgid "N_etwork ID"
+#~ msgstr "ID Jari_ngan"
+
+#~ msgid "Change…"
+#~ msgstr "Ganti…"
+
+#~ msgid "P_IN"
+#~ msgstr "P_IN"
+
+#~ msgid "Allow _roaming if home network is not available"
+#~ msgstr "Ijinkan _roaming bila jaringan rumah tak tersedia"
+
+#~ msgid "Sho_w passwords"
+#~ msgstr "_Tampilkan sandi"
+
+#~ msgid "Authentication"
+#~ msgstr "Autentikasi"
+
+#~ msgid "Allowed methods"
+#~ msgstr "Metoda yang diizinkan"
+
+#~ msgid "Configure _Methods…"
+#~ msgstr "Atur _Metoda…"
+
+#~ msgid "Compression"
+#~ msgstr "Kompresi"
+
+#~ msgid "_Use point-to-point encryption (MPPE)"
+#~ msgstr "G_unakan point-to-point encryption (MPPE)"
+
+#~ msgid "_Require 128-bit encryption"
+#~ msgstr "Pe_rsyaratkan enkripsi 128-bit"
+
+#~ msgid "Use _stateful MPPE"
+#~ msgstr "Gunakan _stateful MPPE"
+
+#~ msgid "Allow _BSD data compression"
+#~ msgstr "Ijinkan pemampatan data _BSD"
+
+#~ msgid "Allow _Deflate data compression"
+#~ msgstr "Ijinkan pemampatan data _Deflate"
+
+#~ msgid "Use TCP _header compression"
+#~ msgstr "Gunakan pemampatan _header TCP"
+
+#~ msgid "Echo"
+#~ msgstr "Echo"
+
+#~ msgid "Send PPP _echo packets"
+#~ msgstr "Kirim paket _echo PPP"
+
+#~ msgid "None"
+#~ msgstr "Nihil"
+
+#~ msgid "For browser only"
+#~ msgstr "Hanya untuk peramban"
+
+#~ msgid "Use this proxy configuration for only browser clients/schemes."
+#~ msgstr "Gunakan konfigurasi proksi ini hanya untuk skema/klien peramban."
+
+#~ msgid "PAC URL"
+#~ msgstr "URL PAC"
+
+#~ msgid "PAC script"
+#~ msgstr "Skrip PAC"
+
+#~ msgid "URL from where the PAC script is to be obtained."
+#~ msgstr "URL darimana skrip PAC akan diperoleh."
+
+#~ msgid "Import script from a file…"
+#~ msgstr "Impor skrip dari suatu berkas…"
+
+#~ msgid "Method"
+#~ msgstr "Metode"
+
+#~ msgid "Ad_vanced…"
+#~ msgstr "Tingkat _Lanjut…"
+
+#~ msgid "Set by master"
+#~ msgstr "Diatur oleh induk"
+
+#~ msgid "Ethernet port state"
+#~ msgstr "Keadaan port ethernet"
+
+#~ msgid "ARP (IPv4)"
+#~ msgstr "ARP (IPv4)"
+
+#~ msgid "NDP (IPv6)"
+#~ msgstr "NDP (IPv6)"
+
+#~ msgid "_Queue ID"
+#~ msgstr "ID _Antrian"
+
+#~ msgid ""
+#~ "Number of bursts of unsolicited NAs and gratuitous ARP packets sent after "
+#~ "port is enabled or disabled."
+#~ msgstr ""
+#~ "Cacah rentetan NA yang tidak diminta dan paket ARP serampangan yang "
+#~ "dikirim setelah port difungsikan atau dinonaktifkan."
+
+#~ msgid "ID of queue which this port should be mapped to."
+#~ msgstr "ID antrian yang mestinya port ini dipetakan padanya."
+
+#~ msgid "Active-Backup runner options"
+#~ msgstr "Opsi pelari Aktif-Backup"
+
+#~ msgid "_Port priority"
+#~ msgstr "_Prioritas port"
+
+#~ msgid ""
+#~ "Value is positive number in milliseconds. Specifies an interval between "
+#~ "bursts of notify-peer packets."
+#~ msgstr ""
+#~ "Nilai adalah bilangan positif dalam milidetik. Menyatakan selang waktu "
+#~ "antara rentetan dari paket notify-peer."
+
+#~ msgid "Port priority. The higher number means higher priority."
+#~ msgstr ""
+#~ "Prioritas port. Angka yang lebih tinggi berarti prioritas lebih tinggi."
+
+#~ msgid "Port _sticky"
+#~ msgstr "Port _lengket"
+
+#~ msgid "Do not unselect the port if a better one becomes available."
+#~ msgstr "Jangan lepas pilihan port bila yang lebih baik menjadi ada."
+
+#~ msgid "LACP runner options"
+#~ msgstr "Opsi pelari LACP"
+
+#~ msgid "_LACP port priority"
+#~ msgstr "Prioritas port _LACP"
+
+#~ msgid "LACP port _key"
+#~ msgstr "_Kunci port LACP"
+
+#~ msgid ""
+#~ "Number of bursts of multicast group rejoin requests sent after port is "
+#~ "enabled or disabled."
+#~ msgstr ""
+#~ "Cacah rentetan permintaan gabung ulang grup multicast yang dikirim "
+#~ "setelah port difungsikan atau dinonaktifkan."
+
+#~ msgid ""
+#~ "Port priority according to LACP standard. The lower number means higher "
+#~ "priority."
+#~ msgstr ""
+#~ "Prioritas port menurut standar LACP. Angka yang lebih rendah berarti "
+#~ "prioritas lebih tinggi."
+
+#~ msgid ""
+#~ "Value is positive number in milliseconds. Specifies an interval between "
+#~ "bursts of multicast group rejoin requests."
+#~ msgstr ""
+#~ "Nilai adalah bilangan positif dalam milidetik. Menyatakan selang waktu "
+#~ "antar rentetan dari permintaan gabung ulang grup multicast."
+
+#~ msgid ""
+#~ "Port key according to LACP standard. It is only possible to aggregate "
+#~ "ports with the same key."
+#~ msgstr ""
+#~ "Kunci port menurut standar LACP. Ini hanya mungkin mengagregasi port "
+#~ "dengan kunci yang sama."
+
+#~ msgid "_Link watcher"
+#~ msgstr "Pemantau _link"
+
+#~ msgid "_Up delay"
+#~ msgstr "T_undaan menyala"
+
+#~ msgid "_Down delay"
+#~ msgstr "Tun_daan mati"
+
+#~ msgid "Send _interval"
+#~ msgstr "Selang waktu k_irim"
+
+#~ msgid "Delay _before first send"
+#~ msgstr "Tundaan se_belum kiriman pertama"
+
+#~ msgid "_Maximum missed replies"
+#~ msgstr "_Maksimum jawaban yang meleset"
+
+#~ msgid "_Source host"
+#~ msgstr "Host _sumber"
+
+#~ msgid "_Target host"
+#~ msgstr "Host _target"
+
+#~ msgid ""
+#~ "Maximum number of missed replies. If this number is exceeded, link is "
+#~ "reported as down."
+#~ msgstr ""
+#~ "Banyaknya maksimum jawaban yang tidak tertangkap. Bila angka ini "
+#~ "terlampaui, link dilaporkan sebagai mati."
+
+#~ msgid ""
+#~ "Hostname to be converted to IP address which will be filled into ARP "
+#~ "request as source address."
+#~ msgstr ""
+#~ "Nama host yang akan dikonversi ke alamat IP yang akan diisikan ke "
+#~ "permintaan ARP sebagai alamat sumber."
+
+#~ msgid ""
+#~ "Hostname to be converted to IP address which will be filled into request "
+#~ "as destination address."
+#~ msgstr ""
+#~ "Nama host yang akan dikonversi ke alamat IP yang akan diisikan ke "
+#~ "permintaan sebagai alamat tujuan."
+
+#~ msgid "Ignore invalid packets from _active ports"
+#~ msgstr "Abaikan paket yang tidak valid dari port _aktif"
+
+#~ msgid ""
+#~ "Validate received ARP packets on active ports. If this is not checked, "
+#~ "all incoming ARP packets will be considered as a good reply."
+#~ msgstr ""
+#~ "Validasikan paket ARP yang diterima pada port aktif. Bila ini tidak "
+#~ "dicentang, semua paket ARP yang datang akan dianggap sebagai jawaban yang "
+#~ "bagus."
+
+#~ msgid "Ignore invalid packets from i_nactive ports"
+#~ msgstr "Abaikan paket yang tidak valid dari port ya_ng tidak aktif"
+
+#~ msgid ""
+#~ "Validate received ARP packets on inactive ports. If this is not checked, "
+#~ "all incoming ARP packets will be considered as a good reply."
+#~ msgstr ""
+#~ "Validasikan paket ARP yang diterima pada port yang tidak aktif. Bila ini "
+#~ "tidak dicentang, semua paket ARP yang datang akan dianggap sebagai "
+#~ "jawaban yang bagus."
+
+#~ msgid "S_end on inactive ports"
+#~ msgstr "K_irim pada port yang tidak aktif"
+
+#~ msgid ""
+#~ "By default, ARP requests are sent on active ports only. This option "
+#~ "allows sending even on inactive ports."
+#~ msgstr ""
+#~ "Secara baku, permintaan ARP dikirim hanya pada port yang aktif. Opsi ini "
+#~ "mengizinkan pengiriman bahkan pada port yang tidak aktif."
+
+#~ msgid ""
+#~ "The delay between the link coming up and the runner being notified about "
+#~ "it."
+#~ msgstr "Tundaan antara link mulai hidup dan pelari diberitahu tentangnya."
+
+#~ msgid ""
+#~ "The delay between the link going down and the runner being notified about "
+#~ "it."
+#~ msgstr "Tundaan antara link menuju mati dan pelari diberitahu tentangnya."
+
+#~ msgid "The interval between requests being sent."
+#~ msgstr "Selang waktu antar pengiriman permintaan."
+
+#~ msgid ""
+#~ "The delay between link watch initialization and the first request being "
+#~ "sent."
+#~ msgstr ""
+#~ "Tundaan antara inisialisasi pemantauan link dan pengiriman permintaan "
+#~ "pertama."
+
+#~ msgid "The link watcher to be used."
+#~ msgstr "Pemantau link yang akan dipakai."
+
+#~ msgid "Link Watcher"
+#~ msgstr "Pemantau Link"
+
+#~ msgid "Im_port team configuration from a file…"
+#~ msgstr "_Impor konfigurasi tim dari suatu berkas…"
+
+#~ msgid "Edit _JSON configuration"
+#~ msgstr "Sunting konfigurasi _JSON"
+
+#~ msgid "Raw Configuration"
+#~ msgstr "Konfigurasi Mentah"
+
+#~ msgid "Highest priority"
+#~ msgstr "Prioritas tertinggi"
+
+#~ msgid "Highest priority (stable)"
+#~ msgstr "Prioritas tertinggi (stabil)"
+
+#~ msgid "Bandwidth"
+#~ msgstr "Lebar Pita"
+
+#~ msgid "Highest number of ports"
+#~ msgstr "Nomor tertinggi port"
+
+#~ msgid "Port priority"
+#~ msgstr "Prioritas port"
+
+#~ msgid "From the team device"
+#~ msgstr "Dari perangkat team"
+
+#~ msgid "From the active port"
+#~ msgstr "Dari port aktif"
+
+#~ msgid "From active to team device"
+#~ msgstr "Dari aktif ke perangkat team"
+
+#~ msgid "_Teamed connections"
+#~ msgstr "Koneksi _team"
+
+#~ msgid "Load balance"
+#~ msgstr "Penyeimbangan beban"
+
+#~ msgid "LACP"
+#~ msgstr "LACP"
+
+#~ msgid "Ethernet"
+#~ msgstr "Ethernet"
+
+#~ msgid "VLAN"
+#~ msgstr "VLAN"
+
+#~ msgid "IP"
+#~ msgstr "IP"
+
+#~ msgid "Any L3 protocol"
+#~ msgstr "Sebarang protokol L3"
+
+#~ msgid "TCP"
+#~ msgstr "TCP"
+
+#~ msgid "UDP"
+#~ msgstr "UDP"
+
+#~ msgid "SCTP"
+#~ msgstr "SCTP"
+
+#~ msgid "Any L4 protocol"
+#~ msgstr "Sebarang protokol L4"
+
+#~ msgid "_Peer notification count"
+#~ msgstr "Cacah pemberitahuan _peer"
+
+#~ msgid "Peer _notification interval"
+#~ msgstr "Selang waktu pemberitahua_n peer"
+
+#~ msgid "_Multicast rejoin count"
+#~ msgstr "Cacah gabung ulang _multicast"
+
+#~ msgid "Multicast _rejoin interval"
+#~ msgstr "_Selang waktu gabung ulang multicast"
+
+#~ msgid "_Hardware Address"
+#~ msgstr "Alamat Perangkat Keras"
+
+#~ msgid ""
+#~ "Desired hardware address of new team device. Usual MAC address format is "
+#~ "accepted."
+#~ msgstr ""
+#~ "Alamat perangkat keras yang diinginkan untuk perangkat team baru. Format "
+#~ "alamat MAC yang biasa dapat dipakai."
+
+#~ msgid "_Runner"
+#~ msgstr "Pela_ri"
+
+#~ msgid "_Hardware address policy"
+#~ msgstr "Kebijakan _alamat perangkat keras"
+
+#~ msgid "Name of runner to be used."
+#~ msgstr "Nama pelari yang akan dipakai."
+
+#~ msgid ""
+#~ "This defines the policy of how hardware addresses of team device and port "
+#~ "devices should be set during the team lifetime."
+#~ msgstr ""
+#~ "Ini menentukan kebijakan bagaimana alamat perangkat keras dari perangkat "
+#~ "team dan perangkat port mesti ditata selama masa hidup team."
+
+#~ msgid "Send LACPDU frames _periodically"
+#~ msgstr "Kirim frame LACPDU secara _periodik"
+
+#~ msgid ""
+#~ "If checked, LACPDU frames are sent along the configured links "
+#~ "periodically. If not, it acts as “speak when spoken to”."
+#~ msgstr ""
+#~ "Bila dicentang, frame LACPDU dikirim melalui link yang ditata secara "
+#~ "periodik. Bila tidak, itu beraksi secara \"menjawab ketika diajak bicara"
+#~ "\"."
+
+#~ msgid "Send a LACPDU frame _every second"
+#~ msgstr "Kirim sebuah frame LACPDU s_etiap detik"
+
+#~ msgid ""
+#~ "Option specifies the rate at which our link partner is asked to transmit "
+#~ "LACPDU packets. If checked, packets will be sent once per second. "
+#~ "Otherwise they will be sent every 30 seconds."
+#~ msgstr ""
+#~ "Opsi menyatakan seberapa laju pasangan link diminta untuk mengirim paket "
+#~ "LACPDU. Bila dicentang, paket akan dikirim sekali per detik. Bila tidak "
+#~ "mereka akan dikirim setiap 30 detik."
+
+#~ msgid "_System priority"
+#~ msgstr "Prioritas _sistem"
+
+#~ msgid "_Minimum ports"
+#~ msgstr "Port _minimum"
+
+#~ msgid "_Aggregator selection policy"
+#~ msgstr "Kebijakan pemilihan _agregator"
+
+#~ msgid "System priority, value can be 0 – 65535."
+#~ msgstr "Prioritas sistem, nilai bisa 0 – 65535."
+
+#~ msgid ""
+#~ "Specifies the minimum number of ports that must be active before "
+#~ "asserting carrier in the master interface, value can be 1 – 255."
+#~ msgstr ""
+#~ "Menyatakan banyaknya port minimum yang mesti aktif sebelum menegaskan "
+#~ "carrier dalam antar muka induk, nilai bisa 1 – 255."
+
+#~ msgid "This selects the policy of how the aggregators will be selected."
+#~ msgstr "Ini memilih kebijakan bagaimana agregator akan dipilih."
+
+#~ msgid ""
+#~ "List of fragment types (strings) which should be used for packet Tx hash "
+#~ "computation."
+#~ msgstr ""
+#~ "Daftar tipe fragmen (string) yang mesti dipakai untuk komputasi hash "
+#~ "paket Tx."
+
+#~ msgid "_Fields for transmission hash"
+#~ msgstr "_Ruas untuk hash transmisi"
+
+#~ msgid "In tenths of a second. Periodic interval between rebalancing."
+#~ msgstr ""
+#~ "Dalam persepuluhan detik. Selang waktu periodik antara penyeimbangan "
+#~ "ulang."
+
+#~ msgid ""
+#~ "Name of active Tx balancer. Active Tx balancing is disabled by default."
+#~ msgstr ""
+#~ "Nama dari penyeimbang Tx aktif. Penyeimbangan Tx aktif dinonaktifkan "
+#~ "secara baku."
+
+#~ msgid "Transmission _balancing interval"
+#~ msgstr "Selang waktu penyeim_bangan transmisi"
+
+#~ msgid "_Transmission balancer"
+#~ msgstr "Penyeimbang _transmisi"
+
+#~ msgid "Runner"
+#~ msgstr "Pelari"
+
+#~ msgid "_Parent interface"
+#~ msgstr "Antarmuka i_nduk"
+
+#~ msgid "VLAN inter_face name"
+#~ msgstr "_Nama antarmuka VLAN"
+
+#~ msgid "Cloned MAC _address"
+#~ msgstr "Alamat MA_C Klon"
+
+#~ msgid "VLAN _id"
+#~ msgstr "_Id VLAN"
+
+#~ msgid "Flags"
+#~ msgstr "Flag"
+
+#~ msgid "_Reorder headers"
+#~ msgstr "U_rutkan ulang header"
+
+#~ msgid "_GVRP"
+#~ msgstr "_GVRP"
+
+#~ msgid "_Loose binding"
+#~ msgstr "Pengikatan _longgar"
+
+#~ msgid "M_VRP"
+#~ msgstr "M_VRP"
+
+#~ msgid "Device name + number"
+#~ msgstr "Nama perangkat + nomor"
+
+#~ msgid "\"vlan\" + number"
+#~ msgstr "\"vlan\" + nomor"
+
+#~ msgid "S_ecurity"
+#~ msgstr "K_eamanan"
+
+#~ msgid "A (5 GHz)"
+#~ msgstr "A (5 GHz)"
+
+#~ msgid "B/G (2.4 GHz)"
+#~ msgstr "B/G (2.4 GHz)"
+
+#~ msgid "Client"
+#~ msgstr "Klien"
+
+#~ msgid "Ad-hoc"
+#~ msgstr "Ad-hoc"
+
+#~ msgid "mW"
+#~ msgstr "mW"
+
+#~ msgid "Transmission po_wer"
+#~ msgstr "_Daya transmisi"
+
+#~ msgid "Mb/s"
+#~ msgstr "Mb/s"
+
+#~ msgid "_Rate"
+#~ msgstr "_Laju"
+
+#~ msgid "_BSSID"
+#~ msgstr "_BSSID"
+
+#~ msgid "C_hannel"
+#~ msgstr "K_anal"
+
+#~ msgid "Ban_d"
+#~ msgstr "Ban_d"
+
+#~ msgid "SS_ID"
+#~ msgstr "SS_ID"
+
+#~ msgid "Edit WireGuard peer"
+#~ msgstr "Sunting peer WireGuard"
+
+#~ msgid "_Apply"
+#~ msgstr "Ter_apkan"
+
+#~ msgid "_Public key"
+#~ msgstr "Kunci _publik"
+
+#~ msgid "Allowed _IPs"
+#~ msgstr "_IP yang diizinkan"
+
+#~ msgid "_Endpoint"
+#~ msgstr "_Endpoint"
+
+#~ msgid "Pre_shared key"
+#~ msgstr "Kunci pre_shared"
+
+#~ msgid "Persistent _keepalive"
+#~ msgstr "_Keepalive persisten"
+
+#~ msgid "A base64 public key calculated by 'wg pubkey' from a private key."
+#~ msgstr ""
+#~ "Kunci publik base64 yang dihitung dengan 'wg pubkey' dari kunci privat."
+
+#~ msgid ""
+#~ "Comma-separated list of IP (v4 or v6) addresses with CIDR masks from "
+#~ "which incoming traffic for this peer is allowed and to which outgoing "
+#~ "traffic for this peer is directed."
+#~ msgstr ""
+#~ "Daftar dipisah koma dari alamat IP (v4 atau V6) dengan mask CIDR. Lalu "
+#~ "lintas masuk dari daftar untuk peer ini diizinkan dan lalu lintas keluar "
+#~ "untuk peer ini diarahkan ke daftar."
+
+#~ msgid ""
+#~ "An endpoint IP or hostname, followed by a colon, and then a port number."
+#~ msgstr ""
+#~ "Titik akhir IP atau nama host, diikuti oleh titik dua, dan kemudian nomor "
+#~ "port."
+
+#~ msgid ""
+#~ "A base64 preshared key generated by 'wg genpsk'. Optional, and may be "
+#~ "omitted. Adds an additional layer of symmetric-key cryptography to be "
+#~ "mixed into the already existing public-key cryptography, for post-quantum "
+#~ "resistance."
+#~ msgstr ""
+#~ "Kunci preshared base64 yang dihasilkan oleh 'wg genpsk'. Opsional, dan "
+#~ "boleh dihilangkan. Menambahkan lapisan kriptografi kunci simetrik untuk "
+#~ "dicampur ke dalam kriptografi kunci publik yang sudah ada, untuk "
+#~ "resistensi pasca-kuantum."
+
+#~ msgid ""
+#~ "How often to send an authenticated empty packet to the peer for the "
+#~ "purpose of keeping a stateful firewall or NAT mapping valid. This is "
+#~ "optional and not recommended outside of specific setups."
+#~ msgstr ""
+#~ "Seberapa sering untuk mengirim paket kosong yang diotentikasi ke peer "
+#~ "untuk tujuan agar menjaga firewall stateful atau pemetaan NAT tetap "
+#~ "valid. Ini adalah opsional dan tidak direkomendasikan di luar setup "
+#~ "tertentu."
+
+#~ msgid "seconds"
+#~ msgstr "detik"
+
+#~ msgid "Sho_w preshared key"
+#~ msgstr "_Tampilkan kunci preshared"
+
+#~ msgid "The name of the wireguard interface to create."
+#~ msgstr "Nama dari antarmuka wireguard yang akan dibuat."
+
+#~ msgid "Private _key"
+#~ msgstr "_Kunci privat"
+
+#~ msgid "The 256 bit private key in base64 encoding"
+#~ msgstr "Kunci privat 256 bit dalam pengkodean base64"
+
+#~ msgid "_Listen port"
+#~ msgstr "_Dengarkan port"
+
+#~ msgid ""
+#~ "A port to listen on. If set to 'automatic', the port will be chosen "
+#~ "randomly when the interface comes up."
+#~ msgstr ""
+#~ "Suatu port tempat mendengarkan. Jika diatur ke 'automatic', port akan "
+#~ "dipilih secara acak saat antarmuka muncul."
+
+#~ msgid "_Fwmark"
+#~ msgstr "_Fwmark"
+
+#~ msgid "Add peer _routes"
+#~ msgstr "Tambahkan _rute peer"
+
+#~ msgid ""
+#~ "Whether to automatically add routes for the AllowedIPs ranges of the peers"
+#~ msgstr ""
+#~ "Apakah akan secara otomatis menambahkan rute untuk rentang AllowedIPs "
+#~ "dari peer"
+
+#~ msgid ""
+#~ "A 32-bit fwmark for outgoing packets. Leave it to 'off' to disable fwmark."
+#~ msgstr ""
+#~ "Sebuah fwmark 32-bit untuk paket keluar. Biarkan 'off' untuk "
+#~ "menonaktifkan fwmark."
+
+#~ msgid "_Show private key"
+#~ msgstr "_Tampilkan kunci privat"
+
+#~ msgid "<b>_Peers</b>"
+#~ msgstr "<b>_Peer</b>"
+
+#~ msgid "automatic"
+#~ msgstr "otomatis"
+
+#~ msgid "off"
+#~ msgstr "mati"
+
+#~ msgid "unspecified error"
+#~ msgstr "kesalahan tidak jelas"
+
+#~ msgid "Preserve"
+#~ msgstr "Pertahankan"
+
+#~ msgid "Permanent"
+#~ msgstr "Permanen"
+
+#~ msgid "Random"
+#~ msgstr "Acak"
+
+#~ msgid "Stable"
+#~ msgstr "Stabil"
+
+#~ msgid ""
+#~ "The MAC address entered here will be used as hardware address for the "
+#~ "network device this connection is activated on. This feature is known as "
+#~ "MAC cloning or spoofing. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "Alamat MAC yang dimasukkan di sini akan dipakai sebagai alamat perangkat "
+#~ "keras bagi perangkat jaringan untuk koneksi yang diaktifkan. Fitur ini "
+#~ "dikenal sebagai klon atau spoof MAC. Contoh: 00:11:22:33:44:55"
+
+#~ msgid "MAC address"
+#~ msgstr "Alamat MAC"
+
+#~ msgid "HW address"
+#~ msgstr "Alamat HW"
+
+#, c-format
+#~ msgid "invalid %s for %s (%s)"
+#~ msgstr "%s tidak valid bagi %s (%s)"
+
+#, c-format
+#~ msgid "invalid %s (%s)"
+#~ msgstr "%s tak valid (%s)"
+
+#, c-format
+#~ msgid "invalid interface-name for %s (%s): "
+#~ msgstr "nama antar muka tidak valid bagi %s (%s): "
+
+#, c-format
+#~ msgid "invalid interface-name (%s): "
+#~ msgstr "nama antar muka tidak valid (%s): "
+
+#~ msgid "can’t parse device name"
+#~ msgstr "tak bisa mengurai nama perangkat"
+
+#~ msgid "invalid hardware address"
+#~ msgstr "alamat perangkat keras tidak valid"
+
+#, c-format
+#~ msgid "invalid %s (%s): "
+#~ msgstr "%s tak valid (%s): "
+
+#, c-format
+#~ msgid "invalid %s (%s) "
+#~ msgstr "%s tak valid (%s) "
+
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add static IP address to be configured in addition to the "
+#~ "automatic ones."
+#~ msgstr ""
+#~ "Alamat IP menandai komputer Anda pada jaringan. Klik tombol \"Tambah\" "
+#~ "untuk menambah alamat IP statik untuk dikonfigurasi sebagai tambahan ke "
+#~ "yang otomatis."
+
+#~ msgid ""
+#~ "The IP address identify your computer on the network and determines the "
+#~ "address range distributed to other computers. Click the “Add” button to "
+#~ "add an IP address. If no address is provided, range will be determined "
+#~ "automatically."
+#~ msgstr ""
+#~ "Alamat IP mengidentifikasi komputer Anda pada jaringan dan menentukan "
+#~ "rentang alamat yang didistribusikan ke komputer lain. Klik tombol \"Tambah"
+#~ "\" untuk menambahkan sebuah alamat IP. Bila tidak ada alamat yang "
+#~ "diberikan, rentang akan ditentukan secara otomatis."
+
+#~ msgid "Additional static addresses"
+#~ msgstr "Alamat statik tambahan"
+
+#~ msgid "Addresses"
+#~ msgstr "Alamat"
+
+#~ msgid "Address (optional)"
+#~ msgstr "Alamat (opsional)"
+
+#~ msgid "No polkit authorization to perform the action"
+#~ msgstr "Tidak ada otorisasi polkit untuk melaksanakan aksi"
+
+#~ msgid "Allowed Authentication Methods"
+#~ msgstr "Metoda Autentikasi yang Diijinkan"
+
+#~ msgid "_EAP"
+#~ msgstr "_EAP"
+
+#~ msgid "Extensible Authentication Protocol"
+#~ msgstr "Extensible Authentication Protocol"
+
+#~ msgid "_PAP"
+#~ msgstr "_PAP"
+
+#~ msgid "Password Authentication Protocol"
+#~ msgstr "Password Authentication Protocol"
+
+#~ msgid "C_HAP"
+#~ msgstr "C_HAP"
+
+#~ msgid "Challenge Handshake Authentication Protocol"
+#~ msgstr "Challenge Handshake Authentication Protocol"
+
+#~ msgid "_MSCHAP"
+#~ msgstr "_MSCHAP"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol"
+
+#~ msgid "MSCHAP v_2"
+#~ msgstr "MSCHAP v_2"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol version 2"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol versi 2"
+
+#~ msgid ""
+#~ "In most cases, the provider’s PPP servers will support all authentication "
+#~ "methods. If connections fail, try disabling support for some methods."
+#~ msgstr ""
+#~ "Pada kebanyakan kasus, server PPP dari penyedia akan mendukung semua "
+#~ "metoda autentikasi. Bila koneksi gagal, cobalah mematikan dukungan untuk "
+#~ "beberapa metoda."
+
+#~ msgid "Wi-Fi"
+#~ msgstr "Wi-Fi"
+
+#~ msgid "DSL/PPPoE"
+#~ msgstr "DSL/PPPoE"
+
+#~ msgid "InfiniBand"
+#~ msgstr "InfiniBand"
+
+#~ msgid "Bond"
+#~ msgstr "Bond"
+
+#~ msgid "Team"
+#~ msgstr "Tim"
+
+#~ msgid "Bridge"
+#~ msgstr "Bridge"
+
+#~ msgid "IP tunnel"
+#~ msgstr "Tunnel IP"
+
+#~ msgid "MACsec"
+#~ msgstr "MACsec"
+
+#~ msgid "WireGuard"
+#~ msgstr "WireGuard"
+
+#~ msgid "VPN"
+#~ msgstr "VPN"
+
+#~ msgid "No VPN service type."
+#~ msgstr "Tidak ada jenis layanan VPN."
+
+#~ msgid "The VPN plugin failed to import the VPN connection correctly: "
+#~ msgstr "Pengaya VPN gagal mengimpor koneksi VPN dengan benar: "
+
+#~ msgid "Select file to import"
+#~ msgstr "Pilih berkas untuk diimpor"
+
+#~ msgid "_Open"
+#~ msgstr "_Buka"
+
+#~ msgid "Hardware"
+#~ msgstr "Perangkat Keras"
+
+#~ msgid "Virtual"
+#~ msgstr "Virtual"
+
+#~ msgid "Import a saved VPN configuration…"
+#~ msgstr "Impor suatu konfigurasi VPN yang tersimpan…"
+
+#~ msgid ""
+#~ "The connection editor dialog could not be initialized due to an unknown "
+#~ "error."
+#~ msgstr ""
+#~ "Dialog penyunting koneksi tidak dapat diinisialisasi karena galat yang "
+#~ "tak dikenal."
+
+#~ msgid "Could not create new connection"
+#~ msgstr "Tak bisa membuat koneksi baru"
+
+#~ msgid "Connection delete failed"
+#~ msgstr "Penghapusan koneksi gagal"
+
+#, c-format
+#~ msgid "Are you sure you wish to delete the connection %s?"
+#~ msgstr "Anda yakin ingin menghapus koneksi %s?"
+
+#~ msgid "_New Connection"
+#~ msgstr "Ko_neksi Baru"
+
+#~ msgid "_Quit"
+#~ msgstr "_Keluar"
+
+#~ msgid "Address"
+#~ msgstr "Alamat"
+
+#~ msgid "Netmask"
+#~ msgstr "Netmask"
+
+#~ msgid "Gateway"
+#~ msgstr "Gateway"
+
+#~ msgid "Metric"
+#~ msgstr "Metrik"
+
+#~ msgid "Prefix"
+#~ msgstr "Awalan"
+
+#, c-format
+#~ msgid "Editing %s"
+#~ msgstr "Menyunting %s"
+
+#~ msgid "Editing un-named connection"
+#~ msgstr "Sunting koneksi tak bernama"
+
+#~ msgid "Missing connection name"
+#~ msgstr "Kurang nama koneksi"
+
+#~ msgid "Editor initializing…"
+#~ msgstr "Menginisialisasi penyunting…"
+
+#~ msgid "Connection cannot be modified"
+#~ msgstr "Koneksi tak bisa diubah"
+
+#, c-format
+#~ msgid "Invalid setting %s: %s"
+#~ msgstr "Pengaturan tak valid %s: %s"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "Penyunting koneksi tak dapat menemukan beberapa sumber daya yang "
+#~ "diperlukan (berkas .ui tak ditemukan)."
+
+#~ msgid "_Save"
+#~ msgstr "_Simpan"
+
+#~ msgid "Save any changes made to this connection."
+#~ msgstr "Simpan perubahan yang dibuat atas koneksi ini."
+
+#~ msgid "Authenticate to save this connection for all users of this machine."
+#~ msgstr ""
+#~ "Lalukan autentikasi untuk menyimpan koneksi ini bagi semua pengguna dari "
+#~ "mesin ini."
+
+#~ msgid "Could not create connection"
+#~ msgstr "Tak bisa membuat koneksi"
+
+#~ msgid "Could not edit connection"
+#~ msgstr "Tak bisa menyunting koneksi"
+
+#~ msgid "Unknown error creating connection editor dialog."
+#~ msgstr "Galat tak dikenal saat membuat dialog penyunting koneksi."
+
+#~ msgid ""
+#~ "Warning: the connection contains some properties not supported by the "
+#~ "editor. They will be cleared upon save."
+#~ msgstr ""
+#~ "Peringatan: koneksi memuat beberapa properti yang tidak didukung oleh "
+#~ "penyunting. Mereka akan dibersikan ketika disimpan."
+
+#~ msgid "Error initializing editor"
+#~ msgstr "Galat menginisialisasi penyunting"
+
+#~ msgid "Connection add failed"
+#~ msgstr "Penambahan koneksi gagal"
+
+#~ msgid "Fix"
+#~ msgstr "Perbaiki"
+
+#~ msgid ""
+#~ "Security labels may prevent some files from being used with certificate "
+#~ "authentication."
+#~ msgstr ""
+#~ "Label keamanan bisa mencegah beberapa berkas dipakai dengan autentikasi "
+#~ "sertifikat."
+
+#~ msgid "Connection _name"
+#~ msgstr "_Nama koneksi"
+
+#~ msgid "_Export…"
+#~ msgstr "_Ekspor…"
+
+#~ msgid "File Relabel"
+#~ msgstr "Label Ulang Berkas"
+
+#~ msgid "_Relabel"
+#~ msgstr "_Label ulang"
+
+#~ msgid ""
+#~ "The following files are not labelled for use with certificate "
+#~ "authentication. Do you wish to adjust the labels?"
+#~ msgstr ""
+#~ "Berkas-berkas berikut tidak dilabeli untuk dipakai dengan autentikasi "
+#~ "sertifikat. Apakah Anda hendak menyetel label?"
+
+#~ msgid "Filename"
+#~ msgstr "Nama berkas"
+
+#~ msgid "never"
+#~ msgstr "tak pernah"
+
+#~ msgid "now"
+#~ msgstr "kini"
+
+#, c-format
+#~ msgid "%d minute ago"
+#~ msgid_plural "%d minutes ago"
+#~ msgstr[0] "%d menit lalu"
+#~ msgstr[1] "%d menit lalu"
+
+#, c-format
+#~ msgid "%d hour ago"
+#~ msgid_plural "%d hours ago"
+#~ msgstr[0] "%d jam lalu"
+#~ msgstr[1] "%d jam lalu"
+
+#, c-format
+#~ msgid "%d day ago"
+#~ msgid_plural "%d days ago"
+#~ msgstr[0] "%d hari lalu"
+#~ msgstr[1] "%d hari lalu"
+
+#, c-format
+#~ msgid "%d month ago"
+#~ msgid_plural "%d months ago"
+#~ msgstr[0] "%d bulan lalu"
+#~ msgstr[1] "%d bulan lalu"
+
+#, c-format
+#~ msgid "%d year ago"
+#~ msgid_plural "%d years ago"
+#~ msgstr[0] "%d tahun lalu"
+#~ msgstr[1] "%d tahun lalu"
+
+#~ msgid "Connection cannot be deleted"
+#~ msgstr "Koneksi tak bisa dihapus"
+
+#~ msgid "Select a connection to edit"
+#~ msgstr "Pilih koneksi untuk disunting"
+
+#~ msgid "Select a connection to delete"
+#~ msgstr "Pilih koneksi untuk dihapus"
+
+#~ msgid "Name"
+#~ msgstr "Nama"
+
+#~ msgid "Last Used"
+#~ msgstr "Terakhir Dipakai"
+
+#~ msgid "Edit the selected connection"
+#~ msgstr "Sunting koneksi terpilih"
+
+#~ msgid "Authenticate to edit the selected connection"
+#~ msgstr "Lakukan autentikasi untuk menyunting koneksi yang dipilih"
+
+#~ msgid "Delete the selected connection"
+#~ msgstr "Hapus koneksi yang dipilih"
+
+#~ msgid "Authenticate to delete the selected connection"
+#~ msgstr "Lakukan autentikasi untuk menghapus koneksi yang dipilih"
+
+#~ msgid "Unrecognized connection type"
+#~ msgstr "Jenis koneksi tidak dikenal"
+
+#, c-format
+#~ msgid "Don’t know how to import “%s” connections"
+#~ msgstr "Tidak tahu bagaimana mengimpor koneksi \"%s\""
+
+#~ msgid "Error importing connection"
+#~ msgstr "Galat saat mengimpor koneksi"
+
+#~ msgid "Error creating connection"
+#~ msgstr "Galat saat membuat koneksi"
+
+#~ msgid "Connection type not specified."
+#~ msgstr "Jenis koneksi tidak dinyatakan."
+
+#~ msgid "No VPN plugins are installed."
+#~ msgstr "Tak ada plugin VPN yang terpasang."
+
+#, c-format
+#~ msgid "Don’t know how to create “%s” connections"
+#~ msgstr "Tidak tahu bagaimana membuat koneksi \"%s\""
+
+#~ msgid "Error editing connection"
+#~ msgstr "Galat saat menyunting koneksi"
+
+#, c-format
+#~ msgid "Did not find a connection with UUID “%s”"
+#~ msgstr "Tidak menemukan koneksi dengan UUID \"%s\""
+
+#~ msgid "Network Connections"
+#~ msgstr "Koneksi Jaringan"
+
+#~ msgid "Add a new connection"
+#~ msgstr "Tambah koneksi baru"
+
+#~ msgid "802.1X Security"
+#~ msgstr "Keamanan 802.1X"
+
+#~ msgid "Could not load 802.1X Security user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna Keamanan 802.1X."
+
+#~ msgid "Use 802.1_X security for this connection"
+#~ msgstr "Gunakan keamanan 802.1_X untuk koneksi ini"
+
+#~ msgid "MAC address of the Bluetooth device. Example: 00:11:22:33:44:55"
+#~ msgstr "Alamat MAC dari perangkat Bluetooth. Contoh: 00:11:22:33:44:55"
+
+#~ msgid "Could not load Bluetooth user interface."
+#~ msgstr "Tak dapat memuat antar muka pengguna Bluetooth."
+
+#~ msgid "Select the type of the Bluetooth connection profile."
+#~ msgstr "Pilih tipe profil koneksi Bluetooth."
+
+#~ msgid "_Personal Area Network"
+#~ msgstr "Jaringan Area _Personal"
+
+#~ msgid "_Dial-Up Network"
+#~ msgstr "Jaringan _Dial-Up"
+
+#~ msgid "Could not load bond user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna bond."
+
+#~ msgid "primary"
+#~ msgstr "primer"
+
+#, c-format
+#~ msgid "Bond connection %d"
+#~ msgstr "Koneksi Bond %d"
+
+#~ msgid "Bridge Port"
+#~ msgstr "Port Bridge"
+
+#~ msgid "Could not load bridge port user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna bridge."
+
+#~ msgid "Could not load bridge user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna bridge."
+
+#, c-format
+#~ msgid "Bridge connection %d"
+#~ msgstr "Koneksi bridge %d"
+
+#~ msgid "DCB"
+#~ msgstr "DCB"
+
+#~ msgid "Could not load DCB user interface."
+#~ msgstr "Tak dapat memuat antar muka pengguna DCB."
+
+#~ msgid "Could not load DSL user interface."
+#~ msgstr "Tak dapat memuat antar muka pengguna DSL."
+
+#~ msgid "missing parent interface"
+#~ msgstr "antarmuka induk yang hilang"
+
+#, c-format
+#~ msgid "DSL connection %d"
+#~ msgstr "Koneksi DSL %d"
+
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “em1”, "
+#~ "“3C:97:0E:42:1A:19”, “em1 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "Opsi ini mengunci koneksi ini ke perangkat jaringan yang dinyatakan oleh "
+#~ "nama antarmukanya atau MAC permanen atau keduanya. Contoh: \"em1\", "
+#~ "\"3C:97:0E:42:1A:19\", \"em1 (3C:97:0E:42:1A:19)\""
+
+#~ msgid "ignored"
+#~ msgstr "diabaikan"
+
+#~ msgid "Could not load ethernet user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna ethernet."
+
+#~ msgid "Ethernet device"
+#~ msgstr "Perangkat ethernet"
+
+#~ msgid "cloned MAC"
+#~ msgstr "MAC yang diklon"
+
+#~ msgid "Wake-on-LAN password"
+#~ msgstr "Kata sandi Wake-on-LAN"
+
+#, c-format
+#~ msgid "Ethernet connection %d"
+#~ msgstr "Koneksi ethernet %d"
+
+#~ msgid ""
+#~ "The zone defines the trust level of the connection. Default is not a "
+#~ "regular zone, selecting it results in the use of the default zone set in "
+#~ "the firewall. Only usable if firewalld is active."
+#~ msgstr ""
+#~ "Zona ini menentukan tingkat kepercayaan koneksi. Bakunya bukan zona "
+#~ "reguler, memilihnya menyebabkan penggunaan set zona baku dalam firewall. "
+#~ "Hanya dapat dipakai bila firewalld aktif."
+
+#~ msgid "Could not load General user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna Umum."
+
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “ib0”, "
+#~ "“80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65”, “ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)”"
+#~ msgstr ""
+#~ "Opsi ini mengunci koneksi ini ke perangkat jaringan yang dinyatakan dari "
+#~ "nama antar mukanya atau MAC permanen atau keduanya. Contoh: \"ib0\", "
+#~ "\"80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65\", \"ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)\""
+
+#~ msgid "Could not load InfiniBand user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna InfiniBand."
+
+#~ msgid "infiniband device"
+#~ msgstr "perangkat infiniband"
+
+#, c-format
+#~ msgid "InfiniBand connection %d"
+#~ msgstr "Koneksi InfiniBand %d"
+
+#~ msgid "Could not load IP tunnel user interface."
+#~ msgstr "Tidak bisa memuat antar muka pengguna tunnel IP."
+
+#, c-format
+#~ msgid "IP tunnel connection %d"
+#~ msgstr "Koneksi tunnel IP %d"
+
+#~ msgid "Automatic (VPN)"
+#~ msgstr "Otomatis (VPN)"
+
+#~ msgid "Automatic (VPN) addresses only"
+#~ msgstr "Otomatis (VPN) hanya alamat"
+
+#~ msgid "Automatic, addresses only"
+#~ msgstr "Otomatis, hanya alamat"
+
+#~ msgid "Automatic (PPPoE)"
+#~ msgstr "Otomatis (PPPoE)"
+
+#~ msgid "Automatic (PPPoE) addresses only"
+#~ msgstr "Otomatis (PPPoE) hanya alamat"
+
+#~ msgid "Automatic (DHCP)"
+#~ msgstr "Otomatis (DHCP)"
+
+#~ msgid "Automatic (DHCP) addresses only"
+#~ msgstr "Otomatis (DHCP) hanya alamat"
+
+#~ msgid "Link-Local Only"
+#~ msgstr "Hanya Link-Lokal"
+
+#~ msgid "Additional DNS ser_vers"
+#~ msgstr "Server _DNS tambahan"
+
+#~ msgid "Additional s_earch domains"
+#~ msgstr "Ranah p_encarian tambahan"
+
+#, c-format
+#~ msgid "Editing IPv4 routes for %s"
+#~ msgstr "Menyunting rute IPv4 untuk %s"
+
+#~ msgid "IPv4 Settings"
+#~ msgstr "Tatanan IPv4"
+
+#~ msgid "Could not load IPv4 user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna IPv4."
+
+#, c-format
+#~ msgid "IPv4 address “%s” invalid"
+#~ msgstr "Alamat IPv4 \"%s\" tak valid"
+
+#, c-format
+#~ msgid "IPv4 address netmask “%s” invalid"
+#~ msgstr "Netmask alamat IPv4 \"%s\" tak valid"
+
+#, c-format
+#~ msgid "IPv4 gateway “%s” invalid"
+#~ msgstr "Gateway IPv4 \"%s\" tak valid"
+
+#, c-format
+#~ msgid "IPv4 DNS server “%s” invalid"
+#~ msgstr "Server DNS IPv4 \"%s\" tak valid"
+
+#~ msgid "Automatic, DHCP only"
+#~ msgstr "Otomatis, hanya DHCP"
+
+#, c-format
+#~ msgid "Editing IPv6 routes for %s"
+#~ msgstr "Menyunting rute IPv6 untuk %s"
+
+#~ msgid "IPv6 Settings"
+#~ msgstr "Tatanan IPv6"
+
+#~ msgid "Could not load IPv6 user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna IPv6."
+
+#, c-format
+#~ msgid "IPv6 address “%s” invalid"
+#~ msgstr "Alamat IPv6 \"%s\" tak valid"
+
+#, c-format
+#~ msgid "IPv6 prefix “%s” invalid"
+#~ msgstr "Prefiks IPv6 \"%s\" tak valid"
+
+#, c-format
+#~ msgid "IPv6 gateway “%s” invalid"
+#~ msgstr "Gateway IPv6 \"%s\" tak valid"
+
+#, c-format
+#~ msgid "IPv6 DNS server “%s” invalid"
+#~ msgstr "Server DNS IPv6 \"%s\" tak valid"
+
+#~ msgid "Could not load MACsec user interface."
+#~ msgstr "Tidak dapat memuat antarmuka pengguna MACsec."
+
+#, c-format
+#~ msgid "MACSEC connection %d"
+#~ msgstr "Koneksi MACSEC %d"
+
+#~ msgid "Duplicate slaves"
+#~ msgstr "Slave duplikat"
+
+#, c-format
+#~ msgid "Slaves “%s” and “%s” both apply to device “%s”"
+#~ msgstr "Slave \"%s\" dan \"%s\" keduanya berlaku bagi perangkat \"%s\""
+
+#, c-format
+#~ msgid ""
+#~ "Slaves “%s” and “%s” apply to different virtual ports (“%s” and “%s”) of "
+#~ "the same physical device."
+#~ msgstr ""
+#~ "Slave \"%s\" dan \"%s\" berlaku bagi port virtual yang berbeda (\"%s\" "
+#~ "dan \"%s\") dari perangkat fisik yang sama."
+
+#, c-format
+#~ msgid "%s slave %d"
+#~ msgstr "%s slave %d"
+
+#~ msgid "Could not load mobile broadband user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna data seluler."
+
+#~ msgid "Unsupported mobile broadband connection type."
+#~ msgstr "Jenis koneksi data seluler tidak didukung."
+
+#~ msgid "Select Mobile Broadband Provider Type"
+#~ msgstr "Pilih Tipe Operator Data Seluler"
+
+#~ msgid ""
+#~ "Select the technology your mobile broadband provider uses. If you are "
+#~ "unsure, ask your provider."
+#~ msgstr ""
+#~ "Pilih teknologi yang digunakan oleh operator seluler Anda. Bila Anda tak "
+#~ "yakin, tanyakan ke operator Anda."
+
+#~ msgid ""
+#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgstr ""
+#~ "Operator saya memakai teknologi berbasis _GSM (mis. GPRS, EDGE, UMTS, "
+#~ "HSDPA)"
+
+#~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
+#~ msgstr "Operator saya memakai teknologi berbasis C_DMA (mis. 1xRTT, EVDO)"
+
+#~ msgid "PAP"
+#~ msgstr "PAP"
+
+#~ msgid "CHAP"
+#~ msgstr "CHAP"
+
+#~ msgid "MSCHAPv2"
+#~ msgstr "MSCHAPv2"
+
+#~ msgid "MSCHAP"
+#~ msgstr "MSCHAP"
+
+#~ msgid "none"
+#~ msgstr "tak ada"
+
+#, c-format
+#~ msgid "Editing PPP authentication methods for %s"
+#~ msgstr "Menyunting metoda autentikasi PPP bagi %s"
+
+#~ msgid "PPP Settings"
+#~ msgstr "Pengaturan PPP"
+
+#~ msgid "Could not load PPP user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna PPP."
+
+#~ msgid "Proxy"
+#~ msgstr "Proksi"
+
+#~ msgid "Could not load proxy user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna proksi."
+
+#~ msgid "Error: file doesn’t contain a valid JSON configuration"
+#~ msgstr "Galat: berkas tak memuat konfigurasi JSON yang valid"
+
+#~ msgid "Team Port"
+#~ msgstr "Port Tim"
+
+#~ msgid "Could not load team port user interface."
+#~ msgstr "Tidak dapat memuat antarmuka pengguna port tim."
+
+#~ msgid "Could not load team user interface."
+#~ msgstr "Tak dapat memuat antar muka pengguna tim."
+
+#, c-format
+#~ msgid "Team connection %d"
+#~ msgstr "Koneksi tim %d"
+
+#, c-format
+#~ msgid "%s (via “%s”)"
+#~ msgstr "%s (via \"%s\")"
+
+#~ msgid "New connection…"
+#~ msgstr "Koneksi baru…"
+
+#~ msgid "Could not load vlan user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna VLAN."
+
+#~ msgid "vlan parent"
+#~ msgstr "vlan induk"
+
+#, c-format
+#~ msgid "VLAN connection %d"
+#~ msgstr "Koneksi VLAN %d"
+
+#, c-format
+#~ msgid "Could not load editor VPN plugin for “%s” (%s)."
+#~ msgstr "Tak bisa menemukan plugin VPN penyunting bagi \"%s\" (%s)."
+
+#~ msgid "unknown failure"
+#~ msgstr "kegagalan yang tak dikenal"
+
+#~ msgid "Could not load VPN user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna VPN."
+
+#, c-format
+#~ msgid "Could not find VPN plugin for “%s”."
+#~ msgstr "Tak bisa menemukan plugin VPN bagi \"%s\"."
+
+#, c-format
+#~ msgid "VPN connection %d"
+#~ msgstr "Koneksi VPN %d"
+
+#~ msgid "Choose a VPN Connection Type"
+#~ msgstr "Pilih Jenis Koneksi VPN"
+
+#~ msgid ""
+#~ "Select the type of VPN you wish to use for the new connection. If the "
+#~ "type of VPN connection you wish to create does not appear in the list, "
+#~ "you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "Pilih tipe VPN yang ingin Anda pakai untuk koneksi baru. Bila tipe "
+#~ "koneksi VPN yang ingin Anda buat tidak muncul pada daftar, mungkin Anda "
+#~ "belum memasang plugin VPN yang tepat."
+
+#~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
+#~ msgstr "Kunci WEP 40/128-bit (Heksa atau ASCII)"
+
+#~ msgid "WEP 128-bit Passphrase"
+#~ msgstr "Frasa-kunci WEP 128-bit"
+
+#~ msgid "Dynamic WEP (802.1X)"
+#~ msgstr "WEP Dinamik (802.1X)"
+
+#~ msgid "WPA & WPA2 Personal"
+#~ msgstr "WPA & WPA2 Personal"
+
+#~ msgid "WPA & WPA2 Enterprise"
+#~ msgstr "WPA & WPA2 Enterprise"
+
+#~ msgid "WPA3 Personal"
+#~ msgstr "WPA3 Personal"
+
+#~ msgid "Enhanced Open"
+#~ msgstr "Enhanced Open"
+
+#~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
+#~ msgstr ""
+#~ "Tak bisa memuat antar muka pengguna keamanan Wi-Fi; kurang pengaturan Wi-"
+#~ "Fi."
+
+#~ msgid "Wi-Fi Security"
+#~ msgstr "Kemananan Wi-Fi"
+
+#~ msgid "Could not load Wi-Fi security user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna keamanan Wi-Fi."
+
+#~ msgid "missing SSID"
+#~ msgstr "kurang SSID"
+
+#~ msgid "Security not compatible with Ad-Hoc mode"
+#~ msgstr "Keamanan tidak kompatibel dengan mode Ad-Hoc"
+
+#~ msgid ""
+#~ "This option locks this connection to the Wi-Fi access point (AP) "
+#~ "specified by the BSSID entered here. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "Opsi ini mengunci koneksi ini ke access point (AP) Wi-Fi yang dinyatakan "
+#~ "oleh BSSID yang dimasukkan disini. Contoh: 00:11:22:33:44:55"
+
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “wlan0”, "
+#~ "“3C:97:0E:42:1A:19”, “wlan0 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "Opsi ini mengunci koneksi ini ke perangkat jaringan yang dinyatakan oleh "
+#~ "nama antarmukanya atau MAC permanen atau keduanya. Contoh: \"wlan0\", "
+#~ "\"3C:97:0E:42:1A:19\", \"wlan0 (3C:97:0E:42:1A:19)\""
+
+#, c-format
+#~ msgid "%u (%u MHz)"
+#~ msgstr "%u (%u MHz)"
+
+#~ msgid "Could not load Wi-Fi user interface."
+#~ msgstr "Tak bisa memuat antar muka pengguna Wi-Fi."
+
+#~ msgid "bssid"
+#~ msgstr "bssid"
+
+#~ msgid "Wi-Fi device"
+#~ msgstr "Perangkat Wi-Fi"
+
+#~ msgid "Public key"
+#~ msgstr "Kunci publik"
+
+#~ msgid "Allowed IPs"
+#~ msgstr "IP yang Diizinkan"
+
+#~ msgid "Could not load WireGuard user interface."
+#~ msgstr "Tak dapat memuat antar muka pengguna WireGuard."
+
+#, c-format
+#~ msgid "WireGuard connection %d"
+#~ msgstr "Koneksi WireGuard %d"
+
+#, c-format
+#~ msgid "A file named “%s” already exists."
+#~ msgstr "Berkas bernama \"%s\" sudah ada."
+
+#~ msgid "_Replace"
+#~ msgstr "_Timpa"
+
+#, c-format
+#~ msgid "Do you want to replace %s with the VPN connection you are saving?"
+#~ msgstr ""
+#~ "Apakah Anda ingin menggantikan %s dengan koneksi VPN yang sedang Anda "
+#~ "simpan?"
+
+#~ msgid "Cannot export VPN connection"
+#~ msgstr "Tidak dapat mengekspor koneksi VPN"
+
+#, c-format
+#~ msgid ""
+#~ "The VPN connection “%s” could not be exported to %s.\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "Koneksi VPN \"%s\" tidak dapat diekspor ke %s.\n"
+#~ "\n"
+#~ "Galat: %s."
+
+#~ msgid "Export VPN connection…"
+#~ msgstr "Ekspor koneksi VPN…"
+
+#~ msgid "_Unlock"
+#~ msgstr "B_uka kunci"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Otomatis membuka kunci perangkat ini"
+
+#~ msgid "Usage:"
+#~ msgstr "Penggunaan:"
+
+#~ msgid ""
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+#~ msgstr ""
+#~ "Program ini adalah komponen dari NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+
+#~ msgid ""
+#~ "It is not intended for command-line interaction but instead runs in the "
+#~ "GNOME desktop environment."
+#~ msgstr ""
+#~ "Ini tidak ditujukan bagi interaksi baris perintah, sebagai gantinya, "
+#~ "jalankan ini di lingkungan desktop GNOME."
+
+#~ msgid "nm-device-wireless"
+#~ msgstr "nm-device-wireless"
+
+#~ msgid "preferences-system-network"
+#~ msgstr "preferences-system-network"
+
+#~ msgid "missing EAP-FAST PAC file"
+#~ msgstr "kurang berkas PAC EAP-FAST"
+
+#~ msgid "GTC"
+#~ msgstr "GTC"
+
+#~ msgid "Choose a PAC file"
+#~ msgstr "Pilih suatu berkas PAC"
+
+#~ msgid "PAC files (*.pac)"
+#~ msgstr "Berkas PAC (*.pac)"
+
+#~ msgid "All files"
+#~ msgstr "Semua berkas"
+
+#~ msgid "Anonymous"
+#~ msgstr "Anonim"
+
+#~ msgid "Authenticated"
+#~ msgstr "Terautentikasi"
+
+#~ msgid "Both"
+#~ msgstr "Keduanya"
+
+#~ msgid "Anony_mous identity"
+#~ msgstr "Identitas anoni_m"
+
+#~ msgid "PAC _file"
+#~ msgstr "_Berkas PAC"
+
+#~ msgid "_Inner authentication"
+#~ msgstr "Otent_ikasi dalam"
+
+#~ msgid "Allow automatic PAC pro_visioning"
+#~ msgstr "Otomatis ijinkan pro_visi PAC"
+
+#~ msgid "missing EAP-LEAP username"
+#~ msgstr "kurang nama pengguna EAP-LEAP"
+
+#~ msgid "missing EAP-LEAP password"
+#~ msgstr "kurang sandi EAP-LEAP"
+
+#~ msgid "MD5"
+#~ msgstr "MD5"
+
+#~ msgid "Version 0"
+#~ msgstr "Versi 0"
+
+#~ msgid "Version 1"
+#~ msgstr "Versi 1"
+
+#~ msgid "No CA certificate is _required"
+#~ msgstr "Tak pe_rlu ada sertifikat CA"
+
+#~ msgid "PEAP _version"
+#~ msgstr "_Versi PEAP"
+
+#~ msgid "Suffix of the server certificate name."
+#~ msgstr "Akhiran nama sertifikat server."
+
+#~ msgid "_Domain"
+#~ msgstr "_Domain"
+
+#~ msgid "missing EAP username"
+#~ msgstr "kurang nama pengguna EAP"
+
+#~ msgid "missing EAP password"
+#~ msgstr "kurang sandi EAP"
+
+#~ msgid "missing EAP client Private Key passphrase"
+#~ msgstr "kurang frasa sandi Kunci Privat klien EAP"
+
+#~ msgid "P_rivate Key Passphrase"
+#~ msgstr "Frasa-kunci Kunci P_rivat"
+
+#~ msgid "Sh_ow passphrase"
+#~ msgstr "_Tampilkan sandi"
+
+#~ msgid "missing EAP-TLS identity"
+#~ msgstr "kurang identitas EAP-TLS"
+
+#~ msgid "no user certificate selected"
+#~ msgstr "tidak ada sertifikat pengguna yang dipilih"
+
+#~ msgid "selected user certificate file does not exist"
+#~ msgstr "berkas sertifikat pengguna yang dipilih tidak ada"
+
+#~ msgid "no key selected"
+#~ msgstr "tidak ada kunci yang dipilih"
+
+#~ msgid "selected key file does not exist"
+#~ msgstr "berkas kunci yang dipilih tidak ada"
+
+#~ msgid "I_dentity"
+#~ msgstr "I_dentitas"
+
+#~ msgid "MSCHAPv2 (no EAP)"
+#~ msgstr "MSCHAPv2 (tanpa EAP)"
+
+#~ msgid "undefined error in 802.1X security (wpa-eap)"
+#~ msgstr "galat tak terdefinisi dalam keamanan 802.1X (wpa-eap)"
+
+#~ msgid "no CA certificate selected"
+#~ msgstr "tidak ada sertifikat CA yang dipilih"
+
+#~ msgid "selected CA certificate file does not exist"
+#~ msgstr "berkas sertifikat CA yang dipilih tidak ada"
+
+#~ msgid "Unknown error validating 802.1X security"
+#~ msgstr "Galat tak diketahui saat memvalidasi keamanan 802.1X"
+
+#~ msgid "TLS"
+#~ msgstr "TLS"
+
+#~ msgid "PWD"
+#~ msgstr "PWD"
+
+#~ msgid "FAST"
+#~ msgstr "FAST"
+
+#~ msgid "Tunneled TLS"
+#~ msgstr "Tunneled TLS"
+
+#~ msgid "Protected EAP (PEAP)"
+#~ msgstr "Protected EAP (PEAP)"
+
+#~ msgid "Externally configured"
+#~ msgstr "Dikonfigurasi eksternal"
+
+#~ msgid "Au_thentication"
+#~ msgstr "O_tentikasi"
+
+#~ msgid "missing leap-username"
+#~ msgstr "kurang nama pengguna leap"
+
+#~ msgid "missing leap-password"
+#~ msgstr "kurang sandi leap"
+
+#~ msgid "missing password"
+#~ msgstr "kurang kata sandi"
+
+#~ msgid "_Type"
+#~ msgstr "_Jenis"
+
+#~ msgid "missing wep-key"
+#~ msgstr "kurang kunci wep"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wep-key: key with a length of %zu must contain only hex-digits"
+#~ msgstr ""
+#~ "kunci wep tak valid: kunci dengan panjang %zu mesti hanya memuat dijit "
+#~ "heksa"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wep-key: key with a length of %zu must contain only ascii "
+#~ "characters"
+#~ msgstr ""
+#~ "kunci wep tak valid: kunci dengan panjang %zu mesti hanya memuat karakter "
+#~ "ascii"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wep-key: wrong key length %zu. A key must be either of length "
+#~ "5/13 (ascii) or 10/26 (hex)"
+#~ msgstr ""
+#~ "kunci wep tak valid: panjang kunci %zu salah. Suatu kunci mesti memiliki "
+#~ "panjang 5/13 (ascii) atau 10/26 (heksa)"
+
+#~ msgid "invalid wep-key: passphrase must be non-empty"
+#~ msgstr "wep-key tak valid: frasa sandi tak boleh kosong"
+
+#~ msgid "invalid wep-key: passphrase must be shorter than 64 characters"
+#~ msgstr ""
+#~ "kunci wep tak valid: frasa sandi mesti lebih pendek daripada 64 karakter"
+
+#~ msgid "Open System"
+#~ msgstr "Sistem Terbuka"
+
+#~ msgid "Shared Key"
+#~ msgstr "Kunci Bersama"
+
+#~ msgid "1 (Default)"
+#~ msgstr "1 (Bawaan)"
+
+#~ msgid "_Key"
+#~ msgstr "_Kunci"
+
+#~ msgid "Sho_w key"
+#~ msgstr "Tampilkan _kunci"
+
+#~ msgid "WEP inde_x"
+#~ msgstr "Inde_ks WEP"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wpa-psk: invalid key-length %zu. Must be [8,63] bytes or 64 hex "
+#~ "digits"
+#~ msgstr ""
+#~ "wpa-psk tak valid: panjang kunci %zu tak valid. Mesti antara [8,63] byte "
+#~ "atau 64 heksa dijit"
+
+#~ msgid "invalid wpa-psk: cannot interpret key with 64 bytes as hex"
+#~ msgstr ""
+#~ "wpa-psk tak valid: tak bisa menginterpretasi kunci dengan 64 byte sebagai "
+#~ "heksa"

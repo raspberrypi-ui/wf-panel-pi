@@ -1,0 +1,3935 @@
+# Kazakh translation for lxpanel.
+# Copyright (C) 2012 The LXDE team
+# This file is distributed under the same license as the LXDE package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"PO-Revision-Date: 2017-05-25 16:59+0000\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
+"X-Pootle-Revision: 0\n"
+"X-Pootle-Path: /kk/lxpanel/po/kk.po\n"
+"X-POOTLE-MTIME: 1495731571.601482\n"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#, c-format
+msgid "Pairing failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#, fuzzy, c-format
+msgid "Pairing successful - connecting..."
+msgstr "'%s' агрегацияланған (team) байланысын дайындау..."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#, fuzzy, c-format
+msgid "Connection successful"
+msgstr "Байланысты орнату сәтсіз"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connection failed - %s"
+msgstr "Байланысты орнату сәтсіз"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#, c-format
+msgid "Please enter code '%s' on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#, c-format
+msgid "Please confirm that '%s' is showing the code '%s' to pair"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#, c-format
+msgid "Please enter PIN code shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#, c-format
+msgid "Please enter passcode shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#, c-format
+msgid "Waiting for response from Bluetooth device..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#, c-format
+msgid "'%s' has requested a pairing. Do you accept the request?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
+#, c-format
+msgid ""
+"Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#, c-format
+msgid ""
+"Pairing successful - this device has no services which can be used with "
+"Raspberry Pi"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#, c-format
+msgid "Do you want to unpair '%s'?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#, c-format
+msgid "Removing pairing with '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#, c-format
+msgid "Removal failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connecting to '%s'..."
+msgstr "'%s' агрегацияланған (team) байланысын баптау..."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnecting from '%s'..."
+msgstr "'%s' агрегацияланған (team) байланысын дайындау..."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnection failed - %s"
+msgstr "Ажырату сәтсіз"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
+#, fuzzy
+msgid "Use the audio menu to connect to this device"
+msgstr "Wi-Fi желісіне байланысты орнату үшін желі мәзірін қолданыңыз"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+msgid "No usable services on this device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#, fuzzy
+msgid "Disconnect..."
+msgstr "Байланысты үзу"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#, fuzzy
+msgid "Connect..."
+msgstr "Ба_йланысу"
+
+#. add the remove option to the submenu
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+msgid "Remove..."
+msgstr ""
+
+#. warn if no BT hardware detected
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+#, fuzzy
+msgid "No Bluetooth adapter found"
+msgstr "Bluetooth түрі"
+
+#. add enable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+#, fuzzy
+msgid "Turn On Bluetooth"
+msgstr "Bluetooth"
+
+#. add disable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+#, fuzzy
+msgid "Turn Off Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+msgid "Stop Discoverable"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+msgid "Make Discoverable"
+msgstr ""
+
+#. add and remove dialogs
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#, fuzzy
+msgid "Add Device..."
+msgstr "құрылғы"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#, fuzzy
+msgid "Manage Bluetooth devices"
+msgstr "жарамсыз Bluetooth құрылғысы (%s)"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#, fuzzy
+msgid "Manages Bluetooth devices"
+msgstr "жарамсыз Bluetooth құрылғысы (%s)"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:171
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:199
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:205
+#, fuzzy, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr "PAN байланысын жасау сәтсіз: %s"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:402
+msgid "Select a drive in menu to eject safely"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:451
+#: ../src/panel/widgets/ejecter/ejecter.c:461
+msgid "Ejecter"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:453
+msgid "Hide icon when no devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:462
+msgid "Ejects mounted drives"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:77
+msgid "ad-hoc"
+msgstr "ad-hoc"
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:82
+msgid "secure."
+msgstr "қауіпсіз."
+
+#: ../src/panel/widgets/netman/applet.c:74
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+msgid "Failed to activate connection"
+msgstr "Байланысты белсендіру мүмкін емес"
+
+#: ../src/panel/widgets/netman/applet.c:75
+#: ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837
+#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+msgid "Unknown error"
+msgstr "Белгісіз қате"
+
+#: ../src/panel/widgets/netman/applet.c:78
+#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:875
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+msgid "Connection failure"
+msgstr "Байланысты орнату сәтсіз"
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn Off Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn On Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:282
+#, c-format
+msgid ""
+"%s\n"
+"IPv4 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:299
+#, c-format
+msgid ""
+"%s\n"
+"IPv6 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:781
+msgid "Failed to add/activate connection"
+msgstr "Байланысты қосу/белсендіру мүмкін емес"
+
+#: ../src/panel/widgets/netman/applet.c:835
+msgid "Device disconnect failed"
+msgstr "Құрылғыны ажырату сәтсіз"
+
+#: ../src/panel/widgets/netman/applet.c:840
+msgid "Disconnect failure"
+msgstr "Ажырату сәтсіз"
+
+#: ../src/panel/widgets/netman/applet.c:870
+msgid "Connection activation failed"
+msgstr "Байланысты іске қосу сәтсіз"
+
+#: ../src/panel/widgets/netman/applet.c:1209
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+msgid "Don’t show this message again"
+msgstr "Бұл хабарламаны келесіде көрсетпеу"
+
+#: ../src/panel/widgets/netman/applet.c:1310
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” disconnected because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы желілік байланыс үзілген соң ажыратылды."
+
+#: ../src/panel/widgets/netman/applet.c:1312
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені желілік байланыс үзілді."
+
+#: ../src/panel/widgets/netman/applet.c:1314
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені VPN қызметі күтпегенде тоқтады."
+
+#: ../src/panel/widgets/netman/applet.c:1316
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service returned invalid "
+"configuration."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені VPN қызметі қате баптауларды қайтарды."
+
+#: ../src/panel/widgets/netman/applet.c:1318
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the connection attempt timed out."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені байланысты орнатудың күту уақыты бітті."
+
+#: ../src/panel/widgets/netman/applet.c:1320
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service did not start in time."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені VPN қызметі уақытында іске қосылмады."
+
+#: ../src/panel/widgets/netman/applet.c:1322
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені VPN қызметі іске қосыла алмады."
+
+#: ../src/panel/widgets/netman/applet.c:1324
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because there were no valid VPN secrets."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені жарамды VPN парольдері табылмады."
+
+#: ../src/panel/widgets/netman/applet.c:1326
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because of invalid VPN secrets."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені VPN парольдері жарамсыз."
+
+#: ../src/panel/widgets/netman/applet.c:1331
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed."
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз."
+
+#: ../src/panel/widgets/netman/applet.c:1358
+#, c-format
+msgid ""
+"VPN connection has been successfully established.\n"
+"\n"
+"%s\n"
+msgstr ""
+"VPN байланысы сәтті орнатылды.\n"
+"\n"
+"%s\n"
+
+#: ../src/panel/widgets/netman/applet.c:1360
+msgid "VPN connection has been successfully established.\n"
+msgstr "VPN байланысы сәтті орнатылды.\n"
+
+#: ../src/panel/widgets/netman/applet.c:1362
+msgid "VPN Login Message"
+msgstr "VPN кіру хабарламасы"
+
+#: ../src/panel/widgets/netman/applet.c:1370
+#: ../src/panel/widgets/netman/applet.c:1410
+msgid "VPN Connection Failed"
+msgstr "VPN байланысы сәтсіз"
+
+#: ../src/panel/widgets/netman/applet.c:1414
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы сәтсіз, өйткені VPN қызметі іске қосыла алмады.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1417
+#, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"\"%s\" VPN байланысы іске қосыла алмады.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1741
+msgid "device not ready (firmware missing)"
+msgstr "құрылғы дайын емес (firmware жоқ)"
+
+#: ../src/panel/widgets/netman/applet.c:1743
+msgid "device not ready"
+msgstr "құрылғы дайын емес"
+
+#. Notify user of unmanaged or unavailable device
+#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
+msgid "disconnected"
+msgstr "байланыспаған"
+
+#: ../src/panel/widgets/netman/applet.c:1769
+msgid "Disconnect"
+msgstr "Байланысты үзу"
+
+#: ../src/panel/widgets/netman/applet.c:1783
+msgid "device not managed"
+msgstr "құрылғы басқарылмайды"
+
+#: ../src/panel/widgets/netman/applet.c:1864
+msgid "No network devices available"
+msgstr "Бірді-бір желілік құрылғы қолжетерсіз"
+
+#: ../src/panel/widgets/netman/applet.c:1917
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Кеңейтілген"
+
+#: ../src/panel/widgets/netman/applet.c:1919
+#, fuzzy
+msgid "VPN Connections"
+msgstr "_VPN байланыстары"
+
+#: ../src/panel/widgets/netman/applet.c:1973
+#, fuzzy
+msgid "Configure VPN…"
+msgstr "VPN ба_птау…"
+
+#: ../src/panel/widgets/netman/applet.c:1977
+#, fuzzy
+msgid "Add a VPN connection…"
+msgstr "VPN байланысын қ_осу…"
+
+#. 'Connection Information' item
+#: ../src/panel/widgets/netman/applet.c:1989
+#: ../src/panel/widgets/netman/applet.c:2393
+msgid "Connection Information"
+msgstr "Байланыс ақпараты"
+
+#. 'Edit Connections...' item
+#: ../src/panel/widgets/netman/applet.c:1997
+#: ../src/panel/widgets/netman/applet.c:2401
+msgid "Edit Connections…"
+msgstr "Байланыстарды түзету…"
+
+#: ../src/panel/widgets/netman/applet.c:2112
+msgid "NetworkManager is not running…"
+msgstr "NetworkManager орындалып тұрған жоқ…"
+
+#: ../src/panel/widgets/netman/applet.c:2118
+#, fuzzy
+msgid "Wi-Fi country is not set"
+msgstr "Менің елім көрсетілмеген"
+
+#: ../src/panel/widgets/netman/applet.c:2119
+msgid "Click here to set Wi-Fi country"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:2127
+#: ../src/panel/widgets/netman/applet.c:3222
+msgid "Networking disabled"
+msgstr "Желі сөндірілген"
+
+#. 'Enable Networking' item
+#: ../src/panel/widgets/netman/applet.c:2351
+#, fuzzy
+msgid "Enable Networking"
+msgstr "Ж_еліні іске қосу"
+
+#. 'Enable Wi-Fi' item
+#: ../src/panel/widgets/netman/applet.c:2360
+#, fuzzy
+msgid "Enable Wi-Fi"
+msgstr "Wi-Fi-ды і_ске қосу"
+
+#. 'Enable Mobile Broadband' item
+#: ../src/panel/widgets/netman/applet.c:2369
+#, fuzzy
+msgid "Enable Mobile Broadband"
+msgstr "_Мобильді кеңжолақты желіні іске қосу"
+
+#. Toggle notifications item
+#: ../src/panel/widgets/netman/applet.c:2381
+#, fuzzy
+msgid "Enable Notifications"
+msgstr "_Хабарламаларды іске қосу"
+
+#: ../src/panel/widgets/netman/applet.c:2415
+#, fuzzy
+msgid "About"
+msgstr "Осы т_уралы"
+
+#: ../src/panel/widgets/netman/applet.c:2736
+#, c-format
+msgid "You are now connected to “%s”."
+msgstr "\"%s\" желісіне байланыс орнатылды."
+
+#: ../src/panel/widgets/netman/applet.c:2776
+msgid "Disconnected"
+msgstr "Ажыратылған"
+
+#: ../src/panel/widgets/netman/applet.c:2777
+msgid "The network connection has been disconnected."
+msgstr "Желілік байланыс ажыратылды."
+
+#: ../src/panel/widgets/netman/applet.c:3079
+#, c-format
+msgid "Preparing network connection “%s”…"
+msgstr "\"%s\" желілік байланысын дайындау…"
+
+#: ../src/panel/widgets/netman/applet.c:3082
+#, c-format
+msgid "User authentication required for network connection “%s”…"
+msgstr "\"%s\" желілік байланысы үшін пайдаланушы аутентификациясы керек…"
+
+#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet-device-bt.c:113
+#: ../src/panel/widgets/netman/mobile-helpers.c:605
+#, c-format
+msgid "Requesting a network address for “%s”…"
+msgstr "\"%s\" үшін желілік адресті сұрау…"
+
+#: ../src/panel/widgets/netman/applet.c:3088
+#, c-format
+msgid "Network connection “%s” active"
+msgstr "\"%s\" желілік байланысы белсенді"
+
+#: ../src/panel/widgets/netman/applet.c:3165
+#, c-format
+msgid "Starting VPN connection “%s”…"
+msgstr "\"%s\" VPN байланысын іске қосу…"
+
+#: ../src/panel/widgets/netman/applet.c:3168
+#, c-format
+msgid "User authentication required for VPN connection “%s”…"
+msgstr "\"%s\" VPN байланысы үшін пайдаланушы аутентификациясы керек…"
+
+#: ../src/panel/widgets/netman/applet.c:3171
+#, c-format
+msgid "Requesting a VPN address for “%s”…"
+msgstr "\"%s\" үшін VPN адресін сұрау…"
+
+#: ../src/panel/widgets/netman/applet.c:3174
+#, c-format
+msgid "VPN connection active"
+msgstr "VPN байланысы белсенді"
+
+#: ../src/panel/widgets/netman/applet.c:3226
+msgid "No network connection"
+msgstr "Желілік байланыстар жоқ"
+
+#: ../src/panel/widgets/netman/applet.c:3781
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "Желі"
+
+#: ../src/panel/widgets/netman/applet.c:3896
+msgid "NetworkManager Applet"
+msgstr "NetworkManager апплеті"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:147
+msgid "Wrong PUK code; please contact your provider."
+msgstr "PUK коды қате; провайдеріңізге хабарласыңыз."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:189
+msgid "Wrong PIN code; please contact your provider."
+msgstr "PIN коды қате; провайдеріңізге хабарласыңыз."
+
+#. Start the spinner to show the progress of the unlock
+#: ../src/panel/widgets/netman/applet-device-broadband.c:240
+msgid "Sending unlock code…"
+msgstr "Босату кодын жіберу…"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:725
+#: ../src/panel/widgets/netman/applet-dialogs.c:532
+#, c-format
+msgid "Mobile Broadband (%s)"
+msgstr "Мобильді кеңжолақты (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:727
+msgid "Mobile Broadband"
+msgstr "Мобильді кеңжолақты"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+msgid "Available"
+msgstr "Қолжетерлік"
+
+#. Default connection item
+#: ../src/panel/widgets/netman/applet-device-broadband.c:793
+msgid "New Mobile Broadband connection…"
+msgstr "Жаңа мобильді кеңжолақты байланысы…"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:809
+#: ../src/panel/widgets/netman/applet-device-bt.c:75
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+msgid "Connection Established"
+msgstr "Байланыс орнатылды"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:810
+msgid "You are now connected to the Mobile Broadband network."
+msgstr "Сіз мобильді кеңжолақты желісіне байланыс орнаттыңыз."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:950
+#: ../src/panel/widgets/netman/applet-device-broadband.c:956
+msgid "Mobile Broadband network."
+msgstr "Мобильді кеңжолақты желісі."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:951
+msgid "You are now registered on the home network."
+msgstr "Сіз үй желісінде тіркелдіңіз."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:957
+msgid "You are now registered on a roaming network."
+msgstr "Сіз роуминг желісінде тіркелдіңіз."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:76
+msgid "You are now connected to the mobile broadband network."
+msgstr "Сіз мобильді кеңжолақты желісіне байланыс орнаттыңыз."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:104
+#: ../src/panel/widgets/netman/mobile-helpers.c:596
+#, c-format
+msgid "Preparing mobile broadband connection “%s”…"
+msgstr "\"%s\" мобильді кеңжолақты байланысын дайындау…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:107
+#: ../src/panel/widgets/netman/mobile-helpers.c:599
+#, c-format
+msgid "Configuring mobile broadband connection “%s”…"
+msgstr "\"%s\" мобильді кеңжолақты байланысын баптау…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:110
+#: ../src/panel/widgets/netman/mobile-helpers.c:602
+#, c-format
+msgid "User authentication required for mobile broadband connection “%s”…"
+msgstr ""
+"\"%s\" мобильді кеңжолақты байланысы үшін пайдаланушы аутентификациясы керек…"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:117
+#: ../src/panel/widgets/netman/mobile-helpers.c:624
+#, c-format
+msgid "Mobile broadband connection “%s” active"
+msgstr "\"%s\" мобильді кеңжолақты байланысы белсенді"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
+msgid "Auto Ethernet"
+msgstr "Авто Ethernet"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
+#, c-format
+msgid "Ethernet Networks (%s)"
+msgstr "Ethernet желілері (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
+#, c-format
+msgid "Ethernet Network (%s)"
+msgstr "Ethernet желісі (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
+msgid "Ethernet Networks"
+msgstr "Ethernet желілері"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
+msgid "Ethernet Network"
+msgstr "Ethernet желісі"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
+msgid "You are now connected to the ethernet network."
+msgstr "Сіз ethernet желісіне байланысқансыз."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
+#, c-format
+msgid "Preparing ethernet network connection “%s”…"
+msgstr "\"%s\" ethernet желілік байланысын дайындау…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
+#, c-format
+msgid "Configuring ethernet network connection “%s”…"
+msgstr "\"%s\" ethernet желілік байланысын баптау…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
+#, c-format
+msgid "User authentication required for ethernet network connection “%s”…"
+msgstr ""
+"\"%s\" ethernet желілік байланысы үшін пайдаланушы аутентификациясы керек…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
+#, c-format
+msgid "Requesting an ethernet network address for “%s”…"
+msgstr "\"%s\" үшін ethernet желілік адресін сұрау…"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
+#, c-format
+msgid "Ethernet network connection “%s” active"
+msgstr "\"%s\" ethernet желілік байланысы белсенді"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
+msgid "DSL authentication"
+msgstr "DSL аутентификациясы"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:1190
+#: ../src/panel/widgets/netman/mobile-helpers.c:455
+#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2
+msgid "_Cancel"
+msgstr "Ба_с тарту"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:1191
+#: ../src/panel/widgets/netman/mobile-helpers.c:456
+#: ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+msgid "_OK"
+msgstr "_ОК"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#, fuzzy
+msgid "Connect to Hidden Wi-Fi Network…"
+msgstr "Жасырын Wi-Fi желісіне байланы_су…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#, fuzzy
+msgid "Create New Wi-Fi Network…"
+msgstr "_Жаңа Wi-Fi желісін жасау…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#, fuzzy
+msgid "Create Wi-Fi Hotspot…"
+msgstr "_Жаңа Wi-Fi желісін жасау…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+msgid "(none)"
+msgstr "(ешнәрсе)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:567
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+msgid "Failed to add new connection"
+msgstr "Жаңа байланысты қосу мүмкін емес"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+msgid "Insufficient privileges."
+msgstr "Рұқсаттар жеткіліксіз."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#, fuzzy, c-format
+msgid "Do you want to disconnect from the wireless network '%s'?"
+msgstr "Сіз агрегацияланған (team) желісіне байланысқансыз."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#, c-format
+msgid "Wi-Fi Networks (%s)"
+msgstr "Wi-Fi желілері (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#, c-format
+msgid "Wi-Fi Network (%s)"
+msgstr "Wi-Fi желісі (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+msgid "Wi-Fi Network"
+msgid_plural "Wi-Fi Networks"
+msgstr[0] "Wi-Fi желі(лер)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+msgid "Wi-Fi is disabled"
+msgstr "Wi-Fi сөндірілген"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+msgid "Wi-Fi is disabled by hardware switch"
+msgstr "Wi-Fi құрылғы қосқышымен сөндірілген"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+msgid "More networks"
+msgstr "Көбірек желілер"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+msgid "Wi-Fi Networks Available"
+msgstr "Wi-Fi желілері қолжетерлік"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+msgid "Use the network menu to connect to a Wi-Fi network"
+msgstr "Wi-Fi желісіне байланысты орнату үшін желі мәзірін қолданыңыз"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#, c-format
+msgid "You are now connected to the Wi-Fi network “%s”."
+msgstr "\"%s\" Wi-Fi желісіне байланыс орнатылды."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#, c-format
+msgid "Preparing Wi-Fi network connection “%s”…"
+msgstr "\"%s\" Wi-Fi желілік байланысын дайындау…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#, c-format
+msgid "Configuring Wi-Fi network connection “%s”…"
+msgstr "\"%s\" Wi-Fi желі байланысын баптау…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#, c-format
+msgid "User authentication required for Wi-Fi network “%s”…"
+msgstr "\"%s\" Wi-Fi желісі үшін пайдаланушы аутентификациясы керек…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#, c-format
+msgid "Requesting a Wi-Fi network address for “%s”…"
+msgstr "\"%s\" үшін Wi-Fi желілік адресті сұрау…"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+msgstr "\"%s\" Wi-Fi желілік байланысы белсенді: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#, c-format
+msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+msgstr "\"%s\" Wi-Fi желілік байланысы белсенді: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#, c-format
+msgid "Wi-Fi network connection “%s” active"
+msgstr "\"%s\" Wi-Fi желілік байланысы белсенді"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:29
+msgid "Error displaying connection information:"
+msgstr "Байланыс ақпаратын көрсету сәтсіз:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:61
+msgid "LEAP"
+msgstr "LEAP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:63
+msgid "Dynamic WEP"
+msgstr "Динамикалық WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:65
+#: ../src/panel/widgets/netman/applet-dialogs.c:237
+#: ../src/panel/widgets/netman/applet-dialogs.c:239
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+#. Create the expander
+#: ../src/panel/widgets/netman/applet-dialogs.c:174
+msgid "More addresses"
+msgstr "Көбірек адрестер"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:235
+msgid "WEP"
+msgstr "WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:241
+msgid "WPA3"
+msgstr "WPA3"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:245
+#: ../src/panel/widgets/netman/applet-dialogs.c:254
+msgctxt "Wi-Fi/Ethernet security"
+msgid "None"
+msgstr "Ешнәрсе"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:324
+#: ../src/panel/widgets/netman/applet-dialogs.c:597
+#, c-format
+msgid "%u Mb/s"
+msgstr "%u Мб/с"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:326
+#: ../src/panel/widgets/netman/applet-dialogs.c:599
+msgctxt "Speed"
+msgid "Unknown"
+msgstr "Белгісіз"
+
+#. Address
+#: ../src/panel/widgets/netman/applet-dialogs.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:363
+msgctxt "Address"
+msgid "Unknown"
+msgstr "Белгісіз"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:415
+msgid "IP Address"
+msgstr "IP адресі"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:364
+msgid "Broadcast Address"
+msgstr "Кең таратылым адресі"
+
+#. Prefix
+#: ../src/panel/widgets/netman/applet-dialogs.c:376
+msgctxt "Subnet Mask"
+msgid "Unknown"
+msgstr "Белгісіз"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:377
+msgid "Subnet Mask"
+msgstr "Ішкі желі маскасы"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Primary DNS"
+msgstr "Біріншілік DNS"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Secondary DNS"
+msgstr "Екіншілік DNS"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+msgid "Tertiary DNS"
+msgstr "Үшіншілік DNS"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:518
+#, c-format
+msgid "Ethernet (%s)"
+msgstr "Ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:521
+#, c-format
+msgid "802.11 Wi-Fi (%s)"
+msgstr "802.11 Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:528
+#, c-format
+msgid "GSM (%s)"
+msgstr "GSM (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:530
+#, c-format
+msgid "CDMA (%s)"
+msgstr "CDMA (%s)"
+
+#. --- General ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:538
+#: ../src/panel/widgets/netman/applet-dialogs.c:872
+msgid "General"
+msgstr "Жалпы"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:541
+msgid "Interface"
+msgstr "Интерфейс"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:556
+msgid "Hardware Address"
+msgstr "Құрылғы адресі"
+
+#. Driver
+#: ../src/panel/widgets/netman/applet-dialogs.c:569
+msgid "Driver"
+msgstr "Драйвер"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:602
+msgid "Speed"
+msgstr "Жылдамдық"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:615
+msgid "Security"
+msgstr "Қауіпсіздік"
+
+#. --- IPv4 ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:640
+#: ../src/panel/widgets/netman/applet-dialogs.c:902
+msgid "IPv4"
+msgstr "IPv4"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:659
+#: ../src/panel/widgets/netman/applet-dialogs.c:707
+msgid "Default Route"
+msgstr "Бастапқы маршрут"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:687
+#: ../src/panel/widgets/netman/applet-dialogs.c:929
+msgid "IPv6"
+msgstr "IPv6"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:728
+msgid "Hotspot"
+msgstr "Қатынау нүктесі"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:746
+msgid "Password"
+msgstr "Пароль"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:876
+msgid "VPN Type"
+msgstr "VPN түрі"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:881
+msgid "VPN Gateway"
+msgstr "VPN шлюзі"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:885
+msgid "VPN Username"
+msgstr "VPN пайд. аты"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:889
+msgid "VPN Banner"
+msgstr "VPN баннері"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:893
+msgid "Base Connection"
+msgstr "Негізгі байланыс"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:894
+msgid "Unknown"
+msgstr "Белгісіз"
+
+#. Shouldn't really happen but ...
+#: ../src/panel/widgets/netman/applet-dialogs.c:1091
+msgid "No valid active connections found!"
+msgstr "Дұрыс белсенді байланыстар табылмады!"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+msgid ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"and many other community contributors and translators"
+msgstr ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"және көптеген басқа қоғамдастық үлес қосушылары\n"
+"және аудармашылар"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+msgid ""
+"Notification area applet for managing your network devices and connections."
+msgstr ""
+"Желілің құрылғылар мен байланыстарды басқару үшін хабарлау аймағының апплеті."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1144
+msgid "NetworkManager Website"
+msgstr "NetworkManager веб сайты"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1148
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+msgid ""
+"The NetworkManager Applet could not find some required resources (the .ui "
+"file was not found)."
+msgstr ""
+"NetworkManager апплеті кейбір міндетті ресурстарды таба алмаған (.ui файлы "
+"табылмады)."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1163
+msgid "Missing resources"
+msgstr "Ресурстар жоқ"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1188
+msgid "Mobile broadband network password"
+msgstr "Мобильді кеңжолақты желісінің паролі"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1197
+#, c-format
+msgid "A password is required to connect to “%s”."
+msgstr "\"%s\" үшін байланысты орнату үшін пароль керек."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1220
+msgid "Password:"
+msgstr "Пароль:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1502
+msgid "SIM PIN unlock required"
+msgstr "SIM үшін PIN босатуы керек"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1503
+msgid "SIM PIN Unlock Required"
+msgstr "SIM үшін PIN босатуы керек"
+
+#. FIXME: some warning about # of times you can enter incorrect PIN
+#: ../src/panel/widgets/netman/applet-dialogs.c:1505
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PIN code before it can be "
+"used."
+msgstr ""
+"\"%s\" мобильді кеңжолақты құрылғысын қолдану алдында оған SIM PIN коды "
+"керек."
+
+#. Translators: PIN code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1507
+msgid "PIN code:"
+msgstr "PIN коды:"
+
+#. Translators: Show/obscure PIN checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1511
+msgid "Show PIN code"
+msgstr "PIN кодын көрсету"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1513
+msgid "SIM PUK unlock required"
+msgstr "SIM үшін PUK босатуы керек"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1514
+msgid "SIM PUK Unlock Required"
+msgstr "SIM үшін PUK босатуы керек"
+
+#. FIXME: some warning about # of times you can enter incorrect PUK
+#: ../src/panel/widgets/netman/applet-dialogs.c:1516
+#, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PUK code before it can be "
+"used."
+msgstr ""
+"\"%s\" мобильді кеңжолақты құрылғысын қолдану алдында оған SIM PUK коды "
+"керек."
+
+#. Translators: PUK code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1518
+msgid "PUK code:"
+msgstr "PUK коды:"
+
+#. Translators: New PIN entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1521
+msgid "New PIN code:"
+msgstr "Жаңа PIN коды:"
+
+#. Translators: New PIN verification entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1523
+msgid "Re-enter new PIN code:"
+msgstr "Жаңа PIN кодын қайталау:"
+
+#. Translators: Show/obscure PIN/PUK checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1528
+msgid "Show PIN/PUK codes"
+msgstr "PIN/PUK кодтарын көрсету"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:427
+msgid "Connection had no VPN setting"
+msgstr "Байланыста VPN баптауы жоқ"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:477
+#, c-format
+msgid "Failed to write connection to VPN UI: %s (%d)"
+msgstr "VPN UI ішіне байланысты жазу сәтсіз: %s (%d)"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:485
+msgid "Failed to write connection to VPN UI: incomplete write"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87
+msgid "802.1X authentication"
+msgstr "802.1X аутентификациясы"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:36
+#: ../src/panel/widgets/netman/mobile-helpers.c:272
+msgid "CDMA"
+msgstr "CDMA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:38
+msgid "EVDO"
+msgstr "EVDO"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:40
+#: ../src/panel/widgets/netman/mobile-helpers.c:270
+msgid "GSM"
+msgstr "GSM"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:42
+msgid "GPRS"
+msgstr "GPRS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:44
+msgid "EDGE"
+msgstr "EDGE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:46
+msgid "UMTS"
+msgstr "UMTS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:48
+msgid "HSDPA"
+msgstr "HSDPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:50
+msgid "HSUPA"
+msgstr "HSUPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:52
+msgid "HSPA"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:54
+msgid "HSPA+"
+msgstr "HSPA+"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:56
+msgid "LTE"
+msgstr "LTE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:103
+msgid "not enabled"
+msgstr "іске қосылмаған"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:109
+msgid "not registered"
+msgstr "тіркелмеген"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:127
+#, c-format
+msgid "Home network (%s)"
+msgstr "Үй желісі (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:129
+#, c-format
+msgid "Home network"
+msgstr "Үй желісі"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:137
+msgid "searching"
+msgstr "іздеу"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:140
+msgid "registration denied"
+msgstr "тіркелу тайдырылған"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:145
+#: ../src/panel/widgets/netman/mb-menu-item.c:151
+#, c-format
+msgid "%s (%s roaming)"
+msgstr "%s (%s роуминг)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:147
+#: ../src/panel/widgets/netman/mb-menu-item.c:153
+#, c-format
+msgid "%s (roaming)"
+msgstr "%s (роуминг)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:156
+#, c-format
+msgid "Roaming network (%s)"
+msgstr "Роуминг желісі (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:158
+#, c-format
+msgid "Roaming network"
+msgstr "Роуминг желісі"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:320
+#, c-format
+msgid "PIN code for SIM card “%s” on “%s”"
+msgstr "\"%s\" SIM картасы үшін PIN коды, \"%s\" жерінде"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:453
+msgid "PIN code required"
+msgstr "PIN коды керек"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:461
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "Мобильді кеңжолақты құрылғы үшін PIN коды керек"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:619
+#, c-format
+msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+msgstr "\"%s\" мобильді кеңжолақты байланысы белсенді: (%d%%%s%s)"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:622
+msgid "roaming"
+msgstr "роуминг"
+
+#: ../src/panel/widgets/netman/netman.c:139
+#, fuzzy
+msgid "Network Manager"
+msgstr "NetworkManager"
+
+#: ../src/panel/widgets/netman/netman.c:140
+#, fuzzy
+msgid "Controller for Network Manager"
+msgstr "NetworkManager"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:793
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:800
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:807
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:815
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:824
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:835
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+
+#. The %s is a mobile provider name, eg "T-Mobile"
+#: ../src/panel/widgets/netman/utils.c:160
+#, c-format
+msgid "%s connection"
+msgstr "%s байланысы"
+
+#: ../src/panel/widgets/netman/utils.c:534
+msgid "PEM certificates (*.pem, *.crt, *.cer)"
+msgstr "PEM сертификаттары (*.pem, *.crt, *.cer)"
+
+#: ../src/panel/widgets/netman/utils.c:546
+msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+msgstr "DER, PEM, не PKCS#12 жеке кілттері (*.der, *.pem, *.p12, *.key)"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:391
+#: ../src/panel/widgets/smenu/menu.c:121
+msgid "Run"
+msgstr "Жөнелту"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:412
+msgid "Enter the command you want to execute:"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:116
+msgid "Logout command is not set"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:122
+msgid "Restart"
+msgstr "Қайта қосу"
+
+#: ../src/panel/widgets/smenu/menu.c:123
+msgid "Logout"
+msgstr "Жүйеден шығу"
+
+#: ../src/panel/widgets/smenu/menu.c:140
+msgid "No file manager is configured."
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:489
+msgid "Add to desktop"
+msgstr "Жұмыс үстеліне қосу"
+
+#: ../src/panel/widgets/smenu/menu.c:496
+msgid "Properties"
+msgstr "Қасиеттері"
+
+#: ../src/panel/widgets/smenu/menu.c:954
+msgid "Click here to open applications menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1047
+msgid "Menu"
+msgstr "Мәзір"
+
+#: ../src/panel/widgets/smenu/menu.c:1048
+msgid "Icon"
+msgstr "Таңбаша"
+
+#: ../src/panel/widgets/smenu/menu.c:1049
+msgid "Padding"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1050
+msgid "Fixed Size"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1058
+msgid "Menu with Search"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1059
+#, fuzzy
+msgid "Searchable Application Menu"
+msgstr "Қолданбалар мәзірі"
+
+#: ../src/panel/widgets/updater/updater.c:189
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:211
+#, fuzzy
+msgid "No network connection - cannot install updates."
+msgstr "Желілік байланыстар жоқ"
+
+#: ../src/panel/widgets/updater/updater.c:217
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:320
+msgid "Show Updates..."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:324
+msgid "Install Updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:470
+msgid "Updates are available - click to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:529
+#: ../src/panel/widgets/updater/updater.c:561
+msgid "Updater"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:531
+msgid "Hours between checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:562
+msgid "Checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#, fuzzy
+msgid "Reconnecting Bluetooth devices..."
+msgstr "жарамсыз Bluetooth құрылғысы (%s)"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#, fuzzy, c-format
+msgid "Bluetooth %s device not found"
+msgstr "Bluetooth байланысы %d"
+
+#. update dialog to show a warning
+#: ../src/panel/widgets/volumepulse/bluetooth.c:405
+msgid "Device not found by PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#, c-format
+msgid "Could not set profile for device : %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#, fuzzy, c-format
+msgid "Failed to connect to Bluetooth device - %s"
+msgstr "телефонға байланыс орнату сәтсіз."
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#, c-format
+msgid "Connecting Bluetooth device '%s' as output..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#, fuzzy, c-format
+msgid "Connecting Bluetooth device '%s' as input..."
+msgstr "жарамсыз Bluetooth құрылғысы (%s)"
+
+#. if the current default source and sink are both the same device, disconnect it and reconnect to
+#. put it into A2DP rather than HSP
+#: ../src/panel/widgets/volumepulse/bluetooth.c:785
+msgid "Reconnecting Bluetooth input device as output only..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#, fuzzy
+msgid "Reconnecting Bluetooth device..."
+msgstr "жарамсыз Bluetooth құрылғысы (%s)"
+
+#. Create a check button as the child of the vertical box.
+#: ../src/panel/widgets/volumepulse/commongui.c:140
+msgid "Mute"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/commongui.c:231
+msgid "No audio devices found"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:71
+msgid "Input from this device not available in the current profile"
+msgstr ""
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/micpulse.c:144
+msgid "Mic volume"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:216
+msgid "Microphone Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:217
+msgid "Display and control microphones for PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+msgid "HDMI"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+msgid "AV Jack"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+msgid "Device Profiles..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+msgid "Output to this device not available in the current profile"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#, fuzzy
+msgid "Device Profiles"
+msgstr "Құрылғыны ажырату сәтсіз"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#, fuzzy
+msgid "Device not connected"
+msgstr "Құрылғыны ажырату сәтсіз"
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+#, fuzzy
+msgid "Volume control"
+msgstr "Ағынды басқару"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+msgid "Volume Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+msgid "Display and control volume for PulseAudio"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
+msgid "label"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:1
+#, fuzzy
+msgid "Available Updates"
+msgstr "Қолжетерлік"
+
+#: ../data/lxplug-updater.ui.h:2
+#, fuzzy
+msgid "Close"
+msgstr "_Жабу"
+
+#: ../data/lxplug-updater.ui.h:3
+msgid "Install"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:4
+msgid "The following packages can be updated :"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:1
+#, fuzzy
+msgid "Add New Device"
+msgstr "құрылғы"
+
+#: ../data/lxplug-bluetooth.ui.h:3
+msgid "_Pair"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:4
+#, fuzzy
+msgid "Searching for Bluetooth devices..."
+msgstr "жарамсыз Bluetooth құрылғысы (%s)"
+
+#~ msgid "Manage your network connections"
+#~ msgstr "Желілік байланыстарыңызды басқару"
+
+#~ msgid "NetworkManager connection editor"
+#~ msgstr "NetworkManager байланыстар түзеткіші"
+
+#~ msgid ""
+#~ "NetworkManager is a system service for managing and configuring your "
+#~ "network connections and devices."
+#~ msgstr ""
+#~ "NetworkManager - бұл жүйелік байланыстарды және құрылғыларды басқару және "
+#~ "баптауға арналған жүйелік қызмет."
+
+#~ msgid ""
+#~ "The nm-connection-editor program works with NetworkManager to create and "
+#~ "edit existing connection profiles for NetworkManager."
+#~ msgstr ""
+#~ "nm-connection-editor бағдарламасы NetworkManager-мен бірге NetworkManager "
+#~ "үшін байланыс профильдерін жасауға және түзетуге жұмыс істейді."
+
+#~ msgid "The NetworkManager Developers"
+#~ msgstr "NetworkManager жасағандар"
+
+#~ msgid "Advanced Network Configuration"
+#~ msgstr "Кеңейтілген желі баптаулары"
+
+#~ msgid "Manage and change your network connection settings"
+#~ msgstr "Сіздің желілік байланысыңызды басқару мен түзету"
+
+#~ msgid "_Network name"
+#~ msgstr "Желі а_тауы"
+
+#~ msgid "Connection _Information"
+#~ msgstr "Байла_ныс ақпараты"
+
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add an IP address."
+#~ msgstr ""
+#~ "IP адрестері компьютеріңізді желіде сипаттайды. IP адресін қосу үшін, "
+#~ "\"Қосу\" батырмасын басыңыз."
+
+#~ msgid "_Add"
+#~ msgstr "Қо_су"
+
+#~ msgid "_Delete"
+#~ msgstr "Ө_шіру"
+
+#~ msgid "Ig_nore automatically obtained routes"
+#~ msgstr "Автоматты түрде  алынған маршруттарды еле_меу"
+
+#~ msgid "_Use this connection only for resources on its network"
+#~ msgstr ""
+#~ "Бұл байланысты тек ол өзі жатқан желі ішіндегі ресурстар үшін қ_олдану"
+
+#~ msgid ""
+#~ "If enabled, this connection will never be used as the default network "
+#~ "connection."
+#~ msgstr ""
+#~ "Іске қосулы болса, бұл байланыс үнсіз келісім бойынша қолданылатын "
+#~ "желілік байланыс ретінде ешқашан қолданылмайтын болады."
+
+#~ msgid "C_reate…"
+#~ msgstr "Жа_сау…"
+
+#~ msgid "Choose a Connection Type"
+#~ msgstr "Байланыс түрін таңдаңыз"
+
+#~ msgid "_Device"
+#~ msgstr "Құр_ылғы"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "Broadcast"
+#~ msgstr "Кең таратылым"
+
+#~ msgid "802.3ad"
+#~ msgstr "802.3ad"
+
+#~ msgid "MII (recommended)"
+#~ msgstr "MII (ұсынылады)"
+
+#~ msgid "ARP"
+#~ msgstr "ARP"
+
+#~ msgid "Bonded _connections"
+#~ msgstr "А_грегацияланған (bond) байланыстары"
+
+#~ msgid "M_ode"
+#~ msgstr "Реж_имі"
+
+#~ msgid "_Edit"
+#~ msgstr "Түз_ету"
+
+#~ msgid "Monitoring _frequency"
+#~ msgstr "Бақылау ж_иілігі"
+
+#~ msgid "ms"
+#~ msgstr "мс"
+
+#~ msgid "_Interface name"
+#~ msgstr "_Интерфейс аты"
+
+#~ msgid "_Link Monitoring"
+#~ msgstr "Бай_ланысты бақылау"
+
+#~ msgid "_Primary"
+#~ msgstr "Біріншілік"
+
+#~ msgid "_MTU"
+#~ msgstr "_MTU"
+
+#~ msgid "bytes"
+#~ msgstr "байт"
+
+#~ msgid "_Priority"
+#~ msgstr "_Приоритеті"
+
+#~ msgid "Bridged _connections"
+#~ msgstr "А_грегацияланған (bridge) байланыстары"
+
+#~ msgid "s"
+#~ msgstr "с"
+
+#~ msgid "_Use Data Center Bridging (DCB) for this connection"
+#~ msgstr "Бұл байланыс үшін Data Center Bridging (DCB) қол_дану"
+
+#~ msgid "FCoE"
+#~ msgstr "FCoE"
+
+#~ msgid "iSCSI"
+#~ msgstr "iSCSI"
+
+#~ msgid "FIP"
+#~ msgstr "FIP"
+
+#~ msgid "Feature"
+#~ msgstr "Мүмкіндік"
+
+#~ msgid "Enable"
+#~ msgstr "Іске қосу"
+
+#~ msgid "Advertise"
+#~ msgstr "Жарнамалау"
+
+#~ msgid "Priority"
+#~ msgstr "Приоритеті"
+
+#~ msgid "Options…"
+#~ msgstr "Опциялар…"
+
+#~ msgid "Priority Groups"
+#~ msgstr "Приоритет топтары"
+
+#~ msgid "default"
+#~ msgstr "бастапқы"
+
+#~ msgid "VN2VN"
+#~ msgstr "VN2VN"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "Traffic Class"
+#~ msgstr "Трафик класы"
+
+#~ msgid "_Username"
+#~ msgstr "_Пайдаланушы аты"
+
+#~ msgid "_Service"
+#~ msgstr "Қы_змет"
+
+#~ msgid "Sho_w password"
+#~ msgstr "Пар_ольді көрсету"
+
+#~ msgid "_Password"
+#~ msgstr "_Пароль"
+
+#~ msgid "PPP _interface"
+#~ msgstr "PPP _интерфейсі"
+
+#~ msgid "P_arent interface"
+#~ msgstr "_Аталық интерфейсі"
+
+#~ msgid "Automatic"
+#~ msgstr "Автоматты"
+
+#~ msgid "Twisted Pair (TP)"
+#~ msgstr "Еспе жұп (TP)"
+
+#~ msgid "Attachment Unit Interface (AUI)"
+#~ msgstr "AUI интерфейсі"
+
+#~ msgid "BNC"
+#~ msgstr "BNC"
+
+#~ msgid "Media Independent Interface (MII)"
+#~ msgstr "MII интерфейсі"
+
+#~ msgid "10 Mb/s"
+#~ msgstr "10 Гб/с"
+
+#~ msgid "100 Mb/s"
+#~ msgstr "100 Гб/с"
+
+#~ msgid "1 Gb/s"
+#~ msgstr "1 Гб/с"
+
+#~ msgid "10 Gb/s"
+#~ msgstr "10 Гб/с"
+
+#~ msgid "Half"
+#~ msgstr "Жарты"
+
+#~ msgid "Full"
+#~ msgstr "Толық"
+
+#~ msgid "Ignore"
+#~ msgstr "Елемеу"
+
+#~ msgid "Manual"
+#~ msgstr "Қолмен"
+
+#~ msgid "_Port"
+#~ msgstr "_Порт"
+
+#~ msgid "C_loned MAC address"
+#~ msgstr "Кл_ондалған MAC адресі"
+
+#~ msgid "De_fault"
+#~ msgstr "Ба_стапқы"
+
+#~ msgid "_Ignore"
+#~ msgstr "Еле_меу"
+
+#~ msgid "_Broadcast"
+#~ msgstr "К_ең таратылым"
+
+#~ msgid "_Speed"
+#~ msgstr "Ж_ылдамдық"
+
+#~ msgid "Duple_x"
+#~ msgstr "Дупле_кс"
+
+#~ msgid "Yes"
+#~ msgstr "Иә"
+
+#~ msgid "No"
+#~ msgstr "Жоқ"
+
+#~ msgid "All _users may connect to this network"
+#~ msgstr "Бұл желіге барлық па_йдаланушылар байланыса алады"
+
+#~ msgid "Automatically connect to _VPN"
+#~ msgstr "VPN-ге а_втобайланысу"
+
+#~ msgid "Firewall _zone"
+#~ msgstr "Файрволл _зонасы"
+
+#~ msgid "_Metered connection"
+#~ msgstr "Өл_шенетін байланыс"
+
+#~ msgid "Connected"
+#~ msgstr "Байланысқан"
+
+#~ msgid "IPIP"
+#~ msgstr "IPIP"
+
+#~ msgid "GRE"
+#~ msgstr "GRE"
+
+#~ msgid "SIT"
+#~ msgstr "SIT"
+
+#~ msgid "ISATAP"
+#~ msgstr "ISATAP"
+
+#~ msgid "VTI"
+#~ msgstr "VTI"
+
+#~ msgid "IP6IP6"
+#~ msgstr "IP6IP6"
+
+#~ msgid "IPIP6"
+#~ msgstr "IPIP6"
+
+#~ msgid "IP6GRE"
+#~ msgstr "IP6GRE"
+
+#~ msgid "VTI6"
+#~ msgstr "VTI6"
+
+#~ msgid "Device name"
+#~ msgstr "Құрылғы аты"
+
+#~ msgid "Parent device"
+#~ msgstr "Аталық құрылғысы"
+
+#~ msgid "Mode"
+#~ msgstr "Режимі"
+
+#~ msgid "Local IP"
+#~ msgstr "Жергілікті IP"
+
+#~ msgid "Remote IP"
+#~ msgstr "Қашықтағы IP"
+
+#~ msgid "MTU"
+#~ msgstr "MTU"
+
+#~ msgid "Automatic with manual DNS settings"
+#~ msgstr "Автоматты, DNS баптаулары қолмен көрсетіледі"
+
+#~ msgid "Shared to other computers"
+#~ msgstr "Басқа компьютерлермен бөліскен"
+
+#~ msgid "_Method"
+#~ msgstr "Тә_сіл"
+
+#~ msgid "S_earch domains"
+#~ msgstr "І_здеу домендері"
+
+#~ msgid "DNS ser_vers"
+#~ msgstr "DNS _серверлері"
+
+#~ msgid "_Routes…"
+#~ msgstr "_Маршруттар…"
+
+#~ msgid "Default"
+#~ msgstr "Бастапқы"
+
+#~ msgid "Disabled"
+#~ msgstr "Сөндірулі"
+
+#~ msgid "Enabled (prefer public address)"
+#~ msgstr "Іске қосылған (публикалық адресті қалау)"
+
+#~ msgid "Enabled (prefer temporary address)"
+#~ msgstr "Іске қосылған (уақытша адресті қалау)"
+
+#~ msgid "EUI64"
+#~ msgstr "EUI64"
+
+#~ msgid "Stable privacy"
+#~ msgstr "Тұрақты жекелік"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "EAP"
+#~ msgstr "EAP"
+
+#~ msgid "Check"
+#~ msgstr "Тексеру"
+
+#~ msgid "Strict"
+#~ msgstr "Қатаң"
+
+#~ msgid "_Device name"
+#~ msgstr "Құ_рылғы атауы"
+
+#~ msgid "_Parent device"
+#~ msgstr "А_талық құрылғысы"
+
+#~ msgid "Keys"
+#~ msgstr "Кілттер"
+
+#~ msgid "_Mode"
+#~ msgstr "Ре_жимі"
+
+#~ msgid "C_AK"
+#~ msgstr "C_AK"
+
+#~ msgid "C_KN"
+#~ msgstr "C_KN"
+
+#~ msgid "Parameters"
+#~ msgstr "Параметрлер"
+
+#~ msgid "_Validation"
+#~ msgstr "Ра_стау"
+
+#~ msgid "_SCI port"
+#~ msgstr "SCI _порты"
+
+#~ msgid "_Encrypt"
+#~ msgstr "Шифрл_еу"
+
+#~ msgid "Basic"
+#~ msgstr "Қарапайым"
+
+#~ msgid "Nu_mber"
+#~ msgstr "Нө_мірі"
+
+#~ msgid "_APN"
+#~ msgstr "_APN"
+
+#~ msgid "N_etwork ID"
+#~ msgstr "Ж_елі ID"
+
+#~ msgid "Change…"
+#~ msgstr "Ауыстыру…"
+
+#~ msgid "P_IN"
+#~ msgstr "P_IN"
+
+#~ msgid "Allow _roaming if home network is not available"
+#~ msgstr "Үй желісі қолжетерсіз болған кезде, _роумингті қолдануға рұқсат ету"
+
+#~ msgid "Sho_w passwords"
+#~ msgstr "Пар_ольдерді көрсету"
+
+#~ msgid "Authentication"
+#~ msgstr "Аутентификация"
+
+#~ msgid "Allowed methods"
+#~ msgstr "Рұқсат етілген тәсілдер"
+
+#~ msgid "Configure _Methods…"
+#~ msgstr "Тә_сілдерді баптау…"
+
+#~ msgid "Compression"
+#~ msgstr "Сығу"
+
+#~ msgid "_Require 128-bit encryption"
+#~ msgstr "128 биттік шифрлеуді _талап ету"
+
+#~ msgid "None"
+#~ msgstr "Ешнәрсе"
+
+#~ msgid "PAC URL"
+#~ msgstr "PAC URL"
+
+#~ msgid "PAC script"
+#~ msgstr "PAC скрипті"
+
+#~ msgid "Import script from a file…"
+#~ msgstr "Скриптті файлдан импорттау…"
+
+#~ msgid "Method"
+#~ msgstr "Тәсіл"
+
+#~ msgid "Ad_vanced…"
+#~ msgstr "Кеңе_йтілген…"
+
+#~ msgid "Ethernet port state"
+#~ msgstr "Ethernet порт қалып-күйі"
+
+#~ msgid "ARP (IPv4)"
+#~ msgstr "ARP (IPv4)"
+
+#~ msgid "NDP (IPv6)"
+#~ msgstr "NDP (IPv6)"
+
+#~ msgid "_Port priority"
+#~ msgstr "_Порт приоритеті"
+
+#~ msgid "_LACP port priority"
+#~ msgstr "LACP п_орт приоритеті"
+
+#~ msgid "LACP port _key"
+#~ msgstr "LACP порт _кілті"
+
+#~ msgid "Im_port team configuration from a file…"
+#~ msgstr "Агрегацияланған (team) баптауларын файлдан _импорттау…"
+
+#~ msgid "Edit _JSON configuration"
+#~ msgstr "JSON баптауларын тү_зету"
+
+#~ msgid "Raw Configuration"
+#~ msgstr "Шикі баптаулар"
+
+#~ msgid "Highest priority"
+#~ msgstr "Ең жоғарғы приоритет"
+
+#~ msgid "Highest priority (stable)"
+#~ msgstr "Ең жоғарғы приоритет (тұрақты)"
+
+#~ msgid "Bandwidth"
+#~ msgstr "Өткізу қабілеті"
+
+#~ msgid "Port priority"
+#~ msgstr "Порт приоритеті"
+
+#~ msgid "From the team device"
+#~ msgstr "Team құрылғысынан"
+
+#~ msgid "_Teamed connections"
+#~ msgstr "А_грегацияланған (team) байланыстары"
+
+#~ msgid "LACP"
+#~ msgstr "LACP"
+
+#~ msgid "Ethernet"
+#~ msgstr "Ethernet"
+
+#~ msgid "VLAN"
+#~ msgstr "VLAN"
+
+#~ msgid "IP"
+#~ msgstr "IP"
+
+#~ msgid "Any L3 protocol"
+#~ msgstr "Кез келген L3 хаттамасы"
+
+#~ msgid "TCP"
+#~ msgstr "TCP"
+
+#~ msgid "UDP"
+#~ msgstr "UDP"
+
+#~ msgid "SCTP"
+#~ msgstr "SCTP"
+
+#~ msgid "Any L4 protocol"
+#~ msgstr "Кез келген L4 хаттамасы"
+
+#~ msgid "_Hardware Address"
+#~ msgstr "Құр_ылғылық адресі"
+
+#~ msgid "_Hardware address policy"
+#~ msgstr "Құр_ылғылық адрес саясаты"
+
+#~ msgid "_System priority"
+#~ msgstr "_Жүйе приоритеті"
+
+#~ msgid "System priority, value can be 0 – 65535."
+#~ msgstr "Жүйелік приоритеті, мәні 0 – 65535 болуы мүмкін."
+
+#~ msgid "_Parent interface"
+#~ msgstr "_Аталық интерфейсі"
+
+#~ msgid "VLAN inter_face name"
+#~ msgstr "VLAN интер_фейсінің аты"
+
+#~ msgid "Cloned MAC _address"
+#~ msgstr "Клондалған MAC _адресі"
+
+#~ msgid "VLAN _id"
+#~ msgstr "VLAN _id"
+
+#~ msgid "Flags"
+#~ msgstr "Жалаушалар"
+
+#~ msgid "_GVRP"
+#~ msgstr "_GVRP"
+
+#~ msgid "M_VRP"
+#~ msgstr "M_VRP"
+
+#~ msgid "Device name + number"
+#~ msgstr "Құрылғы аты + нөмірі"
+
+#~ msgid "\"vlan\" + number"
+#~ msgstr "\"vlan\" + нөмірі"
+
+#~ msgid "S_ecurity"
+#~ msgstr "Қауі_псіздік"
+
+#~ msgid "A (5 GHz)"
+#~ msgstr "A (5 ГГц)"
+
+#~ msgid "B/G (2.4 GHz)"
+#~ msgstr "B/G (2.4 ГГц)"
+
+#~ msgid "Client"
+#~ msgstr "Клиент"
+
+#~ msgid "Ad-hoc"
+#~ msgstr "Ad-hoc"
+
+#~ msgid "mW"
+#~ msgstr "мВт"
+
+#~ msgid "Mb/s"
+#~ msgstr "Мб/с"
+
+#~ msgid "_BSSID"
+#~ msgstr "_BSSID"
+
+#~ msgid "C_hannel"
+#~ msgstr "Ар_на"
+
+#~ msgid "SS_ID"
+#~ msgstr "SS_ID"
+
+#~ msgid "_Apply"
+#~ msgstr "Іске _асыру"
+
+#~ msgid "Allowed _IPs"
+#~ msgstr "Рұқсат е_тілген IP адрестері"
+
+#~ msgid "Pre_shared key"
+#~ msgstr "Алдын-ала бөлісілг_ен кілт"
+
+#~ msgid "seconds"
+#~ msgstr "секунд"
+
+#~ msgid "Sho_w preshared key"
+#~ msgstr "Алдын-ала бөлісілген кілтті көр_сету"
+
+#~ msgid "Private _key"
+#~ msgstr "Жеке _кілт"
+
+#~ msgid "_Show private key"
+#~ msgstr "Жеке кілтті көр_сету"
+
+#~ msgid "automatic"
+#~ msgstr "автоматты"
+
+#~ msgid "unspecified error"
+#~ msgstr "көрсетілмеген қате"
+
+#~ msgid "Preserve"
+#~ msgstr "Сақтау"
+
+#~ msgid "Permanent"
+#~ msgstr "Тұрақты"
+
+#~ msgid "Random"
+#~ msgstr "Кездейсоқ"
+
+#~ msgid "Stable"
+#~ msgstr "Тұрақты"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC адресі"
+
+#~ msgid "HW address"
+#~ msgstr "Құрылғылық адресі"
+
+#, c-format
+#~ msgid "invalid %s (%s)"
+#~ msgstr "жарамсыз %s (%s)"
+
+#, c-format
+#~ msgid "invalid interface-name (%s): "
+#~ msgstr "интерфейс аты қате (%s): "
+
+#~ msgid "can’t parse device name"
+#~ msgstr "құрылғы атын талдау мүмкін емес"
+
+#~ msgid "invalid hardware address"
+#~ msgstr "құрылғылық адресі қате"
+
+#, c-format
+#~ msgid "invalid %s (%s): "
+#~ msgstr "жарамсыз %s (%s): "
+
+#, c-format
+#~ msgid "invalid %s (%s) "
+#~ msgstr "жарамсыз %s (%s) "
+
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add static IP address to be configured in addition to the "
+#~ "automatic ones."
+#~ msgstr ""
+#~ "IP адрестері компьютеріңізді желіде сипаттайды. Автоматты түрде алынатын "
+#~ "IP адрестеріне қосымша түрде статикалық адрестерді баптау үшін, \"Қосу\" "
+#~ "батырмасын басыңыз."
+
+#~ msgid ""
+#~ "The IP address identify your computer on the network and determines the "
+#~ "address range distributed to other computers. Click the “Add” button to "
+#~ "add an IP address. If no address is provided, range will be determined "
+#~ "automatically."
+#~ msgstr ""
+#~ "IP адресі компьютеріңізді желіде сипаттайды және басқа компьютерлерге "
+#~ "таратылатын адрестер аумағын анықтайды. IP адресін қосу үшін, \"Қосу\" "
+#~ "батырмасын басыңыз. Егер адресі көрсетілмесе, аумақ автоматты түрде "
+#~ "анықталатын болады."
+
+#~ msgid "Additional static addresses"
+#~ msgstr "Қосымша статикалық адрестер"
+
+#~ msgid "Addresses"
+#~ msgstr "Адрестер"
+
+#~ msgid "Address (optional)"
+#~ msgstr "Адрес (міндетті емес)"
+
+#~ msgid "Allowed Authentication Methods"
+#~ msgstr "Рұқсат етілген аутентификация тәсілдері"
+
+#~ msgid "_EAP"
+#~ msgstr "_EAP"
+
+#~ msgid "Extensible Authentication Protocol"
+#~ msgstr "Кеңейтілген аутентификация тәсілі"
+
+#~ msgid "_PAP"
+#~ msgstr "_PAP"
+
+#~ msgid "Password Authentication Protocol"
+#~ msgstr "Парольмен аутентификация тәсілі"
+
+#~ msgid "C_HAP"
+#~ msgstr "C_HAP"
+
+#~ msgid "_MSCHAP"
+#~ msgstr "_MSCHAP"
+
+#~ msgid "MSCHAP v_2"
+#~ msgstr "MSCHAP v_2"
+
+#~ msgid "Wi-Fi"
+#~ msgstr "Wi-Fi"
+
+#~ msgid "DSL/PPPoE"
+#~ msgstr "DSL/PPPoE"
+
+#~ msgid "InfiniBand"
+#~ msgstr "InfiniBand"
+
+#~ msgid "Bond"
+#~ msgstr "Bond"
+
+#~ msgid "Team"
+#~ msgstr "Агрегацияланған (Team)"
+
+#~ msgid "Bridge"
+#~ msgstr "Көпір"
+
+#~ msgid "IP tunnel"
+#~ msgstr "IP туннелі"
+
+#~ msgid "MACsec"
+#~ msgstr "MACsec"
+
+#~ msgid "WireGuard"
+#~ msgstr "WireGuard"
+
+#~ msgid "VPN"
+#~ msgstr "VPN"
+
+#~ msgid "The VPN plugin failed to import the VPN connection correctly: "
+#~ msgstr "VPN плагині VPN байланысын дұрыс импорттай алмады: "
+
+#~ msgid "Select file to import"
+#~ msgstr "Импорттау үшін файлды таңдаңыз"
+
+#~ msgid "_Open"
+#~ msgstr "_Ашу"
+
+#~ msgid "Hardware"
+#~ msgstr "Құрылғы"
+
+#~ msgid "Virtual"
+#~ msgstr "Виртуалды"
+
+#~ msgid "Import a saved VPN configuration…"
+#~ msgstr "Сақталған VPN баптауын импорттау…"
+
+#~ msgid "Could not create new connection"
+#~ msgstr "Жаңа байланысты жасау мүмкін емес"
+
+#~ msgid "Connection delete failed"
+#~ msgstr "Байланысты өшіру мүмкін емес"
+
+#, c-format
+#~ msgid "Are you sure you wish to delete the connection %s?"
+#~ msgstr "%s байланысын өшіруді шынымен қалайсыз ба?"
+
+#~ msgid "_New Connection"
+#~ msgstr "_Жаңа байланыс"
+
+#~ msgid "_Quit"
+#~ msgstr "_Шығу"
+
+#~ msgid "Address"
+#~ msgstr "Адрес"
+
+#~ msgid "Netmask"
+#~ msgstr "Желілік маскасы"
+
+#~ msgid "Gateway"
+#~ msgstr "Шлюз"
+
+#~ msgid "Metric"
+#~ msgstr "Метрика"
+
+#~ msgid "Prefix"
+#~ msgstr "Префикс"
+
+#, c-format
+#~ msgid "Editing %s"
+#~ msgstr "%s түзету"
+
+#~ msgid "Editing un-named connection"
+#~ msgstr "Атаусыз байланысты түзету"
+
+#~ msgid "Missing connection name"
+#~ msgstr "Байланыс аты жоқ"
+
+#~ msgid "Editor initializing…"
+#~ msgstr "Түзеткіш іске қосылуда…"
+
+#~ msgid "Connection cannot be modified"
+#~ msgstr "Байланысты түзету мүмкін емес"
+
+#, c-format
+#~ msgid "Invalid setting %s: %s"
+#~ msgstr "%s қате қасиеті: %s"
+
+#~ msgid "_Save"
+#~ msgstr "_Сақтау"
+
+#~ msgid "Save any changes made to this connection."
+#~ msgstr "Бұл байланысқа жасалған өзгерістерді сақтау."
+
+#~ msgid "Authenticate to save this connection for all users of this machine."
+#~ msgstr ""
+#~ "Бұл машинадағы барлық пайдаланушылары үшін сақтауға аутентификациядан өту."
+
+#~ msgid "Could not create connection"
+#~ msgstr "Байланысты жасау мүмкін емес"
+
+#~ msgid "Could not edit connection"
+#~ msgstr "Байланысты түзету мүмкін емес"
+
+#~ msgid "Error initializing editor"
+#~ msgstr "Түзеткішті іске қосу қатесі"
+
+#~ msgid "Connection add failed"
+#~ msgstr "Байланысты қосу сәтсіз"
+
+#~ msgid "Fix"
+#~ msgstr "Түзеу"
+
+#~ msgid "Connection _name"
+#~ msgstr "Байланыс а_ты"
+
+#~ msgid "_Export…"
+#~ msgstr "_Экспорт…"
+
+#~ msgid "Filename"
+#~ msgstr "Файл аты"
+
+#~ msgid "never"
+#~ msgstr "ешқашан"
+
+#~ msgid "now"
+#~ msgstr "қазір"
+
+#, c-format
+#~ msgid "%d minute ago"
+#~ msgid_plural "%d minutes ago"
+#~ msgstr[0] "%d минут бұрын"
+
+#, c-format
+#~ msgid "%d hour ago"
+#~ msgid_plural "%d hours ago"
+#~ msgstr[0] "%d сағат бұрын"
+
+#, c-format
+#~ msgid "%d day ago"
+#~ msgid_plural "%d days ago"
+#~ msgstr[0] "%d күн бұрын"
+
+#, c-format
+#~ msgid "%d month ago"
+#~ msgid_plural "%d months ago"
+#~ msgstr[0] "%d ай бұрын"
+
+#, c-format
+#~ msgid "%d year ago"
+#~ msgid_plural "%d years ago"
+#~ msgstr[0] "%d жыл бұрын"
+
+#~ msgid "Connection cannot be deleted"
+#~ msgstr "Байланысты өшіру мүмкін емес"
+
+#~ msgid "Select a connection to edit"
+#~ msgstr "Түзету үшін байланысты таңдаңыз"
+
+#~ msgid "Select a connection to delete"
+#~ msgstr "Өшіру үшін байланысты таңдаңыз"
+
+#~ msgid "Name"
+#~ msgstr "Аты"
+
+#~ msgid "Last Used"
+#~ msgstr "Соңғы рет қолданылған"
+
+#~ msgid "Edit the selected connection"
+#~ msgstr "Таңдалған байланысты түзету"
+
+#~ msgid "Authenticate to edit the selected connection"
+#~ msgstr "Таңдалған байланысты түзету үшін аутентификациядан өтіңіз"
+
+#~ msgid "Delete the selected connection"
+#~ msgstr "Таңдалған байланысты өшіру"
+
+#~ msgid "Authenticate to delete the selected connection"
+#~ msgstr "Таңдалған байланысты өшіру үішн аутентификациядан өтіңіз"
+
+#~ msgid "Unrecognized connection type"
+#~ msgstr "Белгісіз байланыс түрі"
+
+#, c-format
+#~ msgid "Don’t know how to import “%s” connections"
+#~ msgstr "\"%s\" байланыстарын импорттау тәсілі белгісіз"
+
+#~ msgid "Error importing connection"
+#~ msgstr "Байланысты импорттау қатесі"
+
+#~ msgid "Error creating connection"
+#~ msgstr "Байланысты жасау қатесі"
+
+#~ msgid "Connection type not specified."
+#~ msgstr "Байланыс түрі көрсетілмеген."
+
+#~ msgid "No VPN plugins are installed."
+#~ msgstr "VPN плагиндері орнатылмаған."
+
+#, c-format
+#~ msgid "Don’t know how to create “%s” connections"
+#~ msgstr "\"%s\" байланыстарын жасау жолы белгісіз"
+
+#~ msgid "Error editing connection"
+#~ msgstr "Байланысты түзету қатесі"
+
+#, c-format
+#~ msgid "Did not find a connection with UUID “%s”"
+#~ msgstr "UUID \"%s\" байланысы табылмады"
+
+#~ msgid "Network Connections"
+#~ msgstr "Желілік байланыстар"
+
+#~ msgid "Add a new connection"
+#~ msgstr "Жаңа байланысты қосу"
+
+#~ msgid "802.1X Security"
+#~ msgstr "802.1X қауіпсіздігі"
+
+#~ msgid "Could not load 802.1X Security user interface."
+#~ msgstr "802.1X қауіпсіздігінің пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "Use 802.1_X security for this connection"
+#~ msgstr "Бұл байланыс үшін 802.1X қауіпсі_здігін қолдану"
+
+#~ msgid "MAC address of the Bluetooth device. Example: 00:11:22:33:44:55"
+#~ msgstr "Bluetooth құрылғысының MAC адресі. Мысалы: 00:11:22:33:44:55"
+
+#~ msgid "Could not load Bluetooth user interface."
+#~ msgstr "Bluetooth пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "primary"
+#~ msgstr "біріншілік"
+
+#~ msgid "DCB"
+#~ msgstr "DCB"
+
+#~ msgid "Could not load DCB user interface."
+#~ msgstr "DCB пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "Could not load DSL user interface."
+#~ msgstr "DSL пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "missing parent interface"
+#~ msgstr "аталық интерфейсі жоқ"
+
+#, c-format
+#~ msgid "DSL connection %d"
+#~ msgstr "DSL байланысы %d"
+
+#~ msgid "ignored"
+#~ msgstr "елемейтін"
+
+#~ msgid "Could not load ethernet user interface."
+#~ msgstr "Ethernet пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "Ethernet device"
+#~ msgstr "Ethernet құрылғысы"
+
+#~ msgid "cloned MAC"
+#~ msgstr "клондалған MAC"
+
+#, c-format
+#~ msgid "Ethernet connection %d"
+#~ msgstr "Ethernet байланысы %d"
+
+#~ msgid "Could not load General user interface."
+#~ msgstr "Жалпы пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "Could not load InfiniBand user interface."
+#~ msgstr "InfiniBand пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "infiniband device"
+#~ msgstr "infiniband құрылғысы"
+
+#, c-format
+#~ msgid "InfiniBand connection %d"
+#~ msgstr "InfiniBand байланысы %d"
+
+#~ msgid "Could not load IP tunnel user interface."
+#~ msgstr "IPv4 туннелі пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "IP tunnel connection %d"
+#~ msgstr "IP туннелі байланысы %d"
+
+#~ msgid "Automatic (VPN)"
+#~ msgstr "Автоматты (VPN)"
+
+#~ msgid "Automatic (VPN) addresses only"
+#~ msgstr "Автоматты (VPN), тек адрестер"
+
+#~ msgid "Automatic, addresses only"
+#~ msgstr "Автоматты, тек адрестер"
+
+#~ msgid "Automatic (PPPoE)"
+#~ msgstr "Автоматты (PPPoE)"
+
+#~ msgid "Automatic (PPPoE) addresses only"
+#~ msgstr "Автоматты (PPPoE), тек адрестер"
+
+#~ msgid "Automatic (DHCP)"
+#~ msgstr "Автоматты (DHCP)"
+
+#~ msgid "Automatic (DHCP) addresses only"
+#~ msgstr "Автоматты (DHCP), тек адрестер"
+
+#~ msgid "Link-Local Only"
+#~ msgstr "Тек Link-Local"
+
+#~ msgid "Additional DNS ser_vers"
+#~ msgstr "Қосымша DNS _серверлері"
+
+#~ msgid "Additional s_earch domains"
+#~ msgstr "Қосымша і_здеу домендері"
+
+#, c-format
+#~ msgid "Editing IPv4 routes for %s"
+#~ msgstr "%s үшін IPv4 маршруттарын түзету"
+
+#~ msgid "IPv4 Settings"
+#~ msgstr "IPv4 баптаулары"
+
+#~ msgid "Could not load IPv4 user interface."
+#~ msgstr "IPv4 пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "IPv4 address “%s” invalid"
+#~ msgstr "\"%s\" IPv4 адресі жарамсыз"
+
+#, c-format
+#~ msgid "IPv4 address netmask “%s” invalid"
+#~ msgstr "\"%s\" IPv4 адрестің желілік маскасы жарамсыз"
+
+#, c-format
+#~ msgid "IPv4 gateway “%s” invalid"
+#~ msgstr "\"%s\" IPv4 шлюзі жарамсыз"
+
+#, c-format
+#~ msgid "IPv4 DNS server “%s” invalid"
+#~ msgstr "\"%s\" IPv4 DNS сервері жарамсыз"
+
+#~ msgid "Automatic, DHCP only"
+#~ msgstr "Автоматты, тек DHCP"
+
+#, c-format
+#~ msgid "Editing IPv6 routes for %s"
+#~ msgstr "%s үшін IPv6 маршруттарын түзету"
+
+#~ msgid "IPv6 Settings"
+#~ msgstr "IPv6 баптаулары"
+
+#~ msgid "Could not load IPv6 user interface."
+#~ msgstr "IPv6 пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "IPv6 address “%s” invalid"
+#~ msgstr "\"%s\" IPv6 адресі жарамсыз"
+
+#, c-format
+#~ msgid "IPv6 prefix “%s” invalid"
+#~ msgstr "\"%s\" IPv6 адрес префиксі жарамсыз"
+
+#, c-format
+#~ msgid "IPv6 gateway “%s” invalid"
+#~ msgstr "\"%s\" IPv6 шлюзі жарамсыз"
+
+#, c-format
+#~ msgid "IPv6 DNS server “%s” invalid"
+#~ msgstr "\"%s\" IPv6 DNS сервері жарамсыз"
+
+#~ msgid "Could not load MACsec user interface."
+#~ msgstr "MACsec пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "MACSEC connection %d"
+#~ msgstr "MACsec байланысы %d"
+
+#~ msgid "Could not load mobile broadband user interface."
+#~ msgstr ""
+#~ "Мобильді кеңжолақты байланыстардың пайдаланушы интерфейсін жүктеу мүмкін "
+#~ "емес."
+
+#~ msgid "Unsupported mobile broadband connection type."
+#~ msgstr "Қолдауы жоқ мобильді кеңжолақты байланыс түрі."
+
+#~ msgid "Select Mobile Broadband Provider Type"
+#~ msgstr "Мобильді кеңжолақты провайдер түрін таңдаңыз"
+
+#~ msgid ""
+#~ "Select the technology your mobile broadband provider uses. If you are "
+#~ "unsure, ask your provider."
+#~ msgstr ""
+#~ "Сіздің мобильді кеңжолақты провайдеріңіз қолданатын технологияны "
+#~ "таңдаңыз. Білмесеңіз, провайдеріңізден сұраңыз."
+
+#~ msgid ""
+#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgstr ""
+#~ "Менің провайдерім GSM не_гізіндегі технологияны қолдануда (мыс. GPRS, "
+#~ "EDGE, UMTS, HSDPA)"
+
+#~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
+#~ msgstr ""
+#~ "Менің провайдерім CDMA негізін_дегі технологияны қолдануда (мыс. 1xRTT, "
+#~ "EVDO)"
+
+#~ msgid "PAP"
+#~ msgstr "PAP"
+
+#~ msgid "CHAP"
+#~ msgstr "CHAP"
+
+#~ msgid "MSCHAPv2"
+#~ msgstr "MSCHAPv2"
+
+#~ msgid "MSCHAP"
+#~ msgstr "MSCHAP"
+
+#~ msgid "none"
+#~ msgstr "ешнәрсе"
+
+#, c-format
+#~ msgid "Editing PPP authentication methods for %s"
+#~ msgstr "%s үшін PPP аутентификация тәсілдерін түзету"
+
+#~ msgid "PPP Settings"
+#~ msgstr "PPP баптаулары"
+
+#~ msgid "Could not load PPP user interface."
+#~ msgstr "PPP пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "Proxy"
+#~ msgstr "Прокси"
+
+#~ msgid "Could not load proxy user interface."
+#~ msgstr "Прокси пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "Error: file doesn’t contain a valid JSON configuration"
+#~ msgstr "Қате: файлда жарамды JSON баптаулары жоқ"
+
+#~ msgid "Team Port"
+#~ msgstr "Агрегацияланған (Team) порты"
+
+#~ msgid "Could not load team port user interface."
+#~ msgstr ""
+#~ "Агрегацияланған (Team) порттың пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "Could not load team user interface."
+#~ msgstr "Агрегацияланған (Team) пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "Team connection %d"
+#~ msgstr "Агрегацияланған (Team) байланысы %d"
+
+#, c-format
+#~ msgid "%s (via “%s”)"
+#~ msgstr "%s (\"%s\" арқылы)"
+
+#~ msgid "New connection…"
+#~ msgstr "Жаңа байланыс…"
+
+#~ msgid "Could not load vlan user interface."
+#~ msgstr "Vlan пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "VLAN connection %d"
+#~ msgstr "VLAN байланысы %d"
+
+#, c-format
+#~ msgid "Could not load editor VPN plugin for “%s” (%s)."
+#~ msgstr "\"%s\" үшін VPN түзеткіші плагинін жүктеу мүмкін емес (%s)."
+
+#~ msgid "unknown failure"
+#~ msgstr "белгісіз қате"
+
+#~ msgid "Could not load VPN user interface."
+#~ msgstr "VPN пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "Could not find VPN plugin for “%s”."
+#~ msgstr "\"%s\" үшін VPN плагині табылмады."
+
+#, c-format
+#~ msgid "VPN connection %d"
+#~ msgstr "VPN байланысы %d"
+
+#~ msgid "Choose a VPN Connection Type"
+#~ msgstr "VPN байланысының түрін таңдаңыз"
+
+#~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
+#~ msgstr "WEP 40/128 биттік кілті (Hex не ASCII)"
+
+#~ msgid "WEP 128-bit Passphrase"
+#~ msgstr "WEP 128 биттік кілттік фразасы"
+
+#~ msgid "Dynamic WEP (802.1X)"
+#~ msgstr "Динамикалы WEP (802.1X)"
+
+#~ msgid "WPA & WPA2 Personal"
+#~ msgstr "WPA & WPA2 Personal"
+
+#~ msgid "WPA & WPA2 Enterprise"
+#~ msgstr "WPA & WPA2 Enterprise"
+
+#~ msgid "WPA3 Personal"
+#~ msgstr "WPA3 Personal"
+
+#~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
+#~ msgstr ""
+#~ "Wi-Fi қауіпсіздігінің пайдаланушы интерфейсін жүктеу мүмкін емес: Wi-Fi "
+#~ "баптауы жоқ."
+
+#~ msgid "Wi-Fi Security"
+#~ msgstr "Wi-Fi қауіпсіздігі"
+
+#~ msgid "Could not load Wi-Fi security user interface."
+#~ msgstr "Wi-Fi қауіпсіздігінің пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "missing SSID"
+#~ msgstr "SSID жоқ"
+
+#, c-format
+#~ msgid "%u (%u MHz)"
+#~ msgstr "%u (%u МГц)"
+
+#~ msgid "Could not load Wi-Fi user interface."
+#~ msgstr "Wi-Fi пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#~ msgid "bssid"
+#~ msgstr "bssid"
+
+#~ msgid "Wi-Fi device"
+#~ msgstr "Wi-Fi құрылғысы"
+
+#, c-format
+#~ msgid "Wi-Fi connection %d"
+#~ msgstr "Wi-Fi байланысы %d"
+
+#~ msgid "Public key"
+#~ msgstr "Ашық кілт"
+
+#~ msgid "Allowed IPs"
+#~ msgstr "Рұқсат етілген IP адрестері"
+
+#~ msgid "Could not load WireGuard user interface."
+#~ msgstr "WireGuard пайдаланушы интерфейсін жүктеу мүмкін емес."
+
+#, c-format
+#~ msgid "WireGuard connection %d"
+#~ msgstr "WireGuard байланысы %d"
+
+#, c-format
+#~ msgid "A file named “%s” already exists."
+#~ msgstr "\"%s\" аты бар файл бар болып тұр."
+
+#~ msgid "_Replace"
+#~ msgstr "А_лмастыру"
+
+#, c-format
+#~ msgid "Do you want to replace %s with the VPN connection you are saving?"
+#~ msgstr "%s орнына сіз сақтаймын деген VPN байланысын сақтау керек пе?"
+
+#~ msgid "Cannot export VPN connection"
+#~ msgstr "VPN байланысын экспорттау мүмкін емес"
+
+#, c-format
+#~ msgid ""
+#~ "The VPN connection “%s” could not be exported to %s.\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "\"%s\" VPN байланысын %s ішіне экспорттау мүмкін емес.\n"
+#~ "\n"
+#~ "Қате: %s."
+
+#~ msgid "Export VPN connection…"
+#~ msgstr "VPN байланысын экспорттау…"
+
+#~ msgid "_Unlock"
+#~ msgstr "Бо_сату"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Бұл құрылғыны блоктаудан автоматты түрде босату"
+
+#~ msgid "Usage:"
+#~ msgstr "Қолданылуы:"
+
+#~ msgid ""
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+#~ msgstr ""
+#~ "Бұл бағдарлама NetworkManager құрамасы болып табылады (https://wiki.gnome."
+#~ "org/Projects/NetworkManager/)."
+
+#~ msgid ""
+#~ "It is not intended for command-line interaction but instead runs in the "
+#~ "GNOME desktop environment."
+#~ msgstr ""
+#~ "Командалық жол режимінде емес, GNOME жұмыс үстел ортасында жұмыс істейді."
+
+#~ msgid "nm-device-wireless"
+#~ msgstr "nm-device-wireless"
+
+#~ msgid "preferences-system-network"
+#~ msgstr "preferences-system-network"
+
+#~ msgid "missing EAP-FAST PAC file"
+#~ msgstr "EAP-FAST PAC файлы жоқ"
+
+#~ msgid "GTC"
+#~ msgstr "GTC"
+
+#~ msgid "Choose a PAC file"
+#~ msgstr "PAC файлын таңдаңыз"
+
+#~ msgid "PAC files (*.pac)"
+#~ msgstr "PAC файлдары (*.pac)"
+
+#~ msgid "All files"
+#~ msgstr "Барлық файлдар"
+
+#~ msgid "Anonymous"
+#~ msgstr "Анонимды"
+
+#~ msgid "Authenticated"
+#~ msgstr "Аутентификациядан өткен"
+
+#~ msgid "Both"
+#~ msgstr "Екеуі де"
+
+#~ msgid "Anony_mous identity"
+#~ msgstr "А_нонимды аутентификация"
+
+#~ msgid "PAC _file"
+#~ msgstr "PAC фа_йлы"
+
+#~ msgid "_Inner authentication"
+#~ msgstr "І_шкі аутентификация"
+
+#~ msgid "Allow automatic PAC pro_visioning"
+#~ msgstr "Автоматты PAC ұсы_нуды рұқсат ету"
+
+#~ msgid "missing EAP-LEAP username"
+#~ msgstr "EAP-LEAP пайдаланушы аты жоқ"
+
+#~ msgid "missing EAP-LEAP password"
+#~ msgstr "EAP-LEAP паролі жоқ"
+
+#~ msgid "MD5"
+#~ msgstr "MD5"
+
+#~ msgid "Version 0"
+#~ msgstr "Нұсқасы 0"
+
+#~ msgid "Version 1"
+#~ msgstr "Нұсқасы 1"
+
+#~ msgid "No CA certificate is _required"
+#~ msgstr "CA сертификаты керек е_мес"
+
+#~ msgid "PEAP _version"
+#~ msgstr "_PEAP нұсқасы"
+
+#~ msgid "_Domain"
+#~ msgstr "_Домен"
+
+#~ msgid "missing EAP username"
+#~ msgstr "EAP пайдаланушы аты жоқ"
+
+#~ msgid "missing EAP password"
+#~ msgstr "EAP паролі жоқ"
+
+#~ msgid "P_rivate Key Passphrase"
+#~ msgstr "Ж_еке кілттің кілттік фразасы"
+
+#~ msgid "Sh_ow passphrase"
+#~ msgstr "Кілттік фразаны кө_рсету"
+
+#~ msgid "missing EAP-TLS identity"
+#~ msgstr "EAP-TLS identity жоқ"
+
+#~ msgid "no user certificate selected"
+#~ msgstr "пайдаланушы сертификаты таңдалмады"
+
+#~ msgid "selected user certificate file does not exist"
+#~ msgstr "таңдалған пайдаланушы сертификат файлы жоқ болып тұр"
+
+#~ msgid "no key selected"
+#~ msgstr "кілт таңдалмады"
+
+#~ msgid "selected key file does not exist"
+#~ msgstr "таңдалған кілттер файлы жоқ болып тұр"
+
+#~ msgid "MSCHAPv2 (no EAP)"
+#~ msgstr "MSCHAPv2 (EAP жоқ)"
+
+#~ msgid "undefined error in 802.1X security (wpa-eap)"
+#~ msgstr "802.1X қауіпсіздігі (wpa-eap) ішіндегі анықталмаған қате"
+
+#~ msgid "no CA certificate selected"
+#~ msgstr "СО сертификаты таңдалмады"
+
+#~ msgid "selected CA certificate file does not exist"
+#~ msgstr "таңдалған СО сертификат файлы жоқ болып тұр"
+
+#~ msgid "Unknown error validating 802.1X security"
+#~ msgstr "802.1X қауіпсіздігін тексерудің белгісіз қатесі"
+
+#~ msgid "TLS"
+#~ msgstr "TLS"
+
+#~ msgid "PWD"
+#~ msgstr "PWD"
+
+#~ msgid "FAST"
+#~ msgstr "FAST"
+
+#~ msgid "Tunneled TLS"
+#~ msgstr "Туннельденген TLS"
+
+#~ msgid "Protected EAP (PEAP)"
+#~ msgstr "Қорғалған EAP (PEAP)"
+
+#~ msgid "Externally configured"
+#~ msgstr "Сырттай бапталған"
+
+#~ msgid "Au_thentication"
+#~ msgstr "Аутент_ификация"
+
+#~ msgid "missing leap-username"
+#~ msgstr "leap-username жоқ"
+
+#~ msgid "missing leap-password"
+#~ msgstr "leap-password жоқ"
+
+#~ msgid "missing password"
+#~ msgstr "пароль жоқ"
+
+#~ msgid "_Type"
+#~ msgstr "_Түрі"
+
+#~ msgid "missing wep-key"
+#~ msgstr "wep-key жоқ"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wep-key: key with a length of %zu must contain only hex-digits"
+#~ msgstr ""
+#~ "жарамсыз wep-key: ұзындығы %zu кілт ішінде тек оналтылық сандар болуы тиіс"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wep-key: key with a length of %zu must contain only ascii "
+#~ "characters"
+#~ msgstr ""
+#~ "жарамсыз wep-key: ұзындығы %zu кілт ішінде тек ascii таңбалары болуы тиіс"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wep-key: wrong key length %zu. A key must be either of length "
+#~ "5/13 (ascii) or 10/26 (hex)"
+#~ msgstr ""
+#~ "жарамсыз wep-key: кілт ұзындығы %zu қате. Кілт ұзындығы 5/13 (ascii) "
+#~ "немесе 10/26 (оналтылық) болуы тиіс"
+
+#~ msgid "invalid wep-key: passphrase must be non-empty"
+#~ msgstr "жарамсыз wep-key: кілттік фраза бос емес болуы тиіс"
+
+#~ msgid "invalid wep-key: passphrase must be shorter than 64 characters"
+#~ msgstr "жарамсыз wep-key: кілттік фраза 64 таңбадан аз болуы тиіс"
+
+#~ msgid "Open System"
+#~ msgstr "Ашық жүйе"
+
+#~ msgid "Shared Key"
+#~ msgstr "Ортақ кілт"
+
+#~ msgid "1 (Default)"
+#~ msgstr "1 (Бастапқы)"
+
+#~ msgid "_Key"
+#~ msgstr "Кі_лт"
+
+#~ msgid "Sho_w key"
+#~ msgstr "Кіл_тті көрсету"
+
+#~ msgid "WEP inde_x"
+#~ msgstr "WEP и_ндексі"
+
+#, c-format
+#~ msgid ""
+#~ "invalid wpa-psk: invalid key-length %zu. Must be [8,63] bytes or 64 hex "
+#~ "digits"
+#~ msgstr ""
+#~ "жарамсыз wpa-psk: кілт ұзындығы %zu жарамсыз. Ол [8,63] байт немесе 64 "
+#~ "оналтылық сан болуы тиіс"
+
+#~ msgid "invalid wpa-psk: cannot interpret key with 64 bytes as hex"
+#~ msgstr ""
+#~ "жарамсыз wpa-psk: 64 байты бар кілтті он алтылық кілт ретінде талдау "
+#~ "мүмкін емес"
+
+#~ msgid "Disable connected notifications"
+#~ msgstr "Байланысты орнату хабарламаларын сөндіру"
+
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to a network."
+#~ msgstr ""
+#~ "Желіге байланысты орнатқан кезде хабарламаларды сөндіру үшін бұны true "
+#~ "етіп орнатыңыз."
+
+#~ msgid "Disable disconnected notifications"
+#~ msgstr "Байланысты ажырату хабарламаларын сөндіру"
+
+#~ msgid ""
+#~ "Set this to true to disable notifications when disconnecting from a "
+#~ "network."
+#~ msgstr ""
+#~ "Желімен байланыс ажыратылған кезде хабарламаларды сөндіру үшін бұны true "
+#~ "етіп орнатыңыз."
+
+#~ msgid "Disable VPN notifications"
+#~ msgstr "VPN хабарламаларын сөндіру"
+
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to or "
+#~ "disconnecting from a VPN."
+#~ msgstr ""
+#~ "VPN-ге байланыс орнатылған не ажыратылған кезде хабарламаларды сөндіру "
+#~ "үшін бұны true етіп орнатыңыз."
+
+#~ msgid "Suppress networks available notifications"
+#~ msgstr "Қолжетерлік желілер туралы хабарламаларды басу"
+
+#~ msgid ""
+#~ "Set this to true to disable notifications when Wi-Fi networks are "
+#~ "available."
+#~ msgstr "Wi-Fi желілері қолжетерлік болу туралы хабарламаларды сөндіру."
+
+#, fuzzy
+#~ msgid "Disable WiFi Create"
+#~ msgstr "Wi-Fi жасауды сөндіру"
+
+#~ msgid ""
+#~ "Set to true to disable creation of adhoc networks when using the applet."
+#~ msgstr ""
+#~ "Апплетті қолданған кезде adhoc желілерін жасауды сөндіру үшін бұны true "
+#~ "етіп орнатыңыз."
+
+#~ msgid "Show the applet in notification area"
+#~ msgstr "Хабарлау өрісінде апплетті көрсету"
+
+#~ msgid "Ignore CA certificate"
+#~ msgstr "CA сертификатын елемеу"
+
+#~ msgid "No certificate set"
+#~ msgstr "Сертификат көрсетілмеген"
+
+#~ msgid "No key set"
+#~ msgstr "Кілт көрсетілмеді"
+
+#~ msgid "Choose a key for %s Certificate"
+#~ msgstr "%s сертификаты үшін кілтті таңдаңыз"
+
+#~ msgid "%s key _password"
+#~ msgstr "%s кілт _паролі"
+
+#~ msgid "Choose %s Certificate"
+#~ msgstr "%s сертификатын таңдаңыз"
+
+#~ msgid "%s _certificate"
+#~ msgstr "%s _сертификаты"
+
+#~ msgid "Unlisted"
+#~ msgstr "Тізілмеген"
+
+#~ msgid "My plan is not listed…"
+#~ msgstr "Менің жоспарым тізімде жоқ…"
+
+#~ msgid "Provider"
+#~ msgstr "Провайдер"
+
+#~ msgid "Installed GSM device"
+#~ msgstr "Орнатылған GSM құрылғысы"
+
+#~ msgid "Installed CDMA device"
+#~ msgstr "Орнатылған CDMA құрылғысы"
+
+#~ msgid "Any device"
+#~ msgstr "Кез-келген құрылғы"
+
+#~ msgid "New Mobile Broadband Connection"
+#~ msgstr "Жаңа мобильді кеңжолақты байланысы"
+
+#~ msgid "You will need the following information:"
+#~ msgstr "Сізге келесі ақпарат керек болады:"
+
+#~ msgid "Create a connection for _this mobile broadband device:"
+#~ msgstr "Бұ_л мобильді кеңжолақты құрылғы үшін байланысты жасау:"
+
+#~ msgid "Set up a Mobile Broadband Connection"
+#~ msgstr "Мобильді кеңжолақты байланысты орнату"
+
+#, fuzzy
+#~ msgid "Country or region:"
+#~ msgstr "Ел не аймақ"
+
+#~ msgid "Choose your Provider’s Country or Region"
+#~ msgstr "Провайдеріңіздің ел не аймағын таңдаңыз"
+
+#~ msgid "Select your provider from a _list:"
+#~ msgstr "Өз провайдеріңізді тізі_мнен таңдаңыз:"
+
+#, fuzzy
+#~ msgid ""
+#~ "I can’t find my provider and I wish to set up the connection _manually:"
+#~ msgstr "Өз провайдерімді таба алмадым, оны қол_мен енгіземін:"
+
+#~ msgid "My provider uses GSM technology (GPRS, EDGE, UMTS, HSPA)"
+#~ msgstr "Менің провайдерім GSM қолдануда (GPRS, EDGE, UMTS, HSPA)"
+
+#~ msgid "My provider uses CDMA technology (1xRTT, EVDO)"
+#~ msgstr "Менің провайдерім CDMA қолдануда (1xRTT, EVDO)"
+
+#~ msgid "Choose your Provider"
+#~ msgstr "Провайдеріңізді таңдаңыз"
+
+#~ msgid "_Select your plan:"
+#~ msgstr "Жоспарыңызды таң_даңыз:"
+
+#~ msgid "Choose your Billing Plan"
+#~ msgstr "Төлеу жоспарын таңдаңыз"
+
+#~ msgid ""
+#~ "Your mobile broadband connection is configured with the following "
+#~ "settings:"
+#~ msgstr ""
+#~ "Сіздің мобильді кеңжолақты байланысыңыз келесі баптаулармен бапталған:"
+
+#~ msgid "Your Device:"
+#~ msgstr "Құрылғыңыз:"
+
+#~ msgid "Your Provider:"
+#~ msgstr "Провайдеріңіз:"
+
+#~ msgid "Your Plan:"
+#~ msgstr "Жоспарыңыз:"
+
+#~ msgid "Confirm Mobile Broadband Settings"
+#~ msgstr "Мобильді кеңжолақты баптауларын растау"
+
+#~ msgid "(None)"
+#~ msgstr "(Ешнәрсе)"
+
+#~ msgid "Key in %s"
+#~ msgstr "%s ішіндегі кілт"
+
+#~ msgid "Certificate in %s"
+#~ msgstr "%s ішіндегі сертификаты"
+
+#~ msgid "(Unknown)"
+#~ msgstr "(Белгісіз)"
+
+#~ msgid "Select"
+#~ msgstr "Таңдау"
+
+#~ msgid "Cancel"
+#~ msgstr "Бас тарту"
+
+#~ msgid "Select from file…"
+#~ msgstr "Файлдан таңдау…"
+
+#~ msgid "Choose a %s Certificate"
+#~ msgstr "%s сертификатын таңдау"
+
+#~ msgid "%s certificate _password"
+#~ msgstr "%s сертификат _паролі"
+
+#~ msgid "Error logging in: "
+#~ msgstr "Кіру қатесі: "
+
+#~ msgid "Error opening a session: "
+#~ msgstr "Сессияны ашу қатесі: "
+
+#~ msgid "_Unlock token"
+#~ msgstr "Токенді бо_сату"
+
+#~ msgid "Issued By"
+#~ msgstr "Шығарған"
+
+#~ msgid "Enter %s PIN"
+#~ msgstr "%s PIN кодын енгізіңіз"
+
+#~ msgid "_Login"
+#~ msgstr "_Кіру"
+
+#~ msgid "_Remember PIN"
+#~ msgstr "PIN кодын _есте сақтау"
+
+#~ msgid "Store the password only for this user"
+#~ msgstr "Парольді тек бұл пайдаланушы үшін сақтау"
+
+#~ msgid "Store the password for all users"
+#~ msgstr "Парольді барлық пайдаланушылар үшін сақтау"
+
+#~ msgid "Ask for this password every time"
+#~ msgstr "Әр рет бұл парольді сұрап отыру"
+
+#~ msgid "The password is not required"
+#~ msgstr "Пароль керек емес"
+
+#~ msgid "Sh_ow passwords"
+#~ msgstr "Пар_ольдерді көрсету"
+
+#~ msgid "_Tertiary Password:"
+#~ msgstr "Ү_шіншілік пароль:"
+
+#~ msgid "_Secondary Password:"
+#~ msgstr "Қо_сымша пароль:"
+
+#~ msgid "_Password:"
+#~ msgstr "_Пароль:"
+
+#~ msgid "Click to connect"
+#~ msgstr "Байланысу үшін шертіңіз"
+
+#~ msgid "New…"
+#~ msgstr "Жаңа…"
+
+#~ msgctxt "Wifi/wired security"
+#~ msgid "None"
+#~ msgstr "Ешнәрсе"
+
+#~ msgid "Dynamic WEP (802.1x)"
+#~ msgstr "Динамикалық WEP (802.1x)"
+
+#~ msgid "C_reate"
+#~ msgstr "Жаса_у"
+
+#~ msgid ""
+#~ "Passwords or encryption keys are required to access the Wi-Fi network "
+#~ "“%s”."
+#~ msgstr ""
+#~ "\"%s\" Wi-Fi желісіне байланысу үшін пароль не шифрлеу кілттері керек."
+
+#~ msgid "Wi-Fi Network Authentication Required"
+#~ msgstr "Wi-Fi желі аутентификациясы керек"
+
+#~ msgid "Authentication required by Wi-Fi network"
+#~ msgstr "Wi-Fi желісі үшін аутентификация керек"
+
+#~ msgid "Create New Wi-Fi Network"
+#~ msgstr "Жаңа Wi-Fi желісін жасау"
+
+#~ msgid "New Wi-Fi network"
+#~ msgstr "Жаңа Wi-Fi желісі"
+
+#~ msgid "Enter a name for the Wi-Fi network you wish to create."
+#~ msgstr "Жасалатын Wi-Fi желісінің атын енгізіңіз."
+
+#~ msgid "Connect to Hidden Wi-Fi Network"
+#~ msgstr "Жасырын Wi-Fi желісіне байланысу"
+
+#~ msgid "Hidden Wi-Fi network"
+#~ msgstr "Жасырын Wi-Fi желісі"
+
+#~ msgid ""
+#~ "Enter the name and security details of the hidden Wi-Fi network you wish "
+#~ "to connect to."
+#~ msgstr ""
+#~ "Байланысты орнатқыңыз келетін Wi-Fi жасырын желісінің атын мен "
+#~ "қауіпсіздік ақпаратын енгізіңіз."
+
+#~ msgid "Wi-Fi _security"
+#~ msgstr "Wi-Fi қауі_псіздігі"
+
+#~ msgid "C_onnection"
+#~ msgstr "Ба_йланыс"
+
+#~ msgid "Wi-Fi _adapter"
+#~ msgstr "Wi-Fi _құрылғысы"
+
+#~ msgid "I can’t find my provider and I wish to enter it _manually:"
+#~ msgstr "Өз провайдерімді таба алмадым, оны қол_мен енгіземін:"
+
+#~ msgid "Provider:"
+#~ msgstr "Провайдер:"
+
+#~ msgid "Country or Region List:"
+#~ msgstr "Ел не аймақтар тізімі:"
+
+#~ msgid "Country or region"
+#~ msgstr "Ел не аймақ"
+
+#~ msgid "OLPC Mesh"
+#~ msgstr "OLPC желісі"
+
+#~ msgid "ADSL"
+#~ msgstr "ADSL"
+
+#~ msgid "PCI"
+#~ msgstr "PCI"
+
+#~ msgid "USB"
+#~ msgstr "USB"
+
+#~ msgctxt "long device name"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid ""
+#~ "Either a password is missing or the connection is invalid. In the latter "
+#~ "case, you have to edit the connection with nm-connection-editor first"
+#~ msgstr ""
+#~ "Пароль жоқ болып тұр, немесе байланыс жарамсыз болып тұр. Егер жарамсыз "
+#~ "болса, алдымен байланысты nm-connection-editor көмегімен түзетуіңіз керек"
+
+#~ msgid "Wi-Fi _security:"
+#~ msgstr "Wi-Fi қауі_псіздігі:"
+
+#~ msgid "_Network name:"
+#~ msgstr "Желі а_тауы:"
+
+#~ msgid "C_onnection:"
+#~ msgstr "Ба_йланыс:"
+
+#~ msgid "Wi-Fi _adapter:"
+#~ msgstr "Wi-Fi _құрылғысы:"
+
+#~ msgid "CKN"
+#~ msgstr "CKN"
+
+#~ msgid "CAK"
+#~ msgstr "CAK"
+
+#~ msgid "%s (default)"
+#~ msgstr "%s (бастапқы)"
+
+#~ msgid "Ignored"
+#~ msgstr "Елемеу"
+
+#~ msgid "Active Network Connections"
+#~ msgstr "Белсенді желілік байланыстары"
+
+#~ msgid "Priority:"
+#~ msgstr "Приоритеті:"
+
+#~ msgid "0:"
+#~ msgstr "0:"
+
+#~ msgid "1:"
+#~ msgstr "1:"
+
+#~ msgid "2:"
+#~ msgstr "2:"
+
+#~ msgid "3:"
+#~ msgstr "3:"
+
+#~ msgid "4:"
+#~ msgstr "4:"
+
+#~ msgid "5:"
+#~ msgstr "5:"
+
+#~ msgid "6:"
+#~ msgstr "6:"
+
+#~ msgid "7:"
+#~ msgstr "7:"
+
+#~ msgid "_Automatically connect to this network when it is available"
+#~ msgstr "Бұл желі қолжетерлік болған кезде оған _автобайланысу"
+
+#~ msgid "Connection _priority for auto-activation:"
+#~ msgstr "Автобелсендіру үшін байланыс _приоритеті"
+
+#~ msgid "Mode:"
+#~ msgstr "Режимі:"
+
+#~ msgid "MTU:"
+#~ msgstr "MTU:"
+
+#~ msgid "DSL"
+#~ msgstr "DSL"
+
+#~ msgid "Cannot import VPN connection"
+#~ msgstr "VPN байланысын импорттау мүмкін емес"
+
+#~ msgid ""
+#~ "The file “%s” could not be read or does not contain recognized VPN "
+#~ "connection information\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "\"%s\" файлын оқу мүмкін емес, немесе оның ішінде танылған VPN байланыс "
+#~ "ақпараты жоқ\n"
+#~ "\n"
+#~ "Қате: %s."
+
+#~ msgid "unknown error"
+#~ msgstr "белгісіз қате"
+
+#~ msgid "no file selected"
+#~ msgstr "ешбір файл таңдалмады"
+
+#, fuzzy
+#~ msgid "file “%s” does not exist"
+#~ msgstr "\"%s\" аты бар файл бар болып тұр."
+
+#~ msgid "unspecified error validating eap-method file"
+#~ msgstr "eap-method файлын растаудағы анықталмаған қате"
+
+#~ msgid "invalid EAP-PEAP CA certificate: %s"
+#~ msgstr "жарамсыз EAP-PEAP CA сертификаты: %s"
+
+#~ msgid "invalid EAP-PEAP CA certificate: no certificate specified"
+#~ msgstr "жарамсыз EAP-PEAP CA сертификаты: сертификат көрсетілмеген"
+
+#~ msgid "Choose a Certificate Authority certificate"
+#~ msgstr "Сертификаттау орталығының сертификатын таңдаңыз"
+
+#~ msgid "C_A certificate:"
+#~ msgstr "С_О сертификаты:"
+
+#~ msgid "invalid EAP-TTLS CA certificate: %s"
+#~ msgstr "жарамсыз EAP-TTLS CA сертификаты: %s"
+
+#~ msgid "invalid EAP-TTLS CA certificate: no certificate specified"
+#~ msgstr "жарамсыз EAP-TTLS CA сертификаты: сертификат көрсетілмеген"
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected because the VPN service stopped."
+#~ msgstr ""
+#~ "\n"
+#~ "\"%s\" VPN байланысы VPN қызметі тоқталған соң ажыратылды."
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected."
+#~ msgstr ""
+#~ "\n"
+#~ "\"%s\" VPN байланысы ажыратылды."
+
+#~ msgid "invalid EAP-TLS CA certificate: %s"
+#~ msgstr "Жарамсыз EAP-TLS СО сертификаты: %s"
+
+#~ msgid "invalid EAP-TLS CA certificate: no certificate specified"
+#~ msgstr "жарамсыз EAP-TLS CA сертификаты: сертификат көрсетілмеген"
+
+#~ msgid "invalid EAP-TLS password: missing"
+#~ msgstr "жарамсыз EAP-TLS паролі: жоқ болып тұр"
+
+#~ msgid "invalid EAP-TLS private-key: %s"
+#~ msgstr "жарамсыз EAP-TLS жеке кілті: %s"
+
+#~ msgid "invalid EAP-TLS user-certificate: %s"
+#~ msgstr "жарамсыз EAP-TLS пайдаланушы сертификаты: %s"
+
+#~ msgid "Unencrypted private keys are insecure"
+#~ msgstr "Шифрленбеген жеке кілттері қауіпсіз емес болады"
+
+#~ msgid ""
+#~ "The selected private key does not appear to be protected by a password. "
+#~ "This could allow your security credentials to be compromised. Please "
+#~ "select a password-protected private key.\n"
+#~ "\n"
+#~ "(You can password-protect your private key with openssl)"
+#~ msgstr ""
+#~ "Таңдалған жеке кілт парольмен қорғалмаған сияқты. Бұл сіздің қауіпсіздік "
+#~ "есептік жазба деректерінің әшкерелеуіне әкеп соғуы мүмкін. Парольмен "
+#~ "қорғалған жеке кілтті таңдаңыз.\n"
+#~ "\n"
+#~ "(Сіз жеке кілтіңізді openssl көмегімен парольмен қорғай аласыз)"
+
+#~ msgid "Choose your personal certificate"
+#~ msgstr "Жеке сертификатыңызды таңдаңыз"
+
+#~ msgid "Choose your private key"
+#~ msgstr "Жеке кілтіңізді таңдаңыз"
+
+#~ msgid "New Mobile Broadband connection..."
+#~ msgstr "Жаңа мобильді кеңжолақты байланысы..."
+
+#~ msgid "_Connect to Hidden Wi-Fi Network..."
+#~ msgstr "Жасырын Wi-Fi же_лісіне байланысу..."
+
+#~ msgid "Create _New Wi-Fi Network..."
+#~ msgstr "Жаңа Wi-Fi желісін жа_сау..."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "15"
+#~ msgstr "15"
+
+#~ msgid "_Import team configuration from a file..."
+#~ msgstr "Агрегацияланған (team) баптауларын файлдан _импорттау..."
+
+#~ msgid "FirewallD is not running."
+#~ msgstr "FirewallD іске қосылған емес."
+
+#~ msgid "New..."
+#~ msgstr "Жаңа..."
+
+#~ msgid "NetworkManager for GNOME"
+#~ msgstr "GNOME үшін NetworkManager"
+
+#~ msgid "_Disconnect VPN"
+#~ msgstr "VPN а_жырату"
+
+#~ msgid "_Help"
+#~ msgstr "Кө_мек"
+
+#~ msgid "Enable WiMA_X Mobile Broadband"
+#~ msgstr "WiMAX моб_ильді кеңжолақты желіні іске қосу"
+
+#~ msgid "Requesting address for '%s'..."
+#~ msgstr "'%s' үшін адресті сұрау..."
+
+#~ msgid "Auto InfiniBand"
+#~ msgstr "Автоматты InfiniBand"
+
+#~ msgid "InfiniBand Networks (%s)"
+#~ msgstr "InfiniBand желілері (%s)"
+
+#~ msgid "InfiniBand Network (%s)"
+#~ msgstr "InfiniBand желісі (%s)"
+
+#~ msgid "InfiniBand Networks"
+#~ msgstr "InfiniBand желілері"
+
+#~ msgid "InfiniBand Network"
+#~ msgstr "InfiniBand желісі"
+
+#~ msgid "You are now connected to the InfiniBand network."
+#~ msgstr "Сіз InfiniBand желісіне байланыс орнаттыңыз."
+
+#~ msgid "Preparing InfiniBand connection '%s'..."
+#~ msgstr "'%s' InfiniBand байланысын дайындау..."
+
+#~ msgid "Configuring InfiniBand connection '%s'..."
+#~ msgstr "'%s' InfiniBand байланысын баптау..."
+
+#~ msgid "User authentication required for InfiniBand connection '%s'..."
+#~ msgstr ""
+#~ "'%s' InfiniBand байланысы үшін пайдаланушы аутентификациясы керек..."
+
+#~ msgid "InfiniBand connection '%s' active"
+#~ msgstr "InfiniBand байланысы '%s' байланысы"
+
+#~ msgid "User authentication required for team connection '%s'..."
+#~ msgstr ""
+#~ "'%s' агрегацияланған (team) байланысы үшін пайдаланушы аутентификациясы "
+#~ "керек..."
+
+#~ msgid "Team connection '%s' active"
+#~ msgstr "'%s' агрегацияланған (team) байланысы белсенді"
+
+#~ msgid "You are now connected to the VLAN."
+#~ msgstr "Сіз VLAN желісіне байланыс орнаттыңыз."
+
+#~ msgid "Preparing VLAN connection '%s'..."
+#~ msgstr "'%s' VLAN байланысын іске қосу..."
+
+#~ msgid "Configuring VLAN connection '%s'..."
+#~ msgstr "'%s' VLAN байланысын іске қосу..."
+
+#~ msgid "User authentication required for VLAN connection '%s'..."
+#~ msgstr "'%s' VLAN байланысы үшін пайдаланушы аутентификациясы керек..."
+
+#~ msgid "VLAN connection '%s' active"
+#~ msgstr "'%s' VLAN байланысы белсенді"
+
+#~ msgid "WiMAX Mobile Broadband (%s)"
+#~ msgstr "WiMAX мобильді кеңжолақты (%s)"
+
+#~ msgid "WiMAX Mobile Broadband"
+#~ msgstr "WiMAX мобильді кеңжолақты"
+
+#~ msgid "WiMAX is disabled"
+#~ msgstr "WiMAX сөндірілген"
+
+#~ msgid "WiMAX is disabled by hardware switch"
+#~ msgstr "WiMAX құрылғылық қосқышымен сөндірілген"
+
+#~ msgid "You are now connected to the WiMAX network."
+#~ msgstr "Сіз WiMAX желісіне байланыс орнаттыңыз."
+
+#~ msgid "%d dB"
+#~ msgstr "%d дБ"
+
+#~ msgctxt "WiMAX CINR"
+#~ msgid "unknown"
+#~ msgstr "белгісіз"
+
+#~ msgctxt "WiMAX Base Station ID"
+#~ msgid "unknown"
+#~ msgstr "белгісіз"
+
+#~ msgid "WiMAX (%s)"
+#~ msgstr "WiMAX (%s)"
+
+#~ msgid "CINR:"
+#~ msgstr "CINR:"
+
+#~ msgid "BSID:"
+#~ msgstr "BSID:"
+
+#~ msgid "_Device MAC address:"
+#~ msgstr "Құр_ылғы MAC адресі:"
+
+#~| msgid "Import a saved VPN configuration..."
+#~ msgid "I_mport team configuration from a file..."
+#~ msgstr "Агрегацияланған (team) баптауларын файлдан и_мпорттау..."
+
+#~ msgid "Infrastructure"
+#~ msgstr "Инфраструктура"
+
+#~ msgid "WiMAX"
+#~ msgstr "WiMAX"
+
+#~ msgid "New Mobile Broadband (CDMA) connection..."
+#~ msgstr "Жаңа мобильді кеңжолақты (CDMA) байланысы..."
+
+#~ msgid "You are now connected to the CDMA network."
+#~ msgstr "Сіз CDMA желісіне байланыс орнаттыңыз."
+
+#~ msgid "CDMA network."
+#~ msgstr "CDMA желісі."
+
+#~ msgid "New Mobile Broadband (GSM) connection..."
+#~ msgstr "Жаңа мобильді кеңжолақты (GSM) байланысы..."
+
+#~ msgid "You are now connected to the GSM network."
+#~ msgstr "Сіз GSM желісіне байланыс орнаттыңыз."
+
+#~ msgid "GSM network."
+#~ msgstr "GSM желісі."
+
+#~ msgid "Any"
+#~ msgstr "Кез-келген"
+
+#~ msgid "3G (UMTS/HSPA)"
+#~ msgstr "3G (UMTS/HSPA)"
+
+#~ msgid "2G (GPRS/EDGE)"
+#~ msgstr "2G (GPRS/EDGE)"
+
+#~ msgid "Prefer 3G (UMTS/HSPA)"
+#~ msgstr "3G таңдау (UMTS/HSPA)"
+
+#~ msgid "Prefer 2G (GPRS/EDGE)"
+#~ msgstr "2G таңдау (GPRS/EDGE)"
+
+#~ msgid "Prefer 4G (LTE)"
+#~ msgstr "4G (LTE) таңдау"
+
+#~ msgid "Use only 4G (LTE)"
+#~ msgstr "Тек 4G (LTE) қолдану"
+
+#~ msgid "_Save..."
+#~ msgstr "_Сақтау..."
+
+#~ msgid "Error saving connection"
+#~ msgstr "Байланысты сақтау сәтсіз"
+
+#~ msgid "The property '%s' / '%s' is invalid: %d"
+#~ msgstr "'%s' / '%s' қасиеті қате: %d"
+
+#~ msgid "_Edit..."
+#~ msgstr "Түз_ету..."
+
+#~ msgid "_Delete..."
+#~ msgstr "Ө_шіру..."
+
+#~ msgid "Automatic (PPP)"
+#~ msgstr "Автоматты (PPP)"
+
+#~ msgid "Automatic (PPP) addresses only"
+#~ msgstr "Автоматты (PPP), тек адрестер"
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (failed to connect to D-Bus: (%s) "
+#~ "%s)."
+#~ msgstr ""
+#~ "Bluetooth-ды баптау мүмкін емес  (D-Bus байланысын жасау сәтсіз: (%s) %s)."
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (error finding NetworkManager: (%s) "
+#~ "%s)."
+#~ msgstr ""
+#~ "Bluetooth-ды баптау мүмкін емес (NetworkManager табу қатесі: (%s) %s)."
+
+#~ msgid "Use your mobile phone as a network device (PAN/NAP)"
+#~ msgstr "Мобильді телефоныңызды желілік құрылғы ретінде қолдану (PAN/NAP)"
+
+#~ msgid "Access the Internet using your mobile phone (DUN)"
+#~ msgstr "Интернетке мобильді телефоныңыз арқылы шығу (DUN)"
+
+#~ msgid "Error: %s"
+#~ msgstr "Қате: %s"
+
+#~ msgid "Your phone is now ready to use!"
+#~ msgstr "Телефоныңыз енді қолдануға дайын!"
+
+#~ msgid "Mobile wizard was canceled"
+#~ msgstr "Мобильді шебердің жұмысы тоқтатылды"
+
+#~ msgid "Unknown phone device type (not GSM or CDMA)"
+#~ msgstr "Телефон түрі белгісіз (GSM не CDMA емес)"
+
+#~ msgid "unknown modem type."
+#~ msgstr "модем түрі белгісіз."
+
+#~ msgid "unexpectedly disconnected from the phone."
+#~ msgstr "күтпегенде телефонмен байланыс ажыратылды."
+
+#~ msgid "timed out detecting phone details."
+#~ msgstr "телефон ақпаратын анықтаудың күту уақыты бітті."
+
+#~ msgid "Detecting phone configuration..."
+#~ msgstr "Телефон баптауларын анықтау..."
+
+#~ msgid "%s Network"
+#~ msgstr "%s желісі"
+
+#~ msgid "No Certificate Authority certificate chosen"
+#~ msgstr "Сертификаттау орталығының  (CA) сертификаты таңдалмады"
+
+#~ msgid "Wireless Networks (%s)"
+#~ msgstr "Сымсыз желілер (%s)"
+
+#~ msgid "Wireless Network (%s)"
+#~ msgstr "Сымсыз желі (%s)"
+
+#~ msgid "Wireless Network"
+#~ msgid_plural "Wireless Networks"
+#~ msgstr[0] "Сымсыз желі"
+
+#~ msgid "wireless is disabled"
+#~ msgstr "сымсыз желі сөндірілген"
+
+#~ msgid "Preparing wireless network connection '%s'..."
+#~ msgstr "'%s' сымсыз желі байланысын дайындау..."
+
+#~ msgid "Requesting a wireless network address for '%s'..."
+#~ msgstr "'%s' үшін сымсыз желі адресін сұрау..."
+
+#~ msgid "Wireless"
+#~ msgstr "Сымсыз"
+
+#~ msgid "A_vailable to all users"
+#~ msgstr "Бар_лық пайдаланушыларға қолжетерлік"
+
+#~ msgid "An unknown error occurred."
+#~ msgstr "Белгісіз қате орын алды."
+
+#~ msgid "Could not edit new connection"
+#~ msgstr "Жаңа байланысты түзету мүмкін емес"
+
+#~ msgid "_Security:"
+#~ msgstr "Қауіпсі_здік:"

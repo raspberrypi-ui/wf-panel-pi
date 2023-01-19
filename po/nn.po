@@ -1,0 +1,3785 @@
+# Translation of lxpanel to Norwegian Nynorsk
+# Copyright © 2009 Karl Ove Hufthammer <karl@huftis.org>
+# This file is distributed under the same license as the lxpanel package.
+# Karl Ove Hufthammer <karl@huftis.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: lxpanel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"PO-Revision-Date: 2009-12-31 00:14+0100\n"
+"Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
+"Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.0\n"
+"X-Pootle-Revision: 0\n"
+"X-Pootle-Path: /nn/lxpanel/po/nn.po\n"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#, c-format
+msgid "Pairing failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#, fuzzy, c-format
+msgid "Pairing successful - connecting..."
+msgstr "Klargjer trådlaus nettverkstilkopling «%s» …"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#, fuzzy, c-format
+msgid "Connection successful"
+msgstr "Feil under tilkopling"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, fuzzy, c-format
+msgid "Connection failed - %s"
+msgstr "Feil under tilkopling"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#, c-format
+msgid "Please enter code '%s' on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#, c-format
+msgid "Please confirm that '%s' is showing the code '%s' to pair"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#, c-format
+msgid "Please enter PIN code shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#, c-format
+msgid "Please enter passcode shown on '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#, c-format
+msgid "Waiting for response from Bluetooth device..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#, c-format
+msgid "'%s' has requested a pairing. Do you accept the request?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
+#, c-format
+msgid ""
+"Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#, c-format
+msgid ""
+"Pairing successful - this device has no services which can be used with "
+"Raspberry Pi"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#, c-format
+msgid "Do you want to unpair '%s'?"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#, c-format
+msgid "Removing pairing with '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#, c-format
+msgid "Removal failed - %s"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, c-format
+msgid "Disconnecting from '%s'..."
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#, fuzzy, c-format
+msgid "Disconnection failed - %s"
+msgstr "Feil under fråkopling"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
+#, fuzzy
+msgid "Use the audio menu to connect to this device"
+msgstr "Bruk nettverksmenyen for å kopla til eit trådlaust nettverk"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+msgid "No usable services on this device"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#, fuzzy
+msgid "Disconnect..."
+msgstr "Kopla frå"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#, fuzzy
+msgid "Connect..."
+msgstr "K_oble til"
+
+#. add the remove option to the submenu
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+msgid "Remove..."
+msgstr ""
+
+#. warn if no BT hardware detected
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+msgid "No Bluetooth adapter found"
+msgstr ""
+
+#. add enable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+msgid "Turn On Bluetooth"
+msgstr ""
+
+#. add disable bt option
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+msgid "Turn Off Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+msgid "Stop Discoverable"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+msgid "Make Discoverable"
+msgstr ""
+
+#. add and remove dialogs
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#, fuzzy
+msgid "Add Device..."
+msgstr "Eikvar eining"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#, fuzzy
+msgid "Manage Bluetooth devices"
+msgstr "klarte ikkje å finna blåtanneininga."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
+msgid "Bluetooth"
+msgstr ""
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#, fuzzy
+msgid "Manages Bluetooth devices"
+msgstr "klarte ikkje å finna blåtanneininga."
+
+#: ../src/panel/widgets/ejecter/ejecter.c:171
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:199
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:205
+#, fuzzy, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr "Klarte ikkje oppretta DUN-tilkopling: %s"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:402
+msgid "Select a drive in menu to eject safely"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:451
+#: ../src/panel/widgets/ejecter/ejecter.c:461
+msgid "Ejecter"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:453
+msgid "Hide icon when no devices"
+msgstr ""
+
+#: ../src/panel/widgets/ejecter/ejecter.c:462
+msgid "Ejects mounted drives"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:77
+#, fuzzy
+msgid "ad-hoc"
+msgstr "Ad-hoc"
+
+#: ../src/panel/widgets/netman/ap-menu-item.c:82
+msgid "secure."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:74
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+msgid "Failed to activate connection"
+msgstr "Klarte ikkje å ta i bruk tilkoplinga"
+
+#: ../src/panel/widgets/netman/applet.c:75
+#: ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837
+#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+msgid "Unknown error"
+msgstr "Ukjend feil"
+
+#: ../src/panel/widgets/netman/applet.c:78
+#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:875
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+msgid "Connection failure"
+msgstr "Feil under tilkopling"
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn Off Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:186
+msgid "Turn On Wireless LAN"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:282
+#, c-format
+msgid ""
+"%s\n"
+"IPv4 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:299
+#, c-format
+msgid ""
+"%s\n"
+"IPv6 : %s"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:781
+msgid "Failed to add/activate connection"
+msgstr "Klarte ikkje laga/ta i bruk tilkopling"
+
+#: ../src/panel/widgets/netman/applet.c:835
+msgid "Device disconnect failed"
+msgstr "Klarte ikkje kopla frå eining"
+
+#: ../src/panel/widgets/netman/applet.c:840
+msgid "Disconnect failure"
+msgstr "Feil under fråkopling"
+
+#: ../src/panel/widgets/netman/applet.c:870
+msgid "Connection activation failed"
+msgstr "Klarte ikkje ta i bruk tilkopling"
+
+#: ../src/panel/widgets/netman/applet.c:1209
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+#, fuzzy
+msgid "Don’t show this message again"
+msgstr "Ikkje vis denne meldinga igjen"
+
+#: ../src/panel/widgets/netman/applet.c:1310
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” disconnected because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart fråkopla fordi nettverkstilkoplinga vart broten."
+
+#: ../src/panel/widgets/netman/applet.c:1312
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the network connection was "
+"interrupted."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka fordi nettverkstilkoplinga vart avbroten."
+
+#: ../src/panel/widgets/netman/applet.c:1314
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka fordi VPN-tenesta vart uventa stoppa."
+
+#: ../src/panel/widgets/netman/applet.c:1316
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service returned invalid "
+"configuration."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka fordi VPN-tenesta sendte eit ugyldig "
+"oppsett."
+
+#: ../src/panel/widgets/netman/applet.c:1318
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the connection attempt timed out."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka på grunn av eit tidsavbrot."
+
+#: ../src/panel/widgets/netman/applet.c:1320
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service did not start in time."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka fordi VPN tenesta ikkje vart starta i "
+"tide."
+
+#: ../src/panel/widgets/netman/applet.c:1322
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka fordi VPN tenesta ikkje klarte å starta."
+
+#: ../src/panel/widgets/netman/applet.c:1324
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because there were no valid VPN secrets."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka fordi det ikkje fanst nokon gyldige "
+"gyldige VPN-løyndomar."
+
+#: ../src/panel/widgets/netman/applet.c:1326
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because of invalid VPN secrets."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka pga. ugyldige VPN-løyndomar."
+
+#: ../src/panel/widgets/netman/applet.c:1331
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed."
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka."
+
+#: ../src/panel/widgets/netman/applet.c:1358
+#, c-format
+msgid ""
+"VPN connection has been successfully established.\n"
+"\n"
+"%s\n"
+msgstr ""
+"VPN-tilkopling vart kopla opp.\n"
+"\n"
+"%s\n"
+
+#: ../src/panel/widgets/netman/applet.c:1360
+msgid "VPN connection has been successfully established.\n"
+msgstr "VPN-tilkopling vart kopla opp.\n"
+
+#: ../src/panel/widgets/netman/applet.c:1362
+msgid "VPN Login Message"
+msgstr "Påloggingsmelding for VPN"
+
+#: ../src/panel/widgets/netman/applet.c:1370
+#: ../src/panel/widgets/netman/applet.c:1410
+msgid "VPN Connection Failed"
+msgstr "VPN-tilkoplinga vart mislukka"
+
+#: ../src/panel/widgets/netman/applet.c:1414
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed because the VPN service failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» vart mislukka fordi VPN-tenesta ikkje klarte å starta.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1417
+#, fuzzy, c-format
+msgid ""
+"\n"
+"The VPN connection “%s” failed to start.\n"
+"\n"
+"%s"
+msgstr ""
+"\n"
+"VPN-tilkoplinga «%s» klarte ikkje starta.\n"
+"\n"
+"%s"
+
+#: ../src/panel/widgets/netman/applet.c:1741
+msgid "device not ready (firmware missing)"
+msgstr "eininga er ikkje klar (manglar fastvare)"
+
+#: ../src/panel/widgets/netman/applet.c:1743
+msgid "device not ready"
+msgstr "eininga er ikkje klar"
+
+#. Notify user of unmanaged or unavailable device
+#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
+msgid "disconnected"
+msgstr "fråkopla"
+
+#: ../src/panel/widgets/netman/applet.c:1769
+msgid "Disconnect"
+msgstr "Kopla frå"
+
+#: ../src/panel/widgets/netman/applet.c:1783
+msgid "device not managed"
+msgstr "eining ikkje handsama"
+
+#: ../src/panel/widgets/netman/applet.c:1864
+msgid "No network devices available"
+msgstr "Ingen nettverkseiningar er tilgjengelege"
+
+#: ../src/panel/widgets/netman/applet.c:1917
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Avansert"
+
+#: ../src/panel/widgets/netman/applet.c:1919
+#, fuzzy
+msgid "VPN Connections"
+msgstr "_VPN-tilkoplingar"
+
+#: ../src/panel/widgets/netman/applet.c:1973
+#, fuzzy
+msgid "Configure VPN…"
+msgstr "_Set opp VPN …"
+
+#: ../src/panel/widgets/netman/applet.c:1977
+#, fuzzy
+msgid "Add a VPN connection…"
+msgstr "_VPN-tilkoplingar"
+
+#. 'Connection Information' item
+#: ../src/panel/widgets/netman/applet.c:1989
+#: ../src/panel/widgets/netman/applet.c:2393
+msgid "Connection Information"
+msgstr "Tilkoplingsinformasjon"
+
+#. 'Edit Connections...' item
+#: ../src/panel/widgets/netman/applet.c:1997
+#: ../src/panel/widgets/netman/applet.c:2401
+#, fuzzy
+msgid "Edit Connections…"
+msgstr "Rediger tilkoplingar …"
+
+#: ../src/panel/widgets/netman/applet.c:2112
+#, fuzzy
+msgid "NetworkManager is not running…"
+msgstr "NetworkManager køyrer ikkje …"
+
+#: ../src/panel/widgets/netman/applet.c:2118
+#, fuzzy
+msgid "Wi-Fi country is not set"
+msgstr "Mitt land er ikkje oppgjeve"
+
+#: ../src/panel/widgets/netman/applet.c:2119
+msgid "Click here to set Wi-Fi country"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet.c:2127
+#: ../src/panel/widgets/netman/applet.c:3222
+msgid "Networking disabled"
+msgstr "Nettverk slått av"
+
+#. 'Enable Networking' item
+#: ../src/panel/widgets/netman/applet.c:2351
+#, fuzzy
+msgid "Enable Networking"
+msgstr "Slå på _nettverk"
+
+#. 'Enable Wi-Fi' item
+#: ../src/panel/widgets/netman/applet.c:2360
+#, fuzzy
+msgid "Enable Wi-Fi"
+msgstr "Slå på _trådlaus"
+
+#. 'Enable Mobile Broadband' item
+#: ../src/panel/widgets/netman/applet.c:2369
+#, fuzzy
+msgid "Enable Mobile Broadband"
+msgstr "Slå på _mobilt breiband"
+
+#. Toggle notifications item
+#: ../src/panel/widgets/netman/applet.c:2381
+#, fuzzy
+msgid "Enable Notifications"
+msgstr "Slå på _varsling"
+
+#: ../src/panel/widgets/netman/applet.c:2415
+#, fuzzy
+msgid "About"
+msgstr "_Om"
+
+#: ../src/panel/widgets/netman/applet.c:2736
+#, fuzzy, c-format
+msgid "You are now connected to “%s”."
+msgstr "Du er no kopla til «%s»."
+
+#: ../src/panel/widgets/netman/applet.c:2776
+msgid "Disconnected"
+msgstr "Fråkopla"
+
+#: ../src/panel/widgets/netman/applet.c:2777
+msgid "The network connection has been disconnected."
+msgstr "Nettverkstilkoplinga er fråkopla."
+
+#: ../src/panel/widgets/netman/applet.c:3079
+#, fuzzy, c-format
+msgid "Preparing network connection “%s”…"
+msgstr "Førebur nettverkstilkobling «%s» …"
+
+#: ../src/panel/widgets/netman/applet.c:3082
+#, fuzzy, c-format
+msgid "User authentication required for network connection “%s”…"
+msgstr "Brukarautentisering krevst for nettverkstilkoplinga «%s» …"
+
+#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet-device-bt.c:113
+#: ../src/panel/widgets/netman/mobile-helpers.c:605
+#, fuzzy, c-format
+msgid "Requesting a network address for “%s”…"
+msgstr "Ber om ei nettverksadresse for «%s» …"
+
+#: ../src/panel/widgets/netman/applet.c:3088
+#, fuzzy, c-format
+msgid "Network connection “%s” active"
+msgstr "Nettverkstilkoplinga «%s» er i bruk"
+
+#: ../src/panel/widgets/netman/applet.c:3165
+#, fuzzy, c-format
+msgid "Starting VPN connection “%s”…"
+msgstr "Startar VPN-tilkopling «%s» …"
+
+#: ../src/panel/widgets/netman/applet.c:3168
+#, fuzzy, c-format
+msgid "User authentication required for VPN connection “%s”…"
+msgstr "Brukarautentisering krevst for VPN-tilkoplinga «%s» …"
+
+#: ../src/panel/widgets/netman/applet.c:3171
+#, fuzzy, c-format
+msgid "Requesting a VPN address for “%s”…"
+msgstr "Ber om ei VPN-adresse for «%s» …"
+
+#: ../src/panel/widgets/netman/applet.c:3174
+#, fuzzy, c-format
+msgid "VPN connection active"
+msgstr "VPN-tilkopling «%s» i bruk"
+
+#: ../src/panel/widgets/netman/applet.c:3226
+msgid "No network connection"
+msgstr "Inga nettverkstilkopling"
+
+#: ../src/panel/widgets/netman/applet.c:3781
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "Nettverk"
+
+#: ../src/panel/widgets/netman/applet.c:3896
+msgid "NetworkManager Applet"
+msgstr "Panelprogram for NetworkManager"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:147
+msgid "Wrong PUK code; please contact your provider."
+msgstr "Feil PUK-kode. Kontakt leverandøren."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:189
+msgid "Wrong PIN code; please contact your provider."
+msgstr "Feil PIN-kode. Kontakt leverandøren."
+
+#. Start the spinner to show the progress of the unlock
+#: ../src/panel/widgets/netman/applet-device-broadband.c:240
+#, fuzzy
+msgid "Sending unlock code…"
+msgstr "Sender opplåsingskode …"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:725
+#: ../src/panel/widgets/netman/applet-dialogs.c:532
+#, c-format
+msgid "Mobile Broadband (%s)"
+msgstr "Mobilt breiband (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:727
+msgid "Mobile Broadband"
+msgstr "Mobilt breiband"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+msgid "Available"
+msgstr "Tilgjengeleg"
+
+#. Default connection item
+#: ../src/panel/widgets/netman/applet-device-broadband.c:793
+#, fuzzy
+msgid "New Mobile Broadband connection…"
+msgstr "Ny mobil breibandstilkopling"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:809
+#: ../src/panel/widgets/netman/applet-device-bt.c:75
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+msgid "Connection Established"
+msgstr "Tilkoplinga er sett opp"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:810
+#, fuzzy
+msgid "You are now connected to the Mobile Broadband network."
+msgstr "Du er no kopla til eit mobilt breibandnettverk."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:950
+#: ../src/panel/widgets/netman/applet-device-broadband.c:956
+#, fuzzy
+msgid "Mobile Broadband network."
+msgstr "Passord for mobilt breibandsnettverk"
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:951
+msgid "You are now registered on the home network."
+msgstr "Du er no registrert på heimenettverket."
+
+#: ../src/panel/widgets/netman/applet-device-broadband.c:957
+msgid "You are now registered on a roaming network."
+msgstr "Du er no registrert som gjest på eit utanlandsk nettverk."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:76
+msgid "You are now connected to the mobile broadband network."
+msgstr "Du er no kopla til eit mobilt breibandnettverk."
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:104
+#: ../src/panel/widgets/netman/mobile-helpers.c:596
+#, fuzzy, c-format
+msgid "Preparing mobile broadband connection “%s”…"
+msgstr "Førebur mobil breibandstilkopling «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:107
+#: ../src/panel/widgets/netman/mobile-helpers.c:599
+#, fuzzy, c-format
+msgid "Configuring mobile broadband connection “%s”…"
+msgstr "Set opp mobil breibandstilkopling «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:110
+#: ../src/panel/widgets/netman/mobile-helpers.c:602
+#, fuzzy, c-format
+msgid "User authentication required for mobile broadband connection “%s”…"
+msgstr ""
+"Brukarautentikasjon er påkravt for den mobile breibandstilkoplinga %s …"
+
+#: ../src/panel/widgets/netman/applet-device-bt.c:117
+#: ../src/panel/widgets/netman/mobile-helpers.c:624
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active"
+msgstr "Mobil breibandstilkopling «%s» er i bruk."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
+msgid "Auto Ethernet"
+msgstr "Automatisk lokalnett"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
+#, fuzzy, c-format
+msgid "Ethernet Networks (%s)"
+msgstr "Kabla nettverk (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
+#, fuzzy, c-format
+msgid "Ethernet Network (%s)"
+msgstr "Kabla nettverk (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
+#, fuzzy
+msgid "Ethernet Networks"
+msgstr "Kabla nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
+#, fuzzy
+msgid "Ethernet Network"
+msgstr "Kabla nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
+#, fuzzy
+msgid "You are now connected to the ethernet network."
+msgstr "Du er no kopla til eit kabla nettverk."
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
+#, fuzzy, c-format
+msgid "Preparing ethernet network connection “%s”…"
+msgstr "Førebur kabla nettverkstilkopling «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
+#, fuzzy, c-format
+msgid "Configuring ethernet network connection “%s”…"
+msgstr "Set opp kabla nettverkstilkopling «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
+#, fuzzy, c-format
+msgid "User authentication required for ethernet network connection “%s”…"
+msgstr "Brukarautentisering krevst av den kabla nettverkstilkoplinga «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
+#, fuzzy, c-format
+msgid "Requesting an ethernet network address for “%s”…"
+msgstr "Ber om ei nettverksadresse for det kabla nettverket «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
+#, fuzzy, c-format
+msgid "Ethernet network connection “%s” active"
+msgstr "Kabla nettverkstilkopling «%s» er  i bruk"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
+msgid "DSL authentication"
+msgstr "DSL autentisering"
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:1190
+#: ../src/panel/widgets/netman/mobile-helpers.c:455
+#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2
+msgid "_Cancel"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:1191
+#: ../src/panel/widgets/netman/mobile-helpers.c:456
+#: ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+msgid "_OK"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#, fuzzy
+msgid "Connect to Hidden Wi-Fi Network…"
+msgstr "Kopla til eit gøymt trådlaust nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#, fuzzy
+msgid "Create New Wi-Fi Network…"
+msgstr "Opprett nytt trådlaust nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#, fuzzy
+msgid "Create Wi-Fi Hotspot…"
+msgstr "Opprett nytt trådlaust nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+msgid "(none)"
+msgstr "(ingen)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:567
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+msgid "Failed to add new connection"
+msgstr "Klarte ikkje leggja til ny tilkopling"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+msgid "Insufficient privileges."
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#, fuzzy, c-format
+msgid "Do you want to disconnect from the wireless network '%s'?"
+msgstr "Du er no kopla til trådlaust nettverk «%s»."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#, fuzzy, c-format
+msgid "Wi-Fi Networks (%s)"
+msgstr "Kabla nettverk (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#, fuzzy, c-format
+msgid "Wi-Fi Network (%s)"
+msgstr "Kabla nettverk (%s)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+#, fuzzy
+msgid "Wi-Fi Network"
+msgid_plural "Wi-Fi Networks"
+msgstr[0] "Kabla nettverk"
+msgstr[1] "Kabla nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+#, fuzzy
+msgid "Wi-Fi is disabled"
+msgstr "WiMAX er slått av"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+#, fuzzy
+msgid "Wi-Fi is disabled by hardware switch"
+msgstr "WiMAX er slått av med brytar"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+msgid "More networks"
+msgstr "Fleire nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+#, fuzzy
+msgid "Wi-Fi Networks Available"
+msgstr "Trådlause nettverk er tilgjengelege"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+#, fuzzy
+msgid "Use the network menu to connect to a Wi-Fi network"
+msgstr "Bruk nettverksmenyen for å kopla til eit trådlaust nettverk"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#, fuzzy, c-format
+msgid "You are now connected to the Wi-Fi network “%s”."
+msgstr "Du er no kopla til trådlaust nettverk «%s»."
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#, fuzzy, c-format
+msgid "Preparing Wi-Fi network connection “%s”…"
+msgstr "Førebur nettverkstilkobling «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#, fuzzy, c-format
+msgid "Configuring Wi-Fi network connection “%s”…"
+msgstr "Set opp kabla nettverkstilkopling «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#, fuzzy, c-format
+msgid "User authentication required for Wi-Fi network “%s”…"
+msgstr "Brukarautentisering krevst av det trådlause nettverket «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#, fuzzy, c-format
+msgid "Requesting a Wi-Fi network address for “%s”…"
+msgstr "Ber om ei nettverksadresse for «%s» …"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+msgstr "Trådlaus nettverkstilkopling «%s» er i bruk: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+msgstr "Trådlaus nettverkstilkopling «%s» er i bruk: %s (%d%%)"
+
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#, fuzzy, c-format
+msgid "Wi-Fi network connection “%s” active"
+msgstr "Kabla nettverkstilkopling «%s» er  i bruk"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:29
+msgid "Error displaying connection information:"
+msgstr "Feil under vising av tilkoplingsinformasjon:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:61
+msgid "LEAP"
+msgstr "LEAP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:63
+msgid "Dynamic WEP"
+msgstr "Dynamisk WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:65
+#: ../src/panel/widgets/netman/applet-dialogs.c:237
+#: ../src/panel/widgets/netman/applet-dialogs.c:239
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+#. Create the expander
+#: ../src/panel/widgets/netman/applet-dialogs.c:174
+#, fuzzy
+msgid "More addresses"
+msgstr "Adresser"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:235
+msgid "WEP"
+msgstr "WEP"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:241
+msgid "WPA3"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:245
+#: ../src/panel/widgets/netman/applet-dialogs.c:254
+#, fuzzy
+msgctxt "Wi-Fi/Ethernet security"
+msgid "None"
+msgstr "Ingen"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:324
+#: ../src/panel/widgets/netman/applet-dialogs.c:597
+#, c-format
+msgid "%u Mb/s"
+msgstr "%u Mb/s"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:326
+#: ../src/panel/widgets/netman/applet-dialogs.c:599
+msgctxt "Speed"
+msgid "Unknown"
+msgstr "Ukjend"
+
+#. Address
+#: ../src/panel/widgets/netman/applet-dialogs.c:341
+#: ../src/panel/widgets/netman/applet-dialogs.c:363
+msgctxt "Address"
+msgid "Unknown"
+msgstr "Ukjend"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:342
+#: ../src/panel/widgets/netman/applet-dialogs.c:415
+msgid "IP Address"
+msgstr "IP-adresse"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:364
+msgid "Broadcast Address"
+msgstr "Kringkastingsadresse"
+
+#. Prefix
+#: ../src/panel/widgets/netman/applet-dialogs.c:376
+msgctxt "Subnet Mask"
+msgid "Unknown"
+msgstr "Ukjend"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:377
+msgid "Subnet Mask"
+msgstr "Subnettmaske"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Primary DNS"
+msgstr "Primær DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "Sekundær DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:439
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "Ternær DNS:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:518
+#, c-format
+msgid "Ethernet (%s)"
+msgstr "Ethernet (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:521
+#, c-format
+msgid "802.11 Wi-Fi (%s)"
+msgstr "802.11 Wi-Fi (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:528
+#, c-format
+msgid "GSM (%s)"
+msgstr "GSM (%s)"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:530
+#, c-format
+msgid "CDMA (%s)"
+msgstr "CDMA (%s)"
+
+#. --- General ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:538
+#: ../src/panel/widgets/netman/applet-dialogs.c:872
+msgid "General"
+msgstr "Generelt"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:541
+msgid "Interface"
+msgstr "Grensesnitt"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:556
+msgid "Hardware Address"
+msgstr "Maskinvareadresse"
+
+#. Driver
+#: ../src/panel/widgets/netman/applet-dialogs.c:569
+msgid "Driver"
+msgstr "Driver"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:602
+msgid "Speed"
+msgstr "Snøggleik"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:615
+#, fuzzy
+msgid "Security"
+msgstr "Tryggleik:"
+
+#. --- IPv4 ---
+#: ../src/panel/widgets/netman/applet-dialogs.c:640
+#: ../src/panel/widgets/netman/applet-dialogs.c:902
+msgid "IPv4"
+msgstr "IPv4"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:659
+#: ../src/panel/widgets/netman/applet-dialogs.c:707
+msgid "Default Route"
+msgstr "Standard rute"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:687
+#: ../src/panel/widgets/netman/applet-dialogs.c:929
+msgid "IPv6"
+msgstr "IPv6"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:728
+msgid "Hotspot"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:746
+#, fuzzy
+msgid "Password"
+msgstr "Passord:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:876
+msgid "VPN Type"
+msgstr "VPN-type"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:881
+msgid "VPN Gateway"
+msgstr "VPN-portnar"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:885
+msgid "VPN Username"
+msgstr "VPN-brukarnamn"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:889
+msgid "VPN Banner"
+msgstr "VPN-topptekst"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:893
+msgid "Base Connection"
+msgstr "Grunntilkopling"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:894
+msgid "Unknown"
+msgstr "Ukjend"
+
+#. Shouldn't really happen but ...
+#: ../src/panel/widgets/netman/applet-dialogs.c:1091
+msgid "No valid active connections found!"
+msgstr "Fann ingen tilkoplingar som er i bruk."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+#, fuzzy
+msgid ""
+"Copyright © 2004-2017 Red Hat, Inc.\n"
+"Copyright © 2005-2008 Novell, Inc.\n"
+"and many other community contributors and translators"
+msgstr ""
+"Opphavsrett © 2004–2008 Red Hat, Inc.\n"
+"Opphavsrett © 2005–2008 Novell, Inc.\n"
+"og mange andre bidragsytarar og omsetjarar i fellesskapet"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+msgid ""
+"Notification area applet for managing your network devices and connections."
+msgstr ""
+"Panelprogram for handtering av dine nettverkseiningar og -tilkoplingar."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1144
+msgid "NetworkManager Website"
+msgstr "Netstaden til NetworkManager"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1148
+msgid "translator-credits"
+msgstr ""
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+msgid ""
+"The NetworkManager Applet could not find some required resources (the .ui "
+"file was not found)."
+msgstr ""
+"NetworkManager-miniprogrammet fann ikkje alle nødvendige ressursar (fann "
+"ikkje .ui-fila)."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1163
+msgid "Missing resources"
+msgstr "Manglande ressursar"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1188
+msgid "Mobile broadband network password"
+msgstr "Passord for mobilt breibandsnettverk"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1197
+#, fuzzy, c-format
+msgid "A password is required to connect to “%s”."
+msgstr "Passord krevst for å kopla til «%s»."
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1220
+msgid "Password:"
+msgstr "Passord:"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1502
+msgid "SIM PIN unlock required"
+msgstr "Opplåsingskode for SIM-kortet er nødvendig"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1503
+msgid "SIM PIN Unlock Required"
+msgstr "Opplåsingskode for SIM-kortet er nødvendig"
+
+#. FIXME: some warning about # of times you can enter incorrect PIN
+#: ../src/panel/widgets/netman/applet-dialogs.c:1505
+#, fuzzy, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PIN code before it can be "
+"used."
+msgstr ""
+"Den mobile breibandseininga «%s» krev ein PIN-kode for SIM-kortet før den "
+"kan brukast."
+
+#. Translators: PIN code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1507
+msgid "PIN code:"
+msgstr "PIN-kode:"
+
+#. Translators: Show/obscure PIN checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1511
+msgid "Show PIN code"
+msgstr "Vis PIN-kode"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1513
+msgid "SIM PUK unlock required"
+msgstr "Opplåsing av PUK-koden til SIM-kortet er nødvendig"
+
+#: ../src/panel/widgets/netman/applet-dialogs.c:1514
+msgid "SIM PUK Unlock Required"
+msgstr "Opplåsing av PUK-koden til SIM-kortet er nødvendig"
+
+#. FIXME: some warning about # of times you can enter incorrect PUK
+#: ../src/panel/widgets/netman/applet-dialogs.c:1516
+#, fuzzy, c-format
+msgid ""
+"The mobile broadband device “%s” requires a SIM PUK code before it can be "
+"used."
+msgstr ""
+"Den mobile breibandseininga «%s» krev ein PUK-kode for SIM-kortet før den "
+"kan brukast."
+
+#. Translators: PUK code entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1518
+msgid "PUK code:"
+msgstr "PUK-kode:"
+
+#. Translators: New PIN entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1521
+msgid "New PIN code:"
+msgstr "Ny PIN-kode:"
+
+#. Translators: New PIN verification entry label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1523
+msgid "Re-enter new PIN code:"
+msgstr "Skriv inn ny PUK-kode på nytt:"
+
+#. Translators: Show/obscure PIN/PUK checkbox label
+#: ../src/panel/widgets/netman/applet-dialogs.c:1528
+msgid "Show PIN/PUK codes"
+msgstr "Vis PIN/PUK-kodar"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:427
+#, fuzzy
+msgid "Connection had no VPN setting"
+msgstr "Tilkoplingsinformasjon"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:477
+#, fuzzy, c-format
+msgid "Failed to write connection to VPN UI: %s (%d)"
+msgstr "Klarte ikkje oppretta PAN-tilkopling: %s"
+
+#: ../src/panel/widgets/netman/applet-vpn-request.c:485
+msgid "Failed to write connection to VPN UI: incomplete write"
+msgstr ""
+
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#, fuzzy
+msgid "802.1X authentication"
+msgstr "Kabla 802.1X-autentisering"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:36
+#: ../src/panel/widgets/netman/mobile-helpers.c:272
+msgid "CDMA"
+msgstr "CDMA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:38
+msgid "EVDO"
+msgstr "EVDO"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:40
+#: ../src/panel/widgets/netman/mobile-helpers.c:270
+msgid "GSM"
+msgstr "GSM"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:42
+msgid "GPRS"
+msgstr "GPRS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:44
+msgid "EDGE"
+msgstr "EDGE"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:46
+msgid "UMTS"
+msgstr "UMTS"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:48
+msgid "HSDPA"
+msgstr "HSDPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:50
+msgid "HSUPA"
+msgstr "HSUPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:52
+msgid "HSPA"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:54
+#, fuzzy
+msgid "HSPA+"
+msgstr "HSPA"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:56
+msgid "LTE"
+msgstr ""
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:103
+msgid "not enabled"
+msgstr "ikkje slått på"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:109
+msgid "not registered"
+msgstr "ikkje registrert"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:127
+#, c-format
+msgid "Home network (%s)"
+msgstr "Heimenettverk (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:129
+#, c-format
+msgid "Home network"
+msgstr "Heimenettverk"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:137
+msgid "searching"
+msgstr "søkjer"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:140
+msgid "registration denied"
+msgstr "registrering nekta"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:145
+#: ../src/panel/widgets/netman/mb-menu-item.c:151
+#, c-format
+msgid "%s (%s roaming)"
+msgstr "%s (%s utanlands)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:147
+#: ../src/panel/widgets/netman/mb-menu-item.c:153
+#, c-format
+msgid "%s (roaming)"
+msgstr "%s (utanlands)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:156
+#, c-format
+msgid "Roaming network (%s)"
+msgstr "Utanlandsk nettverk (%s)"
+
+#: ../src/panel/widgets/netman/mb-menu-item.c:158
+#, c-format
+msgid "Roaming network"
+msgstr "Utanlandsk nettverk"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:320
+#, fuzzy, c-format
+msgid "PIN code for SIM card “%s” on “%s”"
+msgstr "PIN-kode for SIM-kort «%s» på «%s»"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:453
+msgid "PIN code required"
+msgstr "PIN-kode påkravd"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:461
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "PIN-kode er påkravd av den mobile breibandseininga"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:619
+#, fuzzy, c-format
+msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+msgstr "Mobil breibandstilkopling «%s» er i bruk: (%d%%%s%s)"
+
+#: ../src/panel/widgets/netman/mobile-helpers.c:622
+msgid "roaming"
+msgstr "utanlands"
+
+#: ../src/panel/widgets/netman/netman.c:139
+#, fuzzy
+msgid "Network Manager"
+msgstr "Panelprogram for NetworkManager"
+
+#: ../src/panel/widgets/netman/netman.c:140
+#, fuzzy
+msgid "Controller for Network Manager"
+msgstr "Panelprogram for NetworkManager"
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:793
+#, c-format
+msgid "object class '%s' has no property named '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:800
+#, c-format
+msgid "property '%s' of object class '%s' is not writable"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:807
+#, c-format
+msgid ""
+"construct property \"%s\" for object '%s' can't be set after construction"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:815
+#, c-format
+msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:824
+#, c-format
+msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+msgstr ""
+
+#: ../src/panel/widgets/netman/nm-shared-utils.c:835
+#, c-format
+msgid ""
+"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+"type '%s'"
+msgstr ""
+
+#. The %s is a mobile provider name, eg "T-Mobile"
+#: ../src/panel/widgets/netman/utils.c:160
+#, fuzzy, c-format
+msgid "%s connection"
+msgstr "Grunntilkopling:"
+
+#: ../src/panel/widgets/netman/utils.c:534
+#, fuzzy
+msgid "PEM certificates (*.pem, *.crt, *.cer)"
+msgstr "DER- eller PEM-sertifikat (*.der, *.pem, *.crt, *cer)"
+
+#: ../src/panel/widgets/netman/utils.c:546
+#, fuzzy
+msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+msgstr "DER, PEM eller PKCS#12 private nøklar (*.der, *.pem, *p12)"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:391
+#: ../src/panel/widgets/smenu/menu.c:121
+msgid "Run"
+msgstr "Køyr"
+
+#: ../src/panel/widgets/smenu/gtk-run.c:412
+msgid "Enter the command you want to execute:"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:116
+msgid "Logout command is not set"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:122
+msgid "Restart"
+msgstr "Start på nytt"
+
+#: ../src/panel/widgets/smenu/menu.c:123
+msgid "Logout"
+msgstr "Logg ut"
+
+#: ../src/panel/widgets/smenu/menu.c:140
+msgid "No file manager is configured."
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:489
+msgid "Add to desktop"
+msgstr "Legg til skrivebord"
+
+#: ../src/panel/widgets/smenu/menu.c:496
+msgid "Properties"
+msgstr "Eigenskapar"
+
+#: ../src/panel/widgets/smenu/menu.c:954
+msgid "Click here to open applications menu"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1047
+msgid "Menu"
+msgstr "Meny"
+
+#: ../src/panel/widgets/smenu/menu.c:1048
+msgid "Icon"
+msgstr "Ikon"
+
+#: ../src/panel/widgets/smenu/menu.c:1049
+msgid "Padding"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1050
+msgid "Fixed Size"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1058
+msgid "Menu with Search"
+msgstr ""
+
+#: ../src/panel/widgets/smenu/menu.c:1059
+#, fuzzy
+msgid "Searchable Application Menu"
+msgstr "Programmeny"
+
+#: ../src/panel/widgets/updater/updater.c:189
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:211
+#, fuzzy
+msgid "No network connection - cannot install updates."
+msgstr "Inga nettverkstilkopling"
+
+#: ../src/panel/widgets/updater/updater.c:217
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:320
+msgid "Show Updates..."
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:324
+msgid "Install Updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:470
+msgid "Updates are available - click to install"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:529
+#: ../src/panel/widgets/updater/updater.c:561
+msgid "Updater"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:531
+msgid "Hours between checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/updater/updater.c:562
+msgid "Checks for updates"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#, fuzzy
+msgid "Reconnecting Bluetooth devices..."
+msgstr "klarte ikkje å finna blåtanneininga."
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#, fuzzy, c-format
+msgid "Bluetooth %s device not found"
+msgstr "Kabla tilkopling %d"
+
+#. update dialog to show a warning
+#: ../src/panel/widgets/volumepulse/bluetooth.c:405
+msgid "Device not found by PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#, c-format
+msgid "Could not set profile for device : %s"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#, fuzzy, c-format
+msgid "Failed to connect to Bluetooth device - %s"
+msgstr "klarte ikkje å kopla til telefonen."
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#, c-format
+msgid "Connecting Bluetooth device '%s' as output..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#, fuzzy, c-format
+msgid "Connecting Bluetooth device '%s' as input..."
+msgstr "klarte ikkje å finna blåtanneininga."
+
+#. if the current default source and sink are both the same device, disconnect it and reconnect to
+#. put it into A2DP rather than HSP
+#: ../src/panel/widgets/volumepulse/bluetooth.c:785
+msgid "Reconnecting Bluetooth input device as output only..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#, fuzzy
+msgid "Reconnecting Bluetooth device..."
+msgstr "klarte ikkje å finna blåtanneininga."
+
+#. Create a check button as the child of the vertical box.
+#: ../src/panel/widgets/volumepulse/commongui.c:140
+msgid "Mute"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/commongui.c:231
+msgid "No audio devices found"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:71
+msgid "Input from this device not available in the current profile"
+msgstr ""
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/micpulse.c:144
+msgid "Mic volume"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:216
+msgid "Microphone Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/micpulse.c:217
+msgid "Display and control microphones for PulseAudio"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+msgid "HDMI"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+msgid "AV Jack"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+msgid "Device Profiles..."
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+msgid "Output to this device not available in the current profile"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#, fuzzy
+msgid "Device Profiles"
+msgstr "Klarte ikkje kopla frå eining"
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#, fuzzy
+msgid "Device not connected"
+msgstr "Klarte ikkje kopla frå eining"
+
+#. update tooltip
+#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+msgid "Volume control"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+msgid "Volume Control (PulseAudio)"
+msgstr ""
+
+#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+msgid "Display and control volume for PulseAudio"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
+msgid "label"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:1
+#, fuzzy
+msgid "Available Updates"
+msgstr "Tilgjengeleg"
+
+#: ../data/lxplug-updater.ui.h:2
+msgid "Close"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:3
+msgid "Install"
+msgstr ""
+
+#: ../data/lxplug-updater.ui.h:4
+msgid "The following packages can be updated :"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:1
+#, fuzzy
+msgid "Add New Device"
+msgstr "Eikvar eining"
+
+#: ../data/lxplug-bluetooth.ui.h:3
+msgid "_Pair"
+msgstr ""
+
+#: ../data/lxplug-bluetooth.ui.h:4
+#, fuzzy
+msgid "Searching for Bluetooth devices..."
+msgstr "klarte ikkje å finna blåtanneininga."
+
+#~ msgid "Manage your network connections"
+#~ msgstr "Handsam nettverkstilkoplingane"
+
+#, fuzzy
+#~ msgid "NetworkManager connection editor"
+#~ msgstr "Inga nettverkstilkopling"
+
+#, fuzzy
+#~ msgid "The NetworkManager Developers"
+#~ msgstr "Panelprogram for NetworkManager"
+
+#, fuzzy
+#~ msgid "Advanced Network Configuration"
+#~ msgstr "Aktive nettverkstilkoplingar"
+
+#~ msgid "Manage and change your network connection settings"
+#~ msgstr "Handter og endra innstillingar for nettverkstilkopling"
+
+#, fuzzy
+#~ msgid "_Network name"
+#~ msgstr "_Nettverksnamn:"
+
+#~ msgid "Connection _Information"
+#~ msgstr "Tilkoplings_informasjon"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add an IP address."
+#~ msgstr ""
+#~ "IP-adresser identifiserer datamaskina di på nettverket. Trykk på «Legg "
+#~ "til»-knappen for å leggja til ei IP-adresse."
+
+#~ msgid "_Delete"
+#~ msgstr "_Slett"
+
+#~ msgid "Ig_nore automatically obtained routes"
+#~ msgstr "O_versjå automatisk innhenta ruter"
+
+#~ msgid "_Use this connection only for resources on its network"
+#~ msgstr ""
+#~ "Br_uk denne tilkoplinga berre for ressursar på nettverket ho tilhøyrer"
+
+#~ msgid ""
+#~ "If enabled, this connection will never be used as the default network "
+#~ "connection."
+#~ msgstr ""
+#~ "Viss det er kryssa av her vil denne tilkoplinga aldri verta brukt som den "
+#~ "forvalde nettverkstilkoplinga."
+
+#, fuzzy
+#~ msgid "C_reate…"
+#~ msgstr "Lag …"
+
+#, fuzzy
+#~ msgid "Choose a Connection Type"
+#~ msgstr "Vel type VPN-tilkopling"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of connection you wish to create.\n"
+#~ "\n"
+#~ "If you are creating a VPN, and the VPN connection you wish to create does "
+#~ "not appear in the list, you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "Vel type VPN du ønskjer å bruka for den nye tilkoplinga. Dersom du ikkje "
+#~ "finn rett type i lista, har du kanskje ikkje riktig VPN-tillegg "
+#~ "installert."
+
+#, fuzzy
+#~ msgid "_Device"
+#~ msgstr "Tene_ste:"
+
+#, fuzzy
+#~ msgid "Broadcast"
+#~ msgstr "Kringkastingsadresse:"
+
+#, fuzzy
+#~ msgid "ARP"
+#~ msgstr "EAP"
+
+#, fuzzy
+#~ msgid "Bonded _connections"
+#~ msgstr "Grunntilkopling:"
+
+#, fuzzy
+#~ msgid "M_ode"
+#~ msgstr "M_odus:"
+
+#~ msgid "_Edit"
+#~ msgstr "R_ediger"
+
+#, fuzzy
+#~ msgid "_Interface name"
+#~ msgstr "Grensesnitt:"
+
+#, fuzzy
+#~ msgid "_Primary"
+#~ msgstr "Primær DNS:"
+
+#, fuzzy
+#~ msgid "_MTU"
+#~ msgstr "_MTU:"
+
+#~ msgid "bytes"
+#~ msgstr "bytar"
+
+#, fuzzy
+#~ msgid "_Priority"
+#~ msgstr "Tryggl_eik:"
+
+#, fuzzy
+#~ msgid "Bridged _connections"
+#~ msgstr "Grunntilkopling:"
+
+#, fuzzy
+#~ msgid "Enable I_GMP snooping"
+#~ msgstr "Slå på _nettverk"
+
+#, fuzzy
+#~ msgid "_Use Data Center Bridging (DCB) for this connection"
+#~ msgstr "Bruk 802.1_X-tryggleik for denne tilkoplinga"
+
+#~ msgid "default"
+#~ msgstr "forval"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgid "_Username"
+#~ msgstr "_Brukarnamn:"
+
+#, fuzzy
+#~ msgid "_Service"
+#~ msgstr "Tene_ste:"
+
+#~ msgid "Sho_w password"
+#~ msgstr "V_is passord"
+
+#, fuzzy
+#~ msgid "_Password"
+#~ msgstr "_Passord:"
+
+#, fuzzy
+#~ msgid "PPP _interface"
+#~ msgstr "Grensesnitt"
+
+#, fuzzy
+#~ msgid "P_arent interface"
+#~ msgstr "Grensesnitt:"
+
+#, fuzzy
+#~ msgid "C_laim interface"
+#~ msgstr "Grensesnitt:"
+
+#~ msgid "Automatic"
+#~ msgstr "Automatisk"
+
+#~ msgid "Twisted Pair (TP)"
+#~ msgstr "Tvinna Par (TP)"
+
+#~ msgid "Attachment Unit Interface (AUI)"
+#~ msgstr "Attachment Unit Interface (AUI)"
+
+#~ msgid "BNC"
+#~ msgstr "BNC"
+
+#~ msgid "Media Independent Interface (MII)"
+#~ msgstr "Media Independent Interface (MII)"
+
+#~ msgid "10 Mb/s"
+#~ msgstr "10 Mb/s"
+
+#~ msgid "100 Mb/s"
+#~ msgstr "100 Mb/s"
+
+#~ msgid "1 Gb/s"
+#~ msgstr "1 Gb/s"
+
+#~ msgid "10 Gb/s"
+#~ msgstr "10 Gb/s"
+
+#~ msgid "Ignore"
+#~ msgstr "Ignorer"
+
+#~ msgid "Manual"
+#~ msgstr "Manuell"
+
+#, fuzzy
+#~ msgid "_Port"
+#~ msgstr "_Port:"
+
+#, fuzzy
+#~ msgid "C_loned MAC address"
+#~ msgstr "_Klona MAC-adresse:"
+
+#, fuzzy
+#~ msgid "Wake on LAN"
+#~ msgstr "_Passord for privat nøkkel:"
+
+#, fuzzy
+#~ msgid "De_fault"
+#~ msgstr "Standard"
+
+#, fuzzy
+#~ msgid "_Ignore"
+#~ msgstr "Ignorer"
+
+#, fuzzy
+#~ msgid "_Broadcast"
+#~ msgstr "Kringkastingsadresse:"
+
+#, fuzzy
+#~ msgid "_Wake on LAN password"
+#~ msgstr "_Passord for privat nøkkel:"
+
+#, fuzzy
+#~ msgid "_Speed"
+#~ msgstr "_Snøggleik:"
+
+#, fuzzy
+#~ msgid "Duple_x"
+#~ msgstr "Full duple_ks"
+
+#, fuzzy
+#~ msgid "No"
+#~ msgstr "Ingen"
+
+#, fuzzy
+#~ msgid "All _users may connect to this network"
+#~ msgstr "Du er no kopla til eit kabla nettverk."
+
+#, fuzzy
+#~ msgid "Automatically connect to _VPN"
+#~ msgstr "Lås opp denne eininga automatisk"
+
+#, fuzzy
+#~ msgid "_Metered connection"
+#~ msgstr "Grunntilkopling:"
+
+#, fuzzy
+#~ msgid "Connect _automatically with priority"
+#~ msgstr "Kopla til _automatisk"
+
+#, fuzzy
+#~ msgid "Connected"
+#~ msgstr "fråkopla"
+
+#, fuzzy
+#~ msgid "Device name"
+#~ msgstr "Tene_ste:"
+
+#, fuzzy
+#~ msgid "Parent device"
+#~ msgstr "Ethernet (%s)"
+
+#, fuzzy
+#~ msgid "MTU"
+#~ msgstr "_MTU:"
+
+#~ msgid "Automatic with manual DNS settings"
+#~ msgstr "Automatisk med manuelle DNS-innstillingar"
+
+#~ msgid "Link-Local"
+#~ msgstr "Tilkopling-lokal"
+
+#~ msgid "Shared to other computers"
+#~ msgstr "Delt med andre datamaskiner"
+
+#, fuzzy
+#~ msgid "_Method"
+#~ msgstr "_Metode:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The DHCP client identifier allows the network administrator to customize "
+#~ "your computer’s configuration. If you wish to use a DHCP client "
+#~ "identifier, enter it here."
+#~ msgstr ""
+#~ "DHCP-klientidentifikatoren tillèt nettverksadministratoren til å tilpassa "
+#~ "innstillingane til datamaskina di. Skriv inn identifikatoren her "
+
+#~ msgid ""
+#~ "Domains used when resolving host names. Use commas to separate multiple "
+#~ "domains."
+#~ msgstr ""
+#~ "Eitt eller fleire domene som vert brukt til å slå opp vertsnamn. Bruk "
+#~ "komma for å skilja domener frå kvarandre."
+
+#, fuzzy
+#~ msgid "D_HCP client ID"
+#~ msgstr "D_HCP-klient-ID:"
+
+#, fuzzy
+#~ msgid "S_earch domains"
+#~ msgstr "_Søkjedomene:"
+
+#, fuzzy
+#~ msgid "DNS ser_vers"
+#~ msgstr "_DNS-tenarar:"
+
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses."
+#~ msgstr ""
+#~ "IP-adresser til domenenamntenarar vert brukt til å slå opp versnamn. Bruk "
+#~ "komma for å skilja fleire adresser til domenenamntenarar."
+
+#~ msgid "Require IPv_4 addressing for this connection to complete"
+#~ msgstr "Krev IPv4-adressering for å fullføra denne tilkoplinga"
+
+#~ msgid ""
+#~ "When connecting to IPv6-capable networks, allows the connection to "
+#~ "complete if IPv4 configuration fails but IPv6 configuration succeeds."
+#~ msgstr ""
+#~ "Tillèt bruk av IPv6 ved tilkopling til nettverk med støtte for IPv6, "
+#~ "dersom IPv4-oppsett ikkje fungerer."
+
+#~ msgid "_Routes…"
+#~ msgstr "_Ruter …"
+
+#~ msgid "Default"
+#~ msgstr "Standard"
+
+#~ msgid "Disabled"
+#~ msgstr "Slått av"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses of domain name servers used to resolve host names. Use "
+#~ "commas to separate multiple domain name server addresses. Link-local "
+#~ "addresses will be automatically scoped to the connecting interface."
+#~ msgstr ""
+#~ "IP-adresser til domenenamntenarar vert brukt til å slå opp versnamn. Bruk "
+#~ "komma for å skilja fleire adresser til domenenamntenarar."
+
+#~ msgid "Require IPv_6 addressing for this connection to complete"
+#~ msgstr "Krev IPv6-adressering for å fullføra denne tilkoplinga"
+
+#~ msgid ""
+#~ "When connecting to IPv4-capable networks, allows the connection to "
+#~ "complete if IPv6 configuration fails but IPv4 configuration succeeds."
+#~ msgstr ""
+#~ "Tillèt bruk av IPv4 ved tilkopling til nettverk med støtte for IPv4, "
+#~ "dersom IPv6-oppsett ikkje fungerer."
+
+#~ msgid "EAP"
+#~ msgstr "EAP"
+
+#, fuzzy
+#~ msgid "Strict"
+#~ msgstr "Kostnad"
+
+#, fuzzy
+#~ msgid "_Device name"
+#~ msgstr "Tene_ste:"
+
+#, fuzzy
+#~ msgid "_Parent device"
+#~ msgstr "Ethernet (%s)"
+
+#, fuzzy
+#~ msgid "_SCI port"
+#~ msgstr "_Importer"
+
+#~ msgid "Basic"
+#~ msgstr "Grunnleggjande"
+
+#, fuzzy
+#~ msgid "Nu_mber"
+#~ msgstr "Nu_mmer:"
+
+#, fuzzy
+#~ msgid "_APN"
+#~ msgstr "_APN:"
+
+#, fuzzy
+#~ msgid "N_etwork ID"
+#~ msgstr "Nettverks-ID:"
+
+#, fuzzy
+#~ msgid "Change…"
+#~ msgstr "Endra …"
+
+#, fuzzy
+#~ msgid "P_IN"
+#~ msgstr "P_IN:"
+
+#~ msgid "Allow _roaming if home network is not available"
+#~ msgstr "Tillat _vandring dersom heimenettverk ikkje er tilgjengeleg"
+
+#~ msgid "Sho_w passwords"
+#~ msgstr "_Vis passord"
+
+#~ msgid "Authentication"
+#~ msgstr "Autentisering"
+
+#, fuzzy
+#~ msgid "Allowed methods"
+#~ msgstr "Tillatne metodar:"
+
+#~ msgid "Configure _Methods…"
+#~ msgstr "Set opp _metodar …"
+
+#~ msgid "Compression"
+#~ msgstr "Komprimering"
+
+#~ msgid "_Use point-to-point encryption (MPPE)"
+#~ msgstr "_Bruk punkt-til-punkt-kryptering (MPPE)"
+
+#~ msgid "_Require 128-bit encryption"
+#~ msgstr "_Krev 128-bitars kryptering"
+
+#~ msgid "Use _stateful MPPE"
+#~ msgstr "Bruk til_standsrik MPPE"
+
+#~ msgid "Allow _BSD data compression"
+#~ msgstr "Tillat _BSD-datakomprimering"
+
+#~ msgid "Allow _Deflate data compression"
+#~ msgstr "Tillat _Deflate-datakomprimering"
+
+#~ msgid "Use TCP _header compression"
+#~ msgstr "Bruk komprimering på TCP-hovud"
+
+#~ msgid "Echo"
+#~ msgstr "Ekko"
+
+#~ msgid "Send PPP _echo packets"
+#~ msgstr "Send PPP-ekkopakkar"
+
+#, fuzzy
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#, fuzzy
+#~ msgid "Method"
+#~ msgstr "_Metode:"
+
+#, fuzzy
+#~ msgid "Ad_vanced…"
+#~ msgstr "Avansert"
+
+#, fuzzy
+#~ msgid "Ethernet port state"
+#~ msgstr "Kabla nettverk"
+
+#, fuzzy
+#~ msgid "_Port priority"
+#~ msgstr "Tryggl_eik:"
+
+#, fuzzy
+#~ msgid "_LACP port priority"
+#~ msgstr "Tryggl_eik:"
+
+#, fuzzy
+#~ msgid "LACP port _key"
+#~ msgstr "Privat nø_kkel:"
+
+#, fuzzy
+#~ msgid "Send _interval"
+#~ msgstr "Grensesnitt:"
+
+#, fuzzy
+#~ msgid "Port priority"
+#~ msgstr "Tryggl_eik:"
+
+#, fuzzy
+#~ msgid "From the team device"
+#~ msgstr "Ethernet (%s)"
+
+#, fuzzy
+#~ msgid "_Teamed connections"
+#~ msgstr "Grunntilkopling:"
+
+#, fuzzy
+#~ msgid "Ethernet"
+#~ msgstr "Automatisk lokalnett"
+
+#, fuzzy
+#~ msgid "IP"
+#~ msgstr "IPv4"
+
+#, fuzzy
+#~ msgid "TCP"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "_Hardware Address"
+#~ msgstr "Maskinvareadresse:"
+
+#, fuzzy
+#~ msgid "_Hardware address policy"
+#~ msgstr "Maskinvareadresse:"
+
+#, fuzzy
+#~ msgid "_System priority"
+#~ msgstr "Tryggl_eik:"
+
+#, fuzzy
+#~ msgid "Transmission _balancing interval"
+#~ msgstr "_Sendareffekt:"
+
+#, fuzzy
+#~ msgid "_Transmission balancer"
+#~ msgstr "_Sendareffekt:"
+
+#, fuzzy
+#~ msgid "_Parent interface"
+#~ msgstr "Grensesnitt:"
+
+#, fuzzy
+#~ msgid "VLAN inter_face name"
+#~ msgstr "Grensesnitt:"
+
+#, fuzzy
+#~ msgid "Cloned MAC _address"
+#~ msgstr "_Klona MAC-adresse:"
+
+#, fuzzy
+#~ msgid "S_ecurity"
+#~ msgstr "Tryggl_eik:"
+
+#~ msgid "A (5 GHz)"
+#~ msgstr "A (5 GHz)"
+
+#~ msgid "B/G (2.4 GHz)"
+#~ msgstr "B/G (2,4 GHz)"
+
+#~ msgid "Ad-hoc"
+#~ msgstr "Ad-hoc"
+
+#~ msgid "mW"
+#~ msgstr "mW"
+
+#, fuzzy
+#~ msgid "Transmission po_wer"
+#~ msgstr "_Sendareffekt:"
+
+#~ msgid "Mb/s"
+#~ msgstr "Mb/s"
+
+#, fuzzy
+#~ msgid "_Rate"
+#~ msgstr "_Rate:"
+
+#, fuzzy
+#~ msgid "_BSSID"
+#~ msgstr "_BSSID:"
+
+#, fuzzy
+#~ msgid "C_hannel"
+#~ msgstr "Ka_nal:"
+
+#, fuzzy
+#~ msgid "Ban_d"
+#~ msgstr "Ban_d:"
+
+#, fuzzy
+#~ msgid "SS_ID"
+#~ msgstr "SS_ID:"
+
+#, fuzzy
+#~ msgid "Allowed _IPs"
+#~ msgstr "Tillatne metodar:"
+
+#, fuzzy
+#~ msgid "Pre_shared key"
+#~ msgstr "Delt nøkkel"
+
+#, fuzzy
+#~ msgid "Sho_w preshared key"
+#~ msgstr "_Vis nøkkel"
+
+#, fuzzy
+#~ msgid "Private _key"
+#~ msgstr "Privat nø_kkel:"
+
+#, fuzzy
+#~ msgid "_Show private key"
+#~ msgstr "Privat nø_kkel:"
+
+#~ msgid "automatic"
+#~ msgstr "automatisk"
+
+#, fuzzy
+#~ msgid ""
+#~ "The MAC address entered here will be used as hardware address for the "
+#~ "network device this connection is activated on. This feature is known as "
+#~ "MAC cloning or spoofing. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "MAC-adressa som vert oppgjeven her, vil brukast som maskinvareadresse for "
+#~ "nettverkseininga denne tilkoplinga brukar. Denne funksjonen er kjend som "
+#~ "MAC-kloning. Døme: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid "MAC address"
+#~ msgstr "Adresse"
+
+#, fuzzy
+#~ msgid "HW address"
+#~ msgstr "Adresse"
+
+#, fuzzy
+#~ msgid "invalid hardware address"
+#~ msgstr "Maskinvareadresse:"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses identify your computer on the network. Click the “Add” "
+#~ "button to add static IP address to be configured in addition to the "
+#~ "automatic ones."
+#~ msgstr ""
+#~ "IP-adresser identifiserer datamaskina di på nettverket. Trykk på «Legg "
+#~ "til»-knappen for å leggja til ei IP-adresse."
+
+#, fuzzy
+#~ msgid "Additional static addresses"
+#~ msgstr "Automatisk, berre adresser"
+
+#~ msgid "Addresses"
+#~ msgstr "Adresser"
+
+#~ msgid "Allowed Authentication Methods"
+#~ msgstr "Tillatne autentiseringsmetodar"
+
+#~ msgid "_EAP"
+#~ msgstr "_EAP"
+
+#~ msgid "Extensible Authentication Protocol"
+#~ msgstr "Extensible Authentication Protocol"
+
+#~ msgid "_PAP"
+#~ msgstr "_PAP"
+
+#~ msgid "Password Authentication Protocol"
+#~ msgstr "Password Authentication Protocol"
+
+#~ msgid "C_HAP"
+#~ msgstr "C_HAP"
+
+#~ msgid "Challenge Handshake Authentication Protocol"
+#~ msgstr "Challenge Handshake Authentication Protocol"
+
+#~ msgid "_MSCHAP"
+#~ msgstr "_MSCHAP"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol"
+
+#~ msgid "MSCHAP v_2"
+#~ msgstr "MSCHAP v_2"
+
+#~ msgid "Microsoft Challenge Handshake Authentication Protocol version 2"
+#~ msgstr "Microsoft Challenge Handshake Authentication Protocol versjon 2"
+
+#, fuzzy
+#~ msgid ""
+#~ "In most cases, the provider’s PPP servers will support all authentication "
+#~ "methods. If connections fail, try disabling support for some methods."
+#~ msgstr ""
+#~ "I dei fleste tilfelle vil leverandøren sine PPP-tenarar støtte alle "
+#~ "autentiseringsmetodar. Dersom du ikkje får kopla til, prøv å slå av "
+#~ "støtte for nokre metodar."
+
+#, fuzzy
+#~ msgid "WireGuard"
+#~ msgstr "Kabla"
+
+#~ msgid "VPN"
+#~ msgstr "VPN"
+
+#, fuzzy
+#~ msgid "The VPN plugin failed to import the VPN connection correctly: "
+#~ msgstr ""
+#~ "VPN-tilleggsprogrammet klarte ikkje å importera VPN-tilkoplinga rett.\n"
+#~ "\n"
+#~ "Feil: Ingen VPN-tenestetype."
+
+#~ msgid "Select file to import"
+#~ msgstr "Vel fil som skal importerast"
+
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Maskinvareadresse:"
+
+#, fuzzy
+#~ msgid "Import a saved VPN configuration…"
+#~ msgstr "Eksporter VPN-tilkopling …"
+
+#~ msgid ""
+#~ "The connection editor dialog could not be initialized due to an unknown "
+#~ "error."
+#~ msgstr ""
+#~ "Klarte ikkje starta dialogvindauge for tilkoplingsredigering på grunn av "
+#~ "ein ukjend feil."
+
+#~ msgid "Could not create new connection"
+#~ msgstr "Klarte ikkje laga ny tilkopling"
+
+#~ msgid "Connection delete failed"
+#~ msgstr "Sletting av tilkopling feila"
+
+#, c-format
+#~ msgid "Are you sure you wish to delete the connection %s?"
+#~ msgstr "Er du sikker på at du vil sletta tilkoplinga %s?"
+
+#, fuzzy
+#~ msgid "_New Connection"
+#~ msgstr "_VPN-tilkoplingar"
+
+#~ msgid "Address"
+#~ msgstr "Adresse"
+
+#~ msgid "Netmask"
+#~ msgstr "Nettmaske"
+
+#~ msgid "Gateway"
+#~ msgstr "Portnar"
+
+#~ msgid "Metric"
+#~ msgstr "Kostnad"
+
+#~ msgid "Prefix"
+#~ msgstr "Prefiks"
+
+#, c-format
+#~ msgid "Editing %s"
+#~ msgstr "Redigerer %s"
+
+#~ msgid "Editing un-named connection"
+#~ msgstr "Redigerer tilkopling utan namn"
+
+#, fuzzy
+#~ msgid "Missing connection name"
+#~ msgstr "Tilkoplings_namn:"
+
+#, fuzzy
+#~ msgid "Editor initializing…"
+#~ msgstr "Feil når redigeringsverktøyet skulle startast"
+
+#, fuzzy
+#~ msgid "Connection cannot be modified"
+#~ msgstr "Klarte ikkje leggja til tilkopling"
+
+#~ msgid ""
+#~ "The connection editor could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "Tilkoplingsredigering fann ikkje alle nødvendige ressursar (fann ikkje ."
+#~ "ui-fila)"
+
+#~ msgid "_Save"
+#~ msgstr "_Lagra"
+
+#~ msgid "Save any changes made to this connection."
+#~ msgstr "Lagra alle endringar for denne tilkoplinga."
+
+#~ msgid "Authenticate to save this connection for all users of this machine."
+#~ msgstr ""
+#~ "Autentiser til å lagra denne innstillinga til alle brukarane av denne "
+#~ "maskina."
+
+#, fuzzy
+#~ msgid "Could not create connection"
+#~ msgstr "Klarte ikkje laga ny tilkopling"
+
+#~ msgid "Could not edit connection"
+#~ msgstr "Klarte ikkje redigera tilkopling"
+
+#, fuzzy
+#~ msgid "Unknown error creating connection editor dialog."
+#~ msgstr "Klarte ikkje laga vindauge for tilkoplingsredigering."
+
+#~ msgid "Error initializing editor"
+#~ msgstr "Feil når redigeringsverktøyet skulle startast"
+
+#~ msgid "Connection add failed"
+#~ msgstr "Klarte ikkje leggja til tilkopling"
+
+#, fuzzy
+#~ msgid "Connection _name"
+#~ msgstr "Tilkoplings_namn:"
+
+#, fuzzy
+#~ msgid "_Export…"
+#~ msgstr "E_ksporter"
+
+#~ msgid "never"
+#~ msgstr "aldri"
+
+#~ msgid "now"
+#~ msgstr "no"
+
+#, c-format
+#~ msgid "%d minute ago"
+#~ msgid_plural "%d minutes ago"
+#~ msgstr[0] "%d minutt sidan"
+#~ msgstr[1] "%d minutt sida"
+
+#, c-format
+#~ msgid "%d hour ago"
+#~ msgid_plural "%d hours ago"
+#~ msgstr[0] "%d time sidan"
+#~ msgstr[1] "%d timar sidan"
+
+#, c-format
+#~ msgid "%d day ago"
+#~ msgid_plural "%d days ago"
+#~ msgstr[0] "%d dag sidan"
+#~ msgstr[1] "%d dagar sidan"
+
+#, c-format
+#~ msgid "%d month ago"
+#~ msgid_plural "%d months ago"
+#~ msgstr[0] "%d månad sidan"
+#~ msgstr[1] "%d månader sidan"
+
+#, c-format
+#~ msgid "%d year ago"
+#~ msgid_plural "%d years ago"
+#~ msgstr[0] "%d år sidan"
+#~ msgstr[1] "%d år sidan"
+
+#, fuzzy
+#~ msgid "Connection cannot be deleted"
+#~ msgstr "Klarte ikkje leggja til tilkopling"
+
+#, fuzzy
+#~ msgid "Select a connection to edit"
+#~ msgstr "Kabla tilkopling %d"
+
+#, fuzzy
+#~ msgid "Select a connection to delete"
+#~ msgstr "Kabla tilkopling %d"
+
+#~ msgid "Name"
+#~ msgstr "Namn"
+
+#~ msgid "Last Used"
+#~ msgstr "Sist brukt"
+
+#~ msgid "Edit the selected connection"
+#~ msgstr "Rediger valt tilkopling"
+
+#~ msgid "Authenticate to edit the selected connection"
+#~ msgstr "Autentiser for å redigera den valde tilkoplinga"
+
+#~ msgid "Delete the selected connection"
+#~ msgstr "Slett vald tilkopling"
+
+#~ msgid "Authenticate to delete the selected connection"
+#~ msgstr "Autentiser til å sletta den valde tilkoplinga"
+
+#, fuzzy
+#~ msgid "Unrecognized connection type"
+#~ msgstr "Ustøtta mobil breibandtilkoplingstype."
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to import “%s” connections"
+#~ msgstr "Veit ikkje korleis «%s»-tilkoplingar vert laga"
+
+#, fuzzy
+#~ msgid "Error importing connection"
+#~ msgstr "Feil under redigering av tilkopling"
+
+#~ msgid "Error creating connection"
+#~ msgstr "Klarte ikkje oppretta tilkopling"
+
+#, fuzzy
+#~ msgid "Connection type not specified."
+#~ msgstr "Klarte ikkje leggja til tilkopling"
+
+#, fuzzy, c-format
+#~ msgid "Don’t know how to create “%s” connections"
+#~ msgstr "Veit ikkje korleis «%s»-tilkoplingar vert laga"
+
+#~ msgid "Error editing connection"
+#~ msgstr "Feil under redigering av tilkopling"
+
+#, fuzzy, c-format
+#~ msgid "Did not find a connection with UUID “%s”"
+#~ msgstr "Fann ikkje tilkopling med UUID «%s»"
+
+#~ msgid "Network Connections"
+#~ msgstr "Nettverkstilkoplingar"
+
+#, fuzzy
+#~ msgid "Add a new connection"
+#~ msgstr "_VPN-tilkoplingar"
+
+#~ msgid "802.1X Security"
+#~ msgstr "802.1X-tryggleik"
+
+#, fuzzy
+#~ msgid "Could not load 802.1X Security user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for trådlaus tryggleik."
+
+#~ msgid "Use 802.1_X security for this connection"
+#~ msgstr "Bruk 802.1_X-tryggleik for denne tilkoplinga"
+
+#, fuzzy
+#~ msgid "Could not load Bluetooth user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy
+#~ msgid "_Personal Area Network"
+#~ msgstr "Slå på _nettverk"
+
+#, fuzzy
+#~ msgid "_Dial-Up Network"
+#~ msgstr "Trådlaust nettverk"
+
+#, fuzzy
+#~ msgid "Could not load bond user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy
+#~ msgid "primary"
+#~ msgstr "Primær DNS:"
+
+#, fuzzy, c-format
+#~ msgid "Bond connection %d"
+#~ msgstr "Kabla tilkopling %d"
+
+#, fuzzy
+#~ msgid "Could not load bridge port user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy
+#~ msgid "Could not load bridge user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy, c-format
+#~ msgid "Bridge connection %d"
+#~ msgstr "Kabla tilkopling %d"
+
+#, fuzzy
+#~ msgid "Could not load DCB user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for DSL-nettverk."
+
+#~ msgid "Could not load DSL user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for DSL-nettverk."
+
+#, fuzzy
+#~ msgid "missing parent interface"
+#~ msgstr "Grensesnitt:"
+
+#, c-format
+#~ msgid "DSL connection %d"
+#~ msgstr "DSL-tilkopling %d"
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “em1”, "
+#~ "“3C:97:0E:42:1A:19”, “em1 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "Dette alternativet låser tilkoplinga til nettverkseininga med den "
+#~ "permanente MAC-adressa oppgjeve her. Døme: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid "ignored"
+#~ msgstr "Ignorert"
+
+#, fuzzy
+#~ msgid "Could not load ethernet user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy
+#~ msgid "Ethernet device"
+#~ msgstr "Ethernet (%s)"
+
+#, fuzzy
+#~ msgid "cloned MAC"
+#~ msgstr "_Klona MAC-adresse:"
+
+#, fuzzy, c-format
+#~ msgid "Ethernet connection %d"
+#~ msgstr "Kabla tilkopling %d"
+
+#, fuzzy
+#~ msgid "Could not load General user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “ib0”, "
+#~ "“80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65”, “ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)”"
+#~ msgstr ""
+#~ "Dette alternativet låser tilkoplinga til nettverkseininga med den "
+#~ "permanente MAC-adressa oppgjeve her. Døme: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid "Could not load InfiniBand user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for trådlaust nettverk."
+
+#, fuzzy, c-format
+#~ msgid "InfiniBand connection %d"
+#~ msgstr "Kabla tilkopling %d"
+
+#, fuzzy
+#~ msgid "Could not load IP tunnel user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for IPv4-nettverk."
+
+#, fuzzy, c-format
+#~ msgid "IP tunnel connection %d"
+#~ msgstr "Kabla tilkopling %d"
+
+#~ msgid "Automatic (VPN)"
+#~ msgstr "Automatisk (VPN)"
+
+#~ msgid "Automatic (VPN) addresses only"
+#~ msgstr "Berre automatiske (VPN-) adresser"
+
+#~ msgid "Automatic, addresses only"
+#~ msgstr "Automatisk, berre adresser"
+
+#~ msgid "Automatic (PPPoE)"
+#~ msgstr "Automatisk (PPPoE)"
+
+#~ msgid "Automatic (PPPoE) addresses only"
+#~ msgstr "Berre automatiske (PPPoE-) adresser"
+
+#~ msgid "Automatic (DHCP)"
+#~ msgstr "Automatisk (DHCP)"
+
+#~ msgid "Automatic (DHCP) addresses only"
+#~ msgstr "Berre automatiske (DHCP-) adresser"
+
+#~ msgid "Link-Local Only"
+#~ msgstr "Berre lokal lekkje"
+
+#, fuzzy
+#~ msgid "Additional DNS ser_vers"
+#~ msgstr "_DNS-tenarar:"
+
+#, fuzzy
+#~ msgid "Additional s_earch domains"
+#~ msgstr "_Søkjedomene:"
+
+#, c-format
+#~ msgid "Editing IPv4 routes for %s"
+#~ msgstr "Redigerer IPv4-ruter for %s"
+
+#~ msgid "IPv4 Settings"
+#~ msgstr "IPv4-innstillingar"
+
+#~ msgid "Could not load IPv4 user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for IPv4-nettverk."
+
+#~ msgid "Automatic, DHCP only"
+#~ msgstr "Automatisk, berre DHCP"
+
+#, c-format
+#~ msgid "Editing IPv6 routes for %s"
+#~ msgstr "Redigerer IPv6-ruter for %s"
+
+#~ msgid "IPv6 Settings"
+#~ msgstr "IPv6-innstillingar"
+
+#~ msgid "Could not load IPv6 user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for IPv6-nettverk"
+
+#, fuzzy
+#~ msgid "Could not load MACsec user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for DSL-nettverk."
+
+#, fuzzy, c-format
+#~ msgid "MACSEC connection %d"
+#~ msgstr "DSL-tilkopling %d"
+
+#~ msgid "Could not load mobile broadband user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for mobilt breibandnettverk."
+
+#~ msgid "Unsupported mobile broadband connection type."
+#~ msgstr "Ustøtta mobil breibandtilkoplingstype."
+
+#~ msgid "Select Mobile Broadband Provider Type"
+#~ msgstr "Vel mobil breibandtilbydartype"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the technology your mobile broadband provider uses. If you are "
+#~ "unsure, ask your provider."
+#~ msgstr ""
+#~ "Vel teknologien tilbydaren til ditt mobile breiband brukar. Spør "
+#~ "tilbydaren om du er usikker."
+
+#~ msgid ""
+#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgstr "Min tilbydar brukar _GSM-basert teknologi (GPRS, EDGE, UMTS, HSDPA)"
+
+#~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
+#~ msgstr "Min tilbydar brukar C_DMA-basert teknologi (1xRTT, EVDO)"
+
+#~ msgid "PAP"
+#~ msgstr "PAP"
+
+#~ msgid "CHAP"
+#~ msgstr "CHAP"
+
+#~ msgid "MSCHAPv2"
+#~ msgstr "MSCHAPv2"
+
+#~ msgid "MSCHAP"
+#~ msgstr "MSCHAP"
+
+#~ msgid "none"
+#~ msgstr "ingen"
+
+#, c-format
+#~ msgid "Editing PPP authentication methods for %s"
+#~ msgstr "Endrar PPP-autentiseringsmetodar for %s"
+
+#~ msgid "PPP Settings"
+#~ msgstr "PPP-innstillingar"
+
+#~ msgid "Could not load PPP user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for PPP-nettverk"
+
+#, fuzzy
+#~ msgid "Could not load proxy user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy
+#~ msgid "Could not load team port user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy
+#~ msgid "Could not load team user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy, c-format
+#~ msgid "Team connection %d"
+#~ msgstr "Kabla tilkopling %d"
+
+#, fuzzy
+#~ msgid "New connection…"
+#~ msgstr "Inga nettverkstilkopling"
+
+#, fuzzy
+#~ msgid "Could not load vlan user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for IPv4-nettverk."
+
+#, fuzzy, c-format
+#~ msgid "VLAN connection %d"
+#~ msgstr "VPN-tilkopling %d"
+
+#, fuzzy, c-format
+#~ msgid "Could not load editor VPN plugin for “%s” (%s)."
+#~ msgstr "Klarte ikkje finna VPN-programtilleggsteneste til «%s»."
+
+#, fuzzy
+#~ msgid "unknown failure"
+#~ msgstr "Feil under tilkopling"
+
+#~ msgid "Could not load VPN user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for VPN."
+
+#, fuzzy, c-format
+#~ msgid "Could not find VPN plugin for “%s”."
+#~ msgstr "Klarte ikkje finna VPN-programtilleggsteneste til «%s»."
+
+#, c-format
+#~ msgid "VPN connection %d"
+#~ msgstr "VPN-tilkopling %d"
+
+#~ msgid "Choose a VPN Connection Type"
+#~ msgstr "Vel type VPN-tilkopling"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the type of VPN you wish to use for the new connection. If the "
+#~ "type of VPN connection you wish to create does not appear in the list, "
+#~ "you may not have the correct VPN plugin installed."
+#~ msgstr ""
+#~ "Vel type VPN du ønskjer å bruka for den nye tilkoplinga. Dersom du ikkje "
+#~ "finn rett type i lista, har du kanskje ikkje riktig VPN-tillegg "
+#~ "installert."
+
+#~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
+#~ msgstr "WEP 40/128-bit-nøkkel (Heksadesimal eller ASCII)"
+
+#~ msgid "WEP 128-bit Passphrase"
+#~ msgstr "WEP 128-bit passfrase"
+
+#~ msgid "Dynamic WEP (802.1X)"
+#~ msgstr "Dynamisk WEP (802.1X)"
+
+#~ msgid "WPA & WPA2 Personal"
+#~ msgstr "WPA & WPA2 personleg"
+
+#~ msgid "WPA & WPA2 Enterprise"
+#~ msgstr "WPA og WPA2 enterprise"
+
+#, fuzzy
+#~ msgid "WPA3 Personal"
+#~ msgstr "WPA & WPA2 personleg"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
+#~ msgstr ""
+#~ "Klart ikkje lasta brukargrensesnitt for trådlaus tryggleik; manglar "
+#~ "trådlausinnstilling."
+
+#, fuzzy
+#~ msgid "Wi-Fi Security"
+#~ msgstr "Trådlaus tryggleik"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi security user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for trådlaus tryggleik."
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the Wi-Fi access point (AP) "
+#~ "specified by the BSSID entered here. Example: 00:11:22:33:44:55"
+#~ msgstr ""
+#~ "Dette alternativet låser denne tilkoplinga til eit trådlaust aksesspunkt "
+#~ "(AP), bestemt av BSSID-en oppgjeve her. Døme: 00:11:22:33:44:55"
+
+#, fuzzy
+#~ msgid ""
+#~ "This option locks this connection to the network device specified either "
+#~ "by its interface name or permanent MAC or both. Examples: “wlan0”, "
+#~ "“3C:97:0E:42:1A:19”, “wlan0 (3C:97:0E:42:1A:19)”"
+#~ msgstr ""
+#~ "Dette alternativet låser tilkoplinga til nettverkseininga med den "
+#~ "permanente MAC-adressa oppgjeve her. Døme: 00:11:22:33:44:55"
+
+#, c-format
+#~ msgid "%u (%u MHz)"
+#~ msgstr "%u (%u MHz)"
+
+#, fuzzy
+#~ msgid "Could not load Wi-Fi user interface."
+#~ msgstr "Klarte ikkje lasta brukargrensesnitt for trådlaust nettverk."
+
+#, fuzzy
+#~ msgid "Wi-Fi device"
+#~ msgstr "Eikvar eining"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi connection %d"
+#~ msgstr "Kabla tilkopling %d"
+
+#, fuzzy
+#~ msgid "Allowed IPs"
+#~ msgstr "Tillatne metodar:"
+
+#, fuzzy
+#~ msgid "Could not load WireGuard user interface."
+#~ msgstr "Klarte ikkje lasta brukergrensesnitt for kabla nettverk."
+
+#, fuzzy, c-format
+#~ msgid "WireGuard connection %d"
+#~ msgstr "Trådlaus tilkopling %d"
+
+#, fuzzy, c-format
+#~ msgid "A file named “%s” already exists."
+#~ msgstr "Ei fil kalla «%s» finst alt."
+
+#~ msgid "_Replace"
+#~ msgstr "_Byt ut"
+
+#, c-format
+#~ msgid "Do you want to replace %s with the VPN connection you are saving?"
+#~ msgstr "Vil du byta ut %s med VPN-tilkoplinga du no lagrar?"
+
+#~ msgid "Cannot export VPN connection"
+#~ msgstr "Klarte ikkje eksportera VPN-tilkopling"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The VPN connection “%s” could not be exported to %s.\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "Klarte ikkje å eksportera VPN-tilkoplinga «%s» til %s\n"
+#~ "\n"
+#~ "Feil: %s."
+
+#, fuzzy
+#~ msgid "Export VPN connection…"
+#~ msgstr "Eksporter VPN-tilkopling …"
+
+#~ msgid "_Unlock"
+#~ msgstr "_Lås opp"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Lås opp denne eininga automatisk"
+
+#~ msgid "Usage:"
+#~ msgstr "Bruk:"
+
+#~ msgid ""
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
+#~ "Projects/NetworkManager/)."
+#~ msgstr ""
+#~ "Dette programmet er ein komponent av NetworkManager https://wiki.gnome."
+#~ "org/Projects/NetworkManager/)."
+
+#~ msgid ""
+#~ "It is not intended for command-line interaction but instead runs in the "
+#~ "GNOME desktop environment."
+#~ msgstr ""
+#~ "Det er ikkje meint for å brukast gjennom kommandolinja, men heller å "
+#~ "køyrast i GNOME-skrivebordsmiljøet."
+
+#~ msgid "GTC"
+#~ msgstr "GTC"
+
+#, fuzzy
+#~ msgid "Choose a PAC file"
+#~ msgstr "Vel PAC-fil …"
+
+#~ msgid "PAC files (*.pac)"
+#~ msgstr "PAC-filer (*.pac)"
+
+#~ msgid "All files"
+#~ msgstr "Alle filer"
+
+#~ msgid "Anonymous"
+#~ msgstr "Anonym"
+
+#~ msgid "Authenticated"
+#~ msgstr "Autentisert"
+
+#~ msgid "Both"
+#~ msgstr "Begge"
+
+#, fuzzy
+#~ msgid "Anony_mous identity"
+#~ msgstr "Anony_m identitet:"
+
+#, fuzzy
+#~ msgid "PAC _file"
+#~ msgstr "PAC-_fil:"
+
+#, fuzzy
+#~ msgid "_Inner authentication"
+#~ msgstr "I_ndre autentisering:"
+
+#~ msgid "Allow automatic PAC pro_visioning"
+#~ msgstr "Tillat automatisk PAC-_tildeling"
+
+#~ msgid "MD5"
+#~ msgstr "MD5"
+
+#~ msgid "Version 0"
+#~ msgstr "Versjon 0"
+
+#~ msgid "Version 1"
+#~ msgstr "Versjon 1"
+
+#, fuzzy
+#~ msgid "No CA certificate is _required"
+#~ msgstr "C_A-sertifikat:"
+
+#, fuzzy
+#~ msgid "PEAP _version"
+#~ msgstr "PEAP-_versjon:"
+
+#, fuzzy
+#~ msgid "P_rivate Key Passphrase"
+#~ msgstr "WEP 128-bit passfrase"
+
+#, fuzzy
+#~ msgid "Sh_ow passphrase"
+#~ msgstr "_Vis passord"
+
+#, fuzzy
+#~ msgid "no user certificate selected"
+#~ msgstr "C_A-sertifikat:"
+
+#, fuzzy
+#~ msgid "I_dentity"
+#~ msgstr "I_dentitet:"
+
+#, fuzzy
+#~ msgid "MSCHAPv2 (no EAP)"
+#~ msgstr "MSCHAPv2"
+
+#, fuzzy
+#~ msgid "no CA certificate selected"
+#~ msgstr "C_A-sertifikat:"
+
+#~ msgid "TLS"
+#~ msgstr "TLS"
+
+#~ msgid "FAST"
+#~ msgstr "FAST"
+
+#~ msgid "Tunneled TLS"
+#~ msgstr "Tunnelert TLS"
+
+#~ msgid "Protected EAP (PEAP)"
+#~ msgstr "Verna EAP (PEAP)"
+
+#, fuzzy
+#~ msgid "Au_thentication"
+#~ msgstr "Au_tentisering:"
+
+#, fuzzy
+#~ msgid "missing password"
+#~ msgstr "_Passord for privat nøkkel:"
+
+#, fuzzy
+#~ msgid "_Type"
+#~ msgstr "_Type:"
+
+#~ msgid "Open System"
+#~ msgstr "Ope system"
+
+#~ msgid "1 (Default)"
+#~ msgstr "1 (Forval)"
+
+#, fuzzy
+#~ msgid "_Key"
+#~ msgstr "Nø_kkel:"
+
+#, fuzzy
+#~ msgid "WEP inde_x"
+#~ msgstr "WEP-indek_s:"
+
+#~ msgid "Disable connected notifications"
+#~ msgstr "Slå av varsel om tilkopling"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to a network."
+#~ msgstr "Set til TRUE for å slå av varsel når du koplar til eit nettverk."
+
+#~ msgid "Disable disconnected notifications"
+#~ msgstr "Slå av varsel om fråkopling"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when disconnecting from a "
+#~ "network."
+#~ msgstr "Set til TRUE for å slå av varsel når du koplar frå eit nettverk."
+
+#, fuzzy
+#~ msgid "Disable VPN notifications"
+#~ msgstr "Slå av varsel om tilkopling"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when connecting to or "
+#~ "disconnecting from a VPN."
+#~ msgstr "Set til TRUE for å slå av varsel når du koplar frå eit nettverk."
+
+#~ msgid "Suppress networks available notifications"
+#~ msgstr "Hindra varsel om tilgjengelege nettverk"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set this to true to disable notifications when Wi-Fi networks are "
+#~ "available."
+#~ msgstr ""
+#~ "Set til TRUE for å slå av varsel når trådlause nettverk er tilgjengelege."
+
+#~ msgid "Stamp"
+#~ msgstr "Stempel"
+
+#~ msgid ""
+#~ "Used to determine whether settings should be migrated to a new version."
+#~ msgstr ""
+#~ "Brukt til å fastslå om innstillingar skal verta migrert til ein ny "
+#~ "versjon."
+
+#, fuzzy
+#~ msgid "Disable WiFi Create"
+#~ msgstr "Slå av laging av trådlaust nettverk"
+
+#, fuzzy
+#~ msgid ""
+#~ "Set to true to disable creation of adhoc networks when using the applet."
+#~ msgstr ""
+#~ "Set til TRUE for å slå av laging av ad hoc-nettverk ved bruk av "
+#~ "miniprogrammet."
+
+#, fuzzy
+#~ msgid "Ignore CA certificate"
+#~ msgstr "Vel CA-sertifikat"
+
+#, fuzzy
+#~ msgid "No certificate set"
+#~ msgstr "C_A-sertifikat:"
+
+#, fuzzy, c-format
+#~ msgid "Choose a key for %s Certificate"
+#~ msgstr "Vel ditt personlege sertifikat …"
+
+#, fuzzy, c-format
+#~ msgid "%s key _password"
+#~ msgstr "_Passord for privat nøkkel:"
+
+#, fuzzy, c-format
+#~ msgid "Choose %s Certificate"
+#~ msgstr "Vel ditt personlege sertifikat …"
+
+#, fuzzy, c-format
+#~ msgid "%s _certificate"
+#~ msgstr "Br_ukarsertifikat:"
+
+#~ msgid "Unlisted"
+#~ msgstr "Ikkje lista"
+
+#, fuzzy
+#~ msgid "My plan is not listed…"
+#~ msgstr "Min plan er ikkje oppgjeven …"
+
+#~ msgid "Provider"
+#~ msgstr "Tilbydar"
+
+#~ msgid "Installed GSM device"
+#~ msgstr "Innstallert GSM-eining"
+
+#~ msgid "Installed CDMA device"
+#~ msgstr "Installert CDMA-eining"
+
+#~ msgid "Any device"
+#~ msgstr "Eikvar eining"
+
+#~ msgid "New Mobile Broadband Connection"
+#~ msgstr "Ny mobil breibandstilkopling"
+
+#~ msgid ""
+#~ "This assistant helps you easily set up a mobile broadband connection to a "
+#~ "cellular (3G) network."
+#~ msgstr ""
+#~ "Denne vegvisaren hjelper deg å setja opp ei mobil breibandstilkopling til "
+#~ "eit 3G-nettverk."
+
+#~ msgid "You will need the following information:"
+#~ msgstr "Du treng følgjande informasjon:"
+
+#, fuzzy
+#~ msgid "Your broadband provider’s name"
+#~ msgstr "Namnet på breibandtilbydaren din"
+
+#~ msgid "Your broadband billing plan name"
+#~ msgstr "Namnet på betalingsplanen til breibandet ditt"
+
+#~ msgid "(in some cases) Your broadband billing plan APN (Access Point Name)"
+#~ msgstr ""
+#~ "(i nokre tilfelle) APN-en (namnet på tilgangspunkt) til breibandet ditt "
+#~ "sin betalingsplan"
+
+#~ msgid "Create a connection for _this mobile broadband device:"
+#~ msgstr "Lag ei tilkopling for _denne mobile breibandseininga"
+
+#~ msgid "Set up a Mobile Broadband Connection"
+#~ msgstr "Set opp ei mobil breibandstilkopling"
+
+#, fuzzy
+#~ msgid "Country or region:"
+#~ msgstr "Land eller region"
+
+#, fuzzy
+#~ msgid "Choose your Provider’s Country or Region"
+#~ msgstr "Vel landet eller regionen for leverandøren din"
+
+#~ msgid "Select your provider from a _list:"
+#~ msgstr "Vel tilbydaren din frå ei _liste:"
+
+#, fuzzy
+#~ msgid ""
+#~ "I can’t find my provider and I wish to set up the connection _manually:"
+#~ msgstr "Eg kan ikkje finna tilbydaren min og eg vil oppgje han manuelt:"
+
+#~ msgid "My provider uses GSM technology (GPRS, EDGE, UMTS, HSPA)"
+#~ msgstr "Min tilbydar brukar GSM-teknologi (GPRS, EDGE, UMTS, HSPA)"
+
+#~ msgid "My provider uses CDMA technology (1xRTT, EVDO)"
+#~ msgstr "Min tilbydar brukar CDMA-teknologi (1xRTT, EVDO)"
+
+#~ msgid "Choose your Provider"
+#~ msgstr "Vel tilbydaren din"
+
+#~ msgid "_Select your plan:"
+#~ msgstr "_Vel planen din:"
+
+#~ msgid "Selected plan _APN (Access Point Name):"
+#~ msgstr "Vald plan-_APN (namn til tilgangspunkt):"
+
+#, fuzzy
+#~ msgid ""
+#~ "Warning: Selecting an incorrect plan may result in billing issues for "
+#~ "your broadband account or may prevent connectivity.\n"
+#~ "\n"
+#~ "If you are unsure of your plan please ask your provider for your plan’s "
+#~ "APN."
+#~ msgstr ""
+#~ "Åtvaring: Å velja feil betalingsplan kan føra til at du vert trekt for "
+#~ "feile beløp eller at du ikkje får kopla deg til.\n"
+#~ "\n"
+#~ "Kontakt tilbydaren din om du er usikker på kva for plan du har."
+
+#~ msgid "Choose your Billing Plan"
+#~ msgstr "Vel betalingsplanen din"
+
+#~ msgid ""
+#~ "Your mobile broadband connection is configured with the following "
+#~ "settings:"
+#~ msgstr ""
+#~ "Den mobile breibandstilkoplinga er set opp med følgjande innstillingar:"
+
+#~ msgid "Your Device:"
+#~ msgstr "Di eining:"
+
+#~ msgid "Your Provider:"
+#~ msgstr "Din tilbydar:"
+
+#~ msgid "Your Plan:"
+#~ msgstr "Din plan:"
+
+#, fuzzy
+#~ msgid ""
+#~ "A connection will now be made to your mobile broadband provider using the "
+#~ "settings you selected. If the connection fails or you cannot access "
+#~ "network resources, double-check your settings. To modify your mobile "
+#~ "broadband connection settings, choose “Network Connections” from the "
+#~ "System → Preferences menu."
+#~ msgstr ""
+#~ "Vil no kopla til ditt mobile breiband med dei innstillingane du vel. "
+#~ "Dobbelsjekk innstillingane dine om tilkoplinga feilar eller du ikkje får "
+#~ "tilgang til nettverksressursar. Vel «Nettverkstilkoplingar» frå «System → "
+#~ "Nettverkstilkoplingar» for å endra innstillingane til den mobile "
+#~ "breibandstilkoplinga di."
+
+#~ msgid "Confirm Mobile Broadband Settings"
+#~ msgstr "Stadfest innstillingar for mobilt breiband"
+
+#, fuzzy
+#~ msgid "(None)"
+#~ msgstr "(ingen)"
+
+#, fuzzy, c-format
+#~ msgid "Certificate in %s"
+#~ msgstr "C_A-sertifikat:"
+
+#, fuzzy
+#~ msgid "(Unknown)"
+#~ msgstr "Ukjend"
+
+#, fuzzy, c-format
+#~ msgid "Choose a %s Certificate"
+#~ msgstr "Vel ditt personlege sertifikat …"
+
+#, fuzzy, c-format
+#~ msgid "%s certificate _password"
+#~ msgstr "Br_ukarsertifikat:"
+
+#, fuzzy
+#~ msgid "Error opening a session: "
+#~ msgstr "Feil under redigering av tilkopling"
+
+#, fuzzy
+#~ msgid "_Unlock token"
+#~ msgstr "_Lås opp"
+
+#, fuzzy
+#~ msgid "Ask for this password every time"
+#~ msgstr "S_pør etter dette passordet kvar gong"
+
+#, fuzzy
+#~ msgid "The password is not required"
+#~ msgstr "Passord krevst for å kopla til «%s»."
+
+#, fuzzy
+#~ msgid "Sh_ow passwords"
+#~ msgstr "_Vis passord"
+
+#, fuzzy
+#~ msgid "_Tertiary Password:"
+#~ msgstr "_Passord:"
+
+#, fuzzy
+#~ msgid "_Secondary Password:"
+#~ msgstr "_Passord:"
+
+#~ msgid "_Password:"
+#~ msgstr "_Passord:"
+
+#, fuzzy
+#~ msgid "Click to connect"
+#~ msgstr "Kopla frå"
+
+#~ msgctxt "Wifi/wired security"
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#, fuzzy
+#~ msgid "Dynamic WEP (802.1x)"
+#~ msgstr "Dynamisk WEP (802.1X)"
+
+#~ msgid "C_reate"
+#~ msgstr "L_ag"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Passwords or encryption keys are required to access the Wi-Fi network "
+#~ "“%s”."
+#~ msgstr ""
+#~ "Passord eller krypteringsnøklar er nødvendig for å kopla til det "
+#~ "trådlause nettverket «%s»."
+
+#, fuzzy
+#~ msgid "Wi-Fi Network Authentication Required"
+#~ msgstr "Autentisering for trådlaust nettverk påkravd"
+
+#, fuzzy
+#~ msgid "Authentication required by Wi-Fi network"
+#~ msgstr "Autentisering er påkravd av det trådlause nettverket"
+
+#, fuzzy
+#~ msgid "Create New Wi-Fi Network"
+#~ msgstr "Opprett nytt trådlaust nettverk"
+
+#, fuzzy
+#~ msgid "New Wi-Fi network"
+#~ msgstr "Nytt trådlaust nettverk"
+
+#, fuzzy
+#~ msgid "Enter a name for the Wi-Fi network you wish to create."
+#~ msgstr "Oppgje eit namn på det trådlause nettverket du ønskjer å oppretta."
+
+#, fuzzy
+#~ msgid "Connect to Hidden Wi-Fi Network"
+#~ msgstr "Kopla til eit gøymt trådlaust nettverk"
+
+#, fuzzy
+#~ msgid "Hidden Wi-Fi network"
+#~ msgstr "Gøymt trådlaust nettverk"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter the name and security details of the hidden Wi-Fi network you wish "
+#~ "to connect to."
+#~ msgstr ""
+#~ "Oppgje namnet og tryggleiksdetaljane til det gøymde trådlause nettverket "
+#~ "du ynskjer å kopla til."
+
+#, fuzzy
+#~ msgid "Wi-Fi _security"
+#~ msgstr "Tr_ådlaus tryggleik:"
+
+#, fuzzy
+#~ msgid "C_onnection"
+#~ msgstr "Tilkopli_ng:"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter"
+#~ msgstr "Trådlaust _kort:"
+
+#, fuzzy
+#~ msgid "I can’t find my provider and I wish to enter it _manually:"
+#~ msgstr "Eg kan ikkje finna tilbydaren min og eg vil oppgje han manuelt:"
+
+#~ msgid "Provider:"
+#~ msgstr "Tilbydar:"
+
+#~ msgid "Country or Region List:"
+#~ msgstr "Liste over land eller regionar:"
+
+#~ msgid "Country or region"
+#~ msgstr "Land eller region"
+
+#, fuzzy
+#~ msgid "Wi-Fi _security:"
+#~ msgstr "Tr_ådlaus tryggleik:"
+
+#~ msgid "_Network name:"
+#~ msgstr "_Nettverksnamn:"
+
+#~ msgid "C_onnection:"
+#~ msgstr "Tilkopli_ng:"
+
+#, fuzzy
+#~ msgid "Wi-Fi _adapter:"
+#~ msgstr "Trådlaust _kort:"
+
+#~ msgid "%s (default)"
+#~ msgstr "%s (forvald)"
+
+#~ msgid "Ignored"
+#~ msgstr "Ignorert"
+
+#~ msgid "Failed to update connection secrets due to an unknown error."
+#~ msgstr "Klarte ikkje å oppdatera tilkoplingsløyndom pga. ein ukjend feil."
+
+#, fuzzy
+#~ msgid "2:"
+#~ msgstr "2"
+
+#, fuzzy
+#~ msgid "3:"
+#~ msgstr "3"
+
+#, fuzzy
+#~ msgid "4:"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgid "Connection _priority for auto-activation:"
+#~ msgstr "Tilkoplings_informasjon"
+
+#~ msgid "DSL"
+#~ msgstr "DSL"
+
+#~ msgid "Cannot import VPN connection"
+#~ msgstr "Klarte ikkje importera VPN-tilkopling"
+
+#, fuzzy
+#~ msgid ""
+#~ "The file “%s” could not be read or does not contain recognized VPN "
+#~ "connection information\n"
+#~ "\n"
+#~ "Error: %s."
+#~ msgstr ""
+#~ "Fila «%s» kunne ikkje lesast eller inneheld ikkje gjenkjend VPN- "
+#~ "tilkoplingssinformasjon\n"
+#~ "\n"
+#~ "Feil: %s"
+
+#, fuzzy
+#~ msgid "unknown error"
+#~ msgstr "Ukjend feil"
+
+#, fuzzy
+#~ msgid "Choose a Certificate Authority certificate"
+#~ msgstr "Vel eit sertifikatautorisert sertifikat (CA) …"
+
+#~ msgid "C_A certificate:"
+#~ msgstr "C_A-sertifikat:"
+
+#, fuzzy
+#~ msgid "NetworkManager for GNOME"
+#~ msgstr "Panelprogram for NetworkManager"
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected because the VPN service stopped."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-tilkoplinga «%s» vart fråkopla fordi VPN-tenesta vart stoppa."
+
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection '%s' disconnected."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-tilkoplinga «%s» er kopla frå."
+
+#~ msgid "_Disconnect VPN"
+#~ msgstr "Ko_pla frå VPN …"
+
+#, fuzzy
+#~ msgid "New Mobile Broadband connection..."
+#~ msgstr "Ny mobil breibandstilkopling"
+
+#, fuzzy
+#~ msgid "_Connect to Hidden Wi-Fi Network..."
+#~ msgstr "_Kopla til eit gøymt trådlaust nettverk …"
+
+#, fuzzy
+#~ msgid "Create _New Wi-Fi Network..."
+#~ msgstr "Opprett _nytt trådlaust nettverk …"
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Aut_onegotiate"
+#~ msgstr "F_orhandla automatisk"
+
+#, fuzzy
+#~ msgid "FirewallD is not running."
+#~ msgstr "NetworkManager køyrer ikkje …"
+
+#~ msgid "New..."
+#~ msgstr "Ny …"
+
+#, fuzzy
+#~ msgid "invalid EAP-TLS CA certificate: %s"
+#~ msgstr "C_A-sertifikat:"
+
+#~ msgid "Unencrypted private keys are insecure"
+#~ msgstr "Ukrypterte private nøklar er utrygge"
+
+#~ msgid ""
+#~ "The selected private key does not appear to be protected by a password.  "
+#~ "This could allow your security credentials to be compromised.  Please "
+#~ "select a password-protected private key.\n"
+#~ "\n"
+#~ "(You can password-protect your private key with openssl)"
+#~ msgstr ""
+#~ "Det ser ikkje ut til at den valde private nøkkelen er verna av eit "
+#~ "passord. Dette kan føra til at dine tyggleiksakkreditiva kan koma på "
+#~ "avvege. Vel eit passordverna privat nøkkel.\n"
+#~ "\n"
+#~ "(Du kan passordverna din private nøkkel med OpenSSL)"
+
+#~ msgid "Choose your private key..."
+#~ msgstr "Vel din private nøkkel …"
+
+#~ msgid "New Mobile Broadband (CDMA) connection..."
+#~ msgstr "Ny mobil breibandstilkopling (CDMA) …"
+
+#~ msgid "You are now connected to the CDMA network."
+#~ msgstr "Du er no kopla til eit CDMA-nettverk."
+
+#~ msgid "CDMA network."
+#~ msgstr "CDMA-nettverk."
+
+#~ msgid "New Mobile Broadband (GSM) connection..."
+#~ msgstr "Ny mobil breibandtilkopling (GSM) …"
+
+#~ msgid "You are now connected to the GSM network."
+#~ msgstr "Du er no kopla til eit GSM-nettverk."
+
+#~ msgid "GSM network."
+#~ msgstr "GSM-nettverk"
+
+#~ msgid "Wireless Networks (%s)"
+#~ msgstr "Trådlause nettverk (%s)"
+
+#~ msgid "Wireless Network (%s)"
+#~ msgstr "Trådlaust nettverk (%s)"
+
+#~ msgid "wireless is disabled"
+#~ msgstr "trådlaus er slått av"
+
+#~ msgid "wireless is disabled by hardware switch"
+#~ msgstr "trådlaus er slått av med brytar"
+
+#~ msgid "Configuring wireless network connection '%s'..."
+#~ msgstr "Set opp trådlaus nettverkstilkopling «%s» …"
+
+#~ msgid "Requesting a wireless network address for '%s'..."
+#~ msgstr "Ber om ei nettverksadresse for det trådlaust nettverket «%s» …"
+
+#~ msgid "Wireless network connection '%s' active"
+#~ msgstr "Trådlaus nettverkstilkopling «%s» er i bruk"
+
+#~ msgid "WiMAX Mobile Broadband (%s)"
+#~ msgstr "WiMAX mobilt breiband (%s)"
+
+#~ msgid "WiMAX Mobile Broadband"
+#~ msgstr "WiMAX mobilt breiband"
+
+#~ msgid "You are now connected to the WiMAX network."
+#~ msgstr "Du er no kopla til WiMAX-nettverket."
+
+#~ msgid "%d dB"
+#~ msgstr "%d dB"
+
+#~ msgctxt "WiMAX CINR"
+#~ msgid "unknown"
+#~ msgstr "ukjend"
+
+#~ msgctxt "WiMAX Base Station ID"
+#~ msgid "unknown"
+#~ msgstr "ukjend"
+
+#~ msgid "WiMAX (%s)"
+#~ msgstr "WiMAX (%s)"
+
+#~ msgid "CINR:"
+#~ msgstr "CINR:"
+
+#~ msgid "BSID:"
+#~ msgstr "BSID:"
+
+#~ msgid "Enable WiMA_X Mobile Broadband"
+#~ msgstr "Slå på WiMA_X mobilt breiband"
+
+#~ msgid "_Help"
+#~ msgstr "_Hjelp"
+
+#~ msgid "Any"
+#~ msgstr "Kva som helst"
+
+#~ msgid "3G (UMTS/HSPA)"
+#~ msgstr "3G (UMTS/HSPA)"
+
+#~ msgid "2G (GPRS/EDGE)"
+#~ msgstr "2G (GPRS/EDGE)"
+
+#~ msgid "Prefer 3G (UMTS/HSPA)"
+#~ msgstr "Føretrekk 3G (UMTS/HSPA)"
+
+#~ msgid "Prefer 2G (GPRS/EDGE)"
+#~ msgstr "Føretrekk 2G (GPRS/EDGE)"
+
+#~ msgid "_Device MAC address:"
+#~ msgstr "_MAC-adresse for eining:"
+
+#~ msgid "Infrastructure"
+#~ msgstr "Infrastruktur"
+
+#~ msgid "Automatic (PPP)"
+#~ msgstr "Automatisk (PPP)"
+
+#~ msgid "Automatic (PPP) addresses only"
+#~ msgstr "Berre automatiske (PPP-) adresser"
+
+#~ msgid "Could not load Wired Security security user interface."
+#~ msgstr ""
+#~ "Klarte ikkje lasta brukargrensesnittet for kabla nettverkstryggleik."
+
+#~ msgid "Wireless"
+#~ msgstr "Trådlaus"
+
+#~ msgid "_Save..."
+#~ msgstr "_Lagra …"
+
+#~ msgid "A_vailable to all users"
+#~ msgstr "_Tilgjengeleg til alle brukarar"
+
+#~ msgid "Error saving connection"
+#~ msgstr "Klarte ikkje lagra tilkopling"
+
+#~ msgid "The property '%s' / '%s' is invalid: %d"
+#~ msgstr "Eigenskapen «%s» eller «%s» er ugyldig: %d"
+
+#~ msgid "An unknown error occurred."
+#~ msgstr "Ein ukjend feil oppstod."
+
+#~ msgid "Could not edit new connection"
+#~ msgstr "Klarte ikkje redigera ny tilkopling"
+
+#~ msgid "Could not edit imported connection"
+#~ msgstr "Klarte ikkje redigera importert tilkopling"
+
+#~ msgid "No VPN plugin available. Please install one to enable this button."
+#~ msgstr ""
+#~ "Ingen VPN-tillegg tilgjengelege. Installer eit for å aktivera denne "
+#~ "knappen."
+
+#~ msgid "_Edit..."
+#~ msgstr "R_ediger …"
+
+#~ msgid "_Delete..."
+#~ msgstr "_Slett …"
+
+#~ msgid "Don't know how to edit '%s' connections"
+#~ msgstr "Veit ikkje korleis «%s»-tilkoplingar vert endra"
+
+#~ msgid "Your phone is now ready to use!"
+#~ msgstr "Telefonen din er no klar til bruk!"
+
+#~ msgid "%s Network"
+#~ msgstr "%s-nettverk"
+
+#~ msgid "Error: %s"
+#~ msgstr "Feil: %s"
+
+#~ msgid "Mobile wizard was canceled"
+#~ msgstr "Mobilvegvisaren vart avbroten"
+
+#~ msgid "Unknown phone device type (not GSM or CDMA)"
+#~ msgstr "Ukjend telefoneiningstype (ikkje GSM eller CDMA)"
+
+#~ msgid "unexpectedly disconnected from the phone."
+#~ msgstr "uventa kopla frå telefonen."
+
+#~ msgid "timed out detecting phone details."
+#~ msgstr "tidsavbrot under oppdaging av telefondetaljar."
+
+#~ msgid "Detecting phone configuration..."
+#~ msgstr "Oppdagar telefoninnstillingar …"
+
+#~ msgid ""
+#~ "The default Bluetooth adapter must be enabled before setting up a Dial-Up-"
+#~ "Networking connection."
+#~ msgstr ""
+#~ "Den forvalde blåtannadapteren må vera påslått før du kan setja opp ei "
+#~ "oppringt tilkopling."
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (failed to connect to D-Bus: %s)."
+#~ msgstr ""
+#~ "Ikkje mogleg å setja opp blåtann (klarte ikkje kopla til D-Bus: %s)."
+
+#~ msgid "Bluetooth configuration not possible (failed to create D-Bus proxy)."
+#~ msgstr ""
+#~ "Ikkje mogleg å setja opp blåtann (klarte ikkje oppretta D-Bus-"
+#~ "mellomtenar)."
+
+#~ msgid ""
+#~ "Bluetooth configuration not possible (error finding NetworkManager: %s)."
+#~ msgstr ""
+#~ "Ikkje mogleg å setja opp blåtann (klarte ikkje finna NetworkManager: %s)"
+
+#~ msgid "Use your mobile phone as a network device (PAN/NAP)"
+#~ msgstr "Bruk mobiltelefonen din som ei nettverkseining (PAN/NAP)"
+
+#~ msgid "Access the Internet using your mobile phone (DUN)"
+#~ msgstr "Få tilgang til Internettet ved å bruka mobiltelefonen din (DUN)"
+
+#~ msgid "WiMAX"
+#~ msgstr "WiMAX"
+
+#~ msgid "No Certificate Authority certificate chosen"
+#~ msgstr "Ingen sertifikatautoriserte sertifikat er valde"
+
+#~ msgid ""
+#~ "Not using a Certificate Authority (CA) certificate can result in "
+#~ "connections to insecure, rogue wireless networks.  Would you like to "
+#~ "choose a Certificate Authority certificate?"
+#~ msgstr ""
+#~ "Å ikkje bruka eit sertifikatautorisert sertifikat (CA) kan resultera i "
+#~ "tilkoplingar til usikre og villeiande trådlause nettverk. Vil du velja "
+#~ "eit sertifikatautorisert sertifikat?"
+
+#~ msgid "_Security:"
+#~ msgstr "Try_ggleik:"
