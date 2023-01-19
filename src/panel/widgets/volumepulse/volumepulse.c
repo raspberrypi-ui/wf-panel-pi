@@ -395,11 +395,10 @@ void volumepulse_init (VolumePulsePlugin *vol)
     /* Allocate and initialize plugin context */
     //VolumePulsePlugin *vol = g_new0 (VolumePulsePlugin, 1);
 
-#ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-#endif
+    textdomain (GETTEXT_PACKAGE);
 
     /* Allocate top level widget and set into plugin widget pointer */
     //vol->panel = panel;

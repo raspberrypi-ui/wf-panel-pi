@@ -94,11 +94,10 @@ void netman_init (NMApplet *nm)
     /* Allocate and initialize plugin context */
     //NMApplet *nm = g_new0 (NMApplet, 1);
 
-#ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-#endif
+    textdomain (GETTEXT_PACKAGE);
 
     /* Allocate top level widget and set into plugin widget pointer. */
     //nm->panel = panel;

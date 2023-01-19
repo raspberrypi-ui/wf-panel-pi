@@ -1,8 +1,8 @@
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <locale.h>
 #include <gtk-layer-shell/gtk-layer-shell.h>
 
-#define GETTEXT_PACKAGE "wf-panel"
 #define MENU_ICON_SPACE 6
 
 extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);

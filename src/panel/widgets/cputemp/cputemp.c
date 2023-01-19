@@ -333,11 +333,10 @@ void cputemp_update_display (CPUTempPlugin *c)
 /* Plugin constructor. */
 void cputemp_init (CPUTempPlugin *c)
 {
-#ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-#endif
+    textdomain (GETTEXT_PACKAGE);
 
     /* Allocate icon as a child of top level */
     c->graph.da = gtk_image_new ();
