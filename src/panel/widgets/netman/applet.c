@@ -183,7 +183,7 @@ static int add_hotspots (const GPtrArray *all_devices, const GPtrArray *all_conn
 
 static void nma_menu_add_wifi_switch_item (GtkWidget *menu, NMApplet *applet)
 {
-	GtkWidget *menu_item = gtk_menu_item_new_with_label (nm_client_wireless_get_enabled (applet->nm_client) ? _("Turn Off Wireless LAN") : _("Turn On Wireless LAN"));
+	GtkWidget *menu_item = gtk_menu_item_new_with_mnemonic (nm_client_wireless_get_enabled (applet->nm_client) ? _("_Turn Off Wireless LAN") : _("_Turn On Wireless LAN"));
 	gtk_widget_show_all (menu_item);
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 	g_signal_connect (menu_item, "activate", G_CALLBACK (nma_set_wifi_enabled_cb), applet);
@@ -1914,9 +1914,9 @@ nma_menu_add_vpn_submenu (GtkWidget *menu, NMApplet *applet)
 #endif
 
 #ifdef LXPANEL_PLUGIN
-	item = GTK_MENU_ITEM (gtk_menu_item_new_with_label (_("Advanced Options")));
+	item = GTK_MENU_ITEM (gtk_menu_item_new_with_mnemonic (_("_Advanced Options")));
 #else
-	item = GTK_MENU_ITEM (gtk_menu_item_new_with_label (_("VPN Connections")));
+	item = GTK_MENU_ITEM (gtk_menu_item_new_with_mnemonic (_("_VPN Connections")));
 #endif
 	gtk_menu_item_set_submenu (item, GTK_WIDGET (vpn_menu));
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), GTK_WIDGET (item));
@@ -1970,11 +1970,11 @@ nma_menu_add_vpn_submenu (GtkWidget *menu, NMApplet *applet)
 #ifndef LXPANEL_PLUGIN
 	if (list->len) {
 		nma_menu_add_separator_item (GTK_WIDGET (vpn_menu));
-		item = GTK_MENU_ITEM (gtk_menu_item_new_with_label (_("Configure VPN…")));
+		item = GTK_MENU_ITEM (gtk_menu_item_new_with_mnemonic (_("_Configure VPN…")));
 		g_signal_connect (item, "activate", G_CALLBACK (nma_menu_configure_vpn_item_activate), applet);
 	} else {
 #endif
-		item = GTK_MENU_ITEM (gtk_menu_item_new_with_label (_("Add a VPN connection…")));
+		item = GTK_MENU_ITEM (gtk_menu_item_new_with_mnemonic (_("_Add a VPN connection…")));
 		g_signal_connect (item, "activate", G_CALLBACK (nma_menu_add_vpn_item_activate), applet);
 #ifndef LXPANEL_PLUGIN
 	}
@@ -1986,7 +1986,7 @@ nma_menu_add_vpn_submenu (GtkWidget *menu, NMApplet *applet)
 	nma_menu_add_separator_item (GTK_WIDGET (vpn_menu));
 
 	/* 'Connection Information' item */
-	applet->info_menu_item = gtk_menu_item_new_with_label (_("Connection Information"));
+	applet->info_menu_item = gtk_menu_item_new_with_mnemonic (_("Connection _Information"));
 	g_signal_connect_swapped (applet->info_menu_item,
 	                          "activate",
 	                          G_CALLBACK (applet_connection_info_cb),
@@ -1994,7 +1994,7 @@ nma_menu_add_vpn_submenu (GtkWidget *menu, NMApplet *applet)
 	gtk_menu_shell_append (GTK_MENU_SHELL (vpn_menu), applet->info_menu_item);
 
 	/* 'Edit Connections...' item */
-	applet->connections_menu_item = gtk_menu_item_new_with_label (_("Edit Connections…"));
+	applet->connections_menu_item = gtk_menu_item_new_with_mnemonic (_("Edit Connections…"));
 	g_signal_connect (applet->connections_menu_item,
 				   "activate",
 				   G_CALLBACK (nma_edit_connections_cb),
@@ -2348,7 +2348,7 @@ static void nma_context_menu_populate (NMApplet *applet, GtkMenu *menu)
 	}
 
 	/* 'Enable Networking' item */
-	applet->networking_enabled_item = gtk_check_menu_item_new_with_label (_("Enable Networking"));
+	applet->networking_enabled_item = gtk_check_menu_item_new_with_mnemonic (_("Enable _Networking"));
 	id = g_signal_connect (applet->networking_enabled_item,
 	                       "toggled",
 	                       G_CALLBACK (nma_set_networking_enabled_cb),
@@ -2357,7 +2357,7 @@ static void nma_context_menu_populate (NMApplet *applet, GtkMenu *menu)
 	gtk_menu_shell_append (menu_shell, applet->networking_enabled_item);
 
 	/* 'Enable Wi-Fi' item */
-	applet->wifi_enabled_item = gtk_check_menu_item_new_with_label (_("Enable Wi-Fi"));
+	applet->wifi_enabled_item = gtk_check_menu_item_new_with_mnemonic (_("Enable _Wi-Fi"));
 	id = g_signal_connect (applet->wifi_enabled_item,
 	                       "toggled",
 	                       G_CALLBACK (nma_set_wifi_enabled_cb),
@@ -2366,7 +2366,7 @@ static void nma_context_menu_populate (NMApplet *applet, GtkMenu *menu)
 	gtk_menu_shell_append (menu_shell, applet->wifi_enabled_item);
 
 	/* 'Enable Mobile Broadband' item */
-	applet->wwan_enabled_item = gtk_check_menu_item_new_with_label (_("Enable Mobile Broadband"));
+	applet->wwan_enabled_item = gtk_check_menu_item_new_with_mnemonic (_("Enable _Mobile Broadband"));
 	id = g_signal_connect (applet->wwan_enabled_item,
 	                       "toggled",
 	                       G_CALLBACK (nma_set_wwan_enabled_cb),
@@ -2378,7 +2378,7 @@ static void nma_context_menu_populate (NMApplet *applet, GtkMenu *menu)
 
 	if (!INDICATOR_ENABLED (applet)) {
 		/* Toggle notifications item */
-		applet->notifications_enabled_item = gtk_check_menu_item_new_with_label (_("Enable Notifications"));
+		applet->notifications_enabled_item = gtk_check_menu_item_new_with_mnemonic (_("Enable N_otifications"));
 		id = g_signal_connect (applet->notifications_enabled_item,
 			                   "toggled",
 			                   G_CALLBACK (nma_set_notifications_enabled_cb),
@@ -2390,7 +2390,7 @@ static void nma_context_menu_populate (NMApplet *applet, GtkMenu *menu)
 	}
 
 	/* 'Connection Information' item */
-	applet->info_menu_item = gtk_menu_item_new_with_label (_("Connection Information"));
+	applet->info_menu_item = gtk_menu_item_new_with_mnemonic (_("Connection _Information"));
 	g_signal_connect_swapped (applet->info_menu_item,
 	                          "activate",
 	                          G_CALLBACK (applet_connection_info_cb),
@@ -2398,7 +2398,7 @@ static void nma_context_menu_populate (NMApplet *applet, GtkMenu *menu)
 	gtk_menu_shell_append (menu_shell, applet->info_menu_item);
 
 	/* 'Edit Connections...' item */
-	applet->connections_menu_item = gtk_menu_item_new_with_label (_("Edit Connections…"));
+	applet->connections_menu_item = gtk_menu_item_new_with_mnemonic (_("Edit Connections…"));
 	g_signal_connect (applet->connections_menu_item,
 				   "activate",
 				   G_CALLBACK (nma_edit_connections_cb),
@@ -2412,7 +2412,7 @@ static void nma_context_menu_populate (NMApplet *applet, GtkMenu *menu)
 		/* About item */
 		GtkWidget *menu_item;
 
-		menu_item = gtk_menu_item_new_with_label (_("About"));
+		menu_item = gtk_menu_item_new_with_mnemonic (_("_About"));
 		g_signal_connect_swapped (menu_item, "activate", G_CALLBACK (applet_about_dialog_show), applet);
 		gtk_menu_shell_append (menu_shell, menu_item);
 	}
