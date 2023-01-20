@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXPanel 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2012-10-09 12:57+0200\n"
 "Last-Translator: Mișu <dumol@l10n.ro>\n"
 "Language-Team: Romanian <diacritice@googlegroups.com>\n"
@@ -766,7 +766,8 @@ msgstr "Autentificare DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Anulează"
 
@@ -1222,6 +1223,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Autentificare 802.1X"
 
@@ -1653,6 +1655,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "nu s-a putut găsi dispozitivul Bluetooth."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Co_nexiune:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "_Nume rețea:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Deblochează"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Detalii conexiune"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Gestionează conexiunile la rețea"
 
@@ -1683,10 +1711,6 @@ msgstr "nu s-a putut găsi dispozitivul Bluetooth."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Gestionează și modifică opțiunile conexiunilor de rețea"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "_Nume rețea:"
 
 #, fuzzy
 #~ msgid ""
@@ -3120,12 +3144,6 @@ msgstr "nu s-a putut găsi dispozitivul Bluetooth."
 #~ msgid "Export VPN connection…"
 #~ msgstr "Exportare conexiune VPN..."
 
-#~ msgid "_Unlock"
-#~ msgstr "_Deblochează"
-
-#~ msgid "Connection Information"
-#~ msgstr "Detalii conexiune"
-
 #~ msgid "Usage:"
 #~ msgstr "Utilizare:"
 
@@ -3601,10 +3619,6 @@ msgstr "nu s-a putut găsi dispozitivul Bluetooth."
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Secur_itatea rețelei fără fir:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "Co_nexiune:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

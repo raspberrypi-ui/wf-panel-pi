@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel 0.3.99\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2016-11-01 00:05+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -756,7 +756,8 @@ msgstr "Ověření DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Storno"
 
@@ -1191,6 +1192,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Selhal zápis připojení do VPN UI: neúplný zápis"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Ověření 802.1X"
 
@@ -1620,6 +1622,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "neplatné zařízení Bluetooth (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Přip_ojení"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Název sítě"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "Odemkno_ut"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Automaticky odemykat toto zařízení"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Informace o spojení"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Zavřít"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Spravujte svá síťová připojení"
 
@@ -1648,9 +1676,6 @@ msgstr "neplatné zařízení Bluetooth (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Spravujte a měňte svá nastavení síťových připojení"
-
-#~ msgid "_Network name"
-#~ msgstr "_Název sítě"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3862,15 +3887,6 @@ msgstr "neplatné zařízení Bluetooth (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Exportovat připojení k VPN…"
 
-#~ msgid "_Unlock"
-#~ msgstr "Odemkno_ut"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Automaticky odemykat toto zařízení"
-
-#~ msgid "Connection Information"
-#~ msgstr "Informace o spojení"
-
 #~ msgid "Usage:"
 #~ msgstr "Použití:"
 
@@ -4440,9 +4456,6 @@ msgstr "neplatné zařízení Bluetooth (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Zabezpečení _Wi-Fi"
-
-#~ msgid "C_onnection"
-#~ msgstr "Přip_ojení"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "_Adaptér Wi-Fi"

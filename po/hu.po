@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2016-11-08 16:39+0100\n"
 "Last-Translator: Peter Czifra <czifi@freestart.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -767,7 +767,8 @@ msgstr "DSL hitelesítés"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "Mé_gse"
 
@@ -1200,6 +1201,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Nem sikerült kiírni a kapcsolatot a VPN felületre: hiányos kiírás"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X hitelesítés"
 
@@ -1633,6 +1635,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "érvénytelen Bluetooth eszköz (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "_Kapcsolat"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Hálózatnév"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Feloldás"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Eszköz automatikus feloldása"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Kapcsolatinformációk"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Bezárás"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Hálózati kapcsolatok kezelése"
 
@@ -1661,9 +1689,6 @@ msgstr "érvénytelen Bluetooth eszköz (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Hálózati kapcsolatok beállításainak kezelése és módosítása"
-
-#~ msgid "_Network name"
-#~ msgstr "_Hálózatnév"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3886,15 +3911,6 @@ msgstr "érvénytelen Bluetooth eszköz (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN kapcsolat exportálása…"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Feloldás"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Eszköz automatikus feloldása"
-
-#~ msgid "Connection Information"
-#~ msgstr "Kapcsolatinformációk"
-
 #~ msgid "Usage:"
 #~ msgstr "Használat:"
 
@@ -4484,9 +4500,6 @@ msgstr "érvénytelen Bluetooth eszköz (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Wi-Fi _biztonság"
-
-#~ msgid "C_onnection"
-#~ msgstr "_Kapcsolat"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "Wi-Fi _csatoló"

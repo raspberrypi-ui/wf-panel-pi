@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2009-12-08 18:15+0100\n"
 "Last-Translator: Sankarshan <sankarshan.mukhopadhyay@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -770,7 +770,8 @@ msgstr "DSL অনুমোদন"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1235,6 +1236,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "তারযুক্ত 802.1X অনুমোদন ব্যবস্থা"
@@ -1665,6 +1667,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ব্লু-টুথ ডিভাইস পাওয়া যায়নি।"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "সংযোগ: (_n)"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "নেটওয়ার্কের নাম: (_N)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "আন-লক করুন: (_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "সংযোগ সংক্রান্ত তথ্য"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #, fuzzy
 #~ msgid "Manage your network connections"
 #~ msgstr "নেটওয়ার্ক সংযোগ নিয়ন্ত্রণ করুন"
@@ -1683,10 +1711,6 @@ msgstr "ব্লু-টুথ ডিভাইস পাওয়া যায়ন�
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "আপনার নেটওয়ার্ক সংযোগ বৈশিষ্ট্য সম্পাদন ও পরিবর্তন করুন"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "নেটওয়ার্কের নাম: (_N)"
 
 #, fuzzy
 #~ msgid ""
@@ -3068,12 +3092,6 @@ msgstr "ব্লু-টুথ ডিভাইস পাওয়া যায়ন�
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN সংযোগ এক্সপোর্ট করুন..."
 
-#~ msgid "_Unlock"
-#~ msgstr "আন-লক করুন: (_U)"
-
-#~ msgid "Connection Information"
-#~ msgstr "সংযোগ সংক্রান্ত তথ্য"
-
 #~ msgid "Usage:"
 #~ msgstr "ব্যবহার:"
 
@@ -3539,10 +3557,6 @@ msgstr "ব্লু-টুথ ডিভাইস পাওয়া যায়ন�
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "নিরাপত্তা: (_S)"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "সংযোগ: (_n)"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

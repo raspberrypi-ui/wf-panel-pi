@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2012-09-29 13:19+0200\n"
 "Last-Translator: Daniel Martinez <entaltoaragon@gmail.com>\n"
 "Language-Team: Aragonés <softaragones@googlegroups.com>\n"
@@ -772,7 +772,8 @@ msgstr "Autenticación DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1228,6 +1229,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "Autenticación DSL"
@@ -1653,6 +1655,33 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr ""
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "C_onexion:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "_Nome d'o rete:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Desbloqueyar"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+#, fuzzy
+msgid "Automatically unlock this device"
+msgstr "Desbloquiar automaticament iste dispositivo"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Informacion d'a conexion"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Chestione as suyas conexions de rete"
 
@@ -1670,10 +1699,6 @@ msgstr ""
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Chestione y cambee os suyos achustes d'a connexión de ret"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "_Nome d'o rete:"
 
 #, fuzzy
 #~ msgid ""
@@ -3006,16 +3031,6 @@ msgstr ""
 #~ msgid "Export VPN connection…"
 #~ msgstr "Exportar connexión VPN…"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Desbloqueyar"
-
-#, fuzzy
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Desbloquiar automaticament iste dispositivo"
-
-#~ msgid "Connection Information"
-#~ msgstr "Informacion d'a conexion"
-
 #~ msgid "Usage:"
 #~ msgstr "Uso:"
 
@@ -3465,10 +3480,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "_Seguridat inalambrica:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "C_onexion:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

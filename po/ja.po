@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  Akira Ouchi <akkiesoft@marokun.net>\n"
 "Language-Team: Japanese\n"
@@ -755,7 +755,8 @@ msgstr "DSL 認証"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
@@ -1187,6 +1188,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "VPN UI への接続の書き込みに失敗しました: 不完全な書き込み"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X の認証"
 
@@ -1621,6 +1623,31 @@ msgstr "ペア(_P)"
 msgid "Searching for Bluetooth devices..."
 msgstr "Bluetooth デバイスを検索中..."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "接続(_O)"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "ネットワーク名(_N)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "アンロック(_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "自動的にこのデバイスをアンロックする"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "接続情報"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "閉じる(_C)"
+
 #~ msgid "Pairing Request"
 #~ msgstr "ペアリングのリクエスト"
 
@@ -1688,12 +1715,6 @@ msgstr "Bluetooth デバイスを検索中..."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "ネットワーク接続セッティングの管理と変更"
-
-#~ msgid "C_onnect"
-#~ msgstr "接続(_O)"
-
-#~ msgid "_Network name"
-#~ msgstr "ネットワーク名(_N)"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3992,15 +4013,6 @@ msgstr "Bluetooth デバイスを検索中..."
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN 接続をエクスポートする..."
-
-#~ msgid "_Unlock"
-#~ msgstr "アンロック(_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "自動的にこのデバイスをアンロックする"
-
-#~ msgid "Connection Information"
-#~ msgstr "接続情報"
 
 #~ msgid "Usage:"
 #~ msgstr "使用法:"

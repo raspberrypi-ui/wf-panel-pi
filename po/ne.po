@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet.network-manager-applet-0-6.ne\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2007-11-13 20:36+0545\n"
 "Last-Translator: Shyam Krishna Bal <shyamkrishna_bal@yahoo.com>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -748,7 +748,8 @@ msgstr "प्रमाणीकरण:"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1196,6 +1197,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "प्रमाणीकरण:"
@@ -1616,6 +1618,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr ""
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "जडान गर्नुहोस्"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "सञ्जाल नाम:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr ""
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "जडान जानकारी"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #, fuzzy
 #~ msgid "Manage your network connections"
 #~ msgstr "सञ्जाल जडान छैन"
@@ -1631,10 +1659,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Advanced Network Configuration"
 #~ msgstr "भीपीएन कन्फिगरेसन त्रुटि"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "सञ्जाल नाम:"
 
 #, fuzzy
 #~ msgid "Broadcast"
@@ -2139,9 +2163,6 @@ msgstr ""
 #~ msgid "Export VPN connection…"
 #~ msgstr "भीपीएन जडान"
 
-#~ msgid "Connection Information"
-#~ msgstr "जडान जानकारी"
-
 #~ msgid "GTC"
 #~ msgstr "GTC"
 
@@ -2314,10 +2335,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "ताररहित सुरक्षा:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "जडान गर्नुहोस्"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

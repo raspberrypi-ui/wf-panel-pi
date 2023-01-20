@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2017-10-03 08:36+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lietuvių <>\n"
@@ -757,7 +757,8 @@ msgstr "DSL tapatybės nustatymas"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
@@ -1197,6 +1198,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Nepavyko įrašyti ryšio į VPN UI: neužbaigtas rašymas"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X tapatybės nustatymas"
 
@@ -1631,6 +1633,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "neteisingas Bluetooth įrenginys (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "_Ryšys"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Tinklo pavadinimas"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Atrakinti"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Automatiškai atrakinti šį įrenginį"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Ryšio informacija"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Užverti"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Tvarkyti tinklo ryšius"
 
@@ -1659,9 +1687,6 @@ msgstr "neteisingas Bluetooth įrenginys (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Tvarkykite ir keiskite savo tinklo ryšių nustatymus"
-
-#~ msgid "_Network name"
-#~ msgstr "_Tinklo pavadinimas"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3984,15 +4009,6 @@ msgstr "neteisingas Bluetooth įrenginys (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Eksportuoti VPN ryšį…"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Atrakinti"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Automatiškai atrakinti šį įrenginį"
-
-#~ msgid "Connection Information"
-#~ msgstr "Ryšio informacija"
-
 #~ msgid "Usage:"
 #~ msgstr "Naudojimas:"
 
@@ -4566,9 +4582,6 @@ msgstr "neteisingas Bluetooth įrenginys (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Belaidžio ryšio _sauga"
-
-#~ msgid "C_onnection"
-#~ msgstr "_Ryšys"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "Belaidis _adapteris"

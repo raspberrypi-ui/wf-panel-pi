@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2018-05-25 11:05+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch\n"
@@ -787,7 +787,8 @@ msgstr "DSL-authenticatie"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Annuleren"
 
@@ -1245,6 +1246,7 @@ msgstr ""
 "schrijven"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X-authenticatie"
 
@@ -1683,6 +1685,33 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ongeldig Bluetooth-apparaat (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "_Verbinding"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Netwerknaam"
+
+# openen/ontgrendelen
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Ontgrendelen"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Dit apparaat automatisch ontgrendelen"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Verbindingsinformatie"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Sluiten"
+
 # geen netwerk/netwerkverbinding
 #~ msgid "Manage your network connections"
 #~ msgstr "Uw netwerkverbindingen beheren"
@@ -1713,9 +1742,6 @@ msgstr "ongeldig Bluetooth-apparaat (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "De instellingen voor uw netwerkverbindingen beheren en bewerken"
-
-#~ msgid "_Network name"
-#~ msgstr "_Netwerknaam"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -4000,16 +4026,6 @@ msgstr "ongeldig Bluetooth-apparaat (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN-verbinding exporteren…"
 
-# openen/ontgrendelen
-#~ msgid "_Unlock"
-#~ msgstr "_Ontgrendelen"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Dit apparaat automatisch ontgrendelen"
-
-#~ msgid "Connection Information"
-#~ msgstr "Verbindingsinformatie"
-
 #~ msgid "Usage:"
 #~ msgstr "Gebruik:"
 
@@ -4596,9 +4612,6 @@ msgstr "ongeldig Bluetooth-apparaat (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Wifi-_beveiliging"
-
-#~ msgid "C_onnection"
-#~ msgstr "_Verbinding"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "Wifi-_adapter"

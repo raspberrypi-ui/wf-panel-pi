@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2009-07-23 20:11+0200\n"
 "Last-Translator: Muhammad Ali Makki <makki.ma@gmail.com>\n"
 "Language-Team: Urdu <makki.ma@gmail.com>\n"
@@ -780,7 +780,8 @@ msgstr "ڈی ایس ایل DSL توثیق"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1243,6 +1244,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "وائیرڈ 802.1X توثیق"
@@ -1669,6 +1671,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "PPP wird auf Gerät %s gestartet …"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "ا_تصال:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "_نیٹ ورک کا نام:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr ""
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "اتصال کی معلومات"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #, fuzzy
 #~ msgid "Manage your network connections"
 #~ msgstr "اپنے نیٹ ورک اتصال کی ادارت کریں"
@@ -1687,10 +1715,6 @@ msgstr "PPP wird auf Gerät %s gestartet …"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "اپنے نیٹ ورک اتصال کی تبدیلی اور ادارت کریں"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "_نیٹ ورک کا نام:"
 
 #, fuzzy
 #~ msgid ""
@@ -2869,9 +2893,6 @@ msgstr "PPP wird auf Gerät %s gestartet …"
 #~ msgid "Export VPN connection…"
 #~ msgstr "وی پی این اتصال برآمد کریں..."
 
-#~ msgid "Connection Information"
-#~ msgstr "اتصال کی معلومات"
-
 #~ msgid "Usage:"
 #~ msgstr "استعمال:"
 
@@ -3317,10 +3338,6 @@ msgstr "PPP wird auf Gerät %s gestartet …"
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "_وائیرلیس سیکورٹی:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "ا_تصال:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

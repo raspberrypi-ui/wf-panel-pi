@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2018-12-23 18:15+0000\n"
 "Last-Translator: markos <jezzivi@yahoo.com>\n"
 "Language-Team: \n"
@@ -757,7 +757,8 @@ msgstr "Потврђивање идентитета ДСЛ-а"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Откажи"
 
@@ -1198,6 +1199,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Нисам успео да запишем везу на ВПН корисничко сучеље: непотпуно писање"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Потврђивање идентитета за 802.1X"
 
@@ -1628,6 +1630,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "неисправан Блутут уређај (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "_Веза:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Назив мреже"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Откључај"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Самостално откључајте овај уређај"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Подаци о вези"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Затвори"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Управљајте вашим везама мреже"
 
@@ -1656,9 +1684,6 @@ msgstr "неисправан Блутут уређај (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Управљајте и измените подешавања ваших мрежних веза"
-
-#~ msgid "_Network name"
-#~ msgstr "_Назив мреже"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3975,15 +4000,6 @@ msgstr "неисправан Блутут уређај (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Извези ВПН везу…"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Откључај"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Самостално откључајте овај уређај"
-
-#~ msgid "Connection Information"
-#~ msgstr "Подаци о вези"
-
 #~ msgid "Usage:"
 #~ msgstr "Употреба:"
 
@@ -4558,10 +4574,6 @@ msgstr "неисправан Блутут уређај (%s)"
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Бежична _безбедност:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "_Веза:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

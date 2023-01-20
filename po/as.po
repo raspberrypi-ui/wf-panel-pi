@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2014-08-20 18:20+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: Assamese <kde-i18n-doc@kde.org>\n"
@@ -762,7 +762,8 @@ msgstr "DSL প্ৰমাণীকৰণ"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1204,6 +1205,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X প্ৰমাণীকৰণ"
 
@@ -1631,6 +1633,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ব্লুটুথ ডিভাইচ পোৱা নাযায়।"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "সংযোগ (_o):"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "নেটৱৰ্কৰ নাম (_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "আনলক কৰক (_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "এই ডিভাইচ স্বচালিতভাৱে আনলক কৰক"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "সংযোগ তথ্য"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "আপোনাৰ নেটৱৰ্ক সংযোগসমূহ ব্যৱস্থাপনা কৰক"
 
@@ -1648,10 +1676,6 @@ msgstr "ব্লুটুথ ডিভাইচ পোৱা নাযায়।
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "আপোনাৰ নেটৱৰ্ক সংযোগক ব্যৱস্থাপনা আৰু সলনি কৰক"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "নেটৱৰ্কৰ নাম (_N):"
 
 #, fuzzy
 #~ msgid ""
@@ -3264,15 +3288,6 @@ msgstr "ব্লুটুথ ডিভাইচ পোৱা নাযায়।
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN সংযোগ এক্সপোৰ্ট কৰক..."
 
-#~ msgid "_Unlock"
-#~ msgstr "আনলক কৰক (_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "এই ডিভাইচ স্বচালিতভাৱে আনলক কৰক"
-
-#~ msgid "Connection Information"
-#~ msgstr "সংযোগ তথ্য"
-
 #~ msgid "Usage:"
 #~ msgstr "ব্যৱহাৰপদ্ধতি (_U):"
 
@@ -3753,10 +3768,6 @@ msgstr "ব্লুটুথ ডিভাইচ পোৱা নাযায়।
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Wi-Fi সুৰক্ষা (_s):"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "সংযোগ (_o):"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

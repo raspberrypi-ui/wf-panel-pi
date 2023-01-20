@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2017-05-25 16:59+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -756,7 +756,8 @@ msgstr "DSL аутентификациясы"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "Ба_с тарту"
 
@@ -1192,6 +1193,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X аутентификациясы"
 
@@ -1619,6 +1621,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "жарамсыз Bluetooth құрылғысы (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Ба_йланыс"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "Желі а_тауы"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "Бо_сату"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Бұл құрылғыны блоктаудан автоматты түрде босату"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Байланыс ақпараты"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Жабу"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Желілік байланыстарыңызды басқару"
 
@@ -1647,9 +1675,6 @@ msgstr "жарамсыз Bluetooth құрылғысы (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Сіздің желілік байланысыңызды басқару мен түзету"
-
-#~ msgid "_Network name"
-#~ msgstr "Желі а_тауы"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -2934,15 +2959,6 @@ msgstr "жарамсыз Bluetooth құрылғысы (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN байланысын экспорттау…"
 
-#~ msgid "_Unlock"
-#~ msgstr "Бо_сату"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Бұл құрылғыны блоктаудан автоматты түрде босату"
-
-#~ msgid "Connection Information"
-#~ msgstr "Байланыс ақпараты"
-
 #~ msgid "Usage:"
 #~ msgstr "Қолданылуы:"
 
@@ -3434,9 +3450,6 @@ msgstr "жарамсыз Bluetooth құрылғысы (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Wi-Fi қауі_псіздігі"
-
-#~ msgid "C_onnection"
-#~ msgstr "Ба_йланыс"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "Wi-Fi _құрылғысы"

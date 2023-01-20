@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2019-03-01 01:43+0000\n"
 "Last-Translator: Andriy Grytsenko <andrej@rep.kiev.ua>\n"
 "Language-Team: UKRAINIAN <translate@linux.org.ua>\n"
@@ -764,7 +764,8 @@ msgstr "Розпізнавання DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -1203,6 +1204,7 @@ msgstr ""
 "Не вдалося записати з'єднання до інтерфейсу користувача VPN: неповний запис"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Розпізнавання за 802.1X"
 
@@ -1636,6 +1638,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "некоректний пристрій Bluetooth (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "З'єднано"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Назва мережі"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Розблокувати"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Автоматично розблоковувати цей пристрій"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Інформація про з'єднання"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "За_крити"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Організуйте ваші мережеві з'єднання"
 
@@ -1664,9 +1692,6 @@ msgstr "некоректний пристрій Bluetooth (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Керування параметрами мережних з'єднань"
-
-#~ msgid "_Network name"
-#~ msgstr "_Назва мережі"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -2215,9 +2240,6 @@ msgstr "некоректний пристрій Bluetooth (%s)"
 
 #~ msgid "Datagram"
 #~ msgstr "Датаграма"
-
-#~ msgid "Connected"
-#~ msgstr "З'єднано"
 
 #~ msgid "_Transport mode"
 #~ msgstr "Ре_жим передавання даних"
@@ -4030,15 +4052,6 @@ msgstr "некоректний пристрій Bluetooth (%s)"
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "Експортування з'єднання VPN…"
-
-#~ msgid "_Unlock"
-#~ msgstr "_Розблокувати"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Автоматично розблоковувати цей пристрій"
-
-#~ msgid "Connection Information"
-#~ msgstr "Інформація про з'єднання"
 
 #~ msgid "Usage:"
 #~ msgstr "Використання:"

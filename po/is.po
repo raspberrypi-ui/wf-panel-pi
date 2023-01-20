@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2021-03-05 12:00+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -754,7 +754,8 @@ msgstr "DSL auðkenning"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Hætta við"
 
@@ -1193,6 +1194,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Mistókst að skrifa tengingu í VPN-viðmót: skrifun ekki kláruð"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X auðkenning"
 
@@ -1617,6 +1619,32 @@ msgstr "_Para"
 msgid "Searching for Bluetooth devices..."
 msgstr "Leita að Bluetooth-tækjum..."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "_Tengjast"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "Heiti _netkerfis:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Aflæsa"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Aflæsa þessu tæki sjálfkrafa"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Upplýsingar um tengingu"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Loka"
+
 #~ msgid "Pairing Request"
 #~ msgstr "Beiðni um pörun"
 
@@ -1725,13 +1753,6 @@ msgstr "Leita að Bluetooth-tækjum..."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Breyta og halda utan um nettenginguna"
-
-#~ msgid "C_onnect"
-#~ msgstr "_Tengjast"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "Heiti _netkerfis:"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3384,15 +3405,6 @@ msgstr "Leita að Bluetooth-tækjum..."
 #, fuzzy
 #~ msgid "Export VPN connection…"
 #~ msgstr "Flytja út VPN-nettengingu..."
-
-#~ msgid "_Unlock"
-#~ msgstr "_Aflæsa"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Aflæsa þessu tæki sjálfkrafa"
-
-#~ msgid "Connection Information"
-#~ msgstr "Upplýsingar um tengingu"
 
 #~ msgid "Usage:"
 #~ msgstr "Notkun:"

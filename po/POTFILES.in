@@ -60,3 +60,7 @@ src/util/wf-shell-app.cpp
 [type: gettext/glade] data/lxpanel-modal.ui
 [type: gettext/glade] data/lxplug-updater.ui
 [type: gettext/glade] data/lxplug-bluetooth.ui
+[type: gettext/glade] src/panel/widgets/netman/8021x.ui
+[type: gettext/glade] src/panel/widgets/netman/gsm-unlock.ui
+[type: gettext/glade] src/panel/widgets/netman/info.ui
+

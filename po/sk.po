@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2020-11-28 22:06+0100\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak\n"
@@ -761,7 +761,8 @@ msgstr "Overenie totožnosti k DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
@@ -1216,6 +1217,7 @@ msgstr ""
 
 # GtkDialog title
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Overenie totožnosti protokolom 802.1X"
 
@@ -1643,6 +1645,32 @@ msgstr "_Párovať"
 msgid "Searching for Bluetooth devices..."
 msgstr "Hľadanie zariadení Bluetooth..."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "Prip_ojiť"
+
+# GtkLabel label
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Názov siete"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Odomknúť"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Automaticky odomknúť toto zariadenie"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Informácie o pripojení"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Zavrieť"
+
 #~ msgid "Pairing Request"
 #~ msgstr "Požiadavka na párovanie"
 
@@ -1781,13 +1809,6 @@ msgstr "Hľadanie zariadení Bluetooth..."
 # dektop entry comment
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Spravuje a mení nastavenia vášho sieťového pripojenia"
-
-#~ msgid "C_onnect"
-#~ msgstr "Prip_ojiť"
-
-# GtkLabel label
-#~ msgid "_Network name"
-#~ msgstr "_Názov siete"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3706,15 +3727,6 @@ msgstr "Hľadanie zariadení Bluetooth..."
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "Exportovať pripojenie k VPN…"
-
-#~ msgid "_Unlock"
-#~ msgstr "_Odomknúť"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Automaticky odomknúť toto zariadenie"
-
-#~ msgid "Connection Information"
-#~ msgstr "Informácie o pripojení"
 
 #~ msgid "Usage:"
 #~ msgstr "Použitie:"

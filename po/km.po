@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2014-12-02 11:44+0000\n"
 "Last-Translator: system user <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -762,7 +762,8 @@ msgstr "ការ​ផ្ទៀងផ្ទាត់ DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1201,6 +1202,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "ការ​ផ្ទៀងផ្ទាត់ 802.1X"
 
@@ -1628,6 +1630,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "រក​មិន​ឃើញ​ឧបករណ៍​ប៊្លូធូស​ឡើយ ។"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "ការ​តភ្ជាប់៖"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "ឈ្មោះ​បណ្ដាញ៖"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "ដោះ​សោ"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "ដោះ​សោ​ឧបករណ៍​នេះ​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "ព័ត៌មាន​តភ្ជាប់"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "គ្រប់គ្រង​ការ​តភ្ជាប់បណ្ដាញ​របស់​អ្នក"
 
@@ -1645,10 +1673,6 @@ msgstr "រក​មិន​ឃើញ​ឧបករណ៍​ប៊្លូធ
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "គ្រប់គ្រង និង​ផ្លាស់ប្ដូរ​ការ​កំណត់​ការ​ភ្ជាប់​បណ្ដាញ​របស់​អ្នក"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "ឈ្មោះ​បណ្ដាញ៖"
 
 #, fuzzy
 #~ msgid ""
@@ -3210,15 +3234,6 @@ msgstr "រក​មិន​ឃើញ​ឧបករណ៍​ប៊្លូធ
 #~ msgid "Export VPN connection…"
 #~ msgstr "នាំចេញ​ការ​តភ្ជាប់ VPN..."
 
-#~ msgid "_Unlock"
-#~ msgstr "ដោះ​សោ"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "ដោះ​សោ​ឧបករណ៍​នេះ​ដោយ​ស្វ័យ​ប្រវត្តិ"
-
-#~ msgid "Connection Information"
-#~ msgstr "ព័ត៌មាន​តភ្ជាប់"
-
 #~ msgid "Usage:"
 #~ msgstr "ការ​ប្រើប្រាស់៖"
 
@@ -3671,10 +3686,6 @@ msgstr "រក​មិន​ឃើញ​ឧបករណ៍​ប៊្លូធ
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "សុវត្ថិភាព​វ៉ាយហ្វាយ៖"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "ការ​តភ្ជាប់៖"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

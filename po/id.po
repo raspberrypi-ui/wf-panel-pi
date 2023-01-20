@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2018-02-19 02:52+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -757,7 +757,8 @@ msgstr "Autentikasi DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Batal"
 
@@ -1194,6 +1195,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Gagal menulis koneksi ke UI VPN: tidak lengkap menulis"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Autentikasi 802.1X"
 
@@ -1625,6 +1627,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "perangkat Bluetooth tak valid (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Terhubung"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Nama jaringan"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "B_uka kunci"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Otomatis membuka kunci perangkat ini"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Informasi Koneksi"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Tutup"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Mengelola koneksi jaringan Anda"
 
@@ -1653,9 +1681,6 @@ msgstr "perangkat Bluetooth tak valid (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Kelola dan ubah tatanan koneksi jaringan Anda"
-
-#~ msgid "_Network name"
-#~ msgstr "_Nama jaringan"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -2191,9 +2216,6 @@ msgstr "perangkat Bluetooth tak valid (%s)"
 
 #~ msgid "Datagram"
 #~ msgstr "Datagram"
-
-#~ msgid "Connected"
-#~ msgstr "Terhubung"
 
 #~ msgid "_Transport mode"
 #~ msgstr "Mode _transport"
@@ -3974,15 +3996,6 @@ msgstr "perangkat Bluetooth tak valid (%s)"
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "Ekspor koneksi VPN…"
-
-#~ msgid "_Unlock"
-#~ msgstr "B_uka kunci"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Otomatis membuka kunci perangkat ini"
-
-#~ msgid "Connection Information"
-#~ msgstr "Informasi Koneksi"
 
 #~ msgid "Usage:"
 #~ msgstr "Penggunaan:"

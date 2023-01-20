@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2019-02-26 19:16+0000\n"
 "Last-Translator: External Translation Source <translation@rep.kiev.ua>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -759,7 +759,8 @@ msgstr "DSL autentifikācija"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "At_celt"
 
@@ -1202,6 +1203,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Neizdevās rakstīt savienojumu uz VPN UI — nepilnīga rakstīšana"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X autentifikācija"
 
@@ -1633,6 +1635,33 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "nederīga Bluetooth ierīce (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Savien_ojums:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "Tīkla _nosaukums:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Atbloķēt"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Automātiski atbloķēt šo ierīci"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Savienojuma informācija"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Aizvērt"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Pārvaldiet savus tīkla savienojumus"
 
@@ -1662,10 +1691,6 @@ msgstr "nederīga Bluetooth ierīce (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Pārvaldiet un mainiet tīkla savienojumu iestatījumus"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "Tīkla _nosaukums:"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3869,15 +3894,6 @@ msgstr "nederīga Bluetooth ierīce (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Eksportē VPN savienojumu…"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Atbloķēt"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Automātiski atbloķēt šo ierīci"
-
-#~ msgid "Connection Information"
-#~ msgstr "Savienojuma informācija"
-
 #~ msgid "Usage:"
 #~ msgstr "Lietojums:"
 
@@ -4454,10 +4470,6 @@ msgstr "nederīga Bluetooth ierīce (%s)"
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Bez_vadu drošība:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "Savien_ojums:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

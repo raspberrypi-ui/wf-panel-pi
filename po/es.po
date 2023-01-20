@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel-0.3.5.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2017-05-27 07:00+0000\n"
 "Last-Translator: haciendasanpedro <haciendasanpedro@yahoo.com>\n"
 "Language-Team: Spanish <daniel@tunki.org>\n"
@@ -759,7 +759,8 @@ msgstr "Autenticación DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -1200,6 +1201,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Falló al escribir la conexión a la IU de la VPN: escritura incompleta"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Autenticación 802.1x"
 
@@ -1635,6 +1637,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "dispositivo Bluetooth no válido (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Co_nexión"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Nombre de red"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "Desbloq_uear"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Desbloquear automáticamente este dispositivo"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Información de la conexión"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Cerrar"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Gestione sus conexiones de red"
 
@@ -1663,9 +1691,6 @@ msgstr "dispositivo Bluetooth no válido (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Gestione y cambie sus ajustes de la conexión de red"
-
-#~ msgid "_Network name"
-#~ msgstr "_Nombre de red"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3944,15 +3969,6 @@ msgstr "dispositivo Bluetooth no válido (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Exportar conexión VPN…"
 
-#~ msgid "_Unlock"
-#~ msgstr "Desbloq_uear"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Desbloquear automáticamente este dispositivo"
-
-#~ msgid "Connection Information"
-#~ msgstr "Información de la conexión"
-
 #~ msgid "Usage:"
 #~ msgstr "Uso:"
 
@@ -4536,9 +4552,6 @@ msgstr "dispositivo Bluetooth no válido (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "_Seguridad inalámbrica"
-
-#~ msgid "C_onnection"
-#~ msgstr "Co_nexión"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "_Adaptador inalámbrico"

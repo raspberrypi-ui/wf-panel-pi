@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2019-02-26 19:06+0000\n"
 "Last-Translator: Andriy Grytsenko <andrej@rep.kiev.ua>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -765,7 +765,8 @@ msgstr "การยืนยันตัวบุคคลกับ DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1211,6 +1212,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "การยืนยันตัวบุคคลกับเครือข่ายโยงสาย 802.1X"
@@ -1640,6 +1642,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "หาอุปกรณ์บลูทูทไม่พบ"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "การเชื่อม_ต่อ:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "_ชื่อเครือข่าย:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_ปลดล็อค"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "ปลดล็อคอุปกรณ์นี้โดยอัตโนมัติ"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "ข้อมูลการเชื่อมต่อ"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "จัดการการเชื่อมต่อเครือข่ายของคุณ"
 
@@ -1657,10 +1685,6 @@ msgstr "หาอุปกรณ์บลูทูทไม่พบ"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "จัดการและตั้งค่าการเชื่อมต่อเครือข่ายของคุณ"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "_ชื่อเครือข่าย:"
 
 #, fuzzy
 #~ msgid ""
@@ -2929,15 +2953,6 @@ msgstr "หาอุปกรณ์บลูทูทไม่พบ"
 #~ msgid "Export VPN connection…"
 #~ msgstr "ส่งออกการเชื่อมต่อ VPN..."
 
-#~ msgid "_Unlock"
-#~ msgstr "_ปลดล็อค"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "ปลดล็อคอุปกรณ์นี้โดยอัตโนมัติ"
-
-#~ msgid "Connection Information"
-#~ msgstr "ข้อมูลการเชื่อมต่อ"
-
 #~ msgid "Usage:"
 #~ msgstr "วิธีใช้:"
 
@@ -3388,10 +3403,6 @@ msgstr "หาอุปกรณ์บลูทูทไม่พบ"
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "การรักษา_ความปลอดภัยเครือข่ายไร้สาย:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "การเชื่อม_ต่อ:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

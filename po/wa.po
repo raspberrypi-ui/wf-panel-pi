@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2004-09-09 10:41+0200\n"
 "Last-Translator: Pablo Saratxaga <pablo@walon.org>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -725,7 +725,8 @@ msgstr ""
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1161,6 +1162,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr ""
 
@@ -1579,6 +1581,33 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "I gn a nou éndjin rantoele...."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Raloyaedjes rantoele"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "Raloyaedjes rantoele"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr ""
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+#, fuzzy
+msgid "Connection Information"
+msgstr "Raloyaedjes rantoele"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #, fuzzy
 #~ msgid "Manage your network connections"
 #~ msgstr "Raloyaedjes rantoele"
@@ -1593,10 +1622,6 @@ msgstr "I gn a nou éndjin rantoele...."
 
 #, fuzzy
 #~ msgid "Advanced Network Configuration"
-#~ msgstr "Raloyaedjes rantoele"
-
-#, fuzzy
-#~ msgid "_Network name"
 #~ msgstr "Raloyaedjes rantoele"
 
 #, fuzzy
@@ -1748,10 +1773,6 @@ msgstr "I gn a nou éndjin rantoele...."
 
 #, fuzzy
 #~ msgid "_Network name:"
-#~ msgstr "Raloyaedjes rantoele"
-
-#, fuzzy
-#~ msgid "C_onnection:"
 #~ msgstr "Raloyaedjes rantoele"
 
 #, fuzzy

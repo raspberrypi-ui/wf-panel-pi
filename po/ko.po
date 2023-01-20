@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2022-11-02 13:45+0900\n"
 "Last-Translator: Lee Yunseok <ironyunseok@protonmail.com>\n"
 "Language-Team: Korean\n"
@@ -769,7 +769,8 @@ msgstr "DSL 인증"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1222,6 +1223,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X 인증"
 
@@ -1646,6 +1648,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr ""
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "연결"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "네트워크 이름(_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "잠금 해제(_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "이 장치 자동으로 잠금 해제"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "연결 정보"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Virtual Magnifier"
 #~ msgstr "가상 돋보기"
 
@@ -1702,10 +1730,6 @@ msgstr ""
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "네트워크 연결 설정을 관리하고 설정을 바꿉니다"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "네트워크 이름(_N):"
 
 #, fuzzy
 #~ msgid ""
@@ -2122,9 +2146,6 @@ msgstr ""
 
 #~ msgid "Datagram"
 #~ msgstr "데이터그램"
-
-#~ msgid "Connected"
-#~ msgstr "연결"
 
 #, fuzzy
 #~ msgid "_Transport mode"
@@ -3252,15 +3273,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Export VPN connection…"
 #~ msgstr "가상 사설망 연결 내보내기..."
-
-#~ msgid "_Unlock"
-#~ msgstr "잠금 해제(_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "이 장치 자동으로 잠금 해제"
-
-#~ msgid "Connection Information"
-#~ msgstr "연결 정보"
 
 #~ msgid "Usage:"
 #~ msgstr "사용법:"

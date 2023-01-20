@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2019-02-28 14:16+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -759,7 +759,8 @@ msgstr "DSL-godkendelse"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Annullér"
 
@@ -1204,6 +1205,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Kunne ikke skrive forbindelse til VPN-UI: ufuldstændig skrivning"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X-godkendelse"
 
@@ -1638,6 +1640,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ugyldig Bluetooth-enhed (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Forbi_ndelse"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Netværksnavn"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Lås op"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Lås automatisk denne enhed op"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Forbindelsesinformation"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Luk"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Håndtér dine netværksforbindelser"
 
@@ -1667,9 +1695,6 @@ msgstr "ugyldig Bluetooth-enhed (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Redigér og ændr dine indstillinger til netværksforbindelser"
-
-#~ msgid "_Network name"
-#~ msgstr "_Netværksnavn"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3889,15 +3914,6 @@ msgstr "ugyldig Bluetooth-enhed (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Eksportér VPN-forbindelse …"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Lås op"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Lås automatisk denne enhed op"
-
-#~ msgid "Connection Information"
-#~ msgstr "Forbindelsesinformation"
-
 #~ msgid "Usage:"
 #~ msgstr "Brug:"
 
@@ -4490,9 +4506,6 @@ msgstr "ugyldig Bluetooth-enhed (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Wi-fi-_sikkerhed"
-
-#~ msgid "C_onnection"
-#~ msgstr "Forbi_ndelse"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "Wi-fi-ada_pter"

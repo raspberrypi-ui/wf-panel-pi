@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2020-07-13 21:35+0200\n"
 "Last-Translator: Emanuele Goldoni <emanuele.goldoni@gmail.com>\n"
 "Language-Team: Italian\n"
@@ -770,7 +770,8 @@ msgstr "Autenticazione DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Annulla"
 
@@ -1210,6 +1211,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Scrittura della connessione non riuscita: scrittura incompleta"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Autenticazione 802.1X"
 
@@ -1641,6 +1643,30 @@ msgstr "_Accoppia"
 msgid "Searching for Bluetooth devices..."
 msgstr "Ricerca di dispositivi Bluetooth..."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "C_onnetti"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Nome rete"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Sblocca"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Sbloccare automaticamente questo dispositivo"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Informazioni connessione"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr "_Chiudi"
+
 #~ msgid "Pairing Request"
 #~ msgstr "Richiesta di accoppiamento"
 
@@ -1777,12 +1803,6 @@ msgstr "Ricerca di dispositivi Bluetooth..."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Gestisce e cambia le impostazioni della connessione di rete"
-
-#~ msgid "C_onnect"
-#~ msgstr "C_onnetti"
-
-#~ msgid "_Network name"
-#~ msgstr "_Nome rete"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -4132,18 +4152,6 @@ msgstr "Ricerca di dispositivi Bluetooth..."
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "Esporta connessione VPN…"
-
-#~ msgid "_Unlock"
-#~ msgstr "_Sblocca"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Sbloccare automaticamente questo dispositivo"
-
-#~ msgid "Connection Information"
-#~ msgstr "Informazioni connessione"
-
-#~ msgid "_Close"
-#~ msgstr "_Chiudi"
 
 #~ msgid "Usage:"
 #~ msgstr "Uso:"

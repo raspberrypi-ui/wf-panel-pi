@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2014-11-24 22:01+0000\n"
 "Last-Translator: armakolas <armakolas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -763,7 +763,8 @@ msgstr "Πιστοποίηση DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1218,6 +1219,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Πιστοποίηση 802.1X"
 
@@ -1646,6 +1648,31 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "αδυναμία εύρεσης της συσκευής Bluetooth."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "Σύν_δεση"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "Ό_νομα δικτύου:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Ξεκλείδωμα"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Αυτόματο ξεκλείδωμα αυτής της συσκευής"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Πληροφορίες σύνδεσης"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Διαχείριση των συνδέσεων δικτύου"
 
@@ -1663,13 +1690,6 @@ msgstr "αδυναμία εύρεσης της συσκευής Bluetooth."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Διαχείριση και αλλαγή ρυθμίσεων των συνδέσεων δικτύου"
-
-#~ msgid "C_onnect"
-#~ msgstr "Σύν_δεση"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "Ό_νομα δικτύου:"
 
 #, fuzzy
 #~ msgid ""
@@ -3310,15 +3330,6 @@ msgstr "αδυναμία εύρεσης της συσκευής Bluetooth."
 #, fuzzy
 #~ msgid "Export VPN connection…"
 #~ msgstr "Εξαγωγή σύνδεσης VPN..."
-
-#~ msgid "_Unlock"
-#~ msgstr "_Ξεκλείδωμα"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Αυτόματο ξεκλείδωμα αυτής της συσκευής"
-
-#~ msgid "Connection Information"
-#~ msgstr "Πληροφορίες σύνδεσης"
 
 #~ msgid "Usage:"
 #~ msgstr "Χρήση:"

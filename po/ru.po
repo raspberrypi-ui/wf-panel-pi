@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2019-03-01 01:42+0000\n"
 "Last-Translator: Alexey Loginov <loginov.alex.valer@gmail.com>\n"
 "Language-Team: Russian <hsh@runtu.org>\n"
@@ -760,7 +760,8 @@ msgstr "Аутентификация в DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Отменить"
 
@@ -1198,6 +1199,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Не удалось записать соединение в VPN UI: незавершённая запись"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Аутентификация по стандарту 802.1X"
 
@@ -1632,6 +1634,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "недопустимое устройство Bluetooth (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Сое_динение"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Имя сети"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Разблокировать"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Разблокировать это устройство автоматически"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Сведения соединении"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Закрыть"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Управление сетевыми соединениями"
 
@@ -1660,9 +1688,6 @@ msgstr "недопустимое устройство Bluetooth (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Управление параметрами сетевых соединений"
-
-#~ msgid "_Network name"
-#~ msgstr "_Имя сети"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -4041,15 +4066,6 @@ msgstr "недопустимое устройство Bluetooth (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Экспорт соединение VPN…"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Разблокировать"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Разблокировать это устройство автоматически"
-
-#~ msgid "Connection Information"
-#~ msgstr "Сведения соединении"
-
 #~ msgid "Usage:"
 #~ msgstr "Использование:"
 
@@ -4626,9 +4642,6 @@ msgstr "недопустимое устройство Bluetooth (%s)"
 
 #~ msgid "Wi-Fi _security"
 #~ msgstr "_Безопасность Wi-Fi"
-
-#~ msgid "C_onnection"
-#~ msgstr "Сое_динение"
 
 #~ msgid "Wi-Fi _adapter"
 #~ msgstr "_Адаптер Wi-Fi"

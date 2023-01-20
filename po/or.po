@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2014-12-02 05:43-0500\n"
 "Last-Translator: mgiri <mgiri@redhat.com>\n"
 "Language-Team: Oriya <Translation-team-or@lists.sourceforge.net>\n"
@@ -772,7 +772,8 @@ msgstr "DSL ବୈଧିକରଣ"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1231,6 +1232,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "ତାରଯୁକ୍ତ 802.1X ବୈଧିକରଣ"
@@ -1660,6 +1662,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ବ୍ଲୁଟୁଥ ଉପକରଣକୁ ଖୋଜି ପାରିଲା ନାହିଁ।"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "ସଂଯୋଗ (_n):"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "ନେଟୱର୍କ ନାମ (_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "ଖୋଲନ୍ତୁ (_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "ସଂଯୋଗ ସୂଚନା"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #, fuzzy
 #~ msgid "Manage your network connections"
 #~ msgstr "ଆପଣଙ୍କର ନେଟୱର୍କ ସଂଯୋଗଗୁଡ଼ିକୁ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ"
@@ -1678,10 +1706,6 @@ msgstr "ବ୍ଲୁଟୁଥ ଉପକରଣକୁ ଖୋଜି ପାରିଲ
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "ଆପଣଙ୍କର ନେଟୱର୍କ ସଂଯୋଗ ସଂରଚନାକୁ ପରିଚାଳନା କରନ୍ତୁ ଏବଂ ପରିବର୍ତ୍ତନ କରନ୍ତୁ"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "ନେଟୱର୍କ ନାମ (_N):"
 
 #, fuzzy
 #~ msgid ""
@@ -3058,12 +3082,6 @@ msgstr "ବ୍ଲୁଟୁଥ ଉପକରଣକୁ ଖୋଜି ପାରିଲ
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN ସଂଯୋଗକୁ ରପ୍ତାନୀ କରନ୍ତୁ..."
 
-#~ msgid "_Unlock"
-#~ msgstr "ଖୋଲନ୍ତୁ (_U)"
-
-#~ msgid "Connection Information"
-#~ msgstr "ସଂଯୋଗ ସୂଚନା"
-
 #~ msgid "Usage:"
 #~ msgstr "ବ୍ୟବହାର ବିଧି:"
 
@@ -3523,10 +3541,6 @@ msgstr "ବ୍ଲୁଟୁଥ ଉପକରଣକୁ ଖୋଜି ପାରିଲ
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "ସୁରକ୍ଷା (_S):"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "ସଂଯୋଗ (_n):"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

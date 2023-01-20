@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  <simon@raspberrypi.org>\n"
 "Language-Team: English (British)\n"
@@ -764,7 +764,8 @@ msgstr "DSL authentication"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Cancel"
 
@@ -1212,6 +1213,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X authentication"
 
@@ -1632,6 +1634,32 @@ msgstr "_Pair"
 #: ../data/lxplug-bluetooth.ui.h:4
 msgid "Searching for Bluetooth devices..."
 msgstr "Searching for Bluetooth devices..."
+
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "C_onnect"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "_Network name:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Unlock"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Automatically unlock this device"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Connection Information"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "Close"
 
 #, c-format
 #~ msgid "Pairing Device '%s'"
@@ -2498,13 +2526,6 @@ msgstr "Searching for Bluetooth devices..."
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Manage and change your network connection settings"
 
-#~ msgid "C_onnect"
-#~ msgstr "C_onnect"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "_Network name:"
-
 #~ msgid "Ig_nore automatically obtained routes"
 #~ msgstr "Ig_nore automatically obtained routes"
 
@@ -3277,15 +3298,6 @@ msgstr "Searching for Bluetooth devices..."
 #, fuzzy
 #~ msgid "Add a new connection"
 #~ msgstr "Add a new VPN connection"
-
-#~ msgid "_Unlock"
-#~ msgstr "_Unlock"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Automatically unlock this device"
-
-#~ msgid "Connection Information"
-#~ msgstr "Connection Information"
 
 #~ msgid "Usage:"
 #~ msgstr "Usage:"

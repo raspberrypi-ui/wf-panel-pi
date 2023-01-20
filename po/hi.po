@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2013-03-24 13:57+0000\n"
 "Last-Translator: chandankumar <chandankumar.093047@gmail.com>\n"
 "Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
@@ -769,7 +769,8 @@ msgstr "DSL सत्यापन"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1212,6 +1213,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X सत्यापन"
 
@@ -1639,6 +1641,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ब्लूटूथ युक्ति नहीं ढूँढ़ सका"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "कनेक्शन (_n):"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "संजाल नाम (_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "अनलॉक करें (_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "स्वचालित रूप से यह युक्ति अनलॉक"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "कनेक्शन जानकारी"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "अपना संजाल कनेक्शन नियंत्रित करें"
 
@@ -1656,10 +1684,6 @@ msgstr "ब्लूटूथ युक्ति नहीं ढूँढ़ �
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "अपना संजाल कनेक्शन सेटिंग प्रबंधित करें और बदलें"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "संजाल नाम (_N):"
 
 #, fuzzy
 #~ msgid ""
@@ -3133,15 +3157,6 @@ msgstr "ब्लूटूथ युक्ति नहीं ढूँढ़ �
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN संबंधन निर्यात करें..."
 
-#~ msgid "_Unlock"
-#~ msgstr "अनलॉक करें (_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "स्वचालित रूप से यह युक्ति अनलॉक"
-
-#~ msgid "Connection Information"
-#~ msgstr "कनेक्शन जानकारी"
-
 #~ msgid "Usage:"
 #~ msgstr "प्रयोग:"
 
@@ -3589,10 +3604,6 @@ msgstr "ब्लूटूथ युक्ति नहीं ढूँढ़ �
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "वाई फाई सुरक्षा (_s):"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "कनेक्शन (_n):"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

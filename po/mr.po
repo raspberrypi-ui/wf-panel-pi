@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2011-03-28 16:06+0530\n"
 "Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
 "Language-Team: Marathi <fedora-trans-mr@redhat.com>\n"
@@ -770,7 +770,8 @@ msgstr "DSL ओळख पटवणे"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1221,6 +1222,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "Wired 802.1X ओळख पटवा"
@@ -1650,6 +1652,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ब्ल्यूटूथ साधण आढळले नाही."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "जोडणी (_n):"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "नेटवर्कचे नाव (_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "कुलूपबंद अशक्य करा (_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "जोडणी माहिती"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "नेटवर्क जोडणी नियंत्रीत करा"
 
@@ -1667,10 +1695,6 @@ msgstr "ब्ल्यूटूथ साधण आढळले नाही."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "नेटवर्क संयोजना व्यवस्थापीत करा व बदला"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "नेटवर्कचे नाव (_N):"
 
 #, fuzzy
 #~ msgid ""
@@ -3029,12 +3053,6 @@ msgstr "ब्ल्यूटूथ साधण आढळले नाही."
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN जोडणीचे स्वरूप बदला..."
 
-#~ msgid "_Unlock"
-#~ msgstr "कुलूपबंद अशक्य करा (_U)"
-
-#~ msgid "Connection Information"
-#~ msgstr "जोडणी माहिती"
-
 #~ msgid "Usage:"
 #~ msgstr "वापर:"
 
@@ -3479,10 +3497,6 @@ msgstr "ब्ल्यूटूथ साधण आढळले नाही."
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "वायरलेस सुरक्षा (_W):"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "जोडणी (_n):"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

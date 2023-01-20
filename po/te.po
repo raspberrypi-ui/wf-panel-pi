@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2012-07-09 18:48+0200\n"
 "Last-Translator: PraveenIlla <mail2ipn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -764,7 +764,8 @@ msgstr "DSL దృవీకరణము"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1208,6 +1209,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "వైరు‌గల 802.1X ధృవీకరణము"
@@ -1638,6 +1640,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "బ్లూటూత్ పరికరమును కనుగొనలేక పోయినది."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "అనుసంధానము (_n):"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "నెట్వర్కు పేరు (_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "అన్‌లాక్ (_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "స్వయచాలకంగా ఈ పరికరమును అన్‌లాక్ చేయు"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "అనుసంధానము సమాచారము"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "మీ నెట్వర్కు అనుసంధానములను నిర్వహించు"
 
@@ -1655,10 +1683,6 @@ msgstr "బ్లూటూత్ పరికరమును కనుగొన�
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "మీ నెట్వర్కు అనుసంధానము అమర్పులను నిర్వహించండి మరియు మార్చండి"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "నెట్వర్కు పేరు (_N):"
 
 #, fuzzy
 #~ msgid ""
@@ -3038,15 +3062,6 @@ msgstr "బ్లూటూత్ పరికరమును కనుగొన�
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN అనుసంధానమును ఎగుమతిచేయుము..."
 
-#~ msgid "_Unlock"
-#~ msgstr "అన్‌లాక్ (_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "స్వయచాలకంగా ఈ పరికరమును అన్‌లాక్ చేయు"
-
-#~ msgid "Connection Information"
-#~ msgstr "అనుసంధానము సమాచారము"
-
 #~ msgid "Usage:"
 #~ msgstr "వినియోగము:"
 
@@ -3505,10 +3520,6 @@ msgstr "బ్లూటూత్ పరికరమును కనుగొన�
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "వైర్‌లెస్ రక్షణ (_W):"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "అనుసంధానము (_n):"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

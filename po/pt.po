@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2016-11-02 22:46+0000\n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
@@ -767,7 +767,8 @@ msgstr "Autenticação DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -1215,6 +1216,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Autenticação 802.1X"
 
@@ -1644,6 +1646,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "incapaz de encontrar o dispositivo Bluetooth."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "_Ligar"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "_Nome da rede:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Destrancar"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Destrancar automaticamente este dispositivo"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Informação de ligação"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Fechar"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Controle as suas ligações de rede"
 
@@ -1675,13 +1703,6 @@ msgstr "incapaz de encontrar o dispositivo Bluetooth."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Gerir e alterar as suas definições da ligação de rede"
-
-#~ msgid "C_onnect"
-#~ msgstr "_Ligar"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "_Nome da rede:"
 
 #, fuzzy
 #~ msgid ""
@@ -3423,15 +3444,6 @@ msgstr "incapaz de encontrar o dispositivo Bluetooth."
 #, fuzzy
 #~ msgid "Export VPN connection…"
 #~ msgstr "Exportar ligação VPN..."
-
-#~ msgid "_Unlock"
-#~ msgstr "_Destrancar"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Destrancar automaticamente este dispositivo"
-
-#~ msgid "Connection Information"
-#~ msgstr "Informação de ligação"
 
 #~ msgid "Usage:"
 #~ msgstr "Uso:"

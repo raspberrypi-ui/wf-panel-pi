@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel 0.5.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2017-05-25 06:59+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -767,7 +767,8 @@ msgstr "Uwierzytelnianie DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Anuluj"
 
@@ -1209,6 +1210,7 @@ msgstr ""
 "niepełny zapis"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Uwierzytelnianie 802.1X"
 
@@ -1644,6 +1646,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "nieprawidłowe urządzenie Bluetooth (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Połączony"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Nazwa sieci"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Odblokuj"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Automatyczne odblokowywanie tego urządzenia"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Informacje o połączeniu"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "Za_mknij"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Zarządzanie połączeniami sieciowymi"
 
@@ -1672,9 +1700,6 @@ msgstr "nieprawidłowe urządzenie Bluetooth (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Zarządzanie ustawieniami połączeń sieciowych"
-
-#~ msgid "_Network name"
-#~ msgstr "_Nazwa sieci"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -2218,9 +2243,6 @@ msgstr "nieprawidłowe urządzenie Bluetooth (%s)"
 
 #~ msgid "Datagram"
 #~ msgstr "Datagram"
-
-#~ msgid "Connected"
-#~ msgstr "Połączony"
 
 #~ msgid "_Transport mode"
 #~ msgstr "_Tryb przesyłania"
@@ -4005,15 +4027,6 @@ msgstr "nieprawidłowe urządzenie Bluetooth (%s)"
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "Wyeksportuj połączenie VPN…"
-
-#~ msgid "_Unlock"
-#~ msgstr "_Odblokuj"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Automatyczne odblokowywanie tego urządzenia"
-
-#~ msgid "Connection Information"
-#~ msgstr "Informacje o połączeniu"
 
 #~ msgid "Usage:"
 #~ msgstr "Użycie:"

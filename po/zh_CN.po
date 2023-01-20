@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel 0.3.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2016-10-25 09:35+0800\n"
 "Last-Translator: Yinghua Wang <wantinghard@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -756,7 +756,8 @@ msgstr "DSL 身份验证"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -1189,6 +1190,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "写入连接到 VPN UI 失败：写入不完整"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X 身份验证"
 
@@ -1617,6 +1619,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "无效的蓝牙设备（%s）"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "已连接"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "网络名称(_N)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "解锁(_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "自动解锁此设备"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "连接信息"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "关闭(_C)"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "管理您的网络连接"
 
@@ -1645,9 +1673,6 @@ msgstr "无效的蓝牙设备（%s）"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "管理或更改您的网络连接设置"
-
-#~ msgid "_Network name"
-#~ msgstr "网络名称(_N)"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -2153,9 +2178,6 @@ msgstr "无效的蓝牙设备（%s）"
 
 #~ msgid "Datagram"
 #~ msgstr "数据报"
-
-#~ msgid "Connected"
-#~ msgstr "已连接"
 
 #~ msgid "_Transport mode"
 #~ msgstr "传输模式(_T)"
@@ -3831,15 +3853,6 @@ msgstr "无效的蓝牙设备（%s）"
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "导出 VPN 连接…"
-
-#~ msgid "_Unlock"
-#~ msgstr "解锁(_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "自动解锁此设备"
-
-#~ msgid "Connection Information"
-#~ msgstr "连接信息"
 
 #~ msgid "Usage:"
 #~ msgstr "用法："

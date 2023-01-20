@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2011-12-24 21:35+0100\n"
 "Last-Translator: Jovan N\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
@@ -778,7 +778,8 @@ msgstr "DSL автентикација"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1232,6 +1233,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "Жичена 802.1X автентикација"
@@ -1660,6 +1662,31 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "не можев да пронајдам Bluetooth уред."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "В_рзи се"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "Име на _мрежа:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Отклучи"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Автоматски отклучи го овој уред"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Информации за поврзувањето"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Менаџирајте со Вашите мрежни врски"
 
@@ -1677,13 +1704,6 @@ msgstr "не можев да пронајдам Bluetooth уред."
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Управувајте и променувајте ги поставувањата на Вашата мрежна врска"
-
-#~ msgid "C_onnect"
-#~ msgstr "В_рзи се"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "Име на _мрежа:"
 
 #, fuzzy
 #~ msgid ""
@@ -2975,15 +2995,6 @@ msgstr "не можев да пронајдам Bluetooth уред."
 #, fuzzy
 #~ msgid "Export VPN connection…"
 #~ msgstr "Извези VPN врска..."
-
-#~ msgid "_Unlock"
-#~ msgstr "_Отклучи"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Автоматски отклучи го овој уред"
-
-#~ msgid "Connection Information"
-#~ msgstr "Информации за поврзувањето"
 
 #~ msgid "Usage:"
 #~ msgstr "Искористеност:"

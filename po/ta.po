@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2012-02-27 13:19+0530\n"
 "Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -779,7 +779,8 @@ msgstr "DSL அங்கீகாரம்"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1231,6 +1232,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 #, fuzzy
 msgid "802.1X authentication"
 msgstr "ஒயர்டு 802.1X அங்கீகாரம்"
@@ -1660,6 +1662,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ஃப்ளூடூத் சாதனத்தை தேட முடியவில்லை."
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "இணைப்பு (_n):"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "பிணைய பெயர் (_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "பூட்டுநீக்கு (_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "தானியங்கியாக இந்த சாதனத்தை பூட்டு திறக்கவும்"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "இணைப்பு தகவல்"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "உங்களது பிணையத்தின் இணைப்புகளை மேலாண்மை செய்க"
 
@@ -1677,10 +1705,6 @@ msgstr "ஃப்ளூடூத் சாதனத்தை தேட முட
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "உங்களின் பிணைய இணைப்பு அமைவுகளை மேலாண்மை மற்றும் மாற்றவும்"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "பிணைய பெயர் (_N):"
 
 #, fuzzy
 #~ msgid ""
@@ -3061,15 +3085,6 @@ msgstr "ஃப்ளூடூத் சாதனத்தை தேட முட
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN இணைப்பை ஏற்றவும்..."
 
-#~ msgid "_Unlock"
-#~ msgstr "பூட்டுநீக்கு (_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "தானியங்கியாக இந்த சாதனத்தை பூட்டு திறக்கவும்"
-
-#~ msgid "Connection Information"
-#~ msgstr "இணைப்பு தகவல்"
-
 #~ msgid "Usage:"
 #~ msgstr "பயன்பாடு:"
 
@@ -3539,10 +3554,6 @@ msgstr "ஃப்ளூடூத் சாதனத்தை தேட முட
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "ஒயர்லெஸ் பாதுகாப்பு (_W):"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "இணைப்பு (_n):"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

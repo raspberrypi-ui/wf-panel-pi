@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2010-09-13 23:29+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: testLokalize <punjabi-users@lists.sf.net>\n"
@@ -752,7 +752,8 @@ msgstr "DSL ਪਰਮਾਣਕਿਤਾ"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "ਰੱਦ ਕਰੋ(_C)"
 
@@ -1189,6 +1190,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X ਪਰਮਾਣਕਿਤਾ"
 
@@ -1617,6 +1619,33 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "ਗ਼ਲਤ ਬਲੂਟੁੱਥ ਜੰਤਰ (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "ਕਨੈਕਸ਼ਨ(_n):"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "ਨੈੱਟਵਰਕ ਨਾਂ(_N):"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "ਅਣ-ਲਾਕ(_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "ਇਹ ਜੰਤਰ ਆਟੋਮੈਟਿਕ ਅਣ-ਲਾਕ ਕਰੋ"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "ਕਨੈਕਸ਼ਨ ਜਾਣਕਾਰੀ"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "ਬੰਦ ਕਰੋ(_C)"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "ਆਪਣੇ ਨੈੱਟਵਰਕ ਕਨੈਕਸ਼ਨਾਂ ਦਾ ਪਰਬੰਧ ਕਰੋ"
 
@@ -1637,10 +1666,6 @@ msgstr "ਗ਼ਲਤ ਬਲੂਟੁੱਥ ਜੰਤਰ (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "ਆਪਣੀ ਨੈੱਟਵਰਕ ਕਨੈਕਸ਼ਨ ਸੈਟਿੰਗ ਦਾ ਪਰਬੰਧ ਕਰੋ ਅਤੇ ਬਦਲੋ"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "ਨੈੱਟਵਰਕ ਨਾਂ(_N):"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3483,15 +3508,6 @@ msgstr "ਗ਼ਲਤ ਬਲੂਟੁੱਥ ਜੰਤਰ (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "VPN ਕਨੈਕਸ਼ਨ ਐਕਸਪੋਰਟ…"
 
-#~ msgid "_Unlock"
-#~ msgstr "ਅਣ-ਲਾਕ(_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "ਇਹ ਜੰਤਰ ਆਟੋਮੈਟਿਕ ਅਣ-ਲਾਕ ਕਰੋ"
-
-#~ msgid "Connection Information"
-#~ msgstr "ਕਨੈਕਸ਼ਨ ਜਾਣਕਾਰੀ"
-
 #~ msgid "Usage:"
 #~ msgstr "ਵਰਤੋਂ:"
 
@@ -4052,10 +4068,6 @@ msgstr "ਗ਼ਲਤ ਬਲੂਟੁੱਥ ਜੰਤਰ (%s)"
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Wi-Fi ਸੁਰੱਖਿਆ(_s):"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "ਕਨੈਕਸ਼ਨ(_n):"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2018-01-06 01:51+0200\n"
 "Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
@@ -759,7 +759,8 @@ msgstr "DSL-aŭtentigo"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1207,6 +1208,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X-aŭtentigo"
 
@@ -1634,6 +1636,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "nevalida Bludento-aparato (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Ko_nekto:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "Ret_nomo:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Malŝlosi"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Aŭtomate malŝlosi ĉi tiun aparaton"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Konektinformoj"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Kontroli viajn retkonektojn"
 
@@ -1651,10 +1679,6 @@ msgstr "nevalida Bludento-aparato (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Administri kaj ŝanĝi viajn retkonektajn agordojn"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "Ret_nomo:"
 
 #, fuzzy
 #~ msgid ""
@@ -2981,15 +3005,6 @@ msgstr "nevalida Bludento-aparato (%s)"
 #~ msgid "Export VPN connection…"
 #~ msgstr "Elporti VPN-konekton…"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Malŝlosi"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Aŭtomate malŝlosi ĉi tiun aparaton"
-
-#~ msgid "Connection Information"
-#~ msgstr "Konektinformoj"
-
 #~ msgid "Usage:"
 #~ msgstr "Uzo:"
 
@@ -3425,10 +3440,6 @@ msgstr "nevalida Bludento-aparato (%s)"
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "Sendrata _sekureco:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "Ko_nekto:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

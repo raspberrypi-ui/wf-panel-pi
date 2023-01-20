@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2012-09-26 00:36+0200\n"
 "Last-Translator: Мікалай <crom-a@tut.by>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -754,7 +754,8 @@ msgstr "Аўтэнтыфікацыя DSL"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Скасаваць"
 
@@ -1190,6 +1191,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "Не атрымалася запісаць злучэнне ў VPN UI: незавершаны запіс"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Аўтэнтыфікацыя 802.1X"
 
@@ -1626,6 +1628,31 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "непрыдатная прылада Bluetooth (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+msgid "C_onnect"
+msgstr "Пад_лучыцца"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "_Назва сеткі"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Разблакаваць"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "Аўтаматычна разблакоўваць гэтую прыладу"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Інфармацыя пра злучэнне"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "_Закрыць"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Кіраванне сеткавымі злучэннямі"
 
@@ -1654,12 +1681,6 @@ msgstr "непрыдатная прылада Bluetooth (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Налады сеткавага злучэння"
-
-#~ msgid "C_onnect"
-#~ msgstr "Пад_лучыцца"
-
-#~ msgid "_Network name"
-#~ msgstr "_Назва сеткі"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3998,15 +4019,6 @@ msgstr "непрыдатная прылада Bluetooth (%s)"
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "Экспарт VPN-злучэння…"
-
-#~ msgid "_Unlock"
-#~ msgstr "_Разблакаваць"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "Аўтаматычна разблакоўваць гэтую прыладу"
-
-#~ msgid "Connection Information"
-#~ msgstr "Інфармацыя пра злучэнне"
 
 #~ msgid "Usage:"
 #~ msgstr "Выкарыстанне:"

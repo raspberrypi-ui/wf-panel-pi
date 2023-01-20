@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2011-10-18 15:16+0200\n"
 "Last-Translator: Erdal Ronahî <erdal dot ronahi at gmail dot com>\n"
 "Language-Team: Kurdish Team http://pckurd.net\n"
@@ -756,7 +756,8 @@ msgstr ""
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1205,6 +1206,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr ""
 
@@ -1627,6 +1629,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr ""
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "_Girêdan:"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "_Navê torê:"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "_Kîlît rake"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "Agahiya girêdanê"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #~ msgid "Manage your network connections"
 #~ msgstr "Girêdanên torê yên xwe birêve bike"
 
@@ -1644,10 +1672,6 @@ msgstr ""
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "Girêdanên torê yên xwe birêve û sererast bike"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "_Navê torê:"
 
 #, fuzzy
 #~ msgid "C_reate…"
@@ -2279,12 +2303,6 @@ msgstr ""
 #~ msgid "Export VPN connection…"
 #~ msgstr "Girêdana VPN sererast bike"
 
-#~ msgid "_Unlock"
-#~ msgstr "_Kîlît rake"
-
-#~ msgid "Connection Information"
-#~ msgstr "Agahiya girêdanê"
-
 #~ msgid "Usage:"
 #~ msgstr "Bikaranîn:"
 
@@ -2453,10 +2471,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Wi-Fi _security"
 #~ msgstr "_Ewlehiya bêqablo:"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "_Girêdan:"
 
 #, fuzzy
 #~ msgid "Wi-Fi _adapter"

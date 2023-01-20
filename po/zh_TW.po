@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2015-03-20 07:19+0000\n"
 "Last-Translator: <wwycheuk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -753,7 +753,8 @@ msgstr "DSL 驗證"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -1193,6 +1194,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr "無法寫入與 VPN UI 的連線：寫入不完整"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "802.1X 驗證"
 
@@ -1621,6 +1623,32 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr "無效的藍牙裝置 (%s)"
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "成功連線"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+msgid "_Network name"
+msgstr "網路名稱(_N)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr "解鎖(_U)"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr "自動解鎖這個裝置"
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+msgid "Connection Information"
+msgstr "連線資訊"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+#, fuzzy
+msgid "_Close"
+msgstr "關閉(_C)"
+
 #~ msgid "Manage your network connections"
 #~ msgstr "管理您的網路連線"
 
@@ -1647,9 +1675,6 @@ msgstr "無效的藍牙裝置 (%s)"
 
 #~ msgid "Manage and change your network connection settings"
 #~ msgstr "管理與變更您的連線設定值"
-
-#~ msgid "_Network name"
-#~ msgstr "網路名稱(_N)"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -2160,9 +2185,6 @@ msgstr "無效的藍牙裝置 (%s)"
 
 #~ msgid "Datagram"
 #~ msgstr "Datagram"
-
-#~ msgid "Connected"
-#~ msgstr "成功連線"
 
 #~ msgid "_Transport mode"
 #~ msgstr "傳輸模式(_T)"
@@ -3808,15 +3830,6 @@ msgstr "無效的藍牙裝置 (%s)"
 
 #~ msgid "Export VPN connection…"
 #~ msgstr "匯出 VPN 連線…"
-
-#~ msgid "_Unlock"
-#~ msgstr "解鎖(_U)"
-
-#~ msgid "Automatically unlock this device"
-#~ msgstr "自動解鎖這個裝置"
-
-#~ msgid "Connection Information"
-#~ msgstr "連線資訊"
 
 #~ msgid "Usage:"
 #~ msgstr "用法："

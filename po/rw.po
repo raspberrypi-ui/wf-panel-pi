@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 13:51+0000\n"
+"POT-Creation-Date: 2023-01-20 21:04+0000\n"
 "PO-Revision-Date: 2005-03-31 20:55-0700\n"
 "Last-Translator: Steve Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -734,7 +734,8 @@ msgstr ""
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
 #: ../src/panel/widgets/netman/mobile-helpers.c:455
 #: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2
+#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr ""
 
@@ -1175,6 +1176,7 @@ msgid "Failed to write connection to VPN UI: incomplete write"
 msgstr ""
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
+#: ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr ""
 
@@ -1593,6 +1595,33 @@ msgstr ""
 msgid "Searching for Bluetooth devices..."
 msgstr ""
 
+#: ../src/panel/widgets/netman/8021x.ui.h:3
+#, fuzzy
+msgid "C_onnect"
+msgstr "Kwihuza"
+
+#: ../src/panel/widgets/netman/8021x.ui.h:4
+#, fuzzy
+msgid "_Network name"
+msgstr "ni OYA"
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
+msgid "_Unlock"
+msgstr ""
+
+#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
+msgid "Automatically unlock this device"
+msgstr ""
+
+#: ../src/panel/widgets/netman/info.ui.h:1
+#, fuzzy
+msgid "Connection Information"
+msgstr "Na: Bishunzwe: Bikora"
+
+#: ../src/panel/widgets/netman/info.ui.h:2
+msgid "_Close"
+msgstr ""
+
 #, fuzzy
 #~ msgid "Manage your network connections"
 #~ msgstr "urusobe Ukwihuza"
@@ -1608,10 +1637,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Advanced Network Configuration"
 #~ msgstr "urusobe Ukwihuza"
-
-#, fuzzy
-#~ msgid "_Network name"
-#~ msgstr "ni OYA"
 
 #, fuzzy
 #~ msgid "Bonded _connections"
@@ -1826,10 +1851,6 @@ msgstr ""
 #~ "Enter the name and security details of the hidden Wi-Fi network you wish "
 #~ "to connect to."
 #~ msgstr "i Na Umutekano Amagenamiterere Bya i urusobe Kuri Kurema"
-
-#, fuzzy
-#~ msgid "C_onnection"
-#~ msgstr "Kwihuza"
 
 #, fuzzy
 #~ msgid "C_onnection:"
