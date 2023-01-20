@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2020-11-28 22:06+0100\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak\n"
@@ -256,11 +256,11 @@ msgid "Connection failure"
 msgstr "Pripojenie zlyhalo"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -471,29 +471,26 @@ msgstr "Neboli nájdené sieťové zariadenia"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Rozšírené tímové voľby"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "Pripojenia k _VPN"
 
 #: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_Konfigurovať VPN…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "_Pridať pripojenie k VPN…"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Informácie o pripojení"
+msgid "Connection _Information"
+msgstr "_Informácie o pripojení"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -521,31 +518,26 @@ msgstr "Sieť deaktivovaná"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Povoliť _sieť"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Povoliť _bezdrôtové pripojenie"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Povoliť _mobilné pripojenie"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "Povoliť o_známenia"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_O programe"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -784,20 +776,18 @@ msgstr "_OK"
 
 # dialog title
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
-#, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "_Pripojiť k skrytej sieti Wi-Fi…"
 
 #  window title
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
-#, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Vytvoriť _novú sieť Wi-Fi…"
 
 #  window title
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Vytvoriť _novú sieť Wi-Fi…"
 
 # ssid
@@ -1798,9 +1788,6 @@ msgstr "Hľadanie zariadení Bluetooth..."
 # GtkLabel label
 #~ msgid "_Network name"
 #~ msgstr "_Názov siete"
-
-#~ msgid "Connection _Information"
-#~ msgstr "_Informácie o pripojení"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3725,6 +3712,9 @@ msgstr "Hľadanie zariadení Bluetooth..."
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Automaticky odomknúť toto zariadenie"
+
+#~ msgid "Connection Information"
+#~ msgstr "Informácie o pripojení"
 
 #~ msgid "Usage:"
 #~ msgstr "Použitie:"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2014-09-15 21:17+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -260,11 +260,11 @@ msgid "Connection failure"
 msgstr "Ha fallat la connexió"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -484,29 +484,28 @@ msgstr "No hi ha cap dispositiu de xarxa disponible"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Avançat"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "Connexions _VPN"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_Configura la VPN..."
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "Connexions _VPN"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Informació de la connexió"
+msgid "Connection _Information"
+msgstr "_Informació de la connexió"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -536,31 +535,26 @@ msgstr "S'ha inhabilitat la gestió de xarxes"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Habilita la gestió de _xarxes"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Habilita el _sense fil"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Habilita la banda ampla _mòbil"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "Habilita les n_otificacions"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Quant a"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -795,17 +789,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Connecta't a la xarxa sense fil oculta"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Crea una xarxa sense fil nova"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Crea una xarxa sense fil nova"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1647,9 +1641,8 @@ msgid "_Pair"
 msgstr ""
 
 #: ../data/lxplug-bluetooth.ui.h:4
-#, fuzzy
 msgid "Searching for Bluetooth devices..."
-msgstr "no s'ha pogut connectar al telèfon."
+msgstr ""
 
 #~ msgid "Manage your network connections"
 #~ msgstr "Gestioneu les connexions de xarxa"
@@ -1672,9 +1665,6 @@ msgstr "no s'ha pogut connectar al telèfon."
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "Nom de _xarxa:"
-
-#~ msgid "Connection _Information"
-#~ msgstr "_Informació de la connexió"
 
 #, fuzzy
 #~ msgid ""
@@ -3314,6 +3304,9 @@ msgstr "no s'ha pogut connectar al telèfon."
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Desbloqueja automàticament este dispositiu"
+
+#~ msgid "Connection Information"
+#~ msgstr "Informació de la connexió"
 
 #~ msgid "Usage:"
 #~ msgstr "Ús:"

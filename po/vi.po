@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2012-10-12 06:22+0200\n"
 "Last-Translator: Duy Hung <nguyentieuhau@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,11 +258,11 @@ msgid "Connection failure"
 msgstr "Gặp lỗi kết nối"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -472,29 +472,28 @@ msgstr "Không tìm thấy thiết bị mạng dùng được"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Nâng cao"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "Kết nối _VPN"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_Cấu hình VPN…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "Kết nối _VPN"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Thông tin kết nối"
+msgid "Connection _Information"
+msgstr "Thông t_in kết nối"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -524,31 +523,26 @@ msgstr "Kết nối mạng tắt"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Bật _mạng"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Bật _Wi-Fi"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Bật _di động băng thông rộng"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "Bật _thông báo"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Giới thiệu"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -782,17 +776,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Kết nối đến mạng Wi-Fi ẩn"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Tạo mạng Wi-Fi mới"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Tạo mạng Wi-Fi mới"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1657,9 +1651,6 @@ msgstr "không thể tìm thiết bị Bluetooth."
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "Tê_n mạng:"
-
-#~ msgid "Connection _Information"
-#~ msgstr "Thông t_in kết nối"
 
 #, fuzzy
 #~ msgid ""
@@ -3256,6 +3247,9 @@ msgstr "không thể tìm thiết bị Bluetooth."
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Tự động gỡ khoá thiết bị này"
+
+#~ msgid "Connection Information"
+#~ msgstr "Thông tin kết nối"
 
 #~ msgid "Usage:"
 #~ msgstr "Cách dùng:"

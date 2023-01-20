@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2009-02-14 12:38+0200\n"
 "Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian Latin <i18n@mova.org>\n"
@@ -253,11 +253,11 @@ msgid "Connection failure"
 msgstr "Niaŭdałaje spałučeńnie VPN"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -475,29 +475,28 @@ msgstr "Niama sietkavych pryładaŭ"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "<b>Asablivaje</b>"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "Spałučeńni _VPN"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_Kanfihuruj VPN..."
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "Spałučeńni _VPN"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Źviestki ab spałučeńni"
+msgid "Connection _Information"
+msgstr "_Źviestki ab spałučeńni"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -527,30 +526,28 @@ msgstr "Sietkavyja pasłuhi vyklučanyja"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Uklučy _sietkavyja pasłuhi"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
 #, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Uklučy _biazdrotavuju sietku"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
 #, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Mabilny Broadband"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Ab"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -793,17 +790,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Spałučy sa schavanaj biazdrotavaj sietkaju"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Stvary novuju biazdrotavuju sietku"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Stvary novuju biazdrotavuju sietku"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1666,7 +1663,7 @@ msgstr ""
 #: ../data/lxplug-bluetooth.ui.h:4
 #, fuzzy
 msgid "Searching for Bluetooth devices..."
-msgstr "Čakańnie aŭtaryzacyi karystalnika dla pryłady „%s”..."
+msgstr "Uklučeńnie PPP na pryładzie %s..."
 
 #, fuzzy
 #~ msgid "Manage your network connections"
@@ -1693,9 +1690,6 @@ msgstr "Čakańnie aŭtaryzacyi karystalnika dla pryłady „%s”..."
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "_Nazva sietki:"
-
-#~ msgid "Connection _Information"
-#~ msgstr "_Źviestki ab spałučeńni"
 
 #, fuzzy
 #~ msgid "Ig_nore automatically obtained routes"
@@ -2734,6 +2728,9 @@ msgstr "Čakańnie aŭtaryzacyi karystalnika dla pryłady „%s”..."
 #~ msgid "Export VPN connection…"
 #~ msgstr "Ekspartuj spałučeńnie VPN..."
 
+#~ msgid "Connection Information"
+#~ msgstr "Źviestki ab spałučeńni"
+
 #, fuzzy
 #~ msgid "Anonymous"
 #~ msgstr "Ananimnaja tojesnaść:"
@@ -3381,9 +3378,6 @@ msgstr "Čakańnie aŭtaryzacyi karystalnika dla pryłady „%s”..."
 
 #~ msgid "Dialing mobile broadband device %s..."
 #~ msgstr "Nabor praz pryładu „Mobile Broadband” %s..."
-
-#~ msgid "Starting PPP on device %s..."
-#~ msgstr "Uklučeńnie PPP na pryładzie %s..."
 
 #~ msgid "Preparing device %s for the wired network..."
 #~ msgstr "Padrychtoŭka pryłady %s dla dracianoj sietki..."

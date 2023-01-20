@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2014-12-02 11:44+0000\n"
 "Last-Translator: system user <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,11 +258,11 @@ msgid "Connection failure"
 msgstr "ការ​តភ្ជាប់​បាន​បរាជ័យ"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -473,29 +473,28 @@ msgstr "មិនមាន​ឧបករណ៍​បណ្ដាញ"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "កម្រិត​ខ្ពស់"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "ការ​តភ្ជាប់ VPN"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "កំណត់​រចនាសម្ព័ន្ធ VPN..."
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "ការ​តភ្ជាប់ VPN"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "ព័ត៌មាន​តភ្ជាប់"
+msgid "Connection _Information"
+msgstr "ព័ត៌មាន​ការ​តភ្ជាប់"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -525,31 +524,26 @@ msgstr "បាន​បិទ​ការ​តភ្ជាប់​បណ្ដ
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "បើក​ការ​តភ្ជាប់​បណ្ដាញ"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "បើក​វ៉ាយហ្វាយ"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "បើក​រលកអាកាស​ចល័ត"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "បើក​ការ​ជូនដំណឹង"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "អំពី"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -783,17 +777,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "តភ្ជាប់​ទៅកាន់​បណ្ដាញ​វ៉ាយហ្វាយ​ដែល​លាក់"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "បង្កើត​បណ្ដាញ​វ៉ាយហ្វាយ​ថ្មី"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "បង្កើត​បណ្ដាញ​វ៉ាយហ្វាយ​ថ្មី"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1655,9 +1649,6 @@ msgstr "រក​មិន​ឃើញ​ឧបករណ៍​ប៊្លូធ
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "ឈ្មោះ​បណ្ដាញ៖"
-
-#~ msgid "Connection _Information"
-#~ msgstr "ព័ត៌មាន​ការ​តភ្ជាប់"
 
 #, fuzzy
 #~ msgid ""
@@ -3224,6 +3215,9 @@ msgstr "រក​មិន​ឃើញ​ឧបករណ៍​ប៊្លូធ
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "ដោះ​សោ​ឧបករណ៍​នេះ​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#~ msgid "Connection Information"
+#~ msgstr "ព័ត៌មាន​តភ្ជាប់"
 
 #~ msgid "Usage:"
 #~ msgstr "ការ​ប្រើប្រាស់៖"

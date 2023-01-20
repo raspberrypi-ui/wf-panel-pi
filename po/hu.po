@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2016-11-08 16:39+0100\n"
 "Last-Translator: Peter Czifra <czifi@freestart.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -260,11 +260,11 @@ msgid "Connection failure"
 msgstr "A kapcsolat meghiúsult"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -480,29 +480,26 @@ msgstr "Nem érhetők el hálózati eszközök"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Speciális csapatbeállítások"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "_VPN kapcsolatok"
 
 #: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "V_PN beállítása…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "VPN kapcsolat hozzá_adása…"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Kapcsolatinformációk"
+msgid "Connection _Information"
+msgstr "_Kapcsolatinformációk"
 
 # Megjegyzés: Itt a magyar fordításban hozzárendeltem gyorsbillentyűt a fordításhoz, az angolban eredetileg nincs.
 #. 'Edit Connections...' item
@@ -531,31 +528,26 @@ msgstr "Hálózat kikapcsolva"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "_Hálózat bekapcsolása"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "_Wi-Fi bekapcsolása"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "_Mobil széles sáv bekapcsolása"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "Ért_esítések bekapcsolása"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Névjegy"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -789,18 +781,16 @@ msgid "_OK"
 msgstr "_OK"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
-#, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Kapcsolódás _rejtett Wi-Fi hálózathoz…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
-#, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Új _Wi-Fi hálózat létrehozása…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Új _Wi-Fi hálózat létrehozása…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1674,9 +1664,6 @@ msgstr "érvénytelen Bluetooth eszköz (%s)"
 
 #~ msgid "_Network name"
 #~ msgstr "_Hálózatnév"
-
-#~ msgid "Connection _Information"
-#~ msgstr "_Kapcsolatinformációk"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3904,6 +3891,9 @@ msgstr "érvénytelen Bluetooth eszköz (%s)"
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Eszköz automatikus feloldása"
+
+#~ msgid "Connection Information"
+#~ msgstr "Kapcsolatinformációk"
 
 #~ msgid "Usage:"
 #~ msgstr "Használat:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2014-12-02 12:00+0000\n"
 "Last-Translator: system user <>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -259,11 +259,11 @@ msgid "Connection failure"
 msgstr "باغلىنىش مەغلۇپ بولدى"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -479,29 +479,28 @@ msgstr "تور ئۈسكۈنىسى يوق"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "ئالىي"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "ۋ پ ن(VPN) باغلىنىشلىرى(_V)"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "ۋ پ ن(VPN) نى سەپلە(_C)…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "ۋ پ ن(VPN) باغلىنىشلىرى(_V)"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "باغلىنىش ئۇچۇرلىرى"
+msgid "Connection _Information"
+msgstr "باغلىنىش ئۇچۇرلىرى(_I)"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -531,31 +530,26 @@ msgstr "تور باغلىنىشى چەكلەنگەن"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "تور ئۇلاشنى قوزغات(_N)"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "سىمسىز تورنى(Wi-Fi) ئىناۋەتلىك قىل(_W)"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "كۆچمە كەڭ بەلۋاغنى ئىناۋەتلىك قىل(_M)"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "ئۇقتۇرۇشلارنى قوزغات(_O)"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "ھەققىدە(_A)"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -789,17 +783,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "يوشۇرۇن سىمسىز(Wi-Fi) تورغا باغلىنىش"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "يېڭى سىمسىز(Wi-Fi) تور قۇرۇش"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "يېڭى سىمسىز(Wi-Fi) تور قۇرۇش"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1669,9 +1663,6 @@ msgstr "كۆكچىش ئۈسكۈنىسى تېپىلمىدى."
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "تور ئاتى(_N)"
-
-#~ msgid "Connection _Information"
-#~ msgstr "باغلىنىش ئۇچۇرلىرى(_I)"
 
 #, fuzzy
 #~ msgid ""
@@ -3134,6 +3125,9 @@ msgstr "كۆكچىش ئۈسكۈنىسى تېپىلمىدى."
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "بۇ ئۈسكۈنىنى ئاپتوماتىك قۇلۇپسىزلا"
+
+#~ msgid "Connection Information"
+#~ msgstr "باغلىنىش ئۇچۇرلىرى"
 
 #~ msgid "Usage:"
 #~ msgstr "ئىشلىتىش ئۇسۇلى:"

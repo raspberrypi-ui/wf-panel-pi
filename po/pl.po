@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel 0.5.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2017-05-25 06:59+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -262,11 +262,11 @@ msgid "Connection failure"
 msgstr "Niepowodzenie połączenia"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -483,29 +483,26 @@ msgstr "Brak dostępnych urządzeń sieciowych"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Zaawansowane opcje zespołu"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "Połączenia _VPN"
 
 #: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "S_konfiguruj VPN…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "_Dodaj połączenie VPN…"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Informacje o połączeniu"
+msgid "Connection _Information"
+msgstr "I_nformacje o połączeniu"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -533,31 +530,26 @@ msgstr "Sieć jest wyłączona"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "_Sieć"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Sieć _Wi-Fi"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Sieć _komórkowa"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "P_owiadomienia"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_O programie"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -789,18 +781,16 @@ msgid "_OK"
 msgstr "_OK"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
-#, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "_Połącz z ukrytą siecią Wi-Fi…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
-#, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Utwórz _nową sieć Wi-Fi…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Utwórz _nową sieć Wi-Fi…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1685,9 +1675,6 @@ msgstr "nieprawidłowe urządzenie Bluetooth (%s)"
 
 #~ msgid "_Network name"
 #~ msgstr "_Nazwa sieci"
-
-#~ msgid "Connection _Information"
-#~ msgstr "I_nformacje o połączeniu"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -4024,6 +4011,9 @@ msgstr "nieprawidłowe urządzenie Bluetooth (%s)"
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Automatyczne odblokowywanie tego urządzenia"
+
+#~ msgid "Connection Information"
+#~ msgstr "Informacje o połączeniu"
 
 #~ msgid "Usage:"
 #~ msgstr "Użycie:"

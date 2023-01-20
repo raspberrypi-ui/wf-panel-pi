@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXPanel 0.5.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2012-10-09 12:57+0200\n"
 "Last-Translator: Mișu <dumol@l10n.ro>\n"
 "Language-Team: Romanian <diacritice@googlegroups.com>\n"
@@ -255,11 +255,11 @@ msgid "Connection failure"
 msgstr "Conexiune eșuată"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -471,29 +471,28 @@ msgstr "Nu există dispozitive de rețea disponibile"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Avansat"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "Conexiuni _VPN"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_Configurează VPN..."
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "_Adaugă o conexiune VPN..."
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Detalii conexiune"
+msgid "Connection _Information"
+msgstr "Detal_ii conexiune"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -523,31 +522,26 @@ msgstr "Rețea dezactivată"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Activează _rețeaua"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Activează _Wi-Fi"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Activează Internetul _mobil de bandă largă"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "Activează n_otificările"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Despre"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -787,17 +781,17 @@ msgstr "_OK"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Conectare la rețea fără fir ascunsă"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Creează rețea fără fir nouă"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Creează rețea fără fir nouă"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1693,9 +1687,6 @@ msgstr "nu s-a putut găsi dispozitivul Bluetooth."
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "_Nume rețea:"
-
-#~ msgid "Connection _Information"
-#~ msgstr "Detal_ii conexiune"
 
 #, fuzzy
 #~ msgid ""
@@ -3131,6 +3122,9 @@ msgstr "nu s-a putut găsi dispozitivul Bluetooth."
 
 #~ msgid "_Unlock"
 #~ msgstr "_Deblochează"
+
+#~ msgid "Connection Information"
+#~ msgstr "Detalii conexiune"
 
 #~ msgid "Usage:"
 #~ msgstr "Utilizare:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2012-07-09 18:48+0200\n"
 "Last-Translator: PraveenIlla <mail2ipn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,11 +255,11 @@ msgid "Connection failure"
 msgstr "అనుసంధానమగుట విఫలం"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -469,29 +469,28 @@ msgstr "ఎటువంటి నెట్వర్కు పరికరము�
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "అధునాతనం"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "_VPN అనుసంధానములు"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "VPN ఆకృతీకరించుము... (_C)"
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "_VPN అనుసంధానములు"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "అనుసంధానము సమాచారము"
+msgid "Connection _Information"
+msgstr "అనుసంధానము సమాచారము (_I)"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -521,31 +520,27 @@ msgstr "నెట్వర్కింగ్ అచేతనమైంది"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "నెట్వర్కింగ్ చేతనముచేయుము (_N)"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
 #, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "వైర్‌లేని విధం చేతనముచేయుము (_W)"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "మొబైల్ బ్రాడ్‌బాండ్‌ను చేతనముచేయుము (_M)"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "సూచన ప్రకటనలను చేతనముచేయుము (_o)"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "గురించి (_A)"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -784,17 +779,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "మరుగునవున్న వైరులేని నెట్వర్కునకు అనుసంధానించు"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "కొత్త వైరులేని నెట్వర్కు సృష్టించుము"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "కొత్త వైరులేని నెట్వర్కు సృష్టించుము"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1664,9 +1659,6 @@ msgstr "బ్లూటూత్ పరికరమును కనుగొన�
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "నెట్వర్కు పేరు (_N):"
-
-#~ msgid "Connection _Information"
-#~ msgstr "అనుసంధానము సమాచారము (_I)"
 
 #, fuzzy
 #~ msgid ""
@@ -3051,6 +3043,9 @@ msgstr "బ్లూటూత్ పరికరమును కనుగొన�
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "స్వయచాలకంగా ఈ పరికరమును అన్‌లాక్ చేయు"
+
+#~ msgid "Connection Information"
+#~ msgstr "అనుసంధానము సమాచారము"
 
 #~ msgid "Usage:"
 #~ msgstr "వినియోగము:"

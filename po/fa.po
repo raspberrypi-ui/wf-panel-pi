@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2010-08-16 22:24+0330\n"
 "Last-Translator: Mostafa <info@mostafadaneshvar.com>\n"
 "Language-Team: Persian <trans-fa@lists.fedoraproject.org>\n"
@@ -257,11 +257,11 @@ msgid "Connection failure"
 msgstr "اتصال شکست خورد"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -477,29 +477,28 @@ msgstr "هیچ دستگاه شبکه‌ای موجود نیست"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "پیشرفته"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "اتصال‌های شبکه‌های اختصاصی _مجازی (VPN)"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_پیکربندی شبکه خصوصی مجازی"
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "اتصال‌های شبکه‌های اختصاصی _مجازی (VPN)"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "اطلاعات اتصال"
+msgid "Connection _Information"
+msgstr "_اطلاعات اتصال"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -529,31 +528,27 @@ msgstr "شبکه غیر فعال شد"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "فعال‌سازی _شبکه"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
 #, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "فعال‌سازی _بی‌سیم"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "فعال‌سازی پهن‌باند تلفن _همراه"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "فعال سازی ا_علان‌ها"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_درباره"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -792,17 +787,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "اتصال به شبکه بی‌سیم مخفی "
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "ساخت یک شبکه بی‌سیم جدید"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "ساخت یک شبکه بی‌سیم جدید"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1679,9 +1674,6 @@ msgstr "نمی‌توان دستگاه بلوتوثی پیدا کرد."
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "نام _شبکه:"
-
-#~ msgid "Connection _Information"
-#~ msgstr "_اطلاعات اتصال"
 
 #, fuzzy
 #~ msgid ""
@@ -2973,6 +2965,9 @@ msgstr "نمی‌توان دستگاه بلوتوثی پیدا کرد."
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "بطور خودکار این دستگاه را باز کن"
+
+#~ msgid "Connection Information"
+#~ msgstr "اطلاعات اتصال"
 
 #~ msgid "Usage:"
 #~ msgstr "کاربرد:"

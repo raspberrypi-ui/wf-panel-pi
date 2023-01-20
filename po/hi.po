@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2013-03-24 13:57+0000\n"
 "Last-Translator: chandankumar <chandankumar.093047@gmail.com>\n"
 "Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
@@ -267,11 +267,11 @@ msgid "Connection failure"
 msgstr "कनेक्शन असफल"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -480,29 +480,28 @@ msgstr "कोई संजाल युक्तियां उपलब्ध
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "विस्तृत"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "_VPN कनेक्शन"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "VPN विन्यस्त करें (_C)..."
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "_VPN कनेक्शन"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "कनेक्शन जानकारी"
+msgid "Connection _Information"
+msgstr "कनेक्शन जानकारी (_I)"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -532,31 +531,26 @@ msgstr "संजालन निष्क्रिय"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "संजालन सक्रिय करें (_N)"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "बेतार सक्रिय करें (_W) "
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "मोबाइल ब्रॉडबैंड सक्रिय करें (_M)"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "सूचना सक्रिय करें (_o)"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "के बारे में (_A)"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -790,17 +784,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "छुपे वाई फाई  संजाल से कनेक्ट करें"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "नया वाई फाई नेटवर्क बनाएँ"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "नया वाई फाई नेटवर्क बनाएँ"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1666,9 +1660,6 @@ msgstr "ब्लूटूथ युक्ति नहीं ढूँढ़ �
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "संजाल नाम (_N):"
-
-#~ msgid "Connection _Information"
-#~ msgstr "कनेक्शन जानकारी (_I)"
 
 #, fuzzy
 #~ msgid ""
@@ -3147,6 +3138,9 @@ msgstr "ब्लूटूथ युक्ति नहीं ढूँढ़ �
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "स्वचालित रूप से यह युक्ति अनलॉक"
+
+#~ msgid "Connection Information"
+#~ msgstr "कनेक्शन जानकारी"
 
 #~ msgid "Usage:"
 #~ msgstr "प्रयोग:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2019-02-26 19:16+0000\n"
 "Last-Translator: External Translation Source <translation@rep.kiev.ua>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,11 +259,11 @@ msgid "Connection failure"
 msgstr "Savienojums neizdevās"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -473,28 +473,26 @@ msgstr "Nav pieejamu tīkla ierīču"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Sajūguma papildu opcijas"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-msgid "VPN Connections"
-msgstr "VPN savienojumi"
+msgid "_VPN Connections"
+msgstr "_VPN savienojumi"
 
 #: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_Konfigurēt VPN…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "Pievienot VPN s_avienojumu…"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Savienojuma informācija"
+msgid "Connection _Information"
+msgstr "Savienojuma _informācija"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -522,31 +520,26 @@ msgstr "Tīklošana izslēgta"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Ieslēgt tīkloša_nu"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Ieslēgt bez_vadu tīklošanu"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Ieslēgt _mobilo platjoslas tīklu"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "Ieslēgt paziņ_ojumus"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "P_ar"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -780,18 +773,16 @@ msgid "_OK"
 msgstr "_Labi"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
-#, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "_Savienoties ar slēptu bezvadu tīklu…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
-#, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Izveidot jau_nu bezvadu tīklu…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Izveidot jau_nu bezvadu tīklu…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1675,12 +1666,6 @@ msgstr "nederīga Bluetooth ierīce (%s)"
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "Tīkla _nosaukums:"
-
-#~ msgid "_VPN Connections"
-#~ msgstr "_VPN savienojumi"
-
-#~ msgid "Connection _Information"
-#~ msgstr "Savienojuma _informācija"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -3890,6 +3875,9 @@ msgstr "nederīga Bluetooth ierīce (%s)"
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Automātiski atbloķēt šo ierīci"
 
+#~ msgid "Connection Information"
+#~ msgstr "Savienojuma informācija"
+
 #~ msgid "Usage:"
 #~ msgstr "Lietojums:"
 
@@ -5439,6 +5427,9 @@ msgstr "nederīga Bluetooth ierīce (%s)"
 #~ "\n"
 #~ "Tas pieprasīs mazliet informācijas, tādu kā IP adresi un noslēpumus.  "
 #~ "Lūdzu vaicājiet savam sistēmadministratoram, lai iegūtu šo informāciju."
+
+#~ msgid "VPN Connections"
+#~ msgstr "VPN savienojumi"
 
 #~ msgid "40-bit WEP"
 #~ msgstr "40-bitu WEP"

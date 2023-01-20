@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2017-05-25 16:59+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -258,11 +258,11 @@ msgid "Connection failure"
 msgstr "Байланысты орнату сәтсіз"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -471,29 +471,26 @@ msgstr "Бірді-бір желілік құрылғы қолжетерсіз"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Кеңейтілген"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "_VPN байланыстары"
 
 #: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "VPN ба_птау…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "VPN байланысын қ_осу…"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Байланыс ақпараты"
+msgid "Connection _Information"
+msgstr "Байла_ныс ақпараты"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -521,31 +518,26 @@ msgstr "Желі сөндірілген"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Ж_еліні іске қосу"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "Wi-Fi-ды і_ске қосу"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "_Мобильді кеңжолақты желіні іске қосу"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "_Хабарламаларды іске қосу"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "Осы т_уралы"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -778,18 +770,16 @@ msgid "_OK"
 msgstr "_ОК"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
-#, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Жасырын Wi-Fi желісіне байланы_су…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
-#, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "_Жаңа Wi-Fi желісін жасау…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "_Жаңа Wi-Fi желісін жасау…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1660,9 +1650,6 @@ msgstr "жарамсыз Bluetooth құрылғысы (%s)"
 
 #~ msgid "_Network name"
 #~ msgstr "Желі а_тауы"
-
-#~ msgid "Connection _Information"
-#~ msgstr "Байла_ныс ақпараты"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -2952,6 +2939,9 @@ msgstr "жарамсыз Bluetooth құрылғысы (%s)"
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Бұл құрылғыны блоктаудан автоматты түрде босату"
+
+#~ msgid "Connection Information"
+#~ msgstr "Байланыс ақпараты"
 
 #~ msgid "Usage:"
 #~ msgstr "Қолданылуы:"

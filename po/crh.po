@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nm-aplet 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2013-05-21 18:21-0500\n"
 "Last-Translator: Reşat SABIQ <tilde.birlik@gmail.com>\n"
 "Language-Team: QIRIMTATARCA (Qırım Türkçesi) <tilde-birlik-meydan@lists."
@@ -257,11 +257,11 @@ msgid "Connection failure"
 msgstr "Bağlantı muvaffaqiyetsizligi"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -472,31 +472,30 @@ msgstr "Şebeke aygıtı bulunamıyor"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "İleriletilgen"
 
 # tüklü
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "_VPN Bağlantıları"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_VPN Yapılandır..."
 
 # tüklü
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "_VPN Bağlantıları"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Bağlantı Malümatı"
+msgid "Connection _Information"
+msgstr "Bağlantı _Malümatı"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -526,31 +525,26 @@ msgstr "Şebeke etkin değil"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "_Şebekelemeni Qabilleştir"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "_Telsiz-Vefanı Qabilleştir"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "_Mobil Kenişbant Qabil Olsun"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "_Bildirimler Qabil Olsun"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Haqqında"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -790,17 +784,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Gizli Telsiz-Vefa Şebekege Bağlan"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Yañı Telsiz-Vefa Şebeke İcat Et"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Yañı Telsiz-Vefa Şebeke İcat Et"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1688,9 +1682,6 @@ msgstr "Bluetooth cihazı tapılamadı."
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "Şebeke _adı:"
-
-#~ msgid "Connection _Information"
-#~ msgstr "Bağlantı _Malümatı"
 
 #, fuzzy
 #~ msgid ""
@@ -3093,6 +3084,9 @@ msgstr "Bluetooth cihazı tapılamadı."
 
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Bu cihaznı avtomatik olaraq kilitsizle"
+
+#~ msgid "Connection Information"
+#~ msgstr "Bağlantı Malümatı"
 
 #~ msgid "Usage:"
 #~ msgstr "Qullanılış:"

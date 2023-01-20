@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetworkManager HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2005-03-31 20:55-0700\n"
 "Last-Translator: Steve Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -257,11 +257,11 @@ msgid "Connection failure"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -442,27 +442,26 @@ msgid "No network devices available"
 msgstr "urusobe Byabonetse"
 
 #: ../src/panel/widgets/netman/applet.c:1917
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:1919
-#, fuzzy
-msgid "VPN Connections"
-msgstr "urusobe Ukwihuza"
+msgid "_VPN Connections"
+msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:1973
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "urusobe Ukwihuza"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
+msgid "Connection _Information"
 msgstr ""
 
 #. 'Edit Connections...' item
@@ -493,29 +492,27 @@ msgstr ""
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
-msgstr "Kuri"
+msgid "Enable _Networking"
+msgstr ""
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr ""
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
-msgstr "urusobe Ukwihuza"
+msgid "Enable _Mobile Broadband"
+msgstr ""
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:2415
 #, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "Bigyanye"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -754,17 +751,17 @@ msgstr "YEGO"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Kuri a urusobe"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Gishya"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Gishya"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1770,6 +1767,10 @@ msgstr ""
 
 #, fuzzy, c-format
 #~ msgid "VLAN connection %d"
+#~ msgstr "urusobe Ukwihuza"
+
+#, fuzzy, c-format
+#~ msgid "VPN connection %d"
 #~ msgstr "urusobe Ukwihuza"
 
 #, fuzzy, c-format

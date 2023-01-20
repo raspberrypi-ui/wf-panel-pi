@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  <info@armath.am>\n"
 "Language-Team: Armenian\n"
@@ -261,13 +261,12 @@ msgstr "Կապակցումը ձախողվեց - %s"
 
 #: ../src/panel/widgets/netman/applet.c:186
 #, fuzzy
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr "Անջատել անլար ցանցը"
 
 #: ../src/panel/widgets/netman/applet.c:186
-#, fuzzy
-msgid "Turn On Wireless LAN"
-msgstr "Միացնել անլար ցանցը"
+msgid "_Turn On Wireless LAN"
+msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
 #, c-format
@@ -452,28 +451,28 @@ msgid "No network devices available"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:1917
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:1919
 #, fuzzy
-msgid "VPN Connections"
+msgid "_VPN Connections"
 msgstr "Միացում ..."
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "Կարգաբերել՝"
 
 #: ../src/panel/widgets/netman/applet.c:1977
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr ""
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
 #, fuzzy
-msgid "Connection Information"
+msgid "Connection _Information"
 msgstr "Կապակցումը ձախողվեց - %s"
 
 #. 'Edit Connections...' item
@@ -502,27 +501,26 @@ msgstr ""
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
 #, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "Ցանցի միացման սխալմունք"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr ""
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr ""
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Մեր մասին"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -760,16 +758,16 @@ msgstr "Լավ"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Անջատել անլար ցանցը"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Անջատել անլար ցանցը"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1580,7 +1578,6 @@ msgid "label"
 msgstr ""
 
 #: ../data/lxplug-updater.ui.h:1
-#, fuzzy
 msgid "Available Updates"
 msgstr "Հասանելի թարմացումներ"
 
@@ -1760,6 +1757,9 @@ msgstr "Բլութութ սարքի որոնում..."
 
 #~ msgid "No APs found - scanning..."
 #~ msgstr "APs չի գտնվել - որոնում..."
+
+#~ msgid "Turn On Wi-Fi"
+#~ msgstr "Միացնել անլար ցանցը"
 
 #~ msgid "No wireless interfaces found"
 #~ msgstr "Անլար ցանցի միջերես չի գտնվել"

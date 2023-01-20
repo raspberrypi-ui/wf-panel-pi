@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2009-07-23 20:11+0200\n"
 "Last-Translator: Muhammad Ali Makki <makki.ma@gmail.com>\n"
 "Language-Team: Urdu <makki.ma@gmail.com>\n"
@@ -261,11 +261,11 @@ msgid "Connection failure"
 msgstr "اتصال کا اضافہ ناکام ہوگیا"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -483,28 +483,28 @@ msgstr "کوئی نیٹ ورک ڈیوائس دستیاب نہیں ہے"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "<b>اعلی</b>"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-msgid "VPN Connections"
-msgstr "VPN-Verbindungen"
+msgid "_VPN Connections"
+msgstr "_وی پی این اتصال"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 #, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "وی پی این _وضع کریں..."
 
 #: ../src/panel/widgets/netman/applet.c:1977
 #, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "Neue VPN-Verbindung erstellen"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "اتصال کی معلومات"
+msgid "Connection _Information"
+msgstr "اتصال کی _معلومات"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -534,31 +534,27 @@ msgstr "نیٹ ورکنگ معطل ہے"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "_نیٹ ورکنگ فعال کریں"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
 #, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "_وائیرلیس فعال کریں"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "_موبائل براڈ بینڈ فعال کریں"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "_اطلاعات فعال کریں"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_بابت"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -799,17 +795,17 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 #, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "پوشیدہ وائیرلیس نیٹ ورک سے اتصال قائم کریں"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 #, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "نیا وائیرلیس نیٹ ورک بنائیں"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "نیا وائیرلیس نیٹ ورک بنائیں"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1671,7 +1667,7 @@ msgstr ""
 #: ../data/lxplug-bluetooth.ui.h:4
 #, fuzzy
 msgid "Searching for Bluetooth devices..."
-msgstr "Es wird auf die Benutzerauthentifizierung auf Gerät »%s« gewartet …"
+msgstr "PPP wird auf Gerät %s gestartet …"
 
 #, fuzzy
 #~ msgid "Manage your network connections"
@@ -1695,12 +1691,6 @@ msgstr "Es wird auf die Benutzerauthentifizierung auf Gerät »%s« gewartet …
 #, fuzzy
 #~ msgid "_Network name"
 #~ msgstr "_نیٹ ورک کا نام:"
-
-#~ msgid "_VPN Connections"
-#~ msgstr "_وی پی این اتصال"
-
-#~ msgid "Connection _Information"
-#~ msgstr "اتصال کی _معلومات"
 
 #, fuzzy
 #~ msgid ""
@@ -2879,6 +2869,9 @@ msgstr "Es wird auf die Benutzerauthentifizierung auf Gerät »%s« gewartet …
 #~ msgid "Export VPN connection…"
 #~ msgstr "وی پی این اتصال برآمد کریں..."
 
+#~ msgid "Connection Information"
+#~ msgstr "اتصال کی معلومات"
+
 #~ msgid "Usage:"
 #~ msgstr "استعمال:"
 
@@ -3823,9 +3816,6 @@ msgstr "Es wird auf die Benutzerauthentifizierung auf Gerät »%s« gewartet …
 #~ msgid "Dialing mobile broadband device %s..."
 #~ msgstr "Mobiles Breitbandgerät %s wählt …"
 
-#~ msgid "Starting PPP on device %s..."
-#~ msgstr "PPP wird auf Gerät %s gestartet …"
-
 #~ msgid "Preparing device %s for the wired network..."
 #~ msgstr "Vorbereiten des Geräts %s wird für das Kabelnetzwerk …"
 
@@ -4066,6 +4056,9 @@ msgstr "Es wird auf die Benutzerauthentifizierung auf Gerät »%s« gewartet …
 
 #~ msgid "Export the selected VPN connection to a file"
 #~ msgstr "Ausgewählte VPN-Verbindung in eine Datei exportieren"
+
+#~ msgid "VPN Connections"
+#~ msgstr "VPN-Verbindungen"
 
 #~ msgid "40-bit WEP"
 #~ msgstr "40-bit WEP"

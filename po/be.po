@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 12:45+0000\n"
+"POT-Creation-Date: 2023-01-20 13:51+0000\n"
 "PO-Revision-Date: 2012-09-26 00:36+0200\n"
 "Last-Translator: Мікалай <crom-a@tut.by>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -257,11 +257,11 @@ msgid "Connection failure"
 msgstr "Не атрымалася падлучыцца"
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn Off Wireless LAN"
+msgid "_Turn Off Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:186
-msgid "Turn On Wireless LAN"
+msgid "_Turn On Wireless LAN"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:282
@@ -470,28 +470,26 @@ msgstr "Даступныя сеткавыя прылады адсутнічаю�
 
 #: ../src/panel/widgets/netman/applet.c:1917
 #, fuzzy
-msgid "Advanced Options"
+msgid "_Advanced Options"
 msgstr "Дадатковыя параметры агрэгацыі"
 
 #: ../src/panel/widgets/netman/applet.c:1919
-msgid "VPN Connections"
-msgstr "VPN Connections"
+msgid "_VPN Connections"
+msgstr "VPN-з_лучэнні"
 
 #: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "Configure VPN…"
+msgid "_Configure VPN…"
 msgstr "_Наладзіць VPN…"
 
 #: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "Add a VPN connection…"
+msgid "_Add a VPN connection…"
 msgstr "_Дадаць VPN-злучэнне…"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection Information"
-msgstr "Інфармацыя пра злучэнне"
+msgid "Connection _Information"
+msgstr "Інфармацыя пра _злучэнне"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
@@ -519,31 +517,26 @@ msgstr "Падтрымка сеткі выключаная"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
-#, fuzzy
-msgid "Enable Networking"
+msgid "Enable _Networking"
 msgstr "_Уключыць падтрымку сеткі"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
-#, fuzzy
-msgid "Enable Wi-Fi"
+msgid "Enable _Wi-Fi"
 msgstr "_Уключыць Wi-Fi"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
-#, fuzzy
-msgid "Enable Mobile Broadband"
+msgid "Enable _Mobile Broadband"
 msgstr "Уключыць _мабільную сувязь"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
-#, fuzzy
-msgid "Enable Notifications"
+msgid "Enable N_otifications"
 msgstr "Уключыць _апавяшчэнні"
 
 #: ../src/panel/widgets/netman/applet.c:2415
-#, fuzzy
-msgid "About"
+msgid "_About"
 msgstr "_Пра праграму"
 
 #: ../src/panel/widgets/netman/applet.c:2736
@@ -775,18 +768,16 @@ msgid "_OK"
 msgstr "_Добра"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
-#, fuzzy
-msgid "Connect to Hidden Wi-Fi Network…"
+msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "_Падлучыцца да схаванай сеткі Wi-Fi…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
-#, fuzzy
-msgid "Create New Wi-Fi Network…"
+msgid "Create _New Wi-Fi Network…"
 msgstr "Стварыць _новую сетку Wi-Fi…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
 #, fuzzy
-msgid "Create Wi-Fi Hotspot…"
+msgid "Create Wi-Fi _Hotspot…"
 msgstr "Стварыць _новую сетку Wi-Fi…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -1669,12 +1660,6 @@ msgstr "непрыдатная прылада Bluetooth (%s)"
 
 #~ msgid "_Network name"
 #~ msgstr "_Назва сеткі"
-
-#~ msgid "_VPN Connections"
-#~ msgstr "VPN-з_лучэнні"
-
-#~ msgid "Connection _Information"
-#~ msgstr "Інфармацыя пра _злучэнне"
 
 #~ msgid ""
 #~ "IP addresses identify your computer on the network. Click the “Add” "
@@ -4020,6 +4005,9 @@ msgstr "непрыдатная прылада Bluetooth (%s)"
 #~ msgid "Automatically unlock this device"
 #~ msgstr "Аўтаматычна разблакоўваць гэтую прыладу"
 
+#~ msgid "Connection Information"
+#~ msgstr "Інфармацыя пра злучэнне"
+
 #~ msgid "Usage:"
 #~ msgstr "Выкарыстанне:"
 
@@ -5300,6 +5288,9 @@ msgstr "непрыдатная прылада Bluetooth (%s)"
 
 #~ msgid "Export the selected VPN connection to a file"
 #~ msgstr "Export the selected VPN connection to a file"
+
+#~ msgid "VPN Connections"
+#~ msgstr "VPN Connections"
 
 #~ msgid ""
 #~ "Could not find the authentication dialog for VPN connection type '%s'. "
