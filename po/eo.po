@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network-manager-applet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 21:04+0000\n"
+"POT-Creation-Date: 2023-01-23 09:19+0000\n"
 "PO-Revision-Date: 2018-01-06 01:51+0200\n"
 "Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
@@ -1386,6 +1386,65 @@ msgstr "DER- aŭ PEM-atestiloj (*.der, *.pem, *.crt, *.cer)"
 msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
 msgstr ""
 "Privataj ŝlosiloj de specoj DER, PEM aŭ PKCS#12 (*.der, *.pem, *.p12, *.key)"
+
+#: ../src/panel/widgets/power/ptbatt.c:389
+#, c-format
+msgid "Charging : %d%%"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:391
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:393
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:398
+#, c-format
+msgid ""
+"Charged : %d%%\n"
+"On external power"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:404
+#, c-format
+msgid "Discharging : %d%%"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:406
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:408
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:431
+msgid ""
+"Low voltage warning\n"
+"Please check your power supply"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:513
+msgid "Power & Battery"
+msgstr ""
+
+#: ../src/panel/widgets/power/ptbatt.c:514
+msgid "Monitors voltage and laptop battery"
+msgstr ""
 
 #: ../src/panel/widgets/smenu/gtk-run.c:391
 #: ../src/panel/widgets/smenu/menu.c:121

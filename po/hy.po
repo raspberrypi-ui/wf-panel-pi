@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 21:04+0000\n"
+"POT-Creation-Date: 2023-01-23 09:19+0000\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  <info@armath.am>\n"
 "Language-Team: Armenian\n"
@@ -1359,6 +1359,77 @@ msgstr ""
 msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
 msgstr ""
 
+#: ../src/panel/widgets/power/ptbatt.c:389
+#, c-format
+msgid "Charging : %d%%"
+msgstr "Լիցքավորում ՝ %d%%"
+
+#: ../src/panel/widgets/power/ptbatt.c:391
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"Լիցքավորում ՝ %d%%\n"
+"Մնացել է ՝ %d րոպե"
+
+#: ../src/panel/widgets/power/ptbatt.c:393
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"Լիցքավորում ՝ %d%%\n"
+"Մնացել է ՝ %0.1f ժամ"
+
+#: ../src/panel/widgets/power/ptbatt.c:398
+#, c-format
+msgid ""
+"Charged : %d%%\n"
+"On external power"
+msgstr ""
+"Լիցքավորված ՝ %d%%\n"
+"On external power"
+
+#: ../src/panel/widgets/power/ptbatt.c:404
+#, c-format
+msgid "Discharging : %d%%"
+msgstr "Լիցքաթափում ՝ %d%%"
+
+#: ../src/panel/widgets/power/ptbatt.c:406
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"Լիցքաթափում ՝ %d%%\n"
+"Մնացել է ՝ %d րոպե"
+
+#: ../src/panel/widgets/power/ptbatt.c:408
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"Լիցքափաթում ՝ %d%%\n"
+"Մնացել է ՝ %0.1f hours"
+
+#: ../src/panel/widgets/power/ptbatt.c:431
+msgid ""
+"Low voltage warning\n"
+"Please check your power supply"
+msgstr ""
+"Ցածր լարման նախազգուշացում\n"
+"Խնդրում ենք ստուգել ձեր հոսանքի աղբյուրը"
+
+#: ../src/panel/widgets/power/ptbatt.c:513
+msgid "Power & Battery"
+msgstr "Հոսանք և մարտկոց"
+
+#: ../src/panel/widgets/power/ptbatt.c:514
+msgid "Monitors voltage and laptop battery"
+msgstr "Վերահսկում է լարումն ու նոթբուքի մարտկոցը"
+
 #: ../src/panel/widgets/smenu/gtk-run.c:391
 #: ../src/panel/widgets/smenu/menu.c:121
 msgid "Run"
@@ -1874,67 +1945,6 @@ msgstr "Փակել"
 
 #~ msgid "Hide characters"
 #~ msgstr "Թաքցնել նիշերը"
-
-#, c-format
-#~ msgid "Charging : %d%%"
-#~ msgstr "Լիցքավորում ՝ %d%%"
-
-#, c-format
-#~ msgid ""
-#~ "Charging : %d%%\n"
-#~ "Time remaining : %d minutes"
-#~ msgstr ""
-#~ "Լիցքավորում ՝ %d%%\n"
-#~ "Մնացել է ՝ %d րոպե"
-
-#, c-format
-#~ msgid ""
-#~ "Charging : %d%%\n"
-#~ "Time remaining : %0.1f hours"
-#~ msgstr ""
-#~ "Լիցքավորում ՝ %d%%\n"
-#~ "Մնացել է ՝ %0.1f ժամ"
-
-#, c-format
-#~ msgid ""
-#~ "Charged : %d%%\n"
-#~ "On external power"
-#~ msgstr ""
-#~ "Լիցքավորված ՝ %d%%\n"
-#~ "On external power"
-
-#, c-format
-#~ msgid "Discharging : %d%%"
-#~ msgstr "Լիցքաթափում ՝ %d%%"
-
-#, c-format
-#~ msgid ""
-#~ "Discharging : %d%%\n"
-#~ "Time remaining : %d minutes"
-#~ msgstr ""
-#~ "Լիցքաթափում ՝ %d%%\n"
-#~ "Մնացել է ՝ %d րոպե"
-
-#, c-format
-#~ msgid ""
-#~ "Discharging : %d%%\n"
-#~ "Time remaining : %0.1f hours"
-#~ msgstr ""
-#~ "Լիցքափաթում ՝ %d%%\n"
-#~ "Մնացել է ՝ %0.1f hours"
-
-#~ msgid ""
-#~ "Low voltage warning\n"
-#~ "Please check your power supply"
-#~ msgstr ""
-#~ "Ցածր լարման նախազգուշացում\n"
-#~ "Խնդրում ենք ստուգել ձեր հոսանքի աղբյուրը"
-
-#~ msgid "Power & Battery"
-#~ msgstr "Հոսանք և մարտկոց"
-
-#~ msgid "Monitors voltage and laptop battery"
-#~ msgstr "Վերահսկում է լարումն ու նոթբուքի մարտկոցը"
 
 #~ msgid "Reboot"
 #~ msgstr "Վերագործարկել"

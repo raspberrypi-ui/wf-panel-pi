@@ -39,6 +39,9 @@ src/panel/widgets/notifications/daemon.cpp
 src/panel/widgets/notifications/notification-center.cpp
 src/panel/widgets/notifications/notification-info.cpp
 src/panel/widgets/notifications/single-notification.cpp
+src/panel/widgets/power.cpp
+src/panel/widgets/power/ptbatt.c
+src/panel/widgets/power/batt_sys.c
 src/panel/widgets/smenu.cpp
 src/panel/widgets/smenu/gtk-run.c
 src/panel/widgets/smenu/menu.c

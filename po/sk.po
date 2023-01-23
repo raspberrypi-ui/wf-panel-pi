@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 21:04+0000\n"
+"POT-Creation-Date: 2023-01-23 09:19+0000\n"
 "PO-Revision-Date: 2020-11-28 22:06+0100\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak\n"
@@ -1397,6 +1397,77 @@ msgstr "Certifikáty PEM (*.pem, *.crt, *.cer)"
 #: ../src/panel/widgets/netman/utils.c:546
 msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
 msgstr "Súkromné kľúče DER, PEM alebo PKCS č. 12 (*.der, *.pem, *.p12, *.key)"
+
+#: ../src/panel/widgets/power/ptbatt.c:389
+#, c-format
+msgid "Charging : %d%%"
+msgstr "Nabíjanie: %d%%"
+
+#: ../src/panel/widgets/power/ptbatt.c:391
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"Nabíjanie: %d%%\n"
+"Zostávajúci čas: %d minút(y)"
+
+#: ../src/panel/widgets/power/ptbatt.c:393
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"Nabíjanie: %d%%\n"
+"Zostávajúci čas: %0.1f hodín(y)"
+
+#: ../src/panel/widgets/power/ptbatt.c:398
+#, c-format
+msgid ""
+"Charged : %d%%\n"
+"On external power"
+msgstr ""
+"Nabitý: %d%%\n"
+"Na externom napájaní"
+
+#: ../src/panel/widgets/power/ptbatt.c:404
+#, c-format
+msgid "Discharging : %d%%"
+msgstr "Vybíjanie: %d%%"
+
+#: ../src/panel/widgets/power/ptbatt.c:406
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"Vybíjanie: %d%%\n"
+"Zostávajúci čas: %d minút(y)"
+
+#: ../src/panel/widgets/power/ptbatt.c:408
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"Vybíjanie: %d%%\n"
+"Zostávajúci čas: %0.1f hodín(y)"
+
+#: ../src/panel/widgets/power/ptbatt.c:431
+msgid ""
+"Low voltage warning\n"
+"Please check your power supply"
+msgstr ""
+"Upozornenie na nízke napätie\n"
+"Skontrolujte, prosím, zdroj napätia"
+
+#: ../src/panel/widgets/power/ptbatt.c:513
+msgid "Power & Battery"
+msgstr "Napájanie a batéria"
+
+#: ../src/panel/widgets/power/ptbatt.c:514
+msgid "Monitors voltage and laptop battery"
+msgstr "Sleduje napätie a batériu notebooku"
 
 #: ../src/panel/widgets/smenu/gtk-run.c:391
 #: ../src/panel/widgets/smenu/menu.c:121
@@ -4838,67 +4909,6 @@ msgstr "_Zavrieť"
 #~ "Nepoužitie certifikátu certifikačnej autority (CA) môže spôsobiť "
 #~ "pripojenie k nezabezpečeným, nebezpečným sieťam Wi-Fi. Chcete si zvoliť "
 #~ "certifikát certifikačnej autority?"
-
-#, c-format
-#~ msgid "Charging : %d%%"
-#~ msgstr "Nabíjanie: %d%%"
-
-#, c-format
-#~ msgid ""
-#~ "Charging : %d%%\n"
-#~ "Time remaining : %d minutes"
-#~ msgstr ""
-#~ "Nabíjanie: %d%%\n"
-#~ "Zostávajúci čas: %d minút(y)"
-
-#, c-format
-#~ msgid ""
-#~ "Charging : %d%%\n"
-#~ "Time remaining : %0.1f hours"
-#~ msgstr ""
-#~ "Nabíjanie: %d%%\n"
-#~ "Zostávajúci čas: %0.1f hodín(y)"
-
-#, c-format
-#~ msgid ""
-#~ "Charged : %d%%\n"
-#~ "On external power"
-#~ msgstr ""
-#~ "Nabitý: %d%%\n"
-#~ "Na externom napájaní"
-
-#, c-format
-#~ msgid "Discharging : %d%%"
-#~ msgstr "Vybíjanie: %d%%"
-
-#, c-format
-#~ msgid ""
-#~ "Discharging : %d%%\n"
-#~ "Time remaining : %d minutes"
-#~ msgstr ""
-#~ "Vybíjanie: %d%%\n"
-#~ "Zostávajúci čas: %d minút(y)"
-
-#, c-format
-#~ msgid ""
-#~ "Discharging : %d%%\n"
-#~ "Time remaining : %0.1f hours"
-#~ msgstr ""
-#~ "Vybíjanie: %d%%\n"
-#~ "Zostávajúci čas: %0.1f hodín(y)"
-
-#~ msgid ""
-#~ "Low voltage warning\n"
-#~ "Please check your power supply"
-#~ msgstr ""
-#~ "Upozornenie na nízke napätie\n"
-#~ "Skontrolujte, prosím, zdroj napätia"
-
-#~ msgid "Power & Battery"
-#~ msgstr "Napájanie a batéria"
-
-#~ msgid "Monitors voltage and laptop battery"
-#~ msgstr "Sleduje napätie a batériu notebooku"
 
 #~ msgid "Audio Outputs"
 #~ msgstr "Zvukové výstupy"
