@@ -38,9 +38,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/ioctl.h>
 #include <asm/ioctl.h>
 #include <zmq.h>
+#include "ptbatt.h"
 #include "batt_sys.h"
 
-#include "plugin.h"
+//#include "plugin.h"
 
 //#define TEST_MODE
 #ifdef TEST_MODE
@@ -53,25 +54,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define VMON_PATH "/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/in0_lcrit_alarm"
 
 /* Plug-in global data */
-
-typedef struct {
-    GtkWidget *plugin;              /* Back pointer to the widget */
-    LXPanel *panel;                 /* Back pointer to panel */
-    GtkWidget *tray_icon;           /* Displayed image */
-    config_setting_t *settings;     /* Plugin settings */
-    battery *batt;
-    GdkPixbuf *plug;
-    GdkPixbuf *flash;
-    GtkWidget *popup;               /* Popup message */
-    GtkWidget *alignment;           /* Alignment object in popup message */
-    GtkWidget *box;                 /* Vbox in popup message */
-    guint timer;
-    guint vtimer;
-    gboolean pt_batt_avail;
-    void *context;
-    void *requester;
-    gboolean ispi;
-} PtBattPlugin;
 
 /* Battery states */
 
@@ -226,9 +208,9 @@ static int init_measurement (PtBattPlugin *pt)
         }
     }
     int val;
-    if (config_setting_lookup_int (pt->settings, "BattNum", &val))
-        pt->batt = battery_get (val);
-    else
+    //if (config_setting_lookup_int (pt->settings, "BattNum", &val))
+    //    pt->batt = battery_get (val);
+    //else
         pt->batt = battery_get (0);
     if (pt->batt) return 1;
 
@@ -313,7 +295,7 @@ static void draw_icon (PtBattPlugin *pt, int lev, float r, float g, float b, int
     int h, w, f, ic; 
 
     // calculate dimensions based on icon size
-    ic = panel_get_icon_size (pt->panel);
+    ic = pt->icon_size;
     w = ic < 36 ? 36 : ic;
     h = ((w * 10) / 36) * 2; // force it to be even
     if (h < 18) h = 18;
@@ -446,7 +428,7 @@ static gboolean vtimer_event (PtBattPlugin *pt)
         int val = fgetc (fp);
         fclose (fp);
         if (val == '1')
-            lxpanel_notify (pt->panel, _("Low voltage warning\nPlease check your power supply"));
+            lxpanel_notify (_("Low voltage warning\nPlease check your power supply"));
     }
     return TRUE;
 }
@@ -454,13 +436,13 @@ static gboolean vtimer_event (PtBattPlugin *pt)
 /* Plugin functions */
 
 /* Handler for system config changed message from panel */
-static void ptbatt_configuration_changed (LXPanel *panel, GtkWidget *p)
+void power_update_display (PtBattPlugin *pt)
 {
-    PtBattPlugin *pt = lxpanel_plugin_get_data (p);
     if (pt->timer) update_icon (pt);
     else gtk_widget_hide (pt->plugin);
 }
 
+#if 0
 /* Plugin destructor. */
 static void ptbatt_destructor (gpointer user_data)
 {
@@ -478,24 +460,24 @@ static void ptbatt_destructor (gpointer user_data)
     /* Deallocate memory */
     g_free (pt);
 }
+#endif
 
 /* Plugin constructor. */
-static GtkWidget *ptbatt_constructor (LXPanel *panel, config_setting_t *settings)
+void power_init (PtBattPlugin *pt)
 {
     /* Allocate and initialize plugin context */
-    PtBattPlugin *pt = g_new0 (PtBattPlugin, 1);
+    //PtBattPlugin *pt = g_new0 (PtBattPlugin, 1);
 
-#ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-#endif
+    textdomain (GETTEXT_PACKAGE);
 
     /* Allocate top level widget and set into plugin widget pointer. */
-    pt->panel = panel;
-    pt->settings = settings;
-    pt->plugin = gtk_event_box_new ();
-    lxpanel_plugin_set_data (pt->plugin, pt, ptbatt_destructor);
+    //pt->panel = panel;
+    //pt->settings = settings;
+    //pt->plugin = gtk_event_box_new ();
+    //lxpanel_plugin_set_data (pt->plugin, pt, ptbatt_destructor);
 
     /* Allocate icon as a child of top level */
     pt->tray_icon = gtk_image_new ();
@@ -519,8 +501,10 @@ static GtkWidget *ptbatt_constructor (LXPanel *panel, config_setting_t *settings
 
     /* Show the widget and return */
     gtk_widget_show_all (pt->plugin);
-    return pt->plugin;
+    //return pt->plugin;
 }
+
+#if 0
 
 FM_DEFINE_MODULE(lxpanel_gtk, ptbatt)
 
@@ -532,3 +516,4 @@ LXPanelPluginInit fm_module_init_lxpanel_gtk = {
     .reconfigure = ptbatt_configuration_changed,
     .gettext_package = GETTEXT_PACKAGE
 };
+#endif

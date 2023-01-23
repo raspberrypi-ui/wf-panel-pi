@@ -33,6 +33,7 @@
 #include "widgets/updater.hpp"
 #include "widgets/cpu.hpp"
 #include "widgets/cputemp.hpp"
+#include "widgets/power.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/notifications/notification-center.hpp"
 
@@ -301,6 +302,8 @@ class WayfirePanel::impl
             return Widget(new WayfireCPU());
         if (name == "cputemp")
             return Widget(new WayfireCPUTemp());
+        if (name == "power")
+            return Widget(new WayfirePower());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
         if (name == "notifications")

@@ -27,6 +27,7 @@ nma	       = dependency('libnma')
 secret	       = dependency('libsecret-1')
 notify	       = dependency('libnotify')
 packagekit     = dependency('packagekit-glib2')
+zmq            = dependency('libzmq')
 
 if get_option('wayland-logout') == true
   wayland_logout = subproject('wayland-logout')
