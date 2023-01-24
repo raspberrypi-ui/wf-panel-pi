@@ -1,8 +1,10 @@
 wf-shell (0.9) bullseye; urgency=medium
 
   * Initialise file manager at startup to load libraries
+  * Add translation files
+  * Add power plugin
 
- -- Simon Long <simon@raspberrypi.com>  Wed, 18 Jan 2023 13:43:06 +0000
+ -- Simon Long <simon@raspberrypi.com>  Tue, 24 Jan 2023 10:30:06 +0000
 
 wf-shell (0.8) bullseye; urgency=medium
 

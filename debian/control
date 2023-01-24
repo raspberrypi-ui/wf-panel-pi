@@ -17,6 +17,6 @@ Package: wf-shell
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, wayfire, libwayland-client0,
  libgtkmm-3.0-1v5 (>=3.24), libwf-config1 (>= 0.7.0), libpulse0, libgtk-layer-shell0 (>= 0.6.0),
- libgtk-3-0 (>= 3.24), libfm-modules, eject, lxmenu-data, packagekit, raspi-config
+ libgtk-3-0 (>= 3.24), libfm-modules, eject, lxmenu-data, packagekit, raspi-config, libzmq5
 Description: Desktop shell for Wayfire
  Wayfire desktop shell with Raspberry Pi modifications
