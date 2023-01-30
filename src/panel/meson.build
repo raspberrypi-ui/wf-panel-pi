@@ -57,7 +57,7 @@ widget_sources = ['widgets/battery.cpp',
 
 deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, zmq]
 
-executable('wf-panel', ['panel.cpp'] + widget_sources,
+executable('wf-panel-pi', ['panel.cpp'] + widget_sources,
         dependencies: deps,
         install: true)
 	

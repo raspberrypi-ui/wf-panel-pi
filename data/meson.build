@@ -1,5 +1,3 @@
-install_data('wayfire.png', install_dir: icon_dir)
-install_data('wallpaper.jpg', install_dir: resource_dir)
 install_data('lxpanel-modal.ui', install_dir: ui_dir)
 install_data('lxplug-bluetooth.ui', install_dir: ui_dir)
 install_data('lxplug-updater.ui', install_dir: ui_dir)
