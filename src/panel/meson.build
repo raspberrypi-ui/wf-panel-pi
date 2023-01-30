@@ -48,12 +48,11 @@ widget_sources = ['widgets/battery.cpp',
 		  'widgets/power/ptbatt.c',
 		  'widgets/power/batt_sys.c',
                   'widgets/window-list/window-list.cpp',
-                  'widgets/window-list/toplevel.cpp',
-		  'widgets/notify.c']
+                  'widgets/window-list/toplevel.cpp']
 
 deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, zmq]
 
-executable('wf-panel-pi', ['panel.cpp'] + widget_sources,
+executable('wf-panel-pi', ['panel.cpp', 'notify.c'] + widget_sources,
         dependencies: deps,
         install: true)
 	
