@@ -49,10 +49,6 @@ widget_sources = ['widgets/battery.cpp',
 		  'widgets/power/batt_sys.c',
                   'widgets/window-list/window-list.cpp',
                   'widgets/window-list/toplevel.cpp',
-                  'widgets/notifications/daemon.cpp',
-                  'widgets/notifications/single-notification.cpp',
-                  'widgets/notifications/notification-info.cpp',
-                  'widgets/notifications/notification-center.cpp',
 		  'widgets/notify.c']
 
 deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, zmq]

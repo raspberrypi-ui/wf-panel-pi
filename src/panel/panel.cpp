@@ -21,9 +21,6 @@
 #include "widgets/launchers.hpp"
 #include "widgets/network.hpp"
 #include "widgets/spacing.hpp"
-#ifdef HAVE_PULSE
-#include "widgets/volume.hpp"
-#endif
 #include "widgets/volumepulse.hpp"
 #include "widgets/micpulse.hpp"
 #include "widgets/smenu.hpp"
@@ -35,7 +32,6 @@
 #include "widgets/cputemp.hpp"
 #include "widgets/power.hpp"
 #include "widgets/window-list/window-list.hpp"
-#include "widgets/notifications/notification-center.hpp"
 
 #include "wf-autohide-window.hpp"
 
@@ -306,8 +302,6 @@ class WayfirePanel::impl
             return Widget(new WayfirePower());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
-        if (name == "notifications")
-            return Widget(new WayfireNotificationCenter());
 
         std::string spacing = "spacing";
         if (name.find(spacing) == 0)
