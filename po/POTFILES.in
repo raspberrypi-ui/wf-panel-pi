@@ -1,7 +1,7 @@
 src/panel/panel.cpp
+src/panel/notify.c
 src/panel/widgets/graph.c
 src/panel/widgets/lxutils.c
-src/panel/widgets/notify.c
 src/panel/widgets/battery.cpp
 src/panel/widgets/bluetooth.cpp
 src/panel/widgets/bluetooth/bluetooth.c
@@ -35,10 +35,6 @@ src/panel/widgets/netman/nm-compat.c
 src/panel/widgets/netman/nm-shared-utils.c
 src/panel/widgets/netman/utils.c
 src/panel/widgets/network.cpp
-src/panel/widgets/notifications/daemon.cpp
-src/panel/widgets/notifications/notification-center.cpp
-src/panel/widgets/notifications/notification-info.cpp
-src/panel/widgets/notifications/single-notification.cpp
 src/panel/widgets/power.cpp
 src/panel/widgets/power/ptbatt.c
 src/panel/widgets/power/batt_sys.c
