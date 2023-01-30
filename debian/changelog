@@ -1,56 +1,5 @@
-wf-shell (0.9) bullseye; urgency=medium
+wf-panel-pi (0.1) bullseye; urgency=medium
 
-  * Initialise file manager at startup to load libraries
-  * Add translation files
-  * Add power plugin
+  * Separate Pi-specific package for modified panel
 
- -- Simon Long <simon@raspberrypi.com>  Tue, 24 Jan 2023 10:30:06 +0000
-
-wf-shell (0.8) bullseye; urgency=medium
-
-  * Remove dock and background components
-
- -- Simon Long <simon@raspberrypi.com>  Tue, 06 Dec 2022 11:18:26 +0000
-
-wf-shell (0.7) bullseye; urgency=medium
-
-  * Only show toggled window list buttons for activated apps
-
- -- Simon Long <simon@raspberrypi.com>  Wed, 30 Nov 2022 14:35:46 +0000
-
-wf-shell (0.6) bullseye; urgency=medium
-
-  * Add CPU monitoring plugins; fix some graphical glitches with icons
-
- -- Simon Long <simon@raspberrypi.com>  Tue, 29 Nov 2022 14:31:31 +0000
-
-wf-shell (0.5) bullseye; urgency=medium
-
-  * Multiple monitor support
-
- -- Simon Long <simon@raspberrypi.com>  Mon, 14 Nov 2022 14:44:11 +0000
-
-wf-shell (0.4) bullseye; urgency=medium
-
-  * Notifications, control messages, themeing
-
- -- Simon Long <simon@raspberrypi.com>  Wed, 02 Nov 2022 11:44:05 +0000
-
-wf-shell (0.3) bullseye; urgency=medium
-
-  * Add keyboard support in menus
-
- -- Simon Long <simon@raspberrypi.com>  Fri, 28 Oct 2022 08:56:42 +0100
-
-wf-shell (0.2) bullseye; urgency=medium
-
-  * First set of Raspberry Pi customisations - plugins and basic config
-  * wf-background removed and replaced with shell script to launch pcmanfm
-
- -- Simon Long <simon@raspberrypi.com>  Fri, 21 Oct 2022 14:20:39 +0100
-
-wf-shell (0.1) unstable; urgency=medium
-
-  * Initial release based on code from wf-shell GitHub
-
- -- Simon Long <simon@raspberrypi.com>  Wed, 05 Oct 2022 09:19:10 +0100
+ -- Simon Long <simon@raspberrypi.com>  Wed, 30 Jan 2023 09:19:10 +0100
