@@ -25,7 +25,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "widgets/lxutils.h"
+#include <gtk/gtk.h>
+#include <gtk-layer-shell/gtk-layer-shell.h>
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
@@ -116,13 +117,13 @@ static void show_message (NotifyWindow *nw, char *str)
     g_free (fmt);
 
     // layer shell setup
-    gtk_layer_init_for_window (nw->popup);
-    gtk_layer_set_anchor (nw->popup, GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-    gtk_layer_set_anchor (nw->popup, GTK_LAYER_SHELL_EDGE_BOTTOM, FALSE);
-    gtk_layer_set_anchor (nw->popup, GTK_LAYER_SHELL_EDGE_LEFT, FALSE);
-    gtk_layer_set_anchor (nw->popup, GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
-    gtk_layer_set_margin (nw->popup, GTK_LAYER_SHELL_EDGE_TOP, SPACING);
-    gtk_layer_set_margin (nw->popup, GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
+    gtk_layer_init_for_window (GTK_WINDOW(nw->popup));
+    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_BOTTOM, FALSE);
+    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_LEFT, FALSE);
+    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
+    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, SPACING);
+    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
 
     g_signal_connect (G_OBJECT (nw->popup), "button-press-event", G_CALLBACK (window_click), nw);
     gtk_widget_show_all (nw->popup);
@@ -163,7 +164,8 @@ static void update_positions (GList *item, int offset)
     for (; item != NULL; item = item->next)
     {
         nw = (NotifyWindow *) item->data;
-        gtk_layer_set_margin (nw->popup, GTK_LAYER_SHELL_EDGE_TOP, gtk_layer_get_margin (nw->popup, GTK_LAYER_SHELL_EDGE_TOP) + offset);
+        gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP,
+            gtk_layer_get_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP) + offset);
     }
 }
 
@@ -177,7 +179,7 @@ static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWi
 
 /* Timer handler to show next window */
 
-static gboolean show_next (void)
+static gboolean show_next (gpointer param)
 {
     NotifyWindow *nw;
     GList *item;
@@ -260,7 +262,7 @@ int lxpanel_notify (const char *message)
     // if the timer isn't running, show the notification immediately and start the timer
     if (interval_timer == 0)
     {
-        show_next ();
+        show_next (NULL);
         interval_timer = g_timeout_add (INTERVAL_MS, (GSourceFunc) show_next, NULL);
     }
 
