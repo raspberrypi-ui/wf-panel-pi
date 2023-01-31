@@ -19,7 +19,7 @@ wayland_protos = dependency('wayland-protocols')
 gtkmm          = dependency('gtkmm-3.0', version: '>=3.24')
 wfconfig       = dependency('wf-config', version: '>=0.7.0') #TODO fallback submodule
 gtklayershell  = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
-libpulse       = dependency('libpulse', required : get_option('pulse'))
+libpulse       = dependency('libpulse')
 menu_cache     = dependency('libmenu-cache')
 libfm          = dependency('libfm-gtk3')
 netman	       = dependency('libnm')
@@ -28,10 +28,6 @@ secret	       = dependency('libsecret-1')
 notify	       = dependency('libnotify')
 packagekit     = dependency('packagekit-glib2')
 zmq            = dependency('libzmq')
-
-if get_option('wayland-logout') == true
-  wayland_logout = subproject('wayland-logout')
-endif
 
 needs_libinotify = ['freebsd', 'dragonfly'].contains(host_machine.system())
 libinotify       = dependency('libinotify', required: needs_libinotify)
