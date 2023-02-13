@@ -1,3 +1,15 @@
+wf-panel-pi (0.3) bookworm; urgency=medium
+
+  * Remove dependency on org.gnome.nm-applet schema
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 13 Feb 2023 11:01:00 +0000
+
+wf-panel-pi (0.2) bookworm; urgency=medium
+
+  * Rebuild for bookworm to fix dependencies
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 13 Feb 2023 08:27:39 +0000
+
 wf-panel-pi (0.1) bullseye; urgency=medium
 
   * Separate Pi-specific package for modified panel

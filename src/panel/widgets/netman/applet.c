@@ -3907,10 +3907,14 @@ applet_startup (GApplication *app, gpointer user_data)
 		return;
 	}
 
+#ifdef LXPANEL_PLUGIN
+	applet->visible = TRUE;
+#else
 	applet->gsettings = g_settings_new (APPLET_PREFS_SCHEMA);
 	applet->visible = g_settings_get_boolean (applet->gsettings, PREF_SHOW_APPLET);
 	g_signal_connect (applet->gsettings, "changed::show-applet",
 	                  G_CALLBACK (applet_gsettings_show_changed), applet);
+#endif
 
 	foo_client_setup (applet);
 
