@@ -16,5 +16,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, wayfire, libwayland-client0,
  libgtkmm-3.0-1v5 (>=3.24), libwf-config1 (>= 0.7.0), libpulse0, libgtk-layer-shell0 (>= 0.6.0),
  libgtk-3-0 (>= 3.24), libfm-modules, eject, lxmenu-data, packagekit, raspi-config, libzmq5
+Recommends: pulseaudio, pipewire, pipewire-pulse, pi-bluetooth, pulseaudio-module-bluetooth,
+ libspa-0.2-bluetooth
 Description: Raspberry Pi desktop panel for Wayfire
  Raspberry Pi desktop panel based on wf-shell
