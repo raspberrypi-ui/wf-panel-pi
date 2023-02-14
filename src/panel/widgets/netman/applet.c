@@ -1193,7 +1193,9 @@ notify_dont_show_cb (NotifyNotification *notify,
 	    && strcmp (id, PREF_DISABLE_VPN_NOTIFICATIONS))
 		return;
 
+#ifndef LXPANEL_PLUGIN
 	g_settings_set_boolean (applet->gsettings, id, TRUE);
+#endif
 }
 
 void applet_do_notify_with_pref (NMApplet *applet,
@@ -1202,8 +1204,10 @@ void applet_do_notify_with_pref (NMApplet *applet,
                                  const char *icon,
                                  const char *pref)
 {
+#ifndef LXPANEL_PLUGIN
 	if (g_settings_get_boolean (applet->gsettings, pref))
 		return;
+#endif
 
 	applet_do_notify (applet, NOTIFY_URGENCY_LOW, summary, message, icon, pref,
 	                  _("Don’t show this message again"),
@@ -2052,6 +2056,7 @@ nma_set_notifications_enabled_cb (GtkWidget *widget, NMApplet *applet)
 
 	state = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget));
 
+#ifndef LXPANEL_PLUGIN
 	g_settings_set_boolean (applet->gsettings,
 	                        PREF_DISABLE_CONNECTED_NOTIFICATIONS,
 	                        !state);
@@ -2064,6 +2069,7 @@ nma_set_notifications_enabled_cb (GtkWidget *widget, NMApplet *applet)
 	g_settings_set_boolean (applet->gsettings,
 	                        PREF_SUPPRESS_WIFI_NETWORKS_AVAILABLE,
 	                        !state);
+#endif
 }
 
 static gboolean
@@ -2250,11 +2256,13 @@ nma_context_menu_update (NMApplet *applet)
 		/* Enabled notifications */
 		g_signal_handler_block (G_OBJECT (applet->notifications_enabled_item),
 			                    applet->notifications_enabled_toggled_id);
+#ifndef LXPANEL_PLUGIN
 		if (   g_settings_get_boolean (applet->gsettings, PREF_DISABLE_CONNECTED_NOTIFICATIONS)
 			&& g_settings_get_boolean (applet->gsettings, PREF_DISABLE_DISCONNECTED_NOTIFICATIONS)
 			&& g_settings_get_boolean (applet->gsettings, PREF_DISABLE_VPN_NOTIFICATIONS)
 			&& g_settings_get_boolean (applet->gsettings, PREF_SUPPRESS_WIFI_NETWORKS_AVAILABLE))
 			notifications_enabled = FALSE;
+#endif
 		gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (applet->notifications_enabled_item), notifications_enabled);
 		g_signal_handler_unblock (G_OBJECT (applet->notifications_enabled_item),
 			                      applet->notifications_enabled_toggled_id);
@@ -2726,8 +2734,12 @@ foo_device_state_changed_cb (NMDevice *device,
 	applet_common_device_state_changed (device, new_state, old_state, reason, applet);
 
 	if (   dclass
+#ifdef LXPANEL_PLUGIN
+	    && new_state == NM_DEVICE_STATE_ACTIVATED) {
+#else
 	    && new_state == NM_DEVICE_STATE_ACTIVATED
 	    && !g_settings_get_boolean (applet->gsettings, PREF_DISABLE_CONNECTED_NOTIFICATIONS)) {
+#endif
 		NMConnection *connection;
 		char *str = NULL;
 
@@ -4026,7 +4038,9 @@ static void finalize (GObject *object)
 	}
 
 	g_clear_object (&applet->info_dialog_ui);
+#ifndef LXPANEL_PLUGIN
 	g_clear_object (&applet->gsettings);
+#endif
 	g_clear_object (&applet->nm_client);
 
 #if WITH_WWAN

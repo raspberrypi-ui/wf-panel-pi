@@ -232,8 +232,10 @@ applet_wifi_can_create_wifi_network (NMApplet *applet)
 	 */
 	perm = nm_client_get_permission_result (applet->nm_client, NM_CLIENT_PERMISSION_WIFI_SHARE_OPEN);
 	if (perm == NM_CLIENT_PERMISSION_RESULT_YES || perm == NM_CLIENT_PERMISSION_RESULT_AUTH) {
+#ifndef LXPANEL_PLUGIN
 		disabled = g_settings_get_boolean (applet->gsettings, PREF_DISABLE_WIFI_CREATE);
 		if (!disabled)
+#endif
 			allowed = TRUE;
 	}
 	return allowed;
@@ -1147,9 +1149,11 @@ wifi_available_dont_show_cb (NotifyNotification *notify,
 	if (!id || strcmp (id, "dont-show"))
 		return;
 
+#ifndef LXPANEL_PLUGIN
 	g_settings_set_boolean (applet->gsettings,
 	                        PREF_SUPPRESS_WIFI_NETWORKS_AVAILABLE,
 	                        TRUE);
+#endif
 }
 
 
@@ -1273,9 +1277,11 @@ queue_avail_access_point_notification (NMDevice *device)
 	if (data->id != 0)
 		return;
 
+#ifndef LXPANEL_PLUGIN
 	if (g_settings_get_boolean (data->applet->gsettings,
 	                            PREF_SUPPRESS_WIFI_NETWORKS_AVAILABLE))
 		return;
+#endif
 
 	data->id = g_timeout_add_seconds (3, idle_check_avail_access_point_notification, data);
 }
