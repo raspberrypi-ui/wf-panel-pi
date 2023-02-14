@@ -1,3 +1,9 @@
+wf-panel-pi (0.4) bookworm; urgency=medium
+
+  * Fix dependencies for audio and netman plugins
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 14 Feb 2023 15:24:21 +0000
+
 wf-panel-pi (0.3) bookworm; urgency=medium
 
   * Remove dependency on org.gnome.nm-applet schema
