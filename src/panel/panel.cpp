@@ -141,11 +141,18 @@ class WayfirePanel::impl
     WidgetContainer left_widgets, center_widgets, right_widgets;
 
     WayfireOutput *output;
+    WfOption<bool> wizard{"panel/wizard"};
 
     int last_autohide_value = -1;
     WfOption<bool> autohide_opt{"panel/autohide"};
     std::function<void()> autohide_opt_updated = [=] ()
     {
+        if (wizard)
+        {
+            window->set_auto_exclusive_zone (false);
+            return;
+        }
+
         if (autohide_opt == last_autohide_value)
             return;
 
@@ -219,6 +226,12 @@ class WayfirePanel::impl
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
         gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
+        if (wizard)
+        {
+            GdkRectangle rect;
+            gdk_monitor_get_geometry (gtk_layer_get_monitor (window->gobj()), &rect);
+            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, rect.width - 80);
+        }
 
         monitor_num.set_callback (set_monitor);
 
