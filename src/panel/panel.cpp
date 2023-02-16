@@ -141,7 +141,8 @@ class WayfirePanel::impl
     WidgetContainer left_widgets, center_widgets, right_widgets;
 
     WayfireOutput *output;
-    WfOption<bool> wizard{"panel/wizard"};
+    WfOption<bool> wizard {"panel/wizard"};
+    WfOption <int> icon_size {"panel/icon_size"};
 
     int last_autohide_value = -1;
     WfOption<bool> autohide_opt{"panel/autohide"};
@@ -230,7 +231,7 @@ class WayfirePanel::impl
         {
             GdkRectangle rect;
             gdk_monitor_get_geometry (gtk_layer_get_monitor (window->gobj()), &rect);
-            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, rect.width - 80);
+            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, rect.width - (icon_size + MENU_ICON_SPACE) * 2);
         }
 
         monitor_num.set_callback (set_monitor);
@@ -383,9 +384,18 @@ class WayfirePanel::impl
             reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
         });
 
-        reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
-        reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
-        reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
+        if (wizard)
+        {
+            reload_widgets((std::string) "", left_widgets, left_box);
+            reload_widgets((std::string) "bluetooth volumepulse", right_widgets, right_box);
+            reload_widgets((std::string) "", center_widgets, center_box);
+        }
+        else
+        {
+            reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
+            reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
+            reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
+        }
     }
 
     WayfirePanelZwfOutputCallbacks callbacks;
