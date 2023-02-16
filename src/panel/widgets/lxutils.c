@@ -130,3 +130,27 @@ void append_menu_icon (GtkWidget *item, GtkWidget *image)
     GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
     gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
 }
+
+gboolean config_setting_lookup_int (const char *plugin, const char *setting, int *value)
+{
+    GKeyFile *kf;
+    GError *err = NULL;
+    gboolean res = FALSE;
+    int val;
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+
+    kf = g_key_file_new ();
+    if (g_key_file_load_from_file (kf, user_file, 0, NULL))
+    {
+        val = g_key_file_get_integer (kf, plugin, setting, &err);
+        if (err == NULL)
+        {
+            *value = val;
+            res = TRUE;
+        }
+    }
+
+    g_key_file_free (kf);
+    g_free (user_file);
+    return res;
+}

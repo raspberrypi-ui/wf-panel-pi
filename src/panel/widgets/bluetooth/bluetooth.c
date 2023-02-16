@@ -2157,8 +2157,7 @@ void bt_init (BluetoothPlugin *bt)
 
     // Enable autopairing if in the wizard, but not if wizard started for user change only
     bt->hid_autopair = 0;
-#if 0
-    if (config_setting_lookup_int (settings, "autopair", &val))
+    if (config_setting_lookup_int ("bluetooth", "autopair", &val))
     {
         if (val == 1)
         {
@@ -2169,7 +2168,6 @@ void bt_init (BluetoothPlugin *bt)
             }
         }
     }
-#endif
 
     /* Load icon cache */
     init_icon_cache (bt);

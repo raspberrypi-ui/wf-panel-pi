@@ -479,8 +479,7 @@ void updater_init (UpdaterPlugin *up)
     up->ids = NULL;
 
     /* Set timer for update checks */
-    //if (!config_setting_lookup_int (settings, "Interval", &up->interval))
-    up->interval = 24;
+    if (!config_setting_lookup_int ("updater", "Interval", &up->interval)) up->interval = 24;
     if (up->interval)
         up->timer = g_timeout_add_seconds (up->interval * SECS_PER_HOUR, periodic_check, up);
     else

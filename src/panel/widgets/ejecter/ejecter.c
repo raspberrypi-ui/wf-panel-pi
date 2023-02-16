@@ -406,13 +406,12 @@ void ej_init (EjecterPlugin *ej)
     g_signal_connect (ej->plugin, "clicked", G_CALLBACK (ejecter_button_press_event), ej);
 
     /* Set up variables */
-    //if (config_setting_lookup_int (settings, "AutoHide", &val))
-    //{
-    //    if (val == 1) ej->autohide = TRUE;
-    //    else ej->autohide = FALSE;
-    //}
-    //else ej->autohide = FALSE;
-    ej->autohide = TRUE;
+    if (config_setting_lookup_int ("ejecter", "AutoHide", &val))
+    {
+        if (val == 1) ej->autohide = TRUE;
+        else ej->autohide = FALSE;
+    }
+    else ej->autohide = FALSE;
 
     ej->popup = NULL;
     ej->menu = NULL;

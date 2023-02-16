@@ -208,9 +208,9 @@ static int init_measurement (PtBattPlugin *pt)
         }
     }
     int val;
-    //if (config_setting_lookup_int (pt->settings, "BattNum", &val))
-    //    pt->batt = battery_get (val);
-    //else
+    if (config_setting_lookup_int ("power", "BattNum", &val))
+        pt->batt = battery_get (val);
+    else
         pt->batt = battery_get (0);
     if (pt->batt) return 1;
 
