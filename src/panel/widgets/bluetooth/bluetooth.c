@@ -2137,7 +2137,7 @@ void bt_init (BluetoothPlugin *bt)
     bt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (bt->plugin), bt->tray_icon);
     set_taskbar_icon (bt->tray_icon, "preferences-system-bluetooth-inactive", bt->icon_size);
-    gtk_widget_set_tooltip_text (bt->tray_icon, _("Manage Bluetooth devices"));
+    if (!bt->wizard) gtk_widget_set_tooltip_text (bt->tray_icon, _("Manage Bluetooth devices"));
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (bt->plugin), GTK_RELIEF_NONE);

@@ -59,6 +59,7 @@ typedef struct {
 
     int icon_size;                      /* Variables used under wf-panel */
     gboolean bottom;
+    gboolean wizard;
 
     gboolean pipewire;                  /* Pipewire running? */
 

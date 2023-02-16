@@ -380,7 +380,7 @@ void volpulse_update_display (VolumePulsePlugin *vol)
 
     /* update tooltip */
     char *tooltip = g_strdup_printf ("%s %d", _("Volume control"), level);
-    gtk_widget_set_tooltip_text (vol->plugin, tooltip);
+    if (!vol->wizard) gtk_widget_set_tooltip_text (vol->plugin, tooltip);
     g_free (tooltip);
 }
 

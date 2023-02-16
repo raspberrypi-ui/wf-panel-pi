@@ -11,6 +11,7 @@ typedef struct {
     //config_setting_t *settings;     /* Plugin settings */
     int icon_size;                      /* Variables used under wf-panel */
     gboolean bottom;
+    gboolean wizard;
     GtkWidget *menu;                /* Popup menu */
     GtkListStore *pair_list;
     GtkListStore *unpair_list;

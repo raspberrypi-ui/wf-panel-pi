@@ -3,7 +3,8 @@
 
 void WayfireVolumepulse::bar_pos_changed_cb (void)
 {
-    if ((std::string) bar_pos == "bottom") vol->bottom = TRUE;
+    if (vol->wizard) vol->bottom = FALSE;
+    else if ((std::string) bar_pos == "bottom") vol->bottom = TRUE;
     else vol->bottom = FALSE;
 }
 
@@ -34,6 +35,7 @@ void WayfireVolumepulse::init (Gtk::HBox *container)
     vol = &data;
     vol->plugin = (GtkWidget *)((*plugin).gobj());
     vol->icon_size = icon_size;
+    vol->wizard = wizard;
     g_idle_add (G_SOURCE_FUNC (vol_set_icon), vol);
     bar_pos_changed_cb ();
 

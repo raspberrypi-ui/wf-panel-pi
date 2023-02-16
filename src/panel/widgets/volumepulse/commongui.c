@@ -147,7 +147,21 @@ static void popup_window_show (VolumePulsePlugin *vol)
     g_signal_connect (G_OBJECT (vol->popup_window), "focus-out-event", G_CALLBACK (popup_focus_out), 0);
 
     /* Layer shell setup */
-    position_popup (vol->popup_window, vol->plugin, vol->bottom);
+    GtkAllocation allocation;
+
+    gtk_layer_init_for_window (vol->popup_window);
+
+    /* set the anchor for the popup layer */
+    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_TOP, vol->bottom ? FALSE : TRUE);
+    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_BOTTOM, vol->bottom ? TRUE : FALSE);
+    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_LEFT, vol->wizard ? FALSE : TRUE);
+    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_RIGHT, vol->wizard ? TRUE : FALSE);
+
+    /* set the margin for the popup layer */
+    gtk_widget_get_allocation (vol->plugin, &allocation);
+    gtk_layer_set_margin (vol->popup_window, GTK_LAYER_SHELL_EDGE_LEFT, allocation.x);
+    if (vol->wizard) gtk_layer_set_margin (vol->popup_window, GTK_LAYER_SHELL_EDGE_TOP, vol->icon_size + MENU_ICON_SPACE - 2);
+
     gtk_layer_set_keyboard_mode (GTK_WINDOW (vol->popup_window), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 
     /* Show the window */
