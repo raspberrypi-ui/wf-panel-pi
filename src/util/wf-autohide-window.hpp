@@ -105,6 +105,8 @@ class WayfireAutohidingWindow : public Gtk::Window
 
     sigc::connection popover_hide;
     WayfireMenuButton *active_button = nullptr;
+
+    WfOption <bool> wizard;
 };
 
 

@@ -16,7 +16,8 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     const std::string& section) :
     position{section + "/position"},
     y_position{WfOption<int>{section + "/autohide_duration"}},
-    edge_offset{WfOption<int>{section + "/edge_offset"}}
+    edge_offset{WfOption<int>{section + "/edge_offset"}},
+    wizard {WfOption<bool>{section + "/wizard"}}
 {
     this->output = output;
     this->set_decorated(false);
@@ -104,7 +105,7 @@ void WayfireAutohidingWindow::update_position()
     gtk_layer_set_anchor(this->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, false);
 
     /* Set new anchor */
-    GtkLayerShellEdge anchor = get_anchor_edge(position);
+    GtkLayerShellEdge anchor = wizard ? GTK_LAYER_SHELL_EDGE_TOP : get_anchor_edge(position);
     gtk_layer_set_anchor(this->gobj(), anchor, true);
 
     /* When the position changes, show an animation from the new edge. */
@@ -285,7 +286,7 @@ bool WayfireAutohidingWindow::update_margin()
     if (y_position.running())
     {
         gtk_layer_set_margin(this->gobj(),
-            get_anchor_edge(position), y_position);
+            wizard ? GTK_LAYER_SHELL_EDGE_TOP : get_anchor_edge(position), y_position);
 
         this->queue_draw(); // XXX: is this necessary?
         return true;
