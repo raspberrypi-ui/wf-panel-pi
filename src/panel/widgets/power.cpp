@@ -13,10 +13,6 @@ void WayfirePower::icon_size_changed_cb (void)
     power_update_display (pt);
 }
 
-void WayfirePower::command (const char *cmd)
-{
-}
-
 gboolean set_icon (PtBattPlugin *pt)
 {
     power_update_display (pt);

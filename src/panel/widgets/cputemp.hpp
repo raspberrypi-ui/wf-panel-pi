@@ -22,7 +22,6 @@ class WayfireCPUTemp : public WayfireWidget
   public:
 
     void init (Gtk::HBox *container) override;
-    void command (const char *cmd) override;
     virtual ~WayfireCPUTemp ();
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);

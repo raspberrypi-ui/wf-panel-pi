@@ -13,10 +13,6 @@ void WayfireCPU::icon_size_changed_cb (void)
     cpu_update_display (cpu);
 }
 
-void WayfireCPU::command (const char *cmd)
-{
-}
-
 gboolean set_icon (CPUPlugin *cpu)
 {
     cpu_update_display (cpu);
