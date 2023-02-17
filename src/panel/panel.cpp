@@ -129,6 +129,12 @@ static struct zwf_output_v2_listener output_impl = {
     .leave_fullscreen = handle_zwf_output_leave_fullscreen,
 };
 
+gboolean is_wizard (void)
+{
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) return TRUE;
+    return FALSE;
+}
+
 class WayfirePanel::impl
 {
     std::unique_ptr<WayfireAutohidingWindow> window;
@@ -141,7 +147,7 @@ class WayfirePanel::impl
     WidgetContainer left_widgets, center_widgets, right_widgets;
 
     WayfireOutput *output;
-    WfOption<bool> wizard {"panel/wizard"};
+    bool wizard = is_wizard ();
     WfOption <int> icon_size {"panel/icon_size"};
 
     int last_autohide_value = -1;
@@ -218,7 +224,7 @@ class WayfirePanel::impl
 
     void create_window()
     {
-        window = std::make_unique<WayfireAutohidingWindow> (output, "panel");
+        window = std::make_unique<WayfireAutohidingWindow> (output, "panel", wizard);
         window->set_size_request(1, minimal_panel_height);
         //panel_layer.set_callback(set_panel_layer);
         //set_panel_layer(); // initial setting
@@ -365,6 +371,7 @@ class WayfirePanel::impl
 
             widget->widget_name = widget_name;
             widget->init(&box);
+            if (wizard) widget->set_wizard ();
             container.push_back(std::move(widget));
         }
     }

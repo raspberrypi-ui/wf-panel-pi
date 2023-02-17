@@ -152,8 +152,8 @@ static void popup_window_show (VolumePulsePlugin *vol)
     gtk_layer_init_for_window (vol->popup_window);
 
     /* set the anchor for the popup layer */
-    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_TOP, vol->bottom ? FALSE : TRUE);
-    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_BOTTOM, vol->bottom ? TRUE : FALSE);
+    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_TOP, (vol->bottom && !vol->wizard) ? FALSE : TRUE);
+    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_BOTTOM, (vol->bottom && !vol->wizard) ? TRUE : FALSE);
     gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_LEFT, vol->wizard ? FALSE : TRUE);
     gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_RIGHT, vol->wizard ? TRUE : FALSE);
 

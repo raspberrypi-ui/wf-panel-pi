@@ -20,6 +20,7 @@ class WayfireWidget
         virtual void init(Gtk::HBox *container) = 0;
         virtual void command (const char *cmd) { printf ("command : %s %s\n", widget_name.c_str(), cmd);}
         virtual void handle_config_reload() {}
+        virtual void set_wizard () {}
         virtual ~WayfireWidget() {};
 };
 

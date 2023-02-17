@@ -3,8 +3,7 @@
 
 void WayfireBluetooth::bar_pos_changed_cb (void)
 {
-    if (bt->wizard) bt->bottom = FALSE;
-    else if ((std::string) bar_pos == "bottom") bt->bottom = TRUE;
+    if ((std::string) bar_pos == "bottom") bt->bottom = TRUE;
     else bt->bottom = FALSE;
 }
 
@@ -17,6 +16,11 @@ void WayfireBluetooth::icon_size_changed_cb (void)
 void WayfireBluetooth::command (const char *cmd)
 {
     bluetooth_control_msg (bt, cmd);
+}
+
+void WayfireBluetooth::set_wizard (void)
+{
+    bt->wizard = TRUE;
 }
 
 gboolean set_icon (BluetoothPlugin *bt)
@@ -35,7 +39,6 @@ void WayfireBluetooth::init (Gtk::HBox *container)
     bt = &data;
     bt->plugin = (GtkWidget *)((*plugin).gobj());
     bt->icon_size = icon_size;
-    bt->wizard = wizard;
     g_idle_add (G_SOURCE_FUNC (set_icon), bt);
     bar_pos_changed_cb ();
 

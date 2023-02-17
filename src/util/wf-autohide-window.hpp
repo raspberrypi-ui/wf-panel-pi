@@ -31,7 +31,7 @@ class WayfireAutohidingWindow : public Gtk::Window
      * 3. section/edge_offset
      */
     WayfireAutohidingWindow(WayfireOutput *output,
-        const std::string& section);
+        const std::string& section, bool wizard);
 
     ~WayfireAutohidingWindow();
     wl_surface* get_wl_surface() const;
@@ -106,7 +106,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     sigc::connection popover_hide;
     WayfireMenuButton *active_button = nullptr;
 
-    WfOption <bool> wizard;
+    bool wizard;
 };
 
 
