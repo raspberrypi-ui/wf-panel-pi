@@ -37,10 +37,6 @@
 		<_short>Autohide</_short>
 		<default>false</default>
 	</option>
-	<option name="wizard" type="bool">
-		<_short>Wizard</_short>
-		<default>false</default>
-	</option>
 	<option name="autohide_duration" type="int">
 		<_short>Autohide Duration</_short>
 		<default>300</default>
