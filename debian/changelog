@@ -1,3 +1,9 @@
+wf-panel-pi (0.5) bookworm; urgency=medium
+
+  * Add wizard mode; build resources for netman plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 20 Feb 2023 09:40:32 +0000
+
 wf-panel-pi (0.4) bookworm; urgency=medium
 
   * Fix dependencies for audio and netman plugins
