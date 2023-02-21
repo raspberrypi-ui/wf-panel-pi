@@ -1,3 +1,9 @@
+wf-panel-pi (0.6) bookworm; urgency=medium
+
+  * Enable bluetooth autopair in wizard mode
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 21 Feb 2023 08:32:50 +0000
+
 wf-panel-pi (0.5) bookworm; urgency=medium
 
   * Add wizard mode; build resources for netman plugin

@@ -2067,7 +2067,6 @@ static void update_icon (BluetoothPlugin *bt)
     }
     gtk_widget_show_all (bt->plugin);
     gtk_widget_set_sensitive (bt->plugin, TRUE);
-    if (!bt->wizard) gtk_widget_set_tooltip_text (bt->tray_icon, _("Manage Bluetooth devices"));
 }
 
 /* Handler for menu button click */
@@ -2138,6 +2137,7 @@ void bt_init (BluetoothPlugin *bt)
     bt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (bt->plugin), bt->tray_icon);
     set_taskbar_icon (bt->tray_icon, "preferences-system-bluetooth-inactive", bt->icon_size);
+    if (!bt->wizard) gtk_widget_set_tooltip_text (bt->tray_icon, _("Manage Bluetooth devices"));
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (bt->plugin), GTK_RELIEF_NONE);
@@ -2157,15 +2157,12 @@ void bt_init (BluetoothPlugin *bt)
 
     // Enable autopairing if in the wizard, but not if wizard started for user change only
     bt->hid_autopair = 0;
-    if (config_setting_lookup_int ("bluetooth", "autopair", &val))
+    if (bt->wizard)
     {
-        if (val == 1)
+        if (!system ("test -f /etc/xdg/autostart/piwiz.desktop"))
         {
-            if (!system ("test -f /etc/xdg/autostart/piwiz.desktop"))
-            {
-                if (system ("grep -q useronly /etc/xdg/autostart/piwiz.desktop"))
-                    bt->hid_autopair = AP_MOUSE | AP_KEYBOARD;
-            }
+            if (system ("grep -q useronly /etc/xdg/autostart/piwiz.desktop"))
+                bt->hid_autopair = AP_MOUSE | AP_KEYBOARD;
         }
     }
 

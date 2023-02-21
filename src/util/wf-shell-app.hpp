@@ -58,6 +58,7 @@ class WayfireShellApp
     int inotify_fd;
     wf::config::config_manager_t config;
     zwf_shell_manager_v2 *manager = nullptr;
+    bool wizard;
 
     WayfireShellApp(int argc, char **argv);
     virtual ~WayfireShellApp();

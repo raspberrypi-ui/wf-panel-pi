@@ -14,7 +14,7 @@ class WayfireVolumepulse : public WayfireWidget
 
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <std::string> bar_pos {"panel/position"};
-    bool wizard = FALSE;
+    bool wizard;
 
     /* plugin */
     VolumePulsePlugin data;
@@ -27,7 +27,6 @@ class WayfireVolumepulse : public WayfireWidget
     virtual ~WayfireVolumepulse ();
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
-    void set_wizard (void) override;
 };
 
 #endif /* end of include guard: WIDGETS_VOLUMEPULSE_HPP */

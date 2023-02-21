@@ -83,6 +83,9 @@ void WayfireShellApp::on_activate()
 {
     app->hold();
 
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
+    else wizard = false;
+
     // load wf-shell if available
     auto gdk_display = gdk_display_get_default();
     auto wl_display = gdk_wayland_display_get_wl_display(gdk_display);
