@@ -411,7 +411,7 @@ void ej_init (EjecterPlugin *ej)
         if (val == 1) ej->autohide = TRUE;
         else ej->autohide = FALSE;
     }
-    else ej->autohide = FALSE;
+    else ej->autohide = TRUE;
 
     ej->popup = NULL;
     ej->menu = NULL;

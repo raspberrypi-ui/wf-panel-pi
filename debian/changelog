@@ -1,3 +1,9 @@
+wf-panel-pi (0.7) bookworm; urgency=medium
+
+  * Autohide ejecter by default
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 22 Feb 2023 12:49:56 +0000
+
 wf-panel-pi (0.6) bookworm; urgency=medium
 
   * Enable bluetooth autopair in wizard mode
