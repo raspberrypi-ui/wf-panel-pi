@@ -148,25 +148,25 @@ msgstr "No Bluetooth adapter found"
 #. add enable bt option
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1980
 msgid "Turn On Bluetooth"
-msgstr "_Turn On Bluetooth"
+msgstr "Turn On Bluetooth"
 
 #. add disable bt option
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1990
 msgid "Turn Off Bluetooth"
-msgstr "_Turn Off Bluetooth"
+msgstr "Turn Off Bluetooth"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2000
 msgid "Stop Discoverable"
-msgstr "Stop _Discoverable"
+msgstr "Stop Discoverable"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2002
 msgid "Make Discoverable"
-msgstr "Make _Discoverable"
+msgstr "Make Discoverable"
 
 #. add and remove dialogs
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2010
 msgid "Add Device..."
-msgstr "_Add Device..."
+msgstr "Add Device..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2140
 msgid "Manage Bluetooth devices"
