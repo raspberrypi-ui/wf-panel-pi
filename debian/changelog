@@ -1,3 +1,9 @@
+wf-panel-pi (0.9) bookworm; urgency=medium
+
+  * Use wlr-randr to detect HDMI devices
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 07 Mar 2023 09:45:21 +0000
+
 wf-panel-pi (0.8) bookworm; urgency=medium
 
   * Correct Bluetooth menu strings 

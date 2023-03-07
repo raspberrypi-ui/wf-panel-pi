@@ -74,8 +74,8 @@ void hdmi_init (VolumePulsePlugin *vol)
 {
     int i, m;
 
-    /* check xrandr for connected monitors */
-    m = get_value ("xrandr -q | grep -c connected");
+    /* check wlr-randr for connected monitors */
+    m = get_value ("wlr-randr | grep -c ^[^[:space:]]");
     if (m < 0) m = 1; /* couldn't read, so assume 1... */
     if (m > 2) m = 2;
 
@@ -87,7 +87,7 @@ void hdmi_init (VolumePulsePlugin *vol)
     {
         for (i = 0; i < 2; i++)
         {
-            vol->hdmi_names[i] = get_string ("xrandr --listmonitors | grep %d: | cut -d ' ' -f 6", i);
+            vol->hdmi_names[i] = get_string ("wlr-randr | grep  ^[^[:space:]] | sort | sed -n %dp | cut -d ' ' -f 1", i + 1);
         }
 
         /* check both devices are HDMI */
@@ -362,7 +362,7 @@ void volpulse_update_display (VolumePulsePlugin *vol)
         else if (level > 0) icon = "audio-volume-low";
         else icon = "audio-volume-silent";
     }
-    set_taskbar_icon (GTK_IMAGE (vol->tray_icon), icon, vol->icon_size);
+    set_taskbar_icon (vol->tray_icon, icon, vol->icon_size);
 
     /* update popup window controls */
     if (vol->popup_window)
