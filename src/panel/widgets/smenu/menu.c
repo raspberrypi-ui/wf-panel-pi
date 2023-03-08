@@ -717,7 +717,7 @@ static void handle_run_command (GtkWidget *widget, gpointer data)
 static GtkWidget *read_menu_item (MenuPlugin *m, char *fname, char *cmd)
 {
     //const gchar *name, *fname, *action, *cmd;
-    const gchar *name, *action = NULL;
+    const gchar *name = NULL, *action = NULL;
     Command *cmd_entry = NULL;
     char *tmp;
     GtkWidget *item, *box, *label, *img;
