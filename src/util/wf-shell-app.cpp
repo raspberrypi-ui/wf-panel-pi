@@ -8,6 +8,7 @@
 #include <wayfire/config/file.hpp>
 
 #include <unistd.h>
+#include <libfm/fm-gtk.h>
 
 std::string WayfireShellApp::get_config_file()
 {
@@ -156,6 +157,8 @@ WayfireShellApp::WayfireShellApp(int argc, char **argv)
     app->add_main_option_entry(
         sigc::mem_fun(this, &WayfireShellApp::parse_cfgfile),
         "config", 'c', "config file to use", "file");
+
+    fm_gtk_init (NULL);
 
     // Activate app after parsing command line
     app->signal_command_line().connect_notify([=] (auto&) {
