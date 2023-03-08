@@ -1,3 +1,9 @@
+wf-panel-pi (0.10) bookworm; urgency=medium
+
+  * Fix a few warnings and bugs 
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 08 Mar 2023 14:54:48 +0000
+
 wf-panel-pi (0.9) bookworm; urgency=medium
 
   * Use wlr-randr to detect HDMI devices
