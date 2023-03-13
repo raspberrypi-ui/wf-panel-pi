@@ -223,7 +223,7 @@ static void install_updates (GtkWidget *widget, gpointer user_data)
 
 static void launch_installer (void)
 {
-    char *cmd[4] = {"sudo", "-AE", "lxplug-updater-install", NULL};
+    char *cmd[4] = {"sudo", "-AE", "wfpanel-updater-install", NULL};
 
     gchar **environ = g_environ_setenv (g_get_environ (), "SUDO_ASKPASS", "/usr/lib/lxplugins/pwdlpu.sh", TRUE);
     g_spawn_async (NULL, cmd, environ, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);

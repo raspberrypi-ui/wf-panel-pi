@@ -1,5 +1,6 @@
 subdir('util')
 subdir('panel')
+subdir('installer')
 
 pkgconfig = import('pkgconfig')
 pkgconfig.generate(
