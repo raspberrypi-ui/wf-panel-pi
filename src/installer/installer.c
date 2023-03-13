@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Controls */
 
-static GtkWidget *msg_dlg, *msg_msg, *msg_pb, *msg_btn, *msg_pbv, *msg_btn2;
+static GtkWidget *msg_dlg, *msg_msg, *msg_pb, *msg_btn, *msg_btn2;
 
 gboolean success = TRUE;
 
@@ -61,7 +61,7 @@ static void message (char *msg, int prog);
 static gboolean quit (GtkButton *button, gpointer data);
 static gboolean reboot (GtkButton *button, gpointer data);
 static PkResults *error_handler (PkTask *task, GAsyncResult *res, char *desc);
-static void progress (PkProgress *progress, PkProgressType *type, gpointer data);
+static void progress (PkProgress *progress, PkProgressType type, gpointer data);
 static gboolean refresh_cache (gpointer data);
 static void compare_versions (PkTask *task, GAsyncResult *res, gpointer data);
 static void start_install (PkTask *task, GAsyncResult *res, gpointer data);
@@ -108,8 +108,16 @@ static void message (char *msg, int prog)
         gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (msg_pb), progress);
     }
     else if (prog == -1) gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
+    gboolean vis = gtk_widget_is_visible (msg_dlg);
     gtk_widget_show (msg_dlg);
-    gtk_window_set_decorated (GTK_WINDOW (msg_dlg), FALSE);
+    // force a redraw if the window was not already displayed - forces a resize to correct size
+    if (!vis)
+    {
+        gtk_window_set_decorated (GTK_WINDOW (msg_dlg), FALSE);
+        gtk_widget_hide (msg_dlg);
+        gtk_widget_unrealize (msg_dlg);
+        gtk_widget_show (msg_dlg);
+    }
 }
 
 static gboolean quit (GtkButton *button, gpointer data)
@@ -172,9 +180,9 @@ static PkResults *error_handler (PkTask *task, GAsyncResult *res, char *desc)
     return results;
 }
 
-static void progress (PkProgress *progress, PkProgressType *type, gpointer data)
+static void progress (PkProgress *progress, PkProgressType type, gpointer data)
 {
-    char *buf, *name;
+    char *buf;
     int role = pk_progress_get_role (progress);
     int status = pk_progress_get_status (progress);
 
@@ -306,9 +314,6 @@ static gboolean close_end (gpointer data)
 
 int main (int argc, char *argv[])
 {
-    char *buf;
-    int res;
-
 #ifdef ENABLE_NLS
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
