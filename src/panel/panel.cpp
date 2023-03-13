@@ -414,7 +414,7 @@ class WayfirePanel::impl
             zwf_output_v2_add_listener(output->output, &output_impl, NULL);
             zwf_output_v2_set_user_data(output->output, &callbacks);
         }
-        lxpanel_notify_init (notifications, notify_timeout);
+        lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
     }
 
     ~impl()
@@ -435,7 +435,7 @@ class WayfirePanel::impl
 
     void handle_config_reload()
     {
-        lxpanel_notify_init (notifications, notify_timeout);
+        lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
         for (auto& w : left_widgets)
             w->handle_config_reload();
         for (auto& w : right_widgets)

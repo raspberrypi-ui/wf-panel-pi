@@ -54,6 +54,7 @@ typedef struct {
 
 static gboolean notifications;
 static gint notify_timeout;
+static GtkWindow *panel;
 
 static GList *nwins = NULL;         /* List of current notifications */
 static int nseq = 0;                /* Sequence number for notifications */
@@ -77,7 +78,7 @@ static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWi
 static void show_message (NotifyWindow *nw, char *str)
 {
     GtkWidget *box, *item;
-    gint x, y;
+    gint x;
     char *fmt, *cptr;
 
     /*
@@ -124,6 +125,7 @@ static void show_message (NotifyWindow *nw, char *str)
     gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
     gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, SPACING);
     gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
+    gtk_layer_set_monitor (GTK_WINDOW(nw->popup), gtk_layer_get_monitor (panel));
 
     g_signal_connect (G_OBJECT (nw->popup), "button-press-event", G_CALLBACK (window_click), nw);
     gtk_widget_show_all (nw->popup);
@@ -159,7 +161,6 @@ static gboolean hide_message (NotifyWindow *nw)
 static void update_positions (GList *item, int offset)
 {
     NotifyWindow *nw;
-    int x, y;
 
     for (; item != NULL; item = item->next)
     {
@@ -218,10 +219,11 @@ static gboolean show_next (gpointer param)
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void lxpanel_notify_init (gboolean enable, gint timeout)
+void lxpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
 {
     notifications = enable;
     notify_timeout = timeout;
+    panel = win;
 
     // set timer for initial display of notifications
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
