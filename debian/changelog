@@ -1,3 +1,9 @@
+wf-panel-pi (0.11) bookworm; urgency=medium
+
+  * Add installer program for updater plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 13 Mar 2023 11:00:02 +0000
+
 wf-panel-pi (0.10) bookworm; urgency=medium
 
   * Fix a few warnings and bugs 
