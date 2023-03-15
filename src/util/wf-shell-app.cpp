@@ -118,15 +118,41 @@ void WayfireShellApp::on_activate()
 
     // Hook up monitor tracking
     auto display = Gdk::Display::get_default();
+    //display->signal_monitor_added().connect_notify(
+    //    [=] (const GMonitor& monitor) { this->add_output(monitor); });
+    //display->signal_monitor_removed().connect_notify(
+    //    [=] (const GMonitor& monitor) { this->rem_output(monitor); });
     display->signal_monitor_added().connect_notify(
-        [=] (const GMonitor& monitor) { this->add_output(monitor); });
+        [=] (const GMonitor& monitor) { this->monitors_changed(); });
     display->signal_monitor_removed().connect_notify(
-        [=] (const GMonitor& monitor) { this->rem_output(monitor); });
+        [=] (const GMonitor& monitor) { this->monitors_changed(); });
 
     // initial monitors
     int num_monitors = display->get_n_monitors();
     for (int i = 0; i < num_monitors; i++)
         add_output(display->get_monitor(i));
+}
+
+bool WayfireShellApp::update_monitors ()
+{
+    // clear the existing monitors
+    monitors.clear ();
+
+    // find the new list of monitors
+    auto display = Gdk::Display::get_default();
+    int num_monitors = display->get_n_monitors();
+    for (int i = 0; i < num_monitors; i++)
+        add_output(display->get_monitor(i));
+
+    return false;
+}
+
+void WayfireShellApp::monitors_changed ()
+{
+    if (hotplug_timer.connected ()) hotplug_timer.disconnect ();
+
+    hotplug_timer = Glib::signal_timeout().connect(
+        sigc::mem_fun(this, &WayfireShellApp::update_monitors), 500);
 }
 
 void WayfireShellApp::add_output(GMonitor monitor)

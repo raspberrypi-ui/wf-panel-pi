@@ -34,6 +34,7 @@ class WayfireShellApp
 {
   private:
     std::vector<std::unique_ptr<WayfireOutput>> monitors;
+    sigc::connection hotplug_timer;
 
   protected:
     /** This should be initialized by the subclass in each program which uses
@@ -45,6 +46,8 @@ class WayfireShellApp
 
     virtual void add_output(GMonitor monitor);
     virtual void rem_output(GMonitor monitor);
+    virtual void monitors_changed ();
+    virtual bool update_monitors ();
 
     /* The following functions can be overridden in the shell implementation to
      * handle the events */
