@@ -17,7 +17,7 @@ class WayfirePanel
     Gtk::Window& get_window();
     void handle_config_reload();
     void handle_command_message (const char *plugin, const char *cmd);
-    void set_monitor();
+    void update_panel ();
 
     private:
     class impl;
