@@ -97,6 +97,7 @@ typedef struct {
     GList *pa_indices;                  /* Indices for current streams */
     char *pa_error_msg;                 /* Error message from success / fail callback */
     int pa_devices;                     /* Counter for pulse devices */
+    guint pa_idle_timer;
 
     /* Bluetooth interface */
     GDBusObjectManager *bt_objmanager;  /* D-Bus BlueZ object manager */
@@ -107,6 +108,7 @@ typedef struct {
     gboolean bt_input;                  /* Flag to show if current connect operation is for input or output */
     gboolean bt_force_hsp;              /* Flag to override automatic profile selection */
     int bt_profile_count;               /* Counter for polling read of profile on connection */
+    guint bt_idle_timer;
 } VolumePulsePlugin;
 
 #endif
@@ -124,6 +126,7 @@ extern void hdmi_init (VolumePulsePlugin *vol);
 extern void volumepulse_init (VolumePulsePlugin *vol);
 extern void micpulse_init (VolumePulsePlugin *vol);
 extern gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd);
+extern void volumepulse_destructor (gpointer user_data);
 
 
 /* End of file */

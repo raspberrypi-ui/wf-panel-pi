@@ -47,4 +47,5 @@ void WayfireNetman::init (Gtk::HBox *container)
 
 WayfireNetman::~WayfireNetman()
 {
+    netman_destructor (nm);
 }

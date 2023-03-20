@@ -42,4 +42,5 @@ void WayfireCPUTemp::init (Gtk::HBox *container)
 
 WayfireCPUTemp::~WayfireCPUTemp()
 {
+    cputemp_destructor (cput);
 }

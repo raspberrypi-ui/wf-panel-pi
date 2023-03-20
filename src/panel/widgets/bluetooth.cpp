@@ -48,4 +48,5 @@ void WayfireBluetooth::init (Gtk::HBox *container)
 
 WayfireBluetooth::~WayfireBluetooth()
 {
+    bluetooth_destructor (bt);
 }

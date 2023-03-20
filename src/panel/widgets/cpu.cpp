@@ -42,4 +42,5 @@ void WayfireCPU::init (Gtk::HBox *container)
 
 WayfireCPU::~WayfireCPU()
 {
+    cpu_destructor (cpu);
 }

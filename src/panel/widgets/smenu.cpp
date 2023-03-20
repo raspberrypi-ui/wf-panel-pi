@@ -47,4 +47,5 @@ void WayfireSmenu::init (Gtk::HBox *container)
 
 WayfireSmenu::~WayfireSmenu()
 {
+    menu_destructor (m);
 }

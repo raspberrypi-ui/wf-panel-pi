@@ -90,6 +90,9 @@ void cpu_update_display (CPUPlugin *c)
     graph_init (&(c->graph), c->icon_size);
 }
 
+void cpu_destructor (gpointer user_data)
+{
+}
 
 void cpu_init (CPUPlugin *c)
 {

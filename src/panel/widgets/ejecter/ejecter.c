@@ -366,16 +366,16 @@ gboolean ejecter_control_msg (EjecterPlugin *ej, const char *cmd)
     g_list_free_full (drives, g_object_unref);
     return TRUE;
 }
-#if 0
+
 /* Plugin destructor. */
-static void ejecter_destructor (gpointer user_data)
+void ejecter_destructor (gpointer user_data)
 {
     EjecterPlugin * ej = (EjecterPlugin *) user_data;
 
     /* Deallocate memory */
-    g_free (ej);
+    //g_free (ej);
 }
-#endif
+
 /* Plugin constructor. */
 //static GtkWidget *ejecter_constructor (LXPanel *panel, config_setting_t *settings)
 void ej_init (EjecterPlugin *ej)

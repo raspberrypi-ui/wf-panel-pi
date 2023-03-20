@@ -4032,10 +4032,12 @@ static void finalize (GObject *object)
 	while (g_slist_length (applet->secrets_reqs))
 		applet_secrets_request_free ((SecretsRequest *) applet->secrets_reqs->data);
 
+#ifndef LXPANEL_PLUGIN
 	if (applet->notification) {
 		notify_notification_close (applet->notification, NULL);
 		g_object_unref (applet->notification);
 	}
+#endif
 
 	g_clear_object (&applet->info_dialog_ui);
 #ifndef LXPANEL_PLUGIN

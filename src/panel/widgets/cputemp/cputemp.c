@@ -329,6 +329,9 @@ void cputemp_update_display (CPUTempPlugin *c)
     graph_init (&(c->graph), c->icon_size);
 }
 
+void cputemp_destructor (gpointer user_data)
+{
+}
 
 /* Plugin constructor. */
 void cputemp_init (CPUTempPlugin *c)

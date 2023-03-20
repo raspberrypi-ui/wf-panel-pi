@@ -2104,16 +2104,16 @@ gboolean bluetooth_control_msg (BluetoothPlugin *bt, const char *cmd)
     return TRUE;
 }
 
-#if 0
+
 /* Plugin destructor. */
-static void bluetooth_destructor (gpointer user_data)
+void bluetooth_destructor (gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
 
     /* Deallocate memory */
-    g_free (bt);
+   // g_free (bt);
 }
-#endif
+
 /* Plugin constructor. */
 //static GtkWidget *bluetooth_constructor (LXPanel *panel, config_setting_t *settings)
 void bt_init (BluetoothPlugin *bt)

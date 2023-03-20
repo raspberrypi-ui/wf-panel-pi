@@ -442,9 +442,8 @@ void power_update_display (PtBattPlugin *pt)
     else gtk_widget_hide (pt->plugin);
 }
 
-#if 0
-/* Plugin destructor. */
-static void ptbatt_destructor (gpointer user_data)
+
+void power_destructor (gpointer user_data)
 {
     PtBattPlugin *pt = (PtBattPlugin *) user_data;
 
@@ -458,9 +457,8 @@ static void ptbatt_destructor (gpointer user_data)
     }
 
     /* Deallocate memory */
-    g_free (pt);
+    //g_free (pt);
 }
-#endif
 
 /* Plugin constructor. */
 void power_init (PtBattPlugin *pt)

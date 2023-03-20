@@ -450,7 +450,6 @@ gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd)
     return FALSE;
 }
 
-#if 0
 /* Plugin destructor */
 
 void volumepulse_destructor (gpointer user_data)
@@ -466,9 +465,8 @@ void volumepulse_destructor (gpointer user_data)
     pulse_terminate (vol);
 
     /* Deallocate all memory. */
-    g_free (vol);
+    //g_free (vol);
 }
-#endif
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

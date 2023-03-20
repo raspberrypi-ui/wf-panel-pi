@@ -128,13 +128,15 @@ static void check_for_updates (gpointer user_data)
 
 static gpointer refresh_update_cache (gpointer data)
 {
+    UpdaterPlugin *up = (UpdaterPlugin *) data;
     PkTask *task = pk_task_new ();
-    pk_client_refresh_cache_async (PK_CLIENT (task), TRUE, NULL, NULL, NULL, (GAsyncReadyCallback) refresh_cache_done, data);
+    pk_client_refresh_cache_async (PK_CLIENT (task), TRUE, up->cancellable, NULL, NULL, (GAsyncReadyCallback) refresh_cache_done, data);
     return NULL;
 }
 
 static void refresh_cache_done (PkTask *task, GAsyncResult *res, gpointer data)
 {
+    UpdaterPlugin *up = (UpdaterPlugin *) data;
     GError *error = NULL;
     pk_task_generic_finish (task, res, &error);
 
@@ -146,7 +148,7 @@ static void refresh_cache_done (PkTask *task, GAsyncResult *res, gpointer data)
     }
 
     DEBUG ("Cache updated - comparing versions");
-    pk_client_get_updates_async (PK_CLIENT (task), PK_FILTER_ENUM_NONE, NULL, NULL, NULL, (GAsyncReadyCallback) check_updates_done, data);
+    pk_client_get_updates_async (PK_CLIENT (task), PK_FILTER_ENUM_NONE, up->cancellable, NULL, NULL, (GAsyncReadyCallback) check_updates_done, data);
 }
 
 static gboolean filter_fn (PkPackage *package, gpointer user_data)
@@ -477,6 +479,7 @@ void updater_init (UpdaterPlugin *up)
     up->menu = NULL;
     up->n_updates = 0;
     up->ids = NULL;
+    up->cancellable = g_cancellable_new ();
 
     /* Set timer for update checks */
     if (!config_setting_lookup_int ("updater", "Interval", &up->interval)) up->interval = 24;
@@ -519,6 +522,18 @@ gboolean updater_control_msg (UpdaterPlugin *up, const char *cmd)
 
     return FALSE;
 }
+
+/* Plugin destructor. */
+void updater_destructor (gpointer user_data)
+{
+    UpdaterPlugin *up = (UpdaterPlugin *) user_data;
+
+    g_cancellable_cancel (up->cancellable);
+
+    /* Deallocate memory */
+    //g_free (up);
+}
+
 #if 0
 /* Handler to open config dialog */
 static GtkWidget *updater_configure (LXPanel *panel, GtkWidget *p)
@@ -542,15 +557,6 @@ static gboolean updater_apply_configuration (gpointer user_data)
     else
         up->timer = 0;
     return FALSE;
-}
-
-/* Plugin destructor. */
-static void updater_destructor (gpointer user_data)
-{
-    UpdaterPlugin *up = (UpdaterPlugin *) user_data;
-
-    /* Deallocate memory */
-    g_free (up);
 }
 
 FM_DEFINE_MODULE (lxpanel_gtk, updater)

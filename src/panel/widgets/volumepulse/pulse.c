@@ -137,6 +137,7 @@ void pulse_init (VolumePulsePlugin *vol)
     pa_mainloop_api *paapi;
 
     vol->pa_cont = NULL;
+    vol->pa_idle_timer = 0;
     vol->pa_mainloop = pa_threaded_mainloop_new ();
     pa_threaded_mainloop_start (vol->pa_mainloop);
 
@@ -221,6 +222,7 @@ void pulse_terminate (VolumePulsePlugin *vol)
         pa_threaded_mainloop_stop (vol->pa_mainloop);
         pa_threaded_mainloop_free (vol->pa_mainloop);
     }
+    if (vol->pa_idle_timer) g_source_remove (vol->pa_idle_timer);
 }
 
 /* Handler for unrecoverable errors - terminates the controller */
@@ -280,7 +282,7 @@ static void pa_cb_subscription (pa_context *pacontext, pa_subscription_event_typ
     DEBUG ("PulseAudio event : %s %s", type, fac);
 #endif
 
-    g_idle_add (pa_update_disp_cb, vol);
+    vol->pa_idle_timer = g_idle_add (pa_update_disp_cb, vol);
 
     pa_threaded_mainloop_signal (vol->pa_mainloop, 0);
 }
@@ -291,6 +293,7 @@ static gboolean pa_update_disp_cb (gpointer userdata)
 {
     VolumePulsePlugin *vol = (VolumePulsePlugin *) userdata;
 
+    vol->pa_idle_timer = 0;
     volumepulse_update_display (vol);
     return FALSE;
 }

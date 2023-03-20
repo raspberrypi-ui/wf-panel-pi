@@ -27,3 +27,4 @@ typedef struct
 
 extern void cputemp_init (CPUTempPlugin *up);
 extern void cputemp_update_display (CPUTempPlugin *up);
+extern void cputemp_destructor (gpointer user_data);

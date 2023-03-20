@@ -48,4 +48,5 @@ void WayfireVolumepulse::init (Gtk::HBox *container)
 
 WayfireVolumepulse::~WayfireVolumepulse()
 {
+    volumepulse_destructor (vol);
 }

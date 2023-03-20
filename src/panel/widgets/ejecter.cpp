@@ -47,4 +47,5 @@ void WayfireEjecter::init (Gtk::HBox *container)
 
 WayfireEjecter::~WayfireEjecter()
 {
+    ejecter_destructor (ej);
 }

@@ -77,17 +77,17 @@ gboolean nm_control_msg (NMApplet *nm, const char *cmd)
     return TRUE;
 }
 
-#if 0
+
 /* Plugin destructor. */
-static void nm_destructor (gpointer user_data)
+void netman_destructor (gpointer user_data)
 {
     NMApplet *nm = (NMApplet *) user_data;
 
     /* Deallocate memory. */
     finalize (nm);
-    g_free (nm);
+    //g_free (nm);
 }
-#endif
+
 /* Plugin constructor. */
 void netman_init (NMApplet *nm)
 {

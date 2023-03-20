@@ -22,5 +22,6 @@ typedef struct {
 
 extern void power_init (PtBattPlugin *pt);
 extern void power_update_display (PtBattPlugin *pt);
+extern void power_destructor (gpointer user_data);
 
 

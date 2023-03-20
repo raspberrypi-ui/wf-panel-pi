@@ -42,4 +42,5 @@ void WayfirePower::init (Gtk::HBox *container)
 
 WayfirePower::~WayfirePower()
 {
+    power_destructor (pt);
 }

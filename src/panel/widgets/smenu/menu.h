@@ -30,3 +30,4 @@ typedef struct {
 extern void menu_init (MenuPlugin *m);
 extern void menu_update_display (MenuPlugin *m);
 extern void menu_show_menu (MenuPlugin *m);
+extern void menu_destructor (gpointer user_data);

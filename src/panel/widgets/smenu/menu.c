@@ -905,9 +905,9 @@ static void menu_panel_configuration_changed (LXPanel *panel, GtkWidget *p)
     }
     create_menu (m);
 }
-
+#endif
 /* Plugin destructor */
-static void menu_destructor (gpointer user_data)
+void menu_destructor (gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
 
@@ -923,9 +923,9 @@ static void menu_destructor (gpointer user_data)
     }
 
     g_free (m->icon);
-    g_free (m);
+    //g_free (m);
 }
-#endif
+
 /* Plugin constructor */
 void menu_init (MenuPlugin *m)
 {

@@ -26,3 +26,4 @@ typedef struct
 
 extern void cpu_init (CPUPlugin *up);
 extern void cpu_update_display (CPUPlugin *up);
+extern void cpu_destructor (gpointer user_data);

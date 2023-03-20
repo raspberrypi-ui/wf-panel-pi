@@ -47,4 +47,5 @@ void WayfireUpdater::init (Gtk::HBox *container)
 
 WayfireUpdater::~WayfireUpdater()
 {
+    updater_destructor (up);
 }

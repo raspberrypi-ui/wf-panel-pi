@@ -18,10 +18,10 @@ typedef struct {
     gchar **ids;                    /* ID strings for pending updates */
     int interval;                   /* Number of hours between periodic checks */
     guint timer;                    /* Periodic check timer ID */
+    GCancellable *cancellable;
 } UpdaterPlugin;
 
 extern void updater_init (UpdaterPlugin *up);
 extern void updater_update_display (UpdaterPlugin *up);
 extern gboolean updater_control_msg (UpdaterPlugin *up, const char *cmd);
-
-
+extern void updater_destructor (gpointer user_data);

@@ -373,7 +373,7 @@ static void bt_cb_connected (GObject *source, GAsyncResult *res, gpointer user_d
 
         // start polling for the PulseAudio profile of the device
         vol->bt_profile_count = 0;
-        g_idle_add (bt_get_profile, vol);
+        vol->bt_idle_timer = g_idle_add (bt_get_profile, vol);
     }
 }
 
@@ -461,6 +461,7 @@ static gboolean bt_get_profile (gpointer user_data)
 
     bt_next_operation (vol);
 
+    vol->bt_idle_timer = 0;
     volumepulse_update_display (vol);
     return FALSE;
 }
@@ -612,6 +613,7 @@ void bluetooth_init (VolumePulsePlugin *vol)
     vol->bt_oname = NULL;
     vol->bt_iname = NULL;
     vol->bt_ops = NULL;
+    vol->bt_idle_timer = 0;
 
     /* Set up callbacks to see if BlueZ is on D-Bus */
     if (vol->input_control)
@@ -632,6 +634,8 @@ void bluetooth_terminate (VolumePulsePlugin *vol)
         g_object_unref (vol->bt_objmanager);
     }
     vol->bt_objmanager = NULL;
+
+    if (vol->bt_idle_timer) g_source_remove (vol->bt_idle_timer);
 
     /* Remove the watch on D-Bus */
     g_bus_unwatch_name (vol->bt_watcher_id);
