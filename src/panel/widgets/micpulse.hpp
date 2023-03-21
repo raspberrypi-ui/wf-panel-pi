@@ -14,6 +14,7 @@ class WayfireMicpulse : public WayfireWidget
 
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <std::string> bar_pos {"panel/position"};
+    sigc::connection icon_timer;
 
     /* plugin */
     VolumePulsePlugin data;
@@ -26,6 +27,7 @@ class WayfireMicpulse : public WayfireWidget
     virtual ~WayfireMicpulse ();
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
+    bool set_icon (void);
 };
 
 #endif /* end of include guard: WIDGETS_VOLUMEPULSE_HPP */

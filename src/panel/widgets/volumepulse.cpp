@@ -18,10 +18,10 @@ void WayfireVolumepulse::command (const char *cmd)
     volumepulse_control_msg (vol, cmd);
 }
 
-gboolean vol_set_icon (VolumePulsePlugin *vol)
+bool WayfireVolumepulse::set_icon (void)
 {
     volpulse_update_display (vol);
-    return FALSE;
+    return false;
 }
 
 void WayfireVolumepulse::init (Gtk::HBox *container)
@@ -35,7 +35,7 @@ void WayfireVolumepulse::init (Gtk::HBox *container)
     vol->plugin = (GtkWidget *)((*plugin).gobj());
     vol->icon_size = icon_size;
     vol->wizard = WayfireShellApp::get().wizard;
-    g_idle_add (G_SOURCE_FUNC (vol_set_icon), vol);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireVolumepulse::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -48,5 +48,6 @@ void WayfireVolumepulse::init (Gtk::HBox *container)
 
 WayfireVolumepulse::~WayfireVolumepulse()
 {
+    icon_timer.disconnect ();
     volumepulse_destructor (vol);
 }

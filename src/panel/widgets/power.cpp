@@ -13,10 +13,10 @@ void WayfirePower::icon_size_changed_cb (void)
     power_update_display (pt);
 }
 
-gboolean set_icon (PtBattPlugin *pt)
+bool WayfirePower::set_icon (void)
 {
     power_update_display (pt);
-    return FALSE;
+    return false;
 }
 
 void WayfirePower::init (Gtk::HBox *container)
@@ -29,7 +29,7 @@ void WayfirePower::init (Gtk::HBox *container)
     pt = &data;
     pt->plugin = (GtkWidget *)((*plugin).gobj());
     pt->icon_size = icon_size;
-    g_idle_add (G_SOURCE_FUNC (set_icon), pt);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfirePower::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -42,5 +42,6 @@ void WayfirePower::init (Gtk::HBox *container)
 
 WayfirePower::~WayfirePower()
 {
+    icon_timer.disconnect ();
     power_destructor (pt);
 }

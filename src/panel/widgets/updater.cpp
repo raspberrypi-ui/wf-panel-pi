@@ -18,10 +18,10 @@ void WayfireUpdater::command (const char *cmd)
     updater_control_msg (up, cmd);
 }
 
-gboolean set_icon (UpdaterPlugin *up)
+bool WayfireUpdater::set_icon (void)
 {
     updater_update_display (up);
-    return FALSE;
+    return false;
 }
 
 void WayfireUpdater::init (Gtk::HBox *container)
@@ -34,7 +34,7 @@ void WayfireUpdater::init (Gtk::HBox *container)
     up = &data;
     up->plugin = (GtkWidget *)((*plugin).gobj());
     up->icon_size = icon_size;
-    g_idle_add (G_SOURCE_FUNC (set_icon), up);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireUpdater::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -47,5 +47,6 @@ void WayfireUpdater::init (Gtk::HBox *container)
 
 WayfireUpdater::~WayfireUpdater()
 {
+    icon_timer.disconnect ();
     updater_destructor (up);
 }

@@ -18,10 +18,10 @@ void WayfireSmenu::command (const char *cmd)
     if (!g_strcmp0 (cmd, "menu")) menu_show_menu (m);
 }
 
-gboolean set_icon (MenuPlugin *m)
+bool WayfireSmenu::set_icon (void)
 {
     menu_update_display (m);
-    return FALSE;
+    return false;
 }
 
 void WayfireSmenu::init (Gtk::HBox *container)
@@ -34,7 +34,7 @@ void WayfireSmenu::init (Gtk::HBox *container)
     m = &data;
     m->plugin = (GtkWidget *)((*plugin).gobj());
     m->icon_size = icon_size;
-    g_idle_add (G_SOURCE_FUNC (set_icon), m);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireSmenu::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -47,5 +47,6 @@ void WayfireSmenu::init (Gtk::HBox *container)
 
 WayfireSmenu::~WayfireSmenu()
 {
+    icon_timer.disconnect ();
     menu_destructor (m);
 }

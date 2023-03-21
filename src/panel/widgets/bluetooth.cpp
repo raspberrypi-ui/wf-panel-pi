@@ -18,10 +18,10 @@ void WayfireBluetooth::command (const char *cmd)
     bluetooth_control_msg (bt, cmd);
 }
 
-gboolean set_icon (BluetoothPlugin *bt)
+bool WayfireBluetooth::set_icon (void)
 {
     bt_update_display (bt);
-    return FALSE;
+    return false;
 }
 
 void WayfireBluetooth::init (Gtk::HBox *container)
@@ -35,7 +35,7 @@ void WayfireBluetooth::init (Gtk::HBox *container)
     bt->plugin = (GtkWidget *)((*plugin).gobj());
     bt->icon_size = icon_size;
     bt->wizard = WayfireShellApp::get().wizard;
-    g_idle_add (G_SOURCE_FUNC (set_icon), bt);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireBluetooth::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -48,5 +48,6 @@ void WayfireBluetooth::init (Gtk::HBox *container)
 
 WayfireBluetooth::~WayfireBluetooth()
 {
+    icon_timer.disconnect ();
     bluetooth_destructor (bt);
 }

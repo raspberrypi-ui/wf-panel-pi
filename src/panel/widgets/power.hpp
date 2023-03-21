@@ -14,6 +14,7 @@ class WayfirePower : public WayfireWidget
 
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <std::string> bar_pos {"panel/position"};
+    sigc::connection icon_timer;
 
     /* plugin */
     PtBattPlugin data;
@@ -25,6 +26,7 @@ class WayfirePower : public WayfireWidget
     virtual ~WayfirePower ();
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
+    bool set_icon (void);
 };
 
 #endif /* end of include guard: WIDGETS_POWER_HPP */

@@ -18,10 +18,10 @@ void WayfireEjecter::command (const char *cmd)
     ejecter_control_msg (ej, cmd);
 }
 
-gboolean set_icon (EjecterPlugin *ej)
+bool WayfireEjecter::set_icon (void)
 {
     ej_update_display (ej);
-    return FALSE;
+    return false;
 }
 
 void WayfireEjecter::init (Gtk::HBox *container)
@@ -34,7 +34,7 @@ void WayfireEjecter::init (Gtk::HBox *container)
     ej = &data;
     ej->plugin = (GtkWidget *)((*plugin).gobj());
     ej->icon_size = icon_size;
-    g_idle_add (G_SOURCE_FUNC (set_icon), ej);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireEjecter::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -47,5 +47,6 @@ void WayfireEjecter::init (Gtk::HBox *container)
 
 WayfireEjecter::~WayfireEjecter()
 {
+    icon_timer.disconnect ();
     ejecter_destructor (ej);
 }

@@ -18,10 +18,10 @@ void WayfireNetman::command (const char *cmd)
     nm_control_msg (nm, cmd);
 }
 
-gboolean set_icon (NMApplet *nm)
+bool WayfireNetman::set_icon (void)
 {
     netman_update_display (nm);
-    return FALSE;
+    return false;
 }
 
 void WayfireNetman::init (Gtk::HBox *container)
@@ -34,7 +34,7 @@ void WayfireNetman::init (Gtk::HBox *container)
     nm = (NMApplet *) g_object_new (NM_TYPE_APPLET, NULL);
     nm->plugin = (GtkWidget *)((*plugin).gobj());
     nm->icon_size = icon_size;
-    g_idle_add (G_SOURCE_FUNC (set_icon), nm);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireNetman::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -47,5 +47,6 @@ void WayfireNetman::init (Gtk::HBox *container)
 
 WayfireNetman::~WayfireNetman()
 {
+    icon_timer.disconnect ();
     netman_destructor (nm);
 }

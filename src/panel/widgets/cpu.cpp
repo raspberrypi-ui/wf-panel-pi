@@ -13,10 +13,10 @@ void WayfireCPU::icon_size_changed_cb (void)
     cpu_update_display (cpu);
 }
 
-gboolean set_icon (CPUPlugin *cpu)
+bool WayfireCPU::set_icon (void)
 {
     cpu_update_display (cpu);
-    return FALSE;
+    return false;
 }
 
 void WayfireCPU::init (Gtk::HBox *container)
@@ -29,7 +29,7 @@ void WayfireCPU::init (Gtk::HBox *container)
     cpu = &data;
     cpu->plugin = (GtkWidget *)((*plugin).gobj());
     cpu->icon_size = icon_size;
-    g_idle_add (G_SOURCE_FUNC (set_icon), cpu);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireCPU::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -42,5 +42,6 @@ void WayfireCPU::init (Gtk::HBox *container)
 
 WayfireCPU::~WayfireCPU()
 {
+    icon_timer.disconnect ();
     cpu_destructor (cpu);
 }

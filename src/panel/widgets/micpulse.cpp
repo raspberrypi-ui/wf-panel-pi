@@ -18,10 +18,10 @@ void WayfireMicpulse::command (const char *cmd)
     volumepulse_control_msg (vol, cmd);
 }
 
-gboolean mic_set_icon (VolumePulsePlugin *vol)
+bool WayfireMicpulse::set_icon (void)
 {
     micpulse_update_display (vol);
-    return FALSE;
+    return false;
 }
 
 void WayfireMicpulse::init (Gtk::HBox *container)
@@ -34,7 +34,7 @@ void WayfireMicpulse::init (Gtk::HBox *container)
     vol = &data;
     vol->plugin = (GtkWidget *)((*plugin).gobj());
     vol->icon_size = icon_size;
-    g_idle_add (G_SOURCE_FUNC (mic_set_icon), vol);
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireMicpulse::set_icon));
     bar_pos_changed_cb ();
 
     /* Initialise the plugin */
@@ -47,5 +47,6 @@ void WayfireMicpulse::init (Gtk::HBox *container)
 
 WayfireMicpulse::~WayfireMicpulse()
 {
+    icon_timer.disconnect ();
     volumepulse_destructor (vol);
 }
