@@ -18,6 +18,8 @@ class WayfirePanel
     void handle_config_reload();
     void handle_command_message (const char *plugin, const char *cmd);
     void update_panel ();
+    bool real_panel ();
+    void set_monitor (GdkMonitor *mon);
 
     private:
     class impl;
@@ -38,6 +40,7 @@ class WayfirePanelApp : public WayfireShellApp
     void handle_new_output(WayfireOutput *output) override;
     void handle_output_removed(WayfireOutput *output) override;
     void on_config_reload() override;
+    void update_panels (int new_mon);
 
   private:
     WayfirePanelApp(int argc, char **argv);

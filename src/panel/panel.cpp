@@ -486,46 +486,19 @@ class WayfirePanel::impl
         else return false;
     }
 
+    bool real_panel ()
+    {
+        return gtk_layer_get_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT);
+    }
+
+    void set_monitor (GdkMonitor *mon)
+    {
+        gtk_layer_set_monitor (window->gobj(), mon);
+    }
+
     std::function<void()> update_panel = [=] ()
     {
-        if (panel_monitor ())
-        {
-            window->set_size_request (1, minimal_panel_height);
-
-            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
-            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
-            if (wizard)
-            {
-                GdkRectangle rect;
-                gdk_monitor_get_geometry (gtk_layer_get_monitor (window->gobj()), &rect);
-                gtk_layer_set_margin (window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, rect.width - (icon_size + MENU_ICON_SPACE) * 2);
-
-                reload_widgets ((std::string) "", left_widgets, left_box);
-                reload_widgets ((std::string) "bluetooth volumepulse", right_widgets, right_box);
-                reload_widgets ((std::string) "", center_widgets, center_box);
-            }
-            else
-            {
-                reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
-                reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
-                reload_widgets ((std::string) center_widgets_opt, center_widgets, center_box);
-            }
-         }
-         else
-         {
-            window->set_size_request (1, 1);
-
-            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
-            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, false);
-            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_TOP, true);
-            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, false);
-            gtk_layer_set_margin (window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 1);
-            gtk_layer_set_margin (window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
-
-            reload_widgets ((std::string) "", left_widgets, left_box);
-            reload_widgets ((std::string) "", right_widgets, right_box);
-            reload_widgets ((std::string) "", center_widgets, center_box);
-         }
+        WayfirePanelApp::get().update_panels (monitor_num);
     };
 };
 
@@ -535,6 +508,8 @@ Gtk::Window& WayfirePanel::get_window() { return pimpl->get_window(); }
 void WayfirePanel::handle_config_reload() { return pimpl->handle_config_reload(); }
 void WayfirePanel::handle_command_message (const char *plugin, const char *cmd) { pimpl->message_widget (plugin, cmd); }
 void WayfirePanel::update_panel () { pimpl->update_panel (); }
+bool WayfirePanel::real_panel () { return pimpl->real_panel (); }
+void WayfirePanel::set_monitor (GdkMonitor *mon) { pimpl->set_monitor (mon); }
 
 class WayfirePanelApp::impl
 {
@@ -558,8 +533,6 @@ void WayfirePanelApp::handle_new_output(WayfireOutput *output)
 {
     priv->panels[output] = std::unique_ptr<WayfirePanel> (
         new WayfirePanel(output));
-    for (auto& p : priv->panels)
-        p.second->update_panel ();
 }
 
 WayfirePanel* WayfirePanelApp::panel_for_wl_output(wl_output *output)
@@ -576,8 +549,31 @@ WayfirePanel* WayfirePanelApp::panel_for_wl_output(wl_output *output)
 void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
 {
     priv->panels.erase(output);
+}
+
+void WayfirePanelApp::update_panels (int new_mon)
+{
+    int n_mons = gdk_display_get_n_monitors (gdk_display_get_default ());
+    if (new_mon >= n_mons) new_mon = n_mons - 1;
+
+    GdkMonitor *mon = gdk_display_get_monitor (gdk_display_get_default (), new_mon);
+
+    WayfireOutput *cur_out = NULL, *new_out = NULL;
+
     for (auto& p : priv->panels)
-        p.second->update_panel ();
+    {
+        if (p.second.get()->real_panel()) cur_out = p.first;
+        if (p.first->monitor->gobj () == mon) new_out = p.first;
+    }
+
+    if (cur_out == new_out) return;
+
+    std::unique_ptr<WayfirePanel> tmp = std::move(priv->panels [cur_out]);
+    priv->panels[cur_out] = std::move(priv->panels[new_out]);
+    priv->panels[new_out] = std::move(tmp);
+
+    for (auto& p : priv->panels)
+        p.second.get()->set_monitor (p.first->monitor->gobj());
 }
 
 WayfirePanelApp& WayfirePanelApp::get()
