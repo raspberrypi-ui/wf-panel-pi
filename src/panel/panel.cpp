@@ -55,7 +55,8 @@ const GDBusInterfaceVTable WayfirePanelApp::interface_vtable =
 {
   handle_method_call,
   handle_get_property,
-  handle_set_property
+  handle_set_property,
+  NULL
 };
 
 void WayfirePanelApp::handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
@@ -487,6 +488,44 @@ class WayfirePanel::impl
 
     std::function<void()> update_panel = [=] ()
     {
+        if (panel_monitor ())
+        {
+            window->set_size_request (1, minimal_panel_height);
+
+            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
+            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
+            if (wizard)
+            {
+                GdkRectangle rect;
+                gdk_monitor_get_geometry (gtk_layer_get_monitor (window->gobj()), &rect);
+                gtk_layer_set_margin (window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, rect.width - (icon_size + MENU_ICON_SPACE) * 2);
+
+                reload_widgets ((std::string) "", left_widgets, left_box);
+                reload_widgets ((std::string) "bluetooth volumepulse", right_widgets, right_box);
+                reload_widgets ((std::string) "", center_widgets, center_box);
+            }
+            else
+            {
+                reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
+                reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
+                reload_widgets ((std::string) center_widgets_opt, center_widgets, center_box);
+            }
+         }
+         else
+         {
+            window->set_size_request (1, 1);
+
+            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
+            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, false);
+            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_TOP, true);
+            gtk_layer_set_anchor (window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, false);
+            gtk_layer_set_margin (window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 1);
+            gtk_layer_set_margin (window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
+
+            reload_widgets ((std::string) "", left_widgets, left_box);
+            reload_widgets ((std::string) "", right_widgets, right_box);
+            reload_widgets ((std::string) "", center_widgets, center_box);
+         }
     };
 };
 
