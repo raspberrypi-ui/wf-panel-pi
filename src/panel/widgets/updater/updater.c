@@ -410,6 +410,7 @@ static void update_icon (UpdaterPlugin *up, gboolean hide)
 static gboolean init_check (gpointer data)
 {
     UpdaterPlugin *up = (UpdaterPlugin *) data;
+    up->idle_timer = 0;
     update_icon (up, TRUE);
 
     /* Don't bother with the check if the wizard is running - it checks anyway... */
@@ -419,7 +420,7 @@ static gboolean init_check (gpointer data)
     else
     {
         DEBUG ("No network connection - polling...");
-        g_timeout_add_seconds (60, net_check, up);
+        up->idle_timer = g_timeout_add_seconds (60, net_check, up);
     }
     return FALSE;
 }
@@ -429,6 +430,7 @@ static gboolean net_check (gpointer data)
     UpdaterPlugin *up = (UpdaterPlugin *) data;
     if (net_available ())
     {
+        up->idle_timer = 0;
         check_for_updates (up);
         return FALSE;
     }
@@ -489,7 +491,7 @@ void updater_init (UpdaterPlugin *up)
         up->timer = 0;
 
     /* Start the initial check for updates */
-    g_idle_add (init_check, up);
+    up->idle_timer = g_idle_add (init_check, up);
 
     /* Show the widget and return. */
     gtk_widget_show_all (up->plugin);
@@ -529,6 +531,8 @@ void updater_destructor (gpointer user_data)
     UpdaterPlugin *up = (UpdaterPlugin *) user_data;
 
     g_cancellable_cancel (up->cancellable);
+    if (up->timer) g_source_remove (up->timer);
+    if (up->idle_timer) g_source_remove (up->idle_timer);
 
     /* Deallocate memory */
     //g_free (up);

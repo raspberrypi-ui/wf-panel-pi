@@ -2110,6 +2110,8 @@ void bluetooth_destructor (gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
 
+    g_bus_unwatch_name (bt->watch);
+
     /* Deallocate memory */
    // g_free (bt);
 }
@@ -2170,7 +2172,7 @@ void bt_init (BluetoothPlugin *bt)
     init_icon_cache (bt);
 
     /* Set up callbacks to see if BlueZ is on DBus */
-    g_bus_watch_name (G_BUS_TYPE_SYSTEM, "org.bluez", 0, cb_name_owned, cb_name_unowned, bt, NULL);
+    bt->watch = g_bus_watch_name (G_BUS_TYPE_SYSTEM, "org.bluez", 0, cb_name_owned, cb_name_unowned, bt, NULL);
 
     /* Show the widget and return */
     gtk_widget_show_all (bt->plugin);
