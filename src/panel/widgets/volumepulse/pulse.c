@@ -206,6 +206,7 @@ static void pa_cb_state (pa_context *pacontext, void *userdata)
 
 void pulse_terminate (VolumePulsePlugin *vol)
 {
+    if (vol->pa_idle_timer) g_source_remove (vol->pa_idle_timer);
     if (vol->pa_mainloop != NULL)
     {
         /* Disconnect the controller context */
@@ -222,7 +223,6 @@ void pulse_terminate (VolumePulsePlugin *vol)
         pa_threaded_mainloop_stop (vol->pa_mainloop);
         pa_threaded_mainloop_free (vol->pa_mainloop);
     }
-    if (vol->pa_idle_timer) g_source_remove (vol->pa_idle_timer);
 }
 
 /* Handler for unrecoverable errors - terminates the controller */

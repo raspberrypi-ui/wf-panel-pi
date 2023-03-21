@@ -451,6 +451,24 @@ void volumepulse_init (VolumePulsePlugin *vol)
     //return vol->plugin;
 }
 
+/* Plugin destructor */
+
+void volumepulse_destructor (gpointer user_data)
+{
+    VolumePulsePlugin *vol = (VolumePulsePlugin *) user_data;
+
+    close_widget (&vol->profiles_dialog);
+    close_widget (&vol->conn_dialog);
+    close_widget (&vol->popup_window);
+    close_widget (&vol->menu_devices);
+
+    bluetooth_terminate (vol);
+    pulse_terminate (vol);
+
+    /* Deallocate all memory. */
+    //g_free (vol);
+}
+
 #if 0
 FM_DEFINE_MODULE (lxpanel_gtk, volumepulse)
 

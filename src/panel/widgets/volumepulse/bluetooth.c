@@ -626,6 +626,8 @@ void bluetooth_init (VolumePulsePlugin *vol)
 
 void bluetooth_terminate (VolumePulsePlugin *vol)
 {
+    if (vol->bt_idle_timer) g_source_remove (vol->bt_idle_timer);
+
     /* Remove signal handlers on D-Bus object manager */
     if (vol->bt_objmanager)
     {
@@ -634,8 +636,6 @@ void bluetooth_terminate (VolumePulsePlugin *vol)
         g_object_unref (vol->bt_objmanager);
     }
     vol->bt_objmanager = NULL;
-
-    if (vol->bt_idle_timer) g_source_remove (vol->bt_idle_timer);
 
     /* Remove the watch on D-Bus */
     g_bus_unwatch_name (vol->bt_watcher_id);

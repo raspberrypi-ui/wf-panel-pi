@@ -48,5 +48,5 @@ void WayfireMicpulse::init (Gtk::HBox *container)
 WayfireMicpulse::~WayfireMicpulse()
 {
     icon_timer.disconnect ();
-    volumepulse_destructor (vol);
+    micpulse_destructor (vol);
 }
