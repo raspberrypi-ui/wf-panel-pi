@@ -136,13 +136,18 @@ void WayfireShellApp::on_activate()
 bool WayfireShellApp::update_monitors ()
 {
     // clear the existing monitors
+    for (auto &mon : monitors)
+        handle_output_removed (mon.get ());
     monitors.clear ();
 
     // find the new list of monitors
-    auto display = Gdk::Display::get_default();
-    int num_monitors = display->get_n_monitors();
+    auto display = Gdk::Display::get_default ();
+    int num_monitors = display->get_n_monitors ();
     for (int i = 0; i < num_monitors; i++)
-        add_output(display->get_monitor(i));
+    {
+        monitors.push_back (std::make_unique<WayfireOutput> (display->get_monitor (i), this->manager));
+        handle_new_output (monitors.back().get());
+    }
 
     return false;
 }
@@ -164,14 +169,13 @@ void WayfireShellApp::add_output(GMonitor monitor)
 
 void WayfireShellApp::rem_output(GMonitor monitor)
 {
-    auto it = std::remove_if(monitors.begin(), monitors.end(),
+    auto it = std::find_if(monitors.begin(), monitors.end(),
         [monitor] (auto& output) { return output->monitor == monitor; });
+    if (it != monitors.end()) handle_output_removed(it->get());
 
-    if (it != monitors.end())
-    {
-        handle_output_removed(it->get());
-        monitors.erase(it, monitors.end());
-    }
+    auto itr = std::remove_if(monitors.begin(), monitors.end(),
+        [monitor] (auto& output) { return output->monitor == monitor; });
+    if (itr != monitors.end()) monitors.erase(itr, monitors.end());
 }
 
 WayfireShellApp::WayfireShellApp(int argc, char **argv)
