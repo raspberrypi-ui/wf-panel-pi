@@ -39,7 +39,7 @@ class WayfirePanelApp : public WayfireShellApp
     void handle_new_output(WayfireOutput *output) override;
     void handle_output_removed(WayfireOutput *output) override;
     void on_config_reload() override;
-    void update_panels (int new_mon);
+    void update_panels ();
 
   private:
     WayfirePanelApp(int argc, char **argv);

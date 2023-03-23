@@ -244,7 +244,7 @@ class WayfirePanel::impl
             gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
         }
 
-        monitor_num.set_callback (set_monitor);
+        monitor_num.set_callback (update_panels);
 
         gtk_widget_set_name (GTK_WIDGET (window->gobj()), "PanelToplevel");
 
@@ -480,7 +480,7 @@ class WayfirePanel::impl
         return this->output;
     }
 
-    std::function<int()> set_monitor = [=] ()
+    int set_monitor ()
     {
         int try_mon = monitor_num;
         while (try_mon >= 0)
@@ -494,6 +494,11 @@ class WayfirePanel::impl
             try_mon--;
         }
         return 0;
+    }
+
+    std::function<void()> update_panels = [=] ()
+    {
+        WayfirePanelApp::get().update_panels ();
     };
 };
 
@@ -531,6 +536,11 @@ void WayfirePanelApp::handle_new_output(WayfireOutput *output)
     if (!priv->panel)
         priv->panel = std::unique_ptr<WayfirePanel> (new WayfirePanel (output, true));
 
+    update_panels ();
+}
+
+void WayfirePanelApp::update_panels ()
+{
     priv->dummies.clear ();
 
     int mon_num = priv->panel->set_monitor ();
