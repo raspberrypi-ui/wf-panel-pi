@@ -11,13 +11,13 @@
 class WayfirePanel
 {
     public:
-    WayfirePanel(WayfireOutput *output);
+    WayfirePanel(WayfireOutput *output, bool real);
 
     wl_surface *get_wl_surface();
     Gtk::Window& get_window();
     void handle_config_reload();
     void handle_command_message (const char *plugin, const char *cmd);
-    void set_monitor();
+    int set_monitor();
     WayfireOutput *get_output();
 
     private:

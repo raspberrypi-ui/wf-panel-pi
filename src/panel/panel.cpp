@@ -141,13 +141,14 @@ class WayfirePanel::impl
 
     WayfireOutput *output;
     bool wizard = WayfireShellApp::get().wizard;
+    bool real;
     WfOption <int> icon_size {"panel/icon_size"};
 
     int last_autohide_value = -1;
     WfOption<bool> autohide_opt{"panel/autohide"};
     std::function<void()> autohide_opt_updated = [=] ()
     {
-        if (wizard || !panel_monitor ())
+        if (wizard || !real)
         {
             window->set_auto_exclusive_zone (false);
             return;
@@ -218,7 +219,7 @@ class WayfirePanel::impl
     void create_window()
     {
         window = std::make_unique<WayfireAutohidingWindow> (output, "panel");
-        window->set_size_request(1, panel_monitor () ? minimal_panel_height : 1);
+        window->set_size_request(1, real ? minimal_panel_height : 1);
         //panel_layer.set_callback(set_panel_layer);
         //set_panel_layer(); // initial setting
 
@@ -233,7 +234,7 @@ class WayfirePanel::impl
             gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, rect.width - (icon_size + MENU_ICON_SPACE) * 2);
         }
 
-        if (!panel_monitor ())
+        if (!real)
         {
             gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
             gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, false);
@@ -383,7 +384,7 @@ class WayfirePanel::impl
     WfOption<std::string> center_widgets_opt{"panel/widgets_center"};
     void init_widgets()
     {
-        if (!panel_monitor ()) return;
+        if (!real) return;
 
         left_widgets_opt.set_callback([=] () {
             reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
@@ -415,9 +416,10 @@ class WayfirePanel::impl
     WfOption <bool> notifications {"panel/notifications"};
 
     public:
-    impl(WayfireOutput *output)
+    impl(WayfireOutput *output, bool real)
     {
         this->output = output;
+        this->real = real;
         create_window();
 
         if (output->output)
@@ -427,7 +429,7 @@ class WayfirePanel::impl
             zwf_output_v2_add_listener(output->output, &output_impl, NULL);
             zwf_output_v2_set_user_data(output->output, &callbacks);
         }
-        if (panel_monitor ()) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
+        if (real) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
     }
 
     ~impl()
@@ -448,7 +450,7 @@ class WayfirePanel::impl
 
     void handle_config_reload()
     {
-        if (panel_monitor ()) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
+        if (real) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
         for (auto& w : left_widgets)
             w->handle_config_reload();
         for (auto& w : right_widgets)
@@ -473,25 +475,12 @@ class WayfirePanel::impl
             if (name == w->widget_name) w->command (cmd);
     }
 
-    bool panel_monitor (void)
-    {
-        GdkMonitor *mon;
-        int try_mon = monitor_num;
-        while (try_mon >= 0)
-        {
-            mon = gdk_display_get_monitor (gdk_display_get_default (), try_mon);
-            if (mon) break;
-        }
-        if (try_mon >= 0 && this->output->monitor->gobj () == mon) return true;
-        else return false;
-    }
-
     WayfireOutput *get_output()
     {
         return this->output;
     }
 
-    std::function<void()> set_monitor = [=] ()
+    std::function<int()> set_monitor = [=] ()
     {
         int try_mon = monitor_num;
         while (try_mon >= 0)
@@ -500,28 +489,28 @@ class WayfirePanel::impl
             if (mon)
             {
                 gtk_layer_set_monitor (window->gobj(), mon);
-                return;
+                return try_mon;
             }
             try_mon--;
         }
+        return 0;
     };
-
-
 };
 
-WayfirePanel::WayfirePanel(WayfireOutput *output) : pimpl(new impl(output)) { }
+WayfirePanel::WayfirePanel(WayfireOutput *output, bool real) : pimpl(new impl(output, real)) { }
 wl_surface *WayfirePanel::get_wl_surface() { return pimpl->get_wl_surface(); }
 Gtk::Window& WayfirePanel::get_window() { return pimpl->get_window(); }
 void WayfirePanel::handle_config_reload() { return pimpl->handle_config_reload(); }
 void WayfirePanel::handle_command_message (const char *plugin, const char *cmd) { pimpl->message_widget (plugin, cmd); }
-void WayfirePanel::set_monitor () { pimpl->set_monitor (); }
+int WayfirePanel::set_monitor () { return pimpl->set_monitor (); }
 WayfireOutput* WayfirePanel::get_output () { return pimpl->get_output (); }
 
 class WayfirePanelApp::impl
 {
   public:
     std::unique_ptr<WayfirePanel> panel = NULL;
-    std::vector<std::unique_ptr<WayfirePanel> > dummies;
+    std::vector<std::unique_ptr<WayfirePanel>> dummies;
+    std::vector<WayfireOutput*> outputs;
 };
 
 void WayfirePanelApp::on_config_reload()
@@ -538,12 +527,21 @@ void WayfirePanelApp::on_command (const char *plugin, const char *command)
 
 void WayfirePanelApp::handle_new_output(WayfireOutput *output)
 {
+    priv->outputs.push_back (output);
     if (!priv->panel)
-        priv->panel = std::unique_ptr<WayfirePanel> (new WayfirePanel (output));
-    else
-        priv->dummies.push_back (std::unique_ptr<WayfirePanel> (new WayfirePanel(output)));
+        priv->panel = std::unique_ptr<WayfirePanel> (new WayfirePanel (output, true));
 
-    priv->panel->set_monitor ();
+    priv->dummies.clear ();
+
+    int mon_num = priv->panel->set_monitor ();
+
+    GdkDisplay *disp = gdk_display_get_default ();
+    GdkMonitor *mon = gdk_display_get_monitor (disp, mon_num);
+    for (auto& p : priv->outputs)
+    {
+        if (p->monitor->gobj () != mon)
+            priv->dummies.push_back (std::unique_ptr<WayfirePanel> (new WayfirePanel(p, false)));
+    }
 }
 
 WayfirePanel* WayfirePanelApp::panel_for_wl_output(wl_output *output)
@@ -558,12 +556,7 @@ WayfirePanel* WayfirePanelApp::panel_for_wl_output(wl_output *output)
 
 void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
 {
-    auto it = std::remove_if(priv->dummies.begin(), priv->dummies.end(),
-        [output] (auto& out) { return out->get_output() == output; });
-
-    if (it != priv->dummies.end()) priv->dummies.erase (it, priv->dummies.end());
-
-    priv->panel->set_monitor ();
+    priv->outputs.erase (std::remove(priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end());
 }
 
 WayfirePanelApp& WayfirePanelApp::get()
