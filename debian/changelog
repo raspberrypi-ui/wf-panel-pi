@@ -1,3 +1,9 @@
+wf-panel-pi (0.12) bookworm; urgency=medium
+
+  * Improve support for multiple monitors
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 27 Mar 2023 15:09:42 +0100
+
 wf-panel-pi (0.11) bookworm; urgency=medium
 
   * Add installer program for updater plugin
