@@ -1565,113 +1565,110 @@ msgstr ""
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:231
 msgid "Reconnecting Bluetooth devices..."
-msgstr ""
+msgstr "블투루스 장치 재연결 중..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
+#, c-format
 msgid "Bluetooth %s device not found"
-msgstr "본딩 네트워크 연결 %d"
+msgstr "%s 블루투스 장치를 찾을 수 없음"
 
 #. update dialog to show a warning
 #: ../src/panel/widgets/volumepulse/bluetooth.c:405
 msgid "Device not found by PulseAudio"
-msgstr ""
+msgstr "펄스오디오에서 장치를 찾을 수 없음"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:417
 #, c-format
 msgid "Could not set profile for device : %s"
-msgstr ""
+msgstr "다음 장치에 대한 프로필을 설정할 수 없음: %s"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to connect to Bluetooth device - %s"
-msgstr "휴대전화에 연결하는 데 실패했습니다."
+msgstr "다음 블루투스 장치 연결에 실패함 - %s"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:656
 #, c-format
 msgid "Connecting Bluetooth device '%s' as output..."
-msgstr ""
+msgstr "'%s' 블루투스 장치를 출력 장치로 연결 중..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:712
 #, c-format
 msgid "Connecting Bluetooth device '%s' as input..."
-msgstr ""
+msgstr "'%s' 블루투스 장치를 입력 장치로 연결 중..."
 
 #. if the current default source and sink are both the same device, disconnect it and reconnect to
 #. put it into A2DP rather than HSP
 #: ../src/panel/widgets/volumepulse/bluetooth.c:785
 msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
+msgstr "블루투스 입력 장치를 출력 장치로 재연결 중..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:830
 msgid "Reconnecting Bluetooth device..."
-msgstr ""
+msgstr "블루투스 장치에 재연결 중..."
 
 #. Create a check button as the child of the vertical box.
 #: ../src/panel/widgets/volumepulse/commongui.c:140
 msgid "Mute"
-msgstr ""
+msgstr "음소거"
 
 #: ../src/panel/widgets/volumepulse/commongui.c:231
 msgid "No audio devices found"
-msgstr ""
+msgstr "오디오 장치를 찾지 못함"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:71
 msgid "Input from this device not available in the current profile"
-msgstr ""
+msgstr "현재 프로필에서는 이 장치를 입력 장치로 사용할 수 없음"
 
 #. update tooltip
 #: ../src/panel/widgets/volumepulse/micpulse.c:144
 msgid "Mic volume"
-msgstr ""
+msgstr "마이크 음량"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:216
 msgid "Microphone Control (PulseAudio)"
-msgstr ""
+msgstr "마이크로폰 제어 (펄스오디오)"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:217
 msgid "Display and control microphones for PulseAudio"
-msgstr ""
+msgstr "펄스오디오 디스플레이 및 마이크로폰 제어"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:103
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:116
 msgid "AV Jack"
-msgstr ""
+msgstr "AV 잭"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:139
 msgid "Device Profiles..."
-msgstr ""
+msgstr "장치 프로필..."
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:172
 msgid "Output to this device not available in the current profile"
-msgstr ""
+msgstr "이 장치로의 출력은 현재 프로필에서 사용 불가능"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:221
-#, fuzzy
 msgid "Device Profiles"
-msgstr "장치 연결 끊는 데 실패"
+msgstr "장치 프로필"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:279
-#, fuzzy
 msgid "Device not connected"
-msgstr "장치 연결 끊는 데 실패"
+msgstr "장치가 연결되지 않음"
 
 #. update tooltip
 #: ../src/panel/widgets/volumepulse/volumepulse.c:382
-#, fuzzy
 msgid "Volume control"
-msgstr "흐름 제어"
+msgstr "음량 제어"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:461
 msgid "Volume Control (PulseAudio)"
-msgstr ""
+msgstr "음량 제어 (펄스오디오)"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:462
 msgid "Display and control volume for PulseAudio"
-msgstr ""
+msgstr "펄스오디오 디스플레이 음량 제어"
 
 #: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
 msgid "label"
