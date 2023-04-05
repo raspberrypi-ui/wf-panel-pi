@@ -1,3 +1,9 @@
+wf-panel-pi (0.13) bookworm; urgency=medium
+
+  * Add additional Korean translations
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 05 Apr 2023 15:08:33 +0100
+
 wf-panel-pi (0.12) bookworm; urgency=medium
 
   * Improve support for multiple monitors
