@@ -71,7 +71,8 @@ gboolean nm_control_msg (NMApplet *nm, const char *cmd)
 
     if (!g_strcmp0 (cmd, "menu"))
     {
-        if (nm_client_get_nm_running (nm->nm_client)) status_icon_activate_cb (nm);
+        if (nm->menu && gtk_widget_get_visible (nm->menu)) gtk_widget_hide (nm->menu);
+        else if (nm_client_get_nm_running (nm->nm_client)) status_icon_activate_cb (nm);
     }
 
     return TRUE;
