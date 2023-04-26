@@ -27,7 +27,7 @@ bool WayfireMicpulse::set_icon (void)
 void WayfireMicpulse::init (Gtk::HBox *container)
 {
     /* Create the button */
-    plugin = std::make_unique <Gtk::Button> ();
+    plugin = std::make_unique <WayfireMenuButton> ("panel");
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */

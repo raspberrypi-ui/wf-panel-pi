@@ -201,6 +201,9 @@ void micpulse_init (VolumePulsePlugin *vol)
     /* Set up Bluez D-Bus interface */
     bluetooth_init (vol);
 
+    /* Create the popup volume control */
+    popup_window_create (vol);
+
     /* Show the widget and return */
     gtk_widget_show_all (vol->plugin);
     //return vol->plugin;

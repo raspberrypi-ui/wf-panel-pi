@@ -35,7 +35,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Static function prototypes                                                 */
 /*----------------------------------------------------------------------------*/
 
-static void popup_window_show (VolumePulsePlugin *vol);
 static void popup_window_scale_changed (GtkRange *range, VolumePulsePlugin *vol);
 static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol);
 static gboolean popup_focus_out (GtkWidget *widget, GdkEventFocus event, gpointer user_data);
@@ -106,19 +105,15 @@ void close_widget (GtkWidget **wid)
 
 /* Create the pop-up volume window */
 
-static void popup_window_show (VolumePulsePlugin *vol)
+void popup_window_create (VolumePulsePlugin *vol)
 {
     //VolumePulsePlugin *vol = lxpanel_plugin_get_data (p);
 
     /* Create a new window. */
-    vol->popup_window = gtk_window_new (GTK_WINDOW_POPUP);
+    vol->popup_window = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (vol->plugin)));
     gtk_widget_set_name (vol->popup_window, "panelpopup");
-    gtk_window_set_decorated (GTK_WINDOW (vol->popup_window), FALSE);
 
     gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window), 0);
-    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (vol->popup_window), TRUE);
-    gtk_window_set_skip_pager_hint (GTK_WINDOW (vol->popup_window), TRUE);
-    gtk_window_set_type_hint (GTK_WINDOW (vol->popup_window), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
 
     /* Create a vertical box as the child of the window. */
     GtkWidget *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
@@ -146,27 +141,9 @@ static void popup_window_show (VolumePulsePlugin *vol)
     g_signal_connect_after (G_OBJECT (vol->popup_window), "destroy", G_CALLBACK (popup_destroyed), vol);
     g_signal_connect (G_OBJECT (vol->popup_window), "focus-out-event", G_CALLBACK (popup_focus_out), 0);
 
-    /* Layer shell setup */
-    GtkAllocation allocation;
-
-    gtk_layer_init_for_window (vol->popup_window);
-
-    /* set the anchor for the popup layer */
-    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_TOP, (vol->bottom && !vol->wizard) ? FALSE : TRUE);
-    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_BOTTOM, (vol->bottom && !vol->wizard) ? TRUE : FALSE);
-    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_LEFT, vol->wizard ? FALSE : TRUE);
-    gtk_layer_set_anchor (vol->popup_window, GTK_LAYER_SHELL_EDGE_RIGHT, vol->wizard ? TRUE : FALSE);
-
-    /* set the margin for the popup layer */
-    gtk_widget_get_allocation (vol->plugin, &allocation);
-    gtk_layer_set_margin (vol->popup_window, GTK_LAYER_SHELL_EDGE_LEFT, allocation.x);
-    if (vol->wizard) gtk_layer_set_margin (vol->popup_window, GTK_LAYER_SHELL_EDGE_TOP, vol->icon_size + MENU_ICON_SPACE - 2);
-
-    gtk_layer_set_keyboard_mode (GTK_WINDOW (vol->popup_window), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
-
-    /* Show the window */
+    /* Realise the window */
     gtk_widget_show_all (vol->popup_window);
-    gtk_window_present (GTK_WINDOW (vol->popup_window));
+    gtk_widget_hide (vol->popup_window);
 }
 
 /* Handler for "value_changed" signal on popup window vertical scale */
@@ -204,7 +181,6 @@ static gboolean popup_focus_out (GtkWidget *widget, GdkEventFocus event, gpointe
 static void popup_destroyed (GtkWidget *widget, VolumePulsePlugin *vol)
 {
     vol->popup_window = NULL;
-    return FALSE;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -339,17 +315,15 @@ gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *even
 {
     switch (event->button)
     {
-        case 1: /* left-click - show or hide volume popup */
-                if (vol->popup_window) close_widget (&vol->popup_window);
-                else popup_window_show (vol);
-                break;
+        case 1: /* left-click - fallthrough to default popover handler to show popup */
+                volumepulse_update_display (vol);
+                return FALSE;
 
         case 2: /* middle-click - toggle mute */
                 pulse_set_mute (vol, pulse_get_mute (vol) ? 0 : 1);
                 break;
 
         case 3: /* right-click - show device list */
-                close_widget (&vol->popup_window);
                 menu_show (vol);
                 show_menu_with_kbd (vol->plugin, vol->menu_devices);
                 break;
