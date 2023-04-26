@@ -451,7 +451,6 @@ void volumepulse_init (VolumePulsePlugin *vol)
 
     /* Show the widget and return */
     gtk_widget_show_all (vol->plugin);
-
     //return vol->plugin;
 }
 
