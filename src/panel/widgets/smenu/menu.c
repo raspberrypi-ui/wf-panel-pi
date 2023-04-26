@@ -207,7 +207,6 @@ static void resize_search (MenuPlugin *m)
     /* set the size of the scrolled window and then redraw the window */
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (m->scr), GTK_POLICY_NEVER, nrows < height ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC);
     gtk_widget_set_size_request (m->scr, -1, nrows);
-    gtk_window_resize (GTK_WINDOW (m->swin), 1, 1);
 }
 
 static void handle_search_changed (GtkEditable *wid, gpointer user_data)
@@ -303,7 +302,7 @@ static void handle_list_select (GtkTreeView *tv, GtkTreePath *path, GtkTreeViewC
 
     destroy_search (m);
 }
-
+#if 0
 static gboolean handle_search_mapped (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     gdk_seat_grab (gdk_display_get_default_seat (gdk_display_get_default ()), gtk_widget_get_window (widget), GDK_SEAT_CAPABILITY_ALL_POINTING, TRUE, NULL, NULL, NULL, NULL);
@@ -332,24 +331,17 @@ static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointe
     //lxpanel_plugin_popup_set_position_helper (m->panel, m->plugin, m->swin, &x, &y);
     gdk_window_move (gtk_widget_get_window (m->swin), x, y);
 }
-
-static void do_search (MenuPlugin *m, GdkEventKey *event)
+#endif
+static void create_search (MenuPlugin *m)
 {
     GtkCellRenderer *prend, *trend;
     GtkTreeModelSort *slist;
     GtkTreeModelFilter *flist;
     GtkWidget *box;
-    gint x, y;
-
-    /* set desired height of search window */
-    m->height = gtk_widget_get_allocated_height (m->menu);
-    gtk_widget_hide (m->menu);
 
     /* create the window */
-    m->swin = gtk_window_new (GTK_WINDOW_POPUP);
-    gtk_window_set_decorated (GTK_WINDOW (m->swin), FALSE);
-    gtk_window_set_type_hint (GTK_WINDOW (m->swin), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
-    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (m->swin), TRUE);
+    m->swin = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (m->plugin)));
+    gtk_widget_set_name (m->swin, "panelpopup");
     //if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
 
     /* add a box */
@@ -391,21 +383,14 @@ static void do_search (MenuPlugin *m, GdkEventKey *event)
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (m->stv), FALSE);
     gtk_tree_view_set_enable_search (GTK_TREE_VIEW (m->stv), FALSE);
 
-    /* size and move */
-    position_popup (m->swin, m->plugin, m->bottom);
-    gtk_layer_set_keyboard_mode (GTK_WINDOW (m->swin), GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
-    gtk_layer_set_keyboard_mode (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), GTK_LAYER_SHELL_KEYBOARD_MODE_NONE);
+    /* realise */
     gtk_widget_show_all (m->swin);
-    gtk_window_present (GTK_WINDOW (m->swin));
-    gtk_widget_grab_focus (m->srch);
-
-    /* initialise the text entry */
-    append_to_entry (m->srch, event->keyval);
+    gtk_widget_hide (m->swin);
 
     /* resize window */
     m->rheight = 0;
-    resize_search (m);
 }
+
 
 /* Handler for keyboard events while menu is open */
 
@@ -416,8 +401,12 @@ static gboolean handle_key_presses (GtkWidget *widget, GdkEventKey *event, gpoin
     if ((event->keyval >= 'a' && event->keyval <= 'z') ||
         (event->keyval >= 'A' && event->keyval <= 'Z'))
     {
-        if (!m->swin) do_search (m, event);
-        else append_to_entry (m->srch, event->keyval);
+        if (!gtk_widget_is_visible (m->swin))
+        {
+            gtk_entry_set_text (GTK_ENTRY (m->srch), "");
+            gtk_button_clicked (GTK_BUTTON (m->plugin));
+        }
+        append_to_entry (m->srch, event->keyval);
         return TRUE;
     }
 
@@ -783,9 +772,9 @@ static GtkWidget *read_menu_item (MenuPlugin *m, char *fname, char *cmd)
 static gboolean create_menu (MenuPlugin *m)
 {
     GtkWidget *mi;
-    const gchar *str;
+    //const gchar *str;
     //config_setting_t *list, *s;
-    guint i;
+    //guint i;
 
     m->menu = gtk_menu_new ();
     gtk_menu_set_reserve_toggle_size (GTK_MENU (m->menu), FALSE);
@@ -840,10 +829,14 @@ static gboolean create_menu (MenuPlugin *m)
 }
 
 /* Handler for menu button click */
-static void menu_button_press_event (GtkButton *button, MenuPlugin *m)
+static gboolean menu_button_press_event (GtkWidget *widget, GdkEventButton *event, MenuPlugin *m)
 {
-    if (m->swin) destroy_search (m);
-    else show_menu_with_kbd (m->plugin, m->menu);
+    if (!gtk_widget_is_visible (m->menu))
+    {
+        show_menu_with_kbd (m->plugin, m->menu);
+        return TRUE;
+    }
+    else return FALSE;
 }
 
 void menu_update_display (MenuPlugin *m)
@@ -871,7 +864,7 @@ void menu_show_menu (MenuPlugin *m)
 {
     //MenuPlugin *m = lxpanel_plugin_get_data (p);
     if (gtk_widget_is_visible (m->menu)) gtk_menu_popdown (GTK_MENU (m->menu));
-    else if (m->swin) destroy_search (m);
+    else if (gtk_widget_is_visible (m->swin)) gtk_widget_hide (m->swin);
     else show_menu_with_kbd (m->plugin, m->menu);
 }
 
@@ -932,8 +925,8 @@ void menu_init (MenuPlugin *m)
     /* Allocate and initialize plugin context */
     //MenuPlugin *m = g_new0 (MenuPlugin, 1);
     //config_setting_t *s;
-    int val;
-    const char *fname;
+    //int val;
+    //const char *fname;
 
     fm_init (NULL);
 
@@ -955,7 +948,7 @@ void menu_init (MenuPlugin *m)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (m->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (m->plugin, "clicked", G_CALLBACK (menu_button_press_event), m);
+    g_signal_connect (m->plugin, "button-release-event", G_CALLBACK (menu_button_press_event), m);
 
 #if 0
     /* Check if configuration exists */
@@ -995,7 +988,6 @@ void menu_init (MenuPlugin *m)
 #endif
     m->icon = g_strdup ("start-here");
     m->padding = 4;
-    m->fixed = FALSE;
 
     m->applist = gtk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING);
     m->ds = fm_dnd_src_new (NULL);
@@ -1008,11 +1000,13 @@ void menu_init (MenuPlugin *m)
         gtk_widget_destroy (m->img);
         gtk_widget_destroy (m->menu);
         gtk_widget_destroy (m->plugin);
-        return NULL;
+        return;
     }
 
     /* Watch the icon theme and reload the menu if it changes */
     g_signal_connect (gtk_icon_theme_get_default (), "changed", G_CALLBACK (handle_reload_menu), m);
+
+    create_search (m);
 
     /* Show the widget and return */
     gtk_widget_show_all (m->plugin);

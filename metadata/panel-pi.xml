@@ -119,6 +119,17 @@
 	</option>
 	</group>
 	<group>
+	<_short>App Search</_short>
+	<option name="search_height" type="int">
+		<_short>Height of Search Window</_short>
+		<default>300</default>
+	</option>
+	<option name="search_fixed" type="bool">
+		<_short>Fix Height of Search Window</_short>
+		<default>false</default>
+	</option>
+	</group>
+	<group>
 	<_short>Clock</_short>
 	<option name="clock_format" type="string">
 		<_short>Clock Format</_short>

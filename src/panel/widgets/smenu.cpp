@@ -13,6 +13,12 @@ void WayfireSmenu::icon_size_changed_cb (void)
     menu_update_display (m);
 }
 
+void WayfireSmenu::search_param_changed_cb (void)
+{
+    m->height = search_height;
+    m->fixed = search_fixed;
+}
+
 void WayfireSmenu::command (const char *cmd)
 {
     if (!g_strcmp0 (cmd, "menu")) menu_show_menu (m);
@@ -27,13 +33,15 @@ bool WayfireSmenu::set_icon (void)
 void WayfireSmenu::init (Gtk::HBox *container)
 {
     /* Create the button */
-    plugin = std::make_unique <Gtk::Button> ();
+    plugin = std::make_unique <WayfireMenuButton> ("panel");
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
     m = &data;
     m->plugin = (GtkWidget *)((*plugin).gobj());
     m->icon_size = icon_size;
+    m->height = search_height;
+    m->fixed = search_fixed;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireSmenu::set_icon));
     bar_pos_changed_cb ();
 
@@ -43,6 +51,8 @@ void WayfireSmenu::init (Gtk::HBox *container)
     /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireSmenu::icon_size_changed_cb));
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireSmenu::bar_pos_changed_cb));
+    search_height.set_callback (sigc::mem_fun (*this, &WayfireSmenu::search_param_changed_cb));
+    search_fixed.set_callback (sigc::mem_fun (*this, &WayfireSmenu::search_param_changed_cb));
 }
 
 WayfireSmenu::~WayfireSmenu()
