@@ -14,6 +14,7 @@ void WayfireClock::init(Gtk::HBox *container)
     update_label();
 
     calendar.show();
+    button->get_popover()->set_name ("panelpopup");
     button->get_popover()->add(calendar);
     button->get_popover()->signal_show().connect_notify(
         sigc::mem_fun(this, &WayfireClock::on_calendar_shown));
