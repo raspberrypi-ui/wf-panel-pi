@@ -154,12 +154,7 @@ static gboolean _open_dir_in_file_manager (GAppLaunchContext* ctx, GList* folder
 
 static void destroy_search (MenuPlugin *m)
 {
-    gtk_layer_set_keyboard_mode (GTK_WINDOW (gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m->plugin)))), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
-    g_signal_handlers_disconnect_matched (m->swin, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, m);
-    g_signal_handlers_disconnect_matched (m->srch, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, m);
-    g_signal_handlers_disconnect_matched (m->stv, G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, m);
-    gtk_widget_destroy (m->swin);
-    m->swin = NULL;
+    gtk_widget_hide (m->swin);
 }
 
 static gboolean filter_apps (GtkTreeModel *model, GtkTreeIter *iter, gpointer user_data)
@@ -864,7 +859,7 @@ void menu_show_menu (MenuPlugin *m)
 {
     //MenuPlugin *m = lxpanel_plugin_get_data (p);
     if (gtk_widget_is_visible (m->menu)) gtk_menu_popdown (GTK_MENU (m->menu));
-    else if (gtk_widget_is_visible (m->swin)) gtk_widget_hide (m->swin);
+    else if (gtk_widget_is_visible (m->swin)) destroy_search (m);
     else show_menu_with_kbd (m->plugin, m->menu);
 }
 
