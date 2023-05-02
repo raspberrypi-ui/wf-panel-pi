@@ -220,12 +220,6 @@ static gboolean handle_list_keypress (GtkWidget *widget, GdkEventKey *event, gpo
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
 
-    if (event->keyval == GDK_KEY_Escape)
-    {
-        destroy_search (m);
-        return TRUE;
-    }
-
     if ((event->keyval >= 'a' && event->keyval <= 'z') ||
         (event->keyval >= 'A' && event->keyval <= 'Z'))
     {
@@ -264,8 +258,7 @@ static gboolean handle_search_keypress (GtkWidget *widget, GdkEventKey *event, g
                                     fm_launch_path_simple (NULL, NULL, fpath, _open_dir_in_file_manager, NULL);
                                     fm_path_unref (fpath);
                                 }
-
-        case GDK_KEY_Escape :   destroy_search (m);
+                                destroy_search (m);
                                 return TRUE;
 
         case GDK_KEY_Up :       nrows = gtk_tree_model_iter_n_children (gtk_tree_view_get_model (GTK_TREE_VIEW (m->stv)), NULL) - 1;

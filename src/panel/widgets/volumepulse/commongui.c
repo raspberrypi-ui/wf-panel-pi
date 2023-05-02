@@ -37,8 +37,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static void popup_window_scale_changed (GtkRange *range, VolumePulsePlugin *vol);
 static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol);
-static gboolean popup_focus_out (GtkWidget *widget, GdkEventFocus event, gpointer user_data);
-static void popup_destroyed (GtkWidget *widget, VolumePulsePlugin *vol);
 
 /*----------------------------------------------------------------------------*/
 /* Generic helper functions                                                   */
@@ -137,10 +135,6 @@ void popup_window_create (VolumePulsePlugin *vol)
     vol->mute_check_handler = g_signal_connect (vol->popup_mute_check, "toggled", G_CALLBACK (popup_window_mute_toggled), vol);
     gtk_widget_set_can_focus (vol->popup_mute_check, FALSE);
 
-    /* Set callbacks to hide the window */
-    g_signal_connect_after (G_OBJECT (vol->popup_window), "destroy", G_CALLBACK (popup_destroyed), vol);
-    g_signal_connect (G_OBJECT (vol->popup_window), "focus-out-event", G_CALLBACK (popup_focus_out), 0);
-
     /* Realise the window */
     gtk_widget_show_all (vol->popup_window);
     gtk_widget_hide (vol->popup_window);
@@ -166,21 +160,6 @@ static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol
     pulse_set_mute (vol, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)));
 
     volumepulse_update_display (vol);
-}
-
-/* Handler for "focus-out" signal on popup window */
-
-static gboolean popup_focus_out (GtkWidget *widget, GdkEventFocus event, gpointer user_data)
-{
-    gtk_widget_destroy (widget);
-    return FALSE;
-}
-
-/* Handler for "destroy" signal on popup window */
-
-static void popup_destroyed (GtkWidget *widget, VolumePulsePlugin *vol)
-{
-    vol->popup_window = NULL;
 }
 
 /*----------------------------------------------------------------------------*/
