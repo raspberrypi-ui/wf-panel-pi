@@ -76,7 +76,7 @@ static gboolean cpu_update (CPUPlugin *c)
         /* Compute user + nice + system as a fraction of total */
         cpu_uns = cpu_delta.u + cpu_delta.n + cpu_delta.s;
         cpu_uns /= (cpu_uns + cpu_delta.i);
-        sprintf (buffer, "%3.0f %%", cpu_uns * 100.0);
+        sprintf (buffer, "C:%3.0f", cpu_uns * 100.0);
 
         graph_new_point (&(c->graph), cpu_uns, 0, buffer);
     }

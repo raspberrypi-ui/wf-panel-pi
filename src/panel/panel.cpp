@@ -30,6 +30,7 @@
 #include "widgets/updater.hpp"
 #include "widgets/cpu.hpp"
 #include "widgets/cputemp.hpp"
+#include "widgets/gpu.hpp"
 #include "widgets/power.hpp"
 #include "widgets/window-list/window-list.hpp"
 
@@ -322,6 +323,8 @@ class WayfirePanel::impl
             return Widget(new WayfireCPU());
         if (name == "cputemp")
             return Widget(new WayfireCPUTemp());
+        if (name == "gpu")
+            return Widget(new WayfireGPU());
         if (name == "power")
             return Widget(new WayfirePower());
         if (name == "window-list")
