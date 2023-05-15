@@ -74,13 +74,17 @@ void hdmi_init (VolumePulsePlugin *vol)
 {
     int i, m;
 
+    vol->hdmi_names[0] = NULL;
+    vol->hdmi_names[1] = NULL;
+
+    /* are we running headless? */
+    m = get_value ("cat /sys/class/drm/card1-HDMI-A-?/status | grep -wc connected");
+    if (m == 0) return;
+
     /* check wlr-randr for connected monitors */
     m = get_value ("wlr-randr | grep -c ^[^[:space:]]");
     if (m < 0) m = 1; /* couldn't read, so assume 1... */
     if (m > 2) m = 2;
-
-    vol->hdmi_names[0] = NULL;
-    vol->hdmi_names[1] = NULL;
 
     /* get the names */
     if (m == 2)
