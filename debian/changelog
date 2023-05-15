@@ -1,3 +1,9 @@
+wf-panel-pi (0.16) bookworm; urgency=medium
+
+  * Fix volume plugin when used with VNC headless
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 15 May 2023 12:30:23 +0100
+
 wf-panel-pi (0.15) bookworm; urgency=medium
 
   * Add GPU plugin
