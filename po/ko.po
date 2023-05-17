@@ -1,181 +1,174 @@
-# English translations for PACKAGE package.
-# Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-#  <simon@raspberrypi.org>, 2017.
+# Korean translations for wf-panel-pi package.
+# Copyright (C) 20213 Raspberry Pi Ltd
+# This file is distributed under the same license as the wf-panel-pi package.
+# Simon Long <simon@raspberrypi.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: wf-panel-pi 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 09:19+0000\n"
-"PO-Revision-Date: 2022-11-02 13:45+0900\n"
-"Last-Translator: Lee Yunseok <ironyunseok@protonmail.com>\n"
+"PO-Revision-Date: 2023-05-15 21:22+0900\n"
+"Last-Translator: Yi Yunseok <ironyunseok@protonmail.com>\n"
 "Language-Team: Korean\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.4.2\n"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1283
 #, c-format
 msgid "Pairing request sent to '%s' - waiting for response..."
-msgstr ""
+msgstr "'%s' 기기에 페어링 요청을 보냄 - 응답을 기다리는 중..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1291
 #, c-format
 msgid "Pairing failed - %s"
-msgstr ""
+msgstr "페어링에 실패함 - %s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1299
-#, fuzzy, c-format
+#, c-format
 msgid "Pairing successful - connecting..."
-msgstr "팀 연결 '%s' 준비 중..."
+msgstr "페어링 성공 - 연결 중..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1307
-#, fuzzy, c-format
+#, c-format
 msgid "Connection successful"
-msgstr "연결에 실패"
+msgstr "연결 성공"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1315
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "Connection failed - %s"
-msgstr "연결에 실패"
+msgstr "연결 실패 - %s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1323
 #, c-format
 msgid "Please enter code '%s' on '%s'"
-msgstr ""
+msgstr "'%s' 기기에 '%s' 코드 입력"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1331
 #, c-format
 msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
+msgstr "'%s' 기기가 페어링 코드 '%s' 를 표시하는지 확인"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1339
 #, c-format
 msgid "Please enter PIN code shown on '%s'"
-msgstr ""
+msgstr "'%s' 기기에 표시된 PIN 코드 입력"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1347
 #, c-format
 msgid "Please enter passcode shown on '%s'"
-msgstr ""
+msgstr "'%s' 기기에 표시된 패스코드 입력"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1355
 #, c-format
 msgid "Waiting for response from Bluetooth device..."
-msgstr ""
+msgstr "블루투스 기기로부터 응답을 기다리는 중..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1363
 #, c-format
 msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
+msgstr "'%s' 기기로부터 페어링 요청이 왔습니다. 수락하시겠습니까?"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1371
 #, c-format
 msgid ""
 "Pairing successful - right-click the volume icon to connect as audio device"
-msgstr ""
+msgstr "페어링 성공 - 음량 아이콘을 우클릭하여 오디오 기기로 연결"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1379
 #, c-format
 msgid ""
 "Pairing successful - this device has no services which can be used with "
 "Raspberry Pi"
-msgstr ""
+msgstr "페어링 성공 - 이 기기는 라즈베리 파이와 함께 사용할 수 없음"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1558
 #, c-format
 msgid "Do you want to unpair '%s'?"
-msgstr ""
+msgstr "'%s' 기기와 페어링을 해제하시겠습니까?"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1561
 #, c-format
 msgid "Removing pairing with '%s'..."
-msgstr ""
+msgstr "'%s' 기기의 페어링을 제거하는 중..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1564
 #, c-format
 msgid "Removal failed - %s"
-msgstr ""
+msgstr "제거 실패 - %s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to '%s'..."
-msgstr "팀 연결 '%s' 설정 중..."
+msgstr "'%s' 연결 중..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnecting from '%s'..."
-msgstr "본딩 네트워크 연결 '%s' 준비 중..."
+msgstr "'%s' 연결해제 중..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnection failed - %s"
-msgstr "연결 끊는 데 실패"
+msgstr "연결해제 실패 - %s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-#, fuzzy
 msgid "Use the audio menu to connect to this device"
-msgstr "네트워크 메뉴에서 와이파이 네트워크에 연결할 수 있습니다"
+msgstr "오디오 메뉴를 사용해 이 기기에 연결"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1694
 msgid "No usable services on this device"
-msgstr ""
+msgstr "이 기기는 사용 불가"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-#, fuzzy
 msgid "Disconnect..."
-msgstr "연결 끊김"
+msgstr "연결해제..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-#, fuzzy
 msgid "Connect..."
-msgstr "연결"
+msgstr "연결..."
 
 #. add the remove option to the submenu
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1777
 msgid "Remove..."
-msgstr ""
+msgstr "제거..."
 
 #. warn if no BT hardware detected
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-#, fuzzy
 msgid "No Bluetooth adapter found"
-msgstr "블루투스"
+msgstr "블루투스 어댑터를 찾을 수 없음"
 
 #. add enable bt option
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-#, fuzzy
 msgid "Turn On Bluetooth"
-msgstr "블루투스"
+msgstr "블루투스 켜기"
 
 #. add disable bt option
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-#, fuzzy
 msgid "Turn Off Bluetooth"
-msgstr "블루투스"
+msgstr "블루투스 끄기"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2000
 msgid "Stop Discoverable"
-msgstr ""
+msgstr "블루투스 검색 끄기"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2002
 msgid "Make Discoverable"
-msgstr ""
+msgstr "블루투스 검색 켜기"
 
 #. add and remove dialogs
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-#, fuzzy
 msgid "Add Device..."
-msgstr "모든 장치"
+msgstr "기기 추가..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2140
 msgid "Manage Bluetooth devices"
-msgstr ""
+msgstr "블루투스 기기 관리"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2189
 msgid "Bluetooth"
@@ -183,7 +176,7 @@ msgstr "블루투스"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2190
 msgid "Manages Bluetooth devices"
-msgstr ""
+msgstr "블루투스 기기 관리"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:171
 msgid ""
@@ -1527,50 +1520,54 @@ msgid ""
 "Updates are available\n"
 "Click the update icon to install"
 msgstr ""
+"업데이트 사용 가능\n"
+"아이콘을 클릭해 설치"
 
 #: ../src/panel/widgets/updater/updater.c:211
-#, fuzzy
 msgid "No network connection - cannot install updates."
-msgstr "네트워크 연결 없음"
+msgstr "네트워크에 연결되지 않음 - 업데이트를 설치할 수 없습니다."
 
 #: ../src/panel/widgets/updater/updater.c:217
 msgid ""
 "Clock not synchronised - cannot install updates. Try again in a few minutes."
 msgstr ""
+"시간이 동기화되지 않음 - 업데이트를 설치할 수 없습니다. 잠시 후 다시 시도해 "
+"주세요."
 
 #: ../src/panel/widgets/updater/updater.c:320
 msgid "Show Updates..."
-msgstr ""
+msgstr "업데이트 표시..."
 
 #: ../src/panel/widgets/updater/updater.c:324
 msgid "Install Updates"
-msgstr ""
+msgstr "업데이트 설치"
 
 #: ../src/panel/widgets/updater/updater.c:470
 msgid "Updates are available - click to install"
-msgstr ""
+msgstr "업데이트 사용 가능 - 설치"
 
 #: ../src/panel/widgets/updater/updater.c:529
 #: ../src/panel/widgets/updater/updater.c:561
 msgid "Updater"
-msgstr ""
+msgstr "업데이터"
 
 #: ../src/panel/widgets/updater/updater.c:531
 msgid "Hours between checks for updates"
-msgstr ""
+msgstr "업데이트 확인 간격"
 
 #: ../src/panel/widgets/updater/updater.c:562
 msgid "Checks for updates"
-msgstr ""
+msgstr "업데이트 확인"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#, fuzzy
 msgid "Reconnecting Bluetooth devices..."
-msgstr "블투루스 장치 재연결 중..."
+msgstr "블루투스 기기를 찾는 중..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, c-format
+#, fuzzy, c-format
 msgid "Bluetooth %s device not found"
-msgstr "%s 블루투스 장치를 찾을 수 없음"
+msgstr "블루투스 어댑터를 찾을 수 없음"
 
 #. update dialog to show a warning
 #: ../src/panel/widgets/volumepulse/bluetooth.c:405
@@ -1583,19 +1580,19 @@ msgid "Could not set profile for device : %s"
 msgstr "다음 장치에 대한 프로필을 설정할 수 없음: %s"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, c-format
+#, fuzzy, c-format
 msgid "Failed to connect to Bluetooth device - %s"
-msgstr "다음 블루투스 장치 연결에 실패함 - %s"
+msgstr "페어링된 블루투스 기기"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, c-format
+#, fuzzy, c-format
 msgid "Connecting Bluetooth device '%s' as output..."
-msgstr "'%s' 블루투스 장치를 출력 장치로 연결 중..."
+msgstr "블루투스 기기를 찾는 중..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, c-format
+#, fuzzy, c-format
 msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "'%s' 블루투스 장치를 입력 장치로 연결 중..."
+msgstr "블루투스 기기를 찾는 중..."
 
 #. if the current default source and sink are both the same device, disconnect it and reconnect to
 #. put it into A2DP rather than HSP
@@ -1604,8 +1601,9 @@ msgid "Reconnecting Bluetooth input device as output only..."
 msgstr "블루투스 입력 장치를 출력 장치로 재연결 중..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#, fuzzy
 msgid "Reconnecting Bluetooth device..."
-msgstr "블루투스 장치에 재연결 중..."
+msgstr "블루투스 기기를 찾는 중..."
 
 #. Create a check button as the child of the vertical box.
 #: ../src/panel/widgets/volumepulse/commongui.c:140
@@ -1675,34 +1673,32 @@ msgid "label"
 msgstr ""
 
 #: ../data/lxplug-updater.ui.h:1
-#, fuzzy
 msgid "Available Updates"
-msgstr "사용 가능"
+msgstr "사용 가능한 업데이트"
 
 #: ../data/lxplug-updater.ui.h:2
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: ../data/lxplug-updater.ui.h:3
 msgid "Install"
-msgstr ""
+msgstr "설치"
 
 #: ../data/lxplug-updater.ui.h:4
 msgid "The following packages can be updated :"
-msgstr ""
+msgstr "다음의 패키지를 업데이트할 수 있음:"
 
 #: ../data/lxplug-bluetooth.ui.h:1
-#, fuzzy
 msgid "Add New Device"
-msgstr "모든 장치"
+msgstr "새 기기 추가"
 
 #: ../data/lxplug-bluetooth.ui.h:3
 msgid "_Pair"
-msgstr ""
+msgstr "페어(_P)"
 
 #: ../data/lxplug-bluetooth.ui.h:4
 msgid "Searching for Bluetooth devices..."
-msgstr ""
+msgstr "블루투스 기기를 찾는 중..."
 
 #: ../src/panel/widgets/netman/8021x.ui.h:3
 #, fuzzy
