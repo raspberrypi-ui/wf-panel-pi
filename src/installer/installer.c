@@ -73,14 +73,6 @@ static gboolean close_end (gpointer data);
 /* Progress / error box                                                       */
 /*----------------------------------------------------------------------------*/
 
-static void panel_update (void)
-{
-	char *id = getenv ("SUDO_UID");
-	char *cmd = g_strdup_printf ("sudo -u \\#%s DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%s/bus wfpanelctl updater check", id, id);
-	system (cmd);
-	g_free (cmd);
-}
-
 static void message (char *msg, int prog)
 {
     if (!msg_dlg)
@@ -130,7 +122,7 @@ static void message (char *msg, int prog)
 
 static gboolean quit (GtkButton *button, gpointer data)
 {
-    if (success) panel_update ();
+    if (success) system ("wfpanelctl updater check");
     if (msg_dlg)
     {
         gtk_widget_destroy (GTK_WIDGET (msg_dlg));
@@ -304,7 +296,7 @@ static void install_done (PkTask *task, GAsyncResult *res, gpointer data)
 
 static gboolean close_end (gpointer data)
 {
-    panel_update ();
+    system ("wfpanelctl updater check");
     if (msg_dlg)
     {
         gtk_widget_destroy (GTK_WIDGET (msg_dlg));

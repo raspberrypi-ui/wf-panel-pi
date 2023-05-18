@@ -1,3 +1,7 @@
 #!/bin/sh
 
-dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:"$2"
+if [ -z $SUDO_UID ] ; then
+  dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:"$2"
+else
+  sudo -u "#$SUDO_UID" DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$SUDO_UID/bus dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:"$2"
+fi
