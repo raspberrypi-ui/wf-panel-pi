@@ -1,26 +1,19 @@
-# wf-shell
+# wf-panel-pi
 
-wf-shell is a repository which contains the various components needed to built a fully functional DE based around wayfire.
-Currently it has only a GTK-based panel and background client.
-
-# Dependencies
-
-wf-shell needs the core wayland libraries and protocols (`wayland-devel` and `wayland-protocols-devel` for Fedora), gtkmm-3.0 and [wf-config](https://github.com/WayfireWM/wf-config)
+A panel for the Raspberry Pi Wayfire desktop, based on wf-panel from the wf-shell project
 
 # Build
 
-Just like any meson project:
+Assuming a 64-bit system:
+
 ```
-git clone https://github.com/WayfireWM/wf-shell && cd wf-shell
-meson build --prefix=/usr --buildtype=release
-ninja -C build && sudo ninja -C build install
+meson setup builddir --prefix=/usr --libdir=/usr/lib/aarch64-linux-gnu
+cd builddir
+meson compile
+sudo meson install
 ```
 
 # Configuration
 
-To configure the panel and the dock, wf-shell uses a config file located (by default) in `~/.config/wf-shell.ini`
-An example configuration can be found in the file `wf-shell.ini.example`, alongside with comments what each option does.
+wf-panel-pi uses a config file located (by default) in `~/.config/wf-panel-pi.ini`
 
-# Screenshots
-
-![Panel & Background demo](/screenshot.png)
