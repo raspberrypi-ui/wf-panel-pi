@@ -105,6 +105,11 @@
 		<_short>Launchers Size</_short>
 		<default>48</default>
 	</option>
+	<option name="launchers_animation_duration" type="int">
+		<_short>Animation Duration</_short>
+		<_long>High values may cause jittery animations</_long>
+		<default>200</default>
+	</option>
 	<option name="launcher_browser" type="string">
 		<_short>Launcher Browser</_short>
 		<default>lxde-x-www-browser.desktop</default>
