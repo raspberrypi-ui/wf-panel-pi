@@ -17,6 +17,7 @@ extern void lxpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win);
 extern int lxpanel_notify (const char *message);
 extern void lxpanel_notify_clear (int seq);
 extern gboolean config_setting_lookup_int (const char *plugin, const char *setting, int *value);
+extern gboolean config_setting_lookup_string (const char *plugin, const char *setting, char **value);
 
 extern char **environ;
 

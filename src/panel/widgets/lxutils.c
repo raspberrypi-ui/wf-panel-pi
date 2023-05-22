@@ -154,3 +154,23 @@ gboolean config_setting_lookup_int (const char *plugin, const char *setting, int
     g_free (user_file);
     return res;
 }
+
+gboolean config_setting_lookup_string (const char *plugin, const char *setting, char **value)
+{
+    GKeyFile *kf;
+    GError *err = NULL;
+    gboolean res = FALSE;
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+
+    kf = g_key_file_new ();
+    if (g_key_file_load_from_file (kf, user_file, 0, NULL))
+    {
+        *value = g_key_file_get_string (kf, plugin, setting, &err);
+        if (err == NULL) res = TRUE;
+        else *value = NULL;
+    }
+
+    g_key_file_free (kf);
+    g_free (user_file);
+    return res;
+}

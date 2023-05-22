@@ -8,21 +8,14 @@
 static void graph_redraw (PluginGraph *graph, char *label)
 {
     unsigned int fontsize, drawing_cursor, i;
-    GdkRGBA background;
-    GdkRGBA colours[3];
     GdkPixbuf *pixbuf;
-
-    gdk_rgba_parse (&background, "light gray");
-    gdk_rgba_parse (&colours[0], "dark gray");
-    gdk_rgba_parse (&colours[1], "orange");
-    gdk_rgba_parse (&colours[2], "red");
 
     cairo_t *cr = cairo_create (graph->pixmap);
     cairo_set_line_width (cr, 1.0);
     
     /* Erase pixmap */
     cairo_rectangle (cr, 0, 0, graph->pixmap_width, graph->pixmap_height);
-    cairo_set_source_rgba (cr, background.blue, background.green, background.red, background.alpha);
+    cairo_set_source_rgba (cr, graph->background.blue, graph->background.green, graph->background.red, graph->background.alpha);
     cairo_fill (cr);
 
     /* Recompute pixmap */
@@ -32,8 +25,8 @@ static void graph_redraw (PluginGraph *graph, char *label)
         /* Draw one bar of the graph. */
         if (graph->samples[drawing_cursor] != 0.0)
         {
-            cairo_set_source_rgba (cr, colours[graph->samp_states[drawing_cursor]].blue, colours[graph->samp_states[drawing_cursor]].green,
-                colours[graph->samp_states[drawing_cursor]].red, colours[graph->samp_states[drawing_cursor]].alpha);        
+            cairo_set_source_rgba (cr, graph->colours[graph->samp_states[drawing_cursor]].blue, graph->colours[graph->samp_states[drawing_cursor]].green,
+                graph->colours[graph->samp_states[drawing_cursor]].red, graph->colours[graph->samp_states[drawing_cursor]].alpha);
 
             cairo_move_to (cr, i + 0.5, graph->pixmap_height);
             cairo_line_to (cr, i + 0.5, graph->pixmap_height - graph->samples[drawing_cursor] * graph->pixmap_height);
@@ -75,8 +68,14 @@ static void graph_redraw (PluginGraph *graph, char *label)
 
 /* Initialise graph for a particular size */
 
-void graph_init (PluginGraph *graph, int icon_size)
+void graph_init (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2)
 {
+    /* Load colours */
+    graph->background = background;
+    graph->colours[0] = foreground;
+    graph->colours[1] = throttle1;
+    graph->colours[2] = throttle2;
+
     /* Allocate pixmap and statistics buffer without border pixels. */
     guint new_pixmap_height = icon_size - (BORDER_SIZE << 1);
     guint new_pixmap_width = (new_pixmap_height * 3) >> 1;

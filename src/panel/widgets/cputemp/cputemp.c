@@ -323,7 +323,8 @@ static gboolean cpu_update (CPUTempPlugin *c)
 
 void cputemp_update_display (CPUTempPlugin *c)
 {
-    graph_init (&(c->graph), c->icon_size);
+    graph_init (&(c->graph), c->icon_size, c->background_color, c->foreground_color,
+        c->low_throttle_color, c->high_throttle_color);
 }
 
 void cputemp_destructor (gpointer user_data)
@@ -333,6 +334,7 @@ void cputemp_destructor (gpointer user_data)
 /* Plugin constructor. */
 void cputemp_init (CPUTempPlugin *c)
 {
+    const char *str;
     int val;
 
     setlocale (LC_ALL, "");
@@ -346,6 +348,30 @@ void cputemp_init (CPUTempPlugin *c)
 
     /* Set up variables */
     c->ispi = is_pi ();
+
+    if (config_setting_lookup_string ("cputemp", "Foreground", &str))
+    {
+        if (!gdk_rgba_parse (&c->foreground_color, str))
+            gdk_rgba_parse (&c->foreground_color, "dark gray");
+    } else gdk_rgba_parse (&c->foreground_color, "dark gray");
+
+    if (config_setting_lookup_string ("cputemp", "Background", &str))
+    {
+        if (!gdk_rgba_parse (&c->background_color, str))
+            gdk_rgba_parse (&c->background_color, "light gray");
+    } else gdk_rgba_parse (&c->background_color, "light gray");
+
+    if (config_setting_lookup_string ("cputemp", "Throttle1", &str))
+    {
+        if (!gdk_rgba_parse (&c->low_throttle_color, str))
+            gdk_rgba_parse (&c->low_throttle_color, "orange");
+    } else gdk_rgba_parse (&c->low_throttle_color, "orange");
+
+    if (config_setting_lookup_string ("cputemp", "Throttle2", &str))
+    {
+        if (!gdk_rgba_parse (&c->high_throttle_color, str))
+            gdk_rgba_parse (&c->high_throttle_color, "red");
+    } else gdk_rgba_parse (&c->high_throttle_color, "red");
 
     if (config_setting_lookup_int ("cputemp", "LowTemp", &val))
     {

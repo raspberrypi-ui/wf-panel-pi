@@ -116,7 +116,8 @@ static gboolean gpu_update (GPUPlugin *g)
 
 void gpu_update_display (GPUPlugin *g)
 {
-    graph_init (&(g->graph), g->icon_size);
+    GdkRGBA none = {0, 0, 0, 0};
+    graph_init (&(g->graph), g->icon_size, g->background_color, g->foreground_color, none, none);
 }
 
 void gpu_destructor (gpointer user_data)
@@ -125,6 +126,8 @@ void gpu_destructor (gpointer user_data)
 
 void gpu_init (GPUPlugin *g)
 {
+    const char *str;
+
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -133,6 +136,18 @@ void gpu_init (GPUPlugin *g)
     /* Allocate icon as a child of top level */
     g->graph.da = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (g->plugin), g->graph.da);
+
+    if (config_setting_lookup_string ("gpu", "Foreground", &str))
+    {
+        if (!gdk_rgba_parse (&g->foreground_color, str))
+            gdk_rgba_parse (&g->foreground_color, "dark gray");
+    } else gdk_rgba_parse (&g->foreground_color, "dark gray");
+
+    if (config_setting_lookup_string ("gpu", "Background", &str))
+    {
+        if (!gdk_rgba_parse (&g->background_color, str))
+            gdk_rgba_parse (&g->background_color, "light gray");
+    } else gdk_rgba_parse (&g->background_color, "light gray");
 
     /* Connect a timer to refresh the statistics. */
     g->timer = g_timeout_add (1500, (GSourceFunc) gpu_update, (gpointer) g);

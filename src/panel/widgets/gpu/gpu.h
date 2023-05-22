@@ -13,7 +13,9 @@ typedef struct
     int icon_size;                          /* Variables used under wf-panel */
     gboolean bottom;
     PluginGraph graph;
-    guint timer;				            /* Timer for periodic update */
+    GdkRGBA foreground_color;               /* Foreground colour for drawing area */
+    GdkRGBA background_color;               /* Background colour for drawing area */
+    guint timer;                            /* Timer for periodic update */
     unsigned long last_val[5];
     unsigned long last_timestamp;
 } GPUPlugin;

@@ -5,11 +5,11 @@
 /* Plug-in global data                                                        */
 /*----------------------------------------------------------------------------*/
 
-typedef unsigned long long CPUTick;		/* Value from /proc/stat */
+typedef unsigned long long CPUTick;     /* Value from /proc/stat */
 
 struct cpu_stat
 {
-    CPUTick u, n, s, i;				/* User, nice, system, idle */
+    CPUTick u, n, s, i;             /* User, nice, system, idle */
 };
 
 /* Private context for plugin */
@@ -20,8 +20,10 @@ typedef struct
     int icon_size;                          /* Variables used under wf-panel */
     gboolean bottom;
     PluginGraph graph;
-    guint timer;				            /* Timer for periodic update */
-    struct cpu_stat previous_cpu_stat;		/* Previous value of cpu_stat */
+    GdkRGBA foreground_color;               /* Foreground colour for drawing area */
+    GdkRGBA background_color;               /* Background colour for drawing area */
+    guint timer;                            /* Timer for periodic update */
+    struct cpu_stat previous_cpu_stat;      /* Previous value of cpu_stat */
 } CPUPlugin;
 
 extern void cpu_init (CPUPlugin *up);
