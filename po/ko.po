@@ -1416,7 +1416,6 @@ msgid ""
 msgstr ""
 "충전 중 : %d%%\n"
 "남은 시간 : %0.1f 시간"
-msgstr ""
 
 #: ../src/panel/widgets/power/ptbatt.c:398
 #, c-format
