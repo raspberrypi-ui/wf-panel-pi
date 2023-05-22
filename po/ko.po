@@ -1397,7 +1397,7 @@ msgstr "DER, PEM, 또는 PKCS#12 비밀 키(*.der, *.pem, *.p12, *.key)"
 #: ../src/panel/widgets/power/ptbatt.c:389
 #, c-format
 msgid "Charging : %d%%"
-msgstr ""
+msgstr "충전 중 : %d%%"
 
 #: ../src/panel/widgets/power/ptbatt.c:391
 #, c-format
@@ -1405,12 +1405,17 @@ msgid ""
 "Charging : %d%%\n"
 "Time remaining : %d minutes"
 msgstr ""
+"충전 중 : %d%%\n"
+"남은 시간 : %d 분"
 
 #: ../src/panel/widgets/power/ptbatt.c:393
 #, c-format
 msgid ""
 "Charging : %d%%\n"
 "Time remaining : %0.1f hours"
+msgstr ""
+"충전 중 : %d%%\n"
+"남은 시간 : %0.1f 시간"
 msgstr ""
 
 #: ../src/panel/widgets/power/ptbatt.c:398
@@ -1419,11 +1424,13 @@ msgid ""
 "Charged : %d%%\n"
 "On external power"
 msgstr ""
+"충전됨 : %d%%\n"
+"외부 전원"
 
 #: ../src/panel/widgets/power/ptbatt.c:404
 #, c-format
 msgid "Discharging : %d%%"
-msgstr ""
+msgstr "소모 중 : %d%%"
 
 #: ../src/panel/widgets/power/ptbatt.c:406
 #, c-format
@@ -1431,6 +1438,8 @@ msgid ""
 "Discharging : %d%%\n"
 "Time remaining : %d minutes"
 msgstr ""
+"소모 중 : %d%%\n"
+"남은 시간 : %d 분"
 
 #: ../src/panel/widgets/power/ptbatt.c:408
 #, c-format
@@ -1438,20 +1447,24 @@ msgid ""
 "Discharging : %d%%\n"
 "Time remaining : %0.1f hours"
 msgstr ""
+"소모 중 : %d%%\n"
+"남은 시간 : %0.1f 시간"
 
 #: ../src/panel/widgets/power/ptbatt.c:431
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
+"저전압 경고\n"
+"전원 공급 장치 확인 요망"
 
 #: ../src/panel/widgets/power/ptbatt.c:513
 msgid "Power & Battery"
-msgstr ""
+msgstr "전원 및 배터리"
 
 #: ../src/panel/widgets/power/ptbatt.c:514
 msgid "Monitors voltage and laptop battery"
-msgstr ""
+msgstr "랩톱 배터리 및 모니터 전압"
 
 #: ../src/panel/widgets/smenu/gtk-run.c:391
 #: ../src/panel/widgets/smenu/menu.c:121
