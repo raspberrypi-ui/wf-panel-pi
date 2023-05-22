@@ -53,9 +53,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define SYSFS_THERMAL_SUBDIR_PREFIX "thermal_zone"
 #define SYSFS_THERMAL_TEMPF         "temp"
 
-#define LOWER_TEMP 40.0
-#define UPPER_TEMP 90.0
-
 
 static gboolean is_pi (void)
 {
@@ -307,8 +304,8 @@ static gboolean cpu_update (CPUTempPlugin *c)
     sprintf (buffer, "%3d°", temp);
 
     ftemp = temp;
-    ftemp -= LOWER_TEMP;
-    ftemp /= (UPPER_TEMP - LOWER_TEMP);
+    ftemp -= c->lower_temp;
+    ftemp /= (c->upper_temp - c->lower_temp);
 
     thr = 0;
     if (c->ispi)
@@ -336,6 +333,8 @@ void cputemp_destructor (gpointer user_data)
 /* Plugin constructor. */
 void cputemp_init (CPUTempPlugin *c)
 {
+    int val;
+
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -347,6 +346,20 @@ void cputemp_init (CPUTempPlugin *c)
 
     /* Set up variables */
     c->ispi = is_pi ();
+
+    if (config_setting_lookup_int ("cputemp", "LowTemp", &val))
+    {
+        if (val >= 0 && val <= 100) c->lower_temp = val;
+        else c->lower_temp = 40;
+    }
+    else c->lower_temp = 40;
+
+    if (config_setting_lookup_int ("cputemp", "HighTemp", &val))
+    {
+        if (val >= 0 && val <= 150 && val > c->lower_temp) c->upper_temp = val;
+        else c->upper_temp = 90;
+    }
+    else c->upper_temp = 90;
 
     /* Find the system thermal sensors */
     check_sensors (c);

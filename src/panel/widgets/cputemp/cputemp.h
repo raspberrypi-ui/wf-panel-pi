@@ -17,12 +17,14 @@ typedef struct
     int icon_size;                          /* Variables used under wf-panel */
     gboolean bottom;
     PluginGraph graph;
-    guint timer;				            /* Timer for periodic update */
+    guint timer;                            /* Timer for periodic update */
     int numsensors;
     char *sensor_array[MAX_NUM_SENSORS];
     GetTempFunc get_temperature[MAX_NUM_SENSORS];
     gint temperature[MAX_NUM_SENSORS];
     gboolean ispi;
+    int lower_temp;                         /* Temperature of bottom of graph */
+    int upper_temp;                         /* Temperature of top of graph */
 } CPUTempPlugin;
 
 extern void cputemp_init (CPUTempPlugin *up);
