@@ -127,7 +127,7 @@ void gpu_destructor (gpointer user_data)
 
 void gpu_init (GPUPlugin *g)
 {
-    const char *str;
+    char *str;
     int val;
 
     setlocale (LC_ALL, "");

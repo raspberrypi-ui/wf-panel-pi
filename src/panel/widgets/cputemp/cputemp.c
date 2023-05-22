@@ -334,7 +334,7 @@ void cputemp_destructor (gpointer user_data)
 /* Plugin constructor. */
 void cputemp_init (CPUTempPlugin *c)
 {
-    const char *str;
+    char *str;
     int val;
 
     setlocale (LC_ALL, "");

@@ -98,7 +98,7 @@ void cpu_destructor (gpointer user_data)
 
 void cpu_init (CPUPlugin *c)
 {
-    const char *str;
+    char *str;
     int val;
 
     setlocale (LC_ALL, "");
@@ -112,6 +112,7 @@ void cpu_init (CPUPlugin *c)
 
     if (config_setting_lookup_int ("cpu", "ShowPercent", &val))
         c->show_percentage = (val != 0);
+    else c->show_percentage = 1;
 
     if (config_setting_lookup_string ("cpu", "Foreground", &str))
     {
