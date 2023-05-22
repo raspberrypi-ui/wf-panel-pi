@@ -22,6 +22,7 @@ typedef struct
     PluginGraph graph;
     GdkRGBA foreground_color;               /* Foreground colour for drawing area */
     GdkRGBA background_color;               /* Background colour for drawing area */
+    gboolean show_percentage;               /* Display usage as a percentage */
     guint timer;                            /* Timer for periodic update */
     struct cpu_stat previous_cpu_stat;      /* Previous value of cpu_stat */
 } CPUPlugin;

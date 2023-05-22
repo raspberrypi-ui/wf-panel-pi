@@ -108,7 +108,8 @@ static gboolean gpu_update (GPUPlugin *g)
     if (g_source_is_destroyed (g_main_current_source ())) return FALSE;
 
     gpu_val = get_gpu_usage (g);
-    sprintf (buffer, "G:%3.0f", gpu_val * 100.0);
+    if (g->show_percentage) sprintf (buffer, "G:%3.0f", gpu_val * 100.0);
+    else buffer[0] = 0;
     graph_new_point (&(g->graph), gpu_val, 0, buffer);
 
     return TRUE;
@@ -127,6 +128,7 @@ void gpu_destructor (gpointer user_data)
 void gpu_init (GPUPlugin *g)
 {
     const char *str;
+    int val;
 
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -136,6 +138,10 @@ void gpu_init (GPUPlugin *g)
     /* Allocate icon as a child of top level */
     g->graph.da = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (g->plugin), g->graph.da);
+
+    if (config_setting_lookup_int ("gpu", "ShowPercent", &val))
+        g->show_percentage = (val != 0);
+    else g->show_percentage = 1;
 
     if (config_setting_lookup_string ("gpu", "Foreground", &str))
     {

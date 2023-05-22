@@ -76,7 +76,8 @@ static gboolean cpu_update (CPUPlugin *c)
         /* Compute user + nice + system as a fraction of total */
         cpu_uns = cpu_delta.u + cpu_delta.n + cpu_delta.s;
         cpu_uns /= (cpu_uns + cpu_delta.i);
-        sprintf (buffer, "C:%3.0f", cpu_uns * 100.0);
+        if (c->show_percentage) sprintf (buffer, "C:%3.0f", cpu_uns * 100.0);
+        else buffer[0] = 0;
 
         graph_new_point (&(c->graph), cpu_uns, 0, buffer);
     }
@@ -98,6 +99,7 @@ void cpu_destructor (gpointer user_data)
 void cpu_init (CPUPlugin *c)
 {
     const char *str;
+    int val;
 
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -107,6 +109,9 @@ void cpu_init (CPUPlugin *c)
     /* Allocate icon as a child of top level */
     c->graph.da = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (c->plugin), c->graph.da);
+
+    if (config_setting_lookup_int ("cpu", "ShowPercent", &val))
+        c->show_percentage = (val != 0);
 
     if (config_setting_lookup_string ("cpu", "Foreground", &str))
     {
