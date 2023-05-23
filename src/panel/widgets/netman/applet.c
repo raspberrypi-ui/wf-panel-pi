@@ -214,7 +214,7 @@ static void set_country (GObject *o, gpointer data)
     }
 }
 
-char *applet_get_ip (NMDevice* device)
+char *get_ip (NMDevice* device)
 {
 	// get the IP4 address
 	NMIPConfig *ip4_config = nm_device_get_ip4_config (device);
@@ -302,7 +302,7 @@ static char *get_tooltip (NMApplet *applet)
 			}
 			g_free (out);
 
-			ip = applet_get_ip (device);
+			ip = get_ip (device);
 			if (ip)
 			{
 				tmp = g_strdup_printf ("%s\n%s", ret, ip);
@@ -2755,7 +2755,8 @@ foo_device_state_changed_cb (NMDevice *device,
 		if (connection) {
 			str = g_strdup_printf (_("You are now connected to “%s”."),
 			                       nm_connection_get_id (connection));
-			char *ip = applet_get_ip (device);
+#ifdef LXPANEL_PLUGIN
+			char *ip = get_ip (device);
 			if (ip)
 			{
 				char *tmp = g_strdup_printf ("%s\n%s", str, ip);
@@ -2763,6 +2764,7 @@ foo_device_state_changed_cb (NMDevice *device,
 				g_free (ip);
 				str = tmp;
 			}
+#endif
 		}
 
 		dclass->notify_connected (device, str, applet);
