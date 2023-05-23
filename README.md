@@ -10,8 +10,8 @@ cd builddir
 meson compile
 sudo meson install
 ```
-On a 32-bit system, <library-location> should be "arm-linux-gnueabihf".
-On a 64-bit system, <library-location> should be "aarch64-linux-gnu".
+On a 32-bit system, `<library-location>` should be `arm-linux-gnueabihf`.
+On a 64-bit system, `<library-location>` should be `aarch64-linux-gnu`.
 
 
 # Configuration
