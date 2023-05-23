@@ -32,7 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
 
-#define TEXT_WIDTH 40
+#define TEXT_WIDTH 50
 #define SPACING 5
 
 #define INIT_MUTE 2500
