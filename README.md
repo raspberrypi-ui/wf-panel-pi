@@ -4,14 +4,15 @@ A panel for the Raspberry Pi Wayfire desktop, based on wf-panel from the wf-shel
 
 # Build
 
-Assuming a 64-bit system:
-
 ```
-meson setup builddir --prefix=/usr --libdir=/usr/lib/aarch64-linux-gnu
+meson setup builddir --prefix=/usr --libdir=/usr/lib/<library-location>
 cd builddir
 meson compile
 sudo meson install
 ```
+On a 32-bit system, <library-location> should be "arm-linux-gnueabihf".
+On a 64-bit system, <library-location> should be "aarch64-linux-gnu".
+
 
 # Configuration
 
