@@ -214,9 +214,39 @@ static void set_country (GObject *o, gpointer data)
     }
 }
 
+char *applet_get_ip (NMDevice* device)
+{
+	// get the IP4 address
+	NMIPConfig *ip4_config = nm_device_get_ip4_config (device);
+	if (ip4_config)
+	{
+		const GPtrArray *addresses = nm_ip_config_get_addresses (ip4_config);
+		if (addresses && addresses->len)
+		{
+			NMIPAddress *addr = (NMIPAddress *) g_ptr_array_index (addresses, 0);
+			if (addr) return g_strdup_printf (_("IP : %s"), nm_ip_address_get_address (addr));
+		}
+	}
+	else
+	{
+		// get the IP6 address if there is no IP4 address
+		NMIPConfig *ip6_config = nm_device_get_ip6_config (device);
+		if (ip6_config)
+		{
+			const GPtrArray *addresses = nm_ip_config_get_addresses (ip6_config);
+			if (addresses && addresses->len)
+			{
+				NMIPAddress *addr = (NMIPAddress *) g_ptr_array_index (addresses, 0);
+				if (addr) return g_strdup_printf (_("IP : %s"), nm_ip_address_get_address (addr));
+			}
+		}
+	}
+	return NULL;
+}
+
 static char *get_tooltip (NMApplet *applet)
 {
-	char *out, *tmp, *ret = NULL;
+	char *out, *tmp, *ip, *ret = NULL;
 	const char *icon_name;
 	int i;
 
@@ -272,40 +302,13 @@ static char *get_tooltip (NMApplet *applet)
 			}
 			g_free (out);
 
-			// get the IP4 address
-			NMIPConfig *ip4_config = nm_device_get_ip4_config (device);
-			if (ip4_config)
+			ip = applet_get_ip (device);
+			if (ip)
 			{
-				const GPtrArray *addresses = nm_ip_config_get_addresses (ip4_config);
-				if (addresses && addresses->len)
-				{
-					NMIPAddress *addr = (NMIPAddress *) g_ptr_array_index (addresses, 0);
-					if (addr)
-					{
-						tmp = g_strdup_printf (_("%s\nIP : %s"), ret, nm_ip_address_get_address (addr));
-						g_free (ret);
-						ret = tmp;
-					}
-				}
-			}
-			else
-			{
-				// get the IP6 address if there is no IP4 address
-				NMIPConfig *ip6_config = nm_device_get_ip6_config (device);
-				if (ip6_config)
-				{
-					const GPtrArray *addresses = nm_ip_config_get_addresses (ip6_config);
-					if (addresses && addresses->len)
-					{
-						NMIPAddress *addr = (NMIPAddress *) g_ptr_array_index (addresses, 0);
-						if (addr)
-						{
-							tmp = g_strdup_printf (_("%s\nIP : %s"), ret, nm_ip_address_get_address (addr));
-							g_free (ret);
-							ret = tmp;
-						}
-					}
-				}
+				tmp = g_strdup_printf ("%s\n%s", ret, ip);
+				g_free (ip);
+				g_free (ret);
+				ret = tmp;
 			}
 		}
 	}
@@ -2752,6 +2755,14 @@ foo_device_state_changed_cb (NMDevice *device,
 		if (connection) {
 			str = g_strdup_printf (_("You are now connected to “%s”."),
 			                       nm_connection_get_id (connection));
+			char *ip = applet_get_ip (device);
+			if (ip)
+			{
+				char *tmp = g_strdup_printf ("%s\n%s", str, ip);
+				g_free (str);
+				g_free (ip);
+				str = tmp;
+			}
 		}
 
 		dclass->notify_connected (device, str, applet);

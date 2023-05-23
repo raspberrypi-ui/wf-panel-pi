@@ -321,6 +321,8 @@ void applet_add_default_connection_item (NMDevice *device,
                                          GtkWidget *menu,
                                          NMApplet *applet);
 
+char *applet_get_ip (NMDevice* device);
+
 extern void netman_init (NMApplet *nm);
 extern void netman_update_display (NMApplet *nm);
 extern gboolean nm_control_msg (NMApplet *nm, const char *cmd);
