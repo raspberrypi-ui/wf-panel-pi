@@ -249,6 +249,9 @@ static char *get_tooltip (NMApplet *applet)
 		// filter out VPNs
 		if (NM_IS_VPN_CONNECTION (aconn)) continue;
 
+		// filter out loopback
+		if (nm_device_get_device_type (device) == NM_DEVICE_TYPE_LOOPBACK) continue;
+
 		// get the standard tooltip for the device, state and connection
 		icon_name = NULL;
 		out = NULL;
@@ -279,26 +282,28 @@ static char *get_tooltip (NMApplet *applet)
 					NMIPAddress *addr = (NMIPAddress *) g_ptr_array_index (addresses, 0);
 					if (addr)
 					{
-						tmp = g_strdup_printf (_("%s\nIPv4 : %s"), ret, nm_ip_address_get_address (addr));
+						tmp = g_strdup_printf (_("%s\nIP : %s"), ret, nm_ip_address_get_address (addr));
 						g_free (ret);
 						ret = tmp;
 					}
 				}
 			}
-
-			// get the IP6 address
-			NMIPConfig *ip6_config = nm_device_get_ip6_config (device);
-			if (ip6_config)
+			else
 			{
-				const GPtrArray *addresses = nm_ip_config_get_addresses (ip6_config);
-				if (addresses && addresses->len)
+				// get the IP6 address if there is no IP4 address
+				NMIPConfig *ip6_config = nm_device_get_ip6_config (device);
+				if (ip6_config)
 				{
-					NMIPAddress *addr = (NMIPAddress *) g_ptr_array_index (addresses, 0);
-					if (addr)
+					const GPtrArray *addresses = nm_ip_config_get_addresses (ip6_config);
+					if (addresses && addresses->len)
 					{
-						tmp = g_strdup_printf (_("%s\nIPv6 : %s"), ret, nm_ip_address_get_address (addr));
-						g_free (ret);
-						ret = tmp;
+						NMIPAddress *addr = (NMIPAddress *) g_ptr_array_index (addresses, 0);
+						if (addr)
+						{
+							tmp = g_strdup_printf (_("%s\nIP : %s"), ret, nm_ip_address_get_address (addr));
+							g_free (ret);
+							ret = tmp;
+						}
 					}
 				}
 			}
