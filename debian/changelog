@@ -1,3 +1,9 @@
+wf-panel-pi (0.18) bookworm; urgency=medium
+
+  * Show IP addresses in netman; add more config params; upstream patches
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 23 May 2023 13:15:36 +0100
+
 wf-panel-pi (0.17) bookworm; urgency=medium
 
   * Fix updater plugin messaging from installer app
