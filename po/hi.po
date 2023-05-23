@@ -274,18 +274,9 @@ msgstr ""
 msgid "_Turn On Wireless LAN"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:282
+#: ../src/panel/widgets/netman/applet.c:227
 #, c-format
-msgid ""
-"%s\n"
-"IPv4 : %s"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:299
-#, c-format
-msgid ""
-"%s\n"
-"IPv6 : %s"
+msgid "IP : %s"
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:781
