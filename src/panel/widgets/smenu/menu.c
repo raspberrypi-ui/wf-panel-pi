@@ -161,10 +161,13 @@ static gboolean filter_apps (GtkTreeModel *model, GtkTreeIter *iter, gpointer us
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
     gboolean res = FALSE;
-    char *str;
+    char *str, *pstr = NULL;
+    GtkTreeIter prev = *iter;
 
     gtk_tree_model_get (model, iter, 1, &str, -1);
-    if (strcasestr (str, gtk_entry_get_text (GTK_ENTRY (m->srch)))) res = TRUE;
+    if (gtk_tree_model_iter_previous (model, &prev)) gtk_tree_model_get (model, &prev, 1, &pstr, -1);
+    if ((!pstr || strcmp (str, pstr)) && strcasestr (str, gtk_entry_get_text (GTK_ENTRY (m->srch)))) res = TRUE;
+    if (pstr) g_free (pstr);
     g_free (str);
     return res;
 }
