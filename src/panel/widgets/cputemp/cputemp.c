@@ -390,6 +390,10 @@ void cputemp_init (CPUTempPlugin *c)
     /* Find the system thermal sensors */
     check_sensors (c);
 
+    c->graph.samples = NULL;
+    c->graph.ring_cursor = 0;
+    cputemp_update_display (c);
+
     /* Connect a timer to refresh the statistics. */
     c->timer = g_timeout_add (1500, (GSourceFunc) cpu_update, (gpointer) c);
 

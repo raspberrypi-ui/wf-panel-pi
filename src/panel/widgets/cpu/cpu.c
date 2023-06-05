@@ -126,6 +126,10 @@ void cpu_init (CPUPlugin *c)
             gdk_rgba_parse (&c->background_color, "light gray");
     } else gdk_rgba_parse (&c->background_color, "light gray");
 
+    c->graph.samples = NULL;
+    c->graph.ring_cursor = 0;
+    cpu_update_display (c);
+
     /* Connect a timer to refresh the statistics. */
     c->timer = g_timeout_add (1500, (GSourceFunc) cpu_update, (gpointer) c);
 

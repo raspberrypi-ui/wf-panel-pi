@@ -155,6 +155,10 @@ void gpu_init (GPUPlugin *g)
             gdk_rgba_parse (&g->background_color, "light gray");
     } else gdk_rgba_parse (&g->background_color, "light gray");
 
+    g->graph.samples = NULL;
+    g->graph.ring_cursor = 0;
+    gpu_update_display (g);
+
     /* Connect a timer to refresh the statistics. */
     g->timer = g_timeout_add (1500, (GSourceFunc) gpu_update, (gpointer) g);
 
