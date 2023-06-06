@@ -68,7 +68,7 @@ static void graph_redraw (PluginGraph *graph, char *label)
 
 /* Initialise graph for a particular size */
 
-void graph_init (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2)
+void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2)
 {
     /* Load colours */
     graph->background = background;
@@ -132,7 +132,7 @@ void graph_init (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA 
 }
 
 
-/* Add  new data point to the graph */
+/* Add new data point to the graph */
 
 void graph_new_point (PluginGraph *graph, float value, int state, char *label)
 {
@@ -145,4 +145,12 @@ void graph_new_point (PluginGraph *graph, float value, int state, char *label)
     if (graph->ring_cursor >= graph->pixmap_width) graph->ring_cursor = 0;
 
     graph_redraw (graph, label);
+}
+
+
+void graph_init (PluginGraph *graph)
+{
+    graph->da = gtk_image_new ();
+    graph->samples = NULL;
+    graph->ring_cursor = 0;
 }

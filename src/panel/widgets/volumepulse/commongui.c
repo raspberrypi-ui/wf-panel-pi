@@ -25,6 +25,10 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <glib/gprintf.h>
+
 #include "volumepulse.h"
 #include "pulse.h"
 #include "bluetooth.h"

@@ -41,6 +41,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <time.h>
 #include <sys/sysinfo.h>
 #include <stdlib.h>
+#define _GNU_SOURCE
+#include <stdio.h>
 #include <glib/gi18n.h>
 
 #include "cputemp.h"
@@ -323,7 +325,7 @@ static gboolean cpu_update (CPUTempPlugin *c)
 
 void cputemp_update_display (CPUTempPlugin *c)
 {
-    graph_init (&(c->graph), c->icon_size, c->background_color, c->foreground_color,
+    graph_reload (&(c->graph), c->icon_size, c->background_color, c->foreground_color,
         c->low_throttle_color, c->high_throttle_color);
 }
 
@@ -343,7 +345,7 @@ void cputemp_init (CPUTempPlugin *c)
     textdomain (GETTEXT_PACKAGE);
 
     /* Allocate icon as a child of top level */
-    c->graph.da = gtk_image_new ();
+    graph_init (&(c->graph));
     gtk_container_add (GTK_CONTAINER (c->plugin), c->graph.da);
 
     /* Set up variables */
@@ -390,8 +392,6 @@ void cputemp_init (CPUTempPlugin *c)
     /* Find the system thermal sensors */
     check_sensors (c);
 
-    c->graph.samples = NULL;
-    c->graph.ring_cursor = 0;
     cputemp_update_display (c);
 
     /* Connect a timer to refresh the statistics. */

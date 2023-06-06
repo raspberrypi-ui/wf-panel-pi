@@ -13,7 +13,8 @@ typedef struct {
     GdkRGBA colours[3];                     /* Graph foreground colours - normal and throttled */
 } PluginGraph;
 
-extern void graph_init (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2);
+extern void graph_init (PluginGraph *graph);
+extern void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2);
 extern void graph_new_point (PluginGraph *graph, float value, int state, char *label);
 
 #endif

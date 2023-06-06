@@ -89,7 +89,7 @@ static gboolean cpu_update (CPUPlugin *c)
 void cpu_update_display (CPUPlugin *c)
 {
     GdkRGBA none = {0, 0, 0, 0};
-    graph_init (&(c->graph), c->icon_size, c->background_color, c->foreground_color, none, none);
+    graph_reload (&(c->graph), c->icon_size, c->background_color, c->foreground_color, none, none);
 }
 
 void cpu_destructor (gpointer user_data)
@@ -107,7 +107,7 @@ void cpu_init (CPUPlugin *c)
     textdomain (GETTEXT_PACKAGE);
 
     /* Allocate icon as a child of top level */
-    c->graph.da = gtk_image_new ();
+    graph_init (&(c->graph));
     gtk_container_add (GTK_CONTAINER (c->plugin), c->graph.da);
 
     if (config_setting_lookup_int ("cpu", "ShowPercent", &val))
@@ -126,8 +126,6 @@ void cpu_init (CPUPlugin *c)
             gdk_rgba_parse (&c->background_color, "light gray");
     } else gdk_rgba_parse (&c->background_color, "light gray");
 
-    c->graph.samples = NULL;
-    c->graph.ring_cursor = 0;
     cpu_update_display (c);
 
     /* Connect a timer to refresh the statistics. */

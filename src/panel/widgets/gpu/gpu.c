@@ -33,6 +33,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <time.h>
 #include <sys/sysinfo.h>
 #include <stdlib.h>
+#define _GNU_SOURCE
+#include <stdio.h>
 #include <glib/gi18n.h>
 
 #include "gpu.h"
@@ -118,7 +120,7 @@ static gboolean gpu_update (GPUPlugin *g)
 void gpu_update_display (GPUPlugin *g)
 {
     GdkRGBA none = {0, 0, 0, 0};
-    graph_init (&(g->graph), g->icon_size, g->background_color, g->foreground_color, none, none);
+    graph_reload (&(g->graph), g->icon_size, g->background_color, g->foreground_color, none, none);
 }
 
 void gpu_destructor (gpointer user_data)
@@ -136,7 +138,7 @@ void gpu_init (GPUPlugin *g)
     textdomain (GETTEXT_PACKAGE);
 
     /* Allocate icon as a child of top level */
-    g->graph.da = gtk_image_new ();
+    graph_init (&(g->graph));
     gtk_container_add (GTK_CONTAINER (g->plugin), g->graph.da);
 
     if (config_setting_lookup_int ("gpu", "ShowPercent", &val))
@@ -155,8 +157,6 @@ void gpu_init (GPUPlugin *g)
             gdk_rgba_parse (&g->background_color, "light gray");
     } else gdk_rgba_parse (&g->background_color, "light gray");
 
-    g->graph.samples = NULL;
-    g->graph.ring_cursor = 0;
     gpu_update_display (g);
 
     /* Connect a timer to refresh the statistics. */
