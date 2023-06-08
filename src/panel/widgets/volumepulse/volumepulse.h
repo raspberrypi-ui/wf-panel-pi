@@ -122,7 +122,6 @@ extern void mic_menu_add_item (VolumePulsePlugin *vol, const char *label, const 
 extern void profiles_dialog_add_combo (VolumePulsePlugin *vol, GtkListStore *ls, GtkWidget *dest, int sel, const char *label, const char *name);
 extern void volpulse_update_display (VolumePulsePlugin *vol);
 extern void micpulse_update_display (VolumePulsePlugin *vol);
-extern void hdmi_init (VolumePulsePlugin *vol);
 extern void volumepulse_init (VolumePulsePlugin *vol);
 extern void micpulse_init (VolumePulsePlugin *vol);
 extern gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd);

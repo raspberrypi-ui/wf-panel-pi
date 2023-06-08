@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Helpers */
 static int get_value (const char *fmt, ...);
-//static void hdmi_init (VolumePulsePlugin *vol);
+static void hdmi_init (VolumePulsePlugin *vol);
 static const char *device_display_name (VolumePulsePlugin *vol, const char *name);
 
 /* Menu popup */
@@ -70,29 +70,23 @@ static int get_value (const char *fmt, ...)
 
 /* Find number of HDMI devices and device names */
 
-void hdmi_init (VolumePulsePlugin *vol)
+static void hdmi_init (VolumePulsePlugin *vol)
 {
     int i, m;
-
-    vol->hdmi_names[0] = NULL;
-    vol->hdmi_names[1] = NULL;
-
-    /* are we running headless? */
-    m = get_value ("cat /sys/class/drm/card1-HDMI-A-?/status | grep -wc connected");
-    if (m == 0) return;
 
     /* check wlr-randr for connected monitors */
     m = get_value ("wlr-randr | grep -c ^[^[:space:]]");
     if (m < 0) m = 1; /* couldn't read, so assume 1... */
     if (m > 2) m = 2;
 
+    vol->hdmi_names[0] = NULL;
+    vol->hdmi_names[1] = NULL;
+
     /* get the names */
     if (m == 2)
     {
-        for (i = 0; i < 2; i++)
-        {
-            vol->hdmi_names[i] = get_string ("wlr-randr | grep  ^[^[:space:]] | sort | sed -n %dp | cut -d ' ' -f 1", i + 1);
-        }
+        vol->hdmi_names[0] = get_string ("wlr-randr | grep  ^[^[:space:]] | sort | head -n 1 | cut -d ' ' -f 1");
+        vol->hdmi_names[1] = get_string ("wlr-randr | grep  ^[^[:space:]] | sort | tail -n 1 | cut -d ' ' -f 1");
 
         /* check both devices are HDMI */
         if (vol->hdmi_names[0] && !strncmp (vol->hdmi_names[0], "HDMI", 4)

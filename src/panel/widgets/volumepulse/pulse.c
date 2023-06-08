@@ -1057,13 +1057,10 @@ static void pa_cb_add_devices_to_profile_dialog (pa_context *c, const pa_card_in
             profiles_dialog_add_combo (vol, ls, vol->profiles_bt_box, sel, pa_proplist_gets (i->proplist, "device.description"), i->name);
         else
         {
-            if (pa_card_has_port (i, PA_DIRECTION_OUTPUT))
-            {
-                if (g_strcmp0 (pa_proplist_gets (i->proplist, "device.description"), "Built-in Audio"))
-                    profiles_dialog_add_combo (vol, ls, vol->profiles_ext_box, sel, pa_proplist_gets (i->proplist, "alsa.card_name"), i->name);
-                else
-                    profiles_dialog_add_combo (vol, ls, vol->profiles_int_box, sel, pa_proplist_gets (i->proplist, "alsa.card_name"), i->name);
-            }
+            if (g_strcmp0 (pa_proplist_gets (i->proplist, "device.description"), "Built-in Audio"))
+                profiles_dialog_add_combo (vol, ls, vol->profiles_ext_box, sel, pa_proplist_gets (i->proplist, "alsa.card_name"), i->name);
+            else if (pa_card_has_port (i, PA_DIRECTION_OUTPUT))
+                profiles_dialog_add_combo (vol, ls, vol->profiles_int_box, sel, pa_proplist_gets (i->proplist, "alsa.card_name"), i->name);
         }
     }
 
