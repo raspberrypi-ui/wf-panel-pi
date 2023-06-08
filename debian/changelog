@@ -1,3 +1,9 @@
+wf-panel-pi (0.20) bookworm; urgency=medium
+
+  * Fixes for detection and naming of HDMI devices in volume plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 08 Jun 2023 11:57:00 +0100
+
 wf-panel-pi (0.19) bookworm; urgency=medium
 
   * Fix graph segfault; filter app list
