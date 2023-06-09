@@ -1,3 +1,9 @@
+wf-panel-pi (0.21) bookworm; urgency=medium
+
+  * Add hotplug for HDMI audio devices
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 09 Jun 2023 14:15:53 +0100
+
 wf-panel-pi (0.20) bookworm; urgency=medium
 
   * Fixes for detection and naming of HDMI devices in volume plugin
