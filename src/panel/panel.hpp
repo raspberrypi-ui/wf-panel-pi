@@ -39,6 +39,7 @@ class WayfirePanelApp : public WayfireShellApp
     void handle_new_output(WayfireOutput *output) override;
     void handle_output_removed(WayfireOutput *output) override;
     void on_config_reload() override;
+    void on_command (const char *plugin, const char *command) override;
     void update_panels ();
 
   private:
@@ -46,8 +47,6 @@ class WayfirePanelApp : public WayfireShellApp
 
     class impl;
     std::unique_ptr<impl> priv;
-
-    void on_command (const char *plugin, const char *command);
 
     static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
     static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);

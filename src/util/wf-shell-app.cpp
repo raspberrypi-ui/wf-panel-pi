@@ -150,9 +150,11 @@ bool WayfireShellApp::update_monitors ()
     }
 
     // update the pulseaudio controllers
-    system ("wfpanelctl volumepulse stop;wfpanelctl micpulse stop");
+    this->on_command ("volumepulse", "stop");
+    this->on_command ("micpulse", "stop");
     system ("systemctl --user restart pipewire.service");
-    system ("wfpanelctl volumepulse start;wfpanelctl micpulse start");
+    this->on_command ("volumepulse", "start");
+    this->on_command ("micpulse", "start");
 
     return false;
 }

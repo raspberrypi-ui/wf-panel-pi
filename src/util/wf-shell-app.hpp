@@ -70,6 +70,7 @@ class WayfireShellApp
     virtual void run();
 
     virtual void on_config_reload() {}
+    virtual void on_command(const char *plugin, const char *command) {}
 
     /**
      * WayfireShellApp is a singleton class.
