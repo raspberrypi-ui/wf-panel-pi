@@ -79,8 +79,11 @@ static void hdmi_init (VolumePulsePlugin *vol)
     if (m < 0) m = 1; /* couldn't read, so assume 1... */
     if (m > 2) m = 2;
 
-    vol->hdmi_names[0] = NULL;
-    vol->hdmi_names[1] = NULL;
+    for (i = 0; i < 2; i++)
+    {
+        if (vol->hdmi_names[i]) g_free (vol->hdmi_names[i]);
+        vol->hdmi_names[i] = NULL;
+    }
 
     /* get the names */
     if (m == 2)
@@ -468,6 +471,69 @@ void volumepulse_destructor (gpointer user_data)
 
     /* Deallocate all memory. */
     //g_free (vol);
+}
+
+/* Callback when control message arrives */
+
+gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd)
+{
+    //VolumePulsePlugin *vol = lxpanel_plugin_get_data (plugin);
+
+    if (!strncmp (cmd, "mute", 4))
+    {
+        pulse_set_mute (vol, pulse_get_mute (vol) ? 0 : 1);
+        volumepulse_update_display (vol);
+        return TRUE;
+    }
+
+    if (!strncmp (cmd, "volu", 4))
+    {
+        if (pulse_get_mute (vol)) pulse_set_mute (vol, 0);
+        else
+        {
+            int volume = pulse_get_volume (vol);
+            if (volume < 100)
+            {
+                volume += 5;
+                volume /= 5;
+                volume *= 5;
+            }
+            pulse_set_volume (vol, volume);
+        }
+        volumepulse_update_display (vol);
+        return TRUE;
+    }
+
+    if (!strncmp (cmd, "vold", 4))
+    {
+        if (pulse_get_mute (vol)) pulse_set_mute (vol, 0);
+        else
+        {
+            int volume = pulse_get_volume (vol);
+            if (volume > 0)
+            {
+                volume -= 1; // effectively -5 + 4 for rounding...
+                volume /= 5;
+                volume *= 5;
+            }
+            pulse_set_volume (vol, volume);
+        }
+        volumepulse_update_display (vol);
+        return TRUE;
+    }
+
+    if (!strncmp (cmd, "stop", 5))
+    {
+        pulse_terminate (vol);
+    }
+
+    if (!strncmp (cmd, "start", 5))
+    {
+        hdmi_init (vol);
+        pulse_init (vol);
+    }
+
+    return FALSE;
 }
 
 #if 0

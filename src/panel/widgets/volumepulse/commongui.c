@@ -355,57 +355,5 @@ void volumepulse_configuration_changed (LXPanel *panel, GtkWidget *plugin)
 }
 #endif
 
-/* Callback when control message arrives */
-
-gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd)
-{
-    //VolumePulsePlugin *vol = lxpanel_plugin_get_data (plugin);
-
-    if (!strncmp (cmd, "mute", 4))
-    {
-        pulse_set_mute (vol, pulse_get_mute (vol) ? 0 : 1);
-        volumepulse_update_display (vol);
-        return TRUE;
-    }
-
-    if (!strncmp (cmd, "volu", 4))
-    {
-        if (pulse_get_mute (vol)) pulse_set_mute (vol, 0);
-        else
-        {
-            int volume = pulse_get_volume (vol);
-            if (volume < 100)
-            {
-                volume += 5;
-                volume /= 5;
-                volume *= 5;
-            }
-            pulse_set_volume (vol, volume);
-        }
-        volumepulse_update_display (vol);
-        return TRUE;
-    }
-
-    if (!strncmp (cmd, "vold", 4))
-    {
-        if (pulse_get_mute (vol)) pulse_set_mute (vol, 0);
-        else
-        {
-            int volume = pulse_get_volume (vol);
-            if (volume > 0)
-            {
-                volume -= 1; // effectively -5 + 4 for rounding...
-                volume /= 5;
-                volume *= 5;
-            }
-            pulse_set_volume (vol, volume);
-        }
-        volumepulse_update_display (vol);
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
 /* End of file */
 /*----------------------------------------------------------------------------*/

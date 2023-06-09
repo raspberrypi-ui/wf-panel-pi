@@ -15,7 +15,7 @@ void WayfireMicpulse::icon_size_changed_cb (void)
 
 void WayfireMicpulse::command (const char *cmd)
 {
-    volumepulse_control_msg (vol, cmd);
+    micpulse_control_msg (vol, cmd);
 }
 
 bool WayfireMicpulse::set_icon (void)

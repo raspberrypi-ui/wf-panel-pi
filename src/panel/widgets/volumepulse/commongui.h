@@ -41,7 +41,6 @@ extern gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButto
 extern void volumepulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePulsePlugin *vol);
 #if 0
 extern void volumepulse_configuration_changed (LXPanel *panel, GtkWidget *plugin);
-extern gboolean volumepulse_control_msg (GtkWidget *plugin, const char *cmd);
 extern void volumepulse_destructor (gpointer user_data);
 #endif
 
