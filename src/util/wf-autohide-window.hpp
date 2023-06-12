@@ -36,6 +36,8 @@ class WayfireAutohidingWindow : public Gtk::Window
     ~WayfireAutohidingWindow();
     wl_surface* get_wl_surface() const;
 
+    bool on_button_press_event(GdkEventButton* event);
+
     /* Add one more autohide request */
     void increase_autohide();
     /* Remove one autohide request */
@@ -74,6 +76,8 @@ class WayfireAutohidingWindow : public Gtk::Window
 
   private:
     WayfireOutput *output;
+    Gtk::Menu menu;
+    Gtk::MenuItem conf;
 
     WfOption<std::string> position;
     void update_position();

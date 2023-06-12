@@ -45,6 +45,13 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
             if (this->active_button)
                 unset_active_popover(*this->active_button);
         });
+
+    this->signal_button_release_event().connect(
+            sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_press_event));
+
+        conf.set_label ("Set Widgets...");
+        menu.attach (conf, 0, 1, 0, 1);
+        menu.show_all();
 }
 
 WayfireAutohidingWindow::~WayfireAutohidingWindow()
@@ -53,6 +60,17 @@ WayfireAutohidingWindow::~WayfireAutohidingWindow()
         zwf_hotspot_v2_destroy(this->edge_hotspot);
     if (this->panel_hotspot)
         zwf_hotspot_v2_destroy(this->panel_hotspot);
+}
+
+bool WayfireAutohidingWindow::on_button_press_event(GdkEventButton* event)
+{
+    if ((event->type == GDK_BUTTON_RELEASE) && (event->button == 3))
+    {
+        menu.attach_to_widget (*this);
+        menu.popup (event->button, event->time);
+        return true;
+    }
+    else return false;
 }
 
 wl_surface* WayfireAutohidingWindow::get_wl_surface() const
