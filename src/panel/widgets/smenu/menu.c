@@ -822,7 +822,7 @@ static gboolean create_menu (MenuPlugin *m)
 /* Handler for menu button click */
 static gboolean menu_button_press_event (GtkWidget *widget, GdkEventButton *event, MenuPlugin *m)
 {
-    if (!gtk_widget_is_visible (m->menu))
+    if (event->button == 1 && !gtk_widget_is_visible (m->menu))
     {
         show_menu_with_kbd (m->plugin, m->menu);
         return TRUE;
