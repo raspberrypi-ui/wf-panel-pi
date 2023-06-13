@@ -7,7 +7,7 @@
 GtkListStore *widgets;
 GtkWidget *ltv, *ctv, *rtv;
 GtkWidget *ladd, *lrem, *radd, *rrem;
-GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright;
+GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright, *scent;
 int lh, ch, rh;
 gboolean found;
 
@@ -110,7 +110,7 @@ static void add_widget (GtkButton *, gpointer data)
 {
     GtkTreeSelection *sel;
     GtkTreeModel *mod;
-    GtkTreeIter iter, citer;
+    GtkTreeIter iter, siter, citer;
     int index;
     char *type;
 
@@ -119,7 +119,8 @@ static void add_widget (GtkButton *, gpointer data)
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, 1, &type, -1);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, &iter);
+        gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fcent), &citer, &siter);
         if ((long) data == 1)
         {
             index = gtk_tree_model_iter_n_children (fleft, NULL);
@@ -397,6 +398,8 @@ void open_config_dialog (void)
 
     fcent = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
     gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (fcent), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 0, NULL);
+    scent = gtk_tree_model_sort_new_with_model (fcent);
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (scent), 0, GTK_SORT_ASCENDING);
 
     fright = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
     gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (fright), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) -1, NULL);
@@ -404,7 +407,7 @@ void open_config_dialog (void)
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sright), 2, GTK_SORT_DESCENDING);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (ltv), sleft);
-    gtk_tree_view_set_model (GTK_TREE_VIEW (ctv), fcent);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (ctv), scent);
     gtk_tree_view_set_model (GTK_TREE_VIEW (rtv), sright);
 
     lh = g_signal_connect (ltv, "cursor-changed", G_CALLBACK (unselect), (void *) 1);
