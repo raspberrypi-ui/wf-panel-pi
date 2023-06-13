@@ -1,4 +1,4 @@
-util = static_library('util', ['gtk-utils.cpp', 'wf-shell-app.cpp', 'wf-autohide-window.cpp', 'wf-popover.cpp'],
+util = static_library('util', ['gtk-utils.cpp', 'wf-shell-app.cpp', 'wf-autohide-window.cpp', 'wf-popover.cpp', 'config.c'],
     dependencies: [wf_protos, wayland_client, gtkmm, wfconfig, libinotify, gtklayershell])
 
 util_includes = include_directories('.')

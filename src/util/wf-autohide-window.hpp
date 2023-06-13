@@ -37,6 +37,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     wl_surface* get_wl_surface() const;
 
     bool on_button_press_event(GdkEventButton* event);
+    void do_configure();
 
     /* Add one more autohide request */
     void increase_autohide();

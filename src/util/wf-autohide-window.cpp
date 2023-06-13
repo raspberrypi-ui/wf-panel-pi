@@ -1,6 +1,10 @@
 #include "wf-autohide-window.hpp"
 #include "wayfire-shell-unstable-v2-client-protocol.h"
 
+extern "C" {
+#include "config.h"
+}
+
 #include <gtk-layer-shell.h>
 #include <wf-shell-app.hpp>
 #include <gdk/gdkwayland.h>
@@ -50,7 +54,10 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
             sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_press_event));
 
         conf.set_label ("Set Widgets...");
+        conf.signal_activate().connect(
+            sigc::mem_fun(this, &WayfireAutohidingWindow::do_configure));
         menu.attach (conf, 0, 1, 0, 1);
+        menu.attach_to_widget (*this);
         menu.show_all();
 }
 
@@ -66,11 +73,15 @@ bool WayfireAutohidingWindow::on_button_press_event(GdkEventButton* event)
 {
     if ((event->type == GDK_BUTTON_RELEASE) && (event->button == 3))
     {
-        menu.attach_to_widget (*this);
         menu.popup (event->button, event->time);
         return true;
     }
     else return false;
+}
+
+void WayfireAutohidingWindow::do_configure()
+{
+    open_config_dialog ();
 }
 
 wl_surface* WayfireAutohidingWindow::get_wl_surface() const
