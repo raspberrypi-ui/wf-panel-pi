@@ -9,6 +9,46 @@ GtkWidget *ltv, *ctv, *rtv;
 GtkWidget *ladd, *lrem, *radd, *rrem;
 GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright;
 int lh, ch, rh;
+gboolean found;
+
+#define NUM_WIDGETS 14
+
+char *wids[NUM_WIDGETS] = {
+    "smenu",
+    "launchers",
+    "window-list",
+    "ejecter",
+    "updater",
+    "bluetooth",
+    "netman",
+    "volumepulse",
+    "micpulse",
+    "clock",
+    "power",
+    "cpu",
+    "gpu",
+    "cputemp"
+};
+
+static const char *display_name (char *str)
+{
+    if (!strncmp (str, "spacing", 7)) return _("Spacer");
+    if (!g_strcmp0 (str, "smenu")) return _("Menu");
+    if (!g_strcmp0 (str, "launchers")) return _("Launcher");
+    if (!g_strcmp0 (str, "window-list")) return _("Window List");
+    if (!g_strcmp0 (str, "ejecter")) return _("Ejecter");
+    if (!g_strcmp0 (str, "updater")) return _("Updater");
+    if (!g_strcmp0 (str, "bluetooth")) return _("Bluetooth");
+    if (!g_strcmp0 (str, "netman")) return _("Network");
+    if (!g_strcmp0 (str, "volumepulse")) return _("Volume");
+    if (!g_strcmp0 (str, "micpulse")) return _("Microphone");
+    if (!g_strcmp0 (str, "clock")) return _("Clock");
+    if (!g_strcmp0 (str, "power")) return _("Power");
+    if (!g_strcmp0 (str, "cpu")) return _("CPU");
+    if (!g_strcmp0 (str, "gpu")) return _("GPU");
+    if (!g_strcmp0 (str, "cputemp")) return _("CPU Temp");
+    return _("<Unknown>");
+}
 
 
 static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
@@ -86,22 +126,21 @@ static void add_widget (GtkButton *, gpointer data)
             if (g_strcmp0 (type, "spacing"))
                 gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
             else
-                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, "Space", 1, "spacing", 2, index + 1, -1);
+                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing"), 1, "spacing", 2, index + 1, -1);
         }
         else
         {
             index = gtk_tree_model_iter_n_children (fright, NULL);
-            if (g_strcmp0 (type, "spacing"))
+            if (strncmp (type, "spacing", 7))
                 gtk_list_store_set (widgets, &citer, 2, -index - 1, -1);
             else
-                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, "Space", 1, "spacing", 2, -index - 1, -1);
+                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing"), 1, "spacing", 2, -index - 1, -1);
         }
         g_free (type);
     }
 }
 
-
-static gboolean renum (GtkTreeModel *mod, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
 {
     // if index > data, subtract 1
     GtkTreeIter citer;
@@ -119,7 +158,6 @@ static gboolean renum (GtkTreeModel *mod, GtkTreePath *path, GtkTreeIter *iter, 
     }
     return FALSE;
 }
-
 
 static void rem_widget (GtkButton *, gpointer data)
 {
@@ -145,7 +183,7 @@ static void rem_widget (GtkButton *, gpointer data)
         gtk_tree_model_get (mod, &iter, 1, &type, 2, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
-        if (g_strcmp0 (type, "spacing"))
+        if (strncmp (type, "spacing", 7))
             gtk_list_store_set (widgets, &citer, 2, 0, -1);
         else
             gtk_list_store_remove (widgets, &citer);
@@ -155,7 +193,7 @@ static void rem_widget (GtkButton *, gpointer data)
     gtk_tree_model_foreach (fmod, renum, (void *) index);
 }
 
-static gboolean up (GtkTreeModel *mod, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
 {
     // find index - 1, make it index
     GtkTreeIter citer;
@@ -170,7 +208,7 @@ static gboolean up (GtkTreeModel *mod, GtkTreePath *path, GtkTreeIter *iter, gpo
     return FALSE;
 }
 
-static gboolean down (GtkTreeModel *mod, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
 {
     // find index + 1, make it index
     GtkTreeIter citer;
@@ -263,6 +301,69 @@ static void down_widget (GtkButton *, gpointer data)
     }
 }
 
+static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
+{
+    char *type;
+    gtk_tree_model_get (mod, iter, 1, &type, -1);
+    if (!g_strcmp0 (data, type))
+    {
+        found = TRUE;
+        return TRUE;
+    }
+    else return FALSE;
+}
+
+void init_config_list (void)
+{
+    widgets = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT);
+
+     // !!!!!! handle the case where there is no local config !!!!!!
+    GKeyFile *kf;
+    GError *err = NULL;
+    gboolean res = FALSE;
+    char *value, *token;
+    int pos;
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+
+    kf = g_key_file_new ();
+    if (g_key_file_load_from_file (kf, user_file, 0, NULL))
+    {
+        value = g_key_file_get_string (kf, "panel", "widgets_left", &err);
+        if (err == NULL) res = TRUE;
+        else value = NULL;
+
+        pos = 1;
+        token = strtok (value, " ");
+        while (token)
+        {
+            gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos++, -1);
+            token = strtok (NULL, " ");
+        }
+
+        value = g_key_file_get_string (kf, "panel", "widgets_right", &err);
+        if (err == NULL) res = TRUE;
+        else value = NULL;
+
+        pos = -1;
+        token = strtok (value, " ");
+        while (token)
+        {
+            gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos--, -1);
+            token = strtok (NULL, " ");
+        }
+    }
+
+    g_key_file_free (kf);
+    g_free (user_file);
+
+    for (pos = 0; pos < NUM_WIDGETS; pos++)
+    {
+        found = FALSE;
+        gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, wids[pos]);
+        if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (wids[pos]), 1, wids[pos], 2, 0, -1);
+    }
+    gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing"), 1, "spacing", 2, 0, -1);
+}
 
 void open_config_dialog (void)
 {
@@ -270,7 +371,6 @@ void open_config_dialog (void)
     GtkWidget *dlg;
     GtkWidget *lup, *ldn, *rup, *rdn;
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
-    int pos = 0;
 
     textdomain (GETTEXT_PACKAGE);
 
@@ -288,13 +388,7 @@ void open_config_dialog (void)
     ldn = (GtkWidget *) gtk_builder_get_object (builder, "dn_l_btn");
     rdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_r_btn");
 
-    widgets = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT);
-
-    gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Menu", 1, "menu", 2, 1, -1);
-    gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Launcher", 1, "launchers", 2, 2, -1);
-    gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Bluetooth", 1, "bluetooth", 2, -1, -1);
-    gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Clock", 1, "clock", 2, 0, -1);
-    gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Space", 1, "spacing", 2, 0, -1);
+    init_config_list ();
 
     fleft = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
     gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (fleft), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 1, NULL);
