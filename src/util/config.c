@@ -72,30 +72,62 @@ static void add_widget (GtkButton *, gpointer data)
     GtkTreeModel *mod;
     GtkTreeIter iter, citer;
     int index;
+    char *type;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ctv));
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
+        gtk_tree_model_get (mod, &iter, 1, &type, -1);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, &iter);
         if ((long) data == 1)
         {
             index = gtk_tree_model_iter_n_children (fleft, NULL);
-            gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+            if (g_strcmp0 (type, "spacing"))
+                gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+            else
+                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, "Space", 1, "spacing", 2, index + 1, -1);
         }
         else
         {
             index = gtk_tree_model_iter_n_children (fright, NULL);
-            gtk_list_store_set (widgets, &citer, 2, -index - 1, -1);
+            if (g_strcmp0 (type, "spacing"))
+                gtk_list_store_set (widgets, &citer, 2, -index - 1, -1);
+            else
+                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, "Space", 1, "spacing", 2, -index - 1, -1);
         }
+        g_free (type);
     }
 }
+
+
+static gboolean renum (GtkTreeModel *mod, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+{
+    // if index > data, subtract 1
+    GtkTreeIter citer;
+    int index;
+    gtk_tree_model_get (mod, iter, 2, &index, -1);
+    if (index > 0 && index > ((long) data))
+    {
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
+        gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+    }
+    if (index < 0 && index < ((long) data))
+    {
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
+        gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+    }
+    return FALSE;
+}
+
 
 static void rem_widget (GtkButton *, gpointer data)
 {
     GtkTreeSelection *sel;
     GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
+    int index;
+    char *type;
 
     if ((long) data == 1)
     {
@@ -110,12 +142,17 @@ static void rem_widget (GtkButton *, gpointer data)
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
+        gtk_tree_model_get (mod, &iter, 1, &type, 2, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
-        gtk_list_store_set (widgets, &citer, 2, 0, -1);
+        if (g_strcmp0 (type, "spacing"))
+            gtk_list_store_set (widgets, &citer, 2, 0, -1);
+        else
+            gtk_list_store_remove (widgets, &citer);
     }
 
     // re-number the widgets in the list....
+    gtk_tree_model_foreach (fmod, renum, (void *) index);
 }
 
 static gboolean up (GtkTreeModel *mod, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
@@ -175,13 +212,13 @@ static void up_widget (GtkButton *, gpointer data)
         if ((long) data == 1)
         {
             if (index == 1) return;
-            gtk_tree_model_foreach (fmod, up, index);
+            gtk_tree_model_foreach (fmod, up, (void *) index);
             gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
         }
         else
         {
             if (index == -1) return;
-            gtk_tree_model_foreach (fmod, down, index);
+            gtk_tree_model_foreach (fmod, down, (void *) index);
             gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
         }
     }
@@ -214,13 +251,13 @@ static void down_widget (GtkButton *, gpointer data)
         if ((long) data == 1)
         {
             if (index == gtk_tree_model_iter_n_children (fmod, NULL)) return;
-            gtk_tree_model_foreach (fmod, down, index);
+            gtk_tree_model_foreach (fmod, down, (void *) index);
             gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
         }
         else
         {
             if (index == - gtk_tree_model_iter_n_children (fmod, NULL)) return;
-            gtk_tree_model_foreach (fmod, up, index);
+            gtk_tree_model_foreach (fmod, up, (void *) index);
             gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
         }
     }
@@ -257,6 +294,7 @@ void open_config_dialog (void)
     gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Launcher", 1, "launchers", 2, 2, -1);
     gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Bluetooth", 1, "bluetooth", 2, -1, -1);
     gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Clock", 1, "clock", 2, 0, -1);
+    gtk_list_store_insert_with_values (widgets, NULL, pos++, 0, "Space", 1, "spacing", 2, 0, -1);
 
     fleft = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
     gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (fleft), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 1, NULL);
