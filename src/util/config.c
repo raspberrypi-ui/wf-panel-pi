@@ -465,6 +465,30 @@ void open_config_dialog (void)
 
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
     {
+        GtkTreeIter iter;
+        char *type;
+
+        if (gtk_tree_model_get_iter_first (sleft, &iter))
+        {
+            do
+            {
+                gtk_tree_model_get (sleft, &iter, 1, &type, -1);
+                printf ("%s ", type);
+            }
+            while (gtk_tree_model_iter_next (sleft, &iter));
+        }
+        printf ("\n");
+
+        if (gtk_tree_model_get_iter_first (sright, &iter))
+        {
+            do
+            {
+                gtk_tree_model_get (sright, &iter, 1, &type, -1);
+                printf ("%s ", type);
+            }
+            while (gtk_tree_model_iter_next (sright, &iter));
+        }
+        printf ("\n");
 
     }
     gtk_widget_destroy (dlg);
