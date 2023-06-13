@@ -2,6 +2,53 @@
 <!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <object class="GtkImage" id="downarrow1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">Move towards right</property>
+    <property name="icon-name">go-down</property>
+  </object>
+  <object class="GtkImage" id="downarrow2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">Move towards right</property>
+    <property name="icon-name">go-down</property>
+  </object>
+  <object class="GtkImage" id="leftarrow1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">Add to left of toolbar</property>
+    <property name="icon-name">go-previous</property>
+  </object>
+  <object class="GtkImage" id="leftarrow2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">go-previous</property>
+  </object>
+  <object class="GtkImage" id="rightarrow1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">Remove from left of toolbar</property>
+    <property name="icon-name">go-next</property>
+  </object>
+  <object class="GtkImage" id="rightarrow2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">Add to right of toolbar</property>
+    <property name="icon-name">go-next</property>
+  </object>
+  <object class="GtkImage" id="uparrow1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">Move towards left</property>
+    <property name="icon-name">go-up</property>
+  </object>
+  <object class="GtkImage" id="uparrow2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="tooltip-text" translatable="yes">Move towards left</property>
+    <property name="icon-name">go-up</property>
+  </object>
   <object class="GtkDialog" id="config_dlg">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Set Widgets</property>
@@ -93,10 +140,11 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="add_l_btn">
-                        <property name="label" translatable="yes">Add</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="image">leftarrow1</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -106,10 +154,11 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="rem_l_btn">
-                        <property name="label" translatable="yes">Remove</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="image">rightarrow1</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -119,11 +168,11 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="up_l_btn">
-                        <property name="label">gtk-go-up</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="use-stock">True</property>
+                        <property name="image">uparrow1</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -133,11 +182,11 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="dn_l_btn">
-                        <property name="label">gtk-go-down</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="use-stock">True</property>
+                        <property name="image">downarrow1</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -151,12 +200,6 @@
                     <property name="fill">True</property>
                     <property name="position">0</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -199,10 +242,11 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="add_r_btn">
-                        <property name="label" translatable="yes">Add</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="image">rightarrow2</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -212,10 +256,12 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="rem_r_btn">
-                        <property name="label" translatable="yes">Remove</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Remove from right of toolbar</property>
+                        <property name="image">leftarrow2</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -225,11 +271,11 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="up_r_btn">
-                        <property name="label">gtk-go-up</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="use-stock">True</property>
+                        <property name="image">uparrow2</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -239,11 +285,11 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="dn_r_btn">
-                        <property name="label">gtk-go-down</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="use-stock">True</property>
+                        <property name="image">downarrow2</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -257,12 +303,6 @@
                     <property name="fill">True</property>
                     <property name="position">0</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
