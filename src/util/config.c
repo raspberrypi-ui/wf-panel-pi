@@ -6,7 +6,7 @@
 
 GtkListStore *widgets;
 GtkWidget *ltv, *ctv, *rtv;
-GtkWidget *ladd, *lrem, *radd, *rrem;
+GtkWidget *ladd, *lrem, *radd, *rrem, *lup, *ldn, *rup, *rdn;
 GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright, *scent;
 int lh, ch, rh;
 gboolean found;
@@ -66,6 +66,11 @@ static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer
 
 static void unselect (GtkTreeView *, gpointer data)
 {
+    GtkTreeSelection *sel;
+    int nitems;
+    GtkTreePath *toppath, *endpath;
+    char *pstr = NULL;
+
     switch ((long) data)
     {
         case  1 :   g_signal_handler_block (ctv, ch);
@@ -74,10 +79,20 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv)));
                     g_signal_handler_unblock (ctv, ch);
                     g_signal_handler_unblock (rtv, rh);
+
+                    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+                    nitems = gtk_tree_model_iter_n_children (fleft, NULL);
+                    toppath = gtk_tree_path_new_from_string ("0");
+                    pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
+                    endpath = gtk_tree_path_new_from_string (pstr);
                     gtk_widget_set_sensitive (ladd, FALSE);
                     gtk_widget_set_sensitive (radd, FALSE);
-                    gtk_widget_set_sensitive (lrem, TRUE);
+                    gtk_widget_set_sensitive (lrem, nitems > 0);
                     gtk_widget_set_sensitive (rrem, FALSE);
+                    gtk_widget_set_sensitive (lup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (ldn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (rup, FALSE);
+                    gtk_widget_set_sensitive (rdn, FALSE);
                     break;
 
         case  0 :   g_signal_handler_block (ltv, lh);
@@ -86,10 +101,16 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv)));
                     g_signal_handler_unblock (ltv, lh);
                     g_signal_handler_unblock (rtv, rh);
-                    gtk_widget_set_sensitive (ladd, TRUE);
-                    gtk_widget_set_sensitive (radd, TRUE);
+
+                    nitems = gtk_tree_model_iter_n_children (fcent, NULL);
+                    gtk_widget_set_sensitive (ladd, nitems > 0);
+                    gtk_widget_set_sensitive (radd, nitems > 0);
                     gtk_widget_set_sensitive (lrem, FALSE);
                     gtk_widget_set_sensitive (rrem, FALSE);
+                    gtk_widget_set_sensitive (lup, FALSE);
+                    gtk_widget_set_sensitive (ldn, FALSE);
+                    gtk_widget_set_sensitive (rup, FALSE);
+                    gtk_widget_set_sensitive (rdn, FALSE);
                     break;
 
         case -1 :   g_signal_handler_block (ltv, lh);
@@ -98,12 +119,24 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (ctv)));
                     g_signal_handler_unblock (ltv, lh);
                     g_signal_handler_unblock (ctv, ch);
+
+                    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+                    nitems = gtk_tree_model_iter_n_children (fright, NULL);
+                    toppath = gtk_tree_path_new_from_string ("0");
+                    pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
+                    endpath = gtk_tree_path_new_from_string (pstr);
                     gtk_widget_set_sensitive (ladd, FALSE);
                     gtk_widget_set_sensitive (radd, FALSE);
                     gtk_widget_set_sensitive (lrem, FALSE);
-                    gtk_widget_set_sensitive (rrem, TRUE);
+                    gtk_widget_set_sensitive (rrem, nitems > 0);
+                    gtk_widget_set_sensitive (lup, FALSE);
+                    gtk_widget_set_sensitive (ldn, FALSE);
+                    gtk_widget_set_sensitive (rup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (rdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
                     break;
     }
+
+    if (pstr) g_free (pstr);
 }
 
 static void add_widget (GtkButton *, gpointer data)
@@ -260,6 +293,7 @@ static void up_widget (GtkButton *, gpointer data)
             gtk_tree_model_foreach (fmod, down, (void *) index);
             gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
         }
+        unselect (NULL, data);
     }
 }
 
@@ -299,6 +333,7 @@ static void down_widget (GtkButton *, gpointer data)
             gtk_tree_model_foreach (fmod, up, (void *) index);
             gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
         }
+        unselect (NULL, data);
     }
 }
 
@@ -370,7 +405,6 @@ void open_config_dialog (void)
 {
     GtkBuilder *builder;
     GtkWidget *dlg;
-    GtkWidget *lup, *ldn, *rup, *rdn;
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
 
     textdomain (GETTEXT_PACKAGE);
@@ -431,7 +465,7 @@ void open_config_dialog (void)
 
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
     {
-        printf ("saving config\n");
+
     }
     gtk_widget_destroy (dlg);
 }
