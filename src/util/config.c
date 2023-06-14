@@ -1,21 +1,57 @@
+/*
+Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the copyright holder nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <glib/gi18n.h>
 
 #include "config.h"
 
-GtkListStore *widgets;
-GtkTreeModel *filt[3], *sort[3];
-GtkWidget *tv[3];
-GtkWidget *ladd, *radd, *rem, *wup, *wdn, *sup, *sdn;
-int hand[3];
-gboolean found;
-char sbuf[32];
+/*----------------------------------------------------------------------------*/
+/* Macros and typedefs */
+/*----------------------------------------------------------------------------*/
 
 #define DEFAULT_LEFT "smenu spacing4 launchers spacing8 window-list"
 #define DEFAULT_RIGHT "ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse micpulse spacing2 clock spacing2 power spacing2"
 
 #define NUM_WIDGETS 14
+
+/*----------------------------------------------------------------------------*/
+/* Global data */
+/*----------------------------------------------------------------------------*/
+
+static GtkListStore *widgets;
+static GtkTreeModel *filt[3], *sort[3];
+static GtkWidget *tv[3];
+static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *sup, *sdn;
+static int hand[3];
+static gboolean found;
+static char sbuf[32];
+
 char *wids[NUM_WIDGETS] = {
     "bluetooth",
     "clock",
@@ -32,6 +68,21 @@ char *wids[NUM_WIDGETS] = {
     "volumepulse",
     "window-list"
 };
+
+/*----------------------------------------------------------------------------*/
+/* Function prototypes */
+/*----------------------------------------------------------------------------*/
+
+static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+
+/*----------------------------------------------------------------------------*/
+/* Private functions */
+/*----------------------------------------------------------------------------*/
+
+/* Helper function to get the displayed name for a particular widget */
 
 static const char *display_name (char *str)
 {
@@ -65,18 +116,7 @@ static const char *display_name (char *str)
     return _("<Unknown>");
 }
 
-static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
-{
-    int index;
-
-    gtk_tree_model_get (model, iter, 2, &index, -1);
-
-    if ((long) data > 0 && index > 0) return TRUE;
-    if ((long) data < 0 && index < 0) return TRUE;
-    if ((long) data == 0 && index == 0) return TRUE;
-
-    return FALSE;
-}
+/* Helper function to locate the currently-highlighted widget */
 
 static int selection (void)
 {
@@ -90,6 +130,8 @@ static int selection (void)
 
     return 0;
 }
+
+/* Enable or disable buttons according to current highlight */
 
 static void update_buttons (void)
 {
@@ -138,21 +180,7 @@ static void update_buttons (void)
     }
 }
 
-static void unselect (GtkTreeView *, gpointer data)
-{
-    int count;
-
-    for (count = 0; count < 3; count++)
-    {
-        if ((long) data + count == 1) continue;
-
-        g_signal_handler_block (tv[count], hand[count]);
-        gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[count])));
-        g_signal_handler_unblock (tv[count], hand[count]);
-    }
-
-    update_buttons ();
-}
+/* Add the currently-highlighted widget to the left or right side, depending on the value of data */
 
 static void add_widget (GtkButton *, gpointer data)
 {
@@ -169,7 +197,11 @@ static void add_widget (GtkButton *, gpointer data)
         gtk_tree_model_get (mod, &iter, 1, &type, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1]), &citer, &siter);
+
+        // just add to the bottom of the list
         index = gtk_tree_model_iter_n_children (filt[1 - lorr], NULL);
+
+        // change index for anything other than a space; space needs to be created
         if (strncmp (type, "spacing", 7))
             gtk_list_store_set (widgets, &citer, 2, lorr * (index + 1), -1);
         else
@@ -178,9 +210,38 @@ static void add_widget (GtkButton *, gpointer data)
     }
 }
 
-static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
+/* Remove the currently-highlighted widget */
+
+static void remove_widget (GtkButton *, gpointer)
 {
-    // if index > data, subtract 1
+    GtkTreeSelection *sel;
+    GtkTreeModel *mod;
+    GtkTreeIter iter, siter, citer;
+    int index, lorr = selection ();
+    char *type;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
+    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
+    {
+        gtk_tree_model_get (mod, &iter, 1, &type, 2, &index, -1);
+        gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
+
+        // change index for anything other than a space; space needs to be deleted
+        if (strncmp (type, "spacing", 7))
+            gtk_list_store_set (widgets, &citer, 2, 0, -1);
+        else
+            gtk_list_store_remove (widgets, &citer);
+        g_free (type);
+    }
+
+    // re-number the widgets in the list below the one removed
+    gtk_tree_model_foreach (filt[1 - lorr], renumber, (void *)((long) index));
+}
+
+static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
+{
+    // if index > data, subtract 1 from index
     GtkTreeIter citer;
     int index;
 
@@ -198,59 +259,7 @@ static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoi
     return FALSE;
 }
 
-static void remove_widget (GtkButton *, gpointer)
-{
-    GtkTreeSelection *sel;
-    GtkTreeModel *mod;
-    GtkTreeIter iter, siter, citer;
-    int index, lorr = selection ();
-    char *type;
-
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
-    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
-    {
-        gtk_tree_model_get (mod, &iter, 1, &type, 2, &index, -1);
-        gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
-        if (strncmp (type, "spacing", 7))
-            gtk_list_store_set (widgets, &citer, 2, 0, -1);
-        else
-            gtk_list_store_remove (widgets, &citer);
-    }
-
-    // re-number the widgets in the list....
-    gtk_tree_model_foreach (filt[1 - lorr], renum, (void *)((long) index));
-}
-
-static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
-{
-    // find index - 1, make it index
-    GtkTreeIter citer;
-    int index;
-    gtk_tree_model_get (mod, iter, 2, &index, -1);
-    if (index == ((long) data) - 1)
-    {
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
-        gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
-        return TRUE;
-    }
-    return FALSE;
-}
-
-static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
-{
-    // find index + 1, make it index
-    GtkTreeIter citer;
-    int index;
-    gtk_tree_model_get (mod, iter, 2, &index, -1);
-    if (index == ((long) data) + 1)
-    {
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
-        gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
-        return TRUE;
-    }
-    return FALSE;
-}
+/* Move the currently-highlighted widget left or right */
 
 static void move_widget (GtkButton *, gpointer data)
 {
@@ -266,6 +275,7 @@ static void move_widget (GtkButton *, gpointer data)
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
 
+        // check not trying to move past end of list
         if (dir == 1)
         {
             if (index == lorr) return;
@@ -275,6 +285,7 @@ static void move_widget (GtkButton *, gpointer data)
             if (index == lorr * gtk_tree_model_iter_n_children (filt[1 - lorr], NULL)) return;
         }
 
+        // to move, swap the index of the widget moved with that of the adjacent widget
         if (dir == lorr)
         {
             gtk_tree_model_foreach (filt[1 - lorr], up, (void *)((long) index));
@@ -289,6 +300,38 @@ static void move_widget (GtkButton *, gpointer data)
         update_buttons ();
     }
 }
+
+static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
+{
+    // find list entry with index = data - 1, make it data
+    GtkTreeIter citer;
+    int index;
+    gtk_tree_model_get (mod, iter, 2, &index, -1);
+    if (index == ((long) data) - 1)
+    {
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
+        gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
+{
+    // find list entry with index = data + 1, make it data
+    GtkTreeIter citer;
+    int index;
+    gtk_tree_model_get (mod, iter, 2, &index, -1);
+    if (index == ((long) data) + 1)
+    {
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
+        gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+/* Change the width of the currently-highlighted space widget */
 
 static void change_space (GtkButton *, gpointer data)
 {
@@ -307,42 +350,36 @@ static void change_space (GtkButton *, gpointer data)
 
         if (!strncmp (type, "spacing", 7))
         {
+            // read the current spacing
             sscanf (type, "spacing%d", &index);
             g_free (type);
 
+            // increment or decrement, pegging at 1
             index += dir;
             if (index < 1) index = 1;
 
-            type = g_strdup_printf ("spacing%d\n", index);
-
+            // update both the widget type and the displayed name
+            type = g_strdup_printf ("spacing%d", index);
             gtk_list_store_set (widgets, &citer, 0, display_name (type), 1, type, -1);
         }
         g_free (type);
 
         update_buttons ();
     }
- }
-
-static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
-{
-    char *type;
-    gtk_tree_model_get (mod, iter, 1, &type, -1);
-    if (!g_strcmp0 (data, type))
-    {
-        found = TRUE;
-        return TRUE;
-    }
-    else return FALSE;
 }
 
-void read_config (void)
+/* Read in config from local configuration file, or use default */
+
+static void read_config (void)
 {
-    GKeyFile *kf;
     char *lvalue, *rvalue, *token;
     int pos;
+
+    // construct the file path
     char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
 
-    kf = g_key_file_new ();
+    // read in data from file to a key file
+    GKeyFile *kf = g_key_file_new ();
     if (g_key_file_load_from_file (kf, user_file, 0, NULL))
     {
         lvalue = g_key_file_get_string (kf, "panel", "widgets_left", NULL);
@@ -357,6 +394,7 @@ void read_config (void)
         rvalue = g_strdup (DEFAULT_RIGHT);
     }
 
+    // add each space-separated widget from the lines in the file to the list store
     pos = 1;
     token = strtok (lvalue, " ");
     while (token)
@@ -378,6 +416,7 @@ void read_config (void)
     g_key_file_free (kf);
     g_free (user_file);
 
+    // add any unused widgets to the list store so they can be added by the user
     for (pos = 0; pos < NUM_WIDGETS; pos++)
     {
         found = FALSE;
@@ -387,21 +426,32 @@ void read_config (void)
     gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing0"), 1, "spacing0", 2, 0, -1);
 }
 
+static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
+{
+    char *type;
+    gtk_tree_model_get (mod, iter, 1, &type, -1);
+    if (!g_strcmp0 (data, type)) found = TRUE;
+    g_free (type);
+    return found;
+}
+
+/* Write config to local configuration file */
+
 static void write_config (void)
 {
     GtkTreeIter iter;
     char *str;
     char config[1000];
-    GKeyFile *kf;
     gsize len;
 
     // construct the file path
     char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
 
     // read in data from file to a key file
-    kf = g_key_file_new ();
+    GKeyFile *kf = g_key_file_new ();
     g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
+    // iterate through the two tree models, concatenating widget names to a space-separated string
     config[0] = 0;
     if (gtk_tree_model_get_iter_first (sort[0], &iter))
     {
@@ -439,16 +489,56 @@ static void write_config (void)
     g_free (user_file);
 }
 
+/* Filter function used by tree models to display widgets in correct places */
+
+static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
+{
+    int index;
+
+    gtk_tree_model_get (model, iter, 2, &index, -1);
+
+    if ((long) data > 0 && index > 0) return TRUE;
+    if ((long) data < 0 && index < 0) return TRUE;
+    if ((long) data == 0 && index == 0) return TRUE;
+
+    return FALSE;
+}
+
+/* Handler for cursor-changed signal to remove highlights in other tree views */
+
+static void unselect (GtkTreeView *, gpointer data)
+{
+    int count;
+
+    for (count = 0; count < 3; count++)
+    {
+        if ((long) data + count == 1) continue;
+
+        g_signal_handler_block (tv[count], hand[count]);
+        gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[count])));
+        g_signal_handler_unblock (tv[count], hand[count]);
+    }
+
+    update_buttons ();
+}
+
+/*----------------------------------------------------------------------------*/
+/* Public API */
+/*----------------------------------------------------------------------------*/
+
 void open_config_dialog (void)
 {
     GtkBuilder *builder;
     GtkWidget *dlg;
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
+    int i;
 
     textdomain (GETTEXT_PACKAGE);
 
+    // create the list store for widgets
     widgets = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT);
 
+    // build the dialog
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
     dlg = (GtkWidget *) gtk_builder_get_object (builder, "config_dlg");
     tv[0] = (GtkWidget *) gtk_builder_get_object (builder, "left_tv");
@@ -462,31 +552,36 @@ void open_config_dialog (void)
     sup = (GtkWidget *) gtk_builder_get_object (builder, "spacei_btn");
     sdn = (GtkWidget *) gtk_builder_get_object (builder, "spaced_btn");
 
+    // read in the current configuration
     read_config ();
 
-    filt[0] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
+    // set up filtering and sorting for the tree views
+    for (i = 0; i < 3; i++)
+    {
+        filt[i] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
+        sort[i] = gtk_tree_model_sort_new_with_model (filt[i]);
+    }
+
     gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[0]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 1, NULL);
-    sort[0] = gtk_tree_model_sort_new_with_model (filt[0]);
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[0]), 2, GTK_SORT_ASCENDING);
 
-    filt[1] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
     gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[1]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 0, NULL);
-    sort[1] = gtk_tree_model_sort_new_with_model (filt[1]);
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[1]), 0, GTK_SORT_ASCENDING);
 
-    filt[2] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
     gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[2]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) -1, NULL);
-    sort[2] = gtk_tree_model_sort_new_with_model (filt[2]);
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[2]), 2, GTK_SORT_DESCENDING);
 
-    gtk_tree_view_set_model (GTK_TREE_VIEW (tv[0]), sort[0]);
-    gtk_tree_view_set_model (GTK_TREE_VIEW (tv[1]), sort[1]);
-    gtk_tree_view_set_model (GTK_TREE_VIEW (tv[2]), sort[2]);
+    for (i = 0; i < 3; i++)
+    {
+        gtk_tree_view_set_model (GTK_TREE_VIEW (tv[i]), sort[i]);
+        hand[i] = g_signal_connect (tv[i], "cursor-changed", G_CALLBACK (unselect), (void *)((long)(1 - i)));
+    }
 
-    hand[0] = g_signal_connect (tv[0], "cursor-changed", G_CALLBACK (unselect), (void *) 1);
-    hand[1] = g_signal_connect (tv[1], "cursor-changed", G_CALLBACK (unselect), (void *) 0);
-    hand[2] = g_signal_connect (tv[2], "cursor-changed", G_CALLBACK (unselect), (void *) -1);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[0]), -1, _("Left"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[1]), -1, _("Available"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[2]), -1, _("Right"), trend, "text", 0, NULL);
 
+    // connect buttton handlers
     g_signal_connect (ladd, "clicked", G_CALLBACK (add_widget), (void *) 1);
     g_signal_connect (radd, "clicked", G_CALLBACK (add_widget), (void *) -1);
 
@@ -498,16 +593,15 @@ void open_config_dialog (void)
     g_signal_connect (sup, "clicked", G_CALLBACK (change_space), (void *) 1);
     g_signal_connect (sdn, "clicked", G_CALLBACK (change_space), (void *) -1);
 
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[0]), -1, _("Left"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[1]), -1, _("Available"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[2]), -1, _("Right"), trend, "text", 0, NULL);
-
     gtk_window_set_default_size (GTK_WINDOW(dlg), 500, 300);
 
+    // run the dialog
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
     {
         write_config ();
     }
-
     gtk_widget_destroy (dlg);
 }
+
+/* End of file */
+/*----------------------------------------------------------------------------*/
