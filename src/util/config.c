@@ -593,7 +593,7 @@ void open_config_dialog (void)
     g_signal_connect (sup, "clicked", G_CALLBACK (change_space), (void *) 1);
     g_signal_connect (sdn, "clicked", G_CALLBACK (change_space), (void *) -1);
 
-    gtk_window_set_default_size (GTK_WINDOW(dlg), 500, 300);
+    gtk_window_set_default_size (GTK_WINDOW (dlg), 500, 300);
 
     // run the dialog
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
