@@ -209,18 +209,17 @@ static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoi
     return FALSE;
 }
 
-static gboolean sel_in_left (void)
+static int selection (void)
 {
-    GtkTreeSelection *sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-    if (gtk_tree_selection_get_selected (sel, &sleft, NULL)) return TRUE;
-    return FALSE;
-}
+    GtkTreeSelection *sel;
 
-static gboolean sel_in_right (void)
-{
-    GtkTreeSelection *sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-    if (gtk_tree_selection_get_selected (sel, &sright, NULL)) return TRUE;
-    return FALSE;
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+    if (gtk_tree_selection_get_selected (sel, &sleft, NULL)) return 1;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+    if (gtk_tree_selection_get_selected (sel, &sright, NULL)) return -1;
+
+    return 0;
 }
 
 static void rem_widget (GtkButton *, gpointer)
@@ -231,17 +230,16 @@ static void rem_widget (GtkButton *, gpointer)
     int index;
     char *type;
 
-    if (sel_in_left ())
+    switch (selection ())
     {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-        fmod = fleft;
+        case 1 :    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+                    fmod = fleft;
+                    break;
+        case -1 :   sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+                    fmod = fright;
+                    break;
+        default :   return;
     }
-    else if (sel_in_right ())
-    {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-        fmod = fright;
-    }
-    else return;
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
@@ -293,21 +291,18 @@ static void move_widget (GtkButton *, gpointer data)
     GtkTreeSelection *sel;
     GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
-    int index, lorr;
+    int index, lorr = selection ();
 
-    if (sel_in_left ())
+    switch (lorr)
     {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-        fmod = fleft;
-        lorr = 1;
+        case 1 :    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+                    fmod = fleft;
+                    break;
+        case -1 :   sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+                    fmod = fright;
+                    break;
+        default :   return;
     }
-    else if (sel_in_right ())
-    {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-        fmod = fright;
-        lorr = -1;
-    }
-    else return;
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
@@ -359,20 +354,16 @@ static void mod_space (GtkButton *, gpointer data)
     int index;
     char *type;
 
-    // find the selected row
-    if (sel_in_left ())
+    switch (selection ())
     {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-        mod = sleft;
-        fmod = fleft;
+        case 1 :    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+                    fmod = fleft;
+                    break;
+        case -1 :   sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+                    fmod = fright;
+                    break;
+        default :   return;
     }
-    else if (sel_in_right ())
-    {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-        mod = sright;
-        fmod = fright;
-    }
-    else return;
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
