@@ -6,7 +6,7 @@
 
 GtkListStore *widgets;
 GtkWidget *ltv, *ctv, *rtv;
-GtkWidget *ladd, *lrem, *radd, *rrem, *lup, *ldn, *rup, *rdn, *sup, *sdn;
+GtkWidget *ladd, *lrem, *radd, *rrem, *wup, *wdn, *sup, *sdn;
 GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright, *scent;
 int lh, ch, rh;
 gboolean found;
@@ -105,10 +105,8 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_widget_set_sensitive (radd, FALSE);
                     gtk_widget_set_sensitive (lrem, nitems > 0);
                     gtk_widget_set_sensitive (rrem, FALSE);
-                    gtk_widget_set_sensitive (lup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
-                    gtk_widget_set_sensitive (ldn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
-                    gtk_widget_set_sensitive (rup, FALSE);
-                    gtk_widget_set_sensitive (rdn, FALSE);
+                    gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
                     break;
 
         case  0 :   g_signal_handler_block (ltv, lh);
@@ -123,10 +121,8 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_widget_set_sensitive (radd, nitems > 0);
                     gtk_widget_set_sensitive (lrem, FALSE);
                     gtk_widget_set_sensitive (rrem, FALSE);
-                    gtk_widget_set_sensitive (lup, FALSE);
-                    gtk_widget_set_sensitive (ldn, FALSE);
-                    gtk_widget_set_sensitive (rup, FALSE);
-                    gtk_widget_set_sensitive (rdn, FALSE);
+                    gtk_widget_set_sensitive (wup, FALSE);
+                    gtk_widget_set_sensitive (wdn, FALSE);
                     break;
 
         case -1 :   g_signal_handler_block (ltv, lh);
@@ -145,10 +141,8 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_widget_set_sensitive (radd, FALSE);
                     gtk_widget_set_sensitive (lrem, FALSE);
                     gtk_widget_set_sensitive (rrem, nitems > 0);
-                    gtk_widget_set_sensitive (lup, FALSE);
-                    gtk_widget_set_sensitive (ldn, FALSE);
-                    gtk_widget_set_sensitive (rup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
-                    gtk_widget_set_sensitive (rdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
                     break;
     }
 
@@ -291,7 +285,7 @@ static void move_widget (GtkButton *, gpointer data)
     GtkTreeSelection *sel;
     GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
-    int index, lorr = selection ();
+    int index, lorr = selection (), dir = (long) data == 1 ? 1 : -1;
 
     switch (lorr)
     {
@@ -310,7 +304,7 @@ static void move_widget (GtkButton *, gpointer data)
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
 
-        if ((long) data == 1)
+        if (dir == 1)
         {
             if (index == lorr) return;
         }
@@ -319,7 +313,7 @@ static void move_widget (GtkButton *, gpointer data)
             if (index == lorr * gtk_tree_model_iter_n_children (fmod, NULL)) return;
         }
 
-        if ((long) data == lorr)
+        if (dir == lorr)
         {
             gtk_tree_model_foreach (fmod, up, (void *) index);
             gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
@@ -339,8 +333,8 @@ static void mod_space (GtkButton *, gpointer data)
     GtkTreeSelection *sel;
     GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
-    int index;
     char *type;
+    int index, dir = (long) data == 1 ? 1 : -1;
 
     switch (selection ())
     {
@@ -364,7 +358,7 @@ static void mod_space (GtkButton *, gpointer data)
             sscanf (type, "spacing%d", &index);
             g_free (type);
 
-            index += (long) data;
+            index += dir;
             if (index < 1) index = 1;
 
             type = g_strdup_printf ("spacing%d\n", index);
@@ -458,10 +452,8 @@ void open_config_dialog (void)
     radd = (GtkWidget *) gtk_builder_get_object (builder, "add_r_btn");
     lrem = (GtkWidget *) gtk_builder_get_object (builder, "rem_l_btn");
     rrem = (GtkWidget *) gtk_builder_get_object (builder, "rem_r_btn");
-    lup = (GtkWidget *) gtk_builder_get_object (builder, "up_l_btn");
-    rup = (GtkWidget *) gtk_builder_get_object (builder, "up_r_btn");
-    ldn = (GtkWidget *) gtk_builder_get_object (builder, "dn_l_btn");
-    rdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_r_btn");
+    wup = (GtkWidget *) gtk_builder_get_object (builder, "up_btn");
+    wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
     sup = (GtkWidget *) gtk_builder_get_object (builder, "spacei_btn");
     sdn = (GtkWidget *) gtk_builder_get_object (builder, "spaced_btn");
 
@@ -496,10 +488,8 @@ void open_config_dialog (void)
     g_signal_connect (lrem, "clicked", G_CALLBACK (rem_widget), NULL);
     g_signal_connect (rrem, "clicked", G_CALLBACK (rem_widget), NULL);
 
-    g_signal_connect (lup, "clicked", G_CALLBACK (move_widget), (void *) 1);
-    g_signal_connect (rup, "clicked", G_CALLBACK (move_widget), (void *) 1);
-    g_signal_connect (ldn, "clicked", G_CALLBACK (move_widget), (void *) -1);
-    g_signal_connect (rdn, "clicked", G_CALLBACK (move_widget), (void *) -1);
+    g_signal_connect (wup, "clicked", G_CALLBACK (move_widget), (void *) 1);
+    g_signal_connect (wdn, "clicked", G_CALLBACK (move_widget), (void *) -1);
 
     g_signal_connect (sup, "clicked", G_CALLBACK (mod_space), (void *) 1);
     g_signal_connect (sdn, "clicked", G_CALLBACK (mod_space), (void *) -1);
