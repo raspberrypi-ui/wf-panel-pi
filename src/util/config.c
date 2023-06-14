@@ -312,36 +312,24 @@ static void move_widget (GtkButton *, gpointer data)
 
         if ((long) data == 1)
         {
-            // up
-            if (lorr == 1)
-            {
-                if (index == 1) return;
-                gtk_tree_model_foreach (fmod, up, (void *) index);
-                gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
-            }
-            else
-            {
-                if (index == -1) return;
-                gtk_tree_model_foreach (fmod, down, (void *) index);
-                gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
-            }
+            if (index == lorr) return;
         }
         else
         {
-            // down
-            if (lorr == 1)
-            {
-                if (index == gtk_tree_model_iter_n_children (fmod, NULL)) return;
-                gtk_tree_model_foreach (fmod, down, (void *) index);
-                gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
-            }
-            else
-            {
-                if (index == - gtk_tree_model_iter_n_children (fmod, NULL)) return;
-                gtk_tree_model_foreach (fmod, up, (void *) index);
-                gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
-            }
+            if (index == lorr * gtk_tree_model_iter_n_children (fmod, NULL)) return;
         }
+
+        if ((long) data == lorr)
+        {
+            gtk_tree_model_foreach (fmod, up, (void *) index);
+            gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+        }
+        else
+        {
+            gtk_tree_model_foreach (fmod, down, (void *) index);
+            gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+        }
+
         unselect (NULL, (void *) lorr);
     }
 }
@@ -376,8 +364,7 @@ static void mod_space (GtkButton *, gpointer data)
             sscanf (type, "spacing%d", &index);
             g_free (type);
 
-            if ((long) data == 1) index++;
-            else index--;
+            index += (long) data;
             if (index < 1) index = 1;
 
             type = g_strdup_printf ("spacing%d\n", index);
