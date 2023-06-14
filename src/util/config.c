@@ -5,9 +5,9 @@
 #include "config.h"
 
 GtkListStore *widgets;
-GtkWidget *ltv, *ctv, *rtv;
+GtkTreeModel *filt[3], *sort[3];
+GtkWidget *tv[3];
 GtkWidget *ladd, *rem, *radd, *wup, *wdn, *sup, *sdn;
-GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright, *scent;
 int lh, ch, rh;
 gboolean found;
 char sbuf[32];
@@ -84,11 +84,11 @@ static int selection (void)
 {
     GtkTreeSelection *sel;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-    if (gtk_tree_selection_get_selected (sel, &sleft, NULL)) return 1;
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[0]));
+    if (gtk_tree_selection_get_selected (sel, &sort[0], NULL)) return 1;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-    if (gtk_tree_selection_get_selected (sel, &sright, NULL)) return -1;
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[2]));
+    if (gtk_tree_selection_get_selected (sel, &sort[2], NULL)) return -1;
 
     return 0;
 }
@@ -104,7 +104,7 @@ static void update_buttons (void)
 
     if (lorr == 0)
     {
-        nitems = gtk_tree_model_iter_n_children (fcent, NULL);
+        nitems = gtk_tree_model_iter_n_children (filt[1], NULL);
         gtk_widget_set_sensitive (ladd, nitems > 0);
         gtk_widget_set_sensitive (radd, nitems > 0);
         gtk_widget_set_sensitive (rem, FALSE);
@@ -118,8 +118,8 @@ static void update_buttons (void)
         gtk_widget_set_sensitive (ladd, FALSE);
         gtk_widget_set_sensitive (radd, FALSE);
 
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (lorr == 1 ? ltv : rtv));
-        nitems = gtk_tree_model_iter_n_children (lorr == 1 ? fleft : fright, NULL);
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
+        nitems = gtk_tree_model_iter_n_children (filt[1 - lorr], NULL);
         toppath = gtk_tree_path_new_from_string ("0");
         pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
         endpath = gtk_tree_path_new_from_string (pstr);
@@ -144,28 +144,28 @@ static void unselect (GtkTreeView *, gpointer data)
 {
     switch ((long) data)
     {
-        case  1 :   g_signal_handler_block (ctv, ch);
-                    g_signal_handler_block (rtv, rh);
-                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (ctv)));
-                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv)));
-                    g_signal_handler_unblock (ctv, ch);
-                    g_signal_handler_unblock (rtv, rh);
+        case  1 :   g_signal_handler_block (tv[1], ch);
+                    g_signal_handler_block (tv[2], rh);
+                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1])));
+                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[2])));
+                    g_signal_handler_unblock (tv[1], ch);
+                    g_signal_handler_unblock (tv[2], rh);
                     break;
 
-        case  0 :   g_signal_handler_block (ltv, lh);
-                    g_signal_handler_block (rtv, rh);
-                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv)));
-                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv)));
-                    g_signal_handler_unblock (ltv, lh);
-                    g_signal_handler_unblock (rtv, rh);
+        case  0 :   g_signal_handler_block (tv[0], lh);
+                    g_signal_handler_block (tv[2], rh);
+                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[0])));
+                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[2])));
+                    g_signal_handler_unblock (tv[0], lh);
+                    g_signal_handler_unblock (tv[2], rh);
                     break;
 
-        case -1 :   g_signal_handler_block (ltv, lh);
-                    g_signal_handler_block (ctv, ch);
-                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv)));
-                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (ctv)));
-                    g_signal_handler_unblock (ltv, lh);
-                    g_signal_handler_unblock (ctv, ch);
+        case -1 :   g_signal_handler_block (tv[0], lh);
+                    g_signal_handler_block (tv[1], ch);
+                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[0])));
+                    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1])));
+                    g_signal_handler_unblock (tv[0], lh);
+                    g_signal_handler_unblock (tv[1], ch);
                     break;
     }
 
@@ -180,14 +180,14 @@ static void add_widget (GtkButton *, gpointer data)
     int index, dir = (long) data == 1 ? 1 : -1;;
     char *type;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ctv));
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1]));
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, 1, &type, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fcent), &citer, &siter);
-        index = gtk_tree_model_iter_n_children (dir == 1 ? fleft : fright, NULL);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1]), &citer, &siter);
+        index = gtk_tree_model_iter_n_children (dir == 1 ? filt[0] : filt[2], NULL);
         if (strncmp (type, "spacing", 7))
             gtk_list_store_set (widgets, &citer, 2, dir * (index + 1), -1);
         else
@@ -219,27 +219,17 @@ static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoi
 static void rem_widget (GtkButton *, gpointer)
 {
     GtkTreeSelection *sel;
-    GtkTreeModel *mod, *fmod;
+    GtkTreeModel *mod;
     GtkTreeIter iter, siter, citer;
-    int index;
+    int index, lorr = selection ();
     char *type;
 
-    switch (selection ())
-    {
-        case 1 :    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-                    fmod = fleft;
-                    break;
-        case -1 :   sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-                    fmod = fright;
-                    break;
-        default :   return;
-    }
-
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, 1, &type, 2, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
         if (strncmp (type, "spacing", 7))
             gtk_list_store_set (widgets, &citer, 2, 0, -1);
         else
@@ -247,7 +237,7 @@ static void rem_widget (GtkButton *, gpointer)
     }
 
     // re-number the widgets in the list....
-    gtk_tree_model_foreach (fmod, renum, (void *)((long) index));
+    gtk_tree_model_foreach (filt[1 - lorr], renum, (void *)((long) index));
 }
 
 static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
@@ -283,26 +273,16 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 static void move_widget (GtkButton *, gpointer data)
 {
     GtkTreeSelection *sel;
-    GtkTreeModel *mod, *fmod;
+    GtkTreeModel *mod;
     GtkTreeIter iter, siter, citer;
     int index, lorr = selection (), dir = (long) data == 1 ? 1 : -1;
 
-    switch (lorr)
-    {
-        case 1 :    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-                    fmod = fleft;
-                    break;
-        case -1 :   sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-                    fmod = fright;
-                    break;
-        default :   return;
-    }
-
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, 2, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
 
         if (dir == 1)
         {
@@ -310,17 +290,17 @@ static void move_widget (GtkButton *, gpointer data)
         }
         else
         {
-            if (index == lorr * gtk_tree_model_iter_n_children (fmod, NULL)) return;
+            if (index == lorr * gtk_tree_model_iter_n_children (filt[1 - lorr], NULL)) return;
         }
 
         if (dir == lorr)
         {
-            gtk_tree_model_foreach (fmod, up, (void *)((long) index));
+            gtk_tree_model_foreach (filt[1 - lorr], up, (void *)((long) index));
             gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
         }
         else
         {
-            gtk_tree_model_foreach (fmod, down, (void *)((long) index));
+            gtk_tree_model_foreach (filt[1 - lorr], down, (void *)((long) index));
             gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
         }
 
@@ -331,27 +311,17 @@ static void move_widget (GtkButton *, gpointer data)
 static void mod_space (GtkButton *, gpointer data)
 {
     GtkTreeSelection *sel;
-    GtkTreeModel *mod, *fmod;
+    GtkTreeModel *mod;
     GtkTreeIter iter, siter, citer;
     int index, lorr = selection (), dir = (long) data == 1 ? 1 : -1;
     char *type;
 
-    switch (lorr)
-    {
-        case 1 :    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-                    fmod = fleft;
-                    break;
-        case -1 :   sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-                    fmod = fright;
-                    break;
-        default :   return;
-    }
-
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, 1, &type, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
 
         if (!strncmp (type, "spacing", 7))
         {
@@ -447,9 +417,9 @@ void open_config_dialog (void)
 
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
     dlg = (GtkWidget *) gtk_builder_get_object (builder, "config_dlg");
-    ltv = (GtkWidget *) gtk_builder_get_object (builder, "left_tv");
-    ctv = (GtkWidget *) gtk_builder_get_object (builder, "cent_tv");
-    rtv = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
+    tv[0] = (GtkWidget *) gtk_builder_get_object (builder, "left_tv");
+    tv[1] = (GtkWidget *) gtk_builder_get_object (builder, "cent_tv");
+    tv[2] = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
     ladd = (GtkWidget *) gtk_builder_get_object (builder, "add_l_btn");
     radd = (GtkWidget *) gtk_builder_get_object (builder, "add_r_btn");
     rem = (GtkWidget *) gtk_builder_get_object (builder, "rem_btn");
@@ -460,28 +430,28 @@ void open_config_dialog (void)
 
     init_config_list ();
 
-    fleft = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
-    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (fleft), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 1, NULL);
-    sleft = gtk_tree_model_sort_new_with_model (fleft);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sleft), 2, GTK_SORT_ASCENDING);
+    filt[0] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
+    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[0]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 1, NULL);
+    sort[0] = gtk_tree_model_sort_new_with_model (filt[0]);
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[0]), 2, GTK_SORT_ASCENDING);
 
-    fcent = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
-    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (fcent), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 0, NULL);
-    scent = gtk_tree_model_sort_new_with_model (fcent);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (scent), 0, GTK_SORT_ASCENDING);
+    filt[1] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
+    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[1]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 0, NULL);
+    sort[1] = gtk_tree_model_sort_new_with_model (filt[1]);
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[1]), 0, GTK_SORT_ASCENDING);
 
-    fright = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
-    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (fright), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) -1, NULL);
-    sright = gtk_tree_model_sort_new_with_model (fright);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sright), 2, GTK_SORT_DESCENDING);
+    filt[2] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
+    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[2]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) -1, NULL);
+    sort[2] = gtk_tree_model_sort_new_with_model (filt[2]);
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[2]), 2, GTK_SORT_DESCENDING);
 
-    gtk_tree_view_set_model (GTK_TREE_VIEW (ltv), sleft);
-    gtk_tree_view_set_model (GTK_TREE_VIEW (ctv), scent);
-    gtk_tree_view_set_model (GTK_TREE_VIEW (rtv), sright);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (tv[0]), sort[0]);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (tv[1]), sort[1]);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (tv[2]), sort[2]);
 
-    lh = g_signal_connect (ltv, "cursor-changed", G_CALLBACK (unselect), (void *) 1);
-    ch = g_signal_connect (ctv, "cursor-changed", G_CALLBACK (unselect), (void *) 0);
-    rh = g_signal_connect (rtv, "cursor-changed", G_CALLBACK (unselect), (void *) -1);
+    lh = g_signal_connect (tv[0], "cursor-changed", G_CALLBACK (unselect), (void *) 1);
+    ch = g_signal_connect (tv[1], "cursor-changed", G_CALLBACK (unselect), (void *) 0);
+    rh = g_signal_connect (tv[2], "cursor-changed", G_CALLBACK (unselect), (void *) -1);
 
     g_signal_connect (ladd, "clicked", G_CALLBACK (add_widget), (void *) 1);
     g_signal_connect (radd, "clicked", G_CALLBACK (add_widget), (void *) -1);
@@ -494,9 +464,9 @@ void open_config_dialog (void)
     g_signal_connect (sup, "clicked", G_CALLBACK (mod_space), (void *) 1);
     g_signal_connect (sdn, "clicked", G_CALLBACK (mod_space), (void *) -1);
 
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ltv), -1, _("Left"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ctv), -1, _("Available"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (rtv), -1, _("Right"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[0]), -1, _("Left"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[1]), -1, _("Available"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[2]), -1, _("Right"), trend, "text", 0, NULL);
 
     gtk_window_set_default_size (GTK_WINDOW(dlg), 500, 300);
 
@@ -516,30 +486,30 @@ void open_config_dialog (void)
         g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
         config[0] = 0;
-        if (gtk_tree_model_get_iter_first (sleft, &iter))
+        if (gtk_tree_model_get_iter_first (sort[0], &iter))
         {
             do
             {
-                gtk_tree_model_get (sleft, &iter, 1, &str, -1);
+                gtk_tree_model_get (sort[0], &iter, 1, &str, -1);
                 strcat (config, str);
                 strcat (config, " ");
                 g_free (str);
             }
-            while (gtk_tree_model_iter_next (sleft, &iter));
+            while (gtk_tree_model_iter_next (sort[0], &iter));
         }
         g_key_file_set_string (kf, "panel", "widgets_left", config);
 
         config[0] = 0;
-        if (gtk_tree_model_get_iter_first (sright, &iter))
+        if (gtk_tree_model_get_iter_first (sort[2], &iter))
         {
             do
             {
-                gtk_tree_model_get (sright, &iter, 1, &str, -1);
+                gtk_tree_model_get (sort[2], &iter, 1, &str, -1);
                 strcat (config, str);
                 strcat (config, " ");
                 g_free (str);
             }
-            while (gtk_tree_model_iter_next (sright, &iter));
+            while (gtk_tree_model_iter_next (sort[2], &iter));
         }
         g_key_file_set_string (kf, "panel", "widgets_right", config);
 
