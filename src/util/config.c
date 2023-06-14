@@ -80,15 +80,68 @@ static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer
     return FALSE;
 }
 
-static void unselect (GtkTreeView *, gpointer data)
+static int selection (void)
+{
+    GtkTreeSelection *sel;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+    if (gtk_tree_selection_get_selected (sel, &sleft, NULL)) return 1;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+    if (gtk_tree_selection_get_selected (sel, &sright, NULL)) return -1;
+
+    return 0;
+}
+
+static void update_buttons (void)
 {
     GtkTreeSelection *sel;
     GtkTreePath *toppath, *endpath;
     GtkTreeModel *mod;
     GtkTreeIter iter;
-    int nitems;
+    int nitems, lorr = selection ();
     char *pstr = NULL, *type = NULL;
 
+    if (lorr == 0)
+    {
+        nitems = gtk_tree_model_iter_n_children (fcent, NULL);
+        gtk_widget_set_sensitive (ladd, nitems > 0);
+        gtk_widget_set_sensitive (radd, nitems > 0);
+        gtk_widget_set_sensitive (rem, FALSE);
+        gtk_widget_set_sensitive (wup, FALSE);
+        gtk_widget_set_sensitive (wdn, FALSE);
+        gtk_widget_set_sensitive (sup, FALSE);
+        gtk_widget_set_sensitive (sdn, FALSE);
+    }
+    else
+    {
+        gtk_widget_set_sensitive (ladd, FALSE);
+        gtk_widget_set_sensitive (radd, FALSE);
+
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (lorr == 1 ? ltv : rtv));
+        nitems = gtk_tree_model_iter_n_children (lorr == 1 ? fleft : fright, NULL);
+        toppath = gtk_tree_path_new_from_string ("0");
+        pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
+        endpath = gtk_tree_path_new_from_string (pstr);
+        g_free (pstr);
+
+        gtk_widget_set_sensitive (rem, nitems > 0);
+        gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
+        gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
+
+        if (gtk_tree_selection_get_selected (sel, &mod, &iter))
+        {
+            gtk_tree_model_get (mod, &iter, 1, &type, -1);
+            if (!sscanf (type, "spacing%d", &nitems)) nitems = 0;
+        }
+        gtk_widget_set_sensitive (sup, type && !strncmp (type, "spacing", 7));
+        gtk_widget_set_sensitive (sdn, type && !strncmp (type, "spacing", 7) && nitems > 1);
+        if (type) g_free (type);
+    }
+}
+
+static void unselect (GtkTreeView *, gpointer data)
+{
     switch ((long) data)
     {
         case  1 :   g_signal_handler_block (ctv, ch);
@@ -97,27 +150,6 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv)));
                     g_signal_handler_unblock (ctv, ch);
                     g_signal_handler_unblock (rtv, rh);
-
-                    gtk_widget_set_sensitive (ladd, FALSE);
-                    gtk_widget_set_sensitive (radd, FALSE);
-
-                    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-                    nitems = gtk_tree_model_iter_n_children (fleft, NULL);
-                    toppath = gtk_tree_path_new_from_string ("0");
-                    pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
-                    endpath = gtk_tree_path_new_from_string (pstr);
-
-                    gtk_widget_set_sensitive (rem, nitems > 0);
-                    gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
-                    gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
-
-                    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
-                    {
-                        gtk_tree_model_get (mod, &iter, 1, &type, -1);
-                        if (!sscanf (type, "spacing%d", &nitems)) nitems = 0;
-                    }
-                    gtk_widget_set_sensitive (sup, type && !strncmp (type, "spacing", 7));
-                    gtk_widget_set_sensitive (sdn, type && !strncmp (type, "spacing", 7) && nitems > 1);
                     break;
 
         case  0 :   g_signal_handler_block (ltv, lh);
@@ -126,15 +158,6 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv)));
                     g_signal_handler_unblock (ltv, lh);
                     g_signal_handler_unblock (rtv, rh);
-
-                    nitems = gtk_tree_model_iter_n_children (fcent, NULL);
-                    gtk_widget_set_sensitive (ladd, nitems > 0);
-                    gtk_widget_set_sensitive (radd, nitems > 0);
-                    gtk_widget_set_sensitive (rem, FALSE);
-                    gtk_widget_set_sensitive (wup, FALSE);
-                    gtk_widget_set_sensitive (wdn, FALSE);
-                    gtk_widget_set_sensitive (sup, FALSE);
-                    gtk_widget_set_sensitive (sdn, FALSE);
                     break;
 
         case -1 :   g_signal_handler_block (ltv, lh);
@@ -143,32 +166,10 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (ctv)));
                     g_signal_handler_unblock (ltv, lh);
                     g_signal_handler_unblock (ctv, ch);
-
-                    gtk_widget_set_sensitive (ladd, FALSE);
-                    gtk_widget_set_sensitive (radd, FALSE);
-
-                    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-                    nitems = gtk_tree_model_iter_n_children (fright, NULL);
-                    toppath = gtk_tree_path_new_from_string ("0");
-                    pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
-                    endpath = gtk_tree_path_new_from_string (pstr);
-
-                    gtk_widget_set_sensitive (rem, nitems > 0);
-                    gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
-                    gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
-
-                    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
-                    {
-                        gtk_tree_model_get (mod, &iter, 1, &type, -1);
-                        if (!sscanf (type, "spacing%d", &nitems)) nitems = 0;
-                    }
-                    gtk_widget_set_sensitive (sup, type && !strncmp (type, "spacing", 7));
-                    gtk_widget_set_sensitive (sdn, type && !strncmp (type, "spacing", 7) && nitems > 1);
                     break;
     }
 
-    if (pstr) g_free (pstr);
-    if (type) g_free (type);
+    update_buttons ();
 }
 
 static void add_widget (GtkButton *, gpointer data)
@@ -176,7 +177,7 @@ static void add_widget (GtkButton *, gpointer data)
     GtkTreeSelection *sel;
     GtkTreeModel *mod;
     GtkTreeIter iter, siter, citer;
-    int index;
+    int index, dir = (long) data == 1 ? 1 : -1;;
     char *type;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ctv));
@@ -186,22 +187,11 @@ static void add_widget (GtkButton *, gpointer data)
         gtk_tree_model_get (mod, &iter, 1, &type, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fcent), &citer, &siter);
-        if ((long) data == 1)
-        {
-            index = gtk_tree_model_iter_n_children (fleft, NULL);
-            if (strncmp (type, "spacing", 7))
-                gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
-            else
-                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing4"), 1, "spacing4", 2, index + 1, -1);
-        }
+        index = gtk_tree_model_iter_n_children (dir == 1 ? fleft : fright, NULL);
+        if (strncmp (type, "spacing", 7))
+            gtk_list_store_set (widgets, &citer, 2, dir * (index + 1), -1);
         else
-        {
-            index = gtk_tree_model_iter_n_children (fright, NULL);
-            if (strncmp (type, "spacing", 7))
-                gtk_list_store_set (widgets, &citer, 2, -index - 1, -1);
-            else
-                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing4"), 1, "spacing4", 2, -index - 1, -1);
-        }
+            gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing4"), 1, "spacing4", 2, dir * (index + 1), -1);
         g_free (type);
     }
 }
@@ -211,6 +201,7 @@ static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoi
     // if index > data, subtract 1
     GtkTreeIter citer;
     int index;
+
     gtk_tree_model_get (mod, iter, 2, &index, -1);
     if (index > 0 && index > ((long) data))
     {
@@ -223,19 +214,6 @@ static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoi
         gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
     }
     return FALSE;
-}
-
-static int selection (void)
-{
-    GtkTreeSelection *sel;
-
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-    if (gtk_tree_selection_get_selected (sel, &sleft, NULL)) return 1;
-
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-    if (gtk_tree_selection_get_selected (sel, &sright, NULL)) return -1;
-
-    return 0;
 }
 
 static void rem_widget (GtkButton *, gpointer)
@@ -346,7 +324,7 @@ static void move_widget (GtkButton *, gpointer data)
             gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
         }
 
-        unselect (NULL, (void *)((long) lorr));
+        update_buttons ();
     }
 }
 
@@ -355,8 +333,8 @@ static void mod_space (GtkButton *, gpointer data)
     GtkTreeSelection *sel;
     GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
-    char *type;
     int index, lorr = selection (), dir = (long) data == 1 ? 1 : -1;
+    char *type;
 
     switch (lorr)
     {
@@ -389,7 +367,7 @@ static void mod_space (GtkButton *, gpointer data)
         }
         g_free (type);
 
-        unselect (NULL, (void *)((long) lorr));
+        update_buttons ();
     }
  }
 
