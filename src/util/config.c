@@ -38,6 +38,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define NUM_WIDGETS 14
 
+#define COL_NAME    0
+#define COL_ID      1
+#define COL_INDEX   2
+
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
@@ -184,9 +188,13 @@ static void add_widget (GtkButton *, gpointer data)
 
         // change index for anything other than a space; space needs to be created
         if (strncmp (type, "spacing", 7))
-            gtk_list_store_set (widgets, &citer, 2, lorr * (index + 1), -1);
+            gtk_list_store_set (widgets, &citer, COL_INDEX, lorr * (index + 1), -1);
         else
-            gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing4"), 1, "spacing4", 2, lorr * (index + 1), -1);
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, display_name ("spacing4"),
+                COL_ID, "spacing4",
+                COL_INDEX, lorr * (index + 1),
+                -1);
         g_free (type);
     }
 }
@@ -210,7 +218,7 @@ static void remove_widget (GtkButton *, gpointer)
 
         // change index for anything other than a space; space needs to be deleted
         if (strncmp (type, "spacing", 7))
-            gtk_list_store_set (widgets, &citer, 2, 0, -1);
+            gtk_list_store_set (widgets, &citer, COL_INDEX, 0, -1);
         else
             gtk_list_store_remove (widgets, &citer);
         g_free (type);
@@ -230,12 +238,12 @@ static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, g
     if (index > 0 && index > ((long) data))
     {
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
-        gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+        gtk_list_store_set (widgets, &citer, COL_INDEX, index - 1, -1);
     }
     if (index < 0 && index < ((long) data))
     {
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
-        gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+        gtk_list_store_set (widgets, &citer, COL_INDEX, index + 1, -1);
     }
     return FALSE;
 }
@@ -270,12 +278,12 @@ static void move_widget (GtkButton *, gpointer data)
         if (dir == lorr)
         {
             gtk_tree_model_foreach (filt[1 - lorr], up, (void *)((long) index));
-            gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+            gtk_list_store_set (widgets, &citer, COL_INDEX, index - 1, -1);
         }
         else
         {
             gtk_tree_model_foreach (filt[1 - lorr], down, (void *)((long) index));
-            gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+            gtk_list_store_set (widgets, &citer, COL_INDEX, index + 1, -1);
         }
 
         update_buttons ();
@@ -291,7 +299,7 @@ static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointe
     if (index == ((long) data) - 1)
     {
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
-        gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+        gtk_list_store_set (widgets, &citer, COL_INDEX, index + 1, -1);
         return TRUE;
     }
     return FALSE;
@@ -306,7 +314,7 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
     if (index == ((long) data) + 1)
     {
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
-        gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+        gtk_list_store_set (widgets, &citer, COL_INDEX, index - 1, -1);
         return TRUE;
     }
     return FALSE;
@@ -341,7 +349,10 @@ static void change_space (GtkButton *, gpointer data)
 
             // update both the widget type and the displayed name
             type = g_strdup_printf ("spacing%d", index);
-            gtk_list_store_set (widgets, &citer, 0, display_name (type), 1, type, -1);
+            gtk_list_store_set (widgets, &citer,
+                COL_NAME, display_name (type),
+                COL_ID, type,
+                -1);
         }
         g_free (type);
 
@@ -396,7 +407,11 @@ static void read_config (void)
     token = strtok (lvalue, " ");
     while (token)
     {
-        gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos++, -1);
+        gtk_list_store_insert_with_values (widgets, NULL, -1,
+            COL_NAME, display_name (token),
+            COL_ID, token,
+            COL_INDEX, pos++,
+            -1);
         token = strtok (NULL, " ");
     }
 
@@ -404,7 +419,11 @@ static void read_config (void)
     token = strtok (rvalue, " ");
     while (token)
     {
-        gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos--, -1);
+        gtk_list_store_insert_with_values (widgets, NULL, -1,
+            COL_NAME, display_name (token),
+            COL_ID, token,
+            COL_INDEX, pos--,
+            -1);
         token = strtok (NULL, " ");
     }
 
@@ -418,9 +437,17 @@ static void read_config (void)
     {
         found = FALSE;
         gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) all_wids[pos]);
-        if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (all_wids[pos]), 1, all_wids[pos], 2, 0, -1);
+        if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1,
+            COL_NAME, display_name (all_wids[pos]),
+            COL_ID, all_wids[pos],
+            COL_INDEX, 0,
+            -1);
     }
-    gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing0"), 1, "spacing0", 2, 0, -1);
+    gtk_list_store_insert_with_values (widgets, NULL, -1,
+        COL_NAME, display_name ("spacing0"),
+        COL_ID, "spacing0",
+        COL_INDEX, 0,
+        -1);
 }
 
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
