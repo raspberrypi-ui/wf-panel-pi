@@ -209,7 +209,21 @@ static gboolean renum (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoi
     return FALSE;
 }
 
-static void rem_widget (GtkButton *, gpointer data)
+static gboolean sel_in_left (void)
+{
+    GtkTreeSelection *sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+    if (gtk_tree_selection_get_selected (sel, &sleft, NULL)) return TRUE;
+    return FALSE;
+}
+
+static gboolean sel_in_right (void)
+{
+    GtkTreeSelection *sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+    if (gtk_tree_selection_get_selected (sel, &sright, NULL)) return TRUE;
+    return FALSE;
+}
+
+static void rem_widget (GtkButton *, gpointer)
 {
     GtkTreeSelection *sel;
     GtkTreeModel *mod, *fmod;
@@ -217,16 +231,17 @@ static void rem_widget (GtkButton *, gpointer data)
     int index;
     char *type;
 
-    if ((long) data == 1)
+    if (sel_in_left ())
     {
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
         fmod = fleft;
     }
-    else
+    else if (sel_in_right ())
     {
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
         fmod = fright;
     }
+    else return;
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
@@ -273,23 +288,26 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
     return FALSE;
 }
 
-static void up_widget (GtkButton *, gpointer data)
+static void move_widget (GtkButton *, gpointer data)
 {
     GtkTreeSelection *sel;
     GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
-    int index;
+    int index, lorr;
 
-    if ((long) data == 1)
+    if (sel_in_left ())
     {
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
         fmod = fleft;
+        lorr = 1;
     }
-    else
+    else if (sel_in_right ())
     {
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
         fmod = fright;
+        lorr = -1;
     }
+    else return;
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
@@ -299,112 +317,84 @@ static void up_widget (GtkButton *, gpointer data)
 
         if ((long) data == 1)
         {
-            if (index == 1) return;
-            gtk_tree_model_foreach (fmod, up, (void *) index);
-            gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+            // up
+            if (lorr == 1)
+            {
+                if (index == 1) return;
+                gtk_tree_model_foreach (fmod, up, (void *) index);
+                gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+            }
+            else
+            {
+                if (index == -1) return;
+                gtk_tree_model_foreach (fmod, down, (void *) index);
+                gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+            }
         }
         else
         {
-            if (index == -1) return;
-            gtk_tree_model_foreach (fmod, down, (void *) index);
-            gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+            // down
+            if (lorr == 1)
+            {
+                if (index == gtk_tree_model_iter_n_children (fmod, NULL)) return;
+                gtk_tree_model_foreach (fmod, down, (void *) index);
+                gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
+            }
+            else
+            {
+                if (index == - gtk_tree_model_iter_n_children (fmod, NULL)) return;
+                gtk_tree_model_foreach (fmod, up, (void *) index);
+                gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
+            }
         }
-        unselect (NULL, data);
-    }
-}
-
-static void down_widget (GtkButton *, gpointer data)
-{
-    GtkTreeSelection *sel;
-    GtkTreeModel *mod, *fmod;
-    GtkTreeIter iter, siter, citer;
-    int index;
-
-    if ((long) data == 1)
-    {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-        fmod = fleft;
-    }
-    else
-    {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-        fmod = fright;
-    }
-
-    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
-    {
-        gtk_tree_model_get (mod, &iter, 2, &index, -1);
-        gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
-
-        if ((long) data == 1)
-        {
-            if (index == gtk_tree_model_iter_n_children (fmod, NULL)) return;
-            gtk_tree_model_foreach (fmod, down, (void *) index);
-            gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
-        }
-        else
-        {
-            if (index == - gtk_tree_model_iter_n_children (fmod, NULL)) return;
-            gtk_tree_model_foreach (fmod, up, (void *) index);
-            gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
-        }
-        unselect (NULL, data);
+        unselect (NULL, (void *) lorr);
     }
 }
 
 static void mod_space (GtkButton *, gpointer data)
 {
     GtkTreeSelection *sel;
-    GtkTreeModel *mod = NULL, *fmod;
+    GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
     int index;
     char *type;
 
     // find the selected row
-    if (mod == NULL)
+    if (sel_in_left ())
     {
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
-        if (gtk_tree_selection_get_selected (sel, &sleft, &iter))
-        {
-            mod = sleft;
-            fmod = fleft;
-        }
+        mod = sleft;
+        fmod = fleft;
     }
-
-    if (mod == NULL)
+    else if (sel_in_right ())
     {
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
-        if (gtk_tree_selection_get_selected (sel, &sright, &iter))
-        {
-            mod = sright;
-            fmod = fright;
-        }
+        mod = sright;
+        fmod = fright;
     }
+    else return;
 
-    if (mod == NULL) return;
-
-    // iter is now the selected row in either left or right
-    gtk_tree_model_get (mod, &iter, 1, &type, -1);
-    if (strncmp (type, "spacing", 7))
+    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
+        gtk_tree_model_get (mod, &iter, 1, &type, -1);
+        gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
+
+        if (!strncmp (type, "spacing", 7))
+        {
+            sscanf (type, "spacing%d", &index);
+            g_free (type);
+
+            if ((long) data == 1) index++;
+            else index--;
+            if (index < 1) index = 1;
+
+            type = g_strdup_printf ("spacing%d\n", index);
+
+            gtk_list_store_set (widgets, &citer, 0, display_name (type), 1, type, -1);
+        }
         g_free (type);
-        return;
     }
-    sscanf (type, "spacing%d", &index);
-    g_free (type);
-
-    gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-    gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
-
-    if ((long) data == 1) index++;
-    else index--;
-    if (index < 0) index = 0;
-
-    type = g_strdup_printf ("spacing%d\n", index);
-
-    gtk_list_store_set (widgets, &citer, 0, display_name (type), 1, type, -1);
-    g_free (type);
  }
 
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
@@ -525,13 +515,13 @@ void open_config_dialog (void)
     g_signal_connect (ladd, "clicked", G_CALLBACK (add_widget), (void *) 1);
     g_signal_connect (radd, "clicked", G_CALLBACK (add_widget), (void *) -1);
 
-    g_signal_connect (lrem, "clicked", G_CALLBACK (rem_widget), (void *) 1);
-    g_signal_connect (rrem, "clicked", G_CALLBACK (rem_widget), (void *) -1);
+    g_signal_connect (lrem, "clicked", G_CALLBACK (rem_widget), NULL);
+    g_signal_connect (rrem, "clicked", G_CALLBACK (rem_widget), NULL);
 
-    g_signal_connect (lup, "clicked", G_CALLBACK (up_widget), (void *) 1);
-    g_signal_connect (rup, "clicked", G_CALLBACK (up_widget), (void *) -1);
-    g_signal_connect (ldn, "clicked", G_CALLBACK (down_widget), (void *) 1);
-    g_signal_connect (rdn, "clicked", G_CALLBACK (down_widget), (void *) -1);
+    g_signal_connect (lup, "clicked", G_CALLBACK (move_widget), (void *) 1);
+    g_signal_connect (rup, "clicked", G_CALLBACK (move_widget), (void *) 1);
+    g_signal_connect (ldn, "clicked", G_CALLBACK (move_widget), (void *) -1);
+    g_signal_connect (rdn, "clicked", G_CALLBACK (move_widget), (void *) -1);
 
     g_signal_connect (sup, "clicked", G_CALLBACK (mod_space), (void *) 1);
     g_signal_connect (sdn, "clicked", G_CALLBACK (mod_space), (void *) -1);
