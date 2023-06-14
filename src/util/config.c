@@ -11,6 +11,9 @@ GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright, *scent;
 int lh, ch, rh;
 gboolean found;
 
+#define DEFAULT_LEFT "smenu spacing4 launchers spacing8 window-list"
+#define DEFAULT_RIGHT "ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse micpulse spacing2 clock spacing2 power spacing2"
+
 #define NUM_WIDGETS 14
 
 char *wids[NUM_WIDGETS] = {
@@ -353,42 +356,44 @@ void init_config_list (void)
 {
     widgets = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT);
 
-     // !!!!!! handle the case where there is no local config !!!!!!
     GKeyFile *kf;
-    GError *err = NULL;
-    gboolean res = FALSE;
-    char *value, *token;
+    char *lvalue, *rvalue, *token;
     int pos;
     char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
 
     kf = g_key_file_new ();
     if (g_key_file_load_from_file (kf, user_file, 0, NULL))
     {
-        value = g_key_file_get_string (kf, "panel", "widgets_left", &err);
-        if (err == NULL) res = TRUE;
-        else value = NULL;
+        lvalue = g_key_file_get_string (kf, "panel", "widgets_left", NULL);
+        if (lvalue == NULL) lvalue = g_strdup (DEFAULT_LEFT);
 
-        pos = 1;
-        token = strtok (value, " ");
-        while (token)
-        {
-            gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos++, -1);
-            token = strtok (NULL, " ");
-        }
-
-        value = g_key_file_get_string (kf, "panel", "widgets_right", &err);
-        if (err == NULL) res = TRUE;
-        else value = NULL;
-
-        pos = -1;
-        token = strtok (value, " ");
-        while (token)
-        {
-            gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos--, -1);
-            token = strtok (NULL, " ");
-        }
+        rvalue = g_key_file_get_string (kf, "panel", "widgets_right", NULL);
+        if (rvalue == NULL) rvalue = g_strdup (DEFAULT_RIGHT);
+    }
+    else
+    {
+        lvalue = g_strdup (DEFAULT_LEFT);
+        rvalue = g_strdup (DEFAULT_RIGHT);
     }
 
+    pos = 1;
+    token = strtok (lvalue, " ");
+    while (token)
+    {
+        gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos++, -1);
+        token = strtok (NULL, " ");
+    }
+
+    pos = -1;
+    token = strtok (rvalue, " ");
+    while (token)
+    {
+        gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (token), 1, token, 2, pos--, -1);
+        token = strtok (NULL, " ");
+    }
+
+    g_free (lvalue);
+    g_free (rvalue);
     g_key_file_free (kf);
     g_free (user_file);
 
@@ -466,30 +471,54 @@ void open_config_dialog (void)
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
     {
         GtkTreeIter iter;
-        char *type;
+        char *str;
+        char config[1000];
+        GKeyFile *kf;
+        gsize len;
 
+        // construct the file path
+        char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+
+        // read in data from file to a key file
+        kf = g_key_file_new ();
+        g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+        config[0] = 0;
         if (gtk_tree_model_get_iter_first (sleft, &iter))
         {
             do
             {
-                gtk_tree_model_get (sleft, &iter, 1, &type, -1);
-                printf ("%s ", type);
+                gtk_tree_model_get (sleft, &iter, 1, &str, -1);
+                strcat (config, str);
+                strcat (config, " ");
+                g_free (str);
             }
             while (gtk_tree_model_iter_next (sleft, &iter));
         }
-        printf ("\n");
+        g_key_file_set_string (kf, "panel", "widgets_left", config);
 
+        config[0] = 0;
         if (gtk_tree_model_get_iter_first (sright, &iter))
         {
             do
             {
-                gtk_tree_model_get (sright, &iter, 1, &type, -1);
-                printf ("%s ", type);
+                gtk_tree_model_get (sright, &iter, 1, &str, -1);
+                strcat (config, str);
+                strcat (config, " ");
+                g_free (str);
             }
             while (gtk_tree_model_iter_next (sright, &iter));
         }
-        printf ("\n");
+        g_key_file_set_string (kf, "panel", "widgets_right", config);
 
+        // write the modified key file out
+        str = g_key_file_to_data (kf, &len, NULL);
+        g_file_set_contents (user_file, str, len, NULL);
+
+        g_free (str);
+        g_key_file_free (kf);
+        g_free (user_file);
     }
+
     gtk_widget_destroy (dlg);
 }
