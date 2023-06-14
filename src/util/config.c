@@ -6,10 +6,11 @@
 
 GtkListStore *widgets;
 GtkWidget *ltv, *ctv, *rtv;
-GtkWidget *ladd, *lrem, *radd, *rrem, *lup, *ldn, *rup, *rdn;
+GtkWidget *ladd, *lrem, *radd, *rrem, *lup, *ldn, *rup, *rdn, *sup, *sdn;
 GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright, *scent;
 int lh, ch, rh;
 gboolean found;
+char sbuf[32];
 
 #define DEFAULT_LEFT "smenu spacing4 launchers spacing8 window-list"
 #define DEFAULT_RIGHT "ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse micpulse spacing2 clock spacing2 power spacing2"
@@ -35,7 +36,8 @@ char *wids[NUM_WIDGETS] = {
 
 static const char *display_name (char *str)
 {
-    if (!strncmp (str, "spacing", 7)) return _("Spacer");
+    int space;
+
     if (!g_strcmp0 (str, "smenu")) return _("Menu");
     if (!g_strcmp0 (str, "launchers")) return _("Launcher");
     if (!g_strcmp0 (str, "window-list")) return _("Window List");
@@ -50,6 +52,17 @@ static const char *display_name (char *str)
     if (!g_strcmp0 (str, "cpu")) return _("CPU");
     if (!g_strcmp0 (str, "gpu")) return _("GPU");
     if (!g_strcmp0 (str, "cputemp")) return _("CPU Temp");
+
+    if (sscanf (str, "spacing%d", &space) == 1)
+    {
+        if (!space) return _("Spacer");
+        else
+        {
+            sprintf (sbuf, _("Spacer (%d)"), space);
+            return sbuf;
+        }
+    }
+
     return _("<Unknown>");
 }
 
@@ -160,10 +173,10 @@ static void add_widget (GtkButton *, gpointer data)
         if ((long) data == 1)
         {
             index = gtk_tree_model_iter_n_children (fleft, NULL);
-            if (g_strcmp0 (type, "spacing"))
+            if (strncmp (type, "spacing", 7))
                 gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
             else
-                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing"), 1, "spacing", 2, index + 1, -1);
+                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing4"), 1, "spacing4", 2, index + 1, -1);
         }
         else
         {
@@ -171,7 +184,7 @@ static void add_widget (GtkButton *, gpointer data)
             if (strncmp (type, "spacing", 7))
                 gtk_list_store_set (widgets, &citer, 2, -index - 1, -1);
             else
-                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing"), 1, "spacing", 2, -index - 1, -1);
+                gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing4"), 1, "spacing4", 2, -index - 1, -1);
         }
         g_free (type);
     }
@@ -340,6 +353,60 @@ static void down_widget (GtkButton *, gpointer data)
     }
 }
 
+static void mod_space (GtkButton *, gpointer data)
+{
+    GtkTreeSelection *sel;
+    GtkTreeModel *mod = NULL, *fmod;
+    GtkTreeIter iter, siter, citer;
+    int index;
+    char *type;
+
+    // find the selected row
+    if (mod == NULL)
+    {
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
+        if (gtk_tree_selection_get_selected (sel, &sleft, &iter))
+        {
+            mod = sleft;
+            fmod = fleft;
+        }
+    }
+
+    if (mod == NULL)
+    {
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
+        if (gtk_tree_selection_get_selected (sel, &sright, &iter))
+        {
+            mod = sright;
+            fmod = fright;
+        }
+    }
+
+    if (mod == NULL) return;
+
+    // iter is now the selected row in either left or right
+    gtk_tree_model_get (mod, &iter, 1, &type, -1);
+    if (strncmp (type, "spacing", 7))
+    {
+        g_free (type);
+        return;
+    }
+    sscanf (type, "spacing%d", &index);
+    g_free (type);
+
+    gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
+    gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (fmod), &citer, &siter);
+
+    if ((long) data == 1) index++;
+    else index--;
+    if (index < 0) index = 0;
+
+    type = g_strdup_printf ("spacing%d\n", index);
+
+    gtk_list_store_set (widgets, &citer, 0, display_name (type), 1, type, -1);
+    g_free (type);
+ }
+
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
 {
     char *type;
@@ -403,7 +470,7 @@ void init_config_list (void)
         gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, wids[pos]);
         if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (wids[pos]), 1, wids[pos], 2, 0, -1);
     }
-    gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing"), 1, "spacing", 2, 0, -1);
+    gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing0"), 1, "spacing0", 2, 0, -1);
 }
 
 void open_config_dialog (void)
@@ -427,6 +494,8 @@ void open_config_dialog (void)
     rup = (GtkWidget *) gtk_builder_get_object (builder, "up_r_btn");
     ldn = (GtkWidget *) gtk_builder_get_object (builder, "dn_l_btn");
     rdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_r_btn");
+    sup = (GtkWidget *) gtk_builder_get_object (builder, "spacei_btn");
+    sdn = (GtkWidget *) gtk_builder_get_object (builder, "spaced_btn");
 
     init_config_list ();
 
@@ -464,9 +533,14 @@ void open_config_dialog (void)
     g_signal_connect (ldn, "clicked", G_CALLBACK (down_widget), (void *) 1);
     g_signal_connect (rdn, "clicked", G_CALLBACK (down_widget), (void *) -1);
 
+    g_signal_connect (sup, "clicked", G_CALLBACK (mod_space), (void *) 1);
+    g_signal_connect (sdn, "clicked", G_CALLBACK (mod_space), (void *) -1);
+
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ltv), -1, "Left", trend, "text", 0, NULL);
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ctv), -1, "Unused", trend, "text", 0, NULL);
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (rtv), -1, "Right", trend, "text", 0, NULL);
+
+    gtk_window_set_default_size (GTK_WINDOW(dlg), 500, 300);
 
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
     {
