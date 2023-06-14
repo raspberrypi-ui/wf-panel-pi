@@ -2,7 +2,7 @@
 #include "wayfire-shell-unstable-v2-client-protocol.h"
 
 extern "C" {
-#include "config.h"
+extern void open_config_dialog (void);
 }
 
 #include <gtk-layer-shell.h>

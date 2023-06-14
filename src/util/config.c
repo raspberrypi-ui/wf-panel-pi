@@ -29,8 +29,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include "config.h"
-
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
