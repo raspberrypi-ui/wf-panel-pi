@@ -52,23 +52,6 @@ static int hand[3];
 static gboolean found;
 static char sbuf[32];
 
-char *wids[NUM_WIDGETS] = {
-    "bluetooth",
-    "clock",
-    "cpu",
-    "cputemp",
-    "ejecter",
-    "gpu",
-    "launchers",
-    "micpulse",
-    "netman",
-    "power",
-    "smenu",
-    "updater",
-    "volumepulse",
-    "window-list"
-};
-
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
 /*----------------------------------------------------------------------------*/
@@ -84,7 +67,7 @@ static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter,
 
 /* Helper function to get the displayed name for a particular widget */
 
-static const char *display_name (char *str)
+static const char *display_name (const char *str)
 {
     int space;
 
@@ -372,6 +355,22 @@ static void change_space (GtkButton *, gpointer data)
 
 static void read_config (void)
 {
+    const char *all_wids[NUM_WIDGETS] = {
+        "bluetooth",
+        "clock",
+        "cpu",
+        "cputemp",
+        "ejecter",
+        "gpu",
+        "launchers",
+        "micpulse",
+        "netman",
+        "power",
+        "smenu",
+        "updater",
+        "volumepulse",
+        "window-list"
+    };
     char *lvalue, *rvalue, *token;
     int pos;
 
@@ -420,8 +419,8 @@ static void read_config (void)
     for (pos = 0; pos < NUM_WIDGETS; pos++)
     {
         found = FALSE;
-        gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, wids[pos]);
-        if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (wids[pos]), 1, wids[pos], 2, 0, -1);
+        gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) all_wids[pos]);
+        if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name (all_wids[pos]), 1, all_wids[pos], 2, 0, -1);
     }
     gtk_list_store_insert_with_values (widgets, NULL, -1, 0, display_name ("spacing0"), 1, "spacing0", 2, 0, -1);
 }
