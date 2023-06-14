@@ -474,7 +474,7 @@ void open_config_dialog (void)
     rtv = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
     ladd = (GtkWidget *) gtk_builder_get_object (builder, "add_l_btn");
     radd = (GtkWidget *) gtk_builder_get_object (builder, "add_r_btn");
-    rem = (GtkWidget *) gtk_builder_get_object (builder, "rem_l_btn");
+    rem = (GtkWidget *) gtk_builder_get_object (builder, "rem_btn");
     wup = (GtkWidget *) gtk_builder_get_object (builder, "up_btn");
     wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
     sup = (GtkWidget *) gtk_builder_get_object (builder, "spacei_btn");
@@ -516,9 +516,9 @@ void open_config_dialog (void)
     g_signal_connect (sup, "clicked", G_CALLBACK (mod_space), (void *) 1);
     g_signal_connect (sdn, "clicked", G_CALLBACK (mod_space), (void *) -1);
 
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ltv), -1, "Left", trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ctv), -1, "Unused", trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (rtv), -1, "Right", trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ltv), -1, _("Left"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (ctv), -1, _("Available"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (rtv), -1, _("Right"), trend, "text", 0, NULL);
 
     gtk_window_set_default_size (GTK_WINDOW(dlg), 500, 300);
 

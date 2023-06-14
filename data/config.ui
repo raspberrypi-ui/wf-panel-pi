@@ -2,41 +2,6 @@
 <!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkImage" id="downarrow2">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="tooltip-text" translatable="yes">Move towards right</property>
-    <property name="icon-name">go-down</property>
-  </object>
-  <object class="GtkImage" id="leftarrow1">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="tooltip-text" translatable="yes">Add to left of toolbar</property>
-    <property name="icon-name">go-previous</property>
-  </object>
-  <object class="GtkImage" id="leftarrow2">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="icon-name">go-previous</property>
-  </object>
-  <object class="GtkImage" id="rightarrow1">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="tooltip-text" translatable="yes">Remove from left of toolbar</property>
-    <property name="icon-name">go-next</property>
-  </object>
-  <object class="GtkImage" id="rightarrow2">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="tooltip-text" translatable="yes">Add to right of toolbar</property>
-    <property name="icon-name">go-next</property>
-  </object>
-  <object class="GtkImage" id="uparrow2">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="tooltip-text" translatable="yes">Move towards left</property>
-    <property name="icon-name">go-up</property>
-  </object>
   <object class="GtkDialog" id="config_dlg">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Set Widgets</property>
@@ -117,6 +82,28 @@
               </packing>
             </child>
             <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="shadow-type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="right_tv">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="enable-search">False</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection"/>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -128,11 +115,11 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="add_l_btn">
+                        <property name="label" translatable="yes">Add to left</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="image">leftarrow1</property>
-                        <property name="always-show-image">True</property>
+                        <property name="tooltip-text" translatable="yes">Add widget to the left side of the taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -141,12 +128,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="rem_l_btn">
+                      <object class="GtkButton" id="add_r_btn">
+                        <property name="label" translatable="yes">Add to right</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="image">rightarrow1</property>
-                        <property name="always-show-image">True</property>
+                        <property name="tooltip-text" translatable="yes">Add widget to the right side of the taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -155,11 +142,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="spacei_btn">
-                        <property name="label" translatable="yes">+</property>
+                      <object class="GtkButton" id="rem_btn">
+                        <property name="label" translatable="yes">Remove</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Remove widget from the taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -168,16 +156,59 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="spaced_btn">
-                        <property name="label" translatable="yes">-</property>
+                      <object class="GtkButton" id="up_btn">
+                        <property name="label" translatable="yes">Move left</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Move widget towards the left of the taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="dn_btn">
+                        <property name="label" translatable="yes">Move right</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Move widget towards the right of the taskbar</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="spacei_btn">
+                        <property name="label" translatable="yes">Increase space</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Increase the size of a spacer widget</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="spaced_btn">
+                        <property name="label" translatable="yes">Reduce space</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Decrease the size of a spacer widget</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">6</property>
                       </packing>
                     </child>
                   </object>
@@ -191,7 +222,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -213,117 +244,14 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
-                <child type="center">
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkButton" id="add_r_btn">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="image">rightarrow2</property>
-                        <property name="always-show-image">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="rem_r_btn">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Remove from right of toolbar</property>
-                        <property name="image">leftarrow2</property>
-                        <property name="always-show-image">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="up_btn">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="image">uparrow2</property>
-                        <property name="always-show-image">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="dn_btn">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="image">downarrow2</property>
-                        <property name="always-show-image">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
                 <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="shadow-type">in</property>
-                <child>
-                  <object class="GtkTreeView" id="right_tv">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="enable-search">False</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">4</property>
               </packing>
             </child>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
