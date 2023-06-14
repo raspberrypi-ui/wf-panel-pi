@@ -125,6 +125,8 @@ void gpu_update_display (GPUPlugin *g)
 
 void gpu_destructor (gpointer user_data)
 {
+    GPUPlugin *g = (GPUPlugin *) user_data;
+    if (g->timer) g_source_remove (g->timer);
 }
 
 void gpu_init (GPUPlugin *g)
