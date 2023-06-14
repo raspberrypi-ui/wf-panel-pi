@@ -6,7 +6,7 @@
 
 GtkListStore *widgets;
 GtkWidget *ltv, *ctv, *rtv;
-GtkWidget *ladd, *lrem, *radd, *rrem, *wup, *wdn, *sup, *sdn;
+GtkWidget *ladd, *rem, *radd, *wup, *wdn, *sup, *sdn;
 GtkTreeModel *fleft, *fright, *fcent, *sleft, *sright, *scent;
 int lh, ch, rh;
 gboolean found;
@@ -83,9 +83,11 @@ static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer
 static void unselect (GtkTreeView *, gpointer data)
 {
     GtkTreeSelection *sel;
-    int nitems;
     GtkTreePath *toppath, *endpath;
-    char *pstr = NULL;
+    GtkTreeModel *mod;
+    GtkTreeIter iter;
+    int nitems;
+    char *pstr = NULL, *type = NULL;
 
     switch ((long) data)
     {
@@ -96,19 +98,26 @@ static void unselect (GtkTreeView *, gpointer data)
                     g_signal_handler_unblock (ctv, ch);
                     g_signal_handler_unblock (rtv, rh);
 
+                    gtk_widget_set_sensitive (ladd, FALSE);
+                    gtk_widget_set_sensitive (radd, FALSE);
+
                     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
                     nitems = gtk_tree_model_iter_n_children (fleft, NULL);
                     toppath = gtk_tree_path_new_from_string ("0");
                     pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
                     endpath = gtk_tree_path_new_from_string (pstr);
-                    gtk_widget_set_sensitive (ladd, FALSE);
-                    gtk_widget_set_sensitive (radd, FALSE);
-                    gtk_widget_set_sensitive (lrem, nitems > 0);
-                    gtk_widget_set_sensitive (rrem, FALSE);
+
+                    gtk_widget_set_sensitive (rem, nitems > 0);
                     gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
                     gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
-                    gtk_widget_set_sensitive (sup, TRUE);
-                    gtk_widget_set_sensitive (sdn, TRUE);
+
+                    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
+                    {
+                        gtk_tree_model_get (mod, &iter, 1, &type, -1);
+                        if (!sscanf (type, "spacing%d", &nitems)) nitems = 0;
+                    }
+                    gtk_widget_set_sensitive (sup, type && !strncmp (type, "spacing", 7));
+                    gtk_widget_set_sensitive (sdn, type && !strncmp (type, "spacing", 7) && nitems > 1);
                     break;
 
         case  0 :   g_signal_handler_block (ltv, lh);
@@ -121,8 +130,7 @@ static void unselect (GtkTreeView *, gpointer data)
                     nitems = gtk_tree_model_iter_n_children (fcent, NULL);
                     gtk_widget_set_sensitive (ladd, nitems > 0);
                     gtk_widget_set_sensitive (radd, nitems > 0);
-                    gtk_widget_set_sensitive (lrem, FALSE);
-                    gtk_widget_set_sensitive (rrem, FALSE);
+                    gtk_widget_set_sensitive (rem, FALSE);
                     gtk_widget_set_sensitive (wup, FALSE);
                     gtk_widget_set_sensitive (wdn, FALSE);
                     gtk_widget_set_sensitive (sup, FALSE);
@@ -136,23 +144,31 @@ static void unselect (GtkTreeView *, gpointer data)
                     g_signal_handler_unblock (ltv, lh);
                     g_signal_handler_unblock (ctv, ch);
 
+                    gtk_widget_set_sensitive (ladd, FALSE);
+                    gtk_widget_set_sensitive (radd, FALSE);
+
                     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (rtv));
                     nitems = gtk_tree_model_iter_n_children (fright, NULL);
                     toppath = gtk_tree_path_new_from_string ("0");
                     pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
                     endpath = gtk_tree_path_new_from_string (pstr);
-                    gtk_widget_set_sensitive (ladd, FALSE);
-                    gtk_widget_set_sensitive (radd, FALSE);
-                    gtk_widget_set_sensitive (lrem, FALSE);
-                    gtk_widget_set_sensitive (rrem, nitems > 0);
+
+                    gtk_widget_set_sensitive (rem, nitems > 0);
                     gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
                     gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
-                    gtk_widget_set_sensitive (sup, TRUE);
-                    gtk_widget_set_sensitive (sdn, TRUE);
+
+                    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
+                    {
+                        gtk_tree_model_get (mod, &iter, 1, &type, -1);
+                        if (!sscanf (type, "spacing%d", &nitems)) nitems = 0;
+                    }
+                    gtk_widget_set_sensitive (sup, type && !strncmp (type, "spacing", 7));
+                    gtk_widget_set_sensitive (sdn, type && !strncmp (type, "spacing", 7) && nitems > 1);
                     break;
     }
 
     if (pstr) g_free (pstr);
+    if (type) g_free (type);
 }
 
 static void add_widget (GtkButton *, gpointer data)
@@ -340,9 +356,9 @@ static void mod_space (GtkButton *, gpointer data)
     GtkTreeModel *mod, *fmod;
     GtkTreeIter iter, siter, citer;
     char *type;
-    int index, dir = (long) data == 1 ? 1 : -1;
+    int index, lorr = selection (), dir = (long) data == 1 ? 1 : -1;
 
-    switch (selection ())
+    switch (lorr)
     {
         case 1 :    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (ltv));
                     fmod = fleft;
@@ -372,6 +388,8 @@ static void mod_space (GtkButton *, gpointer data)
             gtk_list_store_set (widgets, &citer, 0, display_name (type), 1, type, -1);
         }
         g_free (type);
+
+        unselect (NULL, (void *)((long) lorr));
     }
  }
 
@@ -456,8 +474,7 @@ void open_config_dialog (void)
     rtv = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
     ladd = (GtkWidget *) gtk_builder_get_object (builder, "add_l_btn");
     radd = (GtkWidget *) gtk_builder_get_object (builder, "add_r_btn");
-    lrem = (GtkWidget *) gtk_builder_get_object (builder, "rem_l_btn");
-    rrem = (GtkWidget *) gtk_builder_get_object (builder, "rem_r_btn");
+    rem = (GtkWidget *) gtk_builder_get_object (builder, "rem_l_btn");
     wup = (GtkWidget *) gtk_builder_get_object (builder, "up_btn");
     wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
     sup = (GtkWidget *) gtk_builder_get_object (builder, "spacei_btn");
@@ -491,8 +508,7 @@ void open_config_dialog (void)
     g_signal_connect (ladd, "clicked", G_CALLBACK (add_widget), (void *) 1);
     g_signal_connect (radd, "clicked", G_CALLBACK (add_widget), (void *) -1);
 
-    g_signal_connect (lrem, "clicked", G_CALLBACK (rem_widget), NULL);
-    g_signal_connect (rrem, "clicked", G_CALLBACK (rem_widget), NULL);
+    g_signal_connect (rem, "clicked", G_CALLBACK (rem_widget), NULL);
 
     g_signal_connect (wup, "clicked", G_CALLBACK (move_widget), (void *) 1);
     g_signal_connect (wdn, "clicked", G_CALLBACK (move_widget), (void *) -1);
