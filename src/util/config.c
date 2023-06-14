@@ -107,6 +107,8 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_widget_set_sensitive (rrem, FALSE);
                     gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
                     gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (sup, TRUE);
+                    gtk_widget_set_sensitive (sdn, TRUE);
                     break;
 
         case  0 :   g_signal_handler_block (ltv, lh);
@@ -123,6 +125,8 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_widget_set_sensitive (rrem, FALSE);
                     gtk_widget_set_sensitive (wup, FALSE);
                     gtk_widget_set_sensitive (wdn, FALSE);
+                    gtk_widget_set_sensitive (sup, FALSE);
+                    gtk_widget_set_sensitive (sdn, FALSE);
                     break;
 
         case -1 :   g_signal_handler_block (ltv, lh);
@@ -143,6 +147,8 @@ static void unselect (GtkTreeView *, gpointer data)
                     gtk_widget_set_sensitive (rrem, nitems > 0);
                     gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
                     gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
+                    gtk_widget_set_sensitive (sup, TRUE);
+                    gtk_widget_set_sensitive (sdn, TRUE);
                     break;
     }
 
@@ -247,7 +253,7 @@ static void rem_widget (GtkButton *, gpointer)
     }
 
     // re-number the widgets in the list....
-    gtk_tree_model_foreach (fmod, renum, (void *) index);
+    gtk_tree_model_foreach (fmod, renum, (void *)((long) index));
 }
 
 static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
@@ -315,16 +321,16 @@ static void move_widget (GtkButton *, gpointer data)
 
         if (dir == lorr)
         {
-            gtk_tree_model_foreach (fmod, up, (void *) index);
+            gtk_tree_model_foreach (fmod, up, (void *)((long) index));
             gtk_list_store_set (widgets, &citer, 2, index - 1, -1);
         }
         else
         {
-            gtk_tree_model_foreach (fmod, down, (void *) index);
+            gtk_tree_model_foreach (fmod, down, (void *)((long) index));
             gtk_list_store_set (widgets, &citer, 2, index + 1, -1);
         }
 
-        unselect (NULL, (void *) lorr);
+        unselect (NULL, (void *)((long) lorr));
     }
 }
 
