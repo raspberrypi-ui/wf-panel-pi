@@ -127,11 +127,11 @@ static void update_buttons (void)
     int nitems, lorr = selection ();
     char *type = NULL;
 
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (lorr == 0)
     {
-        nitems = gtk_tree_model_iter_n_children (filt[1], NULL);
-        gtk_widget_set_sensitive (ladd, nitems > 0);
-        gtk_widget_set_sensitive (radd, nitems > 0);
+        gtk_widget_set_sensitive (ladd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        gtk_widget_set_sensitive (radd, gtk_tree_selection_get_selected (sel, NULL, NULL));
         gtk_widget_set_sensitive (rem, FALSE);
         gtk_widget_set_sensitive (wup, FALSE);
         gtk_widget_set_sensitive (wdn, FALSE);
@@ -143,7 +143,6 @@ static void update_buttons (void)
         gtk_widget_set_sensitive (ladd, FALSE);
         gtk_widget_set_sensitive (radd, FALSE);
 
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
         nitems = gtk_tree_model_iter_n_children (filt[1 - lorr], NULL);
 
         gtk_widget_set_sensitive (rem, nitems > 0);
