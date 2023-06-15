@@ -121,11 +121,11 @@ static int selection (void)
 static void update_buttons (void)
 {
     GtkTreeSelection *sel;
-    GtkTreePath *toppath, *endpath;
+    GtkTreePath *path;
     GtkTreeModel *mod;
     GtkTreeIter iter;
     int nitems, lorr = selection ();
-    char *pstr = NULL, *type = NULL;
+    char *type = NULL;
 
     if (lorr == 0)
     {
@@ -145,19 +145,21 @@ static void update_buttons (void)
 
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
         nitems = gtk_tree_model_iter_n_children (filt[1 - lorr], NULL);
-        toppath = gtk_tree_path_new_from_string ("0");
-        pstr = g_strdup_printf ("%d", nitems ? nitems - 1 : nitems);
-        endpath = gtk_tree_path_new_from_string (pstr);
-        g_free (pstr);
 
         gtk_widget_set_sensitive (rem, nitems > 0);
-        gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, toppath) ? TRUE : FALSE);
-        gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, endpath) ? TRUE : FALSE);
+        path = gtk_tree_path_new_from_indices (0, -1);
+        gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, path));
+        path = gtk_tree_path_new_from_indices (nitems ? nitems - 1 : nitems, -1);
+        gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, path));
 
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
             gtk_tree_model_get (mod, &iter, 1, &type, -1);
             if (!sscanf (type, "spacing%d", &nitems)) nitems = 0;
+
+            // scroll the tree view to show the highlighted item
+            path = gtk_tree_model_get_path (mod, &iter);
+            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[1 - lorr]), path, NULL, FALSE, 0.0, 0.0);
         }
         gtk_widget_set_sensitive (sup, type && !strncmp (type, "spacing", 7));
         gtk_widget_set_sensitive (sdn, type && !strncmp (type, "spacing", 7) && nitems > 1);
@@ -172,6 +174,7 @@ static void add_widget (GtkButton *, gpointer data)
     GtkTreeSelection *sel;
     GtkTreeModel *mod;
     GtkTreeIter iter, siter, citer;
+    GtkTreePath *path;
     int index, lorr = (long) data == 1 ? 1 : -1;;
     char *type;
 
@@ -196,6 +199,14 @@ static void add_widget (GtkButton *, gpointer data)
                 COL_INDEX, lorr * (index + 1),
                 -1);
         g_free (type);
+
+        // select the added item
+        gtk_tree_selection_unselect_all (sel);
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
+        path = gtk_tree_path_new_from_indices (index, -1);
+        gtk_tree_selection_select_path (sel, path);
+
+        update_buttons ();
     }
 }
 
@@ -222,6 +233,8 @@ static void remove_widget (GtkButton *, gpointer)
         else
             gtk_list_store_remove (widgets, &citer);
         g_free (type);
+
+        update_buttons ();
     }
 
     // re-number the widgets in the list below the one removed
