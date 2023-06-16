@@ -431,9 +431,13 @@ static void configure_plugin (GtkButton *, gpointer)
 
             title = g_strdup_printf ("Configure %s", display_name (type));
             cdlg = gtk_dialog_new_with_buttons (title, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, 
-                _("Cancel"), -2, _("OK"), -1, NULL);
+                _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
             g_free (title);
-            box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+            box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+            gtk_widget_set_margin_top (box, 10);
+            gtk_widget_set_margin_bottom (box, 10);
+            gtk_widget_set_margin_start (box, 10);
+            gtk_widget_set_margin_end (box, 10);
             gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
 
             nitems = sizeof (conf_table) / sizeof (conf_table_t);
@@ -442,9 +446,9 @@ static void configure_plugin (GtkButton *, gpointer)
             {
                 if (!g_strcmp0 (conf_table[index].plugin, type))
                 {
-                    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+                    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
                     label = gtk_label_new (conf_table[index].name);
-                    gtk_container_add (GTK_CONTAINER (hbox), label);
+                    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
                     switch (conf_table[index].type)
                     {
                         case CONF_BOOL :    control = gtk_switch_new ();
@@ -460,13 +464,16 @@ static void configure_plugin (GtkButton *, gpointer)
                         case CONF_COLOUR :  control = gtk_color_button_new ();
                                             break;
                     }
-                    gtk_container_add (GTK_CONTAINER (hbox), control);
+                    gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
                     gtk_container_add (GTK_CONTAINER (box), hbox);
                 }
                 index++;
             }
             gtk_widget_show_all (cdlg);
-            gtk_dialog_run (GTK_DIALOG (cdlg));
+            if (gtk_dialog_run (GTK_DIALOG (cdlg)) == GTK_RESPONSE_OK)
+            {
+                // write the config here...
+            }
             gtk_widget_destroy (cdlg);
         }
     }
