@@ -42,17 +42,56 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COL_ID      1
 #define COL_INDEX   2
 
+typedef enum {
+    CONF_BOOL,
+    CONF_INT,
+    CONF_STRING,
+    CONF_COLOUR
+} CONF_TYPE;
+
+typedef struct {
+    const char *plugin;
+    const char *name;
+    CONF_TYPE type;
+} conf_table_t;
+
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
 static GtkListStore *widgets;
 static GtkTreeModel *filt[3], *sort[3];
+static GtkWidget *dlg;
 static GtkWidget *tv[3];
-static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *sup, *sdn;
+static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *sup, *sdn, *cpl;
 static int hand[3];
 static gboolean found;
 static char sbuf[32];
+
+static conf_table_t conf_table[] = {
+{    "clock",        "format",              CONF_STRING},
+{    "clock",        "font",                CONF_STRING},
+{    "cpu",          "show_percentage",     CONF_BOOL},
+{    "cpu",          "foreground",          CONF_COLOUR},
+{    "cpu",          "background",          CONF_COLOUR},
+{    "cputemp",      "foreground",          CONF_COLOUR},
+{    "cputemp",      "background",          CONF_COLOUR},
+{    "cputemp",      "throttle_1",          CONF_COLOUR},
+{    "cputemp",      "throttle_2",          CONF_COLOUR},
+{    "cputemp",      "low_temp",            CONF_INT},
+{    "cputemp",      "high_temp",           CONF_INT},
+{    "ejecter",      "autohide",            CONF_BOOL},
+{    "gpu",          "show_percentage",     CONF_BOOL},
+{    "gpu",          "foreground",          CONF_COLOUR},
+{    "gpu",          "background",          CONF_COLOUR},
+{    "launchers",    "animation_duration",  CONF_INT},
+{    "launchers",    "spacing",             CONF_INT},
+{    "power",        "batt_num",            CONF_INT},
+{    "smenu",        "search_height",       CONF_INT},
+{    "smenu",        "search_fixed",        CONF_BOOL},
+{    "updater",      "interval",            CONF_INT},
+{    "window-list",  "max_width",           CONF_INT},
+};
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -372,6 +411,67 @@ static void change_space (GtkButton *, gpointer data)
     }
 }
 
+/* Launch customise dialog for plugin-specific options */
+
+static void configure_plugin (GtkButton *, gpointer)
+{
+    GtkTreeSelection *sel;
+    GtkTreeModel *mod;
+    GtkTreeIter iter;
+    int index, nitems, lorr = selection ();
+    char *type, *title;
+    GtkWidget *cdlg, *box, *hbox, *label, *control;
+
+    if (lorr)
+    {
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
+        if (gtk_tree_selection_get_selected (sel, &mod, &iter))
+        {
+            gtk_tree_model_get (mod, &iter, 1, &type, -1);
+
+            title = g_strdup_printf ("Configure %s", display_name (type));
+            cdlg = gtk_dialog_new_with_buttons (title, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, 
+                _("Cancel"), -2, _("OK"), -1, NULL);
+            g_free (title);
+            box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+            gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
+
+            nitems = sizeof (conf_table) / sizeof (conf_table_t);
+            index = 0;
+            while (index < nitems)
+            {
+                if (!g_strcmp0 (conf_table[index].plugin, type))
+                {
+                    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+                    label = gtk_label_new (conf_table[index].name);
+                    gtk_container_add (GTK_CONTAINER (hbox), label);
+                    switch (conf_table[index].type)
+                    {
+                        case CONF_BOOL :    control = gtk_switch_new ();
+                                            break;
+
+                        case CONF_INT :     GtkAdjustment *adj = gtk_adjustment_new (0, -10, 10, 1, 0, 0);
+                                            control = gtk_spin_button_new (adj, 0, 0);
+                                            break;
+
+                        case CONF_STRING :  control = gtk_entry_new ();
+                                            break;
+
+                        case CONF_COLOUR :  control = gtk_color_button_new ();
+                                            break;
+                    }
+                    gtk_container_add (GTK_CONTAINER (hbox), control);
+                    gtk_container_add (GTK_CONTAINER (box), hbox);
+                }
+                index++;
+            }
+            gtk_widget_show_all (cdlg);
+            gtk_dialog_run (GTK_DIALOG (cdlg));
+            gtk_widget_destroy (cdlg);
+        }
+    }
+}
+
 /* Read in config from local configuration file, or use default */
 
 static void read_config (void)
@@ -565,7 +665,6 @@ static void unselect (GtkTreeView *, gpointer data)
 void open_config_dialog (void)
 {
     GtkBuilder *builder;
-    GtkWidget *dlg;
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
     int i;
 
@@ -587,6 +686,7 @@ void open_config_dialog (void)
     wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
     sup = (GtkWidget *) gtk_builder_get_object (builder, "spacei_btn");
     sdn = (GtkWidget *) gtk_builder_get_object (builder, "spaced_btn");
+    cpl = (GtkWidget *) gtk_builder_get_object (builder, "conf_btn");
 
     // read in the current configuration
     read_config ();
@@ -628,6 +728,8 @@ void open_config_dialog (void)
 
     g_signal_connect (sup, "clicked", G_CALLBACK (change_space), (void *) 1);
     g_signal_connect (sdn, "clicked", G_CALLBACK (change_space), (void *) -1);
+
+    g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 
     gtk_window_set_default_size (GTK_WINDOW (dlg), 500, 300);
 
