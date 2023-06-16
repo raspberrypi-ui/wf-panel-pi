@@ -483,19 +483,21 @@ void updater_init (UpdaterPlugin *up)
     up->ids = NULL;
     up->cancellable = g_cancellable_new ();
 
-    /* Set timer for update checks */
-    if (!config_setting_lookup_int ("updater", "Interval", &up->interval)) up->interval = 24;
-    if (up->interval)
-        up->timer = g_timeout_add_seconds (up->interval * SECS_PER_HOUR, periodic_check, up);
-    else
-        up->timer = 0;
-
     /* Start the initial check for updates */
     up->idle_timer = g_idle_add (init_check, up);
 
     /* Show the widget and return. */
     gtk_widget_show_all (up->plugin);
     //return up->plugin;
+}
+
+void updater_set_interval (UpdaterPlugin *up)
+{
+    if (up->timer) g_source_remove (up->timer);
+    if (up->interval)
+        up->timer = g_timeout_add_seconds (up->interval * SECS_PER_HOUR, periodic_check, up);
+    else
+        up->timer = 0;
 }
 
 /* Handler for menu button click */

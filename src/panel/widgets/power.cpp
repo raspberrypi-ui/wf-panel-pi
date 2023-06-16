@@ -32,6 +32,8 @@ void WayfirePower::init (Gtk::HBox *container)
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfirePower::set_icon));
     bar_pos_changed_cb ();
 
+    pt->batt_num = batt_num;
+
     /* Initialise the plugin */
     power_init (pt);
 

@@ -9,7 +9,7 @@ gulong m_handle;
 static void menu_hidden (GtkWidget *menu, gpointer user_data)
 {
     GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m_button)));
-    gtk_layer_set_keyboard_interactivity (panel, FALSE);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
 }
 
 static void committed (GdkWindow *win, gpointer user_data)
@@ -23,16 +23,16 @@ void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
 {
     // simulate a leave event on the button to hide the prelight */
     GdkEventCrossing *ev = gdk_event_new (GDK_LEAVE_NOTIFY);
-    ev->window = gtk_button_get_event_window (button);
+    ev->window = gtk_button_get_event_window (GTK_BUTTON (button));
     ev->time = GDK_CURRENT_TIME;
     ev->mode = GDK_CROSSING_NORMAL;
     ev->send_event = TRUE;
-    gtk_main_do_event (ev);
+    gtk_main_do_event ((GdkEvent *) ev);
 
     GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (button)));
     m_button = button;
     m_menu = menu;
-    gtk_layer_set_keyboard_interactivity (panel, TRUE);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), TRUE);
     m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), NULL);
 }
 
@@ -60,7 +60,7 @@ void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
         size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)
     {
-        gtk_image_set_from_pixbuf (image, pixbuf);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
         g_object_unref (pixbuf);
     }
 }
@@ -72,7 +72,7 @@ void set_menu_icon (GtkWidget *image, const char *icon, int size)
         size > 32 ? 24 : 16, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)
     {
-        gtk_image_set_from_pixbuf (image, pixbuf);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
         g_object_unref (pixbuf);
     }
 }
@@ -129,48 +129,4 @@ void append_menu_icon (GtkWidget *item, GtkWidget *image)
 {
     GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
     gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
-}
-
-gboolean config_setting_lookup_int (const char *plugin, const char *setting, int *value)
-{
-    GKeyFile *kf;
-    GError *err = NULL;
-    gboolean res = FALSE;
-    int val;
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
-
-    kf = g_key_file_new ();
-    if (g_key_file_load_from_file (kf, user_file, 0, NULL))
-    {
-        val = g_key_file_get_integer (kf, plugin, setting, &err);
-        if (err == NULL)
-        {
-            *value = val;
-            res = TRUE;
-        }
-    }
-
-    g_key_file_free (kf);
-    g_free (user_file);
-    return res;
-}
-
-gboolean config_setting_lookup_string (const char *plugin, const char *setting, char **value)
-{
-    GKeyFile *kf;
-    GError *err = NULL;
-    gboolean res = FALSE;
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
-
-    kf = g_key_file_new ();
-    if (g_key_file_load_from_file (kf, user_file, 0, NULL))
-    {
-        *value = g_key_file_get_string (kf, plugin, setting, &err);
-        if (err == NULL) res = TRUE;
-        else *value = NULL;
-    }
-
-    g_key_file_free (kf);
-    g_free (user_file);
-    return res;
 }

@@ -13,8 +13,8 @@ typedef struct
     int icon_size;                          /* Variables used under wf-panel */
     gboolean bottom;
     PluginGraph graph;
-    GdkRGBA foreground_color;               /* Foreground colour for drawing area */
-    GdkRGBA background_color;               /* Background colour for drawing area */
+    GdkRGBA foreground_colour;              /* Foreground colour for drawing area */
+    GdkRGBA background_colour;              /* Background colour for drawing area */
     gboolean show_percentage;               /* Display usage as a percentage */
     guint timer;                            /* Timer for periodic update */
     unsigned long last_val[5];

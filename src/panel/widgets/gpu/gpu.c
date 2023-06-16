@@ -28,13 +28,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#define _GNU_SOURCE
+#include <stdio.h>
 #include <string.h>
 #include <sys/time.h>
 #include <time.h>
 #include <sys/sysinfo.h>
 #include <stdlib.h>
-#define _GNU_SOURCE
-#include <stdio.h>
 #include <glib/gi18n.h>
 
 #include "gpu.h"
@@ -120,7 +120,7 @@ static gboolean gpu_update (GPUPlugin *g)
 void gpu_update_display (GPUPlugin *g)
 {
     GdkRGBA none = {0, 0, 0, 0};
-    graph_reload (&(g->graph), g->icon_size, g->background_color, g->foreground_color, none, none);
+    graph_reload (&(g->graph), g->icon_size, g->background_colour, g->foreground_colour, none, none);
 }
 
 void gpu_destructor (gpointer user_data)
@@ -131,9 +131,6 @@ void gpu_destructor (gpointer user_data)
 
 void gpu_init (GPUPlugin *g)
 {
-    char *str;
-    int val;
-
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -142,22 +139,6 @@ void gpu_init (GPUPlugin *g)
     /* Allocate icon as a child of top level */
     graph_init (&(g->graph));
     gtk_container_add (GTK_CONTAINER (g->plugin), g->graph.da);
-
-    if (config_setting_lookup_int ("gpu", "ShowPercent", &val))
-        g->show_percentage = (val != 0);
-    else g->show_percentage = 1;
-
-    if (config_setting_lookup_string ("gpu", "Foreground", &str))
-    {
-        if (!gdk_rgba_parse (&g->foreground_color, str))
-            gdk_rgba_parse (&g->foreground_color, "dark gray");
-    } else gdk_rgba_parse (&g->foreground_color, "dark gray");
-
-    if (config_setting_lookup_string ("gpu", "Background", &str))
-    {
-        if (!gdk_rgba_parse (&g->background_color, str))
-            gdk_rgba_parse (&g->background_color, "light gray");
-    } else gdk_rgba_parse (&g->background_color, "light gray");
 
     gpu_update_display (g);
 

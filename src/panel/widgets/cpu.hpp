@@ -16,6 +16,10 @@ class WayfireCPU : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
+    WfOption <bool> show_percentage {"panel/cpu_show_percentage"};
+    WfOption <std::string> foreground_colour {"panel/cpu_foreground"};
+    WfOption <std::string> background_colour {"panel/cpu_background"};
+
     /* plugin */
     CPUPlugin data;
     CPUPlugin *cpu;
@@ -27,6 +31,7 @@ class WayfireCPU : public WayfireWidget
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
+    void settings_changed_cb (void);
 };
 
 #endif /* end of include guard: WIDGETS_CPU_HPP */

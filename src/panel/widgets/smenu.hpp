@@ -14,8 +14,8 @@ class WayfireSmenu : public WayfireWidget
 
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <std::string> bar_pos {"panel/position"};
-    WfOption <int> search_height {"panel/search_height"};
-    WfOption <bool> search_fixed {"panel/search_fixed"};
+    WfOption <int> search_height {"panel/smenu_search_height"};
+    WfOption <bool> search_fixed {"panel/smenu_search_fixed"};
     sigc::connection icon_timer;
 
     /* plugin */

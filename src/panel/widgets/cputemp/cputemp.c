@@ -36,13 +36,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#define _GNU_SOURCE
+#include <stdio.h>
 #include <string.h>
 #include <sys/time.h>
 #include <time.h>
 #include <sys/sysinfo.h>
 #include <stdlib.h>
-#define _GNU_SOURCE
-#include <stdio.h>
 #include <glib/gi18n.h>
 
 #include "cputemp.h"
@@ -325,8 +325,8 @@ static gboolean cpu_update (CPUTempPlugin *c)
 
 void cputemp_update_display (CPUTempPlugin *c)
 {
-    graph_reload (&(c->graph), c->icon_size, c->background_color, c->foreground_color,
-        c->low_throttle_color, c->high_throttle_color);
+    graph_reload (&(c->graph), c->icon_size, c->background_colour, c->foreground_colour,
+        c->low_throttle_colour, c->high_throttle_colour);
 }
 
 void cputemp_destructor (gpointer user_data)
@@ -338,9 +338,6 @@ void cputemp_destructor (gpointer user_data)
 /* Plugin constructor. */
 void cputemp_init (CPUTempPlugin *c)
 {
-    char *str;
-    int val;
-
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -352,44 +349,6 @@ void cputemp_init (CPUTempPlugin *c)
 
     /* Set up variables */
     c->ispi = is_pi ();
-
-    if (config_setting_lookup_string ("cputemp", "Foreground", &str))
-    {
-        if (!gdk_rgba_parse (&c->foreground_color, str))
-            gdk_rgba_parse (&c->foreground_color, "dark gray");
-    } else gdk_rgba_parse (&c->foreground_color, "dark gray");
-
-    if (config_setting_lookup_string ("cputemp", "Background", &str))
-    {
-        if (!gdk_rgba_parse (&c->background_color, str))
-            gdk_rgba_parse (&c->background_color, "light gray");
-    } else gdk_rgba_parse (&c->background_color, "light gray");
-
-    if (config_setting_lookup_string ("cputemp", "Throttle1", &str))
-    {
-        if (!gdk_rgba_parse (&c->low_throttle_color, str))
-            gdk_rgba_parse (&c->low_throttle_color, "orange");
-    } else gdk_rgba_parse (&c->low_throttle_color, "orange");
-
-    if (config_setting_lookup_string ("cputemp", "Throttle2", &str))
-    {
-        if (!gdk_rgba_parse (&c->high_throttle_color, str))
-            gdk_rgba_parse (&c->high_throttle_color, "red");
-    } else gdk_rgba_parse (&c->high_throttle_color, "red");
-
-    if (config_setting_lookup_int ("cputemp", "LowTemp", &val))
-    {
-        if (val >= 0 && val <= 100) c->lower_temp = val;
-        else c->lower_temp = 40;
-    }
-    else c->lower_temp = 40;
-
-    if (config_setting_lookup_int ("cputemp", "HighTemp", &val))
-    {
-        if (val >= 0 && val <= 150 && val > c->lower_temp) c->upper_temp = val;
-        else c->upper_temp = 90;
-    }
-    else c->upper_temp = 90;
 
     /* Find the system thermal sensors */
     check_sensors (c);

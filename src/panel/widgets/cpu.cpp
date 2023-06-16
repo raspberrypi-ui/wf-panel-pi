@@ -19,6 +19,16 @@ bool WayfireCPU::set_icon (void)
     return false;
 }
 
+void WayfireCPU::settings_changed_cb (void)
+{
+    cpu->show_percentage = show_percentage;
+    if (!gdk_rgba_parse (&cpu->foreground_colour, ((std::string) foreground_colour).c_str()))
+        gdk_rgba_parse (&cpu->foreground_colour, "dark gray");
+    if (!gdk_rgba_parse (&cpu->background_colour, ((std::string) background_colour).c_str()))
+        gdk_rgba_parse (&cpu->background_colour, "light gray");
+    cpu_update_display (cpu);
+}
+
 void WayfireCPU::init (Gtk::HBox *container)
 {
     /* Create the button */
@@ -38,6 +48,11 @@ void WayfireCPU::init (Gtk::HBox *container)
     /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireCPU::icon_size_changed_cb));
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireCPU::bar_pos_changed_cb));
+    show_percentage.set_callback (sigc::mem_fun (*this, &WayfireCPU::settings_changed_cb));
+    foreground_colour.set_callback (sigc::mem_fun (*this, &WayfireCPU::settings_changed_cb));
+    background_colour.set_callback (sigc::mem_fun (*this, &WayfireCPU::settings_changed_cb));
+
+    settings_changed_cb ();
 }
 
 WayfireCPU::~WayfireCPU()

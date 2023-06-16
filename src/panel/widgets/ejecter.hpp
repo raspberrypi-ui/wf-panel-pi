@@ -16,6 +16,8 @@ class WayfireEjecter : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
+    WfOption <bool> autohide {"panel/ejecter_autohide"};
+
     /* plugin */
     EjecterPlugin data;
     EjecterPlugin *ej;
@@ -28,6 +30,7 @@ class WayfireEjecter : public WayfireWidget
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
+    void settings_changed_cb (void);
 };
 
 #endif /* end of include guard: WIDGETS_EJECTER_HPP */

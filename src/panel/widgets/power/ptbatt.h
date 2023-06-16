@@ -18,6 +18,7 @@ typedef struct {
     void *context;
     void *requester;
     gboolean ispi;
+    int batt_num;
 } PtBattPlugin;
 
 extern void power_init (PtBattPlugin *pt);

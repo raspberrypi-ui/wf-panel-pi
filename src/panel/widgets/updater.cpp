@@ -24,6 +24,12 @@ bool WayfireUpdater::set_icon (void)
     return false;
 }
 
+void WayfireUpdater::settings_changed_cb (void)
+{
+    up->interval = interval;
+    updater_set_interval (up);
+}
+
 void WayfireUpdater::init (Gtk::HBox *container)
 {
     /* Create the button */
@@ -43,6 +49,9 @@ void WayfireUpdater::init (Gtk::HBox *container)
     /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireUpdater::icon_size_changed_cb));
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireUpdater::bar_pos_changed_cb));
+    interval.set_callback (sigc::mem_fun (*this, &WayfireUpdater::settings_changed_cb));
+
+    settings_changed_cb ();
 }
 
 WayfireUpdater::~WayfireUpdater()

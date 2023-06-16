@@ -19,6 +19,16 @@ bool WayfireGPU::set_icon (void)
     return false;
 }
 
+void WayfireGPU::settings_changed_cb (void)
+{
+    gpu->show_percentage = show_percentage;
+    if (!gdk_rgba_parse (&gpu->foreground_colour, ((std::string) foreground_colour).c_str()))
+        gdk_rgba_parse (&gpu->foreground_colour, "dark gray");
+    if (!gdk_rgba_parse (&gpu->background_colour, ((std::string) background_colour).c_str()))
+        gdk_rgba_parse (&gpu->background_colour, "light gray");
+    gpu_update_display (gpu);
+}
+
 void WayfireGPU::init (Gtk::HBox *container)
 {
     /* Create the button */
@@ -38,6 +48,11 @@ void WayfireGPU::init (Gtk::HBox *container)
     /* Setup callbacks */
     icon_size.set_callback (sigc::mem_fun (*this, &WayfireGPU::icon_size_changed_cb));
     bar_pos.set_callback (sigc::mem_fun (*this, &WayfireGPU::bar_pos_changed_cb));
+    show_percentage.set_callback (sigc::mem_fun (*this, &WayfireGPU::settings_changed_cb));
+    foreground_colour.set_callback (sigc::mem_fun (*this, &WayfireGPU::settings_changed_cb));
+    background_colour.set_callback (sigc::mem_fun (*this, &WayfireGPU::settings_changed_cb));
+
+    settings_changed_cb ();
 }
 
 WayfireGPU::~WayfireGPU()

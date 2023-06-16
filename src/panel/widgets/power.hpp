@@ -16,6 +16,8 @@ class WayfirePower : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
+    WfOption <int> batt_num {"panel/power_batt_num"};
+
     /* plugin */
     PtBattPlugin data;
     PtBattPlugin *pt;

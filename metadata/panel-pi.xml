@@ -25,10 +25,6 @@
 		<_short>Icon Size</_short>
 		<default>32</default>
 	</option>
-	<option name="max_task_width" type="int">
-		<_short>Max Task Width</_short>
-		<default>200</default>
-	</option>
 	<option name="minimal_height" type="int">
 		<_short>Minimal Height</_short>
 		<default>24</default>
@@ -124,17 +120,6 @@
 	</option>
 	</group>
 	<group>
-	<_short>App Search</_short>
-	<option name="search_height" type="int">
-		<_short>Height of Search Window</_short>
-		<default>300</default>
-	</option>
-	<option name="search_fixed" type="bool">
-		<_short>Fix Height of Search Window</_short>
-		<default>false</default>
-	</option>
-	</group>
-	<group>
 	<_short>Clock</_short>
 	<option name="clock_format" type="string">
 		<_short>Clock Format</_short>
@@ -143,6 +128,102 @@
 	<option name="clock_font" type="string">
 		<_short>Clock Font</_short>
 		<default>default</default>
+	</option>
+	</group>
+	<group>
+	<_short>Window List</_short>
+	<option name="window_list_max_width" type="int">
+		<_short>Window List Maximum Task Width</_short>
+		<default>200</default>
+	</option>
+	</group>
+	<group>
+	<_short>Searchable Menu</_short>
+	<option name="smenu_search_height" type="int">
+		<_short>Searchable Menu Search Window Height</_short>
+		<default>300</default>
+	</option>
+	<option name="smenu_search_fixed" type="bool">
+		<_short>Searchable Menu Fix Height of Search Window</_short>
+		<default>false</default>
+	</option>
+	</group>
+	<group>
+	<_short>CPU</_short>
+	<option name="cpu_show_percentage" type="bool">
+		<_short>CPU Show Percentage</_short>
+		<default>true</default>
+	</option>
+	<option name="cpu_foreground" type="string">
+		<_short>CPU Foreground Colour</_short>
+		<default>dark gray</default>
+	</option>
+	<option name="cpu_background" type="string">
+		<_short>CPU Background Colour</_short>
+		<default>light gray</default>
+	</option>
+	</group>
+	<group>
+	<_short>GPU</_short>
+	<option name="gpu_show_percentage" type="bool">
+		<_short>GPU Show Percentage</_short>
+		<default>true</default>
+	</option>
+	<option name="gpu_foreground" type="string">
+		<_short>GPU Foreground Colour</_short>
+		<default>dark gray</default>
+	</option>
+	<option name="gpu_background" type="string">
+		<_short>GPU Background Colour</_short>
+		<default>light gray</default>
+	</option>
+	</group>
+	<group>
+	<_short>CPU Temperature</_short>
+	<option name="cputemp_foreground" type="string">
+		<_short>CPU Temperature Foreground Colour</_short>
+		<default>dark gray</default>
+	</option>
+	<option name="cputemp_background" type="string">
+		<_short>CPU Temperature Background Colour</_short>
+		<default>light gray</default>
+	</option>
+	<option name="cputemp_throttle_1" type="string">
+		<_short>CPU Temperature Throttle 1 Colour</_short>
+		<default>orange</default>
+	</option>
+	<option name="cputemp_throttle_2" type="string">
+		<_short>CPU Temperature Throttle 2 Colour</_short>
+		<default>red</default>
+	</option>
+	<option name="cputemp_low_temp" type="int">
+		<_short>CPU Temperature Low Temperature</_short>
+		<default>40</default>
+	</option>
+	<option name="cputemp_high_temp" type="int">
+		<_short>CPU Temperature High Temperature</_short>
+		<default>90</default>
+	</option>
+	</group>
+	<group>
+	<_short>Updater</_short>
+	<option name="updater_interval" type="int">
+		<_short>Updater Interval Between Checks In Hours</_short>
+		<default>24</default>
+	</option>
+	</group>
+	<group>
+	<_short>Ejecter</_short>
+	<option name="ejecter_autohide" type="bool">
+		<_short>Ejecter Hide When Nothing To Eject</_short>
+		<default>true</default>
+	</option>
+	</group>
+	<group>
+	<_short>Power</_short>
+	<option name="power_batt_num" type="int">
+		<_short>Power Battery Number</_short>
+		<default>0</default>
 	</option>
 	</group>
 	</plugin>

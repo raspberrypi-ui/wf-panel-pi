@@ -16,6 +16,13 @@ class WayfireCPUTemp : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
+    WfOption <std::string> foreground_colour {"panel/cputemp_foreground"};
+    WfOption <std::string> background_colour {"panel/cputemp_background"};
+    WfOption <std::string> throttle1_colour {"panel/cputemp_throttle_1"};
+    WfOption <std::string> throttle2_colour {"panel/cputemp_throttle_2"};
+    WfOption <int> low_temp {"panel/cputemp_low_temp"};
+    WfOption <int> high_temp {"panel/cputemp_high_temp"};
+
     /* plugin */
     CPUTempPlugin data;
     CPUTempPlugin *cput;
@@ -27,6 +34,7 @@ class WayfireCPUTemp : public WayfireWidget
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
+    void settings_changed_cb (void);
 };
 
 #endif /* end of include guard: WIDGETS_CPUTEMP_HPP */

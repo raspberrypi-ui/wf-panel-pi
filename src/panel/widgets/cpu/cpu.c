@@ -89,7 +89,7 @@ static gboolean cpu_update (CPUPlugin *c)
 void cpu_update_display (CPUPlugin *c)
 {
     GdkRGBA none = {0, 0, 0, 0};
-    graph_reload (&(c->graph), c->icon_size, c->background_color, c->foreground_color, none, none);
+    graph_reload (&(c->graph), c->icon_size, c->background_colour, c->foreground_colour, none, none);
 }
 
 void cpu_destructor (gpointer user_data)
@@ -100,9 +100,6 @@ void cpu_destructor (gpointer user_data)
 
 void cpu_init (CPUPlugin *c)
 {
-    char *str;
-    int val;
-
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -111,22 +108,6 @@ void cpu_init (CPUPlugin *c)
     /* Allocate icon as a child of top level */
     graph_init (&(c->graph));
     gtk_container_add (GTK_CONTAINER (c->plugin), c->graph.da);
-
-    if (config_setting_lookup_int ("cpu", "ShowPercent", &val))
-        c->show_percentage = (val != 0);
-    else c->show_percentage = 1;
-
-    if (config_setting_lookup_string ("cpu", "Foreground", &str))
-    {
-        if (!gdk_rgba_parse (&c->foreground_color, str))
-            gdk_rgba_parse (&c->foreground_color, "dark gray");
-    } else gdk_rgba_parse (&c->foreground_color, "dark gray");
-
-    if (config_setting_lookup_string ("cpu", "Background", &str))
-    {
-        if (!gdk_rgba_parse (&c->background_color, str))
-            gdk_rgba_parse (&c->background_color, "light gray");
-    } else gdk_rgba_parse (&c->background_color, "light gray");
 
     cpu_update_display (c);
 

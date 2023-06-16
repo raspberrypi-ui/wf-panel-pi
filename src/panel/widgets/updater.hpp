@@ -16,6 +16,8 @@ class WayfireUpdater : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
+    WfOption <int> interval {"panel/updater_interval"};
+
     /* plugin */
     UpdaterPlugin data;
     UpdaterPlugin *up;
@@ -28,6 +30,7 @@ class WayfireUpdater : public WayfireWidget
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
+    void settings_changed_cb (void);
 };
 
 #endif /* end of include guard: WIDGETS_UPDATER_HPP */

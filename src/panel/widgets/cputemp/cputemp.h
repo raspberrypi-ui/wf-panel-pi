@@ -25,10 +25,10 @@ typedef struct
     gboolean ispi;
     int lower_temp;                         /* Temperature of bottom of graph */
     int upper_temp;                         /* Temperature of top of graph */
-    GdkRGBA foreground_color;               /* Foreground colour for drawing area */
-    GdkRGBA background_color;               /* Background colour for drawing area */
-    GdkRGBA low_throttle_color;             /* Colour for bars with ARM freq cap */
-    GdkRGBA high_throttle_color;            /* Colour for bars with throttling */
+    GdkRGBA foreground_colour;              /* Foreground colour for drawing area */
+    GdkRGBA background_colour;              /* Background colour for drawing area */
+    GdkRGBA low_throttle_colour;            /* Colour for bars with ARM freq cap */
+    GdkRGBA high_throttle_colour;           /* Colour for bars with throttling */
 } CPUTempPlugin;
 
 extern void cputemp_init (CPUTempPlugin *up);

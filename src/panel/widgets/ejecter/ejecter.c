@@ -242,6 +242,11 @@ static void update_icon (EjecterPlugin *ej)
         gtk_widget_hide (ej->plugin);
         gtk_widget_set_sensitive (ej->plugin, FALSE);
     }
+    else
+    {
+        gtk_widget_show (ej->plugin);
+        gtk_widget_set_sensitive (ej->plugin, TRUE);
+    }
 }
 
 static void show_menu (EjecterPlugin *ej)
@@ -382,7 +387,6 @@ void ej_init (EjecterPlugin *ej)
 {
     /* Allocate and initialize plugin context */
     //EjecterPlugin *ej = g_new0 (EjecterPlugin, 1);
-    int val;
 
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -406,13 +410,6 @@ void ej_init (EjecterPlugin *ej)
     g_signal_connect (ej->plugin, "clicked", G_CALLBACK (ejecter_button_press_event), ej);
 
     /* Set up variables */
-    if (config_setting_lookup_int ("ejecter", "AutoHide", &val))
-    {
-        if (val == 1) ej->autohide = TRUE;
-        else ej->autohide = FALSE;
-    }
-    else ej->autohide = TRUE;
-
     ej->popup = NULL;
     ej->menu = NULL;
 
