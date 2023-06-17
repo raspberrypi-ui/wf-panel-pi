@@ -132,7 +132,7 @@
 	</group>
 	<group>
 	<_short>Window List</_short>
-	<option name="window_list_max_width" type="int">
+	<option name="window-list_max_width" type="int">
 		<_short>Window List Maximum Task Width</_short>
 		<default>200</default>
 	</option>
