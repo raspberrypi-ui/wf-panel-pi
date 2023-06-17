@@ -423,9 +423,11 @@ static void configure_plugin (GtkButton *, gpointer)
     GtkTreeModel *mod;
     GtkTreeIter iter;
     int index, nitems, lorr = selection ();
-    char *type, *title, *strval, *key;
+    char *type, *strval, *key, *user_file;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
+    GKeyFile *kf;
+    GList *children, *elem;
     gsize len;
 
     if (lorr)
@@ -435,10 +437,10 @@ static void configure_plugin (GtkButton *, gpointer)
         {
             gtk_tree_model_get (mod, &iter, 1, &type, -1);
 
-            title = g_strdup_printf ("Configure %s", display_name (type));
-            cdlg = gtk_dialog_new_with_buttons (title, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, 
+            strval = g_strdup_printf ("Configure %s", display_name (type));
+            cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                 _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
-            g_free (title);
+            g_free (strval);
             box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
             gtk_widget_set_margin_top (box, 10);
             gtk_widget_set_margin_bottom (box, 10);
@@ -462,8 +464,7 @@ static void configure_plugin (GtkButton *, gpointer)
                                             gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (key));
                                             break;
 
-                        case CONF_INT :     GtkAdjustment *adj = gtk_adjustment_new (0, -100, 100, 1, 0, 0);
-                                            control = gtk_spin_button_new (adj, 0, 0);
+                        case CONF_INT :     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
                                             gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
                                             break;
 
@@ -488,12 +489,10 @@ static void configure_plugin (GtkButton *, gpointer)
                 index++;
             }
             gtk_widget_show_all (cdlg);
+
             if (gtk_dialog_run (GTK_DIALOG (cdlg)) == GTK_RESPONSE_OK)
             {
-                GKeyFile *kf;
-                GList *children, *elem;
-
-                char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+                user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
                 kf = g_key_file_new ();
                 g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
@@ -502,21 +501,14 @@ static void configure_plugin (GtkButton *, gpointer)
                 while (elem)
                 {
                     hbox = GTK_WIDGET (elem->data);
-                    GList *boxch = gtk_container_get_children (GTK_CONTAINER (hbox));
-                    control = GTK_WIDGET (boxch->next->data);
+                    control = GTK_WIDGET (gtk_container_get_children (GTK_CONTAINER (hbox))->next->data);
 
                     if (GTK_IS_SWITCH (control))
-                    {
                         g_key_file_set_boolean (kf, "panel", gtk_widget_get_name (control), gtk_switch_get_active (GTK_SWITCH (control)));
-                    }
                     else if (GTK_IS_SPIN_BUTTON (control))
-                    {
                         g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
-                    }
                     else if (GTK_IS_ENTRY (control))
-                    {
                         g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), gtk_entry_get_text (GTK_ENTRY (control)));
-                    }
                     else if (GTK_IS_COLOR_BUTTON (control))
                     {
                         gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (control), &col);
@@ -535,6 +527,7 @@ static void configure_plugin (GtkButton *, gpointer)
                 g_key_file_free (kf);
                 g_free (user_file);
             }
+
             gtk_widget_destroy (cdlg);
         }
     }
