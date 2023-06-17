@@ -6,9 +6,9 @@
 #include "wf-option-wrap.hpp"
 
 extern "C" {
-    gboolean get_config_bool (const char *plugin, const char *name);
-    int get_config_int (const char *plugin, const char *name);
-    void get_config_string (const char *plugin, const char *name, char **dest);
+    gboolean get_config_bool (const char *key);
+    int get_config_int (const char *key);
+    void get_config_string (const char *key, char **dest);
 }
 
 Glib::RefPtr<Gdk::Pixbuf> load_icon_pixbuf_safe(std::string icon_path, int size)
@@ -108,26 +108,26 @@ void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
     set_image_pixbuf(image, pbuff, scale);
 }
 
-gboolean get_config_bool (const char *plugin, const char *name)
+gboolean get_config_bool (const char *key)
 {
-    char *cname = g_strdup_printf ("panel/%s_%s", plugin, name);
+    char *cname = g_strdup_printf ("panel/%s", key);
     WfOption <bool> bool_option {cname};
     g_free (cname);
     if (bool_option) return TRUE;
     else return FALSE;
 }
 
-int get_config_int (const char *plugin, const char *name)
+int get_config_int (const char *key)
 {
-    char *cname = g_strdup_printf ("panel/%s_%s", plugin, name);
+    char *cname = g_strdup_printf ("panel/%s", key);
     WfOption <int> int_option {cname};
     g_free (cname);
     return int_option;
 }
 
-void get_config_string (const char *plugin, const char *name, char **dest)
+void get_config_string (const char *key, char **dest)
 {
-    char *cname = g_strdup_printf ("panel/%s_%s", plugin, name);
+    char *cname = g_strdup_printf ("panel/%s", key);
     WfOption <std::string> string_option {cname};
     g_free (cname);
     *dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
