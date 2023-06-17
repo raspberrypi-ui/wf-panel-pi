@@ -29,6 +29,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib.h>
 #include <glib/gi18n.h>
 
+extern gboolean get_config_bool (const char *plugin, const char *name);
+extern int get_config_int (const char *plugin, const char *name);
+extern void get_config_string (const char *plugin, const char *name, char **dest);
+
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
@@ -419,7 +423,7 @@ static void configure_plugin (GtkButton *, gpointer)
     GtkTreeModel *mod;
     GtkTreeIter iter;
     int index, nitems, lorr = selection ();
-    char *type, *title;
+    char *type, *title, *strval;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
 
     if (lorr)
@@ -452,16 +456,26 @@ static void configure_plugin (GtkButton *, gpointer)
                     switch (conf_table[index].type)
                     {
                         case CONF_BOOL :    control = gtk_switch_new ();
+                                            gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (conf_table[index].plugin, conf_table[index].name));
                                             break;
 
-                        case CONF_INT :     GtkAdjustment *adj = gtk_adjustment_new (0, -10, 10, 1, 0, 0);
+                        case CONF_INT :     GtkAdjustment *adj = gtk_adjustment_new (0, -100, 100, 1, 0, 0);
                                             control = gtk_spin_button_new (adj, 0, 0);
+                                            gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (conf_table[index].plugin, conf_table[index].name));
                                             break;
 
                         case CONF_STRING :  control = gtk_entry_new ();
+                                            get_config_string (conf_table[index].plugin, conf_table[index].name, &strval);
+                                            gtk_entry_set_text (GTK_ENTRY (control), strval);
+                                            g_free (strval);
                                             break;
 
-                        case CONF_COLOUR :  control = gtk_color_button_new ();
+                        case CONF_COLOUR :  GdkRGBA col;
+                                            control = gtk_color_button_new ();
+                                            get_config_string (conf_table[index].plugin, conf_table[index].name, &strval);
+                                            gdk_rgba_parse (&col, strval);
+                                            g_free (strval);
+                                            gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
                                             break;
                     }
                     gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);

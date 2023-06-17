@@ -3,6 +3,13 @@
 #include <gtkmm/icontheme.h>
 #include <gdk/gdkcairo.h>
 #include <iostream>
+#include "wf-option-wrap.hpp"
+
+extern "C" {
+    gboolean get_config_bool (const char *plugin, const char *name);
+    int get_config_int (const char *plugin, const char *name);
+    void get_config_string (const char *plugin, const char *name, char **dest);
+}
 
 Glib::RefPtr<Gdk::Pixbuf> load_icon_pixbuf_safe(std::string icon_path, int size)
 {
@@ -99,4 +106,29 @@ void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
         invert_pixbuf(pbuff);
 
     set_image_pixbuf(image, pbuff, scale);
+}
+
+gboolean get_config_bool (const char *plugin, const char *name)
+{
+    char *cname = g_strdup_printf ("panel/%s_%s", plugin, name);
+    WfOption <bool> bool_option {cname};
+    g_free (cname);
+    if (bool_option) return TRUE;
+    else return FALSE;
+}
+
+int get_config_int (const char *plugin, const char *name)
+{
+    char *cname = g_strdup_printf ("panel/%s_%s", plugin, name);
+    WfOption <int> int_option {cname};
+    g_free (cname);
+    return int_option;
+}
+
+void get_config_string (const char *plugin, const char *name, char **dest)
+{
+    char *cname = g_strdup_printf ("panel/%s_%s", plugin, name);
+    WfOption <std::string> string_option {cname};
+    g_free (cname);
+    *dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
 }
