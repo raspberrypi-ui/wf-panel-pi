@@ -3,6 +3,7 @@
 
 extern "C" {
 extern void open_config_dialog (void);
+extern void plugin_config_dialog (const char *type);
 }
 
 #include <gtk-layer-shell.h>
@@ -53,10 +54,14 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_button_release_event().connect(
             sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_press_event));
 
-        conf.set_label ("Set Widgets...");
+        conf.set_label ("Add/Remove Widgets...");
         conf.signal_activate().connect(
             sigc::mem_fun(this, &WayfireAutohidingWindow::do_configure));
         menu.attach (conf, 0, 1, 0, 1);
+        cplug.set_label ("Configure Widget...");
+        cplug.signal_activate().connect(
+            sigc::mem_fun(this, &WayfireAutohidingWindow::do_plugin_configure));
+        menu.attach (cplug, 0, 1, 1, 2);
         menu.attach_to_widget (*this);
         menu.show_all();
 }
@@ -73,6 +78,45 @@ bool WayfireAutohidingWindow::on_button_press_event(GdkEventButton* event)
 {
     if ((event->type == GDK_BUTTON_RELEASE) && (event->button == 3))
     {
+        conf_plugin = "gtkmm";
+
+        // remap mouse coords to parent window coords
+        gdouble px, py;
+        gdk_window_coords_to_parent (event->window, event->x, event->y, &px, &py);
+
+        // child of window is first hbox
+        std::vector<Gtk::Widget*> winch = this->get_children ();
+        for (auto &tophbox : winch)
+        {
+            if (auto ctophbox = dynamic_cast<Gtk::Container*> (tophbox))
+            {
+                // top hbox has two hboxes as children - loop through both
+                std::vector<Gtk::Widget*> hboxes = ctophbox->get_children ();
+                for (auto &hbox : hboxes)
+                {
+                    if (auto chbox = dynamic_cast<Gtk::Container*> (hbox))
+                    {
+                        // loop through plugins in each hbox
+                        std::vector<Gtk::Widget*> plugins = chbox->get_children ();
+                        for (auto &plugin : plugins)
+                        {
+                            GtkAllocation alloc;
+                            gtk_widget_get_allocation (GTK_WIDGET (plugin->gobj()), &alloc);
+
+                            // check if the x position of the mouse is within the plugin
+                            if (px >= alloc.x && px <= alloc.x + alloc.width)
+                            {
+                                conf_plugin = plugin->get_name();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
+        else cplug.set_sensitive (false);
         menu.popup (event->button, event->time);
         return true;
     }
@@ -82,6 +126,11 @@ bool WayfireAutohidingWindow::on_button_press_event(GdkEventButton* event)
 void WayfireAutohidingWindow::do_configure()
 {
     open_config_dialog ();
+}
+
+void WayfireAutohidingWindow::do_plugin_configure()
+{
+    if (conf_plugin.substr (0,5) != "gtkmm") plugin_config_dialog (conf_plugin.c_str());
 }
 
 wl_surface* WayfireAutohidingWindow::get_wl_surface() const

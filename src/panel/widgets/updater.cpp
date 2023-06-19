@@ -34,6 +34,7 @@ void WayfireUpdater::init (Gtk::HBox *container)
 {
     /* Create the button */
     plugin = std::make_unique <Gtk::Button> ();
+    plugin->set_name ("updater");
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */

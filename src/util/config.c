@@ -409,7 +409,7 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 
 /* Launch customise dialog for plugin-specific options */
 
-void plugin_config_dlg (const char *type)
+void plugin_config_dialog (const char *type)
 {
     int index, nitems;
     char *strval, *key, *user_file;
@@ -515,7 +515,7 @@ void plugin_config_dlg (const char *type)
     gtk_widget_destroy (cdlg);
 }
 
-int space_config_dlg (int space)
+static int space_config_dialog (int space)
 {
     char *strval;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
@@ -565,7 +565,7 @@ static void configure_plugin (GtkButton *, gpointer)
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
             gtk_tree_model_get (mod, &iter, 1, &type, -1);
-            if (strncmp (type, "spacing", 7)) plugin_config_dlg (type);
+            if (strncmp (type, "spacing", 7)) plugin_config_dialog (type);
             else
             {
                 gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
@@ -575,7 +575,7 @@ static void configure_plugin (GtkButton *, gpointer)
                 sscanf (type, "spacing%d", &index);
                 g_free (type);
 
-                index = space_config_dlg (index);
+                index = space_config_dialog (index);
 
                 // update both the widget type and the displayed name
                 type = g_strdup_printf ("spacing%d", index);

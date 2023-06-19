@@ -5,6 +5,7 @@
 void WayfireClock::init(Gtk::HBox *container)
 {
     button = std::make_unique<WayfireMenuButton> ("panel");
+    button->set_name ("clock");
     button->add(label);
     button->show();
     label.show();
