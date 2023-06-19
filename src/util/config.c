@@ -183,8 +183,9 @@ static void update_buttons (void)
     GtkTreePath *path;
     GtkTreeModel *mod;
     GtkTreeIter iter;
-    int nitems, lorr = selection ();
+    int index, nitems, lorr = selection ();
     char *type = NULL;
+    gboolean conf;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (lorr == 0)
@@ -194,6 +195,7 @@ static void update_buttons (void)
         gtk_widget_set_sensitive (rem, FALSE);
         gtk_widget_set_sensitive (wup, FALSE);
         gtk_widget_set_sensitive (wdn, FALSE);
+        gtk_widget_set_sensitive (cpl, FALSE);
     }
     else
     {
@@ -215,6 +217,25 @@ static void update_buttons (void)
             // scroll the tree view to show the highlighted item
             path = gtk_tree_model_get_path (mod, &iter);
             gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[1 - lorr]), path, NULL, FALSE, 0.0, 0.0);
+
+            // can this type be configured?
+            conf = FALSE;
+            if (!strncmp (type, "spacing", 7)) conf = TRUE;
+            else
+            {
+                nitems = sizeof (conf_table) / sizeof (conf_table_t);
+                index = 0;
+                while (index < nitems)
+                {
+                    if (!g_strcmp0 (conf_table[index].plugin, type))
+                    {
+                        conf = TRUE;
+                        break;
+                    }
+                    index++;
+                }
+            }
+            gtk_widget_set_sensitive (cpl, conf);
         }
         if (type) g_free (type);
     }
@@ -499,7 +520,7 @@ int space_config_dlg (int space)
     char *strval;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
 
-    strval = g_strdup_printf (_("Configure %s"), display_name ("spacing"));
+    strval = g_strdup_printf (_("Configure %s"), display_name ("spacing0"));
     cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
         _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
     g_free (strval);
