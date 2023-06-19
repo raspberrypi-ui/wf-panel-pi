@@ -46,6 +46,11 @@ extern void get_config_string (const char *key, char **dest);
 #define COL_ID      1
 #define COL_INDEX   2
 
+typedef struct {
+    const char *plugin;
+    const char *label;
+} name_table_t;
+
 typedef enum {
     CONF_BOOL,
     CONF_INT,
@@ -72,6 +77,23 @@ static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *sup, *sdn, *cpl;
 static int hand[3];
 static gboolean found;
 static char sbuf[32];
+
+static name_table_t name_table[] = {
+{   "bluetooth",    "Bluetooth"},
+{   "clock",        "Clock"},
+{   "cpu",          "CPU"},
+{   "cputemp",      "CPU Temp"},
+{   "ejecter",      "Ejecter"},
+{   "gpu",          "GPU"},
+{   "launchers",    "Launcher"},
+{   "micpulse",     "Microphone"},
+{   "netman",       "Network"},
+{   "power",        "Power"},
+{   "smenu",        "Menu"},
+{   "updater",      "Updater"},
+{   "volumepulse",  "Volume"},
+{   "window-list",  "Window List"},
+};
 
 static conf_table_t conf_table[] = {
 {    "clock",        "format",              CONF_STRING,    "Display format"},
@@ -115,22 +137,7 @@ static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter,
 
 static const char *display_name (const char *str)
 {
-    int space;
-
-    if (!g_strcmp0 (str, "bluetooth")) return _("Bluetooth");
-    if (!g_strcmp0 (str, "clock")) return _("Clock");
-    if (!g_strcmp0 (str, "cpu")) return _("CPU");
-    if (!g_strcmp0 (str, "cputemp")) return _("CPU Temp");
-    if (!g_strcmp0 (str, "ejecter")) return _("Ejecter");
-    if (!g_strcmp0 (str, "gpu")) return _("GPU");
-    if (!g_strcmp0 (str, "launchers")) return _("Launcher");
-    if (!g_strcmp0 (str, "micpulse")) return _("Microphone");
-    if (!g_strcmp0 (str, "netman")) return _("Network");
-    if (!g_strcmp0 (str, "power")) return _("Power");
-    if (!g_strcmp0 (str, "smenu")) return _("Menu");
-    if (!g_strcmp0 (str, "updater")) return _("Updater");
-    if (!g_strcmp0 (str, "volumepulse")) return _("Volume");
-    if (!g_strcmp0 (str, "window-list")) return _("Window List");
+    int index, nitems, space;
 
     if (sscanf (str, "spacing%d", &space) == 1)
     {
@@ -140,6 +147,14 @@ static const char *display_name (const char *str)
             sprintf (sbuf, _("Spacer (%d)"), space);
             return sbuf;
         }
+    }
+
+    nitems = sizeof (name_table) / sizeof (name_table_t);
+    index = 0;
+    while (index < nitems)
+    {
+        if (!g_strcmp0 (str, name_table[index].plugin)) return _(name_table[index].label);
+        index++;
     }
 
     return _("<Unknown>");
@@ -539,6 +554,7 @@ static void configure_plugin (GtkButton *, gpointer)
         {
             gtk_tree_model_get (mod, &iter, 1, &type, -1);
             plugin_config_dlg (type);
+            g_free (type);
         }
     }
 }
