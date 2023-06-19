@@ -57,6 +57,7 @@ typedef struct {
     const char *plugin;
     const char *name;
     CONF_TYPE type;
+    const char *label;
 } conf_table_t;
 
 /*----------------------------------------------------------------------------*/
@@ -73,28 +74,28 @@ static gboolean found;
 static char sbuf[32];
 
 static conf_table_t conf_table[] = {
-{    "clock",        "format",              CONF_STRING},
-{    "clock",        "font",                CONF_STRING},
-{    "cpu",          "show_percentage",     CONF_BOOL},
-{    "cpu",          "foreground",          CONF_COLOUR},
-{    "cpu",          "background",          CONF_COLOUR},
-{    "cputemp",      "foreground",          CONF_COLOUR},
-{    "cputemp",      "background",          CONF_COLOUR},
-{    "cputemp",      "throttle_1",          CONF_COLOUR},
-{    "cputemp",      "throttle_2",          CONF_COLOUR},
-{    "cputemp",      "low_temp",            CONF_INT},
-{    "cputemp",      "high_temp",           CONF_INT},
-{    "ejecter",      "autohide",            CONF_BOOL},
-{    "gpu",          "show_percentage",     CONF_BOOL},
-{    "gpu",          "foreground",          CONF_COLOUR},
-{    "gpu",          "background",          CONF_COLOUR},
-{    "launchers",    "animation_duration",  CONF_INT},
-{    "launchers",    "spacing",             CONF_INT},
-{    "power",        "batt_num",            CONF_INT},
-{    "smenu",        "search_height",       CONF_INT},
-{    "smenu",        "search_fixed",        CONF_BOOL},
-{    "updater",      "interval",            CONF_INT},
-{    "window-list",  "max_width",           CONF_INT},
+{    "clock",        "format",              CONF_STRING,    "Display format"},
+{    "clock",        "font",                CONF_STRING,    "Display font"},
+{    "cpu",          "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
+{    "cpu",          "foreground",          CONF_COLOUR,    "Foreground colour"},
+{    "cpu",          "background",          CONF_COLOUR,    "Background colour"},
+{    "cputemp",      "foreground",          CONF_COLOUR,    "Foreground colour"},
+{    "cputemp",      "background",          CONF_COLOUR,    "Background colour"},
+{    "cputemp",      "throttle_1",          CONF_COLOUR,    "Colour when ARM frequency capped"},
+{    "cputemp",      "throttle_2",          CONF_COLOUR,    "Colour when throttled"},
+{    "cputemp",      "low_temp",            CONF_INT,       "Lower temperature bound"},
+{    "cputemp",      "high_temp",           CONF_INT,       "Upper temperature bound"},
+{    "ejecter",      "autohide",            CONF_BOOL,      "Hide icon when no devices"},
+{    "gpu",          "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
+{    "gpu",          "foreground",          CONF_COLOUR,    "Foreground colour"},
+{    "gpu",          "background",          CONF_COLOUR,    "Background colour"},
+{    "launchers",    "animation_duration",  CONF_INT,       "Animation duration"},
+{    "launchers",    "spacing",             CONF_INT,       "Icon spacing"},
+{    "power",        "batt_num",            CONF_INT,       "Battery number to monitor"},
+{    "smenu",        "search_height",       CONF_INT,       "Search window height"},
+{    "smenu",        "search_fixed",        CONF_BOOL,      "Fix size of search window"},
+{    "updater",      "interval",            CONF_INT,       "Hours between checks for updates"},
+{    "window-list",  "max_width",           CONF_INT,       "Maximum width of task button"},
 };
 
 /*----------------------------------------------------------------------------*/
@@ -445,7 +446,9 @@ void plugin_config_dlg (const char *type)
         if (!g_strcmp0 (conf_table[index].plugin, type))
         {
             hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-            label = gtk_label_new (conf_table[index].name);
+            strval = g_strdup_printf ("%s:", _(conf_table[index].label));
+            label = gtk_label_new (strval);
+            g_free (strval);
             gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
             key = g_strdup_printf ("%s_%s", conf_table[index].plugin, conf_table[index].name);
             switch (conf_table[index].type)
