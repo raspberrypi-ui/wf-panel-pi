@@ -54,11 +54,11 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_button_release_event().connect(
             sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_press_event));
 
-        conf.set_label ("Add/Remove Widgets...");
+        conf.set_label ("Add / Remove Plugins...");
         conf.signal_activate().connect(
             sigc::mem_fun(this, &WayfireAutohidingWindow::do_configure));
         menu.attach (conf, 0, 1, 0, 1);
-        cplug.set_label ("Configure Widget...");
+        cplug.set_label ("Configure Plugin...");
         cplug.signal_activate().connect(
             sigc::mem_fun(this, &WayfireAutohidingWindow::do_plugin_configure));
         menu.attach (cplug, 0, 1, 1, 2);
@@ -117,6 +117,16 @@ bool WayfireAutohidingWindow::on_button_press_event(GdkEventButton* event)
 
         if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
         else cplug.set_sensitive (false);
+
+        // simulate a leave event on the button to hide the prelight */
+        GdkEvent *nev = gdk_event_new (GDK_LEAVE_NOTIFY);
+        GdkEventCrossing *ev = (GdkEventCrossing *) nev;
+        ev->window = event->window;
+        ev->time = GDK_CURRENT_TIME;
+        ev->mode = GDK_CROSSING_NORMAL;
+        ev->send_event = TRUE;
+        gtk_main_do_event (nev);
+
         menu.popup (event->button, event->time);
         return true;
     }

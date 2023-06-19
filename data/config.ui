@@ -4,7 +4,7 @@
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkDialog" id="config_dlg">
     <property name="can-focus">False</property>
-    <property name="title" translatable="yes">Set Widgets</property>
+    <property name="title" translatable="yes">Add / Remove Plugins</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -119,7 +119,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Add widget to the left side of the taskbar</property>
+                        <property name="tooltip-text" translatable="yes">Add plugin to left side of taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -133,7 +133,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Add widget to the right side of the taskbar</property>
+                        <property name="tooltip-text" translatable="yes">Add plugin to right side of taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -147,7 +147,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Remove widget from the taskbar</property>
+                        <property name="tooltip-text" translatable="yes">Remove plugin from taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -161,7 +161,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Move widget towards the left of the taskbar</property>
+                        <property name="tooltip-text" translatable="yes">Move plugin towards left of taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -175,7 +175,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Move widget towards the right of the taskbar</property>
+                        <property name="tooltip-text" translatable="yes">Move plugin towards right of taskbar</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -189,7 +189,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Configure the selected widget</property>
+                        <property name="tooltip-text" translatable="yes">Configure selected plugin</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
