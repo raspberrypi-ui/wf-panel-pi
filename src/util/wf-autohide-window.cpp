@@ -1,3 +1,4 @@
+#include <libintl.h>
 #include "wf-autohide-window.hpp"
 #include "wayfire-shell-unstable-v2-client-protocol.h"
 
@@ -54,16 +55,16 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_button_release_event().connect(
             sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_press_event));
 
-        conf.set_label ("Add / Remove Plugins...");
-        conf.signal_activate().connect(
-            sigc::mem_fun(this, &WayfireAutohidingWindow::do_configure));
-        menu.attach (conf, 0, 1, 0, 1);
-        cplug.set_label ("Configure Plugin...");
-        cplug.signal_activate().connect(
-            sigc::mem_fun(this, &WayfireAutohidingWindow::do_plugin_configure));
-        menu.attach (cplug, 0, 1, 1, 2);
-        menu.attach_to_widget (*this);
-        menu.show_all();
+    conf.set_label (gettext("Add / Remove Plugins..."));
+    conf.signal_activate().connect(sigc::mem_fun(this, &WayfireAutohidingWindow::do_configure));
+    menu.attach (conf, 0, 1, 0, 1);
+
+    cplug.set_label (gettext("Configure Plugin..."));
+    cplug.signal_activate().connect(sigc::mem_fun(this, &WayfireAutohidingWindow::do_plugin_configure));
+    menu.attach (cplug, 0, 1, 1, 2);
+
+    menu.attach_to_widget (*this);
+    menu.show_all();
 }
 
 WayfireAutohidingWindow::~WayfireAutohidingWindow()
