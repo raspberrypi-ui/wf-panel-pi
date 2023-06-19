@@ -73,7 +73,7 @@ static GtkListStore *widgets;
 static GtkTreeModel *filt[3], *sort[3];
 static GtkWidget *dlg;
 static GtkWidget *tv[3];
-static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *sup, *sdn, *cpl;
+static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *cpl;
 static int hand[3];
 static gboolean found;
 static char sbuf[32];
@@ -194,8 +194,6 @@ static void update_buttons (void)
         gtk_widget_set_sensitive (rem, FALSE);
         gtk_widget_set_sensitive (wup, FALSE);
         gtk_widget_set_sensitive (wdn, FALSE);
-        gtk_widget_set_sensitive (sup, FALSE);
-        gtk_widget_set_sensitive (sdn, FALSE);
     }
     else
     {
@@ -213,14 +211,11 @@ static void update_buttons (void)
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
             gtk_tree_model_get (mod, &iter, 1, &type, -1);
-            if (!sscanf (type, "spacing%d", &nitems)) nitems = 0;
 
             // scroll the tree view to show the highlighted item
             path = gtk_tree_model_get_path (mod, &iter);
             gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[1 - lorr]), path, NULL, FALSE, 0.0, 0.0);
         }
-        gtk_widget_set_sensitive (sup, type && !strncmp (type, "spacing", 7));
-        gtk_widget_set_sensitive (sdn, type && !strncmp (type, "spacing", 7) && nitems > 1);
         if (type) g_free (type);
     }
 }
@@ -391,46 +386,6 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
     return FALSE;
 }
 
-/* Change the width of the currently-highlighted space widget */
-
-static void change_space (GtkButton *, gpointer data)
-{
-    GtkTreeSelection *sel;
-    GtkTreeModel *mod;
-    GtkTreeIter iter, siter, citer;
-    int index, lorr = selection (), dir = (long) data == 1 ? 1 : -1;
-    char *type;
-
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
-    if (gtk_tree_selection_get_selected (sel, &mod, &iter))
-    {
-        gtk_tree_model_get (mod, &iter, 1, &type, -1);
-        gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
-
-        if (!strncmp (type, "spacing", 7))
-        {
-            // read the current spacing
-            sscanf (type, "spacing%d", &index);
-            g_free (type);
-
-            // increment or decrement, pegging at 1
-            index += dir;
-            if (index < 1) index = 1;
-
-            // update both the widget type and the displayed name
-            type = g_strdup_printf ("spacing%d", index);
-            gtk_list_store_set (widgets, &citer,
-                COL_NAME, display_name (type),
-                COL_ID, type,
-                -1);
-        }
-        g_free (type);
-
-        update_buttons ();
-    }
-}
-
 /* Launch customise dialog for plugin-specific options */
 
 void plugin_config_dlg (const char *type)
@@ -443,7 +398,7 @@ void plugin_config_dlg (const char *type)
     GList *children, *elem;
     gsize len;
 
-    strval = g_strdup_printf ("Configure %s", display_name (type));
+    strval = g_strdup_printf (_("Configure %s"), display_name (type));
     cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
         _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
     g_free (strval);
@@ -539,12 +494,48 @@ void plugin_config_dlg (const char *type)
     gtk_widget_destroy (cdlg);
 }
 
+int space_config_dlg (int space)
+{
+    char *strval;
+    GtkWidget *cdlg, *box, *hbox, *label, *control;
+
+    strval = g_strdup_printf (_("Configure %s"), display_name ("spacing"));
+    cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
+    g_free (strval);
+    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+    gtk_widget_set_margin_top (box, 10);
+    gtk_widget_set_margin_bottom (box, 10);
+    gtk_widget_set_margin_start (box, 10);
+    gtk_widget_set_margin_end (box, 10);
+    gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
+
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+    label = gtk_label_new (_("Width in pixels:"));
+    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+
+    control = gtk_spin_button_new_with_range (1, 100, 1);
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
+    gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
+
+    gtk_container_add (GTK_CONTAINER (box), hbox);
+    gtk_widget_show_all (cdlg);
+
+    if (gtk_dialog_run (GTK_DIALOG (cdlg)) == GTK_RESPONSE_OK)
+    {
+        space = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
+    }
+
+    gtk_widget_destroy (cdlg);
+    return space;
+}
+
 static void configure_plugin (GtkButton *, gpointer)
 {
     GtkTreeSelection *sel;
     GtkTreeModel *mod;
-    GtkTreeIter iter;
-    int lorr = selection ();
+    GtkTreeIter iter, siter, citer;
+    int index, lorr = selection ();
     char *type;
 
     if (lorr)
@@ -553,7 +544,25 @@ static void configure_plugin (GtkButton *, gpointer)
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
             gtk_tree_model_get (mod, &iter, 1, &type, -1);
-            plugin_config_dlg (type);
+            if (strncmp (type, "spacing", 7)) plugin_config_dlg (type);
+            else
+            {
+                gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
+                gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
+
+                // read the current spacing
+                sscanf (type, "spacing%d", &index);
+                g_free (type);
+
+                index = space_config_dlg (index);
+
+                // update both the widget type and the displayed name
+                type = g_strdup_printf ("spacing%d", index);
+                gtk_list_store_set (widgets, &citer,
+                    COL_NAME, display_name (type),
+                    COL_ID, type,
+                    -1);
+            }
             g_free (type);
         }
     }
@@ -771,8 +780,6 @@ void open_config_dialog (void)
     rem = (GtkWidget *) gtk_builder_get_object (builder, "rem_btn");
     wup = (GtkWidget *) gtk_builder_get_object (builder, "up_btn");
     wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
-    sup = (GtkWidget *) gtk_builder_get_object (builder, "spacei_btn");
-    sdn = (GtkWidget *) gtk_builder_get_object (builder, "spaced_btn");
     cpl = (GtkWidget *) gtk_builder_get_object (builder, "conf_btn");
 
     // read in the current configuration
@@ -812,9 +819,6 @@ void open_config_dialog (void)
 
     g_signal_connect (wup, "clicked", G_CALLBACK (move_widget), (void *) 1);
     g_signal_connect (wdn, "clicked", G_CALLBACK (move_widget), (void *) -1);
-
-    g_signal_connect (sup, "clicked", G_CALLBACK (change_space), (void *) 1);
-    g_signal_connect (sdn, "clicked", G_CALLBACK (change_space), (void *) -1);
 
     g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 

@@ -184,34 +184,6 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="spacei_btn">
-                        <property name="label" translatable="yes">Increase space</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Increase the size of a spacer widget</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">5</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="spaced_btn">
-                        <property name="label" translatable="yes">Reduce space</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Decrease the size of a spacer widget</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">6</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkButton" id="conf_btn">
                         <property name="label" translatable="yes">Configure plugin...</property>
                         <property name="visible">True</property>
@@ -221,7 +193,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">7</property>
+                        <property name="position">5</property>
                       </packing>
                     </child>
                   </object>
