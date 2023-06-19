@@ -53,7 +53,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
         });
 
     this->signal_button_release_event().connect(
-            sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_press_event));
+            sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_release_event));
 
     conf.set_label (gettext("Add / Remove Plugins..."));
     conf.signal_activate().connect(sigc::mem_fun(this, &WayfireAutohidingWindow::do_configure));
@@ -75,7 +75,7 @@ WayfireAutohidingWindow::~WayfireAutohidingWindow()
         zwf_hotspot_v2_destroy(this->panel_hotspot);
 }
 
-bool WayfireAutohidingWindow::on_button_press_event(GdkEventButton* event)
+bool WayfireAutohidingWindow::on_button_release_event(GdkEventButton* event)
 {
     if ((event->type == GDK_BUTTON_RELEASE) && (event->button == 3))
     {
