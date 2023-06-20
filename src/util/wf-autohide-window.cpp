@@ -1,4 +1,4 @@
-#include <libintl.h>
+#include <glib/gi18n.h>
 #include "wf-autohide-window.hpp"
 #include "wayfire-shell-unstable-v2-client-protocol.h"
 
@@ -55,11 +55,11 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_button_release_event().connect(
             sigc::mem_fun(this, &WayfireAutohidingWindow::on_button_release_event));
 
-    conf.set_label (gettext("Add / Remove Plugins..."));
+    conf.set_label (_("Add / Remove Plugins..."));
     conf.signal_activate().connect(sigc::mem_fun(this, &WayfireAutohidingWindow::do_configure));
     menu.attach (conf, 0, 1, 0, 1);
 
-    cplug.set_label (gettext("Configure Plugin..."));
+    cplug.set_label (_("Configure Plugin..."));
     cplug.signal_activate().connect(sigc::mem_fun(this, &WayfireAutohidingWindow::do_plugin_configure));
     menu.attach (cplug, 0, 1, 1, 2);
 

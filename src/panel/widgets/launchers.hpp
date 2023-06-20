@@ -69,7 +69,7 @@ class WayfireLaunchers : public WayfireWidget
     launcher_container get_launchers_from_config();
 
     static constexpr conf_table_t conf_table[2] = {
-        {CONF_INT,  "spacing",  "Icon spacing"},
+        {CONF_INT,  "spacing",  N_("Icon spacing")},
         {CONF_NONE, NULL,       NULL}
     };
 
@@ -77,7 +77,7 @@ class WayfireLaunchers : public WayfireWidget
         virtual void init(Gtk::HBox *container);
         virtual void handle_config_reload();
         virtual ~WayfireLaunchers() {};
-        static const char *display_name (void) { return "Launcher"; };
+        static const char *display_name (void) { return N_("Launcher"); };
         static const conf_table_t *config_params (void) { return conf_table; };
 };
 
