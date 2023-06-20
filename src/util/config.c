@@ -111,7 +111,6 @@ static conf_table_t conf_table[] = {
 {    "gpu",          "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
 {    "gpu",          "foreground",          CONF_COLOUR,    "Foreground colour"},
 {    "gpu",          "background",          CONF_COLOUR,    "Background colour"},
-{    "launchers",    "animation_duration",  CONF_INT,       "Animation duration"},
 {    "launchers",    "spacing",             CONF_INT,       "Icon spacing"},
 {    "power",        "batt_num",            CONF_INT,       "Battery number to monitor"},
 {    "smenu",        "search_height",       CONF_INT,       "Search window height"},
