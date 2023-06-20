@@ -42,11 +42,6 @@ extern void get_plugin_label (const char *type, char *res);
 #define COL_ID      1
 #define COL_INDEX   2
 
-typedef struct {
-    const char *plugin;
-    const char *label;
-} name_table_t;
-
 typedef enum {
     CONF_BOOL,
     CONF_INT,
