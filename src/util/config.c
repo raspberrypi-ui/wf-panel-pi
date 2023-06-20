@@ -37,11 +37,6 @@ extern void get_config_string (const char *key, char **dest);
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
 
-#define DEFAULT_LEFT "smenu spacing4 launchers spacing8 window-list"
-#define DEFAULT_RIGHT "ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse micpulse spacing2 clock spacing2 power spacing2"
-
-#define NUM_WIDGETS 14
-
 #define COL_NAME    0
 #define COL_ID      1
 #define COL_INDEX   2
@@ -592,47 +587,13 @@ static void configure_plugin (GtkButton *, gpointer)
 
 static void read_config (void)
 {
-    const char *all_wids[NUM_WIDGETS] = {
-        "bluetooth",
-        "clock",
-        "cpu",
-        "cputemp",
-        "ejecter",
-        "gpu",
-        "launchers",
-        "micpulse",
-        "netman",
-        "power",
-        "smenu",
-        "updater",
-        "volumepulse",
-        "window-list"
-    };
-    char *lvalue, *rvalue, *token;
+    char *strval, *token;
     int pos;
 
-    // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
-
-    // read in data from file to a key file
-    GKeyFile *kf = g_key_file_new ();
-    if (g_key_file_load_from_file (kf, user_file, 0, NULL))
-    {
-        lvalue = g_key_file_get_string (kf, "panel", "widgets_left", NULL);
-        if (lvalue == NULL) lvalue = g_strdup (DEFAULT_LEFT);
-
-        rvalue = g_key_file_get_string (kf, "panel", "widgets_right", NULL);
-        if (rvalue == NULL) rvalue = g_strdup (DEFAULT_RIGHT);
-    }
-    else
-    {
-        lvalue = g_strdup (DEFAULT_LEFT);
-        rvalue = g_strdup (DEFAULT_RIGHT);
-    }
-
-    // add each space-separated widget from the lines in the file to the list store
+    // add each space-separated widget from the metadata variables to the list store
+    get_config_string ("widgets_left", &strval);
     pos = 1;
-    token = strtok (lvalue, " ");
+    token = strtok (strval, " ");
     while (token)
     {
         gtk_list_store_insert_with_values (widgets, NULL, -1,
@@ -642,9 +603,11 @@ static void read_config (void)
             -1);
         token = strtok (NULL, " ");
     }
+    g_free (strval);
 
+    get_config_string ("widgets_right", &strval);
     pos = -1;
-    token = strtok (rvalue, " ");
+    token = strtok (strval, " ");
     while (token)
     {
         gtk_list_store_insert_with_values (widgets, NULL, -1,
@@ -654,23 +617,25 @@ static void read_config (void)
             -1);
         token = strtok (NULL, " ");
     }
-
-    g_free (lvalue);
-    g_free (rvalue);
-    g_key_file_free (kf);
-    g_free (user_file);
+    g_free (strval);
 
     // add any unused widgets to the list store so they can be added by the user
-    for (pos = 0; pos < NUM_WIDGETS; pos++)
+    get_config_string ("widgets_all", &strval);
+    token = strtok (strval, " ");
+    while (token)
     {
         found = FALSE;
-        gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) all_wids[pos]);
+        gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
         if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1,
-            COL_NAME, display_name (all_wids[pos]),
-            COL_ID, all_wids[pos],
+            COL_NAME, display_name (token),
+            COL_ID, token,
             COL_INDEX, 0,
             -1);
+        token = strtok (NULL, " ");
     }
+    g_free (strval);
+
+    // always add spacing
     gtk_list_store_insert_with_values (widgets, NULL, -1,
         COL_NAME, display_name ("spacing0"),
         COL_ID, "spacing0",
