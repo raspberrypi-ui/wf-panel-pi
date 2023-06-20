@@ -4,11 +4,14 @@
 #include <gdk/gdkcairo.h>
 #include <iostream>
 #include "wf-option-wrap.hpp"
+#include "../panel/panel.hpp"
+
 
 extern "C" {
     gboolean get_config_bool (const char *key);
     int get_config_int (const char *key);
     void get_config_string (const char *key, char **dest);
+    void get_plugin_label (const char *type, char *res);
 }
 
 Glib::RefPtr<Gdk::Pixbuf> load_icon_pixbuf_safe(std::string icon_path, int size)
@@ -131,4 +134,9 @@ void get_config_string (const char *key, char **dest)
     WfOption <std::string> string_option {cname};
     g_free (cname);
     *dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
+}
+
+void get_plugin_label (const char *type, char *res)
+{
+    strcpy (res, WayfirePanelApp::get().display_name(type).c_str());
 }

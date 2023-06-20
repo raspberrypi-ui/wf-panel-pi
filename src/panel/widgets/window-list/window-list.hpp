@@ -83,6 +83,7 @@ class WayfireWindowList : public WayfireWidget
 
     void init(Gtk::HBox *container) override;
     void add_output(WayfireOutput *output);
+    static std::string display_name (void) { return gettext ("Window List"); };
 
     private:
     void on_draw(const Cairo::RefPtr<Cairo::Context>&);

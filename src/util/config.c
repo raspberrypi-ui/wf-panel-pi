@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 extern gboolean get_config_bool (const char *key);
 extern int get_config_int (const char *key);
 extern void get_config_string (const char *key, char **dest);
+extern void get_plugin_label (const char *type, char *res);
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
@@ -72,23 +73,6 @@ static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *cpl;
 static int hand[3];
 static gboolean found;
 static char sbuf[32];
-
-static name_table_t name_table[] = {
-{   "bluetooth",    "Bluetooth"},
-{   "clock",        "Clock"},
-{   "cpu",          "CPU"},
-{   "cputemp",      "CPU Temp"},
-{   "ejecter",      "Ejecter"},
-{   "gpu",          "GPU"},
-{   "launchers",    "Launcher"},
-{   "micpulse",     "Microphone"},
-{   "netman",       "Network"},
-{   "power",        "Power"},
-{   "smenu",        "Menu"},
-{   "updater",      "Updater"},
-{   "volumepulse",  "Volume"},
-{   "window-list",  "Window List"},
-};
 
 static conf_table_t conf_table[] = {
 {    "clock",        "format",              CONF_STRING,    "Display format"},
@@ -131,7 +115,7 @@ static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter,
 
 static const char *display_name (const char *str)
 {
-    int index, nitems, space;
+    int space;
 
     if (sscanf (str, "spacing%d", &space) == 1)
     {
@@ -143,15 +127,8 @@ static const char *display_name (const char *str)
         }
     }
 
-    nitems = sizeof (name_table) / sizeof (name_table_t);
-    index = 0;
-    while (index < nitems)
-    {
-        if (!g_strcmp0 (str, name_table[index].plugin)) return _(name_table[index].label);
-        index++;
-    }
-
-    return _("<Unknown>");
+    get_plugin_label (str, (char *) &sbuf);
+    return sbuf;
 }
 
 /* Helper function to locate the currently-highlighted widget */

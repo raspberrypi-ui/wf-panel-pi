@@ -72,6 +72,7 @@ class WayfireLaunchers : public WayfireWidget
         virtual void init(Gtk::HBox *container);
         virtual void handle_config_reload();
         virtual ~WayfireLaunchers() {};
+        static std::string display_name (void) { return gettext ("Launcher"); };
 };
 
 

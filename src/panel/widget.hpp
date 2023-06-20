@@ -4,6 +4,7 @@
 #include <gtkmm/hvbox.h>
 #include <wf-option-wrap.hpp>
 #include <wayfire/config/types.hpp>
+#include <libintl.h>
 
 #define DEFAULT_PANEL_HEIGHT "48"
 #define DEFAULT_ICON_SIZE 32

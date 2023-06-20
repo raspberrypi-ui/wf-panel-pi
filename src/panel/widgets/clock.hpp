@@ -22,6 +22,7 @@ class WayfireClock : public WayfireWidget
     public:
     void init(Gtk::HBox *container) override;
     bool update_label();
+    static std::string display_name (void) { return gettext ("Clock"); };
     ~WayfireClock();
 };
 

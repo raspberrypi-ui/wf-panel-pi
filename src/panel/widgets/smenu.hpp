@@ -31,6 +31,7 @@ class WayfireSmenu : public WayfireWidget
     void bar_pos_changed_cb (void);
     void search_param_changed_cb (void);
     bool set_icon (void);
+    static std::string display_name (void) { return gettext ("Menu"); };
 };
 
 #endif /* end of include guard: WIDGETS_SMENU_HPP */

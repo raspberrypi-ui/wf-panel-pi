@@ -27,6 +27,7 @@ class WayfireNetman : public WayfireWidget
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
+    static std::string display_name (void) { return gettext ("Network"); };
 };
 
 #endif /* end of include guard: WIDGETS_NETMAN_HPP */
