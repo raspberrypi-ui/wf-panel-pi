@@ -40,6 +40,10 @@ extern const conf_table_t *get_config_table (const char *type);
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
 
+#define COL_NAME    0
+#define COL_ID      1
+#define COL_INDEX   2
+
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
@@ -109,10 +113,10 @@ static void update_buttons (void)
     GtkTreePath *path;
     GtkTreeModel *mod;
     GtkTreeIter iter;
-    int index, nitems, lorr = selection ();
+    int nitems, lorr = selection ();
     char *type = NULL;
     gboolean conf;
-    conf_table_t *cptr;
+    const conf_table_t *cptr;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (lorr == 0)
@@ -330,7 +334,7 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 void plugin_config_dialog (const char *type)
 {
     char *strval, *key, *user_file;
-    conf_table_t *cptr;
+    const conf_table_t *cptr;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
     GKeyFile *kf;
@@ -379,6 +383,8 @@ void plugin_config_dialog (const char *type)
                                 g_free (strval);
                                 gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
                                 break;
+
+            case CONF_NONE :    break;
         }
         gtk_widget_set_name (control, key);
         gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);

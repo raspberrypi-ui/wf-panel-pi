@@ -23,8 +23,8 @@ class WayfireUpdater : public WayfireWidget
     UpdaterPlugin *up;
 
     static constexpr conf_table_t conf_table[2] = {
-        {"updater", "interval", CONF_INT,   "Hours between checks for updates"},
-        {NULL,      NULL,       CONF_NONE,  NULL}
+        {CONF_INT,  "interval", "Hours between checks for updates"},
+        {CONF_NONE, NULL,       NULL}
     };
 
   public:

@@ -23,8 +23,8 @@ class WayfirePower : public WayfireWidget
     PtBattPlugin *pt;
 
     static constexpr conf_table_t conf_table[2] = {
-        {"power",   "batt_num", CONF_INT,   "Battery number to monitor"},
-        {NULL,      NULL,       CONF_NONE,  NULL}
+        {CONF_INT,  "batt_num", "Battery number to monitor"},
+        {CONF_NONE, NULL,       NULL}
     };
 
   public:

@@ -23,9 +23,9 @@ class WayfireSmenu : public WayfireWidget
     MenuPlugin *m;
 
     static constexpr conf_table_t conf_table[3] = {
-        {"smenu",   "search_height",    CONF_INT,   "Search window height"},
-        {"smenu",   "search_fixed",     CONF_BOOL,  "Fix size of search window"},
-        {NULL,      NULL,               CONF_NONE,  NULL}
+        {CONF_INT,  "search_height",    "Search window height"},
+        {CONF_BOOL, "search_fixed",     "Fix size of search window"},
+        {CONF_NONE, NULL,               NULL}
     };
 
   public:

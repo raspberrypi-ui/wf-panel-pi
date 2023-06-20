@@ -20,9 +20,9 @@ class WayfireClock : public WayfireWidget
     void on_calendar_shown();
 
     static constexpr conf_table_t conf_table[3] = {
-        {"clock",   "format",   CONF_STRING,    "Display format"},
-        {"clock",   "font",     CONF_STRING,    "Display font"},
-        {NULL,      NULL,       CONF_NONE,      NULL}
+        {CONF_STRING,   "format",   "Display format"},
+        {CONF_STRING,   "font",     "Display font"},
+        {CONF_NONE,     NULL,       NULL}
     };
 
     public:

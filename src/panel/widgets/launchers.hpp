@@ -69,8 +69,8 @@ class WayfireLaunchers : public WayfireWidget
     launcher_container get_launchers_from_config();
 
     static constexpr conf_table_t conf_table[2] = {
-        {"launchers",   "spacing",  CONF_INT,   "Icon spacing"},
-        {NULL,          NULL,       CONF_NONE,  NULL}
+        {CONF_INT,  "spacing",  "Icon spacing"},
+        {CONF_NONE, NULL,       NULL}
     };
 
     public:

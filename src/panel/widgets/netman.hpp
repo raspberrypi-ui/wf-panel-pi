@@ -20,7 +20,7 @@ class WayfireNetman : public WayfireWidget
     NMApplet *nm;
 
     static constexpr conf_table_t conf_table[1] = {
-        {NULL,  NULL,   CONF_NONE,  NULL}
+        {CONF_NONE, NULL, NULL}
     };
 
   public:

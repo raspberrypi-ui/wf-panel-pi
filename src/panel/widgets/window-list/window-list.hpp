@@ -62,8 +62,8 @@ class WayfireWindowList : public WayfireWidget
     WfOption <int> max_task_width {"panel/window-list_max_width"};
 
     static constexpr conf_table_t conf_table[2] = {
-        {"window-list", "max_width",    CONF_INT,   "Maximum width of task button"},
-        {NULL,          NULL,           CONF_NONE,  NULL}
+        {CONF_INT,  "max_width",    "Maximum width of task button"},
+        {CONF_NONE, NULL,           NULL}
     };
 
     public:

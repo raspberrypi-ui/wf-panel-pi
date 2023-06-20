@@ -23,8 +23,8 @@ class WayfireEjecter : public WayfireWidget
     EjecterPlugin *ej;
 
     static constexpr conf_table_t conf_table[2] = {
-        {"ejecter", "autohide", CONF_BOOL,  "Hide icon when no devices"},
-        {NULL,      NULL,       CONF_NONE,  NULL}
+        {CONF_BOOL, "autohide", "Hide icon when no devices"},
+        {CONF_NONE,  NULL,       NULL}
     };
 
   public:

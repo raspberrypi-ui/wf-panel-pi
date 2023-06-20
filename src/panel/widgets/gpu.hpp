@@ -25,10 +25,10 @@ class WayfireGPU : public WayfireWidget
     GPUPlugin *gpu;
 
     static constexpr conf_table_t conf_table[4] = {
-        {"gpu", "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
-        {"gpu", "foreground",          CONF_COLOUR,    "Foreground colour"},
-        {"gpu", "background",          CONF_COLOUR,    "Background colour"},
-        {NULL,  NULL,                  CONF_NONE,      NULL}
+        {CONF_BOOL,     "show_percentage",  "Show usage as percentage"},
+        {CONF_COLOUR,   "foreground",       "Foreground colour"},
+        {CONF_COLOUR,   "background",       "Background colour"},
+        {CONF_NONE,     NULL,               NULL}
     };
 
   public:

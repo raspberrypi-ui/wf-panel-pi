@@ -25,10 +25,10 @@ class WayfireCPU : public WayfireWidget
     CPUPlugin *cpu;
 
     static constexpr conf_table_t conf_table[4] = {
-        {"cpu", "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
-        {"cpu", "foreground",          CONF_COLOUR,    "Foreground colour"},
-        {"cpu", "background",          CONF_COLOUR,    "Background colour"},
-        {NULL,  NULL,                  CONF_NONE,      NULL}
+        {CONF_BOOL,     "show_percentage",  "Show usage as percentage"},
+        {CONF_COLOUR,   "foreground",       "Foreground colour"},
+        {CONF_COLOUR,   "background",       "Background colour"},
+        {CONF_NONE,     NULL,               NULL}
     };
 
   public:

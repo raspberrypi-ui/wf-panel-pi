@@ -28,13 +28,13 @@ class WayfireCPUTemp : public WayfireWidget
     CPUTempPlugin *cput;
 
     static constexpr conf_table_t conf_table[7] = {
-        {"cputemp", "foreground",   CONF_COLOUR,    "Foreground colour"},
-        {"cputemp", "background",   CONF_COLOUR,    "Background colour"},
-        {"cputemp", "throttle_1",   CONF_COLOUR,    "Colour when ARM frequency capped"},
-        {"cputemp", "throttle_2",   CONF_COLOUR,    "Colour when throttled"},
-        {"cputemp", "low_temp",     CONF_INT,       "Lower temperature bound"},
-        {"cputemp", "high_temp",    CONF_INT,       "Upper temperature bound"},
-        {NULL,      NULL,           CONF_NONE,      NULL}
+        {CONF_COLOUR,   "foreground",   "Foreground colour"},
+        {CONF_COLOUR,   "background",   "Background colour"},
+        {CONF_COLOUR,   "throttle_1",   "Colour when ARM frequency capped"},
+        {CONF_COLOUR,   "throttle_2",   "Colour when throttled"},
+        {CONF_INT,      "low_temp",     "Lower temperature bound"},
+        {CONF_INT,      "high_temp",    "Upper temperature bound"},
+        {CONF_NONE,     NULL,           NULL}
     };
 
   public:
