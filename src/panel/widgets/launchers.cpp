@@ -171,6 +171,8 @@ bool WfLauncherButton::on_click(GdkEventButton *ev)
             on_enter(NULL);
     }
 
+    if (ev->button == 3) return false;
+
     return true;
 }
 
@@ -303,6 +305,7 @@ launcher_container WayfireLaunchers::get_launchers_from_config()
 
 void WayfireLaunchers::init(Gtk::HBox *container)
 {
+    box.set_name ("launchers");
     container->pack_start(box, false, false);
     handle_config_reload();
 }
