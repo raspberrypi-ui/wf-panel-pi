@@ -22,6 +22,12 @@ class WayfireSmenu : public WayfireWidget
     MenuPlugin data;
     MenuPlugin *m;
 
+    static constexpr conf_table_t conf_table[3] = {
+        {"smenu",   "search_height",    CONF_INT,   "Search window height"},
+        {"smenu",   "search_fixed",     CONF_BOOL,  "Fix size of search window"},
+        {NULL,      NULL,               CONF_NONE,  NULL}
+    };
+
   public:
 
     void init (Gtk::HBox *container) override;
@@ -32,6 +38,7 @@ class WayfireSmenu : public WayfireWidget
     void search_param_changed_cb (void);
     bool set_icon (void);
     static std::string display_name (void) { return gettext ("Menu"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_SMENU_HPP */

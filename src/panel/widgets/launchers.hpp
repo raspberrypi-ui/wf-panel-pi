@@ -68,11 +68,17 @@ class WayfireLaunchers : public WayfireWidget
     launcher_container launchers;
     launcher_container get_launchers_from_config();
 
+    static constexpr conf_table_t conf_table[2] = {
+        {"launchers",   "spacing",  CONF_INT,   "Icon spacing"},
+        {NULL,          NULL,       CONF_NONE,  NULL}
+    };
+
     public:
         virtual void init(Gtk::HBox *container);
         virtual void handle_config_reload();
         virtual ~WayfireLaunchers() {};
         static std::string display_name (void) { return gettext ("Launcher"); };
+        static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 

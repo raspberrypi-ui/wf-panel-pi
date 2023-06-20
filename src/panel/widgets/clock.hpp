@@ -19,10 +19,17 @@ class WayfireClock : public WayfireWidget
     void set_font();
     void on_calendar_shown();
 
+    static constexpr conf_table_t conf_table[3] = {
+        {"clock",   "format",   CONF_STRING,    "Display format"},
+        {"clock",   "font",     CONF_STRING,    "Display font"},
+        {NULL,      NULL,       CONF_NONE,      NULL}
+    };
+
     public:
     void init(Gtk::HBox *container) override;
     bool update_label();
     static std::string display_name (void) { return gettext ("Clock"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
     ~WayfireClock();
 };
 

@@ -614,6 +614,25 @@ std::string WayfirePanelApp::display_name (std::string type)
     return gettext ("<Unknown>");
 }
 
+const conf_table_t *WayfirePanelApp::config_params (std::string type)
+{
+    if (type == "bluetooth") return WayfireBluetooth::config_params();
+    if (type == "clock") return WayfireClock::config_params();
+    if (type == "cpu") return WayfireCPU::config_params();
+    if (type == "cputemp") return WayfireCPUTemp::config_params();
+    if (type == "ejecter") return WayfireEjecter::config_params();
+    if (type == "gpu") return WayfireGPU::config_params();
+    if (type == "launchers") return WayfireLaunchers::config_params();
+    if (type == "micpulse") return WayfireMicpulse::config_params();
+    if (type == "netman") return WayfireNetman::config_params();
+    if (type == "power") return WayfirePower::config_params();
+    if (type == "smenu") return WayfireSmenu::config_params();
+    if (type == "updater") return WayfireUpdater::config_params();
+    if (type == "volumepulse") return WayfireVolumepulse::config_params();
+    if (type == "window-list") return WayfireWindowList::config_params();
+    return NULL;
+}
+
 WayfirePanelApp::~WayfirePanelApp() = default;
 WayfirePanelApp::WayfirePanelApp(int argc, char **argv)
     : WayfireShellApp(argc, argv), priv(new impl()) { }

@@ -22,6 +22,11 @@ class WayfirePower : public WayfireWidget
     PtBattPlugin data;
     PtBattPlugin *pt;
 
+    static constexpr conf_table_t conf_table[2] = {
+        {"power",   "batt_num", CONF_INT,   "Battery number to monitor"},
+        {NULL,      NULL,       CONF_NONE,  NULL}
+    };
+
   public:
 
     void init (Gtk::HBox *container) override;
@@ -30,6 +35,7 @@ class WayfirePower : public WayfireWidget
     void bar_pos_changed_cb (void);
     bool set_icon (void);
     static std::string display_name (void) { return gettext ("Power"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_POWER_HPP */

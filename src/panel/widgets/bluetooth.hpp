@@ -21,6 +21,10 @@ class WayfireBluetooth : public WayfireWidget
     BluetoothPlugin data;
     BluetoothPlugin *bt;
 
+    static constexpr conf_table_t conf_table[1] = {
+        {NULL,  NULL,   CONF_NONE,  NULL}
+    };
+
   public:
 
     void init (Gtk::HBox *container) override;
@@ -30,6 +34,7 @@ class WayfireBluetooth : public WayfireWidget
     void bar_pos_changed_cb (void);
     bool set_icon (void);
     static std::string display_name (void) { return gettext ("Bluetooth"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_BLUETOOTH_HPP */

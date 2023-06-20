@@ -24,6 +24,13 @@ class WayfireCPU : public WayfireWidget
     CPUPlugin data;
     CPUPlugin *cpu;
 
+    static constexpr conf_table_t conf_table[4] = {
+        {"cpu", "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
+        {"cpu", "foreground",          CONF_COLOUR,    "Foreground colour"},
+        {"cpu", "background",          CONF_COLOUR,    "Background colour"},
+        {NULL,  NULL,                  CONF_NONE,      NULL}
+    };
+
   public:
 
     void init (Gtk::HBox *container) override;
@@ -33,6 +40,7 @@ class WayfireCPU : public WayfireWidget
     bool set_icon (void);
     void settings_changed_cb (void);
     static std::string display_name (void) { return gettext ("CPU"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_CPU_HPP */

@@ -22,6 +22,11 @@ class WayfireUpdater : public WayfireWidget
     UpdaterPlugin data;
     UpdaterPlugin *up;
 
+    static constexpr conf_table_t conf_table[2] = {
+        {"updater", "interval", CONF_INT,   "Hours between checks for updates"},
+        {NULL,      NULL,       CONF_NONE,  NULL}
+    };
+
   public:
 
     void init (Gtk::HBox *container) override;
@@ -32,6 +37,7 @@ class WayfireUpdater : public WayfireWidget
     bool set_icon (void);
     void settings_changed_cb (void);
     static std::string display_name (void) { return gettext ("Updater"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_UPDATER_HPP */

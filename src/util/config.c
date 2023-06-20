@@ -28,33 +28,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <glib/gi18n.h>
+#include "config.h"
 
 extern gboolean get_config_bool (const char *key);
 extern int get_config_int (const char *key);
 extern void get_config_string (const char *key, char **dest);
 extern void get_plugin_label (const char *type, char *res);
+extern const conf_table_t *get_config_table (const char *type);
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
-
-#define COL_NAME    0
-#define COL_ID      1
-#define COL_INDEX   2
-
-typedef enum {
-    CONF_BOOL,
-    CONF_INT,
-    CONF_STRING,
-    CONF_COLOUR
-} CONF_TYPE;
-
-typedef struct {
-    const char *plugin;
-    const char *name;
-    CONF_TYPE type;
-    const char *label;
-} conf_table_t;
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -68,30 +52,6 @@ static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *cpl;
 static int hand[3];
 static gboolean found;
 static char sbuf[32];
-
-static conf_table_t conf_table[] = {
-{    "clock",        "format",              CONF_STRING,    "Display format"},
-{    "clock",        "font",                CONF_STRING,    "Display font"},
-{    "cpu",          "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
-{    "cpu",          "foreground",          CONF_COLOUR,    "Foreground colour"},
-{    "cpu",          "background",          CONF_COLOUR,    "Background colour"},
-{    "cputemp",      "foreground",          CONF_COLOUR,    "Foreground colour"},
-{    "cputemp",      "background",          CONF_COLOUR,    "Background colour"},
-{    "cputemp",      "throttle_1",          CONF_COLOUR,    "Colour when ARM frequency capped"},
-{    "cputemp",      "throttle_2",          CONF_COLOUR,    "Colour when throttled"},
-{    "cputemp",      "low_temp",            CONF_INT,       "Lower temperature bound"},
-{    "cputemp",      "high_temp",           CONF_INT,       "Upper temperature bound"},
-{    "ejecter",      "autohide",            CONF_BOOL,      "Hide icon when no devices"},
-{    "gpu",          "show_percentage",     CONF_BOOL,      "Show usage as percentage"},
-{    "gpu",          "foreground",          CONF_COLOUR,    "Foreground colour"},
-{    "gpu",          "background",          CONF_COLOUR,    "Background colour"},
-{    "launchers",    "spacing",             CONF_INT,       "Icon spacing"},
-{    "power",        "batt_num",            CONF_INT,       "Battery number to monitor"},
-{    "smenu",        "search_height",       CONF_INT,       "Search window height"},
-{    "smenu",        "search_fixed",        CONF_BOOL,      "Fix size of search window"},
-{    "updater",      "interval",            CONF_INT,       "Hours between checks for updates"},
-{    "window-list",  "max_width",           CONF_INT,       "Maximum width of task button"},
-};
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -152,6 +112,7 @@ static void update_buttons (void)
     int index, nitems, lorr = selection ();
     char *type = NULL;
     gboolean conf;
+    conf_table_t *cptr;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (lorr == 0)
@@ -189,17 +150,8 @@ static void update_buttons (void)
             if (!strncmp (type, "spacing", 7)) conf = TRUE;
             else
             {
-                nitems = sizeof (conf_table) / sizeof (conf_table_t);
-                index = 0;
-                while (index < nitems)
-                {
-                    if (!g_strcmp0 (conf_table[index].plugin, type))
-                    {
-                        conf = TRUE;
-                        break;
-                    }
-                    index++;
-                }
+                cptr = get_config_table (type);
+                if (cptr->type != CONF_NONE) conf = TRUE;
             }
             gtk_widget_set_sensitive (cpl, conf);
         }
@@ -377,8 +329,8 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 
 void plugin_config_dialog (const char *type)
 {
-    int index, nitems;
     char *strval, *key, *user_file;
+    conf_table_t *cptr;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
     GKeyFile *kf;
@@ -396,47 +348,43 @@ void plugin_config_dialog (const char *type)
     gtk_widget_set_margin_end (box, 10);
     gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
 
-    nitems = sizeof (conf_table) / sizeof (conf_table_t);
-    index = 0;
-    while (index < nitems)
+    cptr = get_config_table (type);
+    while (cptr->type != CONF_NONE)
     {
-        if (!g_strcmp0 (conf_table[index].plugin, type))
+        hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+        strval = g_strdup_printf ("%s:", _(cptr->label));
+        label = gtk_label_new (strval);
+        g_free (strval);
+        gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+        key = g_strdup_printf ("%s_%s", type, cptr->name);
+        switch (cptr->type)
         {
-            hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-            strval = g_strdup_printf ("%s:", _(conf_table[index].label));
-            label = gtk_label_new (strval);
-            g_free (strval);
-            gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-            key = g_strdup_printf ("%s_%s", conf_table[index].plugin, conf_table[index].name);
-            switch (conf_table[index].type)
-            {
-                case CONF_BOOL :    control = gtk_switch_new ();
-                                    gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (key));
-                                    break;
+            case CONF_BOOL :    control = gtk_switch_new ();
+                                gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (key));
+                                break;
 
-                case CONF_INT :     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
-                                    gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
-                                    break;
+            case CONF_INT :     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
+                                gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
+                                break;
 
-                case CONF_STRING :  control = gtk_entry_new ();
-                                    get_config_string (key, &strval);
-                                    gtk_entry_set_text (GTK_ENTRY (control), strval);
-                                    g_free (strval);
-                                    break;
+            case CONF_STRING :  control = gtk_entry_new ();
+                                get_config_string (key, &strval);
+                                gtk_entry_set_text (GTK_ENTRY (control), strval);
+                                g_free (strval);
+                                break;
 
-                case CONF_COLOUR :  control = gtk_color_button_new ();
-                                    get_config_string (key, &strval);
-                                    gdk_rgba_parse (&col, strval);
-                                    g_free (strval);
-                                    gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
-                                    break;
-            }
-            gtk_widget_set_name (control, key);
-            gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
-            gtk_container_add (GTK_CONTAINER (box), hbox);
-            g_free (key);
+            case CONF_COLOUR :  control = gtk_color_button_new ();
+                                get_config_string (key, &strval);
+                                gdk_rgba_parse (&col, strval);
+                                g_free (strval);
+                                gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
+                                break;
         }
-        index++;
+        gtk_widget_set_name (control, key);
+        gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
+        gtk_container_add (GTK_CONTAINER (box), hbox);
+        g_free (key);
+        cptr++;
     }
     gtk_widget_show_all (cdlg);
 

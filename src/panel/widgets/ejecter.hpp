@@ -22,6 +22,11 @@ class WayfireEjecter : public WayfireWidget
     EjecterPlugin data;
     EjecterPlugin *ej;
 
+    static constexpr conf_table_t conf_table[2] = {
+        {"ejecter", "autohide", CONF_BOOL,  "Hide icon when no devices"},
+        {NULL,      NULL,       CONF_NONE,  NULL}
+    };
+
   public:
 
     void init (Gtk::HBox *container) override;
@@ -32,6 +37,7 @@ class WayfireEjecter : public WayfireWidget
     bool set_icon (void);
     void settings_changed_cb (void);
     static std::string display_name (void) { return gettext ("Ejecter"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_EJECTER_HPP */

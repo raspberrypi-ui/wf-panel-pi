@@ -42,6 +42,7 @@ class WayfirePanelApp : public WayfireShellApp
     void on_command (const char *plugin, const char *command) override;
     void update_panels ();
     std::string display_name (std::string type);
+    const conf_table_t *config_params (std::string type);
 
   private:
     WayfirePanelApp(int argc, char **argv);
