@@ -595,7 +595,7 @@ void WayfirePanelApp::create(int argc, char **argv)
     g_dbus_node_info_unref (introspection_data);
 }
 
-std::string WayfirePanelApp::display_name (std::string type)
+const char *WayfirePanelApp::display_name (std::string type)
 {
     if (type == "bluetooth") return WayfireBluetooth::display_name();
     if (type == "clock") return WayfireClock::display_name();
@@ -611,7 +611,7 @@ std::string WayfirePanelApp::display_name (std::string type)
     if (type == "updater") return WayfireUpdater::display_name();
     if (type == "volumepulse") return WayfireVolumepulse::display_name();
     if (type == "window-list") return WayfireWindowList::display_name();
-    return gettext ("<Unknown>");
+    return "<Unknown>";
 }
 
 const conf_table_t *WayfirePanelApp::config_params (std::string type)

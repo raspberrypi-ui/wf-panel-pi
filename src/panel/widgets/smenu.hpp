@@ -37,7 +37,7 @@ class WayfireSmenu : public WayfireWidget
     void bar_pos_changed_cb (void);
     void search_param_changed_cb (void);
     bool set_icon (void);
-    static std::string display_name (void) { return gettext ("Menu"); };
+    static const char *display_name (void) { return "Menu"; };
     static const conf_table_t *config_params (void) { return conf_table; };
 };
 

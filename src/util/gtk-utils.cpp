@@ -12,7 +12,7 @@ extern "C" {
     gboolean get_config_bool (const char *key);
     int get_config_int (const char *key);
     void get_config_string (const char *key, char **dest);
-    void get_plugin_label (const char *type, char *res);
+    const char *get_plugin_label (const char *type);
     const conf_table_t *get_config_table (const char *type);
 }
 
@@ -138,9 +138,9 @@ void get_config_string (const char *key, char **dest)
     *dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
 }
 
-void get_plugin_label (const char *type, char *res)
+const char *get_plugin_label (const char *type)
 {
-    strcpy (res, WayfirePanelApp::get().display_name(type).c_str());
+    return WayfirePanelApp::get().display_name (type);
 }
 
 const conf_table_t *get_config_table (const char *type)

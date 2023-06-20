@@ -33,7 +33,7 @@ class WayfireBluetooth : public WayfireWidget
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
-    static std::string display_name (void) { return gettext ("Bluetooth"); };
+    static const char *display_name (void) { return "Bluetooth"; };
     static const conf_table_t *config_params (void) { return conf_table; };
 };
 

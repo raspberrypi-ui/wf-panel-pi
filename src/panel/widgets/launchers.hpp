@@ -77,7 +77,7 @@ class WayfireLaunchers : public WayfireWidget
         virtual void init(Gtk::HBox *container);
         virtual void handle_config_reload();
         virtual ~WayfireLaunchers() {};
-        static std::string display_name (void) { return gettext ("Launcher"); };
+        static const char *display_name (void) { return "Launcher"; };
         static const conf_table_t *config_params (void) { return conf_table; };
 };
 

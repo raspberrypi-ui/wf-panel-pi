@@ -28,7 +28,7 @@ class WayfireClock : public WayfireWidget
     public:
     void init(Gtk::HBox *container) override;
     bool update_label();
-    static std::string display_name (void) { return gettext ("Clock"); };
+    static const char *display_name (void) { return "Clock"; };
     static const conf_table_t *config_params (void) { return conf_table; };
     ~WayfireClock();
 };

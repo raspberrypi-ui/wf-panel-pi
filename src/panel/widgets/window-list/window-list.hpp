@@ -88,7 +88,7 @@ class WayfireWindowList : public WayfireWidget
 
     void init(Gtk::HBox *container) override;
     void add_output(WayfireOutput *output);
-    static std::string display_name (void) { return gettext ("Window List"); };
+    static const char *display_name (void) { return "Window List"; };
     static const conf_table_t *config_params (void) { return conf_table; };
 
     private:

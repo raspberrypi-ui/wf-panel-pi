@@ -45,7 +45,7 @@ class WayfireCPUTemp : public WayfireWidget
     void bar_pos_changed_cb (void);
     bool set_icon (void);
     void settings_changed_cb (void);
-    static std::string display_name (void) { return gettext ("CPU Temp"); };
+    static const char *display_name (void) { return "CPU Temp"; };
     static const conf_table_t *config_params (void) { return conf_table; };
 };
 

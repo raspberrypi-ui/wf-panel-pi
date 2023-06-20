@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 extern gboolean get_config_bool (const char *key);
 extern int get_config_int (const char *key);
 extern void get_config_string (const char *key, char **dest);
-extern void get_plugin_label (const char *type, char *res);
+extern const char *get_plugin_label (const char *type);
 extern const conf_table_t *get_config_table (const char *type);
 
 /*----------------------------------------------------------------------------*/
@@ -86,8 +86,7 @@ static const char *display_name (const char *str)
         }
     }
 
-    get_plugin_label (str, (char *) &sbuf);
-    return sbuf;
+    return _(get_plugin_label (str));
 }
 
 /* Helper function to locate the currently-highlighted widget */
