@@ -1,3 +1,9 @@
+wf-panel-pi (0.22) bookworm; urgency=medium
+
+  * Add plugin config dialog
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 20 Jun 2023 14:11:41 +0100
+
 wf-panel-pi (0.21) bookworm; urgency=medium
 
   * Add hotplug for HDMI audio devices
