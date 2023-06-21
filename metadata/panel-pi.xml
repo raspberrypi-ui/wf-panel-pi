@@ -57,7 +57,7 @@
 			<_name>Bottom</_name>
 		</desc>
 	</option>
-	<option name="notifications" type="bool">
+	<option name="notify_enable" type="bool">
 		<_short>Enable Notifications</_short>
 		<default>true</default>
 	</option>

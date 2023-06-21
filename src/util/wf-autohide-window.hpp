@@ -39,6 +39,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     bool on_button_release_event(GdkEventButton* event);
     void do_configure();
     void do_plugin_configure();
+    void do_notify_configure();
 
     /* Add one more autohide request */
     void increase_autohide();
@@ -81,6 +82,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     Gtk::Menu menu;
     Gtk::MenuItem conf;
     Gtk::MenuItem cplug;
+    Gtk::MenuItem notif;
 
     WfOption<std::string> position;
     void update_position();

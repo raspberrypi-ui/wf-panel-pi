@@ -32,6 +32,7 @@
 #include "widgets/cputemp.hpp"
 #include "widgets/gpu.hpp"
 #include "widgets/power.hpp"
+#include "widgets/notify.hpp"
 #include "widgets/window-list/window-list.hpp"
 
 #include "wf-autohide-window.hpp"
@@ -416,7 +417,7 @@ class WayfirePanel::impl
     WayfirePanelZwfOutputCallbacks callbacks;
 
     WfOption <int> notify_timeout {"panel/notify_timeout"};
-    WfOption <bool> notifications {"panel/notifications"};
+    WfOption <bool> notifications {"panel/notify_enable"};
 
     public:
     impl(WayfireOutput *output, bool real)
@@ -611,6 +612,7 @@ const char *WayfirePanelApp::display_name (std::string type)
     if (type == "updater") return WayfireUpdater::display_name();
     if (type == "volumepulse") return WayfireVolumepulse::display_name();
     if (type == "window-list") return WayfireWindowList::display_name();
+    if (type == "notify") return WayfireNotify::display_name();
     return "<Unknown>";
 }
 
@@ -630,6 +632,7 @@ const conf_table_t *WayfirePanelApp::config_params (std::string type)
     if (type == "updater") return WayfireUpdater::config_params();
     if (type == "volumepulse") return WayfireVolumepulse::config_params();
     if (type == "window-list") return WayfireWindowList::config_params();
+    if (type == "notify") return WayfireNotify::config_params();
     return NULL;
 }
 
