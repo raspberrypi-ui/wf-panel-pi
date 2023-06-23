@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gtk/gtk.h>
 #include <gtk-layer-shell/gtk-layer-shell.h>
+#include "notification.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
@@ -172,7 +173,7 @@ static void update_positions (GList *item, int offset)
 
 /* Handler for mouse click in notification window - closes window */
 
-static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw)
+static gboolean window_click (GtkWidget *, GdkEventButton *, NotifyWindow *nw)
 {
     hide_message (nw);
     return FALSE;
@@ -180,7 +181,7 @@ static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWi
 
 /* Timer handler to show next window */
 
-static gboolean show_next (gpointer param)
+static gboolean show_next (gpointer)
 {
     NotifyWindow *nw;
     GList *item;

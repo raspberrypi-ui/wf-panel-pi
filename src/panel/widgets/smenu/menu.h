@@ -6,7 +6,7 @@
 #include <menu-cache.h>
 #include <libfm/fm-gtk.h>
 
-#include "../lxutils.h"
+#include "lxutils.h"
 
 typedef struct {
     //LXPanel *panel;

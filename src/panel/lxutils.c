@@ -1,7 +1,163 @@
-#include "lxutils.h"
-#include "graph.h"
+/*
+Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
+All rights reserved.
 
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the copyright holder nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+#include <gtk/gtk.h>
+#include <gtk-layer-shell.h>
+#include "lxutils.h"
+
+/*----------------------------------------------------------------------------*/
+/* Macros and typedefs */
+/*----------------------------------------------------------------------------*/
+
+#define MENU_ICON_SPACE 6
 #define BORDER_SIZE 1
+
+/*----------------------------------------------------------------------------*/
+/* Global data */
+/*----------------------------------------------------------------------------*/
+
+static GtkWidget *m_button, *m_menu;
+static gulong m_handle;
+
+/*----------------------------------------------------------------------------*/
+/* Private functions */
+/*----------------------------------------------------------------------------*/
+
+static void menu_hidden (GtkWidget *, gpointer)
+{
+    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m_button)));
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
+}
+
+static void committed (GdkWindow *win, gpointer)
+{
+    g_signal_handler_disconnect (win, m_handle);
+    g_signal_connect (m_menu, "hide", G_CALLBACK (menu_hidden), NULL);
+    gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+}
+
+/*----------------------------------------------------------------------------*/
+/* Public API */
+/*----------------------------------------------------------------------------*/
+
+void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
+{
+    // simulate a leave event on the button to hide the prelight */
+    GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
+    ev->window = gtk_button_get_event_window (GTK_BUTTON (button));
+    ev->time = GDK_CURRENT_TIME;
+    ev->mode = GDK_CROSSING_NORMAL;
+    ev->send_event = TRUE;
+    gtk_main_do_event ((GdkEvent *) ev);
+
+    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (button)));
+    m_button = button;
+    m_menu = menu;
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), TRUE);
+    m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), NULL);
+}
+
+void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
+{
+    if (!icon) return;
+    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon,
+        size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+    if (pixbuf)
+    {
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+        g_object_unref (pixbuf);
+    }
+}
+
+void set_menu_icon (GtkWidget *image, const char *icon, int size)
+{
+    if (!icon) return;
+    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon,
+        size > 32 ? 24 : 16, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+    if (pixbuf)
+    {
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+        g_object_unref (pixbuf);
+    }
+}
+
+GtkWidget *new_menu_item (const char *text, int maxlen, const char *iconname, int icon_size)
+{
+    GtkWidget *item = gtk_menu_item_new ();
+    gtk_widget_set_name (item, "panelmenuitem");
+    GtkWidget *box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, MENU_ICON_SPACE);
+    GtkWidget *label = gtk_label_new (text);
+    GtkWidget *icon = gtk_image_new ();
+    set_menu_icon (icon, iconname, icon_size);
+
+    if (maxlen)
+    {
+        gtk_label_set_max_width_chars (GTK_LABEL (label), maxlen);
+        gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+    }
+
+    gtk_container_add (GTK_CONTAINER (item), box);
+    gtk_container_add (GTK_CONTAINER (box), icon);
+    gtk_container_add (GTK_CONTAINER (box), label);
+
+    return item;
+}
+
+void update_menu_icon (GtkWidget *item, GtkWidget *image)
+{
+    GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
+    GList *children = gtk_container_get_children (GTK_CONTAINER (box));
+    GtkWidget *img = (GtkWidget *) children->data;
+    gtk_container_remove (GTK_CONTAINER (box), img);
+    gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+    gtk_box_reorder_child (GTK_BOX (box), image, 0);
+}
+
+const char *get_menu_label (GtkWidget *item)
+{
+    if (!GTK_IS_BIN (item)) return "";
+    GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
+    if (!box) return "";
+    GList *children = gtk_container_get_children (GTK_CONTAINER (box));
+    if (!children) return "";
+    while (children->data)
+    {
+        if (GTK_IS_LABEL ((GtkWidget *) children->data))
+            return gtk_label_get_text (GTK_LABEL ((GtkWidget *) children->data));
+        children = children->next;
+    }
+    return "";
+}
+
+void append_menu_icon (GtkWidget *item, GtkWidget *image)
+{
+    GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
+    gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
+}
 
 /* Redraw entire graph */
 
@@ -64,7 +220,6 @@ static void graph_redraw (PluginGraph *graph, char *label)
         graph->pixmap_width, graph->pixmap_height, graph->pixmap_width * 4, NULL, NULL);
     gtk_image_set_from_pixbuf (GTK_IMAGE (graph->da), pixbuf);
 }
-
 
 /* Initialise graph for a particular size */
 
@@ -131,7 +286,6 @@ void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGB
     }
 }
 
-
 /* Add new data point to the graph */
 
 void graph_new_point (PluginGraph *graph, float value, int state, char *label)
@@ -147,10 +301,12 @@ void graph_new_point (PluginGraph *graph, float value, int state, char *label)
     graph_redraw (graph, label);
 }
 
-
 void graph_init (PluginGraph *graph)
 {
     graph->da = gtk_image_new ();
     graph->samples = NULL;
     graph->ring_cursor = 0;
 }
+
+/* End of file */
+/*----------------------------------------------------------------------------*/

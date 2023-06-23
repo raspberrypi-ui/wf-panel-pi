@@ -35,7 +35,7 @@
 
 #define LXPANEL_PLUGIN
 #ifdef LXPANEL_PLUGIN
-#include "../lxutils.h"
+#include "lxutils.h"
 #endif
 
 #define NM_TYPE_APPLET              (nma_get_type())

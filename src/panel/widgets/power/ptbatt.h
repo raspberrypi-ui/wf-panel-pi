@@ -1,4 +1,4 @@
-#include "../lxutils.h"
+#include "lxutils.h"
 #include "batt_sys.h"
 
 typedef struct {

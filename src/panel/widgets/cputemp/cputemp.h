@@ -1,5 +1,4 @@
-#include "../lxutils.h"
-#include "../graph.h"
+#include "lxutils.h"
 
 /*----------------------------------------------------------------------------*/
 /* Plug-in global data                                                        */

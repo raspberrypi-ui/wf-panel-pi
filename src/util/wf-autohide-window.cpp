@@ -2,11 +2,6 @@
 #include "wf-autohide-window.hpp"
 #include "wayfire-shell-unstable-v2-client-protocol.h"
 
-extern "C" {
-extern void open_config_dialog (void);
-extern void plugin_config_dialog (const char *type);
-}
-
 #include <gtk-layer-shell.h>
 #include <wf-shell-app.hpp>
 #include <gdk/gdkwayland.h>
@@ -14,6 +9,10 @@ extern void plugin_config_dialog (const char *type);
 #include <glibmm.h>
 #include <iostream>
 #include <assert.h>
+
+extern "C" {
+#include "configure.h"
+}
 
 #define AUTOHIDE_SHOW_DELAY 300
 #define AUTOHIDE_HIDE_DELAY 500

@@ -7,8 +7,6 @@ widget_sources = files(
   'widgets/launchers.cpp',
   'widgets/network.cpp',
   'widgets/spacing.cpp',
-  'widgets/lxutils.c',
-  'widgets/graph.c',
   'widgets/volumepulse.cpp',
   'widgets/micpulse.cpp',
   'widgets/volumepulse/volumepulse.c',
@@ -71,8 +69,12 @@ widget_sources += gnome.compile_resources(
 
 deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, zmq]
 
-executable('wf-panel-pi', ['panel.cpp', 'notify.c'] + widget_sources,
+widget_includes = ['.','../util']
+
+executable('wf-panel-pi', ['panel.cpp', 'lxutils.c'] + widget_sources,
         dependencies: deps,
-        install: true)
+        install: true,
+        include_directories: widget_includes
+)
 
 install_data('wfpanelctl', install_dir : '/usr/bin')

@@ -1,4 +1,4 @@
-#include "../lxutils.h"
+#include "lxutils.h"
 
 /* Plug-in global data */
 

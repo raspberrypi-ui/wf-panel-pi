@@ -3,18 +3,6 @@
 #include <gtkmm/icontheme.h>
 #include <gdk/gdkcairo.h>
 #include <iostream>
-#include "wf-option-wrap.hpp"
-#include "../panel/panel.hpp"
-#include "config.h"
-
-
-extern "C" {
-    gboolean get_config_bool (const char *key);
-    int get_config_int (const char *key);
-    void get_config_string (const char *key, char **dest);
-    const char *get_plugin_label (const char *type);
-    const conf_table_t *get_config_table (const char *type);
-}
 
 Glib::RefPtr<Gdk::Pixbuf> load_icon_pixbuf_safe(std::string icon_path, int size)
 {
@@ -111,39 +99,4 @@ void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
         invert_pixbuf(pbuff);
 
     set_image_pixbuf(image, pbuff, scale);
-}
-
-gboolean get_config_bool (const char *key)
-{
-    char *cname = g_strdup_printf ("panel/%s", key);
-    WfOption <bool> bool_option {cname};
-    g_free (cname);
-    if (bool_option) return TRUE;
-    else return FALSE;
-}
-
-int get_config_int (const char *key)
-{
-    char *cname = g_strdup_printf ("panel/%s", key);
-    WfOption <int> int_option {cname};
-    g_free (cname);
-    return int_option;
-}
-
-void get_config_string (const char *key, char **dest)
-{
-    char *cname = g_strdup_printf ("panel/%s", key);
-    WfOption <std::string> string_option {cname};
-    g_free (cname);
-    *dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
-}
-
-const char *get_plugin_label (const char *type)
-{
-    return WayfirePanelApp::get().display_name (type);
-}
-
-const conf_table_t *get_config_table (const char *type)
-{
-    return WayfirePanelApp::get().config_params (type);
 }

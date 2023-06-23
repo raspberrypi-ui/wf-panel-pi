@@ -1,4 +1,4 @@
-#include "../lxutils.h"
+#include "lxutils.h"
 
 #define ICON_CACHE_SIZE 13
 

@@ -28,13 +28,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <glib/gi18n.h>
-#include "config.h"
-
-extern gboolean get_config_bool (const char *key);
-extern int get_config_int (const char *key);
-extern void get_config_string (const char *key, char **dest);
-extern const char *get_plugin_label (const char *type);
-extern const conf_table_t *get_config_table (const char *type);
+#include "configure.h"
+#include "conf-utils.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
