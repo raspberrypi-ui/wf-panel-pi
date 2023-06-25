@@ -67,14 +67,21 @@ widget_sources += gnome.compile_resources(
   source_dir: 'widgets/netman'
 )
 
-deps = [gtkmm, wayland_client, libutil, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, zmq]
+util_sources = files(
+  'gtk-utils.cpp',
+  'wf-shell-app.cpp',
+  'wf-autohide-window.cpp',
+  'wf-popover.cpp',
+  'conf-utils.cpp',
+  'configure.c',
+  'notification.c'
+)
 
-widget_includes = ['.','../util']
+deps = [gtkmm, wayland_client, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, zmq]
 
-executable('wf-panel-pi', ['panel.cpp', 'lxutils.c'] + widget_sources,
+executable('wf-panel-pi', ['panel.cpp', 'lxutils.c'] + widget_sources + util_sources,
         dependencies: deps,
-        install: true,
-        include_directories: widget_includes
+        install: true
 )
 
 install_data('wfpanelctl', install_dir : '/usr/bin')

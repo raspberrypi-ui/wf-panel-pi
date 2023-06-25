@@ -13,7 +13,7 @@
 #include <map>
 
 #include "panel.hpp"
-#include "../util/gtk-utils.hpp"
+#include "gtk-utils.hpp"
 
 #include "widgets/battery.hpp"
 #include "widgets/menu.hpp"
