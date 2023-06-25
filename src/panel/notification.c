@@ -46,6 +46,7 @@ typedef struct {
     guint hash;                     /* Hash of message string */
     char *message;
     gboolean shown;
+    gboolean critical;
 } NotifyWindow;
 
 
@@ -100,6 +101,12 @@ static void show_message (NotifyWindow *nw, char *str)
     box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     gtk_container_add (GTK_CONTAINER (nw->popup), box);
 
+    if (nw->critical)
+    {
+        GtkWidget *image = gtk_image_new_from_icon_name ("dialog-warning", 32);
+        gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+    }
+
     fmt = g_strcompress (str);
 
     // setting gtk_label_set_max_width_chars looks awful, so we have to do this...
@@ -130,7 +137,7 @@ static void show_message (NotifyWindow *nw, char *str)
 
     g_signal_connect (G_OBJECT (nw->popup), "button-press-event", G_CALLBACK (window_click), nw);
     gtk_widget_show_all (nw->popup);
-    if (notify_timeout > 0) nw->hide_timer = g_timeout_add (notify_timeout * 1000, (GSourceFunc) hide_message, nw);
+    if (!nw->critical && notify_timeout > 0) nw->hide_timer = g_timeout_add (notify_timeout * 1000, (GSourceFunc) hide_message, nw);
 }
 
 /* Destroy a notification window and remove from list */
@@ -261,6 +268,47 @@ int lxpanel_notify (const char *message)
     nw->popup = NULL;
     nw->message = g_strdup (message);
     nw->shown = FALSE;
+    nw->critical = FALSE;
+
+    // if the timer isn't running, show the notification immediately and start the timer
+    if (interval_timer == 0)
+    {
+        show_next (NULL);
+        interval_timer = g_timeout_add (INTERVAL_MS, (GSourceFunc) show_next, NULL);
+    }
+
+    return nseq;
+}
+
+int lxpanel_critical (const char *message)
+{
+    NotifyWindow *nw;
+    GList *item;
+
+    // check to see if this notification is already in the list - just bump it to the top if so...
+    guint hash = g_str_hash (message) + 1;
+
+    // loop through windows in the list, looking for the hash
+    for (item = nwins; item != NULL; item = item->next)
+    {
+        // if hash matches, hide the window
+        nw = (NotifyWindow *) item->data;
+        if (nw->hash == hash) hide_message (nw);
+    }
+
+    // create a new notification window and add it to the front of the list
+    nw = g_new (NotifyWindow, 1);
+    nwins = g_list_prepend (nwins, nw);
+
+    // set the sequence number for this notification
+    nseq++;
+    if (nseq == -1) nseq++;     // use -1 for invalid sequence code
+    nw->seq = nseq;
+    nw->hash = hash;
+    nw->popup = NULL;
+    nw->message = g_strdup (message);
+    nw->shown = FALSE;
+    nw->critical = TRUE;
 
     // if the timer isn't running, show the notification immediately and start the timer
     if (interval_timer == 0)

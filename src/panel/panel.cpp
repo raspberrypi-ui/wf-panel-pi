@@ -471,6 +471,12 @@ class WayfirePanel::impl
             return;
         }
 
+        if (!g_strcmp0 (name, "critical"))
+        {
+            lxpanel_critical (cmd);
+            return;
+        }
+
         for (auto& w : left_widgets)
             if (name == w->widget_name) w->command (cmd);
         for (auto& w : right_widgets)
