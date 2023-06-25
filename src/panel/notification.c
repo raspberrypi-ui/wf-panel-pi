@@ -79,9 +79,11 @@ static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWi
 
 static void show_message (NotifyWindow *nw, char *str)
 {
-    GtkWidget *box, *item;
-    gint x;
+    GtkWidget *box, *lbl;
+    int dim, offset;
     char *fmt, *cptr;
+    GList *item;
+    NotifyWindow *nwl;
 
     /*
      * In order to get a window which looks exactly like a system tooltip, client-side decoration
@@ -111,19 +113,35 @@ static void show_message (NotifyWindow *nw, char *str)
 
     // setting gtk_label_set_max_width_chars looks awful, so we have to do this...
     cptr = fmt;
-    x = 0;
+    dim = 0;
     while (*cptr)
     {
-        if (*cptr == ' ' && x >= TEXT_WIDTH) *cptr = '\n';
-        if (*cptr == '\n') x = 0;
+        if (*cptr == ' ' && dim >= TEXT_WIDTH) *cptr = '\n';
+        if (*cptr == '\n') dim = 0;
         cptr++;
-        x++;
+        dim++;
     }
 
-    item = gtk_label_new (fmt);
-    gtk_label_set_justify (GTK_LABEL (item), GTK_JUSTIFY_CENTER);
-    gtk_box_pack_start (GTK_BOX (box), item, FALSE, FALSE, 0);
+    lbl = gtk_label_new (fmt);
+    gtk_label_set_justify (GTK_LABEL (lbl), GTK_JUSTIFY_CENTER);
+    gtk_box_pack_start (GTK_BOX (box), lbl, FALSE, FALSE, 0);
     g_free (fmt);
+
+    // calculate vertical offset for new window - if critical, at top, else immediately below any criticals
+    offset = SPACING;
+    if (!nw->critical)
+    {
+        for (item = nwins; item != NULL; item = item->next)
+        {
+            nwl = (NotifyWindow *) item->data;
+            if (!nwl->critical) break;
+            if (nwl->shown)
+            {
+                gtk_window_get_size (GTK_WINDOW (nwl->popup), NULL, &dim);
+                offset += dim + SPACING;
+            }
+        }
+    }
 
     // layer shell setup
     gtk_layer_init_for_window (GTK_WINDOW(nw->popup));
@@ -131,7 +149,7 @@ static void show_message (NotifyWindow *nw, char *str)
     gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_BOTTOM, FALSE);
     gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_LEFT, FALSE);
     gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
-    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, SPACING);
+    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, offset);
     gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
     gtk_layer_set_monitor (GTK_WINDOW(nw->popup), gtk_layer_get_monitor (panel));
 
@@ -256,9 +274,14 @@ int lxpanel_notify (const char *message)
         if (nw->hash == hash) hide_message (nw);
     }
 
-    // create a new notification window and add it to the front of the list
+    // create a new notification window and add it to the front of the list, but after any criticals
+    for (item = nwins; item != NULL; item = item->next)
+    {
+        nw = (NotifyWindow *) item->data;
+        if (!nw->critical) break;
+    }
     nw = g_new (NotifyWindow, 1);
-    nwins = g_list_prepend (nwins, nw);
+    nwins = g_list_insert_before (nwins, item, nw);
 
     // set the sequence number for this notification
     nseq++;
