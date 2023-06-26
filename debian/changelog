@@ -1,3 +1,9 @@
+wf-panel-pi (0.23) bookworm; urgency=medium
+
+  * Add critical notifications
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 26 Jun 2023 10:33:25 +0100
+
 wf-panel-pi (0.22) bookworm; urgency=medium
 
   * Add plugin config dialog
