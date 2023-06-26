@@ -269,9 +269,13 @@ int lxpanel_notify (const char *message)
     // loop through windows in the list, looking for the hash
     for (item = nwins; item != NULL; item = item->next)
     {
-        // if hash matches, hide the window
         nw = (NotifyWindow *) item->data;
-        if (nw->hash == hash) hide_message (nw);
+        if (nw->hash == hash)
+        {
+            // if hash matches a critical, do nothing with the new notification, otherwise hide the window
+            if (nw->critical) return -1;
+            else hide_message (nw);
+        }
     }
 
     // create a new notification window and add it to the front of the list, but after any criticals
@@ -309,7 +313,7 @@ int lxpanel_critical (const char *message)
     GList *item;
 
     // check to see if this notification is already in the list - just bump it to the top if so...
-    guint hash = g_str_hash (message) + 1;
+    guint hash = g_str_hash (message);
 
     // loop through windows in the list, looking for the hash
     for (item = nwins; item != NULL; item = item->next)
