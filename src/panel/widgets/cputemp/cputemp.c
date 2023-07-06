@@ -313,7 +313,7 @@ static gboolean cpu_update (CPUTempPlugin *c)
     if (c->ispi)
     {
         temp = get_throttle ();
-        if (temp & 0x04) thr = 2;
+        if (temp & 0x08) thr = 2;
         else if (temp & 0x02) thr = 1;
     }
 
