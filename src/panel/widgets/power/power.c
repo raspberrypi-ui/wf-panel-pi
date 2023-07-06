@@ -65,11 +65,14 @@ static gboolean is_pi (void)
 
 static void update_icon (PowerPlugin *pt)
 {
-    gtk_widget_hide (pt->plugin);
+    set_taskbar_icon (pt->tray_icon, "under-volt", pt->icon_size);
     gtk_widget_set_sensitive (pt->plugin, FALSE);
-    
-    // set the tooltip
-    //gtk_widget_set_tooltip_text (pt->tray_icon, str);
+    if (1) gtk_widget_hide (pt->plugin);
+    else
+    {
+        gtk_widget_show (pt->plugin);
+        gtk_widget_set_tooltip_text (pt->tray_icon, "You should have bought a proper power supply...");
+    }
 }
 
 static gboolean vtimer_event (PowerPlugin *pt)
