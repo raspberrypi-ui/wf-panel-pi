@@ -13,7 +13,6 @@ typedef struct {
     GtkWidget *alignment;           /* Alignment object in popup message */
     GtkWidget *box;                 /* Vbox in popup message */
     guint timer;
-    guint vtimer;
     gboolean pt_batt_avail;
     void *context;
     void *requester;
@@ -21,8 +20,8 @@ typedef struct {
     int batt_num;
 } PtBattPlugin;
 
-extern void power_init (PtBattPlugin *pt);
-extern void power_update_display (PtBattPlugin *pt);
-extern void power_destructor (gpointer user_data);
+extern void batt_init (PtBattPlugin *pt);
+extern void batt_update_display (PtBattPlugin *pt);
+extern void batt_destructor (gpointer user_data);
 
 

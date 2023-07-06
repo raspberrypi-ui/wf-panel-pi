@@ -38,8 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/ioctl.h>
 #include <asm/ioctl.h>
 #include <zmq.h>
-#include "ptbatt.h"
-#include "batt_sys.h"
+#include "batt.h"
 
 //#include "plugin.h"
 
@@ -49,9 +48,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #else
 #define INTERVAL 5000
 #endif
-
-#define VMON_INTERVAL 15000
-#define VMON_PATH "/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/in0_lcrit_alarm"
 
 /* Plug-in global data */
 
@@ -75,7 +71,6 @@ static int charge_level (PtBattPlugin *pt, status_t *status, int *tim);
 static void draw_icon (PtBattPlugin *pt, int lev, float r, float g, float b, int powered);
 static void update_icon (PtBattPlugin *pt);
 static gboolean timer_event (PtBattPlugin *pt);
-static gboolean vtimer_event (PtBattPlugin *pt);
 
 
 static gboolean is_pi (void)
@@ -416,30 +411,17 @@ static gboolean timer_event (PtBattPlugin *pt)
     return TRUE;
 }
 
-static gboolean vtimer_event (PtBattPlugin *pt)
-{
-    FILE *fp = fopen (VMON_PATH, "rb");
-    if (fp)
-    {
-        int val = fgetc (fp);
-        fclose (fp);
-        if (val == '1')
-            lxpanel_notify (_("Low voltage warning\nPlease check your power supply"));
-    }
-    return TRUE;
-}
-
 /* Plugin functions */
 
 /* Handler for system config changed message from panel */
-void power_update_display (PtBattPlugin *pt)
+void batt_update_display (PtBattPlugin *pt)
 {
     if (pt->timer) update_icon (pt);
     else gtk_widget_hide (pt->plugin);
 }
 
 
-void power_destructor (gpointer user_data)
+void batt_destructor (gpointer user_data)
 {
     PtBattPlugin *pt = (PtBattPlugin *) user_data;
 
@@ -457,7 +439,7 @@ void power_destructor (gpointer user_data)
 }
 
 /* Plugin constructor. */
-void power_init (PtBattPlugin *pt)
+void batt_init (PtBattPlugin *pt)
 {
     /* Allocate and initialize plugin context */
     //PtBattPlugin *pt = g_new0 (PtBattPlugin, 1);
@@ -489,9 +471,6 @@ void power_init (PtBattPlugin *pt)
         pt->timer = g_timeout_add (INTERVAL, (GSourceFunc) timer_event, (gpointer) pt);
     }
     else pt->timer = 0;
-
-    /* Start timed events to monitor low voltage warnings */
-    if (pt->ispi) pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);
 
     /* Show the widget and return */
     gtk_widget_show_all (pt->plugin);

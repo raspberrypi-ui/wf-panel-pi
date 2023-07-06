@@ -31,7 +31,7 @@
 #include "widgets/cpu.hpp"
 #include "widgets/cputemp.hpp"
 #include "widgets/gpu.hpp"
-#include "widgets/power.hpp"
+#include "widgets/batt.hpp"
 #include "widgets/notify.hpp"
 #include "widgets/window-list/window-list.hpp"
 
@@ -326,8 +326,8 @@ class WayfirePanel::impl
             return Widget(new WayfireCPUTemp());
         if (name == "gpu")
             return Widget(new WayfireGPU());
-        if (name == "power")
-            return Widget(new WayfirePower());
+        if (name == "batt")
+            return Widget(new WayfireBatt());
         if (name == "window-list")
             return Widget(new WayfireWindowList(output));
 
@@ -613,7 +613,7 @@ const char *WayfirePanelApp::display_name (std::string type)
     if (type == "launchers") return WayfireLaunchers::display_name();
     if (type == "micpulse") return WayfireMicpulse::display_name();
     if (type == "netman") return WayfireNetman::display_name();
-    if (type == "power") return WayfirePower::display_name();
+    if (type == "batt") return WayfireBatt::display_name();
     if (type == "smenu") return WayfireSmenu::display_name();
     if (type == "updater") return WayfireUpdater::display_name();
     if (type == "volumepulse") return WayfireVolumepulse::display_name();
@@ -633,7 +633,7 @@ const conf_table_t *WayfirePanelApp::config_params (std::string type)
     if (type == "launchers") return WayfireLaunchers::config_params();
     if (type == "micpulse") return WayfireMicpulse::config_params();
     if (type == "netman") return WayfireNetman::config_params();
-    if (type == "power") return WayfirePower::config_params();
+    if (type == "batt") return WayfireBatt::config_params();
     if (type == "smenu") return WayfireSmenu::config_params();
     if (type == "updater") return WayfireUpdater::config_params();
     if (type == "volumepulse") return WayfireVolumepulse::config_params();
