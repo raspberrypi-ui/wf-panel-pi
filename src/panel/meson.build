@@ -46,6 +46,8 @@ widget_sources = files(
   'widgets/cputemp/cputemp.c',
   'widgets/gpu.cpp',
   'widgets/gpu/gpu.c',
+  'widgets/power.cpp',
+  'widgets/power/power.c',
   'widgets/batt.cpp',
   'widgets/batt/batt.c',
   'widgets/batt/batt_sys.c',

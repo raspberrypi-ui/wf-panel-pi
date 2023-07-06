@@ -19,11 +19,11 @@
 	</option>
 	<option name="widgets_right" type="string">
 		<_short>Widgets Right</_short>
-		<default>ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse micpulse spacing2 clock spacing2 power spacing2</default>
+		<default>power ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse micpulse spacing2 clock spacing2 batt spacing2</default>
 	</option>
 	<option name="widgets_all" type="string">
 		<_short>All Available Widgets</_short>
-		<default>bluetooth clock cpu cputemp ejecter gpu launchers micpulse netman power smenu updater volumepulse window-list</default>
+		<default>batt bluetooth clock cpu cputemp ejecter gpu launchers micpulse netman power smenu updater volumepulse window-list</default>
 	</option>
 	<option name="icon_size" type="int">
 		<_short>Icon Size</_short>
@@ -224,9 +224,9 @@
 	</option>
 	</group>
 	<group>
-	<_short>Power</_short>
-	<option name="power_batt_num" type="int">
-		<_short>Power Battery Number</_short>
+	<_short>Battery</_short>
+	<option name="batt_batt_num" type="int">
+		<_short>Battery Battery Number</_short>
 		<default>0</default>
 	</option>
 	</group>

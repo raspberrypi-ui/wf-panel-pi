@@ -23,7 +23,6 @@ void WayfirePower::init (Gtk::HBox *container)
 {
     /* Create the button */
     plugin = std::make_unique <Gtk::Button> ();
-    plugin->set_name ("power");
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
@@ -32,8 +31,6 @@ void WayfirePower::init (Gtk::HBox *container)
     pt->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfirePower::set_icon));
     bar_pos_changed_cb ();
-
-    pt->batt_num = batt_num;
 
     /* Initialise the plugin */
     power_init (pt);

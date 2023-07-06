@@ -5,7 +5,7 @@
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "power/ptbatt.h"
+#include "power/power.h"
 }
 
 class WayfirePower : public WayfireWidget
@@ -16,14 +16,11 @@ class WayfirePower : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
-    WfOption <int> batt_num {"panel/power_batt_num"};
-
     /* plugin */
-    PtBattPlugin data;
-    PtBattPlugin *pt;
+    PowerPlugin data;
+    PowerPlugin *pt;
 
-    static constexpr conf_table_t conf_table[2] = {
-        {CONF_INT,  "batt_num", N_("Battery number to monitor")},
+    static constexpr conf_table_t conf_table[1] = {
         {CONF_NONE, NULL,       NULL}
     };
 
