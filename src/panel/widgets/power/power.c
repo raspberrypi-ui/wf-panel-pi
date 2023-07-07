@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2018 Raspberry Pi (Trading) Ltd.
+Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -35,11 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <string.h>
 #include <glib/gi18n.h>
 #include <fcntl.h>
-#include <sys/ioctl.h>
-#include <asm/ioctl.h>
 #include "power.h"
-
-//#include "plugin.h"
 
 #define VMON_INTERVAL 15000
 #define VMON_PATH "/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/in0_lcrit_alarm"
@@ -66,12 +62,16 @@ static gboolean is_pi (void)
 static void update_icon (PowerPlugin *pt)
 {
     set_taskbar_icon (pt->tray_icon, "under-volt", pt->icon_size);
-    gtk_widget_set_sensitive (pt->plugin, FALSE);
-    if (1) gtk_widget_hide (pt->plugin);
+    if (!pt->show_icon)
+    {
+        gtk_widget_set_sensitive (pt->plugin, FALSE);
+        gtk_widget_hide (pt->plugin);
+    }
     else
     {
+        gtk_widget_set_sensitive (pt->plugin, TRUE);
         gtk_widget_show (pt->plugin);
-        gtk_widget_set_tooltip_text (pt->tray_icon, "You should have bought a proper power supply...");
+        gtk_widget_set_tooltip_text (pt->tray_icon, "Low voltage has been detected");
     }
 }
 
@@ -83,7 +83,11 @@ static gboolean vtimer_event (PowerPlugin *pt)
         int val = fgetc (fp);
         fclose (fp);
         if (val == '1')
-            lxpanel_notify (_("Low voltage warning\nPlease check your power supply"));
+        {
+            lxpanel_critical (_("Low voltage warning\nPlease check your power supply"));
+            pt->show_icon = TRUE;
+            update_icon (pt);
+        }
     }
     return TRUE;
 }
@@ -96,6 +100,29 @@ void power_update_display (PowerPlugin *pt)
     update_icon (pt);
 }
 
+void power_init (PowerPlugin *pt)
+{
+    setlocale (LC_ALL, "");
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
+
+    /* Allocate icon as a child of top level */
+    pt->tray_icon = gtk_image_new ();
+    gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
+
+    pt->ispi = is_pi ();
+    pt->show_icon = FALSE;
+
+    /* Start timed events to monitor low voltage warnings */
+    if (pt->ispi) pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);
+    else pt->vtimer = 0;
+
+    update_icon (pt);
+
+    /* Show the widget and return */
+    gtk_widget_show_all (pt->plugin);
+}
 
 void power_destructor (gpointer user_data)
 {
@@ -103,54 +130,5 @@ void power_destructor (gpointer user_data)
 
     /* Disconnect the timer. */
     if (pt->vtimer) g_source_remove (pt->vtimer);
-
-    /* Deallocate memory */
-    //g_free (pt);
 }
 
-/* Plugin constructor. */
-void power_init (PowerPlugin *pt)
-{
-    /* Allocate and initialize plugin context */
-    //PtBattPlugin *pt = g_new0 (PtBattPlugin, 1);
-
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
-    /* Allocate top level widget and set into plugin widget pointer. */
-    //pt->panel = panel;
-    //pt->settings = settings;
-    //pt->plugin = gtk_event_box_new ();
-    //lxpanel_plugin_set_data (pt->plugin, pt, ptbatt_destructor);
-
-    /* Allocate icon as a child of top level */
-    pt->tray_icon = gtk_image_new ();
-    gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
-
-    pt->ispi = is_pi ();
-
-    /* Start timed events to monitor low voltage warnings */
-    if (pt->ispi) pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);
-
-    update_icon (pt);
-
-    /* Show the widget and return */
-    gtk_widget_show_all (pt->plugin);
-    //return pt->plugin;
-}
-
-#if 0
-
-FM_DEFINE_MODULE(lxpanel_gtk, ptbatt)
-
-/* Plugin descriptor. */
-LXPanelPluginInit fm_module_init_lxpanel_gtk = {
-    .name = N_("Power & Battery"),
-    .description = N_("Monitors voltage and laptop battery"),
-    .new_instance = ptbatt_constructor,
-    .reconfigure = ptbatt_configuration_changed,
-    .gettext_package = GETTEXT_PACKAGE
-};
-#endif
