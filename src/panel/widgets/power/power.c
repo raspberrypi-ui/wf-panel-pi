@@ -85,7 +85,7 @@ static gboolean vtimer_event (PowerPlugin *pt)
         if (val == '1')
         {
             lxpanel_critical (_("Low voltage warning\nPlease check your power supply"));
-            pt->show_icon = TRUE;
+            //pt->show_icon = TRUE;
             update_icon (pt);
         }
     }
