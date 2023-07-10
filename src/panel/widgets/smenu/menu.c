@@ -540,7 +540,7 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
 
             gtk_widget_set_name (mi, "syssubmenu");
             const char *comment = menu_cache_item_get_comment (item);
-            if (comment) gtk_widget_set_tooltip_text (mi, comment);
+            //if (comment) gtk_widget_set_tooltip_text (mi, comment);
 
             g_signal_connect (mi, "activate", G_CALLBACK (handle_menu_item_activate), m);
         }
