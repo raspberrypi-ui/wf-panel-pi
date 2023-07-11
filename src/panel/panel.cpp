@@ -199,6 +199,7 @@ class WayfirePanel::impl
 
         window->override_background_color(rgba);
     };
+#endif
 
     WfOption<std::string> panel_layer{"panel/layer"};
     std::function<void()> set_panel_layer = [=] ()
@@ -212,7 +213,6 @@ class WayfirePanel::impl
         if ((std::string)panel_layer == "background")
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BACKGROUND);
     };
-#endif
 
     WfOption<int> minimal_panel_height{"panel/minimal_height"};
     WfOption<std::string> css_path{"panel/css_path"};
@@ -223,13 +223,12 @@ class WayfirePanel::impl
     {
         window = std::make_unique<WayfireAutohidingWindow> (output, "panel");
         window->set_size_request(1, real ? minimal_panel_height : 1);
-        //panel_layer.set_callback(set_panel_layer);
-        //set_panel_layer(); // initial setting
+        panel_layer.set_callback(set_panel_layer);
+        set_panel_layer(); // initial setting
 
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
-        gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
         if (wizard)
         {
             GdkRectangle rect;

@@ -1,3 +1,9 @@
+wf-panel-pi (0.25) bookworm; urgency=medium
+
+  * Default panel to bottom layer; make layer a setup param
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 11 Jul 2023 07:55:51 +0100
+
 wf-panel-pi (0.24) bookworm; urgency=medium
 
   * Split ptbatt into separate power and battery plugins
