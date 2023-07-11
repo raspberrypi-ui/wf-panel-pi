@@ -128,9 +128,7 @@ void WayfireShellApp::on_activate()
         [=] (const GMonitor& monitor) { this->monitors_changed(); });
 
     // initial monitors
-    int num_monitors = display->get_n_monitors();
-    for (int i = 0; i < num_monitors; i++)
-        add_output(display->get_monitor(i));
+    this->monitors_changed ();
 }
 
 bool WayfireShellApp::update_monitors ()

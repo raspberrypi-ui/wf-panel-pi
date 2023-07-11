@@ -226,15 +226,10 @@ class WayfirePanel::impl
         panel_layer.set_callback(set_panel_layer);
         set_panel_layer(); // initial setting
 
-        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
+        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, wizard ? false : true);
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
+
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
-        if (wizard)
-        {
-            GdkRectangle rect;
-            gdk_monitor_get_geometry (gtk_layer_get_monitor (window->gobj()), &rect);
-            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, rect.width - (icon_size + MENU_ICON_SPACE) * 2);
-        }
 
         if (!real)
         {
