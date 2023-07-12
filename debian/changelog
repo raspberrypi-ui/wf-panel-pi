@@ -1,3 +1,10 @@
+wf-panel-pi (0.26) bookworm; urgency=medium
+
+  * Push panel to top layer when menu opened to enable keyboard
+  * Fix length of panel on wizard when hotplugging
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 12 Jul 2023 07:50:16 +0100
+
 wf-panel-pi (0.25) bookworm; urgency=medium
 
   * Default panel to bottom layer; make layer a setup param
