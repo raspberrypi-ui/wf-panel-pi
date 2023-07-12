@@ -2,7 +2,6 @@
 #include "wf-autohide-window.hpp"
 #include "wayfire-shell-unstable-v2-client-protocol.h"
 
-#include <gtk-layer-shell.h>
 #include <wf-shell-app.hpp>
 #include <gdk/gdkwayland.h>
 
@@ -414,6 +413,8 @@ void WayfireAutohidingWindow::set_active_popover(WayfireMenuButton& button)
 
     bool should_grab_focus = this->active_button->is_keyboard_interactive();
     gtk_layer_set_keyboard_interactivity(this->gobj(), should_grab_focus);
+    this->old_layer = gtk_layer_get_layer (this->gobj());
+    gtk_layer_set_layer(this->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
     this->active_button->set_has_focus(should_grab_focus);
     schedule_show(0);
 }
@@ -430,6 +431,7 @@ void WayfireAutohidingWindow::unset_active_popover(WayfireMenuButton& button)
     this->popover_hide.disconnect();
 
     gtk_layer_set_keyboard_interactivity(this->gobj(), false);
+    gtk_layer_set_layer(this->gobj(), this->old_layer);
 
     if (should_autohide())
         schedule_hide(AUTOHIDE_HIDE_DELAY);

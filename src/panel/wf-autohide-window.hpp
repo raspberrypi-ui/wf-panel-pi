@@ -4,6 +4,7 @@
 #include <gtkmm/window.h>
 #include <gdk/gdkwayland.h>
 #include "wf-popover.hpp"
+#include <gtk-layer-shell.h>
 #include <wf-option-wrap.hpp>
 #include <wayfire/util/duration.hpp>
 
@@ -83,6 +84,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     Gtk::MenuItem conf;
     Gtk::MenuItem cplug;
     Gtk::MenuItem notif;
+    GtkLayerShellLayer old_layer;
 
     WfOption<std::string> position;
     void update_position();
