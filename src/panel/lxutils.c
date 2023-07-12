@@ -42,6 +42,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static GtkWidget *m_button, *m_menu;
 static gulong m_handle;
+static GtkLayerShellLayer old_layer;
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -50,6 +51,7 @@ static gulong m_handle;
 static void menu_hidden (GtkWidget *, gpointer)
 {
     GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m_button)));
+    gtk_layer_set_layer (GTK_WINDOW (panel), old_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
 }
 
@@ -77,6 +79,8 @@ void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
     GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (button)));
     m_button = button;
     m_menu = menu;
+    old_layer = gtk_layer_get_layer (GTK_WINDOW (panel));
+    gtk_layer_set_layer (GTK_WINDOW (panel), GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), TRUE);
     m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), NULL);
 }
