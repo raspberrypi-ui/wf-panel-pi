@@ -1,3 +1,10 @@
+wf-panel-pi (0.27) bookworm; urgency=medium
+
+  * Push panel popups to top level when active
+  * Use polkit for updater plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 14 Jul 2023 15:18:09 +0100
+
 wf-panel-pi (0.26) bookworm; urgency=medium
 
   * Push panel to top layer when menu opened to enable keyboard
