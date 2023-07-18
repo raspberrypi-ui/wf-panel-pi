@@ -87,6 +87,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     GtkLayerShellLayer old_layer;
 
     WfOption<std::string> position;
+    WfOption<int> margin;
     void update_position();
 
     wf::animation::simple_animation_t y_position;
