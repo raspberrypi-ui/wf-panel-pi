@@ -605,6 +605,13 @@ namespace IconProvider
                 c = std::tolower(c);
             return str;
         }
+        std::string titlecase(std::string str)
+        {
+            for (auto& c : str)
+                c = std::tolower(c);
+            str[0] = std::toupper(str[0]);
+            return str;
+        }
     }
 
     /* Gio::DesktopAppInfo
@@ -622,6 +629,7 @@ namespace IconProvider
             "/usr/share/applications/org.kde.",
             "/usr/share/applications/org.thonny.",
             "/usr/share/applications/org.xfce.",
+            "/usr/share/applications/org.gnome.",
             "/usr/local/share/applications/",
             "/usr/local/share/applications/org.kde.",
         };
@@ -629,6 +637,7 @@ namespace IconProvider
         std::vector<std::string> app_id_variations = {
             app_id,
             tolower(app_id),
+            titlecase(app_id),
         };
 
         std::vector<std::string> suffixes = {
