@@ -620,6 +620,7 @@ namespace IconProvider
             "/usr/share/applications/",
             "/usr/share/applications/kde/",
             "/usr/share/applications/org.kde.",
+            "/usr/share/applications/org.thonny.",
             "/usr/local/share/applications/",
             "/usr/local/share/applications/org.kde.",
         };
