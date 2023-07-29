@@ -621,6 +621,7 @@ namespace IconProvider
             "/usr/share/applications/kde/",
             "/usr/share/applications/org.kde.",
             "/usr/share/applications/org.thonny.",
+            "/usr/share/applications/org.xfce.",
             "/usr/local/share/applications/",
             "/usr/local/share/applications/org.kde.",
         };
