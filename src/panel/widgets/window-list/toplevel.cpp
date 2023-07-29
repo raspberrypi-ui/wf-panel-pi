@@ -624,6 +624,11 @@ namespace IconProvider
 
         std::vector<std::string> prefixes = {
             "",
+            "/usr/share/raspi-ui-overrides/applications/",
+            "/usr/share/raspi-ui-overrides/applications/org.kde.",
+            "/usr/share/raspi-ui-overrides/applications/org.thonny.",
+            "/usr/share/raspi-ui-overrides/applications/org.xfce.",
+            "/usr/share/raspi-ui-overrides/applications/org.gnome.",
             "/usr/share/applications/",
             "/usr/share/applications/kde/",
             "/usr/share/applications/org.kde.",

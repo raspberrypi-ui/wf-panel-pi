@@ -1,3 +1,9 @@
+wf-panel-pi (0.29) bookworm; urgency=medium
+
+  * More icon lookup tweaks
+
+ -- Simon Long <simon@raspberrypi.com>  Sat, 29 Jul 2023 14:07:46 +0100
+
 wf-panel-pi (0.28) bookworm; urgency=medium
 
   * Fix up some obvious cases where icon lookup fails
