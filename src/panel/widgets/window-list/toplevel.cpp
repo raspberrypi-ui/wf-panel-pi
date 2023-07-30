@@ -612,6 +612,11 @@ namespace IconProvider
             str[0] = std::toupper(str[0]);
             return str;
         }
+        std::string lastbit(std::string str)
+        {
+            std::size_t found = str.find_last_of('.');
+            return str.substr(found + 1);
+        }
     }
 
     /* Gio::DesktopAppInfo
@@ -643,6 +648,7 @@ namespace IconProvider
             app_id,
             tolower(app_id),
             titlecase(app_id),
+            lastbit(app_id),
         };
 
         std::vector<std::string> suffixes = {
