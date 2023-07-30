@@ -693,6 +693,8 @@ namespace IconProvider
                  * get an icon directly from the icon theme */
                 if (Gtk::IconTheme::get_default()->lookup_icon(app_id, 24))
                     icon_name = app_id;
+                else if (Gtk::IconTheme::get_default()->lookup_icon(tolower(app_id), 24))
+                    icon_name = tolower(app_id);
             } else
             {
                 icon_name = icon->to_string();
