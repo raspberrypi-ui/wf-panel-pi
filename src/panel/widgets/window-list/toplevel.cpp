@@ -6,6 +6,7 @@
 #include <gtkmm/gesturedrag.h>
 #include <giomm/desktopappinfo.h>
 #include <iostream>
+#include <filesystem>
 
 #include <gdkmm/seat.h>
 #include <gdk/gdkwayland.h>
@@ -605,18 +606,6 @@ namespace IconProvider
                 c = std::tolower(c);
             return str;
         }
-        std::string titlecase(std::string str)
-        {
-            for (auto& c : str)
-                c = std::tolower(c);
-            str[0] = std::toupper(str[0]);
-            return str;
-        }
-        std::string lastbit(std::string str)
-        {
-            std::size_t found = str.find_last_of('.');
-            return str.substr(found + 1);
-        }
     }
 
     /* Gio::DesktopAppInfo
@@ -627,52 +616,35 @@ namespace IconProvider
     {
         Glib::RefPtr<Gio::DesktopAppInfo> app_info;
 
-        std::vector<std::string> prefixes = {
-            "",
-            "/usr/share/raspi-ui-overrides/applications/",
-            "/usr/share/raspi-ui-overrides/applications/org.kde.",
-            "/usr/share/raspi-ui-overrides/applications/org.thonny.",
-            "/usr/share/raspi-ui-overrides/applications/org.xfce.",
-            "/usr/share/raspi-ui-overrides/applications/org.gnome.",
-            "/usr/share/applications/",
-            "/usr/share/applications/kde/",
-            "/usr/share/applications/org.kde.",
-            "/usr/share/applications/org.thonny.",
-            "/usr/share/applications/org.xfce.",
-            "/usr/share/applications/org.gnome.",
-            "/usr/local/share/applications/",
-            "/usr/local/share/applications/org.kde.",
-        };
+        std::string dirs = std::getenv ("XDG_DATA_DIRS");
+        std::size_t start = 0, end = dirs.find (":");
 
-        std::vector<std::string> app_id_variations = {
-            app_id,
-            tolower(app_id),
-            titlecase(app_id),
-            lastbit(app_id),
-        };
-
-        std::vector<std::string> suffixes = {
-            "",
-            ".desktop"
-        };
-
-        for (auto& prefix : prefixes)
+        // loop through all directories in XDG_DATA_DIRS
+        while (1)
         {
-            for (auto& id : app_id_variations)
+            std::string dir = dirs.substr (start, end - start);
+            std::error_code ec;
+
+            // loop through all files in the applications subdirectory
+            for (const auto & entry : std::filesystem::directory_iterator (dir + "/applications/", ec))
             {
-                for (auto& suffix : suffixes)
+                if (entry.path().extension().string() != ".desktop") continue;
+                std::string stem = entry.path().stem().string();
+                std::string id = stem.substr (stem.find_last_of (".") + 1);
+
+                // do a caseless compare of the last part of the desktop file name against the start of the application id
+                if (!strncasecmp (id.c_str(), app_id.c_str(), strlen (id.c_str())))
                 {
-                    if (!app_info)
-                    {
-                        app_info = Gio::DesktopAppInfo
-                            ::create_from_filename(prefix + id + suffix);
-                    }
+                    app_info = Gio::DesktopAppInfo::create_from_filename (entry.path().string());
+                    if (app_info) return app_info->get_icon();
                 }
             }
-        }
 
-        if (app_info) // success
-            return app_info->get_icon();
+            // iterate if not at end of directory list
+            if (end == std::string::npos) break;
+            start = end + 1;
+            end = dirs.find (":", start);
+        }
 
         return Icon{};
     }
