@@ -615,25 +615,27 @@ namespace IconProvider
     Icon get_from_desktop_app_info(std::string app_id)
     {
         Glib::RefPtr<Gio::DesktopAppInfo> app_info;
+        std::error_code ec;
+        std::string dir, stem, id;
+        std::size_t start, end;
 
         // take the first part of the app-id, up to any . or the end
         std::string cmp_id = tolower (app_id.substr (0, app_id.find (".")));
-
         std::string dirs = std::getenv ("XDG_DATA_DIRS");
-        std::size_t start = 0, end = dirs.find (":");
 
         // loop through all directories in XDG_DATA_DIRS
+        start = 0;
+        end = dirs.find (":");
         while (1)
         {
-            std::string dir = dirs.substr (start, end - start);
-            std::error_code ec;
+            dir = dirs.substr (start, end - start);
 
             // loop through all files in the applications subdirectory
             for (const auto & entry : std::filesystem::directory_iterator (dir + "/applications/", ec))
             {
                 if (entry.path().extension().string() != ".desktop") continue;
-                std::string stem = entry.path().stem().string();
-                std::string id = tolower (stem.substr (stem.find_last_of (".") + 1));
+                stem = entry.path().stem().string();
+                id = tolower (stem.substr (stem.find_last_of (".") + 1));
 
                 // do a caseless compare of the last part of the desktop file name against the start of the application id
                 if (id == cmp_id)
@@ -644,6 +646,31 @@ namespace IconProvider
             }
 
             // iterate if not at end of directory list
+            if (end == std::string::npos) break;
+            start = end + 1;
+            end = dirs.find (":", start);
+        }
+
+        // if we failed to match, try again, but now just try to match partial strings
+        start = 0;
+        end = dirs.find (":");
+        while (1)
+        {
+            dir = dirs.substr (start, end - start);
+
+            for (const auto & entry : std::filesystem::directory_iterator (dir + "/applications/", ec))
+            {
+                if (entry.path().extension().string() != ".desktop") continue;
+                stem = entry.path().stem().string();
+                id = tolower (stem.substr (stem.find_last_of (".") + 1));
+
+                if (id.find (cmp_id) != std::string::npos || cmp_id.find (id) != std::string::npos)
+                {
+                    app_info = Gio::DesktopAppInfo::create_from_filename (entry.path().string());
+                    if (app_info) return app_info->get_icon();
+                }
+            }
+
             if (end == std::string::npos) break;
             start = end + 1;
             end = dirs.find (":", start);
