@@ -86,17 +86,21 @@ void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
                  image.get_scale_factor() : options.user_scale);
     int scaled_size = size * scale;
 
-    if (!icon_theme->lookup_icon(icon_name, scaled_size))
+    if (icon_theme->lookup_icon(icon_name, scaled_size))
     {
-        std::cerr << "Failed to load icon \"" << icon_name << "\"" << std::endl;
-        return;
-    }
-
-    auto pbuff = icon_theme->load_icon(icon_name, scaled_size)
+        auto pbuff = icon_theme->load_icon(icon_name, scaled_size)
         ->scale_simple(scaled_size, scaled_size, Gdk::INTERP_BILINEAR);
 
-    if (options.invert)
-        invert_pixbuf(pbuff);
-
-    set_image_pixbuf(image, pbuff, scale);
+        if (options.invert) invert_pixbuf (pbuff);
+        set_image_pixbuf (image, pbuff, scale);
+    }
+    else
+    {
+        auto pbuff = load_icon_pixbuf_safe(icon_name, scaled_size);
+        if (pbuff)
+        {
+            if (options.invert) invert_pixbuf (pbuff);
+            set_image_pixbuf (image, pbuff, scale);
+        }
+    }
 }
