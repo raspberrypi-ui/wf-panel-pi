@@ -642,7 +642,9 @@ namespace IconProvider
         // well, that didn't work then...
 
         // take the first part of the app-id, up to any . or the end
-        std::string cmp_id = tolower (app_id.substr (0, app_id.find (".")));
+        std::string cmp_id1 = tolower (app_id.substr (0, app_id.find (".")));
+        // take the last part of the app-id, from any . or the start
+        std::string cmp_id2 = tolower (app_id.substr (app_id.find_last_of (".") + 1));
 
         // loop through all directories in XDG_DATA_DIRS
         start = 0;
@@ -659,7 +661,7 @@ namespace IconProvider
                 id = tolower (stem.substr (stem.find_last_of (".") + 1));
 
                 // do a caseless compare of the last part of the desktop file name against the start of the application id
-                if (id == cmp_id)
+                if (id == cmp_id1 || id == cmp_id2)
                 {
                     app_info = Gio::DesktopAppInfo::create_from_filename (entry.path().string());
                     if (app_info) return app_info->get_icon();
@@ -685,7 +687,8 @@ namespace IconProvider
                 stem = entry.path().stem().string();
                 id = tolower (stem.substr (stem.find_last_of (".") + 1));
 
-                if (id.find (cmp_id) != std::string::npos || cmp_id.find (id) != std::string::npos)
+                if (id.find (cmp_id1) != std::string::npos || cmp_id1.find (id) != std::string::npos
+                    || id.find (cmp_id2) != std::string::npos || cmp_id2.find (id) != std::string::npos)
                 {
                     app_info = Gio::DesktopAppInfo::create_from_filename (entry.path().string());
                     if (app_info) return app_info->get_icon();
