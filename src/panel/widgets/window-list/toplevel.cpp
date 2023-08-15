@@ -616,6 +616,9 @@ namespace IconProvider
     {
         Glib::RefPtr<Gio::DesktopAppInfo> app_info;
 
+        // take the first part of the app-id, up to any . or the end
+        std::string cmp_id = tolower (app_id.substr (0, app_id.find (".")));
+
         std::string dirs = std::getenv ("XDG_DATA_DIRS");
         std::size_t start = 0, end = dirs.find (":");
 
@@ -630,10 +633,10 @@ namespace IconProvider
             {
                 if (entry.path().extension().string() != ".desktop") continue;
                 std::string stem = entry.path().stem().string();
-                std::string id = stem.substr (stem.find_last_of (".") + 1);
+                std::string id = tolower (stem.substr (stem.find_last_of (".") + 1));
 
                 // do a caseless compare of the last part of the desktop file name against the start of the application id
-                if (!strncasecmp (id.c_str(), app_id.c_str(), strlen (id.c_str())))
+                if (id == cmp_id)
                 {
                     app_info = Gio::DesktopAppInfo::create_from_filename (entry.path().string());
                     if (app_info) return app_info->get_icon();
