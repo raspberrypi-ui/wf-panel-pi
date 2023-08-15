@@ -619,9 +619,30 @@ namespace IconProvider
         std::string dir, stem, id;
         std::size_t start, end;
 
+        // an app-id should just match a desktop file...
+        std::string dirs = std::getenv ("XDG_DATA_DIRS");
+        start = 0;
+        end = dirs.find (":");
+        while (1)
+        {
+            dir = dirs.substr (start, end - start);
+
+            app_info = Gio::DesktopAppInfo::create_from_filename (dir + "/applications/" + app_id + ".desktop");
+            if (app_info) return app_info->get_icon();
+
+            app_info = Gio::DesktopAppInfo::create_from_filename (dir + "/applications/" + tolower (app_id) + ".desktop");
+            if (app_info) return app_info->get_icon();
+
+            // iterate if not at end of directory list
+            if (end == std::string::npos) break;
+            start = end + 1;
+            end = dirs.find (":", start);
+        }
+
+        // well, that didn't work then...
+
         // take the first part of the app-id, up to any . or the end
         std::string cmp_id = tolower (app_id.substr (0, app_id.find (".")));
-        std::string dirs = std::getenv ("XDG_DATA_DIRS");
 
         // loop through all directories in XDG_DATA_DIRS
         start = 0;
@@ -675,6 +696,8 @@ namespace IconProvider
             start = end + 1;
             end = dirs.find (":", start);
         }
+
+        // there are limits to what it is worth trying....
 
         return Icon{};
     }
