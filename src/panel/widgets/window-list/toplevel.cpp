@@ -616,16 +616,18 @@ namespace IconProvider
     {
         Glib::RefPtr<Gio::DesktopAppInfo> app_info;
         std::error_code ec;
-        std::string dir, stem, id;
+        std::string dirs, dir, stem, id;
         std::size_t start, end;
 
         // an app-id should just match a desktop file...
-        std::string dirs = std::getenv ("XDG_DATA_DIRS");
+        if (std::getenv ("XDG_DATA_DIRS")) dirs = std::getenv ("XDG_DATA_DIRS");
+        else dirs = "/usr/share/applications";
         start = 0;
         end = dirs.find (":");
         while (1)
         {
             dir = dirs.substr (start, end - start);
+            printf ("dir %s\n", dir.c_str());
 
             app_info = Gio::DesktopAppInfo::create_from_filename (dir + "/applications/" + app_id + ".desktop");
             if (app_info) return app_info->get_icon();
