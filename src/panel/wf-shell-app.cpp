@@ -84,6 +84,8 @@ void WayfireShellApp::on_activate()
 {
     app->hold();
 
+    fm_gtk_init (NULL);
+
     if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
     else wizard = false;
 
@@ -186,19 +188,9 @@ void WayfireShellApp::rem_output(GMonitor monitor)
 WayfireShellApp::WayfireShellApp(int argc, char **argv)
 {
     app = Gtk::Application::create(argc, argv, "",
-        Gio::APPLICATION_HANDLES_COMMAND_LINE);
+        Gio::APPLICATION_FLAGS_NONE);
     app->signal_activate().connect_notify(
         sigc::mem_fun(this, &WayfireShellApp::on_activate));
-    app->add_main_option_entry(
-        sigc::mem_fun(this, &WayfireShellApp::parse_cfgfile),
-        "config", 'c', "config file to use", "file");
-
-    fm_gtk_init (NULL);
-
-    // Activate app after parsing command line
-    app->signal_command_line().connect_notify([=] (auto&) {
-        app->activate();
-    });
 }
 
 WayfireShellApp::~WayfireShellApp() {}

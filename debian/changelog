@@ -1,3 +1,9 @@
+wf-panel-pi (0.32) bookworm; urgency=medium
+
+  * Possible fix for occasional startup delay
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 31 Aug 2023 12:17:45 +0100
+
 wf-panel-pi (0.31) bookworm; urgency=medium
 
   * New icon update algorithm
