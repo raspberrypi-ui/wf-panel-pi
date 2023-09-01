@@ -627,7 +627,6 @@ namespace IconProvider
         while (1)
         {
             dir = dirs.substr (start, end - start);
-            printf ("dir %s\n", dir.c_str());
 
             app_info = Gio::DesktopAppInfo::create_from_filename (dir + "/applications/" + app_id + ".desktop");
             if (app_info) return app_info->get_icon();
