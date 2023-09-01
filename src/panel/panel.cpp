@@ -38,6 +38,8 @@
 
 #include "wf-autohide-window.hpp"
 
+long long starttime;
+
 /* Minimal DBus interface for commands to plugins */
 
 static GDBusNodeInfo *introspection_data = NULL;
@@ -646,6 +648,10 @@ WayfirePanelApp::WayfirePanelApp(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
+    struct timeval te;
+    gettimeofday (&te, NULL);
+    starttime = te.tv_sec * 1000LL + te.tv_usec / 1000;
+
     WayfirePanelApp::create(argc, argv);
 
     return 0;

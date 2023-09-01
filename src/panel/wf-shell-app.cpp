@@ -10,6 +10,8 @@
 #include <unistd.h>
 #include <libfm/fm-gtk.h>
 
+extern long long starttime;
+
 std::string WayfireShellApp::get_config_file()
 {
     if (cmdline_config.has_value())
@@ -82,6 +84,12 @@ static struct wl_registry_listener registry_listener =
 
 void WayfireShellApp::on_activate()
 {
+    struct timeval te;
+    gettimeofday (&te, NULL);
+    long long milliseconds = te.tv_sec * 1000LL + te.tv_usec / 1000;
+    milliseconds -= starttime;
+    if (!access ("/boot/panelloop", F_OK) && milliseconds < 5000) system ("reboot");
+
     app->hold();
 
     fm_gtk_init (NULL);
@@ -188,9 +196,17 @@ void WayfireShellApp::rem_output(GMonitor monitor)
 WayfireShellApp::WayfireShellApp(int argc, char **argv)
 {
     app = Gtk::Application::create(argc, argv, "",
-        Gio::APPLICATION_FLAGS_NONE);
+        Gio::APPLICATION_HANDLES_COMMAND_LINE);
     app->signal_activate().connect_notify(
         sigc::mem_fun(this, &WayfireShellApp::on_activate));
+    app->add_main_option_entry(
+        sigc::mem_fun(this, &WayfireShellApp::parse_cfgfile),
+        "config", 'c', "config file to use", "file");
+
+    // Activate app after parsing command line
+    app->signal_command_line().connect_notify([=] (auto&) {
+        app->activate();
+    });
 }
 
 WayfireShellApp::~WayfireShellApp() {}
