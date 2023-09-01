@@ -1,3 +1,9 @@
+wf-panel-pi (0.33) bookworm; urgency=medium
+
+  * Add temporary debug option to detect startup delay
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 01 Sep 2023 13:02:55 +0100
+
 wf-panel-pi (0.32) bookworm; urgency=medium
 
   * Possible fix for occasional startup delay
