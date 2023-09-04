@@ -3,6 +3,7 @@
 #include <gtkmm/headerbar.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/application.h>
+#include <gtkmm/main.h>
 #include <gdk/gdkwayland.h>
 #include <gtk-layer-shell.h>
 
@@ -653,7 +654,9 @@ int main(int argc, char **argv)
     gettimeofday (&te, NULL);
     starttime = te.tv_sec * 1000LL + te.tv_usec / 1000;
 
+    auto main = Gtk::Main (argc, argv, true);
     WayfirePanelApp::create(argc, argv);
 
+    main.run();
     return 0;
 }

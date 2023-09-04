@@ -42,7 +42,7 @@ class WayfireShellApp
     static std::unique_ptr<WayfireShellApp> instance;
     std::optional<std::string> cmdline_config;
 
-    Glib::RefPtr<Gtk::Application> app;
+    //Glib::RefPtr<Gtk::Application> app;
 
     virtual void add_output(GMonitor monitor);
     virtual void rem_output(GMonitor monitor);
