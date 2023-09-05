@@ -39,6 +39,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define VMON_INTERVAL 15000
 #define VMON_PATH "/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/in0_lcrit_alarm"
+#define PSU_PATH "/proc/device-tree/chosen/power/max_current"
+
+/* Reasons to show the icon */
+#define ICON_LOW_VOLTAGE 0x01
+#define ICON_LOW_CURRENT 0x02
 
 /* Plug-in global data */
 
@@ -47,7 +52,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static gboolean is_pi (void);
 static void update_icon (PowerPlugin *pt);
 static gboolean vtimer_event (PowerPlugin *pt);
-
+static gboolean check_psu (void);
 
 static gboolean is_pi (void)
 {
@@ -71,7 +76,9 @@ static void update_icon (PowerPlugin *pt)
     {
         gtk_widget_set_sensitive (pt->plugin, TRUE);
         gtk_widget_show (pt->plugin);
-        gtk_widget_set_tooltip_text (pt->tray_icon, "Low voltage has been detected");
+        if (pt->show_icon == ICON_LOW_VOLTAGE) gtk_widget_set_tooltip_text (pt->tray_icon, "Low voltage has been detected");
+        else if (pt->show_icon == ICON_LOW_CURRENT) gtk_widget_set_tooltip_text (pt->tray_icon, "Power supply not capable of supplying 5A");
+        else gtk_widget_set_tooltip_text (pt->tray_icon, "Low voltage has been detected\n\nPower supply not capable of supplying 5A");
     }
 }
 
@@ -85,11 +92,24 @@ static gboolean vtimer_event (PowerPlugin *pt)
         if (val == '1')
         {
             lxpanel_critical (_("Low voltage warning\nPlease check your power supply"));
-            //pt->show_icon = TRUE;
+            pt->show_icon |= ICON_LOW_VOLTAGE;
             update_icon (pt);
         }
     }
     return TRUE;
+}
+
+static gboolean check_psu (void)
+{
+	FILE *fp = fopen (PSU_PATH, "rb");
+	if (fp)
+	{
+		int val = fgetc (fp);
+		fclose (fp);
+		if (val < '5') return TRUE;
+		else return FALSE;
+	}
+	return FALSE;
 }
 
 /* Plugin functions */
@@ -112,7 +132,9 @@ void power_init (PowerPlugin *pt)
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
 
     pt->ispi = is_pi ();
-    pt->show_icon = FALSE;
+
+    if (check_psu ()) pt->show_icon = ICON_LOW_CURRENT;
+    else pt->show_icon = 0;
 
     /* Start timed events to monitor low voltage warnings */
     if (pt->ispi) pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);

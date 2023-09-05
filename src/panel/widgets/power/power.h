@@ -7,7 +7,7 @@ typedef struct {
     GtkWidget *tray_icon;           /* Displayed image */
     guint vtimer;
     gboolean ispi;
-    gboolean show_icon;
+    int show_icon;
 } PowerPlugin;
 
 extern void power_init (PowerPlugin *pt);
