@@ -1,3 +1,9 @@
+wf-panel-pi (0.34) bookworm; urgency=medium
+
+  * Add option to use Gtk::Main instead of Gtk::Application
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 05 Sep 2023 08:22:30 +0100
+
 wf-panel-pi (0.33) bookworm; urgency=medium
 
   * Add temporary debug option to detect startup delay

@@ -1,6 +1,8 @@
 #ifndef WF_SHELL_APP_HPP
 #define WF_SHELL_APP_HPP
 
+#define USE_MAIN
+
 #include <set>
 #include <string>
 #include <wayfire/config/config-manager.hpp>
@@ -42,7 +44,9 @@ class WayfireShellApp
     static std::unique_ptr<WayfireShellApp> instance;
     std::optional<std::string> cmdline_config;
 
-    //Glib::RefPtr<Gtk::Application> app;
+#ifndef USE_MAIN
+    Glib::RefPtr<Gtk::Application> app;
+#endif
 
     virtual void add_output(GMonitor monitor);
     virtual void rem_output(GMonitor monitor);

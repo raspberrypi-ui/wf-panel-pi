@@ -3,7 +3,6 @@
 #include <gtkmm/headerbar.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/application.h>
-#include <gtkmm/main.h>
 #include <gdk/gdkwayland.h>
 #include <gtk-layer-shell.h>
 
@@ -39,6 +38,12 @@
 #include "widgets/window-list/window-list.hpp"
 
 #include "wf-autohide-window.hpp"
+
+#ifdef USE_MAIN
+#include <gtkmm/main.h>
+
+Gtk::Main maininst;
+#endif
 
 long long starttime;
 
@@ -596,7 +601,11 @@ void WayfirePanelApp::create(int argc, char **argv)
         on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
 
     instance = std::unique_ptr<WayfireShellApp>(new WayfirePanelApp{argc, argv});
+#ifdef USE_MAIN
+    maininst.run();
+#else
     instance->run();
+#endif
 
     g_bus_unown_name (owner_id);
     g_dbus_node_info_unref (introspection_data);
@@ -650,13 +659,17 @@ WayfirePanelApp::WayfirePanelApp(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    struct timeval te;
-    gettimeofday (&te, NULL);
-    starttime = te.tv_sec * 1000LL + te.tv_usec / 1000;
+    if (!access ("/boot/panelloop", F_OK))
+    {
+        struct timeval te;
+        gettimeofday (&te, NULL);
+        starttime = te.tv_sec * 1000LL + te.tv_usec / 1000;
+    }
 
-    auto main = Gtk::Main (argc, argv, true);
+#ifdef USE_MAIN
+    maininst = Gtk::Main (argc, argv, true);
+#endif
     WayfirePanelApp::create(argc, argv);
 
-    main.run();
     return 0;
 }
