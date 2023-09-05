@@ -101,15 +101,18 @@ static gboolean vtimer_event (PowerPlugin *pt)
 
 static gboolean check_psu (void)
 {
-	FILE *fp = fopen (PSU_PATH, "rb");
-	if (fp)
-	{
-		int val = fgetc (fp);
-		fclose (fp);
-		if (val < '5') return TRUE;
-		else return FALSE;
-	}
-	return FALSE;
+    gboolean res = FALSE;
+    int val;
+    FILE *fp = fopen (PSU_PATH, "rb");
+    if (fp)
+    {
+        unsigned char *cptr = (unsigned char *) &val;
+        // you're kidding, right?
+        for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
+        if (val < 5000) res = TRUE;
+        fclose (fp);
+    }
+    return res;
 }
 
 /* Plugin functions */
