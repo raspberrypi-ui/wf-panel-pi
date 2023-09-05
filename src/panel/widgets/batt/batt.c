@@ -34,10 +34,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdint.h>
 #include <string.h>
 #include <glib/gi18n.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <asm/ioctl.h>
-#include <zmq.h>
 #include "batt.h"
 
 //#include "plugin.h"
@@ -79,24 +75,6 @@ static gboolean is_pi (void)
         return TRUE;
     else
         return FALSE;
-}
-
-static int check_service (char *name)
-{
-    int res;
-    char *buf;
-
-    buf = g_strdup_printf ("systemctl status %s 2> /dev/null | grep -qw Active:", name);
-    res = system (buf);
-    g_free (buf);
-
-    if (res) return 0;
-
-    buf = g_strdup_printf ("systemctl status %s 2> /dev/null | grep -w Active: | grep -qw inactive", name);
-    res = system (buf);
-    g_free (buf);
-
-    return res;
 }
 
 /* gdk_pixbuf_get_from_surface function from GDK+3 */
@@ -169,39 +147,6 @@ static int init_measurement (PtBattPlugin *pt)
 #ifdef TEST_MODE
     return 1;
 #endif
-    if (pt->ispi)
-    {
-        pt->pt_batt_avail = FALSE;
-        pt->requester = NULL;
-        pt->context = NULL;
-        pt->pt_batt_avail = FALSE;
-        if (check_service ("pt-device-manager") || check_service ("pi-topd"))
-        {
-            g_message ("ptbatt: pi-top device manager found");
-            pt->context = zmq_ctx_new ();
-            if (pt->context)
-            {
-                pt->requester = zmq_socket (pt->context, ZMQ_REQ);
-                if (pt->requester)
-                {
-                    if (zmq_connect (pt->requester, "tcp://127.0.0.1:3782") == 0)
-                    {
-                        if (zmq_send (pt->requester, "118", 3, ZMQ_NOBLOCK) == 3)
-                        {
-                            g_message ("ptbatt: connected to pi-top device manager");
-                            pt->pt_batt_avail = TRUE;
-                            return 1;
-                        }
-                    }
-                    zmq_close (pt->requester);
-                    pt->requester = NULL;
-                }
-                zmq_ctx_destroy (pt->context);
-                pt->context = NULL;
-            }
-            return 0;
-        }
-    }
     pt->batt = battery_get (pt->batt_num);
     if (pt->batt) return 1;
 
@@ -229,36 +174,6 @@ static int charge_level (PtBattPlugin *pt, status_t *status, int *tim)
 #endif
     *status = STAT_UNKNOWN;
     *tim = 0;
-    if (pt->ispi)
-    {
-        int capacity, state, time, res;
-        char buffer[100];
-
-        if (pt->pt_batt_avail)
-        {
-            if (!pt->requester) return -1;
-
-            res = zmq_recv (pt->requester, buffer, 100, ZMQ_NOBLOCK);
-            if (res > 0 && res < 100)
-            {
-                buffer[res] = 0;
-                if (sscanf (buffer, "%d|%d|%d|%d|", &res, &state, &capacity, &time) == 4)
-                {
-                    if (res == 218 && (state == STAT_CHARGING || state == STAT_DISCHARGING || state == STAT_EXT_POWER))
-                    {
-                        // these two lines shouldn't be necessary once EXT_POWER state is implemented in the device manager
-                        if (capacity == 100 && time == 0) *status = STAT_EXT_POWER;
-                        else
-                        *status = (status_t) state;
-                        *tim = time;
-                    }
-                }
-            }
-            zmq_send (pt->requester, "118", 3, ZMQ_NOBLOCK);
-            if (*status != STAT_UNKNOWN) return capacity;
-            else return -1;
-        }
-    }
     battery *b = pt->batt;
     int mins;
     if (b)
@@ -428,12 +343,6 @@ void batt_destructor (gpointer user_data)
     /* Disconnect the timer. */
     if (pt->timer) g_source_remove (pt->timer);
 
-    if (pt->ispi)
-    {
-        if (pt->requester) zmq_close (pt->requester);
-        if (pt->context) zmq_ctx_destroy (pt->context);
-    }
-
     /* Deallocate memory */
     //g_free (pt);
 }
@@ -459,8 +368,10 @@ void batt_init (PtBattPlugin *pt)
     pt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
 
-    pt->ispi = is_pi ();
-
+#ifndef TEST_MODE
+    if (is_pi ()) pt->timer = 0;
+    else
+#endif
     if (init_measurement (pt))
     {
         /* Load the symbols */

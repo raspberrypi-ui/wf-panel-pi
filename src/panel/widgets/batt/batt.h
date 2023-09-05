@@ -10,10 +10,6 @@ typedef struct {
     GdkPixbuf *plug;
     GdkPixbuf *flash;
     guint timer;
-    gboolean pt_batt_avail;
-    void *context;
-    void *requester;
-    gboolean ispi;
     int batt_num;
 } PtBattPlugin;
 
