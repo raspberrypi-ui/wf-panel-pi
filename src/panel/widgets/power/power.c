@@ -38,7 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "power.h"
 
 #define VMON_INTERVAL 15000
-#define VMON_PATH "/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/in0_lcrit_alarm"
+#define VMON_PATH "/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon%d/in0_lcrit_alarm"
 #define PSU_PATH "/proc/device-tree/chosen/power/max_current"
 
 /* Reasons to show the icon */
@@ -76,15 +76,26 @@ static void update_icon (PowerPlugin *pt)
     {
         gtk_widget_set_sensitive (pt->plugin, TRUE);
         gtk_widget_show (pt->plugin);
-        if (pt->show_icon == ICON_LOW_VOLTAGE) gtk_widget_set_tooltip_text (pt->tray_icon, "Low voltage has been detected");
-        else if (pt->show_icon == ICON_LOW_CURRENT) gtk_widget_set_tooltip_text (pt->tray_icon, "Power supply not capable of supplying 5A");
-        else gtk_widget_set_tooltip_text (pt->tray_icon, "Low voltage has been detected\n\nPower supply not capable of supplying 5A");
+        if (pt->show_icon == ICON_LOW_VOLTAGE) gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected"));
+        else if (pt->show_icon == ICON_LOW_CURRENT) gtk_widget_set_tooltip_text (pt->tray_icon, _("Power supply not capable of supplying 5A"));
+        else gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected\n\nPower supply not capable of supplying 5A"));
     }
 }
 
 static gboolean vtimer_event (PowerPlugin *pt)
 {
-    FILE *fp = fopen (VMON_PATH, "rb");
+    FILE *fp;
+    char *path;
+    int i;
+
+    for (i = 0; i < 3; i++)
+    {
+        path = g_strdup_printf (VMON_PATH, i);
+        fp = fopen (path, "rb");
+        g_free (path);
+        if (fp) break;
+    }
+
     if (fp)
     {
         int val = fgetc (fp);
@@ -109,7 +120,11 @@ static gboolean check_psu (void)
         unsigned char *cptr = (unsigned char *) &val;
         // you're kidding, right?
         for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
-        if (val < 5000) res = TRUE;
+        if (val < 5000)
+        {
+            lxpanel_notify (_("This power supply is not capable of supplying 5A\nPower to peripherals is restricted"));
+            res = TRUE;
+        }
         fclose (fp);
     }
     return res;
