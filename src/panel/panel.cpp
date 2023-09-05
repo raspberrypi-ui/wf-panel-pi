@@ -234,6 +234,7 @@ class WayfirePanel::impl
         window->set_size_request(1, real ? minimal_panel_height : 1);
         panel_layer.set_callback(set_panel_layer);
         set_panel_layer(); // initial setting
+        if (real) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
 
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, wizard ? false : true);
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
@@ -438,7 +439,6 @@ class WayfirePanel::impl
             zwf_output_v2_add_listener(output->output, &output_impl, NULL);
             zwf_output_v2_set_user_data(output->output, &callbacks);
         }
-        if (real) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
     }
 
     ~impl()
