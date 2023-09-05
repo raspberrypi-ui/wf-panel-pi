@@ -1,3 +1,9 @@
+wf-panel-pi (0.35) bookworm; urgency=medium
+
+  * Add power monitoring; remove Pi-top battery monitoring
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 05 Sep 2023 14:45:40 +0100
+
 wf-panel-pi (0.34) bookworm; urgency=medium
 
   * Add option to use Gtk::Main instead of Gtk::Application
