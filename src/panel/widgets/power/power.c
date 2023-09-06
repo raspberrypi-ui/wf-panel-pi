@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fcntl.h>
 #include "power.h"
 
-#define VMON_INTERVAL 15000
+#define VMON_INTERVAL 1000
 #define VMON_PATH "/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon%d/in0_lcrit_alarm"
 #define PSU_PATH "/proc/device-tree/chosen/power/max_current"
 
@@ -107,6 +107,18 @@ static gboolean vtimer_event (PowerPlugin *pt)
             update_icon (pt);
         }
     }
+
+    fp = fopen ("/tmp/oc.log", "rb");
+    if (fp)
+    {
+        if (fscanf (fp, "%d", &i))
+        {
+            if (i != pt->last_oc) lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
+            pt->last_oc = i;
+        }
+        fclose (fp);
+    }
+
     return TRUE;
 }
 
@@ -139,13 +151,8 @@ void power_update_display (PowerPlugin *pt)
 }
 
 /* Handler for control message */
-gboolean power_control_msg (PowerPlugin *ej, const char *cmd)
+gboolean power_control_msg (PowerPlugin *pt, const char *cmd)
 {
-    if (!g_strcmp0 (cmd, "overcurrent"))
-    {
-        lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
-    }
-
     return TRUE;
 }
 
@@ -164,6 +171,8 @@ void power_init (PowerPlugin *pt)
 
     if (check_psu ()) pt->show_icon = ICON_LOW_CURRENT;
     else pt->show_icon = 0;
+
+    pt->last_oc = -1;
 
     /* Start timed events to monitor low voltage warnings */
     if (pt->ispi) pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);

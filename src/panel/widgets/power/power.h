@@ -8,11 +8,12 @@ typedef struct {
     guint vtimer;
     gboolean ispi;
     int show_icon;
+    int last_oc;
 } PowerPlugin;
 
 extern void power_init (PowerPlugin *pt);
 extern void power_update_display (PowerPlugin *pt);
-extern gboolean power_control_msg (PowerPlugin *ej, const char *cmd);
+extern gboolean power_control_msg (PowerPlugin *pt, const char *cmd);
 extern void power_destructor (gpointer user_data);
 
 
