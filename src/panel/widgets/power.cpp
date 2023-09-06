@@ -13,6 +13,11 @@ void WayfirePower::icon_size_changed_cb (void)
     power_update_display (pt);
 }
 
+void WayfirePower::command (const char *cmd)
+{
+    power_control_msg (pt, cmd);
+}
+
 bool WayfirePower::set_icon (void)
 {
     power_update_display (pt);

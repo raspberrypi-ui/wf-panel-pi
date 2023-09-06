@@ -138,6 +138,17 @@ void power_update_display (PowerPlugin *pt)
     update_icon (pt);
 }
 
+/* Handler for control message */
+gboolean power_control_msg (PowerPlugin *ej, const char *cmd)
+{
+    if (!g_strcmp0 (cmd, "overcurrent"))
+    {
+        lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
+    }
+
+    return TRUE;
+}
+
 void power_init (PowerPlugin *pt)
 {
     setlocale (LC_ALL, "");

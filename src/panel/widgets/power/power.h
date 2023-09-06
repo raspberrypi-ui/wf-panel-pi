@@ -12,6 +12,7 @@ typedef struct {
 
 extern void power_init (PowerPlugin *pt);
 extern void power_update_display (PowerPlugin *pt);
+extern gboolean power_control_msg (PowerPlugin *ej, const char *cmd);
 extern void power_destructor (gpointer user_data);
 
 
