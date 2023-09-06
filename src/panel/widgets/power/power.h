@@ -9,6 +9,9 @@ typedef struct {
     gboolean ispi;
     int show_icon;
     int last_oc;
+    struct udev *udev;
+    struct udev_monitor *udev_mon;
+    int fd;
 } PowerPlugin;
 
 extern void power_init (PowerPlugin *pt);

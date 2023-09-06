@@ -35,6 +35,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <string.h>
 #include <glib/gi18n.h>
 #include <fcntl.h>
+#include <libudev.h>
+#include <sys/select.h>
 #include "power.h"
 
 #define VMON_INTERVAL 1000
@@ -88,6 +90,7 @@ static gboolean vtimer_event (PowerPlugin *pt)
     char *path;
     int i;
 
+    // check for low voltage events
     for (i = 0; i < 3; i++)
     {
         path = g_strdup_printf (VMON_PATH, i);
@@ -108,17 +111,31 @@ static gboolean vtimer_event (PowerPlugin *pt)
         }
     }
 
-    fp = fopen ("/tmp/oc.log", "rb");
-    if (fp)
-    {
-        if (fscanf (fp, "%d", &i))
-        {
-            if (i != pt->last_oc) lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
-            pt->last_oc = i;
-        }
-        fclose (fp);
-    }
+    // check for overcurrent events
+    fd_set fds;
+    int ret;
+    struct udev_device *dev;
+    struct timeval tv;
+    tv.tv_usec = 0;
+    tv.tv_sec = 0;
 
+    FD_ZERO (&fds);
+    FD_SET (pt->fd, &fds);
+    ret = select (pt->fd + 1, &fds, NULL, NULL, &tv);
+    if (ret > 0 && FD_ISSET (pt->fd, &fds))
+    {
+        dev = udev_monitor_receive_device (pt->udev_mon);
+        if (dev && !strcmp (udev_device_get_action (dev), "change"))
+        {
+            const char *count = udev_device_get_property_value (dev, "OVER_CURRENT_COUNT");
+            if (sscanf (count, "%d", &i) == 1 && i != pt->last_oc)
+            {
+                lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
+                pt->last_oc = i;
+            }
+        }
+        if (dev) udev_device_unref (dev);
+    }
     return TRUE;
 }
 
@@ -178,6 +195,12 @@ void power_init (PowerPlugin *pt)
     if (pt->ispi) pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);
     else pt->vtimer = 0;
 
+    pt->udev = udev_new ();
+    pt->udev_mon = udev_monitor_new_from_netlink (pt->udev, "kernel");
+    udev_monitor_filter_add_match_subsystem_devtype (pt->udev_mon, "usb", NULL);
+    udev_monitor_enable_receiving (pt->udev_mon);
+    pt->fd = udev_monitor_get_fd (pt->udev_mon);
+
     update_icon (pt);
 
     /* Show the widget and return */
@@ -190,5 +213,8 @@ void power_destructor (gpointer user_data)
 
     /* Disconnect the timer. */
     if (pt->vtimer) g_source_remove (pt->vtimer);
+
+    if (pt->udev_mon) udev_monitor_unref (pt->udev_mon);
+    udev_unref (pt->udev);
 }
 

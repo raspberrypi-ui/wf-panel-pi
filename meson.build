@@ -27,7 +27,7 @@ nma	       	   = dependency('libnma')
 secret	       = dependency('libsecret-1')
 notify	       = dependency('libnotify')
 packagekit     = dependency('packagekit-glib2')
-zmq            = dependency('libzmq')
+udev           = dependency('libudev')
 
 needs_libinotify = ['freebsd', 'dragonfly'].contains(host_machine.system())
 libinotify       = dependency('libinotify', required: needs_libinotify)
