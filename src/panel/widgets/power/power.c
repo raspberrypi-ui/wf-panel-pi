@@ -157,7 +157,7 @@ static gpointer lowvoltage_thread (gpointer data)
             dev = udev_monitor_receive_device (pt->udev_mon_lv);
             if (dev)
             {
-                if (!g_strcmp0 (udev_device_get_action (dev), "change") && !g_strcmp0 (udev_device_get_sysname (dev), "in0_lcrit_alarm"))
+                if (!g_strcmp0 (udev_device_get_action (dev), "change") && !g_strcmp0 (udev_device_get_sysname (dev), "hwmon1"))
                 {
                     path = g_strdup_printf ("%s/in0_lcrit_alarm", udev_device_get_syspath (dev));
                     fp = fopen (path, "rb");
