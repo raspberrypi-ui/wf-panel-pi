@@ -105,7 +105,7 @@ static void show_message (NotifyWindow *nw, char *str)
 
     if (nw->critical)
     {
-        GtkWidget *image = gtk_image_new_from_icon_name ("dialog-warning", 32);
+        GtkWidget *image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DND);
         gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
     }
 
