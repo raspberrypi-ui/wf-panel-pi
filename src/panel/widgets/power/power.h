@@ -5,12 +5,13 @@ typedef struct {
     int icon_size;                  /* Variables used under wf-panel */
     gboolean bottom;
     GtkWidget *tray_icon;           /* Displayed image */
-    guint vtimer;
     int show_icon;
     int last_oc;
     struct udev *udev;
-    struct udev_monitor *udev_mon;
-    int fd;
+    struct udev_monitor *udev_mon_oc;
+    struct udev_monitor *udev_mon_lv;
+    int fd_oc;
+    int fd_lv;
 } PowerPlugin;
 
 extern void power_init (PowerPlugin *pt);
