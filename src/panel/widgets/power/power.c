@@ -76,7 +76,7 @@ static void check_low_voltage (PowerPlugin *pt)
     char *path;
     int i;
 
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < 4; i++)
     {
         path = g_strdup_printf (VMON_PATH, i);
         fp = fopen (path, "rb");
