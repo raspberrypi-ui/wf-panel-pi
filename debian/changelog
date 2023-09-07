@@ -1,3 +1,9 @@
+wf-panel-pi (0.36) bookworm; urgency=medium
+
+  * Add detection of overcurrent events
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 07 Sep 2023 11:53:54 +0100
+
 wf-panel-pi (0.35) bookworm; urgency=medium
 
   * Add power monitoring; remove Pi-top battery monitoring
