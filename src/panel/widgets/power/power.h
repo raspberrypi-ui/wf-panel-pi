@@ -6,7 +6,6 @@ typedef struct {
     gboolean bottom;
     GtkWidget *tray_icon;           /* Displayed image */
     guint vtimer;
-    gboolean ispi;
     int show_icon;
     int last_oc;
     struct udev *udev;
@@ -16,7 +15,6 @@ typedef struct {
 
 extern void power_init (PowerPlugin *pt);
 extern void power_update_display (PowerPlugin *pt);
-extern gboolean power_control_msg (PowerPlugin *pt, const char *cmd);
 extern void power_destructor (gpointer user_data);
 
 

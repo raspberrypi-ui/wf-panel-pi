@@ -54,7 +54,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static gboolean is_pi (void);
 static void update_icon (PowerPlugin *pt);
 static gboolean vtimer_event (PowerPlugin *pt);
-static gboolean check_psu (void);
+static void check_psu (PowerPlugin *pt);
+static void check_low_voltage (PowerPlugin *pt);
+static void check_over_current (PowerPlugin *pt);
+
 
 static gboolean is_pi (void)
 {
@@ -64,33 +67,15 @@ static gboolean is_pi (void)
         return FALSE;
 }
 
-/* Read the current charge state and update the icon accordingly */
 
-static void update_icon (PowerPlugin *pt)
-{
-    set_taskbar_icon (pt->tray_icon, "under-volt", pt->icon_size);
-    if (!pt->show_icon)
-    {
-        gtk_widget_set_sensitive (pt->plugin, FALSE);
-        gtk_widget_hide (pt->plugin);
-    }
-    else
-    {
-        gtk_widget_set_sensitive (pt->plugin, TRUE);
-        gtk_widget_show (pt->plugin);
-        if (pt->show_icon == ICON_LOW_VOLTAGE) gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected"));
-        else if (pt->show_icon == ICON_LOW_CURRENT) gtk_widget_set_tooltip_text (pt->tray_icon, _("Power supply not capable of supplying 5A"));
-        else gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected\n\nPower supply not capable of supplying 5A"));
-    }
-}
+/* Tests */
 
-static gboolean vtimer_event (PowerPlugin *pt)
+static void check_low_voltage (PowerPlugin *pt)
 {
     FILE *fp;
     char *path;
     int i;
 
-    // check for low voltage events
     for (i = 0; i < 3; i++)
     {
         path = g_strdup_printf (VMON_PATH, i);
@@ -110,10 +95,12 @@ static gboolean vtimer_event (PowerPlugin *pt)
             update_icon (pt);
         }
     }
+}
 
-    // check for overcurrent events
+static void check_over_current (PowerPlugin *pt)
+{
     fd_set fds;
-    int ret;
+    int val;
     struct udev_device *dev;
     struct timeval tv;
     tv.tv_usec = 0;
@@ -121,29 +108,29 @@ static gboolean vtimer_event (PowerPlugin *pt)
 
     FD_ZERO (&fds);
     FD_SET (pt->fd, &fds);
-    ret = select (pt->fd + 1, &fds, NULL, NULL, &tv);
-    if (ret > 0 && FD_ISSET (pt->fd, &fds))
+    while (select (pt->fd + 1, &fds, NULL, NULL, &tv) > 0 && FD_ISSET (pt->fd, &fds))
     {
         dev = udev_monitor_receive_device (pt->udev_mon);
-        if (dev && !strcmp (udev_device_get_action (dev), "change"))
+        if (dev)
         {
-            const char *count = udev_device_get_property_value (dev, "OVER_CURRENT_COUNT");
-            if (sscanf (count, "%d", &i) == 1 && i != pt->last_oc)
+            if (!strcmp (udev_device_get_action (dev), "change"))
             {
-                lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
-                pt->last_oc = i;
+                if (sscanf (udev_device_get_property_value (dev, "OVER_CURRENT_COUNT"), "%d", &val) == 1 && val != pt->last_oc)
+                {
+                    lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
+                    pt->last_oc = val;
+                }
             }
+            udev_device_unref (dev);
         }
-        if (dev) udev_device_unref (dev);
     }
-    return TRUE;
 }
 
-static gboolean check_psu (void)
+static void check_psu (PowerPlugin *pt)
 {
-    gboolean res = FALSE;
-    int val;
     FILE *fp = fopen (PSU_PATH, "rb");
+    int val;
+
     if (fp)
     {
         unsigned char *cptr = (unsigned char *) &val;
@@ -152,11 +139,41 @@ static gboolean check_psu (void)
         if (val < 5000)
         {
             lxpanel_notify (_("This power supply is not capable of supplying 5A\nPower to peripherals is restricted"));
-            res = TRUE;
+            pt->show_icon |= ICON_LOW_CURRENT;
+            update_icon (pt);
         }
         fclose (fp);
     }
-    return res;
+}
+
+/* Update the icon to show current status */
+
+static void update_icon (PowerPlugin *pt)
+{
+    set_taskbar_icon (pt->tray_icon, "under-volt", pt->icon_size);
+    if (!pt->show_icon)
+    {
+        gtk_widget_set_sensitive (pt->plugin, FALSE);
+        gtk_widget_hide (pt->plugin);
+    }
+    else
+    {
+        gtk_widget_set_sensitive (pt->plugin, TRUE);
+        gtk_widget_show (pt->plugin);
+        if (pt->show_icon == ICON_LOW_VOLTAGE) gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected"));
+        else if (pt->show_icon == ICON_LOW_CURRENT) gtk_widget_set_tooltip_text (pt->tray_icon, _("Power supply not capable of supplying 5A"));
+        else gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected\n\nPower supply not capable of supplying 5A"));
+    }
+}
+
+/* Timer handler for periodic tests */
+
+static gboolean vtimer_event (PowerPlugin *pt)
+{
+    check_low_voltage (pt);
+    check_over_current (pt);
+
+    return TRUE;
 }
 
 /* Plugin functions */
@@ -165,12 +182,6 @@ static gboolean check_psu (void)
 void power_update_display (PowerPlugin *pt)
 {
     update_icon (pt);
-}
-
-/* Handler for control message */
-gboolean power_control_msg (PowerPlugin *pt, const char *cmd)
-{
-    return TRUE;
 }
 
 void power_init (PowerPlugin *pt)
@@ -184,22 +195,22 @@ void power_init (PowerPlugin *pt)
     pt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
 
-    pt->ispi = is_pi ();
-
-    if (check_psu ()) pt->show_icon = ICON_LOW_CURRENT;
-    else pt->show_icon = 0;
-
-    pt->last_oc = -1;
+    pt->show_icon = 0;
+    pt->vtimer = 0;
 
     /* Start timed events to monitor low voltage warnings */
-    if (pt->ispi) pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);
-    else pt->vtimer = 0;
+    if (is_pi ())
+    {
+        pt->last_oc = -1;
+        pt->udev = udev_new ();
+        pt->udev_mon = udev_monitor_new_from_netlink (pt->udev, "kernel");
+        pt->fd = udev_monitor_get_fd (pt->udev_mon);
+        udev_monitor_filter_add_match_subsystem_devtype (pt->udev_mon, "usb", NULL);
+        udev_monitor_enable_receiving (pt->udev_mon);
 
-    pt->udev = udev_new ();
-    pt->udev_mon = udev_monitor_new_from_netlink (pt->udev, "kernel");
-    udev_monitor_filter_add_match_subsystem_devtype (pt->udev_mon, "usb", NULL);
-    udev_monitor_enable_receiving (pt->udev_mon);
-    pt->fd = udev_monitor_get_fd (pt->udev_mon);
+        check_psu (pt);
+        pt->vtimer = g_timeout_add (VMON_INTERVAL, (GSourceFunc) vtimer_event, (gpointer) pt);
+    }
 
     update_icon (pt);
 
