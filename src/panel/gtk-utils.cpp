@@ -79,16 +79,16 @@ void set_image_pixbuf(Gtk::Image &image, Glib::RefPtr<Gdk::Pixbuf> pixbuf, int s
 }
 
 void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
-                    const WfIconLoadOptions& options)
+                    const WfIconLoadOptions& options,
+                    const Glib::RefPtr<Gtk::IconTheme>& icon_theme)
 {
-    auto icon_theme = Gtk::IconTheme::get_default();
     int scale = ((options.user_scale == -1) ?
                  image.get_scale_factor() : options.user_scale);
     int scaled_size = size * scale;
 
     if (icon_theme->lookup_icon(icon_name, scaled_size))
     {
-        auto pbuff = icon_theme->load_icon(icon_name, scaled_size)
+        auto pbuff = icon_theme->load_icon(icon_name, scaled_size, Gtk::ICON_LOOKUP_FORCE_SIZE)
         ->scale_simple(scaled_size, scaled_size, Gdk::INTERP_BILINEAR);
 
         if (options.invert) invert_pixbuf (pbuff);
