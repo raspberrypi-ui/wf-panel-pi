@@ -113,37 +113,6 @@ void WayfirePanelApp::on_name_lost (GDBusConnection *connection, const gchar *na
 }
 
 
-struct WayfirePanelZwfOutputCallbacks
-{
-    std::function<void()> enter_fullscreen;
-    std::function<void()> leave_fullscreen;
-};
-
-static void handle_zwf_output_enter_fullscreen(void* dd,
-    zwf_output_v2 *zwf_output_v2)
-{
-    auto data = (WayfirePanelZwfOutputCallbacks*)
-        zwf_output_v2_get_user_data(zwf_output_v2);
-
-    if (data)
-        data->enter_fullscreen();
-}
-
-static void handle_zwf_output_leave_fullscreen(void *,
-    zwf_output_v2 *zwf_output_v2)
-{
-    auto data = (WayfirePanelZwfOutputCallbacks*)
-        zwf_output_v2_get_user_data(zwf_output_v2);
-
-    if (data)
-        data->leave_fullscreen();
-}
-
-static struct zwf_output_v2_listener output_impl = {
-    .enter_fullscreen = handle_zwf_output_enter_fullscreen,
-    .leave_fullscreen = handle_zwf_output_leave_fullscreen,
-};
-
 class WayfirePanel::impl
 {
     std::unique_ptr<WayfireAutohidingWindow> window;
@@ -164,29 +133,6 @@ class WayfirePanel::impl
     bool wizard = WayfireShellApp::get().wizard;
     bool real;
     WfOption <int> icon_size {"panel/icon_size"};
-
-    int last_autohide_value = -1;
-    WfOption<bool> autohide_opt{"panel/autohide"};
-    std::function<void()> autohide_opt_updated = [=] ()
-    {
-        if (wizard || !real)
-        {
-            window->set_auto_exclusive_zone (false);
-            return;
-        }
-
-        if (autohide_opt == last_autohide_value)
-            return;
-
-        if (autohide_opt) {
-            this->window->increase_autohide();
-        } else if (last_autohide_value == 1) {
-            this->window->decrease_autohide();
-        }
-
-        last_autohide_value = autohide_opt;
-        window->set_auto_exclusive_zone(!autohide_opt);
-    };
 
 #if 0
     WfOption<std::string> bg_color{"panel/background_color"};
@@ -266,9 +212,6 @@ class WayfirePanel::impl
         //bg_color.set_callback(on_window_color_updated);
         //on_window_color_updated(); // set initial color
 
-        autohide_opt.set_callback(autohide_opt_updated);
-        autohide_opt_updated(); // set initial autohide status
-
         if ((std::string)css_path != "")
         {
             auto css = load_css_from_path(css_path);
@@ -297,6 +240,8 @@ class WayfirePanel::impl
         menu.show_all();
 
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
+
+        if (wizard || !real) window->set_auto_exclusive_zone (false);
 
         window->show_all();
         init_widgets();
@@ -390,10 +335,10 @@ class WayfirePanel::impl
     void init_layout()
     {
         content_box.pack_start(left_box, false, false);
-        std::vector<Gtk::Widget*> center_children = center_box.get_children();
-        if (center_children.size() > 0)
-            content_box.set_center_widget(center_box);
         content_box.pack_end(right_box, false, false);
+        if (!center_box.get_children().empty())
+            content_box.set_center_widget(center_box);
+        center_box.show_all();
         window->add(content_box);
         window->show_all();
     }
@@ -504,6 +449,10 @@ class WayfirePanel::impl
         });
         center_widgets_opt.set_callback([=] () {
             reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
+            if (center_box.get_children().empty())
+                content_box.unset_center_widget();
+            else
+                content_box.set_center_widget(center_box);
         });
 
         if (wizard)
@@ -520,31 +469,14 @@ class WayfirePanel::impl
         }
     }
 
-    WayfirePanelZwfOutputCallbacks callbacks;
-
     WfOption <int> notify_timeout {"panel/notify_timeout"};
     WfOption <bool> notifications {"panel/notify_enable"};
 
     public:
-    impl(WayfireOutput *output, bool real)
+    impl(WayfireOutput *output, bool real) : output(output)
     {
-        this->output = output;
         this->real = real;
         create_window();
-
-        if (output->output)
-        {
-            callbacks.enter_fullscreen = [=]() { window->increase_autohide(); };
-            callbacks.leave_fullscreen = [=]() { window->decrease_autohide(); };
-            zwf_output_v2_add_listener(output->output, &output_impl, NULL);
-            zwf_output_v2_set_user_data(output->output, &callbacks);
-        }
-    }
-
-    ~impl()
-    {
-        if (output->output)
-            zwf_output_v2_set_user_data(output->output, NULL);
     }
 
     wl_surface *get_wl_surface()
