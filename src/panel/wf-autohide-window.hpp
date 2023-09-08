@@ -47,6 +47,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     void decrease_autohide();
     /* Returns true if the window should autohide */
     bool should_autohide() const;
+    void lock_autohide();
 
     /* Hide or show the panel after delay milliseconds, if nothing happens
      * in the meantime */
@@ -93,6 +94,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     WfOption<bool> autohide_opt;
     bool last_autohide_value = autohide_opt;
     void update_autohide();
+    bool autohide_locked = false;
 
     bool has_auto_exclusive_zone = false;
     int last_zone = 0;

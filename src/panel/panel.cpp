@@ -241,7 +241,11 @@ class WayfirePanel::impl
 
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
 
-        if (wizard || !real) window->set_auto_exclusive_zone (false);
+        if (wizard || !real)
+        {
+            window->set_auto_exclusive_zone (false);
+            window->lock_autohide();
+        }
 
         window->show_all();
         init_widgets();

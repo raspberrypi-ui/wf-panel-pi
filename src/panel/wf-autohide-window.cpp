@@ -357,11 +357,11 @@ void WayfireAutohidingWindow::unset_active_popover(WayfireMenuButton& button)
 
 void WayfireAutohidingWindow::update_autohide()
 {
-    //if (wizard || !real) !!!!!
-    //{
-    //    set_auto_exclusive_zone (false);
-    //    return;
-    //}
+    if (autohide_locked)
+    {
+        set_auto_exclusive_zone (false);
+        return;
+    }
 
     if (autohide_opt == last_autohide_value)
         return;
@@ -373,4 +373,9 @@ void WayfireAutohidingWindow::update_autohide()
 
     last_autohide_value = autohide_opt;
     set_auto_exclusive_zone(!autohide_opt);
+}
+
+void WayfireAutohidingWindow::lock_autohide()
+{
+    autohide_locked = true;
 }
