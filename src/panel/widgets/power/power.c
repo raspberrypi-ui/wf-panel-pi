@@ -43,7 +43,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Reasons to show the icon */
 #define ICON_LOW_VOLTAGE 0x01
-#define ICON_LOW_CURRENT 0x02
+#define ICON_OVER_CURRENT 0x02
 
 /* Plug-in global data */
 
@@ -51,7 +51,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static gboolean is_pi (void);
 static void update_icon (PowerPlugin *pt);
-static void check_psu (PowerPlugin *pt);
+static void check_psu (void);
 static gpointer overcurrent_thread (gpointer data);
 static gboolean cb_overcurrent (gpointer data);
 static gpointer lowvoltage_thread (gpointer data);
@@ -69,7 +69,7 @@ static gboolean is_pi (void)
 
 /* Tests */
 
-static void check_psu (PowerPlugin *pt)
+static void check_psu (void)
 {
     FILE *fp = fopen (PSU_PATH, "rb");
     int val;
@@ -79,12 +79,7 @@ static void check_psu (PowerPlugin *pt)
         unsigned char *cptr = (unsigned char *) &val;
         // you're kidding, right?
         for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
-        if (val < 5000)
-        {
-            lxpanel_notify (_("This power supply is not capable of supplying 5A\nPower to peripherals is restricted"));
-            pt->show_icon |= ICON_LOW_CURRENT;
-            update_icon (pt);
-        }
+        if (val < 5000) lxpanel_notify (_("This power supply is not capable of supplying 5A\nPower to peripherals will be restricted"));
         fclose (fp);
     }
 }
@@ -119,7 +114,7 @@ static gpointer overcurrent_thread (gpointer data)
                         {
                             if (sscanf (udev_device_get_property_value (dev, "OVER_CURRENT_COUNT"), "%d", &val) == 1 && val != pt->last_oc)
                             {
-                                gdk_threads_add_idle (cb_overcurrent, NULL);
+                                gdk_threads_add_idle (cb_overcurrent, data);
                                 pt->last_oc = val;
                             }
                         }
@@ -134,9 +129,13 @@ static gpointer overcurrent_thread (gpointer data)
     return NULL;
 }
 
-static gboolean cb_overcurrent (gpointer)
+static gboolean cb_overcurrent (gpointer data)
 {
+    PowerPlugin *pt = (PowerPlugin *) data;
+
     lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
+    pt->show_icon |= ICON_OVER_CURRENT;
+    update_icon (pt);
     return FALSE;
 }
 
@@ -157,7 +156,7 @@ static gpointer lowvoltage_thread (gpointer data)
             dev = udev_monitor_receive_device (pt->udev_mon_lv);
             if (dev)
             {
-                if (!g_strcmp0 (udev_device_get_action (dev), "change") && !g_strcmp0 (udev_device_get_sysname (dev), "hwmon1"))
+                if (!g_strcmp0 (udev_device_get_action (dev), "change") && !strncmp (udev_device_get_sysname (dev), "hwmon", 5))
                 {
                     path = g_strdup_printf ("%s/in0_lcrit_alarm", udev_device_get_syspath (dev));
                     fp = fopen (path, "rb");
@@ -192,19 +191,20 @@ static gboolean cb_lowvoltage (gpointer data)
 
 static void update_icon (PowerPlugin *pt)
 {
+    char *tooltip;
+
     set_taskbar_icon (pt->tray_icon, "under-volt", pt->icon_size);
-    if (!pt->show_icon)
-    {
-        gtk_widget_set_sensitive (pt->plugin, FALSE);
-        gtk_widget_hide (pt->plugin);
-    }
+    gtk_widget_set_sensitive (pt->plugin, FALSE);
+
+    if (!pt->show_icon) gtk_widget_hide (pt->plugin);
     else
     {
-        gtk_widget_set_sensitive (pt->plugin, TRUE);
         gtk_widget_show (pt->plugin);
-        if (pt->show_icon == ICON_LOW_VOLTAGE) gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected"));
-        else if (pt->show_icon == ICON_LOW_CURRENT) gtk_widget_set_tooltip_text (pt->tray_icon, _("Power supply not capable of supplying 5A"));
-        else gtk_widget_set_tooltip_text (pt->tray_icon, _("Low voltage has been detected\n\nPower supply not capable of supplying 5A"));
+        tooltip = g_strdup_printf ("%s%s%s", pt->show_icon & ICON_LOW_VOLTAGE ? _("PSU low voltage detected") : "",
+            (pt->show_icon & ICON_LOW_VOLTAGE) && (pt->show_icon & ICON_OVER_CURRENT) ? "\n" : "",
+            pt->show_icon & ICON_OVER_CURRENT ? _("USB over current detected") : "");
+        gtk_widget_set_tooltip_text (pt->tray_icon, tooltip);
+        g_free (tooltip);
     }
 }
 
@@ -250,7 +250,7 @@ void power_init (PowerPlugin *pt)
         g_thread_new (NULL, overcurrent_thread, pt);
         g_thread_new (NULL, lowvoltage_thread, pt);
 
-        check_psu (pt);
+        check_psu ();
     }
 
     update_icon (pt);
