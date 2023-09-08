@@ -12,6 +12,8 @@ typedef struct {
     struct udev_monitor *udev_mon_lv;
     int fd_oc;
     int fd_lv;
+    GThread *oc_thread;
+    GThread *lv_thread;
 } PowerPlugin;
 
 extern void power_init (PowerPlugin *pt);

@@ -228,6 +228,11 @@ void power_init (PowerPlugin *pt)
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
 
     pt->show_icon = 0;
+    pt->oc_thread = NULL;
+    pt->lv_thread = NULL;
+    pt->udev_mon_oc = NULL;
+    pt->udev_mon_lv = NULL;
+    pt->udev = NULL;
 
     /* Start timed events to monitor low voltage warnings */
     if (is_pi ())
@@ -247,8 +252,8 @@ void power_init (PowerPlugin *pt)
         pt->fd_lv = udev_monitor_get_fd (pt->udev_mon_lv);
 
         /* Start threads to monitor udev */
-        g_thread_new (NULL, overcurrent_thread, pt);
-        g_thread_new (NULL, lowvoltage_thread, pt);
+        pt->oc_thread = g_thread_new (NULL, overcurrent_thread, pt);
+        pt->lv_thread = g_thread_new (NULL, lowvoltage_thread, pt);
 
         check_psu ();
     }
@@ -263,10 +268,10 @@ void power_destructor (gpointer user_data)
 {
     PowerPlugin *pt = (PowerPlugin *) user_data;
 
-    // kill the threads?
-
+    if (pt->oc_thread) g_thread_unref (pt->oc_thread);
+    if (pt->lv_thread) g_thread_unref (pt->lv_thread);
     if (pt->udev_mon_oc) udev_monitor_unref (pt->udev_mon_oc);
     if (pt->udev_mon_lv) udev_monitor_unref (pt->udev_mon_lv);
-    udev_unref (pt->udev);
+    if (pt->udev) udev_unref (pt->udev);
 }
 
