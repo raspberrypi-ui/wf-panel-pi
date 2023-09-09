@@ -72,7 +72,7 @@
 	</option>
 	<option name="layer" type="string">
 		<_short>Layer</_short>
-		<default>top</default>
+		<default>bottom</default>
 		<desc>
 			<value>top</value>
 			<_name>Top</_name>
