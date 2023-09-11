@@ -176,6 +176,7 @@ static char *bt_from_pa_name (const char *pa_name)
 
     if (pa_name == NULL) return NULL;
     if (strstr (pa_name, "bluez") == NULL) return NULL;
+    if (!strstr (pa_name, "monitor") == NULL) return NULL;
     adrs = strstr (pa_name, ".");
     if (adrs == NULL) return NULL;
     if (sscanf (adrs + 1, "%x_%x_%x_%x_%x_%x", &b1, &b2, &b3, &b4, &b5, &b6) != 6) return NULL;
@@ -432,7 +433,7 @@ static gboolean bt_get_profile (gpointer user_data)
             if (btop->direction != OUTPUT)
             {
                 if (vol->pipewire)
-                    paname = bt_to_pa_name (btop->device, "input", "headset-head-unit");
+                    paname = bt_to_pa_name (btop->device, "input", "0");
                 else
                     paname = bt_to_pa_name (btop->device, "source", "headset_head_unit");
                 pulse_change_source (vol, paname);
@@ -443,7 +444,7 @@ static gboolean bt_get_profile (gpointer user_data)
             if (btop->direction != INPUT)
             {
                 if (vol->pipewire)
-                    paname = bt_to_pa_name (btop->device, "output", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp-sink" : "headset-head-unit");
+                    paname = bt_to_pa_name (btop->device, "output", "1");
                 else
                     paname = bt_to_pa_name (btop->device, "sink", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" : "headset_head_unit");
                 pulse_change_sink (vol, paname);
@@ -835,7 +836,7 @@ void bluetooth_reconnect (VolumePulsePlugin *vol, const char *name, const char *
         pulse_mute_all_streams (vol);
         bt_add_operation (vol, vol->bt_oname, CONNECT, OUTPUT);
         vol->bt_input = FALSE;
-        if (!g_strcmp0 (profile, "headset_head_unit")) vol->bt_force_hsp = TRUE;
+        if (!g_strcmp0 (profile, vol->pipewire ? "headset-head-unit" : "headset_head_unit")) vol->bt_force_hsp = TRUE;
         else vol->bt_force_hsp = FALSE;
     }
 
