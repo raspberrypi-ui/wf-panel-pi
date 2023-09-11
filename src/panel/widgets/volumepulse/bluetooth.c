@@ -370,11 +370,10 @@ static void bt_cb_connected (GObject *source, GAsyncResult *res, gpointer user_d
     }
     else
     {
-        DEBUG ("Connected OK - polling for profile");
+        DEBUG ("Connected OK");
 
-        // start polling for the PulseAudio profile of the device
-        vol->bt_profile_count = 0;
-        vol->bt_idle_timer = g_idle_add (bt_get_profile, vol);
+        // give a second to settle state before trying to use as sink or source
+        vol->bt_idle_timer = g_timeout_add (21000, bt_get_profile, vol);
     }
 }
 
@@ -387,16 +386,9 @@ static gboolean bt_get_profile (gpointer user_data)
     char *paname, *pacard, *msg;
     int res;
 
-    // some devices take a very long time to be valid PulseAudio cards after connection
+    // read the card's profile to make sure it is usable
     pacard = bt_to_pa_name (btop->device, "card", NULL);
     pulse_get_profile (vol, pacard);
-    if (vol->pa_profile == NULL && vol->bt_profile_count++ < BT_PULSE_RETRIES)
-    {
-        g_free (pacard);
-        return TRUE;
-    }
-
-    DEBUG ("Profile polled %d times", vol->bt_profile_count);
 
     if (vol->pa_profile == NULL)
     {
@@ -421,14 +413,8 @@ static gboolean bt_get_profile (gpointer user_data)
         }
         else
         {
-            if (btop->direction == OUTPUT && vol->bt_force_hsp == FALSE)
-            {
-                DEBUG ("Profile set to a2dp_sink");
-            }
-            else
-            {
-                DEBUG ("Profile set to headset_head_unit");
-            }
+            pulse_get_profile (vol, pacard);
+            DEBUG ("Profile set to %s", vol->pa_profile);
 
             if (btop->direction != OUTPUT)
             {
@@ -436,8 +422,13 @@ static gboolean bt_get_profile (gpointer user_data)
                     paname = bt_to_pa_name (btop->device, "input", "0");
                 else
                     paname = bt_to_pa_name (btop->device, "source", "headset_head_unit");
-                pulse_change_source (vol, paname);
-                vsystem ("echo %s > ~/.btin", btop->device);
+                if (!pulse_change_source (vol, paname))
+                {
+                    msg = g_strdup_printf (_("Could not change input to device : %s"), vol->pa_error_msg);
+                    bt_connect_dialog_update (vol, msg);
+                    g_free (msg);
+                }
+                else vsystem ("echo %s > ~/.btin", btop->device);
                 g_free (paname);
             }
 
@@ -447,8 +438,13 @@ static gboolean bt_get_profile (gpointer user_data)
                     paname = bt_to_pa_name (btop->device, "output", "1");
                 else
                     paname = bt_to_pa_name (btop->device, "sink", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" : "headset_head_unit");
-                pulse_change_sink (vol, paname);
-                vsystem ("echo %s > ~/.btout", btop->device);
+                if (!pulse_change_sink (vol, paname))
+                {
+                    msg = g_strdup_printf (_("Could not change output to device : %s"), vol->pa_error_msg);
+                    bt_connect_dialog_update (vol, msg);
+                    g_free (msg);
+                }
+                else vsystem ("echo %s > ~/.btout", btop->device);
                 g_free (paname);
             }
         }

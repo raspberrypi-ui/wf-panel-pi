@@ -441,11 +441,11 @@ void volumepulse_init (VolumePulsePlugin *vol)
     /* Find HDMIs */
     hdmi_init (vol);
 
+    /* Set up Bluez D-Bus interface only when first card detected */
+    vol->bt_inited = FALSE;
+
     /* Set up PulseAudio */
     pulse_init (vol);
-
-    /* Set up Bluez D-Bus interface */
-    bluetooth_init (vol);
 
     /* Create the popup volume control */
     popup_window_create (vol);

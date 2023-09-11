@@ -256,9 +256,10 @@ static int pa_set_subscription (VolumePulsePlugin *vol)
 static void pa_cb_subscription (pa_context *pacontext, pa_subscription_event_type_t event, uint32_t idx, void *userdata)
 {
     VolumePulsePlugin *vol = (VolumePulsePlugin *) userdata;
-    
-#ifdef DEBUG_ON
+
     const char *fac, *type;
+    int newcard = 0;
+
     switch (event & PA_SUBSCRIPTION_EVENT_FACILITY_MASK)
     {
         case PA_SUBSCRIPTION_EVENT_SINK : fac = "sink"; break;
@@ -269,16 +270,25 @@ static void pa_cb_subscription (pa_context *pacontext, pa_subscription_event_typ
         case PA_SUBSCRIPTION_EVENT_CLIENT : fac = "client"; break;
         case PA_SUBSCRIPTION_EVENT_SAMPLE_CACHE : fac = "sample cache"; break;
         case PA_SUBSCRIPTION_EVENT_SERVER : fac = "server"; break;
-        case PA_SUBSCRIPTION_EVENT_CARD : fac = "card"; break;
+        case PA_SUBSCRIPTION_EVENT_CARD : fac = "card"; newcard++; break;
         default : fac = "unknown";
     }
     switch (event & PA_SUBSCRIPTION_EVENT_TYPE_MASK)
     {
-        case PA_SUBSCRIPTION_EVENT_NEW : type = "New"; break;
+        case PA_SUBSCRIPTION_EVENT_NEW : type = "New"; newcard++; break;
         case PA_SUBSCRIPTION_EVENT_CHANGE : type = "Change"; break;
         case PA_SUBSCRIPTION_EVENT_REMOVE : type = "Remove"; break;
         default : type = "unknown";
     }
+
+	/* It is only safe to start looking for Bluetooth devices once the Pulse server is up, so wait for the first New card event */
+    if (!vol->bt_inited && newcard == 2)
+    {
+		vol->bt_inited = TRUE;
+		bluetooth_init (vol);
+	}
+
+#ifdef DEBUG_ON
     DEBUG ("PulseAudio event : %s %s", type, fac);
 #endif
 

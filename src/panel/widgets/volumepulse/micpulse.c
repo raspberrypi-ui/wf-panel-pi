@@ -195,11 +195,12 @@ void micpulse_init (VolumePulsePlugin *vol)
     {
         DEBUG ("using pulseaudio");
     }
+
+    /* Set up Bluez D-Bus interface only when first card detected */
+    vol->bt_inited = FALSE;
+
     /* Set up PulseAudio */
     pulse_init (vol);
-
-    /* Set up Bluez D-Bus interface */
-    bluetooth_init (vol);
 
     /* Create the popup volume control */
     popup_window_create (vol);
