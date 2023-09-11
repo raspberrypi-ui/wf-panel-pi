@@ -35,8 +35,8 @@ extern int pulse_get_mute (VolumePulsePlugin *vol);
 extern int pulse_set_mute (VolumePulsePlugin *vol, int mute);
 
 extern int pulse_get_default_sink_source (VolumePulsePlugin *vol);
-extern void pulse_change_sink (VolumePulsePlugin *vol, const char *sinkname);
-extern void pulse_change_source (VolumePulsePlugin *vol, const char *sourcename);
+extern int pulse_change_sink (VolumePulsePlugin *vol, const char *sinkname);
+extern int pulse_change_source (VolumePulsePlugin *vol, const char *sourcename);
 
 extern void pulse_mute_all_streams (VolumePulsePlugin *vol);
 extern void pulse_unmute_all_streams (VolumePulsePlugin *vol);

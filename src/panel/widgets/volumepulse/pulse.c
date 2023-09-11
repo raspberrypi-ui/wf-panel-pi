@@ -496,18 +496,25 @@ static void pa_cb_get_default_sink_source (pa_context *context, const pa_server_
  * Finally, all streams listed in pa_indices are moved to the new sink.
  */
 
-void pulse_change_sink (VolumePulsePlugin *vol, const char *sinkname)
+int pulse_change_sink (VolumePulsePlugin *vol, const char *sinkname)
 {
     DEBUG ("pulse_change_sink %s", sinkname);
     if (vol->pa_default_sink) g_free (vol->pa_default_sink);
     vol->pa_default_sink = g_strdup (sinkname);
 
-    pa_set_default_sink (vol, sinkname);
-    pa_get_channels (vol);
-    pa_restore_volume (vol);
-    pa_restore_mute (vol);
-
+    if (!pa_set_default_sink (vol, sinkname))
+    {
+        DEBUG ("pulse_change_sink error");
+        return 0;
+    }
+    else
+    {
+        pa_get_channels (vol);
+        pa_restore_volume (vol);
+        pa_restore_mute (vol);
+    }
     DEBUG ("pulse_change_sink done");
+    return 1;
 }
 
 /* Create a list of current output streams and move each to the default sink */
@@ -582,15 +589,20 @@ static int pa_move_stream_to_default_sink (VolumePulsePlugin *vol, int index)
  * Finally, all streams listed in pa_indices are moved to the new source.
  */
  
-void pulse_change_source (VolumePulsePlugin *vol, const char *sourcename)
+int pulse_change_source (VolumePulsePlugin *vol, const char *sourcename)
 {
     DEBUG ("pulse_change_source %s", sourcename);
     if (vol->pa_default_source) g_free (vol->pa_default_source);
     vol->pa_default_source = g_strdup (sourcename);
 
-    pa_set_default_source (vol, sourcename);
+    if (!pa_set_default_source (vol, sourcename))
+    {
+        DEBUG ("pulse_change_source error");
+        return 0;
+    }
 
     DEBUG ("pulse_change_source done");
+    return 1;
 }
 
 /* Call the PulseAudio set default source operation */
