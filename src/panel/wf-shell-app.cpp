@@ -11,8 +11,6 @@
 #include <libfm/fm-gtk.h>
 #include <sys/time.h>
 
-extern long long starttime;
-
 std::string WayfireShellApp::get_config_file()
 {
     if (cmdline_config.has_value())
@@ -136,15 +134,6 @@ void WayfireShellApp::on_activate()
 
     // initial monitors
     this->monitors_changed ();
-
-    if (!access ("/boot/panelloop", F_OK))
-    {
-        struct timeval te;
-        gettimeofday (&te, NULL);
-        long long milliseconds = te.tv_sec * 1000LL + te.tv_usec / 1000;
-        milliseconds -= starttime;
-        if (milliseconds < 5000) system ("reboot");
-    }
 }
 
 bool WayfireShellApp::update_monitors ()
