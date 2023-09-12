@@ -5,6 +5,7 @@ typedef struct {
     int icon_size;                  /* Variables used under wf-panel */
     gboolean bottom;
     GtkWidget *tray_icon;           /* Displayed image */
+    GtkWidget *menu;
     int show_icon;
     int last_oc;
     struct udev *udev;

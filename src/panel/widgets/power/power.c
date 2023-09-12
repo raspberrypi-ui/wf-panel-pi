@@ -194,7 +194,7 @@ static void update_icon (PowerPlugin *pt)
     char *tooltip;
 
     set_taskbar_icon (pt->tray_icon, "under-volt", pt->icon_size);
-    gtk_widget_set_sensitive (pt->plugin, FALSE);
+    gtk_widget_set_sensitive (pt->plugin, pt->show_icon);
 
     if (!pt->show_icon) gtk_widget_hide (pt->plugin);
     else
@@ -208,7 +208,19 @@ static void update_icon (PowerPlugin *pt)
     }
 }
 
+static void show_info (GtkWidget *widget, gpointer user_data)
+{
+    system ("x-www-browser https://rptl.io/help &");
+}
+
 /* Plugin functions */
+
+/* Handler for menu button click */
+static void power_button_press_event (GtkButton *widget, PowerPlugin *pt)
+{
+    gtk_widget_show_all (pt->menu);
+    show_menu_with_kbd (pt->plugin, pt->menu);
+}
 
 /* Handler for system config changed message from panel */
 void power_update_display (PowerPlugin *pt)
@@ -218,6 +230,8 @@ void power_update_display (PowerPlugin *pt)
 
 void power_init (PowerPlugin *pt)
 {
+	GtkWidget *item;
+
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -227,12 +241,21 @@ void power_init (PowerPlugin *pt)
     pt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
 
+    /* Set up button */
+    gtk_button_set_relief (GTK_BUTTON (pt->plugin), GTK_RELIEF_NONE);
+    g_signal_connect (pt->plugin, "clicked", G_CALLBACK (power_button_press_event), pt);
+
     pt->show_icon = 0;
     pt->oc_thread = NULL;
     pt->lv_thread = NULL;
     pt->udev_mon_oc = NULL;
     pt->udev_mon_lv = NULL;
     pt->udev = NULL;
+
+    pt->menu = gtk_menu_new ();
+    item = gtk_menu_item_new_with_label (_("Power Information..."));
+    g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (show_info), NULL);
+    gtk_menu_shell_append (GTK_MENU_SHELL (pt->menu), item);
 
     /* Start timed events to monitor low voltage warnings */
     if (is_pi ())
