@@ -137,19 +137,23 @@ class WayfirePanel::impl
     std::function<void()> on_window_color_updated = [=] ()
     {
         if ((std::string)bg_color == "gtk_default")
+        {
             return window->unset_background_color();
+        }
 
         Gdk::RGBA rgba;
         if ((std::string)bg_color == "gtk_headerbar")
         {
             Gtk::HeaderBar headerbar;
             rgba = headerbar.get_style_context()->get_background_color();
-        } else {
-            auto color = wf::option_type::from_string<wf::color_t> (
+        } else
+        {
+            auto color = wf::option_type::from_string<wf::color_t>(
                 ((wf::option_sptr_t<std::string>)bg_color)->get_value_str());
-            if (!color) {
+            if (!color)
+            {
                 std::cerr << "Invalid panel background color in"
-                    " config file" << std::endl;
+                             " config file" << std::endl;
                 return;
             }
 
@@ -167,13 +171,24 @@ class WayfirePanel::impl
     std::function<void()> set_panel_layer = [=] ()
     {
         if ((std::string)panel_layer == "overlay")
+        {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_OVERLAY);
+        }
+
         if ((std::string)panel_layer == "top")
+        {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
+        }
+
         if ((std::string)panel_layer == "bottom")
+        {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BOTTOM);
+        }
+
         if ((std::string)panel_layer == "background")
+        {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BACKGROUND);
+        }
     };
 
     WfOption<int> minimal_panel_height{"panel/minimal_height"};
@@ -183,7 +198,7 @@ class WayfirePanel::impl
 
     void create_window()
     {
-        window = std::make_unique<WayfireAutohidingWindow> (output, "panel");
+        window = std::make_unique<WayfireAutohidingWindow>(output, "panel");
         window->set_size_request(1, real ? minimal_panel_height : 1);
         if (real)
         {
@@ -210,9 +225,10 @@ class WayfirePanel::impl
         monitor_num.set_callback (update_panels);
 
         gtk_widget_set_name (GTK_WIDGET (window->gobj()), "PanelToplevel");
-
-        //bg_color.set_callback(on_window_color_updated);
-        //on_window_color_updated(); // set initial color
+#if 0
+        bg_color.set_callback(on_window_color_updated);
+        on_window_color_updated(); // set initial color
+#endif
 
         if ((std::string)css_path != "")
         {
@@ -343,7 +359,10 @@ class WayfirePanel::impl
         content_box.pack_start(left_box, false, false);
         content_box.pack_end(right_box, false, false);
         if (!center_box.get_children().empty())
+        {
             content_box.set_center_widget(center_box);
+        }
+
         center_box.show_all();
         window->add(content_box);
         window->show_all();
@@ -352,15 +371,30 @@ class WayfirePanel::impl
     Widget widget_from_name(std::string name)
     {
         if (name == "menu")
+        {
             return Widget(new WayfireMenu());
+        }
+
         if (name == "launchers")
+        {
             return Widget(new WayfireLaunchers());
+        }
+
         if (name == "clock")
+        {
             return Widget(new WayfireClock());
+        }
+
         if (name == "network")
+        {
             return Widget(new WayfireNetworkInfo());
+        }
+
         if (name == "battery")
+        {
             return Widget(new WayfireBatteryInfo());
+        }
+
         if (name == "volumepulse")
             return Widget(new WayfireVolumepulse());
         if (name == "micpulse")
@@ -385,8 +419,11 @@ class WayfirePanel::impl
             return Widget(new WayfirePower());
         if (name == "batt")
             return Widget(new WayfireBatt());
+
         if (name == "window-list")
+        {
             return Widget(new WayfireWindowList(output));
+        }
 
         std::string spacing = "spacing";
         if (name.find(spacing) == 0)
@@ -404,7 +441,10 @@ class WayfirePanel::impl
         }
 
         if (name != "none")
+        {
             std::cerr << "Invalid widget: " << name << std::endl;
+        }
+
         return nullptr;
     }
 
@@ -414,17 +454,19 @@ class WayfirePanel::impl
         std::istringstream stream(list);
         std::vector<std::string> result;
 
-        while(stream >> token)
+        while (stream >> token)
         {
             if (token.size())
+            {
                 result.push_back(token);
+            }
         }
 
         return result;
     }
 
     void reload_widgets(std::string list, WidgetContainer& container,
-                        Gtk::HBox& box)
+        Gtk::HBox& box)
     {
         container.clear();
         auto widgets = tokenize(list);
@@ -432,7 +474,9 @@ class WayfirePanel::impl
         {
             auto widget = widget_from_name(widget_name);
             if (!widget)
+            {
                 continue;
+            }
 
             widget->widget_name = widget_name;
             widget->init(&box);
@@ -447,18 +491,24 @@ class WayfirePanel::impl
     {
         if (!real) return;
 
-        left_widgets_opt.set_callback([=] () {
+        left_widgets_opt.set_callback([=] ()
+        {
             reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
         });
-        right_widgets_opt.set_callback([=] () {
+        right_widgets_opt.set_callback([=] ()
+        {
             reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
         });
-        center_widgets_opt.set_callback([=] () {
+        center_widgets_opt.set_callback([=] ()
+        {
             reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
             if (center_box.get_children().empty())
+            {
                 content_box.unset_center_widget();
-            else
+            } else
+            {
                 content_box.set_center_widget(center_box);
+            }
         });
 
         if (wizard)
@@ -478,7 +528,7 @@ class WayfirePanel::impl
     WfOption <int> notify_timeout {"panel/notify_timeout"};
     WfOption <bool> notifications {"panel/notify_enable"};
 
-    public:
+  public:
     impl(WayfireOutput *output, bool real) : output(output)
     {
         this->real = real;
@@ -499,11 +549,19 @@ class WayfirePanel::impl
     {
         if (real) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
         for (auto& w : left_widgets)
+        {
             w->handle_config_reload();
+        }
+
         for (auto& w : right_widgets)
+        {
             w->handle_config_reload();
+        }
+
         for (auto& w : center_widgets)
+        {
             w->handle_config_reload();
+        }
     }
 
     void message_widget (const char *name, const char *cmd)
@@ -555,10 +613,22 @@ class WayfirePanel::impl
     };
 };
 
-WayfirePanel::WayfirePanel(WayfireOutput *output, bool real) : pimpl(new impl(output, real)) { }
-wl_surface *WayfirePanel::get_wl_surface() { return pimpl->get_wl_surface(); }
-Gtk::Window& WayfirePanel::get_window() { return pimpl->get_window(); }
-void WayfirePanel::handle_config_reload() { return pimpl->handle_config_reload(); }
+WayfirePanel::WayfirePanel(WayfireOutput *output, bool real) : pimpl(new impl(output, real))
+{}
+wl_surface*WayfirePanel::get_wl_surface()
+{
+    return pimpl->get_wl_surface();
+}
+
+Gtk::Window& WayfirePanel::get_window()
+{
+    return pimpl->get_window();
+}
+
+void WayfirePanel::handle_config_reload()
+{
+    return pimpl->handle_config_reload();
+}
 void WayfirePanel::handle_command_message (const char *plugin, const char *cmd) { pimpl->message_widget (plugin, cmd); }
 int WayfirePanel::set_monitor () { return pimpl->set_monitor (); }
 WayfireOutput* WayfirePanel::get_output () { return pimpl->get_output (); }
@@ -625,14 +695,19 @@ void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
 WayfirePanelApp& WayfirePanelApp::get()
 {
     if (!instance)
+    {
         throw std::logic_error("Calling WayfirePanelApp::get() before starting app!");
+    }
+
     return dynamic_cast<WayfirePanelApp&>(*instance.get());
 }
 
 void WayfirePanelApp::create(int argc, char **argv)
 {
     if (instance)
+    {
         throw std::logic_error("Running WayfirePanelApp twice!");
+    }
 
     introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
     guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
@@ -692,8 +767,9 @@ const conf_table_t *WayfirePanelApp::config_params (std::string type)
 }
 
 WayfirePanelApp::~WayfirePanelApp() = default;
-WayfirePanelApp::WayfirePanelApp(int argc, char **argv)
-    : WayfireShellApp(argc, argv), priv(new impl()) { }
+WayfirePanelApp::WayfirePanelApp(int argc, char **argv) :
+    WayfireShellApp(argc, argv), priv(new impl())
+{}
 
 int main(int argc, char **argv)
 {
@@ -701,6 +777,5 @@ int main(int argc, char **argv)
     maininst = Gtk::Main (argc, argv, true);
 #endif
     WayfirePanelApp::create(argc, argv);
-
     return 0;
 }
