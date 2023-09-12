@@ -18,7 +18,8 @@ struct LauncherInfo
     virtual Glib::RefPtr<Gdk::Pixbuf> get_pixbuf(int32_t size) = 0;
     virtual std::string get_text() = 0;
     virtual void execute() = 0;
-    virtual ~LauncherInfo() {}
+    virtual ~LauncherInfo()
+    {}
 };
 
 class LauncherAnimation :
@@ -47,7 +48,7 @@ struct WfLauncherButton
 
     WfLauncherButton();
     WfLauncherButton(const WfLauncherButton& other) = delete;
-    WfLauncherButton& operator = (const WfLauncherButton&) = delete;
+    WfLauncherButton& operator =(const WfLauncherButton&) = delete;
     ~WfLauncherButton();
 
     bool initialize(std::string name, std::string icon = "none", std::string label = "");
@@ -73,10 +74,11 @@ class WayfireLaunchers : public WayfireWidget
         {CONF_NONE, NULL,       NULL}
     };
 
-    public:
-        virtual void init(Gtk::HBox *container);
-        virtual void handle_config_reload();
-        virtual ~WayfireLaunchers() {};
+  public:
+    virtual void init(Gtk::HBox *container);
+    virtual void handle_config_reload();
+    virtual ~WayfireLaunchers()
+    {}
         static const char *display_name (void) { return N_("Launcher"); };
         static const conf_table_t *config_params (void) { return conf_table; };
 };

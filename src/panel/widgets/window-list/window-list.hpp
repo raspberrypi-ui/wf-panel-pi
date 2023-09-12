@@ -15,7 +15,7 @@ class WayfireWindowListBox : public Gtk::HBox
     Gtk::Widget *top_widget = nullptr;
     int top_x = 0;
 
-    public:
+  public:
     WayfireWindowListBox();
 
     /**
@@ -47,7 +47,7 @@ class WayfireWindowListBox : public Gtk::HBox
      *
      * @return The direct child widget or none if it doesn't exist
      */
-    Gtk::Widget* get_widget_at(int x);
+    Gtk::Widget *get_widget_at(int x);
 
     /**
      * Get the list of widgets sorted from left to right, i.e ignoring the top
@@ -66,7 +66,7 @@ class WayfireWindowList : public WayfireWidget
         {CONF_NONE, NULL,           NULL}
     };
 
-    public:
+  public:
     std::map<zwlr_foreign_toplevel_handle_v1*,
         std::unique_ptr<WayfireToplevel>> toplevels;
 
@@ -91,7 +91,7 @@ class WayfireWindowList : public WayfireWidget
     static const char *display_name (void) { return N_("Window List"); };
     static const conf_table_t *config_params (void) { return conf_table; };
 
-    private:
+  private:
     void on_draw(const Cairo::RefPtr<Cairo::Context>&);
 
     void set_button_width(int width);
