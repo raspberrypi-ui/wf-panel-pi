@@ -39,7 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/select.h>
 #include "power.h"
 
-#define PSU_PATH "/proc/device-tree/chosen/power/max_current"
+#define POWER_PATH "/proc/device-tree/chosen/power/"
 
 /* Reasons to show the icon */
 #define ICON_LOW_VOLTAGE 0x01
@@ -71,7 +71,7 @@ static gboolean is_pi (void)
 
 static void check_psu (void)
 {
-    FILE *fp = fopen (PSU_PATH, "rb");
+    FILE *fp = fopen (POWER_PATH "max_current", "rb");
     int val;
 
     if (fp)
@@ -80,6 +80,20 @@ static void check_psu (void)
         // you're kidding, right?
         for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
         if (val < 5000) lxpanel_notify (_("This power supply is not capable of supplying 5A\nPower to peripherals will be restricted"));
+        fclose (fp);
+    }
+}
+
+static void check_brownout (void)
+{
+    FILE *fp = fopen (POWER_PATH "reset_event", "rb");
+    int val;
+
+    if (fp)
+    {
+        unsigned char *cptr = (unsigned char *) &val;
+        for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
+        if (val & 0x02) lxpanel_critical (_("Reset due to low power event\nPlease check your power supply"));
         fclose (fp);
     }
 }
@@ -210,7 +224,7 @@ static void update_icon (PowerPlugin *pt)
 
 static void show_info (GtkWidget *widget, gpointer user_data)
 {
-    system ("x-www-browser https://rptl.io/help &");
+    system ("x-www-browser https://rptl.io/rp5-power_supply &");
 }
 
 /* Plugin functions */
@@ -279,6 +293,7 @@ void power_init (PowerPlugin *pt)
         pt->lv_thread = g_thread_new (NULL, lowvoltage_thread, pt);
 
         check_psu ();
+        check_brownout ();
     }
 
     update_icon (pt);
