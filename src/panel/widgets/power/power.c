@@ -42,8 +42,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define POWER_PATH "/proc/device-tree/chosen/power/"
 
 /* Reasons to show the icon */
-#define ICON_LOW_VOLTAGE 0x01
-#define ICON_OVER_CURRENT 0x02
+#define ICON_LOW_VOLTAGE    0x01
+#define ICON_OVER_CURRENT   0x02
+#define ICON_BROWNOUT       0x04
 
 /* Plug-in global data */
 
@@ -52,6 +53,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static gboolean is_pi (void);
 static void update_icon (PowerPlugin *pt);
 static void check_psu (void);
+static void check_brownout (PowerPlugin *pt);
 static gpointer overcurrent_thread (gpointer data);
 static gboolean cb_overcurrent (gpointer data);
 static gpointer lowvoltage_thread (gpointer data);
@@ -84,7 +86,7 @@ static void check_psu (void)
     }
 }
 
-static void check_brownout (void)
+static void check_brownout (PowerPlugin *pt)
 {
     FILE *fp = fopen (POWER_PATH "reset_event", "rb");
     int val;
@@ -93,7 +95,12 @@ static void check_brownout (void)
     {
         unsigned char *cptr = (unsigned char *) &val;
         for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
-        if (val & 0x02) lxpanel_critical (_("Reset due to low power event\nPlease check your power supply"));
+        if (val & 0x02)
+        {
+            lxpanel_critical (_("Reset due to low power event\nPlease check your power supply"));
+            pt->show_icon |= ICON_BROWNOUT;
+            update_icon (pt);
+        }
         fclose (fp);
     }
 }
@@ -214,9 +221,10 @@ static void update_icon (PowerPlugin *pt)
     else
     {
         gtk_widget_show (pt->plugin);
-        tooltip = g_strdup_printf ("%s%s%s", pt->show_icon & ICON_LOW_VOLTAGE ? _("PSU low voltage detected") : "",
-            (pt->show_icon & ICON_LOW_VOLTAGE) && (pt->show_icon & ICON_OVER_CURRENT) ? "\n" : "",
-            pt->show_icon & ICON_OVER_CURRENT ? _("USB over current detected") : "");
+        tooltip = g_strconcat (pt->show_icon & ICON_LOW_VOLTAGE ? _("PSU low voltage detected\n") : "",
+            pt->show_icon & ICON_OVER_CURRENT ? _("USB over current detected\n") : "",
+            pt->show_icon & ICON_BROWNOUT ? _("Low power reset has occurred\n") : "", NULL);
+        tooltip[strlen (tooltip) - 1] = 0;
         gtk_widget_set_tooltip_text (pt->tray_icon, tooltip);
         g_free (tooltip);
     }
@@ -293,7 +301,7 @@ void power_init (PowerPlugin *pt)
         pt->lv_thread = g_thread_new (NULL, lowvoltage_thread, pt);
 
         check_psu ();
-        check_brownout ();
+        check_brownout (pt);
     }
 
     update_icon (pt);
