@@ -1,3 +1,10 @@
+wf-panel-pi (0.39) bookworm; urgency=medium
+
+  * Use icon for brownout
+  * Add audio-headset icon
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 13 Sep 2023 10:55:02 +0100
+
 wf-panel-pi (0.38) bookworm; urgency=medium
 
   * Fix bluetooth for bookworm
