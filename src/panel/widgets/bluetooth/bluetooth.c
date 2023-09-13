@@ -56,6 +56,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 const gchar *icon_names[ICON_CACHE_SIZE] =
 {
     "audio-card",
+    "audio-headset",
     "computer",
     "gnome-dev-computer",
     "gnome-fs-client",

@@ -1,6 +1,6 @@
 #include "lxutils.h"
 
-#define ICON_CACHE_SIZE 13
+#define ICON_CACHE_SIZE 14
 
 /* Plug-in global data */
 
