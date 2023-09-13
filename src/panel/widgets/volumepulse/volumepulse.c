@@ -429,10 +429,12 @@ void volumepulse_init (VolumePulsePlugin *vol)
     if (vol->pipewire)
     {
         DEBUG ("using pipewire");
+        vol->bt_inited = FALSE;
     }
     else
     {
         DEBUG ("using pulseaudio");
+        vol->bt_inited = TRUE;
     }
 
     /* Delete any old ALSA config */
@@ -441,11 +443,11 @@ void volumepulse_init (VolumePulsePlugin *vol)
     /* Find HDMIs */
     hdmi_init (vol);
 
-    /* Set up Bluez D-Bus interface only when first card detected */
-    vol->bt_inited = FALSE;
-
     /* Set up PulseAudio */
     pulse_init (vol);
+
+    /* If on pulse, init Bluetooth - on pipe, this is not done until a new card message is received */
+    if (!vol->pipewire) bluetooth_init (vol);
 
     /* Create the popup volume control */
     popup_window_create (vol);
