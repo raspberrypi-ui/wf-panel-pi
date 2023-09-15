@@ -69,7 +69,7 @@ static void bt_do_operation (VolumePulsePlugin *vol);
 static gboolean bt_next_operation (VolumePulsePlugin *vol);
 static char *bt_to_pa_name (const char *bluez_name, char *type, char *profile);
 static char *bt_from_pa_name (const char *pa_name);
-static int bt_sink_source_compare (char *sink, char *source);
+static int bt_sink_source_compare (VolumePulsePlugin *vol);
 static void bt_cb_name_owned (GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data);
 static void bt_cb_name_owned_norc (GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data);
 static void bt_cb_name_unowned (GDBusConnection *connection, const gchar *name, gpointer user_data);
@@ -192,12 +192,15 @@ static char *bt_from_pa_name (const char *pa_name)
 
 /* Compare a PulseAudio sink and source to see if they are the same BlueZ device */
 
-static int bt_sink_source_compare (char *sink, char *source)
+static int bt_sink_source_compare (VolumePulsePlugin *vol)
 {
-    if (sink == NULL || source == NULL) return 1;
-    if (strstr (sink, "bluez") == NULL) return 1;
-    if (strstr (source, "bluez") == NULL) return 1;
-    return strncmp (sink + 11, source + 13, 17);
+    if (vol->pa_default_sink == NULL || vol->pa_default_source == NULL) return 1;
+    if (strstr (vol->pa_default_sink, "bluez") == NULL) return 1;
+    if (strstr (vol->pa_default_source, "bluez") == NULL) return 1;
+    if (vol->pipewire)
+        return strncmp (vol->pa_default_sink + 13, vol->pa_default_source + 12, 17);
+    else
+        return strncmp (vol->pa_default_sink + 11, vol->pa_default_source + 13, 17);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -209,7 +212,7 @@ static int bt_sink_source_compare (char *sink, char *source)
 static void bt_cb_name_owned (GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data)
 {
     VolumePulsePlugin *vol = (VolumePulsePlugin *) user_data;
-    DEBUG ("Name %s owned on D-Bus", name);
+    DEBUG ("Name %s owned on D-Bus (vol)", name);
 
     /* BlueZ exists - get an object manager for it */
     GError *error = NULL;
@@ -255,7 +258,7 @@ static void bt_cb_name_owned (GDBusConnection *connection, const gchar *name, co
 static void bt_cb_name_owned_norc (GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data)
 {
     VolumePulsePlugin *vol = (VolumePulsePlugin *) user_data;
-    DEBUG ("Name %s owned on D-Bus", name);
+    DEBUG ("Name %s owned on D-Bus (mic)", name);
 
     /* BlueZ exists - get an object manager for it */
     GError *error = NULL;
@@ -802,7 +805,7 @@ void bluetooth_remove_output (VolumePulsePlugin *vol)
     pulse_get_default_sink_source (vol);
     if (strstr (vol->pa_default_sink, "bluez"))
     {
-        if (bt_sink_source_compare (vol->pa_default_sink, vol->pa_default_source))
+        if (bt_sink_source_compare (vol))
         {
             // if the current default sink is Bluetooth and not also the default source, disconnect it
             vol->bt_oname = bt_from_pa_name (vol->pa_default_sink);
@@ -820,7 +823,7 @@ void bluetooth_remove_input (VolumePulsePlugin *vol)
     pulse_get_default_sink_source (vol);
     if (strstr (vol->pa_default_source, "bluez"))
     {
-        if (bt_sink_source_compare (vol->pa_default_sink, vol->pa_default_source))
+        if (bt_sink_source_compare (vol))
         {
             // if the current default source is Bluetooth and not also the default sink, disconnect it
             vol->bt_iname = bt_from_pa_name (vol->pa_default_source);
