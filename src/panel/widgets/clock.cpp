@@ -57,7 +57,10 @@ bool WayfireClock::update_label()
         i++;
     }
 
-    label.set_text(text.substr(i));
+    if (label.get_text() != text.substr(i))
+    {
+        label.set_text(text.substr(i));
+    }
     return 1;
 }
 
