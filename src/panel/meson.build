@@ -8,7 +8,6 @@ widget_sources = files(
   'widgets/network.cpp',
   'widgets/spacing.cpp',
   'widgets/volumepulse.cpp',
-  'widgets/micpulse.cpp',
   'widgets/volumepulse/volumepulse.c',
   'widgets/volumepulse/micpulse.c',
   'widgets/volumepulse/commongui.c',

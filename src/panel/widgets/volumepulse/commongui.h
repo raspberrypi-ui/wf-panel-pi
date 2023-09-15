@@ -29,16 +29,20 @@ extern char *get_string (const char *fmt, ...);
 extern int vsystem (const char *fmt, ...);
 extern void close_widget (GtkWidget **wid);
 
-extern void menu_create (VolumePulsePlugin *vol);
+extern void menu_create (VolumePulsePlugin *vol, gboolean input_control);
 extern void menu_add_separator (VolumePulsePlugin *vol, GtkWidget *menu);
 extern void menu_mark_default (GtkWidget *widget, gpointer data);
-extern void menu_set_alsa_device (GtkWidget *widget, VolumePulsePlugin *vol);
-extern void menu_set_bluetooth_device (GtkWidget *widget, VolumePulsePlugin *vol);
+extern void menu_set_alsa_device_output (GtkWidget *widget, VolumePulsePlugin *vol);
+extern void menu_set_bluetooth_device_output (GtkWidget *widget, VolumePulsePlugin *vol);
+extern void menu_set_alsa_device_input (GtkWidget *widget, VolumePulsePlugin *vol);
+extern void menu_set_bluetooth_device_input (GtkWidget *widget, VolumePulsePlugin *vol);
 
-extern void popup_window_create (VolumePulsePlugin *vol);
+extern void popup_window_create (VolumePulsePlugin *vol, gboolean input_control);
 
 extern gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol);
 extern void volumepulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePulsePlugin *vol);
+extern gboolean micpulse_button_press_event (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol);
+extern void micpulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePulsePlugin *vol);
 #if 0
 extern void volumepulse_configuration_changed (LXPanel *panel, GtkWidget *plugin);
 extern void volumepulse_destructor (gpointer user_data);

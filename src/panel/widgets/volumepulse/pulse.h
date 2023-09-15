@@ -28,11 +28,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 extern void pulse_init (VolumePulsePlugin *vol);
 extern void pulse_terminate (VolumePulsePlugin *vol);
 
-extern int pulse_get_volume (VolumePulsePlugin *vol);
-extern int pulse_set_volume (VolumePulsePlugin *vol, int volume);
+extern int pulse_get_volume (VolumePulsePlugin *vol, gboolean input_control);
+extern int pulse_set_volume (VolumePulsePlugin *vol, int volume, gboolean input_control);
 
-extern int pulse_get_mute (VolumePulsePlugin *vol);
-extern int pulse_set_mute (VolumePulsePlugin *vol, int mute);
+extern int pulse_get_mute (VolumePulsePlugin *vol, gboolean input_control);
+extern int pulse_set_mute (VolumePulsePlugin *vol, int mute, gboolean input_control);
 
 extern int pulse_get_default_sink_source (VolumePulsePlugin *vol);
 extern int pulse_change_sink (VolumePulsePlugin *vol, const char *sinkname);
@@ -47,11 +47,11 @@ extern void pulse_move_output_streams (VolumePulsePlugin *vol);
 extern int pulse_get_profile (VolumePulsePlugin *vol, const char *card);
 extern int pulse_set_profile (VolumePulsePlugin *vol, const char *card, const char *profile);
 
-extern int pulse_add_devices_to_menu (VolumePulsePlugin *vol, gboolean internal);
-extern void pulse_update_devices_in_menu (VolumePulsePlugin *vol);
+extern int pulse_add_devices_to_menu (VolumePulsePlugin *vol, gboolean internal, gboolean input_control);
+extern void pulse_update_devices_in_menu (VolumePulsePlugin *vol, gboolean input_control);
 extern int pulse_add_devices_to_profile_dialog (VolumePulsePlugin *vol);
 
-extern int pulse_count_devices (VolumePulsePlugin *vol);
+extern int pulse_count_devices (VolumePulsePlugin *vol, gboolean input_control);
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

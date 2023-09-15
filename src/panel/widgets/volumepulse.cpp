@@ -10,7 +10,8 @@ void WayfireVolumepulse::bar_pos_changed_cb (void)
 void WayfireVolumepulse::icon_size_changed_cb (void)
 {
     vol->icon_size = icon_size;
-    volpulse_update_display (vol);
+    volumepulse_update_display (vol);
+    micpulse_update_display (vol);
 }
 
 void WayfireVolumepulse::command (const char *cmd)
@@ -20,19 +21,23 @@ void WayfireVolumepulse::command (const char *cmd)
 
 bool WayfireVolumepulse::set_icon (void)
 {
-    volpulse_update_display (vol);
+    volumepulse_update_display (vol);
+    micpulse_update_display (vol);
     return false;
 }
 
 void WayfireVolumepulse::init (Gtk::HBox *container)
 {
     /* Create the button */
-    plugin = std::make_unique <WayfireMenuButton> ("panel");
-    container->pack_start (*plugin, false, false);
+    plugin_vol = std::make_unique <WayfireMenuButton> ("panel");
+    container->pack_start (*plugin_vol, false, false);
+    plugin_mic = std::make_unique <WayfireMenuButton> ("panel");
+    container->pack_start (*plugin_mic, false, false);
 
     /* Setup structure */
     vol = &data;
-    vol->plugin = (GtkWidget *)((*plugin).gobj());
+    vol->plugin[0] = (GtkWidget *)((*plugin_vol).gobj());
+    vol->plugin[1] = (GtkWidget *)((*plugin_mic).gobj());
     vol->icon_size = icon_size;
     vol->wizard = WayfireShellApp::get().wizard;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireVolumepulse::set_icon));

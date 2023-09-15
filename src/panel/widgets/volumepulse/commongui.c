@@ -39,8 +39,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Static function prototypes                                                 */
 /*----------------------------------------------------------------------------*/
 
-static void popup_window_scale_changed (GtkRange *range, VolumePulsePlugin *vol);
-static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol);
+static void popup_window_scale_changed_vol (GtkRange *range, VolumePulsePlugin *vol);
+static void popup_window_mute_toggled_vol (GtkWidget *widget, VolumePulsePlugin *vol);
+static void popup_window_scale_changed_mic (GtkRange *range, VolumePulsePlugin *vol);
+static void popup_window_mute_toggled_mic (GtkWidget *widget, VolumePulsePlugin *vol);
 
 /*----------------------------------------------------------------------------*/
 /* Generic helper functions                                                   */
@@ -107,63 +109,82 @@ void close_widget (GtkWidget **wid)
 
 /* Create the pop-up volume window */
 
-void popup_window_create (VolumePulsePlugin *vol)
+void popup_window_create (VolumePulsePlugin *vol, gboolean input_control)
 {
     //VolumePulsePlugin *vol = lxpanel_plugin_get_data (p);
+    int index = input_control ? 1 : 0;
 
     /* Create a new window. */
-    vol->popup_window = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (vol->plugin)));
-    gtk_widget_set_name (vol->popup_window, "panelpopup");
+    vol->popup_window[index] = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (vol->plugin[index])));
+    gtk_widget_set_name (vol->popup_window[index], "panelpopup");
 
-    gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window), 0);
+    gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window[index]), 0);
 
     /* Create a vertical box as the child of the window. */
     GtkWidget *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add (GTK_CONTAINER (vol->popup_window), box);
+    gtk_container_add (GTK_CONTAINER (vol->popup_window[index]), box);
 
     /* Create a vertical scale as the child of the vertical box. */
-    vol->popup_volume_scale = gtk_scale_new (GTK_ORIENTATION_VERTICAL, GTK_ADJUSTMENT (gtk_adjustment_new (100, 0, 100, 0, 0, 0)));
-    g_object_set (vol->popup_volume_scale, "height-request", 120, NULL);
-    gtk_scale_set_draw_value (GTK_SCALE (vol->popup_volume_scale), FALSE);
-    gtk_range_set_inverted (GTK_RANGE (vol->popup_volume_scale), TRUE);
-    gtk_box_pack_start (GTK_BOX (box), vol->popup_volume_scale, TRUE, TRUE, 0);
-    gtk_widget_set_can_focus (vol->popup_volume_scale, FALSE);
+    vol->popup_volume_scale[index] = gtk_scale_new (GTK_ORIENTATION_VERTICAL, GTK_ADJUSTMENT (gtk_adjustment_new (100, 0, 100, 0, 0, 0)));
+    g_object_set (vol->popup_volume_scale[index], "height-request", 120, NULL);
+    gtk_scale_set_draw_value (GTK_SCALE (vol->popup_volume_scale[index]), FALSE);
+    gtk_range_set_inverted (GTK_RANGE (vol->popup_volume_scale[index]), TRUE);
+    gtk_box_pack_start (GTK_BOX (box), vol->popup_volume_scale[index], TRUE, TRUE, 0);
+    gtk_widget_set_can_focus (vol->popup_volume_scale[index], FALSE);
 
     /* Value-changed and scroll-event signals. */
-    vol->volume_scale_handler = g_signal_connect (vol->popup_volume_scale, "value-changed", G_CALLBACK (popup_window_scale_changed), vol);
-    g_signal_connect (vol->popup_volume_scale, "scroll-event", G_CALLBACK (volumepulse_mouse_scrolled), vol);
+    vol->volume_scale_handler[index] = g_signal_connect (vol->popup_volume_scale[index], "value-changed", input_control ? G_CALLBACK (popup_window_scale_changed_mic) : G_CALLBACK (popup_window_scale_changed_vol), vol);
+    g_signal_connect (vol->popup_volume_scale[index], "scroll-event", G_CALLBACK (volumepulse_mouse_scrolled), vol);
 
     /* Create a check button as the child of the vertical box. */
-    vol->popup_mute_check = gtk_check_button_new_with_label (_("Mute"));
-    gtk_box_pack_end (GTK_BOX (box), vol->popup_mute_check, FALSE, FALSE, 0);
-    vol->mute_check_handler = g_signal_connect (vol->popup_mute_check, "toggled", G_CALLBACK (popup_window_mute_toggled), vol);
-    gtk_widget_set_can_focus (vol->popup_mute_check, FALSE);
+    vol->popup_mute_check[index] = gtk_check_button_new_with_label (_("Mute"));
+    gtk_box_pack_end (GTK_BOX (box), vol->popup_mute_check[index], FALSE, FALSE, 0);
+    vol->mute_check_handler[index] = g_signal_connect (vol->popup_mute_check[index], "toggled", input_control ? G_CALLBACK (popup_window_mute_toggled_mic) : G_CALLBACK (popup_window_mute_toggled_vol), vol);
+    gtk_widget_set_can_focus (vol->popup_mute_check[index], FALSE);
 
     /* Realise the window */
-    gtk_widget_show_all (vol->popup_window);
-    gtk_widget_hide (vol->popup_window);
+    gtk_widget_show_all (vol->popup_window[index]);
+    gtk_widget_hide (vol->popup_window[index]);
 }
 
 /* Handler for "value_changed" signal on popup window vertical scale */
 
-static void popup_window_scale_changed (GtkRange *range, VolumePulsePlugin *vol)
+static void popup_window_scale_changed_vol (GtkRange *range, VolumePulsePlugin *vol)
 {
-    if (pulse_get_mute (vol)) return;
+    if (pulse_get_mute (vol, FALSE)) return;
 
     /* Update the PulseAudio volume */
-    pulse_set_volume (vol, gtk_range_get_value (range));
+    pulse_set_volume (vol, gtk_range_get_value (range), FALSE);
 
     volumepulse_update_display (vol);
 }
 
+static void popup_window_scale_changed_mic (GtkRange *range, VolumePulsePlugin *vol)
+{
+    if (pulse_get_mute (vol, TRUE)) return;
+
+    /* Update the PulseAudio volume */
+    pulse_set_volume (vol, gtk_range_get_value (range), TRUE);
+
+    micpulse_update_display (vol);
+}
+
 /* Handler for "toggled" signal on popup window mute checkbox */
 
-static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol)
+static void popup_window_mute_toggled_vol (GtkWidget *widget, VolumePulsePlugin *vol)
 {
     /* Toggle the PulseAudio mute */
-    pulse_set_mute (vol, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)));
+    pulse_set_mute (vol, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)), FALSE);
 
     volumepulse_update_display (vol);
+}
+
+static void popup_window_mute_toggled_mic (GtkWidget *widget, VolumePulsePlugin *vol)
+{
+    /* Toggle the PulseAudio mute */
+    pulse_set_mute (vol, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)), TRUE);
+
+    micpulse_update_display (vol);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -172,38 +193,39 @@ static void popup_window_mute_toggled (GtkWidget *widget, VolumePulsePlugin *vol
 
 /* Create the device select menu */
 
-void menu_create (VolumePulsePlugin *vol)
+void menu_create (VolumePulsePlugin *vol, gboolean input_control)
 {
     GtkWidget *mi;
     GList *items;
+    int index = input_control ? 1 : 0;
 
     // create input selector
-    vol->menu_devices = gtk_menu_new ();
-    gtk_widget_set_name (vol->menu_devices, "panelmenu");
+    vol->menu_devices[index] = gtk_menu_new ();
+    gtk_widget_set_name (vol->menu_devices[index], "panelmenu");
 
     // add internal devices
-    pulse_add_devices_to_menu (vol, TRUE);
+    pulse_add_devices_to_menu (vol, TRUE, input_control);
 
     // add ALSA devices
-    pulse_add_devices_to_menu (vol, FALSE);
+    pulse_add_devices_to_menu (vol, FALSE, input_control);
 
     // add Bluetooth devices
-    bluetooth_add_devices_to_menu (vol);
+    bluetooth_add_devices_to_menu (vol, input_control);
 
     // update the menu item names, which are currently ALSA device names, to PulseAudio sink/source names
-    pulse_update_devices_in_menu (vol);
+    pulse_update_devices_in_menu (vol, input_control);
 
     // show the default sink and source in the menu
     pulse_get_default_sink_source (vol);
-    gtk_container_foreach (GTK_CONTAINER (vol->menu_devices), menu_mark_default, vol);
+    gtk_container_foreach (GTK_CONTAINER (vol->menu_devices[index]), menu_mark_default, vol);
 
     // did we find any devices? if not, the menu will be empty...
-    items = gtk_container_get_children (GTK_CONTAINER (vol->menu_devices));
+    items = gtk_container_get_children (GTK_CONTAINER (vol->menu_devices[index]));
     if (items == NULL)
     {
         mi = gtk_menu_item_new_with_label (_("No audio devices found"));
         gtk_widget_set_sensitive (GTK_WIDGET (mi), FALSE);
-        gtk_menu_shell_append (GTK_MENU_SHELL (vol->menu_devices), mi);
+        gtk_menu_shell_append (GTK_MENU_SHELL (vol->menu_devices[index]), mi);
     }
     else g_list_free (items);
 }
@@ -237,7 +259,7 @@ void menu_mark_default (GtkWidget *widget, gpointer data)
     VolumePulsePlugin *vol = (VolumePulsePlugin *) data;
     const char *def, *wid = gtk_widget_get_name (widget);
 
-    if (vol->input_control) def = vol->pa_default_source;
+    if (widget == vol->menu_devices[1]) def = vol->pa_default_source;
     else def = vol->pa_default_sink;
     if (!def || !wid) return;
 
@@ -254,38 +276,40 @@ void menu_mark_default (GtkWidget *widget, gpointer data)
 
 /* Handler for menu click to set an ALSA device as output or input */
 
-void menu_set_alsa_device (GtkWidget *widget, VolumePulsePlugin *vol)
+void menu_set_alsa_device_output (GtkWidget *widget, VolumePulsePlugin *vol)
 {
-    if (vol->input_control)
-        bluetooth_remove_input (vol);
-    else
-        bluetooth_remove_output (vol);
+    bluetooth_remove_output (vol);
 
     pulse_unmute_all_streams (vol);
 
-    if (vol->input_control)
-    {
-        pulse_change_source (vol, gtk_widget_get_name (widget));
-        pulse_move_input_streams (vol);
-    }
-    else
-    {
-        pulse_change_sink (vol, gtk_widget_get_name (widget));
-        pulse_move_output_streams (vol);
-    }
+    pulse_change_sink (vol, gtk_widget_get_name (widget));
+    pulse_move_output_streams (vol);
 
     volumepulse_update_display (vol);
 }
 
+void menu_set_alsa_device_input (GtkWidget *widget, VolumePulsePlugin *vol)
+{
+    bluetooth_remove_input (vol);
+
+    pulse_unmute_all_streams (vol);
+
+    pulse_change_source (vol, gtk_widget_get_name (widget));
+    pulse_move_input_streams (vol);
+
+    micpulse_update_display (vol);
+}
+
 /* Handler for menu click to set a Bluetooth device as output or input */
 
-void menu_set_bluetooth_device (GtkWidget *widget, VolumePulsePlugin *vol)
+void menu_set_bluetooth_device_output (GtkWidget *widget, VolumePulsePlugin *vol)
 {
-    if (vol->input_control)
-        bluetooth_set_input (vol, gtk_widget_get_name (widget), gtk_menu_item_get_label (GTK_MENU_ITEM (widget)));
-    else
-        bluetooth_set_output (vol, gtk_widget_get_name (widget), gtk_menu_item_get_label (GTK_MENU_ITEM (widget)));
+    bluetooth_set_output (vol, gtk_widget_get_name (widget), gtk_menu_item_get_label (GTK_MENU_ITEM (widget)));
+}
 
+void menu_set_bluetooth_device_input (GtkWidget *widget, VolumePulsePlugin *vol)
+{
+    bluetooth_set_input (vol, gtk_widget_get_name (widget), gtk_menu_item_get_label (GTK_MENU_ITEM (widget)));
 }
 
 /*----------------------------------------------------------------------------*/
@@ -294,7 +318,7 @@ void menu_set_bluetooth_device (GtkWidget *widget, VolumePulsePlugin *vol)
 
 /* Handler for "button-press-event" signal on main widget. */
 
-gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol)
+gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
     switch (event->button)
     {
@@ -303,12 +327,12 @@ gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *even
                 return FALSE;
 
         case 2: /* middle-click - toggle mute */
-                pulse_set_mute (vol, pulse_get_mute (vol) ? 0 : 1);
+                pulse_set_mute (vol, pulse_get_mute (vol, FALSE) ? 0 : 1, FALSE);
                 break;
 
         case 3: /* right-click - show device list */
-                menu_show (vol);
-                show_menu_with_kbd (vol->plugin, vol->menu_devices);
+                vol_menu_show (vol);
+                show_menu_with_kbd (vol->plugin[0], vol->menu_devices[0]);
                 break;
     }
 
@@ -316,14 +340,36 @@ gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *even
     return TRUE;
 }
 
+gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
+{
+    switch (event->button)
+    {
+        case 1: /* left-click - fallthrough to default popover handler to show popup */
+                micpulse_update_display (vol);
+                return FALSE;
+
+        case 2: /* middle-click - toggle mute */
+                pulse_set_mute (vol, pulse_get_mute (vol, TRUE) ? 0 : 1, TRUE);
+                break;
+
+        case 3: /* right-click - show device list */
+                mic_menu_show (vol);
+                show_menu_with_kbd (vol->plugin[1], vol->menu_devices[1]);
+                break;
+    }
+
+    micpulse_update_display (vol);
+    return TRUE;
+}
+
 /* Handler for "scroll-event" signal */
 
-void volumepulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePulsePlugin *vol)
+void volumepulse_mouse_scrolled (GtkScale *, GdkEventScroll *evt, VolumePulsePlugin *vol)
 {
-    if (pulse_get_mute (vol)) return;
+    if (pulse_get_mute (vol, FALSE)) return;
 
     /* Update the PulseAudio volume by a step */
-    int val = pulse_get_volume (vol);
+    int val = pulse_get_volume (vol, FALSE);
 
     if (evt->direction == GDK_SCROLL_UP || evt->direction == GDK_SCROLL_LEFT
         || (evt->direction == GDK_SCROLL_SMOOTH && (evt->delta_x < 0 || evt->delta_y < 0)))
@@ -335,9 +381,31 @@ void volumepulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePul
     {
         if (val > 0) val -= 2;
     }
-    pulse_set_volume (vol, val);
+    pulse_set_volume (vol, val, FALSE);
 
     volumepulse_update_display (vol);
+}
+
+void micpulse_mouse_scrolled (GtkScale *, GdkEventScroll *evt, VolumePulsePlugin *vol)
+{
+    if (pulse_get_mute (vol, TRUE)) return;
+
+    /* Update the PulseAudio volume by a step */
+    int val = pulse_get_volume (vol, TRUE);
+
+    if (evt->direction == GDK_SCROLL_UP || evt->direction == GDK_SCROLL_LEFT
+        || (evt->direction == GDK_SCROLL_SMOOTH && (evt->delta_x < 0 || evt->delta_y < 0)))
+    {
+        if (val < 100) val += 2;
+    }
+    else if (evt->direction == GDK_SCROLL_DOWN || evt->direction == GDK_SCROLL_RIGHT
+        || (evt->direction == GDK_SCROLL_SMOOTH && (evt->delta_x > 0 || evt->delta_y > 0)))
+    {
+        if (val > 0) val -= 2;
+    }
+    pulse_set_volume (vol, val, TRUE);
+
+    micpulse_update_display (vol);
 }
 
 /*----------------------------------------------------------------------------*/

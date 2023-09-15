@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <glib/gprintf.h>
 #include <gtk/gtk.h>
 #include <pulse/pulseaudio.h>
 
@@ -44,16 +45,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define DEBUG(fmt,args...)
 #endif
 
-#define volumepulse_update_display(vol) do { if (vol->input_control) micpulse_update_display (vol); else volpulse_update_display (vol); } while (0)
-#define menu_show(vol) do { if (vol->input_control) mic_menu_show (vol); else vol_menu_show (vol); } while (0)
-#define menu_add_item(vol,label,name) do { if (vol->input_control) mic_menu_add_item (vol, label, name); else vol_menu_add_item (vol, label, name); } while (0)
-
 #ifndef VOLUMEPULSE_STRUCT
 #define VOLUMEPULSE_STRUCT
 
 typedef struct {
     /* plugin */
-    GtkWidget *plugin;                  /* Pointer to widget */
+    GtkWidget *plugin[2];                  /* Pointer to widget */
     //LXPanel *panel;                   /* Back pointer to panel */
     //config_setting_t *settings;       /* Plugin settings */
 
@@ -64,11 +61,11 @@ typedef struct {
     gboolean pipewire;                  /* Pipewire running? */
 
     /* graphics */
-    GtkWidget *tray_icon;               /* Displayed icon */
-    GtkWidget *popup_window;            /* Top level window for popup */
-    GtkWidget *popup_volume_scale;      /* Scale for volume */
-    GtkWidget *popup_mute_check;        /* Checkbox for mute state */
-    GtkWidget *menu_devices;            /* Right-click menu */
+    GtkWidget *tray_icon[2];            /* Displayed icon */
+    GtkWidget *popup_window[2];         /* Top level window for popup */
+    GtkWidget *popup_volume_scale[2];   /* Scale for volume */
+    GtkWidget *popup_mute_check[2];     /* Checkbox for mute state */
+    GtkWidget *menu_devices[2];         /* Right-click menu */
     GtkWidget *profiles_dialog;         /* Device profiles dialog */
     GtkWidget *profiles_int_box;        /* Vbox for profile combos */
     GtkWidget *profiles_ext_box;        /* Vbox for profile combos */
@@ -76,10 +73,9 @@ typedef struct {
     GtkWidget *conn_dialog;             /* Connection dialog box */
     GtkWidget *conn_label;              /* Dialog box text field */
     GtkWidget *conn_ok;                 /* Dialog box button */
-    guint volume_scale_handler;         /* Handler for volume_scale widget */
-    guint mute_check_handler;           /* Handler for mute_check widget */
+    guint volume_scale_handler[2];      /* Handler for volume_scale widget */
+    guint mute_check_handler[2];        /* Handler for mute_check widget */
     gboolean separator;                 /* Flag to show whether a menu separator has been added */
-    gboolean input_control;             /* Flag to show whether this is an input or output controller */
 
     /* HDMI devices */
     char *hdmi_names[2];                /* Display names of HDMI devices */
@@ -121,14 +117,11 @@ extern void mic_menu_show (VolumePulsePlugin *vol);
 extern void vol_menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name);
 extern void mic_menu_add_item (VolumePulsePlugin *vol, const char *label, const char *name);
 extern void profiles_dialog_add_combo (VolumePulsePlugin *vol, GtkListStore *ls, GtkWidget *dest, int sel, const char *label, const char *name);
-extern void volpulse_update_display (VolumePulsePlugin *vol);
+extern void volumepulse_update_display (VolumePulsePlugin *vol);
 extern void micpulse_update_display (VolumePulsePlugin *vol);
 extern void volumepulse_init (VolumePulsePlugin *vol);
-extern void micpulse_init (VolumePulsePlugin *vol);
 extern gboolean volumepulse_control_msg (VolumePulsePlugin *vol, const char *cmd);
-extern gboolean micpulse_control_msg (VolumePulsePlugin *vol, const char *cmd);
 extern void volumepulse_destructor (gpointer user_data);
-extern void micpulse_destructor (gpointer user_data);
 
 
 /* End of file */

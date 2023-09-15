@@ -27,7 +27,6 @@ extern "C" {
 #include "widgets/network.hpp"
 #include "widgets/spacing.hpp"
 #include "widgets/volumepulse.hpp"
-#include "widgets/micpulse.hpp"
 #include "widgets/smenu.hpp"
 #include "widgets/netman.hpp"
 #include "widgets/bluetooth.hpp"
@@ -397,8 +396,6 @@ class WayfirePanel::impl
 
         if (name == "volumepulse")
             return Widget(new WayfireVolumepulse());
-        if (name == "micpulse")
-            return Widget(new WayfireMicpulse());
         if (name == "smenu")
             return Widget(new WayfireSmenu());
         if (name == "netman")
@@ -733,7 +730,6 @@ const char *WayfirePanelApp::display_name (std::string type)
     if (type == "ejecter") return WayfireEjecter::display_name();
     if (type == "gpu") return WayfireGPU::display_name();
     if (type == "launchers") return WayfireLaunchers::display_name();
-    if (type == "micpulse") return WayfireMicpulse::display_name();
     if (type == "netman") return WayfireNetman::display_name();
     if (type == "power") return WayfirePower::display_name();
     if (type == "batt") return WayfireBatt::display_name();
@@ -754,7 +750,6 @@ const conf_table_t *WayfirePanelApp::config_params (std::string type)
     if (type == "ejecter") return WayfireEjecter::config_params();
     if (type == "gpu") return WayfireGPU::config_params();
     if (type == "launchers") return WayfireLaunchers::config_params();
-    if (type == "micpulse") return WayfireMicpulse::config_params();
     if (type == "netman") return WayfireNetman::config_params();
     if (type == "power") return WayfirePower::config_params();
     if (type == "batt") return WayfireBatt::config_params();

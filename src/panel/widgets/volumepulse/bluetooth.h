@@ -38,7 +38,7 @@ extern void bluetooth_remove_input (VolumePulsePlugin *vol);
 
 extern void bluetooth_reconnect (VolumePulsePlugin *vol, const char *name, const char *profile);
 
-extern void bluetooth_add_devices_to_menu (VolumePulsePlugin *vol);
+extern void bluetooth_add_devices_to_menu (VolumePulsePlugin *vol, gboolean input_control);
 extern void bluetooth_add_devices_to_profile_dialog (VolumePulsePlugin *vol);
 extern int bluetooth_count_devices (VolumePulsePlugin *vol, gboolean input);
 
