@@ -225,8 +225,8 @@ void menu_add_separator (VolumePulsePlugin *vol, GtkWidget *menu)
     {
         mi = gtk_separator_menu_item_new ();
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-        vol->separator = TRUE;
     }
+    vol->separator = TRUE;
     g_list_free (list);
 }
 
