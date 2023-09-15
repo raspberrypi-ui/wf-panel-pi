@@ -909,7 +909,7 @@ void bluetooth_add_devices_to_menu (VolumePulsePlugin *vol)
                 GDBusInterface *interface = G_DBUS_INTERFACE (interfaces->data);
                 if (g_strcmp0 (g_dbus_proxy_get_interface_name (G_DBUS_PROXY (interface)), "org.bluez.Device1") == 0)
                 {
-                    if (bt_has_service (vol, g_dbus_proxy_get_object_path (G_DBUS_PROXY (interface)), vol->input_control ? BT_SERV_HSP : BT_SERV_AUDIO_SINK))
+                    if (bt_has_service (vol, g_dbus_proxy_get_object_path (G_DBUS_PROXY (interface)), vol->input_control ? BT_SERV_HFP : BT_SERV_AUDIO_SINK))
                     {
                         GVariant *name = g_dbus_proxy_get_cached_property (G_DBUS_PROXY (interface), "Alias");
                         GVariant *icon = g_dbus_proxy_get_cached_property (G_DBUS_PROXY (interface), "Icon");
@@ -954,7 +954,7 @@ void bluetooth_add_devices_to_profile_dialog (VolumePulsePlugin *vol)
                 GDBusInterface *interface = G_DBUS_INTERFACE (interfaces->data);
                 if (g_strcmp0 (g_dbus_proxy_get_interface_name (G_DBUS_PROXY (interface)), "org.bluez.Device1") == 0)
                 {
-                    if (bt_has_service (vol, g_dbus_proxy_get_object_path (G_DBUS_PROXY (interface)), BT_SERV_HSP)
+                    if (bt_has_service (vol, g_dbus_proxy_get_object_path (G_DBUS_PROXY (interface)), BT_SERV_HFP)
                         || bt_has_service (vol, g_dbus_proxy_get_object_path (G_DBUS_PROXY (interface)), BT_SERV_AUDIO_SINK))
                     {
                         GVariant *name = g_dbus_proxy_get_cached_property (G_DBUS_PROXY (interface), "Alias");
@@ -1002,7 +1002,7 @@ int bluetooth_count_devices (VolumePulsePlugin *vol, gboolean input)
                 GDBusInterface *interface = G_DBUS_INTERFACE (interfaces->data);
                 if (g_strcmp0 (g_dbus_proxy_get_interface_name (G_DBUS_PROXY (interface)), "org.bluez.Device1") == 0)
                 {
-                    if (bt_has_service (vol, g_dbus_proxy_get_object_path (G_DBUS_PROXY (interface)), input ? BT_SERV_HSP : BT_SERV_AUDIO_SINK))
+                    if (bt_has_service (vol, g_dbus_proxy_get_object_path (G_DBUS_PROXY (interface)), input ? BT_SERV_HFP : BT_SERV_AUDIO_SINK))
                     {
                         GVariant *name = g_dbus_proxy_get_cached_property (G_DBUS_PROXY (interface), "Alias");
                         GVariant *icon = g_dbus_proxy_get_cached_property (G_DBUS_PROXY (interface), "Icon");
