@@ -1,3 +1,9 @@
+wf-panel-pi (0.40) bookworm; urgency=medium
+
+  * Experimental merged volume and microphone plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 15 Sep 2023 14:27:42 +0100
+
 wf-panel-pi (0.39) bookworm; urgency=medium
 
   * Use icon for brownout
