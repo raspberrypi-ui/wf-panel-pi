@@ -422,7 +422,7 @@ static gboolean bt_conn_get_profile (gpointer user_data)
         if (vol->pipewire)
             res = pulse_set_profile (vol, pacard, btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp-sink" :  "headset-head-unit");
         else
-            res = pulse_set_profile (vol, pacard, btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" :  "headset_head_unit");
+            res = pulse_set_profile (vol, pacard, btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" :  "handsfree_head_unit");
 
         if (!res)
         {
@@ -464,7 +464,7 @@ static gboolean bt_conn_set_sink_source (gpointer user_data)
         if (vol->pipewire)
             pacard = bt_to_pa_name (btop->device, "input", "0");
         else
-            pacard = bt_to_pa_name (btop->device, "source", "headset_head_unit");
+            pacard = bt_to_pa_name (btop->device, "source", "handsfree_head_unit");
         if (!pulse_change_source (vol, pacard))
         {
             if (vol->bt_retry_count++ < BT_PULSE_RETRIES)
@@ -485,7 +485,7 @@ static gboolean bt_conn_set_sink_source (gpointer user_data)
         if (vol->pipewire)
             pacard = bt_to_pa_name (btop->device, "output", "1");
         else
-            pacard = bt_to_pa_name (btop->device, "sink", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" : "headset_head_unit");
+            pacard = bt_to_pa_name (btop->device, "sink", btop->direction == OUTPUT && vol->bt_force_hsp == FALSE ? "a2dp_sink" : "handsfree_head_unit");
         if (!pulse_change_sink (vol, pacard))
         {
             if (vol->bt_retry_count++ < BT_PULSE_RETRIES)
@@ -882,7 +882,7 @@ void bluetooth_reconnect (VolumePulsePlugin *vol, const char *name, const char *
         pulse_mute_all_streams (vol);
         bt_add_operation (vol, vol->bt_oname, CONNECT, OUTPUT);
         vol->bt_input = FALSE;
-        if (!g_strcmp0 (profile, vol->pipewire ? "headset-head-unit" : "headset_head_unit")) vol->bt_force_hsp = TRUE;
+        if (!g_strcmp0 (profile, vol->pipewire ? "headset-head-unit" : "handsfree_head_unit")) vol->bt_force_hsp = TRUE;
         else vol->bt_force_hsp = FALSE;
     }
 
