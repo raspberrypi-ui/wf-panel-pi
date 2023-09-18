@@ -510,7 +510,7 @@ void bluetooth_set_output (VolumePulsePlugin *vol, const char *name, const char 
     else
     {
         bt_connect_dialog_show (vol, _("Connecting Bluetooth device '%s' as output..."), label);
-        vol->bt_conname = g_strdup_printf (name);
+        vol->bt_conname = g_strdup (name);
         vol->bt_input = FALSE;
         bt_connect_device (vol, name);
     }
@@ -557,7 +557,7 @@ void bluetooth_set_input (VolumePulsePlugin *vol, const char *name, const char *
     else
     {
         bt_connect_dialog_show (vol, _("Connecting Bluetooth device '%s' as input..."), label);
-        vol->bt_conname = g_strdup_printf (name);
+        vol->bt_conname = g_strdup (name);
         vol->bt_input = TRUE;
         bt_connect_device (vol, name);
     }
