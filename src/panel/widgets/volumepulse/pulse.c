@@ -134,6 +134,7 @@ static void pa_cb_count_outputs (pa_context *c, const pa_card_info *i, int eol, 
 
 void pulse_init (VolumePulsePlugin *vol)
 {
+    DEBUG ("pulse_init");
     pa_proplist *paprop;
     pa_mainloop_api *paapi;
 
@@ -183,6 +184,8 @@ void pulse_init (VolumePulsePlugin *vol)
 
     pa_set_subscription (vol);
     pulse_get_default_sink_source (vol);
+    pulse_move_output_streams (vol);
+    pulse_move_input_streams (vol);
 }
 
 /* Callback for changes in context state during initialisation */
