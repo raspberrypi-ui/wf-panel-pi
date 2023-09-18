@@ -589,7 +589,7 @@ static void pa_list_move_to_default_sink (gpointer data, gpointer userdata)
 
 static int pa_move_stream_to_default_sink (VolumePulsePlugin *vol, int index)
 {
-    DEBUG ("pa_move_stream_to_default_sink %d", index);
+    DEBUG ("pa_move_stream_to_default_sink %s %d", vol->pa_default_sink, index);
     START_PA_OPERATION
     op = pa_context_move_sink_input_by_name (vol->pa_cont, index, vol->pa_default_sink, &pa_cb_generic_success, vol);
     END_PA_OPERATION ("move_sink_input_by_name")
@@ -677,7 +677,7 @@ static void pa_list_move_to_default_source (gpointer data, gpointer userdata)
 
 static int pa_move_stream_to_default_source (VolumePulsePlugin *vol, int index)
 {
-    DEBUG ("pa_move_stream_to_default_source %d", index);
+    DEBUG ("pa_move_stream_to_default_source %s %d", vol->pa_default_source, index);
     START_PA_OPERATION
     op = pa_context_move_source_output_by_name (vol->pa_cont, index, vol->pa_default_source, &pa_cb_generic_success, vol);
     END_PA_OPERATION ("move_source_output_by_name")

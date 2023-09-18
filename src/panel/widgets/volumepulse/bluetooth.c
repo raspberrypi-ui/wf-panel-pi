@@ -40,7 +40,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define BT_SERV_HSP             "00001108"
 #define BT_SERV_HFP             "0000111E"
 
-#define BT_PULSE_RETRIES    20
+#define BT_PULSE_RETRIES    50
 
 /*----------------------------------------------------------------------------*/
 /* Static function prototypes                                                 */
@@ -495,10 +495,8 @@ void bluetooth_set_output (VolumePulsePlugin *vol, const char *name, const char 
 
         if (pulse_change_sink (vol, pacard))
         {
-            pulse_get_default_sink_source (vol);
             pulse_move_output_streams (vol);
-            pulse_unmute_all_streams (vol);
-            //vsystem ("echo %s > ~/.btout", btop->device);
+            //vsystem ("echo %s > ~/.btout", pacard);
         }
         else
         {
@@ -542,10 +540,8 @@ void bluetooth_set_input (VolumePulsePlugin *vol, const char *name, const char *
 
         if (pulse_change_source (vol, pacard))
         {
-            pulse_get_default_sink_source (vol);
             pulse_move_input_streams (vol);
-            pulse_unmute_all_streams (vol);
-            //vsystem ("echo %s > ~/.btin", btop->device);
+            //vsystem ("echo %s > ~/.btin", pacard);
         }
         else
         {

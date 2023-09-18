@@ -298,8 +298,6 @@ void menu_mark_default_input (GtkWidget *widget, gpointer data)
 
 void menu_set_alsa_device_output (GtkWidget *widget, VolumePulsePlugin *vol)
 {
-    pulse_unmute_all_streams (vol);
-
     pulse_change_sink (vol, gtk_widget_get_name (widget));
     pulse_move_output_streams (vol);
 
@@ -308,8 +306,6 @@ void menu_set_alsa_device_output (GtkWidget *widget, VolumePulsePlugin *vol)
 
 void menu_set_alsa_device_input (GtkWidget *widget, VolumePulsePlugin *vol)
 {
-    pulse_unmute_all_streams (vol);
-
     pulse_change_source (vol, gtk_widget_get_name (widget));
     pulse_move_input_streams (vol);
 
