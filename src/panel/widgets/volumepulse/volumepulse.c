@@ -321,9 +321,6 @@ static void profiles_dialog_combo_changed (GtkComboBox *combo, VolumePulsePlugin
     gtk_combo_box_get_active_iter (combo, &iter);
     gtk_tree_model_get (gtk_combo_box_get_model (combo), &iter, 0, &option, -1);
     pulse_set_profile (vol, name, option);
-
-    // need to reconnect a Bluetooth device here to cause the profile to take effect...
-    bluetooth_reconnect (vol, name, option);
 }
 
 /* Handler for 'OK' button on profiles dialog */

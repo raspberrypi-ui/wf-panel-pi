@@ -98,9 +98,7 @@ typedef struct {
     /* Bluetooth interface */
     GDBusObjectManager *bt_objmanager;  /* D-Bus BlueZ object manager */
     guint bt_watcher_id;                /* D-Bus BlueZ watcher ID */
-    GList *bt_ops;                      /* List of Bluetooth connect and disconnect operations */
-    char *bt_iname;                     /* Input device name for use in list */
-    char *bt_oname;                     /* Output device name for use in list */
+    char *bt_conname;                   /* Name of device being connected */
     gboolean bt_input;                  /* Flag to show if current connect operation is for input or output */
     gboolean bt_force_hsp;              /* Flag to override automatic profile selection */
     int bt_retry_count;                 /* Counter for polling read of profile on connection */
