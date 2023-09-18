@@ -1369,7 +1369,7 @@ static void show_pairing_dialog (BluetoothPlugin *bt, PAIR_STATE state, const gc
            break;
 
         case STATE_PAIRED_AUDIO:
-            buffer = g_strdup_printf (_("Pairing successful - right-click the volume icon to connect as audio device"));
+            buffer = g_strdup_printf (_("Pairing successful - right-click the volume icon to select as audio device"));
             gtk_label_set_text (GTK_LABEL (bt->pair_label), buffer);
             gtk_widget_hide (bt->pair_entry);
             connect_ok (bt, G_CALLBACK (handle_close_pair_dialog));
@@ -1689,9 +1689,7 @@ static void handle_menu_connect (GtkWidget *widget, gpointer user_data)
             if (!is_connected (bt, path))
             {
                 show_connect_dialog (bt, DIALOG_CONNECT, STATE_INIT, name);
-                if (check_uuids (bt, path) == DEV_AUDIO_SINK)
-                    show_connect_dialog (bt, DIALOG_CONNECT, STATE_FAIL, _("Use the audio menu to connect to this device"));
-                else if (check_uuids (bt, path) == DEV_OTHER)
+                if (check_uuids (bt, path) == DEV_OTHER)
                     show_connect_dialog (bt, DIALOG_CONNECT, STATE_FAIL, _("No usable services on this device"));
                 else connect_device (bt, path, TRUE);
             }
