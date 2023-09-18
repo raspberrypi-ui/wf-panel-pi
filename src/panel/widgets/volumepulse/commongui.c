@@ -43,6 +43,8 @@ static void popup_window_scale_changed_vol (GtkRange *range, VolumePulsePlugin *
 static void popup_window_mute_toggled_vol (GtkWidget *widget, VolumePulsePlugin *vol);
 static void popup_window_scale_changed_mic (GtkRange *range, VolumePulsePlugin *vol);
 static void popup_window_mute_toggled_mic (GtkWidget *widget, VolumePulsePlugin *vol);
+static void menu_mark_default_input (GtkWidget *widget, gpointer data);
+static void menu_mark_default_output (GtkWidget *widget, gpointer data);
 
 /*----------------------------------------------------------------------------*/
 /* Generic helper functions                                                   */
@@ -217,7 +219,7 @@ void menu_create (VolumePulsePlugin *vol, gboolean input_control)
 
     // show the default sink and source in the menu
     pulse_get_default_sink_source (vol);
-    gtk_container_foreach (GTK_CONTAINER (vol->menu_devices[index]), menu_mark_default, vol);
+    gtk_container_foreach (GTK_CONTAINER (vol->menu_devices[index]), input_control ? menu_mark_default_input : menu_mark_default_output, vol);
 
     // did we find any devices? if not, the menu will be empty...
     items = gtk_container_get_children (GTK_CONTAINER (vol->menu_devices[index]));
@@ -254,13 +256,31 @@ void menu_add_separator (VolumePulsePlugin *vol, GtkWidget *menu)
 
 /* Add a tickmark to the supplied widget if it is the default item in its parent menu */
 
-void menu_mark_default (GtkWidget *widget, gpointer data)
+void menu_mark_default_output (GtkWidget *widget, gpointer data)
 {
     VolumePulsePlugin *vol = (VolumePulsePlugin *) data;
     const char *def, *wid = gtk_widget_get_name (widget);
 
-    if (widget == vol->menu_devices[1]) def = vol->pa_default_source;
-    else def = vol->pa_default_sink;
+    def = vol->pa_default_sink;
+    if (!def || !wid) return;
+
+    // check to see if either the two names match (for an ALSA device),
+    // or if the BlueZ address from the widget is in the default name */
+    if (!g_strcmp0 (def, wid) || (strstr (wid, "bluez") && strstr (def, wid + 20) && !strstr (def, "monitor")))
+    {
+        gulong hid = g_signal_handler_find (widget, G_SIGNAL_MATCH_ID, g_signal_lookup ("activate", GTK_TYPE_CHECK_MENU_ITEM), 0, NULL, NULL, NULL);
+        g_signal_handler_block (widget, hid);
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (widget), TRUE);
+        g_signal_handler_unblock (widget, hid);
+    }
+}
+
+void menu_mark_default_input (GtkWidget *widget, gpointer data)
+{
+    VolumePulsePlugin *vol = (VolumePulsePlugin *) data;
+    const char *def, *wid = gtk_widget_get_name (widget);
+
+    def = vol->pa_default_source;
     if (!def || !wid) return;
 
     // check to see if either the two names match (for an ALSA device),
@@ -278,8 +298,6 @@ void menu_mark_default (GtkWidget *widget, gpointer data)
 
 void menu_set_alsa_device_output (GtkWidget *widget, VolumePulsePlugin *vol)
 {
-    bluetooth_remove_output (vol);
-
     pulse_unmute_all_streams (vol);
 
     pulse_change_sink (vol, gtk_widget_get_name (widget));
@@ -290,8 +308,6 @@ void menu_set_alsa_device_output (GtkWidget *widget, VolumePulsePlugin *vol)
 
 void menu_set_alsa_device_input (GtkWidget *widget, VolumePulsePlugin *vol)
 {
-    bluetooth_remove_input (vol);
-
     pulse_unmute_all_streams (vol);
 
     pulse_change_source (vol, gtk_widget_get_name (widget));

@@ -31,7 +31,6 @@ extern void close_widget (GtkWidget **wid);
 
 extern void menu_create (VolumePulsePlugin *vol, gboolean input_control);
 extern void menu_add_separator (VolumePulsePlugin *vol, GtkWidget *menu);
-extern void menu_mark_default (GtkWidget *widget, gpointer data);
 extern void menu_set_alsa_device_output (GtkWidget *widget, VolumePulsePlugin *vol);
 extern void menu_set_bluetooth_device_output (GtkWidget *widget, VolumePulsePlugin *vol);
 extern void menu_set_alsa_device_input (GtkWidget *widget, VolumePulsePlugin *vol);
