@@ -288,6 +288,7 @@ static void pa_cb_subscription (pa_context *, pa_subscription_event_type_t event
 #ifdef DEBUG_ON
     DEBUG ("PulseAudio event : %s %s", type, fac);
 #endif
+    if (vol->bt_card_found == FALSE && newcard) vol->bt_card_found = TRUE;
 
     vol->pa_idle_timer = g_idle_add (pa_update_disp_cb, vol);
 

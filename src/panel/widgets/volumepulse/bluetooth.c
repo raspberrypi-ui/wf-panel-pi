@@ -54,7 +54,7 @@ static void bt_cb_object_removed (GDBusObjectManager *manager, GDBusObject *obje
 static void bt_cb_interface_properties (GDBusObjectManagerClient *manager, GDBusObjectProxy *object_proxy, GDBusProxy *proxy, GVariant *parameters, GStrv inval, gpointer user_data);
 static void bt_connect_device (VolumePulsePlugin *vol, const char *device);
 static void bt_cb_connected (GObject *source, GAsyncResult *res, gpointer user_data);
-static gboolean bt_conn_get_profile (gpointer user_data);
+static gboolean bt_conn_set_profile (gpointer user_data);
 static gboolean bt_conn_set_sink_source (gpointer user_data);
 static void bt_cb_trusted (GObject *source, GAsyncResult *res, gpointer user_data);
 static gboolean bt_has_service (VolumePulsePlugin *vol, const gchar *path, const gchar *service);
@@ -175,14 +175,13 @@ static void bt_cb_interface_properties (GDBusObjectManagerClient *, GDBusObjectP
 static void bt_connect_device (VolumePulsePlugin *vol, const char *device)
 {
     GDBusInterface *interface = g_dbus_object_manager_get_interface (vol->bt_objmanager, device, "org.bluez.Device1");
-    DEBUG ("Connecting device %s...", device);
+    DEBUG ("Connecting device %s - trusting...", device);
     if (interface)
     {
         // trust and connect
         g_dbus_proxy_call (G_DBUS_PROXY (interface), "org.freedesktop.DBus.Properties.Set", 
             g_variant_new ("(ssv)", g_dbus_proxy_get_interface_name (G_DBUS_PROXY (interface)), "Trusted", g_variant_new_boolean (TRUE)),
             G_DBUS_CALL_FLAGS_NONE, -1, NULL, bt_cb_trusted, vol);
-        g_dbus_proxy_call (G_DBUS_PROXY (interface), "Connect", NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, bt_cb_connected, vol);
         g_object_unref (interface);
     }
     else
@@ -218,39 +217,34 @@ static void bt_cb_connected (GObject *source, GAsyncResult *res, gpointer user_d
 
         // start polling for the PulseAudio profile of the device
         vol->bt_retry_count = 0;
-        vol->bt_retry_timer = g_timeout_add (50, bt_conn_get_profile, vol);
+        vol->bt_retry_timer = g_timeout_add (100, bt_conn_set_profile, vol);
     }
 }
 
-/* Function polled after connection to get profile to confirm PA has found the device */
+/* Function polled after connection to confirm PA has found the device */
 
-static gboolean bt_conn_get_profile (gpointer user_data)
+static gboolean bt_conn_set_profile (gpointer user_data)
 {
     VolumePulsePlugin *vol = (VolumePulsePlugin *) user_data;
     char *pacard, *msg;
     int res;
 
     // some devices take a very long time to be valid PulseAudio cards after connection
-    pacard = bt_to_pa_name (vol->bt_conname, "card", NULL);
-    pulse_get_profile (vol, pacard);
-    if (vol->pa_profile == NULL && vol->bt_retry_count++ < BT_PULSE_RETRIES)
-    {
-        g_free (pacard);
-        return TRUE;
-    }
-
+    if (vol->bt_card_found == FALSE && vol->bt_retry_count++ < BT_PULSE_RETRIES) return TRUE;
     vol->bt_retry_timer = 0;
-    DEBUG ("Profile polled %d times", vol->bt_retry_count);
 
-    if (vol->pa_profile == NULL)
+    if (!vol->bt_card_found)
     {
-        DEBUG ("Bluetooth device not found by PulseAudio - profile not available");
+        DEBUG ("Bluetooth device not found by PulseAudio - timeout");
 
         // update dialog to show a warning
         bt_connect_dialog_update (vol, _("Audio device not found"));
     }
     else
     {
+        pacard = bt_to_pa_name (vol->bt_conname, "card", NULL);
+        pulse_get_profile (vol, pacard);
+
         DEBUG ("Bluetooth device found by PulseAudio with profile %s", vol->pa_profile);
         if (vol->pipewire)
             res = pulse_set_profile (vol, pacard, vol->bt_input ? "headset-head-unit" : "a2dp-sink");
@@ -274,8 +268,8 @@ static gboolean bt_conn_get_profile (gpointer user_data)
             g_free (pacard);
             return FALSE;
         }
+        g_free (pacard);
     }
-    g_free (pacard);
 
     volumepulse_update_display (vol);
     micpulse_update_display (vol);
@@ -344,7 +338,21 @@ static void bt_cb_trusted (GObject *source, GAsyncResult *res, gpointer user_dat
     }
     else
     {
-        DEBUG ("Trusted OK");
+        DEBUG ("Trusted OK - connecting");
+        vol->bt_card_found = FALSE;
+        GDBusInterface *interface = g_dbus_object_manager_get_interface (vol->bt_objmanager, vol->bt_conname, "org.bluez.Device1");
+        if (interface)
+        {
+            g_dbus_proxy_call (G_DBUS_PROXY (interface), "Connect", NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, bt_cb_connected, vol);
+            g_object_unref (interface);
+        }
+        else
+        {
+            DEBUG ("Couldn't get device interface from object manager");
+            char *msg = g_strdup_printf (_("Bluetooth %s device not found"), vol->bt_input ? "input" : "output");
+            bt_connect_dialog_update (vol, msg);
+            g_free (msg);
+        }
     }
 }
 
@@ -432,7 +440,6 @@ static void bt_connect_dialog_ok (GtkButton *, VolumePulsePlugin *vol)
 void bluetooth_init (VolumePulsePlugin *vol)
 {
     /* Reset Bluetooth variables */
-    vol->bt_retry_timer = 0;
     vol->bt_retry_timer = 0;
 
     /* Set up callbacks to see if BlueZ is on D-Bus */
