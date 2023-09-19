@@ -274,7 +274,7 @@ class WayfirePanel::impl
 
     bool on_button_release_event(GdkEventButton* event)
     {
-        if (event->type == GDK_BUTTON_RELEASE && event->button == 3)
+        if (!window->has_popover() && event->type == GDK_BUTTON_RELEASE && event->button == 3)
         {
             conf_plugin = "gtkmm";
 

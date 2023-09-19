@@ -411,6 +411,12 @@ void WayfireAutohidingWindow::unset_active_popover(WayfireMenuButton& button)
     }
 }
 
+bool WayfireAutohidingWindow::has_popover(void)
+{
+    if (this->active_button) return true;
+    return false;
+}
+
 void WayfireAutohidingWindow::update_autohide()
 {
     if (autohide_locked)

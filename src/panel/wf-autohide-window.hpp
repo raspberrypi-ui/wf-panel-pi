@@ -77,6 +77,7 @@ class WayfireAutohidingWindow : public Gtk::Window
      * making it active with set_active_popover()
      */
     void unset_active_popover(WayfireMenuButton& popover);
+    bool has_popover();
 
   private:
     WayfireOutput *output;
