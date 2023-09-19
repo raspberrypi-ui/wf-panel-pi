@@ -422,8 +422,6 @@ void volumepulse_init (VolumePulsePlugin *vol)
     gtk_widget_add_events (vol->plugin[1], GDK_SCROLL_MASK);
 
     /* Set up variables */
-    //vol->input_control = FALSE;
-
     vol->menu_devices[0] = NULL;
     vol->menu_devices[1] = NULL;
     vol->popup_window[0] = NULL;
