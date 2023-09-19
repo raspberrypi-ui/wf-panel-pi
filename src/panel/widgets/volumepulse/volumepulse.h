@@ -103,7 +103,6 @@ typedef struct {
     gboolean bt_force_hsp;              /* Flag to override automatic profile selection */
     int bt_retry_count;                 /* Counter for polling read of profile on connection */
     guint bt_retry_timer;               /* Timer for retrying post-connection events */
-    gboolean bt_inited;
 } VolumePulsePlugin;
 
 #endif

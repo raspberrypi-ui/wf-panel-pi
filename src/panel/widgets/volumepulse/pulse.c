@@ -285,13 +285,6 @@ static void pa_cb_subscription (pa_context *, pa_subscription_event_type_t event
         default : type = "unknown";
     }
 
-	/* It is only safe to start looking for Bluetooth devices once the Pulse server is up, so wait for the first New card event */
-    if (!vol->bt_inited && newcard == 2)
-    {
-		vol->bt_inited = TRUE;
-		bluetooth_init (vol);
-	}
-
 #ifdef DEBUG_ON
     DEBUG ("PulseAudio event : %s %s", type, fac);
 #endif
