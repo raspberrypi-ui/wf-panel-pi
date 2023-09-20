@@ -88,6 +88,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fcntl.h>
 
 #include "menu.h"
+#include "../launcher.h"
 //#include "plugin.h"
 
 const char *logout_cmd = "lxde-pi-shutdown-helper";
@@ -424,6 +425,12 @@ static void handle_menu_item_add_to_desktop (GtkMenuItem* item, GtkWidget* mi)
     fm_path_list_unref (files);
 }
 
+static void handle_menu_item_add_to_launcher (GtkMenuItem* item, GtkWidget* mi)
+{
+    FmFileInfo *fi = g_object_get_qdata (G_OBJECT (mi), sys_menu_item_quark);
+    add_to_launcher (fm_file_info_get_name (fi));
+}
+
 static void handle_menu_item_properties (GtkMenuItem* item, GtkWidget* mi)
 {
     FmFileInfo *fi = g_object_get_qdata (G_OBJECT (mi), sys_menu_item_quark);
@@ -466,8 +473,12 @@ static gboolean handle_menu_item_button_press (GtkWidget* mi, GdkEventButton* ev
 
         menu = gtk_menu_new ();
 
-        item = gtk_menu_item_new_with_label (_("Add to desktop"));
+        item = gtk_menu_item_new_with_label (_("Add to Desktop"));
         g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_add_to_desktop), mi);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+
+        item = gtk_menu_item_new_with_label (_("Add to Launcher"));
+        g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_add_to_launcher), mi);
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
         item = gtk_separator_menu_item_new ();

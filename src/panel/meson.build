@@ -51,7 +51,8 @@ widget_sources = files(
   'widgets/batt/batt.c',
   'widgets/batt/batt_sys.c',
   'widgets/window-list/window-list.cpp',
-  'widgets/window-list/toplevel.cpp'
+  'widgets/window-list/toplevel.cpp',
+  'widgets/launcher.c'
 )
 
 resource_data = files(

@@ -8,6 +8,9 @@
 #include <iostream>
 #include <gtk-utils.hpp>
 #include <wf-shell-app.hpp>
+extern "C" {
+#include "launcher.h"
+}
 
 // create launcher from a .desktop file or app-id
 struct DesktopLauncherInfo : public LauncherInfo
@@ -57,6 +60,11 @@ struct DesktopLauncherInfo : public LauncherInfo
         app_info->launch(std::vector<Glib::RefPtr<Gio::File>>());
     }
 
+    std::string get_filename()
+    {
+        return app_info->get_filename();
+    }
+
     virtual ~DesktopLauncherInfo()
     {}
 };
@@ -96,6 +104,11 @@ struct FileLauncherInfo : public LauncherInfo
     void execute()
     {
         Glib::spawn_command_line_async("/bin/bash -c \'" + command + "\'");
+    }
+
+    std::string get_filename()
+    {
+        return "";
     }
 
     virtual ~FileLauncherInfo()
@@ -161,6 +174,13 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
         .connect(sigc::mem_fun(this, &WfLauncherButton::on_scale_update));
 
     evbox.set_tooltip_text(info->get_text());
+
+    remove.set_label (_("Remove from Launcher"));
+    remove.signal_activate().connect(sigc::mem_fun(this, &WfLauncherButton::on_remove));
+    menu.attach (remove, 0, 1, 0, 1);
+    menu.attach_to_widget (evbox);
+    menu.show_all();
+
     return true;
 }
 
@@ -185,9 +205,19 @@ bool WfLauncherButton::on_click(GdkEventButton *ev)
         }
     }
 
-    if (ev->button == 3) return false;
+    if ((ev->button == 3) && (ev->type == GDK_BUTTON_PRESS))
+    {
+        menu.popup (ev->button, ev->time);
+    }
 
     return true;
+}
+
+void WfLauncherButton::on_remove ()
+{
+    std::string str = info->get_filename();
+    size_t last = str.find_last_of('/');
+    remove_from_launcher (str.substr(last + 1).c_str());
 }
 
 static int get_animation_duration(int start, int end, int scale)

@@ -9,6 +9,8 @@
 #include <gtkmm/hvbox.h>
 #include <gtkmm/eventbox.h>
 #include <gtkmm/button.h>
+#include <gtkmm/menu.h>
+#include <gtkmm/menuitem.h>
 #include <wayfire/util/duration.hpp>
 
 #define LAUNCHERS_ICON_SCALE 1.0
@@ -17,6 +19,7 @@ struct LauncherInfo
 {
     virtual Glib::RefPtr<Gdk::Pixbuf> get_pixbuf(int32_t size) = 0;
     virtual std::string get_text() = 0;
+    virtual std::string get_filename() = 0;
     virtual void execute() = 0;
     virtual ~LauncherInfo()
     {}
@@ -43,6 +46,8 @@ struct WfLauncherButton
 
     Gtk::Image image;
     Gtk::Button evbox;
+    Gtk::Menu menu;
+    Gtk::MenuItem remove;
     LauncherInfo *info = NULL;
     LauncherAnimation current_size{wf::create_option(1000), 0, 0};
 
@@ -58,6 +63,7 @@ struct WfLauncherButton
     bool on_leave(GdkEventCrossing *ev);
     bool on_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
     void on_scale_update();
+    void on_remove();
 
     void set_size(int size);
 };
