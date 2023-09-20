@@ -1480,7 +1480,7 @@ msgstr ""
 
 #: ../src/panel/widgets/smenu/menu.c:489
 msgid "Add to desktop"
-msgstr "Add to desktop"
+msgstr "Add to Desktop"
 
 #: ../src/panel/widgets/smenu/menu.c:496
 msgid "Properties"

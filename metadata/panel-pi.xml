@@ -110,18 +110,6 @@
 		<_long>High values may cause jittery animations</_long>
 		<default>200</default>
 	</option>
-	<option name="launcher_browser" type="string">
-		<_short>Launcher Browser</_short>
-		<default>lxde-x-www-browser.desktop</default>
-	</option>
-	<option name="launcher_filemanager" type="string">
-		<_short>Launcher File Manager</_short>
-		<default>pcmanfm.desktop</default>
-	</option>
-	<option name="launcher_terminal" type="string">
-		<_short>Launcher Terminal</_short>
-		<default>lxterminal.desktop</default>
-	</option>
 	</group>
 	<group>
 	<_short>Clock</_short>

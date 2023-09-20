@@ -473,7 +473,7 @@ static gboolean handle_menu_item_button_press (GtkWidget* mi, GdkEventButton* ev
 
         menu = gtk_menu_new ();
 
-        item = gtk_menu_item_new_with_label (_("Add to Desktop"));
+        item = gtk_menu_item_new_with_label (_("Add to desktop"));
         g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_add_to_desktop), mi);
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
