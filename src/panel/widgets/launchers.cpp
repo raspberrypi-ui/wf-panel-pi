@@ -318,6 +318,7 @@ launcher_container WayfireLaunchers::get_launchers_from_config()
     for (auto opt : section->get_registered_options())
     {
         /* we have a command */
+        if (opt->get_value_str().empty()) continue;
         if (begins_with(opt->get_name(), file_cmd_prefix))
         {
             /* extract launcher name, i.e the string after the prefix */
