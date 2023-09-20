@@ -109,7 +109,7 @@ static char *bt_from_pa_name (const char *pa_name)
 static void bt_cb_name_owned (GDBusConnection *, const gchar *name, const gchar *, gpointer user_data)
 {
     VolumePulsePlugin *vol = (VolumePulsePlugin *) user_data;
-    DEBUG ("Name %s owned on D-Bus (vol)", name);
+    DEBUG ("Name %s owned on D-Bus", name);
 
     /* BlueZ exists - get an object manager for it */
     GError *error = NULL;
