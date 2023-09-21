@@ -10,6 +10,9 @@
 #include <unistd.h>
 #include <libfm/fm-gtk.h>
 #include <sys/time.h>
+extern "C" {
+#include "widgets/launcher.h"
+}
 
 std::string WayfireShellApp::get_config_file()
 {
@@ -83,35 +86,6 @@ static struct wl_registry_listener registry_listener =
     &registry_remove_object
 };
 
-static void init_config (void)
-{
-    char *str;
-    gsize len;
-
-    // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
-
-    // read in data from file to a key file
-    GKeyFile *kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, user_file, (GKeyFileFlags) (G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS), NULL);
-
-    if (!g_key_file_has_group (kf, "panel"))
-    {
-        // write the default launcher config
-        g_key_file_set_string (kf, "panel", "launcher_000001", "lxde-x-www-browser.desktop");
-        g_key_file_set_string (kf, "panel", "launcher_000002", "pcmanfm.desktop");
-        g_key_file_set_string (kf, "panel", "launcher_000003", "lxterminal.desktop");
-
-        // write the modified key file out
-        str = g_key_file_to_data (kf, &len, NULL);
-        g_file_set_contents (user_file, str, len, NULL);
-        g_free (str);
-    }
-
-    g_key_file_free (kf);
-    g_free (user_file);
-}
-
 void WayfireShellApp::on_activate()
 {
 #ifndef USE_MAIN
@@ -141,7 +115,7 @@ void WayfireShellApp::on_activate()
 
     // setup config
     close (open (get_config_file ().c_str(), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
-    init_config ();
+    init_launchers ();
 
     this->config = wf::config::build_configuration(
         xmldirs, RESOURCE_DIR "/defaults.ini",

@@ -30,6 +30,35 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Helper functions for modifying launchers in panel config */
 
+void init_launchers (void)
+{
+    char *str;
+    gsize len;
+
+    // construct the file path
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+
+    // read in data from file to a key file
+    GKeyFile *kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, user_file, (GKeyFileFlags) (G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS), NULL);
+
+    if (!g_key_file_has_group (kf, "panel"))
+    {
+        // write the default launcher config
+        g_key_file_set_string (kf, "panel", "launcher_000001", "lxde-x-www-browser.desktop");
+        g_key_file_set_string (kf, "panel", "launcher_000002", "pcmanfm.desktop");
+        g_key_file_set_string (kf, "panel", "launcher_000003", "lxterminal.desktop");
+
+        // write the modified key file out
+        str = g_key_file_to_data (kf, &len, NULL);
+        g_file_set_contents (user_file, str, len, NULL);
+        g_free (str);
+    }
+
+    g_key_file_free (kf);
+    g_free (user_file);
+}
+
 void add_to_launcher (const char *name)
 {
     char *str, *lname;
