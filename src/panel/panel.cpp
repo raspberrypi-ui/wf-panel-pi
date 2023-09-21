@@ -305,30 +305,18 @@ class WayfirePanel::impl
                                 if (px >= alloc.x && px <= alloc.x + alloc.width)
                                 {
                                     conf_plugin = plugin->get_name();
-                                    break;
+                                    if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
+                                    else cplug.set_sensitive (false);
+                                    show_menu_with_kbd (GTK_WIDGET (plugin->gobj()), GTK_WIDGET (menu.gobj()));
+                                    return true;
                                 }
                             }
                         }
                     }
                 }
             }
-
-            if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
-            else cplug.set_sensitive (false);
-
-            // simulate a leave event on the button to hide the prelight */
-            GdkEvent *nev = gdk_event_new (GDK_LEAVE_NOTIFY);
-            GdkEventCrossing *ev = (GdkEventCrossing *) nev;
-            ev->window = event->window;
-            ev->time = GDK_CURRENT_TIME;
-            ev->mode = GDK_CROSSING_NORMAL;
-            ev->send_event = TRUE;
-            gtk_main_do_event (nev);
-
-            menu.popup (event->button, event->time);
-            return true;
         }
-        else return false;
+        return false;
     }
 
     void do_configure()
