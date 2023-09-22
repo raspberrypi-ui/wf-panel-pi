@@ -59,9 +59,14 @@ static void menu_hidden (GtkWidget *, gpointer)
 
 static void committed (GdkWindow *win, gpointer)
 {
+    // spoof event just to suppress warnings...
+    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_RELEASE);
+    ev->send_event = TRUE;
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+
     g_signal_handler_disconnect (win, m_handle);
     g_signal_connect (m_menu, "hide", G_CALLBACK (menu_hidden), NULL);
-    gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+    gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -76,6 +81,7 @@ void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
     ev->time = GDK_CURRENT_TIME;
     ev->mode = GDK_CROSSING_NORMAL;
     ev->send_event = TRUE;
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
     gtk_main_do_event ((GdkEvent *) ev);
 
     GtkWidget *panel = gtk_widget_get_parent (button);
