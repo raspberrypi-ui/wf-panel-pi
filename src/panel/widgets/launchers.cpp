@@ -10,6 +10,7 @@
 #include <wf-shell-app.hpp>
 extern "C" {
 #include "launcher.h"
+#include "lxutils.h"
 }
 
 // create launcher from a .desktop file or app-id
@@ -205,9 +206,9 @@ bool WfLauncherButton::on_click(GdkEventButton *ev)
         }
     }
 
-    if ((ev->button == 3) && (ev->type == GDK_BUTTON_PRESS))
+    if ((ev->button == 3) && (ev->type == GDK_BUTTON_RELEASE))
     {
-        menu.popup (ev->button, ev->time);
+        show_menu_with_kbd (GTK_WIDGET (evbox.gobj()), GTK_WIDGET (menu.gobj()));
     }
 
     return true;

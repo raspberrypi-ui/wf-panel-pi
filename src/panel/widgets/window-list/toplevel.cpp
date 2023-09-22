@@ -17,6 +17,9 @@
 #include "gtk-utils.hpp"
 #include "panel.hpp"
 #include <cassert>
+extern "C" {
+#include "lxutils.h"
+}
 
 namespace
 {
@@ -70,7 +73,7 @@ class WayfireToplevel::impl
             sigc::mem_fun(this, &WayfireToplevel::impl::on_allocation_changed));
         button.property_scale_factor().signal_changed()
             .connect(sigc::mem_fun(this, &WayfireToplevel::impl::on_scale_update));
-        button.signal_button_press_event().connect(
+        button.signal_button_release_event().connect(
             sigc::mem_fun(this, &WayfireToplevel::impl::on_button_press_event));
 
         icon_size.set_callback (sigc::mem_fun (*this, &WayfireToplevel::impl::on_scale_update));
@@ -188,9 +191,9 @@ class WayfireToplevel::impl
 
     bool on_button_press_event(GdkEventButton *event)
     {
-        if ((event->type == GDK_BUTTON_PRESS) && (event->button == 3))
+        if ((event->type == GDK_BUTTON_RELEASE) && (event->button == 3))
         {
-            menu.popup(event->button, event->time);
+            show_menu_with_kbd (GTK_WIDGET (button.gobj()), GTK_WIDGET (menu.gobj()));
             return true; // It has been handled.
         } else
         {
