@@ -238,10 +238,15 @@ static void show_info (GtkWidget *widget, gpointer user_data)
 /* Plugin functions */
 
 /* Handler for menu button click */
-static void power_button_press_event (GtkButton *widget, PowerPlugin *pt)
+static gboolean power_button_press_event (GtkButton *widget, GdkEventButton *event, PowerPlugin *pt)
 {
-    gtk_widget_show_all (pt->menu);
-    show_menu_with_kbd (pt->plugin, pt->menu);
+    if (event->button == 1)
+    {
+        gtk_widget_show_all (pt->menu);
+        show_menu_with_kbd (pt->plugin, pt->menu);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 /* Handler for system config changed message from panel */
@@ -265,7 +270,7 @@ void power_init (PowerPlugin *pt)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (pt->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (pt->plugin, "clicked", G_CALLBACK (power_button_press_event), pt);
+    g_signal_connect (pt->plugin, "button-release-event", G_CALLBACK (power_button_press_event), pt);
 
     pt->show_icon = 0;
     pt->oc_thread = NULL;

@@ -330,12 +330,17 @@ static GtkWidget *create_menuitem (EjecterPlugin *ej, GDrive *d)
 }
 
 /* Handler for menu button click */
-static void ejecter_button_press_event (GtkWidget *widget, EjecterPlugin * ej)
+static gboolean ejecter_button_press_event (GtkWidget *widget, GdkEventButton *event, EjecterPlugin * ej)
 {
     //EjecterPlugin * ej = lxpanel_plugin_get_data (widget);
 
     /* Show or hide the popup menu on left-click */
-    show_menu (ej);
+    if (event->button == 1)
+    {
+        show_menu (ej);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 /* Handler for system config changed message from panel */
@@ -407,7 +412,7 @@ void ej_init (EjecterPlugin *ej)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (ej->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (ej->plugin, "clicked", G_CALLBACK (ejecter_button_press_event), ej);
+    g_signal_connect (ej->plugin, "button-release-event", G_CALLBACK (ejecter_button_press_event), ej);
 
     /* Set up variables */
     ej->popup = NULL;
