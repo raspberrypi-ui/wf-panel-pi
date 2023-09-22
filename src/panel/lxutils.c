@@ -50,7 +50,9 @@ static GtkLayerShellLayer old_layer;
 
 static void menu_hidden (GtkWidget *, gpointer)
 {
-    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (m_button)));
+    GtkWidget *panel = gtk_widget_get_parent (m_button);
+    while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
+        panel = gtk_widget_get_parent (panel);
     gtk_layer_set_layer (GTK_WINDOW (panel), old_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
 }
@@ -76,7 +78,9 @@ void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
     ev->send_event = TRUE;
     gtk_main_do_event ((GdkEvent *) ev);
 
-    GtkWidget *panel = gtk_widget_get_parent (gtk_widget_get_parent (gtk_widget_get_parent (button)));
+    GtkWidget *panel = gtk_widget_get_parent (button);
+    while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
+        panel = gtk_widget_get_parent (panel);
     m_button = button;
     m_menu = menu;
     old_layer = gtk_layer_get_layer (GTK_WINDOW (panel));
