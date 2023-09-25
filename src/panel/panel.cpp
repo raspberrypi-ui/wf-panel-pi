@@ -278,9 +278,7 @@ class WayfirePanel::impl
         {
             conf_plugin = "gtkmm";
 
-            // remap mouse coords to parent window coords
-            gdouble px, py;
-            gdk_window_coords_to_parent (event->window, event->x, event->y, &px, &py);
+            // get mouse coords to parent window coords
 
             // child of window is first hbox
             std::vector<Gtk::Widget*> winch = window->get_children ();
@@ -299,10 +297,16 @@ class WayfirePanel::impl
                             for (auto &plugin : plugins)
                             {
                                 GtkAllocation alloc;
+                                int x, y;
+
+                                if (!gtk_widget_is_visible (GTK_WIDGET (plugin->gobj()))) continue;
+
+                                gdk_window_get_device_position (gtk_widget_get_window (GTK_WIDGET (plugin->gobj())),
+                                    gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
                                 gtk_widget_get_allocation (GTK_WIDGET (plugin->gobj()), &alloc);
 
                                 // check if the x position of the mouse is within the plugin
-                                if (px >= alloc.x && px <= alloc.x + alloc.width)
+                                if (x >= alloc.x && x <= alloc.x + alloc.width)
                                 {
                                     conf_plugin = plugin->get_name();
                                     if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
