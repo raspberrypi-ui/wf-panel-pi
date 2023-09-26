@@ -88,9 +88,7 @@ static struct wl_registry_listener registry_listener =
 
 void WayfireShellApp::on_activate()
 {
-#ifndef USE_MAIN
     app->hold();
-#endif
 
     fm_gtk_init (NULL);
 
@@ -198,7 +196,6 @@ void WayfireShellApp::rem_output(GMonitor monitor)
 
 WayfireShellApp::WayfireShellApp(int argc, char **argv)
 {
-#ifndef USE_MAIN
     app = Gtk::Application::create(argc, argv, "",
         Gio::APPLICATION_HANDLES_COMMAND_LINE);
     app->signal_activate().connect_notify(
@@ -212,9 +209,6 @@ WayfireShellApp::WayfireShellApp(int argc, char **argv)
     {
         app->activate();
     });
-#else
-    on_activate();
-#endif
 }
 
 WayfireShellApp::~WayfireShellApp()
@@ -228,9 +222,7 @@ WayfireShellApp& WayfireShellApp::get()
 
 void WayfireShellApp::run()
 {
-#ifndef USE_MAIN
     app->run();
-#endif
 }
 
 /* -------------------------- WayfireOutput --------------------------------- */
