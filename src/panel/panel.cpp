@@ -7,6 +7,8 @@ extern "C" {
 #include <gtkmm/headerbar.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/application.h>
+#include <gdkmm/display.h>
+#include <gdkmm/seat.h>
 #include <gdk/gdkwayland.h>
 #include <gtk-layer-shell.h>
 
@@ -291,23 +293,22 @@ class WayfirePanel::impl
                             std::vector<Gtk::Widget*> plugins = chbox->get_children ();
                             for (auto &plugin : plugins)
                             {
-                                GtkAllocation alloc;
                                 int x, y;
+                                Gdk::ModifierType mod;
 
-                                if (!gtk_widget_is_visible (GTK_WIDGET (plugin->gobj()))) continue;
+                                if (!plugin->is_visible ()) continue;
 
                                 // the task list is a scrolled window - ignore it!
-                                if (GTK_IS_SCROLLED_WINDOW (GTK_WIDGET (plugin->gobj()))) continue;
+                                if (GTK_IS_SCROLLED_WINDOW (plugin->gobj())) continue;
 
                                 // spacers are hboxes - ignore them too...
-                                if (GTK_IS_BOX (GTK_WIDGET (plugin->gobj()))) continue;
-
-                                gdk_window_get_device_position (gtk_widget_get_window (GTK_WIDGET (plugin->gobj())),
-                                    gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
-                                gtk_widget_get_allocation (GTK_WIDGET (plugin->gobj()), &alloc);
+                                if (GTK_IS_BOX (plugin->gobj())) continue;
 
                                 // check if the x position of the mouse is within the plugin
-                                if (x >= alloc.x && x <= alloc.x + alloc.width)
+                                plugin->get_window()->get_device_position (Gdk::Display::get_default()->get_default_seat()->get_pointer (), x, y, mod);
+                                Gtk::Allocation alloc = plugin->get_allocation ();
+
+                                if (x >= alloc.get_x () && x <= alloc.get_x () + alloc.get_width())
                                 {
                                     conf_plugin = plugin->get_name();
                                     if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
