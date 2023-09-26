@@ -50,14 +50,14 @@ static GtkLayerShellLayer old_layer;
 
 static void menu_hidden (GtkWidget *, gpointer)
 {
-    GtkWidget *panel = gtk_widget_get_parent (m_button);
+    GtkWidget *panel = m_button;
     while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
         panel = gtk_widget_get_parent (panel);
     gtk_layer_set_layer (GTK_WINDOW (panel), old_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
 }
 
-static void committed (GdkWindow *win, gpointer)
+static void committed (GdkWindow *win, gpointer ptr)
 {
     // spoof event just to suppress warnings...
     GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_RELEASE);
@@ -66,7 +66,17 @@ static void committed (GdkWindow *win, gpointer)
 
     g_signal_handler_disconnect (win, m_handle);
     g_signal_connect (m_menu, "hide", G_CALLBACK (menu_hidden), NULL);
-    gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    if (ptr == NULL)
+        gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    else
+    {
+        GtkAllocation alloc;
+        int x, y;
+        gtk_widget_get_allocation (GTK_WIDGET (m_button), &alloc);
+        gdk_window_get_device_position (gtk_widget_get_window (m_button), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
+        GdkRectangle rect = {x, 0, 0, alloc.height};
+        gtk_menu_popup_at_rect (GTK_MENU (m_menu), gtk_widget_get_window (m_button), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    }
 }
 
 /*----------------------------------------------------------------------------*/
@@ -84,7 +94,7 @@ void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
     gtk_main_do_event ((GdkEvent *) ev);
 
-    GtkWidget *panel = gtk_widget_get_parent (button);
+    GtkWidget *panel = button;
     while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
         panel = gtk_widget_get_parent (panel);
     m_button = button;
@@ -93,6 +103,16 @@ void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
     gtk_layer_set_layer (GTK_WINDOW (panel), GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), TRUE);
     m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), NULL);
+}
+
+void show_menu_with_kbd_at_pointer (GtkWidget *panel, GtkWidget *menu)
+{
+    m_button = panel;
+    m_menu = menu;
+    old_layer = gtk_layer_get_layer (GTK_WINDOW (panel));
+    gtk_layer_set_layer (GTK_WINDOW (panel), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), TRUE);
+    m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), (gpointer) 1);
 }
 
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)

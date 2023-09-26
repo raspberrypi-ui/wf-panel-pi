@@ -271,6 +271,7 @@ class WayfirePanel::impl
         if (!window->has_popover() && event->type == GDK_BUTTON_RELEASE && event->button == 3)
         {
             conf_plugin = "gtkmm";
+            cplug.set_sensitive (false);
 
             // get mouse coords to parent window coords
 
@@ -295,6 +296,12 @@ class WayfirePanel::impl
 
                                 if (!gtk_widget_is_visible (GTK_WIDGET (plugin->gobj()))) continue;
 
+                                // the task list is a scrolled window - ignore it!
+                                if (GTK_IS_SCROLLED_WINDOW (GTK_WIDGET (plugin->gobj()))) continue;
+
+                                // spacers are hboxes - ignore them too...
+                                if (GTK_IS_BOX (GTK_WIDGET (plugin->gobj()))) continue;
+
                                 gdk_window_get_device_position (gtk_widget_get_window (GTK_WIDGET (plugin->gobj())),
                                     gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
                                 gtk_widget_get_allocation (GTK_WIDGET (plugin->gobj()), &alloc);
@@ -304,13 +311,15 @@ class WayfirePanel::impl
                                 {
                                     conf_plugin = plugin->get_name();
                                     if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
-                                    else cplug.set_sensitive (false);
                                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj()), GTK_WIDGET (menu.gobj()));
                                     return true;
                                 }
                             }
                         }
                     }
+                    // not matched any widgets - on the empty area of the bar...
+                    show_menu_with_kbd_at_pointer (GTK_WIDGET (window->gobj()), GTK_WIDGET (menu.gobj()));
+                    return true;
                 }
             }
         }
