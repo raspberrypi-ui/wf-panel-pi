@@ -22,11 +22,8 @@ extern "C" {
 #include "panel.hpp"
 #include "gtk-utils.hpp"
 
-#include "widgets/battery.hpp"
-#include "widgets/menu.hpp"
 #include "widgets/clock.hpp"
 #include "widgets/launchers.hpp"
-#include "widgets/network.hpp"
 #include "widgets/spacing.hpp"
 #include "widgets/volumepulse.hpp"
 #include "widgets/smenu.hpp"
@@ -362,11 +359,6 @@ class WayfirePanel::impl
 
     Widget widget_from_name(std::string name)
     {
-        if (name == "menu")
-        {
-            return Widget(new WayfireMenu());
-        }
-
         if (name == "launchers")
         {
             return Widget(new WayfireLaunchers());
@@ -375,16 +367,6 @@ class WayfirePanel::impl
         if (name == "clock")
         {
             return Widget(new WayfireClock());
-        }
-
-        if (name == "network")
-        {
-            return Widget(new WayfireNetworkInfo());
-        }
-
-        if (name == "battery")
-        {
-            return Widget(new WayfireBatteryInfo());
         }
 
         if (name == "volumepulse")

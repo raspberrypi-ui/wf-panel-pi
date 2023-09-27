@@ -1,11 +1,8 @@
 gnome = import('gnome')
 
 widget_sources = files(
-  'widgets/battery.cpp',
-  'widgets/menu.cpp',
   'widgets/clock.cpp',
   'widgets/launchers.cpp',
-  'widgets/network.cpp',
   'widgets/spacing.cpp',
   'widgets/volumepulse.cpp',
   'widgets/volumepulse/volumepulse.c',
