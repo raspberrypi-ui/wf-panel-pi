@@ -1,3 +1,9 @@
+wf-panel-pi (0.44) bookworm; urgency=medium
+
+  * Remove unused widgets
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 27 Sep 2023 09:11:33 +0100
+
 wf-panel-pi (0.43) bookworm; urgency=medium
 
   * Add right-click menu on empty taskbar
