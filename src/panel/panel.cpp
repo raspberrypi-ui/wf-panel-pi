@@ -219,7 +219,7 @@ class WayfirePanel::impl
 
         monitor_num.set_callback (update_panels);
 
-        gtk_widget_set_name (GTK_WIDGET (window->gobj()), "PanelToplevel");
+        window->set_name ("PanelToplevel");
 #if 0
         bg_color.set_callback(on_window_color_updated);
         on_window_color_updated(); // set initial color
