@@ -298,11 +298,8 @@ class WayfirePanel::impl
 
                                 if (!plugin->is_visible ()) continue;
 
-                                // the task list is a scrolled window - ignore it!
-                                if (GTK_IS_SCROLLED_WINDOW (plugin->gobj())) continue;
-
-                                // spacers are hboxes - ignore them too...
-                                if (GTK_IS_BOX (plugin->gobj())) continue;
+                                // ignore task list (scrolled window) and spacers (boxes)
+                                if (GTK_IS_SCROLLED_WINDOW (plugin->gobj()) || GTK_IS_BOX (plugin->gobj())) continue;
 
                                 // check if the x position of the mouse is within the plugin
                                 plugin->get_window()->get_device_position (Gdk::Display::get_default()->get_default_seat()->get_pointer (), x, y, mod);
@@ -661,11 +658,10 @@ void WayfirePanelApp::update_panels ()
 
     int mon_num = priv->panel->set_monitor ();
 
-    GdkDisplay *disp = gdk_display_get_default ();
-    GdkMonitor *mon = gdk_display_get_monitor (disp, mon_num);
+    auto mon = Gdk::Display::get_default()->get_monitor (mon_num);
     for (auto& p : priv->outputs)
     {
-        if (p->monitor->gobj () != mon)
+        if (p->monitor != mon)
             priv->dummies.push_back (std::unique_ptr<WayfirePanel> (new WayfirePanel(p, false)));
     }
 }
