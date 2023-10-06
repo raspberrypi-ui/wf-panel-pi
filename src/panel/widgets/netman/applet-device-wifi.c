@@ -514,7 +514,7 @@ wifi_new_auto_connection (NMDevice *device,
 
 	/* Make the new connection available only for the current user */
 	s_con = (NMSettingConnection *) nm_setting_connection_new ();
-	nm_setting_connection_add_permission (s_con, "user", g_get_user_name (), NULL);
+	//nm_setting_connection_add_permission (s_con, "user", g_get_user_name (), NULL);
 	nm_connection_add_setting (connection, NM_SETTING (s_con));
 
 	ssid = nm_access_point_get_ssid (ap);

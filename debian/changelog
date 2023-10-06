@@ -1,3 +1,9 @@
+wf-panel-pi (0.45) bookworm; urgency=medium
+
+  * Create wifi connections so all users can connect
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 06 Oct 2023 10:08:50 +0100
+
 wf-panel-pi (0.44) bookworm; urgency=medium
 
   * Remove unused widgets
