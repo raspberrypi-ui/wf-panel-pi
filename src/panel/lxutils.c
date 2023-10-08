@@ -40,7 +40,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
-static GtkWidget *m_button, *m_menu;
+static GtkWidget *m_button, *m_menu, *m_panel;
 static gulong m_handle;
 static GtkLayerShellLayer old_layer;
 
@@ -48,16 +48,21 @@ static GtkLayerShellLayer old_layer;
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
-static void menu_hidden (GtkWidget *, gpointer)
+static GtkWidget *find_panel (GtkWidget *child)
 {
-    GtkWidget *panel = m_button;
+    GtkWidget *panel = child;
     while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
         panel = gtk_widget_get_parent (panel);
+    return panel;
+}
+
+static void menu_hidden (GtkWidget *, gpointer panel)
+{
     gtk_layer_set_layer (GTK_WINDOW (panel), old_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
 }
 
-static void committed (GdkWindow *win, gpointer ptr)
+static void committed (GdkWindow *win, gpointer)
 {
     // spoof event just to suppress warnings...
     GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_RELEASE);
@@ -65,17 +70,19 @@ static void committed (GdkWindow *win, gpointer ptr)
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
 
     g_signal_handler_disconnect (win, m_handle);
-    g_signal_connect (m_menu, "hide", G_CALLBACK (menu_hidden), NULL);
-    if (ptr == NULL)
+    g_signal_connect (m_menu, "hide", G_CALLBACK (menu_hidden), m_panel);
+    if (m_button)
+    {
         gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    }
     else
     {
         GtkAllocation alloc;
         int x, y;
-        gtk_widget_get_allocation (GTK_WIDGET (m_button), &alloc);
-        gdk_window_get_device_position (gtk_widget_get_window (m_button), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
+        gtk_widget_get_allocation (GTK_WIDGET (m_panel), &alloc);
+        gdk_window_get_device_position (gtk_widget_get_window (m_panel), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
         GdkRectangle rect = {x, 0, 0, alloc.height};
-        gtk_menu_popup_at_rect (GTK_MENU (m_menu), gtk_widget_get_window (m_button), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+        gtk_menu_popup_at_rect (GTK_MENU (m_menu), gtk_widget_get_window (m_panel), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
     }
 }
 
@@ -86,36 +93,32 @@ static void committed (GdkWindow *win, gpointer ptr)
 void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
 {
     // simulate a leave event on the button to hide the prelight */
-    if (GTK_IS_BUTTON (button))
-    {
-        GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
-        ev->window = gtk_button_get_event_window (GTK_BUTTON (button));
-        ev->time = GDK_CURRENT_TIME;
-        ev->mode = GDK_CROSSING_NORMAL;
-        ev->send_event = TRUE;
-        gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-        gtk_main_do_event ((GdkEvent *) ev);
-    }
+    GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
+    ev->window = gtk_button_get_event_window (GTK_BUTTON (button));
+    ev->time = GDK_CURRENT_TIME;
+    ev->mode = GDK_CROSSING_NORMAL;
+    ev->send_event = TRUE;
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+    gtk_main_do_event ((GdkEvent *) ev);
 
-    GtkWidget *panel = button;
-    while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
-        panel = gtk_widget_get_parent (panel);
+    m_panel = find_panel (button);
     m_button = button;
     m_menu = menu;
-    old_layer = gtk_layer_get_layer (GTK_WINDOW (panel));
-    gtk_layer_set_layer (GTK_WINDOW (panel), GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), TRUE);
-    m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), NULL);
+    old_layer = gtk_layer_get_layer (GTK_WINDOW (m_panel));
+    gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
+    m_handle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), NULL);
 }
 
-void show_menu_with_kbd_at_pointer (GtkWidget *panel, GtkWidget *menu)
+void show_menu_with_kbd_at_pointer (GtkWidget *widget, GtkWidget *menu)
 {
-    m_button = panel;
+    m_panel = find_panel (widget);
+    m_button = NULL;
     m_menu = menu;
-    old_layer = gtk_layer_get_layer (GTK_WINDOW (panel));
-    gtk_layer_set_layer (GTK_WINDOW (panel), GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), TRUE);
-    m_handle = g_signal_connect (gtk_widget_get_window (panel), "committed", G_CALLBACK (committed), (gpointer) 1);
+    old_layer = gtk_layer_get_layer (GTK_WINDOW (m_panel));
+    gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
+    m_handle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), NULL);
 }
 
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
