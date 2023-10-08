@@ -82,7 +82,7 @@ void StatusNotifierItem::init_widget()
         {
             if (menu)
             {
-                show_menu_with_kbd (GTK_WIDGET (this->gobj()), GTK_WIDGET (menu->gobj()));
+                show_menu_with_kbd_at_pointer (GTK_WIDGET (this->gobj()), GTK_WIDGET (menu->gobj()));
             } else
             {
                 item_proxy->call("ContextMenu", ev_coords);
