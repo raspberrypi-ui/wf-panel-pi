@@ -86,13 +86,16 @@ static void committed (GdkWindow *win, gpointer ptr)
 void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
 {
     // simulate a leave event on the button to hide the prelight */
-    GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
-    ev->window = gtk_button_get_event_window (GTK_BUTTON (button));
-    ev->time = GDK_CURRENT_TIME;
-    ev->mode = GDK_CROSSING_NORMAL;
-    ev->send_event = TRUE;
-    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-    gtk_main_do_event ((GdkEvent *) ev);
+    if (GTK_IS_BUTTON (button))
+    {
+        GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
+        ev->window = gtk_button_get_event_window (GTK_BUTTON (button));
+        ev->time = GDK_CURRENT_TIME;
+        ev->mode = GDK_CROSSING_NORMAL;
+        ev->send_event = TRUE;
+        gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+        gtk_main_do_event ((GdkEvent *) ev);
+    }
 
     GtkWidget *panel = button;
     while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
