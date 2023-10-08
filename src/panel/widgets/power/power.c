@@ -122,28 +122,31 @@ static gpointer overcurrent_thread (gpointer data)
     {
         if (FD_ISSET (pt->fd_oc, &fds))
         {
-            dev = udev_monitor_receive_device (pt->udev_mon_oc);
-            if (dev)
+            if (pt->udev_mon_lv)
             {
-                if (!g_strcmp0 (udev_device_get_action (dev), "change"))
+                dev = udev_monitor_receive_device (pt->udev_mon_oc);
+                if (dev)
                 {
-                    path = g_strdup_printf ("/sys/%s/disable", udev_device_get_property_value (dev, "OVER_CURRENT_PORT"));
-                    fp = fopen (path, "rb");
-                    if (fp)
+                    if (!g_strcmp0 (udev_device_get_action (dev), "change"))
                     {
-                        if (fgetc (fp) == 0x31)
+                        path = g_strdup_printf ("/sys/%s/disable", udev_device_get_property_value (dev, "OVER_CURRENT_PORT"));
+                        fp = fopen (path, "rb");
+                        if (fp)
                         {
-                            if (sscanf (udev_device_get_property_value (dev, "OVER_CURRENT_COUNT"), "%d", &val) == 1 && val != pt->last_oc)
+                            if (fgetc (fp) == 0x31)
                             {
-                                gdk_threads_add_idle (cb_overcurrent, data);
-                                pt->last_oc = val;
+                                if (sscanf (udev_device_get_property_value (dev, "OVER_CURRENT_COUNT"), "%d", &val) == 1 && val != pt->last_oc)
+                                {
+                                    gdk_threads_add_idle (cb_overcurrent, data);
+                                    pt->last_oc = val;
+                                }
                             }
+                            fclose (fp);
                         }
-                        fclose (fp);
+                        g_free (path);
                     }
-                    g_free (path);
+                    udev_device_unref (dev);
                 }
-                udev_device_unref (dev);
             }
         }
     }
@@ -174,24 +177,27 @@ static gpointer lowvoltage_thread (gpointer data)
     {
         if (FD_ISSET (pt->fd_lv, &fds))
         {
-            dev = udev_monitor_receive_device (pt->udev_mon_lv);
-            if (dev)
+            if (pt->udev_mon_lv)
             {
-                if (!g_strcmp0 (udev_device_get_action (dev), "change") && !strncmp (udev_device_get_sysname (dev), "hwmon", 5))
+                dev = udev_monitor_receive_device (pt->udev_mon_lv);
+                if (dev)
                 {
-                    path = g_strdup_printf ("%s/in0_lcrit_alarm", udev_device_get_syspath (dev));
-                    fp = fopen (path, "rb");
-                    if (fp)
+                    if (!g_strcmp0 (udev_device_get_action (dev), "change") && !strncmp (udev_device_get_sysname (dev), "hwmon", 5))
                     {
-                        if (fgetc (fp) == 0x31)
+                        path = g_strdup_printf ("%s/in0_lcrit_alarm", udev_device_get_syspath (dev));
+                        fp = fopen (path, "rb");
+                        if (fp)
                         {
-                            gdk_threads_add_idle (cb_lowvoltage, data);
+                            if (fgetc (fp) == 0x31)
+                            {
+                                gdk_threads_add_idle (cb_lowvoltage, data);
+                            }
+                            fclose (fp);
                         }
-                        fclose (fp);
+                        g_free (path);
                     }
-                    g_free (path);
+                    udev_device_unref (dev);
                 }
-                udev_device_unref (dev);
             }
         }
     }
@@ -322,7 +328,9 @@ void power_destructor (gpointer user_data)
     if (pt->oc_thread) g_thread_unref (pt->oc_thread);
     if (pt->lv_thread) g_thread_unref (pt->lv_thread);
     if (pt->udev_mon_oc) udev_monitor_unref (pt->udev_mon_oc);
+    pt->udev_mon_oc = NULL;
     if (pt->udev_mon_lv) udev_monitor_unref (pt->udev_mon_lv);
+    pt->udev_mon_lv = NULL;
     if (pt->udev) udev_unref (pt->udev);
 }
 
