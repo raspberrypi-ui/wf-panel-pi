@@ -14,7 +14,9 @@ class WayfireStatusNotifier : public WayfireWidget
     Gtk::HBox icons_hbox;
     std::map<Glib::ustring, StatusNotifierItem> items;
 
-    static constexpr conf_table_t conf_table[1] = {
+    static constexpr conf_table_t conf_table[3] = {
+        {CONF_INT,  "smooth_scrolling_threshold",  N_("Smooth scrolling threshold")},
+        {CONF_BOOL, "menu_on_middle_click",        N_("Middle button activates menu")},
         {CONF_NONE, NULL,               NULL}
     };
 
