@@ -6,6 +6,9 @@
 #include <gtkmm/tooltip.h>
 
 #include <libdbusmenu-gtk/dbusmenu-gtk.h>
+extern "C" {
+#include "lxutils.h"
+}
 
 static std::pair<Glib::ustring, Glib::ustring> name_and_obj_path(const Glib::ustring & service)
 {
@@ -70,7 +73,7 @@ void StatusNotifierItem::init_widget()
     setup_tooltip();
     init_menu();
 
-    signal_button_press_event().connect([this] (GdkEventButton *ev) -> bool
+    signal_button_release_event().connect([this] (GdkEventButton *ev) -> bool
     {
         const auto ev_coords = Glib::Variant<std::tuple<int, int>>::create({ev->x, ev->y});
         const guint menu_btn = menu_on_middle_click ? GDK_BUTTON_MIDDLE : GDK_BUTTON_SECONDARY;
@@ -79,7 +82,7 @@ void StatusNotifierItem::init_widget()
         {
             if (menu)
             {
-                menu->popup_at_pointer((GdkEvent*)ev);
+                show_menu_with_kbd (GTK_WIDGET (this->gobj()), GTK_WIDGET (menu->gobj()));
             } else
             {
                 item_proxy->call("ContextMenu", ev_coords);
