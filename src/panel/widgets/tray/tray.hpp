@@ -14,11 +14,17 @@ class WayfireStatusNotifier : public WayfireWidget
     Gtk::HBox icons_hbox;
     std::map<Glib::ustring, StatusNotifierItem> items;
 
+    static constexpr conf_table_t conf_table[1] = {
+        {CONF_NONE, NULL,               NULL}
+    };
+
   public:
     void init(Gtk::HBox *container) override;
 
     void add_item(const Glib::ustring & service);
     void remove_item(const Glib::ustring & service);
+    static const char *display_name (void) { return N_("Tray"); };
+    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif

@@ -15,7 +15,7 @@
 class StatusNotifierItem : public Gtk::EventBox
 {
     WfOption<int> smooth_scolling_threshold{"panel/tray_smooth_scrolling_threshold"};
-    WfOption<int> icon_size{"panel/tray_icon_size"};
+    WfOption<int> icon_size{"panel/icon_size"};
     WfOption<bool> menu_on_middle_click{"panel/tray_menu_on_middle_click"};
 
     Glib::ustring dbus_name;
