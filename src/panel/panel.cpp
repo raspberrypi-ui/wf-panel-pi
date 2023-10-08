@@ -38,6 +38,7 @@ extern "C" {
 #include "widgets/batt.hpp"
 #include "widgets/notify.hpp"
 #include "widgets/window-list/window-list.hpp"
+#include "widgets/tray/tray.hpp"
 
 #include "wf-autohide-window.hpp"
 
@@ -395,6 +396,11 @@ class WayfirePanel::impl
         if (name == "window-list")
         {
             return Widget(new WayfireWindowList(output));
+        }
+
+        if (name == "tray")
+        {
+            return Widget(new WayfireStatusNotifier());
         }
 
         std::string spacing = "spacing";

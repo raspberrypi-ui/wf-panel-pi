@@ -19,11 +19,11 @@
 	</option>
 	<option name="widgets_right" type="string">
 		<_short>Widgets Right</_short>
-		<default>power ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2</default>
+		<default>tray power ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2</default>
 	</option>
 	<option name="widgets_all" type="string">
 		<_short>All Available Widgets</_short>
-		<default>batt bluetooth clock cpu cputemp ejecter gpu launchers netman power smenu updater volumepulse window-list</default>
+		<default>batt bluetooth clock cpu cputemp ejecter gpu launchers netman power smenu tray updater volumepulse window-list</default>
 	</option>
 	<option name="icon_size" type="int">
 		<_short>Icon Size</_short>
@@ -216,6 +216,24 @@
 	<option name="batt_batt_num" type="int">
 		<_short>Battery Battery Number</_short>
 		<default>0</default>
+	</option>
+	</group>
+	<group>
+	<_short>Tray</_short>
+	<option name="tray_smooth_scrolling_threshold" type="int">
+		<_short>Smooth Scrolling Threshold</_short>
+		<default>5</default>
+		<min>1</min>
+	</option>
+	<option name="tray_icon_size" type="int">
+		<_short>Default Icon Size</_short>
+		<default>32</default>
+		<min>1</min>
+	</option>
+	<option name="tray_menu_on_middle_click" type="bool">
+		<_short>Middle Button Activates Menu</_short>
+		<_long>Mouse right button activates a tray item's secondary action instead of the item's menu.</_long>
+		<default>false</default>
 	</option>
 	</group>
 	</plugin>
