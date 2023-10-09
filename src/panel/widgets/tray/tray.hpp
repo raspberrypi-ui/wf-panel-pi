@@ -25,7 +25,7 @@ class WayfireStatusNotifier : public WayfireWidget
 
     void add_item(const Glib::ustring & service);
     void remove_item(const Glib::ustring & service);
-    static const char *display_name (void) { return N_("Tray"); };
+    static const char *display_name (void) { return N_("System Tray"); };
     static const conf_table_t *config_params (void) { return conf_table; };
 };
 
