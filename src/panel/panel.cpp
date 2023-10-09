@@ -313,7 +313,7 @@ class WayfirePanel::impl
                         }
                     }
                     // not matched any widgets - on the empty area of the bar...
-                    show_menu_with_kbd_at_pointer (GTK_WIDGET (window->gobj()), GTK_WIDGET (menu.gobj()));
+                    show_menu_with_kbd (GTK_WIDGET (window->gobj()), GTK_WIDGET (menu.gobj()));
                     return true;
                 }
             }

@@ -48,14 +48,6 @@ static GtkLayerShellLayer old_layer;
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
-static GtkWidget *find_panel (GtkWidget *child)
-{
-    GtkWidget *panel = child;
-    while (!GTK_IS_WINDOW (panel) || !gtk_layer_is_layer_window (GTK_WINDOW (panel)))
-        panel = gtk_widget_get_parent (panel);
-    return panel;
-}
-
 static void menu_hidden (GtkWidget *, gpointer panel)
 {
     gtk_layer_set_layer (GTK_WINDOW (panel), old_layer);
@@ -90,30 +82,27 @@ static void committed (GdkWindow *win, gpointer)
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu)
+void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 {
-    // simulate a leave event on the button to hide the prelight */
-    GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
-    ev->window = gtk_button_get_event_window (GTK_BUTTON (button));
-    ev->time = GDK_CURRENT_TIME;
-    ev->mode = GDK_CROSSING_NORMAL;
-    ev->send_event = TRUE;
-    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-    gtk_main_do_event ((GdkEvent *) ev);
+    if (GTK_IS_BUTTON (widget))
+    {
+        // simulate a leave event on the button to hide the prelight */
+        GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
+        ev->window = gtk_button_get_event_window (GTK_BUTTON (widget));
+        ev->time = GDK_CURRENT_TIME;
+        ev->mode = GDK_CROSSING_NORMAL;
+        ev->send_event = TRUE;
+        gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+        gtk_main_do_event ((GdkEvent *) ev);
 
-    m_panel = find_panel (button);
-    m_button = button;
-    m_menu = menu;
-    old_layer = gtk_layer_get_layer (GTK_WINDOW (m_panel));
-    gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
-    m_handle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), NULL);
-}
+        m_button = widget;
+    }
+    else m_button = NULL;
 
-void show_menu_with_kbd_at_pointer (GtkWidget *widget, GtkWidget *menu)
-{
-    m_panel = find_panel (widget);
-    m_button = NULL;
+    m_panel = widget;
+    while (!GTK_IS_WINDOW (m_panel) || !gtk_layer_is_layer_window (GTK_WINDOW (m_panel)))
+        m_panel = gtk_widget_get_parent (m_panel);
+
     m_menu = menu;
     old_layer = gtk_layer_get_layer (GTK_WINDOW (m_panel));
     gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);

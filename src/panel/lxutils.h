@@ -51,7 +51,6 @@ typedef struct {
 extern char **environ;
 
 extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
-extern void show_menu_with_kbd_at_pointer (GtkWidget *panel, GtkWidget *menu);
 extern void set_taskbar_icon (GtkWidget *image, const char *icon, int size);
 extern void set_menu_icon (GtkWidget *image, const char *icon, int size);
 extern GtkWidget *new_menu_item (const char *text, int maxlen, const char *iconname, int icon_size);
