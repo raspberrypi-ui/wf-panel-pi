@@ -38,6 +38,7 @@ extern "C" {
 #include "widgets/batt.hpp"
 #include "widgets/notify.hpp"
 #include "widgets/window-list/window-list.hpp"
+#include "widgets/tray/tray.hpp"
 
 #include "wf-autohide-window.hpp"
 
@@ -397,6 +398,11 @@ class WayfirePanel::impl
             return Widget(new WayfireWindowList(output));
         }
 
+        if (name == "tray")
+        {
+            return Widget(new WayfireStatusNotifier());
+        }
+
         std::string spacing = "spacing";
         if (name.find(spacing) == 0)
         {
@@ -708,6 +714,7 @@ const char *WayfirePanelApp::display_name (std::string type)
     if (type == "volumepulse") return WayfireVolumepulse::display_name();
     if (type == "window-list") return WayfireWindowList::display_name();
     if (type == "notify") return WayfireNotify::display_name();
+    if (type == "tray") return WayfireStatusNotifier::display_name();
     return "<Unknown>";
 }
 
@@ -728,6 +735,7 @@ const conf_table_t *WayfirePanelApp::config_params (std::string type)
     if (type == "volumepulse") return WayfireVolumepulse::config_params();
     if (type == "window-list") return WayfireWindowList::config_params();
     if (type == "notify") return WayfireNotify::config_params();
+    if (type == "tray") return WayfireStatusNotifier::config_params();
     return NULL;
 }
 

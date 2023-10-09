@@ -49,7 +49,11 @@ widget_sources = files(
   'widgets/batt/batt_sys.c',
   'widgets/window-list/window-list.cpp',
   'widgets/window-list/toplevel.cpp',
-  'widgets/launcher.c'
+  'widgets/launcher.c',
+  'widgets/tray/watcher.cpp',
+  'widgets/tray/tray.cpp',
+  'widgets/tray/item.cpp',
+  'widgets/tray/host.cpp'
 )
 
 resource_data = files(
@@ -76,7 +80,7 @@ util_sources = files(
   'notification.c'
 )
 
-deps = [gtkmm, wayland_client, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev]
+deps = [gtkmm, wayland_client, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk]
 
 executable('wf-panel-pi', ['panel.cpp', 'lxutils.c'] + widget_sources + util_sources,
         dependencies: deps,
