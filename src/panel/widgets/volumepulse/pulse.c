@@ -836,10 +836,11 @@ static void pa_cb_get_info_inputs (pa_context *, const pa_card_info *i, int eol,
         if (pa_card_has_port (i, PA_DIRECTION_INPUT))
         {
             const char *nam = pa_proplist_gets (i->proplist, "alsa.card_name");
+            const char *dev = pa_proplist_gets (i->proplist, "device.name");
             if (nam)
             {
-                DEBUG ("pa_cb_get_info_inputs %s", nam);
-                mic_menu_add_item (vol, nam, nam);
+                DEBUG ("pa_cb_get_info_inputs %s", dev);
+                mic_menu_add_item (vol, nam, dev);
             }
         }
     }
@@ -858,11 +859,12 @@ static void pa_cb_get_info_internal (pa_context *, const pa_card_info *i, int eo
             if (pa_card_has_port (i, PA_DIRECTION_OUTPUT))
             {
                 const char *nam = pa_proplist_gets (i->proplist, "alsa.card_name");
+                const char *dev = pa_proplist_gets (i->proplist, "device.name");
                 if (nam)
                 {
                     if (!strcmp (nam, "bcm2835 Headphones") && vsystem ("raspi-config nonint has_analog")) return;
-                    DEBUG ("pa_cb_get_info_internal %s", nam);
-                    vol_menu_add_item (vol, nam, nam);
+                    DEBUG ("pa_cb_get_info_internal %s", dev);
+                    vol_menu_add_item (vol, nam, dev);
                 }
             }
         }
@@ -882,11 +884,12 @@ static void pa_cb_get_info_external (pa_context *, const pa_card_info *i, int eo
             if (pa_card_has_port (i, PA_DIRECTION_OUTPUT))
             {
                 const char *nam = pa_proplist_gets (i->proplist, "alsa.card_name");
+                const char *dev = pa_proplist_gets (i->proplist, "device.name");
                 if (nam)
                 {
-                    DEBUG ("pa_cb_get_info_external %s", nam);
+                    DEBUG ("pa_cb_get_info_external %s", dev);
                     menu_add_separator (vol, vol->menu_devices[0]);
-                    vol_menu_add_item (vol, nam, nam);
+                    vol_menu_add_item (vol, nam, dev);
                 }
             }
         }
@@ -950,9 +953,9 @@ static void pa_cb_replace_cards_with_sinks (pa_context *, const pa_sink_info *i,
 static void pa_replace_card_with_sink_on_match (GtkWidget *widget, gpointer data)
 {
     pa_sink_info *i = (pa_sink_info *) data;
-    const char *alsaname = pa_proplist_gets (i->proplist, "alsa.card_name");
+    const char *dev = pa_proplist_gets (i->proplist, "device.name");
 
-    if (!strcmp (alsaname, gtk_widget_get_name (widget)))
+    if (!strcmp (dev, gtk_widget_get_name (widget)))
     {
         gtk_widget_set_name (widget, i->name);
         gtk_widget_set_sensitive (widget, TRUE);
@@ -1011,9 +1014,9 @@ static void pa_cb_replace_cards_with_sources (pa_context *, const pa_source_info
 static void pa_replace_card_with_source_on_match (GtkWidget *widget, gpointer data)
 {
     pa_source_info *i = (pa_source_info *) data;
-    const char *alsaname = pa_proplist_gets (i->proplist, "alsa.card_name");
+    const char *dev = pa_proplist_gets (i->proplist, "device.name");
 
-    if (!strcmp (alsaname, gtk_widget_get_name (widget)))
+    if (!strcmp (dev, gtk_widget_get_name (widget)))
     {
         gtk_widget_set_name (widget, i->name);
         gtk_widget_set_sensitive (widget, TRUE);
