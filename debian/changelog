@@ -1,3 +1,10 @@
+wf-panel-pi (0.47) bookworm; urgency=medium
+
+  * Fix GPU plugin on 32-bit systems
+  * Fix volume plugin when using multiple USB devices
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 12 Oct 2023 15:06:52 +0100
+
 wf-panel-pi (0.46) bookworm; urgency=medium
 
   * Add system tray widget
