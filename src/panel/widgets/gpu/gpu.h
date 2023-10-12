@@ -17,7 +17,7 @@ typedef struct
     gboolean show_percentage;               /* Display usage as a percentage */
     guint timer;                            /* Timer for periodic update */
     unsigned long last_val[5];
-    unsigned long last_timestamp;
+    unsigned long long last_timestamp;
 } GPUPlugin;
 
 extern void gpu_init (GPUPlugin *g);

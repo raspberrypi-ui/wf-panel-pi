@@ -44,7 +44,8 @@ float get_gpu_usage (GPUPlugin *g)
 {
     char *buf = NULL;
     size_t res = 0;
-    unsigned long jobs, runtime, active, ts, timestamp, elapsed;
+    unsigned long jobs, runtime, active;
+    unsigned long long ts, timestamp, elapsed;
     float max, load[5];
     int i;
 
@@ -55,7 +56,7 @@ float get_gpu_usage (GPUPlugin *g)
     // read the stats file a line at a time
     while (getline (&buf, &res, fp) > 0)
     {
-        if (sscanf (buf, "timestamp;%ld;", &ts) == 1)
+        if (sscanf (buf, "timestamp;%lld;", &ts) == 1)
         {
             // use the timestamp line to calculate time since last measurement
             timestamp = ts;
