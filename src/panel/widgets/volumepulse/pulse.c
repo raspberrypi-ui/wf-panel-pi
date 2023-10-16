@@ -836,7 +836,7 @@ static void pa_cb_get_info_inputs (pa_context *, const pa_card_info *i, int eol,
         if (pa_card_has_port (i, PA_DIRECTION_INPUT))
         {
             const char *nam = pa_proplist_gets (i->proplist, "alsa.card_name");
-            const char *dev = pa_proplist_gets (i->proplist, "device.name");
+            const char *dev = pa_proplist_gets (i->proplist, "alsa.card");
             if (nam)
             {
                 DEBUG ("pa_cb_get_info_inputs %s", dev);
@@ -859,7 +859,7 @@ static void pa_cb_get_info_internal (pa_context *, const pa_card_info *i, int eo
             if (pa_card_has_port (i, PA_DIRECTION_OUTPUT))
             {
                 const char *nam = pa_proplist_gets (i->proplist, "alsa.card_name");
-                const char *dev = pa_proplist_gets (i->proplist, "device.name");
+                const char *dev = pa_proplist_gets (i->proplist, "alsa.card");
                 if (nam)
                 {
                     if (!strcmp (nam, "bcm2835 Headphones") && vsystem ("raspi-config nonint has_analog")) return;
@@ -884,7 +884,7 @@ static void pa_cb_get_info_external (pa_context *, const pa_card_info *i, int eo
             if (pa_card_has_port (i, PA_DIRECTION_OUTPUT))
             {
                 const char *nam = pa_proplist_gets (i->proplist, "alsa.card_name");
-                const char *dev = pa_proplist_gets (i->proplist, "device.name");
+                const char *dev = pa_proplist_gets (i->proplist, "alsa.card");
                 if (nam)
                 {
                     DEBUG ("pa_cb_get_info_external %s", dev);
@@ -953,7 +953,7 @@ static void pa_cb_replace_cards_with_sinks (pa_context *, const pa_sink_info *i,
 static void pa_replace_card_with_sink_on_match (GtkWidget *widget, gpointer data)
 {
     pa_sink_info *i = (pa_sink_info *) data;
-    const char *dev = pa_proplist_gets (i->proplist, "device.name");
+    const char *dev = pa_proplist_gets (i->proplist, "alsa.card");
 
     if (!strcmp (dev, gtk_widget_get_name (widget)))
     {
@@ -1014,7 +1014,7 @@ static void pa_cb_replace_cards_with_sources (pa_context *, const pa_source_info
 static void pa_replace_card_with_source_on_match (GtkWidget *widget, gpointer data)
 {
     pa_source_info *i = (pa_source_info *) data;
-    const char *dev = pa_proplist_gets (i->proplist, "device.name");
+    const char *dev = pa_proplist_gets (i->proplist, "alsa.card");
 
     if (!strcmp (dev, gtk_widget_get_name (widget)))
     {
