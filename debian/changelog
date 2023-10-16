@@ -1,3 +1,9 @@
+wf-panel-pi (0.48) bookworm; urgency=medium
+
+  * Better fix for USB audio devices
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 16 Oct 2023 13:57:07 +0100
+
 wf-panel-pi (0.47) bookworm; urgency=medium
 
   * Fix GPU plugin on 32-bit systems
