@@ -18,6 +18,7 @@ typedef struct {
     GVolumeMonitor *monitor;
     gboolean autohide;
     GList *ejdrives;
+    GList *mdrives;
     guint hide_timer;
 } EjecterPlugin;
 

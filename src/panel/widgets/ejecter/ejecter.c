@@ -96,6 +96,41 @@ static gboolean was_ejected (EjecterPlugin *ej, GDrive *drive)
     return ejected;
 }
 
+static void log_mount (EjecterPlugin *ej, GMount *mount)
+{
+    GList *l;
+    GDrive *drv, *drive = g_mount_get_drive (mount);
+    for (l = ej->mdrives; l != NULL; l = l->next)
+    {
+        drv = (GDrive *) l->data;
+        if (drv == drive)
+        {
+            g_object_unref (drive);
+            return;
+        }
+    }
+
+    ej->mdrives = g_list_append (ej->mdrives, drive);
+    DEBUG ("MOUNTED DRIVE %s", g_drive_get_name (drive));
+}
+
+static gboolean was_mounted (EjecterPlugin *ej, GDrive *drive)
+{
+    GList *l;
+    GDrive *drv;
+    for (l = ej->mdrives; l != NULL; l = l->next)
+    {
+        drv = (GDrive *) l->data;
+        if (drv == drive)
+        {
+            ej->mdrives = g_list_remove (ej->mdrives, drv);
+            g_object_unref (drv);
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 static void add_seq_for_drive (EjecterPlugin *ej, GDrive *drive, int seq)
 {
     GList *l;
@@ -114,7 +149,7 @@ static void handle_mount_in (GtkWidget *widget, GMount *mount, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("MOUNT ADDED %s", g_mount_get_name (mount));
-
+    log_mount (ej, mount);
     if (ej->menu && gtk_widget_get_visible (ej->menu)) show_menu (ej);
     update_icon (ej);
 }
@@ -167,7 +202,7 @@ static void handle_drive_out (GtkWidget *widget, GDrive *drive, gpointer data)
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("DRIVE REMOVED %s", g_drive_get_name (drive));
 
-    if (!was_ejected (ej, drive))
+    if (was_mounted (ej, drive) && !was_ejected (ej, drive))
         lxpanel_notify (_("Drive was removed without ejecting\nPlease use menu to eject before removal"));
 
     if (ej->menu && gtk_widget_get_visible (ej->menu)) show_menu (ej);
@@ -380,7 +415,7 @@ gboolean ejecter_control_msg (EjecterPlugin *ej, const char *cmd)
 /* Plugin destructor. */
 void ejecter_destructor (gpointer user_data)
 {
-    EjecterPlugin * ej = (EjecterPlugin *) user_data;
+    //EjecterPlugin * ej = (EjecterPlugin *) user_data;
 
     /* Deallocate memory */
     //g_free (ej);
@@ -419,6 +454,7 @@ void ej_init (EjecterPlugin *ej)
     ej->menu = NULL;
 
     ej->hide_timer = 0;
+    ej->mdrives = NULL;
 
     /* Get volume monitor and connect to events */
     ej->monitor = g_volume_monitor_get ();
