@@ -1,3 +1,9 @@
+wf-panel-pi (0.49) bookworm; urgency=medium
+
+  * Suppress removed warnings on drives with no mounts
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 17 Oct 2023 08:49:11 +0100
+
 wf-panel-pi (0.48) bookworm; urgency=medium
 
   * Better fix for USB audio devices

@@ -161,6 +161,7 @@ static void handle_mount_in (GtkWidget *widget, GMount *mount, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("MOUNT ADDED %s", g_mount_get_name (mount));
+
     log_mount (ej, mount);
     if (ej->menu && gtk_widget_get_visible (ej->menu)) show_menu (ej);
     update_icon (ej);
