@@ -114,6 +114,18 @@ static void log_mount (EjecterPlugin *ej, GMount *mount)
     DEBUG ("MOUNTED DRIVE %s", g_drive_get_name (drive));
 }
 
+static void log_init_mounts (EjecterPlugin *ej)
+{
+    ej->mdrives = NULL;
+    GList *l, *mnts = g_volume_monitor_get_mounts (ej->monitor);
+    for (l = mnts; l != NULL; l = l->next)
+    {
+        log_mount (ej, (GMount *) l->data);
+        g_object_unref (l->data);
+    }
+    g_list_free (mnts);
+}
+
 static gboolean was_mounted (EjecterPlugin *ej, GDrive *drive)
 {
     GList *l;
@@ -454,7 +466,6 @@ void ej_init (EjecterPlugin *ej)
     ej->menu = NULL;
 
     ej->hide_timer = 0;
-    ej->mdrives = NULL;
 
     /* Get volume monitor and connect to events */
     ej->monitor = g_volume_monitor_get ();
@@ -465,6 +476,8 @@ void ej_init (EjecterPlugin *ej)
     g_signal_connect (ej->monitor, "mount-pre-unmount", G_CALLBACK (handle_mount_pre), ej);
     g_signal_connect (ej->monitor, "drive-connected", G_CALLBACK (handle_drive_in), ej);
     g_signal_connect (ej->monitor, "drive-disconnected", G_CALLBACK (handle_drive_out), ej);
+
+    log_init_mounts (ej);
 
     /* Show the widget and return. */
     gtk_widget_show_all (ej->plugin);
