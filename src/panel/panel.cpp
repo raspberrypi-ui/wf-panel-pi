@@ -113,6 +113,7 @@ class WayfirePanel::impl
     Gtk::Menu menu;
     Gtk::MenuItem conf;
     Gtk::MenuItem cplug;
+    Gtk::MenuItem appset;
     Gtk::MenuItem notif;
     std::string conf_plugin;
 
@@ -243,9 +244,13 @@ class WayfirePanel::impl
         cplug.signal_activate().connect(sigc::mem_fun(this, &WayfirePanel::impl::do_plugin_configure));
         menu.attach (cplug, 0, 1, 1, 2);
 
+        appset.set_label (_("Taskbar Preferences..."));
+        appset.signal_activate().connect(sigc::mem_fun(this, &WayfirePanel::impl::do_appearance_set));
+        menu.attach (appset, 0, 1, 2, 3);
+
         notif.set_label (_("Notifications..."));
         notif.signal_activate().connect(sigc::mem_fun(this, &WayfirePanel::impl::do_notify_configure));
-        menu.attach (notif, 0, 1, 2, 3);
+        menu.attach (notif, 0, 1, 3, 4);
 
         menu.attach_to_widget (*window);
         menu.show_all();
@@ -330,6 +335,11 @@ class WayfirePanel::impl
     void do_plugin_configure()
     {
         if (conf_plugin.substr (0,5) != "gtkmm") plugin_config_dialog (conf_plugin.c_str());
+    }
+
+    void do_appearance_set()
+    {
+        system ("pipanel -3 &");
     }
 
     void do_notify_configure()

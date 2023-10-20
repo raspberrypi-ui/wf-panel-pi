@@ -1,3 +1,9 @@
+wf-panel-pi (0.51) bookworm; urgency=medium
+
+  * Add menu entry for taskbar preferences
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 20 Oct 2023 16:14:19 +0100
+
 wf-panel-pi (0.50) bookworm; urgency=medium
 
   * Fix volume steps on devices which do odd rounding things...
