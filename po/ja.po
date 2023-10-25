@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2023-10-28 01:07+0900\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  Akira Ouchi <akkiesoft@marokun.net>\n"
 "Language-Team: Japanese\n"
@@ -17,174 +17,358 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
-#, fuzzy, c-format
-msgid "Pairing request sent to '%s' - waiting for response..."
-msgstr "ペアリングのリクエストをデバイスに送信しました。返答を待っています..."
+#: ../src/panel/configure.c:77
+msgid "Spacer"
+msgstr "空白"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#: ../src/panel/configure.c:80
+#, c-format
+msgid "Spacer (%d)"
+msgstr "空白 (%d)"
+
+#: ../src/panel/configure.c:344 ../src/panel/configure.c:443
+#, c-format
+msgid "Configure %s"
+msgstr "%s の設定"
+
+#: ../src/panel/configure.c:346 ../src/panel/configure.c:445
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: ../src/panel/configure.c:346 ../src/panel/configure.c:445
+msgid "OK"
+msgstr "OK"
+
+#: ../src/panel/configure.c:455
+msgid "Width in pixels:"
+msgstr "幅のピクセル数:"
+
+#: ../src/panel/configure.c:721
+msgid "Left Side"
+msgstr "左側"
+
+#: ../src/panel/configure.c:722
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1024
+msgid "Available"
+msgstr "利用可能"
+
+#: ../src/panel/configure.c:723
+msgid "Right Side"
+msgstr "右側"
+
+#: ../src/panel/panel.cpp:244
+msgid "Add / Remove Plugins..."
+msgstr "プラグインを追加/削除..."
+
+#: ../src/panel/panel.cpp:248
+msgid "Configure Plugin..."
+msgstr "プラグインを設定..."
+
+#: ../src/panel/panel.cpp:252
+msgid "Notifications..."
+msgstr "通知..."
+
+#: ../src/panel/panel.cpp:256
+msgid "Taskbar Preferences..."
+msgstr "タスクバーの設定..."
+
+#: ../src/panel/widgets/batt.hpp:26
+msgid "Battery number to monitor"
+msgstr "監視するバッテリーの番号"
+
+#: ../src/panel/widgets/batt.hpp:37
+msgid "Battery"
+msgstr "バッテリー"
+
+#: ../src/panel/widgets/batt/batt.c:295
+#, c-format
+msgid "Charging : %d%%"
+msgstr "充電中 : %d%%"
+
+#: ../src/panel/widgets/batt/batt.c:297
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"充電中 : %d%%\n"
+"残り時間 : %d 分"
+
+#: ../src/panel/widgets/batt/batt.c:299
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"充電中 : %d%%\n"
+"残り時間 : %0.1f 時間"
+
+#: ../src/panel/widgets/batt/batt.c:304
+#, c-format
+msgid ""
+"Charged : %d%%\n"
+"On external power"
+msgstr ""
+"充電完了 : %d%%\n"
+"外部電源を使用中"
+
+#: ../src/panel/widgets/batt/batt.c:310
+#, c-format
+msgid "Discharging : %d%%"
+msgstr "放電中 : %d%%"
+
+#: ../src/panel/widgets/batt/batt.c:312
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"放電中 : %d%%\n"
+"残り時間 : %d 分"
+
+#: ../src/panel/widgets/batt/batt.c:314
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"放電中 : %d%%\n"
+"残り時間 : %0.1f 時間"
+
+#: ../src/panel/widgets/batt/batt.c:397
+msgid "Power & Battery"
+msgstr "電源とバッテリー"
+
+#: ../src/panel/widgets/batt/batt.c:398
+msgid "Monitors voltage and laptop battery"
+msgstr "電圧とラップトップのバッテリーを監視する"
+
+#: ../src/panel/widgets/bluetooth.hpp:36
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2194
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1284
+#, c-format
+msgid "Pairing request sent to '%s' - waiting for response..."
+msgstr "ペアリングのリクエストを '%s' に送信しました - 返答を待っています..."
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1292
 #, c-format
 msgid "Pairing failed - %s"
 msgstr "ペアリングに失敗しました - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1300
+#, c-format
 msgid "Pairing successful - connecting..."
-msgstr "ペアリングに成功しました。接続しています..."
+msgstr "ペアリングに成功しました - 接続しています..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1308
+#, c-format
 msgid "Connection successful"
 msgstr "正常に接続されました"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1316
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1574
 #, c-format
 msgid "Connection failed - %s"
 msgstr "接続に失敗しました - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1324
+#, c-format
 msgid "Please enter code '%s' on '%s'"
-msgstr "コード '%s' をデバイス '%s'上で入力してください"
+msgstr "コード '%s' をデバイス '%s' 上で入力してください"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1332
+#, c-format
 msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
-"デバイス '%s' が接続のために表示しているコード '%s' を確認してください。"
+msgstr "デバイス '%s' が接続のために表示しているコード '%s' を確認してください"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1340
+#, c-format
 msgid "Please enter PIN code shown on '%s'"
-msgstr "デバイス '%s' のPINコードを入力してください"
+msgstr "デバイス '%s' が表示する PIN コードを入力してください"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1348
+#, c-format
 msgid "Please enter passcode shown on '%s'"
-msgstr "コード '%s' をデバイス '%s'上で入力してください"
+msgstr "'%s' 上で表示されているパスコードを入力してください"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1356
+#, c-format
 msgid "Waiting for response from Bluetooth device..."
-msgstr "デバイスからの返答を待っています..."
+msgstr "Bluetooth デバイスからの返答を待っています..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1364
+#, c-format
 msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
-"デバイス '%s' がペアリングをリクエストしました。リクエストを承認しますか？"
+msgstr "'%s' がペアリングをリクエストしました。リクエストを承認しますか？"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1372
+#, c-format
 msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
+"Pairing successful - right-click the volume icon to select as audio device"
 msgstr ""
-"ペアリングに成功しました。 オーディオメニューを使用して出力デバイスとして選択"
-"してください。"
+"ペアリングに成功しました - ボリュームアイコンを右クリックしてオーディオデバイ"
+"スとして選択してください"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1380
+#, c-format
 msgid ""
 "Pairing successful - this device has no services which can be used with "
 "Raspberry Pi"
 msgstr ""
-"ペアリングに成功しましたが、デバイスにはRaspberry Piで使用可能なサービスはあ"
-"りません。"
+"ペアリングに成功しました - このデバイスには Raspberry Pi で使用可能なサービス"
+"はありません"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1559
+#, c-format
 msgid "Do you want to unpair '%s'?"
-msgstr "デバイス '%s' からのペアリングを承認しますか？"
+msgstr "'%s' をペアリング解除しますか？"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1562
+#, c-format
 msgid "Removing pairing with '%s'..."
-msgstr "ペアリング済みのデバイス '%s' を削除しています..."
+msgstr "'%s' とのペアリングを解除しています..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1565
 #, c-format
 msgid "Removal failed - %s"
 msgstr "削除に失敗しました - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1574
+#, c-format
 msgid "Connecting to '%s'..."
-msgstr "デバイス '%s' に接続中..."
+msgstr "'%s' に接続中..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1578
+#, c-format
 msgid "Disconnecting from '%s'..."
-msgstr "デバイス '%s' から切断中..."
+msgstr "'%s' から切断中..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1578
 #, c-format
 msgid "Disconnection failed - %s"
 msgstr "切断に失敗しました - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-msgid "Use the audio menu to connect to this device"
-msgstr "オーディオメニューを使用してデバイスに接続してください"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1693
 msgid "No usable services on this device"
 msgstr "このデバイス上には利用可能なサービスがありません"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1758
 msgid "Disconnect..."
 msgstr "切断..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1763
 msgid "Connect..."
 msgstr "接続..."
 
 #. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-#, fuzzy
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1776
 msgid "Remove..."
-msgstr "削除(_R)"
+msgstr "削除"
 
 #. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1972
 msgid "No Bluetooth adapter found"
 msgstr "Bluetooth アダプターがありません"
 
 #. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1979
 msgid "Turn On Bluetooth"
 msgstr "Bluetoothをオンにする"
 
 #. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1989
 msgid "Turn Off Bluetooth"
 msgstr "Bluetoothをオフにする"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1999
 msgid "Stop Discoverable"
 msgstr "検出不可能にする"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2001
 msgid "Make Discoverable"
 msgstr "検出可能にする"
 
 #. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2009
 msgid "Add Device..."
 msgstr "デバイスを追加..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2150
 msgid "Manage Bluetooth devices"
 msgstr "Bluetooth デバイスの管理"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2195
 msgid "Manages Bluetooth devices"
 msgstr "Bluetooth デバイスを管理する"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:171
+#: ../src/panel/widgets/clock.hpp:23
+msgid "Display format"
+msgstr "表示形式"
+
+#: ../src/panel/widgets/clock.hpp:24
+msgid "Display font"
+msgstr "表示フォント"
+
+#: ../src/panel/widgets/clock.hpp:31
+msgid "Clock"
+msgstr "時計"
+
+#: ../src/panel/widgets/cpu.hpp:28 ../src/panel/widgets/gpu.hpp:28
+msgid "Show usage as percentage"
+msgstr "パーセンテージでの使用率を表示する"
+
+#: ../src/panel/widgets/cpu.hpp:29 ../src/panel/widgets/cputemp.hpp:31
+#: ../src/panel/widgets/gpu.hpp:29
+msgid "Foreground colour"
+msgstr "前景色"
+
+#: ../src/panel/widgets/cpu.hpp:30 ../src/panel/widgets/cputemp.hpp:32
+#: ../src/panel/widgets/gpu.hpp:30
+msgid "Background colour"
+msgstr "背景色"
+
+#: ../src/panel/widgets/cpu.hpp:42
+msgid "CPU"
+msgstr "CPU"
+
+#: ../src/panel/widgets/cputemp.hpp:33
+msgid "Colour when ARM frequency capped"
+msgstr "ARM が周波数をキャップした時の色"
+
+#: ../src/panel/widgets/cputemp.hpp:34
+msgid "Colour when throttled"
+msgstr "スロットルしたときの色"
+
+#: ../src/panel/widgets/cputemp.hpp:35
+msgid "Lower temperature bound"
+msgstr "温度の下限"
+
+#: ../src/panel/widgets/cputemp.hpp:36
+msgid "Upper temperature bound"
+msgstr "温度の上限"
+
+#: ../src/panel/widgets/cputemp.hpp:48
+msgid "CPU Temp"
+msgstr "CPU 温度"
+
+#: ../src/panel/widgets/ejecter.hpp:26
+#: ../src/panel/widgets/ejecter/ejecter.c:504
+msgid "Hide icon when no devices"
+msgstr "デバイスがないときはアイコンを隠す"
+
+#: ../src/panel/widgets/ejecter.hpp:39
+#: ../src/panel/widgets/ejecter/ejecter.c:502
+#: ../src/panel/widgets/ejecter/ejecter.c:512
+msgid "Ejecter"
+msgstr "Ejecter"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:219
 msgid ""
 "Drive was removed without ejecting\n"
 "Please use menu to eject before removal"
@@ -192,7 +376,7 @@ msgstr ""
 "ドライブが取り外しを実行する前に抜き取られました\n"
 "抜き取る前にはメニューを使用して取り外してください"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:199
+#: ../src/panel/widgets/ejecter/ejecter.c:247
 #, c-format
 msgid ""
 "%s has been ejected\n"
@@ -201,7 +385,7 @@ msgstr ""
 "%s が取り外されました\n"
 "安全にデバイスを抜き取ることができます"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:205
+#: ../src/panel/widgets/ejecter/ejecter.c:253
 #, c-format
 msgid ""
 "Failed to eject %s\n"
@@ -210,22 +394,46 @@ msgstr ""
 "%s の取り外しに失敗しました\n"
 "%s"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:402
+#: ../src/panel/widgets/ejecter/ejecter.c:459
 msgid "Select a drive in menu to eject safely"
 msgstr "安全に取り外すドライブをメニューから選択します"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr "Ejecter"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:453
-msgid "Hide icon when no devices"
-msgstr "デバイスがないときはアイコンを隠す"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:462
+#: ../src/panel/widgets/ejecter/ejecter.c:513
 msgid "Ejects mounted drives"
 msgstr "マウントされたドライブを取り外します"
+
+#: ../src/panel/widgets/gpu.hpp:42
+msgid "GPU"
+msgstr "GPU"
+
+#: ../src/panel/widgets/launchers.cpp:179
+msgid "Remove from Launcher"
+msgstr "ランチャーから取り除く"
+
+#: ../src/panel/widgets/launchers.hpp:79
+msgid "Icon spacing"
+msgstr "アイコンの間隔"
+
+#: ../src/panel/widgets/launchers.hpp:88
+msgid "Launcher"
+msgstr "ランチャー"
+
+#: ../src/panel/widgets/smenu.hpp:26
+msgid "Search window height"
+msgstr "検索窓の高さ"
+
+#: ../src/panel/widgets/smenu.hpp:27
+msgid "Fix size of search window"
+msgstr "検索窓のサイズを固定する"
+
+#: ../src/panel/widgets/smenu.hpp:40 ../src/panel/widgets/smenu/menu.c:1043
+msgid "Menu"
+msgstr "メニュー"
+
+#: ../src/panel/widgets/netman.hpp:34 ../src/panel/widgets/netman/applet.c:3814
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "ネットワーク"
 
 #: ../src/panel/widgets/netman/ap-menu-item.c:77
 msgid "ad-hoc"
@@ -236,63 +444,64 @@ msgid "secure."
 msgstr "セキュア。"
 
 #: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1541
 msgid "Failed to activate connection"
 msgstr "接続のアクティベートに失敗しました"
 
 #: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+#: ../src/panel/widgets/netman/applet.c:791
+#: ../src/panel/widgets/netman/applet.c:845
+#: ../src/panel/widgets/netman/applet.c:880
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1543
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1566
 msgid "Unknown error"
 msgstr "不明なエラー"
 
 #: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+#: ../src/panel/widgets/netman/applet.c:794
+#: ../src/panel/widgets/netman/applet.c:883
+#: ../src/panel/widgets/netman/applet-device-wifi.c:572
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1546
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1569
 msgid "Connection failure"
 msgstr "接続に失敗"
 
 #: ../src/panel/widgets/netman/applet.c:186
 msgid "_Turn Off Wireless LAN"
-msgstr ""
+msgstr "無線LANをオフにする(_T)"
 
 #: ../src/panel/widgets/netman/applet.c:186
 msgid "_Turn On Wireless LAN"
-msgstr ""
+msgstr "無線LANをオンにする(_T)"
 
 #: ../src/panel/widgets/netman/applet.c:227
+#: ../src/panel/widgets/netman/applet.c:240
 #, c-format
 msgid "IP : %s"
-msgstr ""
+msgstr "IP : %s"
 
-#: ../src/panel/widgets/netman/applet.c:781
+#: ../src/panel/widgets/netman/applet.c:789
 msgid "Failed to add/activate connection"
 msgstr "接続の追加、あるいは有効化に失敗しました"
 
-#: ../src/panel/widgets/netman/applet.c:835
+#: ../src/panel/widgets/netman/applet.c:843
 msgid "Device disconnect failed"
 msgstr "デバイスの切断に失敗しました"
 
-#: ../src/panel/widgets/netman/applet.c:840
+#: ../src/panel/widgets/netman/applet.c:848
 msgid "Disconnect failure"
 msgstr "切断失敗"
 
-#: ../src/panel/widgets/netman/applet.c:870
+#: ../src/panel/widgets/netman/applet.c:878
 msgid "Connection activation failed"
 msgstr "接続のアクティベートに失敗しました"
 
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+#: ../src/panel/widgets/netman/applet.c:1221
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1265
 msgid "Don’t show this message again"
 msgstr "このメッセージを今後表示しない"
 
-#: ../src/panel/widgets/netman/applet.c:1310
+#: ../src/panel/widgets/netman/applet.c:1322
 #, c-format
 msgid ""
 "\n"
@@ -302,7 +511,7 @@ msgstr ""
 "\n"
 "ネットワーク接続が中断されたため、VPN 接続 '%s' は切断されました。"
 
-#: ../src/panel/widgets/netman/applet.c:1312
+#: ../src/panel/widgets/netman/applet.c:1324
 #, c-format
 msgid ""
 "\n"
@@ -312,7 +521,7 @@ msgstr ""
 "\n"
 "ネットワーク接続が中断されたため、VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1314
+#: ../src/panel/widgets/netman/applet.c:1326
 #, c-format
 msgid ""
 "\n"
@@ -321,7 +530,7 @@ msgstr ""
 "\n"
 "VPN サービスが予期せずに停止したため、VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1316
+#: ../src/panel/widgets/netman/applet.c:1328
 #, c-format
 msgid ""
 "\n"
@@ -331,7 +540,7 @@ msgstr ""
 "\n"
 "VPN サービスが無効な設定を返したため、VPN 接続 '%s'は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1318
+#: ../src/panel/widgets/netman/applet.c:1330
 #, c-format
 msgid ""
 "\n"
@@ -340,7 +549,7 @@ msgstr ""
 "\n"
 "接続試行がタイムアウトしたため、VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1320
+#: ../src/panel/widgets/netman/applet.c:1332
 #, c-format
 msgid ""
 "\n"
@@ -349,7 +558,7 @@ msgstr ""
 "\n"
 "VPN サービスが時間内に開始しなかったため、VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1322
+#: ../src/panel/widgets/netman/applet.c:1334
 #, c-format
 msgid ""
 "\n"
@@ -358,7 +567,7 @@ msgstr ""
 "\n"
 "VPN サービスが開始に失敗したため、VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1324
+#: ../src/panel/widgets/netman/applet.c:1336
 #, c-format
 msgid ""
 "\n"
@@ -367,7 +576,7 @@ msgstr ""
 "\n"
 "有効な VPN シークレットがないため、VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1326
+#: ../src/panel/widgets/netman/applet.c:1338
 #, c-format
 msgid ""
 "\n"
@@ -376,7 +585,7 @@ msgstr ""
 "\n"
 "VPN シークレットが無効なため、VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1331
+#: ../src/panel/widgets/netman/applet.c:1343
 #, c-format
 msgid ""
 "\n"
@@ -385,7 +594,7 @@ msgstr ""
 "\n"
 "VPN 接続 '%s' は失敗しました。"
 
-#: ../src/panel/widgets/netman/applet.c:1358
+#: ../src/panel/widgets/netman/applet.c:1370
 #, c-format
 msgid ""
 "VPN connection has been successfully established.\n"
@@ -396,20 +605,20 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../src/panel/widgets/netman/applet.c:1360
+#: ../src/panel/widgets/netman/applet.c:1372
 msgid "VPN connection has been successfully established.\n"
 msgstr "VPN 接続の確立に成功しました。\n"
 
-#: ../src/panel/widgets/netman/applet.c:1362
+#: ../src/panel/widgets/netman/applet.c:1374
 msgid "VPN Login Message"
 msgstr "VPN ログインメッセージ"
 
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
+#: ../src/panel/widgets/netman/applet.c:1382
+#: ../src/panel/widgets/netman/applet.c:1422
 msgid "VPN Connection Failed"
 msgstr "VPN 接続は失敗しました"
 
-#: ../src/panel/widgets/netman/applet.c:1414
+#: ../src/panel/widgets/netman/applet.c:1426
 #, c-format
 msgid ""
 "\n"
@@ -422,7 +631,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/panel/widgets/netman/applet.c:1417
+#: ../src/panel/widgets/netman/applet.c:1429
 #, c-format
 msgid ""
 "\n"
@@ -435,168 +644,161 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/panel/widgets/netman/applet.c:1741
+#: ../src/panel/widgets/netman/applet.c:1753
 msgid "device not ready (firmware missing)"
 msgstr "デバイスの準備ができていません (ファームウェア未検出)"
 
-#: ../src/panel/widgets/netman/applet.c:1743
+#: ../src/panel/widgets/netman/applet.c:1755
 msgid "device not ready"
 msgstr "デバイスの準備ができていません"
 
 #. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet.c:1765
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:99
 msgid "disconnected"
 msgstr "切断されています"
 
-#: ../src/panel/widgets/netman/applet.c:1769
+#: ../src/panel/widgets/netman/applet.c:1781
 msgid "Disconnect"
 msgstr "切断する"
 
-#: ../src/panel/widgets/netman/applet.c:1783
+#: ../src/panel/widgets/netman/applet.c:1795
 msgid "device not managed"
 msgstr "デバイスは管理されていません"
 
-#: ../src/panel/widgets/netman/applet.c:1864
+#: ../src/panel/widgets/netman/applet.c:1876
 msgid "No network devices available"
 msgstr "ネットワークデバイスがありません"
 
-#: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
+#: ../src/panel/widgets/netman/applet.c:1929
 msgid "_Advanced Options"
-msgstr "チームの高度なオプション"
+msgstr "高度なオプション(_A)"
 
-#: ../src/panel/widgets/netman/applet.c:1919
+#: ../src/panel/widgets/netman/applet.c:1931
 msgid "_VPN Connections"
 msgstr "VPN 接続(_V)"
 
-#: ../src/panel/widgets/netman/applet.c:1973
+#: ../src/panel/widgets/netman/applet.c:1985
 msgid "_Configure VPN…"
-msgstr "VPN を設定(_C)..."
+msgstr "VPN を設定…(_C)"
 
-#: ../src/panel/widgets/netman/applet.c:1977
+#: ../src/panel/widgets/netman/applet.c:1989
 msgid "_Add a VPN connection…"
-msgstr "VPN 接続を追加(_A)"
+msgstr "VPN 接続を追加…(_A)"
 
 #. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
+#: ../src/panel/widgets/netman/applet.c:2001
+#: ../src/panel/widgets/netman/applet.c:2409
 msgid "Connection _Information"
 msgstr "接続情報(_I)"
 
 #. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
+#: ../src/panel/widgets/netman/applet.c:2009
+#: ../src/panel/widgets/netman/applet.c:2417
 msgid "Edit Connections…"
-msgstr "接続を編集する..."
+msgstr "接続を編集する…"
 
-#: ../src/panel/widgets/netman/applet.c:2112
+#: ../src/panel/widgets/netman/applet.c:2126
 msgid "NetworkManager is not running…"
-msgstr "NetworkManager は実行されていません..."
+msgstr "NetworkManager は実行されていません…"
 
-#: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
+#: ../src/panel/widgets/netman/applet.c:2132
 msgid "Wi-Fi country is not set"
-msgstr "私の国は一覧に有りません"
+msgstr "Wi-Fi の国が設定されていません"
 
-#: ../src/panel/widgets/netman/applet.c:2119
+#: ../src/panel/widgets/netman/applet.c:2133
 msgid "Click here to set Wi-Fi country"
-msgstr ""
+msgstr "ここをクリックして Wi-Fi の国を設定します"
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
+#: ../src/panel/widgets/netman/applet.c:2141
+#: ../src/panel/widgets/netman/applet.c:3255
 msgid "Networking disabled"
 msgstr "ネットワークは無効になっています"
 
 #. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
+#: ../src/panel/widgets/netman/applet.c:2367
 msgid "Enable _Networking"
 msgstr "ネットワークを有効にする(_N)"
 
 #. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
+#: ../src/panel/widgets/netman/applet.c:2376
 msgid "Enable _Wi-Fi"
 msgstr "Wi-Fi を有効にする(_W)"
 
 #. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
+#: ../src/panel/widgets/netman/applet.c:2385
 msgid "Enable _Mobile Broadband"
 msgstr "モバイルブロードバンドを有効にする(_M)"
 
 #. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
+#: ../src/panel/widgets/netman/applet.c:2397
 msgid "Enable N_otifications"
 msgstr "通知を有効にする(_O)"
 
-#: ../src/panel/widgets/netman/applet.c:2415
+#: ../src/panel/widgets/netman/applet.c:2431
 msgid "_About"
 msgstr "このアプリケーションについて(_A)"
 
-#: ../src/panel/widgets/netman/applet.c:2736
+#: ../src/panel/widgets/netman/applet.c:2756
 #, c-format
 msgid "You are now connected to “%s”."
 msgstr "現在'%s' に接続しています。"
 
-#: ../src/panel/widgets/netman/applet.c:2776
+#: ../src/panel/widgets/netman/applet.c:2806
 msgid "Disconnected"
 msgstr "切断されました"
 
-#: ../src/panel/widgets/netman/applet.c:2777
+#: ../src/panel/widgets/netman/applet.c:2807
 msgid "The network connection has been disconnected."
 msgstr "ネットワーク接続が切断されました。"
 
-#: ../src/panel/widgets/netman/applet.c:3079
+#: ../src/panel/widgets/netman/applet.c:3109
 #, c-format
 msgid "Preparing network connection “%s”…"
 msgstr "ネットワーク接続 '%s' を準備中..."
 
-#: ../src/panel/widgets/netman/applet.c:3082
+#: ../src/panel/widgets/netman/applet.c:3112
 #, c-format
 msgid "User authentication required for network connection “%s”…"
 msgstr "ネットワーク接続 '%s' にはユーザー認証が必要です..."
 
-#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet.c:3115
 #: ../src/panel/widgets/netman/applet-device-bt.c:113
 #: ../src/panel/widgets/netman/mobile-helpers.c:605
 #, c-format
 msgid "Requesting a network address for “%s”…"
 msgstr "'%s' のネットワークアドレスを要求しています..."
 
-#: ../src/panel/widgets/netman/applet.c:3088
+#: ../src/panel/widgets/netman/applet.c:3118
 #, c-format
 msgid "Network connection “%s” active"
 msgstr "ネットワーク接続 '%s' はアクティブです。"
 
-#: ../src/panel/widgets/netman/applet.c:3165
+#: ../src/panel/widgets/netman/applet.c:3195
 #, c-format
 msgid "Starting VPN connection “%s”…"
 msgstr "VPN 接続 '%s' を開始しています..."
 
-#: ../src/panel/widgets/netman/applet.c:3168
+#: ../src/panel/widgets/netman/applet.c:3198
 #, c-format
 msgid "User authentication required for VPN connection “%s”…"
 msgstr "VPN 接続 '%s' にはユーザー認証が必要です..."
 
-#: ../src/panel/widgets/netman/applet.c:3171
+#: ../src/panel/widgets/netman/applet.c:3201
 #, c-format
 msgid "Requesting a VPN address for “%s”…"
 msgstr "'%s' の VPN アドレスを要求しています..."
 
-#: ../src/panel/widgets/netman/applet.c:3174
+#: ../src/panel/widgets/netman/applet.c:3204
 #, c-format
 msgid "VPN connection active"
 msgstr "VPN 接続はアクティブです"
 
-#: ../src/panel/widgets/netman/applet.c:3226
+#: ../src/panel/widgets/netman/applet.c:3259
 msgid "No network connection"
 msgstr "ネットワーク接続がありません"
 
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "ネットワーク"
-
-#: ../src/panel/widgets/netman/applet.c:3896
+#: ../src/panel/widgets/netman/applet.c:3931
 msgid "NetworkManager Applet"
 msgstr "NetworkManager アプレット"
 
@@ -623,13 +825,6 @@ msgstr "モバイルブロードバンド (%s)"
 msgid "Mobile Broadband"
 msgstr "モバイルブロードバンド"
 
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
-msgid "Available"
-msgstr "利用可能"
-
 #. Default connection item
 #: ../src/panel/widgets/netman/applet-device-broadband.c:793
 msgid "New Mobile Broadband connection…"
@@ -638,7 +833,7 @@ msgstr "新規のモバイルブロードバンド接続…"
 #: ../src/panel/widgets/netman/applet-device-broadband.c:809
 #: ../src/panel/widgets/netman/applet-device-bt.c:75
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1459
 msgid "Connection Established"
 msgstr "接続を確立しました"
 
@@ -755,7 +950,7 @@ msgstr "キャンセル(_C)"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1191
 #: ../src/panel/widgets/netman/mobile-helpers.c:456
 #: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../src/panel/widgets/volumepulse/volumepulse.c:248
 #: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
 msgid "_OK"
 msgstr "OK(_O)"
@@ -764,104 +959,103 @@ msgstr "OK(_O)"
 msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "非表示 Wi-Fi ネットワークに接続する(_C)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#: ../src/panel/widgets/netman/applet-device-wifi.c:266
 msgid "Create _New Wi-Fi Network…"
 msgstr "新規 Wi-Fi ネットワークを作成(_N)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
-#, fuzzy
+#: ../src/panel/widgets/netman/applet-device-wifi.c:307
 msgid "Create Wi-Fi _Hotspot…"
-msgstr "新規 Wi-Fi ネットワークを作成(_N)"
+msgstr "Wi-Fi ホットスポットを作成(_H)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+#: ../src/panel/widgets/netman/applet-device-wifi.c:391
 msgid "(none)"
 msgstr "(なし)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+#: ../src/panel/widgets/netman/applet-device-wifi.c:569
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1564
 msgid "Failed to add new connection"
 msgstr "新規接続の追加に失敗しました"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
 msgid "Insufficient privileges."
 msgstr "権限が不足しています。"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
+#: ../src/panel/widgets/netman/applet-device-wifi.c:623
+#, c-format
 msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "Wi-Fi ネットワーク '%s' に接続しました。"
+msgstr "無線ネットワーク '%s' から切断しますか？"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#: ../src/panel/widgets/netman/applet-device-wifi.c:928
 #, c-format
 msgid "Wi-Fi Networks (%s)"
 msgstr "Wi-Fi ネットワーク (%s)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#: ../src/panel/widgets/netman/applet-device-wifi.c:930
 #, c-format
 msgid "Wi-Fi Network (%s)"
 msgstr "Wi-Fi ネットワーク (%s)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+#: ../src/panel/widgets/netman/applet-device-wifi.c:933
 msgid "Wi-Fi Network"
 msgid_plural "Wi-Fi Networks"
 msgstr[0] "Wi-Fi ネットワーク"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+#: ../src/panel/widgets/netman/applet-device-wifi.c:985
 msgid "Wi-Fi is disabled"
 msgstr "Wi-Fi は無効になっています"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+#: ../src/panel/widgets/netman/applet-device-wifi.c:986
 msgid "Wi-Fi is disabled by hardware switch"
 msgstr "Wi-Fi はハードウェアのスイッチで無効になっています"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1052
 msgid "More networks"
 msgstr "その他のネットワーク"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
 msgid "Wi-Fi Networks Available"
 msgstr "Wi-Fi ネットワークは利用可能です"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1262
 msgid "Use the network menu to connect to a Wi-Fi network"
 msgstr "Wi-Fi ネットワークに接続するにはネットワークメニューを使用します。"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1448
 #, c-format
 msgid "You are now connected to the Wi-Fi network “%s”."
 msgstr "Wi-Fi ネットワーク '%s' に接続しました。"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1493
 #, c-format
 msgid "Preparing Wi-Fi network connection “%s”…"
 msgstr "Wi-Fi ネットワーク接続 '%s' を準備中..."
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1496
 #, c-format
 msgid "Configuring Wi-Fi network connection “%s”…"
 msgstr "Wi-Fi ネットワーク接続 '%s' を設定中です..."
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
 #, c-format
 msgid "User authentication required for Wi-Fi network “%s”…"
 msgstr "Wi-Fi ネットワーク '%s' にはユーザー認証が必要です..."
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
 #, c-format
 msgid "Requesting a Wi-Fi network address for “%s”…"
 msgstr "'%s' の Wi-Fi ネットワークアドレスを要求しています..."
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1515
+#, c-format
 msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "Wi-Fi ネットワーク接続 '%s' はアクティブです: %s (%d%%)"
+msgstr "Wi-Fi ネットワーク接続 '%s' はアクティブです: %s (hotspot)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1518
 #, c-format
 msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
 msgstr "Wi-Fi ネットワーク接続 '%s' はアクティブです: %s (%d%%)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1522
 #, c-format
 msgid "Wi-Fi network connection “%s” active"
 msgstr "Wi-Fi ネットワーク接続 '%s' はアクティブです"
@@ -1299,15 +1493,13 @@ msgstr "モバイルブロードバンド接続 '%s' はアクティブです: (
 msgid "roaming"
 msgstr "ローミング"
 
-#: ../src/panel/widgets/netman/netman.c:139
-#, fuzzy
+#: ../src/panel/widgets/netman/netman.c:145
 msgid "Network Manager"
-msgstr "NetworkManager"
+msgstr "Network Manager"
 
-#: ../src/panel/widgets/netman/netman.c:140
-#, fuzzy
+#: ../src/panel/widgets/netman/netman.c:146
 msgid "Controller for Network Manager"
-msgstr "NetworkManager"
+msgstr "Network Manager 用コントローラー"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:793
 #, c-format
@@ -1364,302 +1556,368 @@ msgstr "PEM 証明書 (*.pem、*.crt、*.cer)"
 msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
 msgstr "DER か、PEM、 PKCS#12 の秘密鍵 (*.der, *.pem, *.p12, *.key)"
 
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
-msgstr ""
+#: ../src/panel/widgets/notify.hpp:9
+msgid "Show notifications"
+msgstr "通知を表示する"
 
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
+#: ../src/panel/widgets/notify.hpp:10
+msgid "Time before notifications close"
+msgstr "通知を閉じるまでの時間"
+
+#: ../src/panel/widgets/notify.hpp:15
+msgid "Notifications"
+msgstr "通知"
+
+#: ../src/panel/widgets/power.hpp:34
+msgid "Power"
+msgstr "電源"
+
+#: ../src/panel/widgets/power/power.c:84
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
 msgstr ""
+"この電源は5Aを供給できません\n"
+"周辺機器への電力供給は制限されます"
 
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
+#: ../src/panel/widgets/power/power.c:100
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
+"低電力イベントによるリセット\n"
+"電源を確認してください"
 
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
+#: ../src/panel/widgets/power/power.c:160
 msgid ""
-"Charged : %d%%\n"
-"On external power"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
+"USBの過電流\n"
+"接続しているUSBデバイスを確認してください"
 
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/panel/widgets/power/power.c:211
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
+"電圧低下の警告\n"
+"電源を確認してください"
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
-msgstr ""
+#: ../src/panel/widgets/power/power.c:230
+msgid "PSU low voltage detected\n"
+msgstr "PSUの電圧低下を検出しました\n"
 
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
-msgstr ""
+#: ../src/panel/widgets/power/power.c:231
+msgid "USB over current detected\n"
+msgstr "USBの過電流を検出しました\n"
+
+#: ../src/panel/widgets/power/power.c:232
+msgid "Low power reset has occurred\n"
+msgstr "低電力リセットが発生しました\n"
+
+#: ../src/panel/widgets/power/power.c:289
+msgid "Power Information..."
+msgstr "電源の情報..."
 
 #: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
+#: ../src/panel/widgets/smenu/menu.c:122
 msgid "Run"
 msgstr "実行"
 
 #: ../src/panel/widgets/smenu/gtk-run.c:412
 msgid "Enter the command you want to execute:"
-msgstr ""
+msgstr "実行したいコマンドを入力してください:"
 
-#: ../src/panel/widgets/smenu/menu.c:116
+#: ../src/panel/widgets/smenu/menu.c:117
 msgid "Logout command is not set"
-msgstr ""
+msgstr "ログアウトコマンドが設定されていません"
 
-#: ../src/panel/widgets/smenu/menu.c:122
+#: ../src/panel/widgets/smenu/menu.c:123
 msgid "Restart"
 msgstr "再起動"
 
-#: ../src/panel/widgets/smenu/menu.c:123
+#: ../src/panel/widgets/smenu/menu.c:124
 msgid "Logout"
 msgstr "ログアウト"
 
-#: ../src/panel/widgets/smenu/menu.c:140
+#: ../src/panel/widgets/smenu/menu.c:141
 msgid "No file manager is configured."
-msgstr ""
+msgstr "ファイルマネージャーが設定されていません。"
 
-#: ../src/panel/widgets/smenu/menu.c:489
+#: ../src/panel/widgets/smenu/menu.c:476
 msgid "Add to desktop"
 msgstr "デスクトップに追加"
 
-#: ../src/panel/widgets/smenu/menu.c:496
+#: ../src/panel/widgets/smenu/menu.c:480
+msgid "Add to Launcher"
+msgstr "ランチャーに追加"
+
+#: ../src/panel/widgets/smenu/menu.c:487
 msgid "Properties"
 msgstr "プロパティ"
 
-#: ../src/panel/widgets/smenu/menu.c:954
+#: ../src/panel/widgets/smenu/menu.c:949
 msgid "Click here to open applications menu"
-msgstr ""
+msgstr "ここをクリックするとアプリケーション・メニューが開きます"
 
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr "メニュー"
-
-#: ../src/panel/widgets/smenu/menu.c:1048
+#: ../src/panel/widgets/smenu/menu.c:1044
 msgid "Icon"
 msgstr "アイコン"
 
-#: ../src/panel/widgets/smenu/menu.c:1049
+#: ../src/panel/widgets/smenu/menu.c:1045
 msgid "Padding"
-msgstr ""
+msgstr "余白"
 
-#: ../src/panel/widgets/smenu/menu.c:1050
+#: ../src/panel/widgets/smenu/menu.c:1046
 msgid "Fixed Size"
-msgstr ""
+msgstr "固定サイズ"
 
-#: ../src/panel/widgets/smenu/menu.c:1058
+#: ../src/panel/widgets/smenu/menu.c:1054
 msgid "Menu with Search"
-msgstr ""
+msgstr "検索付きメニュー"
 
-#: ../src/panel/widgets/smenu/menu.c:1059
-#, fuzzy
+#: ../src/panel/widgets/smenu/menu.c:1055
 msgid "Searchable Application Menu"
-msgstr "アプリケーション・メニュー"
+msgstr "検索可能なアプリケーションメニュー"
 
-#: ../src/panel/widgets/updater/updater.c:189
+#: ../src/panel/widgets/tray/tray.hpp:18
+msgid "Smooth scrolling threshold"
+msgstr "滑らかなスクロールのしきい値"
+
+#: ../src/panel/widgets/tray/tray.hpp:19
+msgid "Middle button activates menu"
+msgstr "中央ボタンでメニューをアクティベート"
+
+#: ../src/panel/widgets/tray/tray.hpp:28
+msgid "System Tray"
+msgstr "システムトレイ"
+
+#: ../src/panel/widgets/updater.hpp:26
+#: ../src/panel/widgets/updater/updater.c:557
+msgid "Hours between checks for updates"
+msgstr "アップデートをチェックする間隔の時間"
+
+#: ../src/panel/widgets/updater.hpp:39
+#: ../src/panel/widgets/updater/updater.c:555
+#: ../src/panel/widgets/updater/updater.c:578
+msgid "Updater"
+msgstr "アップデーター"
+
+#: ../src/panel/widgets/updater/updater.c:191
 msgid ""
 "Updates are available\n"
 "Click the update icon to install"
 msgstr ""
+"アップデートが利用可能です\n"
+"インストールするにはアップデートアイコンをクリックしてください"
 
-#: ../src/panel/widgets/updater/updater.c:211
-#, fuzzy
+#: ../src/panel/widgets/updater/updater.c:213
 msgid "No network connection - cannot install updates."
-msgstr "ネットワーク接続がありません"
+msgstr "ネットワーク接続がありません - アップデートをインストールできません。"
 
-#: ../src/panel/widgets/updater/updater.c:217
+#: ../src/panel/widgets/updater/updater.c:219
 msgid ""
 "Clock not synchronised - cannot install updates. Try again in a few minutes."
 msgstr ""
+"時刻が同期されていません - アップデートをインストールできません。数分おいてか"
+"ら再度試してください。"
 
 #: ../src/panel/widgets/updater/updater.c:320
 msgid "Show Updates..."
-msgstr ""
+msgstr "アップデートを表示..."
 
-#: ../src/panel/widgets/updater/updater.c:324
+#: ../src/panel/widgets/updater/updater.c:325
 msgid "Install Updates"
-msgstr ""
+msgstr "アップデートをインストール"
 
-#: ../src/panel/widgets/updater/updater.c:470
+#: ../src/panel/widgets/updater/updater.c:474
 msgid "Updates are available - click to install"
-msgstr ""
+msgstr "アップデートが利用可能 - クリックしてインストール"
 
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:531
-msgid "Hours between checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:562
+#: ../src/panel/widgets/updater/updater.c:579
 msgid "Checks for updates"
-msgstr ""
+msgstr "アップデートをチェックします"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
-#, fuzzy
-msgid "Reconnecting Bluetooth devices..."
-msgstr "Bluetooth デバイスを検索中..."
+#: ../src/panel/widgets/volumepulse.hpp:37
+msgid "Volume"
+msgstr "ボリューム"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
+#: ../src/panel/widgets/volumepulse/bluetooth.c:190
+#: ../src/panel/widgets/volumepulse/bluetooth.c:352
+#, c-format
 msgid "Bluetooth %s device not found"
-msgstr "Bluetooth アダプターがありません"
+msgstr "Bluetooth %s デバイスがありません"
 
 #. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
-msgstr ""
+#: ../src/panel/widgets/volumepulse/bluetooth.c:241
+msgid "Audio device not found"
+msgstr "オーディオデバイスがありません"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, fuzzy, c-format
+#: ../src/panel/widgets/volumepulse/bluetooth.c:257
+#, c-format
 msgid "Could not set profile for device : %s"
-msgstr "デバイス '%s' からのペアリングを承認しますか？"
+msgstr "デバイス用にプロファイルをセットできませんでした: %s"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
+#: ../src/panel/widgets/volumepulse/bluetooth.c:302
+#, c-format
+msgid "Could not change %s to device : %s"
+msgstr "デバイスへの %s を変更できませんでした : %s"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:419
+#, c-format
 msgid "Failed to connect to Bluetooth device - %s"
-msgstr "ペアリング済みの Bluetooth デバイス"
+msgstr "Bluetooth デバイスに接続できませんでした - %s"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, fuzzy, c-format
+#: ../src/panel/widgets/volumepulse/bluetooth.c:511
+#: ../src/panel/widgets/volumepulse/bluetooth.c:556
+msgid "Could not set device as output"
+msgstr "デバイスを出力として設定できませんでした"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:517
+#, c-format
 msgid "Connecting Bluetooth device '%s' as output..."
-msgstr "デバイス '%s' に接続中..."
+msgstr "Bluetooth デバイス '%s' に出力として接続しています..."
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, fuzzy, c-format
+#: ../src/panel/widgets/volumepulse/bluetooth.c:562
+#, c-format
 msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "デバイス '%s' に接続中..."
-
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
-#, fuzzy
-msgid "Reconnecting Bluetooth device..."
-msgstr "Bluetooth デバイスを検索中..."
+msgstr "Bluetooth デバイス '%s' に入力として接続しています..."
 
 #. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
+#: ../src/panel/widgets/volumepulse/commongui.c:142
 msgid "Mute"
-msgstr ""
+msgstr "ミュート"
 
-#: ../src/panel/widgets/volumepulse/commongui.c:231
+#: ../src/panel/widgets/volumepulse/commongui.c:228
 msgid "No audio devices found"
-msgstr ""
+msgstr "オーディオデバイスが見つかりません"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:71
 msgid "Input from this device not available in the current profile"
-msgstr ""
+msgstr "現在のプロファイルでは、このデバイスからの入力は利用できません"
 
 #. update tooltip
 #: ../src/panel/widgets/volumepulse/micpulse.c:144
 msgid "Mic volume"
-msgstr ""
+msgstr "マイクボリューム"
 
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+#: ../src/panel/widgets/volumepulse/volumepulse.c:104
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+#: ../src/panel/widgets/volumepulse/volumepulse.c:117
 msgid "AV Jack"
-msgstr ""
+msgstr "AVジャック"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+#: ../src/panel/widgets/volumepulse/volumepulse.c:140
 msgid "Device Profiles..."
-msgstr ""
+msgstr "デバイスプロファイル..."
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+#: ../src/panel/widgets/volumepulse/volumepulse.c:173
 msgid "Output to this device not available in the current profile"
-msgstr ""
+msgstr "現在のプロファイルでは、このデバイスからの出力は利用できません"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
-#, fuzzy
+#: ../src/panel/widgets/volumepulse/volumepulse.c:222
 msgid "Device Profiles"
-msgstr "デバイスの切断に失敗しました"
+msgstr "デバイスプロファイル"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
-#, fuzzy
+#: ../src/panel/widgets/volumepulse/volumepulse.c:280
 msgid "Device not connected"
-msgstr "デバイスの切断に失敗しました"
+msgstr "デバイスが接続されていません"
 
 #. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
-#, fuzzy
+#: ../src/panel/widgets/volumepulse/volumepulse.c:380
 msgid "Volume control"
-msgstr "フロー制御"
+msgstr "ボリュームコントロール"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+#: ../src/panel/widgets/volumepulse/volumepulse.c:554
 msgid "Volume Control (PulseAudio)"
-msgstr ""
+msgstr "ボリュームコントロール (PulseAudio)"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+#: ../src/panel/widgets/volumepulse/volumepulse.c:555
 msgid "Display and control volume for PulseAudio"
-msgstr ""
+msgstr "PulseAudio の音量表示とコントロール"
+
+#: ../src/panel/widgets/window-list/window-list.hpp:65
+msgid "Maximum width of task button"
+msgstr "タスクボタンの最大幅"
+
+#: ../src/panel/widgets/window-list/window-list.hpp:91
+msgid "Window List"
+msgstr "ウィンドウ リスト"
+
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr "プラグインの追加/削除"
+
+#: ../data/config.ui.h:2
+msgid "Add to left"
+msgstr "左側に追加"
+
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
+msgstr "プラグインをタスクバーの左側に追加します"
+
+#: ../data/config.ui.h:4
+msgid "Add to right"
+msgstr "右側に追加"
+
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
+msgstr "プラグインをタスクバーの右側に追加します"
+
+#: ../data/config.ui.h:6
+msgid "Remove"
+msgstr "取り除く"
+
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr "タスクバーからプラグインを取り除きます"
+
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr "左に移動"
+
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr "プラグインをタスクバーの左方向に移動します"
+
+#: ../data/config.ui.h:10
+msgid "Move right"
+msgstr "右に移動"
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr "プラグインをタスクバーの右方向に移動します"
+
+#: ../data/config.ui.h:12
+msgid "Configure..."
+msgstr "設定..."
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr "選択したプラグインの設定をします"
 
 #: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-#, fuzzy
 msgid "label"
-msgstr "再ラベル付け"
+msgstr "ラベル"
 
 #: ../data/lxplug-updater.ui.h:1
-#, fuzzy
 msgid "Available Updates"
-msgstr "利用可能"
+msgstr "アップデート可能"
 
 #: ../data/lxplug-updater.ui.h:2
-#, fuzzy
 msgid "Close"
-msgstr "閉じる(_C)"
+msgstr "閉じる"
 
 #: ../data/lxplug-updater.ui.h:3
 msgid "Install"
-msgstr ""
+msgstr "インストール"
 
 #: ../data/lxplug-updater.ui.h:4
 msgid "The following packages can be updated :"
-msgstr ""
+msgstr "次のパッケージがアップデート可能です :"
 
 #: ../data/lxplug-bluetooth.ui.h:1
 msgid "Add New Device"
@@ -1694,9 +1952,70 @@ msgid "Connection Information"
 msgstr "接続情報"
 
 #: ../src/panel/widgets/netman/info.ui.h:2
-#, fuzzy
 msgid "_Close"
 msgstr "閉じる(_C)"
+
+#~ msgid "Reboot"
+#~ msgstr "再起動"
+
+#~ msgid "Later"
+#~ msgstr "あとで"
+
+#, c-format
+#~ msgid "Error %s - %s"
+#~ msgstr "エラー %s - %s"
+
+#~ msgid "Updating package data - please wait..."
+#~ msgstr "パッケージデータをアップデート中 - お待ちください..."
+
+#~ msgid "Checking package details - please wait..."
+#~ msgstr "パッケージの詳細をチェック中 - お待ちください..."
+
+#, c-format
+#~ msgid "%s packages - please wait..."
+#~ msgstr "%s パッケージ - please wait..."
+
+#~ msgid "Installing"
+#~ msgstr "インストール中"
+
+#~ msgid "Downloading"
+#~ msgstr "ダウンロード中"
+
+#~ msgid "updating cache"
+#~ msgstr "キャッシュをアップデート中"
+
+#~ msgid "Comparing versions - please wait..."
+#~ msgstr "バージョンを比較中 - お待ちください..."
+
+#~ msgid "comparing versions"
+#~ msgstr "バージョンを比較中"
+
+#~ msgid "Installing updates - please wait..."
+#~ msgstr "アップデートをインストール中 - お待ちください..."
+
+#~ msgid "System is up to date"
+#~ msgstr "システムは最新です"
+
+#~ msgid "installing packages"
+#~ msgstr "アップデートをインストール中"
+
+#~ msgid ""
+#~ "System is up to date.\n"
+#~ "A reboot is required to complete the install. Reboot now or later?"
+#~ msgstr ""
+#~ "システムは最新です\n"
+#~ "インストールを完了するために再起動が必要です。再起動しますか？"
+
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr "オーディオメニューを使用してデバイスに接続してください"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth devices..."
+#~ msgstr "Bluetooth デバイスを検索中..."
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth device..."
+#~ msgstr "Bluetooth デバイスを検索中..."
 
 #~ msgid "Pairing Request"
 #~ msgstr "ペアリングのリクエスト"
@@ -2574,9 +2893,6 @@ msgstr "閉じる(_C)"
 #~ msgid "Configure _Methods…"
 #~ msgstr "認証方法を設定する(_M)…"
 
-#~ msgid "Compression"
-#~ msgstr "圧縮"
-
 #~ msgid "_Use point-to-point encryption (MPPE)"
 #~ msgstr "MPPE (ポイントツーポイント暗号化) を使用する(_U)"
 
@@ -2864,9 +3180,6 @@ msgstr "閉じる(_C)"
 #~ msgid "Any L3 protocol"
 #~ msgstr "すべての L3 プロトコル"
 
-#~ msgid "TCP"
-#~ msgstr "TCP"
-
 #~ msgid "UDP"
 #~ msgstr "UDP"
 
@@ -2875,9 +3188,6 @@ msgstr "閉じる(_C)"
 
 #~ msgid "Any L4 protocol"
 #~ msgstr "すべての L4 プロトコル"
-
-#~ msgid "_Peer notification count"
-#~ msgstr "ピア通知数(_P)"
 
 #~ msgid "Peer _notification interval"
 #~ msgstr "ピア通知間隔(_N)"
@@ -2935,9 +3245,6 @@ msgstr "閉じる(_C)"
 #~ "このオプションは、リンクパートナーに LACPDU パケットを転送を依頼するレート"
 #~ "を指定します。これにチェックを入れると、パケットは毎秒送信されます。チェッ"
 #~ "クを入れない場合は、30 秒ごとに送信されます。"
-
-#~ msgid "_System priority"
-#~ msgstr "システム優先度(_S)"
 
 #~ msgid "_Minimum ports"
 #~ msgstr "最小ポート数(_M)"
@@ -4522,9 +4829,6 @@ msgstr "閉じる(_C)"
 
 #~ msgid "Select"
 #~ msgstr "選択"
-
-#~ msgid "Cancel"
-#~ msgstr "キャンセル"
 
 #~ msgid "Select from file…"
 #~ msgstr "ファイルから選択…"
