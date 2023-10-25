@@ -23,8 +23,7 @@ src/panel/widgets/gpu.cpp
 src/panel/widgets/gpu/gpu.c
 src/panel/widgets/launcher.c
 src/panel/widgets/launchers.cpp
-src/panel/widgets/menu.cpp
-src/panel/widgets/micpulse.cpp
+src/panel/widgets/smenu.cpp
 src/panel/widgets/netman.cpp
 src/panel/widgets/netman/ap-menu-item.c
 src/panel/widgets/netman/applet-agent.c
@@ -43,7 +42,6 @@ src/panel/widgets/netman/netman.c
 src/panel/widgets/netman/nm-compat.c
 src/panel/widgets/netman/nm-shared-utils.c
 src/panel/widgets/netman/utils.c
-src/panel/widgets/network.cpp
 src/panel/widgets/power.cpp
 src/panel/widgets/power/power.c
 src/panel/widgets/smenu.cpp
