@@ -7,7 +7,7 @@ src/panel/wf-popover.cpp
 src/panel/gtk-utils.cpp
 src/panel/panel.cpp
 src/panel/wf-shell-app.cpp
-src/panel/widgets/battery.cpp
+src/panel/widgets/batt.cpp
 src/panel/widgets/batt/batt.c
 src/panel/widgets/batt/batt-sys.c
 src/panel/widgets/bluetooth.cpp
