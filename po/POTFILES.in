@@ -8,23 +8,33 @@ src/panel/gtk-utils.cpp
 src/panel/panel.cpp
 src/panel/wf-shell-app.cpp
 src/panel/widgets/batt.cpp
+src/panel/widgets/batt.hpp
 src/panel/widgets/batt/batt.c
 src/panel/widgets/batt/batt_sys.c
 src/panel/widgets/bluetooth.cpp
+src/panel/widgets/bluetooth.hpp
 src/panel/widgets/bluetooth/bluetooth.c
 src/panel/widgets/clock.cpp
+src/panel/widgets/clock.hpp
 src/panel/widgets/cpu.cpp
+src/panel/widgets/cpu.hpp
 src/panel/widgets/cpu/cpu.c
 src/panel/widgets/cputemp.cpp
+src/panel/widgets/cputemp.hpp
 src/panel/widgets/cputemp/cputemp.c
 src/panel/widgets/ejecter.cpp
+src/panel/widgets/ejecter.hpp
 src/panel/widgets/ejecter/ejecter.c
 src/panel/widgets/gpu.cpp
+src/panel/widgets/gpu.hpp
 src/panel/widgets/gpu/gpu.c
 src/panel/widgets/launcher.c
 src/panel/widgets/launchers.cpp
+src/panel/widgets/launchers.hpp
 src/panel/widgets/smenu.cpp
+src/panel/widgets/smenu.hpp
 src/panel/widgets/netman.cpp
+src/panel/widgets/netman.hpp
 src/panel/widgets/netman/ap-menu-item.c
 src/panel/widgets/netman/applet-agent.c
 src/panel/widgets/netman/applet.c
@@ -42,7 +52,9 @@ src/panel/widgets/netman/netman.c
 src/panel/widgets/netman/nm-compat.c
 src/panel/widgets/netman/nm-shared-utils.c
 src/panel/widgets/netman/utils.c
+src/panel/widgets/notify.hpp
 src/panel/widgets/power.cpp
+src/panel/widgets/power.hpp
 src/panel/widgets/power/power.c
 src/panel/widgets/smenu.cpp
 src/panel/widgets/smenu/gtk-run.c
@@ -51,10 +63,13 @@ src/panel/widgets/spacing.cpp
 src/panel/widgets/tray/host.cpp
 src/panel/widgets/tray/item.cpp
 src/panel/widgets/tray/tray.cpp
+src/panel/widgets/tray/tray.hpp
 src/panel/widgets/tray/watcher.cpp
 src/panel/widgets/updater.cpp
+src/panel/widgets/updater.hpp
 src/panel/widgets/updater/updater.c
 src/panel/widgets/volumepulse.cpp
+src/panel/widgets/volumepulse.hpp
 src/panel/widgets/volumepulse/bluetooth.c
 src/panel/widgets/volumepulse/commongui.c
 src/panel/widgets/volumepulse/micpulse.c
@@ -62,6 +77,7 @@ src/panel/widgets/volumepulse/pulse.c
 src/panel/widgets/volumepulse/volumepulse.c
 src/panel/widgets/window-list/toplevel.cpp
 src/panel/widgets/window-list/window-list.cpp
+src/panel/widgets/window-list/window-list.hpp
 [type: gettext/glade] data/config.ui
 [type: gettext/glade] data/lxpanel-modal.ui
 [type: gettext/glade] data/lxplug-updater.ui
