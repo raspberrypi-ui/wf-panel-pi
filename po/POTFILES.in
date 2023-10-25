@@ -9,7 +9,7 @@ src/panel/panel.cpp
 src/panel/wf-shell-app.cpp
 src/panel/widgets/batt.cpp
 src/panel/widgets/batt/batt.c
-src/panel/widgets/batt/batt-sys.c
+src/panel/widgets/batt/batt_sys.c
 src/panel/widgets/bluetooth.cpp
 src/panel/widgets/bluetooth/bluetooth.c
 src/panel/widgets/clock.cpp
