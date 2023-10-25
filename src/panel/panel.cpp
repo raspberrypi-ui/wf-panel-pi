@@ -192,6 +192,11 @@ class WayfirePanel::impl
 
     void create_window()
     {
+        setlocale (LC_ALL, "");
+        bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        textdomain (GETTEXT_PACKAGE);
+
         window = std::make_unique<WayfireAutohidingWindow>(output, "panel");
         window->set_size_request(1, real ? minimal_panel_height : 1);
         if (real)

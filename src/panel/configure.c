@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <locale.h>
 #include "configure.h"
 #include "conf-utils.h"
 
@@ -334,6 +335,11 @@ void plugin_config_dialog (const char *type)
     GKeyFile *kf;
     GList *children, *elem;
     gsize len;
+
+    setlocale (LC_ALL, "");
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
 
     strval = g_strdup_printf (_("Configure %s"), display_name (type));
     cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
