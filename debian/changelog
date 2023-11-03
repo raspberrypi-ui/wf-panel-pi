@@ -1,3 +1,9 @@
+wf-panel-pi (0.52) bookworm; urgency=medium
+
+  * Update Japanese translation
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 03 Nov 2023 11:15:22 +0000
+
 wf-panel-pi (0.51) bookworm; urgency=medium
 
   * Add menu entry for taskbar preferences
