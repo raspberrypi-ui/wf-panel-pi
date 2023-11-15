@@ -238,7 +238,7 @@ static void update_icon (PowerPlugin *pt)
 
 static void show_info (GtkWidget *widget, gpointer user_data)
 {
-    system ("x-www-browser https://rptl.io/rp5-power-supply-info &");
+    system ("x-www-browser https://rptl.io/rpi5-power-supply-info &");
 }
 
 /* Plugin functions */

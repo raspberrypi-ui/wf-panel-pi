@@ -1,3 +1,9 @@
+wf-panel-pi (0.54) bookworm; urgency=medium
+
+  * Fix URL for power supply info
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 15 Nov 2023 11:30:06 +0000
+
 wf-panel-pi (0.53) bookworm; urgency=medium
 
   * Handle updates where packages are uninstalled
