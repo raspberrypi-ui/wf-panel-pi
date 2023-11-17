@@ -368,10 +368,6 @@ void batt_init (PtBattPlugin *pt)
     pt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
 
-#ifndef TEST_MODE
-    if (is_pi ()) pt->timer = 0;
-    else
-#endif
     if (init_measurement (pt))
     {
         /* Load the symbols */

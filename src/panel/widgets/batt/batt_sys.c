@@ -319,7 +319,7 @@ battery *battery_get(int battery_number) {
         battery_update ( b );
 
         if (!b->type_battery) {
-            g_message( "ptbatt: not a battery: %s", batt_path );
+            g_message( "batt: not a battery: %s", batt_path );
             battery_free(b);
             b = NULL;
         }
@@ -338,7 +338,7 @@ battery *battery_get(int battery_number) {
     dir = g_dir_open( ACPI_PATH_SYS_POWER_SUPPLY, 0, &error );
     if ( dir == NULL )
     {
-        g_message( "ptbatt: no ACPI/sysfs support in kernel: %s", error->message );
+        g_message( "batt: no ACPI/sysfs support in kernel: %s", error->message );
         g_error_free(error);
         return NULL;
     }
@@ -357,11 +357,11 @@ battery *battery_get(int battery_number) {
         b = NULL;
     }
     if (b != NULL)
-        g_message( "ptbatt: battery entry " ACPI_BATTERY_DEVICE_NAME "%d not found, using %s",
+        g_message( "batt: battery entry " ACPI_BATTERY_DEVICE_NAME "%d not found, using %s",
             battery_number, b->path);
         // FIXME: update config?
     else
-        g_message( "ptbatt: battery %d not found", battery_number );
+        g_message( "batt: battery %d not found", battery_number );
 
     g_dir_close( dir );
     return b;
