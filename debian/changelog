@@ -1,3 +1,9 @@
+wf-panel-pi (0.55) bookworm; urgency=medium
+
+  * Enable battery plugin on Pi
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 22 Nov 2023 14:33:35 +0000
+
 wf-panel-pi (0.54) bookworm; urgency=medium
 
   * Fix URL for power supply info
