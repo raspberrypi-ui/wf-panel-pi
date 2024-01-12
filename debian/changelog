@@ -1,3 +1,9 @@
+wf-panel-pi (0.56) bookworm; urgency=medium
+
+  * Hide volume icon if no audio devices found
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 12 Jan 2024 10:55:13 +0000
+
 wf-panel-pi (0.55) bookworm; urgency=medium
 
   * Enable battery plugin on Pi

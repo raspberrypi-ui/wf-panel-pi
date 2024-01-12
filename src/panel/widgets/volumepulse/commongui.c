@@ -195,7 +195,7 @@ static void popup_window_mute_toggled_mic (GtkWidget *widget, VolumePulsePlugin 
 
 /* Create the device select menu */
 
-void menu_create (VolumePulsePlugin *vol, gboolean input_control)
+gboolean menu_create (VolumePulsePlugin *vol, gboolean input_control)
 {
     GtkWidget *mi;
     GList *items;
@@ -228,8 +228,10 @@ void menu_create (VolumePulsePlugin *vol, gboolean input_control)
         mi = gtk_menu_item_new_with_label (_("No audio devices found"));
         gtk_widget_set_sensitive (GTK_WIDGET (mi), FALSE);
         gtk_menu_shell_append (GTK_MENU_SHELL (vol->menu_devices[index]), mi);
+        return FALSE;
     }
     else g_list_free (items);
+    return TRUE;
 }
 
 /* Add a separator to the menu (but only if there isn't already one there...) */
