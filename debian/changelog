@@ -1,3 +1,9 @@
+wf-panel-pi (0.57) bookworm; urgency=medium
+
+  * Fix hiding of titlebars on modal dialogs
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 15 Jan 2024 08:18:55 +0000
+
 wf-panel-pi (0.56) bookworm; urgency=medium
 
   * Hide volume icon if no audio devices found

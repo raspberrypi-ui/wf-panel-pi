@@ -113,7 +113,6 @@ static void message (char *msg, int prog)
     // force a redraw if the window was not already displayed - forces a resize to correct size
     if (!vis)
     {
-        gtk_window_set_decorated (GTK_WINDOW (msg_dlg), FALSE);
         gtk_widget_hide (msg_dlg);
         gtk_widget_unrealize (msg_dlg);
         gtk_widget_show (msg_dlg);

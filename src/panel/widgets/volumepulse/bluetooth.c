@@ -405,7 +405,6 @@ static void bt_connect_dialog_show (VolumePulsePlugin *vol, const char *fmt, ...
     gtk_widget_hide (vol->conn_ok);
 
     gtk_widget_show (vol->conn_dialog);
-    gtk_window_set_decorated (GTK_WINDOW (vol->conn_dialog), FALSE);
 
     g_free (msg);
 }
