@@ -16,7 +16,7 @@ typedef struct
     GdkRGBA background_colour;              /* Background colour for drawing area */
     gboolean show_percentage;               /* Display usage as a percentage */
     guint timer;                            /* Timer for periodic update */
-    unsigned long last_val[5];
+    unsigned long long last_val[5];
     unsigned long long last_timestamp;
 } GPUPlugin;
 

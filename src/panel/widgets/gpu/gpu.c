@@ -44,8 +44,8 @@ float get_gpu_usage (GPUPlugin *g)
 {
     char *buf = NULL;
     size_t res = 0;
-    unsigned long jobs, runtime, active;
-    unsigned long long ts, timestamp, elapsed;
+    unsigned long jobs, active;
+    unsigned long long timestamp, elapsed, runtime;
     float max, load[5];
     int i;
 
@@ -56,14 +56,13 @@ float get_gpu_usage (GPUPlugin *g)
     // read the stats file a line at a time
     while (getline (&buf, &res, fp) > 0)
     {
-        if (sscanf (buf, "timestamp;%lld;", &ts) == 1)
+        if (sscanf (buf, "timestamp;%lld;", &timestamp) == 1)
         {
             // use the timestamp line to calculate time since last measurement
-            timestamp = ts;
             elapsed = timestamp - g->last_timestamp;
             g->last_timestamp = timestamp;
         }
-        else if (sscanf (strchr (buf, ';'), ";%ld;%ld;%ld;", &jobs, &runtime, &active) == 3)
+        else if (sscanf (strchr (buf, ';'), ";%ld;%lld;%ld;", &jobs, &runtime, &active) == 3)
         {
             // depending on which queue is in the line, calculate the percentage of time used since last measurement
             // store the current time value for the next calculation
