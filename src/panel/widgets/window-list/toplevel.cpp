@@ -483,7 +483,7 @@ class WayfireToplevel::impl
     void handle_output_leave(wl_output *output)
     {
         auto& container = window_list->box;
-        if (1 /*window_list->output->wo == output*/)
+        if (0 /*window_list->output->wo == output*/)
             container.remove(button);
     }
 

@@ -1,3 +1,9 @@
+wf-panel-pi (0.59) bookworm; urgency=medium
+
+  * Fix windows disappearing from task list when multiple monitors used
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 29 Jan 2024 11:54:11 +0000
+
 wf-panel-pi (0.58) bookworm; urgency=medium
 
   * Fix GPU plugin on 32-bit
