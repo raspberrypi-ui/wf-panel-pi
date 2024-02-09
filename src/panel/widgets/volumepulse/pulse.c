@@ -46,6 +46,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define START_PA_OPERATION \
     pa_operation *op; \
+    if (!vol->pa_cont) return 0; \
     if (vol->pa_error_msg) \
     { \
         g_free (vol->pa_error_msg); \
