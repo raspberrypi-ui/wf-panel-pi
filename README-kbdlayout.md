@@ -1,6 +1,8 @@
 # wf-panel-pi (kbdlayout branch)
 
-A panel for the Raspberry Pi Wayfire desktop, based on wf-panel from the wf-shell project
+KbdLayout is an add-on plugin that displays the  current keyboard layout as
+received from a wayfire plugin called `kbdd` over DBus. `kbdd` is included
+as a subproject in this build.
 
 # Build
 
@@ -15,11 +17,11 @@ sudo apt install \
   libdbusmenu-gtk3-dev libxkbcommon-dev libwlroots-dev
 ```
 
-(that should do it for a base desktop version of pi bookworm, if you
-encounter missing tools in the build, you should add the required
-packages accordingly)
+(that should do it for a base desktop version of Raspberry Pi bookworm, if
+you encounter missing tools in the build, you should add the required
+packages accordingly).
 
-Then, do the actual build:
+Then, do the actual build and install all binaries and metadata:
 
 ```
 git clone https://github.com/avarvit/wf-panel-pi.git
@@ -44,8 +46,8 @@ might prefer to uninstall the distributed wf-panel-pi first to avoid this.
 wf-panel-pi uses a config file located (by default) in `~/.config/wf-panel-pi.ini`.
 
 The default configuration may not include KbdLayout, but you can add it manually
-by right-clicking on the taskbar and selecting "Preferences". Note that for
+by right-clicking on the taskbar and clicking "Add/Remove Plugins". Note that for
 KbdLayout to work, the kbdd plugin (installed with this build) must be enabled
-in your $HOME/.config/wayfire.ini. A nice idea is to use the `wcm` tool (which,
+in your `$HOME/.config/wayfire.ini`. A nice idea is to use the `wcm` tool (which,
 AFAIK, is not in the standard repo, so you have to build it from source) to get
 a decent wayfire.ini and then add the kbdd plugin to the already-enabled ones.
