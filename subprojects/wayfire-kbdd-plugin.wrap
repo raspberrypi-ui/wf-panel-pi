@@ -1,0 +1,4 @@
+[wrap-git]
+directory=wayfire-kbdd-plugin
+url=https://github.com/avarvit/wayfire-kbdd-plugin.git
+revision=dbus

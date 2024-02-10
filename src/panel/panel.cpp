@@ -23,6 +23,7 @@ extern "C" {
 #include "gtk-utils.hpp"
 
 #include "widgets/clock.hpp"
+#include "widgets/kbdlayout.hpp"
 #include "widgets/launchers.hpp"
 #include "widgets/spacing.hpp"
 #include "widgets/volumepulse.hpp"
@@ -385,6 +386,8 @@ class WayfirePanel::impl
             return Widget(new WayfireClock());
         }
 
+        if (name == "kbdlayout")
+            return Widget(new WayfireKbdLayout());
         if (name == "volumepulse")
             return Widget(new WayfireVolumepulse());
         if (name == "smenu")
@@ -716,6 +719,7 @@ const char *WayfirePanelApp::display_name (std::string type)
 {
     if (type == "bluetooth") return WayfireBluetooth::display_name();
     if (type == "clock") return WayfireClock::display_name();
+    if (type == "kbdlayout") return WayfireKbdLayout::display_name();
     if (type == "cpu") return WayfireCPU::display_name();
     if (type == "cputemp") return WayfireCPUTemp::display_name();
     if (type == "ejecter") return WayfireEjecter::display_name();
@@ -737,6 +741,7 @@ const conf_table_t *WayfirePanelApp::config_params (std::string type)
 {
     if (type == "bluetooth") return WayfireBluetooth::config_params();
     if (type == "clock") return WayfireClock::config_params();
+    if (type == "kbdlayout") return WayfireKbdLayout::config_params();
     if (type == "cpu") return WayfireCPU::config_params();
     if (type == "cputemp") return WayfireCPUTemp::config_params();
     if (type == "ejecter") return WayfireEjecter::config_params();

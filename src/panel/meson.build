@@ -2,6 +2,7 @@ gnome = import('gnome')
 
 widget_sources = files(
   'widgets/clock.cpp',
+  'widgets/kbdlayout.cpp',
   'widgets/launchers.cpp',
   'widgets/spacing.cpp',
   'widgets/volumepulse.cpp',
@@ -80,7 +81,7 @@ util_sources = files(
   'notification.c'
 )
 
-deps = [gtkmm, wayland_client, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk]
+deps = [gtkmm, wayland_client, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk, xkbcommon]
 
 executable('wf-panel-pi', ['panel.cpp', 'lxutils.c'] + widget_sources + util_sources,
         dependencies: deps,
