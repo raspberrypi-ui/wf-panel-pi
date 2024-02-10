@@ -4,8 +4,8 @@ A panel for the Raspberry Pi Wayfire desktop, based on wf-panel from the wf-shel
 
 # Build
 
-```
 First, make sure that you have all required tools and dependencies installed:
+```
 ```
 sudo apt install \
   meson ninja-build wayfire-dev libwayland-dev wayland-protocols \
@@ -13,11 +13,11 @@ sudo apt install \
   libpulse-dev libmenu-cache-dev libfm-gtk-dev libnm-dev libnma-dev \
   libsecret-1-dev libnotify-dev libpackagekit-glib2-dev libudev-dev \
   libdbusmenu-gtk3-dev libxkbcommon-dev libwlroots-dev
+```
 
 (that should do it for a base desktop version of pi bookworm, if you
 encounter missing tools in the build, you should add the required
 packages accordingly)
-
 
 ```
 Then, do the actual build:
@@ -31,7 +31,6 @@ sudo meson install
 On a 32-bit system, `<library-location>` should be `arm-linux-gnueabihf`.
 On a 64-bit system, `<library-location>` should be `aarch64-linux-gnu`.
 
-```
 Note that this overwrites files from the installed package wf-panel-pi. If
 a newer version of wf-panel-pi comes up, your changes will be lost. You
 might prefer to uninstall the distributed wf-panel-pi first to avoid this.
