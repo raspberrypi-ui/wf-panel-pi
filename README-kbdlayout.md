@@ -5,7 +5,7 @@ A panel for the Raspberry Pi Wayfire desktop, based on wf-panel from the wf-shel
 # Build
 
 First, make sure that you have all required tools and dependencies installed:
-```
+
 ```
 sudo apt install \
   meson ninja-build wayfire-dev libwayland-dev wayland-protocols \
@@ -19,15 +19,18 @@ sudo apt install \
 encounter missing tools in the build, you should add the required
 packages accordingly)
 
-```
 Then, do the actual build:
 
 ```
+git clone https://github.com/avarvit/wf-panel-pi.git
+cd wf-panel-pi
+git switch kbdlayout
 meson setup builddir --prefix=/usr --libdir=/usr/lib/<library-location>
 cd builddir
 meson compile
 sudo meson install
 ```
+
 On a 32-bit system, `<library-location>` should be `arm-linux-gnueabihf`.
 On a 64-bit system, `<library-location>` should be `aarch64-linux-gnu`.
 
@@ -38,8 +41,9 @@ might prefer to uninstall the distributed wf-panel-pi first to avoid this.
 
 # Configuration
 
-wf-panel-pi uses a config file located (by default) in `~/.config/wf-panel-pi.ini`
-The default configuration may not include KbdLayout, but you can add it manuall
+wf-panel-pi uses a config file located (by default) in `~/.config/wf-panel-pi.ini`.
+
+The default configuration may not include KbdLayout, but you can add it manually
 by right-clicking on the taskbar and selecting "Preferences". Note that for
 KbdLayout to work, the kbdd plugin (installed with this build) must be enabled
 in your $HOME/.config/wayfire.ini. A nice idea is to use the `wcm` tool (which,
