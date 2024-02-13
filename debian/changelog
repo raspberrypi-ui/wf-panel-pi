@@ -1,3 +1,9 @@
+wf-panel-pi (0.61) bookworm; urgency=medium
+
+  * Fix brownout detection
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 13 Feb 2024 10:07:08 +0000
+
 wf-panel-pi (0.60) bookworm; urgency=medium
 
   * GPU plugin fix; ensure pipewire context is valid before use
