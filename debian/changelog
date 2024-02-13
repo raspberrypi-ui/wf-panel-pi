@@ -1,3 +1,9 @@
+wf-panel-pi (0.60) bookworm; urgency=medium
+
+  * GPU plugin fix; ensure pipewire context is valid before use
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 13 Feb 2024 07:21:52 +0000
+
 wf-panel-pi (0.59) bookworm; urgency=medium
 
   * Fix windows disappearing from task list when multiple monitors used
