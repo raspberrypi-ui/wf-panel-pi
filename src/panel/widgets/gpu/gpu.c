@@ -51,6 +51,7 @@ float get_gpu_usage (GPUPlugin *g)
 
     // open the stats file
     FILE *fp = fopen ("/sys/kernel/debug/dri/0/gpu_usage", "rb");
+    if (fp == NULL) fp = fopen ("/sys/kernel/debug/dri/1/gpu_usage", "rb");
     if (fp == NULL) return 0.0;
 
     // read the stats file a line at a time

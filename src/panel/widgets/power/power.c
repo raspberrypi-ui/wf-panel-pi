@@ -88,7 +88,7 @@ static void check_psu (void)
 
 static void check_brownout (PowerPlugin *pt)
 {
-    FILE *fp = fopen (POWER_PATH "reset_event", "rb");
+    FILE *fp = fopen (POWER_PATH "power_reset", "rb");
     int val;
 
     if (fp)
