@@ -189,21 +189,6 @@ static void nma_menu_add_wifi_switch_item (GtkWidget *menu, NMApplet *applet)
 	g_signal_connect (menu_item, "activate", G_CALLBACK (nma_set_wifi_enabled_cb), applet);
 }
 
-static int wifi_country_set (void)
-{
-    FILE *fp;
-
-    // is this 5G-compatible hardware?
-    fp = popen ("iw phy0 info | grep -q '\\*[ \\t]*5[0-9][0-9][0-9][ \\t]*MHz'", "r");
-    if (pclose (fp)) return 1;
-
-    // is the country set?
-    fp = popen ("raspi-config nonint get_wifi_country 1", "r");
-    if (pclose (fp)) return 0;
-
-    return 1;
-}
-
 static void set_country (GObject *o, gpointer data)
 {
     if (fork () == 0)
@@ -2127,7 +2112,7 @@ static void nma_menu_show_cb (GtkWidget *menu, NMApplet *applet)
 		return;
 	}
 
-	if (wifi_country_set () == 0)
+	if (!applet->country_set)
 	{
 		nma_menu_add_text_item (menu, _("Wi-Fi country is not set"));
 		GtkWidget *item = gtk_menu_item_new_with_label (_("Click here to set Wi-Fi country"));
