@@ -1,3 +1,9 @@
+wf-panel-pi (0.62) bookworm; urgency=medium
+
+  * Speed up display of network menu by moving wifi country check
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 16 Feb 2024 13:12:43 +0000
+
 wf-panel-pi (0.61) bookworm; urgency=medium
 
   * Fix brownout detection
