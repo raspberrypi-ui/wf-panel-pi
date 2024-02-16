@@ -48,7 +48,7 @@ extern void status_icon_size_changed_cb (NMApplet *applet);
 extern void status_icon_activate_cb (NMApplet *applet);
 extern void finalize (NMApplet *applet);
 
-int wifi_country_set (void)
+static int wifi_country_set (void)
 {
     FILE *fp;
 
