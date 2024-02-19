@@ -57,7 +57,7 @@ static void menu_hidden (GtkWidget *, gpointer panel)
 static void committed (GdkWindow *win, gpointer)
 {
     // spoof event just to suppress warnings...
-    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_RELEASE);
+    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
     ev->send_event = TRUE;
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
 
