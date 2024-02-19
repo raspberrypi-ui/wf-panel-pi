@@ -1,3 +1,9 @@
+wf-panel-pi (0.63) bookworm; urgency=medium
+
+  * Fix for spoof button release event
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 19 Feb 2024 09:53:46 +0000
+
 wf-panel-pi (0.62) bookworm; urgency=medium
 
   * Speed up display of network menu by moving wifi country check
