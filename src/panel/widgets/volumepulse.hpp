@@ -10,8 +10,8 @@ extern "C" {
 
 class WayfireVolumepulse : public WayfireWidget
 {
-    std::unique_ptr <WayfireMenuButton> plugin_vol;
-    std::unique_ptr <WayfireMenuButton> plugin_mic;
+    std::unique_ptr <Gtk::Button> plugin_vol;
+    std::unique_ptr <Gtk::Button> plugin_mic;
 
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <std::string> bar_pos {"panel/position"};

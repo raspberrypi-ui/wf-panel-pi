@@ -28,6 +28,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <glib/gprintf.h>
+#include <gtk-layer-shell/gtk-layer-shell.h>
+#include <fcntl.h>
+#include <libinput.h>
+#include <libudev.h>
+#include <linux/input.h>
 
 #include "volumepulse.h"
 #include "pulse.h"
@@ -49,6 +54,48 @@ static void menu_mark_default_output (GtkWidget *widget, gpointer data);
 /*----------------------------------------------------------------------------*/
 /* Generic helper functions                                                   */
 /*----------------------------------------------------------------------------*/
+
+static int open_restricted (const char *path, int flags, void *)
+{
+    int fd = open (path, flags);
+    return fd < 0 ? -errno : fd;
+}
+
+static void close_restricted (int fd, void *)
+{
+    close (fd);
+}
+
+static const struct libinput_interface interface = {
+    .open_restricted = open_restricted,
+    .close_restricted = close_restricted,
+};
+
+static gboolean check_libinput_events (VolumePulsePlugin *vol)
+{
+    struct libinput_event *ev;
+    libinput_dispatch (vol->li);
+    if ((ev = libinput_get_event (vol->li)) != 0)
+    {
+        if (libinput_event_get_type (ev) == LIBINPUT_EVENT_POINTER_BUTTON)
+        {
+            gint x, y;
+            GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y);
+            int ind = -1;
+            if (vol->popup_window[0]) ind = 0;
+            else if (vol->popup_window[1]) ind = 1;
+
+            if (ind != -1 && (!win || gdk_window_get_parent (win) != gtk_widget_get_window (vol->popup_window[ind])))
+            {
+                close_widget (&vol->popup_window[ind]);
+                if (vol->idle_id) g_source_remove (vol->idle_id);
+                vol->idle_id = 0;
+            }
+            libinput_event_destroy (ev);
+        }
+    }
+    return TRUE;
+}
 
 /* System command accepting variable arguments */
 
@@ -111,14 +158,22 @@ void close_widget (GtkWidget **wid)
 
 /* Create the pop-up volume window */
 
-void popup_window_create (VolumePulsePlugin *vol, gboolean input_control)
+void popup_window_show (VolumePulsePlugin *vol, gboolean input_control)
 {
     //VolumePulsePlugin *vol = lxpanel_plugin_get_data (p);
     int index = input_control ? 1 : 0;
 
     /* Create a new window. */
-    vol->popup_window[index] = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (vol->plugin[index])));
+    vol->popup_window[index] = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_name (vol->popup_window[index], "panelpopup");
+
+    GtkAllocation alloc;
+    gtk_widget_get_allocation (vol->plugin[index], &alloc);
+    gtk_layer_init_for_window (GTK_WINDOW (vol->popup_window[index]));
+    gtk_layer_set_layer (GTK_WINDOW (vol->popup_window[index]), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_anchor (GTK_WINDOW (vol->popup_window[index]), vol->bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW (vol->popup_window[index]), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+    gtk_layer_set_margin (GTK_WINDOW (vol->popup_window[index]), GTK_LAYER_SHELL_EDGE_LEFT, alloc.x);
 
     gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window[index]), 0);
 
@@ -147,6 +202,13 @@ void popup_window_create (VolumePulsePlugin *vol, gboolean input_control)
     /* Realise the window */
     gtk_widget_show_all (vol->popup_window[index]);
     gtk_widget_hide (vol->popup_window[index]);
+    gtk_window_present (GTK_WINDOW (vol->popup_window[index]));
+
+    struct udev *udev = udev_new ();
+    vol->li = libinput_udev_create_context (&interface, NULL, udev);
+    libinput_udev_assign_seat (vol->li, "seat0");
+    libinput_dispatch (vol->li);
+    vol->idle_id = g_idle_add ((GSourceFunc) check_libinput_events, vol);
 }
 
 /* Handler for "value_changed" signal on popup window vertical scale */
@@ -337,6 +399,8 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
     switch (event->button)
     {
         case 1: /* left-click - fallthrough to default popover handler to show popup */
+                if (vol->popup_window[0]) close_widget (&vol->popup_window[0]);
+                else popup_window_show (vol, FALSE);
                 volumepulse_update_display (vol);
                 return FALSE;
 
@@ -345,6 +409,7 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
                 break;
 
         case 3: /* right-click - show device list */
+                close_widget (&vol->popup_window[0]);
                 vol_menu_show (vol);
                 show_menu_with_kbd (vol->plugin[0], vol->menu_devices[0]);
                 break;
@@ -359,6 +424,8 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
     switch (event->button)
     {
         case 1: /* left-click - fallthrough to default popover handler to show popup */
+                if (vol->popup_window[1]) close_widget (&vol->popup_window[1]);
+                else popup_window_show (vol, TRUE);
                 micpulse_update_display (vol);
                 return FALSE;
 
@@ -367,6 +434,7 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
                 break;
 
         case 3: /* right-click - show device list */
+                close_widget (&vol->popup_window[1]);
                 mic_menu_show (vol);
                 show_menu_with_kbd (vol->plugin[1], vol->menu_devices[1]);
                 break;

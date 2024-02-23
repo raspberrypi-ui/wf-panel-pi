@@ -457,10 +457,6 @@ void volumepulse_init (VolumePulsePlugin *vol)
     /* If on pulse, init Bluetooth - on pipe, this is not done until a new card message is received */
     bluetooth_init (vol);
 
-    /* Create the popup volume control */
-    popup_window_create (vol, FALSE);
-    popup_window_create (vol, TRUE);
-
     /* Show the widget and return */
     gtk_widget_show_all (vol->plugin[0]);
     gtk_widget_show_all (vol->plugin[1]);

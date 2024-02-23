@@ -29,9 +29,9 @@ bool WayfireVolumepulse::set_icon (void)
 void WayfireVolumepulse::init (Gtk::HBox *container)
 {
     /* Create the button */
-    plugin_vol = std::make_unique <WayfireMenuButton> ("panel");
+    plugin_vol = std::make_unique <Gtk::Button> ();
     container->pack_start (*plugin_vol, false, false);
-    plugin_mic = std::make_unique <WayfireMenuButton> ("panel");
+    plugin_mic = std::make_unique <Gtk::Button> ();
     container->pack_start (*plugin_mic, false, false);
 
     /* Setup structure */
