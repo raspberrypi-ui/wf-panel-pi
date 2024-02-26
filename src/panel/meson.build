@@ -80,7 +80,7 @@ util_sources = files(
   'notification.c'
 )
 
-deps = [gtkmm, wayland_client, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk]
+deps = [gtkmm, wayland_client, wf_protos, wfconfig, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk, input]
 
 executable('wf-panel-pi', ['panel.cpp', 'lxutils.c'] + widget_sources + util_sources,
         dependencies: deps,

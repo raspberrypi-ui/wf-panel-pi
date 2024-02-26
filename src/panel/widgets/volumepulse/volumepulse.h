@@ -104,9 +104,6 @@ typedef struct {
     int bt_retry_count;                 /* Counter for polling read of profile on connection */
     guint bt_retry_timer;               /* Timer for retrying post-connection events */
     gboolean bt_card_found;
-
-    struct libinput *li;
-    guint idle_id;
 } VolumePulsePlugin;
 
 #endif

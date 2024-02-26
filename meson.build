@@ -29,6 +29,7 @@ notify	       = dependency('libnotify')
 packagekit     = dependency('packagekit-glib2')
 udev           = dependency('libudev')
 dbusmenu_gtk   = dependency('dbusmenu-gtk3-0.4')
+input          = dependency('libinput')
 
 needs_libinotify = ['freebsd', 'dragonfly'].contains(host_machine.system())
 libinotify       = dependency('libinotify', required: needs_libinotify)
