@@ -2,6 +2,7 @@ gnome = import('gnome')
 
 widget_sources = files(
   'widgets/clock.cpp',
+  'widgets/clock/clock.c',
   'widgets/launchers.cpp',
   'widgets/spacing.cpp',
   'widgets/volumepulse.cpp',

@@ -2,22 +2,26 @@
 #define WIDGETS_CLOCK_HPP
 
 #include "../widget.hpp"
-#include "wf-popover.hpp"
-#include <gtkmm/calendar.h>
+#include <gtkmm/button.h>
 #include <gtkmm/label.h>
+
+extern "C" {
+#include "clock/clock.h"
+}
 
 class WayfireClock : public WayfireWidget
 {
+    std::unique_ptr<Gtk::Button> plugin;
     Gtk::Label label;
-    Gtk::Calendar calendar;
-    std::unique_ptr<WayfireMenuButton> button;
 
     sigc::connection timeout;
-    WfOption<std::string> format{"panel/clock_format"};
-    WfOption<std::string> font{"panel/clock_font"};
+    WfOption <std::string> format {"panel/clock_format"};
+    WfOption <std::string> font {"panel/clock_font"};
+    WfOption <std::string> bar_pos {"panel/position"};
 
-    void set_font();
-    void on_calendar_shown();
+    /* plugin */
+    ClockPlugin data;
+    ClockPlugin *clock;
 
     static constexpr conf_table_t conf_table[3] = {
         {CONF_STRING,   "format",   N_("Display format")},
@@ -26,11 +30,13 @@ class WayfireClock : public WayfireWidget
     };
 
   public:
-    void init(Gtk::HBox *container) override;
-    bool update_label();
+    void init (Gtk::HBox *container) override;
+    virtual ~WayfireClock ();
+    void bar_pos_changed_cb (void);
+    void set_font ();
+    bool update_label ();
     static const char *display_name (void) { return N_("Clock"); };
     static const conf_table_t *config_params (void) { return conf_table; };
-    ~WayfireClock();
 };
 
 #endif /* end of include guard: WIDGETS_CLOCK_HPP */
