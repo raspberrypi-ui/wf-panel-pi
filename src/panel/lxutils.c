@@ -50,10 +50,7 @@ static GtkLayerShellLayer old_layer;
 
 static struct libinput *li;
 static guint idle_id;
-static struct {
-    GtkWidget *window;
-    GtkWidget *button;
-} popdata;
+static GtkWidget *popwindow, *popbutton;
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -95,6 +92,8 @@ static void committed (GdkWindow *win, gpointer)
 
 void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 {
+    if (popwindow) close_popup (popwindow);
+
     if (GTK_IS_BUTTON (widget))
     {
         // simulate a leave event on the button to hide the prelight */
@@ -377,9 +376,10 @@ static gboolean check_libinput_events (gpointer)
             GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
                 gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
 
-            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popdata.window) && gdk_window_get_parent (win) != gtk_widget_get_window (popdata.button)))
+            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow) &&
+                gdk_window_get_parent (win) != gtk_widget_get_window (popbutton)))
             {
-                close_popup (popdata.window);
+                close_popup (popwindow);
             }
             libinput_event_destroy (ev);
         }
@@ -392,6 +392,8 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     GtkAllocation alloc;
     GtkWidget *wid;
     int x;
+
+    if (popwindow) close_popup (popwindow);
 
     gtk_layer_init_for_window (GTK_WINDOW (window));
     gtk_widget_show_all (window);
@@ -411,8 +413,8 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
 
     gtk_window_present (GTK_WINDOW (window));
 
-    popdata.window = window;
-    popdata.button = button;
+    popwindow = window;
+    popbutton = button;
 
     li = libinput_udev_create_context (&interface, NULL, udev_new ());
     libinput_udev_assign_seat (li, "seat0");
@@ -425,6 +427,7 @@ void close_popup (GtkWidget *window)
     if (window) gtk_widget_destroy (window);
     if (idle_id) g_source_remove (idle_id);
     idle_id = 0;
+    popwindow = NULL;
 }
 
 /* End of file */
