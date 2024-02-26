@@ -471,10 +471,9 @@ void volumepulse_destructor (gpointer user_data)
 
     close_widget (&vol->profiles_dialog);
     close_widget (&vol->conn_dialog);
-    close_popup (vol->popup_window[0]);
     close_widget (&vol->menu_devices[0]);
-    close_popup (vol->popup_window[1]);
     close_widget (&vol->menu_devices[1]);
+    close_popup ();
 
     bluetooth_terminate (vol);
     pulse_terminate (vol);

@@ -77,7 +77,7 @@ static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *event, Cl
 {
     if (event->button == 1)
     {
-        if (cl->window) close_popup (cl->window);
+        if (cl->window) close_popup ();
         else calendar_show (cl);
         return TRUE;
     }
@@ -86,7 +86,7 @@ static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *event, Cl
     {
         if (cl->window)
         {
-            close_popup (cl->window);
+            close_popup ();
             return TRUE;
         }
     }
@@ -116,6 +116,7 @@ void clock_init (ClockPlugin *cl)
 /* Plugin destructor. */
 void clock_destructor (gpointer)
 {
+    close_popup ();
 }
 
 

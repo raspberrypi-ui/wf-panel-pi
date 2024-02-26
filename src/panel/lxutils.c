@@ -92,7 +92,7 @@ static void committed (GdkWindow *win, gpointer)
 
 void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 {
-    if (popwindow) close_popup (popwindow);
+    close_popup ();
 
     if (GTK_IS_BUTTON (widget))
     {
@@ -379,7 +379,7 @@ static gboolean check_libinput_events (gpointer)
             if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow) &&
                 gdk_window_get_parent (win) != gtk_widget_get_window (popbutton)))
             {
-                close_popup (popwindow);
+                close_popup ();
             }
             libinput_event_destroy (ev);
         }
@@ -393,7 +393,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     GtkWidget *wid;
     int x;
 
-    if (popwindow) close_popup (popwindow);
+    close_popup ();
 
     gtk_layer_init_for_window (GTK_WINDOW (window));
     gtk_widget_show_all (window);
@@ -422,12 +422,12 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     idle_id = g_idle_add ((GSourceFunc) check_libinput_events, NULL);
 }
 
-void close_popup (GtkWidget *window)
+void close_popup (void)
 {
-    if (window) gtk_widget_destroy (window);
+    if (popwindow) gtk_widget_destroy (popwindow);
+    popwindow = NULL;
     if (idle_id) g_source_remove (idle_id);
     idle_id = 0;
-    popwindow = NULL;
 }
 
 /* End of file */

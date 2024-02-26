@@ -62,7 +62,7 @@ extern void graph_init (PluginGraph *graph);
 extern void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2);
 extern void graph_new_point (PluginGraph *graph, float value, int state, char *label);
 extern void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bottom);
-extern void close_popup (GtkWidget *window);
+extern void close_popup (void);
 
 #endif
 

@@ -344,7 +344,7 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
     switch (event->button)
     {
         case 1: /* left-click - show popup */
-                if (vol->popup_window[0]) close_popup (vol->popup_window[0]);
+                if (vol->popup_window[0]) close_popup ();
                 else popup_window_show (vol, FALSE);
                 volumepulse_update_display (vol);
                 return FALSE;
@@ -354,7 +354,7 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
                 break;
 
         case 3: /* right-click - show device list */
-                close_popup (vol->popup_window[0]);
+                close_popup ();
                 vol_menu_show (vol);
                 show_menu_with_kbd (vol->plugin[0], vol->menu_devices[0]);
                 break;
@@ -369,7 +369,7 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
     switch (event->button)
     {
         case 1: /* left-click - show popup */
-                if (vol->popup_window[1]) close_popup (vol->popup_window[1]);
+                if (vol->popup_window[1]) close_popup ();
                 else popup_window_show (vol, TRUE);
                 micpulse_update_display (vol);
                 return FALSE;
@@ -379,7 +379,7 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
                 break;
 
         case 3: /* right-click - show device list */
-                close_popup (vol->popup_window[1]);
+                close_popup ();
                 mic_menu_show (vol);
                 show_menu_with_kbd (vol->plugin[1], vol->menu_devices[1]);
                 break;

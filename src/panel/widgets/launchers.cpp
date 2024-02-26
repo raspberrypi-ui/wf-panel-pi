@@ -187,6 +187,7 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
 
 bool WfLauncherButton::on_click(GdkEventButton *ev)
 {
+    close_popup ();
     assert(info);
     if ((ev->button == 1) && (ev->type == GDK_BUTTON_RELEASE))
     {
