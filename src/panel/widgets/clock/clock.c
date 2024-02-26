@@ -41,12 +41,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Prototypes                                                                 */
 /*----------------------------------------------------------------------------*/
 
+static void cal_destroyed (GtkWidget *widget, gpointer data);
 static void calendar_show (ClockPlugin *cl);
 static gboolean clock_button_press_event (GtkWidget *widget, GdkEventButton *event, ClockPlugin *cl);
 
 /*----------------------------------------------------------------------------*/
 /* Plugin functions                                                           */
 /*----------------------------------------------------------------------------*/
+
+static void cal_destroyed (GtkWidget *, gpointer data)
+{
+    ClockPlugin *cl = (ClockPlugin *) data;
+    cl->window = NULL;
+}
 
 static void calendar_show (ClockPlugin *cl)
 {
@@ -59,9 +66,10 @@ static void calendar_show (ClockPlugin *cl)
     /* Create a vertical box as the child of the window. */
     cl->calendar = gtk_calendar_new ();
     gtk_container_add (GTK_CONTAINER (cl->window), cl->calendar);
+    g_signal_connect (cl->window, "destroy", G_CALLBACK (cal_destroyed), cl);
 
     /* Realise the window */
-    popup_window_at_button (&cl->window, &cl->plugin, cl->bottom);
+    popup_window_at_button (cl->window, cl->plugin, cl->bottom);
 }
 
 /* Handler for menu button click */
@@ -69,7 +77,7 @@ static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *event, Cl
 {
     if (event->button == 1)
     {
-        if (cl->window) close_popup (&cl->window);
+        if (cl->window) close_popup (cl->window);
         else calendar_show (cl);
         return TRUE;
     }
@@ -78,7 +86,7 @@ static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *event, Cl
     {
         if (cl->window)
         {
-            close_popup (&cl->window);
+            close_popup (cl->window);
             return TRUE;
         }
     }
