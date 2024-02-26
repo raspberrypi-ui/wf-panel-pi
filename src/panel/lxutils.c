@@ -25,6 +25,10 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <fcntl.h>
+#include <libinput.h>
+#include <libudev.h>
+#include <linux/input.h>
 #include <gtk/gtk.h>
 #include <gtk-layer-shell.h>
 #include "lxutils.h"
@@ -43,6 +47,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static GtkWidget *m_button, *m_menu, *m_panel;
 static gulong m_handle;
 static GtkLayerShellLayer old_layer;
+
+static struct libinput *li;
+static guint idle_id;
+static struct {
+    GtkWidget **window;
+    GtkWidget **button;
+} popdata;
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -335,6 +346,89 @@ void graph_init (PluginGraph *graph)
     graph->da = gtk_image_new ();
     graph->samples = NULL;
     graph->ring_cursor = 0;
+}
+
+/* Replacement for GTK popover - popup window which closes when clicked outside */
+
+static int open_restricted (const char *path, int flags, void *)
+{
+    int fd = open (path, flags);
+    return fd < 0 ? -errno : fd;
+}
+
+static void close_restricted (int fd, void *)
+{
+    close (fd);
+}
+
+static const struct libinput_interface interface = {
+    .open_restricted = open_restricted,
+    .close_restricted = close_restricted,
+};
+
+static gboolean check_libinput_events (gpointer)
+{
+    struct libinput_event *ev;
+    libinput_dispatch (li);
+    if ((ev = libinput_get_event (li)) != 0)
+    {
+        if (libinput_event_get_type (ev) == LIBINPUT_EVENT_POINTER_BUTTON)
+        {
+            GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
+                gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
+
+            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (*popdata.window) && gdk_window_get_parent (win) != gtk_widget_get_window (*popdata.button)))
+            {
+                close_popup (popdata.window);
+            }
+            libinput_event_destroy (ev);
+        }
+    }
+    return TRUE;
+}
+
+void popup_window_at_button (GtkWidget **window, GtkWidget **button, gboolean bottom)
+{
+    GtkAllocation alloc;
+    GtkWidget *wid;
+    int x;
+
+    gtk_layer_init_for_window (GTK_WINDOW (*window));
+    gtk_widget_show_all (*window);
+
+    wid = *button;
+    while ((wid = gtk_widget_get_parent (wid)) != NULL) gtk_widget_get_allocation (wid, &alloc);
+    x = alloc.width;
+    gtk_widget_get_allocation (*window, &alloc);
+    x -= alloc.width;
+    gtk_widget_get_allocation (*button, &alloc);
+    if (alloc.x <= x) x = alloc.x;
+
+    gtk_layer_set_layer (GTK_WINDOW (*window), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_anchor (GTK_WINDOW (*window), bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW (*window), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+    gtk_layer_set_margin (GTK_WINDOW (*window), GTK_LAYER_SHELL_EDGE_LEFT, x);
+
+    gtk_window_present (GTK_WINDOW (*window));
+
+    popdata.window = window;
+    popdata.button = button;
+
+    li = libinput_udev_create_context (&interface, NULL, udev_new ());
+    libinput_udev_assign_seat (li, "seat0");
+    libinput_dispatch (li);
+    idle_id = g_idle_add ((GSourceFunc) check_libinput_events, NULL);
+}
+
+void close_popup (GtkWidget **window)
+{
+    if (*window)
+    {
+        gtk_widget_destroy (*window);
+        *window = NULL;
+    }
+    if (idle_id) g_source_remove (idle_id);
+    idle_id = 0;
 }
 
 /* End of file */
