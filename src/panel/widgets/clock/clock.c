@@ -73,6 +73,15 @@ static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *event, Cl
         else calendar_show (cl);
         return TRUE;
     }
+
+    if (event->button == 3)
+    {
+        if (cl->window)
+        {
+            close_popup (&cl->window);
+            return TRUE;
+        }
+    }
     return FALSE;
 }
 
