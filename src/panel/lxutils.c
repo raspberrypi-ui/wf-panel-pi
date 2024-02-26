@@ -371,7 +371,8 @@ static gboolean check_libinput_events (gpointer)
     libinput_dispatch (li);
     if ((ev = libinput_get_event (li)) != 0)
     {
-        if (libinput_event_get_type (ev) == LIBINPUT_EVENT_POINTER_BUTTON)
+        enum libinput_event_type type = libinput_event_get_type (ev);
+        if (type == LIBINPUT_EVENT_POINTER_BUTTON || type == LIBINPUT_EVENT_TOUCH_DOWN)
         {
             GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
                 gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
