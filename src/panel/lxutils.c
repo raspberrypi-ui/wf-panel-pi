@@ -373,13 +373,16 @@ static gboolean check_libinput_events (gpointer)
     {
         enum libinput_event_type type = libinput_event_get_type (ev);
 
-        if (type == LIBINPUT_EVENT_POINTER_BUTTON && libinput_event_pointer_get_button_state (libinput_event_get_pointer_event (ev)) == LIBINPUT_BUTTON_STATE_RELEASED)
+        if (type == LIBINPUT_EVENT_POINTER_BUTTON)
         {
-            GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
-                gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
+            if (libinput_event_pointer_get_button_state (libinput_event_get_pointer_event (ev)) == LIBINPUT_BUTTON_STATE_RELEASED)
+            {
+                GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
+                    gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
 
-            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow)))
-                close_popup ();
+                if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow)))
+                    close_popup ();
+            }
             libinput_event_destroy (ev);
         }
 
