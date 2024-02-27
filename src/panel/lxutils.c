@@ -445,6 +445,26 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     mw = rect.width;
     if (bottom) py = mh - py - ph;
 
+    int i, orient = 0;
+    FILE *fp;
+    GdkDisplay *disp = gdk_display_get_default();
+    GdkMonitor *mon = gtk_layer_get_monitor (GTK_WINDOW (wid));
+    for (i = 0; i < gdk_display_get_n_monitors (disp); i++)
+    {
+        // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
+        if (mon == gdk_display_get_monitor (disp, i))
+        {
+            char *cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '",
+                gdk_screen_get_monitor_plug_name (gdk_display_get_default_screen (disp), i));
+            if ((fp = popen (cmd, "r")) != NULL)
+            {
+                fscanf (fp, "%d", &orient);
+                pclose (fp);
+            }
+            g_free (cmd);
+        }
+    }
+
     gtk_layer_set_layer (GTK_WINDOW (window), GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_anchor (GTK_WINDOW (window), bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
     gtk_layer_set_anchor (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
@@ -452,6 +472,12 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     gtk_layer_set_monitor (GTK_WINDOW (window), gtk_layer_get_monitor (GTK_WINDOW (wid)));
 
     gtk_window_present (GTK_WINDOW (window));
+
+    if (orient == 180)
+    {
+        px = mw - px - pw;
+        py = mh - py - ph;
+    }
 
     popwindow = window;
 
