@@ -475,22 +475,21 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     gtk_window_present (GTK_WINDOW (window));
 
     // remap touch for rotated displays
-    if (orient == 180)
+    switch (orient)
     {
-        px = mw - px - pw;
-        py = mh - py - ph;
-    }
-    if (orient == 90)
-    {
-        i = px;
-        px = py;
-        py = mw - i - pw;
-    }
-    if (orient == 270)
-    {
-        i = py;
-        py = px;
-        px = mh - i - ph;
+        case 90 :   i = px;
+                    px = py;
+                    py = mw - i - pw;
+                    break;
+
+        case 180:   px = mw - px - pw;
+                    py = mh - py - ph;
+                    break;
+
+        case 270:   i = py;
+                    py = px;
+                    px = mh - i - ph;
+                    break
     }
     if (orient == 90 || orient == 270)
     {
