@@ -50,7 +50,7 @@ static GtkLayerShellLayer old_layer;
 
 static struct libinput *li;
 static guint idle_id;
-static GtkWidget *popwindow, *popbutton;
+static GtkWidget *popwindow;
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -372,16 +372,24 @@ static gboolean check_libinput_events (gpointer)
     if ((ev = libinput_get_event (li)) != 0)
     {
         enum libinput_event_type type = libinput_event_get_type (ev);
-        if (type == LIBINPUT_EVENT_POINTER_BUTTON || type == LIBINPUT_EVENT_TOUCH_DOWN)
+
+        if (type == LIBINPUT_EVENT_POINTER_BUTTON && libinput_event_pointer_get_button_state (libinput_event_get_pointer_event (ev)) == LIBINPUT_BUTTON_STATE_RELEASED)
         {
             GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
                 gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
 
-            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow) &&
-                gdk_window_get_parent (win) != gtk_widget_get_window (popbutton)))
-            {
+            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow)))
                 close_popup ();
-            }
+            libinput_event_destroy (ev);
+        }
+
+        if (type == LIBINPUT_EVENT_TOUCH_UP)
+        {
+            GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
+                gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
+
+            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow)))
+                close_popup ();
             libinput_event_destroy (ev);
         }
     }
@@ -407,15 +415,19 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     gtk_widget_get_allocation (button, &alloc);
     if (alloc.x <= x) x = alloc.x;
 
+    wid = button;
+    while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
+        wid = gtk_widget_get_parent (wid);
+
     gtk_layer_set_layer (GTK_WINDOW (window), GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_anchor (GTK_WINDOW (window), bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
     gtk_layer_set_anchor (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
     gtk_layer_set_margin (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, x);
+    gtk_layer_set_monitor (GTK_WINDOW (window), gtk_layer_get_monitor (GTK_WINDOW (wid)));
 
     gtk_window_present (GTK_WINDOW (window));
 
     popwindow = window;
-    popbutton = button;
 
     li = libinput_udev_create_context (&interface, NULL, udev_new ());
     libinput_udev_assign_seat (li, "seat0");

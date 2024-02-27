@@ -63,9 +63,8 @@ static void calendar_show (ClockPlugin *cl)
 
     gtk_container_set_border_width (GTK_CONTAINER (cl->window), 0);
 
-    /* Create a vertical box as the child of the window. */
-    cl->calendar = gtk_calendar_new ();
-    gtk_container_add (GTK_CONTAINER (cl->window), cl->calendar);
+    /* Add a calendar to the window. */
+    gtk_container_add (GTK_CONTAINER (cl->window), gtk_calendar_new ());
     g_signal_connect (cl->window, "destroy", G_CALLBACK (cal_destroyed), cl);
 
     /* Realise the window */
@@ -103,11 +102,10 @@ void clock_init (ClockPlugin *cl)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (cl->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (cl->plugin, "button-release-event", G_CALLBACK (clock_button_press_event), cl);
+    g_signal_connect (cl->plugin, "button-press-event", G_CALLBACK (clock_button_press_event), cl);
 
     /* Set up variables */
     cl->window = NULL;
-    cl->calendar = NULL;
 
     /* Show the widget and return. */
     gtk_widget_show_all (cl->plugin);

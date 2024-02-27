@@ -7,9 +7,8 @@
 typedef struct {
 
     GtkWidget *plugin;              /* Back pointer to the widget */
-    gboolean bottom;
     GtkWidget *window;              /* Popup window */
-    GtkWidget *calendar;            /* Popup calendar */
+    gboolean bottom;
 } ClockPlugin;
 
 extern void clock_init (ClockPlugin *cl);
