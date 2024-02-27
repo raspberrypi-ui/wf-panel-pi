@@ -51,6 +51,9 @@ static GtkLayerShellLayer old_layer;
 static struct libinput *li;
 static guint idle_id;
 static GtkWidget *popwindow;
+static double tx, ty;
+static int px, py, pw, ph, mw, mh;
+
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -388,22 +391,28 @@ static gboolean check_libinput_events (gpointer)
 
         if (type == LIBINPUT_EVENT_TOUCH_UP)
         {
-            GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
-                gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
-
-            if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow)))
+            if (tx < px || tx > px + pw || ty < py || ty > py + ph)
                 close_popup ();
             libinput_event_destroy (ev);
         }
+
+        if (type == LIBINPUT_EVENT_TOUCH_DOWN)
+        {
+            struct libinput_event_touch *tev = libinput_event_get_touch_event (ev);
+            tx = libinput_event_touch_get_x_transformed (tev, mw);
+            ty = libinput_event_touch_get_y_transformed (tev, mh);
+            libinput_event_destroy (ev);
+        }
+
     }
     return TRUE;
 }
 
 void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bottom)
 {
+    GdkRectangle rect;
     GtkAllocation alloc;
     GtkWidget *wid;
-    int x;
 
     close_popup ();
 
@@ -412,20 +421,29 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
 
     wid = button;
     while ((wid = gtk_widget_get_parent (wid)) != NULL) gtk_widget_get_allocation (wid, &alloc);
-    x = alloc.width;
+    px = alloc.width;
+    py = alloc.height;
     gtk_widget_get_allocation (window, &alloc);
-    x -= alloc.width;
+    px -= alloc.width;
+    pw = alloc.width;
+    ph = alloc.height;
     gtk_widget_get_allocation (button, &alloc);
-    if (alloc.x <= x) x = alloc.x;
+    if (alloc.x <= px) px = alloc.x;
 
     wid = button;
     while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
         wid = gtk_widget_get_parent (wid);
 
+    gdk_monitor_get_geometry (gtk_layer_get_monitor (GTK_WINDOW (wid)), &rect);
+    mh = rect.height;
+    mw = rect.width;
+
+    if (bottom) py = mh - py - ph;
+
     gtk_layer_set_layer (GTK_WINDOW (window), GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_anchor (GTK_WINDOW (window), bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
     gtk_layer_set_anchor (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-    gtk_layer_set_margin (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, x);
+    gtk_layer_set_margin (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, px);
     gtk_layer_set_monitor (GTK_WINDOW (window), gtk_layer_get_monitor (GTK_WINDOW (wid)));
 
     gtk_window_present (GTK_WINDOW (window));
