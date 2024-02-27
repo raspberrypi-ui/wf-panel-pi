@@ -419,25 +419,30 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     gtk_layer_init_for_window (GTK_WINDOW (window));
     gtk_widget_show_all (window);
 
-    wid = button;
-    while ((wid = gtk_widget_get_parent (wid)) != NULL) gtk_widget_get_allocation (wid, &alloc);
-    px = alloc.width;
-    py = alloc.height;
-    gtk_widget_get_allocation (window, &alloc);
-    px -= alloc.width;
-    pw = alloc.width;
-    ph = alloc.height;
-    gtk_widget_get_allocation (button, &alloc);
-    if (alloc.x <= px) px = alloc.x;
-
+    // find the panel
     wid = button;
     while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
         wid = gtk_widget_get_parent (wid);
 
+    // get the dimensions of the panel
+    gtk_widget_get_allocation (wid, &alloc);
+    px = alloc.width;
+    py = alloc.height;
+
+    // get the dimensions of the popup itself and ensure the popup fits on the screen
+    gtk_widget_get_allocation (window, &alloc);
+    pw = alloc.width;
+    ph = alloc.height;
+    px -= pw;
+
+    // get the dimensions of the button - align left edge of popup with left edge of button
+    gtk_widget_get_allocation (button, &alloc);
+    if (alloc.x <= px) px = alloc.x;
+
+    // get the dimensions of the monitor - correct the y-coord of the plugin if at bottom
     gdk_monitor_get_geometry (gtk_layer_get_monitor (GTK_WINDOW (wid)), &rect);
     mh = rect.height;
     mw = rect.width;
-
     if (bottom) py = mh - py - ph;
 
     gtk_layer_set_layer (GTK_WINDOW (window), GTK_LAYER_SHELL_LAYER_TOP);
