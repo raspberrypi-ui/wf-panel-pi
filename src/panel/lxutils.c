@@ -413,6 +413,8 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     GdkRectangle rect;
     GtkAllocation alloc;
     GtkWidget *wid;
+    int i, orient;
+    FILE *fp;
 
     close_popup ();
 
@@ -445,8 +447,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     mw = rect.width;
     if (bottom) py = mh - py - ph;
 
-    int i, orient = 0;
-    FILE *fp;
+    orient = 0;
     GdkDisplay *disp = gdk_display_get_default();
     GdkMonitor *mon = gtk_layer_get_monitor (GTK_WINDOW (wid));
     for (i = 0; i < gdk_display_get_n_monitors (disp); i++)
@@ -473,10 +474,33 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
 
     gtk_window_present (GTK_WINDOW (window));
 
+    // remap touch for rotated displays
     if (orient == 180)
     {
         px = mw - px - pw;
         py = mh - py - ph;
+    }
+    if (orient == 90)
+    {
+        i = px;
+        px = py;
+        py = mw - i - pw;
+    }
+    if (orient == 270)
+    {
+        i = py;
+        py = px;
+        px = mh - i - ph;
+    }
+    if (orient == 90 || orient == 270)
+    {
+        i = pw;
+        pw = ph;
+        ph = i;
+
+        i = mw;
+        mw = mh;
+        mh = i;
     }
 
     popwindow = window;
