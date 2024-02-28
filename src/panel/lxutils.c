@@ -489,7 +489,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
         case 270:   i = py;
                     py = px;
                     px = mh - i - ph;
-                    break
+                    break;
     }
     if (orient == 90 || orient == 270)
     {
