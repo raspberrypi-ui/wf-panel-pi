@@ -1,3 +1,9 @@
+wf-panel-pi (0.64) bookworm; urgency=medium
+
+  * Use standard windows instead of popovers for volume and calendar
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 28 Feb 2024 14:00:14 +0000
+
 wf-panel-pi (0.63) bookworm; urgency=medium
 
   * Fix for spoof button release event
