@@ -1,3 +1,9 @@
+wf-panel-pi (0.65) bookworm; urgency=medium
+
+  * Fix possible timing hazard with multiple menus
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 29 Feb 2024 14:07:01 +0000
+
 wf-panel-pi (0.64) bookworm; urgency=medium
 
   * Use standard windows instead of popovers for volume and calendar
