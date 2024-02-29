@@ -396,6 +396,13 @@ static gboolean check_libinput_events (gpointer)
             libinput_event_destroy (ev);
         }
 
+        if (type == LIBINPUT_EVENT_KEYBOARD_KEY)
+        {
+            if (libinput_event_keyboard_get_key (libinput_event_get_keyboard_event (ev)) == KEY_ESC)
+                close_popup ();
+            libinput_event_destroy (ev);
+        }
+
         if (type == LIBINPUT_EVENT_TOUCH_UP)
         {
             if (tx < px || tx > px + pw || ty < py || ty > py + ph)
