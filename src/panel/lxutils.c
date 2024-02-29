@@ -54,15 +54,21 @@ static GtkWidget *popwindow;
 static double tx, ty;
 static int px, py, pw, ph, mw, mh;
 
-
 /*----------------------------------------------------------------------------*/
 /* Private functions */
 /*----------------------------------------------------------------------------*/
+
+static gboolean hide_prelight (gpointer data)
+{
+    gtk_widget_unset_state_flags (GTK_WIDGET (data), GTK_STATE_FLAG_PRELIGHT);
+    return FALSE;
+}
 
 static void menu_hidden (GtkWidget *, gpointer panel)
 {
     gtk_layer_set_layer (GTK_WINDOW (panel), old_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
+    if (m_button) g_idle_add (hide_prelight, m_button);
 }
 
 static void committed (GdkWindow *win, gpointer)
@@ -97,19 +103,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 {
     close_popup ();
 
-    if (GTK_IS_BUTTON (widget))
-    {
-        // simulate a leave event on the button to hide the prelight */
-        GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
-        ev->window = gtk_button_get_event_window (GTK_BUTTON (widget));
-        ev->time = GDK_CURRENT_TIME;
-        ev->mode = GDK_CROSSING_NORMAL;
-        ev->send_event = TRUE;
-        gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-        gtk_main_do_event ((GdkEvent *) ev);
-
-        m_button = widget;
-    }
+    if (GTK_IS_BUTTON (widget)) m_button = widget;
     else m_button = NULL;
 
     m_panel = widget;
