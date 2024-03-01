@@ -50,8 +50,8 @@ typedef struct {
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
-static GtkWidget *m_panel = NULL;
-static GtkLayerShellLayer old_layer = GTK_LAYER_SHELL_LAYER_ENTRY_NUMBER;
+static GtkWidget *m_panel;
+static GtkLayerShellLayer orig_layer;
 static struct libinput *li;
 static guint idle_id;
 static GtkWidget *popwindow;
@@ -61,6 +61,11 @@ static int px, py, pw, ph, mw, mh;
 /*----------------------------------------------------------------------------*/
 /* Private functions */
 /*----------------------------------------------------------------------------*/
+
+void store_layer (GtkLayerShellLayer layer)
+{
+    orig_layer = layer;
+}
 
 static GtkWidget *find_panel (GtkWidget *btn)
 {
@@ -78,7 +83,7 @@ static gboolean hide_prelight (GtkWidget *btn)
 
 static void menu_hidden (GtkWidget *, kb_menu_t *data)
 {
-    gtk_layer_set_layer (GTK_WINDOW (m_panel), old_layer);
+    gtk_layer_set_layer (GTK_WINDOW (m_panel), orig_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), FALSE);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
     g_free (data);
@@ -118,8 +123,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 
     kb_menu_t *data = g_new (kb_menu_t, 1);
 
-    if (!m_panel) m_panel = find_panel (widget);
-    if (old_layer == GTK_LAYER_SHELL_LAYER_ENTRY_NUMBER) old_layer = gtk_layer_get_layer (GTK_WINDOW (m_panel));
+    m_panel = find_panel (widget);
 
     if (GTK_IS_BUTTON (widget)) data->button = widget;
     else data->button = NULL;

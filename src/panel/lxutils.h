@@ -50,6 +50,7 @@ typedef struct {
 
 extern char **environ;
 
+extern void store_layer (GtkLayerShellLayer layer);
 extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
 extern void set_taskbar_icon (GtkWidget *image, const char *icon, int size);
 extern void set_menu_icon (GtkWidget *image, const char *icon, int size);
