@@ -51,7 +51,6 @@ typedef struct {
 extern char **environ;
 
 extern void store_layer (GtkLayerShellLayer layer);
-extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
 extern void set_taskbar_icon (GtkWidget *image, const char *icon, int size);
 extern void set_menu_icon (GtkWidget *image, const char *icon, int size);
 extern GtkWidget *new_menu_item (const char *text, int maxlen, const char *iconname, int icon_size);
@@ -62,6 +61,9 @@ extern void append_menu_icon (GtkWidget *item, GtkWidget *image);
 extern void graph_init (PluginGraph *graph);
 extern void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2);
 extern void graph_new_point (PluginGraph *graph, float value, int state, char *label);
+
+extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
+
 extern void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bottom);
 extern void close_popup (void);
 

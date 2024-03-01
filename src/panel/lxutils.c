@@ -59,13 +59,8 @@ static double tx, ty;
 static int px, py, pw, ph, mw, mh;
 
 /*----------------------------------------------------------------------------*/
-/* Private functions */
+/* General helper functions */
 /*----------------------------------------------------------------------------*/
-
-void store_layer (GtkLayerShellLayer layer)
-{
-    orig_layer = layer;
-}
 
 static GtkWidget *find_panel (GtkWidget *btn)
 {
@@ -75,63 +70,13 @@ static GtkWidget *find_panel (GtkWidget *btn)
     return wid;
 }
 
-static gboolean hide_prelight (GtkWidget *btn)
-{
-    gtk_widget_unset_state_flags (btn, GTK_STATE_FLAG_PRELIGHT);
-    return FALSE;
-}
-
-static void menu_hidden (GtkWidget *, kb_menu_t *data)
-{
-    gtk_layer_set_layer (GTK_WINDOW (m_panel), orig_layer);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), FALSE);
-    if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
-    g_free (data);
-}
-
-static void committed (GdkWindow *win, kb_menu_t *data)
-{
-    // spoof event just to suppress warnings...
-    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
-    ev->send_event = TRUE;
-    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-
-    g_signal_handler_disconnect (win, data->handle);
-    g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
-    if (data->button)
-    {
-        gtk_menu_popup_at_widget (GTK_MENU (data->menu), data->button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    }
-    else
-    {
-        GtkAllocation alloc;
-        int x, y;
-        gtk_widget_get_allocation (GTK_WIDGET (m_panel), &alloc);
-        gdk_window_get_device_position (gtk_widget_get_window (m_panel), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
-        GdkRectangle rect = {x, 0, 0, alloc.height};
-        gtk_menu_popup_at_rect (GTK_MENU (data->menu), gtk_widget_get_window (m_panel), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    }
-}
-
 /*----------------------------------------------------------------------------*/
-/* Public API */
+/* General public API - replaces functions from lxpanel */
 /*----------------------------------------------------------------------------*/
 
-void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
+void store_layer (GtkLayerShellLayer layer)
 {
-    close_popup ();
-
-    kb_menu_t *data = g_new (kb_menu_t, 1);
-
-    m_panel = find_panel (widget);
-
-    if (GTK_IS_BUTTON (widget)) data->button = widget;
-    else data->button = NULL;
-    data->menu = menu;
-
-    gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
-    data->handle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), data);
+    orig_layer = layer;
 }
 
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
@@ -211,6 +156,10 @@ void append_menu_icon (GtkWidget *item, GtkWidget *image)
     GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
     gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
 }
+
+/*----------------------------------------------------------------------------*/
+/* Plugin graph */
+/*----------------------------------------------------------------------------*/
 
 /* Redraw entire graph */
 
@@ -361,7 +310,68 @@ void graph_init (PluginGraph *graph)
     graph->ring_cursor = 0;
 }
 
-/* Replacement for GTK popover - popup window which closes when clicked outside */
+/*----------------------------------------------------------------------------*/
+/* Menu popup with keyboard handling */
+/*----------------------------------------------------------------------------*/
+
+static gboolean hide_prelight (GtkWidget *btn)
+{
+    gtk_widget_unset_state_flags (btn, GTK_STATE_FLAG_PRELIGHT);
+    return FALSE;
+}
+
+static void menu_hidden (GtkWidget *, kb_menu_t *data)
+{
+    gtk_layer_set_layer (GTK_WINDOW (m_panel), orig_layer);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), FALSE);
+    if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
+    g_free (data);
+}
+
+static void committed (GdkWindow *win, kb_menu_t *data)
+{
+    // spoof event just to suppress warnings...
+    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
+    ev->send_event = TRUE;
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+
+    g_signal_handler_disconnect (win, data->handle);
+    g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
+    if (data->button)
+    {
+        gtk_menu_popup_at_widget (GTK_MENU (data->menu), data->button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    }
+    else
+    {
+        GtkAllocation alloc;
+        int x, y;
+        gtk_widget_get_allocation (GTK_WIDGET (m_panel), &alloc);
+        gdk_window_get_device_position (gtk_widget_get_window (m_panel), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
+        GdkRectangle rect = {x, 0, 0, alloc.height};
+        gtk_menu_popup_at_rect (GTK_MENU (data->menu), gtk_widget_get_window (m_panel), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    }
+}
+
+void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
+{
+    close_popup ();
+
+    kb_menu_t *data = g_new (kb_menu_t, 1);
+
+    m_panel = find_panel (widget);
+
+    if (GTK_IS_BUTTON (widget)) data->button = widget;
+    else data->button = NULL;
+    data->menu = menu;
+
+    gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
+    data->handle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), data);
+}
+
+/*----------------------------------------------------------------------------*/
+/* Window popup with close on click-away
+/*----------------------------------------------------------------------------*/
 
 static int open_restricted (const char *path, int flags, void *)
 {
