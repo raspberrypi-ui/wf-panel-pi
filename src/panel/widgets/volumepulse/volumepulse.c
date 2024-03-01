@@ -419,11 +419,13 @@ void volumepulse_init (VolumePulsePlugin *vol)
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (vol->plugin[0]), GTK_RELIEF_NONE);
     g_signal_connect (vol->plugin[0], "button-press-event", G_CALLBACK (volumepulse_button_press_event), vol);
+    g_signal_connect (vol->plugin[0], "button-release-event", G_CALLBACK (volumepulse_button_release_event), vol);
     g_signal_connect (vol->plugin[0], "scroll-event", G_CALLBACK (volumepulse_mouse_scrolled), vol);
     gtk_widget_add_events (vol->plugin[0], GDK_SCROLL_MASK);
 
     gtk_button_set_relief (GTK_BUTTON (vol->plugin[1]), GTK_RELIEF_NONE);
     g_signal_connect (vol->plugin[1], "button-press-event", G_CALLBACK (micpulse_button_press_event), vol);
+    g_signal_connect (vol->plugin[1], "button-release-event", G_CALLBACK (micpulse_button_release_event), vol);
     g_signal_connect (vol->plugin[1], "scroll-event", G_CALLBACK (micpulse_mouse_scrolled), vol);
     gtk_widget_add_events (vol->plugin[1], GDK_SCROLL_MASK);
 

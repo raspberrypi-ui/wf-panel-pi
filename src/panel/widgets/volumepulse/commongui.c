@@ -352,7 +352,16 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
         case 2: /* middle-click - toggle mute */
                 pulse_set_mute (vol, pulse_get_mute (vol, FALSE) ? 0 : 1, FALSE);
                 break;
+    }
 
+    volumepulse_update_display (vol);
+    return TRUE;
+}
+
+gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
+{
+    switch (event->button)
+    {
         case 3: /* right-click - show device list */
                 close_popup ();
                 vol_menu_show (vol);
@@ -377,7 +386,16 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
         case 2: /* middle-click - toggle mute */
                 pulse_set_mute (vol, pulse_get_mute (vol, TRUE) ? 0 : 1, TRUE);
                 break;
+    }
 
+    micpulse_update_display (vol);
+    return TRUE;
+}
+
+gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
+{
+    switch (event->button)
+    {
         case 3: /* right-click - show device list */
                 close_popup ();
                 mic_menu_show (vol);
