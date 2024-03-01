@@ -43,7 +43,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 typedef struct {
     GtkWidget *button;
     GtkWidget *menu;
-    gulong  handle;
+    gulong chandle;
+    gulong mhandle;
 } kb_menu_t;
 
 /*----------------------------------------------------------------------------*/
@@ -322,6 +323,7 @@ static gboolean hide_prelight (GtkWidget *btn)
 
 static void menu_hidden (GtkWidget *, kb_menu_t *data)
 {
+    g_signal_handler_disconnect (data->menu, data->mhandle);  // Take this out and watch the crashes....
     gtk_layer_set_layer (GTK_WINDOW (m_panel), orig_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), FALSE);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
@@ -335,8 +337,8 @@ static void committed (GdkWindow *win, kb_menu_t *data)
     ev->send_event = TRUE;
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
 
-    g_signal_handler_disconnect (win, data->handle);
-    g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
+    g_signal_handler_disconnect (win, data->chandle);
+    data->mhandle = g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
     if (data->button)
     {
         gtk_menu_popup_at_widget (GTK_MENU (data->menu), data->button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
@@ -366,7 +368,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 
     gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
-    data->handle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), data);
+    data->chandle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), data);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -495,6 +497,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     gtk_layer_set_anchor (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
     gtk_layer_set_margin (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, px);
     gtk_layer_set_monitor (GTK_WINDOW (window), gtk_layer_get_monitor (GTK_WINDOW (wid)));
+    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (window), TRUE);
 
     gtk_window_present (GTK_WINDOW (window));
 
