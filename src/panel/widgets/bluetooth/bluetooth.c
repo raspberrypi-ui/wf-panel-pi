@@ -1963,7 +1963,7 @@ static void show_menu (BluetoothPlugin *bt)
     int bt_state;
 
     // if the menu is currently on screen, delete all the items and rebuild rather than creating a new one
-    if (bt->menu && gtk_widget_get_visible (bt->menu))
+    if (bt->menu)
     {
         items = gtk_container_get_children (GTK_CONTAINER (bt->menu));
         g_list_free_full (items, (GDestroyNotify) gtk_widget_destroy);
@@ -2169,6 +2169,7 @@ void bt_init (BluetoothPlugin *bt)
     bt->pair_dialog = NULL;
     bt->conn_dialog = NULL;
     bt->list_dialog = NULL;
+    bt->menu = NULL;
     clear (bt);
 
     // is rfkill installed?

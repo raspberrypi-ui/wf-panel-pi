@@ -209,6 +209,7 @@ gboolean menu_create (VolumePulsePlugin *vol, gboolean input_control)
     int index = input_control ? 1 : 0;
 
     // create input selector
+    if (vol->menu_devices[index]) gtk_widget_destroy (vol->menu_devices[index]);
     vol->menu_devices[index] = gtk_menu_new ();
     gtk_widget_set_name (vol->menu_devices[index], "panelmenu");
 
