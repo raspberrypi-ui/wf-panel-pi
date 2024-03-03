@@ -372,7 +372,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 }
 
 /*----------------------------------------------------------------------------*/
-/* Window popup with close on click-away
+/* Window popup with close on click-away */
 /*----------------------------------------------------------------------------*/
 
 static int open_restricted (const char *path, int flags, void *)
