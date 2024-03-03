@@ -393,7 +393,10 @@ static const struct libinput_interface interface = {
 
 static gboolean check_libinput_events (gpointer)
 {
+    GdkWindow *win, *wwin;
+    gboolean match;
     struct libinput_event *ev;
+
     libinput_dispatch (li);
     if ((ev = libinput_get_event (li)) != 0)
     {
@@ -403,11 +406,19 @@ static gboolean check_libinput_events (gpointer)
         {
             if (libinput_event_pointer_get_button_state (libinput_event_get_pointer_event (ev)) == LIBINPUT_BUTTON_STATE_RELEASED)
             {
-                GdkWindow *win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
+                win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
                     gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
-
-                if (!win || (gdk_window_get_parent (win) != gtk_widget_get_window (popwindow)))
-                    close_popup ();
+                if (!win) close_popup ();
+                else
+                {
+                    // is the popup a parent of the window under the pointer?
+                    match = FALSE;
+                    wwin = gtk_widget_get_window (popwindow);
+                    while ((win = gdk_window_get_parent (win)) != NULL)
+                        if (win == wwin)
+                            match = TRUE;
+                    if (!match) close_popup ();
+                }
             }
             libinput_event_destroy (ev);
         }
@@ -421,6 +432,7 @@ static gboolean check_libinput_events (gpointer)
 
         if (type == LIBINPUT_EVENT_TOUCH_UP)
         {
+            // was the touch inside the co-ords of the popup?
             if (tx < px || tx > px + pw || ty < py || ty > py + ph)
                 close_popup ();
             libinput_event_destroy (ev);
@@ -433,7 +445,6 @@ static gboolean check_libinput_events (gpointer)
             ty = libinput_event_touch_get_y_transformed (tev, mh);
             libinput_event_destroy (ev);
         }
-
     }
     return TRUE;
 }
