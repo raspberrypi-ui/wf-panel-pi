@@ -33,7 +33,7 @@ bool WayfireSmenu::set_icon (void)
 void WayfireSmenu::init (Gtk::HBox *container)
 {
     /* Create the button */
-    plugin = std::make_unique <WayfireMenuButton> ("panel");
+    plugin = std::make_unique <Gtk::Button> ();
     plugin->set_name ("smenu");
     container->pack_start (*plugin, false, false);
 

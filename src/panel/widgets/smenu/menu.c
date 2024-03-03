@@ -155,7 +155,8 @@ static gboolean _open_dir_in_file_manager (GAppLaunchContext* ctx, GList* folder
 
 static void destroy_search (MenuPlugin *m)
 {
-    gtk_widget_hide (m->swin);
+    close_popup ();
+    m->swin = NULL;
 }
 
 static gboolean filter_apps (GtkTreeModel *model, GtkTreeIter *iter, gpointer user_data)
@@ -324,6 +325,13 @@ static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointe
     gdk_window_move (gtk_widget_get_window (m->swin), x, y);
 }
 #endif
+
+static void search_destroyed (GtkWidget *widget, gpointer data)
+{
+    MenuPlugin *m = (MenuPlugin *) data;
+    m->swin = NULL;
+}
+
 static void create_search (MenuPlugin *m)
 {
     GtkCellRenderer *prend, *trend;
@@ -332,7 +340,7 @@ static void create_search (MenuPlugin *m)
     GtkWidget *box;
 
     /* create the window */
-    m->swin = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (m->plugin)));
+    m->swin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_name (m->swin, "panelpopup");
     //if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
 
@@ -376,8 +384,8 @@ static void create_search (MenuPlugin *m)
     gtk_tree_view_set_enable_search (GTK_TREE_VIEW (m->stv), FALSE);
 
     /* realise */
-    gtk_widget_show_all (m->swin);
-    gtk_widget_hide (m->swin);
+    g_signal_connect (m->swin, "destroy", G_CALLBACK (search_destroyed), m);
+    popup_window_at_button (m->swin, m->plugin, m->bottom);
 
     /* resize window */
     m->rheight = 0;
@@ -393,11 +401,9 @@ static gboolean handle_key_presses (GtkWidget *widget, GdkEventKey *event, gpoin
     if ((event->keyval >= 'a' && event->keyval <= 'z') ||
         (event->keyval >= 'A' && event->keyval <= 'Z'))
     {
-        if (!gtk_widget_is_visible (m->swin))
-        {
-            gtk_entry_set_text (GTK_ENTRY (m->srch), "");
-            gtk_button_clicked (GTK_BUTTON (m->plugin));
-        }
+        gtk_widget_hide (m->menu);
+        create_search (m);
+        gtk_entry_set_text (GTK_ENTRY (m->srch), "");
         append_to_entry (m->srch, event->keyval);
         return TRUE;
     }
@@ -866,7 +872,7 @@ void menu_show_menu (MenuPlugin *m)
 {
     //MenuPlugin *m = lxpanel_plugin_get_data (p);
     if (gtk_widget_is_visible (m->menu)) gtk_menu_popdown (GTK_MENU (m->menu));
-    else if (gtk_widget_is_visible (m->swin)) destroy_search (m);
+    else if (m->swin && gtk_widget_is_visible (m->swin)) destroy_search (m);
     else show_menu_with_kbd (m->plugin, m->menu);
 }
 
@@ -1007,8 +1013,6 @@ void menu_init (MenuPlugin *m)
 
     /* Watch the icon theme and reload the menu if it changes */
     g_signal_connect (gtk_icon_theme_get_default (), "changed", G_CALLBACK (handle_reload_menu), m);
-
-    create_search (m);
 
     /* Show the widget and return */
     gtk_widget_show_all (m->plugin);
