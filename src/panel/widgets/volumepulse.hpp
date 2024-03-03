@@ -2,7 +2,7 @@
 #define WIDGETS_VOLUMEPULSE_HPP
 
 #include "../widget.hpp"
-#include "wf-popover.hpp"
+#include <gtkmm/button.h>
 
 extern "C" {
 #include "volumepulse/volumepulse.h"
