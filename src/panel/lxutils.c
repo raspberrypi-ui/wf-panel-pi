@@ -57,7 +57,7 @@ static struct libinput *li;
 static guint idle_id;
 static GtkWidget *popwindow;
 static double tx, ty;
-static int px, py, pw, ph, mw, mh;
+static int px, py, mw, mh, orient;
 
 /*----------------------------------------------------------------------------*/
 /* General public API - replaces functions from lxpanel */
@@ -428,8 +428,11 @@ static gboolean check_libinput_events (gpointer)
 
         if (type == LIBINPUT_EVENT_TOUCH_UP)
         {
+            GtkAllocation alloc;
+            gtk_widget_get_allocation (popwindow, &alloc);
+
             // was the touch inside the co-ords of the popup?
-            if (tx < px || tx > px + pw || ty < py || ty > py + ph)
+            if (tx < px || tx > px + alloc.width || ty < py || ty > py + alloc.height)
                 close_popup ();
             libinput_event_destroy (ev);
         }
@@ -437,8 +440,27 @@ static gboolean check_libinput_events (gpointer)
         if (type == LIBINPUT_EVENT_TOUCH_DOWN)
         {
             struct libinput_event_touch *tev = libinput_event_get_touch_event (ev);
-            tx = libinput_event_touch_get_x_transformed (tev, mw);
-            ty = libinput_event_touch_get_y_transformed (tev, mh);
+            tx = libinput_event_touch_get_x_transformed (tev, (orient == 90 || orient == 270) ? mh : mw);
+            ty = libinput_event_touch_get_y_transformed (tev, (orient == 90 || orient == 270) ? mw : mh);
+
+            // remap touch point for rotated displays
+            double d;
+            switch (orient)
+            {
+                case 90 :   d = tx;
+                            tx = mw - ty;
+                            ty = d;
+                            break;
+
+                case 180 :  tx = mw - tx;
+                            ty = mh - ty;
+                            break;
+
+                case 270 :  d = tx;
+                            tx = ty;
+                            ty = mh - d;
+                            break;
+            }
             libinput_event_destroy (ev);
         }
     }
@@ -450,7 +472,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     GdkRectangle rect;
     GtkAllocation alloc;
     GtkWidget *wid;
-    int i, orient;
+    int i, pw, ph;
     FILE *fp;
 
     close_popup ();
@@ -507,34 +529,6 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (window), TRUE);
 
     gtk_window_present (GTK_WINDOW (window));
-
-    // remap touch for rotated displays
-    switch (orient)
-    {
-        case 90 :   i = px;
-                    px = py;
-                    py = mw - i - pw;
-                    break;
-
-        case 180:   px = mw - px - pw;
-                    py = mh - py - ph;
-                    break;
-
-        case 270:   i = py;
-                    py = px;
-                    px = mh - i - ph;
-                    break;
-    }
-    if (orient == 90 || orient == 270)
-    {
-        i = pw;
-        pw = ph;
-        ph = i;
-
-        i = mw;
-        mw = mh;
-        mh = i;
-    }
 
     popwindow = window;
 
