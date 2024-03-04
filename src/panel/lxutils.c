@@ -60,20 +60,16 @@ static double tx, ty;
 static int px, py, pw, ph, mw, mh;
 
 /*----------------------------------------------------------------------------*/
-/* General helper functions */
+/* General public API - replaces functions from lxpanel */
 /*----------------------------------------------------------------------------*/
 
-static GtkWidget *find_panel (GtkWidget *btn)
+GtkWidget *find_panel (GtkWidget *btn)
 {
     GtkWidget *wid = btn;
     while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
         wid = gtk_widget_get_parent (wid);
     return wid;
 }
-
-/*----------------------------------------------------------------------------*/
-/* General public API - replaces functions from lxpanel */
-/*----------------------------------------------------------------------------*/
 
 void store_layer (GtkLayerShellLayer layer)
 {

@@ -161,11 +161,19 @@ static void resize_search (MenuPlugin *m)
 {
     GtkTreePath *path;
     GdkRectangle rect;
-    int nrows, height = m->height - gtk_widget_get_allocated_height (m->srch);
+    int nrows, height;
 
-    if (m->fixed) nrows = height;
+    if (m->fixed)
+    {
+        height = m->height - gtk_widget_get_allocated_height (m->srch);
+        nrows = height;
+    }
     else
     {
+        gdk_monitor_get_geometry (gtk_layer_get_monitor (GTK_WINDOW (m->swin)), &rect);
+        height = (rect.height - gtk_layer_get_exclusive_zone (find_panel (m->plugin)))
+            - gtk_widget_get_allocated_height (m->srch);
+
         /* update the stored row height if current height is bigger */
         path = gtk_tree_path_new_from_indices (0, -1);
         gtk_tree_view_get_cell_area (GTK_TREE_VIEW (m->stv), path, NULL, &rect);
