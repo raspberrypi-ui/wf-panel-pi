@@ -323,7 +323,7 @@ static gboolean hide_prelight (GtkWidget *btn)
 
 static void menu_hidden (GtkWidget *, kb_menu_t *data)
 {
-    g_signal_handler_disconnect (data->menu, data->mhandle);  // Take this out and watch the crashes....
+    g_signal_handler_disconnect (data->menu, data->mhandle);
     gtk_layer_set_layer (GTK_WINDOW (m_panel), orig_layer);
     gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), FALSE);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
