@@ -51,11 +51,10 @@ typedef struct {
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
-static GtkWidget *m_panel;
+static GtkWindow *panel, *popwindow;
 static GtkLayerShellLayer orig_layer;
 static struct libinput *li;
 static guint idle_id;
-static GtkWidget *popwindow;
 static double tx, ty;
 static int px, py, mw, mh, orient;
 
@@ -63,12 +62,12 @@ static int px, py, mw, mh, orient;
 /* General public API - replaces functions from lxpanel */
 /*----------------------------------------------------------------------------*/
 
-GtkWidget *find_panel (GtkWidget *btn)
+GtkWindow *find_panel (GtkWidget *btn)
 {
     GtkWidget *wid = btn;
     while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
         wid = gtk_widget_get_parent (wid);
-    return wid;
+    return GTK_WINDOW (wid);
 }
 
 void store_layer (GtkLayerShellLayer layer)
@@ -320,8 +319,8 @@ static gboolean hide_prelight (GtkWidget *btn)
 static void menu_hidden (GtkWidget *, kb_menu_t *data)
 {
     g_signal_handler_disconnect (data->menu, data->mhandle);
-    gtk_layer_set_layer (GTK_WINDOW (m_panel), orig_layer);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), FALSE);
+    gtk_layer_set_layer (panel, orig_layer);
+    gtk_layer_set_keyboard_interactivity (panel, FALSE);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
     g_free (data);
 }
@@ -341,12 +340,14 @@ static void committed (GdkWindow *win, kb_menu_t *data)
     }
     else
     {
-        GtkAllocation alloc;
+        GdkRectangle rect;
         int x, y;
-        gtk_widget_get_allocation (GTK_WIDGET (m_panel), &alloc);
-        gdk_window_get_device_position (gtk_widget_get_window (m_panel), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
-        GdkRectangle rect = {x, 0, 0, alloc.height};
-        gtk_menu_popup_at_rect (GTK_MENU (data->menu), gtk_widget_get_window (m_panel), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+        gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
+        gdk_window_get_device_position (gtk_widget_get_window (GTK_WIDGET (panel)), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
+        rect.x = x;
+        rect.y = 0;
+        rect.width = 0;
+        gtk_menu_popup_at_rect (GTK_MENU (data->menu), gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
     }
 }
 
@@ -356,15 +357,15 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 
     kb_menu_t *data = g_new (kb_menu_t, 1);
 
-    m_panel = find_panel (widget);
+    panel = find_panel (widget);
 
     if (GTK_IS_BUTTON (widget)) data->button = widget;
     else data->button = NULL;
     data->menu = menu;
 
-    gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
-    data->chandle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), data);
+    gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_keyboard_interactivity (panel, TRUE);
+    data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -409,7 +410,7 @@ static gboolean check_libinput_events (gpointer)
                 {
                     // is the popup a parent of the window under the pointer?
                     match = FALSE;
-                    wwin = gtk_widget_get_window (popwindow);
+                    wwin = gtk_widget_get_window (GTK_WIDGET (popwindow));
                     while ((win = gdk_window_get_parent (win)) != NULL)
                         if (win == wwin)
                             match = TRUE;
@@ -429,7 +430,7 @@ static gboolean check_libinput_events (gpointer)
         if (type == LIBINPUT_EVENT_TOUCH_UP)
         {
             GtkAllocation alloc;
-            gtk_widget_get_allocation (popwindow, &alloc);
+            gtk_widget_get_allocation (GTK_WIDGET (popwindow), &alloc);
 
             // was the touch inside the co-ords of the popup?
             if (tx < px || tx > px + alloc.width || ty < py || ty > py + alloc.height)
@@ -469,44 +470,46 @@ static gboolean check_libinput_events (gpointer)
 
 void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 {
+    GdkDisplay *disp;
+    GdkMonitor *mon;
     GdkRectangle rect;
-    GtkAllocation alloc;
-    GtkWidget *wid;
     int i, pw, ph;
     gboolean bottom;
     FILE *fp;
 
     close_popup ();
 
-    gtk_layer_init_for_window (GTK_WINDOW (window));
+    popwindow = GTK_WINDOW (window);
+
+    disp = gdk_display_get_default();
+    gtk_layer_init_for_window (popwindow);
     gtk_widget_show_all (window);
 
     // get the dimensions of the panel
-    wid = find_panel (button);
-    bottom = gtk_layer_get_anchor (GTK_WINDOW (wid), GTK_LAYER_SHELL_EDGE_BOTTOM);
-    gtk_widget_get_allocation (wid, &alloc);
-    px = alloc.width;
-    py = alloc.height;
+    panel = find_panel (button);
+    bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
+    gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
+    px = rect.width;
+    py = rect.height;
 
     // get the dimensions of the popup itself and ensure the popup fits on the screen
-    gtk_widget_get_allocation (window, &alloc);
-    pw = alloc.width;
-    ph = alloc.height;
+    gtk_widget_get_allocation (window, &rect);
+    pw = rect.width;
+    ph = rect.height;
     px -= pw;
 
     // get the dimensions of the button - align left edge of popup with left edge of button
-    gtk_widget_get_allocation (button, &alloc);
-    if (alloc.x <= px) px = alloc.x;
+    gtk_widget_get_allocation (button, &rect);
+    if (rect.x <= px) px = rect.x;
 
     // get the dimensions of the monitor - correct the y-coord of the plugin if at bottom
-    gdk_monitor_get_geometry (gtk_layer_get_monitor (GTK_WINDOW (wid)), &rect);
+    mon = gtk_layer_get_monitor (panel);
+    gdk_monitor_get_geometry (mon, &rect);
     mh = rect.height;
     mw = rect.width;
     if (bottom) py = mh - py - ph;
 
     orient = 0;
-    GdkDisplay *disp = gdk_display_get_default();
-    GdkMonitor *mon = gtk_layer_get_monitor (GTK_WINDOW (wid));
     for (i = 0; i < gdk_display_get_n_monitors (disp); i++)
     {
         // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
@@ -523,16 +526,14 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
         }
     }
 
-    gtk_layer_set_layer (GTK_WINDOW (window), GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_anchor (GTK_WINDOW (window), bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-    gtk_layer_set_anchor (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-    gtk_layer_set_margin (GTK_WINDOW (window), GTK_LAYER_SHELL_EDGE_LEFT, px);
-    gtk_layer_set_monitor (GTK_WINDOW (window), gtk_layer_get_monitor (GTK_WINDOW (wid)));
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (window), TRUE);
+    gtk_layer_set_layer (popwindow, GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+    gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
+    gtk_layer_set_monitor (popwindow, mon);
+    gtk_layer_set_keyboard_interactivity (popwindow, TRUE);
 
-    gtk_window_present (GTK_WINDOW (window));
-
-    popwindow = window;
+    gtk_window_present (popwindow);
 
     li = libinput_udev_create_context (&interface, NULL, udev_new ());
     libinput_udev_assign_seat (li, "seat0");
@@ -542,7 +543,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 
 void close_popup (void)
 {
-    if (popwindow) gtk_widget_destroy (popwindow);
+    if (popwindow) gtk_widget_destroy (GTK_WIDGET (popwindow));
     popwindow = NULL;
     if (idle_id) g_source_remove (idle_id);
     idle_id = 0;

@@ -171,7 +171,7 @@ static void resize_search (MenuPlugin *m)
     else
     {
         gdk_monitor_get_geometry (gtk_layer_get_monitor (GTK_WINDOW (m->swin)), &rect);
-        height = (rect.height - gtk_layer_get_exclusive_zone (GTK_WINDOW (find_panel (m->plugin))))
+        height = (rect.height - gtk_layer_get_exclusive_zone (find_panel (m->plugin)))
             - gtk_widget_get_allocated_height (m->srch);
 
         /* update the stored row height if current height is bigger */
