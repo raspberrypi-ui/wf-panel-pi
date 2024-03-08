@@ -1,6 +1,6 @@
 wf-panel-pi (0.67) bookworm; urgency=medium
 
-  * Optimisation in window popup function
+  * Various tidying and optimisation in lxutils
 
  -- Simon Long <simon@raspberrypi.com>  Fri, 08 Mar 2024 11:03:41 +0000
 
