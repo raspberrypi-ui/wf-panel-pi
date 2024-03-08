@@ -367,7 +367,7 @@ static void create_search (MenuPlugin *m)
 
     /* realise */
     g_signal_connect (m->swin, "destroy", G_CALLBACK (search_destroyed), m);
-    popup_window_at_button (m->swin, m->plugin, m->bottom);
+    popup_window_at_button (m->swin, m->plugin);
 
     /* resize window */
     m->rheight = 0;

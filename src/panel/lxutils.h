@@ -65,7 +65,7 @@ extern void graph_new_point (PluginGraph *graph, float value, int state, char *l
 
 extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
 
-extern void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bottom);
+extern void popup_window_at_button (GtkWidget *window, GtkWidget *button);
 extern void close_popup (void);
 
 #endif

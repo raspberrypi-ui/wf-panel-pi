@@ -153,7 +153,7 @@ void popup_window_show (VolumePulsePlugin *vol, gboolean input_control)
     g_signal_connect (vol->popup_window[index], "destroy", G_CALLBACK (vol_destroyed), vol);
 
     /* Realise the window */
-    popup_window_at_button (vol->popup_window[index], vol->plugin[index], vol->bottom);
+    popup_window_at_button (vol->popup_window[index], vol->plugin[index]);
 }
 
 /* Handler for "value_changed" signal on popup window vertical scale */

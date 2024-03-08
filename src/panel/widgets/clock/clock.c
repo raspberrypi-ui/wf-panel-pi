@@ -68,7 +68,7 @@ static void calendar_show (ClockPlugin *cl)
     g_signal_connect (cl->window, "destroy", G_CALLBACK (cal_destroyed), cl);
 
     /* Realise the window */
-    popup_window_at_button (cl->window, cl->plugin, cl->bottom);
+    popup_window_at_button (cl->window, cl->plugin);
 }
 
 /* Handler for menu button click */

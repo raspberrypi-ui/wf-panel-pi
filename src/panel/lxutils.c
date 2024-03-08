@@ -467,12 +467,13 @@ static gboolean check_libinput_events (gpointer)
     return TRUE;
 }
 
-void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bottom)
+void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 {
     GdkRectangle rect;
     GtkAllocation alloc;
     GtkWidget *wid;
     int i, pw, ph;
+    gboolean bottom;
     FILE *fp;
 
     close_popup ();
@@ -482,6 +483,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button, gboolean bott
 
     // get the dimensions of the panel
     wid = find_panel (button);
+    bottom = gtk_layer_get_anchor (GTK_WINDOW (wid), GTK_LAYER_SHELL_EDGE_BOTTOM);
     gtk_widget_get_allocation (wid, &alloc);
     px = alloc.width;
     py = alloc.height;
