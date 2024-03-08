@@ -42,7 +42,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 typedef struct {
     GtkWidget *button;
-    GtkWidget *menu;
+    GtkMenu *menu;
     gulong chandle;
     gulong mhandle;
 } kb_menu_t;
@@ -336,7 +336,7 @@ static void committed (GdkWindow *win, kb_menu_t *data)
     data->mhandle = g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
     if (data->button)
     {
-        gtk_menu_popup_at_widget (GTK_MENU (data->menu), data->button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+        gtk_menu_popup_at_widget (data->menu, data->button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
     }
     else
     {
@@ -347,7 +347,7 @@ static void committed (GdkWindow *win, kb_menu_t *data)
         rect.x = x;
         rect.y = 0;
         rect.width = 0;
-        gtk_menu_popup_at_rect (GTK_MENU (data->menu), gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+        gtk_menu_popup_at_rect (data->menu, gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
     }
 }
 
@@ -361,7 +361,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 
     if (GTK_IS_BUTTON (widget)) data->button = widget;
     else data->button = NULL;
-    data->menu = menu;
+    data->menu = GTK_MENU (menu);
 
     gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_keyboard_interactivity (panel, TRUE);
