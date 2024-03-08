@@ -61,7 +61,7 @@ static void calendar_show (ClockPlugin *cl)
     cl->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_name (cl->window, "panelpopup");
 
-    gtk_container_set_border_width (GTK_CONTAINER (cl->window), 0);
+    gtk_container_set_border_width (GTK_CONTAINER (cl->window), 1);
 
     /* Add a calendar to the window. */
     gtk_container_add (GTK_CONTAINER (cl->window), gtk_calendar_new ());
