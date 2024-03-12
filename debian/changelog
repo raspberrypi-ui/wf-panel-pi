@@ -1,3 +1,9 @@
+wf-panel-pi (0.68) bookworm; urgency=medium
+
+  * Do not reset pipewire on HDMI hotplug
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 12 Mar 2024 11:53:20 +0000
+
 wf-panel-pi (0.67) bookworm; urgency=medium
 
   * Various tidying and optimisation in lxutils
