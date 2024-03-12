@@ -476,12 +476,13 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     int i, pw, ph;
     gboolean bottom;
     FILE *fp;
+    char *cmd, *mname;
 
     close_popup ();
 
     popwindow = GTK_WINDOW (window);
 
-    disp = gdk_display_get_default();
+    disp = gdk_display_get_default ();
     gtk_layer_init_for_window (popwindow);
     gtk_widget_show_all (window);
 
@@ -515,14 +516,15 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
         // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
         if (mon == gdk_display_get_monitor (disp, i))
         {
-            char *cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '",
-                gdk_screen_get_monitor_plug_name (gdk_display_get_default_screen (disp), i));
+            mname = gdk_screen_get_monitor_plug_name (gdk_display_get_default_screen (disp), i);
+            cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '", mname);
             if ((fp = popen (cmd, "r")) != NULL)
             {
                 fscanf (fp, "%d", &orient);
                 pclose (fp);
             }
             g_free (cmd);
+            g_free (mname);
         }
     }
 
