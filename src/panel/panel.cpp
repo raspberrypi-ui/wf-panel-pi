@@ -601,39 +601,34 @@ class WayfirePanel::impl
         int try_mon;
         const char *mnumstr = ((std::string) monitor_num).c_str();
 
-        if (sscanf (mnumstr, "%d", &try_mon) != 1)
+        if (strlen (mnumstr) == 1 && sscanf (mnumstr, "%d", &try_mon) == 1)
         {
-            for (try_mon = 0; try_mon < gdk_display_get_n_monitors (dpy); try_mon++)
+            // single digit - interpret as monitor number
+            while (try_mon >= 0)
             {
+                mon = gdk_display_get_monitor (dpy, try_mon);
+                if (mon) break;
+                try_mon--;
+            }
+        }
+        else
+        {
+            // output name - try to match it to a connected monitor
+            for (try_mon = gdk_display_get_n_monitors (dpy) - 1; try_mon >= 0; try_mon--)
+            {
+                mon = gdk_display_get_monitor (dpy, try_mon);
                 char *mname = gdk_screen_get_monitor_plug_name (scr, try_mon);
-                if (!g_strcmp0 (mname, mnumstr))
+                if (!g_strcmp0 (mname, mnumstr) && mon)
                 {
-                    mon = gdk_display_get_monitor (dpy, try_mon);
-                    if (mon)
-                    {
-                        gtk_layer_set_monitor (window->gobj(), mon);
-                        g_free (mname);
-                        return try_mon;
-                    }
+                    g_free (mname);
+                    break;
                 }
                 g_free (mname);
             }
-            mon = gdk_display_get_monitor (dpy, 0);
-            gtk_layer_set_monitor (window->gobj(), mon);
-            return 0;
         }
 
-        while (try_mon >= 0)
-        {
-            mon = gdk_display_get_monitor (dpy, try_mon);
-            if (mon)
-            {
-                gtk_layer_set_monitor (window->gobj(), mon);
-                return try_mon;
-            }
-            try_mon--;
-        }
-        return 0;
+        gtk_layer_set_monitor (window->gobj(), mon);
+        return try_mon >= 0 ? try_mon : 0;
     }
 
     std::function<void()> update_panels = [=] ()
