@@ -197,7 +197,7 @@ class WayfirePanel::impl
     WfOption<int> minimal_panel_height{"panel/minimal_height"};
     WfOption<std::string> css_path{"panel/css_path"};
 
-    WfOption<int> monitor_num{"panel/monitor"};
+    WfOption<std::string> monitor_num{"panel/monitor"};
 
     void create_window()
     {
@@ -595,10 +595,37 @@ class WayfirePanel::impl
 
     int set_monitor ()
     {
-        int try_mon = monitor_num;
+        GdkDisplay *dpy = gdk_display_get_default ();
+        GdkScreen *scr = gdk_display_get_default_screen (dpy);
+        GdkMonitor *mon;
+        int try_mon;
+        const char *mnumstr = ((std::string) monitor_num).c_str();
+
+        if (sscanf (mnumstr, "%d", &try_mon) != 1)
+        {
+            for (try_mon = 0; try_mon < gdk_display_get_n_monitors (dpy); try_mon++)
+            {
+                char *mname = gdk_screen_get_monitor_plug_name (scr, try_mon);
+                if (!g_strcmp0 (mname, mnumstr))
+                {
+                    mon = gdk_display_get_monitor (dpy, try_mon);
+                    if (mon)
+                    {
+                        gtk_layer_set_monitor (window->gobj(), mon);
+                        g_free (mname);
+                        return try_mon;
+                    }
+                }
+                g_free (mname);
+            }
+            mon = gdk_display_get_monitor (dpy, 0);
+            gtk_layer_set_monitor (window->gobj(), mon);
+            return 0;
+        }
+
         while (try_mon >= 0)
         {
-            GdkMonitor *mon = gdk_display_get_monitor (gdk_display_get_default (), try_mon);
+            mon = gdk_display_get_monitor (dpy, try_mon);
             if (mon)
             {
                 gtk_layer_set_monitor (window->gobj(), mon);
