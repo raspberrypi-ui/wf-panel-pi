@@ -4,17 +4,17 @@
 #include "../widget.hpp"
 #include <gtkmm/menubutton.h>
 #include <gtkmm/label.h>
+#include <giomm.h>
 
 
 class WayfireKbdLayout : public WayfireWidget
 {
 
-// currently no use for a real menu, see comments in kbdlayout.cpp
-#if 0
     class MenuItem : public Gtk::MenuItem {
 
         std::string shrt_name;
         std::string long_name;
+        WayfireKbdLayout *parent;
 
       public:
         /*
@@ -24,9 +24,10 @@ class WayfireKbdLayout : public WayfireWidget
         }
         */
 
-        MenuItem(std::string shrtn, std::string longn, bool mnemonic = false) :
+        MenuItem(WayfireKbdLayout *prnt, std::string shrtn, std::string longn, bool mnemonic = false) :
               Gtk::MenuItem(shrtn + " (" + longn + ")", mnemonic)
         {
+           this->parent = prnt;
            this->shrt_name = shrtn;
            this->long_name = longn;
         }
@@ -50,38 +51,56 @@ class WayfireKbdLayout : public WayfireWidget
 
         void on_clicked()
         {
-            fprintf(stderr, "%s clicked\n", get_label().c_str());
+            fprintf(stderr, "%s clicked (short name=%s, long name=%s)\n",
+                get_label().c_str(),
+                get_short_name().c_str(),
+                get_long_name().c_str());
+            parent->dbus_call_switch(get_short_name());
         }
     };
-#endif
 
+    // Menu
     std::unique_ptr<Gtk::MenuButton> button;
     Gtk::Label label;
     Gtk::Menu menu;
     std::unordered_map<std::string,std::string> long_names;
     std::string get_long_name(std::string short_name);
+    void reset_menu(const char *layout_list);
 
+    // Options
     WfOption<std::string> panel_position {"panel/position"};
 
+    // DBus
+    Glib::RefPtr<Glib::MainLoop> loop;
+    Glib::RefPtr<Gio::DBus::Connection> connection;
+    Glib::RefPtr<Gio::DBus::Proxy> proxy;
+    void dbus_initialize();
+    void dbus_call_enable(bool flag);
+    void dbus_call_enable_off_on_pulse();
+    void dbus_call_switch(std::string layout);
+    void dbus_terminate();
 
+    // Handlers
+#if 0
+    void on_button_press_event(GdkEventButton *event);
+#endif
+
+    // Options
     sigc::connection timeout;
     WfOption<std::string> font{"panel/kbdlayout_font"};
 
     void set_font();
-#if 0
-    // mostly debugging stuff, left out
-    void on_button_press_event(GdkEventButton *event);
-    void on_menu_shown();
-#endif
 
-    static constexpr conf_table_t conf_table[3] = {
+    static constexpr conf_table_t conf_table[2] = {
         {CONF_STRING,   "font",     N_("Display font")},
         {CONF_NONE,     NULL,       NULL}
     };
 
   public:
+#if 0
     struct wl_seat *seat;
     struct wl_keyboard *keyboard;
+#endif
 
     void init(Gtk::HBox *container) override;
     void command(const char *cmd) override;
