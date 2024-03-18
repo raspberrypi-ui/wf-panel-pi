@@ -65,8 +65,12 @@ Watcher::~Watcher()
         Gio::DBus::unwatch_name(item_id);
     }
 
-    watcher_connection->unregister_object(dbus_object_id);
-    Gio::DBus::unown_name(dbus_name_id);
+    if (dbus_object_id) {
+        watcher_connection->unregister_object(dbus_object_id);
+    }
+    if (dbus_name_id) {
+        Gio::DBus::unown_name(dbus_name_id);
+    }
 }
 
 void Watcher::on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & connection,
