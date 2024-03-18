@@ -250,29 +250,37 @@ static void update_icon (BluetoothPlugin *bt);
 /* Function Definitions */
 /*---------------------------------------------------------------------------*/
 
-static int bt_enabled (void)
+static int bt_enabled (BluetoothPlugin *bt)
 {
     FILE *fp;
+    int retval = -1;
+    char *line = NULL;
+    size_t len = 0;
 
-    // is rfkill installed?
-    fp = popen ("test -e /usr/sbin/rfkill", "r");
-    if (pclose (fp)) return -2;
+    if (bt->rfkill == FALSE) return -2;
 
-    // is there BT hardware that rfkill can see?
-    fp = popen ("/usr/sbin/rfkill list bluetooth | grep -q blocked", "r");
-    if (pclose (fp)) return -1;
-
-    // is rfkill blocking BT?
-    fp = popen ("/usr/sbin/rfkill list bluetooth | grep -q 'Soft blocked: no'", "r");
-    if (!pclose (fp)) return 1;
-    return 0;
+    fp = popen ("/usr/sbin/rfkill list bluetooth | grep 'Soft blocked'", "r");
+    if (fp)
+    {
+        if (getline (&line, &len, fp) > 0)
+        {
+            if (strstr (line, "blocked"))
+            {
+                if (strstr (line, "no")) retval = 1;
+                else retval = 0;
+            }
+            g_free (line);
+        }
+        pclose (fp);
+    }
+    return retval;
 }
 
 static void toggle_bt (GtkWidget *widget, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
 
-    if (bt_enabled ())
+    if (bt_enabled (bt))
     {
         system ("/usr/sbin/rfkill block bluetooth");
         if (bt->flash_timer) g_source_remove (bt->flash_timer);
@@ -1955,7 +1963,7 @@ static void show_menu (BluetoothPlugin *bt)
     int bt_state;
 
     // if the menu is currently on screen, delete all the items and rebuild rather than creating a new one
-    if (bt->menu && gtk_widget_get_visible (bt->menu))
+    if (bt->menu)
     {
         items = gtk_container_get_children (GTK_CONTAINER (bt->menu));
         g_list_free_full (items, (GDestroyNotify) gtk_widget_destroy);
@@ -1963,7 +1971,7 @@ static void show_menu (BluetoothPlugin *bt)
     else bt->menu = gtk_menu_new ();
     gtk_menu_set_reserve_toggle_size (GTK_MENU (bt->menu), TRUE);
 
-    bt_state = bt_enabled ();
+    bt_state = bt_enabled (bt);
     if ((bt_state == -2 && bt->adapter == NULL) || bt_state == -1)
     {
         // warn if no BT hardware detected
@@ -2040,9 +2048,9 @@ static void update_icon (BluetoothPlugin *bt)
     int bt_state;
     if (!bt->objmanager) return;
 
-    bt_state = bt_enabled ();
-    bt_state = bt_enabled ();   // not a bug - poll a few times to allow to settle...
-    bt_state = bt_enabled ();
+    bt_state = bt_enabled (bt);
+    bt_state = bt_enabled (bt);   // not a bug - poll a few times to allow to settle...
+    bt_state = bt_enabled (bt);
 
     if ((bt_state == -2 && bt->adapter == NULL) || bt_state == -1)
     {
@@ -2161,7 +2169,13 @@ void bt_init (BluetoothPlugin *bt)
     bt->pair_dialog = NULL;
     bt->conn_dialog = NULL;
     bt->list_dialog = NULL;
+    bt->menu = NULL;
     clear (bt);
+
+    // is rfkill installed?
+    FILE *fp = popen ("test -e /usr/sbin/rfkill", "r");
+    if (pclose (fp)) bt->rfkill = FALSE;
+    else bt->rfkill = TRUE;
 
     // Enable autopairing if in the wizard, but not if wizard started for user change only
     bt->hid_autopair = 0;

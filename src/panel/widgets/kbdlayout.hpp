@@ -10,6 +10,8 @@
 class WayfireKbdLayout : public WayfireWidget
 {
 
+    // a helper subclass of Gtk::MenuItem to ease up things with menus
+
     class MenuItem : public Gtk::MenuItem {
 
         std::string shrt_name;
@@ -17,13 +19,6 @@ class WayfireKbdLayout : public WayfireWidget
         WayfireKbdLayout *parent;
 
       public:
-        /*
-        MenuItem(const Glib::ustring &label, bool mnemonic = false) :
-              Gtk::MenuItem(label, mnemonic)
-        {
-        }
-        */
-
         MenuItem(WayfireKbdLayout *prnt, std::string shrtn, std::string longn, bool mnemonic = false) :
               Gtk::MenuItem(shrtn + " (" + longn + ")", mnemonic)
         {
@@ -51,15 +46,18 @@ class WayfireKbdLayout : public WayfireWidget
 
         void on_clicked()
         {
-            fprintf(stderr, "%s clicked (short name=%s, long name=%s)\n",
-                get_label().c_str(),
-                get_short_name().c_str(),
-                get_long_name().c_str());
+#if 0
+            // serves for debugging
+            std::cerr << get_label()
+                << " clicked (short name=" << get_short_name()
+                << ", long name=" << get_long_name()
+                << ")" << std::endl;
+#endif
             parent->dbus_call_switch(get_short_name());
         }
     };
 
-    // Menu
+    // Menu stuff
     std::unique_ptr<Gtk::MenuButton> button;
     Gtk::Label label;
     Gtk::Menu menu;
@@ -67,10 +65,8 @@ class WayfireKbdLayout : public WayfireWidget
     std::string get_long_name(std::string short_name);
     void reset_menu(const char *layout_list);
 
-    // Options
-    WfOption<std::string> panel_position {"panel/position"};
 
-    // DBus
+    // DBus stuff
     Glib::RefPtr<Glib::MainLoop> loop;
     Glib::RefPtr<Gio::DBus::Connection> connection;
     Glib::RefPtr<Gio::DBus::Proxy> proxy;
@@ -86,7 +82,7 @@ class WayfireKbdLayout : public WayfireWidget
 #endif
 
     // Options
-    sigc::connection timeout;
+    WfOption<std::string> panel_position {"panel/position"};
     WfOption<std::string> font{"panel/kbdlayout_font"};
 
     void set_font();
@@ -97,12 +93,15 @@ class WayfireKbdLayout : public WayfireWidget
     };
 
   public:
+
 #if 0
+    // not used
     struct wl_seat *seat;
     struct wl_keyboard *keyboard;
 #endif
 
     void init(Gtk::HBox *container) override;
+    sigc::connection timeout;
     void command(const char *cmd) override;
     void update_label(const char *layout);
     static const char *display_name (void) { return N_("KbdLayout"); };

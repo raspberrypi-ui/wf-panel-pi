@@ -2,7 +2,7 @@
 #define WIDGETS_SMENU_HPP
 
 #include "../widget.hpp"
-#include "wf-popover.hpp"
+#include <gtkmm/button.h>
 
 extern "C" {
 #include "smenu/menu.h"
@@ -10,7 +10,7 @@ extern "C" {
 
 class WayfireSmenu : public WayfireWidget
 {
-    std::unique_ptr <WayfireMenuButton> plugin;
+    std::unique_ptr <Gtk::Button> plugin;
 
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <std::string> bar_pos {"panel/position"};

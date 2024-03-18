@@ -418,12 +418,14 @@ void volumepulse_init (VolumePulsePlugin *vol)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (vol->plugin[0]), GTK_RELIEF_NONE);
-    g_signal_connect (vol->plugin[0], "button-release-event", G_CALLBACK (volumepulse_button_press_event), vol);
+    g_signal_connect (vol->plugin[0], "button-press-event", G_CALLBACK (volumepulse_button_press_event), vol);
+    g_signal_connect (vol->plugin[0], "button-release-event", G_CALLBACK (volumepulse_button_release_event), vol);
     g_signal_connect (vol->plugin[0], "scroll-event", G_CALLBACK (volumepulse_mouse_scrolled), vol);
     gtk_widget_add_events (vol->plugin[0], GDK_SCROLL_MASK);
 
     gtk_button_set_relief (GTK_BUTTON (vol->plugin[1]), GTK_RELIEF_NONE);
-    g_signal_connect (vol->plugin[1], "button-release-event", G_CALLBACK (micpulse_button_press_event), vol);
+    g_signal_connect (vol->plugin[1], "button-press-event", G_CALLBACK (micpulse_button_press_event), vol);
+    g_signal_connect (vol->plugin[1], "button-release-event", G_CALLBACK (micpulse_button_release_event), vol);
     g_signal_connect (vol->plugin[1], "scroll-event", G_CALLBACK (micpulse_mouse_scrolled), vol);
     gtk_widget_add_events (vol->plugin[1], GDK_SCROLL_MASK);
 
@@ -457,10 +459,6 @@ void volumepulse_init (VolumePulsePlugin *vol)
     /* If on pulse, init Bluetooth - on pipe, this is not done until a new card message is received */
     bluetooth_init (vol);
 
-    /* Create the popup volume control */
-    popup_window_create (vol, FALSE);
-    popup_window_create (vol, TRUE);
-
     /* Show the widget and return */
     gtk_widget_show_all (vol->plugin[0]);
     gtk_widget_show_all (vol->plugin[1]);
@@ -475,10 +473,9 @@ void volumepulse_destructor (gpointer user_data)
 
     close_widget (&vol->profiles_dialog);
     close_widget (&vol->conn_dialog);
-    close_widget (&vol->popup_window[0]);
     close_widget (&vol->menu_devices[0]);
-    close_widget (&vol->popup_window[1]);
     close_widget (&vol->menu_devices[1]);
+    close_popup ();
 
     bluetooth_terminate (vol);
     pulse_terminate (vol);

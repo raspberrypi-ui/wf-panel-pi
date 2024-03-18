@@ -109,15 +109,22 @@ void close_widget (GtkWidget **wid)
 /* Volume scale popup window                                                  */
 /*----------------------------------------------------------------------------*/
 
+static void vol_destroyed (GtkWidget *widget, gpointer data)
+{
+    VolumePulsePlugin *vol = (VolumePulsePlugin *) data;
+    if (widget == vol->popup_window[0]) vol->popup_window[0] = NULL;
+    if (widget == vol->popup_window[1]) vol->popup_window[1] = NULL;
+}
+
 /* Create the pop-up volume window */
 
-void popup_window_create (VolumePulsePlugin *vol, gboolean input_control)
+void popup_window_show (VolumePulsePlugin *vol, gboolean input_control)
 {
     //VolumePulsePlugin *vol = lxpanel_plugin_get_data (p);
     int index = input_control ? 1 : 0;
 
     /* Create a new window. */
-    vol->popup_window[index] = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (vol->plugin[index])));
+    vol->popup_window[index] = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_name (vol->popup_window[index], "panelpopup");
 
     gtk_container_set_border_width (GTK_CONTAINER (vol->popup_window[index]), 0);
@@ -143,10 +150,10 @@ void popup_window_create (VolumePulsePlugin *vol, gboolean input_control)
     gtk_box_pack_end (GTK_BOX (box), vol->popup_mute_check[index], FALSE, FALSE, 0);
     vol->mute_check_handler[index] = g_signal_connect (vol->popup_mute_check[index], "toggled", input_control ? G_CALLBACK (popup_window_mute_toggled_mic) : G_CALLBACK (popup_window_mute_toggled_vol), vol);
     gtk_widget_set_can_focus (vol->popup_mute_check[index], FALSE);
+    g_signal_connect (vol->popup_window[index], "destroy", G_CALLBACK (vol_destroyed), vol);
 
     /* Realise the window */
-    gtk_widget_show_all (vol->popup_window[index]);
-    gtk_widget_hide (vol->popup_window[index]);
+    popup_window_at_button (vol->popup_window[index], vol->plugin[index]);
 }
 
 /* Handler for "value_changed" signal on popup window vertical scale */
@@ -202,6 +209,7 @@ gboolean menu_create (VolumePulsePlugin *vol, gboolean input_control)
     int index = input_control ? 1 : 0;
 
     // create input selector
+    if (vol->menu_devices[index]) gtk_widget_destroy (vol->menu_devices[index]);
     vol->menu_devices[index] = gtk_menu_new ();
     gtk_widget_set_name (vol->menu_devices[index], "panelmenu");
 
@@ -336,15 +344,27 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
 {
     switch (event->button)
     {
-        case 1: /* left-click - fallthrough to default popover handler to show popup */
+        case 1: /* left-click - show popup */
+                if (vol->popup_window[0]) close_popup ();
+                else popup_window_show (vol, FALSE);
                 volumepulse_update_display (vol);
                 return FALSE;
 
         case 2: /* middle-click - toggle mute */
                 pulse_set_mute (vol, pulse_get_mute (vol, FALSE) ? 0 : 1, FALSE);
                 break;
+    }
 
+    volumepulse_update_display (vol);
+    return TRUE;
+}
+
+gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
+{
+    switch (event->button)
+    {
         case 3: /* right-click - show device list */
+                close_popup ();
                 vol_menu_show (vol);
                 show_menu_with_kbd (vol->plugin[0], vol->menu_devices[0]);
                 break;
@@ -358,15 +378,27 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
 {
     switch (event->button)
     {
-        case 1: /* left-click - fallthrough to default popover handler to show popup */
+        case 1: /* left-click - show popup */
+                if (vol->popup_window[1]) close_popup ();
+                else popup_window_show (vol, TRUE);
                 micpulse_update_display (vol);
                 return FALSE;
 
         case 2: /* middle-click - toggle mute */
                 pulse_set_mute (vol, pulse_get_mute (vol, TRUE) ? 0 : 1, TRUE);
                 break;
+    }
 
+    micpulse_update_display (vol);
+    return TRUE;
+}
+
+gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
+{
+    switch (event->button)
+    {
         case 3: /* right-click - show device list */
+                close_popup ();
                 mic_menu_show (vol);
                 show_menu_with_kbd (vol->plugin[1], vol->menu_devices[1]);
                 break;

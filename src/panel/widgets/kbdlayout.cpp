@@ -4,19 +4,20 @@
 
 #include <xkbcommon/xkbcommon.h>
 
+#if 0
 // needed for registering a local keyboard handler, which is currently useless
 // (see comments below)
-#if 0
 #include <gdkmm/display.h>
-
 #include <sys/mman.h>
 #include <gdkmm/seat.h>
 #include <gdk/gdkwayland.h>
 #endif
 
 
+
 // tokenizes a comma-separated list of layouts, currently out-of-use
 // (see comments below)
+
 class tokenized_string
 {
     std::vector<std::string> tsvector;
@@ -52,6 +53,7 @@ public:
 
     virtual ~tokenized_string() = default;
 };
+
 
 
 /* this if'ed-out block of code handles keyboard as seen from the wf-panel-pi
@@ -170,6 +172,10 @@ static struct wl_registry_listener registry_listener =
 #endif
 
 
+
+// resets our menu to either its initial state (a message informing that the
+// switching functionality is not available) or to a list of layouts
+
 void WayfireKbdLayout::reset_menu(const char *layout_list) {
     menu.popdown();
     button->unset_popup();
@@ -216,6 +222,9 @@ void WayfireKbdLayout::reset_menu(const char *layout_list) {
 }
 
 
+
+// our constructor; nothing fancy here, just initialize things around
+
 void WayfireKbdLayout::init(Gtk::HBox *container)
 {
 
@@ -236,51 +245,34 @@ void WayfireKbdLayout::init(Gtk::HBox *container)
     assert(this->seat != NULL);
 #endif
 
-    std::vector<std::string> xmldirs(1, METADATA_DIR);
-
+    // button
     button = std::make_unique<Gtk::MenuButton>();
     button->set_name ("kbdlayout");
     button->add(label);
     button->show();
-
-    reset_menu(NULL);
-
-    label.show();
-    label.set_margin_start (4);
-    label.set_margin_end (4);
-
 #if 0
     button->signal_button_press_event().connect_notify(
          sigc::mem_fun(this, &WayfireKbdLayout::on_button_press_event));
 #endif
 
+    // menu
+    reset_menu(NULL);
+
+    // label
+    label.show();
+    label.set_margin_start (4);
+    label.set_margin_end (4);
+
+    // init label and tooltip
     long_names["??"] = "(no DBUS input yet)";
     update_label("??");
     container->pack_start(*button, false, false);
-
-#if 0
-    // The intent of this was to grab the keyboard at startup to cause a focus
-    // switch that would be caught by kbdd; unfortunately, did not make to get
-    // it to work
-    Glib::signal_timeout().connect_once(
-    /* button->signal_draw().connect_notify(*/
-        [=] (/*const Cairo::RefPtr<Cairo::Context>&context*/) {
-            Glib::RefPtr<Gdk::Window> gdk_window = container->get_root_window();
-            Glib::RefPtr<Gdk::Display> gdk_display = Gdk::Display::get_default();
-            Glib::RefPtr<Gdk::Seat> gdk_seat = gdk_display->get_default_seat();
-            Gdk::SeatCapabilities cap_keyboard = Gdk::SEAT_CAPABILITY_KEYBOARD;
-            gdk_seat->grab(gdk_window, cap_keyboard, true);
-        },
-        3000
-    );
-#endif
 
     // dbus
     dbus_initialize();
 
     // initially set font
     set_font();
-
     font.set_callback([=] () { set_font(); });
 }
 
@@ -289,6 +281,12 @@ void WayfireKbdLayout::on_button_press_event(GdkEventButton *event)
 {
 }
 #endif
+
+
+
+// translates a short keyboard layout name to a long one (used in menus
+// and tooltips), by creating a kbd_keymap and getting the description
+// from there and by remembering old mappings
 
 std::string WayfireKbdLayout::get_long_name(std::string short_name)
 {
@@ -322,12 +320,21 @@ std::string WayfireKbdLayout::get_long_name(std::string short_name)
     }
 }
 
+
+// processes DBus "commands" sent to us via wfpanelctl; recognized "commands"
+// are one of the following:
+// (a) xkb_keymap-compatible layout codes like "US", "UK", etc; this updates
+//     the current label and tooltip
+// (b) a comma-separated list of such layouts, serving to (re) build our menu
+// (c) a "-", resulting in the menu being reset to an empty/warning message
+//     (this is part of the initialization sequence performed by kbdd)
+// (d) a "~" resulting in the menu being reset as above and "??" being shown
+//     (this is sent if kbdd is dynamically unloaded during execution)
+
 void WayfireKbdLayout::command(const char *cmd) {
     std::string cmdstr = cmd;
-    // in a future version (still in the oven...), upon startup, kbdd sends all
-    // keyboard layouts it finds in wayfire.ini, so we can build a layout switch
-    // menu; currently this is useless, since this menu cannot be used to really
-    // switch layouts, so this code is left out
+    // upon startup, kbdd sends all keyboard layouts it finds in wayfire.ini, so we
+    // can build a layout switch menu 
     
     if (cmdstr.find(",") != std::string::npos) {
         reset_menu(cmd);
@@ -344,16 +351,18 @@ void WayfireKbdLayout::command(const char *cmd) {
     }
 }
 
+
+// updates our label; if the label is set to "??", a switch off/on sequence
+// of commands is sent to kbdd
+
 void WayfireKbdLayout::update_label(const char *layout) {
     std::string text = layout;
 
-    if (label.get_text() != text)
-    {
+    if (label.get_text() != text) {
         if (label.get_text() == "??") {
             Glib::signal_timeout().connect_once(
                 sigc::mem_fun(this, &WayfireKbdLayout::dbus_call_enable_off_on_pulse),
                 300);
-            // dbus_call_enable_off_on_pulse();
         }
         label.set_text(text);
         button->set_tooltip_text(get_long_name(text));
@@ -372,7 +381,12 @@ void WayfireKbdLayout::set_font()
     }
 }
 
-// TODO: this should be moved into an include file for both kbdd and us
+
+// kbdd DBus introspection XML
+
+// TODO: this introspection XML is common to this plugin and kbdd; it thus
+// should be moved into some include file for both kbdd and us
+
 static const auto introspection_data = Gio::DBus::NodeInfo::create_for_xml(
     R"(
 <?xml version="1.0" encoding="UTF-8"?>
@@ -412,15 +426,22 @@ static const auto introspection_data = Gio::DBus::NodeInfo::create_for_xml(
 </node>
     )");
 
+
+// initialize DBus; we are only using DBus for the send-side of things,
+// since wfpanelctl is used to receive DBUs messages; since only async
+// method call invocations are used, we do not need a Glib main loop
+// other than for initializing DBus, which we do here
+
 void WayfireKbdLayout::dbus_initialize()
 {
-    Gio::init();
+    // it appears this is not needed anymore
+    // Gio::init();
     loop = Glib::MainLoop::create();
 
-    // connection = Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION);
+    connection = Gio::DBus::Connection::get_sync(Gio::DBus::BUS_TYPE_SESSION);
     if (!connection) {
         //FIXME:
-        fprintf(stderr, "get_sync() failed\n");
+        std::cerr << "get_sync() failed" << std::endl;
     }
     else {
         Gio::DBus::Proxy::create(connection, 
@@ -437,14 +458,18 @@ void WayfireKbdLayout::dbus_initialize()
 
 }
 
+
+// sends to kbdd an "enable" command over DBus, passing a zero (false) or a
+// non-zero (true) parameter
+
 void WayfireKbdLayout::dbus_call_enable(bool flag)
 {
     if (!connection) {
-        fprintf(stderr, "No DBus connection!\n");
+        std::cerr << "dbus_call_enable: no DBus connection!" << std::endl;
         return;
     }
     if (!proxy) {
-        fprintf(stderr, "DBus proxy not connected!\n");
+        std::cerr << "DBus proxy not connected!" << std::endl;
         return;
     }
     std::vector<Glib::VariantBase> params_vector(1);
@@ -452,6 +477,9 @@ void WayfireKbdLayout::dbus_call_enable(bool flag)
     Glib::VariantContainerBase params = Glib::VariantContainerBase::create_tuple(params_vector);
     proxy->call("enable", params);
 }
+
+
+// pulses the enable status of kbdd off and then back on (during (re-)initialization)
 
 void WayfireKbdLayout::dbus_call_enable_off_on_pulse() {
     dbus_call_enable(false);
@@ -463,14 +491,18 @@ void WayfireKbdLayout::dbus_call_enable_off_on_pulse() {
     );
 }
 
+
+// sends a "switch" command to kbdd over DBus, causing kbdd to switch the keyboard
+// layout of the last non-shell view to the selected one
+
 void WayfireKbdLayout::dbus_call_switch(std::string layout)
 {
     if (!connection) {
-        fprintf(stderr, "No DBus connection!\n");
+        std::cerr << "dbus_call_switch: no DBus connection!" << std::endl;
         return;
     }
     if (!proxy) {
-        fprintf(stderr, "DBus proxy not connected!\n");
+        std::cerr << "DBus proxy not connected!" << std::endl;
         return;
     }
     std::vector<Glib::VariantBase> params_vector(1);
@@ -479,16 +511,19 @@ void WayfireKbdLayout::dbus_call_switch(std::string layout)
     proxy->call("switch", params);
 }
 
+
+// performs termination actions (currently, just disabling kbdd's DBus operations)
+
 void WayfireKbdLayout::dbus_terminate()
 {
-    fprintf(stderr, "WayfireKbdLayout destructor called\n");
     dbus_call_enable(false);
 }
 
 WayfireKbdLayout::~WayfireKbdLayout()
 {
-    // in case of an interrupt, these get never executed; the caveat
-    // is therefore that kbdd remains enabled
+    // in case wf-panel-pi receives an interrupt, these get never executed; a caveat
+    // is therefore that in such a case, kbdd remains enabled and keeps sending
+    // commands
     dbus_terminate();
     timeout.disconnect();
 }

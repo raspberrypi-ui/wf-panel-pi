@@ -81,6 +81,7 @@ typedef struct {
 	gboolean bottom;
 	GtkWidget *vpn_menu;
 	gboolean killing;
+	gboolean country_set;
 #endif
 
 	NMClient *nm_client;

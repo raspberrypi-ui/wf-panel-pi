@@ -43,6 +43,11 @@ extern "C" {
 
 #include "wf-autohide-window.hpp"
 
+extern "C" {
+#include "lxutils.h"
+}
+
+
 /* Minimal DBus interface for commands to plugins */
 
 static GDBusNodeInfo *introspection_data = NULL;
@@ -168,21 +173,25 @@ class WayfirePanel::impl
         if ((std::string)panel_layer == "overlay")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_OVERLAY);
+            store_layer (GTK_LAYER_SHELL_LAYER_OVERLAY);
         }
 
         if ((std::string)panel_layer == "top")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
+            store_layer (GTK_LAYER_SHELL_LAYER_TOP);
         }
 
         if ((std::string)panel_layer == "bottom")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BOTTOM);
+            store_layer (GTK_LAYER_SHELL_LAYER_BOTTOM);
         }
 
         if ((std::string)panel_layer == "background")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BACKGROUND);
+            store_layer (GTK_LAYER_SHELL_LAYER_BACKGROUND);
         }
     };
 

@@ -40,32 +40,6 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/* Auto-hiding the search box when clicking outside
- *
- * This ought to be possible, but isn't as far as I can tell - or at least
- * I have not yet been able to get it to work...
- *
- * The only way to detect a click outside is by listening to the focus-out signal.
- * In order for this to work, keyboard focus for the layer in question must
- * be set to ON_DEMAND; NONE means it never has focus, and EXCLUSIVE means
- * it never loses it. So far, so good.
- *
- * The problem is that if the search window has focus set to ON_DEMAND, it
- * doesn't get focus when it is opened - you need to click the mouse in the
- * search bar - and even worse, whenever the resize handler is called, it loses
- * focus, with the resultant call to focus-out (which of course then destroys
- * the window...)
- *
- * I cannot as yet find a way to fix either of these - if there was a mechanism
- * to force an ON_DEMAND layer to take keyboard focus, that could be used
- * to fix both problems, but nothing I have tried seems to do that.
- *
- * May need to revisit in future - similar issue with volume scale plugins, but
- * they are already set up to destroy on focus-out, as the resize issue does not
- * affect them; you just need to click in them once before clicking outside.
- *
- */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -155,7 +129,8 @@ static gboolean _open_dir_in_file_manager (GAppLaunchContext* ctx, GList* folder
 
 static void destroy_search (MenuPlugin *m)
 {
-    gtk_widget_hide (m->swin);
+    close_popup ();
+    m->swin = NULL;
 }
 
 static gboolean filter_apps (GtkTreeModel *model, GtkTreeIter *iter, gpointer user_data)
@@ -186,11 +161,19 @@ static void resize_search (MenuPlugin *m)
 {
     GtkTreePath *path;
     GdkRectangle rect;
-    int nrows, height = m->height - gtk_widget_get_allocated_height (m->srch);
+    int nrows, height;
 
-    if (m->fixed) nrows = height;
+    if (m->fixed)
+    {
+        height = m->height - gtk_widget_get_allocated_height (m->srch);
+        nrows = height;
+    }
     else
     {
+        gdk_monitor_get_geometry (gtk_layer_get_monitor (GTK_WINDOW (m->swin)), &rect);
+        height = (rect.height - gtk_layer_get_exclusive_zone (find_panel (m->plugin)))
+            - gtk_widget_get_allocated_height (m->srch);
+
         /* update the stored row height if current height is bigger */
         path = gtk_tree_path_new_from_indices (0, -1);
         gtk_tree_view_get_cell_area (GTK_TREE_VIEW (m->stv), path, NULL, &rect);
@@ -324,6 +307,13 @@ static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointe
     gdk_window_move (gtk_widget_get_window (m->swin), x, y);
 }
 #endif
+
+static void search_destroyed (GtkWidget *widget, gpointer data)
+{
+    MenuPlugin *m = (MenuPlugin *) data;
+    m->swin = NULL;
+}
+
 static void create_search (MenuPlugin *m)
 {
     GtkCellRenderer *prend, *trend;
@@ -332,7 +322,7 @@ static void create_search (MenuPlugin *m)
     GtkWidget *box;
 
     /* create the window */
-    m->swin = GTK_WIDGET (gtk_menu_button_get_popover (GTK_MENU_BUTTON (m->plugin)));
+    m->swin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_name (m->swin, "panelpopup");
     //if (!m->fixed && m->bottom) g_signal_connect (m->swin, "size-allocate", G_CALLBACK (handle_search_resize), m);
 
@@ -376,8 +366,8 @@ static void create_search (MenuPlugin *m)
     gtk_tree_view_set_enable_search (GTK_TREE_VIEW (m->stv), FALSE);
 
     /* realise */
-    gtk_widget_show_all (m->swin);
-    gtk_widget_hide (m->swin);
+    g_signal_connect (m->swin, "destroy", G_CALLBACK (search_destroyed), m);
+    popup_window_at_button (m->swin, m->plugin);
 
     /* resize window */
     m->rheight = 0;
@@ -393,11 +383,9 @@ static gboolean handle_key_presses (GtkWidget *widget, GdkEventKey *event, gpoin
     if ((event->keyval >= 'a' && event->keyval <= 'z') ||
         (event->keyval >= 'A' && event->keyval <= 'Z'))
     {
-        if (!gtk_widget_is_visible (m->swin))
-        {
-            gtk_entry_set_text (GTK_ENTRY (m->srch), "");
-            gtk_button_clicked (GTK_BUTTON (m->plugin));
-        }
+        gtk_widget_hide (m->menu);
+        create_search (m);
+        gtk_entry_set_text (GTK_ENTRY (m->srch), "");
         append_to_entry (m->srch, event->keyval);
         return TRUE;
     }
@@ -866,7 +854,7 @@ void menu_show_menu (MenuPlugin *m)
 {
     //MenuPlugin *m = lxpanel_plugin_get_data (p);
     if (gtk_widget_is_visible (m->menu)) gtk_menu_popdown (GTK_MENU (m->menu));
-    else if (gtk_widget_is_visible (m->swin)) destroy_search (m);
+    else if (m->swin && gtk_widget_is_visible (m->swin)) destroy_search (m);
     else show_menu_with_kbd (m->plugin, m->menu);
 }
 
@@ -1007,8 +995,6 @@ void menu_init (MenuPlugin *m)
 
     /* Watch the icon theme and reload the menu if it changes */
     g_signal_connect (gtk_icon_theme_get_default (), "changed", G_CALLBACK (handle_reload_menu), m);
-
-    create_search (m);
 
     /* Show the widget and return */
     gtk_widget_show_all (m->plugin);

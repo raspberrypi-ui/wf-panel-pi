@@ -38,6 +38,7 @@ typedef struct {
     GdkPixbuf *icon_ref[ICON_CACHE_SIZE];
     guint hid_autopair;
     guint watch;
+    gboolean rfkill;
 } BluetoothPlugin;
 
 extern void bt_init (BluetoothPlugin *bt);

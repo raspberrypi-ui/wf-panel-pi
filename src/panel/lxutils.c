@@ -25,6 +25,10 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <fcntl.h>
+#include <libinput.h>
+#include <libudev.h>
+#include <linux/input.h>
 #include <gtk/gtk.h>
 #include <gtk-layer-shell.h>
 #include "lxutils.h"
@@ -36,78 +40,39 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MENU_ICON_SPACE 6
 #define BORDER_SIZE 1
 
+typedef struct {
+    GtkWidget *button;
+    GtkMenu *menu;
+    gulong chandle;
+    gulong mhandle;
+} kb_menu_t;
+
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
-static GtkWidget *m_button, *m_menu, *m_panel;
-static gulong m_handle;
-static GtkLayerShellLayer old_layer;
+static GtkWindow *panel, *popwindow;
+static GtkLayerShellLayer orig_layer;
+static struct libinput *li;
+static guint idle_id;
+static double tx, ty;
+static int px, py, mw, mh, orient;
 
 /*----------------------------------------------------------------------------*/
-/* Private functions */
+/* General public API - replaces functions from lxpanel */
 /*----------------------------------------------------------------------------*/
 
-static void menu_hidden (GtkWidget *, gpointer panel)
+GtkWindow *find_panel (GtkWidget *btn)
 {
-    gtk_layer_set_layer (GTK_WINDOW (panel), old_layer);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (panel), FALSE);
+    GtkWidget *wid = btn;
+    while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
+        wid = gtk_widget_get_parent (wid);
+    return GTK_WINDOW (wid);
 }
 
-static void committed (GdkWindow *win, gpointer)
+void store_layer (GtkLayerShellLayer layer)
 {
-    // spoof event just to suppress warnings...
-    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_RELEASE);
-    ev->send_event = TRUE;
-    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-
-    g_signal_handler_disconnect (win, m_handle);
-    g_signal_connect (m_menu, "hide", G_CALLBACK (menu_hidden), m_panel);
-    if (m_button)
-    {
-        gtk_menu_popup_at_widget (GTK_MENU (m_menu), m_button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    }
-    else
-    {
-        GtkAllocation alloc;
-        int x, y;
-        gtk_widget_get_allocation (GTK_WIDGET (m_panel), &alloc);
-        gdk_window_get_device_position (gtk_widget_get_window (m_panel), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
-        GdkRectangle rect = {x, 0, 0, alloc.height};
-        gtk_menu_popup_at_rect (GTK_MENU (m_menu), gtk_widget_get_window (m_panel), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    }
-}
-
-/*----------------------------------------------------------------------------*/
-/* Public API */
-/*----------------------------------------------------------------------------*/
-
-void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
-{
-    if (GTK_IS_BUTTON (widget))
-    {
-        // simulate a leave event on the button to hide the prelight */
-        GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
-        ev->window = gtk_button_get_event_window (GTK_BUTTON (widget));
-        ev->time = GDK_CURRENT_TIME;
-        ev->mode = GDK_CROSSING_NORMAL;
-        ev->send_event = TRUE;
-        gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-        gtk_main_do_event ((GdkEvent *) ev);
-
-        m_button = widget;
-    }
-    else m_button = NULL;
-
-    m_panel = widget;
-    while (!GTK_IS_WINDOW (m_panel) || !gtk_layer_is_layer_window (GTK_WINDOW (m_panel)))
-        m_panel = gtk_widget_get_parent (m_panel);
-
-    m_menu = menu;
-    old_layer = gtk_layer_get_layer (GTK_WINDOW (m_panel));
-    gtk_layer_set_layer (GTK_WINDOW (m_panel), GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (GTK_WINDOW (m_panel), TRUE);
-    m_handle = g_signal_connect (gtk_widget_get_window (m_panel), "committed", G_CALLBACK (committed), NULL);
+    orig_layer = layer;
 }
 
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
@@ -187,6 +152,10 @@ void append_menu_icon (GtkWidget *item, GtkWidget *image)
     GtkWidget *box = gtk_bin_get_child (GTK_BIN (item));
     gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
 }
+
+/*----------------------------------------------------------------------------*/
+/* Plugin graph */
+/*----------------------------------------------------------------------------*/
 
 /* Redraw entire graph */
 
@@ -335,6 +304,251 @@ void graph_init (PluginGraph *graph)
     graph->da = gtk_image_new ();
     graph->samples = NULL;
     graph->ring_cursor = 0;
+}
+
+/*----------------------------------------------------------------------------*/
+/* Menu popup with keyboard handling */
+/*----------------------------------------------------------------------------*/
+
+static gboolean hide_prelight (GtkWidget *btn)
+{
+    gtk_widget_unset_state_flags (btn, GTK_STATE_FLAG_PRELIGHT);
+    return FALSE;
+}
+
+static void menu_hidden (GtkWidget *, kb_menu_t *data)
+{
+    g_signal_handler_disconnect (data->menu, data->mhandle);
+    gtk_layer_set_layer (panel, orig_layer);
+    gtk_layer_set_keyboard_interactivity (panel, FALSE);
+    if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
+    g_free (data);
+}
+
+static void committed (GdkWindow *win, kb_menu_t *data)
+{
+    // spoof event just to suppress warnings...
+    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
+    ev->send_event = TRUE;
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+
+    g_signal_handler_disconnect (win, data->chandle);
+    data->mhandle = g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
+    if (data->button)
+    {
+        gtk_menu_popup_at_widget (data->menu, data->button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    }
+    else
+    {
+        GdkRectangle rect;
+        int x, y;
+        gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
+        gdk_window_get_device_position (gtk_widget_get_window (GTK_WIDGET (panel)), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
+        rect.x = x;
+        rect.y = 0;
+        rect.width = 0;
+        gtk_menu_popup_at_rect (data->menu, gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    }
+}
+
+void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
+{
+    close_popup ();
+
+    kb_menu_t *data = g_new (kb_menu_t, 1);
+
+    panel = find_panel (widget);
+
+    if (GTK_IS_BUTTON (widget)) data->button = widget;
+    else data->button = NULL;
+    data->menu = GTK_MENU (menu);
+
+    gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_keyboard_interactivity (panel, TRUE);
+    data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
+}
+
+/*----------------------------------------------------------------------------*/
+/* Window popup with close on click-away */
+/*----------------------------------------------------------------------------*/
+
+static int open_restricted (const char *path, int flags, void *)
+{
+    int fd = open (path, flags);
+    return fd < 0 ? -errno : fd;
+}
+
+static void close_restricted (int fd, void *)
+{
+    close (fd);
+}
+
+static const struct libinput_interface interface = {
+    .open_restricted = open_restricted,
+    .close_restricted = close_restricted,
+};
+
+static gboolean check_libinput_events (gpointer)
+{
+    GdkWindow *win, *wwin;
+    gboolean match;
+    struct libinput_event *ev;
+
+    libinput_dispatch (li);
+    if ((ev = libinput_get_event (li)) != 0)
+    {
+        enum libinput_event_type type = libinput_event_get_type (ev);
+
+        if (type == LIBINPUT_EVENT_POINTER_BUTTON)
+        {
+            if (libinput_event_pointer_get_button_state (libinput_event_get_pointer_event (ev)) == LIBINPUT_BUTTON_STATE_RELEASED)
+            {
+                win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
+                    gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
+                if (!win) close_popup ();
+                else
+                {
+                    // is the popup a parent of the window under the pointer?
+                    match = FALSE;
+                    wwin = gtk_widget_get_window (GTK_WIDGET (popwindow));
+                    while ((win = gdk_window_get_parent (win)) != NULL)
+                        if (win == wwin)
+                            match = TRUE;
+                    if (!match) close_popup ();
+                }
+            }
+            libinput_event_destroy (ev);
+        }
+
+        if (type == LIBINPUT_EVENT_KEYBOARD_KEY)
+        {
+            if (libinput_event_keyboard_get_key (libinput_event_get_keyboard_event (ev)) == KEY_ESC)
+                close_popup ();
+            libinput_event_destroy (ev);
+        }
+
+        if (type == LIBINPUT_EVENT_TOUCH_UP)
+        {
+            GtkAllocation alloc;
+            gtk_widget_get_allocation (GTK_WIDGET (popwindow), &alloc);
+
+            // was the touch inside the co-ords of the popup?
+            if (tx < px || tx > px + alloc.width || ty < py || ty > py + alloc.height)
+                close_popup ();
+            libinput_event_destroy (ev);
+        }
+
+        if (type == LIBINPUT_EVENT_TOUCH_DOWN)
+        {
+            struct libinput_event_touch *tev = libinput_event_get_touch_event (ev);
+            tx = libinput_event_touch_get_x_transformed (tev, (orient == 90 || orient == 270) ? mh : mw);
+            ty = libinput_event_touch_get_y_transformed (tev, (orient == 90 || orient == 270) ? mw : mh);
+
+            // remap touch point for rotated displays
+            double d;
+            switch (orient)
+            {
+                case 90 :   d = tx;
+                            tx = mw - ty;
+                            ty = d;
+                            break;
+
+                case 180 :  tx = mw - tx;
+                            ty = mh - ty;
+                            break;
+
+                case 270 :  d = tx;
+                            tx = ty;
+                            ty = mh - d;
+                            break;
+            }
+            libinput_event_destroy (ev);
+        }
+    }
+    return TRUE;
+}
+
+void popup_window_at_button (GtkWidget *window, GtkWidget *button)
+{
+    GdkDisplay *disp;
+    GdkMonitor *mon;
+    GdkRectangle rect;
+    int i, pw, ph;
+    gboolean bottom;
+    FILE *fp;
+    char *cmd, *mname;
+
+    close_popup ();
+
+    popwindow = GTK_WINDOW (window);
+
+    disp = gdk_display_get_default ();
+    gtk_layer_init_for_window (popwindow);
+    gtk_widget_show_all (window);
+
+    // get the dimensions of the panel
+    panel = find_panel (button);
+    bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
+    gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
+    px = rect.width;
+    py = rect.height;
+
+    // get the dimensions of the popup itself and ensure the popup fits on the screen
+    gtk_widget_get_allocation (window, &rect);
+    pw = rect.width;
+    ph = rect.height;
+    px -= pw;
+
+    // get the dimensions of the button - align left edge of popup with left edge of button
+    gtk_widget_get_allocation (button, &rect);
+    if (rect.x <= px) px = rect.x;
+
+    // get the dimensions of the monitor - correct the y-coord of the plugin if at bottom
+    mon = gtk_layer_get_monitor (panel);
+    gdk_monitor_get_geometry (mon, &rect);
+    mh = rect.height;
+    mw = rect.width;
+    if (bottom) py = mh - py - ph;
+
+    orient = 0;
+    for (i = 0; i < gdk_display_get_n_monitors (disp); i++)
+    {
+        // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
+        if (mon == gdk_display_get_monitor (disp, i))
+        {
+            mname = gdk_screen_get_monitor_plug_name (gdk_display_get_default_screen (disp), i);
+            cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '", mname);
+            if ((fp = popen (cmd, "r")) != NULL)
+            {
+                fscanf (fp, "%d", &orient);
+                pclose (fp);
+            }
+            g_free (cmd);
+            g_free (mname);
+        }
+    }
+
+    gtk_layer_set_layer (popwindow, GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+    gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
+    gtk_layer_set_monitor (popwindow, mon);
+    gtk_layer_set_keyboard_interactivity (popwindow, TRUE);
+
+    gtk_window_present (popwindow);
+
+    li = libinput_udev_create_context (&interface, NULL, udev_new ());
+    libinput_udev_assign_seat (li, "seat0");
+    libinput_dispatch (li);
+    idle_id = g_idle_add ((GSourceFunc) check_libinput_events, NULL);
+}
+
+void close_popup (void)
+{
+    if (popwindow) gtk_widget_destroy (GTK_WIDGET (popwindow));
+    popwindow = NULL;
+    if (idle_id) g_source_remove (idle_id);
+    idle_id = 0;
 }
 
 /* End of file */

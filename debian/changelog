@@ -1,3 +1,45 @@
+wf-panel-pi (0.68) bookworm; urgency=medium
+
+  * Do not reset pipewire on HDMI hotplug
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 12 Mar 2024 11:53:20 +0000
+
+wf-panel-pi (0.67) bookworm; urgency=medium
+
+  * Various tidying and optimisation in lxutils
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 08 Mar 2024 11:03:41 +0000
+
+wf-panel-pi (0.66) bookworm; urgency=medium
+
+  * Use standard window for searchable menu
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 04 Mar 2024 14:14:28 +0000
+
+wf-panel-pi (0.65) bookworm; urgency=medium
+
+  * Fix possible timing hazard with multiple menus
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 29 Feb 2024 14:07:01 +0000
+
+wf-panel-pi (0.64) bookworm; urgency=medium
+
+  * Use standard windows instead of popovers for volume and calendar
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 28 Feb 2024 14:00:14 +0000
+
+wf-panel-pi (0.63) bookworm; urgency=medium
+
+  * Fix for spoof button release event
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 19 Feb 2024 09:53:46 +0000
+
+wf-panel-pi (0.62) bookworm; urgency=medium
+
+  * Speed up display of network menu by moving wifi country check
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 16 Feb 2024 13:12:43 +0000
+
 wf-panel-pi (0.61) bookworm; urgency=medium
 
   * Fix brownout detection
