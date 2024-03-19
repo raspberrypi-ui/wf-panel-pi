@@ -13,6 +13,8 @@ project(
 	],
 )
 
+wayfire_kbdd_plugin = subproject('wayfire-kbdd-plugin')
+
 wayfire        = dependency('wayfire')
 wayland_client = dependency('wayland-client')
 wayland_protos = dependency('wayland-protocols')
@@ -30,6 +32,7 @@ packagekit     = dependency('packagekit-glib2')
 udev           = dependency('libudev')
 dbusmenu_gtk   = dependency('dbusmenu-gtk3-0.4')
 input          = dependency('libinput')
+xkbcommon      = dependency('xkbcommon')
 
 needs_libinotify = ['freebsd', 'dragonfly'].contains(host_machine.system())
 libinotify       = dependency('libinotify', required: needs_libinotify)

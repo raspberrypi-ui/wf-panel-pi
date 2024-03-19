@@ -23,7 +23,7 @@
 	</option>
 	<option name="widgets_all" type="string">
 		<_short>All Available Widgets</_short>
-		<default>batt bluetooth clock cpu cputemp ejecter gpu launchers netman power smenu tray updater volumepulse window-list</default>
+		<default>batt bluetooth clock kbdlayout cpu cputemp ejecter gpu launchers netman power smenu tray updater volumepulse window-list</default>
 	</option>
 	<option name="icon_size" type="int">
 		<_short>Icon Size</_short>
@@ -122,6 +122,14 @@
 		<default>default</default>
 	</option>
 	</group>
+	<group>
+	<_short>KbdLayout</_short>
+	<option name="kbdlayout_font" type="string">
+		<_short>KbdLayout Font</_short>
+		<default>default</default>
+	</option>
+	</group>
+
 	<group>
 	<_short>Window List</_short>
 	<option name="window-list_max_width" type="int">
