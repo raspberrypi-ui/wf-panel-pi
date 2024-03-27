@@ -129,6 +129,7 @@ class WayfirePanel::impl
     WayfireOutput *output;
     bool wizard = WayfireShellApp::get().wizard;
     bool real;
+    bool pressed;
     WfOption <int> icon_size {"panel/icon_size"};
 
 #if 0
@@ -269,6 +270,7 @@ class WayfirePanel::impl
         menu.attach_to_widget (*window);
         menu.show_all();
 
+        window->signal_button_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_press_event));
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
 
         if (wizard || !real)
@@ -285,8 +287,16 @@ class WayfirePanel::impl
             sigc::mem_fun(this, &WayfirePanel::impl::on_delete));
     }
 
+    bool on_button_press_event(GdkEventButton* event)
+    {
+        pressed = true;
+        return false;
+    }
+
     bool on_button_release_event(GdkEventButton* event)
     {
+        if (!pressed) return false;
+        pressed = false;
         if (!window->has_popover() && event->type == GDK_BUTTON_RELEASE && event->button == 3)
         {
             conf_plugin = "gtkmm";

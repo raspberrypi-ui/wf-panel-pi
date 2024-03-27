@@ -74,14 +74,9 @@ void netman_update_display (NMApplet *nm)
 }
 
 /* Handler for menu button click */
-static gboolean netman_button_press_event (GtkButton *button, GdkEventButton *event, NMApplet *nm)
+static gboolean netman_button_press_event (GtkButton *button, NMApplet *nm)
 {
-    if (event->button == 1)
-    {
-        status_icon_activate_cb (nm);
-        return TRUE;
-    }
-    return FALSE;
+    status_icon_activate_cb (nm);
 }
 
 /* Handler for control message */
@@ -136,7 +131,7 @@ void netman_init (NMApplet *nm)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (nm->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (nm->plugin, "button-release-event", G_CALLBACK (netman_button_press_event), nm);
+    g_signal_connect (nm->plugin, "clicked", G_CALLBACK (netman_button_press_event), nm);
 
     /* Set up variables */
     //nm->icon_size = panel_get_safe_icon_size (panel);
