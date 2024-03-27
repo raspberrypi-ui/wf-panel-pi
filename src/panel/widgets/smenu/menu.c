@@ -819,14 +819,9 @@ static gboolean create_menu (MenuPlugin *m)
 }
 
 /* Handler for menu button click */
-static gboolean menu_button_press_event (GtkWidget *widget, GdkEventButton *event, MenuPlugin *m)
+static void menu_button_press_event (GtkWidget *widget, MenuPlugin *m)
 {
-    if (event->button == 1 && !gtk_widget_is_visible (m->menu))
-    {
-        show_menu_with_kbd (m->plugin, m->menu);
-        return TRUE;
-    }
-    else return FALSE;
+    show_menu_with_kbd (m->plugin, m->menu);
 }
 
 void menu_update_display (MenuPlugin *m)
@@ -938,7 +933,7 @@ void menu_init (MenuPlugin *m)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (m->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (m->plugin, "button-release-event", G_CALLBACK (menu_button_press_event), m);
+    g_signal_connect (m->plugin, "clicked", G_CALLBACK (menu_button_press_event), m);
 
 #if 0
     /* Check if configuration exists */

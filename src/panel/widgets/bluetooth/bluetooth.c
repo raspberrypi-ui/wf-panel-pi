@@ -2075,15 +2075,10 @@ static void update_icon (BluetoothPlugin *bt)
 }
 
 /* Handler for menu button click */
-static gboolean bluetooth_button_press_event (GtkButton *widget, GdkEventButton *event, BluetoothPlugin *bt)
+static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt)
 {
-    if (event->button == 1)
-    {
-        show_menu (bt);
-        show_menu_with_kbd (bt->plugin, bt->menu);
-        return TRUE;
-    }
-    return FALSE;
+    show_menu (bt);
+    show_menu_with_kbd (bt->plugin, bt->menu);
 }
 
 /* Handler for system config changed message from panel */
@@ -2157,7 +2152,7 @@ void bt_init (BluetoothPlugin *bt)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (bt->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (bt->plugin, "button-release-event", G_CALLBACK (bluetooth_button_press_event), bt);
+    g_signal_connect (bt->plugin, "clicked", G_CALLBACK (bluetooth_button_press_event), bt);
 
     /* Set up variables */
     bt->pair_list = gtk_list_store_new (7, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_UINT, G_TYPE_UINT, GDK_TYPE_PIXBUF, G_TYPE_STRING);

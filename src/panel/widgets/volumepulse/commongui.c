@@ -340,8 +340,11 @@ void menu_set_bluetooth_device_input (GtkWidget *widget, VolumePulsePlugin *vol)
 
 /* Handler for "button-press-event" signal on main widget. */
 
+gboolean pressed;
+
 gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
+    pressed = TRUE;
     switch (event->button)
     {
         case 1: /* left-click - show popup */
@@ -361,6 +364,8 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
 
 gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
+    if (!pressed) return FALSE;
+    pressed = FALSE;
     switch (event->button)
     {
         case 3: /* right-click - show device list */
@@ -376,6 +381,7 @@ gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, V
 
 gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
+    pressed = TRUE;
     switch (event->button)
     {
         case 1: /* left-click - show popup */
@@ -395,6 +401,8 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
 
 gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
+    if (!pressed) return FALSE;
+    pressed = FALSE;
     switch (event->button)
     {
         case 3: /* right-click - show device list */
