@@ -1,3 +1,9 @@
+wf-panel-pi (0.70) bookworm; urgency=medium
+
+  * Fix various menu-related gremlins
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 27 Mar 2024 14:37:55 +0000
+
 wf-panel-pi (0.69) bookworm; urgency=medium
 
   * Allow named monitor in config
