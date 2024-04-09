@@ -95,6 +95,7 @@
     </child>
     <child type="titlebar">
       <object class="GtkHeaderBar">
+        <property name="title" translatable="yes">Installing updates...</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <child>
