@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Name=Wayfire Panel
-Icon=rpi
+Name=Icon for panel dialogs
+Icon=preferences-desktop
 Exec=wf-panel-pi
