@@ -37,6 +37,7 @@ class WayfireToplevel::impl
     zwlr_foreign_toplevel_handle_v1 *handle, *parent;
     std::vector<zwlr_foreign_toplevel_handle_v1*> children;
     uint32_t state;
+    bool panel_dialog;
 
     WfOption <int> icon_size {"panel/icon_size"};
     Gtk::ToggleButton button;
@@ -58,6 +59,7 @@ class WayfireToplevel::impl
         this->parent = nullptr;
         zwlr_foreign_toplevel_handle_v1_add_listener(handle,
             &toplevel_handle_v1_impl, this);
+        panel_dialog = false;
 
         button_contents.add(image);
         button_contents.add(label);
@@ -300,6 +302,11 @@ class WayfireToplevel::impl
         set_app_id(app_id);
     }
 
+    void set_panel_dialog (void)
+    {
+        this->panel_dialog = true;
+    }
+
     void set_app_id(std::string app_id)
     {
         this->app_id = app_id;
@@ -465,7 +472,7 @@ class WayfireToplevel::impl
 
     void handle_output_enter(wl_output *output)
     {
-        if (this->parent)
+        if (this->parent || this->panel_dialog)
         {
             return;
         }
@@ -546,6 +553,13 @@ static void handle_toplevel_title(void *data, toplevel_t, const char *title)
 static void handle_toplevel_app_id(void *data, toplevel_t, const char *app_id)
 {
     auto impl = static_cast<WayfireToplevel::impl*>(data);
+
+    if (!strcmp (app_id, "wf-panel-pi"))
+    {
+        impl->set_panel_dialog();
+        impl->remove_button();
+    }
+    else
     impl->set_app_id(app_id);
 }
 
