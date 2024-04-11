@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#define _GNU_SOURCE
 #include <errno.h>
 #include <locale.h>
 #include <stdlib.h>
@@ -38,17 +39,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Prototypes */
 
-static void update_icon (KBSwitchPlugin *kbs);
 static void show_menu (KBSwitchPlugin *kbs);
 static void hide_menu (KBSwitchPlugin *kbs);
 
 /* Functions */
-
-static void update_icon (KBSwitchPlugin *kbs)
-{
-    gtk_widget_show (kbs->plugin);
-    gtk_widget_set_sensitive (kbs->plugin, TRUE);
-}
 
 static char *get_string (char *cmd)
 {
@@ -102,13 +96,14 @@ static void set_current_kbd (char *kbd)
     g_free (buffer);
 }
 
-static void handle_kbd_select (GtkWidget *widget, gpointer data)
+static void handle_kbd_select (GtkWidget *widget, KBSwitchPlugin *kbs)
 {
     char *kbd;
 
     kbd = g_strdup (gtk_widget_get_name (widget));
     set_current_kbd (kbd);
     g_free (kbd);
+    kbs_update_display (kbs);
 }
 
 static void show_menu (KBSwitchPlugin *kbs)
@@ -127,7 +122,7 @@ static void show_menu (KBSwitchPlugin *kbs)
         gtk_widget_set_name (item, kbs->kbds[i]);
         if (!g_strcmp0 (curr, kbs->kbds[i]))
             gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
-        g_signal_connect (item, "activate", G_CALLBACK (handle_kbd_select), NULL);
+        g_signal_connect (item, "activate", G_CALLBACK (handle_kbd_select), kbs);
         gtk_menu_shell_append (GTK_MENU_SHELL (kbs->menu), item);
     }
 
@@ -147,7 +142,7 @@ static void hide_menu (KBSwitchPlugin *kbs)
 }
 
 /* Handler for menu button click */
-static void kbs_button_press_event (GtkWidget *widget, KBSwitchPlugin *kbs)
+static void kbs_button_press_event (GtkWidget *, KBSwitchPlugin *kbs)
 {
     /* Show or hide the popup menu on left-click */
     show_menu (kbs);
@@ -156,8 +151,10 @@ static void kbs_button_press_event (GtkWidget *widget, KBSwitchPlugin *kbs)
 /* Handler for system config changed message from panel */
 void kbs_update_display (KBSwitchPlugin *kbs)
 {
-    set_taskbar_icon (kbs->tray_icon, "keyboard", kbs->icon_size);
-    update_icon (kbs);
+    //set_taskbar_icon (kbs->tray_icon, "keyboard", kbs->icon_size);
+    char *kbd = get_current_kbd ();
+    gtk_label_set_text (GTK_LABEL (kbs->tray_icon), kbd);
+    g_free (kbd);
 }
 
 /* Handler for control message */
@@ -179,11 +176,12 @@ gboolean kbs_control_msg (KBSwitchPlugin *kbs, const char *cmd)
         g_free (kbd);
     }
     g_free (curr);
+    kbs_update_display (kbs);
     return TRUE;
 }
 
 /* Plugin destructor. */
-void kbs_destructor (gpointer user_data)
+void kbs_destructor (gpointer)
 {
 }
 
@@ -196,9 +194,9 @@ void kbs_init (KBSwitchPlugin *kbs)
     textdomain (GETTEXT_PACKAGE);
 
     /* Allocate icon as a child of top level */
-    kbs->tray_icon = gtk_image_new ();
+    kbs->tray_icon = gtk_label_new (NULL);
     gtk_container_add (GTK_CONTAINER (kbs->plugin), kbs->tray_icon);
-    set_taskbar_icon (kbs->tray_icon, "keyboard", kbs->icon_size);
+    //set_taskbar_icon (kbs->tray_icon, "keyboard", kbs->icon_size);
     gtk_widget_set_tooltip_text (kbs->tray_icon, _("Select a keyboard layout"));
 
     /* Set up button */
