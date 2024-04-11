@@ -54,7 +54,9 @@ widget_sources = files(
   'widgets/tray/watcher.cpp',
   'widgets/tray/tray.cpp',
   'widgets/tray/item.cpp',
-  'widgets/tray/host.cpp'
+  'widgets/tray/host.cpp',
+  'widgets/kbswitch.cpp',
+  'widgets/kbswitch/kbswitch.c',
 )
 
 resource_data = files(
