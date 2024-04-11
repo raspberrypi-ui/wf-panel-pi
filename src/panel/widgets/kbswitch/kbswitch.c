@@ -135,10 +135,10 @@ static void hide_menu (KBSwitchPlugin *kbs)
 {
     if (kbs->menu)
     {
-		gtk_menu_popdown (GTK_MENU (kbs->menu));
-		gtk_widget_destroy (kbs->menu);
-		kbs->menu = NULL;
-	}
+        gtk_menu_popdown (GTK_MENU (kbs->menu));
+        gtk_widget_destroy (kbs->menu);
+        kbs->menu = NULL;
+    }
 }
 
 /* Handler for menu button click */
