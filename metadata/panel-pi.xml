@@ -23,7 +23,7 @@
 	</option>
 	<option name="widgets_all" type="string">
 		<_short>All Available Widgets</_short>
-		<default>batt bluetooth clock cpu cputemp ejecter gpu launchers netman power smenu tray updater volumepulse window-list</default>
+		<default>batt bluetooth clock cpu cputemp ejecter gpu kbswitch launchers netman power smenu tray updater volumepulse window-list</default>
 	</option>
 	<option name="icon_size" type="int">
 		<_short>Icon Size</_short>
