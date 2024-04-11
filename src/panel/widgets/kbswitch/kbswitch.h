@@ -2,6 +2,8 @@
 
 /* Plug-in global data */
 
+#define MAX_KBDS 5
+
 typedef struct {
 
     GtkWidget *plugin;              /* Back pointer to the widget */
@@ -9,7 +11,7 @@ typedef struct {
     int icon_size;                      /* Variables used under wf-panel */
     gboolean bottom;
     GtkWidget *menu;                /* Popup menu */
-    GtkWidget *empty;               /* Menuitem shown when no devices */
+    char *kbds[MAX_KBDS];
 } KBSwitchPlugin;
 
 extern void kbs_init (KBSwitchPlugin *kbs);

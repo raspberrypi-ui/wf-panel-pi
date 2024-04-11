@@ -231,5 +231,28 @@
 		<default>false</default>
 	</option>
 	</group>
+	<group>
+	<_short>Keyboard Switcher</_short>
+	<option name="kbswitch_keyboard_0" type="string">
+		<_short>Keyboard 0</_short>
+		<default>none</default>
+	</option>
+	<option name="kbswitch_keyboard_1" type="string">
+		<_short>Keyboard 1</_short>
+		<default>none</default>
+	</option>
+	<option name="kbswitch_keyboard_2" type="string">
+		<_short>Keyboard 2</_short>
+		<default>none</default>
+	</option>
+	<option name="kbswitch_keyboard_3" type="string">
+		<_short>Keyboard 3</_short>
+		<default>none</default>
+	</option>
+	<option name="kbswitch_keyboard_4" type="string">
+		<_short>Keyboard 4</_short>
+		<default>none</default>
+	</option>
+	</group>
 	</plugin>
 </wf-panel-pi>

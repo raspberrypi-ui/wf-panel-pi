@@ -16,11 +16,22 @@ class WayfireKBSwitch : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
+    WfOption <std::string> keyboard_0 {"panel/kbswitch_keyboard_0"};
+    WfOption <std::string> keyboard_1 {"panel/kbswitch_keyboard_1"};
+    WfOption <std::string> keyboard_2 {"panel/kbswitch_keyboard_2"};
+    WfOption <std::string> keyboard_3 {"panel/kbswitch_keyboard_3"};
+    WfOption <std::string> keyboard_4 {"panel/kbswitch_keyboard_4"};
+
     /* plugin */
     KBSwitchPlugin data;
     KBSwitchPlugin *kbs;
 
-    static constexpr conf_table_t conf_table[1] = {
+    static constexpr conf_table_t conf_table[6] = {
+        {CONF_STRING,   "keyboard_0",   N_("Keyboard 0")},
+        {CONF_STRING,   "keyboard_1",   N_("Keyboard 1")},
+        {CONF_STRING,   "keyboard_2",   N_("Keyboard 2")},
+        {CONF_STRING,   "keyboard_3",   N_("Keyboard 3")},
+        {CONF_STRING,   "keyboard_4",   N_("Keyboard 4")},
         {CONF_NONE,  NULL,       NULL}
     };
 

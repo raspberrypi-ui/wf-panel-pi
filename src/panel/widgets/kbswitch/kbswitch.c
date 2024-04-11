@@ -52,10 +52,21 @@ static void update_icon (KBSwitchPlugin *kbs)
 
 static void show_menu (KBSwitchPlugin *kbs)
 {
+    GtkWidget *item;
+    int i;
+
     hide_menu (kbs);
 
     kbs->menu = gtk_menu_new ();
     gtk_menu_set_reserve_toggle_size (GTK_MENU (kbs->menu), FALSE);
+
+    for (i = 0; i < MAX_KBDS; i++)
+    {
+        item = new_menu_item (kbs->kbds[i], 40, NULL, kbs->icon_size);
+        gtk_widget_show_all (item);
+        //g_signal_connect (item, "activate", G_CALLBACK (handle_eject_clicked), dt);
+        gtk_menu_shell_append (GTK_MENU_SHELL (kbs->menu), item);
+    }
 
     gtk_widget_show_all (kbs->menu);
     show_menu_with_kbd (kbs->plugin, kbs->menu);
@@ -81,7 +92,7 @@ static void kbs_button_press_event (GtkWidget *widget, KBSwitchPlugin *kbs)
 /* Handler for system config changed message from panel */
 void kbs_update_display (KBSwitchPlugin *kbs)
 {
-    set_taskbar_icon (kbs->tray_icon, "media-eject", kbs->icon_size);
+    set_taskbar_icon (kbs->tray_icon, "keyboard", kbs->icon_size);
     update_icon (kbs);
 }
 
@@ -110,8 +121,8 @@ void kbs_init (KBSwitchPlugin *kbs)
     /* Allocate icon as a child of top level */
     kbs->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (kbs->plugin), kbs->tray_icon);
-    set_taskbar_icon (kbs->tray_icon, "media-eject", kbs->icon_size);
-    gtk_widget_set_tooltip_text (kbs->tray_icon, _("Select a drive in menu to eject safely"));
+    set_taskbar_icon (kbs->tray_icon, "keyboard", kbs->icon_size);
+    gtk_widget_set_tooltip_text (kbs->tray_icon, _("Select a keyboard layout"));
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (kbs->plugin), GTK_RELIEF_NONE);
