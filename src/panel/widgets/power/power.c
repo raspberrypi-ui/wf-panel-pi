@@ -244,7 +244,7 @@ static void show_info (GtkWidget *widget, gpointer user_data)
 /* Plugin functions */
 
 /* Handler for menu button click */
-static gboolean power_button_press_event (GtkButton *widget, PowerPlugin *pt)
+static void power_button_press_event (GtkButton *widget, PowerPlugin *pt)
 {
     gtk_widget_show_all (pt->menu);
     show_menu_with_kbd (pt->plugin, pt->menu);

@@ -378,7 +378,7 @@ static GtkWidget *create_menuitem (EjecterPlugin *ej, GDrive *d)
 }
 
 /* Handler for menu button click */
-static gboolean ejecter_button_press_event (GtkWidget *widget, EjecterPlugin * ej)
+static void ejecter_button_press_event (GtkWidget *widget, EjecterPlugin * ej)
 {
     //EjecterPlugin * ej = lxpanel_plugin_get_data (widget);
 
