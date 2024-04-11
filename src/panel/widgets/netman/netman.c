@@ -74,7 +74,7 @@ void netman_update_display (NMApplet *nm)
 }
 
 /* Handler for menu button click */
-static gboolean netman_button_press_event (GtkButton *button, NMApplet *nm)
+static void netman_button_press_event (GtkButton *button, NMApplet *nm)
 {
     status_icon_activate_cb (nm);
 }
