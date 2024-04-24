@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Icon for panel dialogs
+Icon=preferences-desktop
+Exec=wf-panel-pi
+NoDisplay=true

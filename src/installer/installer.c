@@ -336,6 +336,7 @@ int main (int argc, char *argv[])
 #endif
 
     // GTK setup
+    g_set_prgname ("wf-panel-pi");
     gtk_init (&argc, &argv);
     gtk_icon_theme_prepend_search_path (gtk_icon_theme_get_default(), PACKAGE_DATA_DIR);
 

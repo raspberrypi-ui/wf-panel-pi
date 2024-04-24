@@ -76,7 +76,7 @@ static gboolean init_check (gpointer data);
 static gboolean net_check (gpointer data);
 static gboolean periodic_check (gpointer data);
 //static GtkWidget *updater_constructor (LXPanel *panel, config_setting_t *settings);
-static gboolean updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up);
+static void updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up);
 //static void updater_configuration_changed (LXPanel *panel, GtkWidget *p);
 //static gboolean updater_control_msg (GtkWidget *plugin, const char *cmd);
 //static GtkWidget *updater_configure (LXPanel *panel, GtkWidget *p);
@@ -516,7 +516,7 @@ void updater_set_interval (UpdaterPlugin *up)
 }
 
 /* Handler for menu button click */
-static gboolean updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up)
+static void updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up)
 {
     show_menu (up);
 }
