@@ -1,3 +1,9 @@
+wf-panel-pi (0.71) bookworm; urgency=medium
+
+  * Show more helpful information in taskbar when panel dialogs are open
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 24 Apr 2024 09:38:12 +0100
+
 wf-panel-pi (0.70) bookworm; urgency=medium
 
   * Fix various menu-related gremlins
