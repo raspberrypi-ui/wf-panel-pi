@@ -468,6 +468,13 @@ static gboolean check_libinput_events (gpointer)
     return TRUE;
 }
 
+static void popup_hidden (GtkWidget *popup, kb_menu_t *data)
+{
+    g_signal_handler_disconnect (popup, data->mhandle);
+    if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
+    g_free (data);
+}
+
 void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 {
     GdkDisplay *disp;
@@ -536,6 +543,10 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_layer_set_keyboard_interactivity (popwindow, TRUE);
 
     gtk_window_present (popwindow);
+
+    kb_menu_t *data = g_new (kb_menu_t, 1);
+    data->button = button;
+    data->mhandle = g_signal_connect (popwindow, "hide", G_CALLBACK (popup_hidden), data);
 
     li = libinput_udev_create_context (&interface, NULL, udev_new ());
     libinput_udev_assign_seat (li, "seat0");
