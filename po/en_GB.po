@@ -460,7 +460,7 @@ msgstr "device not managed"
 
 #: ../src/panel/widgets/netman/applet.c:1864
 msgid "No network devices available"
-msgstr "No network devices available"
+msgstr "No wireless interfaces available"
 
 #: ../src/panel/widgets/netman/applet.c:1917
 msgid "_Advanced Options"
