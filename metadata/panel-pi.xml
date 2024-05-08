@@ -41,7 +41,7 @@
 		<_short>Autohide Duration</_short>
 		<default>300</default>
 	</option>
-	<option name="monitor" type="int">
+	<option name="monitor" type="string">
 		<_short>Monitor for Panel</_short>
 		<default>0</default>
 	</option>

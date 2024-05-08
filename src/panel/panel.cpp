@@ -199,7 +199,7 @@ class WayfirePanel::impl
     WfOption<int> minimal_panel_height{"panel/minimal_height"};
     WfOption<std::string> css_path{"panel/css_path"};
 
-    WfOption<int> monitor_num{"panel/monitor"};
+    WfOption<std::string> monitor_num{"panel/monitor"};
 
     void create_window()
     {
@@ -608,18 +608,40 @@ class WayfirePanel::impl
 
     int set_monitor ()
     {
-        int try_mon = monitor_num;
-        while (try_mon >= 0)
+        GdkDisplay *dpy = gdk_display_get_default ();
+        GdkScreen *scr = gdk_display_get_default_screen (dpy);
+        GdkMonitor *mon;
+        int try_mon;
+        const char *mnumstr = ((std::string) monitor_num).c_str();
+
+        if (strlen (mnumstr) == 1 && sscanf (mnumstr, "%d", &try_mon) == 1)
         {
-            GdkMonitor *mon = gdk_display_get_monitor (gdk_display_get_default (), try_mon);
-            if (mon)
+            // single digit - interpret as monitor number
+            while (try_mon >= 0)
             {
-                gtk_layer_set_monitor (window->gobj(), mon);
-                return try_mon;
+                mon = gdk_display_get_monitor (dpy, try_mon);
+                if (mon) break;
+                try_mon--;
             }
-            try_mon--;
         }
-        return 0;
+        else
+        {
+            // output name - try to match it to a connected monitor
+            for (try_mon = gdk_display_get_n_monitors (dpy) - 1; try_mon >= 0; try_mon--)
+            {
+                mon = gdk_display_get_monitor (dpy, try_mon);
+                char *mname = gdk_screen_get_monitor_plug_name (scr, try_mon);
+                if (!g_strcmp0 (mname, mnumstr) && mon)
+                {
+                    g_free (mname);
+                    break;
+                }
+                g_free (mname);
+            }
+        }
+
+        gtk_layer_set_monitor (window->gobj(), mon);
+        return try_mon >= 0 ? try_mon : 0;
     }
 
     std::function<void()> update_panels = [=] ()

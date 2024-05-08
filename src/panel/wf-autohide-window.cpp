@@ -186,6 +186,8 @@ static zwf_hotspot_v2_listener hotspot_listener = {
 
 void WayfireAutohidingWindow::setup_hotspot()
 {
+    if (!this->autohide_opt) return;
+
     if (!this->output->output)
     {
         return;
@@ -215,6 +217,7 @@ void WayfireAutohidingWindow::setup_hotspot()
     uint32_t edge = (position == WF_WINDOW_POSITION_TOP) ?
         ZWF_OUTPUT_V2_HOTSPOT_EDGE_TOP : ZWF_OUTPUT_V2_HOTSPOT_EDGE_BOTTOM;
 
+    // create_hotspot sometimes segfaults due to a bad (but non-NULL) output parameter...
     this->edge_hotspot = zwf_output_v2_create_hotspot(output->output,
         edge, edge_offset, AUTOHIDE_SHOW_DELAY);
 

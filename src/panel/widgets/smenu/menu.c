@@ -758,6 +758,18 @@ static GtkWidget *read_menu_item (MenuPlugin *m, char *fname, char *cmd)
     return item;
 }
 
+void handle_popped_up (GtkMenu *menu, gpointer, gpointer, gboolean, gboolean, MenuPlugin *m)
+{
+    GdkRectangle rect;
+    GtkWidget *win = gtk_widget_get_toplevel (menu);
+    GdkWindow *gwin = gtk_widget_get_window (win);
+    GdkMonitor *mon = gdk_display_get_monitor_at_window (gdk_display_get_default (), gwin);
+    gdk_monitor_get_geometry (mon, &rect);
+    int height = gdk_window_get_height (gwin);
+    if (height > rect.height) height = rect.height;
+    gdk_window_resize (gwin, gdk_window_get_width (gwin), height);
+}
+
 /* Top level function to read in menu data from panel configuration */
 static gboolean create_menu (MenuPlugin *m)
 {
@@ -770,6 +782,7 @@ static gboolean create_menu (MenuPlugin *m)
     gtk_menu_set_reserve_toggle_size (GTK_MENU (m->menu), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (m->menu), 0);
     g_signal_connect (m->menu, "key-press-event", G_CALLBACK (handle_key_presses), m);
+    g_signal_connect (m->menu, "popped-up", G_CALLBACK (handle_popped_up), m);
 
     read_system_menu (GTK_MENU (m->menu), m);
 
