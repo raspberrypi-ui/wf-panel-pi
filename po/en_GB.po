@@ -1,13 +1,13 @@
-# English translations for PACKAGE package.
-# Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-#  <simon@raspberrypi.org>, 2017.
+# English translations for wf-panel-pi package.
+# Copyright (C) 2024 Raspberry Pi Ltd
+# This file is distributed under the same license as the wf-panel-pi package.
+# Simon Long <simon@raspberrypi.org>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2024-05-08 11:47+0100\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  <simon@raspberrypi.org>\n"
 "Language-Team: English (British)\n"
@@ -17,70 +17,202 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#: ../src/panel/configure.c:77
+msgid "Spacer"
+msgstr "Spacer"
+
+#: ../src/panel/configure.c:80
+#, c-format
+msgid "Spacer (%d)"
+msgstr "Spacer (%d)"
+
+#: ../src/panel/configure.c:344 ../src/panel/configure.c:443
+msgid "Configure %s"
+msgstr "Configure %s"
+
+#: ../src/panel/configure.c:346 ../src/panel/configure.c:445
+msgid "Cancel"
+msgstr "Cancel"
+
+#: ../src/panel/configure.c:346 ../src/panel/configure.c:445
+msgid "OK"
+msgstr "OK"
+
+#: ../src/panel/configure.c:455
+msgid "Width in pixels:"
+msgstr "Width in pixels:"
+
+#: ../src/panel/configure.c:721
+msgid "Left Side"
+msgstr "Left Side"
+
+#: ../src/panel/configure.c:722
+#: ../src/panel/widgets/netman/applet-device-broadband.c:780
+#: ../src/panel/widgets/netman/applet-device-bt.c:61
+#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1023
+msgid "Available"
+msgstr "Available"
+
+#: ../src/panel/configure.c:723
+msgid "Right Side"
+msgstr "Right Side"
+
+#: ../src/panel/panel.cpp:254
+msgid "Add / Remove Plugins..."
+msgstr "Add / Remove Plugins..."
+
+#: ../src/panel/panel.cpp:258
+msgid "Configure Plugin..."
+msgstr "Configure Plugin..."
+
+#: ../src/panel/panel.cpp:262
+msgid "Notifications..."
+msgstr "Notifications..."
+
+#: ../src/panel/panel.cpp:266
+msgid "Taskbar Preferences..."
+msgstr "Taskbar Preferences..."
+
+#: ../src/panel/widgets/batt.hpp:26
+msgid "Battery number to monitor"
+msgstr "Battery number to monitor"
+
+#: ../src/panel/widgets/batt.hpp:37
+msgid "Battery"
+msgstr "Battery"
+
+#: ../src/panel/widgets/batt/batt.c:295
+#, c-format
+msgid "Charging : %d%%"
+msgstr "Charging : %d%%"
+
+#: ../src/panel/widgets/batt/batt.c:297
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"Charging : %d%%\n"
+"Time remaining : %d minutes"
+
+#: ../src/panel/widgets/batt/batt.c:299
+#, c-format
+msgid ""
+"Charging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"Charging : %d%%\n"
+"Time remaining : %0.1f hours"
+
+#: ../src/panel/widgets/batt/batt.c:304
+#, c-format
+msgid ""
+"Charged : %d%%\n"
+"On external power"
+msgstr ""
+"Charged : %d%%\n"
+"On external power"
+
+#: ../src/panel/widgets/batt/batt.c:310
+#, c-format
+msgid "Discharging : %d%%"
+msgstr "Discharging : %d%%"
+
+#: ../src/panel/widgets/batt/batt.c:312
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %d minutes"
+msgstr ""
+"Discharging : %d%%\n"
+"Time remaining : %d minutes"
+
+#: ../src/panel/widgets/batt/batt.c:314
+#, c-format
+msgid ""
+"Discharging : %d%%\n"
+"Time remaining : %0.1f hours"
+msgstr ""
+"Discharging : %d%%\n"
+"Time remaining : %0.1f hours"
+
+#: ../src/panel/widgets/batt/batt.c:393
+msgid "Power & Battery"
+msgstr "Power & Battery"
+
+#: ../src/panel/widgets/batt/batt.c:394
+msgid "Monitors voltage and laptop battery"
+msgstr "Monitors voltage and laptop battery"
+
+#: ../src/panel/widgets/bluetooth.hpp:36
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2201
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1292
 #, c-format
 msgid "Pairing request sent to '%s' - waiting for response..."
 msgstr "Pairing request sent to '%s' - waiting for response..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1300
 #, c-format
 msgid "Pairing failed - %s"
 msgstr "Pairing failed - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1308
 #, c-format
 msgid "Pairing successful - connecting..."
 msgstr "Pairing successful - connecting..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1316
 #, c-format
 msgid "Connection successful"
 msgstr "Connection successful"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1324
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1581
 #, c-format
 msgid "Connection failed - %s"
 msgstr "Connection failed - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1332
 #, c-format
 msgid "Please enter code '%s' on '%s'"
 msgstr "Please enter code '%s' on '%s'"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1340
 #, c-format
 msgid "Please confirm that '%s' is showing the code '%s' to pair"
 msgstr "Please confirm that '%s' is showing the code '%s' to pair"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1348
 #, c-format
 msgid "Please enter PIN code shown on '%s'"
 msgstr "Please enter PIN code shown on '%s'"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1356
 #, c-format
 msgid "Please enter passcode shown on '%s'"
 msgstr "Please enter passcode shown on '%s'"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1364
 #, c-format
 msgid "Waiting for response from Bluetooth device..."
 msgstr "Waiting for response from Bluetooth device..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1372
 #, c-format
 msgid "'%s' has requested a pairing. Do you accept the request?"
 msgstr "'%s' has requested a pairing. Do you accept the request?"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, c-format
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1380
 msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
+"Pairing successful - right-click the volume icon to select as audio device"
 msgstr ""
-"Pairing successful - right-click the volume icon to connect as audio device"
+"Pairing successful - right-click the volume icon to select as audio device"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1388
 #, c-format
 msgid ""
 "Pairing successful - this device has no services which can be used with "
@@ -89,139 +221,216 @@ msgstr ""
 "Pairing successful - this device has no services which can be used with "
 "Raspberry Pi"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1566
 #, c-format
 msgid "Do you want to unpair '%s'?"
 msgstr "Do you want to unpair '%s'?"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1569
 #, c-format
 msgid "Removing pairing with '%s'..."
 msgstr "Removing pairing with '%s'..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1572
 #, c-format
 msgid "Removal failed - %s"
 msgstr "Removal failed - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1581
 #, c-format
 msgid "Connecting to '%s'..."
 msgstr "Connecting to '%s'..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1585
 #, c-format
 msgid "Disconnecting from '%s'..."
 msgstr "Disconnecting from '%s'..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1585
 #, c-format
 msgid "Disconnection failed - %s"
 msgstr "Disconnection failed - %s"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-msgid "Use the audio menu to connect to this device"
-msgstr "Use the audio menu to connect to this device"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1699
 msgid "No usable services on this device"
 msgstr "No usable services on this device"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
 msgid "Disconnect..."
 msgstr "Disconnect..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1769
 msgid "Connect..."
 msgstr "Connect..."
 
 #. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1782
 msgid "Remove..."
 msgstr "Remove..."
 
 #. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1978
 msgid "No Bluetooth adapter found"
 msgstr "No Bluetooth adapter found"
 
 #. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1985
 msgid "Turn On Bluetooth"
 msgstr "Turn On Bluetooth"
 
 #. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
+#: ../src/panel/widgets/bluetooth/bluetooth.c:1995
 msgid "Turn Off Bluetooth"
 msgstr "Turn Off Bluetooth"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2005
 msgid "Stop Discoverable"
 msgstr "Stop Discoverable"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2007
 msgid "Make Discoverable"
 msgstr "Make Discoverable"
 
 #. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2015
 msgid "Add Device..."
 msgstr "Add Device..."
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2151
 msgid "Manage Bluetooth devices"
 msgstr "Manage Bluetooth devices"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
+#: ../src/panel/widgets/bluetooth/bluetooth.c:2202
 msgid "Manages Bluetooth devices"
 msgstr "Manages Bluetooth devices"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:171
-msgid ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
-msgstr ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
+#: ../src/panel/widgets/clock.hpp:27
+msgid "Display format"
+msgstr "Display format"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:199
-#, c-format
-msgid ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
-msgstr ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
+#: ../src/panel/widgets/clock.hpp:28
+msgid "Display font"
+msgstr "Display font"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:205
-#, c-format
-msgid ""
-"Failed to eject %s\n"
-"%s"
-msgstr ""
-"Failed to eject %s\n"
-"%s"
+#: ../src/panel/widgets/clock.hpp:38
+msgid "Clock"
+msgstr "Clock"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:402
-msgid "Select a drive in menu to eject safely"
-msgstr "Select a drive in menu to eject safely"
+#: ../src/panel/widgets/cpu.hpp:28 ../src/panel/widgets/gpu.hpp:28
+msgid "Show usage as percentage"
+msgstr "Show usage as percentage"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr "Ejecter"
+#: ../src/panel/widgets/cpu.hpp:29 ../src/panel/widgets/cputemp.hpp:31
+#: ../src/panel/widgets/gpu.hpp:29
+msgid "Foreground colour"
+msgstr "Foreground colour"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:453
+#: ../src/panel/widgets/cpu.hpp:30 ../src/panel/widgets/cputemp.hpp:32
+#: ../src/panel/widgets/gpu.hpp:30
+msgid "Background colour"
+msgstr "Background colour"
+
+#: ../src/panel/widgets/cpu.hpp:42
+msgid "CPU"
+msgstr "CPU"
+
+#: ../src/panel/widgets/cputemp.hpp:33
+msgid "Colour when ARM frequency capped"
+msgstr "Colour when ARM frequency capped"
+
+#: ../src/panel/widgets/cputemp.hpp:34
+msgid "Colour when throttled"
+msgstr "Colour when throttled"
+
+#: ../src/panel/widgets/cputemp.hpp:35
+msgid "Lower temperature bound"
+msgstr "Lower temperature bound"
+
+#: ../src/panel/widgets/cputemp.hpp:36
+msgid "Upper temperature bound"
+msgstr "Upper temperature bound"
+
+#: ../src/panel/widgets/cputemp.hpp:48
+msgid "CPU Temp"
+msgstr "CPU Temp"
+
+#: ../src/panel/widgets/ejecter.hpp:26
+#: ../src/panel/widgets/ejecter/ejecter.c:499
 msgid "Hide icon when no devices"
 msgstr "Hide icon when no devices"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:462
+#: ../src/panel/widgets/ejecter.hpp:39
+#: ../src/panel/widgets/ejecter/ejecter.c:497
+#: ../src/panel/widgets/ejecter/ejecter.c:507
+msgid "Ejecter"
+msgstr "Ejecter"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:219
+msgid ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+msgstr ""
+"Drive was removed without ejecting\n"
+"Please use menu to eject before removal"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:247
+#, c-format
+msgid ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+msgstr ""
+"%s has been ejected\n"
+"It is now safe to remove the device"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:253
+#, c-format
+msgid ""
+"Failed to eject %s\n"
+"%s"
+msgstr ""
+"Failed to eject %s\n"
+"%s"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:454
+msgid "Select a drive in menu to eject safely"
+msgstr "Select a drive in menu to eject safely"
+
+#: ../src/panel/widgets/ejecter/ejecter.c:508
 msgid "Ejects mounted drives"
 msgstr "Ejects mounted drives"
+
+#: ../src/panel/widgets/gpu.hpp:42
+msgid "GPU"
+msgstr "GPU"
+
+#: ../src/panel/widgets/launchers.cpp:179
+msgid "Remove from Launcher"
+msgstr "Remove from Launcher"
+
+#: ../src/panel/widgets/launchers.hpp:79
+msgid "Icon spacing"
+msgstr "Icon spacing"
+
+#: ../src/panel/widgets/launchers.hpp:88
+msgid "Launcher"
+msgstr "Launcher"
+
+#: ../src/panel/widgets/smenu.hpp:26
+msgid "Search window height"
+msgstr "Search window height"
+
+#: ../src/panel/widgets/smenu.hpp:27
+msgid "Fix size of search window"
+msgstr "Fix size of search window"
+
+#: ../src/panel/widgets/smenu.hpp:40 ../src/panel/widgets/smenu/menu.c:1037
+msgid "Menu"
+msgstr "Menu"
+
+#: ../src/panel/widgets/netman.hpp:34 ../src/panel/widgets/netman/applet.c:3799
+#: ../src/panel/widgets/netman/applet-dialogs.c:735
+msgid "Network"
+msgstr "Network"
 
 #: ../src/panel/widgets/netman/ap-menu-item.c:77
 #, fuzzy
@@ -233,25 +442,25 @@ msgid "secure."
 msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1540
 msgid "Failed to activate connection"
 msgstr "Failed to activate connection"
 
 #: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
+#: ../src/panel/widgets/netman/applet.c:776
+#: ../src/panel/widgets/netman/applet.c:830
+#: ../src/panel/widgets/netman/applet.c:865
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1542
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1565
 msgid "Unknown error"
 msgstr "Unknown error"
 
 #: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
+#: ../src/panel/widgets/netman/applet.c:779
+#: ../src/panel/widgets/netman/applet.c:868
+#: ../src/panel/widgets/netman/applet-device-wifi.c:572
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1545
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1568
 msgid "Connection failure"
 msgstr "Connection failure"
 
@@ -263,34 +472,35 @@ msgstr "Turn Off Wireless LAN"
 msgid "_Turn On Wireless LAN"
 msgstr "Turn On Wireless LAN"
 
-#: ../src/panel/widgets/netman/applet.c:227
+#: ../src/panel/widgets/netman/applet.c:212
+#: ../src/panel/widgets/netman/applet.c:225
 #, c-format
 msgid "IP : %s"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:781
+#: ../src/panel/widgets/netman/applet.c:774
 msgid "Failed to add/activate connection"
 msgstr "Failed to add/activate connection"
 
-#: ../src/panel/widgets/netman/applet.c:835
+#: ../src/panel/widgets/netman/applet.c:828
 msgid "Device disconnect failed"
 msgstr "Device disconnect failed"
 
-#: ../src/panel/widgets/netman/applet.c:840
+#: ../src/panel/widgets/netman/applet.c:833
 msgid "Disconnect failure"
 msgstr "Disconnect failure"
 
-#: ../src/panel/widgets/netman/applet.c:870
+#: ../src/panel/widgets/netman/applet.c:863
 msgid "Connection activation failed"
 msgstr "Connection activation failed"
 
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
+#: ../src/panel/widgets/netman/applet.c:1206
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1264
 #, fuzzy
 msgid "Don’t show this message again"
 msgstr "Don't show this message again"
 
-#: ../src/panel/widgets/netman/applet.c:1310
+#: ../src/panel/widgets/netman/applet.c:1307
 #, c-format
 msgid ""
 "\n"
@@ -301,7 +511,7 @@ msgstr ""
 "The VPN connection '%s' disconnected because the network connection was "
 "interrupted."
 
-#: ../src/panel/widgets/netman/applet.c:1312
+#: ../src/panel/widgets/netman/applet.c:1309
 #, c-format
 msgid ""
 "\n"
@@ -312,7 +522,7 @@ msgstr ""
 "The VPN connection '%s' failed because the network connection was "
 "interrupted."
 
-#: ../src/panel/widgets/netman/applet.c:1314
+#: ../src/panel/widgets/netman/applet.c:1311
 #, c-format
 msgid ""
 "\n"
@@ -321,7 +531,7 @@ msgstr ""
 "\n"
 "The VPN connection '%s' failed because the VPN service stopped unexpectedly."
 
-#: ../src/panel/widgets/netman/applet.c:1316
+#: ../src/panel/widgets/netman/applet.c:1313
 #, c-format
 msgid ""
 "\n"
@@ -332,7 +542,7 @@ msgstr ""
 "The VPN connection '%s' failed because the VPN service returned invalid "
 "configuration."
 
-#: ../src/panel/widgets/netman/applet.c:1318
+#: ../src/panel/widgets/netman/applet.c:1315
 #, c-format
 msgid ""
 "\n"
@@ -341,7 +551,7 @@ msgstr ""
 "\n"
 "The VPN connection '%s' failed because the connection attempt timed out."
 
-#: ../src/panel/widgets/netman/applet.c:1320
+#: ../src/panel/widgets/netman/applet.c:1317
 #, c-format
 msgid ""
 "\n"
@@ -350,7 +560,7 @@ msgstr ""
 "\n"
 "The VPN connection '%s' failed because the VPN service did not start in time."
 
-#: ../src/panel/widgets/netman/applet.c:1322
+#: ../src/panel/widgets/netman/applet.c:1319
 #, c-format
 msgid ""
 "\n"
@@ -359,7 +569,7 @@ msgstr ""
 "\n"
 "The VPN connection '%s' failed because the VPN service failed to start."
 
-#: ../src/panel/widgets/netman/applet.c:1324
+#: ../src/panel/widgets/netman/applet.c:1321
 #, c-format
 msgid ""
 "\n"
@@ -368,7 +578,7 @@ msgstr ""
 "\n"
 "The VPN connection '%s' failed because there were no valid VPN secrets."
 
-#: ../src/panel/widgets/netman/applet.c:1326
+#: ../src/panel/widgets/netman/applet.c:1323
 #, c-format
 msgid ""
 "\n"
@@ -377,7 +587,7 @@ msgstr ""
 "\n"
 "The VPN connection '%s' failed because of invalid VPN secrets."
 
-#: ../src/panel/widgets/netman/applet.c:1331
+#: ../src/panel/widgets/netman/applet.c:1328
 #, c-format
 msgid ""
 "\n"
@@ -386,7 +596,7 @@ msgstr ""
 "\n"
 "The VPN connection '%s' failed."
 
-#: ../src/panel/widgets/netman/applet.c:1358
+#: ../src/panel/widgets/netman/applet.c:1355
 #, c-format
 msgid ""
 "VPN connection has been successfully established.\n"
@@ -397,20 +607,20 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../src/panel/widgets/netman/applet.c:1360
+#: ../src/panel/widgets/netman/applet.c:1357
 msgid "VPN connection has been successfully established.\n"
 msgstr "VPN connection has been successfully established.\n"
 
-#: ../src/panel/widgets/netman/applet.c:1362
+#: ../src/panel/widgets/netman/applet.c:1359
 msgid "VPN Login Message"
 msgstr "VPN Login Message"
 
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
+#: ../src/panel/widgets/netman/applet.c:1367
+#: ../src/panel/widgets/netman/applet.c:1407
 msgid "VPN Connection Failed"
 msgstr "VPN Connection Failed"
 
-#: ../src/panel/widgets/netman/applet.c:1414
+#: ../src/panel/widgets/netman/applet.c:1411
 #, c-format
 msgid ""
 "\n"
@@ -423,7 +633,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/panel/widgets/netman/applet.c:1417
+#: ../src/panel/widgets/netman/applet.c:1414
 #, c-format
 msgid ""
 "\n"
@@ -436,173 +646,168 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/panel/widgets/netman/applet.c:1741
+#: ../src/panel/widgets/netman/applet.c:1738
 msgid "device not ready (firmware missing)"
 msgstr "device not ready (firmware missing)"
 
-#: ../src/panel/widgets/netman/applet.c:1743
+#: ../src/panel/widgets/netman/applet.c:1740
 msgid "device not ready"
 msgstr "device not ready"
 
 #. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
+#: ../src/panel/widgets/netman/applet.c:1750
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:99
 msgid "disconnected"
 msgstr "disconnected"
 
-#: ../src/panel/widgets/netman/applet.c:1769
+#: ../src/panel/widgets/netman/applet.c:1766
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: ../src/panel/widgets/netman/applet.c:1783
+#: ../src/panel/widgets/netman/applet.c:1780
 msgid "device not managed"
 msgstr "device not managed"
 
-#: ../src/panel/widgets/netman/applet.c:1864
+#: ../src/panel/widgets/netman/applet.c:1861
 msgid "No network devices available"
 msgstr "No wireless interfaces available"
 
-#: ../src/panel/widgets/netman/applet.c:1917
+#: ../src/panel/widgets/netman/applet.c:1914
 msgid "_Advanced Options"
 msgstr "Advanced Options"
 
-#: ../src/panel/widgets/netman/applet.c:1919
+#: ../src/panel/widgets/netman/applet.c:1916
 msgid "_VPN Connections"
 msgstr "VPN Connections"
 
-#: ../src/panel/widgets/netman/applet.c:1973
+#: ../src/panel/widgets/netman/applet.c:1970
 #, fuzzy
 msgid "_Configure VPN…"
 msgstr "Configure VPN…"
 
-#: ../src/panel/widgets/netman/applet.c:1977
+#: ../src/panel/widgets/netman/applet.c:1974
 msgid "_Add a VPN connection…"
 msgstr "Add VPN Connection…"
 
 #. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
+#: ../src/panel/widgets/netman/applet.c:1986
+#: ../src/panel/widgets/netman/applet.c:2394
 msgid "Connection _Information"
 msgstr "Connection Information…"
 
 #. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
+#: ../src/panel/widgets/netman/applet.c:1994
+#: ../src/panel/widgets/netman/applet.c:2402
 #, fuzzy
 msgid "Edit Connections…"
 msgstr "Edit Connections…"
 
-#: ../src/panel/widgets/netman/applet.c:2112
+#: ../src/panel/widgets/netman/applet.c:2111
 #, fuzzy
 msgid "NetworkManager is not running…"
 msgstr "NetworkManager is not running…"
 
-#: ../src/panel/widgets/netman/applet.c:2118
+#: ../src/panel/widgets/netman/applet.c:2117
 #, fuzzy
 msgid "Wi-Fi country is not set"
 msgstr "My country is not listed"
 
-#: ../src/panel/widgets/netman/applet.c:2119
+#: ../src/panel/widgets/netman/applet.c:2118
 msgid "Click here to set Wi-Fi country"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
+#: ../src/panel/widgets/netman/applet.c:2126
+#: ../src/panel/widgets/netman/applet.c:3240
 msgid "Networking disabled"
 msgstr "Networking disabled"
 
 #. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
+#: ../src/panel/widgets/netman/applet.c:2352
 msgid "Enable _Networking"
 msgstr "Enable Networking"
 
 #. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
+#: ../src/panel/widgets/netman/applet.c:2361
 msgid "Enable _Wi-Fi"
 msgstr "Enable Wireless"
 
 #. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
+#: ../src/panel/widgets/netman/applet.c:2370
 msgid "Enable _Mobile Broadband"
 msgstr "Enable Mobile Broadband"
 
 #. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
+#: ../src/panel/widgets/netman/applet.c:2382
 msgid "Enable N_otifications"
 msgstr "Enable Notifications"
 
-#: ../src/panel/widgets/netman/applet.c:2415
+#: ../src/panel/widgets/netman/applet.c:2416
 msgid "_About"
 msgstr "About"
 
 #
-#: ../src/panel/widgets/netman/applet.c:2736
+#: ../src/panel/widgets/netman/applet.c:2741
 #, c-format
 msgid "You are now connected to “%s”."
 msgstr "You are now connected to '%s'."
 
-#: ../src/panel/widgets/netman/applet.c:2776
+#: ../src/panel/widgets/netman/applet.c:2791
 msgid "Disconnected"
 msgstr "Disconnected"
 
-#: ../src/panel/widgets/netman/applet.c:2777
+#: ../src/panel/widgets/netman/applet.c:2792
 msgid "The network connection has been disconnected."
 msgstr "The network connection has been disconnected."
 
-#: ../src/panel/widgets/netman/applet.c:3079
+#: ../src/panel/widgets/netman/applet.c:3094
 #, c-format
 msgid "Preparing network connection “%s”…"
 msgstr "Preparing network connection '%s'…"
 
-#: ../src/panel/widgets/netman/applet.c:3082
+#: ../src/panel/widgets/netman/applet.c:3097
 #, c-format
 msgid "User authentication required for network connection “%s”…"
 msgstr "User authentication required for network connection '%s'…"
 
 #
-#: ../src/panel/widgets/netman/applet.c:3085
+#: ../src/panel/widgets/netman/applet.c:3100
 #: ../src/panel/widgets/netman/applet-device-bt.c:113
 #: ../src/panel/widgets/netman/mobile-helpers.c:605
 #, c-format
 msgid "Requesting a network address for “%s”…"
 msgstr "Requesting a network address for '%s'…"
 
-#: ../src/panel/widgets/netman/applet.c:3088
+#: ../src/panel/widgets/netman/applet.c:3103
 #, c-format
 msgid "Network connection “%s” active"
 msgstr "Network connection '%s' active"
 
-#: ../src/panel/widgets/netman/applet.c:3165
+#: ../src/panel/widgets/netman/applet.c:3180
 #, c-format
 msgid "Starting VPN connection “%s”…"
 msgstr "Starting VPN connection '%s'…"
 
-#: ../src/panel/widgets/netman/applet.c:3168
+#: ../src/panel/widgets/netman/applet.c:3183
 #, c-format
 msgid "User authentication required for VPN connection “%s”…"
 msgstr "User authentication required for VPN connection '%s'…"
 
 #
-#: ../src/panel/widgets/netman/applet.c:3171
+#: ../src/panel/widgets/netman/applet.c:3186
 #, c-format
 msgid "Requesting a VPN address for “%s”…"
 msgstr "Requesting a VPN address for '%s'…"
 
-#: ../src/panel/widgets/netman/applet.c:3174
+#: ../src/panel/widgets/netman/applet.c:3189
 #, fuzzy, c-format
 msgid "VPN connection active"
 msgstr "VPN connection '%s' active"
 
-#: ../src/panel/widgets/netman/applet.c:3226
+#: ../src/panel/widgets/netman/applet.c:3244
 msgid "No network connection"
 msgstr "No network connection"
 
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "Network"
-
-#: ../src/panel/widgets/netman/applet.c:3896
+#: ../src/panel/widgets/netman/applet.c:3916
 msgid "NetworkManager Applet"
 msgstr "NetworkManager Applet"
 
@@ -630,13 +835,6 @@ msgstr "Mobile Broadband (%s)"
 msgid "Mobile Broadband"
 msgstr "Mobile Broadband"
 
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
-msgid "Available"
-msgstr "Available"
-
 #. Default connection item
 #: ../src/panel/widgets/netman/applet-device-broadband.c:793
 #, fuzzy
@@ -646,7 +844,7 @@ msgstr "New Mobile Broadband Connection"
 #: ../src/panel/widgets/netman/applet-device-broadband.c:809
 #: ../src/panel/widgets/netman/applet-device-bt.c:75
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1458
 msgid "Connection Established"
 msgstr "Connection Established"
 
@@ -764,7 +962,7 @@ msgstr "_Cancel"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1191
 #: ../src/panel/widgets/netman/mobile-helpers.c:456
 #: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
+#: ../src/panel/widgets/volumepulse/volumepulse.c:242
 #: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
 msgid "_OK"
 msgstr "_OK"
@@ -773,108 +971,108 @@ msgstr "_OK"
 msgid "_Connect to Hidden Wi-Fi Network…"
 msgstr "Connect to Hidden Wireless Network…"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#: ../src/panel/widgets/netman/applet-device-wifi.c:266
 msgid "Create _New Wi-Fi Network…"
 msgstr "Create New Wireless Network"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#: ../src/panel/widgets/netman/applet-device-wifi.c:307
 msgid "Create Wi-Fi _Hotspot…"
 msgstr "Create Wireless Hotspot…"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
+#: ../src/panel/widgets/netman/applet-device-wifi.c:391
 msgid "(none)"
 msgstr "(none)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
+#: ../src/panel/widgets/netman/applet-device-wifi.c:569
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1563
 msgid "Failed to add new connection"
 msgstr "Failed to add new connection"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
+#: ../src/panel/widgets/netman/applet-device-wifi.c:570
 msgid "Insufficient privileges."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
+#: ../src/panel/widgets/netman/applet-device-wifi.c:623
 #, c-format
 msgid "Do you want to disconnect from the wireless network '%s'?"
 msgstr "Do you want to disconnect from the wireless network '%s'?"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
+#: ../src/panel/widgets/netman/applet-device-wifi.c:927
 #, c-format
 msgid "Wi-Fi Networks (%s)"
 msgstr "Wireless Networks (%s)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
+#: ../src/panel/widgets/netman/applet-device-wifi.c:929
 #, c-format
 msgid "Wi-Fi Network (%s)"
 msgstr "Wireless Network (%s)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
+#: ../src/panel/widgets/netman/applet-device-wifi.c:932
 msgid "Wi-Fi Network"
 msgid_plural "Wi-Fi Networks"
 msgstr[0] "Wireless Network"
 msgstr[1] "Wireless Networks"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
+#: ../src/panel/widgets/netman/applet-device-wifi.c:984
 msgid "Wi-Fi is disabled"
 msgstr "Wireless networking is disabled"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
+#: ../src/panel/widgets/netman/applet-device-wifi.c:985
 msgid "Wi-Fi is disabled by hardware switch"
 msgstr "Wireless networking is disabled by hardware switch"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1051
 msgid "More networks"
 msgstr "More Networks"
 
 #
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1260
 msgid "Wi-Fi Networks Available"
 msgstr "Wireless Networks Available"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
 msgid "Use the network menu to connect to a Wi-Fi network"
 msgstr "Use the network menu to connect to a wireless network"
 
 #
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1447
 #, c-format
 msgid "You are now connected to the Wi-Fi network “%s”."
 msgstr "You are now connected to the wireless network '%s'."
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1492
 #, c-format
 msgid "Preparing Wi-Fi network connection “%s”…"
 msgstr "Preparing wireless network connection '%s'…"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1495
 #, c-format
 msgid "Configuring Wi-Fi network connection “%s”…"
 msgstr "Configuring wireless network connection '%s'…"
 
 #
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1498
 #, c-format
 msgid "User authentication required for Wi-Fi network “%s”…"
 msgstr "User authentication required for wireless network '%s'…"
 
 #
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1501
 #, c-format
 msgid "Requesting a Wi-Fi network address for “%s”…"
 msgstr "Requesting a wireless network address for '%s'…"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1514
 #, c-format
 msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
 msgstr "Wireless network connection “%s” active: %s (hotspot)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1517
 #, c-format
 msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
 msgstr "Wireless network connection '%s' active: %s (%d%%)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
+#: ../src/panel/widgets/netman/applet-device-wifi.c:1521
 #, c-format
 msgid "Wi-Fi network connection “%s” active"
 msgstr "Wireless network connection '%s' active"
@@ -1324,11 +1522,11 @@ msgstr "Mobile broadband connection '%s' active: (%d%%%s%s)"
 msgid "roaming"
 msgstr "roaming"
 
-#: ../src/panel/widgets/netman/netman.c:139
+#: ../src/panel/widgets/netman/netman.c:160
 msgid "Network Manager"
 msgstr ""
 
-#: ../src/panel/widgets/netman/netman.c:140
+#: ../src/panel/widgets/netman/netman.c:161
 msgid "Controller for Network Manager"
 msgstr ""
 
@@ -1381,62 +1579,47 @@ msgstr "DER or PEM certificates (*.der, *.pem, *.crt, *.cer)"
 msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
 msgstr "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12)"
 
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
-msgstr "Charging : %d%%"
+#: ../src/panel/widgets/notify.hpp:9
+msgid "Show notifications"
+msgstr "Show notifications"
 
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
+#: ../src/panel/widgets/notify.hpp:10
+msgid "Time before notifications close"
+msgstr "Time before notifications close"
+
+#: ../src/panel/widgets/notify.hpp:15
+msgid "Notifications"
+msgstr "Notifications"
+
+#: ../src/panel/widgets/power.hpp:34
+msgid "Power"
+msgstr "Power"
+
+#: ../src/panel/widgets/power/power.c:84
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
 msgstr ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
+"This power supply is not capable of supplying 5V at 5A\n"
+"Power to peripherals will be restricted"
 
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
+#: ../src/panel/widgets/power/power.c:100
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
+"Reset due to low power event\n"
+"Please check your power supply"
 
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
+#: ../src/panel/widgets/power/power.c:160
 msgid ""
-"Charged : %d%%\n"
-"On external power"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
-"Charged : %d%%\n"
-"On external power"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr "Discharging : %d%%"
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/panel/widgets/power/power.c:211
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
@@ -1444,17 +1627,25 @@ msgstr ""
 "Low voltage warning\n"
 "Please check your power supply"
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
-msgstr "Power & Battery"
+#: ../src/panel/widgets/power/power.c:230
+msgid "PSU low voltage detected\n"
+msgstr "PSU low voltage detected\n"
 
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
-msgstr "Monitors voltage and laptop battery"
+#: ../src/panel/widgets/power/power.c:231
+msgid "USB over current detected\n"
+msgstr "USB over current detected\n"
+
+#: ../src/panel/widgets/power/power.c:232
+msgid "Low power reset has occurred\n"
+msgstr "Low power reset has occurred\n"
+
+#: ../src/panel/widgets/power/power.c:284
+msgid "Power Information..."
+msgstr "Power Information..."
 
 #
 #: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
+#: ../src/panel/widgets/smenu/menu.c:96
 msgid "Run"
 msgstr "Run..."
 
@@ -1462,151 +1653,166 @@ msgstr "Run..."
 msgid "Enter the command you want to execute:"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:116
+#: ../src/panel/widgets/smenu/menu.c:91
 msgid "Logout command is not set"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:122
+#: ../src/panel/widgets/smenu/menu.c:97
 msgid "Restart"
 msgstr "Restart"
 
-#: ../src/panel/widgets/smenu/menu.c:123
+#: ../src/panel/widgets/smenu/menu.c:98
 msgid "Logout"
 msgstr "Shutdown..."
 
-#: ../src/panel/widgets/smenu/menu.c:140
+#: ../src/panel/widgets/smenu/menu.c:115
 msgid "No file manager is configured."
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:489
+#: ../src/panel/widgets/smenu/menu.c:464
 msgid "Add to desktop"
 msgstr "Add to Desktop"
 
-#: ../src/panel/widgets/smenu/menu.c:496
+#: ../src/panel/widgets/smenu/menu.c:468
+msgid "Add to Launcher"
+msgstr "Add to Launcher"
+
+#: ../src/panel/widgets/smenu/menu.c:475
 msgid "Properties"
 msgstr "Properties"
 
-#: ../src/panel/widgets/smenu/menu.c:954
+#: ../src/panel/widgets/smenu/menu.c:945
 msgid "Click here to open applications menu"
 msgstr "Click here to open applications menu"
 
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr "Menu"
-
-#: ../src/panel/widgets/smenu/menu.c:1048
+#: ../src/panel/widgets/smenu/menu.c:1038
 msgid "Icon"
 msgstr "Icon"
 
-#: ../src/panel/widgets/smenu/menu.c:1049
+#: ../src/panel/widgets/smenu/menu.c:1039
 msgid "Padding"
 msgstr "Padding"
 
-#: ../src/panel/widgets/smenu/menu.c:1050
+#: ../src/panel/widgets/smenu/menu.c:1040
 msgid "Fixed Size"
 msgstr "Fixed Size"
 
-#: ../src/panel/widgets/smenu/menu.c:1058
+#: ../src/panel/widgets/smenu/menu.c:1048
 msgid "Menu with Search"
 msgstr "Menu with Search"
 
-#: ../src/panel/widgets/smenu/menu.c:1059
+#: ../src/panel/widgets/smenu/menu.c:1049
 msgid "Searchable Application Menu"
 msgstr "Searchable Application Menu"
 
-#: ../src/panel/widgets/updater/updater.c:189
-msgid ""
-"Updates are available\n"
-"Click the update icon to install"
-msgstr ""
-"Updates are available\n"
-"Click the update icon to install"
+#: ../src/panel/widgets/tray/tray.hpp:18
+msgid "Smooth scrolling threshold"
+msgstr "Smooth scrolling threshold"
 
-#: ../src/panel/widgets/updater/updater.c:211
-msgid "No network connection - cannot install updates."
-msgstr "No network connection - cannot install updates."
+#: ../src/panel/widgets/tray/tray.hpp:19
+msgid "Middle button activates menu"
+msgstr "Middle button activates menu"
 
-#: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
-msgstr ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
+#
+#: ../src/panel/widgets/tray/tray.hpp:28
+msgid "System Tray"
+msgstr "System Tray"
 
-#: ../src/panel/widgets/updater/updater.c:320
-msgid "Show Updates..."
-msgstr "Show Updates..."
-
-#: ../src/panel/widgets/updater/updater.c:324
-msgid "Install Updates"
-msgstr "Install Updates"
-
-#: ../src/panel/widgets/updater/updater.c:470
-msgid "Updates are available - click to install"
-msgstr "Updates are available - click to install"
-
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr "Updater"
-
-#: ../src/panel/widgets/updater/updater.c:531
+#: ../src/panel/widgets/updater.hpp:26
+#: ../src/panel/widgets/updater/updater.c:566
 msgid "Hours between checks for updates"
 msgstr "Hours between checks for updates"
 
-#: ../src/panel/widgets/updater/updater.c:562
+#: ../src/panel/widgets/updater.hpp:39
+#: ../src/panel/widgets/updater/updater.c:564
+#: ../src/panel/widgets/updater/updater.c:587
+msgid "Updater"
+msgstr "Updater"
+
+#: ../src/panel/widgets/updater/updater.c:206
+msgid ""
+"Updates are available\n"
+"Click the update icon to install"
+msgstr ""
+"Updates are available\n"
+"Click the update icon to install"
+
+#: ../src/panel/widgets/updater/updater.c:228
+msgid "No network connection - cannot install updates."
+msgstr "No network connection - cannot install updates."
+
+#: ../src/panel/widgets/updater/updater.c:234
+msgid ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgstr ""
+"Clock not synchronised - cannot install updates. Try again in a few minutes."
+
+#: ../src/panel/widgets/updater/updater.c:335
+msgid "Show Updates..."
+msgstr "Show Updates..."
+
+#: ../src/panel/widgets/updater/updater.c:340
+msgid "Install Updates"
+msgstr "Install Updates"
+
+#: ../src/panel/widgets/updater/updater.c:488
+msgid "Updates are available - click to install"
+msgstr "Updates are available - click to install"
+
+#: ../src/panel/widgets/updater/updater.c:588
 msgid "Checks for updates"
 msgstr "Checks for updates"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
-msgid "Reconnecting Bluetooth devices..."
-msgstr "Reconnecting Bluetooth devices..."
+#: ../src/panel/widgets/volumepulse.hpp:37
+msgid "Volume"
+msgstr "Volume"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
+#: ../src/panel/widgets/volumepulse/bluetooth.c:190
+#: ../src/panel/widgets/volumepulse/bluetooth.c:352
 #, c-format
 msgid "Bluetooth %s device not found"
 msgstr "Bluetooth %s device not found"
 
 #. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
-msgstr "Device not found by PulseAudio"
+#: ../src/panel/widgets/volumepulse/bluetooth.c:241
+msgid "Audio device not found"
+msgstr "Audio device not found"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
+#: ../src/panel/widgets/volumepulse/bluetooth.c:257
 #, c-format
 msgid "Could not set profile for device : %s"
 msgstr "Could not set profile for device : %s"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
+#: ../src/panel/widgets/volumepulse/bluetooth.c:302
+msgid "Could not change %s to device : %s"
+msgstr "Could not change %s to device : %s"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:418
 #, c-format
 msgid "Failed to connect to Bluetooth device - %s"
 msgstr "Failed to connect to Bluetooth device - %s"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
+#: ../src/panel/widgets/volumepulse/bluetooth.c:510
+#: ../src/panel/widgets/volumepulse/bluetooth.c:555
+msgid "Could not set device as output"
+msgstr "Could not set device as output"
+
+#: ../src/panel/widgets/volumepulse/bluetooth.c:516
 #, c-format
 msgid "Connecting Bluetooth device '%s' as output..."
 msgstr "Connecting Bluetooth device '%s' as output..."
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
+#: ../src/panel/widgets/volumepulse/bluetooth.c:561
 #, c-format
 msgid "Connecting Bluetooth device '%s' as input..."
 msgstr "Connecting Bluetooth device '%s' as input..."
 
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr "Reconnecting Bluetooth input device as output only..."
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
-msgid "Reconnecting Bluetooth device..."
-msgstr "Reconnecting Bluetooth device..."
-
 #. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
+#: ../src/panel/widgets/volumepulse/commongui.c:149
 msgid "Mute"
 msgstr "Mute"
 
-#: ../src/panel/widgets/volumepulse/commongui.c:231
+#: ../src/panel/widgets/volumepulse/commongui.c:236
 msgid "No audio devices found"
 msgstr "No audio devices found"
 
@@ -1619,55 +1825,178 @@ msgstr "Input from this device not available in the current profile"
 msgid "Mic volume"
 msgstr "Mic volume"
 
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr "Microphone Control (PulseAudio)"
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr "Display and control microphones for PulseAudio"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
+#: ../src/panel/widgets/volumepulse/volumepulse.c:104
 msgid "HDMI"
 msgstr "HDMI"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
+#: ../src/panel/widgets/volumepulse/volumepulse.c:117
 msgid "AV Jack"
 msgstr "AV Jack"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
+#: ../src/panel/widgets/volumepulse/volumepulse.c:136
 msgid "Device Profiles..."
 msgstr "Device Profiles..."
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
+#: ../src/panel/widgets/volumepulse/volumepulse.c:167
 msgid "Output to this device not available in the current profile"
 msgstr "Output to this device not available in the current profile"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#: ../src/panel/widgets/volumepulse/volumepulse.c:216
 msgid "Device Profiles"
 msgstr "Device Profiles"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#: ../src/panel/widgets/volumepulse/volumepulse.c:274
 msgid "Device not connected"
 msgstr "Device not connected"
 
 #. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
+#: ../src/panel/widgets/volumepulse/volumepulse.c:386
 msgid "Volume control"
 msgstr "Volume control"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
+#: ../src/panel/widgets/volumepulse/volumepulse.c:558
 msgid "Volume Control (PulseAudio)"
 msgstr "Volume Control (PulseAudio)"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
+#: ../src/panel/widgets/volumepulse/volumepulse.c:559
 msgid "Display and control volume for PulseAudio"
 msgstr "Display and control volume for PulseAudio"
 
+#: ../src/panel/widgets/window-list/window-list.hpp:65
+msgid "Maximum width of task button"
+msgstr "Maximum width of task button"
+
+#: ../src/panel/widgets/window-list/window-list.hpp:91
+msgid "Window List"
+msgstr "Window List"
+
+#: ../src/installer/installer.c:101
+msgid "Reboot"
+msgstr "Reboot"
+
+#: ../src/installer/installer.c:102
+msgid "Later"
+msgstr "Later"
+
+#: ../src/installer/installer.c:163 ../src/installer/installer.c:173
+#, c-format
+msgid "Error %s - %s"
+msgstr "Error %s - %s"
+
+#: ../src/installer/installer.c:193 ../src/installer/installer.c:225
+msgid "Updating package data - please wait..."
+msgstr "Updating package data - please wait..."
+
+#: ../src/installer/installer.c:199
+msgid "Checking package details - please wait..."
+msgstr "Checking package details - please wait..."
+
+#: ../src/installer/installer.c:206
+#, c-format
+msgid "%s packages - please wait..."
+msgstr "%s packages - please wait..."
+
+#: ../src/installer/installer.c:206
+msgid "Installing"
+msgstr "Installing"
+
+#: ../src/installer/installer.c:206
+msgid "Downloading"
+msgstr "Downloading"
+
+#: ../src/installer/installer.c:235
+msgid "updating cache"
+msgstr "updating cache"
+
+#: ../src/installer/installer.c:237
+msgid "Comparing versions - please wait..."
+msgstr "Comparing versions - please wait..."
+
+#: ../src/installer/installer.c:272
+msgid "comparing versions"
+msgstr "comparing versions"
+
+#: ../src/installer/installer.c:283
+msgid "Installing updates - please wait..."
+msgstr "Installing updates - please wait..."
+
+#: ../src/installer/installer.c:291 ../src/installer/installer.c:305
+msgid "System is up to date"
+msgstr "System is up to date"
+
+#: ../src/installer/installer.c:301
+msgid "installing packages"
+msgstr "installing packages"
+
+#: ../src/installer/installer.c:308
+msgid ""
+"System is up to date.\n"
+"A reboot is required to complete the install. Reboot now or later?"
+msgstr ""
+"System is up to date.\n"
+"A reboot is required to complete the install. Reboot now or later?"
+
+#. End of file
+#. ----------------------------------------------------------------------------
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr "Add / Remove Plugins"
+
+#: ../data/config.ui.h:2
+msgid "Add to left"
+msgstr "Add to left"
+
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
+msgstr "Add plugin to left side of taskbar"
+
+#: ../data/config.ui.h:4
+msgid "Add to right"
+msgstr "Add to right"
+
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
+msgstr "Add plugin to right side of taskbar"
+
+#: ../data/config.ui.h:6
+msgid "Remove"
+msgstr "Remove"
+
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr "Remove plugin from taskbar"
+
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr "Move left"
+
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr "Move plugin towards left of taskbar"
+
+#: ../data/config.ui.h:10
+msgid "Move right"
+msgstr "Move right"
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr "Move plugin towards right of taskbar"
+
+#: ../data/config.ui.h:12
+msgid "Configure..."
+msgstr "Configure..."
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr "Configure selected plugin"
+
 #: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-#, fuzzy
 msgid "label"
 msgstr "label"
+
+#: ../data/lxpanel-modal.ui.h:4
+msgid "Installing updates..."
+msgstr "Installing updates..."
 
 #: ../data/lxplug-updater.ui.h:1
 msgid "Available Updates"
@@ -1723,6 +2052,91 @@ msgstr "Connection Information"
 msgid "_Close"
 msgstr "Close"
 
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:1
+#, fuzzy
+msgid "_Username"
+msgstr "_Username:"
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:2
+msgid "Username used to authenticate with the PPPoE service."
+msgstr ""
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:3
+msgid ""
+"Only initiate sessions with access concentrators that provide the specified "
+"service. For most providers this should be left blank."
+msgstr ""
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:4
+#, fuzzy
+msgid "_Service"
+msgstr "_Service:"
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:5
+msgid "Sho_w password"
+msgstr "Sho_w password"
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:6
+msgid "Password used to authenticate with the PPPoE service."
+msgstr ""
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:7
+#, fuzzy
+msgid "_Password"
+msgstr "_Password:"
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:8
+#, fuzzy
+msgid "PPP _interface"
+msgstr "Interface"
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:9
+#, fuzzy
+msgid "P_arent interface"
+msgstr "_Parent interface:"
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:10
+msgid "An arbitrary name to assign to the newly created PPP interface."
+msgstr ""
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:11
+msgid "The interface on which the PPP connection will be established."
+msgstr ""
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:12
+#, fuzzy
+msgid "C_laim interface"
+msgstr "_Parent interface:"
+
+#: ../src/panel/widgets/netman/connection-editor/ce-page-dsl.ui.h:13
+msgid ""
+"If selected, the connection will take exclusive control of the interface and "
+"it won’t be possible to activate another connection on it. Note that the "
+"option can only be used for Ethernet interfaces. nm-applet is able to "
+"activate the connection only if this option is selected."
+msgstr ""
+
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr "Use the audio menu to connect to this device"
+
+#~ msgid "Reconnecting Bluetooth devices..."
+#~ msgstr "Reconnecting Bluetooth devices..."
+
+#~ msgid "Device not found by PulseAudio"
+#~ msgstr "Device not found by PulseAudio"
+
+#~ msgid "Reconnecting Bluetooth input device as output only..."
+#~ msgstr "Reconnecting Bluetooth input device as output only..."
+
+#~ msgid "Reconnecting Bluetooth device..."
+#~ msgstr "Reconnecting Bluetooth device..."
+
+#~ msgid "Microphone Control (PulseAudio)"
+#~ msgstr "Microphone Control (PulseAudio)"
+
+#~ msgid "Display and control microphones for PulseAudio"
+#~ msgstr "Display and control microphones for PulseAudio"
+
 #, c-format
 #~ msgid "Pairing Device '%s'"
 #~ msgstr "Pairing Device '%s'"
@@ -1746,9 +2160,6 @@ msgstr "Close"
 #~ msgid "Remove Device"
 #~ msgstr "Remove Device"
 
-#~ msgid "_Remove"
-#~ msgstr "_Remove"
-
 #~ msgid "Paired Bluetooth devices"
 #~ msgstr "Paired Bluetooth devices"
 
@@ -1759,27 +2170,6 @@ msgstr "Close"
 #, c-format
 #~ msgid "Disconnect Device"
 #~ msgstr "Disconnect Device"
-
-#~ msgid "CPU Temperature"
-#~ msgstr "CPU Temperature"
-
-#~ msgid "Foreground colour"
-#~ msgstr "Foreground colour"
-
-#~ msgid "Background colour"
-#~ msgstr "Background colour"
-
-#~ msgid "Colour when ARM frequency capped"
-#~ msgstr "Colour when ARM frequency capped"
-
-#~ msgid "Colour when throttled"
-#~ msgstr "Colour when throttled"
-
-#~ msgid "Lower temperature bound"
-#~ msgstr "Lower temperature bound"
-
-#~ msgid "Upper temperature bound"
-#~ msgstr "Upper temperature bound"
 
 #~ msgid "CPU Temperature Monitor"
 #~ msgstr "CPU Temperature Monitor"
@@ -1799,14 +2189,8 @@ msgstr "Close"
 #~ msgid "Width"
 #~ msgstr "Width"
 
-#~ msgid "Height"
-#~ msgstr "Height"
-
 #~ msgid "Zoom"
 #~ msgstr "Zoom"
-
-#~ msgid "Static window"
-#~ msgstr "Static window"
 
 #~ msgid "Follow focus"
 #~ msgstr "Follow focus"
@@ -2791,33 +3175,6 @@ msgstr "Close"
 #~ msgid "Group Bandwidth"
 #~ msgstr "_Priority:"
 
-#, fuzzy
-#~ msgid "_Username"
-#~ msgstr "_Username:"
-
-#, fuzzy
-#~ msgid "_Service"
-#~ msgstr "_Service:"
-
-#~ msgid "Sho_w password"
-#~ msgstr "Sho_w password"
-
-#, fuzzy
-#~ msgid "_Password"
-#~ msgstr "_Password:"
-
-#, fuzzy
-#~ msgid "PPP _interface"
-#~ msgstr "Interface"
-
-#, fuzzy
-#~ msgid "P_arent interface"
-#~ msgstr "_Parent interface:"
-
-#, fuzzy
-#~ msgid "C_laim interface"
-#~ msgstr "_Parent interface:"
-
 #~ msgid "Twisted Pair (TP)"
 #~ msgstr "Twisted Pair (TP)"
 
@@ -3179,21 +3536,12 @@ msgstr "Close"
 #~ msgstr "IPv4"
 
 #, fuzzy
-#~ msgid "TCP"
-#~ msgstr "GTC"
-
-#, fuzzy
 #~ msgid "_Hardware Address"
 #~ msgstr "Hardware Address:"
 
 #, fuzzy
 #~ msgid "_Hardware address policy"
 #~ msgstr "Hardware Address:"
-
-#
-#, fuzzy
-#~ msgid "_System priority"
-#~ msgstr "_Priority:"
 
 #, fuzzy
 #~ msgid "Transmission _balancing interval"
@@ -3493,9 +3841,6 @@ msgstr "Close"
 #, fuzzy
 #~ msgid "WEP inde_x"
 #~ msgstr "WEP inde_x:"
-
-#~ msgid "Disable connected notifications"
-#~ msgstr "Disable connected notifications"
 
 #~ msgid ""
 #~ "Set this to true to disable notifications when connecting to a network."
@@ -4850,57 +5195,6 @@ msgstr "Close"
 
 #~ msgid "The VPN service said: \"%s\""
 #~ msgstr "The VPN service said: \"%s\""
-
-#~ msgid "Reboot"
-#~ msgstr "Reboot"
-
-#~ msgid "Later"
-#~ msgstr "Later"
-
-#, c-format
-#~ msgid "Error %s - %s"
-#~ msgstr "Error %s - %s"
-
-#~ msgid "Updating package data - please wait..."
-#~ msgstr "Updating package data - please wait..."
-
-#~ msgid "Checking package details - please wait..."
-#~ msgstr "Checking package details - please wait..."
-
-#, c-format
-#~ msgid "%s packages - please wait..."
-#~ msgstr "%s packages - please wait..."
-
-#~ msgid "Installing"
-#~ msgstr "Installing"
-
-#~ msgid "Downloading"
-#~ msgstr "Downloading"
-
-#~ msgid "updating cache"
-#~ msgstr "updating cache"
-
-#~ msgid "Comparing versions - please wait..."
-#~ msgstr "Comparing versions - please wait..."
-
-#~ msgid "comparing versions"
-#~ msgstr "comparing versions"
-
-#~ msgid "Installing updates - please wait..."
-#~ msgstr "Installing updates - please wait..."
-
-#~ msgid "System is up to date"
-#~ msgstr "System is up to date"
-
-#~ msgid "installing packages"
-#~ msgstr "installing packages"
-
-#~ msgid ""
-#~ "System is up to date.\n"
-#~ "A reboot is required to complete the install. Reboot now or later?"
-#~ msgstr ""
-#~ "System is up to date.\n"
-#~ "A reboot is required to complete the install. Reboot now or later?"
 
 #~ msgid "Password Required"
 #~ msgstr "Password Required"

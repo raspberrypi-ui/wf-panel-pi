@@ -78,6 +78,7 @@ src/panel/widgets/volumepulse/volumepulse.c
 src/panel/widgets/window-list/toplevel.cpp
 src/panel/widgets/window-list/window-list.cpp
 src/panel/widgets/window-list/window-list.hpp
+src/installer/installer.c
 [type: gettext/glade] data/config.ui
 [type: gettext/glade] data/lxpanel-modal.ui
 [type: gettext/glade] data/lxplug-updater.ui
@@ -85,4 +86,5 @@ src/panel/widgets/window-list/window-list.hpp
 [type: gettext/glade] src/panel/widgets/netman/8021x.ui
 [type: gettext/glade] src/panel/widgets/netman/gsm-unlock.ui
 [type: gettext/glade] src/panel/widgets/netman/info.ui
+[type: gettext/glade] src/panel/widgets/netman/connection-editor/ce-page-dsl.ui
 
