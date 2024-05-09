@@ -1,3 +1,9 @@
+wf-panel-pi (0.73) bookworm; urgency=medium
+
+  * Allow building against either version of libwlroots-dev
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 09 May 2024 11:12:40 +0100
+
 wf-panel-pi (0.72) bookworm; urgency=medium
 
   * Text updates
