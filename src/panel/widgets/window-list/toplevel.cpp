@@ -695,7 +695,7 @@ Icon get_from_desktop_app_info(std::string app_id)
 
         // an app-id should just match a desktop file...
         if (std::getenv ("XDG_DATA_DIRS")) dirs = std::getenv ("XDG_DATA_DIRS");
-        else dirs = "/usr/share/applications";
+        else dirs = "/usr/share";
         start = 0;
         end = dirs.find (":");
         while (1)
