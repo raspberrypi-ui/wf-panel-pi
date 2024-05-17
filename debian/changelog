@@ -1,3 +1,9 @@
+wf-panel-pi (0.74) bookworm; urgency=medium
+
+  * Fix icon search path when XDG_DATA_DIRS not defined
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 17 May 2024 15:16:47 +0100
+
 wf-panel-pi (0.73) bookworm; urgency=medium
 
   * Allow building against either version of libwlroots-dev
