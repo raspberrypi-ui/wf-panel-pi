@@ -13,7 +13,6 @@ project(
 	],
 )
 
-wayfire        = dependency('wayfire')
 wayland_client = dependency('wayland-client')
 wayland_protos = dependency('wayland-protocols')
 gtkmm          = dependency('gtkmm-3.0', version: '>=3.24')
