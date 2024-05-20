@@ -1,3 +1,9 @@
+wf-panel-pi (0.75) bookworm; urgency=medium
+
+  * Integrate wf-config
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 20 May 2024 07:47:32 +0100
+
 wf-panel-pi (0.74) bookworm; urgency=medium
 
   * Fix icon search path when XDG_DATA_DIRS not defined
