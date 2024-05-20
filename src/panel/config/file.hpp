@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wayfire/config/config-manager.hpp>
+#include "config/config-manager.hpp"
 
 namespace wf
 {

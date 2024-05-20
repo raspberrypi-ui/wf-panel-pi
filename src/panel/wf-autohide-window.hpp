@@ -6,7 +6,7 @@
 #include "wf-popover.hpp"
 #include <gtk-layer-shell.h>
 #include <wf-option-wrap.hpp>
-#include <wayfire/util/duration.hpp>
+#include "config/duration.hpp"
 
 struct WayfireOutput;
 struct zwf_hotspot_v2;

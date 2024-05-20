@@ -1,4 +1,4 @@
-#include <wayfire/util/log.hpp>
+#include "config/log.hpp"
 #include <sstream>
 #include <functional>
 #include <iostream>

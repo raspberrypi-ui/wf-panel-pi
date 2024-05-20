@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wayfire/config/section.hpp>
+#include "config/section.hpp"
 #include <libxml/tree.h>
 #include <map>
 

@@ -1,8 +1,8 @@
-#include <wayfire/config/compound-option.hpp>
-#include <wayfire/config/file.hpp>
-#include <wayfire/config/types.hpp>
-#include <wayfire/config/xml.hpp>
-#include <wayfire/util/log.hpp>
+#include "config/compound-option.hpp"
+#include "config/file.hpp"
+#include "config/types.hpp"
+#include "config/xml.hpp"
+#include "config/log.hpp"
 #include <sstream>
 #include <fstream>
 #include <cassert>

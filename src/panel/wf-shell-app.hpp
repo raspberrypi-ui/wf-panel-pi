@@ -3,7 +3,7 @@
 
 #include <set>
 #include <string>
-#include <wayfire/config/config-manager.hpp>
+#include "config/config-manager.hpp"
 
 #include <gtkmm/application.h>
 #include <gdkmm/monitor.h>

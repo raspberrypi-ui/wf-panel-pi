@@ -4,7 +4,7 @@
 #include <glib/gi18n.h>
 #include <gtkmm/hvbox.h>
 #include <wf-option-wrap.hpp>
-#include <wayfire/config/types.hpp>
+#include "config/types.hpp"
 #include "configure.h"
 
 #define DEFAULT_PANEL_HEIGHT "48"

@@ -1,4 +1,4 @@
-#include <wayfire/config/config-manager.hpp>
+#include "config/config-manager.hpp"
 #include <cassert>
 #include <map>
 

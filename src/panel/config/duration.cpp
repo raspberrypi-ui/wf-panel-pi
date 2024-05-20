@@ -1,5 +1,5 @@
-#include <wayfire/util/duration.hpp>
-#include <wayfire/util/log.hpp>
+#include "config/duration.hpp"
+#include "config/log.hpp"
 #include <chrono>
 #include <cmath>
 

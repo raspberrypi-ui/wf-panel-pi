@@ -1,9 +1,9 @@
-#include <wayfire/config/option.hpp>
+#include "config/option.hpp"
 #include <algorithm>
 #include <vector>
 
 #include "option-impl.hpp"
-#include "wayfire/util/log.hpp"
+#include "config/log.hpp"
 
 std::string wf::config::option_base_t::get_name() const
 {

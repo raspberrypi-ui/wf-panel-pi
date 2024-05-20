@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <vector>
-#include <wayfire/config/option.hpp>
+#include "config/option.hpp"
 
 namespace wf
 {

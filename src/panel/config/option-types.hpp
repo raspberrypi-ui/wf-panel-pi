@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wayfire/nonstd/optional.hpp>
+#include "config/optional.hpp"
 #include <string>
 
 namespace wf

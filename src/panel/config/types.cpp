@@ -1,4 +1,4 @@
-#include <wayfire/config/types.hpp>
+#include "config/types.hpp"
 #include <vector>
 #include <map>
 #include <cmath>

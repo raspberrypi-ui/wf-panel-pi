@@ -11,7 +11,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/menu.h>
 #include <gtkmm/menuitem.h>
-#include <wayfire/util/duration.hpp>
+#include "config/duration.hpp"
 
 #define LAUNCHERS_ICON_SCALE 1.0
 

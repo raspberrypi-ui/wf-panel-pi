@@ -1,5 +1,5 @@
-#include <wayfire/config/compound-option.hpp>
-#include <wayfire/config/xml.hpp>
+#include "config/compound-option.hpp"
+#include "config/xml.hpp"
 #include "option-impl.hpp"
 
 using namespace wf::config;

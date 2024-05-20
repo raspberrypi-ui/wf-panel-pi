@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wayfire/config/option-wrapper.hpp>
+#include "config/option-wrapper.hpp"
 #include "wf-shell-app.hpp"
 
 /**

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <wayfire/config/compound-option.hpp>
-#include <wayfire/config/section.hpp>
+#include "config/compound-option.hpp"
+#include "config/section.hpp"
 #include <libxml/tree.h>
 #include <stdint.h>
 

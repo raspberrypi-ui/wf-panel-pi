@@ -1,8 +1,8 @@
 #pragma once
 
-#include <wayfire/config/types.hpp>
-#include <wayfire/config/option.hpp>
-#include <wayfire/util/log.hpp>
+#include "config/types.hpp"
+#include "config/option.hpp"
+#include "config/log.hpp"
 #include <vector>
 #include <map>
 #include <cassert>

@@ -1,7 +1,7 @@
-#include <wayfire/config/xml.hpp>
-#include <wayfire/config/types.hpp>
-#include <wayfire/util/log.hpp>
-#include <wayfire/config/compound-option.hpp>
+#include "config/xml.hpp"
+#include "config/types.hpp"
+#include "config/log.hpp"
+#include "config/compound-option.hpp"
 
 #include "section-impl.hpp"
 #include "option-impl.hpp"

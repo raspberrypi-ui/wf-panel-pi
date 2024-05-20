@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wayfire/config/option-types.hpp>
+#include "config/option-types.hpp"
 #include <glm/vec4.hpp>
 #include <memory>
 #include <vector>

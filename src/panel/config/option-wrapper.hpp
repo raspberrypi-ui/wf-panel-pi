@@ -1,8 +1,8 @@
 #pragma once
 
 #include <stdexcept>
-#include <wayfire/config/option.hpp>
-#include <wayfire/config/compound-option.hpp>
+#include "config/option.hpp"
+#include "config/compound-option.hpp"
 
 namespace wf
 {

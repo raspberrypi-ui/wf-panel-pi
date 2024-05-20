@@ -5,7 +5,7 @@
 #include <gdk/gdkwayland.h>
 #include <iostream>
 #include <memory>
-#include <wayfire/config/file.hpp>
+#include "config/file.hpp"
 
 #include <unistd.h>
 #include <libfm/fm-gtk.h>

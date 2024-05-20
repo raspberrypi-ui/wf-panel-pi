@@ -7,8 +7,8 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 
-#include <wayfire/config/option.hpp>
-#include <wayfire/config/section.hpp>
+#include "config/option.hpp"
+#include "config/section.hpp"
 
 namespace wf
 {
