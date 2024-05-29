@@ -184,32 +184,42 @@ static void progress (PkProgress *progress, PkProgressType type, gpointer data)
     char *buf;
     int role = pk_progress_get_role (progress);
     int status = pk_progress_get_status (progress);
+    int percent = pk_progress_get_percentage (progress);
 
     if (msg_dlg)
     {
-        switch (role)
+        if ((type == PK_PROGRESS_TYPE_PERCENTAGE || type == PK_PROGRESS_TYPE_ITEM_PROGRESS
+            || type == PK_PROGRESS_TYPE_PACKAGE || type == PK_PROGRESS_TYPE_PACKAGE_ID
+            || type == PK_PROGRESS_TYPE_DOWNLOAD_SIZE_REMAINING) && percent >= 0 && percent <= 100)
         {
-            case PK_ROLE_ENUM_REFRESH_CACHE :       if (status == PK_STATUS_ENUM_LOADING_CACHE)
-                                                        message (_("Updating package data - please wait..."), pk_progress_get_percentage (progress));
-                                                    else
-                                                        gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
-                                                    break;
+            switch (role)
+            {
+                case PK_ROLE_ENUM_REFRESH_CACHE :       if (status == PK_STATUS_ENUM_LOADING_CACHE)
+                                                            message (_("Updating package data - please wait..."), percent);
+                                                        else
+                                                            gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
+                                                        break;
 
-            case PK_ROLE_ENUM_GET_DETAILS :         if (status == PK_STATUS_ENUM_LOADING_CACHE)
-                                                        message (_("Checking package details - please wait..."), pk_progress_get_percentage (progress));
-                                                    else
-                                                        gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
-                                                    break;
+                case PK_ROLE_ENUM_GET_UPDATES :         if (status == PK_STATUS_ENUM_LOADING_CACHE)
+                                                            message (_("Comparing versions - please wait..."), percent);
+                                                        else
+                                                            gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
+                                                        break;
 
-            case PK_ROLE_ENUM_UPDATE_PACKAGES :    if (status == PK_STATUS_ENUM_DOWNLOAD || status == PK_STATUS_ENUM_INSTALL)
-                                                    {
-                                                        buf = g_strdup_printf (_("%s packages - please wait..."), status == PK_STATUS_ENUM_INSTALL ? _("Installing") : _("Downloading"));
-                                                        message (buf, pk_progress_get_percentage (progress));
-                                                    }
-                                                    else
-                                                        gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
+                case PK_ROLE_ENUM_UPDATE_PACKAGES :    if (status == PK_STATUS_ENUM_DOWNLOAD || status == PK_STATUS_ENUM_INSTALL)
+                                                        {
+                                                            buf = g_strdup_printf (_("%s packages - please wait..."), status == PK_STATUS_ENUM_INSTALL ? _("Installing") : _("Downloading"));
+                                                            message (buf, percent);
+                                                        }
+                                                        else
+                                                            gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
+                                                        break;
+
+                default :                           gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
                                                     break;
+            }
         }
+        else gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
     }
 }
 
