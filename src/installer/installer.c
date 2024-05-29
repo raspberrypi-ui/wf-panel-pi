@@ -208,7 +208,7 @@ static void progress (PkProgress *progress, PkProgressType type, gpointer data)
 
                 case PK_ROLE_ENUM_UPDATE_PACKAGES :    if (status == PK_STATUS_ENUM_DOWNLOAD || status == PK_STATUS_ENUM_INSTALL)
                                                         {
-                                                            buf = g_strdup_printf (_("%s packages - please wait..."), status == PK_STATUS_ENUM_INSTALL ? _("Installing") : _("Downloading"));
+                                                            buf = g_strdup_printf (_("%s updates - please wait..."), status == PK_STATUS_ENUM_INSTALL ? _("Installing") : _("Downloading"));
                                                             message (buf, percent);
                                                         }
                                                         else
