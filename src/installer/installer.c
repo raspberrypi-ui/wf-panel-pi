@@ -199,7 +199,6 @@ static PkResults *error_handler (PkTask *task, GAsyncResult *res, char *desc)
 
 static void progress (PkProgress *progress, PkProgressType type, gpointer data)
 {
-    char *buf;
     int role = pk_progress_get_role (progress);
     int status = pk_progress_get_status (progress);
     int percent = pk_progress_get_percentage (progress);
@@ -212,23 +211,16 @@ static void progress (PkProgress *progress, PkProgressType type, gpointer data)
         {
             switch (role)
             {
-                case PK_ROLE_ENUM_REFRESH_CACHE :       if (status == PK_STATUS_ENUM_LOADING_CACHE)
-                                                            message (_("Updating package data - please wait..."), percent);
-                                                        else
-                                                            gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
-                                                        break;
-
                 case PK_ROLE_ENUM_GET_UPDATES :         if (status == PK_STATUS_ENUM_LOADING_CACHE)
                                                             message (_("Comparing versions - please wait..."), percent);
                                                         else
                                                             gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
                                                         break;
 
-                case PK_ROLE_ENUM_UPDATE_PACKAGES :    if (status == PK_STATUS_ENUM_DOWNLOAD || status == PK_STATUS_ENUM_INSTALL)
-                                                        {
-                                                            buf = g_strdup_printf (_("%s updates - please wait..."), status == PK_STATUS_ENUM_INSTALL ? _("Installing") : _("Downloading"));
-                                                            message (buf, percent);
-                                                        }
+                case PK_ROLE_ENUM_UPDATE_PACKAGES :     if (status == PK_STATUS_ENUM_DOWNLOAD)
+                                                            message (_("Downloading updates - please wait..."), percent);
+                                                        else if (status == PK_STATUS_ENUM_INSTALL || status == PK_STATUS_ENUM_RUNNING)
+                                                            message (_("Installing updates - please wait..."), percent);
                                                         else
                                                             gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
                                                         break;
@@ -308,7 +300,7 @@ static void start_install (PkTask *task, GAsyncResult *res, gpointer data)
 
     if (pk_package_sack_get_size (fsack) > 0)
     {
-        message (_("Installing updates - please wait..."), MSG_PULSE);
+        message (_("Downloading updates - please wait..."), MSG_PULSE);
 
         ids = pk_package_sack_get_ids (fsack);
         pk_task_update_packages_async (task, ids, NULL, (PkProgressCallback) progress, NULL, (GAsyncReadyCallback) install_done, NULL);
