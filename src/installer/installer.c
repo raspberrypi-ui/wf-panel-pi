@@ -47,6 +47,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <libintl.h>
 
+#define MSG_PULSE  -1
+#define MSG_PROMPT -2
+#define MSG_REBOOT -3
+
 /* Controls */
 
 static GtkWidget *msg_dlg, *msg_msg, *msg_pb, *msg_btn, *msg_btn2;
@@ -57,7 +61,7 @@ gboolean success = TRUE;
 /* Prototypes                                                                 */
 /*----------------------------------------------------------------------------*/
 
-static void message (char *msg, int prog);
+static void message (char *msg, int type);
 static gboolean quit (GtkButton *button, gpointer data);
 static gboolean reboot (GtkButton *button, gpointer data);
 static PkResults *error_handler (PkTask *task, GAsyncResult *res, char *desc);
@@ -73,43 +77,55 @@ static gboolean close_end (gpointer data);
 /* Progress / error box                                                       */
 /*----------------------------------------------------------------------------*/
 
-static void message (char *msg, int prog)
+static void message (char *msg, int type)
 {
     if (!msg_dlg)
     {
         GtkBuilder *builder;
 
         builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/lxpanel-modal.ui");
+
         msg_dlg = (GtkWidget *) gtk_builder_get_object (builder, "modal");
         msg_msg = (GtkWidget *) gtk_builder_get_object (builder, "modal_msg");
         msg_pb = (GtkWidget *) gtk_builder_get_object (builder, "modal_pb");
         msg_btn = (GtkWidget *) gtk_builder_get_object (builder, "modal_ok");
         msg_btn2 = (GtkWidget *) gtk_builder_get_object (builder, "modal_cancel");
-        gtk_label_set_text (GTK_LABEL (msg_msg), msg);
+
         g_object_unref (builder);
     }
-    else gtk_label_set_text (GTK_LABEL (msg_msg), msg);
 
-    gtk_widget_set_visible (msg_btn, prog <= -3);
-    gtk_widget_set_visible (msg_btn2, prog == -4);
-    gtk_widget_set_visible (msg_pb, prog > -2);
-    if (prog == -3) g_signal_connect (msg_btn, "clicked", G_CALLBACK (quit), NULL);
-    else if (prog == -4)
+    gtk_label_set_text (GTK_LABEL (msg_msg), msg);
+
+    gtk_widget_hide (msg_pb);
+    gtk_widget_hide (msg_btn);
+    gtk_widget_hide (msg_btn2);
+
+    switch (type)
     {
-        g_signal_connect (msg_btn2, "clicked", G_CALLBACK (quit), NULL);
-        g_signal_connect (msg_btn, "clicked", G_CALLBACK (reboot), NULL);
-        gtk_button_set_label (GTK_BUTTON (msg_btn), _("Reboot"));
-        gtk_button_set_label (GTK_BUTTON (msg_btn2), _("Later"));
+        case MSG_PROMPT :   g_signal_connect (msg_btn, "clicked", G_CALLBACK (quit), NULL);
+                            gtk_widget_show (msg_btn);
+                            break;
+
+        case MSG_REBOOT :   gtk_button_set_label (GTK_BUTTON (msg_btn), _("Reboot"));
+                            gtk_button_set_label (GTK_BUTTON (msg_btn2), _("Later"));
+                            g_signal_connect (msg_btn, "clicked", G_CALLBACK (reboot), NULL);
+                            g_signal_connect (msg_btn2, "clicked", G_CALLBACK (quit), NULL);
+                            gtk_widget_show (msg_btn);
+                            gtk_widget_show (msg_btn2);
+                            break;
+
+        case MSG_PULSE :    gtk_widget_show (msg_pb);
+                            gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
+                            break;
+
+        default :           gtk_widget_show (msg_pb);
+                            gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (msg_pb), (type / 100.0));
+                            break;
     }
 
-    if (prog >= 0)
-    {
-        float progress = prog / 100.0;
-        gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (msg_pb), progress);
-    }
-    else if (prog == -1) gtk_progress_bar_pulse (GTK_PROGRESS_BAR (msg_pb));
     gboolean vis = gtk_widget_is_visible (msg_dlg);
     gtk_widget_show (msg_dlg);
+
     // force a redraw if the window was not already displayed - forces a resize to correct size
     if (!vis)
     {
@@ -161,8 +177,9 @@ static PkResults *error_handler (PkTask *task, GAsyncResult *res, char *desc)
     {
         success = FALSE;
         buf = g_strdup_printf (_("Error %s - %s"), desc, error->message);
-        message (buf, -3);
+        message (buf, MSG_PROMPT);
         g_free (buf);
+        g_error_free (error);
         return NULL;
     }
 
@@ -171,8 +188,9 @@ static PkResults *error_handler (PkTask *task, GAsyncResult *res, char *desc)
     {
         success = FALSE;
         buf = g_strdup_printf (_("Error %s - %s"), desc, pk_error_get_details (pkerror));
-        message (buf, -3);
+        message (buf, MSG_PROMPT);
         g_free (buf);
+        g_object_unref (pkerror);
         return NULL;
     }
 
@@ -232,7 +250,7 @@ static gboolean refresh_cache (gpointer data)
 {
     PkTask *task;
 
-    message (_("Updating package data - please wait..."), -1);
+    message (_("Updating package data - please wait..."), MSG_PULSE);
 
     task = pk_task_new ();
 
@@ -244,7 +262,7 @@ static void compare_versions (PkTask *task, GAsyncResult *res, gpointer data)
 {
     if (!error_handler (task, res, _("updating cache"))) return;
 
-    message (_("Comparing versions - please wait..."), -1);
+    message (_("Comparing versions - please wait..."), MSG_PULSE);
 
     pk_client_get_updates_async (PK_CLIENT (task), PK_FILTER_ENUM_NONE, NULL, (PkProgressCallback) progress, NULL, (GAsyncReadyCallback) start_install, data);
 }
@@ -290,7 +308,7 @@ static void start_install (PkTask *task, GAsyncResult *res, gpointer data)
 
     if (pk_package_sack_get_size (fsack) > 0)
     {
-        message (_("Installing updates - please wait..."), -1);
+        message (_("Installing updates - please wait..."), MSG_PULSE);
 
         ids = pk_package_sack_get_ids (fsack);
         pk_task_update_packages_async (task, ids, NULL, (PkProgressCallback) progress, NULL, (GAsyncReadyCallback) install_done, NULL);
@@ -298,7 +316,7 @@ static void start_install (PkTask *task, GAsyncResult *res, gpointer data)
     }
     else
     {
-        message (_("System is up to date"), -3);
+        message (_("System is up to date"), MSG_PROMPT);
         g_timeout_add_seconds (2, close_end, NULL);
     }
 
@@ -312,10 +330,10 @@ static void install_done (PkTask *task, GAsyncResult *res, gpointer data)
 
     if (access ("/run/reboot-required", F_OK))
     {
-        message (_("System is up to date"), -3);
+        message (_("System is up to date"), MSG_PROMPT);
         g_timeout_add_seconds (2, close_end, NULL);
     }
-    else message (_("System is up to date.\nA reboot is required to complete the install. Reboot now or later?"), -4);
+    else message (_("System is up to date.\nA reboot is required to complete the install. Reboot now or later?"), MSG_REBOOT);
 }
 
 static gboolean close_end (gpointer data)
