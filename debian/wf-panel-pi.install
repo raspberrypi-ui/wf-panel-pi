@@ -1,0 +1,2 @@
+#!/usr/bin/dh-exec
+data/10-wfpanel-installer.rules => /etc/polkit-1/rules.d/10-wfpanel-installer.rules

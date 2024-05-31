@@ -55,7 +55,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*----------------------------------------------------------------------------*/
 
 static gboolean net_available (void);
-static gboolean clock_synced (void);
 static void check_for_updates (gpointer user_data);
 static gpointer refresh_update_cache (gpointer data);
 static void refresh_cache_done (PkTask *task, GAsyncResult *res, gpointer data);
@@ -92,19 +91,6 @@ static gboolean net_available (void)
 {
     if (system ("hostname -I | grep -q \\\\.") == 0) return TRUE;
     else return FALSE;
-}
-
-static gboolean clock_synced (void)
-{
-    if (system ("test -e /usr/sbin/ntpd") == 0)
-    {
-        if (system ("ntpq -p | grep -q ^\\*") == 0) return TRUE;
-    }
-    else
-    {
-        if (system ("timedatectl status | grep -q \"synchronized: yes\"") == 0) return TRUE;
-    }
-    return FALSE;
 }
 
 
@@ -223,18 +209,6 @@ static void check_updates_done (PkTask *task, GAsyncResult *res, gpointer data)
 
 static void install_updates (GtkWidget *widget, gpointer user_data)
 {
-    if (!net_available ())
-    {
-        message (_("No network connection - cannot install updates."), -3);
-        return;
-    }
-
-    if (!clock_synced ())
-    {
-        message (_("Clock not synchronised - cannot install updates. Try again in a few minutes."), -3);
-        return;
-    }
-
     launch_installer ();
 }
 
@@ -309,7 +283,7 @@ static void handle_close_and_install (GtkButton *button, gpointer user_data)
         gtk_widget_destroy (up->update_dlg);
         up->update_dlg = NULL;
     }
-    if (net_available () && clock_synced ()) launch_installer ();
+    launch_installer ();
 }
 
 static gint delete_update_dialog (GtkWidget *widget, GdkEvent *event, gpointer user_data)

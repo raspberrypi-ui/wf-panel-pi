@@ -56,11 +56,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static GtkWidget *msg_dlg, *msg_msg, *msg_pb, *msg_btn, *msg_btn2;
 
 gboolean success = TRUE;
+int calls;
 
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */
 /*----------------------------------------------------------------------------*/
 
+static gboolean net_available (void);
+static gboolean clock_synced (void);
+static void resync (void);
 static void message (char *msg, int type);
 static gboolean quit (GtkButton *button, gpointer data);
 static gboolean reboot (GtkButton *button, gpointer data);
@@ -72,6 +76,40 @@ static void start_install (PkTask *task, GAsyncResult *res, gpointer data);
 static void install_done (PkTask *task, GAsyncResult *res, gpointer data);
 static gboolean close_end (gpointer data);
 
+/*----------------------------------------------------------------------------*/
+/* Helper functions for system status                                         */
+/*----------------------------------------------------------------------------*/
+
+static gboolean net_available (void)
+{
+    if (system ("hostname -I | grep -q \\\\.") == 0) return TRUE;
+    else return FALSE;
+}
+
+static gboolean clock_synced (void)
+{
+    if (system ("test -e /usr/sbin/ntpd") == 0)
+    {
+        if (system ("ntpq -p | grep -q ^\\*") == 0) return TRUE;
+    }
+    else
+    {
+        if (system ("timedatectl status | grep -q \"synchronized: yes\"") == 0) return TRUE;
+    }
+    return FALSE;
+}
+
+static void resync (void)
+{
+    if (system ("test -e /usr/sbin/ntpd") == 0)
+    {
+        system ("sudo /etc/init.d/ntp stop; sudo ntpd -gq; sudo /etc/init.d/ntp start");
+    }
+    else
+    {
+        system ("sudo systemctl -q stop systemd-timesyncd 2> /dev/null; sudo systemctl -q start systemd-timesyncd 2> /dev/null");
+    }
+}
 
 /*----------------------------------------------------------------------------*/
 /* Progress / error box                                                       */
@@ -207,7 +245,8 @@ static void progress (PkProgress *progress, PkProgressType type, gpointer data)
     {
         if ((type == PK_PROGRESS_TYPE_PERCENTAGE || type == PK_PROGRESS_TYPE_ITEM_PROGRESS
             || type == PK_PROGRESS_TYPE_PACKAGE || type == PK_PROGRESS_TYPE_PACKAGE_ID
-            || type == PK_PROGRESS_TYPE_DOWNLOAD_SIZE_REMAINING) && percent >= 0 && percent <= 100)
+            || type == PK_PROGRESS_TYPE_DOWNLOAD_SIZE_REMAINING || type == PROGRESS_TYPE_SPEED)
+            && percent >= 0 && percent <= 100)
         {
             switch (role)
             {
@@ -237,6 +276,23 @@ static void progress (PkProgress *progress, PkProgressType type, gpointer data)
 /*----------------------------------------------------------------------------*/
 /* Handlers for PackageKit asynchronous install sequence                      */
 /*----------------------------------------------------------------------------*/
+
+static gboolean ntp_check (gpointer data)
+{
+    if (clock_synced ())
+    {
+        g_idle_add (refresh_cache, NULL);
+        return FALSE;
+    }
+
+    if (calls++ > 120)
+    {
+        message (_("Could not sync time - exiting"), MSG_PROMPT);
+        return FALSE;
+    }
+
+    return TRUE;
+}
 
 static gboolean refresh_cache (gpointer data)
 {
@@ -360,7 +416,19 @@ int main (int argc, char *argv[])
     gtk_init (&argc, &argv);
     gtk_icon_theme_prepend_search_path (gtk_icon_theme_get_default(), PACKAGE_DATA_DIR);
 
-    g_idle_add (refresh_cache, NULL);
+    // check the network is connected and the clock is synced
+    calls = 0;
+    if (!net_available ())
+    {
+        message (_("No network connection - exiting"), MSG_PROMPT);
+    }
+    else if (!clock_synced ())
+    {
+        message (_("Synchronising clock - please wait..."), MSG_PULSE);
+        resync ();
+        g_timeout_add_seconds (1, ntp_check, NULL);
+    }
+    else g_idle_add (refresh_cache, NULL);
 
     gtk_main ();
 
