@@ -212,7 +212,7 @@ static void install_updates (GtkWidget *widget, gpointer user_data)
 
 static void launch_installer (void)
 {
-    char *cmd[2] = {"wfpanel-updater-install", NULL};
+    char *cmd[2] = {"gui-updater", NULL};
 
     g_spawn_async (NULL, cmd, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
 }
