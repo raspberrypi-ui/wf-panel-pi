@@ -39,6 +39,7 @@ extern "C" {
 #include "widgets/notify.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/tray/tray.hpp"
+#include "widgets/testxml.hpp"
 
 #include "wf-autohide-window.hpp"
 
@@ -426,6 +427,8 @@ class WayfirePanel::impl
             return Widget(new WayfirePower());
         if (name == "batt")
             return Widget(new WayfireBatt());
+        if (name == "testxml")
+            return Widget(new WayfireXMLPlugin());
 
         if (name == "window-list")
         {
@@ -771,6 +774,7 @@ const char *WayfirePanelApp::display_name (std::string type)
     if (type == "window-list") return WayfireWindowList::display_name();
     if (type == "notify") return WayfireNotify::display_name();
     if (type == "tray") return WayfireStatusNotifier::display_name();
+    if (type == "testxml") return WayfireXMLPlugin::display_name();
     return "<Unknown>";
 }
 
@@ -792,6 +796,7 @@ const conf_table_t *WayfirePanelApp::config_params (std::string type)
     if (type == "window-list") return WayfireWindowList::config_params();
     if (type == "notify") return WayfireNotify::config_params();
     if (type == "tray") return WayfireStatusNotifier::config_params();
+    if (type == "testxml") return WayfireXMLPlugin::config_params();
     return NULL;
 }
 
