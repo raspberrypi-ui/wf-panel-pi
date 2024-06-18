@@ -27,6 +27,7 @@ void WayfireBatt::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (PtBattPlugin));
     pt = &data;
     pt->plugin = (GtkWidget *)((*plugin).gobj());
     pt->icon_size = icon_size;
@@ -47,4 +48,12 @@ WayfireBatt::~WayfireBatt()
 {
     icon_timer.disconnect ();
     batt_destructor (pt);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireBatt;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

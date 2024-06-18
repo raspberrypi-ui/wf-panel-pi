@@ -16,6 +16,7 @@ extern "C" {
 #include <iostream>
 #include <sstream>
 #include <sys/time.h>
+#include <dlfcn.h>
 
 #include <map>
 
@@ -394,49 +395,6 @@ class WayfirePanel::impl
 
     Widget widget_from_name(std::string name)
     {
-        if (name == "launchers")
-        {
-            return Widget(new WayfireLaunchers());
-        }
-
-        if (name == "clock")
-        {
-            return Widget(new WayfireClock());
-        }
-
-        if (name == "volumepulse")
-            return Widget(new WayfireVolumepulse());
-        if (name == "smenu")
-            return Widget(new WayfireSmenu());
-        if (name == "netman")
-            return Widget(new WayfireNetman());
-        if (name == "bluetooth")
-            return Widget(new WayfireBluetooth());
-        if (name == "ejecter")
-            return Widget(new WayfireEjecter());
-        if (name == "updater")
-            return Widget(new WayfireUpdater());
-        if (name == "cpu")
-            return Widget(new WayfireCPU());
-        if (name == "cputemp")
-            return Widget(new WayfireCPUTemp());
-        if (name == "gpu")
-            return Widget(new WayfireGPU());
-        if (name == "power")
-            return Widget(new WayfirePower());
-        if (name == "batt")
-            return Widget(new WayfireBatt());
-
-        if (name == "window-list")
-        {
-            return Widget(new WayfireWindowList(output));
-        }
-
-        if (name == "tray")
-        {
-            return Widget(new WayfireStatusNotifier());
-        }
-
         std::string spacing = "spacing";
         if (name.find(spacing) == 0)
         {
@@ -454,9 +412,19 @@ class WayfirePanel::impl
 
         if (name != "none")
         {
-            std::cerr << "Invalid widget: " << name << std::endl;
+            char *libname = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/lib%s.so", name.c_str());
+            printf ("Loading plugin %s...\n", libname);
+            void *wid = dlopen (libname, RTLD_LAZY);
+            g_free (libname);
+            if (wid)
+            {
+                printf ("Loaded successfully\n");
+                create_t *create_widget = (create_t *) dlsym (wid, "create");
+                destroy_t *destroy_widget = (destroy_t *) dlsym (wid, "destroy");
+                return Widget (create_widget ());
+            }
+            else printf ("Could not open shared library - %s\n", dlerror ());
         }
-
         return nullptr;
     }
 
@@ -717,6 +685,11 @@ WayfirePanel* WayfirePanelApp::panel_for_wl_output(wl_output *output)
         if (p.get()->get_output()->wo == output)
             return p.get();
     }
+    return priv->panel.get();
+}
+
+WayfirePanel* WayfirePanelApp::get_panel(void)
+{
     return priv->panel.get();
 }
 

@@ -35,6 +35,7 @@ void WayfireVolumepulse::init (Gtk::HBox *container)
     container->pack_start (*plugin_mic, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (VolumePulsePlugin));
     vol = &data;
     vol->plugin[0] = (GtkWidget *)((*plugin_vol).gobj());
     vol->plugin[1] = (GtkWidget *)((*plugin_mic).gobj());
@@ -55,4 +56,12 @@ WayfireVolumepulse::~WayfireVolumepulse()
 {
     icon_timer.disconnect ();
     volumepulse_destructor (vol);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireVolumepulse;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

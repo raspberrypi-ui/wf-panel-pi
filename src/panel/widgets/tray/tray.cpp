@@ -22,3 +22,11 @@ void WayfireStatusNotifier::remove_item(const Glib::ustring & service)
 {
     items.erase(service);
 }
+
+extern "C" WayfireWidget *create () {
+    return new WayfireStatusNotifier;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
+}

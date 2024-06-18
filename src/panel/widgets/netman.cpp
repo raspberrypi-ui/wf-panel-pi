@@ -50,3 +50,11 @@ WayfireNetman::~WayfireNetman()
     icon_timer.disconnect ();
     netman_destructor (nm);
 }
+
+extern "C" WayfireWidget *create () {
+    return new WayfireNetman;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
+}

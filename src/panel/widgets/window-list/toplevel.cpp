@@ -323,7 +323,7 @@ class WayfireToplevel::impl
         }
 
         auto panel =
-            WayfirePanelApp::get().panel_for_wl_output(window_list->output->wo);
+            WayfirePanelApp::get().get_panel();
         if (!panel)
         {
             return;
@@ -463,7 +463,7 @@ class WayfireToplevel::impl
         zwlr_foreign_toplevel_handle_v1_destroy(handle);
     }
 
-    void handle_output_enter(wl_output *output)
+    void handle_output_enter()
     {
         if (this->parent)
         {
@@ -471,20 +471,14 @@ class WayfireToplevel::impl
         }
 
         auto& container = window_list->box;
-        if (1 /*window_list->output->wo == output*/)
-        {
-            container.add(button);
-            container.show_all();
-        }
+        container.add(button);
+        container.show_all();
 
         update_menu_item_text();
     }
 
-    void handle_output_leave(wl_output *output)
+    void handle_output_leave()
     {
-        auto& container = window_list->box;
-        if (0 /*window_list->output->wo == output*/)
-            container.remove(button);
     }
 
     void set_toggle_state ()
@@ -552,13 +546,13 @@ static void handle_toplevel_app_id(void *data, toplevel_t, const char *app_id)
 static void handle_toplevel_output_enter(void *data, toplevel_t, wl_output *output)
 {
     auto impl = static_cast<WayfireToplevel::impl*>(data);
-    impl->handle_output_enter(output);
+    impl->handle_output_enter();
 }
 
 static void handle_toplevel_output_leave(void *data, toplevel_t, wl_output *output)
 {
     auto impl = static_cast<WayfireToplevel::impl*>(data);
-    impl->handle_output_leave(output);
+    impl->handle_output_leave();
 }
 
 /* wl_array_for_each isn't supported in C++, so we have to manually
@@ -632,7 +626,7 @@ static void handle_toplevel_parent(void *data, toplevel_t handle, toplevel_t par
     {
         if (impl->get_parent())
         {
-            impl->handle_output_enter(impl->window_list->output->wo);
+            impl->handle_output_enter();
         }
 
         remove_child_from_parent(impl, handle);

@@ -38,6 +38,7 @@ void WayfireSmenu::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (MenuPlugin));
     m = &data;
     m->plugin = (GtkWidget *)((*plugin).gobj());
     m->icon_size = icon_size;
@@ -60,4 +61,12 @@ WayfireSmenu::~WayfireSmenu()
 {
     icon_timer.disconnect ();
     menu_destructor (m);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireSmenu;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

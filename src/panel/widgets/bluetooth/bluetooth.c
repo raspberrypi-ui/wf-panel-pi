@@ -2165,7 +2165,12 @@ void bt_init (BluetoothPlugin *bt)
     bt->conn_dialog = NULL;
     bt->list_dialog = NULL;
     bt->menu = NULL;
-    clear (bt);
+    bt->objmanager = NULL;
+    bt->busconnection = NULL;
+    bt->agentobj = 0;
+    bt->agentmanager = NULL;
+    bt->adapter = NULL;
+    bt->list = NULL;
 
     // is rfkill installed?
     FILE *fp = popen ("test -e /usr/sbin/rfkill", "r");

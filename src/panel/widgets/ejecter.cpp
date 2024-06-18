@@ -38,6 +38,7 @@ void WayfireEjecter::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (EjecterPlugin));
     ej = &data;
     ej->plugin = (GtkWidget *)((*plugin).gobj());
     ej->icon_size = icon_size;
@@ -59,4 +60,12 @@ WayfireEjecter::~WayfireEjecter()
 {
     icon_timer.disconnect ();
     ejecter_destructor (ej);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireEjecter;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

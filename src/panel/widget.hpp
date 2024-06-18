@@ -13,7 +13,6 @@
 #define PANEL_POSITION_BOTTOM "bottom"
 #define PANEL_POSITION_TOP "top"
 
-class wayfire_config;
 class WayfireWidget
 {
   public:
@@ -29,5 +28,8 @@ class WayfireWidget
     virtual ~WayfireWidget()
     {}
 };
+
+typedef WayfireWidget *create_t ();
+typedef void destroy_t (WayfireWidget *);
 
 #endif /* end of include guard: WIDGET_HPP */

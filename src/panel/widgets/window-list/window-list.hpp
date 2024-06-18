@@ -71,11 +71,10 @@ class WayfireWindowList : public WayfireWidget
         std::unique_ptr<WayfireToplevel>> toplevels;
 
     zwlr_foreign_toplevel_manager_v1 *manager;
-    WayfireOutput *output;
     WayfireWindowListBox box;
     Gtk::ScrolledWindow scrolled_window;
 
-    WayfireWindowList(WayfireOutput *output);
+    WayfireWindowList();
     virtual ~WayfireWindowList();
 
     void handle_toplevel_manager(zwlr_foreign_toplevel_manager_v1 *manager);
@@ -83,8 +82,6 @@ class WayfireWindowList : public WayfireWidget
     void handle_new_toplevel(zwlr_foreign_toplevel_handle_v1 *handle);
     int get_icon_size ();
     void update_toggle_states ();
-
-    wayfire_config *get_config();
 
     void init(Gtk::HBox *container) override;
     void add_output(WayfireOutput *output);

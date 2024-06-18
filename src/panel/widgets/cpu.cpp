@@ -37,6 +37,7 @@ void WayfireCPU::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (CPUPlugin));
     cpu = &data;
     cpu->plugin = (GtkWidget *)((*plugin).gobj());
     cpu->icon_size = icon_size;
@@ -60,4 +61,12 @@ WayfireCPU::~WayfireCPU()
 {
     icon_timer.disconnect ();
     cpu_destructor (cpu);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireCPU;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

@@ -37,6 +37,7 @@ void WayfireGPU::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (GPUPlugin));
     gpu = &data;
     gpu->plugin = (GtkWidget *)((*plugin).gobj());
     gpu->icon_size = icon_size;
@@ -60,4 +61,12 @@ WayfireGPU::~WayfireGPU()
 {
     icon_timer.disconnect ();
     gpu_destructor (gpu);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireGPU;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

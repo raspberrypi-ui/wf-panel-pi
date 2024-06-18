@@ -31,6 +31,7 @@ void WayfireBluetooth::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (BluetoothPlugin));
     bt = &data;
     bt->plugin = (GtkWidget *)((*plugin).gobj());
     bt->icon_size = icon_size;
@@ -50,4 +51,12 @@ WayfireBluetooth::~WayfireBluetooth()
 {
     icon_timer.disconnect ();
     bluetooth_destructor (bt);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireBluetooth;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

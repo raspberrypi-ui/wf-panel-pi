@@ -38,6 +38,7 @@ void WayfireUpdater::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (UpdaterPlugin));
     up = &data;
     up->plugin = (GtkWidget *)((*plugin).gobj());
     up->icon_size = icon_size;
@@ -59,4 +60,12 @@ WayfireUpdater::~WayfireUpdater()
 {
     icon_timer.disconnect ();
     updater_destructor (up);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireUpdater;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

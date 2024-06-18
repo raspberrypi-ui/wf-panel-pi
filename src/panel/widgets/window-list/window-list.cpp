@@ -222,9 +222,6 @@ void WayfireWindowList::set_button_width(int width)
 int WayfireWindowList::get_default_button_width()
 {
     return max_task_width;
-    return DEFAULT_SIZE_PC *
-           WayfirePanelApp::get().panel_for_wl_output(output->wo)->get_window()
-               .get_allocated_width();
 }
 
 int WayfireWindowList::get_target_button_width()
@@ -299,12 +296,19 @@ void WayfireWindowList::update_toggle_states (void)
 
 int WayfireWindowList::get_icon_size() { return icon_size; }
 
-WayfireWindowList::WayfireWindowList(WayfireOutput *output)
+WayfireWindowList::WayfireWindowList()
 {
-    this->output = output;
 }
 
 WayfireWindowList::~WayfireWindowList()
 {
     zwlr_foreign_toplevel_manager_v1_destroy(manager);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireWindowList;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

@@ -990,6 +990,7 @@ void menu_init (MenuPlugin *m)
     m->applist = gtk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING);
     m->ds = fm_dnd_src_new (NULL);
     m->swin = NULL;
+    m->menu_cache = NULL;
 
     /* Load the menu configuration */
     if (!create_menu (m))

@@ -47,6 +47,7 @@ void WayfireCPUTemp::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (CPUTempPlugin));
     cput = &data;
     cput->plugin = (GtkWidget *)((*plugin).gobj());
     cput->icon_size = icon_size;
@@ -73,4 +74,12 @@ WayfireCPUTemp::~WayfireCPUTemp()
 {
     icon_timer.disconnect ();
     cputemp_destructor (cput);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfireCPUTemp;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }

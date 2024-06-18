@@ -29,6 +29,7 @@ class WayfirePanelApp : public WayfireShellApp
 {
   public:
     WayfirePanel *panel_for_wl_output(wl_output *output);
+    WayfirePanel *get_panel(void);
     static WayfirePanelApp& get();
 
     /* Starts the program. get() is valid afterward the first (and the only)

@@ -26,6 +26,7 @@ void WayfirePower::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
+    memset (&data, 0, sizeof (PowerPlugin));
     pt = &data;
     pt->plugin = (GtkWidget *)((*plugin).gobj());
     pt->icon_size = icon_size;
@@ -44,4 +45,12 @@ WayfirePower::~WayfirePower()
 {
     icon_timer.disconnect ();
     power_destructor (pt);
+}
+
+extern "C" WayfireWidget *create () {
+    return new WayfirePower;
+}
+
+extern "C" void destroy (WayfireWidget *w) {
+    delete w;
 }
