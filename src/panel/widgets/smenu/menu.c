@@ -78,7 +78,7 @@ typedef struct {
 
 extern void gtk_run (void);
 void restart (void) {};
-void logout (MenuPlugin *m)
+void mlogout (MenuPlugin *m)
 {
     const char* l_logout_cmd = logout_cmd;
     /* If LXSession is running, _LXSESSION_PID will be set */
@@ -95,7 +95,7 @@ void logout (MenuPlugin *m)
 static Command commands[] = {
     { "run", N_("Run"), gtk_run },
     { "restart", N_("Restart"), restart },
-    { "logout", N_("Logout"), logout },
+    { "logout", N_("Logout"), mlogout },
     { NULL, NULL },
 };
 
