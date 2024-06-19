@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib/gi18n.h>
 #include <locale.h>
 #include <dlfcn.h>
+#include <dirent.h>
 #include "configure.h"
 #include "conf-utils.h"
 
@@ -40,6 +41,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COL_NAME    0
 #define COL_ID      1
 #define COL_INDEX   2
+
+#define PLUGIN_PATH "/usr/lib/aarch64-linux-gnu/wfpanel/"
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -82,7 +85,7 @@ static void display_name (const char *type, char **name)
         return;
     }
 
-    libname = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/wfpanel/lib%s.so", type);
+    libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (libname, RTLD_LAZY);
     g_free (libname);
 
@@ -108,7 +111,7 @@ gboolean can_configure (const char *type)
     conf_table_t * (*func_config_params)(void);
     const conf_table_t *cptr;
 
-    libname = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/wfpanel/lib%s.so", type);
+    libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (libname, RTLD_LAZY);
     g_free (libname);
 
@@ -397,7 +400,7 @@ void plugin_config_dialog (const char *type)
     gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
 
     /* load the config table from the shared library */
-    name = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/wfpanel/lib%s.so", type);
+    name = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (name, RTLD_LAZY);
     g_free (name);
 
@@ -578,6 +581,8 @@ static void read_config (void)
 {
     char *strval, *token, *name;
     int pos;
+    struct dirent *dir;
+    DIR *plugind;
 
     // add each space-separated widget from the metadata variables to the list store
     get_config_string ("widgets_left", &strval);
@@ -613,10 +618,14 @@ static void read_config (void)
     g_free (strval);
 
     // add any unused widgets to the list store so they can be added by the user
-    get_config_string ("widgets_all", &strval);
-    token = strtok (strval, " ");
-    while (token)
+    plugind = opendir (PLUGIN_PATH);
+    while ((dir = readdir (plugind)) != NULL)
     {
+        if (strncmp (dir->d_name, "lib", 3) || strncmp (dir->d_name + strlen (dir->d_name) - 3, ".so", 3)) continue;
+        if (!strcmp (dir->d_name, "libnotify.so")) continue;
+        token = g_strdup_printf (dir->d_name + 3);
+        *(token + strlen (token) - 3) = 0;
+
         found = FALSE;
         gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
         if (!found)
@@ -629,9 +638,10 @@ static void read_config (void)
                 -1);
             g_free (name);
         }
-        token = strtok (NULL, " ");
+        g_free (token);
     }
     g_free (strval);
+    closedir (plugind);
 
     // always add spacing
     display_name ("spacing0", &name);
