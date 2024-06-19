@@ -27,16 +27,6 @@ class WayfireCPUTemp : public WayfireWidget
     CPUTempPlugin data;
     CPUTempPlugin *cput;
 
-    static constexpr conf_table_t conf_table[7] = {
-        {CONF_COLOUR,   "foreground",   N_("Foreground colour")},
-        {CONF_COLOUR,   "background",   N_("Background colour")},
-        {CONF_COLOUR,   "throttle_1",   N_("Colour when ARM frequency capped")},
-        {CONF_COLOUR,   "throttle_2",   N_("Colour when throttled")},
-        {CONF_INT,      "low_temp",     N_("Lower temperature bound")},
-        {CONF_INT,      "high_temp",    N_("Upper temperature bound")},
-        {CONF_NONE,     NULL,           NULL}
-    };
-
   public:
 
     void init (Gtk::HBox *container) override;
@@ -45,8 +35,6 @@ class WayfireCPUTemp : public WayfireWidget
     void bar_pos_changed_cb (void);
     bool set_icon (void);
     void settings_changed_cb (void);
-    static const char *display_name (void) { return N_("CPU Temp"); };
-    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_CPUTEMP_HPP */

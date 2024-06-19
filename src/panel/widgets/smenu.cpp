@@ -1,6 +1,16 @@
 #include <glibmm.h>
 #include "smenu.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[3] = {
+        {CONF_INT,  "search_height",    N_("Search window height")},
+        {CONF_BOOL, "search_fixed",     N_("Fix size of search window")},
+        {CONF_NONE, NULL,               NULL}
+    };
+    const char *display_name (void) { return N_("Menu"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 void WayfireSmenu::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") m->bottom = TRUE;

@@ -1,6 +1,20 @@
 #include <glibmm.h>
 #include "cputemp.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[7] = {
+        {CONF_COLOUR,   "foreground",   N_("Foreground colour")},
+        {CONF_COLOUR,   "background",   N_("Background colour")},
+        {CONF_COLOUR,   "throttle_1",   N_("Colour when ARM frequency capped")},
+        {CONF_COLOUR,   "throttle_2",   N_("Colour when throttled")},
+        {CONF_INT,      "low_temp",     N_("Lower temperature bound")},
+        {CONF_INT,      "high_temp",    N_("Upper temperature bound")},
+        {CONF_NONE,     NULL,           NULL}
+    };
+    const char *display_name (void) { return N_("CPU Temp"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 void WayfireCPUTemp::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") cput->bottom = TRUE;

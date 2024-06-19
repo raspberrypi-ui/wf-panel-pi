@@ -6,6 +6,15 @@
 #include "window-list.hpp"
 #include "panel.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[2] = {
+        {CONF_INT,  "max_width",    N_("Maximum width of task button")},
+        {CONF_NONE, NULL,           NULL}
+    };
+    const char *display_name (void) { return N_("Window List"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 WayfireWindowListBox::WayfireWindowListBox() : Gtk::HBox()
 {}
 

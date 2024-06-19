@@ -43,7 +43,8 @@ clock_sources = files(
 
 shared_module('clock', clock_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 launchers_sources = files(
@@ -52,7 +53,8 @@ launchers_sources = files(
 
 shared_module('launchers', launchers_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 volumepulse_sources = files(
@@ -66,7 +68,8 @@ volumepulse_sources = files(
 
 shared_module('volumepulse', volumepulse_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 smenu_sources = files(
@@ -77,7 +80,8 @@ smenu_sources = files(
 
 shared_module('smenu', smenu_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 netman_sources = files(
@@ -116,7 +120,8 @@ netman_sources += gnome.compile_resources(
 
 shared_module('netman', netman_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 bluetooth_sources = files(
@@ -126,7 +131,8 @@ bluetooth_sources = files(
 
 shared_module('bluetooth', bluetooth_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 ejecter_sources = files(
@@ -136,7 +142,8 @@ ejecter_sources = files(
 
 shared_module('ejecter', ejecter_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 updater_sources = files(
@@ -146,7 +153,8 @@ updater_sources = files(
 
 shared_module('updater', updater_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 cpu_sources = files(
@@ -156,7 +164,8 @@ cpu_sources = files(
 
 shared_module('cpu', cpu_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 cputemp_sources = files(
@@ -166,7 +175,8 @@ cputemp_sources = files(
 
 shared_module('cputemp', cputemp_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 gpu_sources = files(
@@ -176,7 +186,8 @@ gpu_sources = files(
 
 shared_module('gpu', gpu_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 power_sources = files(
@@ -186,7 +197,8 @@ power_sources = files(
 
 shared_module('power', power_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 batt_sources = files(
@@ -197,7 +209,8 @@ batt_sources = files(
 
 shared_module('batt', batt_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 window_list_sources = files(
@@ -207,7 +220,8 @@ window_list_sources = files(
 
 shared_module('window-list', window_list_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 tray_sources = files(
@@ -219,6 +233,15 @@ tray_sources = files(
 
 shared_module('tray', tray_sources,
         dependencies: deps,
-        install: true
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
+
+shared_module('notify', ['widgets/notify.cpp'],
+        dependencies: deps,
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
+)
+
+
 install_data('wfpanelctl', install_dir : '/usr/bin')

@@ -1,6 +1,15 @@
 #include <glibmm.h>
 #include "ejecter.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[2] = {
+        {CONF_BOOL, "autohide", N_("Hide icon when no devices")},
+        {CONF_NONE,  NULL,       NULL}
+    };
+    const char *display_name (void) { return N_("Ejecter"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 void WayfireEjecter::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") ej->bottom = TRUE;

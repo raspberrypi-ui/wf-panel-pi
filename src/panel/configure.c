@@ -29,6 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <locale.h>
+#include <dlfcn.h>
 #include "configure.h"
 #include "conf-utils.h"
 
@@ -51,7 +52,6 @@ static GtkWidget *tv[3];
 static GtkWidget *ladd, *radd, *rem, *wup, *wdn, *cpl;
 static int hand[3];
 static gboolean found;
-static char sbuf[32];
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -68,21 +68,61 @@ static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter,
 
 /* Helper function to get the displayed name for a particular widget */
 
-static const char *display_name (const char *str)
+static void display_name (const char *type, char **name)
 {
+    char *libname;
+    void *wid_lib;
     int space;
+    char * (*func_display_name)(void);
 
-    if (sscanf (str, "spacing%d", &space) == 1)
+    if (sscanf (type, "spacing%d", &space) == 1)
     {
-        if (!space) return _("Spacer");
-        else
-        {
-            sprintf (sbuf, _("Spacer (%d)"), space);
-            return sbuf;
-        }
+        if (!space) *name = g_strdup_printf (_("Spacer"));
+        else *name = g_strdup_printf (_("Spacer (%d)"), space);
+        return;
     }
 
-    return _(get_plugin_label (str));
+    libname = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/wfpanel/lib%s.so", type);
+    wid_lib = dlopen (libname, RTLD_LAZY);
+    g_free (libname);
+
+    if (wid_lib)
+    {
+        func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
+        if (!dlerror ())
+            *name = g_strdup_printf (_(func_display_name()));
+        else
+            *name = g_strdup_printf (_("<Unknown>"));
+        dlclose (wid_lib);
+    }
+    else *name = g_strdup_printf (_("<Unknown>"));
+}
+
+/* Helper function to determine whether a particular widget has a config table*/
+
+gboolean can_configure (const char *type)
+{
+    char *libname;
+    void *wid_lib;
+    gboolean can_conf = FALSE;
+    conf_table_t * (*func_config_params)(void);
+    const conf_table_t *cptr;
+
+    libname = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/wfpanel/lib%s.so", type);
+    wid_lib = dlopen (libname, RTLD_LAZY);
+    g_free (libname);
+
+    if (wid_lib)
+    {
+        func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
+        if (!dlerror ())
+        {
+            cptr = func_config_params ();
+            if (cptr->type != CONF_NONE) can_conf = TRUE;
+        }
+        dlclose (wid_lib);
+    }
+    return can_conf;
 }
 
 /* Helper function to locate the currently-highlighted widget */
@@ -111,7 +151,6 @@ static void update_buttons (void)
     int nitems, lorr = selection ();
     char *type = NULL;
     gboolean conf;
-    const conf_table_t *cptr;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (lorr == 0)
@@ -147,11 +186,7 @@ static void update_buttons (void)
             // can this type be configured?
             conf = FALSE;
             if (!strncmp (type, "spacing", 7)) conf = TRUE;
-            else
-            {
-                cptr = get_config_table (type);
-                if (cptr->type != CONF_NONE) conf = TRUE;
-            }
+            else conf = can_configure (type);
             gtk_widget_set_sensitive (cpl, conf);
         }
         if (type) g_free (type);
@@ -167,7 +202,7 @@ static void add_widget (GtkButton *, gpointer data)
     GtkTreeIter iter, siter, citer;
     GtkTreePath *path;
     int index, lorr = (long) data == 1 ? 1 : -1;;
-    char *type;
+    char *type, *name;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1]));
 
@@ -184,11 +219,15 @@ static void add_widget (GtkButton *, gpointer data)
         if (strncmp (type, "spacing", 7))
             gtk_list_store_set (widgets, &citer, COL_INDEX, lorr * (index + 1), -1);
         else
+        {
+            display_name ("spacing4", &name);
             gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, display_name ("spacing4"),
+                COL_NAME, name,
                 COL_ID, "spacing4",
                 COL_INDEX, lorr * (index + 1),
                 -1);
+            g_free (name);
+        }
         g_free (type);
 
         // select the added item
@@ -328,20 +367,25 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 
 void plugin_config_dialog (const char *type)
 {
-    char *strval, *key, *user_file;
+    char *strval, *key, *user_file, *name;
     const conf_table_t *cptr;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
     GKeyFile *kf;
     GList *children, *elem;
     gsize len;
+    conf_table_t *(*func_config_params) (void);
+    void *wid_lib;
 
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 
-    strval = g_strdup_printf (_("Configure %s"), display_name (type));
+    display_name (type, &name);
+    strval = g_strdup_printf (_("Configure %s"), name);
+    g_free (name);
+
     cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
         _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
     g_free (strval);
@@ -352,46 +396,60 @@ void plugin_config_dialog (const char *type)
     gtk_widget_set_margin_end (box, 10);
     gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
 
-    cptr = get_config_table (type);
-    while (cptr->type != CONF_NONE)
+    /* load the config table from the shared library */
+    name = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/wfpanel/lib%s.so", type);
+    wid_lib = dlopen (name, RTLD_LAZY);
+    g_free (name);
+
+    if (wid_lib)
     {
-        hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-        strval = g_strdup_printf ("%s:", _(cptr->label));
-        label = gtk_label_new (strval);
-        g_free (strval);
-        gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-        key = g_strdup_printf ("%s_%s", type, cptr->name);
-        switch (cptr->type)
+        func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
+        if (!dlerror ())
         {
-            case CONF_BOOL :    control = gtk_switch_new ();
-                                gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (key));
-                                break;
+            cptr = func_config_params ();
+            while (cptr->type != CONF_NONE)
+            {
+                hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+                strval = g_strdup_printf ("%s:", _(cptr->label));
+                label = gtk_label_new (strval);
+                g_free (strval);
+                gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+                key = g_strdup_printf ("%s_%s", type, cptr->name);
+                switch (cptr->type)
+                {
+                    case CONF_BOOL :    control = gtk_switch_new ();
+                                        gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (key));
+                                        break;
 
-            case CONF_INT :     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
-                                gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
-                                break;
+                    case CONF_INT :     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
+                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
+                                        break;
 
-            case CONF_STRING :  control = gtk_entry_new ();
-                                get_config_string (key, &strval);
-                                gtk_entry_set_text (GTK_ENTRY (control), strval);
-                                g_free (strval);
-                                break;
+                    case CONF_STRING :  control = gtk_entry_new ();
+                                        get_config_string (key, &strval);
+                                        gtk_entry_set_text (GTK_ENTRY (control), strval);
+                                        g_free (strval);
+                                        break;
 
-            case CONF_COLOUR :  control = gtk_color_button_new ();
-                                get_config_string (key, &strval);
-                                gdk_rgba_parse (&col, strval);
-                                g_free (strval);
-                                gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
-                                break;
+                    case CONF_COLOUR :  control = gtk_color_button_new ();
+                                        get_config_string (key, &strval);
+                                        gdk_rgba_parse (&col, strval);
+                                        g_free (strval);
+                                        gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
+                                        break;
 
-            case CONF_NONE :    break;
+                    case CONF_NONE :    break;
+                }
+                gtk_widget_set_name (control, key);
+                gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
+                gtk_container_add (GTK_CONTAINER (box), hbox);
+                g_free (key);
+                cptr++;
+            }
         }
-        gtk_widget_set_name (control, key);
-        gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
-        gtk_container_add (GTK_CONTAINER (box), hbox);
-        g_free (key);
-        cptr++;
+        dlclose (wid_lib);
     }
+
     gtk_widget_show_all (cdlg);
 
     if (gtk_dialog_run (GTK_DIALOG (cdlg)) == GTK_RESPONSE_OK)
@@ -437,10 +495,13 @@ void plugin_config_dialog (const char *type)
 
 static int space_config_dialog (int space)
 {
-    char *strval;
+    char *strval, *name;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
 
-    strval = g_strdup_printf (_("Configure %s"), display_name ("spacing0"));
+    display_name ("spacing0", &name);
+    strval = g_strdup_printf (_("Configure %s"), name);
+    g_free (name);
+
     cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
         _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
     g_free (strval);
@@ -477,7 +538,7 @@ static void configure_plugin (GtkButton *, gpointer)
     GtkTreeModel *mod;
     GtkTreeIter iter, siter, citer;
     int index, lorr = selection ();
-    char *type;
+    char *type, *name;
 
     if (lorr)
     {
@@ -499,10 +560,12 @@ static void configure_plugin (GtkButton *, gpointer)
 
                 // update both the widget type and the displayed name
                 type = g_strdup_printf ("spacing%d", index);
+                display_name (type, &name);
                 gtk_list_store_set (widgets, &citer,
-                    COL_NAME, display_name (type),
+                    COL_NAME, name,
                     COL_ID, type,
                     -1);
+                g_free (name);
             }
             g_free (type);
         }
@@ -513,7 +576,7 @@ static void configure_plugin (GtkButton *, gpointer)
 
 static void read_config (void)
 {
-    char *strval, *token;
+    char *strval, *token, *name;
     int pos;
 
     // add each space-separated widget from the metadata variables to the list store
@@ -522,11 +585,13 @@ static void read_config (void)
     token = strtok (strval, " ");
     while (token)
     {
+        display_name (token, &name);
         gtk_list_store_insert_with_values (widgets, NULL, -1,
-            COL_NAME, display_name (token),
+            COL_NAME, name,
             COL_ID, token,
             COL_INDEX, pos++,
             -1);
+        g_free (name);
         token = strtok (NULL, " ");
     }
     g_free (strval);
@@ -536,11 +601,13 @@ static void read_config (void)
     token = strtok (strval, " ");
     while (token)
     {
+        display_name (token, &name);
         gtk_list_store_insert_with_values (widgets, NULL, -1,
-            COL_NAME, display_name (token),
+            COL_NAME, name,
             COL_ID, token,
             COL_INDEX, pos--,
             -1);
+        g_free (name);
         token = strtok (NULL, " ");
     }
     g_free (strval);
@@ -552,21 +619,28 @@ static void read_config (void)
     {
         found = FALSE;
         gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
-        if (!found) gtk_list_store_insert_with_values (widgets, NULL, -1,
-            COL_NAME, display_name (token),
-            COL_ID, token,
-            COL_INDEX, 0,
-            -1);
+        if (!found)
+        {
+            display_name (token, &name);
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, token,
+                COL_INDEX, 0,
+                -1);
+            g_free (name);
+        }
         token = strtok (NULL, " ");
     }
     g_free (strval);
 
     // always add spacing
+    display_name ("spacing0", &name);
     gtk_list_store_insert_with_values (widgets, NULL, -1,
-        COL_NAME, display_name ("spacing0"),
+        COL_NAME, name,
         COL_ID, "spacing0",
         COL_INDEX, 0,
         -1);
+    g_free (name);
 }
 
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)

@@ -22,10 +22,10 @@ extern "C" {
 
 #include "panel.hpp"
 #include "gtk-utils.hpp"
-
+#include "widgets/spacing.hpp"
+#if 0
 #include "widgets/clock.hpp"
 #include "widgets/launchers.hpp"
-#include "widgets/spacing.hpp"
 #include "widgets/volumepulse.hpp"
 #include "widgets/smenu.hpp"
 #include "widgets/netman.hpp"
@@ -40,7 +40,7 @@ extern "C" {
 #include "widgets/notify.hpp"
 #include "widgets/window-list/window-list.hpp"
 #include "widgets/tray/tray.hpp"
-
+#endif
 #include "wf-autohide-window.hpp"
 
 extern "C" {
@@ -724,48 +724,6 @@ void WayfirePanelApp::create(int argc, char **argv)
 
     g_bus_unown_name (owner_id);
     g_dbus_node_info_unref (introspection_data);
-}
-
-const char *WayfirePanelApp::display_name (std::string type)
-{
-    if (type == "bluetooth") return WayfireBluetooth::display_name();
-    if (type == "clock") return WayfireClock::display_name();
-    if (type == "cpu") return WayfireCPU::display_name();
-    if (type == "cputemp") return WayfireCPUTemp::display_name();
-    if (type == "ejecter") return WayfireEjecter::display_name();
-    if (type == "gpu") return WayfireGPU::display_name();
-    if (type == "launchers") return WayfireLaunchers::display_name();
-    if (type == "netman") return WayfireNetman::display_name();
-    if (type == "power") return WayfirePower::display_name();
-    if (type == "batt") return WayfireBatt::display_name();
-    if (type == "smenu") return WayfireSmenu::display_name();
-    if (type == "updater") return WayfireUpdater::display_name();
-    if (type == "volumepulse") return WayfireVolumepulse::display_name();
-    if (type == "window-list") return WayfireWindowList::display_name();
-    if (type == "notify") return WayfireNotify::display_name();
-    if (type == "tray") return WayfireStatusNotifier::display_name();
-    return "<Unknown>";
-}
-
-const conf_table_t *WayfirePanelApp::config_params (std::string type)
-{
-    if (type == "bluetooth") return WayfireBluetooth::config_params();
-    if (type == "clock") return WayfireClock::config_params();
-    if (type == "cpu") return WayfireCPU::config_params();
-    if (type == "cputemp") return WayfireCPUTemp::config_params();
-    if (type == "ejecter") return WayfireEjecter::config_params();
-    if (type == "gpu") return WayfireGPU::config_params();
-    if (type == "launchers") return WayfireLaunchers::config_params();
-    if (type == "netman") return WayfireNetman::config_params();
-    if (type == "power") return WayfirePower::config_params();
-    if (type == "batt") return WayfireBatt::config_params();
-    if (type == "smenu") return WayfireSmenu::config_params();
-    if (type == "updater") return WayfireUpdater::config_params();
-    if (type == "volumepulse") return WayfireVolumepulse::config_params();
-    if (type == "window-list") return WayfireWindowList::config_params();
-    if (type == "notify") return WayfireNotify::config_params();
-    if (type == "tray") return WayfireStatusNotifier::config_params();
-    return NULL;
 }
 
 WayfirePanelApp::~WayfirePanelApp() = default;

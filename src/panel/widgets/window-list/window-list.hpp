@@ -61,11 +61,6 @@ class WayfireWindowList : public WayfireWidget
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <int> max_task_width {"panel/window-list_max_width"};
 
-    static constexpr conf_table_t conf_table[2] = {
-        {CONF_INT,  "max_width",    N_("Maximum width of task button")},
-        {CONF_NONE, NULL,           NULL}
-    };
-
   public:
     std::map<zwlr_foreign_toplevel_handle_v1*,
         std::unique_ptr<WayfireToplevel>> toplevels;
@@ -85,8 +80,6 @@ class WayfireWindowList : public WayfireWidget
 
     void init(Gtk::HBox *container) override;
     void add_output(WayfireOutput *output);
-    static const char *display_name (void) { return N_("Window List"); };
-    static const conf_table_t *config_params (void) { return conf_table; };
 
   private:
     void on_draw(const Cairo::RefPtr<Cairo::Context>&);

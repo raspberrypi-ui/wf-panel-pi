@@ -1,8 +1,15 @@
 #include <glibmm.h>
 #include <iostream>
 #include "clock.hpp"
+
 extern "C" {
-#include "lxutils.h"
+    static constexpr conf_table_t conf_table[3] = {
+        {CONF_STRING,   "format",   N_("Display format")},
+        {CONF_STRING,   "font",     N_("Display font")},
+        {CONF_NONE,     NULL,       NULL}
+    };
+    const char *display_name (void) { return N_("Clock"); };
+    const conf_table_t *config_params (void) { return conf_table; };
 }
 
 bool WayfireClock::update_label ()

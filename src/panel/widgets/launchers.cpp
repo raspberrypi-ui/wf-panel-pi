@@ -11,6 +11,13 @@
 extern "C" {
 #include "launcher.h"
 #include "lxutils.h"
+
+    static constexpr conf_table_t conf_table[2] = {
+        {CONF_INT,  "spacing",  N_("Icon spacing")},
+        {CONF_NONE, NULL,       NULL}
+    };
+    const char *display_name (void) { return N_("Launcher"); };
+    const conf_table_t *config_params (void) { return conf_table; };
 }
 
 // create launcher from a .desktop file or app-id

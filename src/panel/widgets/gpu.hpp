@@ -24,13 +24,6 @@ class WayfireGPU : public WayfireWidget
     GPUPlugin data;
     GPUPlugin *gpu;
 
-    static constexpr conf_table_t conf_table[4] = {
-        {CONF_BOOL,     "show_percentage",  N_("Show usage as percentage")},
-        {CONF_COLOUR,   "foreground",       N_("Foreground colour")},
-        {CONF_COLOUR,   "background",       N_("Background colour")},
-        {CONF_NONE,     NULL,               NULL}
-    };
-
   public:
 
     void init (Gtk::HBox *container) override;
@@ -39,8 +32,6 @@ class WayfireGPU : public WayfireWidget
     void bar_pos_changed_cb (void);
     bool set_icon (void);
     void settings_changed_cb (void);
-    static const char *display_name (void) { return N_("GPU"); };
-    static const conf_table_t *config_params (void) { return conf_table; };
 };
 
 #endif /* end of include guard: WIDGETS_GPU_HPP */

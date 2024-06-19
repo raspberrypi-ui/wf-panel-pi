@@ -1,6 +1,17 @@
 #include <glibmm.h>
 #include "cpu.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[4] = {
+        {CONF_BOOL,     "show_percentage",  N_("Show usage as percentage")},
+        {CONF_COLOUR,   "foreground",       N_("Foreground colour")},
+        {CONF_COLOUR,   "background",       N_("Background colour")},
+        {CONF_NONE,     NULL,               NULL}
+    };
+    const char *display_name (void) { return N_("CPU"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 void WayfireCPU::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") cpu->bottom = TRUE;

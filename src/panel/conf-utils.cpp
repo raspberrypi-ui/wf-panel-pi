@@ -62,16 +62,6 @@ void get_config_string (const char *key, char **dest)
     *dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
 }
 
-const char *get_plugin_label (const char *type)
-{
-    return WayfirePanelApp::get().display_name (type);
-}
-
-const conf_table_t *get_config_table (const char *type)
-{
-    return WayfirePanelApp::get().config_params (type);
-}
-
 };
 
 /* End of file */

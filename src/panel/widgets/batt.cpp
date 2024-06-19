@@ -1,6 +1,15 @@
 #include <glibmm.h>
 #include "batt.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[2] = {
+        {CONF_INT,  "batt_num", N_("Battery number to monitor")},
+        {CONF_NONE, NULL,       NULL}
+    };
+    const char *display_name (void) { return N_("Battery"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 void WayfireBatt::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") pt->bottom = TRUE;

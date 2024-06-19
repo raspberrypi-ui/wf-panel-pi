@@ -1,6 +1,14 @@
 #include <glibmm.h>
 #include "netman.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[1] = {
+        {CONF_NONE, NULL, NULL}
+    };
+    const char *display_name (void) { return N_("Network"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 void WayfireNetman::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") nm->bottom = TRUE;

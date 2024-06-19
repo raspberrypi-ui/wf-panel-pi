@@ -1,6 +1,14 @@
 #include <glibmm.h>
 #include "volumepulse.hpp"
 
+extern "C" {
+    static constexpr conf_table_t conf_table[1] = {
+        {CONF_NONE, NULL, NULL}
+    };
+    const char *display_name (void) { return N_("Volume"); };
+    const conf_table_t *config_params (void) { return conf_table; };
+}
+
 void WayfireVolumepulse::bar_pos_changed_cb (void)
 {
     if ((std::string) bar_pos == "bottom") vol->bottom = TRUE;
