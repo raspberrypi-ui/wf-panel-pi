@@ -69,18 +69,19 @@ static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter,
 
 /* Helper function to get the displayed name for a particular widget */
 
-static void display_name (const char *type, char **name)
+static gboolean display_name (const char *type, char **name)
 {
     char *libname;
     void *wid_lib;
     int space;
+    gboolean res = FALSE;
     char * (*func_display_name)(void);
 
     if (sscanf (type, "spacing%d", &space) == 1)
     {
         if (!space) *name = g_strdup_printf (_("Spacer"));
         else *name = g_strdup_printf (_("Spacer (%d)"), space);
-        return;
+        return TRUE;
     }
 
     libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
@@ -91,12 +92,17 @@ static void display_name (const char *type, char **name)
     {
         func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
         if (!dlerror ())
+        {
             *name = g_strdup_printf (_(func_display_name()));
+            res = TRUE;
+        }
         else
             *name = g_strdup_printf (_("<Unknown>"));
         dlclose (wid_lib);
     }
     else *name = g_strdup_printf (_("<Unknown>"));
+
+    return res;
 }
 
 /* Helper function to determine whether a particular widget has a config table*/
@@ -588,12 +594,12 @@ static void read_config (void)
     token = strtok (strval, " ");
     while (token)
     {
-        display_name (token, &name);
-        gtk_list_store_insert_with_values (widgets, NULL, -1,
-            COL_NAME, name,
-            COL_ID, token,
-            COL_INDEX, pos++,
-            -1);
+        if (display_name (token, &name))
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, token,
+                COL_INDEX, pos++,
+                -1);
         g_free (name);
         token = strtok (NULL, " ");
     }
@@ -604,12 +610,12 @@ static void read_config (void)
     token = strtok (strval, " ");
     while (token)
     {
-        display_name (token, &name);
-        gtk_list_store_insert_with_values (widgets, NULL, -1,
-            COL_NAME, name,
-            COL_ID, token,
-            COL_INDEX, pos--,
-            -1);
+        if (display_name (token, &name))
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, token,
+                COL_INDEX, pos--,
+                -1);
         g_free (name);
         token = strtok (NULL, " ");
     }
