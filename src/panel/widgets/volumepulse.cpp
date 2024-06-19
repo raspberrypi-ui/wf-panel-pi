@@ -7,6 +7,7 @@ extern "C" {
     };
     const char *display_name (void) { return N_("Volume"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *plugin_name = "volumepulse";
 }
 
 void WayfireVolumepulse::bar_pos_changed_cb (void)
@@ -38,8 +39,10 @@ void WayfireVolumepulse::init (Gtk::HBox *container)
 {
     /* Create the button */
     plugin_vol = std::make_unique <Gtk::Button> ();
+    plugin_vol->set_name (plugin_name);
     container->pack_start (*plugin_vol, false, false);
     plugin_mic = std::make_unique <Gtk::Button> ();
+    plugin_mic->set_name (plugin_name);
     container->pack_start (*plugin_mic, false, false);
 
     /* Setup structure */

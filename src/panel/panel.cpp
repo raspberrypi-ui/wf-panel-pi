@@ -278,6 +278,9 @@ class WayfirePanel::impl
 
     bool on_button_release_event(GdkEventButton* event)
     {
+        int x, y;
+        Gdk::ModifierType mod;
+
         if (!pressed) return false;
         pressed = false;
         if (!window->has_popover() && event->type == GDK_BUTTON_RELEASE && event->button == 3)
@@ -286,6 +289,7 @@ class WayfirePanel::impl
             cplug.set_sensitive (false);
 
             // get mouse coords to parent window coords
+            window->get_window()->get_device_position (Gdk::Display::get_default()->get_default_seat()->get_pointer (), x, y, mod);
 
             // child of window is first hbox
             std::vector<Gtk::Widget*> winch = window->get_children ();
@@ -303,22 +307,17 @@ class WayfirePanel::impl
                             std::vector<Gtk::Widget*> plugins = chbox->get_children ();
                             for (auto &plugin : plugins)
                             {
-                                int x, y;
-                                Gdk::ModifierType mod;
-
                                 if (!plugin->is_visible ()) continue;
 
-                                // ignore task list (scrolled window) and spacers (boxes)
-                                if (GTK_IS_SCROLLED_WINDOW (plugin->gobj()) || GTK_IS_BOX (plugin->gobj())) continue;
-
                                 // check if the x position of the mouse is within the plugin
-                                plugin->get_window()->get_device_position (Gdk::Display::get_default()->get_default_seat()->get_pointer (), x, y, mod);
                                 Gtk::Allocation alloc = plugin->get_allocation ();
 
                                 if (x >= alloc.get_x () && x <= alloc.get_x () + alloc.get_width())
                                 {
                                     conf_plugin = plugin->get_name();
-                                    if (conf_plugin.substr (0,5) != "gtkmm") cplug.set_sensitive (true);
+                                    if (conf_plugin == "spacing") cplug.hide ();
+                                    else cplug.show ();
+                                    if (can_configure (conf_plugin.c_str())) cplug.set_sensitive (true);
                                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj()), GTK_WIDGET (menu.gobj()));
                                     return true;
                                 }
@@ -326,6 +325,7 @@ class WayfirePanel::impl
                         }
                     }
                     // not matched any widgets - on the empty area of the bar...
+                    cplug.hide ();
                     show_menu_with_kbd (GTK_WIDGET (window->gobj()), GTK_WIDGET (menu.gobj()));
                     return true;
                 }

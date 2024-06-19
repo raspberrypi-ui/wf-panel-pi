@@ -13,6 +13,7 @@ extern "C" {
     };
     const char *display_name (void) { return N_("CPU Temp"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *plugin_name = "cputemp";
 }
 
 void WayfireCPUTemp::bar_pos_changed_cb (void)
@@ -57,7 +58,7 @@ void WayfireCPUTemp::init (Gtk::HBox *container)
 {
     /* Create the button */
     plugin = std::make_unique <Gtk::Button> ();
-    plugin->set_name ("cputemp");
+    plugin->set_name (plugin_name);
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */

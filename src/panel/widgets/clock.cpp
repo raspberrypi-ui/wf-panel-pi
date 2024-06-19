@@ -10,6 +10,7 @@ extern "C" {
     };
     const char *display_name (void) { return N_("Clock"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *plugin_name = "clock";
 }
 
 bool WayfireClock::update_label ()
@@ -43,7 +44,7 @@ void WayfireClock::init(Gtk::HBox *container)
 {
     /* Create the button */
     plugin = std::make_unique <Gtk::Button> ();
-    plugin->set_name ("clock");
+    plugin->set_name (plugin_name);
     container->pack_start (*plugin, false, false);
 
     plugin->add (label);

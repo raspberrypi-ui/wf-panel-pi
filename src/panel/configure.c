@@ -101,7 +101,7 @@ static void display_name (const char *type, char **name)
 
 /* Helper function to determine whether a particular widget has a config table*/
 
-gboolean can_configure (const char *type)
+int can_configure (const char *type)
 {
     char *libname;
     void *wid_lib;

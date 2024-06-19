@@ -8,10 +8,12 @@ extern "C" {
     };
     const char *display_name (void) { return N_("System Tray"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *plugin_name = "tray";
 }
 
 void WayfireStatusNotifier::init(Gtk::HBox *container)
 {
+    icons_hbox.set_name (plugin_name);
     icons_hbox.set_spacing(5);
     container->add(icons_hbox);
 }
