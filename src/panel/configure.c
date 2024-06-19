@@ -617,28 +617,31 @@ static void read_config (void)
 
     // add any unused widgets to the list store so they can be added by the user
     plugind = opendir (PLUGIN_PATH);
-    while ((dir = readdir (plugind)) != NULL)
+    if (plugind)
     {
-        if (strncmp (dir->d_name, "lib", 3) || strncmp (dir->d_name + strlen (dir->d_name) - 3, ".so", 3)) continue;
-        if (!strcmp (dir->d_name, "libnotify.so")) continue;
-        token = g_strdup_printf (dir->d_name + 3);
-        *(token + strlen (token) - 3) = 0;
-
-        found = FALSE;
-        gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
-        if (!found)
+        while ((dir = readdir (plugind)) != NULL)
         {
-            display_name (token, &name);
-            gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, name,
-                COL_ID, token,
-                COL_INDEX, 0,
-                -1);
-            g_free (name);
+            if (strncmp (dir->d_name, "lib", 3) || strncmp (dir->d_name + strlen (dir->d_name) - 3, ".so", 3)) continue;
+            if (!strcmp (dir->d_name, "libnotify.so")) continue;
+            token = g_strdup_printf (dir->d_name + 3);
+            *(token + strlen (token) - 3) = 0;
+
+            found = FALSE;
+            gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
+            if (!found)
+            {
+                display_name (token, &name);
+                gtk_list_store_insert_with_values (widgets, NULL, -1,
+                    COL_NAME, name,
+                    COL_ID, token,
+                    COL_INDEX, 0,
+                    -1);
+                g_free (name);
+            }
+            g_free (token);
         }
-        g_free (token);
+        closedir (plugind);
     }
-    closedir (plugind);
 
     // always add spacing
     display_name ("spacing0", &name);
