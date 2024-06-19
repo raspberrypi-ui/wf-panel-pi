@@ -28,6 +28,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef CONFIGURE_H
 #define CONFIGURE_H
 
+#define PLUGIN_PATH "/usr/lib/aarch64-linux-gnu/wfpanel/"
+
 typedef enum {
     CONF_NONE,
     CONF_BOOL,

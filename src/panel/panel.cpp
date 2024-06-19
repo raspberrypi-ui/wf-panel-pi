@@ -23,24 +23,6 @@ extern "C" {
 #include "panel.hpp"
 #include "gtk-utils.hpp"
 #include "widgets/spacing.hpp"
-#if 0
-#include "widgets/clock.hpp"
-#include "widgets/launchers.hpp"
-#include "widgets/volumepulse.hpp"
-#include "widgets/smenu.hpp"
-#include "widgets/netman.hpp"
-#include "widgets/bluetooth.hpp"
-#include "widgets/ejecter.hpp"
-#include "widgets/updater.hpp"
-#include "widgets/cpu.hpp"
-#include "widgets/cputemp.hpp"
-#include "widgets/gpu.hpp"
-#include "widgets/power.hpp"
-#include "widgets/batt.hpp"
-#include "widgets/notify.hpp"
-#include "widgets/window-list/window-list.hpp"
-#include "widgets/tray/tray.hpp"
-#endif
 #include "wf-autohide-window.hpp"
 
 extern "C" {
@@ -412,7 +394,7 @@ class WayfirePanel::impl
 
         if (name != "none")
         {
-            char *libname = g_strdup_printf ("/usr/lib/aarch64-linux-gnu/lib%s.so", name.c_str());
+            char *libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", name.c_str());
             printf ("Loading plugin %s...\n", libname);
             void *wid = dlopen (libname, RTLD_LAZY);
             g_free (libname);

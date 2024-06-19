@@ -42,8 +42,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COL_ID      1
 #define COL_INDEX   2
 
-#define PLUGIN_PATH "/usr/lib/aarch64-linux-gnu/wfpanel/"
-
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
@@ -640,7 +638,6 @@ static void read_config (void)
         }
         g_free (token);
     }
-    g_free (strval);
     closedir (plugind);
 
     // always add spacing
