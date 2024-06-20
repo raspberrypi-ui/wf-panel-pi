@@ -1,5 +1,6 @@
-widget_sources = files(
-  'widgets/spacer.cpp'
+panel_sources = files(
+  'panel.cpp',
+  'spacer.cpp'
 )
 
 util_sources = files(
@@ -30,7 +31,7 @@ proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir
 
 deps = [gtkmm, wayland_client, wf_protos, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk, input, glm, evdev, libxml2]
 
-executable('wf-panel-pi', ['panel.cpp'] + widget_sources + util_sources + config_sources,
+executable('wf-panel-pi', panel_sources + util_sources + config_sources,
         dependencies: deps,
         install: true,
         export_dynamic: true,
@@ -321,7 +322,7 @@ shared_module(tray_name, tray_sources,
 notify_name = 'notify'
 
 notify_sources = files(
-  'widgets/notify.cpp'
+  'widgets/notify/notify.cpp'
 )
 
 shared_module(notify_name, notify_sources,
@@ -335,7 +336,7 @@ shared_module(notify_name, notify_sources,
 spacing_name = 'spacing'
 
 spacing_sources = files(
-  'widgets/spacing.cpp'
+  'widgets/spacing/spacing.cpp'
 )
 
 shared_module(spacing_name, spacing_sources,

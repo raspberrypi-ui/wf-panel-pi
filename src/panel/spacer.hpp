@@ -1,7 +1,7 @@
 #ifndef WIDGET_SPACER_HPP
 #define WIDGET_SPACER_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 
 class WayfireSpacing : public WayfireWidget
 {

@@ -1,4 +1,4 @@
-#include "../widget.hpp"
+#include <widget.hpp>
 
 extern "C" {
     static constexpr conf_table_t conf_table[3] = {
