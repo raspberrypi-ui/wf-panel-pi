@@ -11,7 +11,7 @@ util_sources = files(
   'configure.c',
   'notification.c',
   'lxutils.c',
-  'widgets/launcher.c'
+  'launcher.c'
 )
 
 config_sources = files(

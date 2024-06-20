@@ -62,7 +62,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fcntl.h>
 
 #include "menu.h"
-#include "../launcher.h"
+#include "launcher.h"
 //#include "plugin.h"
 
 const char *logout_cmd = "lxde-pi-shutdown-helper";

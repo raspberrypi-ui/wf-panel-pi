@@ -11,7 +11,7 @@
 #include <libfm/fm-gtk.h>
 #include <sys/time.h>
 extern "C" {
-#include "widgets/launcher.h"
+#include "launcher.h"
 }
 
 std::string WayfireShellApp::get_config_file()
