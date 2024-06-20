@@ -2,6 +2,9 @@
 #include "ejecter.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireEjecter; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[2] = {
         {CONF_BOOL, "autohide", N_("Hide icon when no devices")},
         {CONF_NONE,  NULL,       NULL}
@@ -69,12 +72,4 @@ WayfireEjecter::~WayfireEjecter()
 {
     icon_timer.disconnect ();
     ejecter_destructor (ej);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireEjecter;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

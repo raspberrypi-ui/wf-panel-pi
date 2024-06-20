@@ -3,6 +3,9 @@
 #include "clock.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireClock; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[3] = {
         {CONF_STRING,   "format",   N_("Display format")},
         {CONF_STRING,   "font",     N_("Display font")},
@@ -74,12 +77,4 @@ void WayfireClock::init(Gtk::HBox *container)
 WayfireClock::~WayfireClock()
 {
     timeout.disconnect ();
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireClock;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

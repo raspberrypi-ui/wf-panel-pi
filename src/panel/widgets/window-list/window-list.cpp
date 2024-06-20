@@ -7,6 +7,9 @@
 #include "panel.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireWindowList; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[2] = {
         {CONF_INT,  "max_width",    N_("Maximum width of task button")},
         {CONF_NONE, NULL,           NULL}
@@ -313,12 +316,4 @@ WayfireWindowList::WayfireWindowList()
 WayfireWindowList::~WayfireWindowList()
 {
     zwlr_foreign_toplevel_manager_v1_destroy(manager);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireWindowList;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

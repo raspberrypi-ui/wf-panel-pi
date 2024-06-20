@@ -2,6 +2,9 @@
 #include "updater.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireUpdater; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[2] = {
         {CONF_INT,  "interval", N_("Hours between checks for updates")},
         {CONF_NONE, NULL,       NULL}
@@ -69,12 +72,4 @@ WayfireUpdater::~WayfireUpdater()
 {
     icon_timer.disconnect ();
     updater_destructor (up);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireUpdater;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

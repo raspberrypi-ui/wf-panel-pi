@@ -2,6 +2,9 @@
 #include "gpu.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireGPU; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[4] = {
         {CONF_BOOL,     "show_percentage",  N_("Show usage as percentage")},
         {CONF_COLOUR,   "foreground",       N_("Foreground colour")},
@@ -72,12 +75,4 @@ WayfireGPU::~WayfireGPU()
 {
     icon_timer.disconnect ();
     gpu_destructor (gpu);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireGPU;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

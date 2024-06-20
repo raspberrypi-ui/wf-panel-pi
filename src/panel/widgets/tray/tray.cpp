@@ -1,6 +1,9 @@
 #include "tray.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireStatusNotifier; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[3] = {
         {CONF_INT,  "smooth_scrolling_threshold",  N_("Smooth scrolling threshold")},
         {CONF_BOOL, "menu_on_middle_click",        N_("Middle button activates menu")},
@@ -32,12 +35,4 @@ void WayfireStatusNotifier::add_item(const Glib::ustring & service)
 void WayfireStatusNotifier::remove_item(const Glib::ustring & service)
 {
     items.erase(service);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireStatusNotifier;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

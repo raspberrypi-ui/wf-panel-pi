@@ -2,6 +2,9 @@
 #include "netman.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireNetman; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[1] = {
         {CONF_NONE, NULL, NULL}
     };
@@ -58,12 +61,4 @@ WayfireNetman::~WayfireNetman()
 {
     icon_timer.disconnect ();
     netman_destructor (nm);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireNetman;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

@@ -2,6 +2,9 @@
 #include "cpu.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireCPU; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[4] = {
         {CONF_BOOL,     "show_percentage",  N_("Show usage as percentage")},
         {CONF_COLOUR,   "foreground",       N_("Foreground colour")},
@@ -72,12 +75,4 @@ WayfireCPU::~WayfireCPU()
 {
     icon_timer.disconnect ();
     cpu_destructor (cpu);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireCPU;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

@@ -2,6 +2,9 @@
 #include "batt.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireBatt; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[2] = {
         {CONF_INT,  "batt_num", N_("Battery number to monitor")},
         {CONF_NONE, NULL,       NULL}
@@ -57,12 +60,4 @@ WayfireBatt::~WayfireBatt()
 {
     icon_timer.disconnect ();
     batt_destructor (pt);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireBatt;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

@@ -2,6 +2,9 @@
 #include "smenu.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireSmenu; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[3] = {
         {CONF_INT,  "search_height",    N_("Search window height")},
         {CONF_BOOL, "search_fixed",     N_("Fix size of search window")},
@@ -71,12 +74,4 @@ WayfireSmenu::~WayfireSmenu()
 {
     icon_timer.disconnect ();
     menu_destructor (m);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireSmenu;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

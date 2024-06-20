@@ -2,6 +2,9 @@
 #include "cputemp.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireCPUTemp; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[7] = {
         {CONF_COLOUR,   "foreground",   N_("Foreground colour")},
         {CONF_COLOUR,   "background",   N_("Background colour")},
@@ -88,12 +91,4 @@ WayfireCPUTemp::~WayfireCPUTemp()
 {
     icon_timer.disconnect ();
     cputemp_destructor (cput);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireCPUTemp;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

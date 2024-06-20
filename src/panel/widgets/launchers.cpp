@@ -13,6 +13,9 @@ extern "C" {
 #include "launcher.h"
 #include "lxutils.h"
 
+    WayfireWidget *create () { return new WayfireLaunchers; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[2] = {
         {CONF_INT,  "spacing",  N_("Icon spacing")},
         {CONF_NONE, NULL,       NULL}
@@ -384,12 +387,4 @@ void WayfireLaunchers::handle_config_reload()
     }
 
     box.show_all();
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireLaunchers;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

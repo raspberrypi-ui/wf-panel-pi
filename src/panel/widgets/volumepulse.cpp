@@ -2,6 +2,9 @@
 #include "volumepulse.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireVolumepulse; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[1] = {
         {CONF_NONE, NULL, NULL}
     };
@@ -66,12 +69,4 @@ WayfireVolumepulse::~WayfireVolumepulse()
 {
     icon_timer.disconnect ();
     volumepulse_destructor (vol);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireVolumepulse;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }

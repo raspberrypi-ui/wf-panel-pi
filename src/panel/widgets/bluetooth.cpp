@@ -2,6 +2,9 @@
 #include "bluetooth.hpp"
 
 extern "C" {
+    WayfireWidget *create () { return new WayfireBluetooth; }
+    void destroy (WayfireWidget *w) { delete w; }
+
     static constexpr conf_table_t conf_table[1] = {
         {CONF_NONE, NULL, NULL}
     };
@@ -60,12 +63,4 @@ WayfireBluetooth::~WayfireBluetooth()
 {
     icon_timer.disconnect ();
     bluetooth_destructor (bt);
-}
-
-extern "C" WayfireWidget *create () {
-    return new WayfireBluetooth;
-}
-
-extern "C" void destroy (WayfireWidget *w) {
-    delete w;
 }
