@@ -19,7 +19,6 @@ extern "C" {
     };
     const char *display_name (void) { return N_("Launcher"); };
     const conf_table_t *config_params (void) { return conf_table; };
-    const char *plugin_name = "launchers";
 }
 
 // create launcher from a .desktop file or app-id
@@ -369,7 +368,7 @@ launcher_container WayfireLaunchers::get_launchers_from_config()
 
 void WayfireLaunchers::init(Gtk::HBox *container)
 {
-    box.set_name (plugin_name);
+    box.set_name (PLUGIN_NAME);
     container->pack_start(box, false, false);
     handle_config_reload();
 }

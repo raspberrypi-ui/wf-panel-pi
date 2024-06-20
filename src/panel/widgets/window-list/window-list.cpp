@@ -13,7 +13,6 @@ extern "C" {
     };
     const char *display_name (void) { return N_("Window List"); };
     const conf_table_t *config_params (void) { return conf_table; };
-    const char *plugin_name = "window-list";
 }
 
 WayfireWindowListBox::WayfireWindowListBox() : Gtk::HBox()
@@ -202,7 +201,7 @@ void WayfireWindowList::init(Gtk::HBox *container)
     scrolled_window.signal_draw().connect_notify(
         sigc::mem_fun(this, &WayfireWindowList::on_draw));
 
-    scrolled_window.set_name (plugin_name);
+    scrolled_window.set_name (PLUGIN_NAME);
     box.set_homogeneous(true);
     scrolled_window.add(box);
     scrolled_window.set_propagate_natural_width(true);

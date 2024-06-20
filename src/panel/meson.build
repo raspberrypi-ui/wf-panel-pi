@@ -1,5 +1,3 @@
-gnome = import('gnome')
-
 widget_sources = files(
   'widgets/spacing.cpp'
 )
@@ -36,26 +34,40 @@ executable('wf-panel-pi', ['panel.cpp'] + widget_sources + util_sources + config
         export_dynamic: true
 )
 
+# clock widget
+
+clock_name = 'clock'
+
 clock_sources = files(
   'widgets/clock.cpp',
   'widgets/clock/clock.c'
 )
 
-shared_module('clock', clock_sources,
+shared_module(clock_name, clock_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + clock_name + '"'
 )
+
+# launcher widget
+
+launchers_name = 'launchers'
 
 launchers_sources = files(
   'widgets/launchers.cpp'
 )
 
-shared_module('launchers', launchers_sources,
+shared_module(launchers_name, launchers_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + launchers_name + '"'
 )
+
+# volumepulse widget
+
+volumepulse_name = 'volumepulse'
 
 volumepulse_sources = files(
   'widgets/volumepulse.cpp',
@@ -66,11 +78,16 @@ volumepulse_sources = files(
   'widgets/volumepulse/bluetooth.c'
 )
 
-shared_module('volumepulse', volumepulse_sources,
+shared_module(volumepulse_name, volumepulse_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + volumepulse_name + '"'
 )
+
+# smenu widget
+
+smenu_name = 'smenu'
 
 smenu_sources = files(
   'widgets/smenu.cpp',
@@ -78,11 +95,16 @@ smenu_sources = files(
   'widgets/smenu/gtk-run.c'
 )
 
-shared_module('smenu', smenu_sources,
+shared_module(smenu_name, smenu_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + smenu_name + '"'
 )
+
+# netman widget
+
+netman_name = 'netman'
 
 netman_sources = files(
   'widgets/netman.cpp',
@@ -111,6 +133,8 @@ resource_data = files(
   'widgets/netman/info.ui'
 )
 
+gnome = import('gnome')
+
 netman_sources += gnome.compile_resources(
   'applet-resources',
   'widgets/netman/applet.gresource.xml',
@@ -118,55 +142,80 @@ netman_sources += gnome.compile_resources(
   source_dir: 'widgets/netman'
 )
 
-shared_module('netman', netman_sources,
+shared_module(netman_name, netman_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + netman_name + '"'
 )
+
+# bluetooth widget
+
+bluetooth_name = 'bluetooth'
 
 bluetooth_sources = files(
   'widgets/bluetooth.cpp',
   'widgets/bluetooth/bluetooth.c'
 )
 
-shared_module('bluetooth', bluetooth_sources,
+shared_module(bluetooth_name, bluetooth_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + bluetooth_name + '"'
 )
+
+# ejecter widget
+
+ejecter_name = 'ejecter'
 
 ejecter_sources = files(
   'widgets/ejecter.cpp',
   'widgets/ejecter/ejecter.c'
 )
 
-shared_module('ejecter', ejecter_sources,
+shared_module(ejecter_name, ejecter_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + ejecter_name + '"'
 )
+
+# updater widget
+
+updater_name = 'updater'
 
 updater_sources = files(
   'widgets/updater.cpp',
   'widgets/updater/updater.c'
 )
 
-shared_module('updater', updater_sources,
+shared_module(updater_name, updater_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + updater_name + '"'
 )
+
+# cpu widget
+
+cpu_name = 'cpu'
 
 cpu_sources = files(
   'widgets/cpu.cpp',
   'widgets/cpu/cpu.c'
 )
 
-shared_module('cpu', cpu_sources,
+shared_module(cpu_name, cpu_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + cpu_name + '"'
 )
+
+# cputemp widget
+
+cputemp_name = 'cputemp'
 
 cputemp_sources = files(
   'widgets/cputemp.cpp',
@@ -176,30 +225,45 @@ cputemp_sources = files(
 shared_module('cputemp', cputemp_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + cputemp_name + '"'
 )
+
+# gpu widget
+
+gpu_name = 'gpu'
 
 gpu_sources = files(
   'widgets/gpu.cpp',
   'widgets/gpu/gpu.c'
 )
 
-shared_module('gpu', gpu_sources,
+shared_module(gpu_name, gpu_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + gpu_name + '"'
 )
+
+# power widget
+
+power_name = 'power'
 
 power_sources = files(
   'widgets/power.cpp',
   'widgets/power/power.c'
 )
 
-shared_module('power', power_sources,
+shared_module(power_name, power_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + power_name + '"'
 )
+
+# batt widget
+
+batt_name = 'batt'
 
 batt_sources = files(
   'widgets/batt.cpp',
@@ -207,22 +271,32 @@ batt_sources = files(
   'widgets/batt/batt_sys.c'
 )
 
-shared_module('batt', batt_sources,
+shared_module(batt_name, batt_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + batt_name + '"'
 )
+
+# window-list widget
+
+window_list_name = 'window-list'
 
 window_list_sources = files(
   'widgets/window-list/window-list.cpp',
   'widgets/window-list/toplevel.cpp'
 )
 
-shared_module('window-list', window_list_sources,
+shared_module(window_list_name, window_list_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + window_list_name + '"'
 )
+
+# tray widget
+
+tray_name = 'tray'
 
 tray_sources = files(
   'widgets/tray/watcher.cpp',
@@ -231,16 +305,26 @@ tray_sources = files(
   'widgets/tray/host.cpp'
 )
 
-shared_module('tray', tray_sources,
+shared_module(tray_name, tray_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + tray_name + '"'
 )
 
-shared_module('notify', ['widgets/notify.cpp'],
+# notify widget
+
+notify_name = 'notify'
+
+notify_sources = files(
+  'widgets/notify.cpp'
+)
+
+shared_module(notify_name, notify_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel'
+        install_dir: get_option('libdir') / 'wfpanel',
+        cpp_args : '-DPLUGIN_NAME="' + notify_name + '"'
 )
 
 
