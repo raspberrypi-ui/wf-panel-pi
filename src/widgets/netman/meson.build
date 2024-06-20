@@ -22,7 +22,7 @@ sources = files(
 
 resource_data = files(
   '8021x.ui',
-  'connection-editor/ce-page-dsl.ui',
+  'ce-page-dsl.ui',
   'gsm-unlock.ui',
   'info.ui'
 )
@@ -33,7 +33,7 @@ sources += gnome.compile_resources(
   'applet-resources',
   'applet.gresource.xml',
   dependencies: resource_data,
-  source_dir: 'netman'
+  source_dir: '.'
 )
 
 shared_module(name, sources,

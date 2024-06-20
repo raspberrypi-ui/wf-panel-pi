@@ -313,7 +313,7 @@ pppoe_get_secrets (SecretsRequest *req, GError **error)
 
 	builder = gtk_builder_new ();
 
-	if (!gtk_builder_add_from_resource (builder, "/org/freedesktop/network-manager-applet/connection-editor/ce-page-dsl.ui", &tmp_error)) {
+	if (!gtk_builder_add_from_resource (builder, "/org/freedesktop/network-manager-applet/ce-page-dsl.ui", &tmp_error)) {
 		g_set_error (error,
 		             NM_SECRET_AGENT_ERROR,
 		             NM_SECRET_AGENT_ERROR_FAILED,
