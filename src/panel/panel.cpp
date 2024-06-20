@@ -395,17 +395,14 @@ class WayfirePanel::impl
         if (name != "none")
         {
             char *libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", name.c_str());
-            printf ("Loading plugin %s...\n", libname);
             void *wid = dlopen (libname, RTLD_LAZY);
             g_free (libname);
             if (wid)
             {
-                printf ("Loaded successfully\n");
                 create_t *create_widget = (create_t *) dlsym (wid, "create");
-                destroy_t *destroy_widget = (destroy_t *) dlsym (wid, "destroy");
                 return Widget (create_widget ());
             }
-            else printf ("Could not open shared library - %s\n", dlerror ());
+            else std::cerr << "Could not open plugin - " << dlerror () << std::endl;
         }
         return nullptr;
     }
