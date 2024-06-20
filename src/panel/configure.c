@@ -548,7 +548,6 @@ static void configure_plugin (GtkButton *, gpointer)
                     COL_ID, type,
                     -1);
                 g_free (name);
-                write_config ();
             }
             g_free (type);
         }
