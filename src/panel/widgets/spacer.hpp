@@ -1,5 +1,5 @@
-#ifndef WIDGET_SPACING_HPP
-#define WIDGET_SPACING_HPP
+#ifndef WIDGET_SPACER_HPP
+#define WIDGET_SPACER_HPP
 
 #include "../widget.hpp"
 
@@ -16,4 +16,4 @@ class WayfireSpacing : public WayfireWidget
 };
 
 
-#endif /* end of include guard: WIDGET_SPACING_HPP */
+#endif /* end of include guard: WIDGET_SPACER_HPP */

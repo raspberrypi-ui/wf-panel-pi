@@ -1,5 +1,5 @@
 widget_sources = files(
-  'widgets/spacing.cpp'
+  'widgets/spacer.cpp'
 )
 
 util_sources = files(
@@ -312,7 +312,7 @@ shared_module(tray_name, tray_sources,
         cpp_args : '-DPLUGIN_NAME="' + tray_name + '"'
 )
 
-# notify widget
+# notify widget - only for config dialog
 
 notify_name = 'notify'
 
@@ -323,8 +323,21 @@ notify_sources = files(
 shared_module(notify_name, notify_sources,
         dependencies: deps,
         install: true,
-        install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + notify_name + '"'
+        install_dir: get_option('libdir') / 'wfpanel'
+)
+
+# spacing widget - only for config dialog
+
+spacing_name = 'spacing'
+
+spacing_sources = files(
+  'widgets/spacing.cpp'
+)
+
+shared_module(spacing_name, spacing_sources,
+        dependencies: deps,
+        install: true,
+        install_dir: get_option('libdir') / 'wfpanel'
 )
 
 

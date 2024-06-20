@@ -62,6 +62,7 @@ static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, g
 static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+static void write_config (void);
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -372,7 +373,7 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 
 /* Launch customise dialog for plugin-specific options */
 
-void plugin_config_dialog (const char *type)
+int plugin_config_dialog (const char *type)
 {
     char *strval, *key, *user_file, *name;
     const conf_table_t *cptr;
@@ -381,6 +382,7 @@ void plugin_config_dialog (const char *type)
     GKeyFile *kf;
     GList *children, *elem;
     gsize len;
+    int space = -1;
     conf_table_t *(*func_config_params) (void);
     void *wid_lib;
 
@@ -388,6 +390,13 @@ void plugin_config_dialog (const char *type)
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
+
+    if (!strncmp (type, "spacing", 7))
+    {
+        // read the current spacing
+        sscanf (type, "spacing%d", &space);
+        type = "spacing";
+    }
 
     display_name (type, &name);
     strval = g_strdup_printf (_("Configure %s"), name);
@@ -429,7 +438,10 @@ void plugin_config_dialog (const char *type)
                                         break;
 
                     case CONF_INT :     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
-                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
+                                        if (space == -1)
+                                            gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
+                                        else
+                                            gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
                                         break;
 
                     case CONF_STRING :  control = gtk_entry_new ();
@@ -475,7 +487,12 @@ void plugin_config_dialog (const char *type)
             if (GTK_IS_SWITCH (control))
                 g_key_file_set_boolean (kf, "panel", gtk_widget_get_name (control), gtk_switch_get_active (GTK_SWITCH (control)));
             else if (GTK_IS_SPIN_BUTTON (control))
-                g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
+            {
+                if (space != -1)
+                    space = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
+                else
+                    g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
+            }
             else if (GTK_IS_ENTRY (control))
                 g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), gtk_entry_get_text (GTK_ENTRY (control)));
             else if (GTK_IS_COLOR_BUTTON (control))
@@ -498,44 +515,6 @@ void plugin_config_dialog (const char *type)
     }
 
     gtk_widget_destroy (cdlg);
-}
-
-static int space_config_dialog (int space)
-{
-    char *strval, *name;
-    GtkWidget *cdlg, *box, *hbox, *label, *control;
-
-    display_name ("spacing0", &name);
-    strval = g_strdup_printf (_("Configure %s"), name);
-    g_free (name);
-
-    cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-        _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
-    g_free (strval);
-    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
-    gtk_widget_set_margin_top (box, 10);
-    gtk_widget_set_margin_bottom (box, 10);
-    gtk_widget_set_margin_start (box, 10);
-    gtk_widget_set_margin_end (box, 10);
-    gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
-
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-    label = gtk_label_new (_("Width in pixels:"));
-    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-
-    control = gtk_spin_button_new_with_range (1, 100, 1);
-    gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
-    gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
-
-    gtk_container_add (GTK_CONTAINER (box), hbox);
-    gtk_widget_show_all (cdlg);
-
-    if (gtk_dialog_run (GTK_DIALOG (cdlg)) == GTK_RESPONSE_OK)
-    {
-        space = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
-    }
-
-    gtk_widget_destroy (cdlg);
     return space;
 }
 
@@ -553,19 +532,15 @@ static void configure_plugin (GtkButton *, gpointer)
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
             gtk_tree_model_get (mod, &iter, 1, &type, -1);
-            if (strncmp (type, "spacing", 7)) plugin_config_dialog (type);
-            else
+            index = plugin_config_dialog (type);
+            if (index != -1)
             {
+                // spacing is a special case...
                 gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
                 gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
 
-                // read the current spacing
-                sscanf (type, "spacing%d", &index);
-                g_free (type);
-
-                index = space_config_dialog (index);
-
                 // update both the widget type and the displayed name
+                g_free (type);
                 type = g_strdup_printf ("spacing%d", index);
                 display_name (type, &name);
                 gtk_list_store_set (widgets, &citer,
@@ -573,6 +548,7 @@ static void configure_plugin (GtkButton *, gpointer)
                     COL_ID, type,
                     -1);
                 g_free (name);
+                write_config ();
             }
             g_free (type);
         }

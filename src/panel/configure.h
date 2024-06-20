@@ -45,7 +45,7 @@ typedef struct {
 } conf_table_t;
 
 extern void open_config_dialog (void);
-extern void plugin_config_dialog (const char *type);
+extern int plugin_config_dialog (const char *type);
 extern int can_configure (const char *type);
 
 #endif

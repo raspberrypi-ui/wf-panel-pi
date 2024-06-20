@@ -22,7 +22,7 @@ extern "C" {
 
 #include "panel.hpp"
 #include "gtk-utils.hpp"
-#include "widgets/spacing.hpp"
+#include "widgets/spacer.hpp"
 #include "wf-autohide-window.hpp"
 
 extern "C" {
