@@ -1,11 +1,11 @@
 #ifndef WIDGETS_CPUTEMP_HPP
 #define WIDGETS_CPUTEMP_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "cputemp/cputemp.h"
+#include "cputemp.h"
 }
 
 class WayfireCPUTemp : public WayfireWidget

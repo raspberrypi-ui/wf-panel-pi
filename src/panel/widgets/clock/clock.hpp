@@ -1,12 +1,12 @@
 #ifndef WIDGETS_CLOCK_HPP
 #define WIDGETS_CLOCK_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 #include <gtkmm/label.h>
 
 extern "C" {
-#include "clock/clock.h"
+#include "clock.h"
 }
 
 class WayfireClock : public WayfireWidget

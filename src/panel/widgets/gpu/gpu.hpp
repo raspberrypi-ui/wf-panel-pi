@@ -1,11 +1,11 @@
 #ifndef WIDGETS_GPU_HPP
 #define WIDGETS_GPU_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "gpu/gpu.h"
+#include "gpu.h"
 }
 
 class WayfireGPU : public WayfireWidget

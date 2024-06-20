@@ -1,7 +1,7 @@
 #ifndef LAUNCHERS_HPP
 #define LAUNCHERS_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <vector>
 #include <giomm/desktopappinfo.h>
 #include <gdkmm/pixbuf.h>

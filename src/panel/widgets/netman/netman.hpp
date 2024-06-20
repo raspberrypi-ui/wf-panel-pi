@@ -1,14 +1,14 @@
-#ifndef WIDGETS_POWER_HPP
-#define WIDGETS_POWER_HPP
+#ifndef WIDGETS_NETMAN_HPP
+#define WIDGETS_NETMAN_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "power/power.h"
+#include "applet.h"
 }
 
-class WayfirePower : public WayfireWidget
+class WayfireNetman : public WayfireWidget
 {
     std::unique_ptr <Gtk::Button> plugin;
 
@@ -17,16 +17,16 @@ class WayfirePower : public WayfireWidget
     sigc::connection icon_timer;
 
     /* plugin */
-    PowerPlugin data;
-    PowerPlugin *pt;
+    NMApplet *nm;
 
   public:
 
     void init (Gtk::HBox *container) override;
-    virtual ~WayfirePower ();
+    void command (const char *cmd) override;
+    virtual ~WayfireNetman ();
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
 };
 
-#endif /* end of include guard: WIDGETS_POWER_HPP */
+#endif /* end of include guard: WIDGETS_NETMAN_HPP */

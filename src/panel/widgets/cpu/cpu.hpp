@@ -1,11 +1,11 @@
 #ifndef WIDGETS_CPU_HPP
 #define WIDGETS_CPU_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "cpu/cpu.h"
+#include "cpu.h"
 }
 
 class WayfireCPU : public WayfireWidget

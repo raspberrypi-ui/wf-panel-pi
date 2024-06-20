@@ -10,7 +10,7 @@
 #include <wf-shell-app.hpp>
 
 extern "C" {
-#include "launcher.h"
+#include "../launcher.h"
 #include "lxutils.h"
 
     WayfireWidget *create () { return new WayfireLaunchers; }

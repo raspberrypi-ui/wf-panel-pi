@@ -43,7 +43,7 @@ executable('wf-panel-pi', ['panel.cpp'] + widget_sources + util_sources + config
 clock_name = 'clock'
 
 clock_sources = files(
-  'widgets/clock.cpp',
+  'widgets/clock/clock.cpp',
   'widgets/clock/clock.c'
 )
 
@@ -59,7 +59,7 @@ shared_module(clock_name, clock_sources,
 launchers_name = 'launchers'
 
 launchers_sources = files(
-  'widgets/launchers.cpp'
+  'widgets/launchers/launchers.cpp'
 )
 
 shared_module(launchers_name, launchers_sources,
@@ -74,7 +74,7 @@ shared_module(launchers_name, launchers_sources,
 volumepulse_name = 'volumepulse'
 
 volumepulse_sources = files(
-  'widgets/volumepulse.cpp',
+  'widgets/volumepulse/volumepulse.cpp',
   'widgets/volumepulse/volumepulse.c',
   'widgets/volumepulse/micpulse.c',
   'widgets/volumepulse/commongui.c',
@@ -94,7 +94,7 @@ shared_module(volumepulse_name, volumepulse_sources,
 smenu_name = 'smenu'
 
 smenu_sources = files(
-  'widgets/smenu.cpp',
+  'widgets/smenu/smenu.cpp',
   'widgets/smenu/menu.c',
   'widgets/smenu/gtk-run.c'
 )
@@ -111,7 +111,7 @@ shared_module(smenu_name, smenu_sources,
 netman_name = 'netman'
 
 netman_sources = files(
-  'widgets/netman.cpp',
+  'widgets/netman/netman.cpp',
   'widgets/netman/netman.c',
   'widgets/netman/ap-menu-item.c',
   'widgets/netman/applet.c',
@@ -158,7 +158,7 @@ shared_module(netman_name, netman_sources,
 bluetooth_name = 'bluetooth'
 
 bluetooth_sources = files(
-  'widgets/bluetooth.cpp',
+  'widgets/bluetooth/bluetooth.cpp',
   'widgets/bluetooth/bluetooth.c'
 )
 
@@ -174,7 +174,7 @@ shared_module(bluetooth_name, bluetooth_sources,
 ejecter_name = 'ejecter'
 
 ejecter_sources = files(
-  'widgets/ejecter.cpp',
+  'widgets/ejecter/ejecter.cpp',
   'widgets/ejecter/ejecter.c'
 )
 
@@ -190,7 +190,7 @@ shared_module(ejecter_name, ejecter_sources,
 updater_name = 'updater'
 
 updater_sources = files(
-  'widgets/updater.cpp',
+  'widgets/updater/updater.cpp',
   'widgets/updater/updater.c'
 )
 
@@ -206,7 +206,7 @@ shared_module(updater_name, updater_sources,
 cpu_name = 'cpu'
 
 cpu_sources = files(
-  'widgets/cpu.cpp',
+  'widgets/cpu/cpu.cpp',
   'widgets/cpu/cpu.c'
 )
 
@@ -222,7 +222,7 @@ shared_module(cpu_name, cpu_sources,
 cputemp_name = 'cputemp'
 
 cputemp_sources = files(
-  'widgets/cputemp.cpp',
+  'widgets/cputemp/cputemp.cpp',
   'widgets/cputemp/cputemp.c'
 )
 
@@ -238,7 +238,7 @@ shared_module('cputemp', cputemp_sources,
 gpu_name = 'gpu'
 
 gpu_sources = files(
-  'widgets/gpu.cpp',
+  'widgets/gpu/gpu.cpp',
   'widgets/gpu/gpu.c'
 )
 
@@ -254,7 +254,7 @@ shared_module(gpu_name, gpu_sources,
 power_name = 'power'
 
 power_sources = files(
-  'widgets/power.cpp',
+  'widgets/power/power.cpp',
   'widgets/power/power.c'
 )
 
@@ -270,7 +270,7 @@ shared_module(power_name, power_sources,
 batt_name = 'batt'
 
 batt_sources = files(
-  'widgets/batt.cpp',
+  'widgets/batt/batt.cpp',
   'widgets/batt/batt.c',
   'widgets/batt/batt_sys.c'
 )

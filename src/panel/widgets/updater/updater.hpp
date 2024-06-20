@@ -1,14 +1,14 @@
-#ifndef WIDGETS_EJECTER_HPP
-#define WIDGETS_EJECTER_HPP
+#ifndef WIDGETS_UPDATER_HPP
+#define WIDGETS_UPDATER_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "ejecter/ejecter.h"
+#include "updater.h"
 }
 
-class WayfireEjecter : public WayfireWidget
+class WayfireUpdater : public WayfireWidget
 {
     std::unique_ptr <Gtk::Button> plugin;
 
@@ -16,21 +16,21 @@ class WayfireEjecter : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
     sigc::connection icon_timer;
 
-    WfOption <bool> autohide {"panel/ejecter_autohide"};
+    WfOption <int> interval {"panel/updater_interval"};
 
     /* plugin */
-    EjecterPlugin data;
-    EjecterPlugin *ej;
+    UpdaterPlugin data;
+    UpdaterPlugin *up;
 
   public:
 
     void init (Gtk::HBox *container) override;
     void command (const char *cmd) override;
-    virtual ~WayfireEjecter ();
+    virtual ~WayfireUpdater ();
     void icon_size_changed_cb (void);
     void bar_pos_changed_cb (void);
     bool set_icon (void);
     void settings_changed_cb (void);
 };
 
-#endif /* end of include guard: WIDGETS_EJECTER_HPP */
+#endif /* end of include guard: WIDGETS_UPDATER_HPP */

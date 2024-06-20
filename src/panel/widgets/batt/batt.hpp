@@ -1,11 +1,11 @@
 #ifndef WIDGETS_BATT_HPP
 #define WIDGETS_BATT_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "batt/batt.h"
+#include "batt.h"
 }
 
 class WayfireBatt : public WayfireWidget

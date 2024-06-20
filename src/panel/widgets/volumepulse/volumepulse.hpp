@@ -1,11 +1,11 @@
 #ifndef WIDGETS_VOLUMEPULSE_HPP
 #define WIDGETS_VOLUMEPULSE_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "volumepulse/volumepulse.h"
+#include "volumepulse.h"
 }
 
 class WayfireVolumepulse : public WayfireWidget

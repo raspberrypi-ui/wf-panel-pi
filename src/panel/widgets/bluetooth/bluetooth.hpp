@@ -1,11 +1,11 @@
 #ifndef WIDGETS_BLUETOOTH_HPP
 #define WIDGETS_BLUETOOTH_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "bluetooth/bluetooth.h"
+#include "bluetooth.h"
 }
 
 class WayfireBluetooth : public WayfireWidget

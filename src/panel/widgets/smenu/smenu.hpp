@@ -1,11 +1,11 @@
 #ifndef WIDGETS_SMENU_HPP
 #define WIDGETS_SMENU_HPP
 
-#include "../widget.hpp"
+#include <widget.hpp>
 #include <gtkmm/button.h>
 
 extern "C" {
-#include "smenu/menu.h"
+#include "menu.h"
 }
 
 class WayfireSmenu : public WayfireWidget
