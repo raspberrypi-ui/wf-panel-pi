@@ -1,14 +1,14 @@
-clock_name = 'clock'
+name = 'clock'
 
-clock_sources = files(
+sources = files(
   'clock.cpp',
   'clock.c'
 )
 
-shared_module(clock_name, clock_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + clock_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

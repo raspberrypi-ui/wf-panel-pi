@@ -1,14 +1,14 @@
-window_list_name = 'window-list'
+name = 'window-list'
 
-window_list_sources = files(
+sources = files(
   'window-list.cpp',
   'toplevel.cpp'
 )
 
-shared_module(window_list_name, window_list_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + window_list_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

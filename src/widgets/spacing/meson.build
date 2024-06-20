@@ -1,10 +1,10 @@
-spacing_name = 'spacing'
+name = 'spacing'
 
-spacing_sources = files(
+sources = files(
   'spacing.cpp'
 )
 
-shared_module(spacing_name, spacing_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',

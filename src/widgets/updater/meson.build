@@ -1,14 +1,14 @@
-updater_name = 'updater'
+name = 'updater'
 
-updater_sources = files(
+sources = files(
   'updater.cpp',
   'updater.c'
 )
 
-shared_module(updater_name, updater_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + updater_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

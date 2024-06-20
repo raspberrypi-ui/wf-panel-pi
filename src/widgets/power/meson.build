@@ -1,14 +1,14 @@
-power_name = 'power'
+name = 'power'
 
-power_sources = files(
+sources = files(
   'power.cpp',
   'power.c'
 )
 
-shared_module(power_name, power_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + power_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

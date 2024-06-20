@@ -1,6 +1,6 @@
-netman_name = 'netman'
+name = 'netman'
 
-netman_sources = files(
+sources = files(
   'netman.cpp',
   'netman.c',
   'ap-menu-item.c',
@@ -29,17 +29,17 @@ resource_data = files(
 
 gnome = import('gnome')
 
-netman_sources += gnome.compile_resources(
+sources += gnome.compile_resources(
   'applet-resources',
   'applet.gresource.xml',
   dependencies: resource_data,
   source_dir: 'netman'
 )
 
-shared_module(netman_name, netman_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + netman_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

@@ -1,6 +1,6 @@
-volumepulse_name = 'volumepulse'
+name = 'volumepulse'
 
-volumepulse_sources = files(
+sources = files(
   'volumepulse.cpp',
   'volumepulse.c',
   'micpulse.c',
@@ -9,10 +9,10 @@ volumepulse_sources = files(
   'bluetooth.c'
 )
 
-shared_module(volumepulse_name, volumepulse_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + volumepulse_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

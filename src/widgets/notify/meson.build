@@ -1,10 +1,10 @@
-notify_name = 'notify'
+name = 'notify'
 
-notify_sources = files(
+sources = files(
   'notify.cpp'
 )
 
-shared_module(notify_name, notify_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',

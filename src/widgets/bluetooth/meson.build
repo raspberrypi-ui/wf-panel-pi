@@ -1,14 +1,14 @@
-bluetooth_name = 'bluetooth'
+name = 'bluetooth'
 
-bluetooth_sources = files(
+sources = files(
   'bluetooth.cpp',
   'bluetooth.c'
 )
 
-shared_module(bluetooth_name, bluetooth_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + bluetooth_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

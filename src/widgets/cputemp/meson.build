@@ -1,14 +1,14 @@
-cputemp_name = 'cputemp'
+name = 'cputemp'
 
-cputemp_sources = files(
+sources = files(
   'cputemp.cpp',
   'cputemp.c'
 )
 
-shared_module('cputemp', cputemp_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + cputemp_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )

@@ -1,15 +1,15 @@
-smenu_name = 'smenu'
+name = 'smenu'
 
-smenu_sources = files(
+sources = files(
   'smenu.cpp',
   'menu.c',
   'gtk-run.c'
 )
 
-shared_module(smenu_name, smenu_sources,
+shared_module(name, sources,
         dependencies: deps,
         install: true,
         install_dir: get_option('libdir') / 'wfpanel',
-        cpp_args : '-DPLUGIN_NAME="' + smenu_name + '"',
+        cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )
