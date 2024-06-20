@@ -26,12 +26,16 @@ config_sources = files(
    'config/compound-option.cpp',
 )
 
+proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wfpanel/"'
+
 deps = [gtkmm, wayland_client, wf_protos, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk, input, glm, evdev, libxml2]
 
 executable('wf-panel-pi', ['panel.cpp'] + widget_sources + util_sources + config_sources,
         dependencies: deps,
         install: true,
-        export_dynamic: true
+        export_dynamic: true,
+        c_args : proj_args,
+        cpp_args : proj_args
 )
 
 # clock widget
