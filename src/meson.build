@@ -1,3 +1,5 @@
+incdir = include_directories('panel')
+
 subdir('panel')
 subdir('widgets')
 
