@@ -341,7 +341,7 @@ class WayfirePanel::impl
 
     void do_plugin_configure()
     {
-        if (conf_plugin.substr (0,5) != "gtkmm") plugin_config_dialog (conf_plugin.c_str());
+        plugin_config_dialog (conf_plugin.c_str());
     }
 
     void do_notify_configure()
