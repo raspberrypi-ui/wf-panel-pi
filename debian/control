@@ -8,7 +8,7 @@ Build-Depends: debhelper-compat (= 13), meson, wayland-protocols, libgtkmm-3.0-d
  libmenu-cache-dev, libfm-gtk-dev, libwnck-3-dev, libsecret-1-dev (>= 0.18),
  libnm-dev (>= 1.15), libnma-dev (>= 1.8.30-1+rpt1), libnotify-dev (>= 0.7),
  libpackagekit-glib2-dev, libgtk-3-dev (>= 3.24), libudev-dev, libdbusmenu-gtk3-dev,
- libevdev-dev, dh-exec
+ libevdev-dev
 Standards-Version: 4.5.1
 Homepage: <insert the upstream URL, if relevant>
 Rules-Requires-Root: no
@@ -17,7 +17,8 @@ Package: wf-panel-pi
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libwayland-client0,
  libgtkmm-3.0-1v5 (>=3.24), libpulse0, libgtk-layer-shell0 (>= 0.6.0),
- libgtk-3-0 (>= 3.24), libfm-modules, eject, lxmenu-data, packagekit, raspi-config, libudev1
+ libgtk-3-0 (>= 3.24), libfm-modules, eject, lxmenu-data, packagekit, raspi-config,
+ libudev1, gui-updater
 Recommends: pulseaudio, pipewire, pipewire-pulse, pi-bluetooth, pulseaudio-module-bluetooth,
  libspa-0.2-bluetooth, lp-connection-editor
 Description: Raspberry Pi desktop panel for Wayfire
