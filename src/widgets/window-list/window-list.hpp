@@ -1,7 +1,7 @@
 #ifndef WIDGETS_WINDOW_LIST_HPP
 #define WIDGETS_WINDOW_LIST_HPP
 
-#include "../../widget.hpp"
+#include "widget.hpp"
 #include "panel.hpp"
 #include <wlr-foreign-toplevel-management-unstable-v1-client-protocol.h>
 

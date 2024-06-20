@@ -1,4 +1,5 @@
 subdir('panel')
+subdir('widgets')
 subdir('installer')
 
 pkgconfig = import('pkgconfig')

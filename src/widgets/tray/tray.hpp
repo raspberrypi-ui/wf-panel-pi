@@ -2,7 +2,7 @@
 #define TRAY_TRAY_HPP
 
 #include "item.hpp"
-#include "widgets/tray/host.hpp"
+#include "host.hpp"
 
 #include <widget.hpp>
 
