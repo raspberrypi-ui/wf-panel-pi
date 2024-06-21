@@ -3,8 +3,8 @@
 #include "config/log.hpp"
 #include "config/compound-option.hpp"
 
-#include "section-impl.hpp"
-#include "option-impl.hpp"
+#include "config/section-impl.hpp"
+#include "config/option-impl.hpp"
 
 static stdx::optional<const xmlChar*> extract_value(xmlNodePtr node,
     std::string value_name)

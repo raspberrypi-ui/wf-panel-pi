@@ -32,8 +32,7 @@ gnome = import('gnome')
 sources += gnome.compile_resources(
   'applet-resources',
   'applet.gresource.xml',
-  dependencies: resource_data,
-  source_dir: '.'
+  dependencies: resource_data
 )
 
 shared_module(name, sources,

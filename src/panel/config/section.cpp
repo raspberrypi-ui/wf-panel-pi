@@ -1,5 +1,5 @@
 #include <stdexcept>
-#include "section-impl.hpp"
+#include "config/section-impl.hpp"
 
 wf::config::section_t::section_t(const std::string& name)
 {

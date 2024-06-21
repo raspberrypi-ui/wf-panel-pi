@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <vector>
 
-#include "option-impl.hpp"
+#include "config/option-impl.hpp"
 #include "config/log.hpp"
 
 std::string wf::config::option_base_t::get_name() const

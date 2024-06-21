@@ -8,7 +8,7 @@
 #include <cassert>
 #include <set>
 
-#include "option-impl.hpp"
+#include "config/option-impl.hpp"
 
 #include <sys/file.h>
 #include <fcntl.h>

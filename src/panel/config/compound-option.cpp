@@ -1,6 +1,6 @@
 #include "config/compound-option.hpp"
 #include "config/xml.hpp"
-#include "option-impl.hpp"
+#include "config/option-impl.hpp"
 
 using namespace wf::config;
 

@@ -94,7 +94,7 @@ static gboolean display_name (const char *type, char **name)
         func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
         if (!dlerror ())
         {
-            *name = g_strdup_printf (_(func_display_name()));
+            *name = g_strdup (_(func_display_name()));
             res = TRUE;
         }
         else
@@ -604,7 +604,7 @@ static void read_config (void)
         {
             if (strncmp (dir->d_name, "lib", 3) || strncmp (dir->d_name + strlen (dir->d_name) - 3, ".so", 3)) continue;
             if (!strcmp (dir->d_name, "libnotify.so")) continue;
-            token = g_strdup_printf (dir->d_name + 3);
+            token = g_strdup (dir->d_name + 3);
             *(token + strlen (token) - 3) = 0;
 
             found = FALSE;

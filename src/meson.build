@@ -1,4 +1,4 @@
-incdir = include_directories('panel')
+incdir = include_directories('api')
 
 subdir('panel')
 subdir('widgets')
