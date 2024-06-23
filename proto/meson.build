@@ -35,3 +35,19 @@ wf_protos = declare_dependency(
 	link_with: lib_wl_protos,
 	sources: wl_protos_headers,
 )
+
+custom_target ('wayfire-shell-unstable-v2-client-protocol.h',
+	input : 'wayfire-shell-unstable-v2.xml',
+	output : 'wayfire-shell-unstable-v2-client-protocol.h',
+	command : [ wayland_scanner, 'client-header', '@INPUT@', '@OUTPUT@'],
+	install : true,
+	install_dir: get_option('includedir') + '/wf-panel-pi/'
+)
+
+custom_target ('wlr-foreign-toplevel-management-unstable-v1-client-protocol.h',
+	input : 'wlr-foreign-toplevel-management-unstable-v1.xml',
+	output : 'wlr-foreign-toplevel-management-unstable-v1-client-protocol.h',
+	command : [ wayland_scanner, 'client-header', '@INPUT@', '@OUTPUT@'],
+	install : true,
+	install_dir: get_option('includedir') + '/wf-panel-pi/'
+)
