@@ -23,3 +23,9 @@ Recommends: pulseaudio, pipewire, pipewire-pulse, pi-bluetooth, pulseaudio-modul
  libspa-0.2-bluetooth, lp-connection-editor
 Description: Raspberry Pi desktop panel for Wayfire
  Raspberry Pi desktop panel based on wf-shell
+
+Package: wf-panel-pi-dev
+Architecture: any
+Depends: ${misc:Depends}, wf-panel-pi
+Description: Raspberry Pi desktop panel for Wayfire - plugin API
+ API files for plugins for Raspberry Pi desktop panel based on wf-shell
