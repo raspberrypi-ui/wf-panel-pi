@@ -623,15 +623,6 @@ static void read_config (void)
         }
         closedir (plugind);
     }
-
-    // always add spacing
-    display_name ("spacing0", &name);
-    gtk_list_store_insert_with_values (widgets, NULL, -1,
-        COL_NAME, name,
-        COL_ID, "spacing0",
-        COL_INDEX, 0,
-        -1);
-    g_free (name);
 }
 
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
