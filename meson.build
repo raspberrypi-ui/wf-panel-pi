@@ -1,16 +1,16 @@
 project(
-	'wf-panel-pi',
+    'wf-panel-pi',
     'c',
-	'cpp',
-	version: '0.8.0',
-	license: 'MIT',
-	meson_version: '>=0.51.0',
-	default_options: [
-		'cpp_std=c++17',
+    'cpp',
+    version: '0.8.0',
+    license: 'MIT',
+    meson_version: '>=0.51.0',
+    default_options: [
+        'cpp_std=c++17',
         'c_std=c11',
-		'warning_level=2',
-		'werror=false',
-	],
+        'warning_level=2',
+        'werror=false',
+    ],
 )
 
 wayland_client = dependency('wayland-client')
@@ -20,10 +20,10 @@ gtklayershell  = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['
 libpulse       = dependency('libpulse')
 menu_cache     = dependency('libmenu-cache')
 libfm          = dependency('libfm-gtk3')
-netman	       = dependency('libnm')
-nma	       = dependency('libnma')
-secret	       = dependency('libsecret-1')
-notify	       = dependency('libnotify')
+netman         = dependency('libnm')
+nma            = dependency('libnma')
+secret         = dependency('libsecret-1')
+notify         = dependency('libnotify')
 packagekit     = dependency('packagekit-glib2')
 udev           = dependency('libudev')
 dbusmenu_gtk   = dependency('dbusmenu-gtk3-0.4')
@@ -62,3 +62,18 @@ subdir('proto')
 subdir('data')
 subdir('src')
 subdir('po')
+
+pkgconfig = import('pkgconfig')
+pkgconfig.generate(
+    version:      meson.project_version(),
+    filebase:     meson.project_name(),
+    name:         meson.project_name(),
+    description: 'Panel for Raspberry Pi Wayland desktop',
+    requires:     gtkmm,
+    subdirs:     'wf-panel-pi',
+    variables:    ['metadatadir=' + metadata_dir,
+                   'uidir=' + ui_dir,
+                   'sysconfdir=' + sysconf_dir,
+                   'plugindir=${libdir}/wf-panel-pi',
+                   'icondir=' + icon_dir]
+    )
