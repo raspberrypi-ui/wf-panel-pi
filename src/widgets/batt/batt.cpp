@@ -39,8 +39,7 @@ void WayfireBatt::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    memset (&data, 0, sizeof (PtBattPlugin));
-    pt = &data;
+    pt = (PtBattPlugin *) calloc (1, sizeof (PtBattPlugin));
     pt->plugin = (GtkWidget *)((*plugin).gobj());
     pt->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireBatt::set_icon));

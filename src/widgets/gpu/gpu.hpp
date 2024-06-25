@@ -21,7 +21,6 @@ class WayfireGPU : public WayfireWidget
     WfOption <std::string> background_colour {"panel/gpu_background"};
 
     /* plugin */
-    GPUPlugin data;
     GPUPlugin *gpu;
 
   public:

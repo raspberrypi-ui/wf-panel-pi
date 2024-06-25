@@ -19,7 +19,6 @@ class WayfireUpdater : public WayfireWidget
     WfOption <int> interval {"panel/updater_interval"};
 
     /* plugin */
-    UpdaterPlugin data;
     UpdaterPlugin *up;
 
   public:

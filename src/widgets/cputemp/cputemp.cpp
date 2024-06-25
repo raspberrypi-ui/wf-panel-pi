@@ -64,8 +64,7 @@ void WayfireCPUTemp::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    memset (&data, 0, sizeof (CPUTempPlugin));
-    cput = &data;
+    cput = (CPUTempPlugin *) calloc (1, sizeof (CPUTempPlugin));
     cput->plugin = (GtkWidget *)((*plugin).gobj());
     cput->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireCPUTemp::set_icon));

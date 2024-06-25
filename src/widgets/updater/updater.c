@@ -484,7 +484,7 @@ void updater_destructor (gpointer user_data)
     if (up->idle_timer) g_source_remove (up->idle_timer);
 
     /* Deallocate memory */
-    //g_free (up);
+    g_free (up);
 }
 
 #if 0

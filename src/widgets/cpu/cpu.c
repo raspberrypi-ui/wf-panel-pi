@@ -96,6 +96,7 @@ void cpu_destructor (gpointer user_data)
 {
     CPUPlugin *c = (CPUPlugin *) user_data;
     if (c->timer) g_source_remove (c->timer);
+    g_free (c);
 }
 
 void cpu_init (CPUPlugin *c)

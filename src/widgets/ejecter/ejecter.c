@@ -423,10 +423,10 @@ gboolean ejecter_control_msg (EjecterPlugin *ej, const char *cmd)
 /* Plugin destructor. */
 void ejecter_destructor (gpointer user_data)
 {
-    //EjecterPlugin * ej = (EjecterPlugin *) user_data;
+    EjecterPlugin * ej = (EjecterPlugin *) user_data;
 
     /* Deallocate memory */
-    //g_free (ej);
+    g_free (ej);
 }
 
 /* Plugin constructor. */

@@ -19,7 +19,6 @@ class WayfireSmenu : public WayfireWidget
     sigc::connection icon_timer;
 
     /* plugin */
-    MenuPlugin data;
     MenuPlugin *m;
 
   public:

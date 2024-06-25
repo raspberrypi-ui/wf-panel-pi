@@ -344,7 +344,7 @@ void batt_destructor (gpointer user_data)
     if (pt->timer) g_source_remove (pt->timer);
 
     /* Deallocate memory */
-    //g_free (pt);
+    g_free (pt);
 }
 
 /* Plugin constructor. */

@@ -18,7 +18,6 @@ class WayfireBluetooth : public WayfireWidget
     bool wizard;
 
     /* plugin */
-    BluetoothPlugin data;
     BluetoothPlugin *bt;
 
   public:

@@ -50,8 +50,7 @@ void WayfireEjecter::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    memset (&data, 0, sizeof (EjecterPlugin));
-    ej = &data;
+    ej = (EjecterPlugin *) calloc (1, sizeof (EjecterPlugin));
     ej->plugin = (GtkWidget *)((*plugin).gobj());
     ej->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireEjecter::set_icon));

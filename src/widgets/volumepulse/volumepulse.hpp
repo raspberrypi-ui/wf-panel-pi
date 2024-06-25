@@ -19,7 +19,6 @@ class WayfireVolumepulse : public WayfireWidget
     bool wizard;
 
     /* plugin */
-    VolumePulsePlugin data;
     VolumePulsePlugin *vol;
 
   public:

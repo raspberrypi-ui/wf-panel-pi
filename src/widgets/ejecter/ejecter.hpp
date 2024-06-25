@@ -19,7 +19,6 @@ class WayfireEjecter : public WayfireWidget
     WfOption <bool> autohide {"panel/ejecter_autohide"};
 
     /* plugin */
-    EjecterPlugin data;
     EjecterPlugin *ej;
 
   public:

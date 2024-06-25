@@ -24,7 +24,6 @@ class WayfireCPUTemp : public WayfireWidget
     WfOption <int> high_temp {"panel/cputemp_high_temp"};
 
     /* plugin */
-    CPUTempPlugin data;
     CPUTempPlugin *cput;
 
   public:

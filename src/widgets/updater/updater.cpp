@@ -50,8 +50,7 @@ void WayfireUpdater::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    memset (&data, 0, sizeof (UpdaterPlugin));
-    up = &data;
+    up = (UpdaterPlugin *) calloc (1, sizeof (UpdaterPlugin));
     up->plugin = (GtkWidget *)((*plugin).gobj());
     up->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireUpdater::set_icon));

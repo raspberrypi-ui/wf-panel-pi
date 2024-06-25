@@ -43,8 +43,7 @@ void WayfireBluetooth::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    memset (&data, 0, sizeof (BluetoothPlugin));
-    bt = &data;
+    bt = (BluetoothPlugin *) calloc (1, sizeof (BluetoothPlugin));
     bt->plugin = (GtkWidget *)((*plugin).gobj());
     bt->icon_size = icon_size;
     bt->wizard = WayfireShellApp::get().wizard;

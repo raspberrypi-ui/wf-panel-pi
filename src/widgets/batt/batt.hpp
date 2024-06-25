@@ -19,7 +19,6 @@ class WayfireBatt : public WayfireWidget
     WfOption <int> batt_num {"panel/batt_batt_num"};
 
     /* plugin */
-    PtBattPlugin data;
     PtBattPlugin *pt;
 
   public:

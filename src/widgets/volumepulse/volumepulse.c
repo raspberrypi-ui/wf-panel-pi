@@ -483,7 +483,7 @@ void volumepulse_destructor (gpointer user_data)
     pulse_terminate (vol);
 
     /* Deallocate all memory. */
-    //g_free (vol);
+    g_free (vol);
 }
 
 /* Callback when control message arrives */

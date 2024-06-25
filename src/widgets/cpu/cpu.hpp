@@ -21,7 +21,6 @@ class WayfireCPU : public WayfireWidget
     WfOption <std::string> background_colour {"panel/cpu_background"};
 
     /* plugin */
-    CPUPlugin data;
     CPUPlugin *cpu;
 
   public:

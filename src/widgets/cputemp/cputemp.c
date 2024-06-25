@@ -333,6 +333,7 @@ void cputemp_destructor (gpointer user_data)
 {
     CPUTempPlugin *c = (CPUTempPlugin *) user_data;
     if (c->timer) g_source_remove (c->timer);
+    g_free (c);
 }
 
 /* Plugin constructor. */

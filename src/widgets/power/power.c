@@ -327,5 +327,6 @@ void power_destructor (gpointer user_data)
     if (pt->udev_mon_lv) udev_monitor_unref (pt->udev_mon_lv);
     pt->udev_mon_lv = NULL;
     if (pt->udev) udev_unref (pt->udev);
+    g_free (pt);
 }
 

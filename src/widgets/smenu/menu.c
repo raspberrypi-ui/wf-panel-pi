@@ -914,7 +914,7 @@ void menu_destructor (gpointer user_data)
     }
 
     g_free (m->icon);
-    //g_free (m);
+    g_free (m);
 }
 
 /* Plugin constructor */

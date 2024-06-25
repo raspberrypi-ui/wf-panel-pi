@@ -17,7 +17,6 @@ class WayfirePower : public WayfireWidget
     sigc::connection icon_timer;
 
     /* plugin */
-    PowerPlugin data;
     PowerPlugin *pt;
 
   public:

@@ -2122,7 +2122,7 @@ void bluetooth_destructor (gpointer user_data)
     g_bus_unwatch_name (bt->watch);
 
     /* Deallocate memory */
-   // g_free (bt);
+    g_free (bt);
 }
 
 /* Plugin constructor. */

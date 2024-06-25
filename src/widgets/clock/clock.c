@@ -112,9 +112,11 @@ void clock_init (ClockPlugin *cl)
 }
 
 /* Plugin destructor. */
-void clock_destructor (gpointer)
+void clock_destructor (gpointer data)
 {
+    ClockPlugin *cl = (ClockPlugin *) data;
     close_popup ();
+    g_free (cl);
 }
 
 

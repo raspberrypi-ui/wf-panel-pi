@@ -20,7 +20,6 @@ class WayfireClock : public WayfireWidget
     WfOption <std::string> bar_pos {"panel/position"};
 
     /* plugin */
-    ClockPlugin data;
     ClockPlugin *clock;
 
   public:
