@@ -105,6 +105,7 @@ void netman_destructor (gpointer user_data)
 
     /* Deallocate memory. */
     finalize (nm);
+    g_object_unref (nm);
     //g_free (nm);
 }
 
