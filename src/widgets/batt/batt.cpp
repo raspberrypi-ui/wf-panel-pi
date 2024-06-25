@@ -9,8 +9,8 @@ extern "C" {
         {CONF_INT,  "batt_num", N_("Battery number to monitor")},
         {CONF_NONE, NULL,       NULL}
     };
-    const char *display_name (void) { return N_("Battery"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Battery"); };
 }
 
 void WayfireBatt::bar_pos_changed_cb (void)

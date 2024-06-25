@@ -11,8 +11,8 @@ extern "C" {
         {CONF_COLOUR,   "background",       N_("Background colour")},
         {CONF_NONE,     NULL,               NULL}
     };
-    const char *display_name (void) { return N_("GPU"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("GPU"); };
 }
 
 void WayfireGPU::bar_pos_changed_cb (void)

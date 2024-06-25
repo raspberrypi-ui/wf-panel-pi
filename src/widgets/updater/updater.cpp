@@ -9,8 +9,8 @@ extern "C" {
         {CONF_INT,  "interval", N_("Hours between checks for updates")},
         {CONF_NONE, NULL,       NULL}
     };
-    const char *display_name (void) { return N_("Updater"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Updater"); };
 }
 
 void WayfireUpdater::bar_pos_changed_cb (void)

@@ -9,8 +9,8 @@ extern "C" {
         {CONF_BOOL, "menu_on_middle_click",        N_("Middle button activates menu")},
         {CONF_NONE, NULL,               NULL}
     };
-    const char *display_name (void) { return N_("System Tray"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("System Tray"); };
 }
 
 void WayfireStatusNotifier::init(Gtk::HBox *container)

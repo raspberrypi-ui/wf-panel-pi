@@ -10,8 +10,8 @@ extern "C" {
         {CONF_BOOL, "search_fixed",     N_("Fix size of search window")},
         {CONF_NONE, NULL,               NULL}
     };
-    const char *display_name (void) { return N_("Menu"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Menu"); };
 }
 
 void WayfireSmenu::bar_pos_changed_cb (void)

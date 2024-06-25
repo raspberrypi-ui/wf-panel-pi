@@ -14,8 +14,8 @@ extern "C" {
         {CONF_INT,  "max_width",    N_("Maximum width of task button")},
         {CONF_NONE, NULL,           NULL}
     };
-    const char *display_name (void) { return N_("Window List"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Window List"); };
 }
 
 WayfireWindowListBox::WayfireWindowListBox() : Gtk::HBox()

@@ -20,8 +20,8 @@ extern "C" {
         {CONF_INT,  "spacing",  N_("Icon spacing")},
         {CONF_NONE, NULL,       NULL}
     };
-    const char *display_name (void) { return N_("Launcher"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Launcher"); };
 }
 
 // create launcher from a .desktop file or app-id

@@ -9,8 +9,8 @@ extern "C" {
         {CONF_BOOL, "autohide", N_("Hide icon when no devices")},
         {CONF_NONE,  NULL,       NULL}
     };
-    const char *display_name (void) { return N_("Ejecter"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Ejecter"); };
 }
 
 void WayfireEjecter::bar_pos_changed_cb (void)

@@ -94,7 +94,7 @@ static gboolean display_name (const char *type, char **name)
         func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
         if (!dlerror ())
         {
-            *name = g_strdup (_(func_display_name()));
+            *name = g_strdup (func_display_name());
             res = TRUE;
         }
         else

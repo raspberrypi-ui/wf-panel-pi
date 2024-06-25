@@ -11,8 +11,8 @@ extern "C" {
         {CONF_STRING,   "font",     N_("Display font")},
         {CONF_NONE,     NULL,       NULL}
     };
-    const char *display_name (void) { return N_("Clock"); };
     const conf_table_t *config_params (void) { return conf_table; };
+    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Clock"); };
 }
 
 bool WayfireClock::update_label ()
