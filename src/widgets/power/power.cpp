@@ -38,7 +38,7 @@ void WayfirePower::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    pt = (PowerPlugin *) calloc (1, sizeof (PowerPlugin));
+    pt = g_new0 (PowerPlugin, 1);
     pt->plugin = (GtkWidget *)((*plugin).gobj());
     pt->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfirePower::set_icon));

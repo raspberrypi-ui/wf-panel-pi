@@ -51,7 +51,7 @@ void WayfireSmenu::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    m = (MenuPlugin *) calloc (1, sizeof (MenuPlugin));
+    m = g_new0 (MenuPlugin, 1);
     m->plugin = (GtkWidget *)((*plugin).gobj());
     m->icon_size = icon_size;
     m->height = search_height;

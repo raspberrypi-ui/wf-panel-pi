@@ -51,7 +51,7 @@ void WayfireCPU::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    cpu = (CPUPlugin *) calloc (1, sizeof (CPUPlugin));
+    cpu = g_new0 (CPUPlugin, 1);
     cpu->plugin = (GtkWidget *)((*plugin).gobj());
     cpu->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireCPU::set_icon));

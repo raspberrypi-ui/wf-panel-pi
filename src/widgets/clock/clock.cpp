@@ -56,7 +56,7 @@ void WayfireClock::init(Gtk::HBox *container)
     label.set_margin_end (4);
 
     /* Setup structure */
-    clock = (ClockPlugin *) calloc (1, sizeof (ClockPlugin));
+    clock = g_new0 (ClockPlugin, 1);
     clock->plugin = (GtkWidget *)((*plugin).gobj());
     bar_pos_changed_cb ();
 

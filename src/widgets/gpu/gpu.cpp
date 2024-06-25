@@ -51,7 +51,7 @@ void WayfireGPU::init (Gtk::HBox *container)
     container->pack_start (*plugin, false, false);
 
     /* Setup structure */
-    gpu = (GPUPlugin *) calloc (1, sizeof (GPUPlugin));
+    gpu = g_new0 (GPUPlugin, 1);
     gpu->plugin = (GtkWidget *)((*plugin).gobj());
     gpu->icon_size = icon_size;
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireGPU::set_icon));

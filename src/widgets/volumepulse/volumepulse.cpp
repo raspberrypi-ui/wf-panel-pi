@@ -48,7 +48,7 @@ void WayfireVolumepulse::init (Gtk::HBox *container)
     container->pack_start (*plugin_mic, false, false);
 
     /* Setup structure */
-    vol = (VolumePulsePlugin *) calloc (1, sizeof (VolumePulsePlugin));
+    vol = g_new0 (VolumePulsePlugin, 1);
     vol->plugin[0] = (GtkWidget *)((*plugin_vol).gobj());
     vol->plugin[1] = (GtkWidget *)((*plugin_mic).gobj());
     vol->icon_size = icon_size;
