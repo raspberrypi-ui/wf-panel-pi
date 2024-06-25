@@ -36,7 +36,7 @@ class WayfireToplevel::impl
 {
     zwlr_foreign_toplevel_handle_v1 *handle, *parent;
     std::vector<zwlr_foreign_toplevel_handle_v1*> children;
-    uint32_t state;
+    uint32_t state = 0;
 
     WfOption <int> icon_size {"panel/icon_size"};
     Gtk::ToggleButton button;
