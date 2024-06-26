@@ -574,7 +574,7 @@ save_one_secret (Request *r,
                  NMSetting *setting,
                  const char *key,
                  const char *secret,
-                 const char *display_name)
+                 const char *display_name1)
 {
 	GHashTable *attrs;
 	char *alt_display_name = NULL;
@@ -593,11 +593,11 @@ save_one_secret (Request *r,
 	attrs = _create_keyring_add_attr_list (r->connection,
 	                                       setting_name,
 	                                       key,
-	                                       display_name ? NULL : &alt_display_name);
+	                                       display_name1 ? NULL : &alt_display_name);
 	g_assert (attrs);
 
 	secret_password_storev (&network_manager_secret_schema, attrs, NULL,
-	                        display_name ? display_name : alt_display_name, secret,
+	                        display_name1 ? display_name1 : alt_display_name, secret,
 	                        r->cancellable, save_secret_cb, r);
 	r->keyring_calls++;
 
@@ -611,7 +611,7 @@ vpn_secret_iter_cb (const char *key, const char *secret, gpointer user_data)
 	Request *r = user_data;
 	NMSetting *setting;
 	const char *service_name, *id;
-	char *display_name;
+	char *display_name1;
 
 	if (secret && strlen (secret)) {
 		setting = nm_connection_get_setting (r->connection, NM_TYPE_SETTING_VPN);
@@ -621,12 +621,12 @@ vpn_secret_iter_cb (const char *key, const char *secret, gpointer user_data)
 		id = nm_connection_get_id (r->connection);
 		g_assert (id);
 
-		display_name = g_strdup_printf ("VPN %s secret for %s/%s/" NM_SETTING_VPN_SETTING_NAME,
+		display_name1 = g_strdup_printf ("VPN %s secret for %s/%s/" NM_SETTING_VPN_SETTING_NAME,
 		                                key,
 		                                id,
 		                                service_name);
-		save_one_secret (r, setting, key, secret, display_name);
-		g_free (display_name);
+		save_one_secret (r, setting, key, secret, display_name1);
+		g_free (display_name1);
 	}
 }
 
