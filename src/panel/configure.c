@@ -69,37 +69,6 @@ static void write_config (void);
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
-/* Helper function to get the displayed name for a particular widget */
-
-static gboolean get_name (const char *type, char **name)
-{
-    char *libname;
-    void *wid_lib;
-    int space;
-    gboolean res = FALSE;
-    char * (*func_display_name)(void);
-
-    libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
-    wid_lib = dlopen (libname, RTLD_LAZY);
-    g_free (libname);
-
-    if (wid_lib)
-    {
-        func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
-        if (!dlerror ())
-        {
-            *name = g_strdup (func_display_name());
-            res = TRUE;
-        }
-        else
-            *name = g_strdup_printf (_("<Unknown>"));
-        dlclose (wid_lib);
-    }
-    else *name = g_strdup_printf (_("<Unknown>"));
-
-    return res;
-}
-
 /* Helper function to determine whether a particular widget has a config table*/
 
 int can_configure (const char *type)
@@ -424,6 +393,7 @@ int plugin_config_dialog (const char *type)
     gsize len;
     int space = -1;
     conf_table_t *(*func_config_params) (void);
+    char * (*func_display_name)(void);
     void *wid_lib;
 
     setlocale (LC_ALL, "");
@@ -438,13 +408,8 @@ int plugin_config_dialog (const char *type)
         type = "spacing";
     }
 
-    get_name (type, &name);
-    strval = g_strdup_printf (_("Configure %s"), name);
-    g_free (name);
-
-    cdlg = gtk_dialog_new_with_buttons (strval, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+    cdlg = gtk_dialog_new_with_buttons (NULL, GTK_WINDOW (dlg), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
         _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
-    g_free (strval);
     box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
     gtk_widget_set_margin_top (box, 10);
     gtk_widget_set_margin_bottom (box, 10);
@@ -452,13 +417,21 @@ int plugin_config_dialog (const char *type)
     gtk_widget_set_margin_end (box, 10);
     gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
 
-    /* load the config table from the shared library */
+    /* load the information from the shared library */
     name = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (name, RTLD_LAZY);
     g_free (name);
 
     if (wid_lib)
     {
+        func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
+        if (!dlerror ())
+            strval = g_strdup_printf (_("Configure %s"), func_display_name ());
+        else
+            strval = g_strdup_printf (_("Configure %s"), _("<Unknown>"));
+        gtk_window_set_title (GTK_WINDOW (cdlg), strval);
+        g_free (strval);
+
         func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
         if (!dlerror ())
         {
