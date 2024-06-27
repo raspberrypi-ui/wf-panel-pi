@@ -41,6 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COL_NAME    0
 #define COL_ID      1
 #define COL_INDEX   2
+#define COL_CONFIG  3
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -70,20 +71,13 @@ static void write_config (void);
 
 /* Helper function to get the displayed name for a particular widget */
 
-static gboolean display_name (const char *type, char **name)
+static gboolean get_name (const char *type, char **name)
 {
     char *libname;
     void *wid_lib;
     int space;
     gboolean res = FALSE;
     char * (*func_display_name)(void);
-
-    if (sscanf (type, "spacing%d", &space) == 1)
-    {
-        if (!space) *name = g_strdup_printf (_("Spacer"));
-        else *name = g_strdup_printf (_("Spacer (%d)"), space);
-        return TRUE;
-    }
 
     libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (libname, RTLD_LAZY);
@@ -131,6 +125,54 @@ int can_configure (const char *type)
         dlclose (wid_lib);
     }
     return can_conf;
+}
+
+/* Helper function to read the name and configurability of a library */
+
+static gboolean read_lib (const char *type, char **name, gboolean *config)
+{
+    char *libname;
+    void *wid_lib;
+    int space;
+    gboolean res = FALSE;
+    char * (*func_display_name)(void);
+    conf_table_t * (*func_config_params)(void);
+    const conf_table_t *cptr;
+
+    *config = FALSE;
+    if (sscanf (type, "spacing%d", &space) == 1)
+    {
+        if (!space) *name = g_strdup_printf (_("Spacer"));
+        else *name = g_strdup_printf (_("Spacer (%d)"), space);
+        *config = TRUE;
+        return TRUE;
+    }
+
+    libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
+    wid_lib = dlopen (libname, RTLD_LAZY);
+    g_free (libname);
+
+    if (wid_lib)
+    {
+        func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
+        if (!dlerror ())
+        {
+            *name = g_strdup (func_display_name());
+            res = TRUE;
+        }
+        else *name = g_strdup_printf (_("<Unknown>"));
+
+        func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
+        if (!dlerror ())
+        {
+            cptr = func_config_params ();
+            if (cptr->type != CONF_NONE) *config = TRUE;
+        }
+        dlclose (wid_lib);
+    }
+    else *name = g_strdup_printf (_("<Unknown>"));
+
+    return res;
 }
 
 /* Helper function to locate the currently-highlighted widget */
@@ -185,16 +227,13 @@ static void update_buttons (void)
 
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
-            gtk_tree_model_get (mod, &iter, 1, &type, -1);
+            gtk_tree_model_get (mod, &iter, COL_ID, &type, COL_CONFIG, &conf, -1);
 
             // scroll the tree view to show the highlighted item
             path = gtk_tree_model_get_path (mod, &iter);
             gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[1 - lorr]), path, NULL, FALSE, 0.0, 0.0);
 
             // can this type be configured?
-            conf = FALSE;
-            if (!strncmp (type, "spacing", 7)) conf = TRUE;
-            else conf = can_configure (type);
             gtk_widget_set_sensitive (cpl, conf);
         }
         if (type) g_free (type);
@@ -216,7 +255,7 @@ static void add_widget (GtkButton *, gpointer data)
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
-        gtk_tree_model_get (mod, &iter, 1, &type, -1);
+        gtk_tree_model_get (mod, &iter, COL_ID, &type, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1]), &citer, &siter);
 
@@ -228,11 +267,12 @@ static void add_widget (GtkButton *, gpointer data)
             gtk_list_store_set (widgets, &citer, COL_INDEX, lorr * (index + 1), -1);
         else
         {
-            display_name ("spacing4", &name);
+            name = g_strdup_printf (_("Spacer (%d)"), 4);
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, "spacing4",
                 COL_INDEX, lorr * (index + 1),
+                COL_CONFIG, TRUE,
                 -1);
             g_free (name);
         }
@@ -261,7 +301,7 @@ static void remove_widget (GtkButton *, gpointer)
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
-        gtk_tree_model_get (mod, &iter, 1, &type, 2, &index, -1);
+        gtk_tree_model_get (mod, &iter, COL_ID, &type, COL_INDEX, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
 
@@ -285,7 +325,7 @@ static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, g
     GtkTreeIter citer;
     int index;
 
-    gtk_tree_model_get (mod, iter, 2, &index, -1);
+    gtk_tree_model_get (mod, iter, COL_INDEX, &index, -1);
     if (index > 0 && index > ((long) data))
     {
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
@@ -311,7 +351,7 @@ static void move_widget (GtkButton *, gpointer data)
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
-        gtk_tree_model_get (mod, &iter, 2, &index, -1);
+        gtk_tree_model_get (mod, &iter, COL_INDEX, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1 - lorr]), &citer, &siter);
 
@@ -346,7 +386,7 @@ static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointe
     // find list entry with index = data - 1, make it data
     GtkTreeIter citer;
     int index;
-    gtk_tree_model_get (mod, iter, 2, &index, -1);
+    gtk_tree_model_get (mod, iter, COL_INDEX, &index, -1);
     if (index == ((long) data) - 1)
     {
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
@@ -361,7 +401,7 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
     // find list entry with index = data + 1, make it data
     GtkTreeIter citer;
     int index;
-    gtk_tree_model_get (mod, iter, 2, &index, -1);
+    gtk_tree_model_get (mod, iter, COL_INDEX, &index, -1);
     if (index == ((long) data) + 1)
     {
         gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (mod), &citer, iter);
@@ -398,7 +438,7 @@ int plugin_config_dialog (const char *type)
         type = "spacing";
     }
 
-    display_name (type, &name);
+    get_name (type, &name);
     strval = g_strdup_printf (_("Configure %s"), name);
     g_free (name);
 
@@ -531,7 +571,7 @@ static void configure_plugin (GtkButton *, gpointer)
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1 - lorr]));
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
-            gtk_tree_model_get (mod, &iter, 1, &type, -1);
+            gtk_tree_model_get (mod, &iter, COL_ID, &type, -1);
             index = plugin_config_dialog (type);
             if (index != -1)
             {
@@ -542,7 +582,7 @@ static void configure_plugin (GtkButton *, gpointer)
                 // update both the widget type and the displayed name
                 g_free (type);
                 type = g_strdup_printf ("spacing%d", index);
-                display_name (type, &name);
+                name = g_strdup_printf (_("Spacer (%d)"), index);
                 gtk_list_store_set (widgets, &citer,
                     COL_NAME, name,
                     COL_ID, type,
@@ -562,6 +602,7 @@ static void read_config (void)
     int pos;
     struct dirent *dir;
     DIR *plugind;
+    gboolean config;
 
     // add each space-separated widget from the metadata variables to the list store
     get_config_string ("widgets_left", &strval);
@@ -569,11 +610,12 @@ static void read_config (void)
     token = strtok (strval, " ");
     while (token)
     {
-        if (display_name (token, &name))
+        if (read_lib (token, &name, &config))
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, token,
                 COL_INDEX, pos++,
+                COL_CONFIG, config,
                 -1);
         g_free (name);
         token = strtok (NULL, " ");
@@ -585,11 +627,12 @@ static void read_config (void)
     token = strtok (strval, " ");
     while (token)
     {
-        if (display_name (token, &name))
+        if (read_lib (token, &name, &config))
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, token,
                 COL_INDEX, pos--,
+                COL_CONFIG, config,
                 -1);
         g_free (name);
         token = strtok (NULL, " ");
@@ -611,11 +654,12 @@ static void read_config (void)
             gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
             if (!found)
             {
-                display_name (token, &name);
+                read_lib (token, &name, &config);
                 gtk_list_store_insert_with_values (widgets, NULL, -1,
                     COL_NAME, name,
                     COL_ID, token,
                     COL_INDEX, 0,
+                    COL_CONFIG, config,
                     -1);
                 g_free (name);
             }
@@ -628,7 +672,7 @@ static void read_config (void)
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
 {
     char *type;
-    gtk_tree_model_get (mod, iter, 1, &type, -1);
+    gtk_tree_model_get (mod, iter, COL_ID, &type, -1);
     if (!g_strcmp0 (data, type)) found = TRUE;
     g_free (type);
     return found;
@@ -656,7 +700,7 @@ static void write_config (void)
     {
         do
         {
-            gtk_tree_model_get (sort[0], &iter, 1, &str, -1);
+            gtk_tree_model_get (sort[0], &iter, COL_ID, &str, -1);
             strcat (config, str);
             strcat (config, " ");
             g_free (str);
@@ -670,7 +714,7 @@ static void write_config (void)
     {
         do
         {
-            gtk_tree_model_get (sort[2], &iter, 1, &str, -1);
+            gtk_tree_model_get (sort[2], &iter, COL_ID, &str, -1);
             strcat (config, str);
             strcat (config, " ");
             g_free (str);
@@ -694,7 +738,7 @@ static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer
 {
     int index;
 
-    gtk_tree_model_get (model, iter, 2, &index, -1);
+    gtk_tree_model_get (model, iter, COL_INDEX, &index, -1);
 
     if ((long) data > 0 && index > 0) return TRUE;
     if ((long) data < 0 && index < 0) return TRUE;
@@ -734,7 +778,7 @@ void open_config_dialog (void)
     textdomain (GETTEXT_PACKAGE);
 
     // create the list store for widgets
-    widgets = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT);
+    widgets = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN);
 
     // build the dialog
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
