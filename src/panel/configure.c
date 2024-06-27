@@ -481,6 +481,11 @@ int plugin_config_dialog (const char *type)
         }
         dlclose (wid_lib);
     }
+    else
+    {
+        gtk_widget_destroy (cdlg);
+        return space;
+    }
 
     gtk_widget_show_all (cdlg);
 
