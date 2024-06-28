@@ -5,7 +5,7 @@ sources = files(
   'updater.c'
 )
 
-packagekit     = dependency('packagekit-glib2')
+packagekit = dependency('packagekit-glib2')
 updater_deps = [ packagekit ]
 
 shared_module(name, sources,

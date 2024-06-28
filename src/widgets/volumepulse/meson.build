@@ -9,7 +9,7 @@ sources = files(
   'bluetooth.c'
 )
 
-libpulse       = dependency('libpulse')
+libpulse = dependency('libpulse')
 volumepulse_deps = [ libpulse ]
 
 shared_module(name, sources,

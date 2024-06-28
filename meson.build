@@ -34,7 +34,7 @@ wayland_protos = dependency('wayland-protocols')
 
 subdir('proto')
 
-gtkmm          = dependency('gtkmm-3.0', version: '>=3.24')
+gtkmm = dependency('gtkmm-3.0', version: '>=3.24')
 deps = [ wf_protos, gtkmm ]
 
 subdir('metadata')

@@ -35,10 +35,10 @@ sources += gnome.compile_resources(
   dependencies: resource_data
 )
 
-netman         = dependency('libnm')
-nma            = dependency('libnma')
-secret         = dependency('libsecret-1')
-notify         = dependency('libnotify')
+netman = dependency('libnm')
+nma = dependency('libnma')
+secret = dependency('libsecret-1')
+notify = dependency('libnotify')
 netman_deps = [ netman, nma, secret, notify ]
 
 shared_module(name, sources,

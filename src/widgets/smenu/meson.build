@@ -6,7 +6,7 @@ sources = files(
   'gtk-run.c'
 )
 
-menu_cache     = dependency('libmenu-cache')
+menu_cache = dependency('libmenu-cache')
 smenu_deps = [ menu_cache ]
 
 shared_module(name, sources,

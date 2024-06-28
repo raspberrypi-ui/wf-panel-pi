@@ -7,7 +7,7 @@ sources = files(
   'host.cpp'
 )
 
-dbusmenu_gtk   = dependency('dbusmenu-gtk3-0.4')
+dbusmenu_gtk = dependency('dbusmenu-gtk3-0.4')
 tray_deps = [ dbusmenu_gtk ]
 
 shared_module(name, sources,
