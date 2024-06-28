@@ -5,8 +5,11 @@ sources = files(
   'updater.c'
 )
 
+packagekit     = dependency('packagekit-glib2')
+updater_deps = [ packagekit ]
+
 shared_module(name, sources,
-        dependencies: deps,
+        dependencies: deps + updater_deps,
         install: true,
         install_dir: get_option('libdir') / 'wf-panel-pi',
         cpp_args : '-DPLUGIN_NAME="' + name + '"',

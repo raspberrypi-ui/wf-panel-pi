@@ -29,8 +29,6 @@ config_sources = files(
 
 proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"'
 
-deps = [gtkmm, wayland_client, wf_protos, gtklayershell, menu_cache, libfm, netman, nma, secret, notify, packagekit, libpulse, udev, dbusmenu_gtk, input, glm, evdev, libxml2]
-
 executable('wf-panel-pi', panel_sources + util_sources + config_sources,
         dependencies: deps,
         install: true,
