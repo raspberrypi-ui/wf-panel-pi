@@ -47,7 +47,6 @@ extern gboolean with_agent;
 extern gboolean with_appindicator;
 
 #define BINDIR "/usr/bin"
-#define ICONDIR "/usr/share/lxpanel/data/icons"
 #define HAVE_LIBNOTIFY_07 1
 
 G_DEFINE_TYPE (NMApplet, nma, G_TYPE_APPLICATION)
@@ -3672,6 +3671,7 @@ static void nma_icons_init (NMApplet *applet)
 #endif
 		applet->icon_theme = gtk_icon_theme_get_default ();
 
+#ifndef LXPANEL_PLUGIN
 	/* If not done yet, append our search path */
 	path_appended = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (applet->icon_theme),
 	                                 "NMAIconPathAppended"));
@@ -3681,6 +3681,7 @@ static void nma_icons_init (NMApplet *applet)
 		                   "NMAIconPathAppended",
 		                   GINT_TO_POINTER (TRUE));
 	}
+#endif
 
 	g_signal_connect (applet->icon_theme, "changed", G_CALLBACK (nma_icon_theme_changed), applet);
 
