@@ -137,7 +137,17 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
             cptr = func_config_params ();
             if (cptr->type != CONF_NONE) *config = TRUE;
         }
-        dlclose (wid_lib);
+
+        /*
+         * Sigh. Due to the way libnm uses an __attribute__(constructor) function
+         * to register DBus errors, this is called every time the netman plugin is
+         * dlopen'ed, but if it is called more than once, it segfaults. The gating
+         * variable designed to prevent it from being reopened is cleared if you
+         * dlclose it once opened, so on the next dlopen it crashes. The only fix
+         * short of changing the way libnm is initialised is to never dlclose that
+         * particular plugin once it has been opened. This makes me a sad panda...
+         */
+        if (strcmp (type, "netman")) dlclose (wid_lib);
     }
     else *name = g_strdup_printf (_("<Unknown>"));
 
