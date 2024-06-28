@@ -41,14 +41,7 @@ wayland_protos = dependency('wayland-protocols')
 subdir('proto')
 
 gtkmm          = dependency('gtkmm-3.0', version: '>=3.24')
-gtklayershell  = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
-libfm          = dependency('libfm-gtk3')
-udev           = dependency('libudev')
-input          = dependency('libinput')
-evdev          = dependency('libevdev')
-libxml2        = dependency('libxml-2.0')
-
-deps = [ wf_protos, gtkmm, gtklayershell, libfm, udev, input, evdev, libxml2 ]
+deps = [ wf_protos, gtkmm ]
 
 subdir('metadata')
 subdir('data')

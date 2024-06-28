@@ -29,8 +29,16 @@ config_sources = files(
 
 proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"'
 
+gtklayershell  = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
+libfm          = dependency('libfm-gtk3')
+udev           = dependency('libudev')
+input          = dependency('libinput')
+evdev          = dependency('libevdev')
+libxml2        = dependency('libxml-2.0')
+panel_deps = [ gtklayershell, libfm, udev, input, evdev, libxml2 ]
+
 executable('wf-panel-pi', panel_sources + util_sources + config_sources,
-        dependencies: deps,
+        dependencies: deps + panel_deps,
         install: true,
         export_dynamic: true,
         c_args : proj_args,
