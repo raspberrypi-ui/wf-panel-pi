@@ -25,11 +25,8 @@ sysconf_dir = join_paths(get_option('prefix'), get_option('sysconfdir'))
 
 gettext_package = meson.project_name()
 
-add_project_arguments('-DICONDIR="' + icon_dir + '"', language : 'cpp')
 add_project_arguments('-DMETADATA_DIR="' + metadata_dir + '"', language : 'cpp')
-add_project_arguments('-DSYSCONF_DIR="' + sysconf_dir + '"', language : 'cpp')
-add_project_arguments('-DRESOURCE_DIR="' + resource_dir + '"', language : 'cpp')
-add_project_arguments('-DPACKAGE_DATA_DIR="' + resource_dir + '"', language : 'c')
+add_project_arguments('-DPACKAGE_DATA_DIR="' + resource_dir + '"', language : [ 'c', 'cpp' ])
 add_project_arguments('-DGETTEXT_PACKAGE="' + gettext_package + '"', language : [ 'c', 'cpp' ])
 add_project_arguments('-DPACKAGE_LOCALE_DIR="' + share_dir + '/locale"', language : [ 'c', 'cpp' ])
 

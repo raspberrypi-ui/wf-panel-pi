@@ -116,7 +116,7 @@ void WayfireShellApp::on_activate()
     init_launchers ();
 
     this->config = wf::config::build_configuration(
-        xmldirs, RESOURCE_DIR "/defaults.ini",
+        xmldirs, PACKAGE_DATA_DIR "/defaults.ini",
         get_config_file());
 
     inotify_fd = inotify_init();
