@@ -7,7 +7,8 @@ sources = files(
 )
 
 menu_cache = dependency('libmenu-cache')
-smenu_deps = [ menu_cache ]
+libfm = dependency('libfm-gtk3')
+smenu_deps = [ menu_cache, libfm ]
 
 shared_module(name, sources,
         dependencies: deps + smenu_deps,

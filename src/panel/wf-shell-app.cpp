@@ -90,8 +90,6 @@ void WayfireShellApp::on_activate()
 {
     app->hold();
 
-    fm_gtk_init (NULL);
-
     if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
     else wizard = false;
 

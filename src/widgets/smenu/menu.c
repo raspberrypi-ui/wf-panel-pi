@@ -926,6 +926,7 @@ void menu_init (MenuPlugin *m)
     //int val;
     //const char *fname;
 
+    fm_gtk_init (NULL);
     fm_init (NULL);
 
     setlocale (LC_ALL, "");
