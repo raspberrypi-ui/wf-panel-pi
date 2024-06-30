@@ -20,10 +20,6 @@
 		<_short>Widgets Right</_short>
 		<default>tray power ejecter updater spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2</default>
 	</option>
-	<option name="widgets_all" type="string">
-		<_short>All Available Widgets</_short>
-		<default>batt bluetooth clock cpu cputemp ejecter gpu launchers netman power smenu tray updater volumepulse window-list</default>
-	</option>
 	<option name="icon_size" type="int">
 		<_short>Icon Size</_short>
 		<default>32</default>
