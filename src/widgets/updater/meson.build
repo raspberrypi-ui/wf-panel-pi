@@ -15,3 +15,5 @@ shared_module(name, sources,
         cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )
+
+install_data('updater.xml', install_dir: metadata_dir)

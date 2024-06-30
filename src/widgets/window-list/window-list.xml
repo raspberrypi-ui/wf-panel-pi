@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<wf-panel-pi>
+	<plugin name="panel">
+	<_short>Panel</_short>
+	<group>
+	<_short>Window List</_short>
+	<option name="window-list_max_width" type="int">
+		<_short>Window List Maximum Task Width</_short>
+		<default>200</default>
+	</option>
+	</group>
+	</plugin>
+</wf-panel-pi>

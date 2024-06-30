@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<wf-panel-pi>
+	<plugin name="panel">
+	<_short>Panel</_short>
+	<group>
+	<_short>Clock</_short>
+	<option name="clock_format" type="string">
+		<_short>Clock Format</_short>
+		<default>%H:%M</default>
+	</option>
+	<option name="clock_font" type="string">
+		<_short>Clock Font</_short>
+		<default>default</default>
+	</option>
+	</group>
+	</plugin>
+</wf-panel-pi>

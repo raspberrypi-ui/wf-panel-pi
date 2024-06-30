@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<wf-panel-pi>
+	<plugin name="panel">
+	<_short>Panel</_short>
+	<group>
+	<_short>Searchable Menu</_short>
+	<option name="smenu_search_height" type="int">
+		<_short>Searchable Menu Search Window Height</_short>
+		<default>300</default>
+	</option>
+	<option name="smenu_search_fixed" type="bool">
+		<_short>Searchable Menu Fix Height of Search Window</_short>
+		<default>false</default>
+	</option>
+	</group>
+	</plugin>
+</wf-panel-pi>

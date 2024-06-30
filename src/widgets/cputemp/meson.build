@@ -12,3 +12,5 @@ shared_module(name, sources,
         cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )
+
+install_data('cputemp.xml', install_dir: metadata_dir)

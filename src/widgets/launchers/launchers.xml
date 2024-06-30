@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<wf-panel-pi>
+	<plugin name="panel">
+	<_short>Panel</_short>
+	<group>
+	<_short>Launchers</_short>
+	<option name="launchers_spacing" type="int">
+		<_short>Launchers Spacing</_short>
+		<default>0</default>
+	</option>
+	<option name="launchers_size" type="int">
+		<_short>Launchers Size</_short>
+		<default>48</default>
+	</option>
+	<option name="launchers_animation_duration" type="int">
+		<_short>Animation Duration</_short>
+		<_long>High values may cause jittery animations</_long>
+		<default>200</default>
+	</option>
+	</group>
+	</plugin>
+</wf-panel-pi>

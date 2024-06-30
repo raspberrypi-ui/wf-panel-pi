@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<wf-panel-pi>
+	<plugin name="panel">
+	<_short>Panel</_short>
+	<group>
+	<_short>CPU Temperature</_short>
+	<option name="cputemp_foreground" type="string">
+		<_short>CPU Temperature Foreground Colour</_short>
+		<default>dark gray</default>
+	</option>
+	<option name="cputemp_background" type="string">
+		<_short>CPU Temperature Background Colour</_short>
+		<default>light gray</default>
+	</option>
+	<option name="cputemp_throttle_1" type="string">
+		<_short>CPU Temperature Throttle 1 Colour</_short>
+		<default>orange</default>
+	</option>
+	<option name="cputemp_throttle_2" type="string">
+		<_short>CPU Temperature Throttle 2 Colour</_short>
+		<default>red</default>
+	</option>
+	<option name="cputemp_low_temp" type="int">
+		<_short>CPU Temperature Low Temperature</_short>
+		<default>40</default>
+	</option>
+	<option name="cputemp_high_temp" type="int">
+		<_short>CPU Temperature High Temperature</_short>
+		<default>90</default>
+	</option>
+	</group>
+	</plugin>
+</wf-panel-pi>
