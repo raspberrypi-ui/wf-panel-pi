@@ -52,14 +52,6 @@
 			<_name>Bottom</_name>
 		</desc>
 	</option>
-	<option name="notify_enable" type="bool">
-		<_short>Enable Notifications</_short>
-		<default>true</default>
-	</option>
-	<option name="notify_timeout" type="int">
-		<_short>Notification Timeout</_short>
-		<default>15</default>
-	</option>
 	<option name="edge_offset" type="int">
 		<_short>Edge offset</_short>
 		<_long>The distance from the cursor to the edge of screen to show the panel when it's hidden.</_long>
