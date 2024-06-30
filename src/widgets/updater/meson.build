@@ -16,4 +16,4 @@ shared_module(name, sources,
         include_directories : incdir
 )
 
-install_data('updater.xml', install_dir: metadata_dir)
+install_data(name + '.xml', install_dir: metadata_dir)

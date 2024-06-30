@@ -13,4 +13,4 @@ shared_module(name, sources,
         include_directories : incdir
 )
 
-install_data('window-list.xml', install_dir: metadata_dir)
+install_data(name + '.xml', install_dir: metadata_dir)
