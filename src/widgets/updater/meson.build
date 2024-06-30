@@ -6,10 +6,10 @@ sources = files(
 )
 
 packagekit = dependency('packagekit-glib2')
-updater_deps = [ packagekit ]
+module_deps = [ packagekit ]
 
 shared_module(name, sources,
-        dependencies: deps + updater_deps,
+        dependencies: deps + module_deps,
         install: true,
         install_dir: get_option('libdir') / 'wf-panel-pi',
         cpp_args : '-DPLUGIN_NAME="' + name + '"',

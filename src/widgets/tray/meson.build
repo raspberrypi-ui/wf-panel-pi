@@ -8,10 +8,10 @@ sources = files(
 )
 
 dbusmenu_gtk = dependency('dbusmenu-gtk3-0.4')
-tray_deps = [ dbusmenu_gtk ]
+module_deps = [ dbusmenu_gtk ]
 
 shared_module(name, sources,
-        dependencies: deps + tray_deps,
+        dependencies: deps + module_deps,
         install: true,
         install_dir: get_option('libdir') / 'wf-panel-pi',
         cpp_args : '-DPLUGIN_NAME="' + name + '"',

@@ -10,12 +10,14 @@ sources = files(
 )
 
 libpulse = dependency('libpulse')
-volumepulse_deps = [ libpulse ]
+module_deps = [ libpulse ]
 
 shared_module(name, sources,
-        dependencies: deps + volumepulse_deps,
+        dependencies: deps + module_deps,
         install: true,
         install_dir: get_option('libdir') / 'wf-panel-pi',
         cpp_args : '-DPLUGIN_NAME="' + name + '"',
         include_directories : incdir
 )
+
+#install_data(name + '.xml', install_dir: metadata_dir)

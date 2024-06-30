@@ -8,10 +8,10 @@ sources = files(
 
 menu_cache = dependency('libmenu-cache')
 libfm = dependency('libfm-gtk3')
-smenu_deps = [ menu_cache, libfm ]
+module_deps = [ menu_cache, libfm ]
 
 shared_module(name, sources,
-        dependencies: deps + smenu_deps,
+        dependencies: deps + module_deps,
         install: true,
         install_dir: get_option('libdir') / 'wf-panel-pi',
         cpp_args : '-DPLUGIN_NAME="' + name + '"',
