@@ -43,6 +43,12 @@ bool WayfireShellApp::parse_cfgfile(const Glib::ustring & option_name,
     return true;
 }
 
+void WayfireShellApp::rescan_xml_directory(void)
+{
+    std::vector<std::string> xmldirs(1, METADATA_DIR);
+    wf::config::reload_xml_files (this->config, xmldirs);
+}
+
 #define INOT_BUF_SIZE (1024 * sizeof(inotify_event))
 char buf[INOT_BUF_SIZE];
 

@@ -427,6 +427,7 @@ class WayfirePanel::impl
     void reload_widgets(std::string list, WidgetContainer& container,
         Gtk::HBox& box)
     {
+        WayfirePanelApp::get().rescan_xml_directory ();
         container.clear();
         auto widgets = tokenize(list);
         for (auto widget_name : widgets)

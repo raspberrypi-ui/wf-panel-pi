@@ -86,5 +86,12 @@ void save_configuration_to_file(const config_manager_t& manager,
  */
 config_manager_t build_configuration(const std::vector<std::string>& xmldirs,
     const std::string& sysconf, const std::string& userconf);
+
+/**
+ * Rescan the XML files for any which have been added, and add any new
+ * options found to the configuration.
+ */
+void reload_xml_files(config_manager_t& manager,
+    const std::vector<std::string>& xmldirs);
 }
 }

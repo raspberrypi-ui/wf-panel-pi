@@ -645,3 +645,32 @@ wf::config::config_manager_t wf::config::build_configuration(
     load_configuration_options_from_file(manager, userconf);
     return manager;
 }
+
+void wf::config::reload_xml_files(config_manager_t& manager,
+    const std::vector<std::string>& xmldirs)
+{
+    for (auto& xmldir : xmldirs)
+    {
+        auto xmld = opendir(xmldir.c_str());
+        if (NULL == xmld) continue;
+
+        struct dirent *entry;
+        while ((entry = readdir(xmld)) != NULL)
+        {
+            if ((entry->d_type != DT_LNK) && (entry->d_type != DT_REG)) continue;
+
+            std::string filename = xmldir + '/' + entry->d_name;
+            if ((filename.length() > 4) &&
+                (filename.rfind(".xml") == filename.length() - 4))
+            {
+                auto node = find_section_start_node(filename);
+                if (node)
+                {
+                    manager.add_options_if_new(wf::config::xml::create_section_from_xml_node(node));
+                }
+            }
+        }
+
+        closedir(xmld);
+    }
+}

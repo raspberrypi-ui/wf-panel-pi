@@ -75,6 +75,7 @@ class WayfireShellApp
     {}
     virtual void on_command(const char *plugin, const char *command) {}
 
+    void rescan_xml_directory (void);
     /**
      * WayfireShellApp is a singleton class.
      * Using this function, any part of the application can get access to the

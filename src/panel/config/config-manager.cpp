@@ -1,4 +1,5 @@
 #include "config/config-manager.hpp"
+#include "config/log.hpp"
 #include <cassert>
 #include <map>
 
@@ -31,6 +32,33 @@ void wf::config::config_manager_t::merge_section(
             existing_option->set_value_str(option->get_value_str());
         } else
         {
+            existing_section->register_new_option(option);
+        }
+    }
+}
+
+void wf::config::config_manager_t::add_options_if_new(
+    std::shared_ptr<section_t> section)
+{
+    assert(section);
+    if (this->priv->sections.count(section->get_name()) == 0)
+    {
+        /* Did not exist previously, just add the new section */
+        this->priv->sections[section->get_name()] = section;
+        return;
+    }
+
+    /* Merge with existing config section */
+    auto existing_section = get_section(section->get_name());
+    auto merging_options  = section->get_registered_options();
+    for (auto& option : merging_options)
+    {
+        auto existing_option =
+            existing_section->get_option_or(option->get_name());
+
+        if (!existing_option)
+        {
+            LOGI("Registering new option ", option->get_name());
             existing_section->register_new_option(option);
         }
     }

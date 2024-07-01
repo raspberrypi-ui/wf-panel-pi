@@ -23,6 +23,15 @@ class config_manager_t
     void merge_section(std::shared_ptr<section_t> section);
 
     /**
+     * Add the given config section to the configuration.
+     * If the section already exists, each new option will be added to the
+     * existing section. Existing options will not be changed.
+     *
+     * @param section The section to add, must be non-null.
+     */
+    void add_options_if_new(std::shared_ptr<section_t> section);
+
+    /**
      * Find the configuration section with the given name.
      * @return nullptr if the section doesn't exist.
      */
