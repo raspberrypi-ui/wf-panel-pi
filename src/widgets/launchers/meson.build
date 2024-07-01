@@ -6,6 +6,10 @@ sources = files(
 
 module_deps = [ ]
 
+metadata = files(
+  name + '.xml'
+)
+
 shared_module(name, sources,
         dependencies: deps + module_deps,
         install: true,
@@ -14,4 +18,4 @@ shared_module(name, sources,
         include_directories : incdir
 )
 
-install_data(name + '.xml', install_dir: metadata_dir)
+install_data(metadata, install_dir: metadata_dir)

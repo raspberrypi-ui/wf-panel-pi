@@ -10,6 +10,10 @@ menu_cache = dependency('libmenu-cache')
 libfm = dependency('libfm-gtk3')
 module_deps = [ menu_cache, libfm ]
 
+metadata = files(
+  name + '.xml'
+)
+
 shared_module(name, sources,
         dependencies: deps + module_deps,
         install: true,
@@ -18,4 +22,4 @@ shared_module(name, sources,
         include_directories : incdir
 )
 
-install_data(name + '.xml', install_dir: metadata_dir)
+install_data(metadata, install_dir: metadata_dir)
