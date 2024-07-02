@@ -388,8 +388,14 @@ class WayfirePanel::impl
                 std::cerr << "Invalid spacing, " << pixel << std::endl;
                 return nullptr;
             }
-
-            return Widget(new WayfireSpacing(pixel));
+            try
+            {
+                return Widget(new WayfireSpacing(pixel));
+            }
+            catch (...)
+            {
+                return nullptr;
+            }
         }
 
         if (name != "none")
@@ -400,7 +406,14 @@ class WayfirePanel::impl
             if (wid)
             {
                 create_t *create_widget = (create_t *) dlsym (wid, "create");
-                return Widget (create_widget ());
+                try
+                {
+                    return Widget (create_widget ());
+                }
+                catch (...)
+                {
+                    return nullptr;
+                }
             }
             else std::cerr << "Could not open plugin - " << dlerror () << std::endl;
         }
