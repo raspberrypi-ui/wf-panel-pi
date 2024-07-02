@@ -79,6 +79,7 @@ class base_option_wrapper_t
     {
         if (raw_option)
         {
+            LOGW ("Option loaded twice");
             throw std::logic_error(
                 "Loading an option into option wrapper twice!");
         }
@@ -86,12 +87,14 @@ class base_option_wrapper_t
         auto untyped_option = load_raw_option(name);
         if (untyped_option == nullptr)
         {
+            LOGW ("No such option: " + std::string(name));
             throw std::runtime_error("No such option: " + std::string(name));
         }
 
         raw_option = std::dynamic_pointer_cast<OptionType>(untyped_option);
         if (raw_option == nullptr)
         {
+            LOGW ("Bad option type: " + std::string(name));
             throw std::runtime_error("Bad option type: " + std::string(name));
         }
 
