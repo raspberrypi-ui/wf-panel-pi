@@ -1,1 +1,1 @@
-install_data('panel.xml', install_dir: metadata_dir)
+install_data('panel-pi.xml', install_dir: metadata_dir)
