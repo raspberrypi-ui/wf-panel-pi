@@ -1,3 +1,9 @@
+wf-panel-pi (0.77) bookworm; urgency=medium
+
+  * Convert plugins to shared objects
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 08 Jul 2024 11:40:35 +0100
+
 wf-panel-pi (0.76) bookworm; urgency=medium
 
   * Tweaks to PackageKit messages
