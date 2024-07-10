@@ -425,18 +425,18 @@ class WayfireToplevel::impl
     {
         if (state & WF_TOPLEVEL_STATE_MINIMIZED)
         {
-            minimize.set_label("Unminimize");
+            minimize.set_label(_("Unminimize"));
         } else
         {
-            minimize.set_label("Minimize");
+            minimize.set_label(_("Minimize"));
         }
 
         if (state & WF_TOPLEVEL_STATE_MAXIMIZED)
         {
-            maximize.set_label("Unmaximize");
+            maximize.set_label(_("Unmaximize"));
         } else
         {
-            maximize.set_label("Maximize");
+            maximize.set_label(_("Maximize"));
         }
     }
 
