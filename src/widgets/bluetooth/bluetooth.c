@@ -2119,6 +2119,7 @@ void bluetooth_destructor (gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
 
+    clear (bt);
     g_bus_unwatch_name (bt->watch);
 
     /* Deallocate memory */
