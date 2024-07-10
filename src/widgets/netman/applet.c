@@ -3333,6 +3333,8 @@ applet_update_icon (gpointer user_data)
 void
 applet_schedule_update_icon (NMApplet *applet)
 {
+	if (applet->killing) return;
+
 	if (!applet->update_icon_id)
 		applet->update_icon_id = g_idle_add (applet_update_icon, applet);
 }
