@@ -78,9 +78,9 @@ class WayfireToplevel::impl
 
         icon_size.set_callback (sigc::mem_fun (*this, &WayfireToplevel::impl::on_scale_update));
 
-        minimize.set_label("Minimize");
-        maximize.set_label("Maximize");
-        close.set_label("Close");
+        minimize.set_label(_("Minimize"));
+        maximize.set_label(_("Maximize"));
+        close.set_label(_("Close"));
         minimize.signal_activate().connect(
             sigc::mem_fun(this, &WayfireToplevel::impl::on_menu_minimize));
         maximize.signal_activate().connect(
