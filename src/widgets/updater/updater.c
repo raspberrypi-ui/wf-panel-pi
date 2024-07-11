@@ -231,8 +231,6 @@ static void show_updates (GtkWidget *widget, gpointer user_data)
     int count;
     char buffer[1024], *ptr, *ver;
 
-    textdomain (GETTEXT_PACKAGE);
-
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/lxplug-updater.ui");
     up->update_dlg = (GtkWidget *) gtk_builder_get_object (builder, "update_dlg");
     g_signal_connect (gtk_builder_get_object (builder, "btn_install"), "clicked", G_CALLBACK (handle_close_and_install), up);
@@ -401,11 +399,6 @@ void updater_init (UpdaterPlugin *up)
 {
     /* Allocate and initialize plugin context */
     //UpdaterPlugin *up = g_new0 (UpdaterPlugin, 1);
-
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
 
     /* Allocate top level widget and set into plugin widget pointer. */
     //up->panel = panel;

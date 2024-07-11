@@ -100,10 +100,11 @@ int can_configure (const char *type)
 
 static gboolean read_lib (const char *type, char **name, gboolean *config)
 {
-    char *libname;
+    char *libname, *package;
     void *wid_lib;
     int space;
     gboolean res = FALSE;
+    char * (*func_package_name)(void);
     char * (*func_display_name)(void);
     conf_table_t * (*func_config_params)(void);
     const conf_table_t *cptr;
@@ -123,13 +124,18 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
 
     if (wid_lib)
     {
+        func_package_name = (char * (*) (void)) dlsym (wid_lib, "package_name");
+        if (!dlerror ()) package = g_strdup (func_package_name());
+        else package = NULL;
+
         func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
         if (!dlerror ())
         {
-            *name = g_strdup (func_display_name());
+            *name = g_strdup (dgettext (package, func_display_name ()));
             res = TRUE;
         }
         else *name = g_strdup_printf (_("<Unknown>"));
+        if (package) g_free (package);
 
         func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
         if (!dlerror ())
@@ -394,7 +400,7 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 
 int plugin_config_dialog (const char *type)
 {
-    char *strval, *key, *user_file, *name;
+    char *strval, *key, *user_file, *name, *package;
     const conf_table_t *cptr;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
@@ -403,13 +409,9 @@ int plugin_config_dialog (const char *type)
     gsize len;
     int space = -1;
     conf_table_t *(*func_config_params) (void);
+    char * (*func_package_name)(void);
     char * (*func_display_name)(void);
     void *wid_lib;
-
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
 
     if (!strncmp (type, "spacing", 7))
     {
@@ -434,9 +436,13 @@ int plugin_config_dialog (const char *type)
 
     if (wid_lib)
     {
+        func_package_name = (char * (*) (void)) dlsym (wid_lib, "package_name");
+        if (!dlerror ()) package = g_strdup (func_package_name());
+        else package = NULL;
+
         func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
         if (!dlerror ())
-            strval = g_strdup_printf (_("Configure %s"), func_display_name ());
+            strval = g_strdup_printf (_("Configure %s"), dgettext (package, func_display_name ()));
         else
             strval = g_strdup_printf (_("Configure %s"), _("<Unknown>"));
         gtk_window_set_title (GTK_WINDOW (cdlg), strval);
@@ -449,7 +455,7 @@ int plugin_config_dialog (const char *type)
             while (cptr->type != CONF_NONE)
             {
                 hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-                strval = g_strdup_printf ("%s:", _(cptr->label));
+                strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
                 label = gtk_label_new (strval);
                 g_free (strval);
                 gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
@@ -490,6 +496,7 @@ int plugin_config_dialog (const char *type)
             }
         }
         dlclose (wid_lib);
+        if (package) g_free (package);
     }
     else
     {
@@ -762,8 +769,6 @@ void open_config_dialog (void)
     GtkBuilder *builder;
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
     int i;
-
-    textdomain (GETTEXT_PACKAGE);
 
     // create the list store for widgets
     widgets = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN);

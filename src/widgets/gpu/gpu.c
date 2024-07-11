@@ -133,11 +133,6 @@ void gpu_destructor (gpointer user_data)
 
 void gpu_init (GPUPlugin *g)
 {
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
     /* Allocate icon as a child of top level */
     graph_init (&(g->graph));
     gtk_container_add (GTK_CONTAINER (g->plugin), g->graph.da);

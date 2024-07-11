@@ -95,11 +95,6 @@ static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *event, Cl
 /* Plugin constructor */
 void clock_init (ClockPlugin *cl)
 {
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (cl->plugin), GTK_RELIEF_NONE);
     g_signal_connect (cl->plugin, "button-press-event", G_CALLBACK (clock_button_press_event), cl);

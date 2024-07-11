@@ -615,8 +615,6 @@ static void disconnect_prompt (WifiMenuItemInfo *info, const char *name)
 	GtkBuilder *builder;
 	char *buffer;
 
-	textdomain (GETTEXT_PACKAGE);
-
 	builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/lxpanel-modal.ui");
 
 	GtkWidget *disc_dlg = (GtkWidget *) gtk_builder_get_object (builder, "modal");

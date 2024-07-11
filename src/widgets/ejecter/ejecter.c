@@ -436,11 +436,6 @@ void ej_init (EjecterPlugin *ej)
     /* Allocate and initialize plugin context */
     //EjecterPlugin *ej = g_new0 (EjecterPlugin, 1);
 
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
     /* Allocate top level widget and set into plugin widget pointer. */
     //ej->panel = panel;
     //ej->settings = settings;

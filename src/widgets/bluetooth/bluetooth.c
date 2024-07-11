@@ -1267,8 +1267,6 @@ static void show_pairing_dialog (BluetoothPlugin *bt, PAIR_STATE state, const gc
     GtkBuilder *builder;
     char *buffer;
 
-    textdomain (GETTEXT_PACKAGE);
-
     if (!bt->pair_dialog)
     {
         builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/lxplug-bluetooth.ui");
@@ -1511,8 +1509,6 @@ static void show_list_dialog (BluetoothPlugin *bt)
     GtkBuilder *builder;
     GtkCellRenderer *rend;
 
-    textdomain (GETTEXT_PACKAGE);
-
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/lxplug-bluetooth.ui");
     bt->list_dialog = (GtkWidget *) gtk_builder_get_object (builder, "list_dlg");
     bt->list_ok = (GtkWidget *) gtk_builder_get_object (builder, "list_pair");
@@ -1554,8 +1550,6 @@ static void show_connect_dialog (BluetoothPlugin *bt, DIALOG_TYPE type, CONN_STA
     GtkBuilder *builder;
     GtkWidget *msg_pb;
     char *buffer;
-
-    textdomain (GETTEXT_PACKAGE);
 
     switch (type)
     {
@@ -2133,11 +2127,6 @@ void bt_init (BluetoothPlugin *bt)
     /* Allocate and initialize plugin context */
     //BluetoothPlugin *bt = g_new0 (BluetoothPlugin, 1);
     int val;
-
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
 
     /* Allocate top level widget and set into plugin widget pointer. */
     //bt->panel = panel;

@@ -10,7 +10,8 @@ extern "C" {
         {CONF_NONE, NULL,       NULL}
     };
     const conf_table_t *config_params (void) { return conf_table; };
-    const char *display_name (void) { textdomain (GETTEXT_PACKAGE); return _("Battery"); };
+    const char *display_name (void) { return N_("Battery"); };
+    const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 
 void WayfireBatt::bar_pos_changed_cb (void)

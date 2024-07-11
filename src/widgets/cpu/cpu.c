@@ -101,11 +101,6 @@ void cpu_destructor (gpointer user_data)
 
 void cpu_init (CPUPlugin *c)
 {
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
     /* Allocate icon as a child of top level */
     graph_init (&(c->graph));
     gtk_container_add (GTK_CONTAINER (c->plugin), c->graph.da);
