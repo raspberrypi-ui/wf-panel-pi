@@ -450,7 +450,7 @@ class WayfirePanel::impl
             widget->init(&box);
             container.push_back(std::move(widget));
 
-            // a widget could reset the textdomain to a local value - reset back to the system value after each load
+            // a badly-written widget could reset the textdomain to a local value - reset back to the system value after each load
             textdomain (GETTEXT_PACKAGE);
         }
     }

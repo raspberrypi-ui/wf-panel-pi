@@ -58,6 +58,7 @@ extern GtkWidget *new_menu_item (const char *text, int maxlen, const char *iconn
 extern void update_menu_icon (GtkWidget *item, GtkWidget *image);
 extern const char *get_menu_label (GtkWidget *item);
 extern void append_menu_icon (GtkWidget *item, GtkWidget *image);
+extern void revert_textdomain (void);
 
 extern void graph_init (PluginGraph *graph);
 extern void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2);

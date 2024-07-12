@@ -153,6 +153,11 @@ void append_menu_icon (GtkWidget *item, GtkWidget *image)
     gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
 }
 
+void revert_textdomain (void)
+{
+    textdomain (GETTEXT_PACKAGE);
+}
+
 /*----------------------------------------------------------------------------*/
 /* Plugin graph */
 /*----------------------------------------------------------------------------*/
