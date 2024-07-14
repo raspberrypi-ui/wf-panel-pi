@@ -1,6 +1,6 @@
-# simplified Chinese translation of lxpanel.
-# Copyright (C) 2008-2016 the lxpanel's authors
-# This file is distributed under the same license as the lxpanel package.
+# Simplified Chinese translation of wf-panel-pi.
+# Copyright (C) 2008-2016 the wf-panel-pi's authors
+# This file is distributed under the same license as the wf-panel-pi package.
 # ideal <05281253@bjtu.edu.cn>, 2008.
 # Yinghua Wang <wantinghard@gmail.com>, 2016.
 # ykla <yklaxds@gmail>, 2024.
