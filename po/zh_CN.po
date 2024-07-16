@@ -1,22 +1,23 @@
-# CHinese simplified translation of lxpanel.
-# Copyright (C) 2008-2016 the lxpanel's authors
-# This file is distributed under the same license as the lxpanel package.
+# Simplified Chinese translation of wf-panel-pi.
+# Copyright (C) 2008-2016 the wf-panel-pi's authors
+# This file is distributed under the same license as the wf-panel-pi package.
 # ideal <05281253@bjtu.edu.cn>, 2008.
 # Yinghua Wang <wantinghard@gmail.com>, 2016.
+# ykla <yklaxds@gmail>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel 0.3.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 09:19+0000\n"
-"PO-Revision-Date: 2016-10-25 09:35+0800\n"
-"Last-Translator: Yinghua Wang <wantinghard@gmail.com>\n"
-"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-07-14 17:34+0800\n"
+"Last-Translator: ykla <yklaxds@gmail.com>\n"
+"Language-Team: ykla <yklaxds@gmail.com>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.6.0-rc2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Pootle-Revision: 0\n"
 "X-Pootle-Path: /zh_CN/lxpanel/po/zh_CN.po\n"
 "X-POOTLE-MTIME: 1417570650.000000\n"
@@ -24,177 +25,170 @@ msgstr ""
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1283
 #, c-format
 msgid "Pairing request sent to '%s' - waiting for response..."
-msgstr ""
+msgstr "已向 '%s' 发送配对请求——等待响应……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1291
 #, c-format
 msgid "Pairing failed - %s"
-msgstr ""
+msgstr "配对失败——%s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1299
-#, fuzzy, c-format
+#, c-format
 msgid "Pairing successful - connecting..."
-msgstr "正在准备组队网络连接“%s”..."
+msgstr "配对成功——正在连接……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1307
-#, fuzzy, c-format
+#, c-format
 msgid "Connection successful"
-msgstr "连接失败"
+msgstr "连接成功"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1315
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "Connection failed - %s"
-msgstr "连接失败"
+msgstr "连接失败——%s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1323
 #, c-format
 msgid "Please enter code '%s' on '%s'"
-msgstr ""
+msgstr "请在 '%2$s' 上输入代码 '%1$s'"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1331
 #, c-format
 msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
+msgstr "请确认 '%s' 上显示的代码 '%s' 以进行配对"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1339
 #, c-format
 msgid "Please enter PIN code shown on '%s'"
-msgstr ""
+msgstr "请输入在 '%s' 上显示的 PIN 码。"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1347
 #, c-format
 msgid "Please enter passcode shown on '%s'"
-msgstr ""
+msgstr "请输入在 '%s' 上显示的密码。"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1355
 #, c-format
 msgid "Waiting for response from Bluetooth device..."
-msgstr ""
+msgstr "正在等待蓝牙设备响应.……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1363
 #, c-format
 msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
+msgstr "'%s' 请求进行配对。您是否接受该请求？"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1371
 #, c-format
 msgid ""
 "Pairing successful - right-click the volume icon to connect as audio device"
-msgstr ""
+msgstr "配对成功——右键点击音量图标可将其配置为音频设备"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1379
 #, c-format
 msgid ""
 "Pairing successful - this device has no services which can be used with "
 "Raspberry Pi"
-msgstr ""
+msgstr "配对成功——此设备没有可用于树莓派的服务"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1558
 #, c-format
 msgid "Do you want to unpair '%s'?"
-msgstr ""
+msgstr "你想要解除配对 '%s' 吗？"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1561
 #, c-format
 msgid "Removing pairing with '%s'..."
-msgstr ""
+msgstr "正在解除与 '%s' 的配对……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1564
 #, c-format
 msgid "Removal failed - %s"
-msgstr ""
+msgstr "解除失败——%s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to '%s'..."
-msgstr "正在配置组队网络连接 %s..."
+msgstr "正在连接 %s……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnecting from '%s'..."
-msgstr "正在准备绑定连接“%s”..."
+msgstr "正在断开连接“%s”……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnection failed - %s"
-msgstr "断开失败"
+msgstr "断开失败——%s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-#, fuzzy
 msgid "Use the audio menu to connect to this device"
-msgstr "使用网络菜单连接到 Wi-Fi 网络"
+msgstr "使用音频菜单来接入该设备"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1694
 msgid "No usable services on this device"
-msgstr ""
+msgstr "该设备无可用的服务"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-#, fuzzy
 msgid "Disconnect..."
-msgstr "断开"
+msgstr "断开连接……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-#, fuzzy
 msgid "Connect..."
-msgstr "连接(_O)"
+msgstr "连接……"
 
 #. add the remove option to the submenu
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1777
 msgid "Remove..."
-msgstr ""
+msgstr "移除……"
 
 #. warn if no BT hardware detected
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-#, fuzzy
 msgid "No Bluetooth adapter found"
-msgstr "蓝牙类型"
+msgstr "未找到蓝牙适配器"
 
 #. add enable bt option
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-#, fuzzy
 msgid "Turn On Bluetooth"
-msgstr "蓝牙"
+msgstr "打开蓝牙"
 
 #. add disable bt option
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-#, fuzzy
 msgid "Turn Off Bluetooth"
-msgstr "蓝牙"
+msgstr "关闭蓝牙"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2000
 msgid "Stop Discoverable"
-msgstr ""
+msgstr "关闭设备可现性"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2002
 msgid "Make Discoverable"
-msgstr ""
+msgstr "打开设备可现性"
 
 #. add and remove dialogs
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-#, fuzzy
 msgid "Add Device..."
-msgstr "设备"
+msgstr "添加设备……"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2140
-#, fuzzy
 msgid "Manage Bluetooth devices"
-msgstr "无效的蓝牙设备（%s）"
+msgstr "管理蓝牙设备"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2189
 msgid "Bluetooth"
 msgstr "蓝牙"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:2190
-#, fuzzy
 msgid "Manages Bluetooth devices"
-msgstr "无效的蓝牙设备（%s）"
+msgstr "管理蓝牙设备"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:171
 msgid ""
 "Drive was removed without ejecting\n"
 "Please use menu to eject before removal"
 msgstr ""
+"驱动器未安全弹出即被移除\n"
+"请使用菜单选项进行安全弹出。"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:199
 #, c-format
@@ -202,34 +196,38 @@ msgid ""
 "%s has been ejected\n"
 "It is now safe to remove the device"
 msgstr ""
+"%s 已弹出。\n"
+"现在可以安全地移除设备。"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:205
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Failed to eject %s\n"
 "%s"
-msgstr "无法建立 PAN 连接：%s"
+msgstr ""
+"弹出失败 %s\n"
+"%s"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:402
 msgid "Select a drive in menu to eject safely"
-msgstr ""
+msgstr "在菜单中选择驱动器可安全卸载"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:451
 #: ../src/panel/widgets/ejecter/ejecter.c:461
 msgid "Ejecter"
-msgstr ""
+msgstr "弹出设备"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:453
 msgid "Hide icon when no devices"
-msgstr ""
+msgstr "无设备时隐藏图标"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:462
 msgid "Ejects mounted drives"
-msgstr ""
+msgstr "弹出已挂载的设备"
 
 #: ../src/panel/widgets/netman/ap-menu-item.c:77
 msgid "ad-hoc"
-msgstr "ad-hoc"
+msgstr "热点"
 
 #: ../src/panel/widgets/netman/ap-menu-item.c:82
 msgid "secure."
@@ -238,7 +236,7 @@ msgstr "安全。"
 #: ../src/panel/widgets/netman/applet.c:74
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1525
 msgid "Failed to activate connection"
-msgstr "无法激活连接"
+msgstr "无法启用连接"
 
 #: ../src/panel/widgets/netman/applet.c:75
 #: ../src/panel/widgets/netman/applet.c:783
@@ -260,20 +258,20 @@ msgstr "连接失败"
 
 #: ../src/panel/widgets/netman/applet.c:186
 msgid "_Turn Off Wireless LAN"
-msgstr ""
+msgstr "_关闭 WLAN"
 
 #: ../src/panel/widgets/netman/applet.c:186
 msgid "_Turn On Wireless LAN"
-msgstr ""
+msgstr "_打开 WLAN"
 
 #: ../src/panel/widgets/netman/applet.c:227
 #, c-format
 msgid "IP : %s"
-msgstr ""
+msgstr "IP：%s"
 
 #: ../src/panel/widgets/netman/applet.c:781
 msgid "Failed to add/activate connection"
-msgstr "无法添加/激活连接"
+msgstr "无法添加/启动连接"
 
 #: ../src/panel/widgets/netman/applet.c:835
 msgid "Device disconnect failed"
@@ -300,7 +298,7 @@ msgid ""
 "interrupted."
 msgstr ""
 "\n"
-"由于网络连接中断，VPN 连接“%s”已断开。"
+"由于网络连接中断，VPN “%s”连接已断开。"
 
 #: ../src/panel/widgets/netman/applet.c:1312
 #, c-format
@@ -310,7 +308,7 @@ msgid ""
 "interrupted."
 msgstr ""
 "\n"
-"由于网络连接中断，VPN 连接“%s”失败。"
+"由于网络连接中断，VPN “%s” 连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1314
 #, c-format
@@ -319,7 +317,7 @@ msgid ""
 "The VPN connection “%s” failed because the VPN service stopped unexpectedly."
 msgstr ""
 "\n"
-"由于 VPN 服务异常停止，VPN 连接“%s”失败。"
+"由于 VPN 服务异常停止，VPN “%s”连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1316
 #, c-format
@@ -329,7 +327,7 @@ msgid ""
 "configuration."
 msgstr ""
 "\n"
-"由于 VPN 服务返回了无效的配置，VPN 连接“%s”失败。"
+"由于 VPN 服务返回了无效的配置，VPN “%s”连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1318
 #, c-format
@@ -338,7 +336,7 @@ msgid ""
 "The VPN connection “%s” failed because the connection attempt timed out."
 msgstr ""
 "\n"
-"由于连接尝试超时，VPN 连接“%s”失败。"
+"由于连接尝试超时，VPN “%s”连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1320
 #, c-format
@@ -347,7 +345,7 @@ msgid ""
 "The VPN connection “%s” failed because the VPN service did not start in time."
 msgstr ""
 "\n"
-"由于 VPN 服务未及时启动，VPN 连接“%s”失败。"
+"由于 VPN 服务未及时启动，VPN “%s”连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1322
 #, c-format
@@ -356,7 +354,7 @@ msgid ""
 "The VPN connection “%s” failed because the VPN service failed to start."
 msgstr ""
 "\n"
-"由于 VPN 服务启动失败，VPN 连接“%s”失败。"
+"由于 VPN 服务启动失败，VPN “%s”连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1324
 #, c-format
@@ -365,7 +363,7 @@ msgid ""
 "The VPN connection “%s” failed because there were no valid VPN secrets."
 msgstr ""
 "\n"
-"由于没有有效的 VPN 密钥（secret），VPN 连接“%s”失败。"
+"由于没有有效的 VPN 密钥（secret），VPN “%s”连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1326
 #, c-format
@@ -374,7 +372,7 @@ msgid ""
 "The VPN connection “%s” failed because of invalid VPN secrets."
 msgstr ""
 "\n"
-"由于 VPN 密钥（secret）无效，VPN 连接“%s”失败。"
+"由于 VPN 密钥无效，VPN “%s”连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1331
 #, c-format
@@ -383,7 +381,7 @@ msgid ""
 "The VPN connection “%s” failed."
 msgstr ""
 "\n"
-"VPN 连接“%s”失败。"
+"VPN “%s” 连接失败。"
 
 #: ../src/panel/widgets/netman/applet.c:1358
 #, c-format
@@ -418,7 +416,7 @@ msgid ""
 "%s"
 msgstr ""
 "\n"
-"由于 VPN 服务启动失败，VPN 连接“%s”失败。\n"
+"由于 VPN 服务启动失败，VPN “%s”连接失败。\n"
 "\n"
 "%s"
 
@@ -431,13 +429,13 @@ msgid ""
 "%s"
 msgstr ""
 "\n"
-"VPN 连接“%s”启动失败。\n"
+"VPN “%s” 连接启动失败。\n"
 "\n"
 "%s"
 
 #: ../src/panel/widgets/netman/applet.c:1741
 msgid "device not ready (firmware missing)"
-msgstr "设备未就绪（缺少固件）"
+msgstr "设备未就绪（固件缺失）"
 
 #: ../src/panel/widgets/netman/applet.c:1743
 msgid "device not ready"
@@ -459,12 +457,11 @@ msgstr "设备未托管"
 
 #: ../src/panel/widgets/netman/applet.c:1864
 msgid "No network devices available"
-msgstr "没有可用的网络设备"
+msgstr "无网络设备可用"
 
 #: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
 msgid "_Advanced Options"
-msgstr "组合高级选项"
+msgstr "_高级选项"
 
 #: ../src/panel/widgets/netman/applet.c:1919
 msgid "_VPN Connections"
@@ -472,36 +469,35 @@ msgstr "_VPN 连接"
 
 #: ../src/panel/widgets/netman/applet.c:1973
 msgid "_Configure VPN…"
-msgstr "配置 VPN(_C)…"
+msgstr "_配置 VPN……"
 
 #: ../src/panel/widgets/netman/applet.c:1977
 msgid "_Add a VPN connection…"
-msgstr "添加 VPN 连接(_A)…"
+msgstr "_添加一个 VPN 连接……"
 
 #. 'Connection Information' item
 #: ../src/panel/widgets/netman/applet.c:1989
 #: ../src/panel/widgets/netman/applet.c:2393
 msgid "Connection _Information"
-msgstr "连接信息(_I)"
+msgstr "连接 _信息"
 
 #. 'Edit Connections...' item
 #: ../src/panel/widgets/netman/applet.c:1997
 #: ../src/panel/widgets/netman/applet.c:2401
 msgid "Edit Connections…"
-msgstr "编辑连接…"
+msgstr "编辑连接……"
 
 #: ../src/panel/widgets/netman/applet.c:2112
 msgid "NetworkManager is not running…"
-msgstr "网络管理器未运行……"
+msgstr "NetworkManager 未运行……"
 
 #: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
 msgid "Wi-Fi country is not set"
-msgstr "我所在国家/地区没有被列出"
+msgstr "所在区域未被列出"
 
 #: ../src/panel/widgets/netman/applet.c:2119
 msgid "Click here to set Wi-Fi country"
-msgstr ""
+msgstr "点击此处设置 WiFi 区域"
 
 #: ../src/panel/widgets/netman/applet.c:2127
 #: ../src/panel/widgets/netman/applet.c:3222
@@ -511,31 +507,31 @@ msgstr "网络已禁用"
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
 msgid "Enable _Networking"
-msgstr "启用联网(_N)"
+msgstr "启用 _联网"
 
 #. 'Enable Wi-Fi' item
 #: ../src/panel/widgets/netman/applet.c:2360
 msgid "Enable _Wi-Fi"
-msgstr "启用 _Wi-Fi"
+msgstr "启用 _WiFi"
 
 #. 'Enable Mobile Broadband' item
 #: ../src/panel/widgets/netman/applet.c:2369
 msgid "Enable _Mobile Broadband"
-msgstr "启用移动宽带(_M)"
+msgstr "启用 _移动宽带"
 
 #. Toggle notifications item
 #: ../src/panel/widgets/netman/applet.c:2381
 msgid "Enable N_otifications"
-msgstr "启用通知(_O)"
+msgstr "启用 _通知"
 
 #: ../src/panel/widgets/netman/applet.c:2415
 msgid "_About"
-msgstr "关于(_A)"
+msgstr "_关于"
 
 #: ../src/panel/widgets/netman/applet.c:2736
 #, c-format
 msgid "You are now connected to “%s”."
-msgstr "您现在已连接到“%s”。"
+msgstr "您已连接至“%s”。"
 
 #: ../src/panel/widgets/netman/applet.c:2776
 msgid "Disconnected"
@@ -598,15 +594,15 @@ msgstr "网络"
 
 #: ../src/panel/widgets/netman/applet.c:3896
 msgid "NetworkManager Applet"
-msgstr "网络管理器小程序"
+msgstr "NetworkManager Applet"
 
 #: ../src/panel/widgets/netman/applet-device-broadband.c:147
 msgid "Wrong PUK code; please contact your provider."
-msgstr "错误的 PUK 代码；请联络您的供应商。"
+msgstr "PUK 码错误；请联系您的供应商。"
 
 #: ../src/panel/widgets/netman/applet-device-broadband.c:189
 msgid "Wrong PIN code; please contact your provider."
-msgstr "错误的 PIN 代码；请联络您的供应商。"
+msgstr "PIN 码错误；请联系您的供应商。"
 
 #. Start the spinner to show the progress of the unlock
 #: ../src/panel/widgets/netman/applet-device-broadband.c:240
@@ -628,12 +624,12 @@ msgstr "移动宽带"
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:107
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1022
 msgid "Available"
-msgstr "可用的"
+msgstr "可用"
 
 #. Default connection item
 #: ../src/panel/widgets/netman/applet-device-broadband.c:793
 msgid "New Mobile Broadband connection…"
-msgstr "新建移动宽带连接…"
+msgstr "新建移动宽带连接……"
 
 #: ../src/panel/widgets/netman/applet-device-broadband.c:809
 #: ../src/panel/widgets/netman/applet-device-bt.c:75
@@ -690,7 +686,7 @@ msgstr "移动宽带连接“%s”已激活"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:16
 msgid "Auto Ethernet"
-msgstr "自动以太网"
+msgstr "以太网自动协商"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:72
 #, c-format
@@ -712,7 +708,7 @@ msgstr "以太网"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:125
 msgid "You are now connected to the ethernet network."
-msgstr "您现已连接到以太网。"
+msgstr "您已连接至以太网。"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:153
 #, c-format
@@ -750,7 +746,7 @@ msgstr "DSL 身份验证"
 #: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
 #: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
-msgstr "取消(_C)"
+msgstr "_取消"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:342
 #: ../src/panel/widgets/netman/applet-dialogs.c:1191
@@ -759,20 +755,19 @@ msgstr "取消(_C)"
 #: ../src/panel/widgets/volumepulse/volumepulse.c:247
 #: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
 msgid "_OK"
-msgstr "确定(_O)"
+msgstr "_确认"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "连接到隐藏的 Wi-Fi 网络(_C)…"
+msgstr "_连接到隐藏的 WiFi 网络……"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 msgid "Create _New Wi-Fi Network…"
-msgstr "新建 Wi-Fi 网络(_N)…"
+msgstr "_新建 WiFi 网络"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
-#, fuzzy
 msgid "Create Wi-Fi _Hotspot…"
-msgstr "新建 Wi-Fi 网络(_N)…"
+msgstr "新建 WiFi _热点"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
 msgid "(none)"
@@ -788,32 +783,32 @@ msgid "Insufficient privileges."
 msgstr "权限不足。"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
+#, c-format
 msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "单击此图标连接到无线网络"
+msgstr "你想断开与无线网络 '%s' 的连接吗？"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:926
 #, c-format
 msgid "Wi-Fi Networks (%s)"
-msgstr "Wi-Fi 网络（%s）"
+msgstr "WiFi 网络（%s）"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:928
 #, c-format
 msgid "Wi-Fi Network (%s)"
-msgstr "Wi-Fi 网络（%s）"
+msgstr "WiFi 网络（%s）"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:931
 msgid "Wi-Fi Network"
 msgid_plural "Wi-Fi Networks"
-msgstr[0] "Wi-Fi 网络"
+msgstr[0] "WiFi 网络"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:983
 msgid "Wi-Fi is disabled"
-msgstr "Wi-Fi 已禁用"
+msgstr "WiFi 已禁用"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:984
 msgid "Wi-Fi is disabled by hardware switch"
-msgstr "Wi-Fi 已通过硬件开关禁用"
+msgstr "WiFi 已通过硬件开关禁用"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1050
 msgid "More networks"
@@ -821,31 +816,31 @@ msgstr "更多网络"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1257
 msgid "Wi-Fi Networks Available"
-msgstr "Wi-Fi 网络可用"
+msgstr "WiFi 网络可用"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1258
 msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr "使用网络菜单连接到 Wi-Fi 网络"
+msgstr "使用网络菜单连接到 WiFi 网络"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1442
 #, c-format
 msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "您现在已连接到 Wi-Fi 网络“%s”。"
+msgstr "您已连接至 WiFi 网络“%s”。"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1477
 #, c-format
 msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "正在准备 Wi-Fi 网络连接“%s”……"
+msgstr "正在准备 WiFi 网络连接“%s”……"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1480
 #, c-format
 msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "正在配置 Wi-Fi 网络连接“%s”……"
+msgstr "正在配置 WiFi 网络连接“%s”……"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1483
 #, c-format
 msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr "Wi-Fi 网络“%s”需要用户身份验证……"
+msgstr "WiFi 网络“%s”需要用户身份验证……"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1486
 #, c-format
@@ -853,23 +848,23 @@ msgid "Requesting a Wi-Fi network address for “%s”…"
 msgstr "正在为“%s”请求网络地址……"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
+#, c-format
 msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "Wi-Fi 网络连接“%s”已激活：%s (%d%%)"
+msgstr "WiFi 网络连接 “%s” 已激活：%s（热点）"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1502
 #, c-format
 msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "Wi-Fi 网络连接“%s”已激活：%s (%d%%)"
+msgstr "WiFi 网络连接“%s”已激活：%s (%d%%)"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1506
 #, c-format
 msgid "Wi-Fi network connection “%s” active"
-msgstr "Wi-Fi 网络连接“%s”已激活"
+msgstr "WiFi 网络连接“%s”已激活"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:29
 msgid "Error displaying connection information:"
-msgstr "显示连接信息时出错："
+msgstr "显示连接信息时发生错误："
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:61
 msgid "LEAP"
@@ -962,7 +957,7 @@ msgstr "以太网（%s）"
 #: ../src/panel/widgets/netman/applet-dialogs.c:521
 #, c-format
 msgid "802.11 Wi-Fi (%s)"
-msgstr "802.11 Wi-Fi (%s)"
+msgstr "802.11 WiFi (%s)"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:528
 #, c-format
@@ -978,7 +973,7 @@ msgstr "CDMA（%s）"
 #: ../src/panel/widgets/netman/applet-dialogs.c:538
 #: ../src/panel/widgets/netman/applet-dialogs.c:872
 msgid "General"
-msgstr "常规"
+msgstr "通用"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:541
 msgid "Interface"
@@ -1052,7 +1047,7 @@ msgstr "未知"
 #. Shouldn't really happen but ...
 #: ../src/panel/widgets/netman/applet-dialogs.c:1091
 msgid "No valid active connections found!"
-msgstr "未找到合法的活动连接！"
+msgstr "未找到有效的活动连接！"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1139
 msgid ""
@@ -1067,7 +1062,7 @@ msgstr ""
 #: ../src/panel/widgets/netman/applet-dialogs.c:1142
 msgid ""
 "Notification area applet for managing your network devices and connections."
-msgstr "管理您网络设备和连接的通知区域小程序。"
+msgstr "用于管理网络设备和连接的通知区域小程序。"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1144
 msgid "NetworkManager Website"
@@ -1080,13 +1075,14 @@ msgstr ""
 "Wei Mingzhi <whistler_wmz@users.sf.net>, 2009, 2010\n"
 "Leah Liu <lliu@redhat.com>, 2010\n"
 "Aron Xu <aronxu@gnome.org>, 2010\n"
-"Dingzhong Chen <wsxy162@gmail.com>, 2018"
+"Dingzhong Chen <wsxy162@gmail.com>, 2018\n"
+"ykla <yklaxds@gmail.com>, 2024"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1158
 msgid ""
 "The NetworkManager Applet could not find some required resources (the .ui "
 "file was not found)."
-msgstr "网络管理器小程序找不到所需的资源（.ui 文件未找到）。"
+msgstr "网络管理器小程序找不到所需的资源（未找到 .ui 文件）。"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1163
 msgid "Missing resources"
@@ -1099,7 +1095,7 @@ msgstr "移动宽带网络密码"
 #: ../src/panel/widgets/netman/applet-dialogs.c:1197
 #, c-format
 msgid "A password is required to connect to “%s”."
-msgstr "连接到“%s”需要密码。"
+msgstr "“%s” 连接需要密码。"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1220
 msgid "Password:"
@@ -1119,7 +1115,7 @@ msgstr "需要解锁 SIM PIN"
 msgid ""
 "The mobile broadband device “%s” requires a SIM PIN code before it can be "
 "used."
-msgstr "移动宽带设备“%s”在可以使用之前需要 SIM PIN 码。"
+msgstr "移动宽带设备“%s”需要 SIM PIN 码，才能继续使用。"
 
 #. Translators: PIN code entry label
 #: ../src/panel/widgets/netman/applet-dialogs.c:1507
@@ -1145,7 +1141,7 @@ msgstr "需要解锁 SIM PUK"
 msgid ""
 "The mobile broadband device “%s” requires a SIM PUK code before it can be "
 "used."
-msgstr "移动宽带设备“%s”在可以使用之前需要 SIM PUK 码。"
+msgstr "移动宽带设备“%s”需要 SIM PUK 码，才能继续使用。"
 
 #. Translators: PUK code entry label
 #: ../src/panel/widgets/netman/applet-dialogs.c:1518
@@ -1174,11 +1170,11 @@ msgstr "连接没有 VPN 设置"
 #: ../src/panel/widgets/netman/applet-vpn-request.c:477
 #, c-format
 msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr "写入连接到 VPN UI 失败：%s（%d）"
+msgstr "VPN UI 连接写入失败：%s（%d）"
 
 #: ../src/panel/widgets/netman/applet-vpn-request.c:485
 msgid "Failed to write connection to VPN UI: incomplete write"
-msgstr "写入连接到 VPN UI 失败：写入不完整"
+msgstr "VPN UI 连接写入失败：配置不完整"
 
 #: ../src/panel/widgets/netman/ethernet-dialog.c:87
 #: ../src/panel/widgets/netman/8021x.ui.h:1
@@ -1282,7 +1278,7 @@ msgstr "漫游网络"
 #: ../src/panel/widgets/netman/mobile-helpers.c:320
 #, c-format
 msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "“%2$s”上 SIM 卡“%1$s”的 PIN 码"
+msgstr "SIM 卡 \"%s\" 在 \"%s\" 上的 PIN 码"
 
 #: ../src/panel/widgets/netman/mobile-helpers.c:453
 msgid "PIN code required"
@@ -1302,24 +1298,22 @@ msgid "roaming"
 msgstr "漫游中"
 
 #: ../src/panel/widgets/netman/netman.c:139
-#, fuzzy
 msgid "Network Manager"
-msgstr "网络管理器"
+msgstr "Network Manager "
 
 #: ../src/panel/widgets/netman/netman.c:140
-#, fuzzy
 msgid "Controller for Network Manager"
-msgstr "网络管理器"
+msgstr "NetworkManager 控制器"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:793
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr "对象类“%s”没有名为“%s”的属性"
+msgstr "对象类“%2$s”没有名为“%1$s”的属性"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:800
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr "对象类“%2$s”的“%1$s”属性是不可写的"
+msgstr "对象类 '%2$s' 的属性 '%1$s' 不可写。"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:807
 #, c-format
@@ -1361,7 +1355,7 @@ msgstr "DER、PEM 或 PKCS#12 私钥（*.der、*.pem、*.p12、*.key）"
 #: ../src/panel/widgets/power/ptbatt.c:389
 #, c-format
 msgid "Charging : %d%%"
-msgstr ""
+msgstr "正在充电：%d%%"
 
 #: ../src/panel/widgets/power/ptbatt.c:391
 #, c-format
@@ -1369,6 +1363,8 @@ msgid ""
 "Charging : %d%%\n"
 "Time remaining : %d minutes"
 msgstr ""
+"正在充电：%d%%\n"
+"还需要：%d 分钟"
 
 #: ../src/panel/widgets/power/ptbatt.c:393
 #, c-format
@@ -1376,6 +1372,8 @@ msgid ""
 "Charging : %d%%\n"
 "Time remaining : %0.1f hours"
 msgstr ""
+"正在充电：%d%%\n"
+"还需要：%0.1f 小时"
 
 #: ../src/panel/widgets/power/ptbatt.c:398
 #, c-format
@@ -1383,11 +1381,13 @@ msgid ""
 "Charged : %d%%\n"
 "On external power"
 msgstr ""
+"已充电：%d%%\n"
+"使用外部电源"
 
 #: ../src/panel/widgets/power/ptbatt.c:404
 #, c-format
 msgid "Discharging : %d%%"
-msgstr ""
+msgstr "正在使用电池：%d%%"
 
 #: ../src/panel/widgets/power/ptbatt.c:406
 #, c-format
@@ -1395,6 +1395,8 @@ msgid ""
 "Discharging : %d%%\n"
 "Time remaining : %d minutes"
 msgstr ""
+"正在使用电池：%d%%\n"
+"续航剩余：%d 分钟"
 
 #: ../src/panel/widgets/power/ptbatt.c:408
 #, c-format
@@ -1402,20 +1404,24 @@ msgid ""
 "Discharging : %d%%\n"
 "Time remaining : %0.1f hours"
 msgstr ""
+"正在使用电池：%d%%\n"
+"续航剩余：%0.1f 小时"
 
 #: ../src/panel/widgets/power/ptbatt.c:431
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
+"低电压警告\n"
+"请检查您的电源适配器"
 
 #: ../src/panel/widgets/power/ptbatt.c:513
 msgid "Power & Battery"
-msgstr ""
+msgstr "电源和电池"
 
 #: ../src/panel/widgets/power/ptbatt.c:514
 msgid "Monitors voltage and laptop battery"
-msgstr ""
+msgstr "监控电压和笔记本电池"
 
 #: ../src/panel/widgets/smenu/gtk-run.c:391
 #: ../src/panel/widgets/smenu/menu.c:121
@@ -1424,11 +1430,11 @@ msgstr "运行"
 
 #: ../src/panel/widgets/smenu/gtk-run.c:412
 msgid "Enter the command you want to execute:"
-msgstr ""
+msgstr "输入你想运行的命令："
 
 #: ../src/panel/widgets/smenu/menu.c:116
 msgid "Logout command is not set"
-msgstr ""
+msgstr "登出命令未设定"
 
 #: ../src/panel/widgets/smenu/menu.c:122
 msgid "Restart"
@@ -1440,7 +1446,7 @@ msgstr "注销"
 
 #: ../src/panel/widgets/smenu/menu.c:140
 msgid "No file manager is configured."
-msgstr ""
+msgstr "未配置文件管理器。"
 
 #: ../src/panel/widgets/smenu/menu.c:489
 msgid "Add to desktop"
@@ -1452,7 +1458,7 @@ msgstr "属性"
 
 #: ../src/panel/widgets/smenu/menu.c:954
 msgid "Click here to open applications menu"
-msgstr ""
+msgstr "点击此处打开软件菜单"
 
 #: ../src/panel/widgets/smenu/menu.c:1047
 msgid "Menu"
@@ -1464,223 +1470,212 @@ msgstr "图标"
 
 #: ../src/panel/widgets/smenu/menu.c:1049
 msgid "Padding"
-msgstr ""
+msgstr "填充"
 
 #: ../src/panel/widgets/smenu/menu.c:1050
 msgid "Fixed Size"
-msgstr ""
+msgstr "固定大小"
 
 #: ../src/panel/widgets/smenu/menu.c:1058
 msgid "Menu with Search"
-msgstr ""
+msgstr "菜单与搜索"
 
 #: ../src/panel/widgets/smenu/menu.c:1059
-#, fuzzy
 msgid "Searchable Application Menu"
-msgstr "应用程序菜单"
+msgstr "可搜索的应用菜单"
 
 #: ../src/panel/widgets/updater/updater.c:189
 msgid ""
 "Updates are available\n"
 "Click the update icon to install"
 msgstr ""
+"有更新可用\n"
+"点击更新图标进行安装"
 
 #: ../src/panel/widgets/updater/updater.c:211
-#, fuzzy
 msgid "No network connection - cannot install updates."
-msgstr "没有网络连接"
+msgstr "无网络连接——无法安装更新。"
 
 #: ../src/panel/widgets/updater/updater.c:217
 msgid ""
 "Clock not synchronised - cannot install updates. Try again in a few minutes."
-msgstr ""
+msgstr "时钟未同步——无法安装更新。请稍后再试。"
 
 #: ../src/panel/widgets/updater/updater.c:320
 msgid "Show Updates..."
-msgstr ""
+msgstr "显示更新……"
 
 #: ../src/panel/widgets/updater/updater.c:324
 msgid "Install Updates"
-msgstr ""
+msgstr "安装更新"
 
 #: ../src/panel/widgets/updater/updater.c:470
 msgid "Updates are available - click to install"
-msgstr ""
+msgstr "有更新可用——点击安装"
 
 #: ../src/panel/widgets/updater/updater.c:529
 #: ../src/panel/widgets/updater/updater.c:561
 msgid "Updater"
-msgstr ""
+msgstr "更新器"
 
 #: ../src/panel/widgets/updater/updater.c:531
 msgid "Hours between checks for updates"
-msgstr ""
+msgstr "检查更新的时间间隔"
 
 #: ../src/panel/widgets/updater/updater.c:562
 msgid "Checks for updates"
-msgstr ""
+msgstr "查找更新"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:231
-#, fuzzy
 msgid "Reconnecting Bluetooth devices..."
-msgstr "无效的蓝牙设备（%s）"
+msgstr "正在重新连接蓝牙设备……"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
+#, c-format
 msgid "Bluetooth %s device not found"
-msgstr "蓝牙连接 %d"
+msgstr "未找到蓝牙设备 %s"
 
 #. update dialog to show a warning
 #: ../src/panel/widgets/volumepulse/bluetooth.c:405
 msgid "Device not found by PulseAudio"
-msgstr ""
+msgstr "PulseAudio 未找到设备"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:417
 #, c-format
 msgid "Could not set profile for device : %s"
-msgstr ""
+msgstr "无法为设备 %s 配置文件："
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to connect to Bluetooth device - %s"
-msgstr "连接到电话失败。"
+msgstr "无法连接到蓝牙设备——%s"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:656
 #, c-format
 msgid "Connecting Bluetooth device '%s' as output..."
-msgstr ""
+msgstr "把接入的蓝牙设备 '%s' 作为输出设备……"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "无效的蓝牙设备（%s）"
+msgstr "把接入的蓝牙设备 '%s' 作为输入设备……"
 
 #. if the current default source and sink are both the same device, disconnect it and reconnect to
 #. put it into A2DP rather than HSP
 #: ../src/panel/widgets/volumepulse/bluetooth.c:785
 msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
+msgstr "重新将蓝牙输入设备连接为仅输出..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:830
-#, fuzzy
 msgid "Reconnecting Bluetooth device..."
-msgstr "无效的蓝牙设备（%s）"
+msgstr "正在重连蓝牙设备……"
 
 #. Create a check button as the child of the vertical box.
 #: ../src/panel/widgets/volumepulse/commongui.c:140
 msgid "Mute"
-msgstr ""
+msgstr "静音"
 
 #: ../src/panel/widgets/volumepulse/commongui.c:231
 msgid "No audio devices found"
-msgstr ""
+msgstr "未找到音频设备"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:71
 msgid "Input from this device not available in the current profile"
-msgstr ""
+msgstr "当前配置文件不支持此设备的输入"
 
 #. update tooltip
 #: ../src/panel/widgets/volumepulse/micpulse.c:144
 msgid "Mic volume"
-msgstr ""
+msgstr "麦克风音量"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:216
 msgid "Microphone Control (PulseAudio)"
-msgstr ""
+msgstr "麦克风控制（PulseAudio）"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:217
 msgid "Display and control microphones for PulseAudio"
-msgstr ""
+msgstr "管理和控制 PulseAudio 中的麦克风"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:103
 msgid "HDMI"
-msgstr ""
+msgstr "HDMI"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:116
 msgid "AV Jack"
-msgstr ""
+msgstr "AV 插口"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:139
 msgid "Device Profiles..."
-msgstr ""
+msgstr "设备配置文件……"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:172
 msgid "Output to this device not available in the current profile"
-msgstr ""
+msgstr "当前配置下无法将输出发送到此设备。"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:221
-#, fuzzy
 msgid "Device Profiles"
-msgstr "设备断开失败"
+msgstr "设备配置文件"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:279
-#, fuzzy
 msgid "Device not connected"
-msgstr "设备断开失败"
+msgstr "设备未连接"
 
 #. update tooltip
 #: ../src/panel/widgets/volumepulse/volumepulse.c:382
-#, fuzzy
 msgid "Volume control"
-msgstr "流量控制"
+msgstr "音量控制"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:461
 msgid "Volume Control (PulseAudio)"
-msgstr ""
+msgstr "音量控制（PulseAudio）"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:462
 msgid "Display and control volume for PulseAudio"
-msgstr ""
+msgstr "显示和控制 PulseAudio 的音量"
 
 #: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-#, fuzzy
 msgid "label"
-msgstr "重新标签"
+msgstr "标签"
 
 #: ../data/lxplug-updater.ui.h:1
-#, fuzzy
 msgid "Available Updates"
-msgstr "可用的"
+msgstr "可用更新"
 
 #: ../data/lxplug-updater.ui.h:2
-#, fuzzy
 msgid "Close"
-msgstr "关闭(_C)"
+msgstr "退出"
 
 #: ../data/lxplug-updater.ui.h:3
 msgid "Install"
-msgstr ""
+msgstr "安装"
 
 #: ../data/lxplug-updater.ui.h:4
 msgid "The following packages can be updated :"
-msgstr ""
+msgstr "以下软件包将被更新："
 
 #: ../data/lxplug-bluetooth.ui.h:1
-#, fuzzy
 msgid "Add New Device"
-msgstr "设备"
+msgstr "添加新设备"
 
 #: ../data/lxplug-bluetooth.ui.h:3
 msgid "_Pair"
-msgstr ""
+msgstr "_配对"
 
 #: ../data/lxplug-bluetooth.ui.h:4
-#, fuzzy
 msgid "Searching for Bluetooth devices..."
-msgstr "无效的蓝牙设备（%s）"
+msgstr "正在搜索蓝牙设备……"
 
 #: ../src/panel/widgets/netman/8021x.ui.h:3
-#, fuzzy
 msgid "C_onnect"
-msgstr "已连接"
+msgstr "_连接"
 
 #: ../src/panel/widgets/netman/8021x.ui.h:4
 msgid "_Network name"
-msgstr "网络名称(_N)"
+msgstr "_网络名称"
 
 #: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
 msgid "_Unlock"
-msgstr "解锁(_U)"
+msgstr "_解锁"
 
 #: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
 msgid "Automatically unlock this device"
@@ -1691,9 +1686,8 @@ msgid "Connection Information"
 msgstr "连接信息"
 
 #: ../src/panel/widgets/netman/info.ui.h:2
-#, fuzzy
 msgid "_Close"
-msgstr "关闭(_C)"
+msgstr "_退出"
 
 #~ msgid "Manage your network connections"
 #~ msgstr "管理您的网络连接"
@@ -4088,8 +4082,8 @@ msgstr "关闭(_C)"
 #~ "invalid wep-key: wrong key length %zu. A key must be either of length "
 #~ "5/13 (ascii) or 10/26 (hex)"
 #~ msgstr ""
-#~ "无效的 wep-key：错误的密钥长度 %zu。密钥必须为长度 5/13（ascii）或者 "
-#~ "10/26（十六进制）"
+#~ "无效的 wep-key：错误的密钥长度 %zu。密钥必须为长度 5/13（ascii）或者 10/26"
+#~ "（十六进制）"
 
 #~ msgid "invalid wep-key: passphrase must be non-empty"
 #~ msgstr "无效的 wep-key：密码不能为空"
