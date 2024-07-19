@@ -105,6 +105,62 @@ static void check_brownout (PowerPlugin *pt)
     }
 }
 
+static char *get_string (char *cmd)
+{
+    char *line = NULL, *res = NULL;
+    size_t len = 0;
+    FILE *fp = popen (cmd, "r");
+
+    if (fp == NULL) return NULL;
+    if (getline (&line, &len, fp) > 0)
+    {
+        res = line;
+        while (*res)
+        {
+            if (g_ascii_isspace (*res)) *res = 0;
+            res++;
+        }
+        res = g_strdup (line);
+    }
+    pclose (fp);
+    g_free (line);
+    return res;
+}
+
+#define MEM_WARN_THRESHOLD 1024
+#define RES_HEIGHT_THRESHOLD 1080
+
+static void check_memres (void)
+{
+    char *res;
+    int mem, width, height, max_h = 0;
+
+    res = get_string ("vcgencmd get_config total_mem | cut -d = -f 2");
+    if (!res) return;
+    if (sscanf (res, "%d", &mem) != 1) return;
+    g_free (res);
+    if (mem < 256 || mem > MEM_WARN_THRESHOLD) return;
+
+    res = get_string ("wlr-randr | sed -n '/^HDMI-A-1/,/Position/{/current/p}' | sed 's/ //g' | sed 's/px.*//'");
+    if (res)
+    {
+        if (sscanf (res, "%dx%d", &width, &height) == 2)
+            if (height > max_h) max_h = height;
+        g_free (res);
+    }
+
+    res = get_string ("wlr-randr | sed -n '/^HDMI-A-2/,/Position/{/current/p}' | sed 's/ //g' | sed 's/px.*//'");
+    if (res)
+    {
+        if (sscanf (res, "%dx%d", &width, &height) == 2)
+            if (height > max_h) max_h = height;
+        g_free (res);
+    }
+
+    if (max_h > RES_HEIGHT_THRESHOLD)
+        lxpanel_notify (_("High display resolution is using large amounts of memory.\nConsider reducing screen resolution."));
+}
+
 /* Monitoring threads and callbacks */
 
 static gpointer overcurrent_thread (gpointer data)
@@ -303,6 +359,7 @@ void power_init (PowerPlugin *pt)
 
         check_psu ();
         check_brownout (pt);
+        check_memres ();
     }
 
     update_icon (pt);

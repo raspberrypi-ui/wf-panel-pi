@@ -9,7 +9,7 @@ extern "C" {
         {CONF_NONE, NULL,       NULL}
     };
     const conf_table_t *config_params (void) { return conf_table; };
-    const char *display_name (void) { return N_("Power"); };
+    const char *display_name (void) { return N_("System Monitor"); };
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 
