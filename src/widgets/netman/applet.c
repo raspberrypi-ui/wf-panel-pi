@@ -192,9 +192,8 @@ static void set_country (GObject *o, gpointer data)
 {
     if (fork () == 0)
     {
-        setenv ("SUDO_ASKPASS", "/usr/lib/rc-gui/pwdrcg.sh", 1);
-        char *args[] = { "sudo", "-AE", "rc_gui", "-w", NULL };
-        execvp ("sudo", args);
+        char *args[] = { "rc_gui", "-w", NULL };
+        execvp ("rc_gui", args);
     }
 }
 
