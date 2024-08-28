@@ -1,3 +1,10 @@
+wf-panel-pi (0.79) bookworm; urgency=medium
+
+  * Fix bug when setting wi-fi country
+  * Increase memory threshold for high resolution warning
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 28 Aug 2024 11:39:52 +0100
+
 wf-panel-pi (0.78) bookworm; urgency=medium
 
   * Translation update
