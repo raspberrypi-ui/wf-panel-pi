@@ -127,7 +127,7 @@ static char *get_string (char *cmd)
     return res;
 }
 
-#define MEM_WARN_THRESHOLD 1024
+#define MEM_WARN_THRESHOLD 2048
 #define RES_HEIGHT_THRESHOLD 1200
 
 static void check_memres (void)
