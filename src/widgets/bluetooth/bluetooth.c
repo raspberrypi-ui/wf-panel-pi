@@ -2167,16 +2167,10 @@ void bt_init (BluetoothPlugin *bt)
     if (pclose (fp)) bt->rfkill = FALSE;
     else bt->rfkill = TRUE;
 
-    // Enable autopairing if in the wizard, but not if wizard started for user change only
+    // Enable autopairing if flag file found
     bt->hid_autopair = 0;
-    if (bt->wizard)
-    {
-        if (!system ("test -f /etc/xdg/autostart/piwiz.desktop"))
-        {
-            if (system ("grep -q useronly /etc/xdg/autostart/piwiz.desktop"))
-                bt->hid_autopair = AP_MOUSE | AP_KEYBOARD;
-        }
-    }
+    if (bt->wizard && !system ("test -f /boot/btautopair"))
+        bt->hid_autopair = AP_MOUSE | AP_KEYBOARD;
 
     /* Load icon cache */
     init_icon_cache (bt);
