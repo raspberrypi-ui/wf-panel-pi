@@ -1,3 +1,9 @@
+wf-panel-pi (0.80) bookworm; urgency=medium
+
+  * Use flag file for autopair
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 10 Sep 2024 15:32:34 +0100
+
 wf-panel-pi (0.79) bookworm; urgency=medium
 
   * Fix bug when setting wi-fi country
