@@ -2169,7 +2169,7 @@ void bt_init (BluetoothPlugin *bt)
 
     // Enable autopairing if flag file found
     bt->hid_autopair = 0;
-    if (bt->wizard && !system ("test -f /boot/btautopair"))
+    if (bt->wizard && !system ("test -f /boot/firmware/btautopair"))
         bt->hid_autopair = AP_MOUSE | AP_KEYBOARD;
 
     /* Load icon cache */
