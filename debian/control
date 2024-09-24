@@ -20,7 +20,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, libwayland-client0,
  libgtk-3-0 (>= 3.24), libfm-modules, eject, lxmenu-data, packagekit, raspi-config,
  libudev1, gui-updater
 Recommends: pulseaudio, pipewire, pipewire-pulse, pi-bluetooth, pulseaudio-module-bluetooth,
- libspa-0.2-bluetooth, lp-connection-editor
+ libspa-0.2-bluetooth, lp-connection-editor, wfplug-squeek
 Description: Raspberry Pi desktop panel for Wayfire
  Raspberry Pi desktop panel based on wf-shell
 
