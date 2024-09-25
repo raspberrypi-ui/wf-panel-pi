@@ -40,13 +40,11 @@ extern void popup_window_create (VolumePulsePlugin *vol, gboolean input_control)
 
 extern gboolean volumepulse_button_press_event (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol);
 extern gboolean volumepulse_button_release_event (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol);
-extern void volumepulse_gesture_pressed (GtkGestureLongPress *gesture, gdouble x, gdouble y, VolumePulsePlugin *vol);
-extern void volumepulse_gesture_released (GtkGestureLongPress *gesture, GdkEventSequence *seq, VolumePulsePlugin *vol);
+extern void volumepulse_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *vol);
 extern void volumepulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePulsePlugin *vol);
 extern gboolean micpulse_button_press_event (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol);
 extern gboolean micpulse_button_release_event (GtkWidget *widget, GdkEventButton *event, VolumePulsePlugin *vol);
-extern void micpulse_gesture_pressed (GtkGestureLongPress *gesture, gdouble x, gdouble y, VolumePulsePlugin *vol);
-extern void micpulse_gesture_released (GtkGestureLongPress *gesture, GdkEventSequence *seq, VolumePulsePlugin *vol);
+extern void micpulse_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *vol);
 extern void micpulse_mouse_scrolled (GtkScale *scale, GdkEventScroll *evt, VolumePulsePlugin *vol);
 #if 0
 extern void volumepulse_configuration_changed (LXPanel *panel, GtkWidget *plugin);
