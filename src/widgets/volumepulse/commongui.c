@@ -350,8 +350,9 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
                 if (vol->popup_window[0])
                 {
                     close_popup ();
-                    pressed = TRUE;
+                    pressed = FALSE;
                 }
+                else pressed = TRUE;
                 volumepulse_update_display (vol);
                 return FALSE;
     }
@@ -362,10 +363,15 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *event, Vol
 
 gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
-    if (event->button == 1) return FALSE;
-
     switch (event->button)
     {
+        case 1: if (pressed)
+                {
+                    popup_window_show (vol, FALSE);
+                    pressed = FALSE;
+                }
+                break;
+
         case 2: /* middle-click - toggle mute */
                 pulse_set_mute (vol, pulse_get_mute (vol, FALSE) ? 0 : 1, FALSE);
                 break;
@@ -383,22 +389,11 @@ gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, V
 
 void volumepulse_gesture_pressed (GtkGestureLongPress *gesture, gdouble x, gdouble y, VolumePulsePlugin *vol)
 {
-    pressed = TRUE;
+    if (!pressed) return;
     close_popup ();
     vol_menu_show (vol);
     show_menu_with_kbd (vol->plugin[0], vol->menu_devices[0]);
     volumepulse_update_display (vol);
-}
-
-void volumepulse_gesture_released (GtkGestureLongPress *gesture, GdkEventSequence *seq, VolumePulsePlugin *vol)
-{
-    if (!pressed)
-    {
-        if (vol->popup_window[0]) close_popup ();
-        else popup_window_show (vol, FALSE);
-        volumepulse_update_display (vol);
-    }
-
     pressed = FALSE;
 }
 
@@ -410,8 +405,9 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
                 if (vol->popup_window[1])
                 {
                     close_popup ();
-                    pressed = TRUE;
+                    pressed = FALSE;
                 }
+                else pressed = TRUE;
                 micpulse_update_display (vol);
                 return FALSE;
     }
@@ -422,10 +418,15 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *event, Volume
 
 gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
-    if (event->button == 1) return FALSE;
-
     switch (event->button)
     {
+        case 1: if (pressed)
+                {
+                    popup_window_show (vol, TRUE);
+                    pressed = FALSE;
+                }
+                break;
+
         case 2: /* middle-click - toggle mute */
                 pulse_set_mute (vol, pulse_get_mute (vol, TRUE) ? 0 : 1, TRUE);
                 break;
@@ -443,22 +444,11 @@ gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, Volu
 
 void micpulse_gesture_pressed (GtkGestureLongPress *gesture, gdouble x, gdouble y, VolumePulsePlugin *vol)
 {
-    pressed = TRUE;
+    if (!pressed) return;
     close_popup ();
     mic_menu_show (vol);
     show_menu_with_kbd (vol->plugin[1], vol->menu_devices[1]);
     micpulse_update_display (vol);
-}
-
-void micpulse_gesture_released (GtkGestureLongPress *gesture, GdkEventSequence *seq, VolumePulsePlugin *vol)
-{
-    if (!pressed)
-    {
-        if (vol->popup_window[1]) close_popup ();
-        else popup_window_show (vol, TRUE);
-        micpulse_update_display (vol);
-    }
-
     pressed = FALSE;
 }
 
