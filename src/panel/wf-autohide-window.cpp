@@ -18,7 +18,6 @@ extern "C" {
 
 static void gesture_pressed (GtkGestureLongPress *gesture, gdouble x, gdouble y, GtkWidget *widget)
 {
-    printf ("panel pressed\n");
     pass_right_click (widget);
 }
 
@@ -38,6 +37,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     gtk_layer_set_namespace(this->gobj(), "$unfocus panel");
 
     GtkGesture *gesture = gtk_gesture_long_press_new (GTK_WIDGET (this->gobj()));
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture, "pressed", G_CALLBACK (gesture_pressed), this->gobj());
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
