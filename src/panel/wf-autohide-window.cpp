@@ -18,7 +18,7 @@ extern "C" {
 
 static void gesture_pressed (GtkGestureLongPress *gesture, gdouble x, gdouble y, GtkWidget *widget)
 {
-    pass_right_click (widget);
+    pass_right_click (widget, x, y);
 }
 
 WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,

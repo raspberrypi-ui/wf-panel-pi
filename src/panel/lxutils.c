@@ -568,13 +568,15 @@ void close_popup (void)
     idle_id = 0;
 }
 
-void pass_right_click (GtkWidget *wid)
+void pass_right_click (GtkWidget *wid, double x, double y)
 {
     gboolean ret;
     GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_PRESS);
     ev->send_event = TRUE;
     ev->button = 3;
     ev->window = gtk_widget_get_window (wid);
+    ev->x_root = x;
+    ev->y_root = y;
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
     GtkWidget *w = wid;
     while (!GTK_IS_WINDOW (w)) w = gtk_widget_get_parent (w);
