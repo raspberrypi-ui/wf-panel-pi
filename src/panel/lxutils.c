@@ -570,15 +570,20 @@ void close_popup (void)
 
 void pass_right_click (GtkWidget *wid, double x, double y)
 {
+    GtkAllocation alloc;
+    GdkEventButton *ev;
+    GtkWidget *w;
     gboolean ret;
-    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_PRESS);
+
+    gtk_widget_get_allocation (wid, &alloc);
+    ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_PRESS);
     ev->send_event = TRUE;
     ev->button = 3;
     ev->window = gtk_widget_get_window (wid);
-    ev->x_root = x;
-    ev->y_root = y;
+    ev->x_root = x + alloc.x;
+    ev->y_root = y + alloc.y;
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-    GtkWidget *w = wid;
+    w = wid;
     while (!GTK_IS_WINDOW (w)) w = gtk_widget_get_parent (w);
     g_signal_emit_by_name (w, "button-press-event", ev, &ret);
     ev->type = GDK_BUTTON_RELEASE;

@@ -2096,11 +2096,8 @@ static gboolean bluetooth_button_release_event (GtkWidget *, GdkEventButton *eve
 
 void bluetooth_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, BluetoothPlugin *bt)
 {
-    GtkAllocation alloc;
-
     if (!bt->pressed) return;
-    gtk_widget_get_allocation (bt->plugin, &alloc);
-    pass_right_click (bt->plugin, x + alloc.x, y + alloc.y);
+    pass_right_click (bt->plugin, x, y);
     bt->pressed = FALSE;
 }
 
