@@ -68,6 +68,7 @@ extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
 
 extern void popup_window_at_button (GtkWidget *window, GtkWidget *button);
 extern void close_popup (void);
+extern void pass_right_click (GtkWidget *wid);
 
 #endif
 

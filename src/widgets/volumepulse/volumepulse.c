@@ -427,12 +427,12 @@ void volumepulse_init (VolumePulsePlugin *vol)
     gtk_widget_add_events (vol->plugin[1], GDK_SCROLL_MASK);
 
     gesture = gtk_gesture_long_press_new (vol->plugin[0]);
-    gtk_gesture_single_set_touch_only (gesture, TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture, "pressed", G_CALLBACK (volumepulse_gesture_pressed), vol);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     gesture = gtk_gesture_long_press_new (vol->plugin[1]);
-    gtk_gesture_single_set_touch_only (gesture, TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture, "pressed", G_CALLBACK (micpulse_gesture_pressed), vol);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
@@ -445,6 +445,7 @@ void volumepulse_init (VolumePulsePlugin *vol)
     vol->conn_dialog = NULL;
     vol->hdmi_names[0] = NULL;
     vol->hdmi_names[1] = NULL;
+    vol->pressed = FALSE;
 
     vol->pipewire = !system ("ps ax | grep pipewire-pulse | grep -qv grep");
     if (vol->pipewire)

@@ -568,5 +568,21 @@ void close_popup (void)
     idle_id = 0;
 }
 
+void pass_right_click (GtkWidget *wid)
+{
+    gboolean ret;
+    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_BUTTON_PRESS);
+    ev->send_event = TRUE;
+    ev->button = 3;
+    ev->window = gtk_widget_get_window (wid);
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+    GtkWidget *w = wid;
+    while (!GTK_IS_WINDOW (w)) w = gtk_widget_get_parent (w);
+    g_signal_emit_by_name (w, "button-press-event", ev, &ret);
+    ev->type = GDK_BUTTON_RELEASE;
+    g_signal_emit_by_name (w, "button-release-event", ev, &ret);
+}
+
+
 /* End of file */
 /*----------------------------------------------------------------------------*/
