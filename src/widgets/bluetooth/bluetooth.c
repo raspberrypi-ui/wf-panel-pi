@@ -2069,36 +2069,15 @@ static void update_icon (BluetoothPlugin *bt)
 }
 
 /* Handler for menu button click */
-
-static gboolean bluetooth_button_press_event (GtkWidget *, GdkEventButton *event, BluetoothPlugin *bt)
+static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt)
 {
-    if (event->button == 1 && bt->menu && gtk_widget_is_visible (bt->menu))
-    {
-        bt->pressed = FALSE;
-        return TRUE;
-    }
-    bt->pressed = TRUE;
-    return FALSE;
-}
-
-static gboolean bluetooth_button_release_event (GtkWidget *, GdkEventButton *event, BluetoothPlugin *bt)
-{
-    if (event->button == 1 && bt->pressed)
-    {
-        show_menu (bt);
-        show_menu_with_kbd (bt->plugin, bt->menu);
-        bt->pressed = FALSE;
-        return TRUE;
-    }
-    bt->pressed = FALSE;
-    return FALSE;
+    show_menu (bt);
+    show_menu_with_kbd (bt->plugin, bt->menu);
 }
 
 void bluetooth_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, BluetoothPlugin *bt)
 {
-    if (!bt->pressed) return;
     pass_right_click (bt->plugin, x, y);
-    bt->pressed = FALSE;
 }
 
 /* Handler for system config changed message from panel */
@@ -2169,8 +2148,7 @@ void bt_init (BluetoothPlugin *bt)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (bt->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (bt->plugin, "button-press-event", G_CALLBACK (bluetooth_button_press_event), bt);
-    g_signal_connect (bt->plugin, "button-release-event", G_CALLBACK (bluetooth_button_release_event), bt);
+    g_signal_connect (bt->plugin, "clicked", G_CALLBACK (bluetooth_button_press_event), bt);
 
     gesture = gtk_gesture_long_press_new (bt->plugin);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
@@ -2194,7 +2172,6 @@ void bt_init (BluetoothPlugin *bt)
     bt->agentmanager = NULL;
     bt->adapter = NULL;
     bt->list = NULL;
-    bt->pressed = FALSE;
 
     // is rfkill installed?
     FILE *fp = popen ("test -e /usr/sbin/rfkill", "r");
