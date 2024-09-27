@@ -46,6 +46,8 @@ typedef struct {
     GtkMenu *menu;
     gulong chandle;
     gulong mhandle;
+    double x;
+    double y;
 } kb_menu_t;
 
 /*----------------------------------------------------------------------------*/
@@ -349,8 +351,7 @@ static void committed (GdkWindow *win, kb_menu_t *data)
         GdkRectangle rect;
         int x, y;
         gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
-        gdk_window_get_device_position (gtk_widget_get_window (GTK_WIDGET (panel)), gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())), &x, &y, NULL);
-        rect.x = x;
+        rect.x = data->x;
         rect.y = 0;
         rect.width = 0;
         gtk_menu_popup_at_rect (data->menu, gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
@@ -368,11 +369,34 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
     if (GTK_IS_BUTTON (widget)) data->button = widget;
     else data->button = NULL;
     data->menu = GTK_MENU (menu);
+    data->x = -1.0;
+    data->y = -1.0;
 
     gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_keyboard_interactivity (panel, TRUE);
     data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
 }
+
+void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, double y)
+{
+    close_popup ();
+
+    kb_menu_t *data = g_new (kb_menu_t, 1);
+
+    panel = find_panel (widget);
+
+    if (GTK_IS_BUTTON (widget)) data->button = widget;
+    else data->button = NULL;
+    data->menu = GTK_MENU (menu);
+    data->x = x;
+    data->y = y;
+
+    gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_keyboard_interactivity (panel, TRUE);
+    data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
+}
+
+
 
 /*----------------------------------------------------------------------------*/
 /* Window popup with close on click-away */
