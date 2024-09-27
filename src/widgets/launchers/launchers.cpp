@@ -170,8 +170,8 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
     }
 
     evbox.add(image);
-    evbox.signal_button_press_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_click));
-    evbox.signal_button_release_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_click));
+    evbox.signal_button_press_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_press));
+    evbox.signal_button_release_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_release));
     evbox.set_relief (Gtk::RELIEF_NONE);
     //evbox.signal_enter_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_enter));
     //evbox.signal_leave_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_leave));
@@ -197,31 +197,21 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
     return true;
 }
 
-bool WfLauncherButton::on_click(GdkEventButton *ev)
+bool WfLauncherButton::on_press(GdkEventButton *ev)
 {
     close_popup ();
-    assert(info);
-    if ((ev->button == 1) && (ev->type == GDK_BUTTON_RELEASE))
-    {
-        info->execute();
-        if (!current_size.running())
-        {
-            on_leave(NULL);
-        }
-    }
+    return true;
+}
 
-    if ((ev->button == 1) && (ev->type == GDK_BUTTON_PRESS))
+bool WfLauncherButton::on_release(GdkEventButton *ev)
+{
+    switch (ev->button)
     {
-        /* touch will generate button_press, but not enter notify */
-        if (!current_size.running())
-        {
-            on_enter(NULL);
-        }
-    }
-
-    if ((ev->button == 3) && (ev->type == GDK_BUTTON_RELEASE))
-    {
-        show_menu_with_kbd (GTK_WIDGET (evbox.gobj()), GTK_WIDGET (menu.gobj()));
+        case 1: assert(info);
+                info->execute();
+                break;
+        case 3: show_menu_with_kbd (GTK_WIDGET (evbox.gobj()), GTK_WIDGET (menu.gobj()));
+                break;
     }
 
     return true;

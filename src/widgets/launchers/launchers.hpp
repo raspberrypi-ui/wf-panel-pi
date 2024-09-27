@@ -58,7 +58,8 @@ struct WfLauncherButton
 
     bool initialize(std::string name, std::string icon = "none", std::string label = "");
 
-    bool on_click(GdkEventButton *ev);
+    bool on_press(GdkEventButton *ev);
+    bool on_release(GdkEventButton *ev);
     bool on_enter(GdkEventCrossing *ev);
     bool on_leave(GdkEventCrossing *ev);
     bool on_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
