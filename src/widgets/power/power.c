@@ -306,6 +306,11 @@ static void power_button_press_event (GtkButton *widget, PowerPlugin *pt)
     show_menu_with_kbd (pt->plugin, pt->menu);
 }
 
+static void power_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, PowerPlugin *pt)
+{
+    pass_right_click (pt->plugin, x, y);
+}
+
 /* Handler for system config changed message from panel */
 void power_update_display (PowerPlugin *pt)
 {
@@ -323,6 +328,12 @@ void power_init (PowerPlugin *pt)
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (pt->plugin), GTK_RELIEF_NONE);
     g_signal_connect (pt->plugin, "clicked", G_CALLBACK (power_button_press_event), pt);
+
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (pt->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (power_gesture_pressed), pt);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     pt->show_icon = 0;
     pt->oc_thread = NULL;

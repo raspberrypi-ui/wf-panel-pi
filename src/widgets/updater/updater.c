@@ -74,6 +74,7 @@ static gboolean net_check (gpointer data);
 static gboolean periodic_check (gpointer data);
 //static GtkWidget *updater_constructor (LXPanel *panel, config_setting_t *settings);
 static void updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up);
+static void updater_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, UpdaterPlugin *up);
 //static void updater_configuration_changed (LXPanel *panel, GtkWidget *p);
 //static gboolean updater_control_msg (GtkWidget *plugin, const char *cmd);
 //static GtkWidget *updater_configure (LXPanel *panel, GtkWidget *p);
@@ -416,6 +417,12 @@ void updater_init (UpdaterPlugin *up)
     gtk_button_set_relief (GTK_BUTTON (up->plugin), GTK_RELIEF_NONE);
     g_signal_connect (up->plugin, "clicked", G_CALLBACK (updater_button_press_event), up);
 
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (up->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (updater_gesture_pressed), up);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+
     /* Set up variables */
     up->menu = NULL;
     up->update_dlg = NULL;
@@ -444,6 +451,11 @@ void updater_set_interval (UpdaterPlugin *up)
 static void updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up)
 {
     show_menu (up);
+}
+
+static void updater_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, UpdaterPlugin *up)
+{
+    pass_right_click (up->plugin, x, y);
 }
 
 /* Handler for system config changed message from panel */

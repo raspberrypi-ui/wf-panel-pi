@@ -79,6 +79,11 @@ static void netman_button_press_event (GtkButton *button, NMApplet *nm)
     status_icon_activate_cb (nm);
 }
 
+static void netman_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, NMApplet *nm)
+{
+    pass_right_click (nm->plugin, x, y);
+}
+
 /* Handler for control message */
 gboolean nm_control_msg (NMApplet *nm, const char *cmd)
 {
@@ -128,6 +133,12 @@ void netman_init (NMApplet *nm)
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (nm->plugin), GTK_RELIEF_NONE);
     g_signal_connect (nm->plugin, "clicked", G_CALLBACK (netman_button_press_event), nm);
+
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (nm->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (netman_gesture_pressed), nm);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     //nm->icon_size = panel_get_safe_icon_size (panel);

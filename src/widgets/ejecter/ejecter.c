@@ -386,6 +386,11 @@ static void ejecter_button_press_event (GtkWidget *widget, EjecterPlugin * ej)
     show_menu (ej);
 }
 
+static void ejecter_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, EjecterPlugin *ej)
+{
+    pass_right_click (ej->plugin, x, y);
+}
+
 /* Handler for system config changed message from panel */
 void ej_update_display (EjecterPlugin * ej)
 {
@@ -451,6 +456,12 @@ void ej_init (EjecterPlugin *ej)
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (ej->plugin), GTK_RELIEF_NONE);
     g_signal_connect (ej->plugin, "clicked", G_CALLBACK (ejecter_button_press_event), ej);
+
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (ej->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (ejecter_gesture_pressed),ej);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     ej->popup = NULL;

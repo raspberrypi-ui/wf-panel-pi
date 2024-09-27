@@ -837,6 +837,11 @@ static void menu_button_press_event (GtkWidget *widget, MenuPlugin *m)
     show_menu_with_kbd (m->plugin, m->menu);
 }
 
+static void menu_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, MenuPlugin *m)
+{
+    pass_right_click (m->plugin, x, y);
+}
+
 void menu_update_display (MenuPlugin *m)
 {
     GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), m->icon, m->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
@@ -943,6 +948,12 @@ void menu_init (MenuPlugin *m)
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (m->plugin), GTK_RELIEF_NONE);
     g_signal_connect (m->plugin, "clicked", G_CALLBACK (menu_button_press_event), m);
+
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (m->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (menu_gesture_pressed), m);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
 #if 0
     /* Check if configuration exists */
