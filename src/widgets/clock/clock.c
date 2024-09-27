@@ -72,24 +72,37 @@ static void calendar_show (ClockPlugin *cl)
 }
 
 /* Handler for menu button click */
-static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *event, ClockPlugin *cl)
+static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *, ClockPlugin *cl)
 {
+    cl->pressed = TRUE;
+    if (cl->window)
+    {
+        close_popup ();
+        cl->pressed = FALSE;
+    }
+    return FALSE;
+}
+
+static gboolean clock_button_release_event (GtkWidget *, GdkEventButton *event, ClockPlugin *cl)
+{
+    if (!cl->pressed) return TRUE;
+    cl->pressed = FALSE;
+
     if (event->button == 1)
     {
-        if (cl->window) close_popup ();
-        else calendar_show (cl);
+        calendar_show (cl);
         return TRUE;
     }
 
-    if (event->button == 3)
-    {
-        if (cl->window)
-        {
-            close_popup ();
-            return TRUE;
-        }
-    }
     return FALSE;
+}
+
+static void clock_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, ClockPlugin *cl)
+{
+    if (!cl->pressed) return;
+    cl->pressed = FALSE;
+
+    pass_right_click (cl->plugin, x, y);
 }
 
 /* Plugin constructor */
@@ -98,6 +111,13 @@ void clock_init (ClockPlugin *cl)
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (cl->plugin), GTK_RELIEF_NONE);
     g_signal_connect (cl->plugin, "button-press-event", G_CALLBACK (clock_button_press_event), cl);
+    g_signal_connect (cl->plugin, "button-release-event", G_CALLBACK (clock_button_release_event), cl);
+
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (cl->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (clock_gesture_pressed), cl);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     cl->window = NULL;
