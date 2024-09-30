@@ -170,13 +170,14 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
     }
 
     evbox.add(image);
-    evbox.signal_button_press_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_press));
     evbox.signal_button_release_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_release));
     evbox.set_relief (Gtk::RELIEF_NONE);
-    //evbox.signal_enter_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_enter));
-    //evbox.signal_leave_notify_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_leave));
 
-    //evbox.signal_draw().connect(sigc::mem_fun(this, &WfLauncherButton::on_draw));
+    gesture = Gtk::GestureLongPress::create(evbox);
+    gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
+    gesture->signal_pressed().connect(sigc::mem_fun(*this, &WfLauncherButton::on_gesture_pressed));
+    gesture->set_touch_only(true);
+
     evbox.signal_map().connect([=] ()
     {
         set_size(base_size);
@@ -197,24 +198,30 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
     return true;
 }
 
-bool WfLauncherButton::on_press(GdkEventButton *ev)
-{
-    close_popup ();
-    return true;
-}
-
 bool WfLauncherButton::on_release(GdkEventButton *ev)
 {
     switch (ev->button)
     {
-        case 1: assert(info);
-                info->execute();
+        case 1: if (pressed == PRESS_LONG)
+                    show_menu_with_kbd (GTK_WIDGET (evbox.gobj()), GTK_WIDGET (menu.gobj()));
+                else
+                {
+                    assert(info);
+                    info->execute();
+                }
                 break;
+
         case 3: show_menu_with_kbd (GTK_WIDGET (evbox.gobj()), GTK_WIDGET (menu.gobj()));
                 break;
     }
 
+    pressed = PRESS_NONE;
     return true;
+}
+
+void WfLauncherButton::on_gesture_pressed (double x, double y)
+{
+    pressed = PRESS_LONG;
 }
 
 void WfLauncherButton::on_remove ()
@@ -222,45 +229,6 @@ void WfLauncherButton::on_remove ()
     std::string str = info->get_filename();
     size_t last = str.find_last_of('/');
     remove_from_launcher (str.substr(last + 1).c_str());
-}
-
-static int get_animation_duration(int start, int end, int scale)
-{
-    return WfOption<int>{"panel/launchers_animation_duration"}.value();
-}
-
-bool WfLauncherButton::on_enter(GdkEventCrossing *ev)
-{
-    int target_size = base_size * LAUNCHERS_ICON_SCALE;
-    int duration    = get_animation_duration(
-        current_size, target_size, image.get_scale_factor());
-
-    evbox.queue_draw();
-    current_size = LauncherAnimation{wf::create_option(duration),
-        (int)current_size, target_size};
-    return false;
-}
-
-bool WfLauncherButton::on_leave(GdkEventCrossing *ev)
-{
-    evbox.queue_draw();
-    int duration = get_animation_duration(
-        current_size, base_size, image.get_scale_factor());
-
-    current_size = LauncherAnimation{wf::create_option(duration),
-        (int)current_size, base_size};
-
-    return false;
-}
-
-bool WfLauncherButton::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx)
-{
-    if (current_size.running())
-    {
-        set_size(current_size);
-    }
-
-    return false;
 }
 
 /* Because icons can have different sizes, we need to use a Gdk::Pixbuf

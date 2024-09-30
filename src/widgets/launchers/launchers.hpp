@@ -11,6 +11,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/menu.h>
 #include <gtkmm/menuitem.h>
+#include <gtkmm/gesturelongpress.h>
 #include "config/duration.hpp"
 
 #define LAUNCHERS_ICON_SCALE 1.0
@@ -48,6 +49,7 @@ struct WfLauncherButton
     Gtk::Button evbox;
     Gtk::Menu menu;
     Gtk::MenuItem remove;
+    Glib::RefPtr<Gtk::GestureLongPress> gesture;
     LauncherInfo *info = NULL;
     LauncherAnimation current_size{wf::create_option(1000), 0, 0};
 
@@ -58,11 +60,9 @@ struct WfLauncherButton
 
     bool initialize(std::string name, std::string icon = "none", std::string label = "");
 
-    bool on_press(GdkEventButton *ev);
     bool on_release(GdkEventButton *ev);
-    bool on_enter(GdkEventCrossing *ev);
-    bool on_leave(GdkEventCrossing *ev);
-    bool on_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+    void on_gesture_pressed(double, double);
+
     void on_scale_update();
     void on_remove();
 
