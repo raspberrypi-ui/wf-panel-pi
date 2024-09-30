@@ -36,6 +36,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define MENU_ICON_SPACE 6
 
+typedef enum {
+  PRESS_NONE,
+  PRESS_SHORT,
+  PRESS_LONG
+} press_t;
+
 typedef struct {
     GtkWidget *da;                          /* Drawing area */
     cairo_surface_t *pixmap;                /* Pixmap to be drawn on drawing area */
