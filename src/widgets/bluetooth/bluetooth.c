@@ -2071,13 +2071,24 @@ static void update_icon (BluetoothPlugin *bt)
 /* Handler for menu button click */
 static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt)
 {
-    show_menu (bt);
-    show_menu_with_kbd (bt->plugin, bt->menu);
+    if (bt->pressed != PRESS_LONG)
+    {
+        show_menu (bt);
+        show_menu_with_kbd (bt->plugin, bt->menu);
+    }
+    bt->pressed = PRESS_NONE;
 }
 
 static void bluetooth_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, BluetoothPlugin *bt)
 {
-    pass_right_click (bt->plugin, x, y);
+    bt->pressed = PRESS_LONG;
+    bt->press_x = x;
+    bt->press_y = y;
+}
+
+static void bluetooth_gesture_end (GtkGestureLongPress *, GdkEventSequence *, BluetoothPlugin *bt)
+{
+    if (bt->pressed == PRESS_LONG) pass_right_click (bt->plugin, bt->press_x, bt->press_y);
 }
 
 /* Handler for system config changed message from panel */
@@ -2153,6 +2164,7 @@ void bt_init (BluetoothPlugin *bt)
     GtkGesture *gesture = gtk_gesture_long_press_new (bt->plugin);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture, "pressed", G_CALLBACK (bluetooth_gesture_pressed), bt);
+    g_signal_connect (gesture, "end", G_CALLBACK (bluetooth_gesture_end), bt);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
