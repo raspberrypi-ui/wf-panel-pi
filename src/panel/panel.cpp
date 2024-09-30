@@ -7,6 +7,7 @@ extern "C" {
 #include <gtkmm/headerbar.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/application.h>
+#include <gtkmm/gesturelongpress.h>
 #include <gdkmm/display.h>
 #include <gdkmm/seat.h>
 #include <gdk/gdkwayland.h>
@@ -104,6 +105,7 @@ class WayfirePanel::impl
     Gtk::MenuItem notif;
     Gtk::MenuItem appset;
     std::string conf_plugin;
+    Glib::RefPtr<Gtk::GestureLongPress> gesture;
 
     using Widget = std::unique_ptr<WayfireWidget>;
     using WidgetContainer = std::vector<Widget>;
@@ -112,7 +114,6 @@ class WayfirePanel::impl
     WayfireOutput *output;
     bool wizard = WayfireShellApp::get().wizard;
     bool real;
-    bool pressed;
     WfOption <int> icon_size {"panel/icon_size"};
 
 #if 0
@@ -208,7 +209,6 @@ class WayfirePanel::impl
             gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 1);
             gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
         }
-
         monitor_num.set_callback (update_panels);
 
         window->set_name ("PanelToplevel");
@@ -251,6 +251,12 @@ class WayfirePanel::impl
         window->signal_button_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_press_event));
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
 
+        gesture = Gtk::GestureLongPress::create(*window);
+        gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
+        gesture->signal_pressed().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_pressed));
+        gesture->signal_end().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_end));
+        gesture->set_touch_only(false);
+
         if (wizard || !real)
         {
             window->set_auto_exclusive_zone (false);
@@ -267,14 +273,14 @@ class WayfirePanel::impl
 
     bool on_button_press_event(GdkEventButton* event)
     {
-        pressed = true;
+        pressed = PRESS_SHORT;
         return false;
     }
 
     bool on_button_release_event(GdkEventButton* event)
     {
-        if (!pressed) return false;
-        pressed = false;
+        if (pressed != PRESS_SHORT) return false;
+        pressed = PRESS_NONE;
         if (!window->has_popover() && event->type == GDK_BUTTON_RELEASE && event->button == 3)
         {
             conf_plugin = "gtkmm";
@@ -321,6 +327,19 @@ class WayfirePanel::impl
             }
         }
         return false;
+    }
+
+    void on_gesture_pressed(double x, double y)
+    {
+        pressed = PRESS_LONG;
+        press_x = x;
+        press_y = y;
+    }
+
+    void on_gesture_end(GdkEventSequence *)
+    {
+        if (pressed == PRESS_LONG) pass_right_click (GTK_WIDGET (window->gobj()), press_x, press_y);
+        pressed = PRESS_NONE;
     }
 
     void do_configure()

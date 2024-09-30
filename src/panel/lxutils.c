@@ -54,6 +54,10 @@ typedef struct {
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
+press_t pressed;
+double press_x;
+double press_y;
+
 static GtkWindow *panel, *popwindow;
 static GtkLayerShellLayer orig_layer;
 static struct libinput *li;

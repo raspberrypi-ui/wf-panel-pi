@@ -42,6 +42,9 @@ typedef enum {
   PRESS_LONG
 } press_t;
 
+extern press_t pressed;
+extern double press_x, press_y;
+
 typedef struct {
     GtkWidget *da;                          /* Drawing area */
     cairo_surface_t *pixmap;                /* Pixmap to be drawn on drawing area */

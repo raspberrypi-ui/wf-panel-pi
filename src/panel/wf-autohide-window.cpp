@@ -9,17 +9,8 @@
 #include <iostream>
 #include <assert.h>
 
-extern "C" {
-#include "lxutils.h"
-}
-
 #define AUTOHIDE_SHOW_DELAY 300
 #define AUTOHIDE_HIDE_DELAY 500
-
-static void gesture_pressed (GtkGestureLongPress *gesture, gdouble x, gdouble y, GtkWidget *widget)
-{
-    pass_right_click (widget, x, y);
-}
 
 WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     const std::string& section) :
@@ -35,11 +26,6 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     gtk_layer_init_for_window(this->gobj());
     gtk_layer_set_monitor(this->gobj(), output->monitor->gobj());
     gtk_layer_set_namespace(this->gobj(), "$unfocus panel");
-
-    GtkGesture *gesture = gtk_gesture_long_press_new (GTK_WIDGET (this->gobj()));
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (gesture_pressed), this->gobj());
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     this->position.set_callback([=] () { this->update_position(); });
     this->update_position();
