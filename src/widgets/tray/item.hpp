@@ -7,6 +7,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/image.h>
 #include <gtkmm/menu.h>
+#include <gtkmm/gesturelongpress.h>
 
 #include <wf-option-wrap.hpp>
 
@@ -30,6 +31,8 @@ class StatusNotifierItem : public Gtk::EventBox
 
     Glib::RefPtr<Gtk::IconTheme> icon_theme = Gtk::IconTheme::get_default();
 
+    Glib::RefPtr<Gtk::GestureLongPress> gesture;
+
     template<typename T>
     T get_item_property(const Glib::ustring & name, const T & default_value = {}) const
     {
@@ -44,6 +47,7 @@ class StatusNotifierItem : public Gtk::EventBox
     void init_menu();
 
     void handle_signal(const Glib::ustring & signal, const Glib::VariantContainerBase & params);
+    void on_gesture_pressed (double x, double y);
 
     void update_icon();
     void setup_tooltip();

@@ -64,6 +64,11 @@ StatusNotifierItem::StatusNotifierItem(const Glib::ustring & service)
                     const Glib::VariantContainerBase & params) { handle_signal(signal, params); });
         init_widget();
     });
+
+    gesture = Gtk::GestureLongPress::create(*this);
+    gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
+    gesture->signal_pressed().connect(sigc::mem_fun(*this, &StatusNotifierItem::on_gesture_pressed));
+    gesture->set_touch_only(true);
 }
 
 void StatusNotifierItem::init_widget()
@@ -73,12 +78,17 @@ void StatusNotifierItem::init_widget()
     setup_tooltip();
     init_menu();
 
+    signal_button_press_event().connect([this] (GdkEventButton *ev) -> bool
+    {
+        return true;
+    });
+
     signal_button_release_event().connect([this] (GdkEventButton *ev) -> bool
     {
         const auto ev_coords = Glib::Variant<std::tuple<int, int>>::create({ev->x, ev->y});
         const guint menu_btn = menu_on_middle_click ? GDK_BUTTON_MIDDLE : GDK_BUTTON_SECONDARY;
         const guint secondary_activate_btn = menu_on_middle_click ? GDK_BUTTON_SECONDARY : GDK_BUTTON_MIDDLE;
-        if (get_item_property<bool>("ItemIsMenu", true) || (ev->button == menu_btn))
+        if (get_item_property<bool>("ItemIsMenu", true) || (ev->button == menu_btn) || pressed == PRESS_LONG)
         {
             if (menu)
             {
@@ -94,6 +104,7 @@ void StatusNotifierItem::init_widget()
         {
             item_proxy->call("SecondaryActivate", ev_coords);
         }
+        pressed = PRESS_NONE;
 
         return true;
     });
@@ -153,6 +164,11 @@ void StatusNotifierItem::init_widget()
 
         return true;
     });
+}
+
+void StatusNotifierItem::on_gesture_pressed (double x, double y)
+{
+    pressed = PRESS_LONG;
 }
 
 void StatusNotifierItem::setup_tooltip()
