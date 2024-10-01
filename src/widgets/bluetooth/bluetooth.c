@@ -117,7 +117,8 @@ static const GDBusInterfaceVTable interface_vtable =
 {
   handle_method_call,
   NULL,
-  NULL
+  NULL,
+  {NULL}
 };
 
 static const gchar introspection_xml[] =
@@ -276,7 +277,7 @@ static int bt_enabled (BluetoothPlugin *bt)
     return retval;
 }
 
-static void toggle_bt (GtkWidget *widget, gpointer user_data)
+static void toggle_bt (GtkWidget *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
 
@@ -500,8 +501,8 @@ static void find_hardware (BluetoothPlugin *bt)
 
 /* Handler for method calls on the agent */
 
-static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path,
-    const gchar *interface_name, const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation,
+static void handle_method_call (GDBusConnection *, const gchar *, const gchar *,
+    const gchar *, const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation,
     gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
@@ -569,14 +570,14 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
 
 /* Bus watcher callbacks - information only at present; may want to link the general initialisation to these */
 
-static void cb_name_owned (GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data)
+static void cb_name_owned (GDBusConnection *, const gchar *name, const gchar *, gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
     DEBUG ("Name %s owned on DBus", name);
     initialise (bt);
 }
 
-static void cb_name_unowned (GDBusConnection *connection, const gchar *name, gpointer user_data)
+static void cb_name_unowned (GDBusConnection *, const gchar *name, gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
     DEBUG ("Name %s unowned on DBus", name);
@@ -585,36 +586,36 @@ static void cb_name_unowned (GDBusConnection *connection, const gchar *name, gpo
 
 /* Object manager callbacks - we only really care about objects added, removed or with changed properties */
 
-static void cb_interface_added (GDBusObjectManager *manager, GDBusObject *object, GDBusInterface *interface, gpointer user_data)
+static void cb_interface_added (GDBusObjectManager *, GDBusObject *, GDBusInterface *interface, gpointer)
 {
     DEBUG ("Object manager - interface %s added", g_dbus_proxy_get_interface_name (G_DBUS_PROXY (interface)));
 }
 
-static void cb_interface_removed (GDBusObjectManager *manager, GDBusObject *object, GDBusInterface *interface, gpointer user_data)
+static void cb_interface_removed (GDBusObjectManager *, GDBusObject *, GDBusInterface *interface, gpointer)
 {
     DEBUG ("Object manager - interface %s removed", g_dbus_proxy_get_interface_name (G_DBUS_PROXY (interface)));
 }
 
-static void cb_object_added (GDBusObjectManager *manager, GDBusObject *object, gpointer user_data)
+static void cb_object_added (GDBusObjectManager *, GDBusObject *object, gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
     DEBUG ("Object manager - object added at path %s", g_dbus_object_get_object_path (object));
     find_hardware (bt);
 }
 
-static void cb_object_removed (GDBusObjectManager *manager, GDBusObject *object, gpointer user_data)
+static void cb_object_removed (GDBusObjectManager *, GDBusObject *object, gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
     DEBUG ("Object manager - object removed at path %s", g_dbus_object_get_object_path (object));
     find_hardware (bt);
 }
 
-static void cb_interface_signal (GDBusObjectManagerClient *manager, GDBusObjectProxy *object_proxy, GDBusProxy *proxy, gchar *sender, gchar *signal, GVariant *parameters, gpointer user_data)
+static void cb_interface_signal (GDBusObjectManagerClient *, GDBusObjectProxy *, GDBusProxy *proxy, gchar *sender, gchar *signal, GVariant *parameters, gpointer)
 {
     DEBUG_VAR ("Object manager - object at %s interface signal %s %s %s", parameters, g_dbus_proxy_get_object_path (proxy), sender, signal);
 }
 
-static void cb_interface_properties (GDBusObjectManagerClient *manager, GDBusObjectProxy *object_proxy, GDBusProxy *proxy, GVariant *parameters, GStrv inval, gpointer user_data)
+static void cb_interface_properties (GDBusObjectManagerClient *, GDBusObjectProxy *, GDBusProxy *proxy, GVariant *parameters, GStrv, gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
     GVariant *var, *var2;
@@ -708,7 +709,7 @@ static void set_search (BluetoothPlugin *bt, gboolean state)
     }
 }
 
-static void cb_search_start (GObject *source, GAsyncResult *res, gpointer user_data)
+static void cb_search_start (GObject *source, GAsyncResult *res, gpointer)
 {
     GError *error = NULL;
     GVariant *var = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), res, &error);
@@ -725,7 +726,7 @@ static void cb_search_start (GObject *source, GAsyncResult *res, gpointer user_d
     if (var) g_variant_unref (var);
 }
 
-static void cb_search_end (GObject *source, GAsyncResult *res, gpointer user_data)
+static void cb_search_end (GObject *source, GAsyncResult *res, gpointer)
 {
     GError *error = NULL;
     GVariant *var= g_dbus_proxy_call_finish (G_DBUS_PROXY (source), res, &error);
@@ -765,7 +766,7 @@ static void set_discoverable (BluetoothPlugin *bt, gboolean state)
     g_variant_unref (var);
 }
 
-static void cb_discover (GObject *source, GAsyncResult *res, gpointer user_data)
+static void cb_discover (GObject *source, GAsyncResult *res, gpointer)
 {
     GError *error = NULL;
     GVariant *var = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), res, &error);
@@ -798,7 +799,7 @@ static void set_powered (BluetoothPlugin *bt, gboolean state)
     g_variant_unref (var);
 }
 
-static void cb_power (GObject *source, GAsyncResult *res, gpointer user_data)
+static void cb_power (GObject *source, GAsyncResult *res, gpointer)
 {
     GError *error = NULL;
     GVariant *var = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), res, &error);
@@ -906,7 +907,7 @@ static void cb_paired (GObject *source, GAsyncResult *res, gpointer user_data)
     if (var) g_variant_unref (var);
 }
 
-static void cb_cancelled (GObject *source, GAsyncResult *res, gpointer user_data)
+static void cb_cancelled (GObject *source, GAsyncResult *res, gpointer)
 {
     GError *error = NULL;
     GVariant *var = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), res, &error);
@@ -957,7 +958,7 @@ static void trust_device (BluetoothPlugin *bt, const gchar *path, gboolean state
     g_object_unref (interface);
 }
 
-static void cb_trusted (GObject *source, GAsyncResult *res, gpointer user_data)
+static void cb_trusted (GObject *source, GAsyncResult *res, gpointer)
 {
     GError *error = NULL;
     GVariant *var = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), res, &error);
@@ -1152,7 +1153,7 @@ static gboolean check_icon (BluetoothPlugin *bt, const gchar *path, const gchar 
 
 /* Functions to respond to method calls on the agent */
 
-static void handle_pin_entered (GtkButton *button, gpointer user_data)
+static void handle_pin_entered (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     DEBUG ("PIN entered by user");
@@ -1163,7 +1164,7 @@ static void handle_pin_entered (GtkButton *button, gpointer user_data)
     g_variant_unref (retvar);
  }
 
-static void handle_pass_entered (GtkButton *button, gpointer user_data)
+static void handle_pass_entered (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     guint32 passkey;
@@ -1176,7 +1177,7 @@ static void handle_pass_entered (GtkButton *button, gpointer user_data)
     g_variant_unref (retvar);
 }
 
-static void handle_pin_confirmed (GtkButton *button, gpointer user_data)
+static void handle_pin_confirmed (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     DEBUG ("PIN confirmed by user");
@@ -1184,7 +1185,7 @@ static void handle_pin_confirmed (GtkButton *button, gpointer user_data)
     g_dbus_method_invocation_return_value (bt->invocation, NULL);
 }
 
-static void handle_pin_rejected (GtkButton *button, gpointer user_data)
+static void handle_pin_rejected (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     DEBUG ("PIN rejected by user");
@@ -1201,7 +1202,7 @@ static void handle_pin_rejected (GtkButton *button, gpointer user_data)
     }
 }
 
-static void handle_authorize_yes (GtkButton *button, gpointer user_data)
+static void handle_authorize_yes (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     DEBUG ("Pairing authorized by user");
@@ -1209,7 +1210,7 @@ static void handle_authorize_yes (GtkButton *button, gpointer user_data)
     g_dbus_method_invocation_return_value (bt->invocation, NULL);
 }
 
-static void handle_authorize_no (GtkButton *button, gpointer user_data)
+static void handle_authorize_no (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     DEBUG ("Pairing not authorized by user");
@@ -1226,14 +1227,14 @@ static void handle_authorize_no (GtkButton *button, gpointer user_data)
     }
 }
 
-static void handle_cancel_pair (GtkButton *button, gpointer user_data)
+static void handle_cancel_pair (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     pair_device (bt, bt->pairing_object, FALSE);
     handle_close_pair_dialog (NULL, bt);
 }
 
-static void handle_close_pair_dialog (GtkButton *button, gpointer user_data)
+static void handle_close_pair_dialog (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     if (bt->pair_dialog)
@@ -1418,7 +1419,7 @@ static gboolean selected_path (BluetoothPlugin *bt, char **path, char **name)
     return TRUE;
 }
 
-static void handle_pair (GtkButton *button, gpointer user_data)
+static void handle_pair (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     gchar *path, *name;
@@ -1448,14 +1449,14 @@ static void handle_pair (GtkButton *button, gpointer user_data)
     }
 }
 
-static void handle_remove (GtkButton *button, gpointer user_data)
+static void handle_remove (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     show_connect_dialog (bt, DIALOG_REMOVE, STATE_CONFIRMED, bt->device_name);
     remove_device (bt, bt->device_path);
 }
 
-static void handle_close_list_dialog (GtkButton *button, gpointer user_data)
+static void handle_close_list_dialog (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
     if (bt->list_dialog)
@@ -1470,7 +1471,7 @@ static void handle_close_list_dialog (GtkButton *button, gpointer user_data)
     }
 }
 
-static gint delete_list (GtkWidget *widget, GdkEvent *event, gpointer user_data)
+static gint delete_list (GtkWidget *, GdkEvent *, gpointer user_data)
 {
     BluetoothPlugin * bt = (BluetoothPlugin *) user_data;
     if (bt->list_dialog)
@@ -1486,7 +1487,7 @@ static gint delete_list (GtkWidget *widget, GdkEvent *event, gpointer user_data)
     return TRUE;
 }
 
-static gboolean filter_unknowns (GtkTreeModel *model, GtkTreeIter *iter, gpointer data)
+static gboolean filter_unknowns (GtkTreeModel *model, GtkTreeIter *iter, gpointer)
 {
     char *str;
     gboolean res = FALSE;
@@ -1624,7 +1625,7 @@ static void show_connect_dialog (BluetoothPlugin *bt, DIALOG_TYPE type, CONN_STA
     g_free (buffer);
 }
 
-static void handle_close_connect_dialog (GtkButton *button, gpointer user_data)
+static void handle_close_connect_dialog (GtkButton *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
 
@@ -1642,7 +1643,7 @@ static void handle_close_connect_dialog (GtkButton *button, gpointer user_data)
 
 /* Functions to manage main menu */
 
-static void handle_menu_add (GtkWidget *widget, gpointer user_data)
+static void handle_menu_add (GtkWidget *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     set_search (bt, TRUE);
@@ -1716,7 +1717,7 @@ static gboolean flash_icon (gpointer user_data)
     return TRUE;
 }
 
-static void handle_menu_discover (GtkWidget *widget, gpointer user_data)
+static void handle_menu_discover (GtkWidget *, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
 
@@ -1735,7 +1736,7 @@ static void handle_menu_discover (GtkWidget *widget, gpointer user_data)
     }
 }
 
-static gboolean add_to_menu (GtkTreeModel *model, GtkTreePath *tpath, GtkTreeIter *iter, gpointer user_data)
+static gboolean add_to_menu (GtkTreeModel *model, GtkTreePath *, GtkTreeIter *iter, gpointer user_data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) user_data;
     gchar *name, *path;
@@ -1858,7 +1859,7 @@ static void add_device (BluetoothPlugin *bt, GDBusObject *object, GtkListStore *
     g_object_unref (interface);
 }
 
-gboolean find_path (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+gboolean find_path (GtkTreeModel *model, GtkTreePath *, GtkTreeIter *iter, gpointer data)
 {
     BluetoothPlugin *bt = (BluetoothPlugin *) data;
 
@@ -2069,7 +2070,8 @@ static void update_icon (BluetoothPlugin *bt)
 }
 
 /* Handler for menu button click */
-static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt)
+
+static void bluetooth_button_press_event (GtkButton *, BluetoothPlugin *bt)
 {
     if (pressed != PRESS_LONG)
     {
@@ -2079,7 +2081,7 @@ static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt
     pressed = PRESS_NONE;
 }
 
-static void bluetooth_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, BluetoothPlugin *bt)
+static void bluetooth_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, BluetoothPlugin *)
 {
     pressed = PRESS_LONG;
     press_x = x;
@@ -2142,7 +2144,6 @@ void bt_init (BluetoothPlugin *bt)
 {
     /* Allocate and initialize plugin context */
     //BluetoothPlugin *bt = g_new0 (BluetoothPlugin, 1);
-    int val;
 
     /* Allocate top level widget and set into plugin widget pointer. */
     //bt->panel = panel;
