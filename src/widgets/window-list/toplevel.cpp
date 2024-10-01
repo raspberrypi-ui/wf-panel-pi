@@ -4,6 +4,7 @@
 #include <gtkmm/togglebutton.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/gesturedrag.h>
+#include <gtkmm/gesturelongpress.h>
 #include <giomm/desktopappinfo.h>
 #include <iostream>
 #include <filesystem>
@@ -46,6 +47,7 @@ class WayfireToplevel::impl
     Gtk::Menu menu;
     Gtk::MenuItem minimize, maximize, close;
     Glib::RefPtr<Gtk::GestureDrag> drag_gesture;
+    Glib::RefPtr<Gtk::GestureLongPress> gesture;
 
     Glib::ustring app_id, title;
 
@@ -67,8 +69,8 @@ class WayfireToplevel::impl
         button.set_tooltip_text("none");
         button.show_all ();
 
-        button.signal_clicked().connect_notify(
-            sigc::mem_fun(this, &WayfireToplevel::impl::on_clicked));
+        //button.signal_clicked().connect_notify(
+        //    sigc::mem_fun(this, &WayfireToplevel::impl::on_clicked));
         button.signal_size_allocate().connect_notify(
             sigc::mem_fun(this, &WayfireToplevel::impl::on_allocation_changed));
         button.property_scale_factor().signal_changed()
@@ -100,6 +102,11 @@ class WayfireToplevel::impl
             sigc::mem_fun(this, &WayfireToplevel::impl::on_drag_update));
         drag_gesture->signal_drag_end().connect_notify(
             sigc::mem_fun(this, &WayfireToplevel::impl::on_drag_end));
+
+        gesture = Gtk::GestureLongPress::create(button);
+        gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
+        gesture->signal_pressed().connect(sigc::mem_fun(this, &WayfireToplevel::impl::on_gesture_pressed));
+        gesture->set_touch_only(true);
 
         this->window_list = window_list;
     }
@@ -191,14 +198,25 @@ class WayfireToplevel::impl
 
     bool on_button_press_event(GdkEventButton *event)
     {
-        if ((event->type == GDK_BUTTON_RELEASE) && (event->button == 3))
+        switch (event->button)
         {
-            show_menu_with_kbd (GTK_WIDGET (button.gobj()), GTK_WIDGET (menu.gobj()));
-            return true; // It has been handled.
-        } else
-        {
-            return false;
+            case 1: if (pressed == PRESS_LONG)
+                        show_menu_with_kbd (GTK_WIDGET (button.gobj()), GTK_WIDGET (menu.gobj()));
+                    else
+                        on_clicked ();
+                    break;
+
+            case 3: show_menu_with_kbd (GTK_WIDGET (button.gobj()), GTK_WIDGET (menu.gobj()));
+                    break;
         }
+
+        pressed = PRESS_NONE;
+        return true;
+    }
+
+    void on_gesture_pressed (double x, double y)
+    {
+        pressed = PRESS_LONG;
     }
 
     void on_menu_minimize()

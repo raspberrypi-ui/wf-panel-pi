@@ -281,7 +281,7 @@ class WayfirePanel::impl
     {
         if (pressed == PRESS_NONE) return false;
         pressed = PRESS_NONE;
-        if (!window->has_popover() && event->type == GDK_BUTTON_RELEASE && event->button == 3)
+        if (!window->has_popover() && event->button == 3)
         {
             conf_plugin = "gtkmm";
             cplug.set_sensitive (false);
