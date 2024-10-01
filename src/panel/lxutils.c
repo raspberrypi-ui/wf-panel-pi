@@ -369,7 +369,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 
     panel = find_panel (widget);
 
-    if (GTK_IS_BUTTON (widget)) data->button = widget;
+    if (GTK_IS_BUTTON (widget) || GTK_IS_EVENT_BOX (widget)) data->button = widget;
     else data->button = NULL;
     data->menu = GTK_MENU (menu);
     data->x = -1.0;
@@ -388,8 +388,7 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
 
     panel = find_panel (widget);
 
-    if (GTK_IS_BUTTON (widget)) data->button = widget;
-    else data->button = NULL;
+    data->button = NULL;
     data->menu = GTK_MENU (menu);
     data->x = x;
     data->y = y;
