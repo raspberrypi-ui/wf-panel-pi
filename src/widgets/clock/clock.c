@@ -74,35 +74,40 @@ static void calendar_show (ClockPlugin *cl)
 /* Handler for menu button click */
 static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *, ClockPlugin *cl)
 {
-    cl->pressed = TRUE;
+    pressed = PRESS_SHORT;
     if (cl->window)
     {
         close_popup ();
-        cl->pressed = FALSE;
+        pressed = PRESS_NONE;
     }
     return FALSE;
 }
 
 static gboolean clock_button_release_event (GtkWidget *, GdkEventButton *event, ClockPlugin *cl)
 {
-    if (!cl->pressed) return TRUE;
-    cl->pressed = FALSE;
+    if (pressed == PRESS_NONE) return TRUE;
 
-    if (event->button == 1)
+    switch (event->button)
     {
-        calendar_show (cl);
-        return TRUE;
+        case 1: if (pressed == PRESS_LONG)
+                    pass_right_click (cl->plugin, press_x, press_y);
+                else
+                    calendar_show (cl);
+                pressed = PRESS_NONE;
+                break;
+
+        case 3: pressed = PRESS_SHORT;
+                break;
     }
 
     return FALSE;
 }
 
-static void clock_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, ClockPlugin *cl)
+static void clock_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, ClockPlugin *)
 {
-    if (!cl->pressed) return;
-    cl->pressed = FALSE;
-
-    pass_right_click (cl->plugin, x, y);
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
 }
 
 /* Plugin constructor */
