@@ -292,7 +292,7 @@ static void update_icon (PowerPlugin *pt)
     }
 }
 
-static void show_info (GtkWidget *widget, gpointer user_data)
+static void show_info (GtkWidget *, gpointer)
 {
     system ("x-www-browser https://rptl.io/rpi5-power-supply-info &");
 }
@@ -300,15 +300,26 @@ static void show_info (GtkWidget *widget, gpointer user_data)
 /* Plugin functions */
 
 /* Handler for menu button click */
-static void power_button_press_event (GtkButton *widget, PowerPlugin *pt)
+static void power_button_press_event (GtkButton *, PowerPlugin *pt)
 {
-    gtk_widget_show_all (pt->menu);
-    show_menu_with_kbd (pt->plugin, pt->menu);
+    if (pressed != PRESS_LONG)
+    {
+        gtk_widget_show_all (pt->menu);
+        show_menu_with_kbd (pt->plugin, pt->menu);
+    }
+    pressed = PRESS_NONE;
 }
 
-static void power_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, PowerPlugin *pt)
+static void power_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, PowerPlugin *)
 {
-    pass_right_click (pt->plugin, x, y);
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
+}
+
+static void power_gesture_end (GtkGestureLongPress *, GdkEventSequence *, PowerPlugin *pt)
+{
+    if (pressed == PRESS_LONG) pass_right_click (pt->plugin, press_x, press_y);
 }
 
 /* Handler for system config changed message from panel */
@@ -333,6 +344,7 @@ void power_init (PowerPlugin *pt)
     GtkGesture *gesture = gtk_gesture_long_press_new (pt->plugin);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture, "pressed", G_CALLBACK (power_gesture_pressed), pt);
+    g_signal_connect (gesture, "end", G_CALLBACK (power_gesture_end), pt);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     pt->show_icon = 0;

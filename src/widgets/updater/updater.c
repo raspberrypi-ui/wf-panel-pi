@@ -75,6 +75,7 @@ static gboolean periodic_check (gpointer data);
 //static GtkWidget *updater_constructor (LXPanel *panel, config_setting_t *settings);
 static void updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up);
 static void updater_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, UpdaterPlugin *up);
+static void updater_gesture_end (GtkGestureLongPress *, GdkEventSequence *, UpdaterPlugin *up);
 //static void updater_configuration_changed (LXPanel *panel, GtkWidget *p);
 //static gboolean updater_control_msg (GtkWidget *plugin, const char *cmd);
 //static GtkWidget *updater_configure (LXPanel *panel, GtkWidget *p);
@@ -136,7 +137,7 @@ static void refresh_cache_done (PkTask *task, GAsyncResult *res, gpointer data)
     pk_client_get_updates_async (PK_CLIENT (task), PK_FILTER_ENUM_NONE, up->cancellable, NULL, NULL, (GAsyncReadyCallback) check_updates_done, data);
 }
 
-static gboolean filter_fn (PkPackage *package, gpointer user_data)
+static gboolean filter_fn (PkPackage *package, gpointer)
 {
     PkInfoEnum info = pk_package_get_info (package);
 	switch (info)
@@ -155,7 +156,7 @@ static gboolean filter_fn (PkPackage *package, gpointer user_data)
     }
 }
 
-static gboolean filter_fn_x86 (PkPackage *package, gpointer user_data)
+static gboolean filter_fn_x86 (PkPackage *package, gpointer)
 {
     if (strstr (pk_package_get_arch (package), "amd64")) return FALSE;
     return filter_fn (package, NULL);
@@ -206,7 +207,7 @@ static void check_updates_done (PkTask *task, GAsyncResult *res, gpointer data)
 /* Launch installer process                                                   */
 /*----------------------------------------------------------------------------*/
 
-static void install_updates (GtkWidget *widget, gpointer user_data)
+static void install_updates (GtkWidget *, gpointer)
 {
     launch_installer ();
 }
@@ -223,7 +224,7 @@ static void launch_installer (void)
 /* Dialog box showing pending updates                                         */
 /*----------------------------------------------------------------------------*/
 
-static void show_updates (GtkWidget *widget, gpointer user_data)
+static void show_updates (GtkWidget *, gpointer user_data)
 {
     UpdaterPlugin *up = (UpdaterPlugin *) user_data;
     GtkBuilder *builder;
@@ -262,7 +263,7 @@ static void show_updates (GtkWidget *widget, gpointer user_data)
     gtk_widget_show_all (up->update_dlg);
 }
 
-static void handle_close_update_dialog (GtkButton *button, gpointer user_data)
+static void handle_close_update_dialog (GtkButton *, gpointer user_data)
 {
     UpdaterPlugin *up = (UpdaterPlugin *) user_data;
     if (up->update_dlg)
@@ -272,7 +273,7 @@ static void handle_close_update_dialog (GtkButton *button, gpointer user_data)
     }
 }
 
-static void handle_close_and_install (GtkButton *button, gpointer user_data)
+static void handle_close_and_install (GtkButton *, gpointer user_data)
 {
     UpdaterPlugin *up = (UpdaterPlugin *) user_data;
     if (up->update_dlg)
@@ -283,7 +284,7 @@ static void handle_close_and_install (GtkButton *button, gpointer user_data)
     launch_installer ();
 }
 
-static gint delete_update_dialog (GtkWidget *widget, GdkEvent *event, gpointer user_data)
+static gint delete_update_dialog (GtkWidget *, GdkEvent *, gpointer user_data)
 {
     UpdaterPlugin *up = (UpdaterPlugin *) user_data;
     handle_close_update_dialog (NULL, up);
@@ -421,6 +422,7 @@ void updater_init (UpdaterPlugin *up)
     GtkGesture *gesture = gtk_gesture_long_press_new (up->plugin);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture, "pressed", G_CALLBACK (updater_gesture_pressed), up);
+    g_signal_connect (gesture, "end", G_CALLBACK (updater_gesture_end), up);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
@@ -448,14 +450,22 @@ void updater_set_interval (UpdaterPlugin *up)
 }
 
 /* Handler for menu button click */
-static void updater_button_press_event (GtkWidget *widget, UpdaterPlugin *up)
+static void updater_button_press_event (GtkWidget *, UpdaterPlugin *up)
 {
-    show_menu (up);
+    if (pressed != PRESS_LONG) show_menu (up);
+    pressed = PRESS_NONE;
 }
 
-static void updater_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, UpdaterPlugin *up)
+static void updater_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, UpdaterPlugin *)
 {
-    pass_right_click (up->plugin, x, y);
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
+}
+
+static void updater_gesture_end (GtkGestureLongPress *, GdkEventSequence *, UpdaterPlugin *up)
+{
+    if (pressed == PRESS_LONG) pass_right_click (up->plugin, press_x, press_y);
 }
 
 /* Handler for system config changed message from panel */

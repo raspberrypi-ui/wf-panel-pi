@@ -78,7 +78,7 @@ typedef struct {
 
 extern void gtk_run (void);
 void restart (void) {};
-void mlogout (MenuPlugin *m)
+void mlogout (void)
 {
     const char* l_logout_cmd = logout_cmd;
     /* If LXSession is running, _LXSESSION_PID will be set */
@@ -96,13 +96,13 @@ static Command commands[] = {
     { "run", N_("Run"), gtk_run },
     { "restart", N_("Restart"), restart },
     { "logout", N_("Logout"), mlogout },
-    { NULL, NULL },
+    { NULL, NULL, NULL },
 };
 
 
 /* Open a specified path in a file manager. */
 static gboolean _open_dir_in_file_manager (GAppLaunchContext* ctx, GList* folder_infos,
-                                          gpointer user_data, GError** err)
+                                          gpointer, GError** err)
 {
     FmFileInfo *fi = folder_infos->data; /* only first is used */
     GAppInfo *app = g_app_info_get_default_for_type("inode/directory", TRUE);
@@ -191,7 +191,7 @@ static void resize_search (MenuPlugin *m)
     gtk_widget_set_size_request (m->scr, -1, nrows);
 }
 
-static void handle_search_changed (GtkEditable *wid, gpointer user_data)
+static void handle_search_changed (GtkEditable *, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
     GtkTreePath *path = gtk_tree_path_new_from_indices (0, -1);
@@ -203,7 +203,7 @@ static void handle_search_changed (GtkEditable *wid, gpointer user_data)
     resize_search (m);
 }
 
-static gboolean handle_list_keypress (GtkWidget *widget, GdkEventKey *event, gpointer user_data)
+static gboolean handle_list_keypress (GtkWidget *, GdkEventKey *event, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
 
@@ -223,7 +223,7 @@ static gboolean handle_list_keypress (GtkWidget *widget, GdkEventKey *event, gpo
     return FALSE;
 }
 
-static gboolean handle_search_keypress (GtkWidget *widget, GdkEventKey *event, gpointer user_data)
+static gboolean handle_search_keypress (GtkWidget *, GdkEventKey *event, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
     GtkTreeSelection *sel;
@@ -259,7 +259,7 @@ static gboolean handle_search_keypress (GtkWidget *widget, GdkEventKey *event, g
     }
 }
 
-static void handle_list_select (GtkTreeView *tv, GtkTreePath *path, GtkTreeViewColumn *col, gpointer user_data)
+static void handle_list_select (GtkTreeView *tv, GtkTreePath *path, GtkTreeViewColumn *, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
     GtkTreeModel *mod = gtk_tree_view_get_model (tv);
@@ -308,7 +308,7 @@ static void handle_search_resize (GtkWidget *self, GtkAllocation *alloc, gpointe
 }
 #endif
 
-static void search_destroyed (GtkWidget *widget, gpointer data)
+static void search_destroyed (GtkWidget *, gpointer data)
 {
     MenuPlugin *m = (MenuPlugin *) data;
     m->swin = NULL;
@@ -376,7 +376,7 @@ static void create_search (MenuPlugin *m)
 
 /* Handler for keyboard events while menu is open */
 
-static gboolean handle_key_presses (GtkWidget *widget, GdkEventKey *event, gpointer user_data)
+static gboolean handle_key_presses (GtkWidget *, GdkEventKey *event, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
 
@@ -396,14 +396,14 @@ static gboolean handle_key_presses (GtkWidget *widget, GdkEventKey *event, gpoin
 
 /* Handlers for system menu items */
 
-static void handle_menu_item_activate (GtkMenuItem *mi, MenuPlugin *m)
+static void handle_menu_item_activate (GtkMenuItem *mi, MenuPlugin *)
 {
     FmFileInfo *fi = g_object_get_qdata (G_OBJECT (mi), sys_menu_item_quark);
 
     fm_launch_path_simple (NULL, NULL, fm_file_info_get_path (fi), _open_dir_in_file_manager, NULL);
 }
 
-static void handle_menu_item_add_to_desktop (GtkMenuItem* item, GtkWidget* mi)
+static void handle_menu_item_add_to_desktop (GtkMenuItem *, GtkWidget* mi)
 {
     FmFileInfo *fi = g_object_get_qdata (G_OBJECT (mi), sys_menu_item_quark);
     FmPathList *files = fm_path_list_new ();
@@ -413,13 +413,13 @@ static void handle_menu_item_add_to_desktop (GtkMenuItem* item, GtkWidget* mi)
     fm_path_list_unref (files);
 }
 
-static void handle_menu_item_add_to_launcher (GtkMenuItem* item, GtkWidget* mi)
+static void handle_menu_item_add_to_launcher (GtkMenuItem *, GtkWidget* mi)
 {
     FmFileInfo *fi = g_object_get_qdata (G_OBJECT (mi), sys_menu_item_quark);
     add_to_launcher (fm_file_info_get_name (fi));
 }
 
-static void handle_menu_item_properties (GtkMenuItem* item, GtkWidget* mi)
+static void handle_menu_item_properties (GtkMenuItem *, GtkWidget* mi)
 {
     FmFileInfo *fi = g_object_get_qdata (G_OBJECT (mi), sys_menu_item_quark);
     FmFileInfoList *files = fm_file_info_list_new ();
@@ -538,7 +538,7 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
             g_free (mpath);
 
             gtk_widget_set_name (mi, "syssubmenu");
-            const char *comment = menu_cache_item_get_comment (item);
+            //const char *comment = menu_cache_item_get_comment (item);
             //if (comment) gtk_widget_set_tooltip_text (mi, comment);
 
             g_signal_connect (mi, "activate", G_CALLBACK (handle_menu_item_activate), m);
@@ -655,7 +655,7 @@ static void reload_system_menu (MenuPlugin *m, GtkMenu *menu)
     g_list_free (children);
 }
 
-static void handle_reload_menu (MenuCache* cache, gpointer user_data)
+static void handle_reload_menu (MenuCache *, gpointer user_data)
 {
     MenuPlugin *m = (MenuPlugin *) user_data;
 
@@ -682,12 +682,12 @@ static void read_system_menu (GtkMenu *menu, MenuPlugin *m)
 
 /* Functions to create individual menu items from panel config */
 
-static void handle_spawn_app (GtkWidget *widget, gpointer data)
+static void handle_spawn_app (GtkWidget *, gpointer data)
 {
     if (data) fm_launch_command_simple (NULL, NULL, 0, data, NULL);
 }
 
-static void handle_run_command (GtkWidget *widget, gpointer data)
+static void handle_run_command (GtkWidget *, gpointer data)
 {
     void (*cmd) (void) = (void *) data;
     cmd ();
@@ -758,10 +758,10 @@ static GtkWidget *read_menu_item (MenuPlugin *m, char *fname, char *cmd)
     return item;
 }
 
-void handle_popped_up (GtkMenu *menu, gpointer, gpointer, gboolean, gboolean, MenuPlugin *m)
+void handle_popped_up (GtkMenu *menu, gpointer, gpointer, gboolean, gboolean, MenuPlugin *)
 {
     GdkRectangle rect;
-    GtkWidget *win = gtk_widget_get_toplevel (menu);
+    GtkWidget *win = gtk_widget_get_toplevel (GTK_WIDGET(menu));
     GdkWindow *gwin = gtk_widget_get_window (win);
     GdkMonitor *mon = gdk_display_get_monitor_at_window (gdk_display_get_default (), gwin);
     gdk_monitor_get_geometry (mon, &rect);
@@ -832,14 +832,22 @@ static gboolean create_menu (MenuPlugin *m)
 }
 
 /* Handler for menu button click */
-static void menu_button_press_event (GtkWidget *widget, MenuPlugin *m)
+static void menu_button_press_event (GtkWidget *, MenuPlugin *m)
 {
-    show_menu_with_kbd (m->plugin, m->menu);
+    if (pressed != PRESS_LONG) show_menu_with_kbd (m->plugin, m->menu);
+    pressed = PRESS_NONE;
 }
 
-static void menu_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, MenuPlugin *m)
+static void menu_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, MenuPlugin *)
 {
-    pass_right_click (m->plugin, x, y);
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
+}
+
+static void menu_gesture_end (GtkGestureLongPress *, GdkEventSequence *, MenuPlugin *m)
+{
+    if (pressed == PRESS_LONG) pass_right_click (m->plugin, press_x, press_y);
 }
 
 void menu_update_display (MenuPlugin *m)
@@ -953,6 +961,7 @@ void menu_init (MenuPlugin *m)
     GtkGesture *gesture = gtk_gesture_long_press_new (m->plugin);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture, "pressed", G_CALLBACK (menu_gesture_pressed), m);
+    g_signal_connect (gesture, "end", G_CALLBACK (menu_gesture_end), m);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
 #if 0

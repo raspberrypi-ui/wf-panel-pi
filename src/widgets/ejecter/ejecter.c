@@ -157,7 +157,7 @@ static void add_seq_for_drive (EjecterPlugin *ej, GDrive *drive, int seq)
     }
 }
 
-static void handle_mount_in (GtkWidget *widget, GMount *mount, gpointer data)
+static void handle_mount_in (GtkWidget *, GMount *mount, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("MOUNT ADDED %s", g_mount_get_name (mount));
@@ -167,7 +167,7 @@ static void handle_mount_in (GtkWidget *widget, GMount *mount, gpointer data)
     update_icon (ej);
 }
 
-static void handle_mount_out (GtkWidget *widget, GMount *mount, gpointer data)
+static void handle_mount_out (GtkWidget *, GMount *mount, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("MOUNT REMOVED %s", g_mount_get_name (mount));
@@ -176,14 +176,14 @@ static void handle_mount_out (GtkWidget *widget, GMount *mount, gpointer data)
     update_icon (ej);
 }
 
-static void handle_mount_pre (GtkWidget *widget, GMount *mount, gpointer data)
+static void handle_mount_pre (GtkWidget *, GMount *mount, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("MOUNT PREUNMOUNT %s", g_mount_get_name (mount));
     log_eject (ej, g_mount_get_drive (mount));
 }
 
-static void handle_volume_in (GtkWidget *widget, GVolume *vol, gpointer data)
+static void handle_volume_in (GtkWidget *, GVolume *vol, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("VOLUME ADDED %s", g_volume_get_name (vol));
@@ -192,7 +192,7 @@ static void handle_volume_in (GtkWidget *widget, GVolume *vol, gpointer data)
     update_icon (ej);
 }
 
-static void handle_volume_out (GtkWidget *widget, GVolume *vol, gpointer data)
+static void handle_volume_out (GtkWidget *, GVolume *vol, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("VOLUME REMOVED %s", g_volume_get_name (vol));
@@ -201,7 +201,7 @@ static void handle_volume_out (GtkWidget *widget, GVolume *vol, gpointer data)
     update_icon (ej);
 }
 
-static void handle_drive_in (GtkWidget *widget, GDrive *drive, gpointer data)
+static void handle_drive_in (GtkWidget *, GDrive *drive, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("DRIVE ADDED %s", g_drive_get_name (drive));
@@ -210,7 +210,7 @@ static void handle_drive_in (GtkWidget *widget, GDrive *drive, gpointer data)
     update_icon (ej);
 }
 
-static void handle_drive_out (GtkWidget *widget, GDrive *drive, gpointer data)
+static void handle_drive_out (GtkWidget *, GDrive *drive, gpointer data)
 {
     EjecterPlugin *ej = (EjecterPlugin *) data;
     DEBUG ("DRIVE REMOVED %s", g_drive_get_name (drive));
@@ -222,7 +222,7 @@ static void handle_drive_out (GtkWidget *widget, GDrive *drive, gpointer data)
     update_icon (ej);
 }
 
-static void handle_eject_clicked (GtkWidget *widget, gpointer data)
+static void handle_eject_clicked (GtkWidget *, gpointer data)
 {
     CallbackData *dt = (CallbackData *) data;
     EjecterPlugin *ej = dt->ej;
@@ -378,17 +378,25 @@ static GtkWidget *create_menuitem (EjecterPlugin *ej, GDrive *d)
 }
 
 /* Handler for menu button click */
-static void ejecter_button_press_event (GtkWidget *widget, EjecterPlugin * ej)
+static void ejecter_button_press_event (GtkWidget *, EjecterPlugin * ej)
 {
     //EjecterPlugin * ej = lxpanel_plugin_get_data (widget);
 
     /* Show or hide the popup menu on left-click */
-    show_menu (ej);
+    if (pressed != PRESS_LONG) show_menu (ej);
+    pressed = PRESS_NONE;
 }
 
-static void ejecter_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, EjecterPlugin *ej)
+static void ejecter_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, EjecterPlugin *)
 {
-    pass_right_click (ej->plugin, x, y);
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
+}
+
+static void ejecter_gesture_end (GtkGestureLongPress *, GdkEventSequence *, EjecterPlugin *ej)
+{
+    if (pressed == PRESS_LONG) pass_right_click (ej->plugin, press_x, press_y);
 }
 
 /* Handler for system config changed message from panel */
@@ -460,7 +468,8 @@ void ej_init (EjecterPlugin *ej)
     /* Set up long press */
     GtkGesture *gesture = gtk_gesture_long_press_new (ej->plugin);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (ejecter_gesture_pressed),ej);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (ejecter_gesture_pressed), ej);
+    g_signal_connect (gesture, "end", G_CALLBACK (ejecter_gesture_end), ej);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */

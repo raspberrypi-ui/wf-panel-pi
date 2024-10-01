@@ -353,7 +353,6 @@ static void committed (GdkWindow *win, kb_menu_t *data)
     else
     {
         GdkRectangle rect;
-        int x, y;
         gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
         rect.x = data->x;
         rect.y = 0;
