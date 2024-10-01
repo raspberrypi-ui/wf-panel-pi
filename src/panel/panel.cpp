@@ -255,7 +255,7 @@ class WayfirePanel::impl
         gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
         gesture->signal_pressed().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_pressed));
         gesture->signal_end().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_end));
-        gesture->set_touch_only(false);
+        gesture->set_touch_only(true);
 
         if (wizard || !real)
         {
