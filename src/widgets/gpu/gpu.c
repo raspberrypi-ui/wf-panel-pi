@@ -118,6 +118,18 @@ static gboolean gpu_update (GPUPlugin *g)
     return TRUE;
 }
 
+static void gpu_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, GPUPlugin *)
+{
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
+}
+
+static void gpu_gesture_end (GtkGestureLongPress *, GdkEventSequence *, GPUPlugin *g)
+{
+    if (pressed == PRESS_LONG) pass_right_click (g->plugin, press_x, press_y);
+}
+
 void gpu_update_display (GPUPlugin *g)
 {
     GdkRGBA none = {0, 0, 0, 0};
@@ -138,6 +150,13 @@ void gpu_init (GPUPlugin *g)
     gtk_container_add (GTK_CONTAINER (g->plugin), g->graph.da);
 
     gpu_update_display (g);
+
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (g->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (gpu_gesture_pressed), g);
+    g_signal_connect (gesture, "end", G_CALLBACK (gpu_gesture_end), g);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     /* Connect a timer to refresh the statistics. */
     g->timer = g_timeout_add (1500, (GSourceFunc) gpu_update, (gpointer) g);
