@@ -59,7 +59,6 @@ typedef enum
 
 /* Prototypes */
 
-static gboolean is_pi (void);
 static void convert_alpha (guchar *dest_data, int dest_stride, guchar *src_data, int src_stride, int src_x, int src_y, int width, int height);
 GdkPixbuf *gdk_pixbuf_get_from_surface (cairo_surface_t *surface, gint src_x, gint src_y, gint width, gint height);
 static int init_measurement (PtBattPlugin *pt);
@@ -68,14 +67,6 @@ static void draw_icon (PtBattPlugin *pt, int lev, float r, float g, float b, int
 static void update_icon (PtBattPlugin *pt);
 static gboolean timer_event (PtBattPlugin *pt);
 
-
-static gboolean is_pi (void)
-{
-    if (system ("raspi-config nonint is_pi") == 0)
-        return TRUE;
-    else
-        return FALSE;
-}
 
 /* gdk_pixbuf_get_from_surface function from GDK+3 */
 
@@ -121,8 +112,8 @@ convert_alpha (guchar *dest_data,
 
 GdkPixbuf *
 gdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
-                              gint             src_x,
-                              gint             src_y,
+                              gint             ,
+                              gint             ,
                               gint             width,
                               gint             height)
 {
@@ -335,6 +326,17 @@ void batt_update_display (PtBattPlugin *pt)
     else gtk_widget_hide (pt->plugin);
 }
 
+static void batt_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, PtBattPlugin *)
+{
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
+}
+
+static void batt_gesture_end (GtkGestureLongPress *, GdkEventSequence *, PtBattPlugin *pt)
+{
+    if (pressed == PRESS_LONG) pass_right_click (pt->plugin, press_x, press_y);
+}
 
 void batt_destructor (gpointer user_data)
 {
@@ -362,6 +364,13 @@ void batt_init (PtBattPlugin *pt)
     /* Allocate icon as a child of top level */
     pt->tray_icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
+
+    /* Set up long press */
+    GtkGesture *gesture = gtk_gesture_long_press_new (pt->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
+    g_signal_connect (gesture, "pressed", G_CALLBACK (batt_gesture_pressed), pt);
+    g_signal_connect (gesture, "end", G_CALLBACK (batt_gesture_end), pt);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
 
     if (init_measurement (pt))
     {
