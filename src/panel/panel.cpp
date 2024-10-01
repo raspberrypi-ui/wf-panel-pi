@@ -279,7 +279,7 @@ class WayfirePanel::impl
 
     bool on_button_release_event(GdkEventButton* event)
     {
-        if (pressed != PRESS_SHORT) return false;
+        if (pressed == PRESS_NONE) return false;
         pressed = PRESS_NONE;
         if (!window->has_popover() && event->type == GDK_BUTTON_RELEASE && event->button == 3)
         {
@@ -314,7 +314,7 @@ class WayfirePanel::impl
                                     else cplug.show ();
                                     if (can_configure (conf_plugin.c_str())) cplug.set_sensitive (true);
                                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj()), GTK_WIDGET (menu.gobj()));
-                                    return true;
+                                    return false;
                                 }
                             }
                         }
@@ -322,7 +322,6 @@ class WayfirePanel::impl
                     // not matched any widgets - on the empty area of the bar...
                     cplug.hide ();
                     show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj()), GTK_WIDGET (menu.gobj()), event->x_root, event->y_root);
-                    return true;
                 }
             }
         }
@@ -339,7 +338,6 @@ class WayfirePanel::impl
     void on_gesture_end(GdkEventSequence *)
     {
         if (pressed == PRESS_LONG) pass_right_click (GTK_WIDGET (window->gobj()), press_x, press_y);
-        pressed = PRESS_NONE;
     }
 
     void do_configure()
