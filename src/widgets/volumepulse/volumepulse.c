@@ -445,7 +445,6 @@ void volumepulse_init (VolumePulsePlugin *vol)
     vol->conn_dialog = NULL;
     vol->hdmi_names[0] = NULL;
     vol->hdmi_names[1] = NULL;
-    vol->pressed = FALSE;
 
     vol->pipewire = !system ("ps ax | grep pipewire-pulse | grep -qv grep");
     if (vol->pipewire)

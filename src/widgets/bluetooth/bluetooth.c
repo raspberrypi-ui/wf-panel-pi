@@ -2071,24 +2071,24 @@ static void update_icon (BluetoothPlugin *bt)
 /* Handler for menu button click */
 static void bluetooth_button_press_event (GtkButton *widget, BluetoothPlugin *bt)
 {
-    if (bt->pressed != PRESS_LONG)
+    if (pressed != PRESS_LONG)
     {
         show_menu (bt);
         show_menu_with_kbd (bt->plugin, bt->menu);
     }
-    bt->pressed = PRESS_NONE;
+    pressed = PRESS_NONE;
 }
 
 static void bluetooth_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, BluetoothPlugin *bt)
 {
-    bt->pressed = PRESS_LONG;
-    bt->press_x = x;
-    bt->press_y = y;
+    pressed = PRESS_LONG;
+    press_x = x;
+    press_y = y;
 }
 
 static void bluetooth_gesture_end (GtkGestureLongPress *, GdkEventSequence *, BluetoothPlugin *bt)
 {
-    if (bt->pressed == PRESS_LONG) pass_right_click (bt->plugin, bt->press_x, bt->press_y);
+    if (pressed == PRESS_LONG) pass_right_click (bt->plugin, press_x, press_y);
 }
 
 /* Handler for system config changed message from panel */

@@ -616,6 +616,7 @@ void pass_right_click (GtkWidget *wid, double x, double y)
     g_signal_emit_by_name (w, "button-press-event", ev, &ret);
     ev->type = GDK_BUTTON_RELEASE;
     g_signal_emit_by_name (w, "button-release-event", ev, &ret);
+    pressed = PRESS_LONG;
 }
 
 

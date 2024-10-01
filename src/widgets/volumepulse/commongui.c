@@ -342,11 +342,11 @@ void menu_set_bluetooth_device_input (GtkWidget *widget, VolumePulsePlugin *vol)
 
 gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *, VolumePulsePlugin *vol)
 {
-    vol->pressed = PRESS_SHORT;
+    pressed = PRESS_SHORT;
     if (vol->popup_window[0])
     {
         close_popup ();
-        vol->pressed = PRESS_NONE;
+        pressed = PRESS_NONE;
     }
 
     volumepulse_update_display (vol);
@@ -355,12 +355,12 @@ gboolean volumepulse_button_press_event (GtkWidget *, GdkEventButton *, VolumePu
 
 gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
-    if (vol->pressed == PRESS_NONE) return TRUE;
+    if (pressed == PRESS_NONE) return TRUE;
 
     switch (event->button)
     {
         case 1: /* left-click - show volume popup */
-                if (vol->pressed == PRESS_LONG)
+                if (pressed == PRESS_LONG)
                 {
                     vol_menu_show (vol);
                     show_menu_with_kbd (vol->plugin[0], vol->menu_devices[0]);
@@ -378,24 +378,24 @@ gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, V
                 break;
     }
 
-    vol->pressed = PRESS_NONE;
+    pressed = PRESS_NONE;
     volumepulse_update_display (vol);
     return TRUE;
 }
 
 void volumepulse_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *vol)
 {
-    if (vol->pressed == PRESS_NONE) return;
-    vol->pressed = PRESS_LONG;
+    if (pressed == PRESS_NONE) return;
+    pressed = PRESS_LONG;
 }
 
 gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *, VolumePulsePlugin *vol)
 {
-    vol->pressed = PRESS_SHORT;
+    pressed = PRESS_SHORT;
     if (vol->popup_window[1])
     {
         close_popup ();
-        vol->pressed = PRESS_NONE;
+        pressed = PRESS_NONE;
     }
 
     micpulse_update_display (vol);
@@ -404,12 +404,12 @@ gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *, VolumePulse
 
 gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, VolumePulsePlugin *vol)
 {
-    if (vol->pressed == PRESS_NONE) return TRUE;
+    if (pressed == PRESS_NONE) return TRUE;
 
     switch (event->button)
     {
         case 1: /* left-click - show volume popup */
-                if (vol->pressed == PRESS_LONG)
+                if (pressed == PRESS_LONG)
                 {
                     mic_menu_show (vol);
                     show_menu_with_kbd (vol->plugin[1], vol->menu_devices[1]);
@@ -427,15 +427,15 @@ gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, Volu
                 break;
     }
 
-    vol->pressed = PRESS_NONE;
+    pressed = PRESS_NONE;
     micpulse_update_display (vol);
     return TRUE;
 }
 
 void micpulse_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *vol)
 {
-    if (vol->pressed == PRESS_NONE) return;
-    vol->pressed = PRESS_LONG;
+    if (pressed == PRESS_NONE) return;
+    pressed = PRESS_LONG;
 }
 
 /* Handler for "scroll-event" signal */

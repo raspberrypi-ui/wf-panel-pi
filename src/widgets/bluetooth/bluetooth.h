@@ -12,9 +12,6 @@ typedef struct {
     int icon_size;                      /* Variables used under wf-panel */
     gboolean bottom;
     gboolean wizard;
-    press_t pressed;
-    gdouble press_x;
-    gdouble press_y;
     GtkWidget *menu;                /* Popup menu */
     GtkListStore *pair_list;
     GtkListStore *unpair_list;
