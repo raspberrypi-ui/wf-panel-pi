@@ -383,12 +383,6 @@ gboolean volumepulse_button_release_event (GtkWidget *, GdkEventButton *event, V
     return TRUE;
 }
 
-void volumepulse_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *vol)
-{
-    if (pressed == PRESS_NONE) return;
-    pressed = PRESS_LONG;
-}
-
 gboolean micpulse_button_press_event (GtkWidget *, GdkEventButton *, VolumePulsePlugin *vol)
 {
     pressed = PRESS_SHORT;
@@ -432,7 +426,7 @@ gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, Volu
     return TRUE;
 }
 
-void micpulse_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *vol)
+void volmic_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *)
 {
     if (pressed == PRESS_NONE) return;
     pressed = PRESS_LONG;

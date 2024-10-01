@@ -47,7 +47,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*----------------------------------------------------------------------------*/
 
 static char *bt_to_pa_name (const char *bluez_name, char *type, char *profile);
-static char *bt_from_pa_name (const char *pa_name);
 static void bt_cb_name_owned (GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data);
 static void bt_cb_name_unowned (GDBusConnection *connection, const gchar *name, gpointer user_data);
 static void bt_cb_object_removed (GDBusObjectManager *manager, GDBusObject *object, gpointer user_data);
@@ -82,22 +81,6 @@ static char *bt_to_pa_name (const char *bluez_name, char *type, char *profile)
     }
     return g_strdup_printf ("bluez_%s.%02X_%02X_%02X_%02X_%02X_%02X%s%s",
         type, b1, b2, b3, b4, b5, b6, profile ? "." : "", profile ? profile : "");
-}
-
-/* Convert a PulseAudio sink / source / card to a BlueZ device name */
-
-static char *bt_from_pa_name (const char *pa_name)
-{
-    unsigned int b1, b2, b3, b4, b5, b6;
-    char *adrs;
-
-    if (pa_name == NULL) return NULL;
-    if (strstr (pa_name, "bluez") == NULL) return NULL;
-    if (strstr (pa_name, "monitor") != NULL) return NULL;
-    adrs = strstr (pa_name, ".");
-    if (adrs == NULL) return NULL;
-    if (sscanf (adrs + 1, "%x_%x_%x_%x_%x_%x", &b1, &b2, &b3, &b4, &b5, &b6) != 6) return NULL;
-    return g_strdup_printf ("/org/bluez/hci0/dev_%02X_%02X_%02X_%02X_%02X_%02X", b1, b2, b3, b4, b5, b6);
 }
 
 /*----------------------------------------------------------------------------*/
