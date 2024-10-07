@@ -4,6 +4,7 @@ typedef struct {
     GtkWidget *plugin;              /* Back pointer to the widget */
     int icon_size;                  /* Variables used under wf-panel */
     gboolean bottom;
+    GtkGesture *gesture;
     GtkWidget *tray_icon;           /* Displayed image */
     GtkWidget *menu;
     int show_icon;

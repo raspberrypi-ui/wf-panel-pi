@@ -2135,6 +2135,7 @@ void bluetooth_destructor (gpointer user_data)
     g_bus_unwatch_name (bt->watch);
 
     /* Deallocate memory */
+    if (bt->gesture) g_object_unref (bt->gesture);
     g_free (bt);
 }
 
@@ -2162,11 +2163,11 @@ void bt_init (BluetoothPlugin *bt)
     g_signal_connect (bt->plugin, "clicked", G_CALLBACK (bluetooth_button_press_event), bt);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (bt->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (bluetooth_gesture_pressed), bt);
-    g_signal_connect (gesture, "end", G_CALLBACK (bluetooth_gesture_end), bt);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    bt->gesture = gtk_gesture_long_press_new (bt->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (bt->gesture), TRUE);
+    g_signal_connect (bt->gesture, "pressed", G_CALLBACK (bluetooth_gesture_pressed), bt);
+    g_signal_connect (bt->gesture, "end", G_CALLBACK (bluetooth_gesture_end), bt);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (bt->gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     bt->pair_list = gtk_list_store_new (7, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_UINT, G_TYPE_UINT, GDK_TYPE_PIXBUF, G_TYPE_STRING);

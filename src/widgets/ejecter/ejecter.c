@@ -439,6 +439,7 @@ void ejecter_destructor (gpointer user_data)
     EjecterPlugin * ej = (EjecterPlugin *) user_data;
 
     /* Deallocate memory */
+    if (ej->gesture) g_object_unref (ej->gesture);
     g_free (ej);
 }
 
@@ -466,11 +467,11 @@ void ej_init (EjecterPlugin *ej)
     g_signal_connect (ej->plugin, "clicked", G_CALLBACK (ejecter_button_press_event), ej);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (ej->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (ejecter_gesture_pressed), ej);
-    g_signal_connect (gesture, "end", G_CALLBACK (ejecter_gesture_end), ej);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    ej->gesture = gtk_gesture_long_press_new (ej->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (ej->gesture), TRUE);
+    g_signal_connect (ej->gesture, "pressed", G_CALLBACK (ejecter_gesture_pressed), ej);
+    g_signal_connect (ej->gesture, "end", G_CALLBACK (ejecter_gesture_end), ej);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (ej->gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     ej->popup = NULL;

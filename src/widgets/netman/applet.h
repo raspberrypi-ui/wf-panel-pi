@@ -79,6 +79,7 @@ typedef struct {
 	GtkWidget *plugin;              /* Back pointer to widget */
 	gboolean active;
 	gboolean bottom;
+	GtkGesture *gesture;
 	GtkWidget *vpn_menu;
 	gboolean killing;
 	gboolean country_set;

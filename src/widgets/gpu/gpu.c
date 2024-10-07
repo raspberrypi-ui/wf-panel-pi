@@ -140,6 +140,7 @@ void gpu_destructor (gpointer user_data)
 {
     GPUPlugin *g = (GPUPlugin *) user_data;
     if (g->timer) g_source_remove (g->timer);
+    if (g->gesture) g_object_unref (g->gesture);
     g_free (g);
 }
 
@@ -152,11 +153,11 @@ void gpu_init (GPUPlugin *g)
     gpu_update_display (g);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (g->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (gpu_gesture_pressed), g);
-    g_signal_connect (gesture, "end", G_CALLBACK (gpu_gesture_end), g);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    g->gesture = gtk_gesture_long_press_new (g->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (g->gesture), TRUE);
+    g_signal_connect (g->gesture, "pressed", G_CALLBACK (gpu_gesture_pressed), g);
+    g_signal_connect (g->gesture, "end", G_CALLBACK (gpu_gesture_end), g);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g->gesture), GTK_PHASE_BUBBLE);
 
     /* Connect a timer to refresh the statistics. */
     g->timer = g_timeout_add (1500, (GSourceFunc) gpu_update, (gpointer) g);

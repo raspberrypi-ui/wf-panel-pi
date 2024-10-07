@@ -15,6 +15,7 @@ typedef struct
     GtkWidget *plugin;                      /* Back pointer to the widget */
     int icon_size;                          /* Variables used under wf-panel */
     gboolean bottom;
+    GtkGesture *gesture;
     PluginGraph graph;
     guint timer;                            /* Timer for periodic update */
     int numsensors;

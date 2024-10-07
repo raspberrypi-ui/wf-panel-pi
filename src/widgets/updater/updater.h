@@ -12,6 +12,7 @@ typedef struct {
     //config_setting_t *settings;     /* Plugin settings */
     int icon_size;                      /* Variables used under wf-panel */
     gboolean bottom;
+    GtkGesture *gesture;
     GtkWidget *menu;                /* Popup menu */
     GtkWidget *update_dlg;          /* Widget used to display pending update list */
     int n_updates;                  /* Number of pending updates */

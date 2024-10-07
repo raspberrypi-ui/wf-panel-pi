@@ -344,6 +344,7 @@ void cputemp_destructor (gpointer user_data)
 {
     CPUTempPlugin *c = (CPUTempPlugin *) user_data;
     if (c->timer) g_source_remove (c->timer);
+    if (c->gesture) g_object_unref (c->gesture);
     g_free (c);
 }
 
@@ -363,11 +364,11 @@ void cputemp_init (CPUTempPlugin *c)
     cputemp_update_display (c);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (c->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (cputemp_gesture_pressed), c);
-    g_signal_connect (gesture, "end", G_CALLBACK (cputemp_gesture_end), c);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    c->gesture = gtk_gesture_long_press_new (c->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (c->gesture), TRUE);
+    g_signal_connect (c->gesture, "pressed", G_CALLBACK (cputemp_gesture_pressed), c);
+    g_signal_connect (c->gesture, "end", G_CALLBACK (cputemp_gesture_end), c);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (c->gesture), GTK_PHASE_BUBBLE);
 
     /* Connect a timer to refresh the statistics. */
     c->timer = g_timeout_add (1500, (GSourceFunc) cpu_update, (gpointer) c);

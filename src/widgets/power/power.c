@@ -341,11 +341,11 @@ void power_init (PowerPlugin *pt)
     g_signal_connect (pt->plugin, "clicked", G_CALLBACK (power_button_press_event), pt);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (pt->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (power_gesture_pressed), pt);
-    g_signal_connect (gesture, "end", G_CALLBACK (power_gesture_end), pt);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    pt->gesture = gtk_gesture_long_press_new (pt->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (pt->gesture), TRUE);
+    g_signal_connect (pt->gesture, "pressed", G_CALLBACK (power_gesture_pressed), pt);
+    g_signal_connect (pt->gesture, "end", G_CALLBACK (power_gesture_end), pt);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (pt->gesture), GTK_PHASE_BUBBLE);
 
     pt->show_icon = 0;
     pt->oc_thread = NULL;
@@ -402,6 +402,7 @@ void power_destructor (gpointer user_data)
     if (pt->udev_mon_lv) udev_monitor_unref (pt->udev_mon_lv);
     pt->udev_mon_lv = NULL;
     if (pt->udev) udev_unref (pt->udev);
+    if (pt->gesture) g_object_unref (pt->gesture);
     g_free (pt);
 }
 

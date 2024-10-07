@@ -56,6 +56,7 @@ typedef struct {
 
     int icon_size;                      /* Variables used under wf-panel */
     gboolean bottom;
+    GtkGesture *gesture[2];
     gboolean wizard;
 
     gboolean pipewire;                  /* Pipewire running? */

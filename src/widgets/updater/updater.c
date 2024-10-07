@@ -419,11 +419,11 @@ void updater_init (UpdaterPlugin *up)
     g_signal_connect (up->plugin, "clicked", G_CALLBACK (updater_button_press_event), up);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (up->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (updater_gesture_pressed), up);
-    g_signal_connect (gesture, "end", G_CALLBACK (updater_gesture_end), up);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    up->gesture = gtk_gesture_long_press_new (up->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (up->gesture), TRUE);
+    g_signal_connect (up->gesture, "pressed", G_CALLBACK (updater_gesture_pressed), up);
+    g_signal_connect (up->gesture, "end", G_CALLBACK (updater_gesture_end), up);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (up->gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     up->menu = NULL;
@@ -497,6 +497,7 @@ void updater_destructor (gpointer user_data)
     g_cancellable_cancel (up->cancellable);
     if (up->timer) g_source_remove (up->timer);
     if (up->idle_timer) g_source_remove (up->idle_timer);
+    if (up->gesture) g_object_unref (up->gesture);
 
     /* Deallocate memory */
     g_free (up);

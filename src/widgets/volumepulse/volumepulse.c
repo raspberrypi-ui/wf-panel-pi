@@ -396,8 +396,6 @@ void volumepulse_update_display (VolumePulsePlugin *vol)
 
 void volumepulse_init (VolumePulsePlugin *vol)
 {
-    GtkGesture *gesture;
-
     /* Allocate and initialize plugin context */
     //VolumePulsePlugin *vol = g_new0 (VolumePulsePlugin, 1);
 
@@ -426,15 +424,15 @@ void volumepulse_init (VolumePulsePlugin *vol)
     g_signal_connect (vol->plugin[1], "scroll-event", G_CALLBACK (micpulse_mouse_scrolled), vol);
     gtk_widget_add_events (vol->plugin[1], GDK_SCROLL_MASK);
 
-    gesture = gtk_gesture_long_press_new (vol->plugin[0]);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (volmic_gesture_pressed), vol);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    vol->gesture[0] = gtk_gesture_long_press_new (vol->plugin[0]);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (vol->gesture[0]), TRUE);
+    g_signal_connect (vol->gesture[0], "pressed", G_CALLBACK (volmic_gesture_pressed), vol);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (vol->gesture[0]), GTK_PHASE_BUBBLE);
 
-    gesture = gtk_gesture_long_press_new (vol->plugin[1]);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (volmic_gesture_pressed), vol);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    vol->gesture[1] = gtk_gesture_long_press_new (vol->plugin[1]);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (vol->gesture[1]), TRUE);
+    g_signal_connect (vol->gesture[1], "pressed", G_CALLBACK (volmic_gesture_pressed), vol);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (vol->gesture[1]), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     vol->menu_devices[0] = NULL;
@@ -490,6 +488,8 @@ void volumepulse_destructor (gpointer user_data)
     pulse_terminate (vol);
 
     /* Deallocate all memory. */
+    if (vol->gesture[0]) g_object_unref (vol->gesture[0]);
+    if (vol->gesture[1]) g_object_unref (vol->gesture[1]);
     g_free (vol);
 }
 

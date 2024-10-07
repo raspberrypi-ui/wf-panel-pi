@@ -346,6 +346,7 @@ void batt_destructor (gpointer user_data)
     if (pt->timer) g_source_remove (pt->timer);
 
     /* Deallocate memory */
+    if (pt->gesture) g_object_unref (pt->gesture);
     g_free (pt);
 }
 
@@ -366,11 +367,11 @@ void batt_init (PtBattPlugin *pt)
     gtk_container_add (GTK_CONTAINER (pt->plugin), pt->tray_icon);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (pt->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (batt_gesture_pressed), pt);
-    g_signal_connect (gesture, "end", G_CALLBACK (batt_gesture_end), pt);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    pt->gesture = gtk_gesture_long_press_new (pt->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (pt->gesture), TRUE);
+    g_signal_connect (pt->gesture, "pressed", G_CALLBACK (batt_gesture_pressed), pt);
+    g_signal_connect (pt->gesture, "end", G_CALLBACK (batt_gesture_end), pt);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (pt->gesture), GTK_PHASE_BUBBLE);
 
     if (init_measurement (pt))
     {

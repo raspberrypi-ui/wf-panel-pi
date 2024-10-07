@@ -925,6 +925,7 @@ void menu_destructor (gpointer user_data)
         menu_cache_remove_reload_notify (m->menu_cache, m->reload_notify);
         menu_cache_unref (m->menu_cache);
     }
+    if (m->gesture) g_object_unref (m->gesture);
 
     g_free (m->icon);
     g_free (m);
@@ -958,11 +959,11 @@ void menu_init (MenuPlugin *m)
     g_signal_connect (m->plugin, "clicked", G_CALLBACK (menu_button_press_event), m);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (m->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (menu_gesture_pressed), m);
-    g_signal_connect (gesture, "end", G_CALLBACK (menu_gesture_end), m);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    m->gesture = gtk_gesture_long_press_new (m->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (m->gesture), TRUE);
+    g_signal_connect (m->gesture, "pressed", G_CALLBACK (menu_gesture_pressed), m);
+    g_signal_connect (m->gesture, "end", G_CALLBACK (menu_gesture_end), m);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (m->gesture), GTK_PHASE_BUBBLE);
 
 #if 0
     /* Check if configuration exists */

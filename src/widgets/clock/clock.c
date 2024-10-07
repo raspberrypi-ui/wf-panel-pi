@@ -119,10 +119,10 @@ void clock_init (ClockPlugin *cl)
     g_signal_connect (cl->plugin, "button-release-event", G_CALLBACK (clock_button_release_event), cl);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (cl->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (clock_gesture_pressed), cl);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    cl->gesture = gtk_gesture_long_press_new (cl->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (cl->gesture), TRUE);
+    g_signal_connect (cl->gesture, "pressed", G_CALLBACK (clock_gesture_pressed), cl);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (cl->gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     cl->window = NULL;
@@ -136,6 +136,7 @@ void clock_destructor (gpointer data)
 {
     ClockPlugin *cl = (ClockPlugin *) data;
     close_popup ();
+    if (cl->gesture) g_object_unref (cl->gesture);
     g_free (cl);
 }
 

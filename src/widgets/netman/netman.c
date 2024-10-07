@@ -118,6 +118,7 @@ void netman_destructor (gpointer user_data)
 
     /* Deallocate memory. */
     finalize (nm);
+    if (nm->gesture) g_object_unref (nm->gesture);
     g_object_unref (nm);
     //g_free (nm);
 }
@@ -143,11 +144,11 @@ void netman_init (NMApplet *nm)
     g_signal_connect (nm->plugin, "clicked", G_CALLBACK (netman_button_press_event), nm);
 
     /* Set up long press */
-    GtkGesture *gesture = gtk_gesture_long_press_new (nm->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
-    g_signal_connect (gesture, "pressed", G_CALLBACK (netman_gesture_pressed), nm);
-    g_signal_connect (gesture, "end", G_CALLBACK (netman_gesture_end), nm);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
+    nm->gesture = gtk_gesture_long_press_new (nm->plugin);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (nm->gesture), TRUE);
+    g_signal_connect (nm->gesture, "pressed", G_CALLBACK (netman_gesture_pressed), nm);
+    g_signal_connect (nm->gesture, "end", G_CALLBACK (netman_gesture_end), nm);
+    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (nm->gesture), GTK_PHASE_BUBBLE);
 
     /* Set up variables */
     //nm->icon_size = panel_get_safe_icon_size (panel);

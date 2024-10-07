@@ -10,6 +10,7 @@ typedef struct {
     //config_setting_t *settings;     /* Plugin settings */
     int icon_size;                      /* Variables used under wf-panel */
     gboolean bottom;
+    GtkGesture *gesture;
     GtkWidget *popup;               /* Popup message */
     GtkWidget *alignment;           /* Alignment object in popup message */
     GtkWidget *box;                 /* Vbox in popup message */
