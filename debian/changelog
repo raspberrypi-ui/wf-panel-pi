@@ -1,3 +1,9 @@
+wf-panel-pi (0.84) bookworm; urgency=medium
+
+  * Add Connect plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 11 Oct 2024 14:37:12 +0100
+
 wf-panel-pi (0.83) bookworm; urgency=medium
 
   * Add Squeekboard

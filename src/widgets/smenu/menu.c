@@ -415,6 +415,12 @@ static void handle_menu_item_properties (GtkMenuItem *, GtkWidget* mi)
 
 static void handle_restore_submenu (GtkMenuItem *mi, GtkWidget *submenu)
 {
+    printf ("restore\n");
+    if (longpress) 
+    {
+        longpress = FALSE;
+        return;
+    }
     g_signal_handlers_disconnect_by_func (mi, handle_restore_submenu, submenu);
     gtk_menu_item_set_submenu (mi, submenu);
     g_object_set_data (G_OBJECT (mi), "PanelMenuItemSubmenu", NULL);
@@ -455,6 +461,7 @@ static void show_context_menu (GtkWidget* mi)
         g_object_set_data_full (G_OBJECT (mi), "PanelMenuItemSubmenu", g_object_ref (item), g_object_unref);
         gtk_menu_popdown (GTK_MENU (item));
     }
+    printf ("menu %lx\n", menu);
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), menu);
     g_signal_connect (mi, "deselect", G_CALLBACK (handle_restore_submenu), item);
     gtk_widget_show_all (menu);
@@ -462,6 +469,7 @@ static void show_context_menu (GtkWidget* mi)
 
 static gboolean handle_menu_item_button_press (GtkWidget* mi, GdkEventButton* evt, MenuPlugin* m)
 {
+    printf ("button press\n");
     longpress = FALSE;
     if (evt->button == 1)
     {
@@ -470,28 +478,24 @@ static gboolean handle_menu_item_button_press (GtkWidget* mi, GdkEventButton* ev
         fm_dnd_src_set_widget (m->ds, mi);
         g_signal_connect (m->ds, "data-get", G_CALLBACK (handle_menu_item_data_get), mi);
     }
-    else if (evt->button == 3)
-    {
-        /* don't make duplicates */
-        if (g_signal_handler_find (mi, G_SIGNAL_MATCH_FUNC, 0, 0, NULL, handle_restore_submenu, NULL)) return FALSE;
-        show_context_menu (mi);
-    }
     return FALSE;
 }
 
-static gboolean handle_menu_item_button_release (GtkWidget* mi, GdkEventButton*, MenuPlugin* m)
+static gboolean handle_menu_item_button_release (GtkWidget* mi, GdkEventButton *evt, MenuPlugin* m)
 {
-    if (!longpress)
+    printf ("button release\n");
+    if (longpress || evt->button == 3)
+    {
+        if (g_signal_handler_find (mi, G_SIGNAL_MATCH_FUNC, 0, 0, NULL, handle_restore_submenu, NULL)) return FALSE;
+        show_context_menu (mi);
+    
+    }
+    else
     {
         handle_menu_item_activate (GTK_MENU_ITEM (mi), m);
         gtk_widget_hide (m->menu);
     }
-    else
-    {
-        show_context_menu (mi);
-        gtk_menu_item_select (GTK_MENU_ITEM (mi));
-    }
-    longpress = FALSE;
+    //longpress = FALSE;
     return TRUE;
 }
 
@@ -536,6 +540,7 @@ static gboolean handle_key_presses (GtkWidget *, GdkEventKey *event, gpointer us
 
 static void handle_menu_item_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, GtkWidget *)
 {
+    printf ("gesture press\n");
     longpress = TRUE;
 }
 
@@ -632,6 +637,7 @@ static int sys_menu_load_submenu (MenuPlugin* m, MenuCacheDir* dir, GtkWidget* m
                 if (s_count)
                 {   
                     gtk_widget_set_name (mi, "sysmenu");
+                    printf ("sysmenu\n");
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), sub);
                 }
                 else
