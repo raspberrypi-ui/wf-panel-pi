@@ -272,7 +272,7 @@ static void setup_auto_complete( GtkEntry* entry )
 }
 
 #ifndef DISABLE_MENU
-static void reload_apps(MenuCache* cache, gpointer user_data)
+static void reload_apps(MenuCache* cache, gpointer)
 {
     g_debug("reload apps!");
     if(app_list)
@@ -360,9 +360,9 @@ static void activate_window(GtkWindow* toplevel_window)
      * See EWMH spec, source indication part:
      * http://standards.freedesktop.org/wm-spec/wm-spec-latest.html#sourceindication
      */
+#if 0
     GtkWidget* widget = GTK_WIDGET(toplevel_window);
     GdkScreen* screen = gtk_widget_get_screen(widget);
-#if 0
     if (gdk_x11_screen_supports_net_wm_hint (screen,
 					   gdk_atom_intern_static_string ("_NET_ACTIVE_WINDOW")))
     {
