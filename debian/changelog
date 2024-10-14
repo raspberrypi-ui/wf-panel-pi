@@ -1,3 +1,9 @@
+wf-panel-pi (0.85) bookworm; urgency=medium
+
+  * Add long press gesture for touchscreen
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 14 Oct 2024 09:32:19 +0100
+
 wf-panel-pi (0.84) bookworm; urgency=medium
 
   * Add Connect plugin
