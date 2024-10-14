@@ -65,10 +65,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "launcher.h"
 //#include "plugin.h"
 
-static gboolean longpress;
-
-static void handle_menu_item_activate (GtkMenuItem *mi, MenuPlugin *);
-
 const char *logout_cmd = "lxde-pi-shutdown-helper";
 
 
@@ -378,6 +374,26 @@ static void create_search (MenuPlugin *m)
 }
 
 
+/* Handler for keyboard events while menu is open */
+
+static gboolean handle_key_presses (GtkWidget *, GdkEventKey *event, gpointer user_data)
+{
+    MenuPlugin *m = (MenuPlugin *) user_data;
+
+    if ((event->keyval >= 'a' && event->keyval <= 'z') ||
+        (event->keyval >= 'A' && event->keyval <= 'Z'))
+    {
+        gtk_widget_hide (m->menu);
+        create_search (m);
+        gtk_entry_set_text (GTK_ENTRY (m->srch), "");
+        append_to_entry (m->srch, event->keyval);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+
 /* Handlers for system menu items */
 
 static void handle_menu_item_activate (GtkMenuItem *mi, MenuPlugin *)
@@ -427,42 +443,8 @@ static void handle_menu_item_data_get (FmDndSrc *ds, GtkWidget *mi)
     fm_dnd_src_set_file (ds, fi);
 }
 
-static void show_context_menu (GtkWidget* mi)
-{
-    GtkWidget *item, *menu;
-
-    menu = gtk_menu_new ();
-
-    item = gtk_menu_item_new_with_label (_("Add to desktop"));
-    g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_add_to_desktop), mi);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-
-    item = gtk_menu_item_new_with_label (_("Add to Launcher"));
-    g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_add_to_launcher), mi);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-
-    item = gtk_separator_menu_item_new ();
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-
-    item = gtk_menu_item_new_with_label (_("Properties"));
-    g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_properties), mi);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-
-    item = gtk_menu_item_get_submenu (GTK_MENU_ITEM (mi)); /* reuse it */
-    if (item)
-    {
-        /* set object data to keep reference on the submenu we preserve */
-        g_object_set_data_full (G_OBJECT (mi), "PanelMenuItemSubmenu", g_object_ref (item), g_object_unref);
-        gtk_menu_popdown (GTK_MENU (item));
-    }
-    gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), menu);
-    g_signal_connect (mi, "deselect", G_CALLBACK (handle_restore_submenu), item);
-    gtk_widget_show_all (menu);
-}
-
 static gboolean handle_menu_item_button_press (GtkWidget* mi, GdkEventButton* evt, MenuPlugin* m)
 {
-    longpress = FALSE;
     if (evt->button == 1)
     {
         /* allow drag on clicked item */
@@ -472,72 +454,44 @@ static gboolean handle_menu_item_button_press (GtkWidget* mi, GdkEventButton* ev
     }
     else if (evt->button == 3)
     {
+        GtkWidget *item, *menu;
+
         /* don't make duplicates */
         if (g_signal_handler_find (mi, G_SIGNAL_MATCH_FUNC, 0, 0, NULL, handle_restore_submenu, NULL)) return FALSE;
-        show_context_menu (mi);
-    }
-    return FALSE;
-}
 
-static gboolean handle_menu_item_button_release (GtkWidget* mi, GdkEventButton*, MenuPlugin* m)
-{
-    if (!longpress)
-    {
-        handle_menu_item_activate (GTK_MENU_ITEM (mi), m);
-        gtk_widget_hide (m->menu);
-    }
-    else
-    {
-        show_context_menu (mi);
-        gtk_menu_item_select (GTK_MENU_ITEM (mi));
-    }
-    longpress = FALSE;
-    return TRUE;
-}
+        menu = gtk_menu_new ();
 
+        item = gtk_menu_item_new_with_label (_("Add to desktop"));
+        g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_add_to_desktop), mi);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-/* Handler for keyboard events while menu is open */
+        item = gtk_menu_item_new_with_label (_("Add to Launcher"));
+        g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_add_to_launcher), mi);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-static gboolean handle_key_presses (GtkWidget *, GdkEventKey *event, gpointer user_data)
-{
-    MenuPlugin *m = (MenuPlugin *) user_data;
+        item = gtk_separator_menu_item_new ();
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-    if ((event->keyval >= 'a' && event->keyval <= 'z') ||
-        (event->keyval >= 'A' && event->keyval <= 'Z'))
-    {
-        gtk_widget_hide (m->menu);
-        create_search (m);
-        gtk_entry_set_text (GTK_ENTRY (m->srch), "");
-        append_to_entry (m->srch, event->keyval);
-        return TRUE;
-    }
+        item = gtk_menu_item_new_with_label (_("Properties"));
+        g_signal_connect (item, "activate", G_CALLBACK (handle_menu_item_properties), mi);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-    if (event->keyval == GDK_KEY_Return)
-    {
-        GtkWidget *menu = gtk_menu_shell_get_selected_item (GTK_MENU_SHELL (m->menu));
-        GtkWidget *submenu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (menu));
-        if (submenu)
+        item = gtk_menu_item_get_submenu (GTK_MENU_ITEM (mi)); /* reuse it */
+        if (item)
         {
-            GtkWidget *subitem = gtk_menu_shell_get_selected_item (GTK_MENU_SHELL (submenu));
-            if (subitem)
-            {
-                handle_menu_item_activate (GTK_MENU_ITEM (subitem), m);
-                gtk_widget_hide (m->menu);
-                return TRUE;
-            }
+            /* set object data to keep reference on the submenu we preserve */
+            g_object_set_data_full (G_OBJECT (mi), "PanelMenuItemSubmenu", g_object_ref (item), g_object_unref);
+            gtk_menu_popdown (GTK_MENU (item));
         }
+        gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), menu);
+        g_signal_connect (mi, "deselect", G_CALLBACK (handle_restore_submenu), item);
+        gtk_widget_show_all (menu);
     }
-
     return FALSE;
 }
 
 
 /* Functions to create system menu items */
-
-static void handle_menu_item_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, GtkWidget *)
-{
-    longpress = TRUE;
-}
 
 static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
 {
@@ -586,18 +540,14 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
             gtk_widget_set_name (mi, "syssubmenu");
             //const char *comment = menu_cache_item_get_comment (item);
             //if (comment) gtk_widget_set_tooltip_text (mi, comment);
+
+            g_signal_connect (mi, "activate", G_CALLBACK (handle_menu_item_activate), m);
         }
         fm_path_unref (path);
         g_object_unref (icon);
 
         g_signal_connect (mi, "button-press-event", G_CALLBACK (handle_menu_item_button_press), m);
-        g_signal_connect (mi, "button-release-event", G_CALLBACK (handle_menu_item_button_release), m);
         gtk_drag_source_set (mi, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
-
-        m->migesture = gtk_gesture_long_press_new (mi);
-        gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (m->migesture), TRUE);
-        g_signal_connect (m->migesture, "pressed", G_CALLBACK (handle_menu_item_gesture_pressed), mi);
-        gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (m->migesture), GTK_PHASE_BUBBLE);
     }
     gtk_widget_show_all (mi);
     return mi;
@@ -976,7 +926,6 @@ void menu_destructor (gpointer user_data)
         menu_cache_unref (m->menu_cache);
     }
     if (m->gesture) g_object_unref (m->gesture);
-    if (m->migesture) g_object_unref (m->migesture);
 
     g_free (m->icon);
     g_free (m);
