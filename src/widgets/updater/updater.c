@@ -420,7 +420,7 @@ void updater_init (UpdaterPlugin *up)
 
     /* Set up long press */
     up->gesture = gtk_gesture_long_press_new (up->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (up->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (up->gesture), touch_only);
     g_signal_connect (up->gesture, "pressed", G_CALLBACK (updater_gesture_pressed), up);
     g_signal_connect (up->gesture, "end", G_CALLBACK (updater_gesture_end), up);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (up->gesture), GTK_PHASE_BUBBLE);

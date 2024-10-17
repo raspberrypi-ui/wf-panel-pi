@@ -58,6 +58,8 @@ press_t pressed;
 double press_x;
 double press_y;
 
+gboolean touch_only;
+
 static GtkWindow *panel, *popwindow;
 static GtkLayerShellLayer orig_layer;
 static struct libinput *li;

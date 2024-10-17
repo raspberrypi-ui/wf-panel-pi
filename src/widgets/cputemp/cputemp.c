@@ -365,7 +365,7 @@ void cputemp_init (CPUTempPlugin *c)
 
     /* Set up long press */
     c->gesture = gtk_gesture_long_press_new (c->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (c->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (c->gesture), touch_only);
     g_signal_connect (c->gesture, "pressed", G_CALLBACK (cputemp_gesture_pressed), c);
     g_signal_connect (c->gesture, "end", G_CALLBACK (cputemp_gesture_end), c);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (c->gesture), GTK_PHASE_BUBBLE);

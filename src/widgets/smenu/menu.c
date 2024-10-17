@@ -595,7 +595,7 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
         gtk_drag_source_set (mi, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
 
         m->migesture = gtk_gesture_long_press_new (mi);
-        gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (m->migesture), TRUE);
+        gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (m->migesture), touch_only);
         g_signal_connect (m->migesture, "pressed", G_CALLBACK (handle_menu_item_gesture_pressed), mi);
         gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (m->migesture), GTK_PHASE_BUBBLE);
     }
@@ -1011,7 +1011,7 @@ void menu_init (MenuPlugin *m)
 
     /* Set up long press */
     m->gesture = gtk_gesture_long_press_new (m->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (m->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (m->gesture), touch_only);
     g_signal_connect (m->gesture, "pressed", G_CALLBACK (menu_gesture_pressed), m);
     g_signal_connect (m->gesture, "end", G_CALLBACK (menu_gesture_end), m);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (m->gesture), GTK_PHASE_BUBBLE);

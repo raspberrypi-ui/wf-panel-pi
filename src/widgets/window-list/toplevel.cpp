@@ -106,7 +106,7 @@ class WayfireToplevel::impl
         gesture = Gtk::GestureLongPress::create(button);
         gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
         gesture->signal_pressed().connect(sigc::mem_fun(this, &WayfireToplevel::impl::on_gesture_pressed));
-        gesture->set_touch_only(true);
+        gesture->set_touch_only(touch_only);
 
         this->window_list = window_list;
     }

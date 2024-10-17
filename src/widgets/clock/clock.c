@@ -120,7 +120,7 @@ void clock_init (ClockPlugin *cl)
 
     /* Set up long press */
     cl->gesture = gtk_gesture_long_press_new (cl->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (cl->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (cl->gesture), touch_only);
     g_signal_connect (cl->gesture, "pressed", G_CALLBACK (clock_gesture_pressed), cl);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (cl->gesture), GTK_PHASE_BUBBLE);
 

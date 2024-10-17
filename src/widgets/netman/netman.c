@@ -145,7 +145,7 @@ void netman_init (NMApplet *nm)
 
     /* Set up long press */
     nm->gesture = gtk_gesture_long_press_new (nm->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (nm->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (nm->gesture), touch_only);
     g_signal_connect (nm->gesture, "pressed", G_CALLBACK (netman_gesture_pressed), nm);
     g_signal_connect (nm->gesture, "end", G_CALLBACK (netman_gesture_end), nm);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (nm->gesture), GTK_PHASE_BUBBLE);

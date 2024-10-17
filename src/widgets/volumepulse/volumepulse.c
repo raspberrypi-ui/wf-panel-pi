@@ -425,12 +425,12 @@ void volumepulse_init (VolumePulsePlugin *vol)
     gtk_widget_add_events (vol->plugin[1], GDK_SCROLL_MASK);
 
     vol->gesture[0] = gtk_gesture_long_press_new (vol->plugin[0]);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (vol->gesture[0]), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (vol->gesture[0]), touch_only);
     g_signal_connect (vol->gesture[0], "pressed", G_CALLBACK (volmic_gesture_pressed), vol);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (vol->gesture[0]), GTK_PHASE_BUBBLE);
 
     vol->gesture[1] = gtk_gesture_long_press_new (vol->plugin[1]);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (vol->gesture[1]), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (vol->gesture[1]), touch_only);
     g_signal_connect (vol->gesture[1], "pressed", G_CALLBACK (volmic_gesture_pressed), vol);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (vol->gesture[1]), GTK_PHASE_BUBBLE);
 

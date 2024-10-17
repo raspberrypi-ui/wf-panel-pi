@@ -176,7 +176,7 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
     gesture = Gtk::GestureLongPress::create(evbox);
     gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
     gesture->signal_pressed().connect(sigc::mem_fun(*this, &WfLauncherButton::on_gesture_pressed));
-    gesture->set_touch_only(true);
+    gesture->set_touch_only(touch_only);
 
     evbox.signal_map().connect([=] ()
     {

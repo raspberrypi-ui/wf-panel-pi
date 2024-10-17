@@ -68,7 +68,7 @@ StatusNotifierItem::StatusNotifierItem(const Glib::ustring & service)
     gesture = Gtk::GestureLongPress::create(*this);
     gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
     gesture->signal_pressed().connect(sigc::mem_fun(*this, &StatusNotifierItem::on_gesture_pressed));
-    gesture->set_touch_only(true);
+    gesture->set_touch_only(touch_only);
 }
 
 void StatusNotifierItem::init_widget()

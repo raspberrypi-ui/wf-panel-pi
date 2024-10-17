@@ -81,6 +81,10 @@
 		<_short>Background Color</_short>
 		<default>#EDECEBFF</default>
 	</option>
+	<option name="gestures_touch_only" type="bool">
+		<_short>Gestures Touch Only</_short>
+		<default>false</default>
+	</option>
 	</group>
 	</plugin>
 </wf-panel-pi>

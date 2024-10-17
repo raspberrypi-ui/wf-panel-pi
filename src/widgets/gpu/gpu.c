@@ -154,7 +154,7 @@ void gpu_init (GPUPlugin *g)
 
     /* Set up long press */
     g->gesture = gtk_gesture_long_press_new (g->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (g->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (g->gesture), touch_only);
     g_signal_connect (g->gesture, "pressed", G_CALLBACK (gpu_gesture_pressed), g);
     g_signal_connect (g->gesture, "end", G_CALLBACK (gpu_gesture_end), g);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (g->gesture), GTK_PHASE_BUBBLE);

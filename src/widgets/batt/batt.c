@@ -368,7 +368,7 @@ void batt_init (PtBattPlugin *pt)
 
     /* Set up long press */
     pt->gesture = gtk_gesture_long_press_new (pt->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (pt->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (pt->gesture), touch_only);
     g_signal_connect (pt->gesture, "pressed", G_CALLBACK (batt_gesture_pressed), pt);
     g_signal_connect (pt->gesture, "end", G_CALLBACK (batt_gesture_end), pt);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (pt->gesture), GTK_PHASE_BUBBLE);

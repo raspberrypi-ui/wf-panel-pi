@@ -115,6 +115,7 @@ class WayfirePanel::impl
     bool wizard = WayfireShellApp::get().wizard;
     bool real;
     WfOption <int> icon_size {"panel/icon_size"};
+    WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
 
 #if 0
     WfOption<std::string> bg_color{"panel/background_color"};
@@ -186,6 +187,8 @@ class WayfirePanel::impl
 
     void create_window()
     {
+        touch_only = gestures_touch_only;
+
         window = std::make_unique<WayfireAutohidingWindow>(output, "panel");
         window->set_size_request(1, real ? minimal_panel_height : 1);
         if (real)
@@ -255,7 +258,7 @@ class WayfirePanel::impl
         gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
         gesture->signal_pressed().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_pressed));
         gesture->signal_end().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_end));
-        gesture->set_touch_only(true);
+        gesture->set_touch_only(touch_only);
 
         if (wizard || !real)
         {

@@ -468,7 +468,7 @@ void ej_init (EjecterPlugin *ej)
 
     /* Set up long press */
     ej->gesture = gtk_gesture_long_press_new (ej->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (ej->gesture), TRUE);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (ej->gesture), touch_only);
     g_signal_connect (ej->gesture, "pressed", G_CALLBACK (ejecter_gesture_pressed), ej);
     g_signal_connect (ej->gesture, "end", G_CALLBACK (ejecter_gesture_end), ej);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (ej->gesture), GTK_PHASE_BUBBLE);
