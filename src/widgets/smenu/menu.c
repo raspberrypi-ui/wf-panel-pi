@@ -545,7 +545,7 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
     GdkPixbuf *icon;
     FmPath *path;
     FmFileInfo *fi;
-    FmIcon *fm_icon;
+    const char *icon_name;
     char *mpath;
 
     if (menu_cache_item_get_type (item) == MENU_CACHE_TYPE_SEP)
@@ -572,10 +572,10 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
         fi = fm_file_info_new_from_menu_cache_item (path, item);
         g_object_set_qdata_full (G_OBJECT (mi), sys_menu_item_quark, fi, (GDestroyNotify) fm_file_info_unref);
 
-        fm_icon = fm_file_info_get_icon (fi);
-        if (fm_icon == NULL) fm_icon = fm_icon_from_name ("application-x-executable");
-        icon = fm_pixbuf_from_icon_with_fallback (fm_icon, m->icon_size, "application-x-executable");
-        gtk_image_set_from_pixbuf (GTK_IMAGE (img), icon);
+        icon_name = menu_cache_item_get_icon (item);
+        icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon_name ? icon_name : "application-x-executable",
+            m->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+        if (icon) gtk_image_set_from_pixbuf (GTK_IMAGE (img), icon);
 
         if (menu_cache_item_get_type (item) == MENU_CACHE_TYPE_APP)
         {
@@ -588,7 +588,7 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
             //if (comment) gtk_widget_set_tooltip_text (mi, comment);
         }
         fm_path_unref (path);
-        g_object_unref (icon);
+        if (icon) g_object_unref (icon);
 
         g_signal_connect (mi, "button-press-event", G_CALLBACK (handle_menu_item_button_press), m);
         g_signal_connect (mi, "button-release-event", G_CALLBACK (handle_menu_item_button_release), m);
