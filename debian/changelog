@@ -1,3 +1,11 @@
+wf-panel-pi (0.87) bookworm; urgency=medium
+
+  * Bypass libfm when loading main menu icons
+  * Do not check PSU on CM5
+  * Do not try to open empty menus
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 25 Oct 2024 12:40:14 +0100
+
 wf-panel-pi (0.86) bookworm; urgency=medium
 
   * Make touch-only gestures a global option
