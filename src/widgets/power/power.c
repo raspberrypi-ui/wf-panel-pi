@@ -73,6 +73,8 @@ static gboolean is_pi (void)
 
 static void check_psu (void)
 {
+    if (system ("raspi-config nonint is_cmfive") == 0) return;
+
     FILE *fp = fopen (POWER_PATH "max_current", "rb");
     int val;
 
