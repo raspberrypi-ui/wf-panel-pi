@@ -428,7 +428,7 @@ gboolean micpulse_button_release_event (GtkWidget *, GdkEventButton *event, Volu
 
 void volmic_gesture_pressed (GtkGestureLongPress *, gdouble, gdouble, VolumePulsePlugin *)
 {
-    pressed = PRESS_LONG;
+    if (pressed == PRESS_SHORT) pressed = PRESS_LONG;
 }
 
 /* Handler for "scroll-event" signal */

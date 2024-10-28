@@ -105,7 +105,7 @@ static gboolean clock_button_release_event (GtkWidget *, GdkEventButton *event, 
 
 static void clock_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, ClockPlugin *)
 {
-    pressed = PRESS_LONG;
+    if (pressed == PRESS_SHORT) pressed = PRESS_LONG;
     press_x = x;
     press_y = y;
 }

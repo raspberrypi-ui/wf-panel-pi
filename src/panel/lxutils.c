@@ -380,7 +380,7 @@ static gboolean check_menu (GtkWidget *menu)
 void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 {
     close_popup ();
-    if (!check_menu (menu)) return;
+    //if (!check_menu (menu)) return;
 
     kb_menu_t *data = g_new (kb_menu_t, 1);
 
