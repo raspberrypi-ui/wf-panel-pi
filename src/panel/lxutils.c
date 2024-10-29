@@ -368,7 +368,7 @@ static void count_item (GtkWidget *, gpointer data)
     (* (int *) data)++;
 }
 
-static gboolean check_menu (GtkWidget *menu)
+gboolean check_menu (GtkWidget *menu)
 {
     if (!GTK_IS_MENU (menu)) return FALSE;
     int count = 0;
@@ -380,7 +380,6 @@ static gboolean check_menu (GtkWidget *menu)
 void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 {
     close_popup ();
-    //if (!check_menu (menu)) return;
 
     kb_menu_t *data = g_new (kb_menu_t, 1);
 
@@ -400,7 +399,6 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, double y)
 {
     close_popup ();
-    if (!check_menu (menu)) return;
 
     kb_menu_t *data = g_new (kb_menu_t, 1);
 

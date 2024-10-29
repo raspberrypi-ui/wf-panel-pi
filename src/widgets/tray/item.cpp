@@ -97,7 +97,10 @@ void StatusNotifierItem::init_widget()
             if (menu)
             {
                 if (pressed != PRESS_NONE)
-                    show_menu_with_kbd_at_xy (GTK_WIDGET (this->gobj()), GTK_WIDGET (menu->gobj()), ev->x_root, ev->y_root);
+                {
+                    if (check_menu (GTK_WIDGET (menu->gobj())))
+                        show_menu_with_kbd_at_xy (GTK_WIDGET (this->gobj()), GTK_WIDGET (menu->gobj()), ev->x_root, ev->y_root);
+                }
             } else
             {
                 item_proxy->call("ContextMenu", ev_coords);

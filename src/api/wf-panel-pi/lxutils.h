@@ -75,6 +75,7 @@ extern void graph_init (PluginGraph *graph);
 extern void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2);
 extern void graph_new_point (PluginGraph *graph, float value, int state, char *label);
 
+extern gboolean check_menu (GtkWidget *menu);
 extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
 extern void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, double y);
 
