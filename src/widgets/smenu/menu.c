@@ -573,8 +573,11 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
         g_object_set_qdata_full (G_OBJECT (mi), sys_menu_item_quark, fi, (GDestroyNotify) fm_file_info_unref);
 
         icon_name = menu_cache_item_get_icon (item);
-        icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon_name ? icon_name : "application-x-executable",
-            m->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+        if (strstr (icon_name, "/"))
+            icon = gdk_pixbuf_new_from_file_at_size (icon_name, m->icon_size, m->icon_size, NULL);
+        else
+            icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon_name ? icon_name : "application-x-executable",
+                m->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
         if (icon) gtk_image_set_from_pixbuf (GTK_IMAGE (img), icon);
 
         if (menu_cache_item_get_type (item) == MENU_CACHE_TYPE_APP)
