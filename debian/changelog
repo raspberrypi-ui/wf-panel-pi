@@ -1,3 +1,9 @@
+wf-panel-pi (0.90) bookworm; urgency=medium
+
+  * Prevent access to wifi devices if country unset even if rfkill not enabled
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 30 Oct 2024 11:30:50 +0000
+
 wf-panel-pi (0.89) bookworm; urgency=medium
 
   * Improved menu icon handling
