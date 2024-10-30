@@ -2120,6 +2120,7 @@ static void nma_menu_show_cb (GtkWidget *menu, NMApplet *applet)
 	{
 		GtkWidget *item = gtk_menu_item_new_with_label (_("Click here to set Wi-Fi country"));
 		g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (set_country), NULL);
+		gtk_widget_set_tooltip_text (item, _("Wi-Fi country must be set to connect to Wi-Fi networks"));
 		gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 		gtk_widget_show (item);
 	}
