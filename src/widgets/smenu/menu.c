@@ -579,15 +579,17 @@ static GtkWidget *create_system_menu_item (MenuCacheItem *item, MenuPlugin *m)
             if (strstr (icon_name, "/"))
                 icon = gdk_pixbuf_new_from_file_at_size (icon_name, m->icon_size, m->icon_size, NULL);
             else
+            {
                 icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon_name,
                     m->icon_size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
 
-            // fallback for packages using obsolete icon location
-            if (!icon)
-            {
-                char *fname = g_strdup_printf ("/usr/share/pixmaps/%s", icon_name);
-                icon = gdk_pixbuf_new_from_file_at_size (fname, m->icon_size, m->icon_size, NULL);
-                g_free (fname);
+                // fallback for packages using obsolete icon location
+                if (!icon)
+                {
+                    char *fname = g_strdup_printf ("/usr/share/pixmaps/%s", icon_name);
+                    icon = gdk_pixbuf_new_from_file_at_size (fname, m->icon_size, m->icon_size, NULL);
+                    g_free (fname);
+                }
             }
         }
         if (!icon)
