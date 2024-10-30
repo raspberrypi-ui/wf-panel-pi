@@ -707,14 +707,9 @@ msgstr "Edit Connections…"
 msgid "NetworkManager is not running…"
 msgstr "NetworkManager is not running…"
 
-#: ../src/panel/widgets/netman/applet.c:2117
-#, fuzzy
-msgid "Wi-Fi country is not set"
-msgstr "My country is not listed"
-
 #: ../src/panel/widgets/netman/applet.c:2118
 msgid "Click here to set Wi-Fi country"
-msgstr ""
+msgstr "Set Wi-Fi Country..."
 
 #: ../src/panel/widgets/netman/applet.c:2126
 #: ../src/panel/widgets/netman/applet.c:3240
