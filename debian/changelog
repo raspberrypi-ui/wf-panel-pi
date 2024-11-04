@@ -1,3 +1,9 @@
+wf-panel-pi (0.91) bookworm; urgency=medium
+
+  * Add support for launcher icons with full path
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 04 Nov 2024 11:40:44 +0000
+
 wf-panel-pi (0.90) bookworm; urgency=medium
 
   * Prevent access to wifi devices if country unset even if rfkill not enabled
