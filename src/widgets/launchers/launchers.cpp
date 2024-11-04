@@ -53,6 +53,10 @@ struct DesktopLauncherInfo : public LauncherInfo
         auto icon  = app_info->get_icon()->to_string();
         auto theme = Gtk::IconTheme::get_default();
 
+        // look up explicit paths
+        if (icon.find ("/") != std::string::npos)
+            return Gdk::Pixbuf::create_from_file (icon, size, size);
+
         if (!theme->lookup_icon(icon, size))
         {
             std::cerr << "Failed to load icon \"" << icon << "\"" << std::endl;
