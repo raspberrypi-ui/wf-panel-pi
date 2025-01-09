@@ -85,6 +85,7 @@ extern void close_popup (void);
 extern void pass_right_click (GtkWidget *wid, double x, double y);
 
 #define lxpanel_notify(panel,msg) wfpanel_notify(msg)
+#define lxpanel_notify_clear(seq) wfpanel_notify_clear(seq)
 #define lxpanel_plugin_update_menu_icon(item,icon) update_menu_icon(item,icon)
 #define lxpanel_plugin_append_menu_icon(item,icon) append_menu_icon(item,icon)
 #define wrap_new_menu_item(plugin,text,maxlen,icon) new_menu_item(text,maxlen,icon,plugin->icon_size)
