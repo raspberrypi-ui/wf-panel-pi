@@ -320,6 +320,14 @@ void graph_init (PluginGraph *graph)
     graph->ring_cursor = 0;
 }
 
+void graph_free (PluginGraph *graph)
+{
+    if (graph->pixmap) cairo_surface_destroy (graph->pixmap);
+    if (graph->samples) g_free (graph->samples);
+    if (graph->samp_states) g_free (graph->samp_states);
+    gtk_widget_destroy (graph->da);
+}
+
 /*----------------------------------------------------------------------------*/
 /* Menu popup with keyboard handling */
 /*----------------------------------------------------------------------------*/

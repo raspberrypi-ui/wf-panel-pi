@@ -28,10 +28,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
 
-extern void lxpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win);
-extern int lxpanel_notify (const char *message);
-extern int lxpanel_critical (const char *message);
-extern void lxpanel_notify_clear (int seq);
+extern void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win);
+extern int wfpanel_notify (const char *message);
+extern int wfpanel_critical (const char *message);
+extern void wfpanel_notify_clear (int seq);
 
 #endif
 

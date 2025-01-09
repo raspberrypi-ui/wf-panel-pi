@@ -1058,7 +1058,7 @@ static void
 applet_clear_notify (NMApplet *applet)
 {
 #ifdef LXPANEL_PLUGIN
-	lxpanel_notify_clear (applet->notification);
+	wfpanel_notify_clear (applet->notification);
 #else
 	if (applet->notification == NULL)
 		return;
@@ -1115,7 +1115,7 @@ applet_do_notify (NMApplet *applet,
 
 #ifdef LXPANEL_PLUGIN
 	escaped = utils_escape_notify_message (message);
-	applet->notification = lxpanel_notify (escaped);
+	applet->notification = wfpanel_notify (escaped);
 	g_free (escaped);
 #else
 	if (INDICATOR_ENABLED (applet)) {

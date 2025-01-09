@@ -74,6 +74,7 @@ extern void revert_textdomain (void);
 extern void graph_init (PluginGraph *graph);
 extern void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2);
 extern void graph_new_point (PluginGraph *graph, float value, int state, char *label);
+extern void graph_free (PluginGraph *graph);
 
 extern gboolean check_menu (GtkWidget *menu);
 extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
@@ -82,6 +83,16 @@ extern void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double
 extern void popup_window_at_button (GtkWidget *window, GtkWidget *button);
 extern void close_popup (void);
 extern void pass_right_click (GtkWidget *wid, double x, double y);
+
+#define lxpanel_notify(panel,msg) wfpanel_notify(msg)
+#define lxpanel_plugin_update_menu_icon(item,icon) update_menu_icon(item,icon)
+#define lxpanel_plugin_append_menu_icon(item,icon) append_menu_icon(item,icon)
+#define wrap_new_menu_item(plugin,text,maxlen,icon) new_menu_item(text,maxlen,icon,plugin->icon_size)
+#define wrap_set_menu_icon(plugin,image,icon) set_menu_icon(image,icon,plugin->icon_size)
+#define wrap_set_taskbar_icon(plugin,image,icon) set_taskbar_icon(image,icon,plugin->icon_size)
+#define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu)
+#define wrap_icon_size(plugin) (plugin->icon_size)
+#define wrap_is_at_bottom(plugin) (plugin->bottom)
 
 #endif
 

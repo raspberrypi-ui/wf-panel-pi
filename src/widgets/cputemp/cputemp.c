@@ -343,6 +343,7 @@ void cputemp_update_display (CPUTempPlugin *c)
 void cputemp_destructor (gpointer user_data)
 {
     CPUTempPlugin *c = (CPUTempPlugin *) user_data;
+    graph_free (&(c->graph));
     if (c->timer) g_source_remove (c->timer);
     if (c->gesture) g_object_unref (c->gesture);
     g_free (c);

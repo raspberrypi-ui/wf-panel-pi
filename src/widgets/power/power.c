@@ -83,7 +83,7 @@ static void check_psu (void)
         unsigned char *cptr = (unsigned char *) &val;
         // you're kidding, right?
         for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
-        if (val < 5000) lxpanel_notify (_("This power supply is not capable of supplying 5A\nPower to peripherals will be restricted"));
+        if (val < 5000) wfpanel_notify (_("This power supply is not capable of supplying 5A\nPower to peripherals will be restricted"));
         fclose (fp);
     }
 }
@@ -99,7 +99,7 @@ static void check_brownout (PowerPlugin *pt)
         for (int i = 3; i >= 0; i--) cptr[i] = fgetc (fp);
         if (val & 0x02)
         {
-            lxpanel_critical (_("Reset due to low power event\nPlease check your power supply"));
+            wfpanel_critical (_("Reset due to low power event\nPlease check your power supply"));
             pt->show_icon |= ICON_BROWNOUT;
             update_icon (pt);
         }
@@ -160,7 +160,7 @@ static void check_memres (void)
     }
 
     if (max_h > RES_HEIGHT_THRESHOLD)
-        lxpanel_notify (_("High display resolution is using large amounts of memory.\nConsider reducing screen resolution."));
+        wfpanel_notify (_("High display resolution is using large amounts of memory.\nConsider reducing screen resolution."));
 }
 
 /* Monitoring threads and callbacks */
@@ -215,7 +215,7 @@ static gboolean cb_overcurrent (gpointer data)
 {
     PowerPlugin *pt = (PowerPlugin *) data;
 
-    lxpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
+    wfpanel_critical (_("USB overcurrent\nPlease check your connected USB devices"));
     pt->show_icon |= ICON_OVER_CURRENT;
     update_icon (pt);
     return FALSE;
@@ -266,7 +266,7 @@ static gboolean cb_lowvoltage (gpointer data)
 {
     PowerPlugin *pt = (PowerPlugin *) data;
 
-    lxpanel_critical (_("Low voltage warning\nPlease check your power supply"));
+    wfpanel_critical (_("Low voltage warning\nPlease check your power supply"));
     pt->show_icon |= ICON_LOW_VOLTAGE;
     update_icon (pt);
     return FALSE;

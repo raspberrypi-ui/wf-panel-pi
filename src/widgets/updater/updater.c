@@ -189,7 +189,7 @@ static void check_updates_done (PkTask *task, GAsyncResult *res, gpointer data)
     {
         DEBUG ("Check complete - %d updates available", up->n_updates);
         up->ids = pk_package_sack_get_ids (fsack);
-        lxpanel_notify (_("Updates are available\nClick the update icon to install"));
+        wfpanel_notify (_("Updates are available\nClick the update icon to install"));
     }
     else
     {

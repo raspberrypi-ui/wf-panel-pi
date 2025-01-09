@@ -245,7 +245,7 @@ static gboolean show_next (gpointer)
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void lxpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
+void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
 {
     notifications = enable;
     notify_timeout = timeout;
@@ -255,7 +255,7 @@ void lxpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
 
-int lxpanel_notify (const char *message)
+int wfpanel_notify (const char *message)
 {
     NotifyWindow *nw;
     GList *item;
@@ -307,7 +307,7 @@ int lxpanel_notify (const char *message)
     return nseq;
 }
 
-int lxpanel_critical (const char *message)
+int wfpanel_critical (const char *message)
 {
     NotifyWindow *nw;
     GList *item;
@@ -347,7 +347,7 @@ int lxpanel_critical (const char *message)
     return nseq;
 }
 
-void lxpanel_notify_clear (int seq)
+void wfpanel_notify_clear (int seq)
 {
     NotifyWindow *nw;
     GList *item;

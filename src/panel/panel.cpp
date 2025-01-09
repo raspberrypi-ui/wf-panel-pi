@@ -195,7 +195,7 @@ class WayfirePanel::impl
         {
             panel_layer.set_callback(set_panel_layer);
             set_panel_layer(); // initial setting
-            lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
+            wfpanel_notify_init (notifications, notify_timeout, window->gobj ());
         }
 
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, wizard ? false : true);
@@ -532,7 +532,7 @@ class WayfirePanel::impl
 
     void handle_config_reload()
     {
-        if (real) lxpanel_notify_init (notifications, notify_timeout, window->gobj ());
+        if (real) wfpanel_notify_init (notifications, notify_timeout, window->gobj ());
         for (auto& w : left_widgets)
         {
             w->handle_config_reload();
@@ -553,13 +553,13 @@ class WayfirePanel::impl
     {
         if (!g_strcmp0 (name, "notify"))
         {
-            lxpanel_notify (cmd);
+            wfpanel_notify (cmd);
             return;
         }
 
         if (!g_strcmp0 (name, "critical"))
         {
-            lxpanel_critical (cmd);
+            wfpanel_critical (cmd);
             return;
         }
 

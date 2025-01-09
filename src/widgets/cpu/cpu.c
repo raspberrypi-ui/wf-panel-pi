@@ -106,6 +106,7 @@ void cpu_update_display (CPUPlugin *c)
 void cpu_destructor (gpointer user_data)
 {
     CPUPlugin *c = (CPUPlugin *) user_data;
+    graph_free (&(c->graph));
     if (c->timer) g_source_remove (c->timer);
     if (c->gesture) g_object_unref (c->gesture);
     g_free (c);

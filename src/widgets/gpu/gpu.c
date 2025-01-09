@@ -139,6 +139,7 @@ void gpu_update_display (GPUPlugin *g)
 void gpu_destructor (gpointer user_data)
 {
     GPUPlugin *g = (GPUPlugin *) user_data;
+    graph_free (&(g->graph));
     if (g->timer) g_source_remove (g->timer);
     if (g->gesture) g_object_unref (g->gesture);
     g_free (g);
