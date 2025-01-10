@@ -94,6 +94,7 @@ extern void pass_right_click (GtkWidget *wid, double x, double y);
 #define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu)
 #define wrap_icon_size(plugin) (plugin->icon_size)
 #define wrap_is_at_bottom(plugin) (plugin->bottom)
+#define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
 
 #endif
 
