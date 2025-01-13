@@ -91,6 +91,7 @@ extern void pass_right_click (GtkWidget *wid, double x, double y);
 #define wrap_new_menu_item(plugin,text,maxlen,icon) new_menu_item(text,maxlen,icon,plugin->icon_size)
 #define wrap_set_menu_icon(plugin,image,icon) set_menu_icon(image,icon,plugin->icon_size)
 #define wrap_set_taskbar_icon(plugin,image,icon) set_taskbar_icon(image,icon,plugin->icon_size)
+#define wrap_get_menu_label(item) get_menu_label(item)
 #define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu)
 #define wrap_icon_size(plugin) (plugin->icon_size)
 #define wrap_is_at_bottom(plugin) (plugin->bottom)
