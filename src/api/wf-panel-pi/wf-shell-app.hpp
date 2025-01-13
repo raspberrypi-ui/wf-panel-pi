@@ -54,9 +54,9 @@ class WayfireShellApp
     virtual void on_activate();
     virtual bool parse_cfgfile(const Glib::ustring & option_name,
         const Glib::ustring & value, bool has_value);
-    virtual void handle_new_output(WayfireOutput *output)
+    virtual void handle_new_output(WayfireOutput *)
     {}
-    virtual void handle_output_removed(WayfireOutput *output)
+    virtual void handle_output_removed(WayfireOutput *)
     {}
 
   public:
@@ -73,7 +73,7 @@ class WayfireShellApp
 
     virtual void on_config_reload()
     {}
-    virtual void on_command(const char *plugin, const char *command) {}
+    virtual void on_command(const char *, const char *) {}
 
     void rescan_xml_directory (void);
     /**
