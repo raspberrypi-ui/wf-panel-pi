@@ -96,6 +96,7 @@ extern GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpoint
 #define wrap_icon_size(plugin) (plugin->icon_size)
 #define wrap_is_at_bottom(plugin) (plugin->bottom)
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
+#define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed = PRESS_NONE;return;}pressed = PRESS_NONE;
 
 #endif
 

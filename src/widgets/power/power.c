@@ -301,15 +301,12 @@ static void show_info (GtkWidget *, gpointer)
 
 /* Plugin functions */
 
-/* Handler for menu button click */
-static void power_button_press_event (GtkButton *, PowerPlugin *pt)
+/* Handler for button click */
+static void power_button_clicked (GtkWidget *, PowerPlugin *pt)
 {
-    if (pressed != PRESS_LONG)
-    {
-        gtk_widget_show_all (pt->menu);
-        show_menu_with_kbd (pt->plugin, pt->menu);
-    }
-    pressed = PRESS_NONE;
+    CHECK_LONGPRESS
+    gtk_widget_show_all (pt->menu);
+    show_menu_with_kbd (pt->plugin, pt->menu);
 }
 
 /* Handler for system config changed message from panel */
@@ -328,7 +325,7 @@ void power_init (PowerPlugin *pt)
 
     /* Set up button */
     gtk_button_set_relief (GTK_BUTTON (pt->plugin), GTK_RELIEF_NONE);
-    g_signal_connect (pt->plugin, "clicked", G_CALLBACK (power_button_press_event), pt);
+    g_signal_connect (pt->plugin, "clicked", G_CALLBACK (power_button_clicked), pt);
 
     /* Set up long press */
     pt->gesture = add_long_press (pt->plugin, NULL, NULL);

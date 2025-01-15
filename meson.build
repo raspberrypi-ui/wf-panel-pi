@@ -14,6 +14,7 @@ project(
 )
 
 add_project_arguments(['-Wno-pedantic', '-Wno-unused-parameter', '-Wno-parentheses'], language: 'cpp')
+add_project_arguments('-D_GNU_SOURCE', language : [ 'c', 'cpp' ])
 
 share_dir = join_paths(get_option('prefix'), 'share')
 resource_dir = join_paths(share_dir, 'wf-panel-pi')
