@@ -83,7 +83,7 @@ extern void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double
 extern void popup_window_at_button (GtkWidget *window, GtkWidget *button);
 extern void close_popup (void);
 extern void pass_right_click (GtkWidget *wid, double x, double y);
-extern GtkGesture *add_long_press (GtkWidget *target);
+extern GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpointer data);
 
 #define lxpanel_notify(panel,msg) wfpanel_notify(msg)
 #define lxpanel_notify_clear(seq) wfpanel_notify_clear(seq)

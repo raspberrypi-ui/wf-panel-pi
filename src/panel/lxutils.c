@@ -618,6 +618,10 @@ void close_popup (void)
     idle_id = 0;
 }
 
+/*----------------------------------------------------------------------------*/
+/* Long press gestures */
+/*----------------------------------------------------------------------------*/
+
 void pass_right_click (GtkWidget *wid, double x, double y)
 {
     GtkAllocation alloc;
@@ -641,10 +645,6 @@ void pass_right_click (GtkWidget *wid, double x, double y)
     pressed = PRESS_LONG;
 }
 
-/*----------------------------------------------------------------------------*/
-/* Long press gestures */
-/*----------------------------------------------------------------------------*/
-
 static void gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, gpointer)
 {
     pressed = PRESS_LONG;
@@ -652,21 +652,21 @@ static void gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, gpoint
     press_y = y;
 }
 
-static void gesture_end (GtkGestureLongPress *, GdkEventSequence *, GtkWidget *target)
+static void gesture_end_default (GtkGestureLongPress *, GdkEventSequence *, GtkWidget *target)
 {
     if (pressed == PRESS_LONG) pass_right_click (target, press_x, press_y);
 }
 
-GtkGesture *add_long_press (GtkWidget *target)
+GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpointer data)
 {
     GtkGesture *gesture = gtk_gesture_long_press_new (target);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), touch_only);
     g_signal_connect (gesture, "pressed", G_CALLBACK (gesture_pressed), NULL);
-    g_signal_connect (gesture, "end", G_CALLBACK (gesture_end), target);
+    if (callback) g_signal_connect (gesture, "end", G_CALLBACK (callback), data);
+    else g_signal_connect (gesture, "end", G_CALLBACK (gesture_end_default), target);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
     return gesture;
 }
-
 
 /* End of file */
 /*----------------------------------------------------------------------------*/
