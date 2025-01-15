@@ -55,8 +55,7 @@ typedef struct {
 /*----------------------------------------------------------------------------*/
 
 press_t pressed;
-double press_x;
-double press_y;
+static double press_x, press_y;
 
 gboolean touch_only;
 

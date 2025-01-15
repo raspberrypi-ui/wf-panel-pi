@@ -312,18 +312,6 @@ static void power_button_press_event (GtkButton *, PowerPlugin *pt)
     pressed = PRESS_NONE;
 }
 
-static void power_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, PowerPlugin *)
-{
-    pressed = PRESS_LONG;
-    press_x = x;
-    press_y = y;
-}
-
-static void power_gesture_end (GtkGestureLongPress *, GdkEventSequence *, PowerPlugin *pt)
-{
-    if (pressed == PRESS_LONG) pass_right_click (pt->plugin, press_x, press_y);
-}
-
 /* Handler for system config changed message from panel */
 void power_update_display (PowerPlugin *pt)
 {
@@ -343,11 +331,7 @@ void power_init (PowerPlugin *pt)
     g_signal_connect (pt->plugin, "clicked", G_CALLBACK (power_button_press_event), pt);
 
     /* Set up long press */
-    pt->gesture = gtk_gesture_long_press_new (pt->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (pt->gesture), touch_only);
-    g_signal_connect (pt->gesture, "pressed", G_CALLBACK (power_gesture_pressed), pt);
-    g_signal_connect (pt->gesture, "end", G_CALLBACK (power_gesture_end), pt);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (pt->gesture), GTK_PHASE_BUBBLE);
+    pt->gesture = add_long_press (pt->plugin, NULL, NULL);
 
     pt->show_icon = 0;
     pt->oc_thread = NULL;

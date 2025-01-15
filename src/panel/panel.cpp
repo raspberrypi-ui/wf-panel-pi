@@ -254,11 +254,8 @@ class WayfirePanel::impl
         window->signal_button_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_press_event));
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
 
-        gesture = Gtk::GestureLongPress::create(*window);
-        gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
-        gesture->signal_pressed().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_pressed));
-        gesture->signal_end().connect(sigc::mem_fun(*this, &WayfirePanel::impl::on_gesture_end));
-        gesture->set_touch_only(touch_only);
+        GtkGestureLongPress *ggest = (GtkGestureLongPress *) add_long_press (GTK_WIDGET (window->gobj()), NULL, NULL);
+        gesture = Glib::wrap (ggest);
 
         if (wizard || !real)
         {
@@ -329,18 +326,6 @@ class WayfirePanel::impl
             }
         }
         return false;
-    }
-
-    void on_gesture_pressed(double x, double y)
-    {
-        pressed = PRESS_LONG;
-        press_x = x;
-        press_y = y;
-    }
-
-    void on_gesture_end(GdkEventSequence *)
-    {
-        if (pressed == PRESS_LONG) pass_right_click (GTK_WIDGET (window->gobj()), press_x, press_y);
     }
 
     void do_configure()

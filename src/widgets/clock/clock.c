@@ -43,7 +43,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static void cal_destroyed (GtkWidget *widget, gpointer data);
 static void calendar_show (ClockPlugin *cl);
-static gboolean clock_button_press_event (GtkWidget *widget, GdkEventButton *event, ClockPlugin *cl);
+static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *, ClockPlugin *vol);
+static gboolean clock_button_release_event (GtkWidget *, GdkEventButton *event, ClockPlugin *vol);
 
 /*----------------------------------------------------------------------------*/
 /* Plugin functions                                                           */
@@ -71,43 +72,28 @@ static void calendar_show (ClockPlugin *cl)
     popup_window_at_button (cl->window, cl->plugin);
 }
 
-/* Handler for menu button click */
+/* Handler for button click */
 static gboolean clock_button_press_event (GtkWidget *, GdkEventButton *, ClockPlugin *cl)
 {
-    pressed = PRESS_SHORT;
-    if (cl->window)
-    {
-        close_popup ();
-        pressed = PRESS_NONE;
-    }
+    pressed = PRESS_NONE;
+    if (cl->window) cl->popup_shown = TRUE;
+    else cl->popup_shown = FALSE;
     return FALSE;
 }
 
 static gboolean clock_button_release_event (GtkWidget *, GdkEventButton *event, ClockPlugin *cl)
 {
-    if (pressed == PRESS_NONE) return TRUE;
+    if (pressed == PRESS_LONG) return FALSE;
 
     switch (event->button)
     {
-        case 1: if (pressed == PRESS_LONG)
-                    pass_right_click (cl->plugin, press_x, press_y);
-                else
-                    calendar_show (cl);
-                pressed = PRESS_NONE;
-                break;
+        case 1: if (!cl->popup_shown) calendar_show (cl);
+                return FALSE;
 
-        case 3: pressed = PRESS_SHORT;
-                break;
+        case 3: return FALSE;
     }
 
-    return FALSE;
-}
-
-static void clock_gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, ClockPlugin *)
-{
-    if (pressed == PRESS_SHORT) pressed = PRESS_LONG;
-    press_x = x;
-    press_y = y;
+    return TRUE;
 }
 
 /* Plugin constructor */
@@ -119,10 +105,7 @@ void clock_init (ClockPlugin *cl)
     g_signal_connect (cl->plugin, "button-release-event", G_CALLBACK (clock_button_release_event), cl);
 
     /* Set up long press */
-    cl->gesture = gtk_gesture_long_press_new (cl->plugin);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (cl->gesture), touch_only);
-    g_signal_connect (cl->gesture, "pressed", G_CALLBACK (clock_gesture_pressed), cl);
-    gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (cl->gesture), GTK_PHASE_BUBBLE);
+    cl->gesture = add_long_press (cl->plugin, NULL, NULL);
 
     /* Set up variables */
     cl->window = NULL;
