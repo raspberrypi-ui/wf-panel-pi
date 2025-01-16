@@ -1,3 +1,9 @@
+wf-panel-pi (0.92) bookworm; urgency=medium
+
+  * Add support for hybrid package projects
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 16 Jan 2025 14:00:29 +0000
+
 wf-panel-pi (0.91) bookworm; urgency=medium
 
   * Add support for launcher icons with full path
