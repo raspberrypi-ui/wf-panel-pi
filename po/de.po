@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2025-01-17 10:28+0000\n"
 "PO-Revision-Date: 2020-12-14 12:51+0100\n"
 "Last-Translator: Ingo Brückl <ib@wupperonline.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,1706 +20,1264 @@ msgstr ""
 "X-Pootle-Path: /de/lxpanel/po/de.po\n"
 "X-POOTLE-MTIME: 1417540506.000000\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
-msgid "Pairing request sent to '%s' - waiting for response..."
+msgid "Spacer"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#: ../src/panel/configure.c:116 ../src/panel/configure.c:255
+#: ../src/panel/configure.c:580
 #, c-format
-msgid "Pairing failed - %s"
+msgid "Spacer (%d)"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
-#, c-format
-msgid "Pairing successful - connecting..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#: ../src/panel/configure.c:137 ../src/panel/configure.c:158
+#: ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Connection successful"
-msgstr "Verbindung fehlgeschlagen"
+msgid "<Unknown>"
+msgstr "Unbekannt"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#: ../src/panel/configure.c:424
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../src/panel/configure.c:424
+#, fuzzy
+msgid "OK"
+msgstr "_OK"
+
+#: ../src/panel/configure.c:445 ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Connection failed - %s"
-msgstr "Verbindung fehlgeschlagen"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, c-format
-msgid "Please enter code '%s' on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, c-format
-msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, c-format
-msgid "Please enter PIN code shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, c-format
-msgid "Please enter passcode shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, c-format
-msgid "Waiting for response from Bluetooth device..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, c-format
-msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, c-format
-msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, c-format
-msgid ""
-"Pairing successful - this device has no services which can be used with "
-"Raspberry Pi"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, c-format
-msgid "Do you want to unpair '%s'?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, c-format
-msgid "Removing pairing with '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
-#, c-format
-msgid "Removal failed - %s"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, c-format
-msgid "Disconnecting from '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
-msgid "Disconnection failed - %s"
-msgstr "Trennen schlug fehl"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-#, fuzzy
-msgid "Use the audio menu to connect to this device"
-msgstr ""
-"Verwenden Sie das Netzwerkmenü, um sich mit einem Funknetzwerk zu verbinden"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
-msgid "No usable services on this device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-#, fuzzy
-msgid "Disconnect..."
-msgstr "Verbindung trennen"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-#, fuzzy
-msgid "Connect..."
-msgstr "_Verbinden"
-
-#. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-msgid "Remove..."
-msgstr ""
-
-#. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-#, fuzzy
-msgid "No Bluetooth adapter found"
-msgstr "Bluetooth-Typ"
-
-#. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-#, fuzzy
-msgid "Turn On Bluetooth"
-msgstr "Bluetooth"
-
-#. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-#, fuzzy
-msgid "Turn Off Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
-msgid "Stop Discoverable"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
-msgid "Make Discoverable"
-msgstr ""
-
-#. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-#, fuzzy
-msgid "Add Device..."
-msgstr "Gerät"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
-#, fuzzy
-msgid "Manage Bluetooth devices"
-msgstr "Ungültiges Bluetooth-Gerät (%s)"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
-#, fuzzy
-msgid "Manages Bluetooth devices"
-msgstr "Ungültiges Bluetooth-Gerät (%s)"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:171
-msgid ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:199
-#, c-format
-msgid ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:205
-#, c-format
-msgid ""
-"Failed to eject %s\n"
-"%s"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:402
-msgid "Select a drive in menu to eject safely"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:453
-msgid "Hide icon when no devices"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:462
-msgid "Ejects mounted drives"
-msgstr ""
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:77
-msgid "ad-hoc"
-msgstr "Ad-hoc"
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:82
-msgid "secure."
-msgstr "sicher."
-
-#: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
-msgid "Failed to activate connection"
-msgstr "Aktivierung der Verbindung schlug fehl"
-
-#: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
-msgid "Unknown error"
-msgstr "Unbekannter Fehler"
-
-#: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
-msgid "Connection failure"
-msgstr "Verbindung fehlgeschlagen"
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn Off Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn On Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:227
-#, c-format
-msgid "IP : %s"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:781
-msgid "Failed to add/activate connection"
-msgstr "Hinzufügen/Aktivierung der Verbindung schlug fehl"
-
-#: ../src/panel/widgets/netman/applet.c:835
-msgid "Device disconnect failed"
-msgstr "Trennen des Gerätes schlug fehl"
-
-#: ../src/panel/widgets/netman/applet.c:840
-msgid "Disconnect failure"
-msgstr "Trennen schlug fehl"
-
-#: ../src/panel/widgets/netman/applet.c:870
-msgid "Connection activation failed"
-msgstr "Aktivierung der Verbindung fehlgeschlagen"
-
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
-msgid "Don’t show this message again"
-msgstr "Diesen Hinweis nicht mehr anzeigen"
-
-#: ../src/panel/widgets/netman/applet.c:1310
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” disconnected because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« wurde getrennt, weil die Netzwerkverbindung getrennt "
-"wurde."
-
-#: ../src/panel/widgets/netman/applet.c:1312
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil die "
-"Netzwerkverbindung getrennt wurde."
-
-#: ../src/panel/widgets/netman/applet.c:1314
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der VPN-Dienst "
-"unerwartet beendet wurde."
-
-#: ../src/panel/widgets/netman/applet.c:1316
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service returned invalid "
-"configuration."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der VPN-Server "
-"keine geeignete Netzwerkkonfiguration lieferte."
-
-#: ../src/panel/widgets/netman/applet.c:1318
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the connection attempt timed out."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil die "
-"Netzwerkverbindung eine Zeitüberschreitung verursacht hat."
-
-#: ../src/panel/widgets/netman/applet.c:1320
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service did not start in time."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der VPN-Dienst "
-"nicht in der vorgesehenen Zeit gestartet wurde."
-
-#: ../src/panel/widgets/netman/applet.c:1322
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der Start des "
-"VPN-Dienstes fehlgeschlagen ist."
-
-#: ../src/panel/widgets/netman/applet.c:1324
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because there were no valid VPN secrets."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil keine gültigen "
-"VPN-Geheimnisse vorliegen."
-
-#: ../src/panel/widgets/netman/applet.c:1326
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because of invalid VPN secrets."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil VPN-"
-"Geheimnisse ungültig sind."
-
-#: ../src/panel/widgets/netman/applet.c:1331
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed."
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden."
-
-#: ../src/panel/widgets/netman/applet.c:1358
-#, c-format
-msgid ""
-"VPN connection has been successfully established.\n"
-"\n"
-"%s\n"
-msgstr ""
-"Die VPN-Verbindung wurde erfolgreich eingerichtet.\n"
-"\n"
-"%s\n"
-
-#: ../src/panel/widgets/netman/applet.c:1360
-msgid "VPN connection has been successfully established.\n"
-msgstr "Die VPN-Verbindung wurde erfolgreich eingerichtet.\n"
-
-#: ../src/panel/widgets/netman/applet.c:1362
-msgid "VPN Login Message"
-msgstr "VPN-Anmeldemitteilung"
-
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
-msgid "VPN Connection Failed"
-msgstr "VPN-Verbindung fehlgeschlagen"
-
-#: ../src/panel/widgets/netman/applet.c:1414
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil das Starten "
-"des VPN-Dienstes fehlgeschlagen ist.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1417
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"Das Starten der VPN-Verbindung »%s« ist fehlgeschlagen.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1741
-msgid "device not ready (firmware missing)"
-msgstr "Gerät ist nicht betriebsbereit (Firmware fehlt)"
-
-#: ../src/panel/widgets/netman/applet.c:1743
-msgid "device not ready"
-msgstr "Gerät ist nicht betriebsbereit"
-
-#. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
-msgid "disconnected"
-msgstr "nicht verbunden"
-
-#: ../src/panel/widgets/netman/applet.c:1769
-msgid "Disconnect"
-msgstr "Verbindung trennen"
-
-#: ../src/panel/widgets/netman/applet.c:1783
-msgid "device not managed"
-msgstr "Gerät wird nicht verwaltet"
-
-#: ../src/panel/widgets/netman/applet.c:1864
-msgid "No network devices available"
-msgstr "Es sind keine Netzwerkgeräte verfügbar"
-
-#: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
-msgid "_Advanced Options"
-msgstr "Erweiterte Einstellungen für Team"
-
-#: ../src/panel/widgets/netman/applet.c:1919
-msgid "_VPN Connections"
-msgstr "_VPN-Verbindungen"
-
-#: ../src/panel/widgets/netman/applet.c:1973
-msgid "_Configure VPN…"
+msgid "Configure %s"
 msgstr "VPN _konfigurieren …"
 
-#: ../src/panel/widgets/netman/applet.c:1977
-msgid "_Add a VPN connection…"
-msgstr "Eine VPN-Verbindung _hinzufügen …"
-
-#. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection _Information"
-msgstr "Verbindungs_informationen"
-
-#. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
-msgid "Edit Connections…"
-msgstr "Verbindungen bearbeiten …"
-
-#: ../src/panel/widgets/netman/applet.c:2112
-msgid "NetworkManager is not running…"
-msgstr "Der Netzwerk-Manager läuft zur Zeit nicht …"
-
-#: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
-msgid "Wi-Fi country is not set"
-msgstr "Mein Land ist nicht aufgelistet"
-
-#: ../src/panel/widgets/netman/applet.c:2119
-msgid "Click here to set Wi-Fi country"
+#: ../src/panel/configure.c:814
+msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
-msgid "Networking disabled"
-msgstr "Netzwerke deaktiviert"
-
-#. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
-msgid "Enable _Networking"
-msgstr "_Netzwerke aktivieren"
-
-#. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable _Wi-Fi"
-msgstr "_Funknetzwerk aktivieren"
-
-#. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
-msgid "Enable _Mobile Broadband"
-msgstr "_Mobiles Breitband aktivieren"
-
-#. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable N_otifications"
-msgstr "_Benachrichtigungen aktivieren"
-
-#: ../src/panel/widgets/netman/applet.c:2415
-msgid "_About"
-msgstr "_Info"
-
-#: ../src/panel/widgets/netman/applet.c:2736
-#, c-format
-msgid "You are now connected to “%s”."
-msgstr "Sie sind nun mit »%s« verbunden."
-
-#: ../src/panel/widgets/netman/applet.c:2776
-msgid "Disconnected"
-msgstr "Verbindung getrennt"
-
-#: ../src/panel/widgets/netman/applet.c:2777
-msgid "The network connection has been disconnected."
-msgstr "Die Netzwerkverbindung wurde getrennt."
-
-#: ../src/panel/widgets/netman/applet.c:3079
-#, c-format
-msgid "Preparing network connection “%s”…"
-msgstr "Netzwerkverbindung »%s« wird vorbereitet …"
-
-#: ../src/panel/widgets/netman/applet.c:3082
-#, c-format
-msgid "User authentication required for network connection “%s”…"
-msgstr "Benutzerlegitimierung ist erforderlich für Netzwerkverbindung »%s« …"
-
-#: ../src/panel/widgets/netman/applet.c:3085
-#: ../src/panel/widgets/netman/applet-device-bt.c:113
-#: ../src/panel/widgets/netman/mobile-helpers.c:605
-#, c-format
-msgid "Requesting a network address for “%s”…"
-msgstr "Netzwerkadresse für »%s« wird angefordert …"
-
-#: ../src/panel/widgets/netman/applet.c:3088
-#, c-format
-msgid "Network connection “%s” active"
-msgstr "Netzwerkverbindung »%s« ist aktiv"
-
-#: ../src/panel/widgets/netman/applet.c:3165
-#, c-format
-msgid "Starting VPN connection “%s”…"
-msgstr "VPN-Verbindung »%s« wird gestartet …"
-
-#: ../src/panel/widgets/netman/applet.c:3168
-#, c-format
-msgid "User authentication required for VPN connection “%s”…"
-msgstr "Benutzerlegitimierung ist erforderlich für VPN-Verbindung »%s« …"
-
-#: ../src/panel/widgets/netman/applet.c:3171
-#, c-format
-msgid "Requesting a VPN address for “%s”…"
-msgstr "Anfordern einer Netzwerkadresse von VPN-Verbindung »%s« …"
-
-#: ../src/panel/widgets/netman/applet.c:3174
-#, c-format
-msgid "VPN connection active"
-msgstr "VPN-Verbindung ist aktiv"
-
-#: ../src/panel/widgets/netman/applet.c:3226
-msgid "No network connection"
-msgstr "Keine Netzwerkverbindung"
-
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "Netzwerk"
-
-#: ../src/panel/widgets/netman/applet.c:3896
-msgid "NetworkManager Applet"
-msgstr "Netzwerk-Manager-Applet"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:147
-msgid "Wrong PUK code; please contact your provider."
-msgstr "Falscher PUK-Code. Bitte kontaktieren Sie Ihren Dienstanbieter."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:189
-msgid "Wrong PIN code; please contact your provider."
-msgstr "Falscher PIN-Code. Bitte kontaktieren Sie Ihren Dienstanbieter."
-
-#. Start the spinner to show the progress of the unlock
-#: ../src/panel/widgets/netman/applet-device-broadband.c:240
-msgid "Sending unlock code…"
-msgstr "Code zum Entsperren wird gesendet …"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:725
-#: ../src/panel/widgets/netman/applet-dialogs.c:532
-#, c-format
-msgid "Mobile Broadband (%s)"
-msgstr "Mobiles Breitband (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:727
-msgid "Mobile Broadband"
-msgstr "Mobiles Breitband"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+#: ../src/panel/configure.c:815
 msgid "Available"
 msgstr "Verfügbar"
 
-#. Default connection item
-#: ../src/panel/widgets/netman/applet-device-broadband.c:793
-msgid "New Mobile Broadband connection…"
-msgstr "Neue mobile Breitbandverbindung …"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:809
-#: ../src/panel/widgets/netman/applet-device-bt.c:75
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
-msgid "Connection Established"
-msgstr "Verbindung hergestellt"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:810
-msgid "You are now connected to the Mobile Broadband network."
-msgstr "Sie sind nun mit dem mobilen Breitbandnetzwerk verbunden."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:950
-#: ../src/panel/widgets/netman/applet-device-broadband.c:956
-msgid "Mobile Broadband network."
-msgstr "Mobiles Breitbandnetzwerk."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:951
-msgid "You are now registered on the home network."
-msgstr "Sie sind nun im Heimnetzwerk angemeldet."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:957
-msgid "You are now registered on a roaming network."
-msgstr "Sie sind nun in einem Roaming-Netzwerk angemeldet."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:76
-msgid "You are now connected to the mobile broadband network."
-msgstr "Sie sind nun mit dem mobilen Breitbandnetzwerk verbunden."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:104
-#: ../src/panel/widgets/netman/mobile-helpers.c:596
-#, c-format
-msgid "Preparing mobile broadband connection “%s”…"
-msgstr "Mobile Breitbandverbindung »%s« wird vorbereitet …"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:107
-#: ../src/panel/widgets/netman/mobile-helpers.c:599
-#, c-format
-msgid "Configuring mobile broadband connection “%s”…"
-msgstr "Mobile Breitbandverbindung »%s« wird konfiguriert …"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:110
-#: ../src/panel/widgets/netman/mobile-helpers.c:602
-#, c-format
-msgid "User authentication required for mobile broadband connection “%s”…"
+#: ../src/panel/configure.c:816
+msgid "Right Side"
 msgstr ""
-"Benutzerlegitimierung ist erforderlich für mobile Breitbandverbindung »%s« …"
 
-#: ../src/panel/widgets/netman/applet-device-bt.c:117
-#: ../src/panel/widgets/netman/mobile-helpers.c:624
-#, c-format
-msgid "Mobile broadband connection “%s” active"
-msgstr "Mobile Breitbandverbindung »%s« ist aktiv"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
-msgid "Auto Ethernet"
-msgstr "Auto-Ethernet"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
-#, c-format
-msgid "Ethernet Networks (%s)"
-msgstr "Ethernet-Netze (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
-#, c-format
-msgid "Ethernet Network (%s)"
-msgstr "Ethernet-Netz (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
-msgid "Ethernet Networks"
-msgstr "Ethernet-Netze"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
-msgid "Ethernet Network"
-msgstr "Ethernet-Netz"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
-msgid "You are now connected to the ethernet network."
-msgstr "Sie sind nun mit dem Ethernet-Netzwerk verbunden."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
-#, c-format
-msgid "Preparing ethernet network connection “%s”…"
-msgstr "Ethernet-Netzverbindung »%s« wird vorbereitet …"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
-#, c-format
-msgid "Configuring ethernet network connection “%s”…"
-msgstr "Ethernet-Netzverbindung »%s« wird konfiguriert …"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
-#, c-format
-msgid "User authentication required for ethernet network connection “%s”…"
+#: ../src/panel/panel.cpp:235
+msgid "Add / Remove Plugins..."
 msgstr ""
-"Benutzerlegitimierung ist erforderlich für Ethernet-Netzverbindung »%s« …"
 
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
-#, c-format
-msgid "Requesting an ethernet network address for “%s”…"
-msgstr "Netzwerkadresse für Ethernet-Netz »%s« wird angefordert …"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
-#, c-format
-msgid "Ethernet network connection “%s” active"
-msgstr "Ethernet-Netzverbindung »%s« ist aktiv"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
-msgid "DSL authentication"
-msgstr "DSL-Legitimierung"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:1190
-#: ../src/panel/widgets/netman/mobile-helpers.c:455
-#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
-msgid "_Cancel"
-msgstr "A_bbrechen"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:1191
-#: ../src/panel/widgets/netman/mobile-helpers.c:456
-#: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
-#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
-msgid "_OK"
-msgstr "_OK"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:208
-msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "Mit einem _verborgenen Funknetzwerk verbinden …"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
-msgid "Create _New Wi-Fi Network…"
-msgstr "Neues _Funknetzwerk erstellen …"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#: ../src/panel/panel.cpp:239
 #, fuzzy
-msgid "Create Wi-Fi _Hotspot…"
-msgstr "Neues _Funknetzwerk erstellen …"
+msgid "Configure Plugin..."
+msgstr "VPN _konfigurieren …"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
-msgid "(none)"
-msgstr "(keine)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
-msgid "Failed to add new connection"
-msgstr "Hinzufügen einer neuen Verbindung schlug fehl"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
-msgid "Insufficient privileges."
-msgstr "Unzureichende Berechtigungen."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
-msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "Sie sind nun mit dem Funknetzwerk »%s« verbunden."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
-#, c-format
-msgid "Wi-Fi Networks (%s)"
-msgstr "Funknetzwerke (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
-#, c-format
-msgid "Wi-Fi Network (%s)"
-msgstr "Funknetzwerk (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
-msgid "Wi-Fi Network"
-msgid_plural "Wi-Fi Networks"
-msgstr[0] "Funknetzwerk"
-msgstr[1] "Funknetzwerke"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
-msgid "Wi-Fi is disabled"
-msgstr "Funknetzwerk ist deaktiviert"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
-msgid "Wi-Fi is disabled by hardware switch"
-msgstr "Funknetzwerk wurde durch Schalter deaktiviert"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
-msgid "More networks"
-msgstr "Weitere Netzwerke"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
-msgid "Wi-Fi Networks Available"
-msgstr "Funknetzwerke sind verfügbar"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
-msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr ""
-"Verwenden Sie das Netzwerkmenü, um sich mit einem Funknetzwerk zu verbinden"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
-#, c-format
-msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "Sie sind nun mit dem Funknetzwerk »%s« verbunden."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
-#, c-format
-msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "Funknetzwerkverbindung »%s« wird vorbereitet …"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
-#, c-format
-msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "Funknetzwerkverbindung »%s« wird konfiguriert …"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
-#, c-format
-msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr "Benutzerlegitimierung ist erforderlich für Funknetzwerk »%s« …"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
-#, c-format
-msgid "Requesting a Wi-Fi network address for “%s”…"
-msgstr "Funknetzwerkadresse für »%s« wird angefordert …"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "Funknetzwerkverbindung mit »%s« ist aktiv: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
-#, c-format
-msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "Funknetzwerkverbindung mit »%s« ist aktiv: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
-#, c-format
-msgid "Wi-Fi network connection “%s” active"
-msgstr "Funknetzwerkverbindung »%s« ist aktiv"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:29
-msgid "Error displaying connection information:"
-msgstr "Die Verbindungsinformationen konnten nicht angezeigt werden:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:61
-msgid "LEAP"
-msgstr "LEAP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:63
-msgid "Dynamic WEP"
-msgstr "Dynamisches WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:65
-#: ../src/panel/widgets/netman/applet-dialogs.c:237
-#: ../src/panel/widgets/netman/applet-dialogs.c:239
-msgid "WPA/WPA2"
-msgstr "WPA/WPA2"
-
-#. Create the expander
-#: ../src/panel/widgets/netman/applet-dialogs.c:174
-msgid "More addresses"
-msgstr "Weitere Adressen"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:235
-msgid "WEP"
-msgstr "WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:241
-msgid "WPA3"
-msgstr "WPA3"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:245
-#: ../src/panel/widgets/netman/applet-dialogs.c:254
-msgctxt "Wi-Fi/Ethernet security"
-msgid "None"
-msgstr "Keine"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:324
-#: ../src/panel/widgets/netman/applet-dialogs.c:597
-#, c-format
-msgid "%u Mb/s"
-msgstr "%u Mb/s"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:326
-#: ../src/panel/widgets/netman/applet-dialogs.c:599
-msgctxt "Speed"
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#. Address
-#: ../src/panel/widgets/netman/applet-dialogs.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:363
-msgctxt "Address"
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:415
-msgid "IP Address"
-msgstr "IP-Adresse"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:364
-msgid "Broadcast Address"
-msgstr "Broadcast-Adresse"
-
-#. Prefix
-#: ../src/panel/widgets/netman/applet-dialogs.c:376
-msgctxt "Subnet Mask"
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:377
-msgid "Subnet Mask"
-msgstr "Subnetz-Maske"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Primary DNS"
-msgstr "Primärer DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Secondary DNS"
-msgstr "Sekundärer DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Tertiary DNS"
-msgstr "Tertiärer DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:518
-#, c-format
-msgid "Ethernet (%s)"
-msgstr "Ethernet (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:521
-#, c-format
-msgid "802.11 Wi-Fi (%s)"
-msgstr "802.11 Wi-Fi (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:528
-#, c-format
-msgid "GSM (%s)"
-msgstr "GSM (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:530
-#, c-format
-msgid "CDMA (%s)"
-msgstr "CDMA (%s)"
-
-#. --- General ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:538
-#: ../src/panel/widgets/netman/applet-dialogs.c:872
-msgid "General"
-msgstr "Allgemein"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:541
-msgid "Interface"
-msgstr "Schnittstelle"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:556
-msgid "Hardware Address"
-msgstr "Hardware-Adresse"
-
-#. Driver
-#: ../src/panel/widgets/netman/applet-dialogs.c:569
-msgid "Driver"
-msgstr "Treiber"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:602
-msgid "Speed"
-msgstr "Geschwindigkeit"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:615
-msgid "Security"
-msgstr "Sicherheit"
-
-#. --- IPv4 ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:640
-#: ../src/panel/widgets/netman/applet-dialogs.c:902
-msgid "IPv4"
-msgstr "IPv4"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:659
-#: ../src/panel/widgets/netman/applet-dialogs.c:707
-msgid "Default Route"
-msgstr "Vorgaberoute"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:687
-#: ../src/panel/widgets/netman/applet-dialogs.c:929
-msgid "IPv6"
-msgstr "IPv6"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:728
-msgid "Hotspot"
-msgstr "Hotspot"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:746
-msgid "Password"
-msgstr "Passwort"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:876
-msgid "VPN Type"
-msgstr "VPN-Typ"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:881
-msgid "VPN Gateway"
-msgstr "VPN-Gateway"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:885
-msgid "VPN Username"
-msgstr "VPN-Benutzername"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:889
-msgid "VPN Banner"
-msgstr "VPN-Banner"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:893
-msgid "Base Connection"
-msgstr "Zugordnete Verbindung"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:894
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#. Shouldn't really happen but ...
-#: ../src/panel/widgets/netman/applet-dialogs.c:1091
-msgid "No valid active connections found!"
-msgstr "Keine aktiven Netzwerkverbindungen gefunden!"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1139
-msgid ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"and many other community contributors and translators"
-msgstr ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"und viele andere Mitwirkende und Übersetzer"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1142
-msgid ""
-"Notification area applet for managing your network devices and connections."
-msgstr ""
-"Ein Applet für das Benachrichtigungsfeld, mit dem Sie Ihre Netzwerkgeräte "
-"und Netzwerkverbindungen verwalten können."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1144
-msgid "NetworkManager Website"
-msgstr "Netzwerk-Manager-Website"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1148
-msgid "translator-credits"
-msgstr ""
-"Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2016, 2017\n"
-"Christian Kirbach <christian.kirbach@gmail.com>, 2014, 2016, 2017"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1158
-msgid ""
-"The NetworkManager Applet could not find some required resources (the .ui "
-"file was not found)."
-msgstr ""
-"Das Netzwerk-Manager-Applet konnte benötigte Ressourcen nicht finden (Die ."
-"ui-Datei wurde nicht gefunden)."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1163
-msgid "Missing resources"
-msgstr "Fehlende Ressourcen"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1188
-msgid "Mobile broadband network password"
-msgstr "Passwort der mobilen Breitbandverbindung"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1197
-#, c-format
-msgid "A password is required to connect to “%s”."
-msgstr "Es wird ein Passwort benötigt, um sich mit »%s« zu verbinden."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1220
-msgid "Password:"
-msgstr "Passwort:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1502
-msgid "SIM PIN unlock required"
-msgstr "Entsperren der SIM-Karte mittels PIN-Code erforderlich"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1503
-msgid "SIM PIN Unlock Required"
-msgstr "Entsperren der SIM-Karte mittels PIN-Code erforderlich"
-
-#. FIXME: some warning about # of times you can enter incorrect PIN
-#: ../src/panel/widgets/netman/applet-dialogs.c:1505
-#, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PIN code before it can be "
-"used."
-msgstr ""
-"Das mobile Breitband-Gerät »%s« erfordert vor Verwendung eine SIM-PIN-Nummer."
-
-#. Translators: PIN code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1507
-msgid "PIN code:"
-msgstr "PIN-Code:"
-
-#. Translators: Show/obscure PIN checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1511
-msgid "Show PIN code"
-msgstr "PIN-Code anzeigen"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1513
-msgid "SIM PUK unlock required"
-msgstr "Entsperren der SIM-Karte mittels PUK-Code erforderlich"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1514
-msgid "SIM PUK Unlock Required"
-msgstr "Entsperren der SIM-Karte mittels PUK-Code erforderlich"
-
-#. FIXME: some warning about # of times you can enter incorrect PUK
-#: ../src/panel/widgets/netman/applet-dialogs.c:1516
-#, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PUK code before it can be "
-"used."
-msgstr ""
-"Das mobile Breitband-Gerät »%s« erfordert vor Verwendung einen SIM-PUK-Code."
-
-#. Translators: PUK code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1518
-msgid "PUK code:"
-msgstr "PUK-Code:"
-
-#. Translators: New PIN entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1521
-msgid "New PIN code:"
-msgstr "Neuer PIN-Code:"
-
-#. Translators: New PIN verification entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1523
-msgid "Re-enter new PIN code:"
-msgstr "Geben Sie den neuen PIN-Code erneut ein:"
-
-#. Translators: Show/obscure PIN/PUK checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1528
-msgid "Show PIN/PUK codes"
-msgstr "PIN/PUK-Codes anzeigen"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:427
-msgid "Connection had no VPN setting"
-msgstr "Die Verbindung hat keine VPN-Einstellungen"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:477
-#, c-format
-msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr ""
-"Verbindungsmeldung an die VPN Benutzeroberfläche fehlgeschlagen: %s (%d)"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:485
-msgid "Failed to write connection to VPN UI: incomplete write"
-msgstr ""
-"Fehler beim Schreiben von Verbindung zum VPN UI: unvollständiges Schreiben"
-
-#: ../src/panel/widgets/netman/ethernet-dialog.c:87
-#: ../src/panel/widgets/netman/8021x.ui.h:1
-msgid "802.1X authentication"
-msgstr "802.1X-Legitimierung"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:36
-#: ../src/panel/widgets/netman/mobile-helpers.c:272
-msgid "CDMA"
-msgstr "CDMA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:38
-msgid "EVDO"
-msgstr "EVDO"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:40
-#: ../src/panel/widgets/netman/mobile-helpers.c:270
-msgid "GSM"
-msgstr "GSM"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:42
-msgid "GPRS"
-msgstr "GPRS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:44
-msgid "EDGE"
-msgstr "EDGE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:46
-msgid "UMTS"
-msgstr "UMTS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:48
-msgid "HSDPA"
-msgstr "HSDPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:50
-msgid "HSUPA"
-msgstr "HSUPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:52
-msgid "HSPA"
-msgstr "HSPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:54
-msgid "HSPA+"
-msgstr "HSPA+"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:56
-msgid "LTE"
-msgstr "LTE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:103
-msgid "not enabled"
-msgstr "nicht aktiviert"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:109
-msgid "not registered"
-msgstr "nicht angemeldet"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:127
-#, c-format
-msgid "Home network (%s)"
-msgstr "Heimnetzwerk (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:129
-#, c-format
-msgid "Home network"
-msgstr "Heimnetzwerk"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:137
-msgid "searching"
-msgstr "Suche läuft"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:140
-msgid "registration denied"
-msgstr "Registrierung abgelehnt"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:145
-#: ../src/panel/widgets/netman/mb-menu-item.c:151
-#, c-format
-msgid "%s (%s roaming)"
-msgstr "%s (%s-Roaming)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:147
-#: ../src/panel/widgets/netman/mb-menu-item.c:153
-#, c-format
-msgid "%s (roaming)"
-msgstr "%s (Roaming)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:156
-#, c-format
-msgid "Roaming network (%s)"
-msgstr "Roaming-Netzwerk (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:158
-#, c-format
-msgid "Roaming network"
-msgstr "Roaming-Netzwerk"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:320
-#, c-format
-msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "PIN-Code für SIM-Karte »%s« auf »%s«"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:453
-msgid "PIN code required"
-msgstr "PIN-Code erforderlich"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:461
-msgid "PIN code is needed for the mobile broadband device"
-msgstr "Für das mobile Breitbandgerät ist ein PIN-Code erforderlich"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:619
-#, c-format
-msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
-msgstr "Mobile Breitbandverbindung »%s« ist aktiv: (%d%%%s%s)"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:622
-msgid "roaming"
-msgstr "Roaming"
-
-#: ../src/panel/widgets/netman/netman.c:139
+#: ../src/panel/panel.cpp:243
 #, fuzzy
-msgid "Network Manager"
-msgstr "NetworkManager"
+msgid "Notifications..."
+msgstr "_Benachrichtigungen aktivieren"
 
-#: ../src/panel/widgets/netman/netman.c:140
+#: ../src/panel/panel.cpp:247
+msgid "Taskbar Preferences..."
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:10
+msgid "Display format"
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:11
+msgid "Display font"
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:15
 #, fuzzy
-msgid "Controller for Network Manager"
-msgstr "NetworkManager"
+msgid "Clock"
+msgstr "_Entsperren"
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:793
-#, c-format
-msgid "object class '%s' has no property named '%s'"
-msgstr "Objektklasse »%s« hat keine Eigenschaft namens »%s«"
+#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
+msgid "Show usage as percentage"
+msgstr ""
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:800
-#, c-format
-msgid "property '%s' of object class '%s' is not writable"
-msgstr "Eigenschaft »%s« von Objektklasse »%s« ist nicht schreibbar"
+#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
+msgid "Foreground colour"
+msgstr ""
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:807
-#, c-format
+#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
+msgid "Background colour"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:15
+#, fuzzy
+msgid "CPU"
+msgstr "TCP"
+
+#: ../src/widgets/gpu/gpu.cpp:15
+msgid "GPU"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:20
+msgid "Icon spacing"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:24
+#, fuzzy
+msgid "Launcher"
+msgstr "Verbindungsüberwachung"
+
+#: ../src/widgets/launchers/launchers.cpp:196
+msgid "Remove from Launcher"
+msgstr ""
+
+#: ../src/widgets/notify/notify.cpp:5
+#, fuzzy
+msgid "Show notifications"
+msgstr "_Benachrichtigungen aktivieren"
+
+#: ../src/widgets/notify/notify.cpp:6
+#, fuzzy
+msgid "Time before notifications close"
+msgstr "Benachrichtigungs_anzahl der Gegenstelle"
+
+#: ../src/widgets/notify/notify.cpp:10
+#, fuzzy
+msgid "Notifications"
+msgstr "_Benachrichtigungen aktivieren"
+
+#: ../src/widgets/power/power.c:86
 msgid ""
-"construct property \"%s\" for object '%s' can't be set after construction"
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
 msgstr ""
-"Konstruktor-Eigenschaft »%s« für Objekt »%s« kann nicht nach der "
-"Konstruktion gesetzt werden"
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:815
-#, c-format
-msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
-"»%s::%s« ist ein ungültiger Eigenschaftsname. »%s« ist kein GObject-Untertyp"
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:824
-#, c-format
-msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
-"Eigenschaft »%s« des Typs »%s« von Wert des Typs »%s« kann nicht gesetzt "
-"werden"
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:835
-#, c-format
+#: ../src/widgets/power/power.c:102
 msgid ""
-"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
-"type '%s'"
-msgstr ""
-"Wert »%s« des Typs »%s« ist ungültig oder nicht im Wertebereich für "
-"Eigenschaft »%s« des Typs »%s«"
-
-#. The %s is a mobile provider name, eg "T-Mobile"
-#: ../src/panel/widgets/netman/utils.c:160
-#, c-format
-msgid "%s connection"
-msgstr "Verbindung mit %s"
-
-#: ../src/panel/widgets/netman/utils.c:534
-msgid "PEM certificates (*.pem, *.crt, *.cer)"
-msgstr "PEM-Zertifikate (*.pem, *.crt, *.cer)"
-
-#: ../src/panel/widgets/netman/utils.c:546
-msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
-msgstr "DER-, PEM-, oder PKCS#12-Privatschlüssel (*.der, *.pem, *.p12, *.key)"
-
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
+#: ../src/widgets/power/power.c:163
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
+"High display resolution is using large amounts of memory.\n"
+"Consider reducing screen resolution."
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
+#: ../src/widgets/power/power.c:218
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
-msgid ""
-"Charged : %d%%\n"
-"On external power"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/widgets/power/power.c:269
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
+#: ../src/widgets/power/power.c:288
+msgid "PSU low voltage detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
+#: ../src/widgets/power/power.c:289
+msgid "USB over current detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
-msgid "Run"
-msgstr "Ausführen"
-
-#: ../src/panel/widgets/smenu/gtk-run.c:412
-msgid "Enter the command you want to execute:"
+#: ../src/widgets/power/power.c:290
+msgid "Low power reset has occurred\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:116
-msgid "Logout command is not set"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:122
-msgid "Restart"
-msgstr "Neu starten"
-
-#: ../src/panel/widgets/smenu/menu.c:123
-msgid "Logout"
-msgstr "Abmelden"
-
-#: ../src/panel/widgets/smenu/menu.c:140
-msgid "No file manager is configured."
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:489
-msgid "Add to desktop"
-msgstr "Zur Arbeitsfläche hinzufügen"
-
-#: ../src/panel/widgets/smenu/menu.c:496
-msgid "Properties"
-msgstr "Eigenschaften"
-
-#: ../src/panel/widgets/smenu/menu.c:954
-msgid "Click here to open applications menu"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr "Menü"
-
-#: ../src/panel/widgets/smenu/menu.c:1048
-msgid "Icon"
-msgstr "Symbol"
-
-#: ../src/panel/widgets/smenu/menu.c:1049
-msgid "Padding"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1050
-msgid "Fixed Size"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1058
-msgid "Menu with Search"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1059
+#: ../src/widgets/power/power.c:341
 #, fuzzy
-msgid "Searchable Application Menu"
-msgstr "Anwendungsmenü"
+msgid "Power Information..."
+msgstr "Verbindungsinformationen"
 
-#: ../src/panel/widgets/updater/updater.c:189
-msgid ""
-"Updates are available\n"
-"Click the update icon to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:211
+#: ../src/widgets/power/power.cpp:12
 #, fuzzy
-msgid "No network connection - cannot install updates."
-msgstr "Keine Netzwerkverbindung"
+msgid "System Monitor"
+msgstr "_Systempriorität"
 
-#: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
+#: ../src/widgets/spacing/spacing.cpp:5
+msgid "Width in pixels"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:320
-msgid "Show Updates..."
+#: ../src/widgets/tray/tray.cpp:8
+msgid "Smooth scrolling threshold"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:324
-msgid "Install Updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:470
-msgid "Updates are available - click to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:531
-msgid "Hours between checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:562
-msgid "Checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#: ../src/widgets/tray/tray.cpp:9
 #, fuzzy
-msgid "Reconnecting Bluetooth devices..."
-msgstr "Ungültiges Bluetooth-Gerät (%s)"
+msgid "Middle button activates menu"
+msgstr "Aktivierung der Verbindung schlug fehl"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
-msgid "Bluetooth %s device not found"
-msgstr "Bluetooth-Verbindung %d"
-
-#. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, c-format
-msgid "Could not set profile for device : %s"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
-msgid "Failed to connect to Bluetooth device - %s"
-msgstr "Ungültiges Bluetooth-Gerät (%s)"
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, c-format
-msgid "Connecting Bluetooth device '%s' as output..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, fuzzy, c-format
-msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "Ungültiges Bluetooth-Gerät (%s)"
-
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#: ../src/widgets/tray/tray.cpp:13
 #, fuzzy
-msgid "Reconnecting Bluetooth device..."
-msgstr "Ungültiges Bluetooth-Gerät (%s)"
+msgid "System Tray"
+msgstr "_Systempriorität"
 
-#. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
-msgid "Mute"
+#: ../src/widgets/window-list/toplevel.cpp:83
+#: ../src/widgets/window-list/toplevel.cpp:449
+msgid "Minimize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/commongui.c:231
-msgid "No audio devices found"
+#: ../src/widgets/window-list/toplevel.cpp:84
+#: ../src/widgets/window-list/toplevel.cpp:457
+msgid "Maximize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/micpulse.c:71
-msgid "Input from this device not available in the current profile"
-msgstr ""
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/micpulse.c:144
-msgid "Mic volume"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
-msgid "HDMI"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
-msgid "AV Jack"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
-msgid "Device Profiles..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
-msgid "Output to this device not available in the current profile"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
-#, fuzzy
-msgid "Device Profiles"
-msgstr "Trennen des Gerätes schlug fehl"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
-#, fuzzy
-msgid "Device not connected"
-msgstr "Trennen des Gerätes schlug fehl"
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
-#, fuzzy
-msgid "Volume control"
-msgstr "Flusskontrolle"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
-msgid "Volume Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
-msgid "Display and control volume for PulseAudio"
-msgstr ""
-
-# SELinux
-#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-#, fuzzy
-msgid "label"
-msgstr "Neu markieren"
-
-#: ../data/lxplug-updater.ui.h:1
-#, fuzzy
-msgid "Available Updates"
-msgstr "Verfügbar"
-
-#: ../data/lxplug-updater.ui.h:2
+#: ../src/widgets/window-list/toplevel.cpp:85
 #, fuzzy
 msgid "Close"
 msgstr "S_chließen"
 
-#: ../data/lxplug-updater.ui.h:3
-msgid "Install"
+#: ../src/widgets/window-list/toplevel.cpp:446
+msgid "Unminimize"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:4
-msgid "The following packages can be updated :"
+#: ../src/widgets/window-list/toplevel.cpp:454
+msgid "Unmaximize"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:1
-#, fuzzy
-msgid "Add New Device"
-msgstr "Gerät"
-
-#: ../data/lxplug-bluetooth.ui.h:3
-msgid "_Pair"
+#: ../src/widgets/window-list/window-list.cpp:14
+msgid "Maximum width of task button"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:4
+#: ../src/widgets/window-list/window-list.cpp:18
+msgid "Window List"
+msgstr ""
+
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr ""
+
+#: ../data/config.ui.h:2
 #, fuzzy
-msgid "Searching for Bluetooth devices..."
-msgstr "Ungültiges Bluetooth-Gerät (%s)"
+msgid "Add to left"
+msgstr "Zur Arbeitsfläche hinzufügen"
 
-#: ../src/panel/widgets/netman/8021x.ui.h:3
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:4
 #, fuzzy
-msgid "C_onnect"
-msgstr "_Verbindung"
+msgid "Add to right"
+msgstr "Zur Arbeitsfläche hinzufügen"
 
-#: ../src/panel/widgets/netman/8021x.ui.h:4
-msgid "_Network name"
-msgstr "_Netzwerkname"
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
+msgstr ""
 
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
-msgid "_Unlock"
-msgstr "_Entsperren"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
-msgid "Automatically unlock this device"
-msgstr "Dieses Gerät automatisch entsperren"
-
-#: ../src/panel/widgets/netman/info.ui.h:1
-msgid "Connection Information"
-msgstr "Verbindungsinformationen"
-
-#: ../src/panel/widgets/netman/info.ui.h:2
+#: ../data/config.ui.h:6
 #, fuzzy
-msgid "_Close"
-msgstr "S_chließen"
+msgid "Remove"
+msgstr "Entfernte IP"
+
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr ""
+
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:10
+msgid "Move right"
+msgstr ""
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:12
+#, fuzzy
+msgid "Configure..."
+msgstr "VPN _konfigurieren …"
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr ""
+
+# SELinux
+#: ../data/lxpanel-modal.ui.h:1
+#, fuzzy
+msgid "label"
+msgstr "Neu markieren"
+
+#: ../data/lxpanel-modal.ui.h:2
+msgid "_Cancel"
+msgstr "A_bbrechen"
+
+#: ../data/lxpanel-modal.ui.h:3
+msgid "_OK"
+msgstr "_OK"
+
+#, fuzzy, c-format
+#~ msgid "Connection successful"
+#~ msgstr "Verbindung fehlgeschlagen"
+
+#, fuzzy, c-format
+#~ msgid "Connection failed - %s"
+#~ msgstr "Verbindung fehlgeschlagen"
+
+#, fuzzy, c-format
+#~ msgid "Disconnection failed - %s"
+#~ msgstr "Trennen schlug fehl"
+
+#, fuzzy
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr ""
+#~ "Verwenden Sie das Netzwerkmenü, um sich mit einem Funknetzwerk zu "
+#~ "verbinden"
+
+#, fuzzy
+#~ msgid "Disconnect..."
+#~ msgstr "Verbindung trennen"
+
+#, fuzzy
+#~ msgid "Connect..."
+#~ msgstr "_Verbinden"
+
+#, fuzzy
+#~ msgid "No Bluetooth adapter found"
+#~ msgstr "Bluetooth-Typ"
+
+#, fuzzy
+#~ msgid "Turn On Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Turn Off Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Add Device..."
+#~ msgstr "Gerät"
+
+#, fuzzy
+#~ msgid "Manage Bluetooth devices"
+#~ msgstr "Ungültiges Bluetooth-Gerät (%s)"
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Manages Bluetooth devices"
+#~ msgstr "Ungültiges Bluetooth-Gerät (%s)"
+
+#~ msgid "ad-hoc"
+#~ msgstr "Ad-hoc"
+
+#~ msgid "secure."
+#~ msgstr "sicher."
+
+#~ msgid "Unknown error"
+#~ msgstr "Unbekannter Fehler"
+
+#~ msgid "Connection failure"
+#~ msgstr "Verbindung fehlgeschlagen"
+
+#~ msgid "Failed to add/activate connection"
+#~ msgstr "Hinzufügen/Aktivierung der Verbindung schlug fehl"
+
+#~ msgid "Device disconnect failed"
+#~ msgstr "Trennen des Gerätes schlug fehl"
+
+#~ msgid "Disconnect failure"
+#~ msgstr "Trennen schlug fehl"
+
+#~ msgid "Connection activation failed"
+#~ msgstr "Aktivierung der Verbindung fehlgeschlagen"
+
+#~ msgid "Don’t show this message again"
+#~ msgstr "Diesen Hinweis nicht mehr anzeigen"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« wurde getrennt, weil die Netzwerkverbindung "
+#~ "getrennt wurde."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil die "
+#~ "Netzwerkverbindung getrennt wurde."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service stopped "
+#~ "unexpectedly."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der VPN-"
+#~ "Dienst unerwartet beendet wurde."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service returned invalid "
+#~ "configuration."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der VPN-"
+#~ "Server keine geeignete Netzwerkkonfiguration lieferte."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the connection attempt timed out."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil die "
+#~ "Netzwerkverbindung eine Zeitüberschreitung verursacht hat."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service did not start in "
+#~ "time."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der VPN-"
+#~ "Dienst nicht in der vorgesehenen Zeit gestartet wurde."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil der Start "
+#~ "des VPN-Dienstes fehlgeschlagen ist."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because there were no valid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil keine "
+#~ "gültigen VPN-Geheimnisse vorliegen."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because of invalid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil VPN-"
+#~ "Geheimnisse ungültig sind."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed."
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden."
+
+#, c-format
+#~ msgid ""
+#~ "VPN connection has been successfully established.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Die VPN-Verbindung wurde erfolgreich eingerichtet.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "VPN connection has been successfully established.\n"
+#~ msgstr "Die VPN-Verbindung wurde erfolgreich eingerichtet.\n"
+
+#~ msgid "VPN Login Message"
+#~ msgstr "VPN-Anmeldemitteilung"
+
+#~ msgid "VPN Connection Failed"
+#~ msgstr "VPN-Verbindung fehlgeschlagen"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "Die VPN-Verbindung »%s« konnte nicht hergestellt werden, weil das Starten "
+#~ "des VPN-Dienstes fehlgeschlagen ist.\n"
+#~ "\n"
+#~ "%s"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "Das Starten der VPN-Verbindung »%s« ist fehlgeschlagen.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "device not ready (firmware missing)"
+#~ msgstr "Gerät ist nicht betriebsbereit (Firmware fehlt)"
+
+#~ msgid "device not ready"
+#~ msgstr "Gerät ist nicht betriebsbereit"
+
+#~ msgid "disconnected"
+#~ msgstr "nicht verbunden"
+
+#~ msgid "Disconnect"
+#~ msgstr "Verbindung trennen"
+
+#~ msgid "device not managed"
+#~ msgstr "Gerät wird nicht verwaltet"
+
+#~ msgid "No network devices available"
+#~ msgstr "Es sind keine Netzwerkgeräte verfügbar"
+
+#, fuzzy
+#~ msgid "_Advanced Options"
+#~ msgstr "Erweiterte Einstellungen für Team"
+
+#~ msgid "_VPN Connections"
+#~ msgstr "_VPN-Verbindungen"
+
+#~ msgid "_Add a VPN connection…"
+#~ msgstr "Eine VPN-Verbindung _hinzufügen …"
+
+#~ msgid "Connection _Information"
+#~ msgstr "Verbindungs_informationen"
+
+#~ msgid "Edit Connections…"
+#~ msgstr "Verbindungen bearbeiten …"
+
+#~ msgid "NetworkManager is not running…"
+#~ msgstr "Der Netzwerk-Manager läuft zur Zeit nicht …"
+
+#, fuzzy
+#~ msgid "Wi-Fi country is not set"
+#~ msgstr "Mein Land ist nicht aufgelistet"
+
+#~ msgid "Networking disabled"
+#~ msgstr "Netzwerke deaktiviert"
+
+#~ msgid "Enable _Networking"
+#~ msgstr "_Netzwerke aktivieren"
+
+#~ msgid "Enable _Wi-Fi"
+#~ msgstr "_Funknetzwerk aktivieren"
+
+#~ msgid "Enable _Mobile Broadband"
+#~ msgstr "_Mobiles Breitband aktivieren"
+
+#~ msgid "_About"
+#~ msgstr "_Info"
+
+#, c-format
+#~ msgid "You are now connected to “%s”."
+#~ msgstr "Sie sind nun mit »%s« verbunden."
+
+#~ msgid "Disconnected"
+#~ msgstr "Verbindung getrennt"
+
+#~ msgid "The network connection has been disconnected."
+#~ msgstr "Die Netzwerkverbindung wurde getrennt."
+
+#, c-format
+#~ msgid "Preparing network connection “%s”…"
+#~ msgstr "Netzwerkverbindung »%s« wird vorbereitet …"
+
+#, c-format
+#~ msgid "User authentication required for network connection “%s”…"
+#~ msgstr ""
+#~ "Benutzerlegitimierung ist erforderlich für Netzwerkverbindung »%s« …"
+
+#, c-format
+#~ msgid "Requesting a network address for “%s”…"
+#~ msgstr "Netzwerkadresse für »%s« wird angefordert …"
+
+#, c-format
+#~ msgid "Network connection “%s” active"
+#~ msgstr "Netzwerkverbindung »%s« ist aktiv"
+
+#, c-format
+#~ msgid "Starting VPN connection “%s”…"
+#~ msgstr "VPN-Verbindung »%s« wird gestartet …"
+
+#, c-format
+#~ msgid "User authentication required for VPN connection “%s”…"
+#~ msgstr "Benutzerlegitimierung ist erforderlich für VPN-Verbindung »%s« …"
+
+#, c-format
+#~ msgid "Requesting a VPN address for “%s”…"
+#~ msgstr "Anfordern einer Netzwerkadresse von VPN-Verbindung »%s« …"
+
+#, c-format
+#~ msgid "VPN connection active"
+#~ msgstr "VPN-Verbindung ist aktiv"
+
+#~ msgid "No network connection"
+#~ msgstr "Keine Netzwerkverbindung"
+
+#~ msgid "Network"
+#~ msgstr "Netzwerk"
+
+#~ msgid "NetworkManager Applet"
+#~ msgstr "Netzwerk-Manager-Applet"
+
+#~ msgid "Wrong PUK code; please contact your provider."
+#~ msgstr "Falscher PUK-Code. Bitte kontaktieren Sie Ihren Dienstanbieter."
+
+#~ msgid "Wrong PIN code; please contact your provider."
+#~ msgstr "Falscher PIN-Code. Bitte kontaktieren Sie Ihren Dienstanbieter."
+
+#~ msgid "Sending unlock code…"
+#~ msgstr "Code zum Entsperren wird gesendet …"
+
+#, c-format
+#~ msgid "Mobile Broadband (%s)"
+#~ msgstr "Mobiles Breitband (%s)"
+
+#~ msgid "Mobile Broadband"
+#~ msgstr "Mobiles Breitband"
+
+#~ msgid "New Mobile Broadband connection…"
+#~ msgstr "Neue mobile Breitbandverbindung …"
+
+#~ msgid "Connection Established"
+#~ msgstr "Verbindung hergestellt"
+
+#~ msgid "You are now connected to the Mobile Broadband network."
+#~ msgstr "Sie sind nun mit dem mobilen Breitbandnetzwerk verbunden."
+
+#~ msgid "Mobile Broadband network."
+#~ msgstr "Mobiles Breitbandnetzwerk."
+
+#~ msgid "You are now registered on the home network."
+#~ msgstr "Sie sind nun im Heimnetzwerk angemeldet."
+
+#~ msgid "You are now registered on a roaming network."
+#~ msgstr "Sie sind nun in einem Roaming-Netzwerk angemeldet."
+
+#~ msgid "You are now connected to the mobile broadband network."
+#~ msgstr "Sie sind nun mit dem mobilen Breitbandnetzwerk verbunden."
+
+#, c-format
+#~ msgid "Preparing mobile broadband connection “%s”…"
+#~ msgstr "Mobile Breitbandverbindung »%s« wird vorbereitet …"
+
+#, c-format
+#~ msgid "Configuring mobile broadband connection “%s”…"
+#~ msgstr "Mobile Breitbandverbindung »%s« wird konfiguriert …"
+
+#, c-format
+#~ msgid "User authentication required for mobile broadband connection “%s”…"
+#~ msgstr ""
+#~ "Benutzerlegitimierung ist erforderlich für mobile Breitbandverbindung "
+#~ "»%s« …"
+
+#, c-format
+#~ msgid "Mobile broadband connection “%s” active"
+#~ msgstr "Mobile Breitbandverbindung »%s« ist aktiv"
+
+#~ msgid "Auto Ethernet"
+#~ msgstr "Auto-Ethernet"
+
+#, c-format
+#~ msgid "Ethernet Networks (%s)"
+#~ msgstr "Ethernet-Netze (%s)"
+
+#, c-format
+#~ msgid "Ethernet Network (%s)"
+#~ msgstr "Ethernet-Netz (%s)"
+
+#~ msgid "Ethernet Networks"
+#~ msgstr "Ethernet-Netze"
+
+#~ msgid "Ethernet Network"
+#~ msgstr "Ethernet-Netz"
+
+#~ msgid "You are now connected to the ethernet network."
+#~ msgstr "Sie sind nun mit dem Ethernet-Netzwerk verbunden."
+
+#, c-format
+#~ msgid "Preparing ethernet network connection “%s”…"
+#~ msgstr "Ethernet-Netzverbindung »%s« wird vorbereitet …"
+
+#, c-format
+#~ msgid "Configuring ethernet network connection “%s”…"
+#~ msgstr "Ethernet-Netzverbindung »%s« wird konfiguriert …"
+
+#, c-format
+#~ msgid "User authentication required for ethernet network connection “%s”…"
+#~ msgstr ""
+#~ "Benutzerlegitimierung ist erforderlich für Ethernet-Netzverbindung »%s« …"
+
+#, c-format
+#~ msgid "Requesting an ethernet network address for “%s”…"
+#~ msgstr "Netzwerkadresse für Ethernet-Netz »%s« wird angefordert …"
+
+#, c-format
+#~ msgid "Ethernet network connection “%s” active"
+#~ msgstr "Ethernet-Netzverbindung »%s« ist aktiv"
+
+#~ msgid "DSL authentication"
+#~ msgstr "DSL-Legitimierung"
+
+#~ msgid "_Connect to Hidden Wi-Fi Network…"
+#~ msgstr "Mit einem _verborgenen Funknetzwerk verbinden …"
+
+#~ msgid "Create _New Wi-Fi Network…"
+#~ msgstr "Neues _Funknetzwerk erstellen …"
+
+#, fuzzy
+#~ msgid "Create Wi-Fi _Hotspot…"
+#~ msgstr "Neues _Funknetzwerk erstellen …"
+
+#~ msgid "(none)"
+#~ msgstr "(keine)"
+
+#~ msgid "Failed to add new connection"
+#~ msgstr "Hinzufügen einer neuen Verbindung schlug fehl"
+
+#~ msgid "Insufficient privileges."
+#~ msgstr "Unzureichende Berechtigungen."
+
+#, fuzzy, c-format
+#~ msgid "Do you want to disconnect from the wireless network '%s'?"
+#~ msgstr "Sie sind nun mit dem Funknetzwerk »%s« verbunden."
+
+#, c-format
+#~ msgid "Wi-Fi Networks (%s)"
+#~ msgstr "Funknetzwerke (%s)"
+
+#, c-format
+#~ msgid "Wi-Fi Network (%s)"
+#~ msgstr "Funknetzwerk (%s)"
+
+#~ msgid "Wi-Fi Network"
+#~ msgid_plural "Wi-Fi Networks"
+#~ msgstr[0] "Funknetzwerk"
+#~ msgstr[1] "Funknetzwerke"
+
+#~ msgid "Wi-Fi is disabled"
+#~ msgstr "Funknetzwerk ist deaktiviert"
+
+#~ msgid "Wi-Fi is disabled by hardware switch"
+#~ msgstr "Funknetzwerk wurde durch Schalter deaktiviert"
+
+#~ msgid "More networks"
+#~ msgstr "Weitere Netzwerke"
+
+#~ msgid "Wi-Fi Networks Available"
+#~ msgstr "Funknetzwerke sind verfügbar"
+
+#~ msgid "Use the network menu to connect to a Wi-Fi network"
+#~ msgstr ""
+#~ "Verwenden Sie das Netzwerkmenü, um sich mit einem Funknetzwerk zu "
+#~ "verbinden"
+
+#, c-format
+#~ msgid "You are now connected to the Wi-Fi network “%s”."
+#~ msgstr "Sie sind nun mit dem Funknetzwerk »%s« verbunden."
+
+#, c-format
+#~ msgid "Preparing Wi-Fi network connection “%s”…"
+#~ msgstr "Funknetzwerkverbindung »%s« wird vorbereitet …"
+
+#, c-format
+#~ msgid "Configuring Wi-Fi network connection “%s”…"
+#~ msgstr "Funknetzwerkverbindung »%s« wird konfiguriert …"
+
+#, c-format
+#~ msgid "User authentication required for Wi-Fi network “%s”…"
+#~ msgstr "Benutzerlegitimierung ist erforderlich für Funknetzwerk »%s« …"
+
+#, c-format
+#~ msgid "Requesting a Wi-Fi network address for “%s”…"
+#~ msgstr "Funknetzwerkadresse für »%s« wird angefordert …"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+#~ msgstr "Funknetzwerkverbindung mit »%s« ist aktiv: %s (%d%%)"
+
+#, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+#~ msgstr "Funknetzwerkverbindung mit »%s« ist aktiv: %s (%d%%)"
+
+#, c-format
+#~ msgid "Wi-Fi network connection “%s” active"
+#~ msgstr "Funknetzwerkverbindung »%s« ist aktiv"
+
+#~ msgid "Error displaying connection information:"
+#~ msgstr "Die Verbindungsinformationen konnten nicht angezeigt werden:"
+
+#~ msgid "LEAP"
+#~ msgstr "LEAP"
+
+#~ msgid "Dynamic WEP"
+#~ msgstr "Dynamisches WEP"
+
+#~ msgid "WPA/WPA2"
+#~ msgstr "WPA/WPA2"
+
+#~ msgid "More addresses"
+#~ msgstr "Weitere Adressen"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "WPA3"
+#~ msgstr "WPA3"
+
+#~ msgctxt "Wi-Fi/Ethernet security"
+#~ msgid "None"
+#~ msgstr "Keine"
+
+#, c-format
+#~ msgid "%u Mb/s"
+#~ msgstr "%u Mb/s"
+
+#~ msgctxt "Speed"
+#~ msgid "Unknown"
+#~ msgstr "Unbekannt"
+
+#~ msgctxt "Address"
+#~ msgid "Unknown"
+#~ msgstr "Unbekannt"
+
+#~ msgid "IP Address"
+#~ msgstr "IP-Adresse"
+
+#~ msgid "Broadcast Address"
+#~ msgstr "Broadcast-Adresse"
+
+#~ msgctxt "Subnet Mask"
+#~ msgid "Unknown"
+#~ msgstr "Unbekannt"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Subnetz-Maske"
+
+#~ msgid "Primary DNS"
+#~ msgstr "Primärer DNS"
+
+#~ msgid "Secondary DNS"
+#~ msgstr "Sekundärer DNS"
+
+#~ msgid "Tertiary DNS"
+#~ msgstr "Tertiärer DNS"
+
+#, c-format
+#~ msgid "Ethernet (%s)"
+#~ msgstr "Ethernet (%s)"
+
+#, c-format
+#~ msgid "802.11 Wi-Fi (%s)"
+#~ msgstr "802.11 Wi-Fi (%s)"
+
+#, c-format
+#~ msgid "GSM (%s)"
+#~ msgstr "GSM (%s)"
+
+#, c-format
+#~ msgid "CDMA (%s)"
+#~ msgstr "CDMA (%s)"
+
+#~ msgid "General"
+#~ msgstr "Allgemein"
+
+#~ msgid "Interface"
+#~ msgstr "Schnittstelle"
+
+#~ msgid "Hardware Address"
+#~ msgstr "Hardware-Adresse"
+
+#~ msgid "Driver"
+#~ msgstr "Treiber"
+
+#~ msgid "Speed"
+#~ msgstr "Geschwindigkeit"
+
+#~ msgid "Security"
+#~ msgstr "Sicherheit"
+
+#~ msgid "IPv4"
+#~ msgstr "IPv4"
+
+#~ msgid "Default Route"
+#~ msgstr "Vorgaberoute"
+
+#~ msgid "IPv6"
+#~ msgstr "IPv6"
+
+#~ msgid "Hotspot"
+#~ msgstr "Hotspot"
+
+#~ msgid "Password"
+#~ msgstr "Passwort"
+
+#~ msgid "VPN Type"
+#~ msgstr "VPN-Typ"
+
+#~ msgid "VPN Gateway"
+#~ msgstr "VPN-Gateway"
+
+#~ msgid "VPN Username"
+#~ msgstr "VPN-Benutzername"
+
+#~ msgid "VPN Banner"
+#~ msgstr "VPN-Banner"
+
+#~ msgid "Base Connection"
+#~ msgstr "Zugordnete Verbindung"
+
+#~ msgid "No valid active connections found!"
+#~ msgstr "Keine aktiven Netzwerkverbindungen gefunden!"
+
+#~ msgid ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "and many other community contributors and translators"
+#~ msgstr ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "und viele andere Mitwirkende und Übersetzer"
+
+#~ msgid ""
+#~ "Notification area applet for managing your network devices and "
+#~ "connections."
+#~ msgstr ""
+#~ "Ein Applet für das Benachrichtigungsfeld, mit dem Sie Ihre Netzwerkgeräte "
+#~ "und Netzwerkverbindungen verwalten können."
+
+#~ msgid "NetworkManager Website"
+#~ msgstr "Netzwerk-Manager-Website"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2016, 2017\n"
+#~ "Christian Kirbach <christian.kirbach@gmail.com>, 2014, 2016, 2017"
+
+#~ msgid ""
+#~ "The NetworkManager Applet could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "Das Netzwerk-Manager-Applet konnte benötigte Ressourcen nicht finden "
+#~ "(Die .ui-Datei wurde nicht gefunden)."
+
+#~ msgid "Missing resources"
+#~ msgstr "Fehlende Ressourcen"
+
+#~ msgid "Mobile broadband network password"
+#~ msgstr "Passwort der mobilen Breitbandverbindung"
+
+#, c-format
+#~ msgid "A password is required to connect to “%s”."
+#~ msgstr "Es wird ein Passwort benötigt, um sich mit »%s« zu verbinden."
+
+#~ msgid "Password:"
+#~ msgstr "Passwort:"
+
+#~ msgid "SIM PIN unlock required"
+#~ msgstr "Entsperren der SIM-Karte mittels PIN-Code erforderlich"
+
+#~ msgid "SIM PIN Unlock Required"
+#~ msgstr "Entsperren der SIM-Karte mittels PIN-Code erforderlich"
+
+#, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PIN code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "Das mobile Breitband-Gerät »%s« erfordert vor Verwendung eine SIM-PIN-"
+#~ "Nummer."
+
+#~ msgid "PIN code:"
+#~ msgstr "PIN-Code:"
+
+#~ msgid "Show PIN code"
+#~ msgstr "PIN-Code anzeigen"
+
+#~ msgid "SIM PUK unlock required"
+#~ msgstr "Entsperren der SIM-Karte mittels PUK-Code erforderlich"
+
+#~ msgid "SIM PUK Unlock Required"
+#~ msgstr "Entsperren der SIM-Karte mittels PUK-Code erforderlich"
+
+#, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PUK code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "Das mobile Breitband-Gerät »%s« erfordert vor Verwendung einen SIM-PUK-"
+#~ "Code."
+
+#~ msgid "PUK code:"
+#~ msgstr "PUK-Code:"
+
+#~ msgid "New PIN code:"
+#~ msgstr "Neuer PIN-Code:"
+
+#~ msgid "Re-enter new PIN code:"
+#~ msgstr "Geben Sie den neuen PIN-Code erneut ein:"
+
+#~ msgid "Show PIN/PUK codes"
+#~ msgstr "PIN/PUK-Codes anzeigen"
+
+#~ msgid "Connection had no VPN setting"
+#~ msgstr "Die Verbindung hat keine VPN-Einstellungen"
+
+#, c-format
+#~ msgid "Failed to write connection to VPN UI: %s (%d)"
+#~ msgstr ""
+#~ "Verbindungsmeldung an die VPN Benutzeroberfläche fehlgeschlagen: %s (%d)"
+
+#~ msgid "Failed to write connection to VPN UI: incomplete write"
+#~ msgstr ""
+#~ "Fehler beim Schreiben von Verbindung zum VPN UI: unvollständiges Schreiben"
+
+#~ msgid "802.1X authentication"
+#~ msgstr "802.1X-Legitimierung"
+
+#~ msgid "CDMA"
+#~ msgstr "CDMA"
+
+#~ msgid "EVDO"
+#~ msgstr "EVDO"
+
+#~ msgid "GSM"
+#~ msgstr "GSM"
+
+#~ msgid "GPRS"
+#~ msgstr "GPRS"
+
+#~ msgid "EDGE"
+#~ msgstr "EDGE"
+
+#~ msgid "UMTS"
+#~ msgstr "UMTS"
+
+#~ msgid "HSDPA"
+#~ msgstr "HSDPA"
+
+#~ msgid "HSUPA"
+#~ msgstr "HSUPA"
+
+#~ msgid "HSPA"
+#~ msgstr "HSPA"
+
+#~ msgid "HSPA+"
+#~ msgstr "HSPA+"
+
+#~ msgid "LTE"
+#~ msgstr "LTE"
+
+#~ msgid "not enabled"
+#~ msgstr "nicht aktiviert"
+
+#~ msgid "not registered"
+#~ msgstr "nicht angemeldet"
+
+#, c-format
+#~ msgid "Home network (%s)"
+#~ msgstr "Heimnetzwerk (%s)"
+
+#, c-format
+#~ msgid "Home network"
+#~ msgstr "Heimnetzwerk"
+
+#~ msgid "searching"
+#~ msgstr "Suche läuft"
+
+#~ msgid "registration denied"
+#~ msgstr "Registrierung abgelehnt"
+
+#, c-format
+#~ msgid "%s (%s roaming)"
+#~ msgstr "%s (%s-Roaming)"
+
+#, c-format
+#~ msgid "%s (roaming)"
+#~ msgstr "%s (Roaming)"
+
+#, c-format
+#~ msgid "Roaming network (%s)"
+#~ msgstr "Roaming-Netzwerk (%s)"
+
+#, c-format
+#~ msgid "Roaming network"
+#~ msgstr "Roaming-Netzwerk"
+
+#, c-format
+#~ msgid "PIN code for SIM card “%s” on “%s”"
+#~ msgstr "PIN-Code für SIM-Karte »%s« auf »%s«"
+
+#~ msgid "PIN code required"
+#~ msgstr "PIN-Code erforderlich"
+
+#~ msgid "PIN code is needed for the mobile broadband device"
+#~ msgstr "Für das mobile Breitbandgerät ist ein PIN-Code erforderlich"
+
+#, c-format
+#~ msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+#~ msgstr "Mobile Breitbandverbindung »%s« ist aktiv: (%d%%%s%s)"
+
+#~ msgid "roaming"
+#~ msgstr "Roaming"
+
+#, fuzzy
+#~ msgid "Network Manager"
+#~ msgstr "NetworkManager"
+
+#, fuzzy
+#~ msgid "Controller for Network Manager"
+#~ msgstr "NetworkManager"
+
+#, c-format
+#~ msgid "object class '%s' has no property named '%s'"
+#~ msgstr "Objektklasse »%s« hat keine Eigenschaft namens »%s«"
+
+#, c-format
+#~ msgid "property '%s' of object class '%s' is not writable"
+#~ msgstr "Eigenschaft »%s« von Objektklasse »%s« ist nicht schreibbar"
+
+#, c-format
+#~ msgid ""
+#~ "construct property \"%s\" for object '%s' can't be set after construction"
+#~ msgstr ""
+#~ "Konstruktor-Eigenschaft »%s« für Objekt »%s« kann nicht nach der "
+#~ "Konstruktion gesetzt werden"
+
+#, c-format
+#~ msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+#~ msgstr ""
+#~ "»%s::%s« ist ein ungültiger Eigenschaftsname. »%s« ist kein GObject-"
+#~ "Untertyp"
+
+#, c-format
+#~ msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+#~ msgstr ""
+#~ "Eigenschaft »%s« des Typs »%s« von Wert des Typs »%s« kann nicht gesetzt "
+#~ "werden"
+
+#, c-format
+#~ msgid ""
+#~ "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+#~ "type '%s'"
+#~ msgstr ""
+#~ "Wert »%s« des Typs »%s« ist ungültig oder nicht im Wertebereich für "
+#~ "Eigenschaft »%s« des Typs »%s«"
+
+#, c-format
+#~ msgid "%s connection"
+#~ msgstr "Verbindung mit %s"
+
+#~ msgid "PEM certificates (*.pem, *.crt, *.cer)"
+#~ msgstr "PEM-Zertifikate (*.pem, *.crt, *.cer)"
+
+#~ msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+#~ msgstr ""
+#~ "DER-, PEM-, oder PKCS#12-Privatschlüssel (*.der, *.pem, *.p12, *.key)"
+
+#~ msgid "Run"
+#~ msgstr "Ausführen"
+
+#~ msgid "Restart"
+#~ msgstr "Neu starten"
+
+#~ msgid "Logout"
+#~ msgstr "Abmelden"
+
+#~ msgid "Properties"
+#~ msgstr "Eigenschaften"
+
+#~ msgid "Menu"
+#~ msgstr "Menü"
+
+#~ msgid "Icon"
+#~ msgstr "Symbol"
+
+#, fuzzy
+#~ msgid "Searchable Application Menu"
+#~ msgstr "Anwendungsmenü"
+
+#, fuzzy
+#~ msgid "No network connection - cannot install updates."
+#~ msgstr "Keine Netzwerkverbindung"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth devices..."
+#~ msgstr "Ungültiges Bluetooth-Gerät (%s)"
+
+#, fuzzy, c-format
+#~ msgid "Bluetooth %s device not found"
+#~ msgstr "Bluetooth-Verbindung %d"
+
+#, fuzzy, c-format
+#~ msgid "Failed to connect to Bluetooth device - %s"
+#~ msgstr "Ungültiges Bluetooth-Gerät (%s)"
+
+#, fuzzy, c-format
+#~ msgid "Connecting Bluetooth device '%s' as input..."
+#~ msgstr "Ungültiges Bluetooth-Gerät (%s)"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth device..."
+#~ msgstr "Ungültiges Bluetooth-Gerät (%s)"
+
+#, fuzzy
+#~ msgid "Device Profiles"
+#~ msgstr "Trennen des Gerätes schlug fehl"
+
+#, fuzzy
+#~ msgid "Device not connected"
+#~ msgstr "Trennen des Gerätes schlug fehl"
+
+#, fuzzy
+#~ msgid "Volume control"
+#~ msgstr "Flusskontrolle"
+
+#, fuzzy
+#~ msgid "Available Updates"
+#~ msgstr "Verfügbar"
+
+#, fuzzy
+#~ msgid "Add New Device"
+#~ msgstr "Gerät"
+
+#, fuzzy
+#~ msgid "Searching for Bluetooth devices..."
+#~ msgstr "Ungültiges Bluetooth-Gerät (%s)"
+
+#, fuzzy
+#~ msgid "C_onnect"
+#~ msgstr "_Verbindung"
+
+#~ msgid "_Network name"
+#~ msgstr "_Netzwerkname"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Dieses Gerät automatisch entsperren"
+
+#, fuzzy
+#~ msgid "_Close"
+#~ msgstr "S_chließen"
 
 #~ msgid "Manage your network connections"
 #~ msgstr "Verwaltung der Netzwerkverbindungen"
@@ -2343,9 +1901,6 @@ msgstr "S_chließen"
 #~ msgid "Local IP"
 #~ msgstr "Lokale IP"
 
-#~ msgid "Remote IP"
-#~ msgstr "Entfernte IP"
-
 #~ msgid "Input key"
 #~ msgstr "Eingabeschlüssel"
 
@@ -2824,9 +2379,6 @@ msgstr "S_chließen"
 #~ msgid "The link watcher to be used."
 #~ msgstr "Die zu verwendende Verbindungsüberwachung."
 
-#~ msgid "Link Watcher"
-#~ msgstr "Verbindungsüberwachung"
-
 #~ msgid "Im_port team configuration from a file…"
 #~ msgstr "Team-Konfiguration aus Datei _importieren …"
 
@@ -2881,9 +2433,6 @@ msgstr "S_chließen"
 #~ msgid "Any L3 protocol"
 #~ msgstr "Jedes L3-Protokoll"
 
-#~ msgid "TCP"
-#~ msgstr "TCP"
-
 #~ msgid "UDP"
 #~ msgstr "UDP"
 
@@ -2892,9 +2441,6 @@ msgstr "S_chließen"
 
 #~ msgid "Any L4 protocol"
 #~ msgstr "Jedes L4-Protokoll"
-
-#~ msgid "_Peer notification count"
-#~ msgstr "Benachrichtigungs_anzahl der Gegenstelle"
 
 #~ msgid "Peer _notification interval"
 #~ msgstr "Benachrichtigungs_intervall der Gegenstelle"
@@ -2953,9 +2499,6 @@ msgstr "S_chließen"
 #~ "Die Option gibt an, mit welcher Taktung der Linkpartner gebeten wird, "
 #~ "LACPDU-Pakete zu senden. Falls aktiviert, wird ein Paket pro Sekunde "
 #~ "gesendet, ansonsten eines alle 30 Sekunden."
-
-#~ msgid "_System priority"
-#~ msgstr "_Systempriorität"
 
 #~ msgid "_Minimum ports"
 #~ msgstr "_Minimale Ports"
@@ -4481,9 +4024,6 @@ msgstr "S_chließen"
 
 #~ msgid "Select"
 #~ msgstr "Auswählen"
-
-#~ msgid "Cancel"
-#~ msgstr "Abbrechen"
 
 #~ msgid "Select from file…"
 #~ msgstr "Aus _Datei auswählen …"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2025-01-17 10:28+0000\n"
 "PO-Revision-Date: 2017-07-19 16:43+0000\n"
 "Last-Translator: Juhani Numminen <juhaninumminen0@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,1679 +20,1215 @@ msgstr ""
 "X-Pootle-Path: /fi/lxpanel/po/fi.po\n"
 "X-POOTLE-MTIME: 1500482631.038653\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
-msgid "Pairing request sent to '%s' - waiting for response..."
+msgid "Spacer"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#: ../src/panel/configure.c:116 ../src/panel/configure.c:255
+#: ../src/panel/configure.c:580
 #, c-format
-msgid "Pairing failed - %s"
+msgid "Spacer (%d)"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#: ../src/panel/configure.c:137 ../src/panel/configure.c:158
+#: ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Pairing successful - connecting..."
-msgstr "Valmistellaan tiimiyhteyttä  ”%s”…"
+msgid "<Unknown>"
+msgstr "Tuntematon"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#: ../src/panel/configure.c:424
+#, fuzzy
+msgid "Cancel"
+msgstr "_Peru"
+
+#: ../src/panel/configure.c:424
+#, fuzzy
+msgid "OK"
+msgstr "_OK"
+
+#: ../src/panel/configure.c:445 ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Connection successful"
-msgstr "Yhteysvirhe"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
-msgid "Connection failed - %s"
-msgstr "Yhteysvirhe"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, c-format
-msgid "Please enter code '%s' on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, c-format
-msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, c-format
-msgid "Please enter PIN code shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, c-format
-msgid "Please enter passcode shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, c-format
-msgid "Waiting for response from Bluetooth device..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, c-format
-msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, c-format
-msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, c-format
-msgid ""
-"Pairing successful - this device has no services which can be used with "
-"Raspberry Pi"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, c-format
-msgid "Do you want to unpair '%s'?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, c-format
-msgid "Removing pairing with '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
-#, c-format
-msgid "Removal failed - %s"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
-msgid "Connecting to '%s'..."
-msgstr "Tehdään tiimiverkkoyhteyden ”%s” asetuksia…"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
-msgid "Disconnecting from '%s'..."
-msgstr "Valmistellaan sidottua yhteyttä  ”%s”…"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
-msgid "Disconnection failed - %s"
-msgstr "Katkaisuvirhe"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-#, fuzzy
-msgid "Use the audio menu to connect to this device"
-msgstr "Käytä verkkovalikkoa yhdistääksesi wifi-verkkoon"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
-msgid "No usable services on this device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-#, fuzzy
-msgid "Disconnect..."
-msgstr "Katkaise yhteys"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-#, fuzzy
-msgid "Connect..."
-msgstr "_Yhdistä"
-
-#. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-msgid "Remove..."
-msgstr ""
-
-#. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-#, fuzzy
-msgid "No Bluetooth adapter found"
-msgstr "Bluetooth-tyyppi"
-
-#. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-#, fuzzy
-msgid "Turn On Bluetooth"
-msgstr "Bluetooth"
-
-#. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-#, fuzzy
-msgid "Turn Off Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
-msgid "Stop Discoverable"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
-msgid "Make Discoverable"
-msgstr ""
-
-#. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-#, fuzzy
-msgid "Add Device..."
-msgstr "laite"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
-#, fuzzy
-msgid "Manage Bluetooth devices"
-msgstr "virheellinen Bluetooth-laite (%s)"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
-#, fuzzy
-msgid "Manages Bluetooth devices"
-msgstr "virheellinen Bluetooth-laite (%s)"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:171
-msgid ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:199
-#, c-format
-msgid ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:205
-#, fuzzy, c-format
-msgid ""
-"Failed to eject %s\n"
-"%s"
-msgstr "PAN-yhteyden luominen epäonnistui: %s"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:402
-msgid "Select a drive in menu to eject safely"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:453
-msgid "Hide icon when no devices"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:462
-msgid "Ejects mounted drives"
-msgstr ""
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:77
-msgid "ad-hoc"
-msgstr "ad-hoc"
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:82
-msgid "secure."
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
-msgid "Failed to activate connection"
-msgstr "Yhteyden aktivointi epäonnistui"
-
-#: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
-msgid "Unknown error"
-msgstr "Tuntematon virhe"
-
-#: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
-msgid "Connection failure"
-msgstr "Yhteysvirhe"
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn Off Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn On Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:227
-#, c-format
-msgid "IP : %s"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:781
-msgid "Failed to add/activate connection"
-msgstr "Yhteyden lisäys/aktivointi epäonnistui"
-
-#: ../src/panel/widgets/netman/applet.c:835
-msgid "Device disconnect failed"
-msgstr "Laitteen katkaisu epäonnistui"
-
-#: ../src/panel/widgets/netman/applet.c:840
-msgid "Disconnect failure"
-msgstr "Katkaisuvirhe"
-
-#: ../src/panel/widgets/netman/applet.c:870
-msgid "Connection activation failed"
-msgstr "Yhteyden aktivointi epäonnistui"
-
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
-msgid "Don’t show this message again"
-msgstr "Älä näytä tätä uudestaan"
-
-#: ../src/panel/widgets/netman/applet.c:1310
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” disconnected because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” katkesi, koska verkkoyhteys katkaistiin."
-
-#: ../src/panel/widgets/netman/applet.c:1312
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska verkkoyhteys katkaistiin."
-
-#: ../src/panel/widgets/netman/applet.c:1314
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska VPN-palvelu pysähtyi odottamatta."
-
-#: ../src/panel/widgets/netman/applet.c:1316
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service returned invalid "
-"configuration."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska VPN-palvelulta saatiin virheellinen "
-"asetusmäärittely."
-
-#: ../src/panel/widgets/netman/applet.c:1318
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the connection attempt timed out."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska yhteysyritys aikakatkaistiin."
-
-#: ../src/panel/widgets/netman/applet.c:1320
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service did not start in time."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska VPN-palvelu ei käynnistynyt sallitussa "
-"ajassa."
-
-#: ../src/panel/widgets/netman/applet.c:1322
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska VPN-palvelua ei voitu käynnistää."
-
-#: ../src/panel/widgets/netman/applet.c:1324
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because there were no valid VPN secrets."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska kelvollisia VPN-salaisuuksia ei löytynyt."
-
-#: ../src/panel/widgets/netman/applet.c:1326
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because of invalid VPN secrets."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui virheellisten VPN-salaisuuksien takia."
-
-#: ../src/panel/widgets/netman/applet.c:1331
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed."
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui."
-
-#: ../src/panel/widgets/netman/applet.c:1358
-#, c-format
-msgid ""
-"VPN connection has been successfully established.\n"
-"\n"
-"%s\n"
-msgstr ""
-"VPN-yhteys on muodostettu onnistuneesti.\n"
-"\n"
-"%s\n"
-
-#: ../src/panel/widgets/netman/applet.c:1360
-msgid "VPN connection has been successfully established.\n"
-msgstr "VPN-yhteys on muodostettu onnistuneesti.\n"
-
-#: ../src/panel/widgets/netman/applet.c:1362
-msgid "VPN Login Message"
-msgstr "VPN-yhteyden kirjautumisviesti"
-
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
-msgid "VPN Connection Failed"
-msgstr "VPN-yhteys epäonnistui"
-
-#: ../src/panel/widgets/netman/applet.c:1414
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"VPN-yhteys “%s” epäonnistui, koska VPN-palvelu ei käynnistynyt.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1417
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"VPN-yhteyden “%s” käynnistäminen epäonnistui.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1741
-msgid "device not ready (firmware missing)"
-msgstr "laite ei ole valmiina"
-
-#: ../src/panel/widgets/netman/applet.c:1743
-msgid "device not ready"
-msgstr "laite ei valmis"
-
-#. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
-msgid "disconnected"
-msgstr "katkaistu"
-
-#: ../src/panel/widgets/netman/applet.c:1769
-msgid "Disconnect"
-msgstr "Katkaise yhteys"
-
-#: ../src/panel/widgets/netman/applet.c:1783
-msgid "device not managed"
-msgstr "laitetta ei hallita"
-
-#: ../src/panel/widgets/netman/applet.c:1864
-msgid "No network devices available"
-msgstr "Verkkolaitteita ei löytynyt"
-
-#: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
-msgid "_Advanced Options"
-msgstr "Tiimin lisäasetukset"
-
-#: ../src/panel/widgets/netman/applet.c:1919
-msgid "_VPN Connections"
-msgstr "_VPN-yhteydet"
-
-#: ../src/panel/widgets/netman/applet.c:1973
-msgid "_Configure VPN…"
+msgid "Configure %s"
 msgstr "_Määritä VPN…"
 
-#: ../src/panel/widgets/netman/applet.c:1977
-msgid "_Add a VPN connection…"
-msgstr "_Lisää VPN-yhteys…"
-
-#. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection _Information"
-msgstr "Tietoja _yhteydestä"
-
-#. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
-msgid "Edit Connections…"
-msgstr "Muokkaa yhteyksiä…"
-
-#: ../src/panel/widgets/netman/applet.c:2112
-msgid "NetworkManager is not running…"
-msgstr "NetworkManager ei ole käynnissä…"
-
-#: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
-msgid "Wi-Fi country is not set"
-msgstr "Maani ei ole luettelossa"
-
-#: ../src/panel/widgets/netman/applet.c:2119
-msgid "Click here to set Wi-Fi country"
+#: ../src/panel/configure.c:814
+msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
-msgid "Networking disabled"
-msgstr "Verkko ei ole käytössä"
-
-#. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
-msgid "Enable _Networking"
-msgstr "Ota _verkko käyttöön"
-
-#. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable _Wi-Fi"
-msgstr "Ota _wifi käyttöön"
-
-#. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
-msgid "Enable _Mobile Broadband"
-msgstr "Ota _mobiililaajakaista käyttöön"
-
-#. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable N_otifications"
-msgstr "Ota ilm_oitukset käyttöön"
-
-#: ../src/panel/widgets/netman/applet.c:2415
-msgid "_About"
-msgstr "_Tietoja"
-
-#: ../src/panel/widgets/netman/applet.c:2736
-#, c-format
-msgid "You are now connected to “%s”."
-msgstr "Yhteys verkkoon “%s” on nyt muodostettu."
-
-#: ../src/panel/widgets/netman/applet.c:2776
-msgid "Disconnected"
-msgstr "Yhteys katkaistu"
-
-#: ../src/panel/widgets/netman/applet.c:2777
-msgid "The network connection has been disconnected."
-msgstr "Verkkoyhteys on nyt katkaistu."
-
-#: ../src/panel/widgets/netman/applet.c:3079
-#, c-format
-msgid "Preparing network connection “%s”…"
-msgstr "Valmistellaan verkkoyhteyttä “%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3082
-#, c-format
-msgid "User authentication required for network connection “%s”…"
-msgstr "Käyttäjätunnistautuminen vaaditaan verkkoyhteydelle “%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3085
-#: ../src/panel/widgets/netman/applet-device-bt.c:113
-#: ../src/panel/widgets/netman/mobile-helpers.c:605
-#, c-format
-msgid "Requesting a network address for “%s”…"
-msgstr "Pyydetään verkko-osoitetta verkosta “%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3088
-#, c-format
-msgid "Network connection “%s” active"
-msgstr "Verkkoyhteys “%s” on aktiivinen"
-
-#: ../src/panel/widgets/netman/applet.c:3165
-#, c-format
-msgid "Starting VPN connection “%s”…"
-msgstr "Käynnistetään VPN-yhteyttä “%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3168
-#, c-format
-msgid "User authentication required for VPN connection “%s”…"
-msgstr "Käyttäjätunnistautuminen vaaditaan VPN-yhteydelle “%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3171
-#, c-format
-msgid "Requesting a VPN address for “%s”…"
-msgstr "Pyydetään VPN-osoitetta yhteydelle “%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3174
-#, c-format
-msgid "VPN connection active"
-msgstr "VPN-yhteys on aktiivinen"
-
-#: ../src/panel/widgets/netman/applet.c:3226
-msgid "No network connection"
-msgstr "Ei verkkoyhteyttä"
-
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "Verkko"
-
-#: ../src/panel/widgets/netman/applet.c:3896
-msgid "NetworkManager Applet"
-msgstr "Verkon hallinta -sovelma"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:147
-msgid "Wrong PUK code; please contact your provider."
-msgstr "Väärä PUK-koodi. Ota yhteys palveluntarjoajaasi."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:189
-msgid "Wrong PIN code; please contact your provider."
-msgstr "Väärä PIN-koodi. Ota yhteys palveluntarjoajaasi."
-
-#. Start the spinner to show the progress of the unlock
-#: ../src/panel/widgets/netman/applet-device-broadband.c:240
-msgid "Sending unlock code…"
-msgstr "Lähetetään lukituksen avauskoodia…"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:725
-#: ../src/panel/widgets/netman/applet-dialogs.c:532
-#, c-format
-msgid "Mobile Broadband (%s)"
-msgstr "Mobiililaajakaista (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:727
-msgid "Mobile Broadband"
-msgstr "Mobiililaajakaista"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+#: ../src/panel/configure.c:815
 msgid "Available"
 msgstr "Saatavilla"
 
-#. Default connection item
-#: ../src/panel/widgets/netman/applet-device-broadband.c:793
-msgid "New Mobile Broadband connection…"
-msgstr "Uusi mobiililaajakaistayhteys…"
+#: ../src/panel/configure.c:816
+msgid "Right Side"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-broadband.c:809
-#: ../src/panel/widgets/netman/applet-device-bt.c:75
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
-msgid "Connection Established"
-msgstr "Yhteys muodostettu"
+#: ../src/panel/panel.cpp:235
+msgid "Add / Remove Plugins..."
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-broadband.c:810
-msgid "You are now connected to the Mobile Broadband network."
-msgstr "Yhteys mobiililaajakaistaan on nyt muodostettu."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:950
-#: ../src/panel/widgets/netman/applet-device-broadband.c:956
-msgid "Mobile Broadband network."
-msgstr "Mobiililaajakaistaverkko."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:951
-msgid "You are now registered on the home network."
-msgstr "Olet nyt rekisteröitynyt kotiverkkoon."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:957
-msgid "You are now registered on a roaming network."
-msgstr "Olet nyt rekisteröitynyt vierailuverkkoon."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:76
-msgid "You are now connected to the mobile broadband network."
-msgstr "Yhteys mobiililaajakaistaan on nyt muodostettu."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:104
-#: ../src/panel/widgets/netman/mobile-helpers.c:596
-#, c-format
-msgid "Preparing mobile broadband connection “%s”…"
-msgstr "Valmistellaan mobiililaajakaistayhteyttä “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:107
-#: ../src/panel/widgets/netman/mobile-helpers.c:599
-#, c-format
-msgid "Configuring mobile broadband connection “%s”…"
-msgstr "Tehdään mobiililaajakaistayhteyden “%s” asetuksia…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:110
-#: ../src/panel/widgets/netman/mobile-helpers.c:602
-#, c-format
-msgid "User authentication required for mobile broadband connection “%s”…"
-msgstr "Käyttäjätunnistautuminen vaaditaan mobiililaajakaistayhteydelle “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:117
-#: ../src/panel/widgets/netman/mobile-helpers.c:624
-#, c-format
-msgid "Mobile broadband connection “%s” active"
-msgstr "Mobiililaajakaistayhteys “%s” on aktiivinen"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
-msgid "Auto Ethernet"
-msgstr "Automaattinen Ethernet"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
-#, c-format
-msgid "Ethernet Networks (%s)"
-msgstr "Ethernet-verkot (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
-#, c-format
-msgid "Ethernet Network (%s)"
-msgstr "Ethernet-verkko (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
-msgid "Ethernet Networks"
-msgstr "Ethernet-verkot"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
-msgid "Ethernet Network"
-msgstr "Ethernet-verkko"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
-msgid "You are now connected to the ethernet network."
-msgstr "Yhteys ethernet-verkkoon on nyt muodostettu."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
-#, c-format
-msgid "Preparing ethernet network connection “%s”…"
-msgstr "Valmistellaan ethernet-verkkoyhteyttä “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
-#, c-format
-msgid "Configuring ethernet network connection “%s”…"
-msgstr "Tehdään ethernet-verkkoyhteyden “%s” asetuksia…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
-#, c-format
-msgid "User authentication required for ethernet network connection “%s”…"
-msgstr "Käyttäjätunnistautuminen vaaditaan ethernet-verkolle “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
-#, c-format
-msgid "Requesting an ethernet network address for “%s”…"
-msgstr "Pyydetään verkko-osoitetta ethernet-verkosta “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
-#, c-format
-msgid "Ethernet network connection “%s” active"
-msgstr "Ethernet-verkkoyhteys “%s” on aktiivinen"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
-msgid "DSL authentication"
-msgstr "DSL-todentaminen"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:1190
-#: ../src/panel/widgets/netman/mobile-helpers.c:455
-#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
-msgid "_Cancel"
-msgstr "_Peru"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:1191
-#: ../src/panel/widgets/netman/mobile-helpers.c:456
-#: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
-#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
-msgid "_OK"
-msgstr "_OK"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:208
-msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "Yhdistä _piilotettuun wifi-verkkoon…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
-msgid "Create _New Wi-Fi Network…"
-msgstr "Luo _uusi wifi-verkko…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#: ../src/panel/panel.cpp:239
 #, fuzzy
-msgid "Create Wi-Fi _Hotspot…"
-msgstr "Luo _uusi wifi-verkko…"
+msgid "Configure Plugin..."
+msgstr "_Määritä VPN…"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
-msgid "(none)"
-msgstr "(ei mitään)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
-msgid "Failed to add new connection"
-msgstr "Uuden yhteyden lisäys epäonnistui"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
-msgid "Insufficient privileges."
-msgstr "Käyttöoikeudet eivät riitä."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
-msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "Yhteys tiimiverkkoon on nyt muodostettu."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
-#, c-format
-msgid "Wi-Fi Networks (%s)"
-msgstr "Wifi-verkot (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
-#, c-format
-msgid "Wi-Fi Network (%s)"
-msgstr "Wifi-verkko (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
-msgid "Wi-Fi Network"
-msgid_plural "Wi-Fi Networks"
-msgstr[0] "Wifi-verkko"
-msgstr[1] "Wifi-verkot"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
-msgid "Wi-Fi is disabled"
-msgstr "Wifi ei ole käytössä"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
-msgid "Wi-Fi is disabled by hardware switch"
-msgstr "Wifi on kytketty pois käytöstä laitteessa olevasta painikkeesta"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
-msgid "More networks"
-msgstr "Lisää verkkoja"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
-msgid "Wi-Fi Networks Available"
-msgstr "Wifi-verkkoja saatavilla"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
-msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr "Käytä verkkovalikkoa yhdistääksesi wifi-verkkoon"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
-#, c-format
-msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "Yhteys wifi-verkkoon “%s” on nyt muodostettu."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
-#, c-format
-msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "Valmistellaan wifi-verkkoyhteyttä “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
-#, c-format
-msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "Tehdään wifi-verkkoyhteyden “%s” asetuksia…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
-#, c-format
-msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr "Käyttäjätunnistautuminen vaaditaan wifi-verkkoon “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
-#, c-format
-msgid "Requesting a Wi-Fi network address for “%s”…"
-msgstr "Pyydetään verkko-osoitetta wifi-verkosta “%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "Wifi-verkkoyhteys “%s” on aktiivinen: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
-#, c-format
-msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "Wifi-verkkoyhteys “%s” on aktiivinen: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
-#, c-format
-msgid "Wi-Fi network connection “%s” active"
-msgstr "Wifi-verkkoyhteys “%s” on aktiivinen"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:29
-msgid "Error displaying connection information:"
-msgstr "Virhe näytettäessä yhteyden tietoja:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:61
-msgid "LEAP"
-msgstr "LEAP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:63
-msgid "Dynamic WEP"
-msgstr "Dynaaminen WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:65
-#: ../src/panel/widgets/netman/applet-dialogs.c:237
-#: ../src/panel/widgets/netman/applet-dialogs.c:239
-msgid "WPA/WPA2"
-msgstr "WPA/WPA2"
-
-#. Create the expander
-#: ../src/panel/widgets/netman/applet-dialogs.c:174
-msgid "More addresses"
-msgstr "Lisää osoitteita"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:235
-msgid "WEP"
-msgstr "WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:241
-msgid "WPA3"
-msgstr "WPA3"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:245
-#: ../src/panel/widgets/netman/applet-dialogs.c:254
-msgctxt "Wi-Fi/Ethernet security"
-msgid "None"
-msgstr "Ei mitään"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:324
-#: ../src/panel/widgets/netman/applet-dialogs.c:597
-#, c-format
-msgid "%u Mb/s"
-msgstr "%u Mb/s"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:326
-#: ../src/panel/widgets/netman/applet-dialogs.c:599
-msgctxt "Speed"
-msgid "Unknown"
-msgstr "Tuntematon"
-
-#. Address
-#: ../src/panel/widgets/netman/applet-dialogs.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:363
-msgctxt "Address"
-msgid "Unknown"
-msgstr "Tuntematon"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:415
-msgid "IP Address"
-msgstr "IP-osoite"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:364
-msgid "Broadcast Address"
-msgstr "Yleisosoite"
-
-#. Prefix
-#: ../src/panel/widgets/netman/applet-dialogs.c:376
-msgctxt "Subnet Mask"
-msgid "Unknown"
-msgstr "Tuntematon"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:377
-msgid "Subnet Mask"
-msgstr "Aliverkkopeite"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Primary DNS"
-msgstr "Ensisijainen DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Secondary DNS"
-msgstr "Toissijainen DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Tertiary DNS"
-msgstr "Kolmas DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:518
-#, c-format
-msgid "Ethernet (%s)"
-msgstr "Ethernet (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:521
-#, c-format
-msgid "802.11 Wi-Fi (%s)"
-msgstr "802.11 Wi-Fi (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:528
-#, c-format
-msgid "GSM (%s)"
-msgstr "GSM (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:530
-#, c-format
-msgid "CDMA (%s)"
-msgstr "CDMA (%s)"
-
-#. --- General ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:538
-#: ../src/panel/widgets/netman/applet-dialogs.c:872
-msgid "General"
-msgstr "Yleiset"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:541
-msgid "Interface"
-msgstr "Verkkolaite"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:556
-msgid "Hardware Address"
-msgstr "Fyysinen osoite"
-
-#. Driver
-#: ../src/panel/widgets/netman/applet-dialogs.c:569
-msgid "Driver"
-msgstr "Ajuri"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:602
-msgid "Speed"
-msgstr "Nopeus"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:615
-msgid "Security"
-msgstr "Tietoturva"
-
-#. --- IPv4 ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:640
-#: ../src/panel/widgets/netman/applet-dialogs.c:902
-msgid "IPv4"
-msgstr "IPv4"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:659
-#: ../src/panel/widgets/netman/applet-dialogs.c:707
-msgid "Default Route"
-msgstr "Oletusyhdyskäytävä"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:687
-#: ../src/panel/widgets/netman/applet-dialogs.c:929
-msgid "IPv6"
-msgstr "IPv6"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:728
-msgid "Hotspot"
-msgstr "Yhteyspiste"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:746
-msgid "Password"
-msgstr "Salasana"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:876
-msgid "VPN Type"
-msgstr "VPN-tyyppi"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:881
-msgid "VPN Gateway"
-msgstr "VPN-yhdyskäytävä"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:885
-msgid "VPN Username"
-msgstr "VPN-käyttäjänimi"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:889
-msgid "VPN Banner"
-msgstr "VPN-selite"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:893
-msgid "Base Connection"
-msgstr "Yhteys"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:894
-msgid "Unknown"
-msgstr "Tuntematon"
-
-#. Shouldn't really happen but ...
-#: ../src/panel/widgets/netman/applet-dialogs.c:1091
-msgid "No valid active connections found!"
-msgstr "Toimivia aktiivisia yhteyksiä ei löytynyt!"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1139
-msgid ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"and many other community contributors and translators"
-msgstr ""
-"Tekijänoikeus © 2004-2017 Red Hat, Inc.\n"
-"Tekijänoikeus © 2005-2008 Novell, Inc.\n"
-"ja monet muut kehittäjät sekä kääntäjät"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1142
-msgid ""
-"Notification area applet for managing your network devices and connections."
-msgstr "Ilmoitusalueen sovelma verkkolaitteiden ja -yhteyksien hallintaan."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1144
-msgid "NetworkManager Website"
-msgstr "NetworkManagerin verkkosivusto"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1148
-msgid "translator-credits"
-msgstr "Jiri Grönroos"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1158
-msgid ""
-"The NetworkManager Applet could not find some required resources (the .ui "
-"file was not found)."
-msgstr ""
-"Verkonhallintasovelma ei löytänyt joitain tarvitsemiaan resursseja (.ui-"
-"tiedostoa ei löytynyt)."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1163
-msgid "Missing resources"
-msgstr "Puuttuvia resursseja"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1188
-msgid "Mobile broadband network password"
-msgstr "Mobiililaajakaistaverkon salasana"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1197
-#, c-format
-msgid "A password is required to connect to “%s”."
-msgstr "Yhteys verkkoon “%s” vaatii salasanan."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1220
-msgid "Password:"
-msgstr "Salasana:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1502
-msgid "SIM PIN unlock required"
-msgstr "SIM-kortin PIN-koodi vaaditaan"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1503
-msgid "SIM PIN Unlock Required"
-msgstr "SIM-kortin PIN-koodi vaaditaan"
-
-#. FIXME: some warning about # of times you can enter incorrect PIN
-#: ../src/panel/widgets/netman/applet-dialogs.c:1505
-#, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PIN code before it can be "
-"used."
-msgstr ""
-"Mobiililaajakaistalaite “%s” vaatii SIM-kortin PIN-koodin ennen käyttöä."
-
-#. Translators: PIN code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1507
-msgid "PIN code:"
-msgstr "PIN-koodi:"
-
-#. Translators: Show/obscure PIN checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1511
-msgid "Show PIN code"
-msgstr "Näytä PIN-koodi"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1513
-msgid "SIM PUK unlock required"
-msgstr "SIM-kortin PUK-koodi vaaditaan"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1514
-msgid "SIM PUK Unlock Required"
-msgstr "SIM-kortin PUK-koodi vaaditaan"
-
-#. FIXME: some warning about # of times you can enter incorrect PUK
-#: ../src/panel/widgets/netman/applet-dialogs.c:1516
-#, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PUK code before it can be "
-"used."
-msgstr ""
-"Mobiililaajakaistalaite “%s” vaatii SIM-kortin PUK-koodin ennen käyttöä."
-
-#. Translators: PUK code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1518
-msgid "PUK code:"
-msgstr "PUK-koodi:"
-
-#. Translators: New PIN entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1521
-msgid "New PIN code:"
-msgstr "Uusi PIN-koodi:"
-
-#. Translators: New PIN verification entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1523
-msgid "Re-enter new PIN code:"
-msgstr "Syötä uusi PIN-koodi uudelleen:"
-
-#. Translators: Show/obscure PIN/PUK checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1528
-msgid "Show PIN/PUK codes"
-msgstr "Näytä PIN-/PUK-koodit"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:427
-msgid "Connection had no VPN setting"
-msgstr "Yhteydellä ei ollut VPN-asetusta"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:477
-#, fuzzy, c-format
-msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr "DUN-yhteyden luominen epäonnistui: %s"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:485
-msgid "Failed to write connection to VPN UI: incomplete write"
-msgstr ""
-
-#: ../src/panel/widgets/netman/ethernet-dialog.c:87
-#: ../src/panel/widgets/netman/8021x.ui.h:1
-msgid "802.1X authentication"
-msgstr "802.1X-tunnistautuminen"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:36
-#: ../src/panel/widgets/netman/mobile-helpers.c:272
-msgid "CDMA"
-msgstr "CDMA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:38
-msgid "EVDO"
-msgstr "EVDO"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:40
-#: ../src/panel/widgets/netman/mobile-helpers.c:270
-msgid "GSM"
-msgstr "GSM"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:42
-msgid "GPRS"
-msgstr "GPRS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:44
-msgid "EDGE"
-msgstr "EDGE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:46
-msgid "UMTS"
-msgstr "UMTS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:48
-msgid "HSDPA"
-msgstr "HSDPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:50
-msgid "HSUPA"
-msgstr "HSUPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:52
-msgid "HSPA"
-msgstr "HSPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:54
-msgid "HSPA+"
-msgstr "HSPA+"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:56
-msgid "LTE"
-msgstr "LTE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:103
-msgid "not enabled"
-msgstr "ei käytössä"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:109
-msgid "not registered"
-msgstr "ei rekisteröity"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:127
-#, c-format
-msgid "Home network (%s)"
-msgstr "Kotiverkko (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:129
-#, c-format
-msgid "Home network"
-msgstr "Kotiverkko"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:137
-msgid "searching"
-msgstr "etsitään"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:140
-msgid "registration denied"
-msgstr "rekisteröinti evätty"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:145
-#: ../src/panel/widgets/netman/mb-menu-item.c:151
-#, c-format
-msgid "%s (%s roaming)"
-msgstr "%s (%s - verkkovierailu)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:147
-#: ../src/panel/widgets/netman/mb-menu-item.c:153
-#, c-format
-msgid "%s (roaming)"
-msgstr "%s (verkkovierailu)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:156
-#, c-format
-msgid "Roaming network (%s)"
-msgstr "Verkkovierailu (roaming - %s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:158
-#, c-format
-msgid "Roaming network"
-msgstr "Vierasverkko"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:320
-#, fuzzy, c-format
-msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "PIN-koodi SIM-kortille \"%s\" laitteessa \"%s\""
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:453
-msgid "PIN code required"
-msgstr "PIN-koodi vaaditaan"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:461
-msgid "PIN code is needed for the mobile broadband device"
-msgstr "Mobiililaajakaistalaite vaatii PIN-koodin"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:619
-#, c-format
-msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
-msgstr "Mobiililaajakaistayhteys “%s” on aktiivinen: (%d%%%s%s)"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:622
-msgid "roaming"
-msgstr "verkkovierailu"
-
-#: ../src/panel/widgets/netman/netman.c:139
+#: ../src/panel/panel.cpp:243
 #, fuzzy
-msgid "Network Manager"
-msgstr "NetworkManager"
+msgid "Notifications..."
+msgstr "Ota ilm_oitukset käyttöön"
 
-#: ../src/panel/widgets/netman/netman.c:140
+#: ../src/panel/panel.cpp:247
+msgid "Taskbar Preferences..."
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:10
+msgid "Display format"
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:11
+msgid "Display font"
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:15
 #, fuzzy
-msgid "Controller for Network Manager"
-msgstr "NetworkManager"
+msgid "Clock"
+msgstr "Avaa l_ukitus"
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:793
-#, c-format
-msgid "object class '%s' has no property named '%s'"
+#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
+msgid "Show usage as percentage"
 msgstr ""
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:800
-#, c-format
-msgid "property '%s' of object class '%s' is not writable"
+#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
+msgid "Foreground colour"
 msgstr ""
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:807
-#, c-format
+#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
+msgid "Background colour"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:15
+#, fuzzy
+msgid "CPU"
+msgstr "TCP"
+
+#: ../src/widgets/gpu/gpu.cpp:15
+msgid "GPU"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:20
+msgid "Icon spacing"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:24
+msgid "Launcher"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:196
+msgid "Remove from Launcher"
+msgstr ""
+
+#: ../src/widgets/notify/notify.cpp:5
+#, fuzzy
+msgid "Show notifications"
+msgstr "Ota ilm_oitukset käyttöön"
+
+#: ../src/widgets/notify/notify.cpp:6
+#, fuzzy
+msgid "Time before notifications close"
+msgstr "Älä näytä ilmoitusta kun yhteys muodostuu"
+
+#: ../src/widgets/notify/notify.cpp:10
+#, fuzzy
+msgid "Notifications"
+msgstr "Ota ilm_oitukset käyttöön"
+
+#: ../src/widgets/power/power.c:86
 msgid ""
-"construct property \"%s\" for object '%s' can't be set after construction"
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
 msgstr ""
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:815
-#, c-format
-msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:824
-#, c-format
-msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:835
-#, c-format
+#: ../src/widgets/power/power.c:102
 msgid ""
-"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
-"type '%s'"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
 
-#. The %s is a mobile provider name, eg "T-Mobile"
-#: ../src/panel/widgets/netman/utils.c:160
-#, c-format
-msgid "%s connection"
-msgstr "%s (yhteys)"
-
-#: ../src/panel/widgets/netman/utils.c:534
-msgid "PEM certificates (*.pem, *.crt, *.cer)"
-msgstr "PEM-varmenteet (*.pem, *.crt, *.cer)"
-
-#: ../src/panel/widgets/netman/utils.c:546
-msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
-msgstr "DER-, PEM- tai PKCS#12-yksityisavaimet (*.der, *.pem, *.p12, *.key)"
-
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
+#: ../src/widgets/power/power.c:163
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
+"High display resolution is using large amounts of memory.\n"
+"Consider reducing screen resolution."
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
+#: ../src/widgets/power/power.c:218
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
-msgid ""
-"Charged : %d%%\n"
-"On external power"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/widgets/power/power.c:269
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
+#: ../src/widgets/power/power.c:288
+msgid "PSU low voltage detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
+#: ../src/widgets/power/power.c:289
+msgid "USB over current detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
-msgid "Run"
-msgstr "Suorita"
-
-#: ../src/panel/widgets/smenu/gtk-run.c:412
-msgid "Enter the command you want to execute:"
+#: ../src/widgets/power/power.c:290
+msgid "Low power reset has occurred\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:116
-msgid "Logout command is not set"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:122
-msgid "Restart"
-msgstr "Käynnistä uudelleen"
-
-#: ../src/panel/widgets/smenu/menu.c:123
-msgid "Logout"
-msgstr "Kirjaudu ulos"
-
-#: ../src/panel/widgets/smenu/menu.c:140
-msgid "No file manager is configured."
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:489
-msgid "Add to desktop"
-msgstr "Lisää työpöydälle"
-
-#: ../src/panel/widgets/smenu/menu.c:496
-msgid "Properties"
-msgstr "Asetukset"
-
-#: ../src/panel/widgets/smenu/menu.c:954
-msgid "Click here to open applications menu"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr "Valikko"
-
-#: ../src/panel/widgets/smenu/menu.c:1048
-msgid "Icon"
-msgstr "Kuvake"
-
-#: ../src/panel/widgets/smenu/menu.c:1049
-msgid "Padding"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1050
-msgid "Fixed Size"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1058
-msgid "Menu with Search"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1059
+#: ../src/widgets/power/power.c:341
 #, fuzzy
-msgid "Searchable Application Menu"
-msgstr "Sovellusvalikko"
+msgid "Power Information..."
+msgstr "Tietoja yhteydestä"
 
-#: ../src/panel/widgets/updater/updater.c:189
-msgid ""
-"Updates are available\n"
-"Click the update icon to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:211
+#: ../src/widgets/power/power.cpp:12
 #, fuzzy
-msgid "No network connection - cannot install updates."
-msgstr "Ei verkkoyhteyttä"
+msgid "System Monitor"
+msgstr "_Järjestelmäprioriteetti"
 
-#: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
+#: ../src/widgets/spacing/spacing.cpp:5
+msgid "Width in pixels"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:320
-msgid "Show Updates..."
+#: ../src/widgets/tray/tray.cpp:8
+msgid "Smooth scrolling threshold"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:324
-msgid "Install Updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:470
-msgid "Updates are available - click to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:531
-msgid "Hours between checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:562
-msgid "Checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#: ../src/widgets/tray/tray.cpp:9
 #, fuzzy
-msgid "Reconnecting Bluetooth devices..."
-msgstr "virheellinen Bluetooth-laite (%s)"
+msgid "Middle button activates menu"
+msgstr "Yhteyden aktivointi epäonnistui"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
-msgid "Bluetooth %s device not found"
-msgstr "Bluetooth-yhteys %d"
-
-#. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, c-format
-msgid "Could not set profile for device : %s"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
-msgid "Failed to connect to Bluetooth device - %s"
-msgstr "puhelimeen yhdistäminen epäonnistui."
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, c-format
-msgid "Connecting Bluetooth device '%s' as output..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, fuzzy, c-format
-msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "virheellinen Bluetooth-laite (%s)"
-
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#: ../src/widgets/tray/tray.cpp:13
 #, fuzzy
-msgid "Reconnecting Bluetooth device..."
-msgstr "virheellinen Bluetooth-laite (%s)"
+msgid "System Tray"
+msgstr "_Järjestelmäprioriteetti"
 
-#. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
-msgid "Mute"
+#: ../src/widgets/window-list/toplevel.cpp:83
+#: ../src/widgets/window-list/toplevel.cpp:449
+msgid "Minimize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/commongui.c:231
-msgid "No audio devices found"
+#: ../src/widgets/window-list/toplevel.cpp:84
+#: ../src/widgets/window-list/toplevel.cpp:457
+msgid "Maximize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/micpulse.c:71
-msgid "Input from this device not available in the current profile"
-msgstr ""
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/micpulse.c:144
-msgid "Mic volume"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
-msgid "HDMI"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
-msgid "AV Jack"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
-msgid "Device Profiles..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
-msgid "Output to this device not available in the current profile"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
-#, fuzzy
-msgid "Device Profiles"
-msgstr "Laitteen katkaisu epäonnistui"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
-#, fuzzy
-msgid "Device not connected"
-msgstr "Laitteen katkaisu epäonnistui"
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
-#, fuzzy
-msgid "Volume control"
-msgstr "Vuonohjaus"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
-msgid "Volume Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
-msgid "Display and control volume for PulseAudio"
-msgstr ""
-
-#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-msgid "label"
-msgstr ""
-
-#: ../data/lxplug-updater.ui.h:1
-#, fuzzy
-msgid "Available Updates"
-msgstr "Saatavilla"
-
-#: ../data/lxplug-updater.ui.h:2
+#: ../src/widgets/window-list/toplevel.cpp:85
 #, fuzzy
 msgid "Close"
 msgstr "_Sulje"
 
-#: ../data/lxplug-updater.ui.h:3
-msgid "Install"
+#: ../src/widgets/window-list/toplevel.cpp:446
+msgid "Unminimize"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:4
-msgid "The following packages can be updated :"
+#: ../src/widgets/window-list/toplevel.cpp:454
+msgid "Unmaximize"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:1
-#, fuzzy
-msgid "Add New Device"
-msgstr "laite"
-
-#: ../data/lxplug-bluetooth.ui.h:3
-msgid "_Pair"
+#: ../src/widgets/window-list/window-list.cpp:14
+msgid "Maximum width of task button"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:4
+#: ../src/widgets/window-list/window-list.cpp:18
+msgid "Window List"
+msgstr ""
+
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr ""
+
+#: ../data/config.ui.h:2
 #, fuzzy
-msgid "Searching for Bluetooth devices..."
-msgstr "virheellinen Bluetooth-laite (%s)"
+msgid "Add to left"
+msgstr "Lisää työpöydälle"
 
-#: ../src/panel/widgets/netman/8021x.ui.h:3
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:4
 #, fuzzy
-msgid "C_onnect"
-msgstr "Yh_teys:"
+msgid "Add to right"
+msgstr "Lisää työpöydälle"
 
-#: ../src/panel/widgets/netman/8021x.ui.h:4
-msgid "_Network name"
-msgstr "_Verkon nimi"
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
+msgstr ""
 
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
-msgid "_Unlock"
-msgstr "Avaa l_ukitus"
+#: ../data/config.ui.h:6
+msgid "Remove"
+msgstr ""
 
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
-msgid "Automatically unlock this device"
-msgstr "Avaa tämän laitteen lukitus automaattisesti"
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr ""
 
-#: ../src/panel/widgets/netman/info.ui.h:1
-msgid "Connection Information"
-msgstr "Tietoja yhteydestä"
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr ""
 
-#: ../src/panel/widgets/netman/info.ui.h:2
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:10
+msgid "Move right"
+msgstr ""
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:12
 #, fuzzy
-msgid "_Close"
-msgstr "_Sulje"
+msgid "Configure..."
+msgstr "_Määritä VPN…"
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1
+msgid "label"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:2
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: ../data/lxpanel-modal.ui.h:3
+msgid "_OK"
+msgstr "_OK"
+
+#, fuzzy, c-format
+#~ msgid "Pairing successful - connecting..."
+#~ msgstr "Valmistellaan tiimiyhteyttä  ”%s”…"
+
+#, fuzzy, c-format
+#~ msgid "Connection successful"
+#~ msgstr "Yhteysvirhe"
+
+#, fuzzy, c-format
+#~ msgid "Connection failed - %s"
+#~ msgstr "Yhteysvirhe"
+
+#, fuzzy, c-format
+#~ msgid "Connecting to '%s'..."
+#~ msgstr "Tehdään tiimiverkkoyhteyden ”%s” asetuksia…"
+
+#, fuzzy, c-format
+#~ msgid "Disconnecting from '%s'..."
+#~ msgstr "Valmistellaan sidottua yhteyttä  ”%s”…"
+
+#, fuzzy, c-format
+#~ msgid "Disconnection failed - %s"
+#~ msgstr "Katkaisuvirhe"
+
+#, fuzzy
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr "Käytä verkkovalikkoa yhdistääksesi wifi-verkkoon"
+
+#, fuzzy
+#~ msgid "Disconnect..."
+#~ msgstr "Katkaise yhteys"
+
+#, fuzzy
+#~ msgid "Connect..."
+#~ msgstr "_Yhdistä"
+
+#, fuzzy
+#~ msgid "No Bluetooth adapter found"
+#~ msgstr "Bluetooth-tyyppi"
+
+#, fuzzy
+#~ msgid "Turn On Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Turn Off Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Add Device..."
+#~ msgstr "laite"
+
+#, fuzzy
+#~ msgid "Manage Bluetooth devices"
+#~ msgstr "virheellinen Bluetooth-laite (%s)"
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Manages Bluetooth devices"
+#~ msgstr "virheellinen Bluetooth-laite (%s)"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Failed to eject %s\n"
+#~ "%s"
+#~ msgstr "PAN-yhteyden luominen epäonnistui: %s"
+
+#~ msgid "ad-hoc"
+#~ msgstr "ad-hoc"
+
+#~ msgid "Unknown error"
+#~ msgstr "Tuntematon virhe"
+
+#~ msgid "Connection failure"
+#~ msgstr "Yhteysvirhe"
+
+#~ msgid "Failed to add/activate connection"
+#~ msgstr "Yhteyden lisäys/aktivointi epäonnistui"
+
+#~ msgid "Device disconnect failed"
+#~ msgstr "Laitteen katkaisu epäonnistui"
+
+#~ msgid "Disconnect failure"
+#~ msgstr "Katkaisuvirhe"
+
+#~ msgid "Connection activation failed"
+#~ msgstr "Yhteyden aktivointi epäonnistui"
+
+#~ msgid "Don’t show this message again"
+#~ msgstr "Älä näytä tätä uudestaan"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” katkesi, koska verkkoyhteys katkaistiin."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska verkkoyhteys katkaistiin."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service stopped "
+#~ "unexpectedly."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska VPN-palvelu pysähtyi odottamatta."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service returned invalid "
+#~ "configuration."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska VPN-palvelulta saatiin virheellinen "
+#~ "asetusmäärittely."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the connection attempt timed out."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska yhteysyritys aikakatkaistiin."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service did not start in "
+#~ "time."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska VPN-palvelu ei käynnistynyt sallitussa "
+#~ "ajassa."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska VPN-palvelua ei voitu käynnistää."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because there were no valid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska kelvollisia VPN-salaisuuksia ei "
+#~ "löytynyt."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because of invalid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui virheellisten VPN-salaisuuksien takia."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed."
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui."
+
+#, c-format
+#~ msgid ""
+#~ "VPN connection has been successfully established.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "VPN-yhteys on muodostettu onnistuneesti.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "VPN connection has been successfully established.\n"
+#~ msgstr "VPN-yhteys on muodostettu onnistuneesti.\n"
+
+#~ msgid "VPN Login Message"
+#~ msgstr "VPN-yhteyden kirjautumisviesti"
+
+#~ msgid "VPN Connection Failed"
+#~ msgstr "VPN-yhteys epäonnistui"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteys “%s” epäonnistui, koska VPN-palvelu ei käynnistynyt.\n"
+#~ "\n"
+#~ "%s"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "VPN-yhteyden “%s” käynnistäminen epäonnistui.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "device not ready (firmware missing)"
+#~ msgstr "laite ei ole valmiina"
+
+#~ msgid "device not ready"
+#~ msgstr "laite ei valmis"
+
+#~ msgid "disconnected"
+#~ msgstr "katkaistu"
+
+#~ msgid "Disconnect"
+#~ msgstr "Katkaise yhteys"
+
+#~ msgid "device not managed"
+#~ msgstr "laitetta ei hallita"
+
+#~ msgid "No network devices available"
+#~ msgstr "Verkkolaitteita ei löytynyt"
+
+#, fuzzy
+#~ msgid "_Advanced Options"
+#~ msgstr "Tiimin lisäasetukset"
+
+#~ msgid "_VPN Connections"
+#~ msgstr "_VPN-yhteydet"
+
+#~ msgid "_Add a VPN connection…"
+#~ msgstr "_Lisää VPN-yhteys…"
+
+#~ msgid "Connection _Information"
+#~ msgstr "Tietoja _yhteydestä"
+
+#~ msgid "Edit Connections…"
+#~ msgstr "Muokkaa yhteyksiä…"
+
+#~ msgid "NetworkManager is not running…"
+#~ msgstr "NetworkManager ei ole käynnissä…"
+
+#, fuzzy
+#~ msgid "Wi-Fi country is not set"
+#~ msgstr "Maani ei ole luettelossa"
+
+#~ msgid "Networking disabled"
+#~ msgstr "Verkko ei ole käytössä"
+
+#~ msgid "Enable _Networking"
+#~ msgstr "Ota _verkko käyttöön"
+
+#~ msgid "Enable _Wi-Fi"
+#~ msgstr "Ota _wifi käyttöön"
+
+#~ msgid "Enable _Mobile Broadband"
+#~ msgstr "Ota _mobiililaajakaista käyttöön"
+
+#~ msgid "_About"
+#~ msgstr "_Tietoja"
+
+#, c-format
+#~ msgid "You are now connected to “%s”."
+#~ msgstr "Yhteys verkkoon “%s” on nyt muodostettu."
+
+#~ msgid "Disconnected"
+#~ msgstr "Yhteys katkaistu"
+
+#~ msgid "The network connection has been disconnected."
+#~ msgstr "Verkkoyhteys on nyt katkaistu."
+
+#, c-format
+#~ msgid "Preparing network connection “%s”…"
+#~ msgstr "Valmistellaan verkkoyhteyttä “%s”…"
+
+#, c-format
+#~ msgid "User authentication required for network connection “%s”…"
+#~ msgstr "Käyttäjätunnistautuminen vaaditaan verkkoyhteydelle “%s”…"
+
+#, c-format
+#~ msgid "Requesting a network address for “%s”…"
+#~ msgstr "Pyydetään verkko-osoitetta verkosta “%s”…"
+
+#, c-format
+#~ msgid "Network connection “%s” active"
+#~ msgstr "Verkkoyhteys “%s” on aktiivinen"
+
+#, c-format
+#~ msgid "Starting VPN connection “%s”…"
+#~ msgstr "Käynnistetään VPN-yhteyttä “%s”…"
+
+#, c-format
+#~ msgid "User authentication required for VPN connection “%s”…"
+#~ msgstr "Käyttäjätunnistautuminen vaaditaan VPN-yhteydelle “%s”…"
+
+#, c-format
+#~ msgid "Requesting a VPN address for “%s”…"
+#~ msgstr "Pyydetään VPN-osoitetta yhteydelle “%s”…"
+
+#, c-format
+#~ msgid "VPN connection active"
+#~ msgstr "VPN-yhteys on aktiivinen"
+
+#~ msgid "No network connection"
+#~ msgstr "Ei verkkoyhteyttä"
+
+#~ msgid "Network"
+#~ msgstr "Verkko"
+
+#~ msgid "NetworkManager Applet"
+#~ msgstr "Verkon hallinta -sovelma"
+
+#~ msgid "Wrong PUK code; please contact your provider."
+#~ msgstr "Väärä PUK-koodi. Ota yhteys palveluntarjoajaasi."
+
+#~ msgid "Wrong PIN code; please contact your provider."
+#~ msgstr "Väärä PIN-koodi. Ota yhteys palveluntarjoajaasi."
+
+#~ msgid "Sending unlock code…"
+#~ msgstr "Lähetetään lukituksen avauskoodia…"
+
+#, c-format
+#~ msgid "Mobile Broadband (%s)"
+#~ msgstr "Mobiililaajakaista (%s)"
+
+#~ msgid "Mobile Broadband"
+#~ msgstr "Mobiililaajakaista"
+
+#~ msgid "New Mobile Broadband connection…"
+#~ msgstr "Uusi mobiililaajakaistayhteys…"
+
+#~ msgid "Connection Established"
+#~ msgstr "Yhteys muodostettu"
+
+#~ msgid "You are now connected to the Mobile Broadband network."
+#~ msgstr "Yhteys mobiililaajakaistaan on nyt muodostettu."
+
+#~ msgid "Mobile Broadband network."
+#~ msgstr "Mobiililaajakaistaverkko."
+
+#~ msgid "You are now registered on the home network."
+#~ msgstr "Olet nyt rekisteröitynyt kotiverkkoon."
+
+#~ msgid "You are now registered on a roaming network."
+#~ msgstr "Olet nyt rekisteröitynyt vierailuverkkoon."
+
+#~ msgid "You are now connected to the mobile broadband network."
+#~ msgstr "Yhteys mobiililaajakaistaan on nyt muodostettu."
+
+#, c-format
+#~ msgid "Preparing mobile broadband connection “%s”…"
+#~ msgstr "Valmistellaan mobiililaajakaistayhteyttä “%s”…"
+
+#, c-format
+#~ msgid "Configuring mobile broadband connection “%s”…"
+#~ msgstr "Tehdään mobiililaajakaistayhteyden “%s” asetuksia…"
+
+#, c-format
+#~ msgid "User authentication required for mobile broadband connection “%s”…"
+#~ msgstr ""
+#~ "Käyttäjätunnistautuminen vaaditaan mobiililaajakaistayhteydelle “%s”…"
+
+#, c-format
+#~ msgid "Mobile broadband connection “%s” active"
+#~ msgstr "Mobiililaajakaistayhteys “%s” on aktiivinen"
+
+#~ msgid "Auto Ethernet"
+#~ msgstr "Automaattinen Ethernet"
+
+#, c-format
+#~ msgid "Ethernet Networks (%s)"
+#~ msgstr "Ethernet-verkot (%s)"
+
+#, c-format
+#~ msgid "Ethernet Network (%s)"
+#~ msgstr "Ethernet-verkko (%s)"
+
+#~ msgid "Ethernet Networks"
+#~ msgstr "Ethernet-verkot"
+
+#~ msgid "Ethernet Network"
+#~ msgstr "Ethernet-verkko"
+
+#~ msgid "You are now connected to the ethernet network."
+#~ msgstr "Yhteys ethernet-verkkoon on nyt muodostettu."
+
+#, c-format
+#~ msgid "Preparing ethernet network connection “%s”…"
+#~ msgstr "Valmistellaan ethernet-verkkoyhteyttä “%s”…"
+
+#, c-format
+#~ msgid "Configuring ethernet network connection “%s”…"
+#~ msgstr "Tehdään ethernet-verkkoyhteyden “%s” asetuksia…"
+
+#, c-format
+#~ msgid "User authentication required for ethernet network connection “%s”…"
+#~ msgstr "Käyttäjätunnistautuminen vaaditaan ethernet-verkolle “%s”…"
+
+#, c-format
+#~ msgid "Requesting an ethernet network address for “%s”…"
+#~ msgstr "Pyydetään verkko-osoitetta ethernet-verkosta “%s”…"
+
+#, c-format
+#~ msgid "Ethernet network connection “%s” active"
+#~ msgstr "Ethernet-verkkoyhteys “%s” on aktiivinen"
+
+#~ msgid "DSL authentication"
+#~ msgstr "DSL-todentaminen"
+
+#~ msgid "_Connect to Hidden Wi-Fi Network…"
+#~ msgstr "Yhdistä _piilotettuun wifi-verkkoon…"
+
+#~ msgid "Create _New Wi-Fi Network…"
+#~ msgstr "Luo _uusi wifi-verkko…"
+
+#, fuzzy
+#~ msgid "Create Wi-Fi _Hotspot…"
+#~ msgstr "Luo _uusi wifi-verkko…"
+
+#~ msgid "(none)"
+#~ msgstr "(ei mitään)"
+
+#~ msgid "Failed to add new connection"
+#~ msgstr "Uuden yhteyden lisäys epäonnistui"
+
+#~ msgid "Insufficient privileges."
+#~ msgstr "Käyttöoikeudet eivät riitä."
+
+#, fuzzy, c-format
+#~ msgid "Do you want to disconnect from the wireless network '%s'?"
+#~ msgstr "Yhteys tiimiverkkoon on nyt muodostettu."
+
+#, c-format
+#~ msgid "Wi-Fi Networks (%s)"
+#~ msgstr "Wifi-verkot (%s)"
+
+#, c-format
+#~ msgid "Wi-Fi Network (%s)"
+#~ msgstr "Wifi-verkko (%s)"
+
+#~ msgid "Wi-Fi Network"
+#~ msgid_plural "Wi-Fi Networks"
+#~ msgstr[0] "Wifi-verkko"
+#~ msgstr[1] "Wifi-verkot"
+
+#~ msgid "Wi-Fi is disabled"
+#~ msgstr "Wifi ei ole käytössä"
+
+#~ msgid "Wi-Fi is disabled by hardware switch"
+#~ msgstr "Wifi on kytketty pois käytöstä laitteessa olevasta painikkeesta"
+
+#~ msgid "More networks"
+#~ msgstr "Lisää verkkoja"
+
+#~ msgid "Wi-Fi Networks Available"
+#~ msgstr "Wifi-verkkoja saatavilla"
+
+#~ msgid "Use the network menu to connect to a Wi-Fi network"
+#~ msgstr "Käytä verkkovalikkoa yhdistääksesi wifi-verkkoon"
+
+#, c-format
+#~ msgid "You are now connected to the Wi-Fi network “%s”."
+#~ msgstr "Yhteys wifi-verkkoon “%s” on nyt muodostettu."
+
+#, c-format
+#~ msgid "Preparing Wi-Fi network connection “%s”…"
+#~ msgstr "Valmistellaan wifi-verkkoyhteyttä “%s”…"
+
+#, c-format
+#~ msgid "Configuring Wi-Fi network connection “%s”…"
+#~ msgstr "Tehdään wifi-verkkoyhteyden “%s” asetuksia…"
+
+#, c-format
+#~ msgid "User authentication required for Wi-Fi network “%s”…"
+#~ msgstr "Käyttäjätunnistautuminen vaaditaan wifi-verkkoon “%s”…"
+
+#, c-format
+#~ msgid "Requesting a Wi-Fi network address for “%s”…"
+#~ msgstr "Pyydetään verkko-osoitetta wifi-verkosta “%s”…"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+#~ msgstr "Wifi-verkkoyhteys “%s” on aktiivinen: %s (%d%%)"
+
+#, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+#~ msgstr "Wifi-verkkoyhteys “%s” on aktiivinen: %s (%d%%)"
+
+#, c-format
+#~ msgid "Wi-Fi network connection “%s” active"
+#~ msgstr "Wifi-verkkoyhteys “%s” on aktiivinen"
+
+#~ msgid "Error displaying connection information:"
+#~ msgstr "Virhe näytettäessä yhteyden tietoja:"
+
+#~ msgid "LEAP"
+#~ msgstr "LEAP"
+
+#~ msgid "Dynamic WEP"
+#~ msgstr "Dynaaminen WEP"
+
+#~ msgid "WPA/WPA2"
+#~ msgstr "WPA/WPA2"
+
+#~ msgid "More addresses"
+#~ msgstr "Lisää osoitteita"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "WPA3"
+#~ msgstr "WPA3"
+
+#~ msgctxt "Wi-Fi/Ethernet security"
+#~ msgid "None"
+#~ msgstr "Ei mitään"
+
+#, c-format
+#~ msgid "%u Mb/s"
+#~ msgstr "%u Mb/s"
+
+#~ msgctxt "Speed"
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgctxt "Address"
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgid "IP Address"
+#~ msgstr "IP-osoite"
+
+#~ msgid "Broadcast Address"
+#~ msgstr "Yleisosoite"
+
+#~ msgctxt "Subnet Mask"
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Aliverkkopeite"
+
+#~ msgid "Primary DNS"
+#~ msgstr "Ensisijainen DNS"
+
+#~ msgid "Secondary DNS"
+#~ msgstr "Toissijainen DNS"
+
+#~ msgid "Tertiary DNS"
+#~ msgstr "Kolmas DNS"
+
+#, c-format
+#~ msgid "Ethernet (%s)"
+#~ msgstr "Ethernet (%s)"
+
+#, c-format
+#~ msgid "802.11 Wi-Fi (%s)"
+#~ msgstr "802.11 Wi-Fi (%s)"
+
+#, c-format
+#~ msgid "GSM (%s)"
+#~ msgstr "GSM (%s)"
+
+#, c-format
+#~ msgid "CDMA (%s)"
+#~ msgstr "CDMA (%s)"
+
+#~ msgid "General"
+#~ msgstr "Yleiset"
+
+#~ msgid "Interface"
+#~ msgstr "Verkkolaite"
+
+#~ msgid "Hardware Address"
+#~ msgstr "Fyysinen osoite"
+
+#~ msgid "Driver"
+#~ msgstr "Ajuri"
+
+#~ msgid "Speed"
+#~ msgstr "Nopeus"
+
+#~ msgid "Security"
+#~ msgstr "Tietoturva"
+
+#~ msgid "IPv4"
+#~ msgstr "IPv4"
+
+#~ msgid "Default Route"
+#~ msgstr "Oletusyhdyskäytävä"
+
+#~ msgid "IPv6"
+#~ msgstr "IPv6"
+
+#~ msgid "Hotspot"
+#~ msgstr "Yhteyspiste"
+
+#~ msgid "Password"
+#~ msgstr "Salasana"
+
+#~ msgid "VPN Type"
+#~ msgstr "VPN-tyyppi"
+
+#~ msgid "VPN Gateway"
+#~ msgstr "VPN-yhdyskäytävä"
+
+#~ msgid "VPN Username"
+#~ msgstr "VPN-käyttäjänimi"
+
+#~ msgid "VPN Banner"
+#~ msgstr "VPN-selite"
+
+#~ msgid "Base Connection"
+#~ msgstr "Yhteys"
+
+#~ msgid "No valid active connections found!"
+#~ msgstr "Toimivia aktiivisia yhteyksiä ei löytynyt!"
+
+#~ msgid ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "and many other community contributors and translators"
+#~ msgstr ""
+#~ "Tekijänoikeus © 2004-2017 Red Hat, Inc.\n"
+#~ "Tekijänoikeus © 2005-2008 Novell, Inc.\n"
+#~ "ja monet muut kehittäjät sekä kääntäjät"
+
+#~ msgid ""
+#~ "Notification area applet for managing your network devices and "
+#~ "connections."
+#~ msgstr "Ilmoitusalueen sovelma verkkolaitteiden ja -yhteyksien hallintaan."
+
+#~ msgid "NetworkManager Website"
+#~ msgstr "NetworkManagerin verkkosivusto"
+
+#~ msgid "translator-credits"
+#~ msgstr "Jiri Grönroos"
+
+#~ msgid ""
+#~ "The NetworkManager Applet could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "Verkonhallintasovelma ei löytänyt joitain tarvitsemiaan resursseja (.ui-"
+#~ "tiedostoa ei löytynyt)."
+
+#~ msgid "Missing resources"
+#~ msgstr "Puuttuvia resursseja"
+
+#~ msgid "Mobile broadband network password"
+#~ msgstr "Mobiililaajakaistaverkon salasana"
+
+#, c-format
+#~ msgid "A password is required to connect to “%s”."
+#~ msgstr "Yhteys verkkoon “%s” vaatii salasanan."
+
+#~ msgid "Password:"
+#~ msgstr "Salasana:"
+
+#~ msgid "SIM PIN unlock required"
+#~ msgstr "SIM-kortin PIN-koodi vaaditaan"
+
+#~ msgid "SIM PIN Unlock Required"
+#~ msgstr "SIM-kortin PIN-koodi vaaditaan"
+
+#, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PIN code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "Mobiililaajakaistalaite “%s” vaatii SIM-kortin PIN-koodin ennen käyttöä."
+
+#~ msgid "PIN code:"
+#~ msgstr "PIN-koodi:"
+
+#~ msgid "Show PIN code"
+#~ msgstr "Näytä PIN-koodi"
+
+#~ msgid "SIM PUK unlock required"
+#~ msgstr "SIM-kortin PUK-koodi vaaditaan"
+
+#~ msgid "SIM PUK Unlock Required"
+#~ msgstr "SIM-kortin PUK-koodi vaaditaan"
+
+#, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PUK code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "Mobiililaajakaistalaite “%s” vaatii SIM-kortin PUK-koodin ennen käyttöä."
+
+#~ msgid "PUK code:"
+#~ msgstr "PUK-koodi:"
+
+#~ msgid "New PIN code:"
+#~ msgstr "Uusi PIN-koodi:"
+
+#~ msgid "Re-enter new PIN code:"
+#~ msgstr "Syötä uusi PIN-koodi uudelleen:"
+
+#~ msgid "Show PIN/PUK codes"
+#~ msgstr "Näytä PIN-/PUK-koodit"
+
+#~ msgid "Connection had no VPN setting"
+#~ msgstr "Yhteydellä ei ollut VPN-asetusta"
+
+#, fuzzy, c-format
+#~ msgid "Failed to write connection to VPN UI: %s (%d)"
+#~ msgstr "DUN-yhteyden luominen epäonnistui: %s"
+
+#~ msgid "802.1X authentication"
+#~ msgstr "802.1X-tunnistautuminen"
+
+#~ msgid "CDMA"
+#~ msgstr "CDMA"
+
+#~ msgid "EVDO"
+#~ msgstr "EVDO"
+
+#~ msgid "GSM"
+#~ msgstr "GSM"
+
+#~ msgid "GPRS"
+#~ msgstr "GPRS"
+
+#~ msgid "EDGE"
+#~ msgstr "EDGE"
+
+#~ msgid "UMTS"
+#~ msgstr "UMTS"
+
+#~ msgid "HSDPA"
+#~ msgstr "HSDPA"
+
+#~ msgid "HSUPA"
+#~ msgstr "HSUPA"
+
+#~ msgid "HSPA"
+#~ msgstr "HSPA"
+
+#~ msgid "HSPA+"
+#~ msgstr "HSPA+"
+
+#~ msgid "LTE"
+#~ msgstr "LTE"
+
+#~ msgid "not enabled"
+#~ msgstr "ei käytössä"
+
+#~ msgid "not registered"
+#~ msgstr "ei rekisteröity"
+
+#, c-format
+#~ msgid "Home network (%s)"
+#~ msgstr "Kotiverkko (%s)"
+
+#, c-format
+#~ msgid "Home network"
+#~ msgstr "Kotiverkko"
+
+#~ msgid "searching"
+#~ msgstr "etsitään"
+
+#~ msgid "registration denied"
+#~ msgstr "rekisteröinti evätty"
+
+#, c-format
+#~ msgid "%s (%s roaming)"
+#~ msgstr "%s (%s - verkkovierailu)"
+
+#, c-format
+#~ msgid "%s (roaming)"
+#~ msgstr "%s (verkkovierailu)"
+
+#, c-format
+#~ msgid "Roaming network (%s)"
+#~ msgstr "Verkkovierailu (roaming - %s)"
+
+#, c-format
+#~ msgid "Roaming network"
+#~ msgstr "Vierasverkko"
+
+#, fuzzy, c-format
+#~ msgid "PIN code for SIM card “%s” on “%s”"
+#~ msgstr "PIN-koodi SIM-kortille \"%s\" laitteessa \"%s\""
+
+#~ msgid "PIN code required"
+#~ msgstr "PIN-koodi vaaditaan"
+
+#~ msgid "PIN code is needed for the mobile broadband device"
+#~ msgstr "Mobiililaajakaistalaite vaatii PIN-koodin"
+
+#, c-format
+#~ msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+#~ msgstr "Mobiililaajakaistayhteys “%s” on aktiivinen: (%d%%%s%s)"
+
+#~ msgid "roaming"
+#~ msgstr "verkkovierailu"
+
+#, fuzzy
+#~ msgid "Network Manager"
+#~ msgstr "NetworkManager"
+
+#, fuzzy
+#~ msgid "Controller for Network Manager"
+#~ msgstr "NetworkManager"
+
+#, c-format
+#~ msgid "%s connection"
+#~ msgstr "%s (yhteys)"
+
+#~ msgid "PEM certificates (*.pem, *.crt, *.cer)"
+#~ msgstr "PEM-varmenteet (*.pem, *.crt, *.cer)"
+
+#~ msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+#~ msgstr "DER-, PEM- tai PKCS#12-yksityisavaimet (*.der, *.pem, *.p12, *.key)"
+
+#~ msgid "Run"
+#~ msgstr "Suorita"
+
+#~ msgid "Restart"
+#~ msgstr "Käynnistä uudelleen"
+
+#~ msgid "Logout"
+#~ msgstr "Kirjaudu ulos"
+
+#~ msgid "Properties"
+#~ msgstr "Asetukset"
+
+#~ msgid "Menu"
+#~ msgstr "Valikko"
+
+#~ msgid "Icon"
+#~ msgstr "Kuvake"
+
+#, fuzzy
+#~ msgid "Searchable Application Menu"
+#~ msgstr "Sovellusvalikko"
+
+#, fuzzy
+#~ msgid "No network connection - cannot install updates."
+#~ msgstr "Ei verkkoyhteyttä"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth devices..."
+#~ msgstr "virheellinen Bluetooth-laite (%s)"
+
+#, fuzzy, c-format
+#~ msgid "Bluetooth %s device not found"
+#~ msgstr "Bluetooth-yhteys %d"
+
+#, fuzzy, c-format
+#~ msgid "Failed to connect to Bluetooth device - %s"
+#~ msgstr "puhelimeen yhdistäminen epäonnistui."
+
+#, fuzzy, c-format
+#~ msgid "Connecting Bluetooth device '%s' as input..."
+#~ msgstr "virheellinen Bluetooth-laite (%s)"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth device..."
+#~ msgstr "virheellinen Bluetooth-laite (%s)"
+
+#, fuzzy
+#~ msgid "Device Profiles"
+#~ msgstr "Laitteen katkaisu epäonnistui"
+
+#, fuzzy
+#~ msgid "Device not connected"
+#~ msgstr "Laitteen katkaisu epäonnistui"
+
+#, fuzzy
+#~ msgid "Volume control"
+#~ msgstr "Vuonohjaus"
+
+#, fuzzy
+#~ msgid "Available Updates"
+#~ msgstr "Saatavilla"
+
+#, fuzzy
+#~ msgid "Add New Device"
+#~ msgstr "laite"
+
+#, fuzzy
+#~ msgid "Searching for Bluetooth devices..."
+#~ msgstr "virheellinen Bluetooth-laite (%s)"
+
+#, fuzzy
+#~ msgid "C_onnect"
+#~ msgstr "Yh_teys:"
+
+#~ msgid "_Network name"
+#~ msgstr "_Verkon nimi"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Avaa tämän laitteen lukitus automaattisesti"
+
+#, fuzzy
+#~ msgid "_Close"
+#~ msgstr "_Sulje"
 
 #~ msgid "Manage your network connections"
 #~ msgstr "Hallitse verkkoyhteyksiä"
@@ -2407,9 +1943,6 @@ msgstr "_Sulje"
 #~ msgid "Any L3 protocol"
 #~ msgstr "Mikä tahansa L3-protokolla"
 
-#~ msgid "TCP"
-#~ msgstr "TCP"
-
 #~ msgid "UDP"
 #~ msgstr "UDP"
 
@@ -2430,9 +1963,6 @@ msgstr "_Sulje"
 
 #~ msgid "Send a LACPDU frame _every second"
 #~ msgstr "Lähetä LACPDU-kehys _joka sekunti"
-
-#~ msgid "_System priority"
-#~ msgstr "_Järjestelmäprioriteetti"
 
 #, fuzzy
 #~ msgid "Transmission _balancing interval"
@@ -3546,9 +3076,6 @@ msgstr "_Sulje"
 #~ msgid "WEP inde_x"
 #~ msgstr "WEP-inde_ksi"
 
-#~ msgid "Disable connected notifications"
-#~ msgstr "Älä näytä ilmoitusta kun yhteys muodostuu"
-
 #, fuzzy
 #~ msgid ""
 #~ "Set this to true to disable notifications when connecting to a network."
@@ -3772,10 +3299,6 @@ msgstr "_Sulje"
 #, fuzzy
 #~ msgid "(Unknown)"
 #~ msgstr "Tuntematon"
-
-#, fuzzy
-#~ msgid "Cancel"
-#~ msgstr "_Peru"
 
 #, fuzzy
 #~ msgid "Choose a %s Certificate"

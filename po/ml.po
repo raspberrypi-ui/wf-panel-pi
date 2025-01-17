@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2025-01-17 10:28+0000\n"
 "PO-Revision-Date: 2019-02-26 19:15+0000\n"
 "Last-Translator: External Translation Source <translation@rep.kiev.ua>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,1697 +20,1188 @@ msgstr ""
 "X-Pootle-Path: /ml/lxpanel/po/ml.po\n"
 "X-POOTLE-MTIME: 1551208538.771607\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
-msgid "Pairing request sent to '%s' - waiting for response..."
+msgid "Spacer"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#: ../src/panel/configure.c:116 ../src/panel/configure.c:255
+#: ../src/panel/configure.c:580
 #, c-format
-msgid "Pairing failed - %s"
+msgid "Spacer (%d)"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#: ../src/panel/configure.c:137 ../src/panel/configure.c:158
+#: ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Pairing successful - connecting..."
-msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s'-നായി തയ്യാറെടുക്കുന്നു..."
+msgid "<Unknown>"
+msgstr "അപരിചിതം"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#: ../src/panel/configure.c:424
+msgid "Cancel"
+msgstr ""
+
+#: ../src/panel/configure.c:424
+msgid "OK"
+msgstr ""
+
+#: ../src/panel/configure.c:445 ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Connection successful"
-msgstr "ബന്ധമായില്ല"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
-msgid "Connection failed - %s"
-msgstr "ബന്ധമായില്ല"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, c-format
-msgid "Please enter code '%s' on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, c-format
-msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, c-format
-msgid "Please enter PIN code shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, c-format
-msgid "Please enter passcode shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, c-format
-msgid "Waiting for response from Bluetooth device..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, c-format
-msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, c-format
-msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, c-format
-msgid ""
-"Pairing successful - this device has no services which can be used with "
-"Raspberry Pi"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, c-format
-msgid "Do you want to unpair '%s'?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, c-format
-msgid "Removing pairing with '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
-#, c-format
-msgid "Removal failed - %s"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, c-format
-msgid "Disconnecting from '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
-msgid "Disconnection failed - %s"
-msgstr "വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-#, fuzzy
-msgid "Use the audio menu to connect to this device"
-msgstr "ശൃംഖലകളുടെ പട്ടികയുപയോഗിച്ചു് ഒരു വയര്‍ലെസ് ശൃംഖലയുമായി ബന്ധപ്പെടുക"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
-msgid "No usable services on this device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-#, fuzzy
-msgid "Disconnect..."
-msgstr "ബന്ധം വിഛേദിക്കുക"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-#, fuzzy
-msgid "Connect..."
-msgstr "_കണക്ട് ചെയ്യുക"
-
-#. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-msgid "Remove..."
-msgstr ""
-
-#. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-#, fuzzy
-msgid "No Bluetooth adapter found"
-msgstr "ബ്ലൂടൂത്ത്"
-
-#. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-#, fuzzy
-msgid "Turn On Bluetooth"
-msgstr "ബ്ലൂടൂത്ത്"
-
-#. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-#, fuzzy
-msgid "Turn Off Bluetooth"
-msgstr "ബ്ലൂടൂത്ത്"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
-msgid "Stop Discoverable"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
-msgid "Make Discoverable"
-msgstr ""
-
-#. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-#, fuzzy
-msgid "Add Device..."
-msgstr "ഏതെങ്കിലും ഡിവൈസ്"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
-#, fuzzy
-msgid "Manage Bluetooth devices"
-msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "ബ്ലൂടൂത്ത്"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
-#, fuzzy
-msgid "Manages Bluetooth devices"
-msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
-
-#: ../src/panel/widgets/ejecter/ejecter.c:171
-msgid ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:199
-#, c-format
-msgid ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:205
-#, fuzzy, c-format
-msgid ""
-"Failed to eject %s\n"
-"%s"
-msgstr "പിഎഎന്‍ കണക്ഷന്‍ തയ്യാറാക്കുന്നതില്‍ പരാജയം: %s"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:402
-msgid "Select a drive in menu to eject safely"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:453
-msgid "Hide icon when no devices"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:462
-msgid "Ejects mounted drives"
-msgstr ""
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:77
-#, fuzzy
-msgid "ad-hoc"
-msgstr "അഡ്-ഹോക്"
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:82
-msgid "secure."
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
-msgid "Failed to activate connection"
-msgstr "ബന്ധം സജീവമാക്കുന്നതില്‍ പരാജയപ്പെട്ടു"
-
-#: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
-msgid "Unknown error"
-msgstr "അറിയാത്ത ഏതോ പ്രശ്നം"
-
-#: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
-msgid "Connection failure"
-msgstr "ബന്ധമായില്ല"
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn Off Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn On Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:227
-#, c-format
-msgid "IP : %s"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:781
-msgid "Failed to add/activate connection"
-msgstr "ഒരു ബന്ധം ചേര്‍ക്കാന്‍/സജീവമാക്കാന്‍ സാധിച്ചില്ല"
-
-#: ../src/panel/widgets/netman/applet.c:835
-msgid "Device disconnect failed"
-msgstr "ഉപകരണം വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
-
-#: ../src/panel/widgets/netman/applet.c:840
-msgid "Disconnect failure"
-msgstr "വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
-
-#: ../src/panel/widgets/netman/applet.c:870
-msgid "Connection activation failed"
-msgstr "ബന്ധം സജീവമാക്കാന്‍ സാധിച്ചില്ല"
-
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
-#, fuzzy
-msgid "Don’t show this message again"
-msgstr "ഈ സന്ദേശം ഇനി കാണിക്കരുതു്"
-
-#: ../src/panel/widgets/netman/applet.c:1310
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” disconnected because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"വിപിഎന്‍ കണക്ഷനില്‍ തടസ്സം നേരിട്ടതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' വിഛേദിക്കപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1312
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"ശൃംഖല കണക്ഷനില്‍ തടസ്സം നേരിട്ടതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1314
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
-msgstr ""
-"\n"
-"വിപിഎന്‍ സര്‍വീസ് അപ്രതീക്ഷിതമായി നിലച്ചതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1316
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service returned invalid "
-"configuration."
-msgstr ""
-"\n"
-"വിപിഎന്‍ സേവനം തെറ്റായ ക്രമീകരമാണെന്നറിയിച്ചതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1318
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the connection attempt timed out."
-msgstr ""
-"\n"
-"ബന്ധപ്പെടാനനുവദിച്ച സമയം കഴിഞ്ഞുപോയതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1320
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service did not start in time."
-msgstr ""
-"\n"
-"വിപിഎന്‍ സേവനം ശരിയായ സമയത്തു് ആരംഭിക്കുവാന്‍ സാധ്യമാകാത്തതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' "
-"പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1322
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start."
-msgstr ""
-"\n"
-"വിപിഎന്‍ സേവനം ആരംഭിക്കുന്നതിലുള്ള തടസ്സം കാരണം വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1324
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because there were no valid VPN secrets."
-msgstr ""
-"\n"
-"സാധുവായ വിപിഎന്‍ രഹസ്യങ്ങള്‍ ലഭ്യമല്ലാത്തതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1326
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because of invalid VPN secrets."
-msgstr ""
-"\n"
-"അസാധുവായ വിപിഎന്‍ രഹസ്യങ്ങള്‍ കാരണം വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1331
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed."
-msgstr ""
-"\n"
-"വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
-
-#: ../src/panel/widgets/netman/applet.c:1358
-#, c-format
-msgid ""
-"VPN connection has been successfully established.\n"
-"\n"
-"%s\n"
-msgstr ""
-"വിപിഎന്‍ കണക്ഷന്‍ വിജയകരമായി സ്ഥാപിച്ചിരിയ്ക്കുന്നു.\n"
-"\n"
-"%s\n"
-
-#: ../src/panel/widgets/netman/applet.c:1360
-msgid "VPN connection has been successfully established.\n"
-msgstr "വിപിഎന്‍ കണക്ഷന്‍ വിജയകരമായി സ്ഥാപിച്ചിരിയ്ക്കുന്നു.\n"
-
-#: ../src/panel/widgets/netman/applet.c:1362
-msgid "VPN Login Message"
-msgstr "വിപിഎന്‍ ലോഗിന്‍ സന്ദേശം"
-
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
-msgid "VPN Connection Failed"
-msgstr "വിപിഎന്‍ ബന്ധം പരാജയപ്പെട്ടു"
-
-#: ../src/panel/widgets/netman/applet.c:1414
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"വിപിഎന്‍ സേവനം ആരംഭിക്കുവാന്‍ സാധിക്കാത്തതിനാല്‍, വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1417
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"വിപിഎന്‍ ബന്ധം '%s' ആരംഭിക്കുന്നതില്‍ പരാജയപ്പെട്ടു.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1741
-msgid "device not ready (firmware missing)"
-msgstr "ഉപകരണം തയ്യാറല്ല (ഫേംവെയര്‍ ഇല്ല)"
-
-#: ../src/panel/widgets/netman/applet.c:1743
-msgid "device not ready"
-msgstr "ഉപകരണം തയ്യാറല്ല"
-
-#. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
-msgid "disconnected"
-msgstr "ബന്ധം വിഛേദിച്ചിരിയ്ക്കുന്നു"
-
-#: ../src/panel/widgets/netman/applet.c:1769
-msgid "Disconnect"
-msgstr "ബന്ധം വിഛേദിക്കുക"
-
-#: ../src/panel/widgets/netman/applet.c:1783
-msgid "device not managed"
-msgstr "ഉപകരണം കൈകാര്യം ചെയ്യാത്തതാണു്"
-
-#: ../src/panel/widgets/netman/applet.c:1864
-msgid "No network devices available"
-msgstr "ശൃംഖല ഉപകരണങ്ങളൊന്നും ലഭ്യമല്ല"
-
-#: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
-msgid "_Advanced Options"
-msgstr "സങ്കീര്‍ണ്ണമായ"
-
-#: ../src/panel/widgets/netman/applet.c:1919
-msgid "_VPN Connections"
-msgstr "_വിപിഎന്‍ ബന്ധങ്ങള്‍"
-
-#: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "_Configure VPN…"
+msgid "Configure %s"
 msgstr "വിപി_എന്‍ ക്രമീകരിക്കുക..."
 
-#: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "_Add a VPN connection…"
-msgstr "_വിപിഎന്‍ ബന്ധങ്ങള്‍"
-
-#. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection _Information"
-msgstr "ബന്ധ _വിവരം"
-
-#. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
-#, fuzzy
-msgid "Edit Connections…"
-msgstr "ബന്ധങ്ങള്‍ ചിട്ടപ്പെടുത്തുക..."
-
-#: ../src/panel/widgets/netman/applet.c:2112
-#, fuzzy
-msgid "NetworkManager is not running…"
-msgstr "NetworkManager പ്രവര്‍ത്തനത്തിലില്ല..."
-
-#: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
-msgid "Wi-Fi country is not set"
-msgstr "എന്റെ രാജ്യം ലഭ്യമല്ല"
-
-#: ../src/panel/widgets/netman/applet.c:2119
-msgid "Click here to set Wi-Fi country"
+#: ../src/panel/configure.c:814
+msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
-msgid "Networking disabled"
-msgstr "ശൃംഖല ബന്ധം പ്രവര്‍ത്ത രഹിതമാക്കിയിരിക്കുന്നു"
-
-#. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
-msgid "Enable _Networking"
-msgstr "_ശൃംഖല ബന്ധം സജ്ജമാക്കുക"
-
-#. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable _Wi-Fi"
-msgstr "_വയര്‍ലെസ് സജ്ജമാക്കുക"
-
-#. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
-msgid "Enable _Mobile Broadband"
-msgstr "_മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് സജ്ജമാക്കുക"
-
-#. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable N_otifications"
-msgstr "അറിയിപ്പു_കള്‍ പ്രവര്‍ത്തന സജ്ജമാക്കുക"
-
-#: ../src/panel/widgets/netman/applet.c:2415
-msgid "_About"
-msgstr "_അണിയറ വിശേഷം"
-
-#: ../src/panel/widgets/netman/applet.c:2736
-#, fuzzy, c-format
-msgid "You are now connected to “%s”."
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ '%s'-മായി ബന്ധപ്പെട്ടിരിക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet.c:2776
-msgid "Disconnected"
-msgstr "ബന്ധംവിഛേദിച്ചിരിക്കുന്നു"
-
-#: ../src/panel/widgets/netman/applet.c:2777
-msgid "The network connection has been disconnected."
-msgstr "ശൃംഖല ബന്ധം വിഛേദിച്ചിരിക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet.c:3079
-#, fuzzy, c-format
-msgid "Preparing network connection “%s”…"
-msgstr "ശൃംഖല ബന്ധം '%s'-നായി തയ്യാറെടുക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet.c:3082
-#, fuzzy, c-format
-msgid "User authentication required for network connection “%s”…"
-msgstr ""
-"ശൃംഖല ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet.c:3085
-#: ../src/panel/widgets/netman/applet-device-bt.c:113
-#: ../src/panel/widgets/netman/mobile-helpers.c:605
-#, fuzzy, c-format
-msgid "Requesting a network address for “%s”…"
-msgstr "'%s'-നു് ഒരു ശൃംഖല വിലാസത്തിനായി ആവശ്യപ്പെടുന്നു..."
-
-#: ../src/panel/widgets/netman/applet.c:3088
-#, fuzzy, c-format
-msgid "Network connection “%s” active"
-msgstr "ശൃംഖല ബന്ധം '%s' സജീവമാണു്"
-
-#: ../src/panel/widgets/netman/applet.c:3165
-#, fuzzy, c-format
-msgid "Starting VPN connection “%s”…"
-msgstr "വിപിഎന്‍ ബന്ധം '%s' ആരംഭിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet.c:3168
-#, fuzzy, c-format
-msgid "User authentication required for VPN connection “%s”…"
-msgstr ""
-"വിപിഎന്‍ ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet.c:3171
-#, fuzzy, c-format
-msgid "Requesting a VPN address for “%s”…"
-msgstr "'%s'-നായി ഒരു വിപിഎന്‍ വിലാസം ആവശ്യപ്പെടുന്നു..."
-
-#: ../src/panel/widgets/netman/applet.c:3174
-#, fuzzy, c-format
-msgid "VPN connection active"
-msgstr "വിപിഎന്‍ ബന്ധം '%s' സജീവമാണു്"
-
-#: ../src/panel/widgets/netman/applet.c:3226
-msgid "No network connection"
-msgstr "ശൃംഖല ബന്ധം ലഭ്യമല്ല"
-
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "ശൃംഖല"
-
-#: ../src/panel/widgets/netman/applet.c:3896
-msgid "NetworkManager Applet"
-msgstr "NetworkManager ലഘുപ്രയോഗം"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:147
-msgid "Wrong PUK code; please contact your provider."
-msgstr "തെറ്റായ പിയുകെ കോഡ്; ദയവായി നിങ്ങളുടെ ദാതാവുമായി ബന്ധപ്പെടുക."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:189
-msgid "Wrong PIN code; please contact your provider."
-msgstr "തെറ്റായ പിന്‍ കോഡ്; ദയവായി നിങ്ങളുടെ ദാതാവുമായി ബന്ധപ്പെടുക."
-
-#. Start the spinner to show the progress of the unlock
-#: ../src/panel/widgets/netman/applet-device-broadband.c:240
-#, fuzzy
-msgid "Sending unlock code…"
-msgstr "പൂട്ട് തുറക്കേണ്ട കോഡ് അയയ്ക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:725
-#: ../src/panel/widgets/netman/applet-dialogs.c:532
-#, c-format
-msgid "Mobile Broadband (%s)"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:727
-msgid "Mobile Broadband"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ്"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+#: ../src/panel/configure.c:815
 msgid "Available"
 msgstr "ലഭ്യമായവ"
 
-#. Default connection item
-#: ../src/panel/widgets/netman/applet-device-broadband.c:793
-#, fuzzy
-msgid "New Mobile Broadband connection…"
-msgstr "പുതിയ മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് കണക്ഷന്‍"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:809
-#: ../src/panel/widgets/netman/applet-device-bt.c:75
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
-msgid "Connection Established"
-msgstr "ബന്ധം സ്ഥാപിച്ചു"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:810
-msgid "You are now connected to the Mobile Broadband network."
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ മൊബെല്‍ ബ്രോഡ്ബാന്‍ഡ് ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:950
-#: ../src/panel/widgets/netman/applet-device-broadband.c:956
-msgid "Mobile Broadband network."
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ശൃംഖല."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:951
-msgid "You are now registered on the home network."
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ വീട്ടിലെ ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:957
-msgid "You are now registered on a roaming network."
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ പുറത്തൊരു ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:76
-msgid "You are now connected to the mobile broadband network."
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ മൊബെല്‍ ബ്രോഡ്ബാന്‍ഡ് ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:104
-#: ../src/panel/widgets/netman/mobile-helpers.c:596
-#, fuzzy, c-format
-msgid "Preparing mobile broadband connection “%s”…"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s'-നായി തയ്യാറാകുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:107
-#: ../src/panel/widgets/netman/mobile-helpers.c:599
-#, fuzzy, c-format
-msgid "Configuring mobile broadband connection “%s”…"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' ക്രമീകരിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:110
-#: ../src/panel/widgets/netman/mobile-helpers.c:602
-#, fuzzy, c-format
-msgid "User authentication required for mobile broadband connection “%s”…"
-msgstr ""
-"മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി "
-"ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:117
-#: ../src/panel/widgets/netman/mobile-helpers.c:624
-#, fuzzy, c-format
-msgid "Mobile broadband connection “%s” active"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' സജീവമാണു്"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
-msgid "Auto Ethernet"
-msgstr "ഓട്ടോ ഇതര്‍നെറ്റ്"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
-#, c-format
-msgid "Ethernet Networks (%s)"
-msgstr "എതര്‍നെറ്റ് ശൃംഖലകള്‍ (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
-#, c-format
-msgid "Ethernet Network (%s)"
-msgstr "എതര്‍നെറ്റ് ശൃംഖല (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
-msgid "Ethernet Networks"
-msgstr "എതര്‍നെറ്റ് ശൃംഖലകള്‍"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
-msgid "Ethernet Network"
-msgstr "എതര്‍നെറ്റ് ശൃംഖല"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
-msgid "You are now connected to the ethernet network."
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ എഥര്‍നെറ്റ് ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
-#, fuzzy, c-format
-msgid "Preparing ethernet network connection “%s”…"
-msgstr "എഥര്‍നെറ്റ് ശൃംഖല ബന്ധം '%s' തയ്യാറാകുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
-#, fuzzy, c-format
-msgid "Configuring ethernet network connection “%s”…"
-msgstr "എഥര്‍നെറ്റ് ശൃംഖല ബന്ധം '%s' ക്രമീകരിയ്ക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
-#, fuzzy, c-format
-msgid "User authentication required for ethernet network connection “%s”…"
-msgstr ""
-"എഥര്‍നെറ്റ് ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
-#, fuzzy, c-format
-msgid "Requesting an ethernet network address for “%s”…"
-msgstr "'%s'-നുള്ള ഒരു എഥര്‍നെറ്റ് ശൃംഖല വിലാസം ആവശ്യപ്പെടുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
-#, fuzzy, c-format
-msgid "Ethernet network connection “%s” active"
-msgstr "എഥര്‍നെറ്റ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
-msgid "DSL authentication"
-msgstr "ഡിഎസ്എല്‍ ആധികാരികത ഉറപ്പാക്കല്‍"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:1190
-#: ../src/panel/widgets/netman/mobile-helpers.c:455
-#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
-msgid "_Cancel"
+#: ../src/panel/configure.c:816
+msgid "Right Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:1191
-#: ../src/panel/widgets/netman/mobile-helpers.c:456
-#: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
-#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
-msgid "_OK"
+#: ../src/panel/panel.cpp:235
+msgid "Add / Remove Plugins..."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#: ../src/panel/panel.cpp:239
 #, fuzzy
-msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "അദൃശ്യമായ വയര്‍ലെസ് നെറ്റ്‌വര്‍ക്കിലേക്ക് കണക്ട് ചെയ്യുക"
+msgid "Configure Plugin..."
+msgstr "വിപി_എന്‍ ക്രമീകരിക്കുക..."
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#: ../src/panel/panel.cpp:243
 #, fuzzy
-msgid "Create _New Wi-Fi Network…"
-msgstr "പുതിയ വയര്‍ലെസ് ശൃംഖല ഉണ്ടാക്കുക"
+msgid "Notifications..."
+msgstr "അറിയിപ്പു_കള്‍ പ്രവര്‍ത്തന സജ്ജമാക്കുക"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
-#, fuzzy
-msgid "Create Wi-Fi _Hotspot…"
-msgstr "പുതിയ വയര്‍ലെസ് ശൃംഖല ഉണ്ടാക്കുക"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
-msgid "(none)"
-msgstr "(ഒന്നുമില്ല)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
-msgid "Failed to add new connection"
-msgstr "പുതിയ ബന്ധം ചേര്‍ക്കാനായില്ല"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
-msgid "Insufficient privileges."
+#: ../src/panel/panel.cpp:247
+msgid "Taskbar Preferences..."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
-msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ വയര്‍ലെസ് ശൃംഖല '%s'-മായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
-#, c-format
-msgid "Wi-Fi Networks (%s)"
-msgstr "വയര്‍ലെസ് ശൃംഖലകള്‍ (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
-#, c-format
-msgid "Wi-Fi Network (%s)"
-msgstr "വയര്‍ലെസ് ശൃംഖല (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
-msgid "Wi-Fi Network"
-msgid_plural "Wi-Fi Networks"
-msgstr[0] "വയര്‍ലെസ് ശൃംഖല"
-msgstr[1] "വയര്‍ലെസ് ശൃംഖലകള്‍"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
-msgid "Wi-Fi is disabled"
-msgstr "വയര്‍ലസ്സ് പ്രവര്‍ത്തനരഹിതമാക്കിയിരിയ്ക്കുന്നു"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
-msgid "Wi-Fi is disabled by hardware switch"
-msgstr "ഹാര്‍ഡ്‌​വെയര്‍ സ്വിച്ച് ഉപയോഗിച്ച് വയര്‍ലെസ്സ് പ്രവര്‍ത്തന രഹിതമാക്കിയിരിക്കുന്നു"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
-msgid "More networks"
-msgstr "കൂടുതല്‍ ശൃംഖലകള്‍"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
-msgid "Wi-Fi Networks Available"
-msgstr "ലഭ്യമായ വയര്‍ലെസ് ശൃംഖലകള്‍"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
-msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr "ശൃംഖലകളുടെ പട്ടികയുപയോഗിച്ചു് ഒരു വയര്‍ലെസ് ശൃംഖലയുമായി ബന്ധപ്പെടുക"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
-#, fuzzy, c-format
-msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ വയര്‍ലെസ് ശൃംഖല '%s'-മായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
-#, fuzzy, c-format
-msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "വയര്‍ഡ് ശൃംഖല ബന്ധം '%s' തയ്യാറാകുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
-#, fuzzy, c-format
-msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' ക്രമീകരിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
-#, fuzzy, c-format
-msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr ""
-"വയര്‍ലെസ് ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
-#, fuzzy, c-format
-msgid "Requesting a Wi-Fi network address for “%s”…"
-msgstr "'%s'-നുള്ള ഒരു വയര്‍ലെസ് ശൃംഖല വിലാസത്തിനായി ആവശ്യപ്പെടുന്നു..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active"
-msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:29
-msgid "Error displaying connection information:"
-msgstr "ബന്ധം സംബന്ധിച്ചുള്ള വിവരം കാണിക്കുന്നതില്‍ പിശക്"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:61
-msgid "LEAP"
-msgstr "എല്‍ഇഎപി"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:63
-msgid "Dynamic WEP"
-msgstr "ഡൈനമിക് ഡബ്ലിയുഇപി"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:65
-#: ../src/panel/widgets/netman/applet-dialogs.c:237
-#: ../src/panel/widgets/netman/applet-dialogs.c:239
-msgid "WPA/WPA2"
-msgstr "ഡബ്ലിയുപിഎ/ഡബ്ലിയുപിഎ2"
-
-#. Create the expander
-#: ../src/panel/widgets/netman/applet-dialogs.c:174
-#, fuzzy
-msgid "More addresses"
-msgstr "വിലാസങ്ങള്‍"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:235
-msgid "WEP"
-msgstr "ഡബ്ലിയുഇപി"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:241
-msgid "WPA3"
+#: ../src/widgets/clock/clock.cpp:10
+msgid "Display format"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:245
-#: ../src/panel/widgets/netman/applet-dialogs.c:254
-msgctxt "Wi-Fi/Ethernet security"
-msgid "None"
-msgstr "ഒന്നുമില്ല"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:324
-#: ../src/panel/widgets/netman/applet-dialogs.c:597
-#, c-format
-msgid "%u Mb/s"
-msgstr "%u Mb/s"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:326
-#: ../src/panel/widgets/netman/applet-dialogs.c:599
-msgctxt "Speed"
-msgid "Unknown"
-msgstr "അറിയില്ല"
-
-#. Address
-#: ../src/panel/widgets/netman/applet-dialogs.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:363
-msgctxt "Address"
-msgid "Unknown"
-msgstr "അറിയില്ല"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:415
-msgid "IP Address"
-msgstr "ഐപി വിലാസം"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:364
-msgid "Broadcast Address"
-msgstr "ബ്രോഡ്കാസ്റ്റ് വിലാസം"
-
-#. Prefix
-#: ../src/panel/widgets/netman/applet-dialogs.c:376
-msgctxt "Subnet Mask"
-msgid "Unknown"
-msgstr "അറിയില്ല"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:377
-msgid "Subnet Mask"
-msgstr "സബ്‌നെറ്റ് മാസ്ക്"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Primary DNS"
-msgstr "പ്രാഥമിക ഡിഎന്‍എസ്:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Secondary DNS"
-msgstr "രണ്ടാമത്തെ ഡിഎന്‍എസ്:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Tertiary DNS"
-msgstr "മൂന്നാമത്തെ ഡിഎന്‍എസ്:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:518
-#, c-format
-msgid "Ethernet (%s)"
-msgstr "ഇതര്‍നെറ്റ് (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:521
-#, c-format
-msgid "802.11 Wi-Fi (%s)"
-msgstr "802.11 വൈഫൈ (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:528
-#, c-format
-msgid "GSM (%s)"
-msgstr "ജിഎസ്എം (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:530
-#, c-format
-msgid "CDMA (%s)"
-msgstr "സിഡിഎംഎ (%s)"
-
-#. --- General ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:538
-#: ../src/panel/widgets/netman/applet-dialogs.c:872
-msgid "General"
-msgstr "പൊതുവായ"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:541
-msgid "Interface"
-msgstr "വിനിമയതലം"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:556
-msgid "Hardware Address"
-msgstr "ഹാര്‍ഡ്‌വെയര്‍ വിലാസം"
-
-#. Driver
-#: ../src/panel/widgets/netman/applet-dialogs.c:569
-msgid "Driver"
-msgstr "ഡ്രൈവര്‍"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:602
-msgid "Speed"
-msgstr "വേഗത"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:615
-#, fuzzy
-msgid "Security"
-msgstr "സുരക്ഷ:"
-
-#. --- IPv4 ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:640
-#: ../src/panel/widgets/netman/applet-dialogs.c:902
-msgid "IPv4"
-msgstr "IPv4"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:659
-#: ../src/panel/widgets/netman/applet-dialogs.c:707
-msgid "Default Route"
-msgstr "സഹജമായ റൂട്ട്"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:687
-#: ../src/panel/widgets/netman/applet-dialogs.c:929
-msgid "IPv6"
-msgstr "IPv6"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:728
-msgid "Hotspot"
+#: ../src/widgets/clock/clock.cpp:11
+msgid "Display font"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:746
+#: ../src/widgets/clock/clock.cpp:15
 #, fuzzy
-msgid "Password"
-msgstr "അടയാളവാക്ക്:"
+msgid "Clock"
+msgstr "_പൂട്ട് തുറക്കുക"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:876
-msgid "VPN Type"
-msgstr "വിപിഎന്‍ തരം"
+#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
+msgid "Show usage as percentage"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:881
-msgid "VPN Gateway"
-msgstr "വിപിഎന്‍ ഗേറ്റ്‌വേ"
+#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
+msgid "Foreground colour"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:885
-msgid "VPN Username"
-msgstr "വിപിഎന്‍ ഉപയോക്തൃനാമം"
+#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
+msgid "Background colour"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:889
-msgid "VPN Banner"
-msgstr "വിപിഎന്‍ ബാനര്‍"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:893
-msgid "Base Connection"
-msgstr "അടിസ്ഥാന ബന്ധം"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:894
-msgid "Unknown"
-msgstr "അപരിചിതം"
-
-#. Shouldn't really happen but ...
-#: ../src/panel/widgets/netman/applet-dialogs.c:1091
-msgid "No valid active connections found!"
-msgstr "സാധുവായ സജീവ ബന്ധങ്ങളൊന്നും കണ്ടില്ല!"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+#: ../src/widgets/cpu/cpu.cpp:15
 #, fuzzy
+msgid "CPU"
+msgstr "GTC"
+
+#: ../src/widgets/gpu/gpu.cpp:15
+msgid "GPU"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:20
+msgid "Icon spacing"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:24
+msgid "Launcher"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:196
+msgid "Remove from Launcher"
+msgstr ""
+
+#: ../src/widgets/notify/notify.cpp:5
+#, fuzzy
+msgid "Show notifications"
+msgstr "അറിയിപ്പു_കള്‍ പ്രവര്‍ത്തന സജ്ജമാക്കുക"
+
+#: ../src/widgets/notify/notify.cpp:6
+#, fuzzy
+msgid "Time before notifications close"
+msgstr "ബന്ധപ്പെടുമ്പോളുള്ള അറിയിപ്പുകള്‍ പ്രവര്‍ത്തന രഹിതമാക്കുക"
+
+#: ../src/widgets/notify/notify.cpp:10
+#, fuzzy
+msgid "Notifications"
+msgstr "അറിയിപ്പു_കള്‍ പ്രവര്‍ത്തന സജ്ജമാക്കുക"
+
+#: ../src/widgets/power/power.c:86
 msgid ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"and many other community contributors and translators"
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
 msgstr ""
-"പകര്‍പ്പവകാശം © 2004-2008 റെഡ് ഹാറ്റ്, ഇന്‍ക്.\n"
-"പകര്‍പ്പവകാശം © 2005-2008 നോവല്‍, ഇന്‍ക്."
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+#: ../src/widgets/power/power.c:102
 msgid ""
-"Notification area applet for managing your network devices and connections."
-msgstr "നിങ്ങളുടെ ശൃംഖല ഉപകരണങ്ങളും ബന്ധങ്ങളും കൈകാര്യം ചെയ്യുന്നതിനായുള്ള അറിയിപ്പിനുള്ള സ്ഥലം."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1144
-msgid "NetworkManager Website"
-msgstr "NetworkManager വെബ്സൈറ്റ്"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1148
-msgid "translator-credits"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+#: ../src/widgets/power/power.c:163
 msgid ""
-"The NetworkManager Applet could not find some required resources (the .ui "
-"file was not found)."
+"High display resolution is using large amounts of memory.\n"
+"Consider reducing screen resolution."
 msgstr ""
-"ആവശ്യമുള്ള ചില ഉറവിടങ്ങള്‍ ലഭ്യമാക്കുവാന്‍ NetworkManager ആപ്ലെറ്റിനു് സാധ്യമായില്ല (.uiഫയല്‍ "
-"ലഭ്യമായില്ല)"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1163
-msgid "Missing resources"
-msgstr "ലഭ്യമല്ലാത്ത റിസോഴ്സുകള്‍"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1188
-msgid "Mobile broadband network password"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് നെറ്റ്‌വര്‍ക്കിനുള്ള അടയാളവാക്ക്"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1197
-#, fuzzy, c-format
-msgid "A password is required to connect to “%s”."
-msgstr "'%s'-ലേക്കു് ബന്ധപ്പെടുന്നതിനായി ഒരു അടയാളവാക്ക് ആവശ്യമുണ്ടു്."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1220
-msgid "Password:"
-msgstr "അടയാളവാക്ക്:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1502
-msgid "SIM PIN unlock required"
-msgstr "സിം പിന്‍ കൊടുത്തു് തുറക്കണം"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1503
-msgid "SIM PIN Unlock Required"
-msgstr "സിം പിന്‍ കൊടുത്തു് തുറക്കണം"
-
-#. FIXME: some warning about # of times you can enter incorrect PIN
-#: ../src/panel/widgets/netman/applet-dialogs.c:1505
-#, fuzzy, c-format
+#: ../src/widgets/power/power.c:218
 msgid ""
-"The mobile broadband device “%s” requires a SIM PIN code before it can be "
-"used."
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ഉപകരണം '%s' ഉപയോഗിക്കുന്നതിനു് മുമ്പ് ഒരു സിം പിന്‍ കോഡ് ആവശ്യമുണ്ടു്."
-
-#. Translators: PIN code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1507
-msgid "PIN code:"
-msgstr "പിന്‍ കോഡ്:"
-
-#. Translators: Show/obscure PIN checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1511
-msgid "Show PIN code"
-msgstr "പിന്‍ കോഡ് കാണിയ്ക്കുക"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1513
-msgid "SIM PUK unlock required"
-msgstr "സിം പിയുകെ കൊടുത്തു് തുറക്കണം"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1514
-msgid "SIM PUK Unlock Required"
-msgstr "സിം പിയുകെ കൊടുത്തു് തുറക്കണം"
-
-#. FIXME: some warning about # of times you can enter incorrect PUK
-#: ../src/panel/widgets/netman/applet-dialogs.c:1516
-#, fuzzy, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PUK code before it can be "
-"used."
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ഉപകരണം '%s' ഉപയോഗിക്കുന്നതിനു് മുമ്പ് ഒരു സിം പിയുകെ കോഡ് ആവശ്യമുണ്ടു്."
-
-#. Translators: PUK code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1518
-msgid "PUK code:"
-msgstr "പിയുകെ കോഡ്:"
-
-#. Translators: New PIN entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1521
-msgid "New PIN code:"
-msgstr "പുതിയ പിന്‍ കോഡ്:"
-
-#. Translators: New PIN verification entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1523
-msgid "Re-enter new PIN code:"
-msgstr "പുതിയ പിന്‍ കോഡ് വീണ്ടും നല്‍കുക:"
-
-#. Translators: Show/obscure PIN/PUK checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1528
-msgid "Show PIN/PUK codes"
-msgstr "പിന്‍/പിഒകെ കോഡുകള്‍ കാണിയ്ക്കുക"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:427
-#, fuzzy
-msgid "Connection had no VPN setting"
-msgstr "ബന്ധവിവരം"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:477
-#, fuzzy, c-format
-msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr "ഡിയുഎന്‍ കണക്ഷനുണ്ടാക്കുന്നതില്‍ പരാജയം: %s"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:485
-msgid "Failed to write connection to VPN UI: incomplete write"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
 
-#: ../src/panel/widgets/netman/ethernet-dialog.c:87
-#: ../src/panel/widgets/netman/8021x.ui.h:1
-msgid "802.1X authentication"
-msgstr "802.1X ആധികാരികത"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:36
-#: ../src/panel/widgets/netman/mobile-helpers.c:272
-msgid "CDMA"
-msgstr "സിഡിഎംഎ"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:38
-msgid "EVDO"
-msgstr "EVDO"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:40
-#: ../src/panel/widgets/netman/mobile-helpers.c:270
-msgid "GSM"
-msgstr "ജിഎസ്എം"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:42
-msgid "GPRS"
-msgstr "GPRS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:44
-msgid "EDGE"
-msgstr "EDGE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:46
-msgid "UMTS"
-msgstr "UMTS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:48
-msgid "HSDPA"
-msgstr "HSDPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:50
-msgid "HSUPA"
-msgstr "HSUPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:52
-msgid "HSPA"
-msgstr "HSPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:54
-msgid "HSPA+"
-msgstr "HSPA+"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:56
-msgid "LTE"
-msgstr "LTE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:103
-msgid "not enabled"
-msgstr "പ്രവര്‍ത്തന സജ്ജമല്ല"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:109
-msgid "not registered"
-msgstr "രജിസ്ടര്‍ ചെയ്തിട്ടില്ല"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:127
-#, c-format
-msgid "Home network (%s)"
-msgstr "ഹോം ശൃംഖല (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:129
-#, c-format
-msgid "Home network"
-msgstr "ഹോം ശൃംഖല "
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:137
-msgid "searching"
-msgstr "തെരയുന്നു"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:140
-msgid "registration denied"
-msgstr "രജിസ്ട്രേഷന്‍ നിഷേധിച്ചിരിക്കുന്നു"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:145
-#: ../src/panel/widgets/netman/mb-menu-item.c:151
-#, c-format
-msgid "%s (%s roaming)"
-msgstr "%s (%s റോമിങ്)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:147
-#: ../src/panel/widgets/netman/mb-menu-item.c:153
-#, c-format
-msgid "%s (roaming)"
-msgstr "%s (റോമിങ്)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:156
-#, c-format
-msgid "Roaming network (%s)"
-msgstr "റോമിങ് ശൃംഖല (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:158
-#, c-format
-msgid "Roaming network"
-msgstr "റോമിങ് ശൃംഖല"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:320
-#, fuzzy, c-format
-msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "'%2$s' ലെ സിം കാര്‍ഡ് '%1$s' നു് പിന്‍ കോഡ് ആവശ്യമുണ്ടു്"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:453
-msgid "PIN code required"
-msgstr "പിന്‍ കോഡ് ആവശ്യമുണ്ടു്"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:461
-msgid "PIN code is needed for the mobile broadband device"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ഡിവൈസിനു് പിന്‍ കോഡ് ആവശ്യമുണ്ടു്"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:619
-#, fuzzy, c-format
-msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
-msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' സജീവമാണു്: (%d%%%s%s)"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:622
-msgid "roaming"
-msgstr "പുറത്തുള്ള"
-
-#: ../src/panel/widgets/netman/netman.c:139
-#, fuzzy
-msgid "Network Manager"
-msgstr "ശൃംഖല മാനേജര്‍"
-
-#: ../src/panel/widgets/netman/netman.c:140
-#, fuzzy
-msgid "Controller for Network Manager"
-msgstr "ശൃംഖല മാനേജര്‍"
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:793
-#, c-format
-msgid "object class '%s' has no property named '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:800
-#, c-format
-msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:807
-#, c-format
-msgid ""
-"construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:815
-#, c-format
-msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:824
-#, c-format
-msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:835
-#, c-format
-msgid ""
-"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
-"type '%s'"
-msgstr ""
-
-#. The %s is a mobile provider name, eg "T-Mobile"
-#: ../src/panel/widgets/netman/utils.c:160
-#, c-format
-msgid "%s connection"
-msgstr "%s കണക്ഷന്‍"
-
-#: ../src/panel/widgets/netman/utils.c:534
-#, fuzzy
-msgid "PEM certificates (*.pem, *.crt, *.cer)"
-msgstr "DER അല്ലെങ്കില്‍ PEM സര്‍ട്ടിഫീക്കേറ്റുകള്‍ (*.der, *.pem, *.crt, *.cer)"
-
-#: ../src/panel/widgets/netman/utils.c:546
-msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
-msgstr "DER, PEM, അല്ലെങ്കില്‍ PKCS#12 സ്വകാര്യ കീകള്‍ (*.der, *.pem, *.p12)"
-
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
-msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
-msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
-msgid ""
-"Charged : %d%%\n"
-"On external power"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/widgets/power/power.c:269
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
+#: ../src/widgets/power/power.c:288
+msgid "PSU low voltage detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
+#: ../src/widgets/power/power.c:289
+msgid "USB over current detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
-msgid "Run"
+#: ../src/widgets/power/power.c:290
+msgid "Low power reset has occurred\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/gtk-run.c:412
-msgid "Enter the command you want to execute:"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:116
-msgid "Logout command is not set"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:122
-msgid "Restart"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:123
-msgid "Logout"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:140
-msgid "No file manager is configured."
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:489
-msgid "Add to desktop"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:496
-msgid "Properties"
-msgstr "ഗുണഗണങ്ങള്‍"
-
-#: ../src/panel/widgets/smenu/menu.c:954
-msgid "Click here to open applications menu"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1048
-msgid "Icon"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1049
-msgid "Padding"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1050
-msgid "Fixed Size"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1058
-msgid "Menu with Search"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1059
-msgid "Searchable Application Menu"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:189
-msgid ""
-"Updates are available\n"
-"Click the update icon to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:211
+#: ../src/widgets/power/power.c:341
 #, fuzzy
-msgid "No network connection - cannot install updates."
-msgstr "ശൃംഖല ബന്ധം ലഭ്യമല്ല"
+msgid "Power Information..."
+msgstr "ബന്ധവിവരം"
 
-#: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:320
-msgid "Show Updates..."
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:324
-msgid "Install Updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:470
-msgid "Updates are available - click to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:531
-msgid "Hours between checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:562
-msgid "Checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#: ../src/widgets/power/power.cpp:12
 #, fuzzy
-msgid "Reconnecting Bluetooth devices..."
-msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+msgid "System Monitor"
+msgstr "_മുന്‍ഗണന: "
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
-msgid "Bluetooth %s device not found"
-msgstr "ബോണ്ട് ബന്ധം %d"
-
-#. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
+#: ../src/widgets/spacing/spacing.cpp:5
+msgid "Width in pixels"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, c-format
-msgid "Could not set profile for device : %s"
+#: ../src/widgets/tray/tray.cpp:8
+msgid "Smooth scrolling threshold"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
-msgid "Failed to connect to Bluetooth device - %s"
-msgstr "ഫോണിലേക്ക് കണക്ട് ചെയ്യുന്നതില്‍ പരാജയം."
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, c-format
-msgid "Connecting Bluetooth device '%s' as output..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, fuzzy, c-format
-msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
-
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#: ../src/widgets/tray/tray.cpp:9
 #, fuzzy
-msgid "Reconnecting Bluetooth device..."
-msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+msgid "Middle button activates menu"
+msgstr "ബന്ധം സജീവമാക്കുന്നതില്‍ പരാജയപ്പെട്ടു"
 
-#. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
-msgid "Mute"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/commongui.c:231
-msgid "No audio devices found"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:71
-msgid "Input from this device not available in the current profile"
-msgstr ""
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/micpulse.c:144
-msgid "Mic volume"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
-msgid "HDMI"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
-msgid "AV Jack"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
-msgid "Device Profiles..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
-msgid "Output to this device not available in the current profile"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#: ../src/widgets/tray/tray.cpp:13
 #, fuzzy
-msgid "Device Profiles"
-msgstr "ഉപകരണം വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
+msgid "System Tray"
+msgstr "_മുന്‍ഗണന: "
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
-#, fuzzy
-msgid "Device not connected"
-msgstr "ഉപകരണം വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
-msgid "Volume control"
+#: ../src/widgets/window-list/toplevel.cpp:83
+#: ../src/widgets/window-list/toplevel.cpp:449
+msgid "Minimize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
-msgid "Volume Control (PulseAudio)"
+#: ../src/widgets/window-list/toplevel.cpp:84
+#: ../src/widgets/window-list/toplevel.cpp:457
+msgid "Maximize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
-msgid "Display and control volume for PulseAudio"
-msgstr ""
-
-#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-msgid "label"
-msgstr ""
-
-#: ../data/lxplug-updater.ui.h:1
-#, fuzzy
-msgid "Available Updates"
-msgstr "ലഭ്യമായവ"
-
-#: ../data/lxplug-updater.ui.h:2
+#: ../src/widgets/window-list/toplevel.cpp:85
 msgid "Close"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:3
-msgid "Install"
+#: ../src/widgets/window-list/toplevel.cpp:446
+msgid "Unminimize"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:4
-msgid "The following packages can be updated :"
+#: ../src/widgets/window-list/toplevel.cpp:454
+msgid "Unmaximize"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:1
-#, fuzzy
-msgid "Add New Device"
-msgstr "ഏതെങ്കിലും ഡിവൈസ്"
-
-#: ../data/lxplug-bluetooth.ui.h:3
-msgid "_Pair"
+#: ../src/widgets/window-list/window-list.cpp:14
+msgid "Maximum width of task button"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:4
-#, fuzzy
-msgid "Searching for Bluetooth devices..."
-msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
-
-#: ../src/panel/widgets/netman/8021x.ui.h:3
-#, fuzzy
-msgid "C_onnect"
-msgstr "ക_ണക്ഷന്‍:"
-
-#: ../src/panel/widgets/netman/8021x.ui.h:4
-#, fuzzy
-msgid "_Network name"
-msgstr "_ശൃംഖലയുടെ പേരു്:"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
-msgid "_Unlock"
-msgstr "_പൂട്ട് തുറക്കുക"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
-msgid "Automatically unlock this device"
-msgstr "ഈ ഉപകരണം സ്വയം തുറക്കുക"
-
-#: ../src/panel/widgets/netman/info.ui.h:1
-msgid "Connection Information"
-msgstr "ബന്ധവിവരം"
-
-#: ../src/panel/widgets/netman/info.ui.h:2
-msgid "_Close"
+#: ../src/widgets/window-list/window-list.cpp:18
+msgid "Window List"
 msgstr ""
+
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr ""
+
+#: ../data/config.ui.h:2
+msgid "Add to left"
+msgstr ""
+
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:4
+msgid "Add to right"
+msgstr ""
+
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:6
+msgid "Remove"
+msgstr ""
+
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr ""
+
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:10
+msgid "Move right"
+msgstr ""
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:12
+#, fuzzy
+msgid "Configure..."
+msgstr "വിപി_എന്‍ ക്രമീകരിക്കുക..."
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1
+msgid "label"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:2
+msgid "_Cancel"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:3
+msgid "_OK"
+msgstr ""
+
+#, fuzzy, c-format
+#~ msgid "Pairing successful - connecting..."
+#~ msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s'-നായി തയ്യാറെടുക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Connection successful"
+#~ msgstr "ബന്ധമായില്ല"
+
+#, fuzzy, c-format
+#~ msgid "Connection failed - %s"
+#~ msgstr "ബന്ധമായില്ല"
+
+#, fuzzy, c-format
+#~ msgid "Disconnection failed - %s"
+#~ msgstr "വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
+
+#, fuzzy
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr "ശൃംഖലകളുടെ പട്ടികയുപയോഗിച്ചു് ഒരു വയര്‍ലെസ് ശൃംഖലയുമായി ബന്ധപ്പെടുക"
+
+#, fuzzy
+#~ msgid "Disconnect..."
+#~ msgstr "ബന്ധം വിഛേദിക്കുക"
+
+#, fuzzy
+#~ msgid "Connect..."
+#~ msgstr "_കണക്ട് ചെയ്യുക"
+
+#, fuzzy
+#~ msgid "No Bluetooth adapter found"
+#~ msgstr "ബ്ലൂടൂത്ത്"
+
+#, fuzzy
+#~ msgid "Turn On Bluetooth"
+#~ msgstr "ബ്ലൂടൂത്ത്"
+
+#, fuzzy
+#~ msgid "Turn Off Bluetooth"
+#~ msgstr "ബ്ലൂടൂത്ത്"
+
+#, fuzzy
+#~ msgid "Add Device..."
+#~ msgstr "ഏതെങ്കിലും ഡിവൈസ്"
+
+#, fuzzy
+#~ msgid "Manage Bluetooth devices"
+#~ msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+
+#~ msgid "Bluetooth"
+#~ msgstr "ബ്ലൂടൂത്ത്"
+
+#, fuzzy
+#~ msgid "Manages Bluetooth devices"
+#~ msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Failed to eject %s\n"
+#~ "%s"
+#~ msgstr "പിഎഎന്‍ കണക്ഷന്‍ തയ്യാറാക്കുന്നതില്‍ പരാജയം: %s"
+
+#, fuzzy
+#~ msgid "ad-hoc"
+#~ msgstr "അഡ്-ഹോക്"
+
+#~ msgid "Unknown error"
+#~ msgstr "അറിയാത്ത ഏതോ പ്രശ്നം"
+
+#~ msgid "Connection failure"
+#~ msgstr "ബന്ധമായില്ല"
+
+#~ msgid "Failed to add/activate connection"
+#~ msgstr "ഒരു ബന്ധം ചേര്‍ക്കാന്‍/സജീവമാക്കാന്‍ സാധിച്ചില്ല"
+
+#~ msgid "Device disconnect failed"
+#~ msgstr "ഉപകരണം വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
+
+#~ msgid "Disconnect failure"
+#~ msgstr "വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
+
+#~ msgid "Connection activation failed"
+#~ msgstr "ബന്ധം സജീവമാക്കാന്‍ സാധിച്ചില്ല"
+
+#, fuzzy
+#~ msgid "Don’t show this message again"
+#~ msgstr "ഈ സന്ദേശം ഇനി കാണിക്കരുതു്"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ കണക്ഷനില്‍ തടസ്സം നേരിട്ടതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' വിഛേദിക്കപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "ശൃംഖല കണക്ഷനില്‍ തടസ്സം നേരിട്ടതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service stopped "
+#~ "unexpectedly."
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ സര്‍വീസ് അപ്രതീക്ഷിതമായി നിലച്ചതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service returned invalid "
+#~ "configuration."
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ സേവനം തെറ്റായ ക്രമീകരമാണെന്നറിയിച്ചതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the connection attempt timed out."
+#~ msgstr ""
+#~ "\n"
+#~ "ബന്ധപ്പെടാനനുവദിച്ച സമയം കഴിഞ്ഞുപോയതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service did not start in "
+#~ "time."
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ സേവനം ശരിയായ സമയത്തു് ആരംഭിക്കുവാന്‍ സാധ്യമാകാത്തതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' "
+#~ "പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start."
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ സേവനം ആരംഭിക്കുന്നതിലുള്ള തടസ്സം കാരണം വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because there were no valid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "സാധുവായ വിപിഎന്‍ രഹസ്യങ്ങള്‍ ലഭ്യമല്ലാത്തതിനാല്‍ വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because of invalid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "അസാധുവായ വിപിഎന്‍ രഹസ്യങ്ങള്‍ കാരണം വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed."
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു."
+
+#, c-format
+#~ msgid ""
+#~ "VPN connection has been successfully established.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "വിപിഎന്‍ കണക്ഷന്‍ വിജയകരമായി സ്ഥാപിച്ചിരിയ്ക്കുന്നു.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "VPN connection has been successfully established.\n"
+#~ msgstr "വിപിഎന്‍ കണക്ഷന്‍ വിജയകരമായി സ്ഥാപിച്ചിരിയ്ക്കുന്നു.\n"
+
+#~ msgid "VPN Login Message"
+#~ msgstr "വിപിഎന്‍ ലോഗിന്‍ സന്ദേശം"
+
+#~ msgid "VPN Connection Failed"
+#~ msgstr "വിപിഎന്‍ ബന്ധം പരാജയപ്പെട്ടു"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ സേവനം ആരംഭിക്കുവാന്‍ സാധിക്കാത്തതിനാല്‍, വിപിഎന്‍ ബന്ധം '%s' പരാജയപ്പെട്ടു.\n"
+#~ "\n"
+#~ "%s"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "വിപിഎന്‍ ബന്ധം '%s' ആരംഭിക്കുന്നതില്‍ പരാജയപ്പെട്ടു.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "device not ready (firmware missing)"
+#~ msgstr "ഉപകരണം തയ്യാറല്ല (ഫേംവെയര്‍ ഇല്ല)"
+
+#~ msgid "device not ready"
+#~ msgstr "ഉപകരണം തയ്യാറല്ല"
+
+#~ msgid "disconnected"
+#~ msgstr "ബന്ധം വിഛേദിച്ചിരിയ്ക്കുന്നു"
+
+#~ msgid "Disconnect"
+#~ msgstr "ബന്ധം വിഛേദിക്കുക"
+
+#~ msgid "device not managed"
+#~ msgstr "ഉപകരണം കൈകാര്യം ചെയ്യാത്തതാണു്"
+
+#~ msgid "No network devices available"
+#~ msgstr "ശൃംഖല ഉപകരണങ്ങളൊന്നും ലഭ്യമല്ല"
+
+#, fuzzy
+#~ msgid "_Advanced Options"
+#~ msgstr "സങ്കീര്‍ണ്ണമായ"
+
+#~ msgid "_VPN Connections"
+#~ msgstr "_വിപിഎന്‍ ബന്ധങ്ങള്‍"
+
+#, fuzzy
+#~ msgid "_Add a VPN connection…"
+#~ msgstr "_വിപിഎന്‍ ബന്ധങ്ങള്‍"
+
+#~ msgid "Connection _Information"
+#~ msgstr "ബന്ധ _വിവരം"
+
+#, fuzzy
+#~ msgid "Edit Connections…"
+#~ msgstr "ബന്ധങ്ങള്‍ ചിട്ടപ്പെടുത്തുക..."
+
+#, fuzzy
+#~ msgid "NetworkManager is not running…"
+#~ msgstr "NetworkManager പ്രവര്‍ത്തനത്തിലില്ല..."
+
+#, fuzzy
+#~ msgid "Wi-Fi country is not set"
+#~ msgstr "എന്റെ രാജ്യം ലഭ്യമല്ല"
+
+#~ msgid "Networking disabled"
+#~ msgstr "ശൃംഖല ബന്ധം പ്രവര്‍ത്ത രഹിതമാക്കിയിരിക്കുന്നു"
+
+#~ msgid "Enable _Networking"
+#~ msgstr "_ശൃംഖല ബന്ധം സജ്ജമാക്കുക"
+
+#~ msgid "Enable _Wi-Fi"
+#~ msgstr "_വയര്‍ലെസ് സജ്ജമാക്കുക"
+
+#~ msgid "Enable _Mobile Broadband"
+#~ msgstr "_മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് സജ്ജമാക്കുക"
+
+#~ msgid "_About"
+#~ msgstr "_അണിയറ വിശേഷം"
+
+#, fuzzy, c-format
+#~ msgid "You are now connected to “%s”."
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ '%s'-മായി ബന്ധപ്പെട്ടിരിക്കുന്നു."
+
+#~ msgid "Disconnected"
+#~ msgstr "ബന്ധംവിഛേദിച്ചിരിക്കുന്നു"
+
+#~ msgid "The network connection has been disconnected."
+#~ msgstr "ശൃംഖല ബന്ധം വിഛേദിച്ചിരിക്കുന്നു."
+
+#, fuzzy, c-format
+#~ msgid "Preparing network connection “%s”…"
+#~ msgstr "ശൃംഖല ബന്ധം '%s'-നായി തയ്യാറെടുക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for network connection “%s”…"
+#~ msgstr ""
+#~ "ശൃംഖല ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting a network address for “%s”…"
+#~ msgstr "'%s'-നു് ഒരു ശൃംഖല വിലാസത്തിനായി ആവശ്യപ്പെടുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Network connection “%s” active"
+#~ msgstr "ശൃംഖല ബന്ധം '%s' സജീവമാണു്"
+
+#, fuzzy, c-format
+#~ msgid "Starting VPN connection “%s”…"
+#~ msgstr "വിപിഎന്‍ ബന്ധം '%s' ആരംഭിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for VPN connection “%s”…"
+#~ msgstr ""
+#~ "വിപിഎന്‍ ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി "
+#~ "ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting a VPN address for “%s”…"
+#~ msgstr "'%s'-നായി ഒരു വിപിഎന്‍ വിലാസം ആവശ്യപ്പെടുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "VPN connection active"
+#~ msgstr "വിപിഎന്‍ ബന്ധം '%s' സജീവമാണു്"
+
+#~ msgid "No network connection"
+#~ msgstr "ശൃംഖല ബന്ധം ലഭ്യമല്ല"
+
+#~ msgid "Network"
+#~ msgstr "ശൃംഖല"
+
+#~ msgid "NetworkManager Applet"
+#~ msgstr "NetworkManager ലഘുപ്രയോഗം"
+
+#~ msgid "Wrong PUK code; please contact your provider."
+#~ msgstr "തെറ്റായ പിയുകെ കോഡ്; ദയവായി നിങ്ങളുടെ ദാതാവുമായി ബന്ധപ്പെടുക."
+
+#~ msgid "Wrong PIN code; please contact your provider."
+#~ msgstr "തെറ്റായ പിന്‍ കോഡ്; ദയവായി നിങ്ങളുടെ ദാതാവുമായി ബന്ധപ്പെടുക."
+
+#, fuzzy
+#~ msgid "Sending unlock code…"
+#~ msgstr "പൂട്ട് തുറക്കേണ്ട കോഡ് അയയ്ക്കുന്നു..."
+
+#, c-format
+#~ msgid "Mobile Broadband (%s)"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് (%s)"
+
+#~ msgid "Mobile Broadband"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ്"
+
+#, fuzzy
+#~ msgid "New Mobile Broadband connection…"
+#~ msgstr "പുതിയ മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് കണക്ഷന്‍"
+
+#~ msgid "Connection Established"
+#~ msgstr "ബന്ധം സ്ഥാപിച്ചു"
+
+#~ msgid "You are now connected to the Mobile Broadband network."
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ മൊബെല്‍ ബ്രോഡ്ബാന്‍ഡ് ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
+
+#~ msgid "Mobile Broadband network."
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ശൃംഖല."
+
+#~ msgid "You are now registered on the home network."
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ വീട്ടിലെ ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
+
+#~ msgid "You are now registered on a roaming network."
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ പുറത്തൊരു ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
+
+#~ msgid "You are now connected to the mobile broadband network."
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ മൊബെല്‍ ബ്രോഡ്ബാന്‍ഡ് ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
+
+#, fuzzy, c-format
+#~ msgid "Preparing mobile broadband connection “%s”…"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s'-നായി തയ്യാറാകുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Configuring mobile broadband connection “%s”…"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' ക്രമീകരിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for mobile broadband connection “%s”…"
+#~ msgstr ""
+#~ "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി "
+#~ "ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Mobile broadband connection “%s” active"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' സജീവമാണു്"
+
+#~ msgid "Auto Ethernet"
+#~ msgstr "ഓട്ടോ ഇതര്‍നെറ്റ്"
+
+#, c-format
+#~ msgid "Ethernet Networks (%s)"
+#~ msgstr "എതര്‍നെറ്റ് ശൃംഖലകള്‍ (%s)"
+
+#, c-format
+#~ msgid "Ethernet Network (%s)"
+#~ msgstr "എതര്‍നെറ്റ് ശൃംഖല (%s)"
+
+#~ msgid "Ethernet Networks"
+#~ msgstr "എതര്‍നെറ്റ് ശൃംഖലകള്‍"
+
+#~ msgid "Ethernet Network"
+#~ msgstr "എതര്‍നെറ്റ് ശൃംഖല"
+
+#~ msgid "You are now connected to the ethernet network."
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ എഥര്‍നെറ്റ് ശൃംഖലയുമായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
+
+#, fuzzy, c-format
+#~ msgid "Preparing ethernet network connection “%s”…"
+#~ msgstr "എഥര്‍നെറ്റ് ശൃംഖല ബന്ധം '%s' തയ്യാറാകുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Configuring ethernet network connection “%s”…"
+#~ msgstr "എഥര്‍നെറ്റ് ശൃംഖല ബന്ധം '%s' ക്രമീകരിയ്ക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for ethernet network connection “%s”…"
+#~ msgstr ""
+#~ "എഥര്‍നെറ്റ് ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി "
+#~ "ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting an ethernet network address for “%s”…"
+#~ msgstr "'%s'-നുള്ള ഒരു എഥര്‍നെറ്റ് ശൃംഖല വിലാസം ആവശ്യപ്പെടുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Ethernet network connection “%s” active"
+#~ msgstr "എഥര്‍നെറ്റ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്"
+
+#~ msgid "DSL authentication"
+#~ msgstr "ഡിഎസ്എല്‍ ആധികാരികത ഉറപ്പാക്കല്‍"
+
+#, fuzzy
+#~ msgid "_Connect to Hidden Wi-Fi Network…"
+#~ msgstr "അദൃശ്യമായ വയര്‍ലെസ് നെറ്റ്‌വര്‍ക്കിലേക്ക് കണക്ട് ചെയ്യുക"
+
+#, fuzzy
+#~ msgid "Create _New Wi-Fi Network…"
+#~ msgstr "പുതിയ വയര്‍ലെസ് ശൃംഖല ഉണ്ടാക്കുക"
+
+#, fuzzy
+#~ msgid "Create Wi-Fi _Hotspot…"
+#~ msgstr "പുതിയ വയര്‍ലെസ് ശൃംഖല ഉണ്ടാക്കുക"
+
+#~ msgid "(none)"
+#~ msgstr "(ഒന്നുമില്ല)"
+
+#~ msgid "Failed to add new connection"
+#~ msgstr "പുതിയ ബന്ധം ചേര്‍ക്കാനായില്ല"
+
+#, fuzzy, c-format
+#~ msgid "Do you want to disconnect from the wireless network '%s'?"
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ വയര്‍ലെസ് ശൃംഖല '%s'-മായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
+
+#, c-format
+#~ msgid "Wi-Fi Networks (%s)"
+#~ msgstr "വയര്‍ലെസ് ശൃംഖലകള്‍ (%s)"
+
+#, c-format
+#~ msgid "Wi-Fi Network (%s)"
+#~ msgstr "വയര്‍ലെസ് ശൃംഖല (%s)"
+
+#~ msgid "Wi-Fi Network"
+#~ msgid_plural "Wi-Fi Networks"
+#~ msgstr[0] "വയര്‍ലെസ് ശൃംഖല"
+#~ msgstr[1] "വയര്‍ലെസ് ശൃംഖലകള്‍"
+
+#~ msgid "Wi-Fi is disabled"
+#~ msgstr "വയര്‍ലസ്സ് പ്രവര്‍ത്തനരഹിതമാക്കിയിരിയ്ക്കുന്നു"
+
+#~ msgid "Wi-Fi is disabled by hardware switch"
+#~ msgstr "ഹാര്‍ഡ്‌​വെയര്‍ സ്വിച്ച് ഉപയോഗിച്ച് വയര്‍ലെസ്സ് പ്രവര്‍ത്തന രഹിതമാക്കിയിരിക്കുന്നു"
+
+#~ msgid "More networks"
+#~ msgstr "കൂടുതല്‍ ശൃംഖലകള്‍"
+
+#~ msgid "Wi-Fi Networks Available"
+#~ msgstr "ലഭ്യമായ വയര്‍ലെസ് ശൃംഖലകള്‍"
+
+#~ msgid "Use the network menu to connect to a Wi-Fi network"
+#~ msgstr "ശൃംഖലകളുടെ പട്ടികയുപയോഗിച്ചു് ഒരു വയര്‍ലെസ് ശൃംഖലയുമായി ബന്ധപ്പെടുക"
+
+#, fuzzy, c-format
+#~ msgid "You are now connected to the Wi-Fi network “%s”."
+#~ msgstr "നിങ്ങള്‍ ഇപ്പോള്‍ വയര്‍ലെസ് ശൃംഖല '%s'-മായി ബന്ധപ്പെട്ടിരിയ്ക്കുന്നു."
+
+#, fuzzy, c-format
+#~ msgid "Preparing Wi-Fi network connection “%s”…"
+#~ msgstr "വയര്‍ഡ് ശൃംഖല ബന്ധം '%s' തയ്യാറാകുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Configuring Wi-Fi network connection “%s”…"
+#~ msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' ക്രമീകരിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for Wi-Fi network “%s”…"
+#~ msgstr ""
+#~ "വയര്‍ലെസ് ബന്ധം '%s' ഉപയോക്താവിനോടു് ആധികാരികത ഉറപ്പാക്കുന്നതിനായി "
+#~ "ആവശ്യപ്പെട്ടിരിക്കുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting a Wi-Fi network address for “%s”…"
+#~ msgstr "'%s'-നുള്ള ഒരു വയര്‍ലെസ് ശൃംഖല വിലാസത്തിനായി ആവശ്യപ്പെടുന്നു..."
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+#~ msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്: %s (%d%%)"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+#~ msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്: %s (%d%%)"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active"
+#~ msgstr "വയര്‍ലെസ് ശൃംഖല ബന്ധം '%s' സജീവമാണു്"
+
+#~ msgid "Error displaying connection information:"
+#~ msgstr "ബന്ധം സംബന്ധിച്ചുള്ള വിവരം കാണിക്കുന്നതില്‍ പിശക്"
+
+#~ msgid "LEAP"
+#~ msgstr "എല്‍ഇഎപി"
+
+#~ msgid "Dynamic WEP"
+#~ msgstr "ഡൈനമിക് ഡബ്ലിയുഇപി"
+
+#~ msgid "WPA/WPA2"
+#~ msgstr "ഡബ്ലിയുപിഎ/ഡബ്ലിയുപിഎ2"
+
+#, fuzzy
+#~ msgid "More addresses"
+#~ msgstr "വിലാസങ്ങള്‍"
+
+#~ msgid "WEP"
+#~ msgstr "ഡബ്ലിയുഇപി"
+
+#~ msgctxt "Wi-Fi/Ethernet security"
+#~ msgid "None"
+#~ msgstr "ഒന്നുമില്ല"
+
+#, c-format
+#~ msgid "%u Mb/s"
+#~ msgstr "%u Mb/s"
+
+#~ msgctxt "Speed"
+#~ msgid "Unknown"
+#~ msgstr "അറിയില്ല"
+
+#~ msgctxt "Address"
+#~ msgid "Unknown"
+#~ msgstr "അറിയില്ല"
+
+#~ msgid "IP Address"
+#~ msgstr "ഐപി വിലാസം"
+
+#~ msgid "Broadcast Address"
+#~ msgstr "ബ്രോഡ്കാസ്റ്റ് വിലാസം"
+
+#~ msgctxt "Subnet Mask"
+#~ msgid "Unknown"
+#~ msgstr "അറിയില്ല"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "സബ്‌നെറ്റ് മാസ്ക്"
+
+#, fuzzy
+#~ msgid "Primary DNS"
+#~ msgstr "പ്രാഥമിക ഡിഎന്‍എസ്:"
+
+#, fuzzy
+#~ msgid "Secondary DNS"
+#~ msgstr "രണ്ടാമത്തെ ഡിഎന്‍എസ്:"
+
+#, fuzzy
+#~ msgid "Tertiary DNS"
+#~ msgstr "മൂന്നാമത്തെ ഡിഎന്‍എസ്:"
+
+#, c-format
+#~ msgid "Ethernet (%s)"
+#~ msgstr "ഇതര്‍നെറ്റ് (%s)"
+
+#, c-format
+#~ msgid "802.11 Wi-Fi (%s)"
+#~ msgstr "802.11 വൈഫൈ (%s)"
+
+#, c-format
+#~ msgid "GSM (%s)"
+#~ msgstr "ജിഎസ്എം (%s)"
+
+#, c-format
+#~ msgid "CDMA (%s)"
+#~ msgstr "സിഡിഎംഎ (%s)"
+
+#~ msgid "General"
+#~ msgstr "പൊതുവായ"
+
+#~ msgid "Interface"
+#~ msgstr "വിനിമയതലം"
+
+#~ msgid "Hardware Address"
+#~ msgstr "ഹാര്‍ഡ്‌വെയര്‍ വിലാസം"
+
+#~ msgid "Driver"
+#~ msgstr "ഡ്രൈവര്‍"
+
+#~ msgid "Speed"
+#~ msgstr "വേഗത"
+
+#, fuzzy
+#~ msgid "Security"
+#~ msgstr "സുരക്ഷ:"
+
+#~ msgid "IPv4"
+#~ msgstr "IPv4"
+
+#~ msgid "Default Route"
+#~ msgstr "സഹജമായ റൂട്ട്"
+
+#~ msgid "IPv6"
+#~ msgstr "IPv6"
+
+#, fuzzy
+#~ msgid "Password"
+#~ msgstr "അടയാളവാക്ക്:"
+
+#~ msgid "VPN Type"
+#~ msgstr "വിപിഎന്‍ തരം"
+
+#~ msgid "VPN Gateway"
+#~ msgstr "വിപിഎന്‍ ഗേറ്റ്‌വേ"
+
+#~ msgid "VPN Username"
+#~ msgstr "വിപിഎന്‍ ഉപയോക്തൃനാമം"
+
+#~ msgid "VPN Banner"
+#~ msgstr "വിപിഎന്‍ ബാനര്‍"
+
+#~ msgid "Base Connection"
+#~ msgstr "അടിസ്ഥാന ബന്ധം"
+
+#~ msgid "No valid active connections found!"
+#~ msgstr "സാധുവായ സജീവ ബന്ധങ്ങളൊന്നും കണ്ടില്ല!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "and many other community contributors and translators"
+#~ msgstr ""
+#~ "പകര്‍പ്പവകാശം © 2004-2008 റെഡ് ഹാറ്റ്, ഇന്‍ക്.\n"
+#~ "പകര്‍പ്പവകാശം © 2005-2008 നോവല്‍, ഇന്‍ക്."
+
+#~ msgid ""
+#~ "Notification area applet for managing your network devices and "
+#~ "connections."
+#~ msgstr ""
+#~ "നിങ്ങളുടെ ശൃംഖല ഉപകരണങ്ങളും ബന്ധങ്ങളും കൈകാര്യം ചെയ്യുന്നതിനായുള്ള അറിയിപ്പിനുള്ള സ്ഥലം."
+
+#~ msgid "NetworkManager Website"
+#~ msgstr "NetworkManager വെബ്സൈറ്റ്"
+
+#~ msgid ""
+#~ "The NetworkManager Applet could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "ആവശ്യമുള്ള ചില ഉറവിടങ്ങള്‍ ലഭ്യമാക്കുവാന്‍ NetworkManager ആപ്ലെറ്റിനു് സാധ്യമായില്ല (."
+#~ "uiഫയല്‍ ലഭ്യമായില്ല)"
+
+#~ msgid "Missing resources"
+#~ msgstr "ലഭ്യമല്ലാത്ത റിസോഴ്സുകള്‍"
+
+#~ msgid "Mobile broadband network password"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് നെറ്റ്‌വര്‍ക്കിനുള്ള അടയാളവാക്ക്"
+
+#, fuzzy, c-format
+#~ msgid "A password is required to connect to “%s”."
+#~ msgstr "'%s'-ലേക്കു് ബന്ധപ്പെടുന്നതിനായി ഒരു അടയാളവാക്ക് ആവശ്യമുണ്ടു്."
+
+#~ msgid "Password:"
+#~ msgstr "അടയാളവാക്ക്:"
+
+#~ msgid "SIM PIN unlock required"
+#~ msgstr "സിം പിന്‍ കൊടുത്തു് തുറക്കണം"
+
+#~ msgid "SIM PIN Unlock Required"
+#~ msgstr "സിം പിന്‍ കൊടുത്തു് തുറക്കണം"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PIN code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ഉപകരണം '%s' ഉപയോഗിക്കുന്നതിനു് മുമ്പ് ഒരു സിം പിന്‍ കോഡ് ആവശ്യമുണ്ടു്."
+
+#~ msgid "PIN code:"
+#~ msgstr "പിന്‍ കോഡ്:"
+
+#~ msgid "Show PIN code"
+#~ msgstr "പിന്‍ കോഡ് കാണിയ്ക്കുക"
+
+#~ msgid "SIM PUK unlock required"
+#~ msgstr "സിം പിയുകെ കൊടുത്തു് തുറക്കണം"
+
+#~ msgid "SIM PUK Unlock Required"
+#~ msgstr "സിം പിയുകെ കൊടുത്തു് തുറക്കണം"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PUK code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ഉപകരണം '%s' ഉപയോഗിക്കുന്നതിനു് മുമ്പ് ഒരു സിം പിയുകെ കോഡ് ആവശ്യമുണ്ടു്."
+
+#~ msgid "PUK code:"
+#~ msgstr "പിയുകെ കോഡ്:"
+
+#~ msgid "New PIN code:"
+#~ msgstr "പുതിയ പിന്‍ കോഡ്:"
+
+#~ msgid "Re-enter new PIN code:"
+#~ msgstr "പുതിയ പിന്‍ കോഡ് വീണ്ടും നല്‍കുക:"
+
+#~ msgid "Show PIN/PUK codes"
+#~ msgstr "പിന്‍/പിഒകെ കോഡുകള്‍ കാണിയ്ക്കുക"
+
+#, fuzzy
+#~ msgid "Connection had no VPN setting"
+#~ msgstr "ബന്ധവിവരം"
+
+#, fuzzy, c-format
+#~ msgid "Failed to write connection to VPN UI: %s (%d)"
+#~ msgstr "ഡിയുഎന്‍ കണക്ഷനുണ്ടാക്കുന്നതില്‍ പരാജയം: %s"
+
+#~ msgid "802.1X authentication"
+#~ msgstr "802.1X ആധികാരികത"
+
+#~ msgid "CDMA"
+#~ msgstr "സിഡിഎംഎ"
+
+#~ msgid "EVDO"
+#~ msgstr "EVDO"
+
+#~ msgid "GSM"
+#~ msgstr "ജിഎസ്എം"
+
+#~ msgid "GPRS"
+#~ msgstr "GPRS"
+
+#~ msgid "EDGE"
+#~ msgstr "EDGE"
+
+#~ msgid "UMTS"
+#~ msgstr "UMTS"
+
+#~ msgid "HSDPA"
+#~ msgstr "HSDPA"
+
+#~ msgid "HSUPA"
+#~ msgstr "HSUPA"
+
+#~ msgid "HSPA"
+#~ msgstr "HSPA"
+
+#~ msgid "HSPA+"
+#~ msgstr "HSPA+"
+
+#~ msgid "LTE"
+#~ msgstr "LTE"
+
+#~ msgid "not enabled"
+#~ msgstr "പ്രവര്‍ത്തന സജ്ജമല്ല"
+
+#~ msgid "not registered"
+#~ msgstr "രജിസ്ടര്‍ ചെയ്തിട്ടില്ല"
+
+#, c-format
+#~ msgid "Home network (%s)"
+#~ msgstr "ഹോം ശൃംഖല (%s)"
+
+#, c-format
+#~ msgid "Home network"
+#~ msgstr "ഹോം ശൃംഖല "
+
+#~ msgid "searching"
+#~ msgstr "തെരയുന്നു"
+
+#~ msgid "registration denied"
+#~ msgstr "രജിസ്ട്രേഷന്‍ നിഷേധിച്ചിരിക്കുന്നു"
+
+#, c-format
+#~ msgid "%s (%s roaming)"
+#~ msgstr "%s (%s റോമിങ്)"
+
+#, c-format
+#~ msgid "%s (roaming)"
+#~ msgstr "%s (റോമിങ്)"
+
+#, c-format
+#~ msgid "Roaming network (%s)"
+#~ msgstr "റോമിങ് ശൃംഖല (%s)"
+
+#, c-format
+#~ msgid "Roaming network"
+#~ msgstr "റോമിങ് ശൃംഖല"
+
+#, fuzzy, c-format
+#~ msgid "PIN code for SIM card “%s” on “%s”"
+#~ msgstr "'%2$s' ലെ സിം കാര്‍ഡ് '%1$s' നു് പിന്‍ കോഡ് ആവശ്യമുണ്ടു്"
+
+#~ msgid "PIN code required"
+#~ msgstr "പിന്‍ കോഡ് ആവശ്യമുണ്ടു്"
+
+#~ msgid "PIN code is needed for the mobile broadband device"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ഡിവൈസിനു് പിന്‍ കോഡ് ആവശ്യമുണ്ടു്"
+
+#, fuzzy, c-format
+#~ msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+#~ msgstr "മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് ബന്ധം '%s' സജീവമാണു്: (%d%%%s%s)"
+
+#~ msgid "roaming"
+#~ msgstr "പുറത്തുള്ള"
+
+#, fuzzy
+#~ msgid "Network Manager"
+#~ msgstr "ശൃംഖല മാനേജര്‍"
+
+#, fuzzy
+#~ msgid "Controller for Network Manager"
+#~ msgstr "ശൃംഖല മാനേജര്‍"
+
+#, c-format
+#~ msgid "%s connection"
+#~ msgstr "%s കണക്ഷന്‍"
+
+#, fuzzy
+#~ msgid "PEM certificates (*.pem, *.crt, *.cer)"
+#~ msgstr "DER അല്ലെങ്കില്‍ PEM സര്‍ട്ടിഫീക്കേറ്റുകള്‍ (*.der, *.pem, *.crt, *.cer)"
+
+#~ msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+#~ msgstr "DER, PEM, അല്ലെങ്കില്‍ PKCS#12 സ്വകാര്യ കീകള്‍ (*.der, *.pem, *.p12)"
+
+#~ msgid "Properties"
+#~ msgstr "ഗുണഗണങ്ങള്‍"
+
+#, fuzzy
+#~ msgid "No network connection - cannot install updates."
+#~ msgstr "ശൃംഖല ബന്ധം ലഭ്യമല്ല"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth devices..."
+#~ msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+
+#, fuzzy, c-format
+#~ msgid "Bluetooth %s device not found"
+#~ msgstr "ബോണ്ട് ബന്ധം %d"
+
+#, fuzzy, c-format
+#~ msgid "Failed to connect to Bluetooth device - %s"
+#~ msgstr "ഫോണിലേക്ക് കണക്ട് ചെയ്യുന്നതില്‍ പരാജയം."
+
+#, fuzzy, c-format
+#~ msgid "Connecting Bluetooth device '%s' as input..."
+#~ msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth device..."
+#~ msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+
+#, fuzzy
+#~ msgid "Device Profiles"
+#~ msgstr "ഉപകരണം വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
+
+#, fuzzy
+#~ msgid "Device not connected"
+#~ msgstr "ഉപകരണം വേര്‍പ്പെടുത്താന്‍ സാധിച്ചില്ല"
+
+#, fuzzy
+#~ msgid "Available Updates"
+#~ msgstr "ലഭ്യമായവ"
+
+#, fuzzy
+#~ msgid "Add New Device"
+#~ msgstr "ഏതെങ്കിലും ഡിവൈസ്"
+
+#, fuzzy
+#~ msgid "Searching for Bluetooth devices..."
+#~ msgstr "ബ്ലൂടൂത് ഡിവൈസ് ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല."
+
+#, fuzzy
+#~ msgid "C_onnect"
+#~ msgstr "ക_ണക്ഷന്‍:"
+
+#, fuzzy
+#~ msgid "_Network name"
+#~ msgstr "_ശൃംഖലയുടെ പേരു്:"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "ഈ ഉപകരണം സ്വയം തുറക്കുക"
 
 #~ msgid "Manage your network connections"
 #~ msgstr "നിങ്ങളുടെ ശൃംഖല ബന്ധങ്ങള്‍ കൈകാര്യം ചെയ്യുക"
@@ -2349,20 +1840,12 @@ msgstr ""
 #~ msgstr "IPv4"
 
 #, fuzzy
-#~ msgid "TCP"
-#~ msgstr "GTC"
-
-#, fuzzy
 #~ msgid "_Hardware Address"
 #~ msgstr "ഹാര്‍ഡ്‌വെയര്‍ വിലാസം:"
 
 #, fuzzy
 #~ msgid "_Hardware address policy"
 #~ msgstr "ഹാര്‍ഡ്‌വെയര്‍ വിലാസം:"
-
-#, fuzzy
-#~ msgid "_System priority"
-#~ msgstr "_മുന്‍ഗണന: "
 
 #, fuzzy
 #~ msgid "Transmission _balancing interval"
@@ -2678,8 +2161,8 @@ msgstr ""
 #~ "Security labels may prevent some files from being used with certificate "
 #~ "authentication."
 #~ msgstr ""
-#~ "ഇഎപി ആധികാരികത ഉറപ്പാക്കലിലുള്ള സിഎ സര്‍ട്ടിഫിക്കേറ്റുകളെപ്പറ്റിയുള്ള മുന്നറിയിപ്പുകള്‍ പ്രവര്‍"
-#~ "ത്തന രഹിതമാക്കുന്നതിനായി ഇതു് true ആയി സജ്ജമാക്കുക."
+#~ "ഇഎപി ആധികാരികത ഉറപ്പാക്കലിലുള്ള സിഎ സര്‍ട്ടിഫിക്കേറ്റുകളെപ്പറ്റിയുള്ള മുന്നറിയിപ്പുകള്‍ "
+#~ "പ്രവര്‍ത്തന രഹിതമാക്കുന്നതിനായി ഇതു് true ആയി സജ്ജമാക്കുക."
 
 #, fuzzy
 #~ msgid "Connection _name"
@@ -2997,8 +2480,8 @@ msgstr ""
 #~ "Select the technology your mobile broadband provider uses. If you are "
 #~ "unsure, ask your provider."
 #~ msgstr ""
-#~ "നിങ്ങളുടെ മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് പ്രൊവൈഡര്‍ ഉപയോഗിക്കുന്ന ടെക്നോളജി തെരഞ്ഞെടുക്കുക.  നിങ്ങള്‍"
-#~ "ക്കറിയില്ലെങ്കില്‍ പ്രൊവൈഡറിനോട് അന്വേഷിക്കുക."
+#~ "നിങ്ങളുടെ മൊബൈല്‍ ബ്രോഡ്ബാന്‍ഡ് പ്രൊവൈഡര്‍ ഉപയോഗിക്കുന്ന ടെക്നോളജി തെരഞ്ഞെടുക്കുക.  "
+#~ "നിങ്ങള്‍ക്കറിയില്ലെങ്കില്‍ പ്രൊവൈഡറിനോട് അന്വേഷിക്കുക."
 
 #~ msgid ""
 #~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
@@ -3093,8 +2576,8 @@ msgstr ""
 #~ "you may not have the correct VPN plugin installed."
 #~ msgstr ""
 #~ "പുതിയ കണക്ഷനുവേണ്ടി നിങ്ങള്‍ ഉപയോഗിക്കുവാന്‍ ആഗ്രഹിക്കുന്ന തരത്തിലുള്ള വിപിഎന്‍ ബന്ധം "
-#~ "തെരഞ്ഞെടുക്കുക.  നിങ്ങള്‍ക്കു് ആവശ്യമുള്ളതു് പട്ടികയില്‍ ലഭ്യമല്ല എങ്കില്‍, നിങ്ങള്‍ ശരിയായ പ്ലഗിന്‍ ഇന്‍"
-#~ "സ്റ്റോള്‍ ചെയ്തിട്ടുണ്ടാവില്ല."
+#~ "തെരഞ്ഞെടുക്കുക.  നിങ്ങള്‍ക്കു് ആവശ്യമുള്ളതു് പട്ടികയില്‍ ലഭ്യമല്ല എങ്കില്‍, നിങ്ങള്‍ ശരിയായ പ്ലഗിന്‍ "
+#~ "ഇന്‍സ്റ്റോള്‍ ചെയ്തിട്ടുണ്ടാവില്ല."
 
 #~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
 #~ msgstr "ഡബ്ലിയുഇപി 40/128-bit കീ (ഹെക്സോ ആസ്കിയോ)"
@@ -3328,9 +2811,6 @@ msgstr ""
 #~ msgid "WEP inde_x"
 #~ msgstr "WEP _സൂചിക:"
 
-#~ msgid "Disable connected notifications"
-#~ msgstr "ബന്ധപ്പെടുമ്പോളുള്ള അറിയിപ്പുകള്‍ പ്രവര്‍ത്തന രഹിതമാക്കുക"
-
 #~ msgid ""
 #~ "Set this to true to disable notifications when connecting to a network."
 #~ msgstr ""
@@ -3353,8 +2833,8 @@ msgstr ""
 #~ "Set this to true to disable notifications when connecting to or "
 #~ "disconnecting from a VPN."
 #~ msgstr ""
-#~ "ഒരു വിപിഎനില്‍ നിന്നും ബന്ധം വിഛേദിക്കുമ്പോള്‍ അല്ലെങ്കില്‍ തയ്യാറാക്കുമ്പോള്‍, അറിയിപ്പുകള്‍ പ്രവര്‍"
-#~ "ത്തന രഹിതമാക്കുന്നതിനായി ഇതു് true ആക്കുക."
+#~ "ഒരു വിപിഎനില്‍ നിന്നും ബന്ധം വിഛേദിക്കുമ്പോള്‍ അല്ലെങ്കില്‍ തയ്യാറാക്കുമ്പോള്‍, അറിയിപ്പുകള്‍ "
+#~ "പ്രവര്‍ത്തന രഹിതമാക്കുന്നതിനായി ഇതു് true ആക്കുക."
 
 #~ msgid "Suppress networks available notifications"
 #~ msgstr "ശൃംഖലകള്‍ ലഭ്യമാണെന്ന അറിയിപ്പ് കാണിയ്ക്കേണ്ട"
@@ -3397,8 +2877,8 @@ msgstr ""
 #~ "Set this to true to disable warnings about CA certificates in EAP "
 #~ "authentication."
 #~ msgstr ""
-#~ "ഇഎപി ആധികാരികത ഉറപ്പാക്കലിലുള്ള സിഎ സര്‍ട്ടിഫിക്കേറ്റുകളെപ്പറ്റിയുള്ള മുന്നറിയിപ്പുകള്‍ പ്രവര്‍"
-#~ "ത്തന രഹിതമാക്കുന്നതിനായി ഇതു് true ആയി സജ്ജമാക്കുക."
+#~ "ഇഎപി ആധികാരികത ഉറപ്പാക്കലിലുള്ള സിഎ സര്‍ട്ടിഫിക്കേറ്റുകളെപ്പറ്റിയുള്ള മുന്നറിയിപ്പുകള്‍ "
+#~ "പ്രവര്‍ത്തന രഹിതമാക്കുന്നതിനായി ഇതു് true ആയി സജ്ജമാക്കുക."
 
 #~ msgid ""
 #~ "Set this to true to disable warnings about CA certificates in phase 2 of "
@@ -3453,8 +2933,8 @@ msgstr ""
 #~ "This assistant helps you easily set up a mobile broadband connection to a "
 #~ "cellular (3G) network."
 #~ msgstr ""
-#~ "ഈ സഹായി നിങ്ങളെ എളുപ്പത്തില്‍ ഒരു സെല്ലുലാര്‍ (3G) നെറ്റ്‌വര്‍ക്കിലേക്ക് നിങ്ങളുടെമൊബൈല്‍ ബ്രോഡ്ബാന്‍"
-#~ "ഡ് ബന്ധം സജ്ജമാക്കുന്നു."
+#~ "ഈ സഹായി നിങ്ങളെ എളുപ്പത്തില്‍ ഒരു സെല്ലുലാര്‍ (3G) നെറ്റ്‌വര്‍ക്കിലേക്ക് നിങ്ങളുടെമൊബൈല്‍ "
+#~ "ബ്രോഡ്ബാന്‍ഡ് ബന്ധം സജ്ജമാക്കുന്നു."
 
 #~ msgid "You will need the following information:"
 #~ msgstr "നിങ്ങള്‍ക്ക് ഈ വിവരങ്ങള്‍ ആവശ്യമാകുന്നു:"
@@ -4007,8 +3487,8 @@ msgstr ""
 #~ "a Certificate Authority certificate?"
 #~ msgstr ""
 #~ "ഒരു സര്‍ട്ടിഫീക്കേറ്റ് അഥോറിറ്റി (CA) സര്‍ട്ടിഫീക്കേറ്റ് ഉപയോഗിച്ചില്ല എങ്കില്‍, "
-#~ "സുരക്ഷിതമല്ലാത്ത വയര്‍ലെസ് ശൃംഖലകളിലേയ്ക്കു് കടക്കുവാന്‍ സാധ്യതയുണ്ടു്. നിങ്ങള്‍ക്കു് ഒരു സര്‍"
-#~ "ട്ടിഫീക്കേറ്റ് അഥോറിറ്റി സര്‍ട്ടിഫീക്കേറ്റ് തെരഞ്ഞെടുക്കണമോ?"
+#~ "സുരക്ഷിതമല്ലാത്ത വയര്‍ലെസ് ശൃംഖലകളിലേയ്ക്കു് കടക്കുവാന്‍ സാധ്യതയുണ്ടു്. നിങ്ങള്‍ക്കു് ഒരു "
+#~ "സര്‍ട്ടിഫീക്കേറ്റ് അഥോറിറ്റി സര്‍ട്ടിഫീക്കേറ്റ് തെരഞ്ഞെടുക്കണമോ?"
 
 #~ msgid "Wireless Networks (%s)"
 #~ msgstr "വയര്‍ലെസ് ശൃംഖലകള്‍ (%s)"

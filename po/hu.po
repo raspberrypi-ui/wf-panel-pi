@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2025-01-17 10:28+0000\n"
 "PO-Revision-Date: 2016-11-08 16:39+0100\n"
 "Last-Translator: Peter Czifra <czifi@freestart.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -22,1694 +22,1249 @@ msgstr ""
 "X-Pootle-Path: /hu/lxpanel/po/hu.po\n"
 "X-POOTLE-MTIME: 1432221336.000000\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
-msgid "Pairing request sent to '%s' - waiting for response..."
+msgid "Spacer"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#: ../src/panel/configure.c:116 ../src/panel/configure.c:255
+#: ../src/panel/configure.c:580
 #, c-format
-msgid "Pairing failed - %s"
+msgid "Spacer (%d)"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
-#, c-format
-msgid "Pairing successful - connecting..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#: ../src/panel/configure.c:137 ../src/panel/configure.c:158
+#: ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Connection successful"
-msgstr "A kapcsolat meghiúsult"
+msgid "<Unknown>"
+msgstr "Ismeretlen"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
+#: ../src/panel/configure.c:424
+msgid "Cancel"
+msgstr "Mégse"
+
+#: ../src/panel/configure.c:424
+#, fuzzy
+msgid "OK"
+msgstr "_OK"
+
+#: ../src/panel/configure.c:445 ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Connection failed - %s"
-msgstr "A kapcsolat meghiúsult"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, c-format
-msgid "Please enter code '%s' on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, c-format
-msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, c-format
-msgid "Please enter PIN code shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, c-format
-msgid "Please enter passcode shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, c-format
-msgid "Waiting for response from Bluetooth device..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, c-format
-msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, c-format
-msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, c-format
-msgid ""
-"Pairing successful - this device has no services which can be used with "
-"Raspberry Pi"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, c-format
-msgid "Do you want to unpair '%s'?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, c-format
-msgid "Removing pairing with '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
-#, c-format
-msgid "Removal failed - %s"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, c-format
-msgid "Disconnecting from '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
-msgid "Disconnection failed - %s"
-msgstr "Kapcsolatbontási hiba"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-#, fuzzy
-msgid "Use the audio menu to connect to this device"
-msgstr "A hálózat menüvel kapcsolódhat a Wi-Fi hálózathoz"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
-msgid "No usable services on this device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-#, fuzzy
-msgid "Disconnect..."
-msgstr "Bontás"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-#, fuzzy
-msgid "Connect..."
-msgstr "Kapcs_olódás"
-
-#. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-msgid "Remove..."
-msgstr ""
-
-#. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-#, fuzzy
-msgid "No Bluetooth adapter found"
-msgstr "Bluetooth típusa"
-
-#. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-#, fuzzy
-msgid "Turn On Bluetooth"
-msgstr "Bluetooth"
-
-#. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-#, fuzzy
-msgid "Turn Off Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
-msgid "Stop Discoverable"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
-msgid "Make Discoverable"
-msgstr ""
-
-#. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-#, fuzzy
-msgid "Add Device..."
-msgstr "eszköz"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
-#, fuzzy
-msgid "Manage Bluetooth devices"
-msgstr "érvénytelen Bluetooth eszköz (%s)"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
-#, fuzzy
-msgid "Manages Bluetooth devices"
-msgstr "érvénytelen Bluetooth eszköz (%s)"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:171
-msgid ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:199
-#, c-format
-msgid ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:205
-#, c-format
-msgid ""
-"Failed to eject %s\n"
-"%s"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:402
-msgid "Select a drive in menu to eject safely"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:453
-msgid "Hide icon when no devices"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:462
-msgid "Ejects mounted drives"
-msgstr ""
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:77
-msgid "ad-hoc"
-msgstr "eseti"
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:82
-msgid "secure."
-msgstr "biztonságos."
-
-#: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
-msgid "Failed to activate connection"
-msgstr "Nem sikerült aktiválni a kapcsolatot"
-
-#: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
-msgid "Unknown error"
-msgstr "Ismeretlen hiba"
-
-#: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
-msgid "Connection failure"
-msgstr "A kapcsolat meghiúsult"
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn Off Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn On Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:227
-#, c-format
-msgid "IP : %s"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:781
-msgid "Failed to add/activate connection"
-msgstr "A kapcsolat hozzáadása vagy aktiválása meghiúsult"
-
-#: ../src/panel/widgets/netman/applet.c:835
-msgid "Device disconnect failed"
-msgstr "Az eszköz leválasztása meghiúsult"
-
-#: ../src/panel/widgets/netman/applet.c:840
-msgid "Disconnect failure"
-msgstr "Kapcsolatbontási hiba"
-
-#: ../src/panel/widgets/netman/applet.c:870
-msgid "Connection activation failed"
-msgstr "A kapcsolat aktiválása meghiúsult"
-
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
-msgid "Don’t show this message again"
-msgstr "Ne mutassa ezt az üzenetet újra"
-
-#: ../src/panel/widgets/netman/applet.c:1310
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” disconnected because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat bontva, mivel a hálózati kapcsolat megszakadt."
-
-#: ../src/panel/widgets/netman/applet.c:1312
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel a hálózati kapcsolat megszakadt."
-
-#: ../src/panel/widgets/netman/applet.c:1314
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás váratlanul "
-"leállt."
-
-#: ../src/panel/widgets/netman/applet.c:1316
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service returned invalid "
-"configuration."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás érvénytelen "
-"konfigurációt adott vissza."
-
-#: ../src/panel/widgets/netman/applet.c:1318
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the connection attempt timed out."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel a kapcsolódási kísérlet túllépte "
-"az időkorlátot."
-
-#: ../src/panel/widgets/netman/applet.c:1320
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service did not start in time."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás nem indult el "
-"időben."
-
-#: ../src/panel/widgets/netman/applet.c:1322
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás nem indult el."
-
-#: ../src/panel/widgets/netman/applet.c:1324
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because there were no valid VPN secrets."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel nem találhatók érvényes titkos VPN "
-"információk."
-
-#: ../src/panel/widgets/netman/applet.c:1326
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because of invalid VPN secrets."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult az érvénytelen titkos VPN információk "
-"miatt."
-
-#: ../src/panel/widgets/netman/applet.c:1331
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed."
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult."
-
-#: ../src/panel/widgets/netman/applet.c:1358
-#, c-format
-msgid ""
-"VPN connection has been successfully established.\n"
-"\n"
-"%s\n"
-msgstr ""
-"A VPN kapcsolat sikeresen létrehozva.\n"
-"\n"
-"%s\n"
-
-#: ../src/panel/widgets/netman/applet.c:1360
-msgid "VPN connection has been successfully established.\n"
-msgstr "A VPN kapcsolat sikeresen létrehozva.\n"
-
-#: ../src/panel/widgets/netman/applet.c:1362
-msgid "VPN Login Message"
-msgstr "VPN bejelentkezési üzenet"
-
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
-msgid "VPN Connection Failed"
-msgstr "A VPN kapcsolat meghiúsult"
-
-#: ../src/panel/widgets/netman/applet.c:1414
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás nem tudott "
-"elindulni.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1417
-#, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"A(z) „%s” VPN kapcsolat indítása meghiúsult, mivel.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1741
-msgid "device not ready (firmware missing)"
-msgstr "az eszköz nem áll készen (hiányzó firmware)"
-
-#: ../src/panel/widgets/netman/applet.c:1743
-msgid "device not ready"
-msgstr "az eszköz nem áll készen"
-
-#. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
-msgid "disconnected"
-msgstr "leválasztva"
-
-#: ../src/panel/widgets/netman/applet.c:1769
-msgid "Disconnect"
-msgstr "Bontás"
-
-#: ../src/panel/widgets/netman/applet.c:1783
-msgid "device not managed"
-msgstr "az eszköz nem kezelt"
-
-#: ../src/panel/widgets/netman/applet.c:1864
-msgid "No network devices available"
-msgstr "Nem érhetők el hálózati eszközök"
-
-#: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
-msgid "_Advanced Options"
-msgstr "Speciális csapatbeállítások"
-
-#: ../src/panel/widgets/netman/applet.c:1919
-msgid "_VPN Connections"
-msgstr "_VPN kapcsolatok"
-
-#: ../src/panel/widgets/netman/applet.c:1973
-msgid "_Configure VPN…"
+msgid "Configure %s"
 msgstr "V_PN beállítása…"
 
-#: ../src/panel/widgets/netman/applet.c:1977
-msgid "_Add a VPN connection…"
-msgstr "VPN kapcsolat hozzá_adása…"
-
-#. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection _Information"
-msgstr "_Kapcsolatinformációk"
-
-# Megjegyzés: Itt a magyar fordításban hozzárendeltem gyorsbillentyűt a fordításhoz, az angolban eredetileg nincs.
-#. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
-msgid "Edit Connections…"
-msgstr "Kap_csolatok szerkesztése…"
-
-#: ../src/panel/widgets/netman/applet.c:2112
-msgid "NetworkManager is not running…"
-msgstr "A Hálózatkezelő nem fut…"
-
-#: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
-msgid "Wi-Fi country is not set"
-msgstr "Az ország nincs felsorolva"
-
-#: ../src/panel/widgets/netman/applet.c:2119
-msgid "Click here to set Wi-Fi country"
+#: ../src/panel/configure.c:814
+msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
-msgid "Networking disabled"
-msgstr "Hálózat kikapcsolva"
-
-#. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
-msgid "Enable _Networking"
-msgstr "_Hálózat bekapcsolása"
-
-#. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable _Wi-Fi"
-msgstr "_Wi-Fi bekapcsolása"
-
-#. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
-msgid "Enable _Mobile Broadband"
-msgstr "_Mobil széles sáv bekapcsolása"
-
-#. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable N_otifications"
-msgstr "Ért_esítések bekapcsolása"
-
-#: ../src/panel/widgets/netman/applet.c:2415
-msgid "_About"
-msgstr "_Névjegy"
-
-#: ../src/panel/widgets/netman/applet.c:2736
-#, c-format
-msgid "You are now connected to “%s”."
-msgstr "Kapcsolódott ehhez: „%s”."
-
-#: ../src/panel/widgets/netman/applet.c:2776
-msgid "Disconnected"
-msgstr "Kapcsolat bontva"
-
-#: ../src/panel/widgets/netman/applet.c:2777
-msgid "The network connection has been disconnected."
-msgstr "A hálózati kapcsolat bontva."
-
-#: ../src/panel/widgets/netman/applet.c:3079
-#, c-format
-msgid "Preparing network connection “%s”…"
-msgstr "A hálózati kapcsolat („%s”) előkészítése…"
-
-#: ../src/panel/widgets/netman/applet.c:3082
-#, c-format
-msgid "User authentication required for network connection “%s”…"
-msgstr "A felhasználó hitelesítése szükséges a hálózati kapcsolathoz („%s”)…"
-
-#: ../src/panel/widgets/netman/applet.c:3085
-#: ../src/panel/widgets/netman/applet-device-bt.c:113
-#: ../src/panel/widgets/netman/mobile-helpers.c:605
-#, c-format
-msgid "Requesting a network address for “%s”…"
-msgstr "Hálózati cím kérése a következőhöz: „%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3088
-#, c-format
-msgid "Network connection “%s” active"
-msgstr "A hálózati kapcsolat („%s”) aktív"
-
-#: ../src/panel/widgets/netman/applet.c:3165
-#, c-format
-msgid "Starting VPN connection “%s”…"
-msgstr "A VPN kapcsolat („%s”) indítása…"
-
-#: ../src/panel/widgets/netman/applet.c:3168
-#, c-format
-msgid "User authentication required for VPN connection “%s”…"
-msgstr "A felhasználó hitelesítése szükséges a VPN kapcsolathoz („%s”)…"
-
-#: ../src/panel/widgets/netman/applet.c:3171
-#, c-format
-msgid "Requesting a VPN address for “%s”…"
-msgstr "VPN cím kérése ehhez: „%s”…"
-
-#: ../src/panel/widgets/netman/applet.c:3174
-#, c-format
-msgid "VPN connection active"
-msgstr "A VPN kapcsolat aktív"
-
-#: ../src/panel/widgets/netman/applet.c:3226
-msgid "No network connection"
-msgstr "Nincs hálózati kapcsolat"
-
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "Hálózat"
-
-#: ../src/panel/widgets/netman/applet.c:3896
-msgid "NetworkManager Applet"
-msgstr "Hálózatkezelő kisalkalmazás"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:147
-msgid "Wrong PUK code; please contact your provider."
-msgstr "A PUK-kód hibás, keresse meg szolgáltatóját."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:189
-msgid "Wrong PIN code; please contact your provider."
-msgstr "A PIN-kód hibás, keresse meg szolgáltatóját."
-
-#. Start the spinner to show the progress of the unlock
-#: ../src/panel/widgets/netman/applet-device-broadband.c:240
-msgid "Sending unlock code…"
-msgstr "Feloldási kód küldése…"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:725
-#: ../src/panel/widgets/netman/applet-dialogs.c:532
-#, c-format
-msgid "Mobile Broadband (%s)"
-msgstr "Mobil széles sáv (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:727
-msgid "Mobile Broadband"
-msgstr "Mobil széles sáv"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+#: ../src/panel/configure.c:815
 msgid "Available"
 msgstr "Elérhető"
 
-#. Default connection item
-#: ../src/panel/widgets/netman/applet-device-broadband.c:793
-msgid "New Mobile Broadband connection…"
-msgstr "Új mobil széles sávú kapcsolat…"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:809
-#: ../src/panel/widgets/netman/applet-device-bt.c:75
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
-msgid "Connection Established"
-msgstr "Kapcsolat létrehozva"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:810
-msgid "You are now connected to the Mobile Broadband network."
-msgstr "Kapcsolódott a mobil széles sávú hálózathoz."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:950
-#: ../src/panel/widgets/netman/applet-device-broadband.c:956
-msgid "Mobile Broadband network."
-msgstr "Mobil széles sávú hálózat."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:951
-msgid "You are now registered on the home network."
-msgstr "Mostantól regisztrálva van az otthoni hálózaton."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:957
-msgid "You are now registered on a roaming network."
-msgstr "Mostantól regisztrálva van a barangoló hálózaton."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:76
-msgid "You are now connected to the mobile broadband network."
-msgstr "Kapcsolódott a mobil széles sávú hálózathoz."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:104
-#: ../src/panel/widgets/netman/mobile-helpers.c:596
-#, c-format
-msgid "Preparing mobile broadband connection “%s”…"
-msgstr "A mobil széles sávú kapcsolat („%s”) előkészítése…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:107
-#: ../src/panel/widgets/netman/mobile-helpers.c:599
-#, c-format
-msgid "Configuring mobile broadband connection “%s”…"
-msgstr "A mobil széles sávú kapcsolat („%s”) beállítása…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:110
-#: ../src/panel/widgets/netman/mobile-helpers.c:602
-#, c-format
-msgid "User authentication required for mobile broadband connection “%s”…"
+#: ../src/panel/configure.c:816
+msgid "Right Side"
 msgstr ""
-"Felhasználói hitelesítés szükséges a mobil széles sávú kapcsolathoz („%s”)…"
 
-#: ../src/panel/widgets/netman/applet-device-bt.c:117
-#: ../src/panel/widgets/netman/mobile-helpers.c:624
-#, c-format
-msgid "Mobile broadband connection “%s” active"
-msgstr "A mobil széles sávú kapcsolat („%s”) aktív"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
-msgid "Auto Ethernet"
-msgstr "Automatikus Ethernet"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
-#, c-format
-msgid "Ethernet Networks (%s)"
-msgstr "Vezetékes hálózatok (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
-#, c-format
-msgid "Ethernet Network (%s)"
-msgstr "Vezetékes hálózat (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
-msgid "Ethernet Networks"
-msgstr "Vezetékes hálózatok"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
-msgid "Ethernet Network"
-msgstr "Vezetékes hálózat"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
-msgid "You are now connected to the ethernet network."
-msgstr "Kapcsolódott a vezetékes hálózathoz."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
-#, c-format
-msgid "Preparing ethernet network connection “%s”…"
-msgstr "Vezetékes hálózati kapcsolat („%s”) előkészítése…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
-#, c-format
-msgid "Configuring ethernet network connection “%s”…"
-msgstr "Vezetékes hálózati kapcsolat („%s”) előkészítése…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
-#, c-format
-msgid "User authentication required for ethernet network connection “%s”…"
+#: ../src/panel/panel.cpp:235
+msgid "Add / Remove Plugins..."
 msgstr ""
-"A felhasználó hitelesítése szükséges a vezetékes hálózati kapcsolathoz („%s”)"
-"…"
 
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
-#, c-format
-msgid "Requesting an ethernet network address for “%s”…"
-msgstr "Vezetékes hálózati cím kérése ehhez: „%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
-#, c-format
-msgid "Ethernet network connection “%s” active"
-msgstr "A vezetékes hálózati kapcsolat („%s”) aktív"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
-msgid "DSL authentication"
-msgstr "DSL hitelesítés"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:1190
-#: ../src/panel/widgets/netman/mobile-helpers.c:455
-#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
-msgid "_Cancel"
-msgstr "Mé_gse"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:1191
-#: ../src/panel/widgets/netman/mobile-helpers.c:456
-#: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
-#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
-msgid "_OK"
-msgstr "_OK"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:208
-msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "Kapcsolódás _rejtett Wi-Fi hálózathoz…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
-msgid "Create _New Wi-Fi Network…"
-msgstr "Új _Wi-Fi hálózat létrehozása…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
+#: ../src/panel/panel.cpp:239
 #, fuzzy
-msgid "Create Wi-Fi _Hotspot…"
-msgstr "Új _Wi-Fi hálózat létrehozása…"
+msgid "Configure Plugin..."
+msgstr "V_PN beállítása…"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
-msgid "(none)"
-msgstr "(nincs)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
-msgid "Failed to add new connection"
-msgstr "Az új kapcsolat hozzáadása meghiúsult"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
-msgid "Insufficient privileges."
-msgstr "Elégtelen jogosultságok."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
-msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "Kapcsolódott a Wi-Fi hálózathoz („%s”)."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
-#, c-format
-msgid "Wi-Fi Networks (%s)"
-msgstr "Wi-Fi hálózatok (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
-#, c-format
-msgid "Wi-Fi Network (%s)"
-msgstr "Wi-Fi hálózat (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
-msgid "Wi-Fi Network"
-msgid_plural "Wi-Fi Networks"
-msgstr[0] "Wi-Fi hálózat"
-msgstr[1] "Wi-Fi hálózatok"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
-msgid "Wi-Fi is disabled"
-msgstr "A Wi-Fi kikapcsolva"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
-msgid "Wi-Fi is disabled by hardware switch"
-msgstr "A Wi-Fi hardveres kapcsolóval kikapcsolva"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
-msgid "More networks"
-msgstr "További hálózatok"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
-msgid "Wi-Fi Networks Available"
-msgstr "Wi-Fi hálózatok érhetők el"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
-msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr "A hálózat menüvel kapcsolódhat a Wi-Fi hálózathoz"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
-#, c-format
-msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "Kapcsolódott a Wi-Fi hálózathoz („%s”)."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
-#, c-format
-msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "A Wi-Fi hálózati kapcsolat („%s”) előkészítése…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
-#, c-format
-msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "A Wi-Fi hálózati kapcsolat („%s”) beállítása…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
-#, c-format
-msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr "A felhasználó hitelesítése szükséges a Wi-Fi hálózathoz („%s”)…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
-#, c-format
-msgid "Requesting a Wi-Fi network address for “%s”…"
-msgstr "Wi-Fi hálózati cím kérése a következőhöz: „%s”…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "A Wi-Fi hálózati kapcsolat („%s”) aktív: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
-#, c-format
-msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "A Wi-Fi hálózati kapcsolat („%s”) aktív: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
-#, c-format
-msgid "Wi-Fi network connection “%s” active"
-msgstr "A Wi-Fi hálózati kapcsolat („%s”) aktív"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:29
-msgid "Error displaying connection information:"
-msgstr "Hiba a kapcsolatinformációk megjelenítése közben:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:61
-msgid "LEAP"
-msgstr "LEAP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:63
-msgid "Dynamic WEP"
-msgstr "Dinamikus WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:65
-#: ../src/panel/widgets/netman/applet-dialogs.c:237
-#: ../src/panel/widgets/netman/applet-dialogs.c:239
-msgid "WPA/WPA2"
-msgstr "WPA/WPA2"
-
-#. Create the expander
-#: ../src/panel/widgets/netman/applet-dialogs.c:174
-msgid "More addresses"
-msgstr "További címek"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:235
-msgid "WEP"
-msgstr "WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:241
-msgid "WPA3"
-msgstr "WPA3"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:245
-#: ../src/panel/widgets/netman/applet-dialogs.c:254
-msgctxt "Wi-Fi/Ethernet security"
-msgid "None"
-msgstr "Nincs"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:324
-#: ../src/panel/widgets/netman/applet-dialogs.c:597
-#, c-format
-msgid "%u Mb/s"
-msgstr "%u Mb/s"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:326
-#: ../src/panel/widgets/netman/applet-dialogs.c:599
-msgctxt "Speed"
-msgid "Unknown"
-msgstr "Ismeretlen"
-
-#. Address
-#: ../src/panel/widgets/netman/applet-dialogs.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:363
-msgctxt "Address"
-msgid "Unknown"
-msgstr "Ismeretlen"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:415
-msgid "IP Address"
-msgstr "IP cím"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:364
-msgid "Broadcast Address"
-msgstr "Broadcast cím"
-
-#. Prefix
-#: ../src/panel/widgets/netman/applet-dialogs.c:376
-msgctxt "Subnet Mask"
-msgid "Unknown"
-msgstr "Ismeretlen"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:377
-msgid "Subnet Mask"
-msgstr "Alhálózati maszk"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Primary DNS"
-msgstr "Elsődleges DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Secondary DNS"
-msgstr "Másodlagos DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Tertiary DNS"
-msgstr "Harmadlagos DNS"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:518
-#, c-format
-msgid "Ethernet (%s)"
-msgstr "Ethernet (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:521
-#, c-format
-msgid "802.11 Wi-Fi (%s)"
-msgstr "802.11 Wi-Fi (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:528
-#, c-format
-msgid "GSM (%s)"
-msgstr "GSM (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:530
-#, c-format
-msgid "CDMA (%s)"
-msgstr "CDMA (%s)"
-
-#. --- General ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:538
-#: ../src/panel/widgets/netman/applet-dialogs.c:872
-msgid "General"
-msgstr "Általános"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:541
-msgid "Interface"
-msgstr "Csatoló"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:556
-msgid "Hardware Address"
-msgstr "Hardvercím"
-
-#. Driver
-#: ../src/panel/widgets/netman/applet-dialogs.c:569
-msgid "Driver"
-msgstr "Illesztőprogram"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:602
-msgid "Speed"
-msgstr "Sebesség"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:615
-msgid "Security"
-msgstr "Biztonság"
-
-#. --- IPv4 ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:640
-#: ../src/panel/widgets/netman/applet-dialogs.c:902
-msgid "IPv4"
-msgstr "IPv4"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:659
-#: ../src/panel/widgets/netman/applet-dialogs.c:707
-msgid "Default Route"
-msgstr "Alapértelmezett útvonal"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:687
-#: ../src/panel/widgets/netman/applet-dialogs.c:929
-msgid "IPv6"
-msgstr "IPv6"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:728
-msgid "Hotspot"
-msgstr "Hotspot"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:746
-msgid "Password"
-msgstr "Jelszó"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:876
-msgid "VPN Type"
-msgstr "VPN típusa"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:881
-msgid "VPN Gateway"
-msgstr "VPN átjáró"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:885
-msgid "VPN Username"
-msgstr "VPN felhasználónév"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:889
-msgid "VPN Banner"
-msgstr "VPN fejléc"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:893
-msgid "Base Connection"
-msgstr "Alapkapcsolat"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:894
-msgid "Unknown"
-msgstr "Ismeretlen"
-
-#. Shouldn't really happen but ...
-#: ../src/panel/widgets/netman/applet-dialogs.c:1091
-msgid "No valid active connections found!"
-msgstr "Nem találhatók érvényes aktív kapcsolatok!"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1139
-msgid ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"and many other community contributors and translators"
-msgstr ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"és sok más közösségi közreműködő és fordító"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1142
-msgid ""
-"Notification area applet for managing your network devices and connections."
-msgstr ""
-"Értesítésiterület-kisalkalmazás a hálózati eszközök és kapcsolatok "
-"kezelésére."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1144
-msgid "NetworkManager Website"
-msgstr "A Hálózatkezelő webhelye"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1148
-msgid "translator-credits"
-msgstr "Meskó Balázs <mesko.balazs at fsf dot hu>"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1158
-msgid ""
-"The NetworkManager Applet could not find some required resources (the .ui "
-"file was not found)."
-msgstr "A Hálózatkezelő kisalkalmazás nem talál néhány szükséges .ui fájlt."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1163
-msgid "Missing resources"
-msgstr "Hiányzó erőforrások"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1188
-msgid "Mobile broadband network password"
-msgstr "Mobil széles sávú hálózat jelszava"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1197
-#, c-format
-msgid "A password is required to connect to “%s”."
-msgstr "Jelszó szükséges a kapcsolódáshoz a következőhöz: „%s”."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1220
-msgid "Password:"
-msgstr "Jelszó:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1502
-msgid "SIM PIN unlock required"
-msgstr "A SIM PIN feloldása szükséges"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1503
-msgid "SIM PIN Unlock Required"
-msgstr "A SIM PIN feloldása szükséges"
-
-#. FIXME: some warning about # of times you can enter incorrect PIN
-#: ../src/panel/widgets/netman/applet-dialogs.c:1505
-#, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PIN code before it can be "
-"used."
-msgstr ""
-"A(z) „%s” mobil széles sávú eszköz használatához a SIM PIN-kód szükséges."
-
-#. Translators: PIN code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1507
-msgid "PIN code:"
-msgstr "PIN kód:"
-
-#. Translators: Show/obscure PIN checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1511
-msgid "Show PIN code"
-msgstr "PIN-kód megjelenítése"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1513
-msgid "SIM PUK unlock required"
-msgstr "A SIM PUK feloldása szükséges"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1514
-msgid "SIM PUK Unlock Required"
-msgstr "A SIM PUK feloldása szükséges"
-
-#. FIXME: some warning about # of times you can enter incorrect PUK
-#: ../src/panel/widgets/netman/applet-dialogs.c:1516
-#, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PUK code before it can be "
-"used."
-msgstr ""
-"A(z) „%s” mobil széles sávú eszköz használatához a SIM PUK-kód szükséges."
-
-#. Translators: PUK code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1518
-msgid "PUK code:"
-msgstr "PUK kód:"
-
-#. Translators: New PIN entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1521
-msgid "New PIN code:"
-msgstr "Új PIN-kód:"
-
-#. Translators: New PIN verification entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1523
-msgid "Re-enter new PIN code:"
-msgstr "Írja be újra az új PIN-kódot:"
-
-#. Translators: Show/obscure PIN/PUK checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1528
-msgid "Show PIN/PUK codes"
-msgstr "PIN/PUK-kódok megjelenítése"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:427
-msgid "Connection had no VPN setting"
-msgstr "A kapcsolatnak nem volt VPN beállítása"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:477
-#, c-format
-msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr "Nem sikerült kiírni a kapcsolatot a VPN felületre: %s (%d)"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:485
-msgid "Failed to write connection to VPN UI: incomplete write"
-msgstr "Nem sikerült kiírni a kapcsolatot a VPN felületre: hiányos kiírás"
-
-#: ../src/panel/widgets/netman/ethernet-dialog.c:87
-#: ../src/panel/widgets/netman/8021x.ui.h:1
-msgid "802.1X authentication"
-msgstr "802.1X hitelesítés"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:36
-#: ../src/panel/widgets/netman/mobile-helpers.c:272
-msgid "CDMA"
-msgstr "CDMA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:38
-msgid "EVDO"
-msgstr "EVDO"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:40
-#: ../src/panel/widgets/netman/mobile-helpers.c:270
-msgid "GSM"
-msgstr "GSM"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:42
-msgid "GPRS"
-msgstr "GPRS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:44
-msgid "EDGE"
-msgstr "EDGE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:46
-msgid "UMTS"
-msgstr "UMTS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:48
-msgid "HSDPA"
-msgstr "HSDPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:50
-msgid "HSUPA"
-msgstr "HSUPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:52
-msgid "HSPA"
-msgstr "HSPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:54
-msgid "HSPA+"
-msgstr "HSPA+"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:56
-msgid "LTE"
-msgstr "LTE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:103
-msgid "not enabled"
-msgstr "nincs bekapcsolva"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:109
-msgid "not registered"
-msgstr "nincs regisztrálva"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:127
-#, c-format
-msgid "Home network (%s)"
-msgstr "Otthoni hálózat (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:129
-#, c-format
-msgid "Home network"
-msgstr "Otthoni hálózat"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:137
-msgid "searching"
-msgstr "keresés"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:140
-msgid "registration denied"
-msgstr "regisztráció megtagadva"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:145
-#: ../src/panel/widgets/netman/mb-menu-item.c:151
-#, c-format
-msgid "%s (%s roaming)"
-msgstr "%s (%s barangoló)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:147
-#: ../src/panel/widgets/netman/mb-menu-item.c:153
-#, c-format
-msgid "%s (roaming)"
-msgstr "%s (barangoló)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:156
-#, c-format
-msgid "Roaming network (%s)"
-msgstr "Barangoló hálózat (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:158
-#, c-format
-msgid "Roaming network"
-msgstr "Barangoló hálózat"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:320
-#, c-format
-msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "A(z) „%s” SIM-kártya PIN-kódja ezen: „%s”"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:453
-msgid "PIN code required"
-msgstr "PIN kód szükséges"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:461
-msgid "PIN code is needed for the mobile broadband device"
-msgstr "PIN kód szükséges a mobil széles sávú eszközhöz"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:619
-#, c-format
-msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
-msgstr "A(z) „%s” mobil széles sávú kapcsolat aktív: (%d%%%s%s)"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:622
-msgid "roaming"
-msgstr "barangoló"
-
-#: ../src/panel/widgets/netman/netman.c:139
+#: ../src/panel/panel.cpp:243
 #, fuzzy
-msgid "Network Manager"
-msgstr "Hálózatkezelő"
+msgid "Notifications..."
+msgstr "Ért_esítések bekapcsolása"
 
-#: ../src/panel/widgets/netman/netman.c:140
+#: ../src/panel/panel.cpp:247
+msgid "Taskbar Preferences..."
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:10
+msgid "Display format"
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:11
+msgid "Display font"
+msgstr ""
+
+#: ../src/widgets/clock/clock.cpp:15
 #, fuzzy
-msgid "Controller for Network Manager"
-msgstr "Hálózatkezelő"
+msgid "Clock"
+msgstr "_Feloldás"
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:793
-#, c-format
-msgid "object class '%s' has no property named '%s'"
-msgstr "a(z) „%s” objektumosztálynak nincs „%s” nevű tulajdonsága"
+#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
+msgid "Show usage as percentage"
+msgstr ""
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:800
-#, c-format
-msgid "property '%s' of object class '%s' is not writable"
-msgstr "„%2$s” osztály „%1$s” tulajdonsága nem írható"
+#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
+msgid "Foreground colour"
+msgstr ""
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:807
-#, c-format
+#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
+msgid "Background colour"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:15
+#, fuzzy
+msgid "CPU"
+msgstr "TCP"
+
+#: ../src/widgets/gpu/gpu.cpp:15
+msgid "GPU"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:20
+msgid "Icon spacing"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:24
+#, fuzzy
+msgid "Launcher"
+msgstr "Kapcsolatfigyelő"
+
+#: ../src/widgets/launchers/launchers.cpp:196
+msgid "Remove from Launcher"
+msgstr ""
+
+#: ../src/widgets/notify/notify.cpp:5
+#, fuzzy
+msgid "Show notifications"
+msgstr "Ért_esítések bekapcsolása"
+
+#: ../src/widgets/notify/notify.cpp:6
+#, fuzzy
+msgid "Time before notifications close"
+msgstr "_Partnerértesítések száma"
+
+#: ../src/widgets/notify/notify.cpp:10
+#, fuzzy
+msgid "Notifications"
+msgstr "Ért_esítések bekapcsolása"
+
+#: ../src/widgets/power/power.c:86
 msgid ""
-"construct property \"%s\" for object '%s' can't be set after construction"
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
 msgstr ""
-"„%2$s” objektum „%1$s” konstuktortulajdonsága nem állítható be a létrehozás "
-"után"
 
-#: ../src/panel/widgets/netman/nm-shared-utils.c:815
-#, c-format
-msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr "„%s::%s” nem érvényes tulajdonságnév, „%s” nem egy GObject résztípus"
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:824
-#, c-format
-msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
-"nem állítható be „%2$s” típusú „%1$s” tulajdonság „%3$s” típusú értékre"
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:835
-#, c-format
+#: ../src/widgets/power/power.c:102
 msgid ""
-"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
-"type '%s'"
-msgstr ""
-"a(z) „%2$s” típusú „%1$s” érték érvénytelen vagy kívül esik a tartományon "
-"„%4$s” típusú „%3$s” tulajdonsághoz"
-
-#. The %s is a mobile provider name, eg "T-Mobile"
-#: ../src/panel/widgets/netman/utils.c:160
-#, c-format
-msgid "%s connection"
-msgstr "%s kapcsolat"
-
-#: ../src/panel/widgets/netman/utils.c:534
-msgid "PEM certificates (*.pem, *.crt, *.cer)"
-msgstr "PEM tanúsítványok (*.pem, *.crt, *.cer)"
-
-#: ../src/panel/widgets/netman/utils.c:546
-msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
-msgstr "DER, PEM vagy PKCS#12 személyes kulcsok (*.der, *.pem, *.p12, *.key)"
-
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
+#: ../src/widgets/power/power.c:163
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
+"High display resolution is using large amounts of memory.\n"
+"Consider reducing screen resolution."
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
+#: ../src/widgets/power/power.c:218
 msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
-msgid ""
-"Charged : %d%%\n"
-"On external power"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/widgets/power/power.c:269
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
+#: ../src/widgets/power/power.c:288
+msgid "PSU low voltage detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
+#: ../src/widgets/power/power.c:289
+msgid "USB over current detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
-msgid "Run"
-msgstr "Futtatás"
-
-#: ../src/panel/widgets/smenu/gtk-run.c:412
-msgid "Enter the command you want to execute:"
+#: ../src/widgets/power/power.c:290
+msgid "Low power reset has occurred\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:116
-msgid "Logout command is not set"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:122
-msgid "Restart"
-msgstr "Újraindítás"
-
-#: ../src/panel/widgets/smenu/menu.c:123
-msgid "Logout"
-msgstr "Kijelentkezés"
-
-#: ../src/panel/widgets/smenu/menu.c:140
-msgid "No file manager is configured."
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:489
-msgid "Add to desktop"
-msgstr "Hozzáadás az Asztalhoz"
-
-#: ../src/panel/widgets/smenu/menu.c:496
-msgid "Properties"
-msgstr "Tulajdonságok"
-
-#: ../src/panel/widgets/smenu/menu.c:954
-msgid "Click here to open applications menu"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr "Menü"
-
-#: ../src/panel/widgets/smenu/menu.c:1048
-msgid "Icon"
-msgstr "Ikon"
-
-#: ../src/panel/widgets/smenu/menu.c:1049
-msgid "Padding"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1050
-msgid "Fixed Size"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1058
-msgid "Menu with Search"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1059
+#: ../src/widgets/power/power.c:341
 #, fuzzy
-msgid "Searchable Application Menu"
-msgstr "Alkalmazás menü"
+msgid "Power Information..."
+msgstr "Kapcsolatinformációk"
 
-#: ../src/panel/widgets/updater/updater.c:189
-msgid ""
-"Updates are available\n"
-"Click the update icon to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:211
+#: ../src/widgets/power/power.cpp:12
 #, fuzzy
-msgid "No network connection - cannot install updates."
-msgstr "Nincs hálózati kapcsolat"
+msgid "System Monitor"
+msgstr "_Rendszerprioritás"
 
-#: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
+#: ../src/widgets/spacing/spacing.cpp:5
+msgid "Width in pixels"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:320
-msgid "Show Updates..."
+#: ../src/widgets/tray/tray.cpp:8
+msgid "Smooth scrolling threshold"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:324
-msgid "Install Updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:470
-msgid "Updates are available - click to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:531
-msgid "Hours between checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:562
-msgid "Checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#: ../src/widgets/tray/tray.cpp:9
 #, fuzzy
-msgid "Reconnecting Bluetooth devices..."
-msgstr "érvénytelen Bluetooth eszköz (%s)"
+msgid "Middle button activates menu"
+msgstr "Nem sikerült aktiválni a kapcsolatot"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
-msgid "Bluetooth %s device not found"
-msgstr "%d. Bluetooth kapcsolat"
-
-#. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, c-format
-msgid "Could not set profile for device : %s"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
-msgid "Failed to connect to Bluetooth device - %s"
-msgstr "érvénytelen Bluetooth eszköz (%s)"
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, c-format
-msgid "Connecting Bluetooth device '%s' as output..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, fuzzy, c-format
-msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "érvénytelen Bluetooth eszköz (%s)"
-
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
+#: ../src/widgets/tray/tray.cpp:13
 #, fuzzy
-msgid "Reconnecting Bluetooth device..."
-msgstr "érvénytelen Bluetooth eszköz (%s)"
+msgid "System Tray"
+msgstr "_Rendszerprioritás"
 
-#. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
-msgid "Mute"
+#: ../src/widgets/window-list/toplevel.cpp:83
+#: ../src/widgets/window-list/toplevel.cpp:449
+msgid "Minimize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/commongui.c:231
-msgid "No audio devices found"
+#: ../src/widgets/window-list/toplevel.cpp:84
+#: ../src/widgets/window-list/toplevel.cpp:457
+msgid "Maximize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/micpulse.c:71
-msgid "Input from this device not available in the current profile"
-msgstr ""
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/micpulse.c:144
-msgid "Mic volume"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
-msgid "HDMI"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
-msgid "AV Jack"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
-msgid "Device Profiles..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
-msgid "Output to this device not available in the current profile"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
-#, fuzzy
-msgid "Device Profiles"
-msgstr "Az eszköz leválasztása meghiúsult"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
-#, fuzzy
-msgid "Device not connected"
-msgstr "Az eszköz leválasztása meghiúsult"
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
-#, fuzzy
-msgid "Volume control"
-msgstr "Folyamvezérlés"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
-msgid "Volume Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
-msgid "Display and control volume for PulseAudio"
-msgstr ""
-
-#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-#, fuzzy
-msgid "label"
-msgstr "Újracímkézés"
-
-#: ../data/lxplug-updater.ui.h:1
-#, fuzzy
-msgid "Available Updates"
-msgstr "Elérhető"
-
-#: ../data/lxplug-updater.ui.h:2
+#: ../src/widgets/window-list/toplevel.cpp:85
 #, fuzzy
 msgid "Close"
 msgstr "_Bezárás"
 
-#: ../data/lxplug-updater.ui.h:3
-msgid "Install"
+#: ../src/widgets/window-list/toplevel.cpp:446
+msgid "Unminimize"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:4
-msgid "The following packages can be updated :"
+#: ../src/widgets/window-list/toplevel.cpp:454
+msgid "Unmaximize"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:1
-#, fuzzy
-msgid "Add New Device"
-msgstr "eszköz"
-
-#: ../data/lxplug-bluetooth.ui.h:3
-msgid "_Pair"
+#: ../src/widgets/window-list/window-list.cpp:14
+msgid "Maximum width of task button"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:4
+#: ../src/widgets/window-list/window-list.cpp:18
+msgid "Window List"
+msgstr ""
+
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr ""
+
+#: ../data/config.ui.h:2
 #, fuzzy
-msgid "Searching for Bluetooth devices..."
-msgstr "érvénytelen Bluetooth eszköz (%s)"
+msgid "Add to left"
+msgstr "Hozzáadás az Asztalhoz"
 
-#: ../src/panel/widgets/netman/8021x.ui.h:3
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:4
 #, fuzzy
-msgid "C_onnect"
-msgstr "_Kapcsolat"
+msgid "Add to right"
+msgstr "Hozzáadás az Asztalhoz"
 
-#: ../src/panel/widgets/netman/8021x.ui.h:4
-msgid "_Network name"
-msgstr "_Hálózatnév"
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
+msgstr ""
 
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
-msgid "_Unlock"
-msgstr "_Feloldás"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
-msgid "Automatically unlock this device"
-msgstr "Eszköz automatikus feloldása"
-
-#: ../src/panel/widgets/netman/info.ui.h:1
-msgid "Connection Information"
-msgstr "Kapcsolatinformációk"
-
-#: ../src/panel/widgets/netman/info.ui.h:2
+#: ../data/config.ui.h:6
 #, fuzzy
-msgid "_Close"
-msgstr "_Bezárás"
+msgid "Remove"
+msgstr "Távoli IP-cím"
+
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr ""
+
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:10
+msgid "Move right"
+msgstr ""
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:12
+#, fuzzy
+msgid "Configure..."
+msgstr "V_PN beállítása…"
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1
+#, fuzzy
+msgid "label"
+msgstr "Újracímkézés"
+
+#: ../data/lxpanel-modal.ui.h:2
+msgid "_Cancel"
+msgstr "Mé_gse"
+
+#: ../data/lxpanel-modal.ui.h:3
+msgid "_OK"
+msgstr "_OK"
+
+#, fuzzy, c-format
+#~ msgid "Connection successful"
+#~ msgstr "A kapcsolat meghiúsult"
+
+#, fuzzy, c-format
+#~ msgid "Connection failed - %s"
+#~ msgstr "A kapcsolat meghiúsult"
+
+#, fuzzy, c-format
+#~ msgid "Disconnection failed - %s"
+#~ msgstr "Kapcsolatbontási hiba"
+
+#, fuzzy
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr "A hálózat menüvel kapcsolódhat a Wi-Fi hálózathoz"
+
+#, fuzzy
+#~ msgid "Disconnect..."
+#~ msgstr "Bontás"
+
+#, fuzzy
+#~ msgid "Connect..."
+#~ msgstr "Kapcs_olódás"
+
+#, fuzzy
+#~ msgid "No Bluetooth adapter found"
+#~ msgstr "Bluetooth típusa"
+
+#, fuzzy
+#~ msgid "Turn On Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Turn Off Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Add Device..."
+#~ msgstr "eszköz"
+
+#, fuzzy
+#~ msgid "Manage Bluetooth devices"
+#~ msgstr "érvénytelen Bluetooth eszköz (%s)"
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Manages Bluetooth devices"
+#~ msgstr "érvénytelen Bluetooth eszköz (%s)"
+
+#~ msgid "ad-hoc"
+#~ msgstr "eseti"
+
+#~ msgid "secure."
+#~ msgstr "biztonságos."
+
+#~ msgid "Unknown error"
+#~ msgstr "Ismeretlen hiba"
+
+#~ msgid "Connection failure"
+#~ msgstr "A kapcsolat meghiúsult"
+
+#~ msgid "Failed to add/activate connection"
+#~ msgstr "A kapcsolat hozzáadása vagy aktiválása meghiúsult"
+
+#~ msgid "Device disconnect failed"
+#~ msgstr "Az eszköz leválasztása meghiúsult"
+
+#~ msgid "Disconnect failure"
+#~ msgstr "Kapcsolatbontási hiba"
+
+#~ msgid "Connection activation failed"
+#~ msgstr "A kapcsolat aktiválása meghiúsult"
+
+#~ msgid "Don’t show this message again"
+#~ msgstr "Ne mutassa ezt az üzenetet újra"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat bontva, mivel a hálózati kapcsolat megszakadt."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel a hálózati kapcsolat megszakadt."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service stopped "
+#~ "unexpectedly."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás váratlanul "
+#~ "leállt."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service returned invalid "
+#~ "configuration."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás érvénytelen "
+#~ "konfigurációt adott vissza."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the connection attempt timed out."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel a kapcsolódási kísérlet "
+#~ "túllépte az időkorlátot."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service did not start in "
+#~ "time."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás nem indult "
+#~ "el időben."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás nem indult "
+#~ "el."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because there were no valid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel nem találhatók érvényes titkos "
+#~ "VPN információk."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because of invalid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult az érvénytelen titkos VPN információk "
+#~ "miatt."
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed."
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult."
+
+#, c-format
+#~ msgid ""
+#~ "VPN connection has been successfully established.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "A VPN kapcsolat sikeresen létrehozva.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "VPN connection has been successfully established.\n"
+#~ msgstr "A VPN kapcsolat sikeresen létrehozva.\n"
+
+#~ msgid "VPN Login Message"
+#~ msgstr "VPN bejelentkezési üzenet"
+
+#~ msgid "VPN Connection Failed"
+#~ msgstr "A VPN kapcsolat meghiúsult"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat meghiúsult, mivel a VPN szolgáltatás nem tudott "
+#~ "elindulni.\n"
+#~ "\n"
+#~ "%s"
+
+#, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "A(z) „%s” VPN kapcsolat indítása meghiúsult, mivel.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "device not ready (firmware missing)"
+#~ msgstr "az eszköz nem áll készen (hiányzó firmware)"
+
+#~ msgid "device not ready"
+#~ msgstr "az eszköz nem áll készen"
+
+#~ msgid "disconnected"
+#~ msgstr "leválasztva"
+
+#~ msgid "Disconnect"
+#~ msgstr "Bontás"
+
+#~ msgid "device not managed"
+#~ msgstr "az eszköz nem kezelt"
+
+#~ msgid "No network devices available"
+#~ msgstr "Nem érhetők el hálózati eszközök"
+
+#, fuzzy
+#~ msgid "_Advanced Options"
+#~ msgstr "Speciális csapatbeállítások"
+
+#~ msgid "_VPN Connections"
+#~ msgstr "_VPN kapcsolatok"
+
+#~ msgid "_Add a VPN connection…"
+#~ msgstr "VPN kapcsolat hozzá_adása…"
+
+#~ msgid "Connection _Information"
+#~ msgstr "_Kapcsolatinformációk"
+
+# Megjegyzés: Itt a magyar fordításban hozzárendeltem gyorsbillentyűt a fordításhoz, az angolban eredetileg nincs.
+#~ msgid "Edit Connections…"
+#~ msgstr "Kap_csolatok szerkesztése…"
+
+#~ msgid "NetworkManager is not running…"
+#~ msgstr "A Hálózatkezelő nem fut…"
+
+#, fuzzy
+#~ msgid "Wi-Fi country is not set"
+#~ msgstr "Az ország nincs felsorolva"
+
+#~ msgid "Networking disabled"
+#~ msgstr "Hálózat kikapcsolva"
+
+#~ msgid "Enable _Networking"
+#~ msgstr "_Hálózat bekapcsolása"
+
+#~ msgid "Enable _Wi-Fi"
+#~ msgstr "_Wi-Fi bekapcsolása"
+
+#~ msgid "Enable _Mobile Broadband"
+#~ msgstr "_Mobil széles sáv bekapcsolása"
+
+#~ msgid "_About"
+#~ msgstr "_Névjegy"
+
+#, c-format
+#~ msgid "You are now connected to “%s”."
+#~ msgstr "Kapcsolódott ehhez: „%s”."
+
+#~ msgid "Disconnected"
+#~ msgstr "Kapcsolat bontva"
+
+#~ msgid "The network connection has been disconnected."
+#~ msgstr "A hálózati kapcsolat bontva."
+
+#, c-format
+#~ msgid "Preparing network connection “%s”…"
+#~ msgstr "A hálózati kapcsolat („%s”) előkészítése…"
+
+#, c-format
+#~ msgid "User authentication required for network connection “%s”…"
+#~ msgstr ""
+#~ "A felhasználó hitelesítése szükséges a hálózati kapcsolathoz („%s”)…"
+
+#, c-format
+#~ msgid "Requesting a network address for “%s”…"
+#~ msgstr "Hálózati cím kérése a következőhöz: „%s”…"
+
+#, c-format
+#~ msgid "Network connection “%s” active"
+#~ msgstr "A hálózati kapcsolat („%s”) aktív"
+
+#, c-format
+#~ msgid "Starting VPN connection “%s”…"
+#~ msgstr "A VPN kapcsolat („%s”) indítása…"
+
+#, c-format
+#~ msgid "User authentication required for VPN connection “%s”…"
+#~ msgstr "A felhasználó hitelesítése szükséges a VPN kapcsolathoz („%s”)…"
+
+#, c-format
+#~ msgid "Requesting a VPN address for “%s”…"
+#~ msgstr "VPN cím kérése ehhez: „%s”…"
+
+#, c-format
+#~ msgid "VPN connection active"
+#~ msgstr "A VPN kapcsolat aktív"
+
+#~ msgid "No network connection"
+#~ msgstr "Nincs hálózati kapcsolat"
+
+#~ msgid "Network"
+#~ msgstr "Hálózat"
+
+#~ msgid "NetworkManager Applet"
+#~ msgstr "Hálózatkezelő kisalkalmazás"
+
+#~ msgid "Wrong PUK code; please contact your provider."
+#~ msgstr "A PUK-kód hibás, keresse meg szolgáltatóját."
+
+#~ msgid "Wrong PIN code; please contact your provider."
+#~ msgstr "A PIN-kód hibás, keresse meg szolgáltatóját."
+
+#~ msgid "Sending unlock code…"
+#~ msgstr "Feloldási kód küldése…"
+
+#, c-format
+#~ msgid "Mobile Broadband (%s)"
+#~ msgstr "Mobil széles sáv (%s)"
+
+#~ msgid "Mobile Broadband"
+#~ msgstr "Mobil széles sáv"
+
+#~ msgid "New Mobile Broadband connection…"
+#~ msgstr "Új mobil széles sávú kapcsolat…"
+
+#~ msgid "Connection Established"
+#~ msgstr "Kapcsolat létrehozva"
+
+#~ msgid "You are now connected to the Mobile Broadband network."
+#~ msgstr "Kapcsolódott a mobil széles sávú hálózathoz."
+
+#~ msgid "Mobile Broadband network."
+#~ msgstr "Mobil széles sávú hálózat."
+
+#~ msgid "You are now registered on the home network."
+#~ msgstr "Mostantól regisztrálva van az otthoni hálózaton."
+
+#~ msgid "You are now registered on a roaming network."
+#~ msgstr "Mostantól regisztrálva van a barangoló hálózaton."
+
+#~ msgid "You are now connected to the mobile broadband network."
+#~ msgstr "Kapcsolódott a mobil széles sávú hálózathoz."
+
+#, c-format
+#~ msgid "Preparing mobile broadband connection “%s”…"
+#~ msgstr "A mobil széles sávú kapcsolat („%s”) előkészítése…"
+
+#, c-format
+#~ msgid "Configuring mobile broadband connection “%s”…"
+#~ msgstr "A mobil széles sávú kapcsolat („%s”) beállítása…"
+
+#, c-format
+#~ msgid "User authentication required for mobile broadband connection “%s”…"
+#~ msgstr ""
+#~ "Felhasználói hitelesítés szükséges a mobil széles sávú kapcsolathoz "
+#~ "(„%s”)…"
+
+#, c-format
+#~ msgid "Mobile broadband connection “%s” active"
+#~ msgstr "A mobil széles sávú kapcsolat („%s”) aktív"
+
+#~ msgid "Auto Ethernet"
+#~ msgstr "Automatikus Ethernet"
+
+#, c-format
+#~ msgid "Ethernet Networks (%s)"
+#~ msgstr "Vezetékes hálózatok (%s)"
+
+#, c-format
+#~ msgid "Ethernet Network (%s)"
+#~ msgstr "Vezetékes hálózat (%s)"
+
+#~ msgid "Ethernet Networks"
+#~ msgstr "Vezetékes hálózatok"
+
+#~ msgid "Ethernet Network"
+#~ msgstr "Vezetékes hálózat"
+
+#~ msgid "You are now connected to the ethernet network."
+#~ msgstr "Kapcsolódott a vezetékes hálózathoz."
+
+#, c-format
+#~ msgid "Preparing ethernet network connection “%s”…"
+#~ msgstr "Vezetékes hálózati kapcsolat („%s”) előkészítése…"
+
+#, c-format
+#~ msgid "Configuring ethernet network connection “%s”…"
+#~ msgstr "Vezetékes hálózati kapcsolat („%s”) előkészítése…"
+
+#, c-format
+#~ msgid "User authentication required for ethernet network connection “%s”…"
+#~ msgstr ""
+#~ "A felhasználó hitelesítése szükséges a vezetékes hálózati kapcsolathoz "
+#~ "(„%s”)…"
+
+#, c-format
+#~ msgid "Requesting an ethernet network address for “%s”…"
+#~ msgstr "Vezetékes hálózati cím kérése ehhez: „%s”…"
+
+#, c-format
+#~ msgid "Ethernet network connection “%s” active"
+#~ msgstr "A vezetékes hálózati kapcsolat („%s”) aktív"
+
+#~ msgid "DSL authentication"
+#~ msgstr "DSL hitelesítés"
+
+#~ msgid "_Connect to Hidden Wi-Fi Network…"
+#~ msgstr "Kapcsolódás _rejtett Wi-Fi hálózathoz…"
+
+#~ msgid "Create _New Wi-Fi Network…"
+#~ msgstr "Új _Wi-Fi hálózat létrehozása…"
+
+#, fuzzy
+#~ msgid "Create Wi-Fi _Hotspot…"
+#~ msgstr "Új _Wi-Fi hálózat létrehozása…"
+
+#~ msgid "(none)"
+#~ msgstr "(nincs)"
+
+#~ msgid "Failed to add new connection"
+#~ msgstr "Az új kapcsolat hozzáadása meghiúsult"
+
+#~ msgid "Insufficient privileges."
+#~ msgstr "Elégtelen jogosultságok."
+
+#, fuzzy, c-format
+#~ msgid "Do you want to disconnect from the wireless network '%s'?"
+#~ msgstr "Kapcsolódott a Wi-Fi hálózathoz („%s”)."
+
+#, c-format
+#~ msgid "Wi-Fi Networks (%s)"
+#~ msgstr "Wi-Fi hálózatok (%s)"
+
+#, c-format
+#~ msgid "Wi-Fi Network (%s)"
+#~ msgstr "Wi-Fi hálózat (%s)"
+
+#~ msgid "Wi-Fi Network"
+#~ msgid_plural "Wi-Fi Networks"
+#~ msgstr[0] "Wi-Fi hálózat"
+#~ msgstr[1] "Wi-Fi hálózatok"
+
+#~ msgid "Wi-Fi is disabled"
+#~ msgstr "A Wi-Fi kikapcsolva"
+
+#~ msgid "Wi-Fi is disabled by hardware switch"
+#~ msgstr "A Wi-Fi hardveres kapcsolóval kikapcsolva"
+
+#~ msgid "More networks"
+#~ msgstr "További hálózatok"
+
+#~ msgid "Wi-Fi Networks Available"
+#~ msgstr "Wi-Fi hálózatok érhetők el"
+
+#~ msgid "Use the network menu to connect to a Wi-Fi network"
+#~ msgstr "A hálózat menüvel kapcsolódhat a Wi-Fi hálózathoz"
+
+#, c-format
+#~ msgid "You are now connected to the Wi-Fi network “%s”."
+#~ msgstr "Kapcsolódott a Wi-Fi hálózathoz („%s”)."
+
+#, c-format
+#~ msgid "Preparing Wi-Fi network connection “%s”…"
+#~ msgstr "A Wi-Fi hálózati kapcsolat („%s”) előkészítése…"
+
+#, c-format
+#~ msgid "Configuring Wi-Fi network connection “%s”…"
+#~ msgstr "A Wi-Fi hálózati kapcsolat („%s”) beállítása…"
+
+#, c-format
+#~ msgid "User authentication required for Wi-Fi network “%s”…"
+#~ msgstr "A felhasználó hitelesítése szükséges a Wi-Fi hálózathoz („%s”)…"
+
+#, c-format
+#~ msgid "Requesting a Wi-Fi network address for “%s”…"
+#~ msgstr "Wi-Fi hálózati cím kérése a következőhöz: „%s”…"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+#~ msgstr "A Wi-Fi hálózati kapcsolat („%s”) aktív: %s (%d%%)"
+
+#, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+#~ msgstr "A Wi-Fi hálózati kapcsolat („%s”) aktív: %s (%d%%)"
+
+#, c-format
+#~ msgid "Wi-Fi network connection “%s” active"
+#~ msgstr "A Wi-Fi hálózati kapcsolat („%s”) aktív"
+
+#~ msgid "Error displaying connection information:"
+#~ msgstr "Hiba a kapcsolatinformációk megjelenítése közben:"
+
+#~ msgid "LEAP"
+#~ msgstr "LEAP"
+
+#~ msgid "Dynamic WEP"
+#~ msgstr "Dinamikus WEP"
+
+#~ msgid "WPA/WPA2"
+#~ msgstr "WPA/WPA2"
+
+#~ msgid "More addresses"
+#~ msgstr "További címek"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "WPA3"
+#~ msgstr "WPA3"
+
+#~ msgctxt "Wi-Fi/Ethernet security"
+#~ msgid "None"
+#~ msgstr "Nincs"
+
+#, c-format
+#~ msgid "%u Mb/s"
+#~ msgstr "%u Mb/s"
+
+#~ msgctxt "Speed"
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
+
+#~ msgctxt "Address"
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
+
+#~ msgid "IP Address"
+#~ msgstr "IP cím"
+
+#~ msgid "Broadcast Address"
+#~ msgstr "Broadcast cím"
+
+#~ msgctxt "Subnet Mask"
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Alhálózati maszk"
+
+#~ msgid "Primary DNS"
+#~ msgstr "Elsődleges DNS"
+
+#~ msgid "Secondary DNS"
+#~ msgstr "Másodlagos DNS"
+
+#~ msgid "Tertiary DNS"
+#~ msgstr "Harmadlagos DNS"
+
+#, c-format
+#~ msgid "Ethernet (%s)"
+#~ msgstr "Ethernet (%s)"
+
+#, c-format
+#~ msgid "802.11 Wi-Fi (%s)"
+#~ msgstr "802.11 Wi-Fi (%s)"
+
+#, c-format
+#~ msgid "GSM (%s)"
+#~ msgstr "GSM (%s)"
+
+#, c-format
+#~ msgid "CDMA (%s)"
+#~ msgstr "CDMA (%s)"
+
+#~ msgid "General"
+#~ msgstr "Általános"
+
+#~ msgid "Interface"
+#~ msgstr "Csatoló"
+
+#~ msgid "Hardware Address"
+#~ msgstr "Hardvercím"
+
+#~ msgid "Driver"
+#~ msgstr "Illesztőprogram"
+
+#~ msgid "Speed"
+#~ msgstr "Sebesség"
+
+#~ msgid "Security"
+#~ msgstr "Biztonság"
+
+#~ msgid "IPv4"
+#~ msgstr "IPv4"
+
+#~ msgid "Default Route"
+#~ msgstr "Alapértelmezett útvonal"
+
+#~ msgid "IPv6"
+#~ msgstr "IPv6"
+
+#~ msgid "Hotspot"
+#~ msgstr "Hotspot"
+
+#~ msgid "Password"
+#~ msgstr "Jelszó"
+
+#~ msgid "VPN Type"
+#~ msgstr "VPN típusa"
+
+#~ msgid "VPN Gateway"
+#~ msgstr "VPN átjáró"
+
+#~ msgid "VPN Username"
+#~ msgstr "VPN felhasználónév"
+
+#~ msgid "VPN Banner"
+#~ msgstr "VPN fejléc"
+
+#~ msgid "Base Connection"
+#~ msgstr "Alapkapcsolat"
+
+#~ msgid "No valid active connections found!"
+#~ msgstr "Nem találhatók érvényes aktív kapcsolatok!"
+
+#~ msgid ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "and many other community contributors and translators"
+#~ msgstr ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "és sok más közösségi közreműködő és fordító"
+
+#~ msgid ""
+#~ "Notification area applet for managing your network devices and "
+#~ "connections."
+#~ msgstr ""
+#~ "Értesítésiterület-kisalkalmazás a hálózati eszközök és kapcsolatok "
+#~ "kezelésére."
+
+#~ msgid "NetworkManager Website"
+#~ msgstr "A Hálózatkezelő webhelye"
+
+#~ msgid "translator-credits"
+#~ msgstr "Meskó Balázs <mesko.balazs at fsf dot hu>"
+
+#~ msgid ""
+#~ "The NetworkManager Applet could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr "A Hálózatkezelő kisalkalmazás nem talál néhány szükséges .ui fájlt."
+
+#~ msgid "Missing resources"
+#~ msgstr "Hiányzó erőforrások"
+
+#~ msgid "Mobile broadband network password"
+#~ msgstr "Mobil széles sávú hálózat jelszava"
+
+#, c-format
+#~ msgid "A password is required to connect to “%s”."
+#~ msgstr "Jelszó szükséges a kapcsolódáshoz a következőhöz: „%s”."
+
+#~ msgid "Password:"
+#~ msgstr "Jelszó:"
+
+#~ msgid "SIM PIN unlock required"
+#~ msgstr "A SIM PIN feloldása szükséges"
+
+#~ msgid "SIM PIN Unlock Required"
+#~ msgstr "A SIM PIN feloldása szükséges"
+
+#, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PIN code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "A(z) „%s” mobil széles sávú eszköz használatához a SIM PIN-kód szükséges."
+
+#~ msgid "PIN code:"
+#~ msgstr "PIN kód:"
+
+#~ msgid "Show PIN code"
+#~ msgstr "PIN-kód megjelenítése"
+
+#~ msgid "SIM PUK unlock required"
+#~ msgstr "A SIM PUK feloldása szükséges"
+
+#~ msgid "SIM PUK Unlock Required"
+#~ msgstr "A SIM PUK feloldása szükséges"
+
+#, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PUK code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "A(z) „%s” mobil széles sávú eszköz használatához a SIM PUK-kód szükséges."
+
+#~ msgid "PUK code:"
+#~ msgstr "PUK kód:"
+
+#~ msgid "New PIN code:"
+#~ msgstr "Új PIN-kód:"
+
+#~ msgid "Re-enter new PIN code:"
+#~ msgstr "Írja be újra az új PIN-kódot:"
+
+#~ msgid "Show PIN/PUK codes"
+#~ msgstr "PIN/PUK-kódok megjelenítése"
+
+#~ msgid "Connection had no VPN setting"
+#~ msgstr "A kapcsolatnak nem volt VPN beállítása"
+
+#, c-format
+#~ msgid "Failed to write connection to VPN UI: %s (%d)"
+#~ msgstr "Nem sikerült kiírni a kapcsolatot a VPN felületre: %s (%d)"
+
+#~ msgid "Failed to write connection to VPN UI: incomplete write"
+#~ msgstr "Nem sikerült kiírni a kapcsolatot a VPN felületre: hiányos kiírás"
+
+#~ msgid "802.1X authentication"
+#~ msgstr "802.1X hitelesítés"
+
+#~ msgid "CDMA"
+#~ msgstr "CDMA"
+
+#~ msgid "EVDO"
+#~ msgstr "EVDO"
+
+#~ msgid "GSM"
+#~ msgstr "GSM"
+
+#~ msgid "GPRS"
+#~ msgstr "GPRS"
+
+#~ msgid "EDGE"
+#~ msgstr "EDGE"
+
+#~ msgid "UMTS"
+#~ msgstr "UMTS"
+
+#~ msgid "HSDPA"
+#~ msgstr "HSDPA"
+
+#~ msgid "HSUPA"
+#~ msgstr "HSUPA"
+
+#~ msgid "HSPA"
+#~ msgstr "HSPA"
+
+#~ msgid "HSPA+"
+#~ msgstr "HSPA+"
+
+#~ msgid "LTE"
+#~ msgstr "LTE"
+
+#~ msgid "not enabled"
+#~ msgstr "nincs bekapcsolva"
+
+#~ msgid "not registered"
+#~ msgstr "nincs regisztrálva"
+
+#, c-format
+#~ msgid "Home network (%s)"
+#~ msgstr "Otthoni hálózat (%s)"
+
+#, c-format
+#~ msgid "Home network"
+#~ msgstr "Otthoni hálózat"
+
+#~ msgid "searching"
+#~ msgstr "keresés"
+
+#~ msgid "registration denied"
+#~ msgstr "regisztráció megtagadva"
+
+#, c-format
+#~ msgid "%s (%s roaming)"
+#~ msgstr "%s (%s barangoló)"
+
+#, c-format
+#~ msgid "%s (roaming)"
+#~ msgstr "%s (barangoló)"
+
+#, c-format
+#~ msgid "Roaming network (%s)"
+#~ msgstr "Barangoló hálózat (%s)"
+
+#, c-format
+#~ msgid "Roaming network"
+#~ msgstr "Barangoló hálózat"
+
+#, c-format
+#~ msgid "PIN code for SIM card “%s” on “%s”"
+#~ msgstr "A(z) „%s” SIM-kártya PIN-kódja ezen: „%s”"
+
+#~ msgid "PIN code required"
+#~ msgstr "PIN kód szükséges"
+
+#~ msgid "PIN code is needed for the mobile broadband device"
+#~ msgstr "PIN kód szükséges a mobil széles sávú eszközhöz"
+
+#, c-format
+#~ msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+#~ msgstr "A(z) „%s” mobil széles sávú kapcsolat aktív: (%d%%%s%s)"
+
+#~ msgid "roaming"
+#~ msgstr "barangoló"
+
+#, fuzzy
+#~ msgid "Network Manager"
+#~ msgstr "Hálózatkezelő"
+
+#, fuzzy
+#~ msgid "Controller for Network Manager"
+#~ msgstr "Hálózatkezelő"
+
+#, c-format
+#~ msgid "object class '%s' has no property named '%s'"
+#~ msgstr "a(z) „%s” objektumosztálynak nincs „%s” nevű tulajdonsága"
+
+#, c-format
+#~ msgid "property '%s' of object class '%s' is not writable"
+#~ msgstr "„%2$s” osztály „%1$s” tulajdonsága nem írható"
+
+#, c-format
+#~ msgid ""
+#~ "construct property \"%s\" for object '%s' can't be set after construction"
+#~ msgstr ""
+#~ "„%2$s” objektum „%1$s” konstuktortulajdonsága nem állítható be a "
+#~ "létrehozás után"
+
+#, c-format
+#~ msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
+#~ msgstr ""
+#~ "„%s::%s” nem érvényes tulajdonságnév, „%s” nem egy GObject résztípus"
+
+#, c-format
+#~ msgid "unable to set property '%s' of type '%s' from value of type '%s'"
+#~ msgstr ""
+#~ "nem állítható be „%2$s” típusú „%1$s” tulajdonság „%3$s” típusú értékre"
+
+#, c-format
+#~ msgid ""
+#~ "value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
+#~ "type '%s'"
+#~ msgstr ""
+#~ "a(z) „%2$s” típusú „%1$s” érték érvénytelen vagy kívül esik a tartományon "
+#~ "„%4$s” típusú „%3$s” tulajdonsághoz"
+
+#, c-format
+#~ msgid "%s connection"
+#~ msgstr "%s kapcsolat"
+
+#~ msgid "PEM certificates (*.pem, *.crt, *.cer)"
+#~ msgstr "PEM tanúsítványok (*.pem, *.crt, *.cer)"
+
+#~ msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+#~ msgstr ""
+#~ "DER, PEM vagy PKCS#12 személyes kulcsok (*.der, *.pem, *.p12, *.key)"
+
+#~ msgid "Run"
+#~ msgstr "Futtatás"
+
+#~ msgid "Restart"
+#~ msgstr "Újraindítás"
+
+#~ msgid "Logout"
+#~ msgstr "Kijelentkezés"
+
+#~ msgid "Properties"
+#~ msgstr "Tulajdonságok"
+
+#~ msgid "Menu"
+#~ msgstr "Menü"
+
+#~ msgid "Icon"
+#~ msgstr "Ikon"
+
+#, fuzzy
+#~ msgid "Searchable Application Menu"
+#~ msgstr "Alkalmazás menü"
+
+#, fuzzy
+#~ msgid "No network connection - cannot install updates."
+#~ msgstr "Nincs hálózati kapcsolat"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth devices..."
+#~ msgstr "érvénytelen Bluetooth eszköz (%s)"
+
+#, fuzzy, c-format
+#~ msgid "Bluetooth %s device not found"
+#~ msgstr "%d. Bluetooth kapcsolat"
+
+#, fuzzy, c-format
+#~ msgid "Failed to connect to Bluetooth device - %s"
+#~ msgstr "érvénytelen Bluetooth eszköz (%s)"
+
+#, fuzzy, c-format
+#~ msgid "Connecting Bluetooth device '%s' as input..."
+#~ msgstr "érvénytelen Bluetooth eszköz (%s)"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth device..."
+#~ msgstr "érvénytelen Bluetooth eszköz (%s)"
+
+#, fuzzy
+#~ msgid "Device Profiles"
+#~ msgstr "Az eszköz leválasztása meghiúsult"
+
+#, fuzzy
+#~ msgid "Device not connected"
+#~ msgstr "Az eszköz leválasztása meghiúsult"
+
+#, fuzzy
+#~ msgid "Volume control"
+#~ msgstr "Folyamvezérlés"
+
+#, fuzzy
+#~ msgid "Available Updates"
+#~ msgstr "Elérhető"
+
+#, fuzzy
+#~ msgid "Add New Device"
+#~ msgstr "eszköz"
+
+#, fuzzy
+#~ msgid "Searching for Bluetooth devices..."
+#~ msgstr "érvénytelen Bluetooth eszköz (%s)"
+
+#, fuzzy
+#~ msgid "C_onnect"
+#~ msgstr "_Kapcsolat"
+
+#~ msgid "_Network name"
+#~ msgstr "_Hálózatnév"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Eszköz automatikus feloldása"
+
+#, fuzzy
+#~ msgid "_Close"
+#~ msgstr "_Bezárás"
 
 #~ msgid "Manage your network connections"
 #~ msgstr "Hálózati kapcsolatok kezelése"
@@ -2324,9 +1879,6 @@ msgstr "_Bezárás"
 #~ msgid "Local IP"
 #~ msgstr "Helyi IP-cím"
 
-#~ msgid "Remote IP"
-#~ msgstr "Távoli IP-cím"
-
 #~ msgid "Input key"
 #~ msgstr "Bemeneti kulcs"
 
@@ -2798,9 +2350,6 @@ msgstr "_Bezárás"
 #~ msgid "The link watcher to be used."
 #~ msgstr "A használandó kapcsolatfigyelő."
 
-#~ msgid "Link Watcher"
-#~ msgstr "Kapcsolatfigyelő"
-
 #~ msgid "Im_port team configuration from a file…"
 #~ msgstr "Cs_apatbeállítás importálása fájlból…"
 
@@ -2855,9 +2404,6 @@ msgstr "_Bezárás"
 #~ msgid "Any L3 protocol"
 #~ msgstr "Bármilyen L3 protokoll"
 
-#~ msgid "TCP"
-#~ msgstr "TCP"
-
 #~ msgid "UDP"
 #~ msgstr "UDP"
 
@@ -2866,9 +2412,6 @@ msgstr "_Bezárás"
 
 #~ msgid "Any L4 protocol"
 #~ msgstr "Bármilyen L4 protokoll"
-
-#~ msgid "_Peer notification count"
-#~ msgstr "_Partnerértesítések száma"
 
 #~ msgid "Peer _notification interval"
 #~ msgstr "Partneré_rtesítés időköze"
@@ -2926,9 +2469,6 @@ msgstr "_Bezárás"
 #~ "A beállítás meghatározza a sebességet, ahogy a kapcsolatpartnert LACPDU "
 #~ "csomagok küldésére kéri. Ha engedélyezett, akkor a csomagok "
 #~ "másodpercenként lesznek kiküldve. Ellenkező esetben 30 másodpercenként."
-
-#~ msgid "_System priority"
-#~ msgstr "_Rendszerprioritás"
 
 #~ msgid "_Minimum ports"
 #~ msgstr "Portok leg_kisebb száma"
@@ -4435,9 +3975,6 @@ msgstr "_Bezárás"
 
 #~ msgid "Select"
 #~ msgstr "Kiválasztás"
-
-#~ msgid "Cancel"
-#~ msgstr "Mégse"
 
 #~ msgid "Select from file…"
 #~ msgstr "Kiválasztás fájlból…"

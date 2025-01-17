@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wf-panel-pi 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2025-01-17 10:28+0000\n"
 "PO-Revision-Date: 2023-05-15 21:22+0900\n"
 "Last-Translator: Yi Yunseok <ironyunseok@protonmail.com>\n"
 "Language-Team: Korean\n"
@@ -18,1429 +18,155 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
-msgid "Pairing request sent to '%s' - waiting for response..."
-msgstr "'%s' 기기에 페어링 요청을 보냄 - 응답을 기다리는 중..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
-#, c-format
-msgid "Pairing failed - %s"
-msgstr "페어링에 실패함 - %s"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
-#, c-format
-msgid "Pairing successful - connecting..."
-msgstr "페어링 성공 - 연결 중..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
-#, c-format
-msgid "Connection successful"
-msgstr "연결 성공"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, c-format
-msgid "Connection failed - %s"
-msgstr "연결 실패 - %s"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, c-format
-msgid "Please enter code '%s' on '%s'"
-msgstr "'%s' 기기에 '%s' 코드 입력"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, c-format
-msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr "'%s' 기기가 페어링 코드 '%s' 를 표시하는지 확인"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, c-format
-msgid "Please enter PIN code shown on '%s'"
-msgstr "'%s' 기기에 표시된 PIN 코드 입력"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, c-format
-msgid "Please enter passcode shown on '%s'"
-msgstr "'%s' 기기에 표시된 패스코드 입력"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, c-format
-msgid "Waiting for response from Bluetooth device..."
-msgstr "블루투스 기기로부터 응답을 기다리는 중..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, c-format
-msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr "'%s' 기기로부터 페어링 요청이 왔습니다. 수락하시겠습니까?"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, c-format
-msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
-msgstr "페어링 성공 - 음량 아이콘을 우클릭하여 오디오 기기로 연결"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, c-format
-msgid ""
-"Pairing successful - this device has no services which can be used with "
-"Raspberry Pi"
-msgstr "페어링 성공 - 이 기기는 라즈베리 파이와 함께 사용할 수 없음"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, c-format
-msgid "Do you want to unpair '%s'?"
-msgstr "'%s' 기기와 페어링을 해제하시겠습니까?"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, c-format
-msgid "Removing pairing with '%s'..."
-msgstr "'%s' 기기의 페어링을 제거하는 중..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
-#, c-format
-msgid "Removal failed - %s"
-msgstr "제거 실패 - %s"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr "'%s' 연결 중..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, c-format
-msgid "Disconnecting from '%s'..."
-msgstr "'%s' 연결해제 중..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, c-format
-msgid "Disconnection failed - %s"
-msgstr "연결해제 실패 - %s"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-msgid "Use the audio menu to connect to this device"
-msgstr "오디오 메뉴를 사용해 이 기기에 연결"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
-msgid "No usable services on this device"
-msgstr "이 기기는 사용 불가"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-msgid "Disconnect..."
-msgstr "연결해제..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-msgid "Connect..."
-msgstr "연결..."
-
-#. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-msgid "Remove..."
-msgstr "제거..."
-
-#. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-msgid "No Bluetooth adapter found"
-msgstr "블루투스 어댑터를 찾을 수 없음"
-
-#. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-msgid "Turn On Bluetooth"
-msgstr "블루투스 켜기"
-
-#. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-msgid "Turn Off Bluetooth"
-msgstr "블루투스 끄기"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
-msgid "Stop Discoverable"
-msgstr "블루투스 검색 끄기"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
-msgid "Make Discoverable"
-msgstr "블루투스 검색 켜기"
-
-#. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-msgid "Add Device..."
-msgstr "기기 추가..."
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
-msgid "Manage Bluetooth devices"
-msgstr "블루투스 기기 관리"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "블루투스"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
-msgid "Manages Bluetooth devices"
-msgstr "블루투스 기기 관리"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:171
-msgid ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
-msgstr ""
-"드라이브가 강제 제거됨\n"
-"제거하기 전에 메뉴를 사용해 배출해야 안전함"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:199
-#, c-format
-msgid ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
-msgstr ""
-"%s 장치를 배출함\n"
-"안전하게 장치를 제거할 수 있음"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:205
-#, c-format
-msgid ""
-"Failed to eject %s\n"
-"%s"
-msgstr ""
-"%s 장치 배출 실패\n"
-"%s"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:402
-msgid "Select a drive in menu to eject safely"
-msgstr "안전하게 제거할 장치를 선택"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr "드라이브 배출기"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:453
-msgid "Hide icon when no devices"
-msgstr "연결된 장치가 없을 때 아이콘 숨기기"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:462
-msgid "Ejects mounted drives"
-msgstr "마운트된 드라이브들을 배출"
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:77
-#, fuzzy
-msgid "ad-hoc"
-msgstr "애드혹"
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:82
-msgid "secure."
+msgid "Spacer"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
-msgid "Failed to activate connection"
-msgstr "연결 활성화하는 데 실패"
-
-#: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
-msgid "Unknown error"
-msgstr "알 수 없는 오류"
-
-#: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
-msgid "Connection failure"
-msgstr "연결에 실패"
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn Off Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn On Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:227
+#: ../src/panel/configure.c:116 ../src/panel/configure.c:255
+#: ../src/panel/configure.c:580
 #, c-format
-msgid "IP : %s"
+msgid "Spacer (%d)"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:781
-msgid "Failed to add/activate connection"
-msgstr "연결 추가/활성화하는 데 실패"
-
-#: ../src/panel/widgets/netman/applet.c:835
-msgid "Device disconnect failed"
-msgstr "장치 연결 끊는 데 실패"
-
-#: ../src/panel/widgets/netman/applet.c:840
-msgid "Disconnect failure"
-msgstr "연결 끊는 데 실패"
-
-#: ../src/panel/widgets/netman/applet.c:870
-msgid "Connection activation failed"
-msgstr "연결 활성화 실패"
-
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
-#, fuzzy
-msgid "Don’t show this message again"
-msgstr "다시 보지 않기"
-
-#: ../src/panel/widgets/netman/applet.c:1310
+#: ../src/panel/configure.c:137 ../src/panel/configure.c:158
+#: ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” disconnected because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 네트워크 연결이 중단되었습니다."
+msgid "<Unknown>"
+msgstr "알 수 없음"
 
-#: ../src/panel/widgets/netman/applet.c:1312
+#: ../src/panel/configure.c:424
+msgid "Cancel"
+msgstr ""
+
+#: ../src/panel/configure.c:424
+msgid "OK"
+msgstr ""
+
+#: ../src/panel/configure.c:445 ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 네트워크 연결이 중단되었습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1314
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스가 예기치 못하게 중단"
-"되었습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1316
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service returned invalid "
-"configuration."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스가 잘못된 설정을 반환"
-"했습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1318
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the connection attempt timed out."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 연결 시도가 제한 시간을 초과했습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1320
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service did not start in time."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스가 제 시간에 시작하"
-"지 못했습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1322
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스를 시작하는데 실패했"
-"습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1324
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because there were no valid VPN secrets."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 올바른 가상 사설망 비밀정보가 없습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1326
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because of invalid VPN secrets."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 비밀 정보가 잘못되었습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1331
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed."
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다."
-
-#: ../src/panel/widgets/netman/applet.c:1358
-#, c-format
-msgid ""
-"VPN connection has been successfully established.\n"
-"\n"
-"%s\n"
-msgstr ""
-"가상 사설망에 성공적으로 연결했습니다.\n"
-"\n"
-"%s\n"
-
-#: ../src/panel/widgets/netman/applet.c:1360
-msgid "VPN connection has been successfully established.\n"
-msgstr "가상 사설망에 성공적으로 연결했습니다.\n"
-
-#: ../src/panel/widgets/netman/applet.c:1362
-msgid "VPN Login Message"
-msgstr "가상 사설망 로그인 메시지"
-
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
-msgid "VPN Connection Failed"
-msgstr "가상 사설망 연결 실패"
-
-#: ../src/panel/widgets/netman/applet.c:1414
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스를 시작하는 데 실패했"
-"습니다.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1417
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"'%s' 가상 사설망 연결이 실패했습니다.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1741
-msgid "device not ready (firmware missing)"
-msgstr "장치가 준비되지 않음(펌웨어 없음)"
-
-#: ../src/panel/widgets/netman/applet.c:1743
-msgid "device not ready"
-msgstr "장치가 준비되지 않음"
-
-#. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
-msgid "disconnected"
-msgstr "연결 끊김"
-
-#: ../src/panel/widgets/netman/applet.c:1769
-msgid "Disconnect"
-msgstr "연결 끊김"
-
-#: ../src/panel/widgets/netman/applet.c:1783
-msgid "device not managed"
-msgstr "장치가 관리되지 않음"
-
-#: ../src/panel/widgets/netman/applet.c:1864
-msgid "No network devices available"
-msgstr "네트워크 장치를 찾을 수 없습니다"
-
-#: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
-msgid "_Advanced Options"
-msgstr "고급"
-
-#: ../src/panel/widgets/netman/applet.c:1919
-msgid "_VPN Connections"
-msgstr "가상 사설망 연결(_V)"
-
-#: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "_Configure VPN…"
+msgid "Configure %s"
 msgstr "가상 사설망 설정(_C)..."
 
-#: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "_Add a VPN connection…"
-msgstr "가상 사설망 연결(_V)"
-
-#. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection _Information"
-msgstr "연결 정보(_I)"
-
-#. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
-#, fuzzy
-msgid "Edit Connections…"
-msgstr "연결 편집..."
-
-#: ../src/panel/widgets/netman/applet.c:2112
-#, fuzzy
-msgid "NetworkManager is not running…"
-msgstr "네트워크 관리가 실행 중이 아닙니다..."
-
-#: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
-msgid "Wi-Fi country is not set"
-msgstr "내 나라가 목록에 없습니다"
-
-#: ../src/panel/widgets/netman/applet.c:2119
-msgid "Click here to set Wi-Fi country"
+#: ../src/panel/configure.c:814
+msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
-msgid "Networking disabled"
-msgstr "네트워크를 사용할 수 없습니다"
-
-#. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
-msgid "Enable _Networking"
-msgstr "네트워크 사용(_N)"
-
-#. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable _Wi-Fi"
-msgstr "와이파이 사용(_W)"
-
-#. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
-msgid "Enable _Mobile Broadband"
-msgstr "모바일 광대역 사용(_M)"
-
-#. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable N_otifications"
-msgstr "통지기능 사용(_O)"
-
-#: ../src/panel/widgets/netman/applet.c:2415
-msgid "_About"
-msgstr "정보(_A)"
-
-#: ../src/panel/widgets/netman/applet.c:2736
-#, fuzzy, c-format
-msgid "You are now connected to “%s”."
-msgstr "'%s'에 연결되었습니다."
-
-#: ../src/panel/widgets/netman/applet.c:2776
-msgid "Disconnected"
-msgstr "연결 끊김"
-
-#: ../src/panel/widgets/netman/applet.c:2777
-msgid "The network connection has been disconnected."
-msgstr "네트워크 연결이 끊겼습니다."
-
-#: ../src/panel/widgets/netman/applet.c:3079
-#, fuzzy, c-format
-msgid "Preparing network connection “%s”…"
-msgstr "네트워크 연결 '%s' 준비 중..."
-
-#: ../src/panel/widgets/netman/applet.c:3082
-#, fuzzy, c-format
-msgid "User authentication required for network connection “%s”…"
-msgstr "네트워크 연결 '%s'에는 사용자 인증이 필요합니다..."
-
-#: ../src/panel/widgets/netman/applet.c:3085
-#: ../src/panel/widgets/netman/applet-device-bt.c:113
-#: ../src/panel/widgets/netman/mobile-helpers.c:605
-#, fuzzy, c-format
-msgid "Requesting a network address for “%s”…"
-msgstr "'%s'에 네트워크 주소 요청중..."
-
-#: ../src/panel/widgets/netman/applet.c:3088
-#, fuzzy, c-format
-msgid "Network connection “%s” active"
-msgstr "'%s' 네트워크 연결 사용 중"
-
-#: ../src/panel/widgets/netman/applet.c:3165
-#, fuzzy, c-format
-msgid "Starting VPN connection “%s”…"
-msgstr "가상 사설망 연결 '%s' 시작 중..."
-
-#: ../src/panel/widgets/netman/applet.c:3168
-#, fuzzy, c-format
-msgid "User authentication required for VPN connection “%s”…"
-msgstr "가상 사설망 연결 '%s'에는 사용자 인증이 필요합니다..."
-
-#: ../src/panel/widgets/netman/applet.c:3171
-#, fuzzy, c-format
-msgid "Requesting a VPN address for “%s”…"
-msgstr "'%s'에 가상 사설망 주소 요청 중..."
-
-#: ../src/panel/widgets/netman/applet.c:3174
-#, fuzzy, c-format
-msgid "VPN connection active"
-msgstr "가상 사설망 연결 '%s' 사용 중"
-
-#: ../src/panel/widgets/netman/applet.c:3226
-msgid "No network connection"
-msgstr "네트워크 연결 없음"
-
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "네트워크"
-
-#: ../src/panel/widgets/netman/applet.c:3896
-msgid "NetworkManager Applet"
-msgstr "네트워크 관리 애플릿"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:147
-msgid "Wrong PUK code; please contact your provider."
-msgstr "잘못된 PUK 코드. 서비스 업체에 문의하십시오."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:189
-msgid "Wrong PIN code; please contact your provider."
-msgstr "잘못된 PIN 코드. 서비스 업체에 문의하십시오."
-
-#. Start the spinner to show the progress of the unlock
-#: ../src/panel/widgets/netman/applet-device-broadband.c:240
-#, fuzzy
-msgid "Sending unlock code…"
-msgstr "언락 코드를 보내는 중..."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:725
-#: ../src/panel/widgets/netman/applet-dialogs.c:532
-#, c-format
-msgid "Mobile Broadband (%s)"
-msgstr "모바일 광대역(%s)"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:727
-msgid "Mobile Broadband"
-msgstr "모바일 광대역"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+#: ../src/panel/configure.c:815
 msgid "Available"
 msgstr "사용 가능"
 
-#. Default connection item
-#: ../src/panel/widgets/netman/applet-device-broadband.c:793
-#, fuzzy
-msgid "New Mobile Broadband connection…"
-msgstr "새 모바일 광대역 연결"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:809
-#: ../src/panel/widgets/netman/applet-device-bt.c:75
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
-msgid "Connection Established"
-msgstr "연결됨"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:810
-msgid "You are now connected to the Mobile Broadband network."
-msgstr "모바일 광대역 네트워크에 연결되었습니다."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:950
-#: ../src/panel/widgets/netman/applet-device-broadband.c:956
-msgid "Mobile Broadband network."
-msgstr "모바일 광대역 네트워크."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:951
-msgid "You are now registered on the home network."
-msgstr "홈 네트워크에 등록되었습니다."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:957
-msgid "You are now registered on a roaming network."
-msgstr "로밍 네트워크에 등록되었습니다."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:76
-msgid "You are now connected to the mobile broadband network."
-msgstr "모바일 광대역 네트워크에 연결되었습니다."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:104
-#: ../src/panel/widgets/netman/mobile-helpers.c:596
-#, fuzzy, c-format
-msgid "Preparing mobile broadband connection “%s”…"
-msgstr "모바일 광대역 연결 '%s' 준비 중..."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:107
-#: ../src/panel/widgets/netman/mobile-helpers.c:599
-#, fuzzy, c-format
-msgid "Configuring mobile broadband connection “%s”…"
-msgstr "모바일 광대역 연결 '%s' 설정 중..."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:110
-#: ../src/panel/widgets/netman/mobile-helpers.c:602
-#, fuzzy, c-format
-msgid "User authentication required for mobile broadband connection “%s”…"
-msgstr "모바일 광대역 연결 '%s'에는 사용자 인증이 필요합니다..."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:117
-#: ../src/panel/widgets/netman/mobile-helpers.c:624
-#, fuzzy, c-format
-msgid "Mobile broadband connection “%s” active"
-msgstr "모바일 광대역 연결 '%s' 사용 중"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
-msgid "Auto Ethernet"
-msgstr "자동 이더넷"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
-#, c-format
-msgid "Ethernet Networks (%s)"
-msgstr "이더넷 네트워크(%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
-#, c-format
-msgid "Ethernet Network (%s)"
-msgstr "이더넷 네트워크(%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
-msgid "Ethernet Networks"
-msgstr "이더넷 네트워크"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
-msgid "Ethernet Network"
-msgstr "이더넷 네트워크"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
-msgid "You are now connected to the ethernet network."
-msgstr "이더넷 네트워크에 연결되었습니다."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
-#, fuzzy, c-format
-msgid "Preparing ethernet network connection “%s”…"
-msgstr "이더넷 네트워크 '%s' 연결 준비 중..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
-#, fuzzy, c-format
-msgid "Configuring ethernet network connection “%s”…"
-msgstr "이더넷 네트워크 '%s' 연결 설정 중..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
-#, fuzzy, c-format
-msgid "User authentication required for ethernet network connection “%s”…"
-msgstr "이더넷 네트워크 연결 '%s'에 사용자 인증이 필요합니다..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
-#, fuzzy, c-format
-msgid "Requesting an ethernet network address for “%s”…"
-msgstr "이더넷 네트워크 '%s'에 네트워크 주소 요청 중..."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
-#, fuzzy, c-format
-msgid "Ethernet network connection “%s” active"
-msgstr "이더넷 네트워크 연결 '%s' 사용 중"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
-msgid "DSL authentication"
-msgstr "DSL 인증"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:1190
-#: ../src/panel/widgets/netman/mobile-helpers.c:455
-#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
-msgid "_Cancel"
+#: ../src/panel/configure.c:816
+msgid "Right Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:1191
-#: ../src/panel/widgets/netman/mobile-helpers.c:456
-#: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
-#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
-msgid "_OK"
+#: ../src/panel/panel.cpp:235
+msgid "Add / Remove Plugins..."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#: ../src/panel/panel.cpp:239
 #, fuzzy
-msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "감춰진 와이파이 네트워크에 연결"
+msgid "Configure Plugin..."
+msgstr "가상 사설망 설정(_C)..."
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#: ../src/panel/panel.cpp:243
 #, fuzzy
-msgid "Create _New Wi-Fi Network…"
-msgstr "새 와이파이 네트워크 만들기"
+msgid "Notifications..."
+msgstr "통지기능 사용(_O)"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
-#, fuzzy
-msgid "Create Wi-Fi _Hotspot…"
-msgstr "새 와이파이 네트워크 만들기"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
-msgid "(none)"
-msgstr "(없음)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
-msgid "Failed to add new connection"
-msgstr "새로운 연결을 추가하는데 실패"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
-msgid "Insufficient privileges."
+#: ../src/panel/panel.cpp:247
+msgid "Taskbar Preferences..."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
-msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "팀 네트워크에 연결되었습니다."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
-#, c-format
-msgid "Wi-Fi Networks (%s)"
-msgstr "와이파이 네트워크(%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
-#, c-format
-msgid "Wi-Fi Network (%s)"
-msgstr "와이파이 네트워크(%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
-msgid "Wi-Fi Network"
-msgid_plural "Wi-Fi Networks"
-msgstr[0] "와이파이 네트워크"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
-msgid "Wi-Fi is disabled"
-msgstr "와이파이를 사용하지 않습니다"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
-msgid "Wi-Fi is disabled by hardware switch"
-msgstr "와이파이가 하드웨어 스위치를 통해 사용하지 않습니다"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
-msgid "More networks"
-msgstr "다른 네트워크"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
-msgid "Wi-Fi Networks Available"
-msgstr "와이파이 네트워크가 사용 가능합니다"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
-msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr "네트워크 메뉴에서 와이파이 네트워크에 연결할 수 있습니다"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
-#, fuzzy, c-format
-msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "와이파이 네트워크 '%s'에 연결되었습니다."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
-#, fuzzy, c-format
-msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "와이파이 네트워크 '%s' 연결 준비 중..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
-#, fuzzy, c-format
-msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "와이파이 네트워크 '%s' 연결 설정 중..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
-#, fuzzy, c-format
-msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr "와이파이 네트워크 연결 '%s'에 사용자 인증이 필요합니다..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
-#, fuzzy, c-format
-msgid "Requesting a Wi-Fi network address for “%s”…"
-msgstr "'%s'에 대한 와이파이 네트워크 주소 요청 중..."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "와이파이 네트워크 연결 '%s' 사용 중: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "와이파이 네트워크 연결 '%s' 사용 중: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active"
-msgstr "와이파이 네트워크 연결 '%s' 사용 중"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:29
-msgid "Error displaying connection information:"
-msgstr "연결 정보 보이기 오류:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:61
-msgid "LEAP"
-msgstr "LEAP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:63
-msgid "Dynamic WEP"
-msgstr "동적 WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:65
-#: ../src/panel/widgets/netman/applet-dialogs.c:237
-#: ../src/panel/widgets/netman/applet-dialogs.c:239
-msgid "WPA/WPA2"
-msgstr "WPA/WPA2"
-
-#. Create the expander
-#: ../src/panel/widgets/netman/applet-dialogs.c:174
-#, fuzzy
-msgid "More addresses"
-msgstr "주소"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:235
-msgid "WEP"
-msgstr "WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:241
-msgid "WPA3"
+#: ../src/widgets/clock/clock.cpp:10
+msgid "Display format"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:245
-#: ../src/panel/widgets/netman/applet-dialogs.c:254
-msgctxt "Wi-Fi/Ethernet security"
-msgid "None"
-msgstr "없음"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:324
-#: ../src/panel/widgets/netman/applet-dialogs.c:597
-#, c-format
-msgid "%u Mb/s"
-msgstr "%u Mb/s"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:326
-#: ../src/panel/widgets/netman/applet-dialogs.c:599
-msgctxt "Speed"
-msgid "Unknown"
-msgstr "알 수 없음"
-
-#. Address
-#: ../src/panel/widgets/netman/applet-dialogs.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:363
-msgctxt "Address"
-msgid "Unknown"
-msgstr "알 수 없음"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:415
-#, fuzzy
-msgid "IP Address"
-msgstr "IP 주소:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:364
-#, fuzzy
-msgid "Broadcast Address"
-msgstr "브로드캐스트 주소:"
-
-#. Prefix
-#: ../src/panel/widgets/netman/applet-dialogs.c:376
-msgctxt "Subnet Mask"
-msgid "Unknown"
-msgstr "알 수 없음"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:377
-#, fuzzy
-msgid "Subnet Mask"
-msgstr "서브넷 마스크:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Primary DNS"
-msgstr "기본 DNS:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Secondary DNS"
-msgstr "보조 DNS:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Tertiary DNS"
-msgstr "세 번째 DNS:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:518
-#, c-format
-msgid "Ethernet (%s)"
-msgstr "이더넷(%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:521
-#, fuzzy, c-format
-msgid "802.11 Wi-Fi (%s)"
-msgstr "802.11 와이파이(%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:528
-#, c-format
-msgid "GSM (%s)"
-msgstr "GSM (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:530
-#, c-format
-msgid "CDMA (%s)"
-msgstr "CDMA (%s)"
-
-#. --- General ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:538
-#: ../src/panel/widgets/netman/applet-dialogs.c:872
-msgid "General"
-msgstr "일반"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:541
-#, fuzzy
-msgid "Interface"
-msgstr "인터페이스:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:556
-#, fuzzy
-msgid "Hardware Address"
-msgstr "하드웨어 주소:"
-
-#. Driver
-#: ../src/panel/widgets/netman/applet-dialogs.c:569
-#, fuzzy
-msgid "Driver"
-msgstr "드라이버:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:602
-#, fuzzy
-msgid "Speed"
-msgstr "속도:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:615
-#, fuzzy
-msgid "Security"
-msgstr "보안:"
-
-#. --- IPv4 ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:640
-#: ../src/panel/widgets/netman/applet-dialogs.c:902
-msgid "IPv4"
-msgstr "IPv4"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:659
-#: ../src/panel/widgets/netman/applet-dialogs.c:707
-#, fuzzy
-msgid "Default Route"
-msgstr "기본 경로:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:687
-#: ../src/panel/widgets/netman/applet-dialogs.c:929
-msgid "IPv6"
-msgstr "IPv6"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:728
-msgid "Hotspot"
+#: ../src/widgets/clock/clock.cpp:11
+msgid "Display font"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:746
+#: ../src/widgets/clock/clock.cpp:15
 #, fuzzy
-msgid "Password"
-msgstr "암호:"
+msgid "Clock"
+msgstr "잠금 해제(_U)"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:876
+#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
+msgid "Show usage as percentage"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
+msgid "Foreground colour"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
+msgid "Background colour"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:15
 #, fuzzy
-msgid "VPN Type"
-msgstr "가상 사설망 형식:"
+msgid "CPU"
+msgstr "GTC"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:881
+#: ../src/widgets/gpu/gpu.cpp:15
+msgid "GPU"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:20
+msgid "Icon spacing"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:24
+msgid "Launcher"
+msgstr ""
+
+#: ../src/widgets/launchers/launchers.cpp:196
+msgid "Remove from Launcher"
+msgstr ""
+
+#: ../src/widgets/notify/notify.cpp:5
 #, fuzzy
-msgid "VPN Gateway"
-msgstr "가상 사설망 게이트웨이:"
+msgid "Show notifications"
+msgstr "통지기능 사용(_O)"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:885
+#: ../src/widgets/notify/notify.cpp:6
 #, fuzzy
-msgid "VPN Username"
-msgstr "가상 사설망 사용자 이름:"
+msgid "Time before notifications close"
+msgstr "연결이 되면 알려주지 않음"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:889
+#: ../src/widgets/notify/notify.cpp:10
 #, fuzzy
-msgid "VPN Banner"
-msgstr "가상 사설망 추방자:"
+msgid "Notifications"
+msgstr "통지기능 사용(_O)"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:893
-#, fuzzy
-msgid "Base Connection"
-msgstr "기반 연결:"
+#: ../src/widgets/power/power.c:86
+msgid ""
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:894
-msgid "Unknown"
-msgstr "알 수 없음"
-
-#. Shouldn't really happen but ...
-#: ../src/panel/widgets/netman/applet-dialogs.c:1091
-msgid "No valid active connections found!"
-msgstr "활성된 연결을 찾을 수 없습니다!"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+#: ../src/widgets/power/power.c:102
 #, fuzzy
 msgid ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"and many other community contributors and translators"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
-"Copyright © 2004-2011 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"and many other community contributors and translators"
+"저전압 경고\n"
+"전원 공급 장치 확인 요망"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+#: ../src/widgets/power/power.c:163
 msgid ""
-"Notification area applet for managing your network devices and connections."
-msgstr "네트워크 장치와 연결을 관리하는 알림 영역 애플릿."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1144
-msgid "NetworkManager Website"
-msgstr "네트워크 관리 웹사이트"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1148
-msgid "translator-credits"
+"High display resolution is using large amounts of memory.\n"
+"Consider reducing screen resolution."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+#: ../src/widgets/power/power.c:218
 msgid ""
-"The NetworkManager Applet could not find some required resources (the .ui "
-"file was not found)."
-msgstr ""
-"네트워크 관리 애플릿이 필요한 리소스를 찾을 수 없습니다. (.ui 파일이 없습니"
-"다.)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1163
-msgid "Missing resources"
-msgstr "빠진 자료"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1188
-msgid "Mobile broadband network password"
-msgstr "모바일 광대역 네트워크 암호"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1197
-#, fuzzy, c-format
-msgid "A password is required to connect to “%s”."
-msgstr "'%s'에 연결하려면 암호가 필요합니다."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1220
-msgid "Password:"
-msgstr "암호:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1502
-msgid "SIM PIN unlock required"
-msgstr "SIM PIN 잠금해제가 필요합니다"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1503
-msgid "SIM PIN Unlock Required"
-msgstr "SIM PIN 잠금해제가 필요합니다"
-
-#. FIXME: some warning about # of times you can enter incorrect PIN
-#: ../src/panel/widgets/netman/applet-dialogs.c:1505
-#, fuzzy, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PIN code before it can be "
-"used."
-msgstr "'%s' 모바일 광대역 장치를 사용하려면 SIM PIN 코드가 필요합니다."
-
-#. Translators: PIN code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1507
-msgid "PIN code:"
-msgstr "PIN 코드:"
-
-#. Translators: Show/obscure PIN checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1511
-msgid "Show PIN code"
-msgstr "PIN 코드 표시"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1513
-msgid "SIM PUK unlock required"
-msgstr "SIM PUK 잠금 해제가 필요합니다"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1514
-msgid "SIM PUK Unlock Required"
-msgstr "SIM PUK 잠금 해제가 필요합니다"
-
-#. FIXME: some warning about # of times you can enter incorrect PUK
-#: ../src/panel/widgets/netman/applet-dialogs.c:1516
-#, fuzzy, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PUK code before it can be "
-"used."
-msgstr "'%s' 모바일 광대역 장치를 사용하려면 SIM PUK 코드가 필요합니다."
-
-#. Translators: PUK code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1518
-msgid "PUK code:"
-msgstr "PUK 코드:"
-
-#. Translators: New PIN entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1521
-msgid "New PIN code:"
-msgstr "새 PIN 코드:"
-
-#. Translators: New PIN verification entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1523
-msgid "Re-enter new PIN code:"
-msgstr "새 PIN 코드 다시 입력:"
-
-#. Translators: Show/obscure PIN/PUK checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1528
-msgid "Show PIN/PUK codes"
-msgstr "PIN/PUK 코드 표시"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:427
-#, fuzzy
-msgid "Connection had no VPN setting"
-msgstr "연결 정보"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:477
-#, fuzzy, c-format
-msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr "DUN 연결을 만들 수 없습니다: %s"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:485
-msgid "Failed to write connection to VPN UI: incomplete write"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
 
-#: ../src/panel/widgets/netman/ethernet-dialog.c:87
-#: ../src/panel/widgets/netman/8021x.ui.h:1
-msgid "802.1X authentication"
-msgstr "802.1X 인증"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:36
-#: ../src/panel/widgets/netman/mobile-helpers.c:272
-msgid "CDMA"
-msgstr "CDMA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:38
-msgid "EVDO"
-msgstr "EVDO"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:40
-#: ../src/panel/widgets/netman/mobile-helpers.c:270
-msgid "GSM"
-msgstr "GSM"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:42
-msgid "GPRS"
-msgstr "GPRS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:44
-msgid "EDGE"
-msgstr "EDGE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:46
-msgid "UMTS"
-msgstr "UMTS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:48
-msgid "HSDPA"
-msgstr "HSDPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:50
-msgid "HSUPA"
-msgstr "HSUPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:52
-msgid "HSPA"
-msgstr "HSPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:54
-msgid "HSPA+"
-msgstr "HSPA+"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:56
-msgid "LTE"
-msgstr "LTE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:103
-msgid "not enabled"
-msgstr "사용하지 않음"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:109
-msgid "not registered"
-msgstr "등록되지 않음"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:127
-#, c-format
-msgid "Home network (%s)"
-msgstr "가정 네트워크(%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:129
-#, c-format
-msgid "Home network"
-msgstr "가정 네트워크"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:137
-msgid "searching"
-msgstr "검색중"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:140
-msgid "registration denied"
-msgstr "등록이 거부되었습니다"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:145
-#: ../src/panel/widgets/netman/mb-menu-item.c:151
-#, c-format
-msgid "%s (%s roaming)"
-msgstr "%s (%s 로밍)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:147
-#: ../src/panel/widgets/netman/mb-menu-item.c:153
-#, c-format
-msgid "%s (roaming)"
-msgstr "%s (로밍)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:156
-#, c-format
-msgid "Roaming network (%s)"
-msgstr "로밍 네트워크(%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:158
-#, c-format
-msgid "Roaming network"
-msgstr "로밍 네트워크"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:320
-#, fuzzy, c-format
-msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "'%2$s'의 SIM 카드 '%1$s'에 대한 PIM 코드"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:453
-msgid "PIN code required"
-msgstr "PIN 코드가 필요합니다"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:461
-msgid "PIN code is needed for the mobile broadband device"
-msgstr "PIN 코드가 모바일 광대역 장치를 위해 필요합니다"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:619
-#, fuzzy, c-format
-msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
-msgstr "모바일 광대역 연결 '%s' 사용 중: (%d%%%s%s)"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:622
-msgid "roaming"
-msgstr "로밍"
-
-#: ../src/panel/widgets/netman/netman.c:139
-#, fuzzy
-msgid "Network Manager"
-msgstr "네트워크 관리 애플릿"
-
-#: ../src/panel/widgets/netman/netman.c:140
-#, fuzzy
-msgid "Controller for Network Manager"
-msgstr "네트워크 관리 애플릿"
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:793
-#, c-format
-msgid "object class '%s' has no property named '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:800
-#, c-format
-msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:807
-#, c-format
-msgid ""
-"construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:815
-#, c-format
-msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:824
-#, c-format
-msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:835
-#, c-format
-msgid ""
-"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
-"type '%s'"
-msgstr ""
-
-#. The %s is a mobile provider name, eg "T-Mobile"
-#: ../src/panel/widgets/netman/utils.c:160
-#, c-format
-msgid "%s connection"
-msgstr "%s 연결"
-
-#: ../src/panel/widgets/netman/utils.c:534
-#, fuzzy
-msgid "PEM certificates (*.pem, *.crt, *.cer)"
-msgstr "DEP 혹은 PEM 인증서(*.det, *.pem, *.crt, *.cer)"
-
-#: ../src/panel/widgets/netman/utils.c:546
-msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
-msgstr "DER, PEM, 또는 PKCS#12 비밀 키(*.der, *.pem, *.p12, *.key)"
-
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
-msgstr "충전 중 : %d%%"
-
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
-msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-"충전 중 : %d%%\n"
-"남은 시간 : %d 분"
-
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
-msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-"충전 중 : %d%%\n"
-"남은 시간 : %0.1f 시간"
-
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
-msgid ""
-"Charged : %d%%\n"
-"On external power"
-msgstr ""
-"충전됨 : %d%%\n"
-"외부 전원"
-
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr "소모 중 : %d%%"
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-"소모 중 : %d%%\n"
-"남은 시간 : %d 분"
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-"소모 중 : %d%%\n"
-"남은 시간 : %0.1f 시간"
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/widgets/power/power.c:269
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
@@ -1448,286 +174,1303 @@ msgstr ""
 "저전압 경고\n"
 "전원 공급 장치 확인 요망"
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
-msgstr "전원 및 배터리"
-
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
-msgstr "랩톱 배터리 및 모니터 전압"
-
-#: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
-msgid "Run"
-msgstr "실행"
-
-#: ../src/panel/widgets/smenu/gtk-run.c:412
-msgid "Enter the command you want to execute:"
+#: ../src/widgets/power/power.c:288
+msgid "PSU low voltage detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:116
-msgid "Logout command is not set"
+#: ../src/widgets/power/power.c:289
+msgid "USB over current detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:122
-msgid "Restart"
-msgstr "다시 시작"
-
-#: ../src/panel/widgets/smenu/menu.c:123
-msgid "Logout"
-msgstr "로그아웃"
-
-#: ../src/panel/widgets/smenu/menu.c:140
-msgid "No file manager is configured."
+#: ../src/widgets/power/power.c:290
+msgid "Low power reset has occurred\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:489
-msgid "Add to desktop"
-msgstr "데스크톱에 추가"
-
-#: ../src/panel/widgets/smenu/menu.c:496
-msgid "Properties"
-msgstr "속성"
-
-#: ../src/panel/widgets/smenu/menu.c:954
-msgid "Click here to open applications menu"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr "메뉴"
-
-#: ../src/panel/widgets/smenu/menu.c:1048
-msgid "Icon"
-msgstr "아이콘"
-
-#: ../src/panel/widgets/smenu/menu.c:1049
-msgid "Padding"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1050
-msgid "Fixed Size"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1058
-msgid "Menu with Search"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1059
+#: ../src/widgets/power/power.c:341
 #, fuzzy
-msgid "Searchable Application Menu"
-msgstr "프로그램 메뉴"
+msgid "Power Information..."
+msgstr "연결 정보"
 
-#: ../src/panel/widgets/updater/updater.c:189
-msgid ""
-"Updates are available\n"
-"Click the update icon to install"
-msgstr ""
-"업데이트 사용 가능\n"
-"아이콘을 클릭해 설치"
-
-#: ../src/panel/widgets/updater/updater.c:211
-msgid "No network connection - cannot install updates."
-msgstr "네트워크에 연결되지 않음 - 업데이트를 설치할 수 없습니다."
-
-#: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
-msgstr ""
-"시간이 동기화되지 않음 - 업데이트를 설치할 수 없습니다. 잠시 후 다시 시도해 "
-"주세요."
-
-#: ../src/panel/widgets/updater/updater.c:320
-msgid "Show Updates..."
-msgstr "업데이트 표시..."
-
-#: ../src/panel/widgets/updater/updater.c:324
-msgid "Install Updates"
-msgstr "업데이트 설치"
-
-#: ../src/panel/widgets/updater/updater.c:470
-msgid "Updates are available - click to install"
-msgstr "업데이트 사용 가능 - 설치"
-
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr "업데이터"
-
-#: ../src/panel/widgets/updater/updater.c:531
-msgid "Hours between checks for updates"
-msgstr "업데이트 확인 간격"
-
-#: ../src/panel/widgets/updater/updater.c:562
-msgid "Checks for updates"
-msgstr "업데이트 확인"
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
+#: ../src/widgets/power/power.cpp:12
 #, fuzzy
-msgid "Reconnecting Bluetooth devices..."
-msgstr "블루투스 기기를 찾는 중..."
+msgid "System Monitor"
+msgstr "우선 순위(_P):"
 
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
-msgid "Bluetooth %s device not found"
-msgstr "블루투스 어댑터를 찾을 수 없음"
-
-#. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
-msgstr "펄스오디오에서 장치를 찾을 수 없음"
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, c-format
-msgid "Could not set profile for device : %s"
-msgstr "다음 장치에 대한 프로필을 설정할 수 없음: %s"
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
-msgid "Failed to connect to Bluetooth device - %s"
-msgstr "페어링된 블루투스 기기"
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, fuzzy, c-format
-msgid "Connecting Bluetooth device '%s' as output..."
-msgstr "블루투스 기기를 찾는 중..."
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, fuzzy, c-format
-msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "블루투스 기기를 찾는 중..."
-
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr "블루투스 입력 장치를 출력 장치로 재연결 중..."
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
-#, fuzzy
-msgid "Reconnecting Bluetooth device..."
-msgstr "블루투스 기기를 찾는 중..."
-
-#. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
-msgid "Mute"
-msgstr "음소거"
-
-#: ../src/panel/widgets/volumepulse/commongui.c:231
-msgid "No audio devices found"
-msgstr "오디오 장치를 찾지 못함"
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:71
-msgid "Input from this device not available in the current profile"
-msgstr "현재 프로필에서는 이 장치를 입력 장치로 사용할 수 없음"
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/micpulse.c:144
-msgid "Mic volume"
-msgstr "마이크 음량"
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr "마이크로폰 제어 (펄스오디오)"
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr "펄스오디오 디스플레이 및 마이크로폰 제어"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
-msgid "HDMI"
-msgstr "HDMI"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
-msgid "AV Jack"
-msgstr "AV 잭"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
-msgid "Device Profiles..."
-msgstr "장치 프로필..."
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
-msgid "Output to this device not available in the current profile"
-msgstr "이 장치로의 출력은 현재 프로필에서 사용 불가능"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
-msgid "Device Profiles"
-msgstr "장치 프로필"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
-msgid "Device not connected"
-msgstr "장치가 연결되지 않음"
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
-msgid "Volume control"
-msgstr "음량 제어"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
-msgid "Volume Control (PulseAudio)"
-msgstr "음량 제어 (펄스오디오)"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
-msgid "Display and control volume for PulseAudio"
-msgstr "펄스오디오 디스플레이 음량 제어"
-
-#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-msgid "label"
+#: ../src/widgets/spacing/spacing.cpp:5
+msgid "Width in pixels"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:1
-msgid "Available Updates"
-msgstr "사용 가능한 업데이트"
+#: ../src/widgets/tray/tray.cpp:8
+msgid "Smooth scrolling threshold"
+msgstr ""
 
-#: ../data/lxplug-updater.ui.h:2
+#: ../src/widgets/tray/tray.cpp:9
+#, fuzzy
+msgid "Middle button activates menu"
+msgstr "연결 활성화하는 데 실패"
+
+#: ../src/widgets/tray/tray.cpp:13
+#, fuzzy
+msgid "System Tray"
+msgstr "우선 순위(_P):"
+
+#: ../src/widgets/window-list/toplevel.cpp:83
+#: ../src/widgets/window-list/toplevel.cpp:449
+msgid "Minimize"
+msgstr ""
+
+#: ../src/widgets/window-list/toplevel.cpp:84
+#: ../src/widgets/window-list/toplevel.cpp:457
+msgid "Maximize"
+msgstr ""
+
+#: ../src/widgets/window-list/toplevel.cpp:85
 msgid "Close"
 msgstr "닫기"
 
-#: ../data/lxplug-updater.ui.h:3
-msgid "Install"
-msgstr "설치"
-
-#: ../data/lxplug-updater.ui.h:4
-msgid "The following packages can be updated :"
-msgstr "다음의 패키지를 업데이트할 수 있음:"
-
-#: ../data/lxplug-bluetooth.ui.h:1
-msgid "Add New Device"
-msgstr "새 기기 추가"
-
-#: ../data/lxplug-bluetooth.ui.h:3
-msgid "_Pair"
-msgstr "페어(_P)"
-
-#: ../data/lxplug-bluetooth.ui.h:4
-msgid "Searching for Bluetooth devices..."
-msgstr "블루투스 기기를 찾는 중..."
-
-#: ../src/panel/widgets/netman/8021x.ui.h:3
-#, fuzzy
-msgid "C_onnect"
-msgstr "연결"
-
-#: ../src/panel/widgets/netman/8021x.ui.h:4
-#, fuzzy
-msgid "_Network name"
-msgstr "네트워크 이름(_N):"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
-msgid "_Unlock"
-msgstr "잠금 해제(_U)"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
-msgid "Automatically unlock this device"
-msgstr "이 장치 자동으로 잠금 해제"
-
-#: ../src/panel/widgets/netman/info.ui.h:1
-msgid "Connection Information"
-msgstr "연결 정보"
-
-#: ../src/panel/widgets/netman/info.ui.h:2
-msgid "_Close"
+#: ../src/widgets/window-list/toplevel.cpp:446
+msgid "Unminimize"
 msgstr ""
+
+#: ../src/widgets/window-list/toplevel.cpp:454
+msgid "Unmaximize"
+msgstr ""
+
+#: ../src/widgets/window-list/window-list.cpp:14
+msgid "Maximum width of task button"
+msgstr ""
+
+#: ../src/widgets/window-list/window-list.cpp:18
+msgid "Window List"
+msgstr ""
+
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr ""
+
+#: ../data/config.ui.h:2
+#, fuzzy
+msgid "Add to left"
+msgstr "데스크톱에 추가"
+
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:4
+#, fuzzy
+msgid "Add to right"
+msgstr "데스크톱에 추가"
+
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:6
+#, fuzzy
+msgid "Remove"
+msgstr "제거..."
+
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr ""
+
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:10
+#, fuzzy
+msgid "Move right"
+msgstr "세로"
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:12
+#, fuzzy
+msgid "Configure..."
+msgstr "가상 사설망 설정(_C)..."
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1
+msgid "label"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:2
+msgid "_Cancel"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:3
+msgid "_OK"
+msgstr ""
+
+#, c-format
+#~ msgid "Pairing request sent to '%s' - waiting for response..."
+#~ msgstr "'%s' 기기에 페어링 요청을 보냄 - 응답을 기다리는 중..."
+
+#, c-format
+#~ msgid "Pairing failed - %s"
+#~ msgstr "페어링에 실패함 - %s"
+
+#, c-format
+#~ msgid "Pairing successful - connecting..."
+#~ msgstr "페어링 성공 - 연결 중..."
+
+#, c-format
+#~ msgid "Connection successful"
+#~ msgstr "연결 성공"
+
+#, c-format
+#~ msgid "Connection failed - %s"
+#~ msgstr "연결 실패 - %s"
+
+#, c-format
+#~ msgid "Please enter code '%s' on '%s'"
+#~ msgstr "'%s' 기기에 '%s' 코드 입력"
+
+#, c-format
+#~ msgid "Please confirm that '%s' is showing the code '%s' to pair"
+#~ msgstr "'%s' 기기가 페어링 코드 '%s' 를 표시하는지 확인"
+
+#, c-format
+#~ msgid "Please enter PIN code shown on '%s'"
+#~ msgstr "'%s' 기기에 표시된 PIN 코드 입력"
+
+#, c-format
+#~ msgid "Please enter passcode shown on '%s'"
+#~ msgstr "'%s' 기기에 표시된 패스코드 입력"
+
+#, c-format
+#~ msgid "Waiting for response from Bluetooth device..."
+#~ msgstr "블루투스 기기로부터 응답을 기다리는 중..."
+
+#, c-format
+#~ msgid "'%s' has requested a pairing. Do you accept the request?"
+#~ msgstr "'%s' 기기로부터 페어링 요청이 왔습니다. 수락하시겠습니까?"
+
+#, c-format
+#~ msgid ""
+#~ "Pairing successful - right-click the volume icon to connect as audio "
+#~ "device"
+#~ msgstr "페어링 성공 - 음량 아이콘을 우클릭하여 오디오 기기로 연결"
+
+#, c-format
+#~ msgid ""
+#~ "Pairing successful - this device has no services which can be used with "
+#~ "Raspberry Pi"
+#~ msgstr "페어링 성공 - 이 기기는 라즈베리 파이와 함께 사용할 수 없음"
+
+#, c-format
+#~ msgid "Do you want to unpair '%s'?"
+#~ msgstr "'%s' 기기와 페어링을 해제하시겠습니까?"
+
+#, c-format
+#~ msgid "Removing pairing with '%s'..."
+#~ msgstr "'%s' 기기의 페어링을 제거하는 중..."
+
+#, c-format
+#~ msgid "Removal failed - %s"
+#~ msgstr "제거 실패 - %s"
+
+#, c-format
+#~ msgid "Connecting to '%s'..."
+#~ msgstr "'%s' 연결 중..."
+
+#, c-format
+#~ msgid "Disconnecting from '%s'..."
+#~ msgstr "'%s' 연결해제 중..."
+
+#, c-format
+#~ msgid "Disconnection failed - %s"
+#~ msgstr "연결해제 실패 - %s"
+
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr "오디오 메뉴를 사용해 이 기기에 연결"
+
+#~ msgid "No usable services on this device"
+#~ msgstr "이 기기는 사용 불가"
+
+#~ msgid "Disconnect..."
+#~ msgstr "연결해제..."
+
+#~ msgid "Connect..."
+#~ msgstr "연결..."
+
+#~ msgid "No Bluetooth adapter found"
+#~ msgstr "블루투스 어댑터를 찾을 수 없음"
+
+#~ msgid "Turn On Bluetooth"
+#~ msgstr "블루투스 켜기"
+
+#~ msgid "Turn Off Bluetooth"
+#~ msgstr "블루투스 끄기"
+
+#~ msgid "Stop Discoverable"
+#~ msgstr "블루투스 검색 끄기"
+
+#~ msgid "Make Discoverable"
+#~ msgstr "블루투스 검색 켜기"
+
+#~ msgid "Add Device..."
+#~ msgstr "기기 추가..."
+
+#~ msgid "Manage Bluetooth devices"
+#~ msgstr "블루투스 기기 관리"
+
+#~ msgid "Bluetooth"
+#~ msgstr "블루투스"
+
+#~ msgid "Manages Bluetooth devices"
+#~ msgstr "블루투스 기기 관리"
+
+#~ msgid ""
+#~ "Drive was removed without ejecting\n"
+#~ "Please use menu to eject before removal"
+#~ msgstr ""
+#~ "드라이브가 강제 제거됨\n"
+#~ "제거하기 전에 메뉴를 사용해 배출해야 안전함"
+
+#, c-format
+#~ msgid ""
+#~ "%s has been ejected\n"
+#~ "It is now safe to remove the device"
+#~ msgstr ""
+#~ "%s 장치를 배출함\n"
+#~ "안전하게 장치를 제거할 수 있음"
+
+#, c-format
+#~ msgid ""
+#~ "Failed to eject %s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "%s 장치 배출 실패\n"
+#~ "%s"
+
+#~ msgid "Select a drive in menu to eject safely"
+#~ msgstr "안전하게 제거할 장치를 선택"
+
+#~ msgid "Ejecter"
+#~ msgstr "드라이브 배출기"
+
+#~ msgid "Hide icon when no devices"
+#~ msgstr "연결된 장치가 없을 때 아이콘 숨기기"
+
+#~ msgid "Ejects mounted drives"
+#~ msgstr "마운트된 드라이브들을 배출"
+
+#, fuzzy
+#~ msgid "ad-hoc"
+#~ msgstr "애드혹"
+
+#~ msgid "Unknown error"
+#~ msgstr "알 수 없는 오류"
+
+#~ msgid "Connection failure"
+#~ msgstr "연결에 실패"
+
+#~ msgid "Failed to add/activate connection"
+#~ msgstr "연결 추가/활성화하는 데 실패"
+
+#~ msgid "Device disconnect failed"
+#~ msgstr "장치 연결 끊는 데 실패"
+
+#~ msgid "Disconnect failure"
+#~ msgstr "연결 끊는 데 실패"
+
+#~ msgid "Connection activation failed"
+#~ msgstr "연결 활성화 실패"
+
+#, fuzzy
+#~ msgid "Don’t show this message again"
+#~ msgstr "다시 보지 않기"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 네트워크 연결이 중단되었습니다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 네트워크 연결이 중단되었습니다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service stopped "
+#~ "unexpectedly."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스가 예기치 못하게 "
+#~ "중단되었습니다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service returned invalid "
+#~ "configuration."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스가 잘못된 설정을 "
+#~ "반환했습니다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the connection attempt timed out."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 연결 시도가 제한 시간을 초과했습니"
+#~ "다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service did not start in "
+#~ "time."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스가 제 시간에 시작"
+#~ "하지 못했습니다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스를 시작하는데 실패"
+#~ "했습니다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because there were no valid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 올바른 가상 사설망 비밀정보가 없습니"
+#~ "다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because of invalid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 비밀 정보가 잘못되었습니"
+#~ "다."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed."
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다."
+
+#, c-format
+#~ msgid ""
+#~ "VPN connection has been successfully established.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "가상 사설망에 성공적으로 연결했습니다.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "VPN connection has been successfully established.\n"
+#~ msgstr "가상 사설망에 성공적으로 연결했습니다.\n"
+
+#~ msgid "VPN Login Message"
+#~ msgstr "가상 사설망 로그인 메시지"
+
+#~ msgid "VPN Connection Failed"
+#~ msgstr "가상 사설망 연결 실패"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다. 가상 사설망 서비스를 시작하는 데 실"
+#~ "패했습니다.\n"
+#~ "\n"
+#~ "%s"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "'%s' 가상 사설망 연결이 실패했습니다.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "device not ready (firmware missing)"
+#~ msgstr "장치가 준비되지 않음(펌웨어 없음)"
+
+#~ msgid "device not ready"
+#~ msgstr "장치가 준비되지 않음"
+
+#~ msgid "disconnected"
+#~ msgstr "연결 끊김"
+
+#~ msgid "Disconnect"
+#~ msgstr "연결 끊김"
+
+#~ msgid "device not managed"
+#~ msgstr "장치가 관리되지 않음"
+
+#~ msgid "No network devices available"
+#~ msgstr "네트워크 장치를 찾을 수 없습니다"
+
+#, fuzzy
+#~ msgid "_Advanced Options"
+#~ msgstr "고급"
+
+#~ msgid "_VPN Connections"
+#~ msgstr "가상 사설망 연결(_V)"
+
+#, fuzzy
+#~ msgid "_Add a VPN connection…"
+#~ msgstr "가상 사설망 연결(_V)"
+
+#~ msgid "Connection _Information"
+#~ msgstr "연결 정보(_I)"
+
+#, fuzzy
+#~ msgid "Edit Connections…"
+#~ msgstr "연결 편집..."
+
+#, fuzzy
+#~ msgid "NetworkManager is not running…"
+#~ msgstr "네트워크 관리가 실행 중이 아닙니다..."
+
+#, fuzzy
+#~ msgid "Wi-Fi country is not set"
+#~ msgstr "내 나라가 목록에 없습니다"
+
+#~ msgid "Networking disabled"
+#~ msgstr "네트워크를 사용할 수 없습니다"
+
+#~ msgid "Enable _Networking"
+#~ msgstr "네트워크 사용(_N)"
+
+#~ msgid "Enable _Wi-Fi"
+#~ msgstr "와이파이 사용(_W)"
+
+#~ msgid "Enable _Mobile Broadband"
+#~ msgstr "모바일 광대역 사용(_M)"
+
+#~ msgid "_About"
+#~ msgstr "정보(_A)"
+
+#, fuzzy, c-format
+#~ msgid "You are now connected to “%s”."
+#~ msgstr "'%s'에 연결되었습니다."
+
+#~ msgid "Disconnected"
+#~ msgstr "연결 끊김"
+
+#~ msgid "The network connection has been disconnected."
+#~ msgstr "네트워크 연결이 끊겼습니다."
+
+#, fuzzy, c-format
+#~ msgid "Preparing network connection “%s”…"
+#~ msgstr "네트워크 연결 '%s' 준비 중..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for network connection “%s”…"
+#~ msgstr "네트워크 연결 '%s'에는 사용자 인증이 필요합니다..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting a network address for “%s”…"
+#~ msgstr "'%s'에 네트워크 주소 요청중..."
+
+#, fuzzy, c-format
+#~ msgid "Network connection “%s” active"
+#~ msgstr "'%s' 네트워크 연결 사용 중"
+
+#, fuzzy, c-format
+#~ msgid "Starting VPN connection “%s”…"
+#~ msgstr "가상 사설망 연결 '%s' 시작 중..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for VPN connection “%s”…"
+#~ msgstr "가상 사설망 연결 '%s'에는 사용자 인증이 필요합니다..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting a VPN address for “%s”…"
+#~ msgstr "'%s'에 가상 사설망 주소 요청 중..."
+
+#, fuzzy, c-format
+#~ msgid "VPN connection active"
+#~ msgstr "가상 사설망 연결 '%s' 사용 중"
+
+#~ msgid "No network connection"
+#~ msgstr "네트워크 연결 없음"
+
+#~ msgid "Network"
+#~ msgstr "네트워크"
+
+#~ msgid "NetworkManager Applet"
+#~ msgstr "네트워크 관리 애플릿"
+
+#~ msgid "Wrong PUK code; please contact your provider."
+#~ msgstr "잘못된 PUK 코드. 서비스 업체에 문의하십시오."
+
+#~ msgid "Wrong PIN code; please contact your provider."
+#~ msgstr "잘못된 PIN 코드. 서비스 업체에 문의하십시오."
+
+#, fuzzy
+#~ msgid "Sending unlock code…"
+#~ msgstr "언락 코드를 보내는 중..."
+
+#, c-format
+#~ msgid "Mobile Broadband (%s)"
+#~ msgstr "모바일 광대역(%s)"
+
+#~ msgid "Mobile Broadband"
+#~ msgstr "모바일 광대역"
+
+#, fuzzy
+#~ msgid "New Mobile Broadband connection…"
+#~ msgstr "새 모바일 광대역 연결"
+
+#~ msgid "Connection Established"
+#~ msgstr "연결됨"
+
+#~ msgid "You are now connected to the Mobile Broadband network."
+#~ msgstr "모바일 광대역 네트워크에 연결되었습니다."
+
+#~ msgid "Mobile Broadband network."
+#~ msgstr "모바일 광대역 네트워크."
+
+#~ msgid "You are now registered on the home network."
+#~ msgstr "홈 네트워크에 등록되었습니다."
+
+#~ msgid "You are now registered on a roaming network."
+#~ msgstr "로밍 네트워크에 등록되었습니다."
+
+#~ msgid "You are now connected to the mobile broadband network."
+#~ msgstr "모바일 광대역 네트워크에 연결되었습니다."
+
+#, fuzzy, c-format
+#~ msgid "Preparing mobile broadband connection “%s”…"
+#~ msgstr "모바일 광대역 연결 '%s' 준비 중..."
+
+#, fuzzy, c-format
+#~ msgid "Configuring mobile broadband connection “%s”…"
+#~ msgstr "모바일 광대역 연결 '%s' 설정 중..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for mobile broadband connection “%s”…"
+#~ msgstr "모바일 광대역 연결 '%s'에는 사용자 인증이 필요합니다..."
+
+#, fuzzy, c-format
+#~ msgid "Mobile broadband connection “%s” active"
+#~ msgstr "모바일 광대역 연결 '%s' 사용 중"
+
+#~ msgid "Auto Ethernet"
+#~ msgstr "자동 이더넷"
+
+#, c-format
+#~ msgid "Ethernet Networks (%s)"
+#~ msgstr "이더넷 네트워크(%s)"
+
+#, c-format
+#~ msgid "Ethernet Network (%s)"
+#~ msgstr "이더넷 네트워크(%s)"
+
+#~ msgid "Ethernet Networks"
+#~ msgstr "이더넷 네트워크"
+
+#~ msgid "Ethernet Network"
+#~ msgstr "이더넷 네트워크"
+
+#~ msgid "You are now connected to the ethernet network."
+#~ msgstr "이더넷 네트워크에 연결되었습니다."
+
+#, fuzzy, c-format
+#~ msgid "Preparing ethernet network connection “%s”…"
+#~ msgstr "이더넷 네트워크 '%s' 연결 준비 중..."
+
+#, fuzzy, c-format
+#~ msgid "Configuring ethernet network connection “%s”…"
+#~ msgstr "이더넷 네트워크 '%s' 연결 설정 중..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for ethernet network connection “%s”…"
+#~ msgstr "이더넷 네트워크 연결 '%s'에 사용자 인증이 필요합니다..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting an ethernet network address for “%s”…"
+#~ msgstr "이더넷 네트워크 '%s'에 네트워크 주소 요청 중..."
+
+#, fuzzy, c-format
+#~ msgid "Ethernet network connection “%s” active"
+#~ msgstr "이더넷 네트워크 연결 '%s' 사용 중"
+
+#~ msgid "DSL authentication"
+#~ msgstr "DSL 인증"
+
+#, fuzzy
+#~ msgid "_Connect to Hidden Wi-Fi Network…"
+#~ msgstr "감춰진 와이파이 네트워크에 연결"
+
+#, fuzzy
+#~ msgid "Create _New Wi-Fi Network…"
+#~ msgstr "새 와이파이 네트워크 만들기"
+
+#, fuzzy
+#~ msgid "Create Wi-Fi _Hotspot…"
+#~ msgstr "새 와이파이 네트워크 만들기"
+
+#~ msgid "(none)"
+#~ msgstr "(없음)"
+
+#~ msgid "Failed to add new connection"
+#~ msgstr "새로운 연결을 추가하는데 실패"
+
+#, fuzzy, c-format
+#~ msgid "Do you want to disconnect from the wireless network '%s'?"
+#~ msgstr "팀 네트워크에 연결되었습니다."
+
+#, c-format
+#~ msgid "Wi-Fi Networks (%s)"
+#~ msgstr "와이파이 네트워크(%s)"
+
+#, c-format
+#~ msgid "Wi-Fi Network (%s)"
+#~ msgstr "와이파이 네트워크(%s)"
+
+#~ msgid "Wi-Fi Network"
+#~ msgid_plural "Wi-Fi Networks"
+#~ msgstr[0] "와이파이 네트워크"
+
+#~ msgid "Wi-Fi is disabled"
+#~ msgstr "와이파이를 사용하지 않습니다"
+
+#~ msgid "Wi-Fi is disabled by hardware switch"
+#~ msgstr "와이파이가 하드웨어 스위치를 통해 사용하지 않습니다"
+
+#~ msgid "More networks"
+#~ msgstr "다른 네트워크"
+
+#~ msgid "Wi-Fi Networks Available"
+#~ msgstr "와이파이 네트워크가 사용 가능합니다"
+
+#~ msgid "Use the network menu to connect to a Wi-Fi network"
+#~ msgstr "네트워크 메뉴에서 와이파이 네트워크에 연결할 수 있습니다"
+
+#, fuzzy, c-format
+#~ msgid "You are now connected to the Wi-Fi network “%s”."
+#~ msgstr "와이파이 네트워크 '%s'에 연결되었습니다."
+
+#, fuzzy, c-format
+#~ msgid "Preparing Wi-Fi network connection “%s”…"
+#~ msgstr "와이파이 네트워크 '%s' 연결 준비 중..."
+
+#, fuzzy, c-format
+#~ msgid "Configuring Wi-Fi network connection “%s”…"
+#~ msgstr "와이파이 네트워크 '%s' 연결 설정 중..."
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for Wi-Fi network “%s”…"
+#~ msgstr "와이파이 네트워크 연결 '%s'에 사용자 인증이 필요합니다..."
+
+#, fuzzy, c-format
+#~ msgid "Requesting a Wi-Fi network address for “%s”…"
+#~ msgstr "'%s'에 대한 와이파이 네트워크 주소 요청 중..."
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+#~ msgstr "와이파이 네트워크 연결 '%s' 사용 중: %s (%d%%)"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+#~ msgstr "와이파이 네트워크 연결 '%s' 사용 중: %s (%d%%)"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active"
+#~ msgstr "와이파이 네트워크 연결 '%s' 사용 중"
+
+#~ msgid "Error displaying connection information:"
+#~ msgstr "연결 정보 보이기 오류:"
+
+#~ msgid "LEAP"
+#~ msgstr "LEAP"
+
+#~ msgid "Dynamic WEP"
+#~ msgstr "동적 WEP"
+
+#~ msgid "WPA/WPA2"
+#~ msgstr "WPA/WPA2"
+
+#, fuzzy
+#~ msgid "More addresses"
+#~ msgstr "주소"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgctxt "Wi-Fi/Ethernet security"
+#~ msgid "None"
+#~ msgstr "없음"
+
+#, c-format
+#~ msgid "%u Mb/s"
+#~ msgstr "%u Mb/s"
+
+#~ msgctxt "Speed"
+#~ msgid "Unknown"
+#~ msgstr "알 수 없음"
+
+#~ msgctxt "Address"
+#~ msgid "Unknown"
+#~ msgstr "알 수 없음"
+
+#, fuzzy
+#~ msgid "IP Address"
+#~ msgstr "IP 주소:"
+
+#, fuzzy
+#~ msgid "Broadcast Address"
+#~ msgstr "브로드캐스트 주소:"
+
+#~ msgctxt "Subnet Mask"
+#~ msgid "Unknown"
+#~ msgstr "알 수 없음"
+
+#, fuzzy
+#~ msgid "Subnet Mask"
+#~ msgstr "서브넷 마스크:"
+
+#, fuzzy
+#~ msgid "Primary DNS"
+#~ msgstr "기본 DNS:"
+
+#, fuzzy
+#~ msgid "Secondary DNS"
+#~ msgstr "보조 DNS:"
+
+#, fuzzy
+#~ msgid "Tertiary DNS"
+#~ msgstr "세 번째 DNS:"
+
+#, c-format
+#~ msgid "Ethernet (%s)"
+#~ msgstr "이더넷(%s)"
+
+#, fuzzy, c-format
+#~ msgid "802.11 Wi-Fi (%s)"
+#~ msgstr "802.11 와이파이(%s)"
+
+#, c-format
+#~ msgid "GSM (%s)"
+#~ msgstr "GSM (%s)"
+
+#, c-format
+#~ msgid "CDMA (%s)"
+#~ msgstr "CDMA (%s)"
+
+#~ msgid "General"
+#~ msgstr "일반"
+
+#, fuzzy
+#~ msgid "Interface"
+#~ msgstr "인터페이스:"
+
+#, fuzzy
+#~ msgid "Hardware Address"
+#~ msgstr "하드웨어 주소:"
+
+#, fuzzy
+#~ msgid "Driver"
+#~ msgstr "드라이버:"
+
+#, fuzzy
+#~ msgid "Speed"
+#~ msgstr "속도:"
+
+#, fuzzy
+#~ msgid "Security"
+#~ msgstr "보안:"
+
+#~ msgid "IPv4"
+#~ msgstr "IPv4"
+
+#, fuzzy
+#~ msgid "Default Route"
+#~ msgstr "기본 경로:"
+
+#~ msgid "IPv6"
+#~ msgstr "IPv6"
+
+#, fuzzy
+#~ msgid "Password"
+#~ msgstr "암호:"
+
+#, fuzzy
+#~ msgid "VPN Type"
+#~ msgstr "가상 사설망 형식:"
+
+#, fuzzy
+#~ msgid "VPN Gateway"
+#~ msgstr "가상 사설망 게이트웨이:"
+
+#, fuzzy
+#~ msgid "VPN Username"
+#~ msgstr "가상 사설망 사용자 이름:"
+
+#, fuzzy
+#~ msgid "VPN Banner"
+#~ msgstr "가상 사설망 추방자:"
+
+#, fuzzy
+#~ msgid "Base Connection"
+#~ msgstr "기반 연결:"
+
+#~ msgid "No valid active connections found!"
+#~ msgstr "활성된 연결을 찾을 수 없습니다!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "and many other community contributors and translators"
+#~ msgstr ""
+#~ "Copyright © 2004-2011 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "and many other community contributors and translators"
+
+#~ msgid ""
+#~ "Notification area applet for managing your network devices and "
+#~ "connections."
+#~ msgstr "네트워크 장치와 연결을 관리하는 알림 영역 애플릿."
+
+#~ msgid "NetworkManager Website"
+#~ msgstr "네트워크 관리 웹사이트"
+
+#~ msgid ""
+#~ "The NetworkManager Applet could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "네트워크 관리 애플릿이 필요한 리소스를 찾을 수 없습니다. (.ui 파일이 없습"
+#~ "니다.)"
+
+#~ msgid "Missing resources"
+#~ msgstr "빠진 자료"
+
+#~ msgid "Mobile broadband network password"
+#~ msgstr "모바일 광대역 네트워크 암호"
+
+#, fuzzy, c-format
+#~ msgid "A password is required to connect to “%s”."
+#~ msgstr "'%s'에 연결하려면 암호가 필요합니다."
+
+#~ msgid "Password:"
+#~ msgstr "암호:"
+
+#~ msgid "SIM PIN unlock required"
+#~ msgstr "SIM PIN 잠금해제가 필요합니다"
+
+#~ msgid "SIM PIN Unlock Required"
+#~ msgstr "SIM PIN 잠금해제가 필요합니다"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PIN code before it can be "
+#~ "used."
+#~ msgstr "'%s' 모바일 광대역 장치를 사용하려면 SIM PIN 코드가 필요합니다."
+
+#~ msgid "PIN code:"
+#~ msgstr "PIN 코드:"
+
+#~ msgid "Show PIN code"
+#~ msgstr "PIN 코드 표시"
+
+#~ msgid "SIM PUK unlock required"
+#~ msgstr "SIM PUK 잠금 해제가 필요합니다"
+
+#~ msgid "SIM PUK Unlock Required"
+#~ msgstr "SIM PUK 잠금 해제가 필요합니다"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PUK code before it can be "
+#~ "used."
+#~ msgstr "'%s' 모바일 광대역 장치를 사용하려면 SIM PUK 코드가 필요합니다."
+
+#~ msgid "PUK code:"
+#~ msgstr "PUK 코드:"
+
+#~ msgid "New PIN code:"
+#~ msgstr "새 PIN 코드:"
+
+#~ msgid "Re-enter new PIN code:"
+#~ msgstr "새 PIN 코드 다시 입력:"
+
+#~ msgid "Show PIN/PUK codes"
+#~ msgstr "PIN/PUK 코드 표시"
+
+#, fuzzy
+#~ msgid "Connection had no VPN setting"
+#~ msgstr "연결 정보"
+
+#, fuzzy, c-format
+#~ msgid "Failed to write connection to VPN UI: %s (%d)"
+#~ msgstr "DUN 연결을 만들 수 없습니다: %s"
+
+#~ msgid "802.1X authentication"
+#~ msgstr "802.1X 인증"
+
+#~ msgid "CDMA"
+#~ msgstr "CDMA"
+
+#~ msgid "EVDO"
+#~ msgstr "EVDO"
+
+#~ msgid "GSM"
+#~ msgstr "GSM"
+
+#~ msgid "GPRS"
+#~ msgstr "GPRS"
+
+#~ msgid "EDGE"
+#~ msgstr "EDGE"
+
+#~ msgid "UMTS"
+#~ msgstr "UMTS"
+
+#~ msgid "HSDPA"
+#~ msgstr "HSDPA"
+
+#~ msgid "HSUPA"
+#~ msgstr "HSUPA"
+
+#~ msgid "HSPA"
+#~ msgstr "HSPA"
+
+#~ msgid "HSPA+"
+#~ msgstr "HSPA+"
+
+#~ msgid "LTE"
+#~ msgstr "LTE"
+
+#~ msgid "not enabled"
+#~ msgstr "사용하지 않음"
+
+#~ msgid "not registered"
+#~ msgstr "등록되지 않음"
+
+#, c-format
+#~ msgid "Home network (%s)"
+#~ msgstr "가정 네트워크(%s)"
+
+#, c-format
+#~ msgid "Home network"
+#~ msgstr "가정 네트워크"
+
+#~ msgid "searching"
+#~ msgstr "검색중"
+
+#~ msgid "registration denied"
+#~ msgstr "등록이 거부되었습니다"
+
+#, c-format
+#~ msgid "%s (%s roaming)"
+#~ msgstr "%s (%s 로밍)"
+
+#, c-format
+#~ msgid "%s (roaming)"
+#~ msgstr "%s (로밍)"
+
+#, c-format
+#~ msgid "Roaming network (%s)"
+#~ msgstr "로밍 네트워크(%s)"
+
+#, c-format
+#~ msgid "Roaming network"
+#~ msgstr "로밍 네트워크"
+
+#, fuzzy, c-format
+#~ msgid "PIN code for SIM card “%s” on “%s”"
+#~ msgstr "'%2$s'의 SIM 카드 '%1$s'에 대한 PIM 코드"
+
+#~ msgid "PIN code required"
+#~ msgstr "PIN 코드가 필요합니다"
+
+#~ msgid "PIN code is needed for the mobile broadband device"
+#~ msgstr "PIN 코드가 모바일 광대역 장치를 위해 필요합니다"
+
+#, fuzzy, c-format
+#~ msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+#~ msgstr "모바일 광대역 연결 '%s' 사용 중: (%d%%%s%s)"
+
+#~ msgid "roaming"
+#~ msgstr "로밍"
+
+#, fuzzy
+#~ msgid "Network Manager"
+#~ msgstr "네트워크 관리 애플릿"
+
+#, fuzzy
+#~ msgid "Controller for Network Manager"
+#~ msgstr "네트워크 관리 애플릿"
+
+#, c-format
+#~ msgid "%s connection"
+#~ msgstr "%s 연결"
+
+#, fuzzy
+#~ msgid "PEM certificates (*.pem, *.crt, *.cer)"
+#~ msgstr "DEP 혹은 PEM 인증서(*.det, *.pem, *.crt, *.cer)"
+
+#~ msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+#~ msgstr "DER, PEM, 또는 PKCS#12 비밀 키(*.der, *.pem, *.p12, *.key)"
+
+#, c-format
+#~ msgid "Charging : %d%%"
+#~ msgstr "충전 중 : %d%%"
+
+#, c-format
+#~ msgid ""
+#~ "Charging : %d%%\n"
+#~ "Time remaining : %d minutes"
+#~ msgstr ""
+#~ "충전 중 : %d%%\n"
+#~ "남은 시간 : %d 분"
+
+#, c-format
+#~ msgid ""
+#~ "Charging : %d%%\n"
+#~ "Time remaining : %0.1f hours"
+#~ msgstr ""
+#~ "충전 중 : %d%%\n"
+#~ "남은 시간 : %0.1f 시간"
+
+#, c-format
+#~ msgid ""
+#~ "Charged : %d%%\n"
+#~ "On external power"
+#~ msgstr ""
+#~ "충전됨 : %d%%\n"
+#~ "외부 전원"
+
+#, c-format
+#~ msgid "Discharging : %d%%"
+#~ msgstr "소모 중 : %d%%"
+
+#, c-format
+#~ msgid ""
+#~ "Discharging : %d%%\n"
+#~ "Time remaining : %d minutes"
+#~ msgstr ""
+#~ "소모 중 : %d%%\n"
+#~ "남은 시간 : %d 분"
+
+#, c-format
+#~ msgid ""
+#~ "Discharging : %d%%\n"
+#~ "Time remaining : %0.1f hours"
+#~ msgstr ""
+#~ "소모 중 : %d%%\n"
+#~ "남은 시간 : %0.1f 시간"
+
+#~ msgid "Power & Battery"
+#~ msgstr "전원 및 배터리"
+
+#~ msgid "Monitors voltage and laptop battery"
+#~ msgstr "랩톱 배터리 및 모니터 전압"
+
+#~ msgid "Run"
+#~ msgstr "실행"
+
+#~ msgid "Restart"
+#~ msgstr "다시 시작"
+
+#~ msgid "Logout"
+#~ msgstr "로그아웃"
+
+#~ msgid "Properties"
+#~ msgstr "속성"
+
+#~ msgid "Menu"
+#~ msgstr "메뉴"
+
+#~ msgid "Icon"
+#~ msgstr "아이콘"
+
+#, fuzzy
+#~ msgid "Searchable Application Menu"
+#~ msgstr "프로그램 메뉴"
+
+#~ msgid ""
+#~ "Updates are available\n"
+#~ "Click the update icon to install"
+#~ msgstr ""
+#~ "업데이트 사용 가능\n"
+#~ "아이콘을 클릭해 설치"
+
+#~ msgid "No network connection - cannot install updates."
+#~ msgstr "네트워크에 연결되지 않음 - 업데이트를 설치할 수 없습니다."
+
+#~ msgid ""
+#~ "Clock not synchronised - cannot install updates. Try again in a few "
+#~ "minutes."
+#~ msgstr ""
+#~ "시간이 동기화되지 않음 - 업데이트를 설치할 수 없습니다. 잠시 후 다시 시도"
+#~ "해 주세요."
+
+#~ msgid "Show Updates..."
+#~ msgstr "업데이트 표시..."
+
+#~ msgid "Install Updates"
+#~ msgstr "업데이트 설치"
+
+#~ msgid "Updates are available - click to install"
+#~ msgstr "업데이트 사용 가능 - 설치"
+
+#~ msgid "Updater"
+#~ msgstr "업데이터"
+
+#~ msgid "Hours between checks for updates"
+#~ msgstr "업데이트 확인 간격"
+
+#~ msgid "Checks for updates"
+#~ msgstr "업데이트 확인"
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth devices..."
+#~ msgstr "블루투스 기기를 찾는 중..."
+
+#, fuzzy, c-format
+#~ msgid "Bluetooth %s device not found"
+#~ msgstr "블루투스 어댑터를 찾을 수 없음"
+
+#~ msgid "Device not found by PulseAudio"
+#~ msgstr "펄스오디오에서 장치를 찾을 수 없음"
+
+#, c-format
+#~ msgid "Could not set profile for device : %s"
+#~ msgstr "다음 장치에 대한 프로필을 설정할 수 없음: %s"
+
+#, fuzzy, c-format
+#~ msgid "Failed to connect to Bluetooth device - %s"
+#~ msgstr "페어링된 블루투스 기기"
+
+#, fuzzy, c-format
+#~ msgid "Connecting Bluetooth device '%s' as output..."
+#~ msgstr "블루투스 기기를 찾는 중..."
+
+#, fuzzy, c-format
+#~ msgid "Connecting Bluetooth device '%s' as input..."
+#~ msgstr "블루투스 기기를 찾는 중..."
+
+#~ msgid "Reconnecting Bluetooth input device as output only..."
+#~ msgstr "블루투스 입력 장치를 출력 장치로 재연결 중..."
+
+#, fuzzy
+#~ msgid "Reconnecting Bluetooth device..."
+#~ msgstr "블루투스 기기를 찾는 중..."
+
+#~ msgid "Mute"
+#~ msgstr "음소거"
+
+#~ msgid "No audio devices found"
+#~ msgstr "오디오 장치를 찾지 못함"
+
+#~ msgid "Input from this device not available in the current profile"
+#~ msgstr "현재 프로필에서는 이 장치를 입력 장치로 사용할 수 없음"
+
+#~ msgid "Mic volume"
+#~ msgstr "마이크 음량"
+
+#~ msgid "Microphone Control (PulseAudio)"
+#~ msgstr "마이크로폰 제어 (펄스오디오)"
+
+#~ msgid "Display and control microphones for PulseAudio"
+#~ msgstr "펄스오디오 디스플레이 및 마이크로폰 제어"
+
+#~ msgid "HDMI"
+#~ msgstr "HDMI"
+
+#~ msgid "AV Jack"
+#~ msgstr "AV 잭"
+
+#~ msgid "Device Profiles..."
+#~ msgstr "장치 프로필..."
+
+#~ msgid "Output to this device not available in the current profile"
+#~ msgstr "이 장치로의 출력은 현재 프로필에서 사용 불가능"
+
+#~ msgid "Device Profiles"
+#~ msgstr "장치 프로필"
+
+#~ msgid "Device not connected"
+#~ msgstr "장치가 연결되지 않음"
+
+#~ msgid "Volume control"
+#~ msgstr "음량 제어"
+
+#~ msgid "Volume Control (PulseAudio)"
+#~ msgstr "음량 제어 (펄스오디오)"
+
+#~ msgid "Display and control volume for PulseAudio"
+#~ msgstr "펄스오디오 디스플레이 음량 제어"
+
+#~ msgid "Available Updates"
+#~ msgstr "사용 가능한 업데이트"
+
+#~ msgid "Install"
+#~ msgstr "설치"
+
+#~ msgid "The following packages can be updated :"
+#~ msgstr "다음의 패키지를 업데이트할 수 있음:"
+
+#~ msgid "Add New Device"
+#~ msgstr "새 기기 추가"
+
+#~ msgid "_Pair"
+#~ msgstr "페어(_P)"
+
+#~ msgid "Searching for Bluetooth devices..."
+#~ msgstr "블루투스 기기를 찾는 중..."
+
+#, fuzzy
+#~ msgid "C_onnect"
+#~ msgstr "연결"
+
+#, fuzzy
+#~ msgid "_Network name"
+#~ msgstr "네트워크 이름(_N):"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "이 장치 자동으로 잠금 해제"
 
 #~ msgid "Virtual Magnifier"
 #~ msgstr "가상 돋보기"
@@ -1740,9 +1483,6 @@ msgstr ""
 
 #~ msgid "Width"
 #~ msgstr "가로"
-
-#~ msgid "Height"
-#~ msgstr "세로"
 
 #~ msgid "Zoom"
 #~ msgstr "확대율"
@@ -2470,20 +2210,12 @@ msgstr ""
 #~ msgstr "FIP"
 
 #, fuzzy
-#~ msgid "TCP"
-#~ msgstr "GTC"
-
-#, fuzzy
 #~ msgid "_Hardware Address"
 #~ msgstr "하드웨어 주소:"
 
 #, fuzzy
 #~ msgid "_Hardware address policy"
 #~ msgstr "하드웨어 주소:"
-
-#, fuzzy
-#~ msgid "_System priority"
-#~ msgstr "우선 순위(_P):"
 
 #, fuzzy
 #~ msgid "Transmission _balancing interval"
@@ -3464,9 +3196,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "WEP inde_x"
 #~ msgstr "WEP 인덱스(_X):"
-
-#~ msgid "Disable connected notifications"
-#~ msgstr "연결이 되면 알려주지 않음"
 
 #~ msgid ""
 #~ "Set this to true to disable notifications when connecting to a network."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 09:19+0000\n"
+"POT-Creation-Date: 2025-01-17 10:28+0000\n"
 "PO-Revision-Date: 2014-08-12 00:54+0000\n"
 "Last-Translator: Радослав Иванов <reckku@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,1698 +20,1193 @@ msgstr ""
 "X-Pootle-Path: /bg/lxpanel/po/bg.po\n"
 "X-POOTLE-MTIME: 1407804851.000000\n"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1283
+#: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
-msgid "Pairing request sent to '%s' - waiting for response..."
+msgid "Spacer"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1291
+#: ../src/panel/configure.c:116 ../src/panel/configure.c:255
+#: ../src/panel/configure.c:580
 #, c-format
-msgid "Pairing failed - %s"
+msgid "Spacer (%d)"
 msgstr ""
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1299
+#: ../src/panel/configure.c:137 ../src/panel/configure.c:158
+#: ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Pairing successful - connecting..."
-msgstr "Подготовка на връзката към обединената мрежа „%s“…"
+msgid "<Unknown>"
+msgstr "Неопределена"
 
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1307
+#: ../src/panel/configure.c:424
+msgid "Cancel"
+msgstr ""
+
+#: ../src/panel/configure.c:424
+msgid "OK"
+msgstr ""
+
+#: ../src/panel/configure.c:445 ../src/panel/configure.c:447
 #, fuzzy, c-format
-msgid "Connection successful"
-msgstr "Неуспешно установяване на връзка"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1315
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
-msgid "Connection failed - %s"
-msgstr "Неуспешно установяване на връзка"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, c-format
-msgid "Please enter code '%s' on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, c-format
-msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, c-format
-msgid "Please enter PIN code shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, c-format
-msgid "Please enter passcode shown on '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, c-format
-msgid "Waiting for response from Bluetooth device..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, c-format
-msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, c-format
-msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, c-format
-msgid ""
-"Pairing successful - this device has no services which can be used with "
-"Raspberry Pi"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, c-format
-msgid "Do you want to unpair '%s'?"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, c-format
-msgid "Removing pairing with '%s'..."
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1564
-#, c-format
-msgid "Removal failed - %s"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
-msgid "Connecting to '%s'..."
-msgstr "Настройване на обединената връзка „%s“…"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
-msgid "Disconnecting from '%s'..."
-msgstr "Подготовка на свързаната връзка „%s“…"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
-msgid "Disconnection failed - %s"
-msgstr "Неуспешно прекъсване"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1692
-#, fuzzy
-msgid "Use the audio menu to connect to this device"
-msgstr "Използвайте менюто с наличните мрежи, за да се свържете"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1694
-msgid "No usable services on this device"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1759
-#, fuzzy
-msgid "Disconnect..."
-msgstr " Прекъсване"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1764
-#, fuzzy
-msgid "Connect..."
-msgstr "_Свързване"
-
-#. add the remove option to the submenu
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-msgid "Remove..."
-msgstr ""
-
-#. warn if no BT hardware detected
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1973
-#, fuzzy
-msgid "No Bluetooth adapter found"
-msgstr "Bluetooth"
-
-#. add enable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1980
-#, fuzzy
-msgid "Turn On Bluetooth"
-msgstr "Bluetooth"
-
-#. add disable bt option
-#: ../src/panel/widgets/bluetooth/bluetooth.c:1990
-#, fuzzy
-msgid "Turn Off Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2000
-msgid "Stop Discoverable"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2002
-msgid "Make Discoverable"
-msgstr ""
-
-#. add and remove dialogs
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2010
-#, fuzzy
-msgid "Add Device..."
-msgstr "Което и да е устройство"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2140
-msgid "Manage Bluetooth devices"
-msgstr ""
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2189
-msgid "Bluetooth"
-msgstr "Bluetooth"
-
-#: ../src/panel/widgets/bluetooth/bluetooth.c:2190
-msgid "Manages Bluetooth devices"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:171
-msgid ""
-"Drive was removed without ejecting\n"
-"Please use menu to eject before removal"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:199
-#, c-format
-msgid ""
-"%s has been ejected\n"
-"It is now safe to remove the device"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:205
-#, fuzzy, c-format
-msgid ""
-"Failed to eject %s\n"
-"%s"
-msgstr "Не може да се създаде връзка по лична мрежа PAN: %s"
-
-#: ../src/panel/widgets/ejecter/ejecter.c:402
-msgid "Select a drive in menu to eject safely"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
-msgid "Ejecter"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:453
-msgid "Hide icon when no devices"
-msgstr ""
-
-#: ../src/panel/widgets/ejecter/ejecter.c:462
-msgid "Ejects mounted drives"
-msgstr ""
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:77
-#, fuzzy
-msgid "ad-hoc"
-msgstr "Инцидентна (ад хок)"
-
-#: ../src/panel/widgets/netman/ap-menu-item.c:82
-msgid "secure."
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:74
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1525
-msgid "Failed to activate connection"
-msgstr "Неуспешно задействане на връзка"
-
-#: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1527
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1550
-msgid "Unknown error"
-msgstr "Непозната грешка"
-
-#: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
-#: ../src/panel/widgets/netman/applet.c:875
-#: ../src/panel/widgets/netman/applet-device-wifi.c:570
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1530
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1553
-msgid "Connection failure"
-msgstr "Неуспешно установяване на връзка"
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn Off Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:186
-msgid "_Turn On Wireless LAN"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:227
-#, c-format
-msgid "IP : %s"
-msgstr ""
-
-#: ../src/panel/widgets/netman/applet.c:781
-msgid "Failed to add/activate connection"
-msgstr "Неуспешно добавяне/задействане на връзка"
-
-#: ../src/panel/widgets/netman/applet.c:835
-msgid "Device disconnect failed"
-msgstr "Неуспешно прекъсване на връзка"
-
-#: ../src/panel/widgets/netman/applet.c:840
-msgid "Disconnect failure"
-msgstr "Неуспешно прекъсване"
-
-#: ../src/panel/widgets/netman/applet.c:870
-msgid "Connection activation failed"
-msgstr "Неуспешно задействане на връзка"
-
-#: ../src/panel/widgets/netman/applet.c:1209
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1261
-#, fuzzy
-msgid "Don’t show this message again"
-msgstr "Това съобщение да не се показва повече"
-
-#: ../src/panel/widgets/netman/applet.c:1310
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” disconnected because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ прекъсна, защото мрежовата връзка беше прекъсната."
-
-#: ../src/panel/widgets/netman/applet.c:1312
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the network connection was "
-"interrupted."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото мрежовата връзка беше прекъсната."
-
-#: ../src/panel/widgets/netman/applet.c:1314
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service stopped unexpectedly."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ спря неочаквано."
-
-#: ../src/panel/widgets/netman/applet.c:1316
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service returned invalid "
-"configuration."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ върна грешни "
-"настройки."
-
-#: ../src/panel/widgets/netman/applet.c:1318
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the connection attempt timed out."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото времето за опити изтече."
-
-#: ../src/panel/widgets/netman/applet.c:1320
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service did not start in time."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ не стартира "
-"навреме."
-
-#: ../src/panel/widgets/netman/applet.c:1322
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ не успя да "
-"стартира."
-
-#: ../src/panel/widgets/netman/applet.c:1324
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because there were no valid VPN secrets."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото нямаше валидни тайни за ВЧМ."
-
-#: ../src/panel/widgets/netman/applet.c:1326
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because of invalid VPN secrets."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, поради невалидни тайни за ВЧМ."
-
-#: ../src/panel/widgets/netman/applet.c:1331
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed."
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна."
-
-#: ../src/panel/widgets/netman/applet.c:1358
-#, c-format
-msgid ""
-"VPN connection has been successfully established.\n"
-"\n"
-"%s\n"
-msgstr ""
-"Успешна връзка към ВЧМ.\n"
-"\n"
-"%s\n"
-
-#: ../src/panel/widgets/netman/applet.c:1360
-msgid "VPN connection has been successfully established.\n"
-msgstr "Успешна връзка към ВЧМ.\n"
-
-#: ../src/panel/widgets/netman/applet.c:1362
-msgid "VPN Login Message"
-msgstr "Съобщение при идентификация пред ВЧМ"
-
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
-msgid "VPN Connection Failed"
-msgstr "Връзката към ВЧМ е неуспешна"
-
-#: ../src/panel/widgets/netman/applet.c:1414
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed because the VPN service failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ не успя да "
-"стартира.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1417
-#, fuzzy, c-format
-msgid ""
-"\n"
-"The VPN connection “%s” failed to start.\n"
-"\n"
-"%s"
-msgstr ""
-"\n"
-"Връзката към ВЧМ „%s“ не успя да стартира.\n"
-"\n"
-"%s"
-
-#: ../src/panel/widgets/netman/applet.c:1741
-msgid "device not ready (firmware missing)"
-msgstr "устройството не е готово (липсва фърмуер)"
-
-#: ../src/panel/widgets/netman/applet.c:1743
-msgid "device not ready"
-msgstr "устройството не е готово"
-
-#. Notify user of unmanaged or unavailable device
-#: ../src/panel/widgets/netman/applet.c:1753
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:99
-msgid "disconnected"
-msgstr "връзката е прекъсната"
-
-#: ../src/panel/widgets/netman/applet.c:1769
-msgid "Disconnect"
-msgstr " Прекъсване"
-
-#: ../src/panel/widgets/netman/applet.c:1783
-msgid "device not managed"
-msgstr "устройството не се управлява"
-
-#: ../src/panel/widgets/netman/applet.c:1864
-msgid "No network devices available"
-msgstr "Не са налични мрежови устройства"
-
-#: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
-msgid "_Advanced Options"
-msgstr "Допълнителни"
-
-#: ../src/panel/widgets/netman/applet.c:1919
-msgid "_VPN Connections"
-msgstr "_Връзки към ВЧМ"
-
-#: ../src/panel/widgets/netman/applet.c:1973
-#, fuzzy
-msgid "_Configure VPN…"
+msgid "Configure %s"
 msgstr "_Настройване на ВЧМ…"
 
-#: ../src/panel/widgets/netman/applet.c:1977
-#, fuzzy
-msgid "_Add a VPN connection…"
-msgstr "_Връзки към ВЧМ"
-
-#. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
-msgid "Connection _Information"
-msgstr "_Информация за връзката"
-
-#. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
-#, fuzzy
-msgid "Edit Connections…"
-msgstr "Настройки на връзките…"
-
-#: ../src/panel/widgets/netman/applet.c:2112
-#, fuzzy
-msgid "NetworkManager is not running…"
-msgstr "NetworkManager не е включен…"
-
-#: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
-msgid "Wi-Fi country is not set"
-msgstr "Моята държава не е в списъка"
-
-#: ../src/panel/widgets/netman/applet.c:2119
-msgid "Click here to set Wi-Fi country"
+#: ../src/panel/configure.c:814
+msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
-msgid "Networking disabled"
-msgstr "Изключена мрежа"
-
-#. 'Enable Networking' item
-#: ../src/panel/widgets/netman/applet.c:2351
-msgid "Enable _Networking"
-msgstr "_Включване на мрежата"
-
-#. 'Enable Wi-Fi' item
-#: ../src/panel/widgets/netman/applet.c:2360
-msgid "Enable _Wi-Fi"
-msgstr "Включване на _безжичната мрежа"
-
-#. 'Enable Mobile Broadband' item
-#: ../src/panel/widgets/netman/applet.c:2369
-msgid "Enable _Mobile Broadband"
-msgstr "Включване на _мобилна връзка"
-
-#. Toggle notifications item
-#: ../src/panel/widgets/netman/applet.c:2381
-msgid "Enable N_otifications"
-msgstr "Включване на _уведомяване"
-
-#: ../src/panel/widgets/netman/applet.c:2415
-msgid "_About"
-msgstr "_Относно"
-
-#: ../src/panel/widgets/netman/applet.c:2736
-#, fuzzy, c-format
-msgid "You are now connected to “%s”."
-msgstr "Свързани сте към „%s“."
-
-#: ../src/panel/widgets/netman/applet.c:2776
-msgid "Disconnected"
-msgstr "Без връзка"
-
-#: ../src/panel/widgets/netman/applet.c:2777
-msgid "The network connection has been disconnected."
-msgstr "Връзката към мрежата е прекъсната."
-
-#: ../src/panel/widgets/netman/applet.c:3079
-#, fuzzy, c-format
-msgid "Preparing network connection “%s”…"
-msgstr "Подготовка на връзката „%s“…"
-
-#: ../src/panel/widgets/netman/applet.c:3082
-#, fuzzy, c-format
-msgid "User authentication required for network connection “%s”…"
-msgstr "Изисква се идентификация на потребител за връзката „%s“…"
-
-#: ../src/panel/widgets/netman/applet.c:3085
-#: ../src/panel/widgets/netman/applet-device-bt.c:113
-#: ../src/panel/widgets/netman/mobile-helpers.c:605
-#, fuzzy, c-format
-msgid "Requesting a network address for “%s”…"
-msgstr "Заявка за мрежов адрес за „%s“…"
-
-#: ../src/panel/widgets/netman/applet.c:3088
-#, fuzzy, c-format
-msgid "Network connection “%s” active"
-msgstr "Жичната връзка „%s“ е активна"
-
-#: ../src/panel/widgets/netman/applet.c:3165
-#, fuzzy, c-format
-msgid "Starting VPN connection “%s”…"
-msgstr "Стартиране на връзката към ВЧМ „%s“…"
-
-#: ../src/panel/widgets/netman/applet.c:3168
-#, fuzzy, c-format
-msgid "User authentication required for VPN connection “%s”…"
-msgstr "Изисква се идентификация на потребител за връзката към ВЧМ „%s“…"
-
-#: ../src/panel/widgets/netman/applet.c:3171
-#, fuzzy, c-format
-msgid "Requesting a VPN address for “%s”…"
-msgstr "Изискване на адрес за ВЧМ за „%s“…"
-
-#: ../src/panel/widgets/netman/applet.c:3174
-#, fuzzy, c-format
-msgid "VPN connection active"
-msgstr "Връзката към ВЧМ „%s“ е активна"
-
-#: ../src/panel/widgets/netman/applet.c:3226
-msgid "No network connection"
-msgstr "Няма връзка към мрежа"
-
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
-msgid "Network"
-msgstr "Мрежа"
-
-#: ../src/panel/widgets/netman/applet.c:3896
-msgid "NetworkManager Applet"
-msgstr "Аплетът NetworkManager"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:147
-msgid "Wrong PUK code; please contact your provider."
-msgstr "PUK-ът е грешен. Свържете се с доставчика на услугата."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:189
-msgid "Wrong PIN code; please contact your provider."
-msgstr "PIN-ът е грешен. Свържете се с доставчика на услугата."
-
-#. Start the spinner to show the progress of the unlock
-#: ../src/panel/widgets/netman/applet-device-broadband.c:240
-#, fuzzy
-msgid "Sending unlock code…"
-msgstr "Изпращане на отключващия код…"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:725
-#: ../src/panel/widgets/netman/applet-dialogs.c:532
-#, c-format
-msgid "Mobile Broadband (%s)"
-msgstr "Мобилна връзка (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:727
-msgid "Mobile Broadband"
-msgstr "Мобилна връзка"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:780
-#: ../src/panel/widgets/netman/applet-device-bt.c:61
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:107
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1022
+#: ../src/panel/configure.c:815
 msgid "Available"
 msgstr "Налични мрежи"
 
-#. Default connection item
-#: ../src/panel/widgets/netman/applet-device-broadband.c:793
-#, fuzzy
-msgid "New Mobile Broadband connection…"
-msgstr "Нова мобилна връзка"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:809
-#: ../src/panel/widgets/netman/applet-device-bt.c:75
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:124
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1443
-msgid "Connection Established"
-msgstr "Връзката е осъществена"
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:810
-msgid "You are now connected to the Mobile Broadband network."
-msgstr "Свързани сте към мобилната мрежа."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:950
-#: ../src/panel/widgets/netman/applet-device-broadband.c:956
-msgid "Mobile Broadband network."
-msgstr "Парола за мобилна мрежа."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:951
-msgid "You are now registered on the home network."
-msgstr "Регистрирани сте в домашната мрежа."
-
-#: ../src/panel/widgets/netman/applet-device-broadband.c:957
-msgid "You are now registered on a roaming network."
-msgstr "Регистрирани сте в мрежа с роуминг."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:76
-msgid "You are now connected to the mobile broadband network."
-msgstr "Свързани сте към мобилна мрежа."
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:104
-#: ../src/panel/widgets/netman/mobile-helpers.c:596
-#, fuzzy, c-format
-msgid "Preparing mobile broadband connection “%s”…"
-msgstr "Подготовка на мобилна връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:107
-#: ../src/panel/widgets/netman/mobile-helpers.c:599
-#, fuzzy, c-format
-msgid "Configuring mobile broadband connection “%s”…"
-msgstr "Настройване на мобилна връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:110
-#: ../src/panel/widgets/netman/mobile-helpers.c:602
-#, fuzzy, c-format
-msgid "User authentication required for mobile broadband connection “%s”…"
-msgstr "Необходима е идентификация на потребител за мобилна връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-bt.c:117
-#: ../src/panel/widgets/netman/mobile-helpers.c:624
-#, fuzzy, c-format
-msgid "Mobile broadband connection “%s” active"
-msgstr "Мобилната връзка „%s“ е активна"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:16
-msgid "Auto Ethernet"
-msgstr "Автоматична мрежа по Ethernet"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:72
-#, c-format
-msgid "Ethernet Networks (%s)"
-msgstr "Жични мрежи (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:74
-#, c-format
-msgid "Ethernet Network (%s)"
-msgstr "Жична мрежа (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:77
-msgid "Ethernet Networks"
-msgstr "Жични мрежи"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:79
-msgid "Ethernet Network"
-msgstr "Жична мрежа"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:125
-msgid "You are now connected to the ethernet network."
-msgstr "Свързани сте към жичната мрежа."
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:153
-#, fuzzy, c-format
-msgid "Preparing ethernet network connection “%s”…"
-msgstr "Подготовка на жична връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:156
-#, fuzzy, c-format
-msgid "Configuring ethernet network connection “%s”…"
-msgstr "Настройване на жична връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:159
-#, fuzzy, c-format
-msgid "User authentication required for ethernet network connection “%s”…"
-msgstr "Изисква се идентификация на потребител за жична връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:162
-#, fuzzy, c-format
-msgid "Requesting an ethernet network address for “%s”…"
-msgstr "Заявка за жичен мрежов адрес за „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:166
-#, fuzzy, c-format
-msgid "Ethernet network connection “%s” active"
-msgstr "Жичната връзка „%s“ е активна"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:338
-msgid "DSL authentication"
-msgstr "Идентификация за DSL"
-
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:1190
-#: ../src/panel/widgets/netman/mobile-helpers.c:455
-#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
-msgid "_Cancel"
+#: ../src/panel/configure.c:816
+msgid "Right Side"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-ethernet.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:1191
-#: ../src/panel/widgets/netman/mobile-helpers.c:456
-#: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
-#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
-msgid "_OK"
+#: ../src/panel/panel.cpp:235
+msgid "Add / Remove Plugins..."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:208
+#: ../src/panel/panel.cpp:239
 #, fuzzy
-msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "Свързване към скрита безжична мрежа"
+msgid "Configure Plugin..."
+msgstr "_Настройване на ВЧМ…"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:264
+#: ../src/panel/panel.cpp:243
 #, fuzzy
-msgid "Create _New Wi-Fi Network…"
-msgstr "Създаване на нова безжична мрежа"
+msgid "Notifications..."
+msgstr "Включване на _уведомяване"
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:305
-#, fuzzy
-msgid "Create Wi-Fi _Hotspot…"
-msgstr "Създаване на нова безжична мрежа"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:389
-msgid "(none)"
-msgstr "(нищо)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:567
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1548
-msgid "Failed to add new connection"
-msgstr "Неуспешно добавяне на нова връзка"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:568
-msgid "Insufficient privileges."
+#: ../src/panel/panel.cpp:247
+msgid "Taskbar Preferences..."
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
-msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "Свързани сте към обединената мрежа."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:926
-#, c-format
-msgid "Wi-Fi Networks (%s)"
-msgstr "Безжични мрежи (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:928
-#, c-format
-msgid "Wi-Fi Network (%s)"
-msgstr "Жична мрежа (%s)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:931
-msgid "Wi-Fi Network"
-msgid_plural "Wi-Fi Networks"
-msgstr[0] "Безжична мрежа"
-msgstr[1] "Безжични мрежи"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:983
-msgid "Wi-Fi is disabled"
-msgstr "Изключен Wi-Fi"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:984
-msgid "Wi-Fi is disabled by hardware switch"
-msgstr "Wi-Fi е изключен от хардуерен ключ"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1050
-msgid "More networks"
-msgstr "Още мрежи"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1257
-msgid "Wi-Fi Networks Available"
-msgstr "Достъпни са безжични мрежи"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1258
-msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr "Използвайте менюто с наличните мрежи, за да се свържете"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1442
-#, fuzzy, c-format
-msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "Свързани сте към безжичната мрежа „%s“."
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1477
-#, fuzzy, c-format
-msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "Подготовка на безжичната връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1480
-#, fuzzy, c-format
-msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "Настройване на безжична връзка „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1483
-#, fuzzy, c-format
-msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr "Изисква се идентификация на потребител за безжична мрежа „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1486
-#, fuzzy, c-format
-msgid "Requesting a Wi-Fi network address for “%s”…"
-msgstr "Заявка за мрежов адрес за „%s“…"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "Безжичната връзка „%s“ е активна: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1502
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "Безжичната връзка „%s“ е активна: %s (%d%%)"
-
-#: ../src/panel/widgets/netman/applet-device-wifi.c:1506
-#, fuzzy, c-format
-msgid "Wi-Fi network connection “%s” active"
-msgstr "Безжичната връзка „%s“ е активна"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:29
-msgid "Error displaying connection information:"
-msgstr "Грешка при показване на информацията за връзката:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:61
-msgid "LEAP"
-msgstr "LEAP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:63
-msgid "Dynamic WEP"
-msgstr "Динамичен WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:65
-#: ../src/panel/widgets/netman/applet-dialogs.c:237
-#: ../src/panel/widgets/netman/applet-dialogs.c:239
-msgid "WPA/WPA2"
-msgstr "WPA/WPA2"
-
-#. Create the expander
-#: ../src/panel/widgets/netman/applet-dialogs.c:174
-#, fuzzy
-msgid "More addresses"
-msgstr "Адреси"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:235
-msgid "WEP"
-msgstr "WEP"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:241
-msgid "WPA3"
+#: ../src/widgets/clock/clock.cpp:10
+msgid "Display format"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:245
-#: ../src/panel/widgets/netman/applet-dialogs.c:254
-msgctxt "Wi-Fi/Ethernet security"
-msgid "None"
-msgstr "Без"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:324
-#: ../src/panel/widgets/netman/applet-dialogs.c:597
-#, c-format
-msgid "%u Mb/s"
-msgstr "%u Mb/s"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:326
-#: ../src/panel/widgets/netman/applet-dialogs.c:599
-msgctxt "Speed"
-msgid "Unknown"
-msgstr "Неопределена"
-
-#. Address
-#: ../src/panel/widgets/netman/applet-dialogs.c:341
-#: ../src/panel/widgets/netman/applet-dialogs.c:363
-msgctxt "Address"
-msgid "Unknown"
-msgstr "Неопределен"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:342
-#: ../src/panel/widgets/netman/applet-dialogs.c:415
-msgid "IP Address"
-msgstr "IP адрес"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:364
-msgid "Broadcast Address"
-msgstr "Адрес за разпръскване"
-
-#. Prefix
-#: ../src/panel/widgets/netman/applet-dialogs.c:376
-msgctxt "Subnet Mask"
-msgid "Unknown"
-msgstr "Неопределена"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:377
-msgid "Subnet Mask"
-msgstr "Маска на подмрежата"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Primary DNS"
-msgstr "_Основен:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-#, fuzzy
-msgid "Secondary DNS"
-msgstr "_Втора парола:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:439
-msgid "Tertiary DNS"
+#: ../src/widgets/clock/clock.cpp:11
+msgid "Display font"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:518
-#, c-format
-msgid "Ethernet (%s)"
-msgstr "Ethernet (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:521
-#, c-format
-msgid "802.11 Wi-Fi (%s)"
-msgstr "802.11 Wi-Fi (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:528
-#, c-format
-msgid "GSM (%s)"
-msgstr "GSM (%s)"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:530
-#, c-format
-msgid "CDMA (%s)"
-msgstr "CDMA (%s)"
-
-#. --- General ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:538
-#: ../src/panel/widgets/netman/applet-dialogs.c:872
-msgid "General"
-msgstr "Общи"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:541
-msgid "Interface"
-msgstr "Интерфейс"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:556
-msgid "Hardware Address"
-msgstr "Хардуерен адрес"
-
-#. Driver
-#: ../src/panel/widgets/netman/applet-dialogs.c:569
-msgid "Driver"
-msgstr "Драйвер"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:602
-msgid "Speed"
-msgstr "Скорост"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:615
+#: ../src/widgets/clock/clock.cpp:15
 #, fuzzy
-msgid "Security"
-msgstr "Защита:"
+msgid "Clock"
+msgstr "_Отключване"
 
-#. --- IPv4 ---
-#: ../src/panel/widgets/netman/applet-dialogs.c:640
-#: ../src/panel/widgets/netman/applet-dialogs.c:902
-msgid "IPv4"
-msgstr "IPv4"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:659
-#: ../src/panel/widgets/netman/applet-dialogs.c:707
-msgid "Default Route"
-msgstr "Маршрут по подразбиране"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:687
-#: ../src/panel/widgets/netman/applet-dialogs.c:929
-msgid "IPv6"
-msgstr "IPv6"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:728
-msgid "Hotspot"
+#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
+msgid "Show usage as percentage"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:746
+#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
+msgid "Foreground colour"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
+msgid "Background colour"
+msgstr ""
+
+#: ../src/widgets/cpu/cpu.cpp:15
 #, fuzzy
-msgid "Password"
-msgstr "Парола:"
+msgid "CPU"
+msgstr "GTC"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:876
-msgid "VPN Type"
-msgstr "Вид ВЧМ"
+#: ../src/widgets/gpu/gpu.cpp:15
+msgid "GPU"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:881
-msgid "VPN Gateway"
-msgstr "Шлюз за ВЧМ"
+#: ../src/widgets/launchers/launchers.cpp:20
+msgid "Icon spacing"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:885
-msgid "VPN Username"
-msgstr "Потребител за ВЧМ"
+#: ../src/widgets/launchers/launchers.cpp:24
+msgid "Launcher"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:889
-msgid "VPN Banner"
-msgstr "Известие за ВЧМ"
+#: ../src/widgets/launchers/launchers.cpp:196
+msgid "Remove from Launcher"
+msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:893
-msgid "Base Connection"
-msgstr "Основна връзка"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:894
-msgid "Unknown"
-msgstr "Неопределена"
-
-#. Shouldn't really happen but ...
-#: ../src/panel/widgets/netman/applet-dialogs.c:1091
-msgid "No valid active connections found!"
-msgstr "Не са намерени активни връзки!"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1139
+#: ../src/widgets/notify/notify.cpp:5
 #, fuzzy
+msgid "Show notifications"
+msgstr "Включване на _уведомяване"
+
+#: ../src/widgets/notify/notify.cpp:6
+#, fuzzy
+msgid "Time before notifications close"
+msgstr "Изключване на уведомяването за установяването на връзки"
+
+#: ../src/widgets/notify/notify.cpp:10
+#, fuzzy
+msgid "Notifications"
+msgstr "Включване на _уведомяване"
+
+#: ../src/widgets/power/power.c:86
 msgid ""
-"Copyright © 2004-2017 Red Hat, Inc.\n"
-"Copyright © 2005-2008 Novell, Inc.\n"
-"and many other community contributors and translators"
+"This power supply is not capable of supplying 5A\n"
+"Power to peripherals will be restricted"
 msgstr ""
-"Авторски права © 2004-2011 Red Hat, Inc.\n"
-"Авторски права © 2005-2008 Novell, Inc.\n"
-"и още много сътрудници и преводачи"
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1142
+#: ../src/widgets/power/power.c:102
 msgid ""
-"Notification area applet for managing your network devices and connections."
-msgstr ""
-"Аплет за областта за уведомяване за управление на мрежовите устройства и "
-"връзки."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1144
-msgid "NetworkManager Website"
-msgstr "Уеб сайт на NetworkManager"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1148
-msgid "translator-credits"
+"Reset due to low power event\n"
+"Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1158
+#: ../src/widgets/power/power.c:163
 msgid ""
-"The NetworkManager Applet could not find some required resources (the .ui "
-"file was not found)."
+"High display resolution is using large amounts of memory.\n"
+"Consider reducing screen resolution."
 msgstr ""
-"Аплетът NetworkManager не можа да открие някои задължителни ресурси (файлът ."
-"ui не е намерен)."
 
-#: ../src/panel/widgets/netman/applet-dialogs.c:1163
-msgid "Missing resources"
-msgstr "Липсващи ресурси"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1188
-msgid "Mobile broadband network password"
-msgstr "Парола за мобилна връзка"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1197
-#, fuzzy, c-format
-msgid "A password is required to connect to “%s”."
-msgstr "За свързване към „%s“ се изисква парола."
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1220
-msgid "Password:"
-msgstr "Парола:"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1502
-msgid "SIM PIN unlock required"
-msgstr "Необходим е PIN"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1503
-msgid "SIM PIN Unlock Required"
-msgstr "Необходим е PIN"
-
-#. FIXME: some warning about # of times you can enter incorrect PIN
-#: ../src/panel/widgets/netman/applet-dialogs.c:1505
-#, fuzzy, c-format
+#: ../src/widgets/power/power.c:218
 msgid ""
-"The mobile broadband device “%s” requires a SIM PIN code before it can be "
-"used."
-msgstr ""
-"Мобилното широколентово устройство „%s“ изисква PIN за SIM, преди да се "
-"свърже."
-
-#. Translators: PIN code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1507
-msgid "PIN code:"
-msgstr "PIN:"
-
-#. Translators: Show/obscure PIN checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1511
-msgid "Show PIN code"
-msgstr "Показване на PIN"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1513
-msgid "SIM PUK unlock required"
-msgstr "Необходим е PUK за SIM"
-
-#: ../src/panel/widgets/netman/applet-dialogs.c:1514
-msgid "SIM PUK Unlock Required"
-msgstr "Необходим е PUK за отключване на SIM"
-
-#. FIXME: some warning about # of times you can enter incorrect PUK
-#: ../src/panel/widgets/netman/applet-dialogs.c:1516
-#, fuzzy, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PUK code before it can be "
-"used."
-msgstr ""
-"Мобилното широколентово устройство „%s“ изисква PUK за SIM, преди да се "
-"използва."
-
-#. Translators: PUK code entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1518
-msgid "PUK code:"
-msgstr "PUK:"
-
-#. Translators: New PIN entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1521
-msgid "New PIN code:"
-msgstr "Нов PIN:"
-
-#. Translators: New PIN verification entry label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1523
-msgid "Re-enter new PIN code:"
-msgstr "Повторете PIN:"
-
-#. Translators: Show/obscure PIN/PUK checkbox label
-#: ../src/panel/widgets/netman/applet-dialogs.c:1528
-msgid "Show PIN/PUK codes"
-msgstr "Показване на PIN/PUK"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:427
-#, fuzzy
-msgid "Connection had no VPN setting"
-msgstr "Информация за връзката"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:477
-#, fuzzy, c-format
-msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr "Не може да се създаде комутируема връзка: %s"
-
-#: ../src/panel/widgets/netman/applet-vpn-request.c:485
-msgid "Failed to write connection to VPN UI: incomplete write"
+"USB overcurrent\n"
+"Please check your connected USB devices"
 msgstr ""
 
-#: ../src/panel/widgets/netman/ethernet-dialog.c:87
-#: ../src/panel/widgets/netman/8021x.ui.h:1
-msgid "802.1X authentication"
-msgstr "Идентификация 802.1Х"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:36
-#: ../src/panel/widgets/netman/mobile-helpers.c:272
-msgid "CDMA"
-msgstr "CDMA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:38
-msgid "EVDO"
-msgstr "EVDO"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:40
-#: ../src/panel/widgets/netman/mobile-helpers.c:270
-msgid "GSM"
-msgstr "GSM"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:42
-msgid "GPRS"
-msgstr "GPRS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:44
-msgid "EDGE"
-msgstr "EDGE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:46
-msgid "UMTS"
-msgstr "UMTS"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:48
-msgid "HSDPA"
-msgstr "HSDPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:50
-msgid "HSUPA"
-msgstr "HSUPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:52
-msgid "HSPA"
-msgstr "HSPA"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:54
-msgid "HSPA+"
-msgstr "HSPA+"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:56
-msgid "LTE"
-msgstr "LTE"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:103
-msgid "not enabled"
-msgstr "не е включено"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:109
-msgid "not registered"
-msgstr "не е регистрирана"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:127
-#, c-format
-msgid "Home network (%s)"
-msgstr "Домашна мрежа (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:129
-#, c-format
-msgid "Home network"
-msgstr "Домашна мрежа"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:137
-msgid "searching"
-msgstr "търсене"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:140
-msgid "registration denied"
-msgstr "регистрацията е отхвърлена"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:145
-#: ../src/panel/widgets/netman/mb-menu-item.c:151
-#, c-format
-msgid "%s (%s roaming)"
-msgstr "%s (роуминг към %s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:147
-#: ../src/panel/widgets/netman/mb-menu-item.c:153
-#, c-format
-msgid "%s (roaming)"
-msgstr "%s (роуминг)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:156
-#, c-format
-msgid "Roaming network (%s)"
-msgstr "Мрежа с роуминг (%s)"
-
-#: ../src/panel/widgets/netman/mb-menu-item.c:158
-#, c-format
-msgid "Roaming network"
-msgstr "Мрежа с роуминг"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:320
-#, fuzzy, c-format
-msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "ПИН за картата „%s“ на „%s“"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:453
-msgid "PIN code required"
-msgstr "Необходим е PIN"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:461
-msgid "PIN code is needed for the mobile broadband device"
-msgstr "Мобилното устройство изисква PIN"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:619
-#, fuzzy, c-format
-msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
-msgstr "Мобилната връзка „%s“ е активна: (%d%%%s%s)"
-
-#: ../src/panel/widgets/netman/mobile-helpers.c:622
-msgid "roaming"
-msgstr "роуминг"
-
-#: ../src/panel/widgets/netman/netman.c:139
-#, fuzzy
-msgid "Network Manager"
-msgstr "Аплетът NetworkManager"
-
-#: ../src/panel/widgets/netman/netman.c:140
-#, fuzzy
-msgid "Controller for Network Manager"
-msgstr "Аплетът NetworkManager"
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:793
-#, c-format
-msgid "object class '%s' has no property named '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:800
-#, c-format
-msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:807
-#, c-format
-msgid ""
-"construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:815
-#, c-format
-msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:824
-#, c-format
-msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
-
-#: ../src/panel/widgets/netman/nm-shared-utils.c:835
-#, c-format
-msgid ""
-"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
-"type '%s'"
-msgstr ""
-
-#. The %s is a mobile provider name, eg "T-Mobile"
-#: ../src/panel/widgets/netman/utils.c:160
-#, c-format
-msgid "%s connection"
-msgstr "Връзка към %s"
-
-#: ../src/panel/widgets/netman/utils.c:534
-#, fuzzy
-msgid "PEM certificates (*.pem, *.crt, *.cer)"
-msgstr "Сертификати, DER или PEM (*.der, *.pem, *.crt, *.cer)"
-
-#: ../src/panel/widgets/netman/utils.c:546
-msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
-msgstr ""
-"Частни ключове, формат DER, PEM или PKCS#12 (*.der, *.pem, *.p12, *.key)"
-
-#: ../src/panel/widgets/power/ptbatt.c:389
-#, c-format
-msgid "Charging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:391
-#, c-format
-msgid ""
-"Charging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:393
-#, c-format
-msgid ""
-"Charging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:398
-#, c-format
-msgid ""
-"Charged : %d%%\n"
-"On external power"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:404
-#, c-format
-msgid "Discharging : %d%%"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:406
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %d minutes"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:408
-#, c-format
-msgid ""
-"Discharging : %d%%\n"
-"Time remaining : %0.1f hours"
-msgstr ""
-
-#: ../src/panel/widgets/power/ptbatt.c:431
+#: ../src/widgets/power/power.c:269
 msgid ""
 "Low voltage warning\n"
 "Please check your power supply"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:513
-msgid "Power & Battery"
+#: ../src/widgets/power/power.c:288
+msgid "PSU low voltage detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/power/ptbatt.c:514
-msgid "Monitors voltage and laptop battery"
+#: ../src/widgets/power/power.c:289
+msgid "USB over current detected\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
-msgid "Run"
-msgstr "Стартирай..."
-
-#: ../src/panel/widgets/smenu/gtk-run.c:412
-msgid "Enter the command you want to execute:"
+#: ../src/widgets/power/power.c:290
+msgid "Low power reset has occurred\n"
 msgstr ""
 
-#: ../src/panel/widgets/smenu/menu.c:116
-msgid "Logout command is not set"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:122
-msgid "Restart"
-msgstr "Рестартирай"
-
-#: ../src/panel/widgets/smenu/menu.c:123
-msgid "Logout"
-msgstr "Излез"
-
-#: ../src/panel/widgets/smenu/menu.c:140
-msgid "No file manager is configured."
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:489
-msgid "Add to desktop"
-msgstr "Добави към Плота"
-
-#: ../src/panel/widgets/smenu/menu.c:496
-msgid "Properties"
-msgstr "Свойства"
-
-#: ../src/panel/widgets/smenu/menu.c:954
-msgid "Click here to open applications menu"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1047
-msgid "Menu"
-msgstr "Меню"
-
-#: ../src/panel/widgets/smenu/menu.c:1048
-msgid "Icon"
-msgstr "Икона"
-
-#: ../src/panel/widgets/smenu/menu.c:1049
-msgid "Padding"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1050
-msgid "Fixed Size"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1058
-msgid "Menu with Search"
-msgstr ""
-
-#: ../src/panel/widgets/smenu/menu.c:1059
+#: ../src/widgets/power/power.c:341
 #, fuzzy
-msgid "Searchable Application Menu"
-msgstr "Главно меню"
+msgid "Power Information..."
+msgstr "Информация за връзката"
 
-#: ../src/panel/widgets/updater/updater.c:189
-msgid ""
-"Updates are available\n"
-"Click the update icon to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:211
+#: ../src/widgets/power/power.cpp:12
 #, fuzzy
-msgid "No network connection - cannot install updates."
-msgstr "Няма връзка към мрежа"
+msgid "System Monitor"
+msgstr "_Приоритет:"
 
-#: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
+#: ../src/widgets/spacing/spacing.cpp:5
+msgid "Width in pixels"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:320
-msgid "Show Updates..."
+#: ../src/widgets/tray/tray.cpp:8
+msgid "Smooth scrolling threshold"
 msgstr ""
 
-#: ../src/panel/widgets/updater/updater.c:324
-msgid "Install Updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:470
-msgid "Updates are available - click to install"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
-msgid "Updater"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:531
-msgid "Hours between checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/updater/updater.c:562
-msgid "Checks for updates"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:231
-msgid "Reconnecting Bluetooth devices..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:333
-#, fuzzy, c-format
-msgid "Bluetooth %s device not found"
-msgstr "Свързана връзка %d"
-
-#. update dialog to show a warning
-#: ../src/panel/widgets/volumepulse/bluetooth.c:405
-msgid "Device not found by PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, c-format
-msgid "Could not set profile for device : %s"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:588
-#, fuzzy, c-format
-msgid "Failed to connect to Bluetooth device - %s"
-msgstr "неуспешна връзка с телефона."
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:656
-#, c-format
-msgid "Connecting Bluetooth device '%s' as output..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:712
-#, c-format
-msgid "Connecting Bluetooth device '%s' as input..."
-msgstr ""
-
-#. if the current default source and sink are both the same device, disconnect it and reconnect to
-#. put it into A2DP rather than HSP
-#: ../src/panel/widgets/volumepulse/bluetooth.c:785
-msgid "Reconnecting Bluetooth input device as output only..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/bluetooth.c:830
-msgid "Reconnecting Bluetooth device..."
-msgstr ""
-
-#. Create a check button as the child of the vertical box.
-#: ../src/panel/widgets/volumepulse/commongui.c:140
-msgid "Mute"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/commongui.c:231
-msgid "No audio devices found"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:71
-msgid "Input from this device not available in the current profile"
-msgstr ""
-
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/micpulse.c:144
-msgid "Mic volume"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:216
-msgid "Microphone Control (PulseAudio)"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/micpulse.c:217
-msgid "Display and control microphones for PulseAudio"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:103
-msgid "HDMI"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:116
-msgid "AV Jack"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:139
-msgid "Device Profiles..."
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:172
-msgid "Output to this device not available in the current profile"
-msgstr ""
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:221
+#: ../src/widgets/tray/tray.cpp:9
 #, fuzzy
-msgid "Device Profiles"
-msgstr "Неуспешно прекъсване на връзка"
+msgid "Middle button activates menu"
+msgstr "Неуспешно задействане на връзка"
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:279
+#: ../src/widgets/tray/tray.cpp:13
 #, fuzzy
-msgid "Device not connected"
-msgstr "Неуспешно прекъсване на връзка"
+msgid "System Tray"
+msgstr "_Приоритет:"
 
-#. update tooltip
-#: ../src/panel/widgets/volumepulse/volumepulse.c:382
-#, fuzzy
-msgid "Volume control"
-msgstr "Контрол на потока"
-
-#: ../src/panel/widgets/volumepulse/volumepulse.c:461
-msgid "Volume Control (PulseAudio)"
+#: ../src/widgets/window-list/toplevel.cpp:83
+#: ../src/widgets/window-list/toplevel.cpp:449
+msgid "Minimize"
 msgstr ""
 
-#: ../src/panel/widgets/volumepulse/volumepulse.c:462
-msgid "Display and control volume for PulseAudio"
+#: ../src/widgets/window-list/toplevel.cpp:84
+#: ../src/widgets/window-list/toplevel.cpp:457
+msgid "Maximize"
 msgstr ""
 
-#: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
-msgid "label"
-msgstr ""
-
-#: ../data/lxplug-updater.ui.h:1
-#, fuzzy
-msgid "Available Updates"
-msgstr "Налични мрежи"
-
-#: ../data/lxplug-updater.ui.h:2
+#: ../src/widgets/window-list/toplevel.cpp:85
 msgid "Close"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:3
-msgid "Install"
+#: ../src/widgets/window-list/toplevel.cpp:446
+msgid "Unminimize"
 msgstr ""
 
-#: ../data/lxplug-updater.ui.h:4
-msgid "The following packages can be updated :"
+#: ../src/widgets/window-list/toplevel.cpp:454
+msgid "Unmaximize"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:1
+#: ../src/widgets/window-list/window-list.cpp:14
+msgid "Maximum width of task button"
+msgstr ""
+
+#: ../src/widgets/window-list/window-list.cpp:18
+msgid "Window List"
+msgstr ""
+
+#: ../data/config.ui.h:1
+msgid "Add / Remove Plugins"
+msgstr ""
+
+#: ../data/config.ui.h:2
 #, fuzzy
-msgid "Add New Device"
-msgstr "Което и да е устройство"
+msgid "Add to left"
+msgstr "Добави към Плота"
 
-#: ../data/lxplug-bluetooth.ui.h:3
-msgid "_Pair"
+#: ../data/config.ui.h:3
+msgid "Add plugin to left side of taskbar"
 msgstr ""
 
-#: ../data/lxplug-bluetooth.ui.h:4
-msgid "Searching for Bluetooth devices..."
-msgstr ""
-
-#: ../src/panel/widgets/netman/8021x.ui.h:3
+#: ../data/config.ui.h:4
 #, fuzzy
-msgid "C_onnect"
-msgstr "Вр_ъзка:"
+msgid "Add to right"
+msgstr "Добави към Плота"
 
-#: ../src/panel/widgets/netman/8021x.ui.h:4
-#, fuzzy
-msgid "_Network name"
-msgstr "_Име на мрежа:"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:2
-msgid "_Unlock"
-msgstr "_Отключване"
-
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:3
-msgid "Automatically unlock this device"
-msgstr "Автоматично отключване на това устройство"
-
-#: ../src/panel/widgets/netman/info.ui.h:1
-msgid "Connection Information"
-msgstr "Информация за връзката"
-
-#: ../src/panel/widgets/netman/info.ui.h:2
-msgid "_Close"
+#: ../data/config.ui.h:5
+msgid "Add plugin to right side of taskbar"
 msgstr ""
+
+#: ../data/config.ui.h:6
+msgid "Remove"
+msgstr ""
+
+#: ../data/config.ui.h:7
+msgid "Remove plugin from taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:8
+msgid "Move left"
+msgstr ""
+
+#: ../data/config.ui.h:9
+msgid "Move plugin towards left of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:10
+msgid "Move right"
+msgstr ""
+
+#: ../data/config.ui.h:11
+msgid "Move plugin towards right of taskbar"
+msgstr ""
+
+#: ../data/config.ui.h:12
+#, fuzzy
+msgid "Configure..."
+msgstr "_Настройване на ВЧМ…"
+
+#: ../data/config.ui.h:13
+msgid "Configure selected plugin"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:1
+msgid "label"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:2
+msgid "_Cancel"
+msgstr ""
+
+#: ../data/lxpanel-modal.ui.h:3
+msgid "_OK"
+msgstr ""
+
+#, fuzzy, c-format
+#~ msgid "Pairing successful - connecting..."
+#~ msgstr "Подготовка на връзката към обединената мрежа „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Connection successful"
+#~ msgstr "Неуспешно установяване на връзка"
+
+#, fuzzy, c-format
+#~ msgid "Connection failed - %s"
+#~ msgstr "Неуспешно установяване на връзка"
+
+#, fuzzy, c-format
+#~ msgid "Connecting to '%s'..."
+#~ msgstr "Настройване на обединената връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Disconnecting from '%s'..."
+#~ msgstr "Подготовка на свързаната връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Disconnection failed - %s"
+#~ msgstr "Неуспешно прекъсване"
+
+#, fuzzy
+#~ msgid "Use the audio menu to connect to this device"
+#~ msgstr "Използвайте менюто с наличните мрежи, за да се свържете"
+
+#, fuzzy
+#~ msgid "Disconnect..."
+#~ msgstr " Прекъсване"
+
+#, fuzzy
+#~ msgid "Connect..."
+#~ msgstr "_Свързване"
+
+#, fuzzy
+#~ msgid "No Bluetooth adapter found"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Turn On Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Turn Off Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy
+#~ msgid "Add Device..."
+#~ msgstr "Което и да е устройство"
+
+#~ msgid "Bluetooth"
+#~ msgstr "Bluetooth"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "Failed to eject %s\n"
+#~ "%s"
+#~ msgstr "Не може да се създаде връзка по лична мрежа PAN: %s"
+
+#, fuzzy
+#~ msgid "ad-hoc"
+#~ msgstr "Инцидентна (ад хок)"
+
+#~ msgid "Unknown error"
+#~ msgstr "Непозната грешка"
+
+#~ msgid "Connection failure"
+#~ msgstr "Неуспешно установяване на връзка"
+
+#~ msgid "Failed to add/activate connection"
+#~ msgstr "Неуспешно добавяне/задействане на връзка"
+
+#~ msgid "Device disconnect failed"
+#~ msgstr "Неуспешно прекъсване на връзка"
+
+#~ msgid "Disconnect failure"
+#~ msgstr "Неуспешно прекъсване"
+
+#~ msgid "Connection activation failed"
+#~ msgstr "Неуспешно задействане на връзка"
+
+#, fuzzy
+#~ msgid "Don’t show this message again"
+#~ msgstr "Това съобщение да не се показва повече"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” disconnected because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ прекъсна, защото мрежовата връзка беше прекъсната."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the network connection was "
+#~ "interrupted."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото мрежовата връзка беше "
+#~ "прекъсната."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service stopped "
+#~ "unexpectedly."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ спря неочаквано."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service returned invalid "
+#~ "configuration."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ върна грешни "
+#~ "настройки."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the connection attempt timed out."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото времето за опити изтече."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service did not start in "
+#~ "time."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ не стартира "
+#~ "навреме."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ не успя да "
+#~ "стартира."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because there were no valid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото нямаше валидни тайни за ВЧМ."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because of invalid VPN secrets."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, поради невалидни тайни за ВЧМ."
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed."
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна."
+
+#, c-format
+#~ msgid ""
+#~ "VPN connection has been successfully established.\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Успешна връзка към ВЧМ.\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid "VPN connection has been successfully established.\n"
+#~ msgstr "Успешна връзка към ВЧМ.\n"
+
+#~ msgid "VPN Login Message"
+#~ msgstr "Съобщение при идентификация пред ВЧМ"
+
+#~ msgid "VPN Connection Failed"
+#~ msgstr "Връзката към ВЧМ е неуспешна"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed because the VPN service failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ е неуспешна, защото услугата за ВЧМ не успя да "
+#~ "стартира.\n"
+#~ "\n"
+#~ "%s"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "\n"
+#~ "The VPN connection “%s” failed to start.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "Връзката към ВЧМ „%s“ не успя да стартира.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "device not ready (firmware missing)"
+#~ msgstr "устройството не е готово (липсва фърмуер)"
+
+#~ msgid "device not ready"
+#~ msgstr "устройството не е готово"
+
+#~ msgid "disconnected"
+#~ msgstr "връзката е прекъсната"
+
+#~ msgid "Disconnect"
+#~ msgstr " Прекъсване"
+
+#~ msgid "device not managed"
+#~ msgstr "устройството не се управлява"
+
+#~ msgid "No network devices available"
+#~ msgstr "Не са налични мрежови устройства"
+
+#, fuzzy
+#~ msgid "_Advanced Options"
+#~ msgstr "Допълнителни"
+
+#~ msgid "_VPN Connections"
+#~ msgstr "_Връзки към ВЧМ"
+
+#, fuzzy
+#~ msgid "_Add a VPN connection…"
+#~ msgstr "_Връзки към ВЧМ"
+
+#~ msgid "Connection _Information"
+#~ msgstr "_Информация за връзката"
+
+#, fuzzy
+#~ msgid "Edit Connections…"
+#~ msgstr "Настройки на връзките…"
+
+#, fuzzy
+#~ msgid "NetworkManager is not running…"
+#~ msgstr "NetworkManager не е включен…"
+
+#, fuzzy
+#~ msgid "Wi-Fi country is not set"
+#~ msgstr "Моята държава не е в списъка"
+
+#~ msgid "Networking disabled"
+#~ msgstr "Изключена мрежа"
+
+#~ msgid "Enable _Networking"
+#~ msgstr "_Включване на мрежата"
+
+#~ msgid "Enable _Wi-Fi"
+#~ msgstr "Включване на _безжичната мрежа"
+
+#~ msgid "Enable _Mobile Broadband"
+#~ msgstr "Включване на _мобилна връзка"
+
+#~ msgid "_About"
+#~ msgstr "_Относно"
+
+#, fuzzy, c-format
+#~ msgid "You are now connected to “%s”."
+#~ msgstr "Свързани сте към „%s“."
+
+#~ msgid "Disconnected"
+#~ msgstr "Без връзка"
+
+#~ msgid "The network connection has been disconnected."
+#~ msgstr "Връзката към мрежата е прекъсната."
+
+#, fuzzy, c-format
+#~ msgid "Preparing network connection “%s”…"
+#~ msgstr "Подготовка на връзката „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for network connection “%s”…"
+#~ msgstr "Изисква се идентификация на потребител за връзката „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Requesting a network address for “%s”…"
+#~ msgstr "Заявка за мрежов адрес за „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Network connection “%s” active"
+#~ msgstr "Жичната връзка „%s“ е активна"
+
+#, fuzzy, c-format
+#~ msgid "Starting VPN connection “%s”…"
+#~ msgstr "Стартиране на връзката към ВЧМ „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for VPN connection “%s”…"
+#~ msgstr "Изисква се идентификация на потребител за връзката към ВЧМ „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Requesting a VPN address for “%s”…"
+#~ msgstr "Изискване на адрес за ВЧМ за „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "VPN connection active"
+#~ msgstr "Връзката към ВЧМ „%s“ е активна"
+
+#~ msgid "No network connection"
+#~ msgstr "Няма връзка към мрежа"
+
+#~ msgid "Network"
+#~ msgstr "Мрежа"
+
+#~ msgid "NetworkManager Applet"
+#~ msgstr "Аплетът NetworkManager"
+
+#~ msgid "Wrong PUK code; please contact your provider."
+#~ msgstr "PUK-ът е грешен. Свържете се с доставчика на услугата."
+
+#~ msgid "Wrong PIN code; please contact your provider."
+#~ msgstr "PIN-ът е грешен. Свържете се с доставчика на услугата."
+
+#, fuzzy
+#~ msgid "Sending unlock code…"
+#~ msgstr "Изпращане на отключващия код…"
+
+#, c-format
+#~ msgid "Mobile Broadband (%s)"
+#~ msgstr "Мобилна връзка (%s)"
+
+#~ msgid "Mobile Broadband"
+#~ msgstr "Мобилна връзка"
+
+#, fuzzy
+#~ msgid "New Mobile Broadband connection…"
+#~ msgstr "Нова мобилна връзка"
+
+#~ msgid "Connection Established"
+#~ msgstr "Връзката е осъществена"
+
+#~ msgid "You are now connected to the Mobile Broadband network."
+#~ msgstr "Свързани сте към мобилната мрежа."
+
+#~ msgid "Mobile Broadband network."
+#~ msgstr "Парола за мобилна мрежа."
+
+#~ msgid "You are now registered on the home network."
+#~ msgstr "Регистрирани сте в домашната мрежа."
+
+#~ msgid "You are now registered on a roaming network."
+#~ msgstr "Регистрирани сте в мрежа с роуминг."
+
+#~ msgid "You are now connected to the mobile broadband network."
+#~ msgstr "Свързани сте към мобилна мрежа."
+
+#, fuzzy, c-format
+#~ msgid "Preparing mobile broadband connection “%s”…"
+#~ msgstr "Подготовка на мобилна връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Configuring mobile broadband connection “%s”…"
+#~ msgstr "Настройване на мобилна връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for mobile broadband connection “%s”…"
+#~ msgstr "Необходима е идентификация на потребител за мобилна връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Mobile broadband connection “%s” active"
+#~ msgstr "Мобилната връзка „%s“ е активна"
+
+#~ msgid "Auto Ethernet"
+#~ msgstr "Автоматична мрежа по Ethernet"
+
+#, c-format
+#~ msgid "Ethernet Networks (%s)"
+#~ msgstr "Жични мрежи (%s)"
+
+#, c-format
+#~ msgid "Ethernet Network (%s)"
+#~ msgstr "Жична мрежа (%s)"
+
+#~ msgid "Ethernet Networks"
+#~ msgstr "Жични мрежи"
+
+#~ msgid "Ethernet Network"
+#~ msgstr "Жична мрежа"
+
+#~ msgid "You are now connected to the ethernet network."
+#~ msgstr "Свързани сте към жичната мрежа."
+
+#, fuzzy, c-format
+#~ msgid "Preparing ethernet network connection “%s”…"
+#~ msgstr "Подготовка на жична връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Configuring ethernet network connection “%s”…"
+#~ msgstr "Настройване на жична връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for ethernet network connection “%s”…"
+#~ msgstr "Изисква се идентификация на потребител за жична връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Requesting an ethernet network address for “%s”…"
+#~ msgstr "Заявка за жичен мрежов адрес за „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Ethernet network connection “%s” active"
+#~ msgstr "Жичната връзка „%s“ е активна"
+
+#~ msgid "DSL authentication"
+#~ msgstr "Идентификация за DSL"
+
+#, fuzzy
+#~ msgid "_Connect to Hidden Wi-Fi Network…"
+#~ msgstr "Свързване към скрита безжична мрежа"
+
+#, fuzzy
+#~ msgid "Create _New Wi-Fi Network…"
+#~ msgstr "Създаване на нова безжична мрежа"
+
+#, fuzzy
+#~ msgid "Create Wi-Fi _Hotspot…"
+#~ msgstr "Създаване на нова безжична мрежа"
+
+#~ msgid "(none)"
+#~ msgstr "(нищо)"
+
+#~ msgid "Failed to add new connection"
+#~ msgstr "Неуспешно добавяне на нова връзка"
+
+#, fuzzy, c-format
+#~ msgid "Do you want to disconnect from the wireless network '%s'?"
+#~ msgstr "Свързани сте към обединената мрежа."
+
+#, c-format
+#~ msgid "Wi-Fi Networks (%s)"
+#~ msgstr "Безжични мрежи (%s)"
+
+#, c-format
+#~ msgid "Wi-Fi Network (%s)"
+#~ msgstr "Жична мрежа (%s)"
+
+#~ msgid "Wi-Fi Network"
+#~ msgid_plural "Wi-Fi Networks"
+#~ msgstr[0] "Безжична мрежа"
+#~ msgstr[1] "Безжични мрежи"
+
+#~ msgid "Wi-Fi is disabled"
+#~ msgstr "Изключен Wi-Fi"
+
+#~ msgid "Wi-Fi is disabled by hardware switch"
+#~ msgstr "Wi-Fi е изключен от хардуерен ключ"
+
+#~ msgid "More networks"
+#~ msgstr "Още мрежи"
+
+#~ msgid "Wi-Fi Networks Available"
+#~ msgstr "Достъпни са безжични мрежи"
+
+#~ msgid "Use the network menu to connect to a Wi-Fi network"
+#~ msgstr "Използвайте менюто с наличните мрежи, за да се свържете"
+
+#, fuzzy, c-format
+#~ msgid "You are now connected to the Wi-Fi network “%s”."
+#~ msgstr "Свързани сте към безжичната мрежа „%s“."
+
+#, fuzzy, c-format
+#~ msgid "Preparing Wi-Fi network connection “%s”…"
+#~ msgstr "Подготовка на безжичната връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Configuring Wi-Fi network connection “%s”…"
+#~ msgstr "Настройване на безжична връзка „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "User authentication required for Wi-Fi network “%s”…"
+#~ msgstr "Изисква се идентификация на потребител за безжична мрежа „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Requesting a Wi-Fi network address for “%s”…"
+#~ msgstr "Заявка за мрежов адрес за „%s“…"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
+#~ msgstr "Безжичната връзка „%s“ е активна: %s (%d%%)"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
+#~ msgstr "Безжичната връзка „%s“ е активна: %s (%d%%)"
+
+#, fuzzy, c-format
+#~ msgid "Wi-Fi network connection “%s” active"
+#~ msgstr "Безжичната връзка „%s“ е активна"
+
+#~ msgid "Error displaying connection information:"
+#~ msgstr "Грешка при показване на информацията за връзката:"
+
+#~ msgid "LEAP"
+#~ msgstr "LEAP"
+
+#~ msgid "Dynamic WEP"
+#~ msgstr "Динамичен WEP"
+
+#~ msgid "WPA/WPA2"
+#~ msgstr "WPA/WPA2"
+
+#, fuzzy
+#~ msgid "More addresses"
+#~ msgstr "Адреси"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgctxt "Wi-Fi/Ethernet security"
+#~ msgid "None"
+#~ msgstr "Без"
+
+#, c-format
+#~ msgid "%u Mb/s"
+#~ msgstr "%u Mb/s"
+
+#~ msgctxt "Speed"
+#~ msgid "Unknown"
+#~ msgstr "Неопределена"
+
+#~ msgctxt "Address"
+#~ msgid "Unknown"
+#~ msgstr "Неопределен"
+
+#~ msgid "IP Address"
+#~ msgstr "IP адрес"
+
+#~ msgid "Broadcast Address"
+#~ msgstr "Адрес за разпръскване"
+
+#~ msgctxt "Subnet Mask"
+#~ msgid "Unknown"
+#~ msgstr "Неопределена"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Маска на подмрежата"
+
+#, fuzzy
+#~ msgid "Primary DNS"
+#~ msgstr "_Основен:"
+
+#, fuzzy
+#~ msgid "Secondary DNS"
+#~ msgstr "_Втора парола:"
+
+#, c-format
+#~ msgid "Ethernet (%s)"
+#~ msgstr "Ethernet (%s)"
+
+#, c-format
+#~ msgid "802.11 Wi-Fi (%s)"
+#~ msgstr "802.11 Wi-Fi (%s)"
+
+#, c-format
+#~ msgid "GSM (%s)"
+#~ msgstr "GSM (%s)"
+
+#, c-format
+#~ msgid "CDMA (%s)"
+#~ msgstr "CDMA (%s)"
+
+#~ msgid "General"
+#~ msgstr "Общи"
+
+#~ msgid "Interface"
+#~ msgstr "Интерфейс"
+
+#~ msgid "Hardware Address"
+#~ msgstr "Хардуерен адрес"
+
+#~ msgid "Driver"
+#~ msgstr "Драйвер"
+
+#~ msgid "Speed"
+#~ msgstr "Скорост"
+
+#, fuzzy
+#~ msgid "Security"
+#~ msgstr "Защита:"
+
+#~ msgid "IPv4"
+#~ msgstr "IPv4"
+
+#~ msgid "Default Route"
+#~ msgstr "Маршрут по подразбиране"
+
+#~ msgid "IPv6"
+#~ msgstr "IPv6"
+
+#, fuzzy
+#~ msgid "Password"
+#~ msgstr "Парола:"
+
+#~ msgid "VPN Type"
+#~ msgstr "Вид ВЧМ"
+
+#~ msgid "VPN Gateway"
+#~ msgstr "Шлюз за ВЧМ"
+
+#~ msgid "VPN Username"
+#~ msgstr "Потребител за ВЧМ"
+
+#~ msgid "VPN Banner"
+#~ msgstr "Известие за ВЧМ"
+
+#~ msgid "Base Connection"
+#~ msgstr "Основна връзка"
+
+#~ msgid "No valid active connections found!"
+#~ msgstr "Не са намерени активни връзки!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright © 2004-2017 Red Hat, Inc.\n"
+#~ "Copyright © 2005-2008 Novell, Inc.\n"
+#~ "and many other community contributors and translators"
+#~ msgstr ""
+#~ "Авторски права © 2004-2011 Red Hat, Inc.\n"
+#~ "Авторски права © 2005-2008 Novell, Inc.\n"
+#~ "и още много сътрудници и преводачи"
+
+#~ msgid ""
+#~ "Notification area applet for managing your network devices and "
+#~ "connections."
+#~ msgstr ""
+#~ "Аплет за областта за уведомяване за управление на мрежовите устройства и "
+#~ "връзки."
+
+#~ msgid "NetworkManager Website"
+#~ msgstr "Уеб сайт на NetworkManager"
+
+#~ msgid ""
+#~ "The NetworkManager Applet could not find some required resources (the .ui "
+#~ "file was not found)."
+#~ msgstr ""
+#~ "Аплетът NetworkManager не можа да открие някои задължителни ресурси "
+#~ "(файлът .ui не е намерен)."
+
+#~ msgid "Missing resources"
+#~ msgstr "Липсващи ресурси"
+
+#~ msgid "Mobile broadband network password"
+#~ msgstr "Парола за мобилна връзка"
+
+#, fuzzy, c-format
+#~ msgid "A password is required to connect to “%s”."
+#~ msgstr "За свързване към „%s“ се изисква парола."
+
+#~ msgid "Password:"
+#~ msgstr "Парола:"
+
+#~ msgid "SIM PIN unlock required"
+#~ msgstr "Необходим е PIN"
+
+#~ msgid "SIM PIN Unlock Required"
+#~ msgstr "Необходим е PIN"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PIN code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "Мобилното широколентово устройство „%s“ изисква PIN за SIM, преди да се "
+#~ "свърже."
+
+#~ msgid "PIN code:"
+#~ msgstr "PIN:"
+
+#~ msgid "Show PIN code"
+#~ msgstr "Показване на PIN"
+
+#~ msgid "SIM PUK unlock required"
+#~ msgstr "Необходим е PUK за SIM"
+
+#~ msgid "SIM PUK Unlock Required"
+#~ msgstr "Необходим е PUK за отключване на SIM"
+
+#, fuzzy, c-format
+#~ msgid ""
+#~ "The mobile broadband device “%s” requires a SIM PUK code before it can be "
+#~ "used."
+#~ msgstr ""
+#~ "Мобилното широколентово устройство „%s“ изисква PUK за SIM, преди да се "
+#~ "използва."
+
+#~ msgid "PUK code:"
+#~ msgstr "PUK:"
+
+#~ msgid "New PIN code:"
+#~ msgstr "Нов PIN:"
+
+#~ msgid "Re-enter new PIN code:"
+#~ msgstr "Повторете PIN:"
+
+#~ msgid "Show PIN/PUK codes"
+#~ msgstr "Показване на PIN/PUK"
+
+#, fuzzy
+#~ msgid "Connection had no VPN setting"
+#~ msgstr "Информация за връзката"
+
+#, fuzzy, c-format
+#~ msgid "Failed to write connection to VPN UI: %s (%d)"
+#~ msgstr "Не може да се създаде комутируема връзка: %s"
+
+#~ msgid "802.1X authentication"
+#~ msgstr "Идентификация 802.1Х"
+
+#~ msgid "CDMA"
+#~ msgstr "CDMA"
+
+#~ msgid "EVDO"
+#~ msgstr "EVDO"
+
+#~ msgid "GSM"
+#~ msgstr "GSM"
+
+#~ msgid "GPRS"
+#~ msgstr "GPRS"
+
+#~ msgid "EDGE"
+#~ msgstr "EDGE"
+
+#~ msgid "UMTS"
+#~ msgstr "UMTS"
+
+#~ msgid "HSDPA"
+#~ msgstr "HSDPA"
+
+#~ msgid "HSUPA"
+#~ msgstr "HSUPA"
+
+#~ msgid "HSPA"
+#~ msgstr "HSPA"
+
+#~ msgid "HSPA+"
+#~ msgstr "HSPA+"
+
+#~ msgid "LTE"
+#~ msgstr "LTE"
+
+#~ msgid "not enabled"
+#~ msgstr "не е включено"
+
+#~ msgid "not registered"
+#~ msgstr "не е регистрирана"
+
+#, c-format
+#~ msgid "Home network (%s)"
+#~ msgstr "Домашна мрежа (%s)"
+
+#, c-format
+#~ msgid "Home network"
+#~ msgstr "Домашна мрежа"
+
+#~ msgid "searching"
+#~ msgstr "търсене"
+
+#~ msgid "registration denied"
+#~ msgstr "регистрацията е отхвърлена"
+
+#, c-format
+#~ msgid "%s (%s roaming)"
+#~ msgstr "%s (роуминг към %s)"
+
+#, c-format
+#~ msgid "%s (roaming)"
+#~ msgstr "%s (роуминг)"
+
+#, c-format
+#~ msgid "Roaming network (%s)"
+#~ msgstr "Мрежа с роуминг (%s)"
+
+#, c-format
+#~ msgid "Roaming network"
+#~ msgstr "Мрежа с роуминг"
+
+#, fuzzy, c-format
+#~ msgid "PIN code for SIM card “%s” on “%s”"
+#~ msgstr "ПИН за картата „%s“ на „%s“"
+
+#~ msgid "PIN code required"
+#~ msgstr "Необходим е PIN"
+
+#~ msgid "PIN code is needed for the mobile broadband device"
+#~ msgstr "Мобилното устройство изисква PIN"
+
+#, fuzzy, c-format
+#~ msgid "Mobile broadband connection “%s” active: (%d%%%s%s)"
+#~ msgstr "Мобилната връзка „%s“ е активна: (%d%%%s%s)"
+
+#~ msgid "roaming"
+#~ msgstr "роуминг"
+
+#, fuzzy
+#~ msgid "Network Manager"
+#~ msgstr "Аплетът NetworkManager"
+
+#, fuzzy
+#~ msgid "Controller for Network Manager"
+#~ msgstr "Аплетът NetworkManager"
+
+#, c-format
+#~ msgid "%s connection"
+#~ msgstr "Връзка към %s"
+
+#, fuzzy
+#~ msgid "PEM certificates (*.pem, *.crt, *.cer)"
+#~ msgstr "Сертификати, DER или PEM (*.der, *.pem, *.crt, *.cer)"
+
+#~ msgid "DER, PEM, or PKCS#12 private keys (*.der, *.pem, *.p12, *.key)"
+#~ msgstr ""
+#~ "Частни ключове, формат DER, PEM или PKCS#12 (*.der, *.pem, *.p12, *.key)"
+
+#~ msgid "Run"
+#~ msgstr "Стартирай..."
+
+#~ msgid "Restart"
+#~ msgstr "Рестартирай"
+
+#~ msgid "Logout"
+#~ msgstr "Излез"
+
+#~ msgid "Properties"
+#~ msgstr "Свойства"
+
+#~ msgid "Menu"
+#~ msgstr "Меню"
+
+#~ msgid "Icon"
+#~ msgstr "Икона"
+
+#, fuzzy
+#~ msgid "Searchable Application Menu"
+#~ msgstr "Главно меню"
+
+#, fuzzy
+#~ msgid "No network connection - cannot install updates."
+#~ msgstr "Няма връзка към мрежа"
+
+#, fuzzy, c-format
+#~ msgid "Bluetooth %s device not found"
+#~ msgstr "Свързана връзка %d"
+
+#, fuzzy, c-format
+#~ msgid "Failed to connect to Bluetooth device - %s"
+#~ msgstr "неуспешна връзка с телефона."
+
+#, fuzzy
+#~ msgid "Device Profiles"
+#~ msgstr "Неуспешно прекъсване на връзка"
+
+#, fuzzy
+#~ msgid "Device not connected"
+#~ msgstr "Неуспешно прекъсване на връзка"
+
+#, fuzzy
+#~ msgid "Volume control"
+#~ msgstr "Контрол на потока"
+
+#, fuzzy
+#~ msgid "Available Updates"
+#~ msgstr "Налични мрежи"
+
+#, fuzzy
+#~ msgid "Add New Device"
+#~ msgstr "Което и да е устройство"
+
+#, fuzzy
+#~ msgid "C_onnect"
+#~ msgstr "Вр_ъзка:"
+
+#, fuzzy
+#~ msgid "_Network name"
+#~ msgstr "_Име на мрежа:"
+
+#~ msgid "Automatically unlock this device"
+#~ msgstr "Автоматично отключване на това устройство"
 
 #~ msgid "Manage your network connections"
 #~ msgstr "Управление на мрежовите връзки"
@@ -2455,20 +1950,12 @@ msgstr ""
 #~ msgstr "FIP"
 
 #, fuzzy
-#~ msgid "TCP"
-#~ msgstr "GTC"
-
-#, fuzzy
 #~ msgid "_Hardware Address"
 #~ msgstr "Хардуерен адрес:"
 
 #, fuzzy
 #~ msgid "_Hardware address policy"
 #~ msgstr "Хардуерен адрес:"
-
-#, fuzzy
-#~ msgid "_System priority"
-#~ msgstr "_Приоритет:"
 
 #, fuzzy
 #~ msgid "Transmission _balancing interval"
@@ -3487,9 +2974,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "WEP inde_x"
 #~ msgstr "Индек_с в WEP:"
-
-#~ msgid "Disable connected notifications"
-#~ msgstr "Изключване на уведомяването за установяването на връзки"
 
 #~ msgid ""
 #~ "Set this to true to disable notifications when connecting to a network."
