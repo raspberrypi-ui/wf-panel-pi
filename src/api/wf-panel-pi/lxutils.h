@@ -98,6 +98,9 @@ extern GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpoint
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
 #define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed = PRESS_NONE;return;}pressed = PRESS_NONE;
 
+#undef _
+#define _(a) dgettext(GETTEXT_PACKAGE,a)
+
 #endif
 
 /* End of file */
