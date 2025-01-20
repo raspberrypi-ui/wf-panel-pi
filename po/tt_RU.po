@@ -294,24 +294,3 @@ msgstr ""
 msgid "_OK"
 msgstr ""
 
-#~ msgid "Run"
-#~ msgstr "Башкару"
-
-#~ msgid "Restart"
-#~ msgstr "Яңадан җибәрү"
-
-#~ msgid "Logout"
-#~ msgstr "Системадан чыгу"
-
-#~ msgid "Properties"
-#~ msgstr "Сыйфатлар"
-
-#~ msgid "Menu"
-#~ msgstr "Меню"
-
-#~ msgid "Icon"
-#~ msgstr "Билгечек"
-
-#, fuzzy
-#~ msgid "Searchable Application Menu"
-#~ msgstr "Кушымта исемлеге"

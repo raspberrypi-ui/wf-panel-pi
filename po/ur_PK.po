@@ -298,24 +298,3 @@ msgstr ""
 msgid "_OK"
 msgstr ""
 
-#~ msgid "Run"
-#~ msgstr "چلائیں"
-
-#~ msgid "Restart"
-#~ msgstr "دوبارہ چلائیں"
-
-#~ msgid "Logout"
-#~ msgstr "لاگ آؤٹ"
-
-#~ msgid "Properties"
-#~ msgstr "خصوصیات"
-
-#~ msgid "Menu"
-#~ msgstr "فہرست"
-
-#~ msgid "Icon"
-#~ msgstr "آئکن"
-
-#, fuzzy
-#~ msgid "Searchable Application Menu"
-#~ msgstr "اطلاقیہ مینیو"

@@ -295,24 +295,3 @@ msgstr ""
 msgid "_OK"
 msgstr ""
 
-#~ msgid "Run"
-#~ msgstr "Emprendre"
-
-#~ msgid "Restart"
-#~ msgstr "Remprendre"
-
-#~ msgid "Logout"
-#~ msgstr "Modar"
-
-#~ msgid "Properties"
-#~ msgstr "Opcions"
-
-#~ msgid "Menu"
-#~ msgstr "Menû"
-
-#~ msgid "Icon"
-#~ msgstr "Icona"
-
-#, fuzzy
-#~ msgid "Searchable Application Menu"
-#~ msgstr "Menû d'applicacions"

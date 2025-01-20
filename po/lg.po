@@ -296,24 +296,3 @@ msgstr ""
 msgid "_OK"
 msgstr ""
 
-#~ msgid "Run"
-#~ msgstr "Tandika"
-
-#~ msgid "Restart"
-#~ msgstr "Damu okutandika"
-
-#~ msgid "Logout"
-#~ msgstr "Komya olutuula"
-
-#~ msgid "Properties"
-#~ msgstr "Enneyisa"
-
-#~ msgid "Menu"
-#~ msgstr "Menyu"
-
-#~ msgid "Icon"
-#~ msgstr "Kafaananyi"
-
-#, fuzzy
-#~ msgid "Searchable Application Menu"
-#~ msgstr "Menyu ya kutandika puloguramu"

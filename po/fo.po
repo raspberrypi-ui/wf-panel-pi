@@ -295,24 +295,3 @@ msgstr ""
 msgid "_OK"
 msgstr ""
 
-#~ msgid "Run"
-#~ msgstr "Koyr"
-
-#~ msgid "Restart"
-#~ msgstr "Endurbyrja"
-
-#~ msgid "Logout"
-#~ msgstr "Útrita"
-
-#~ msgid "Properties"
-#~ msgstr "Eginleikar"
-
-#~ msgid "Menu"
-#~ msgstr "Valmynd"
-
-#~ msgid "Icon"
-#~ msgstr "Ímynd"
-
-#, fuzzy
-#~ msgid "Searchable Application Menu"
-#~ msgstr "Nýtsluskipanar valmynd"

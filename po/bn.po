@@ -296,24 +296,3 @@ msgstr ""
 msgid "_OK"
 msgstr ""
 
-#~ msgid "Run"
-#~ msgstr "চালু করুন"
-
-#~ msgid "Restart"
-#~ msgstr "পুনরায় শুরু করুন"
-
-#~ msgid "Logout"
-#~ msgstr "লগ-আউট"
-
-#~ msgid "Properties"
-#~ msgstr "বৈশিষ্ট্যাবলী"
-
-#~ msgid "Menu"
-#~ msgstr "মেনু"
-
-#~ msgid "Icon"
-#~ msgstr "আইকন"
-
-#, fuzzy
-#~ msgid "Searchable Application Menu"
-#~ msgstr "অ্যাপ্লিকেশন মেনু"
