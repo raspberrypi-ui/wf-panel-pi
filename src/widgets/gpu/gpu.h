@@ -27,10 +27,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 typedef struct
 {
-    GtkWidget *plugin;                      /* Back pointer to the widget */
     int icon_size;                          /* Variables used under wf-panel */
     gboolean bottom;
     GtkGesture *gesture;
+    GtkWidget *plugin;                      /* Back pointer to the widget */
     PluginGraph graph;
     GdkRGBA foreground_colour;              /* Foreground colour for drawing area */
     GdkRGBA background_colour;              /* Background colour for drawing area */
