@@ -582,7 +582,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
             cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '", mname);
             if ((fp = popen (cmd, "r")) != NULL)
             {
-                fscanf (fp, "%d", &orient);
+                if (fscanf (fp, "%d", &orient) != 1) orient = 0;
                 pclose (fp);
             }
             g_free (cmd);

@@ -565,7 +565,7 @@ class WayfirePanel::impl
     {
         GdkDisplay *dpy = gdk_display_get_default ();
         GdkScreen *scr = gdk_display_get_default_screen (dpy);
-        GdkMonitor *mon;
+        GdkMonitor *mon = NULL;
         int try_mon;
         const char *mnumstr = ((std::string) monitor_num).c_str();
 
@@ -595,7 +595,7 @@ class WayfirePanel::impl
             }
         }
 
-        gtk_layer_set_monitor (window->gobj(), mon);
+        if (mon) gtk_layer_set_monitor (window->gobj(), mon);
         return try_mon >= 0 ? try_mon : 0;
     }
 

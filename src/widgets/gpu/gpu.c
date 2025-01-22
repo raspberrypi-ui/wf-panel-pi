@@ -52,7 +52,7 @@ float get_gpu_usage (GPUPlugin *g)
     char *buf = NULL;
     size_t res = 0;
     unsigned long jobs, active;
-    unsigned long long timestamp, elapsed, runtime;
+    unsigned long long timestamp, elapsed = 0, runtime;
     float max, load[5];
     int i;
 
@@ -86,9 +86,12 @@ float get_gpu_usage (GPUPlugin *g)
                 if (g->last_val[i] == 0) load[i] = 0.0;
                 else
                 {
-                    load[i] = runtime;
-                    load[i] -= g->last_val[i];
-                    load[i] /= elapsed;
+                    if (elapsed)
+                    {
+                        load[i] = runtime;
+                        load[i] -= g->last_val[i];
+                        load[i] /= elapsed;
+                    }
                 }
                 g->last_val[i] = runtime;
             }

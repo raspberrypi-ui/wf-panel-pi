@@ -97,7 +97,7 @@ void add_to_launcher (const char *name)
 
 void remove_from_launcher (const char *name)
 {
-    char *str;
+    char *str = NULL;
     gsize len, i;
     int ind;
 
@@ -128,7 +128,7 @@ void remove_from_launcher (const char *name)
     }
     g_strfreev (keys);
 
-    g_free (str);
+    if (str) g_free (str);
     g_key_file_free (kf);
     g_free (user_file);
 }

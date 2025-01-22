@@ -454,6 +454,7 @@ int plugin_config_dialog (const char *type)
             cptr = func_config_params ();
             while (cptr->type != CONF_NONE)
             {
+                control = NULL;
                 hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
                 strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
                 label = gtk_label_new (strval);
@@ -488,9 +489,17 @@ int plugin_config_dialog (const char *type)
 
                     case CONF_NONE :    break;
                 }
-                gtk_widget_set_name (control, key);
-                gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
-                gtk_container_add (GTK_CONTAINER (box), hbox);
+                if (control)
+                {
+                    gtk_widget_set_name (control, key);
+                    gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
+                    gtk_container_add (GTK_CONTAINER (box), hbox);
+                }
+                else
+                {
+                    gtk_widget_destroy (label);
+                    gtk_widget_destroy (hbox);
+                }
                 g_free (key);
                 cptr++;
             }

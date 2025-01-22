@@ -61,7 +61,11 @@ static gboolean cpu_update (CPUPlugin *c)
     /* Open statistics file and scan out CPU usage */
     stat = fopen ("/proc/stat", "r");
     if (stat == NULL) return TRUE;
-    fgets (buffer, 256, stat);
+    if (!fgets (buffer, 256, stat))
+    {
+        fclose (stat);
+        return TRUE;
+    }
     fclose (stat);
     if (!strlen (buffer)) return TRUE;
     if (sscanf (buffer, "cpu %llu %llu %llu %llu", &cpu.u, &cpu.n, &cpu.s, &cpu.i) == 4)
