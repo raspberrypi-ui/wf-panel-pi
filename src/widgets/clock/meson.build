@@ -1,8 +1,7 @@
 name = 'clock'
 
 sources = files(
-  'clock.cpp',
-  'clock.c'
+  'clock.cpp'
 )
 
 module_deps = [ ]
