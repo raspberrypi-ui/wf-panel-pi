@@ -18,9 +18,7 @@ src/panel/spacer.cpp
 src/panel/wf-autohide-window.cpp
 src/panel/wf-popover.cpp
 src/panel/wf-shell-app.cpp
-src/widgets/clock/clock.c
 src/widgets/clock/clock.cpp
-src/widgets/clock/clock.h
 src/widgets/clock/clock.hpp
 src/widgets/cpu/cpu.c
 src/widgets/cpu/cpu.cpp
@@ -51,4 +49,3 @@ src/widgets/window-list/toplevel.hpp
 src/widgets/window-list/window-list.cpp
 src/widgets/window-list/window-list.hpp
 [type: gettext/glade] data/config.ui
-[type: gettext/glade] data/lxpanel-modal.ui
