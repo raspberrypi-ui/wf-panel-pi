@@ -1,5 +1,5 @@
-/*
-Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
+/*============================================================================
+Copyright (c) 2023-2025 Raspberry Pi Holdings Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -23,21 +23,19 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+============================================================================*/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-#include <errno.h>
 #include <locale.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
 #include <glib/gi18n.h>
-#include <fcntl.h>
 #include <libudev.h>
-#include <sys/select.h>
+
+#include "lxutils.h"
+
 #include "power.h"
+
+/*----------------------------------------------------------------------------*/
+/* Typedefs and macros                                                        */
+/*----------------------------------------------------------------------------*/
 
 #define POWER_PATH "/proc/device-tree/chosen/power/"
 
@@ -46,9 +44,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define ICON_OVER_CURRENT   0x02
 #define ICON_BROWNOUT       0x04
 
-/* Plug-in global data */
+/*----------------------------------------------------------------------------*/
+/* Plug-in global data                                                        */
+/*----------------------------------------------------------------------------*/
 
-/* Prototypes */
+/*----------------------------------------------------------------------------*/
+/* Prototypes                                                                 */
+/*----------------------------------------------------------------------------*/
 
 static gboolean is_pi (void);
 static void update_icon (PowerPlugin *pt);
@@ -58,6 +60,10 @@ static gpointer overcurrent_thread (gpointer data);
 static gboolean cb_overcurrent (gpointer data);
 static gpointer lowvoltage_thread (gpointer data);
 static gboolean cb_lowvoltage (gpointer data);
+
+/*----------------------------------------------------------------------------*/
+/* Function definitions                                                       */
+/*----------------------------------------------------------------------------*/
 
 /* Helpers */
 
@@ -299,7 +305,9 @@ static void show_info (GtkWidget *, gpointer)
     system ("x-www-browser https://rptl.io/rpi5-power-supply-info &");
 }
 
-/* Plugin functions */
+/*----------------------------------------------------------------------------*/
+/* wf-panel plugin functions                                                  */
+/*----------------------------------------------------------------------------*/
 
 /* Handler for button click */
 static void power_button_clicked (GtkWidget *, PowerPlugin *pt)
@@ -317,7 +325,9 @@ void power_update_display (PowerPlugin *pt)
 
 void power_init (PowerPlugin *pt)
 {
-	GtkWidget *item;
+    setlocale (LC_ALL, "");
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
     /* Allocate icon as a child of top level */
     pt->tray_icon = gtk_image_new ();
@@ -338,7 +348,7 @@ void power_init (PowerPlugin *pt)
     pt->udev = NULL;
 
     pt->menu = gtk_menu_new ();
-    item = gtk_menu_item_new_with_label (_("Power Information..."));
+    GtkWidget *item = gtk_menu_item_new_with_label (_("Power Information..."));
     g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (show_info), NULL);
     gtk_menu_shell_append (GTK_MENU_SHELL (pt->menu), item);
 
@@ -389,3 +399,5 @@ void power_destructor (gpointer user_data)
     g_free (pt);
 }
 
+/* End of file */
+/*----------------------------------------------------------------------------*/

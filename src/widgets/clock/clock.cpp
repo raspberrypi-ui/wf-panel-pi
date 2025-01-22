@@ -100,7 +100,7 @@ void WayfireClock::config_changed_cb ()
     update_label ();
 }
 
-void WayfireClock::init(Gtk::HBox *container)
+void WayfireClock::init (Gtk::HBox *container)
 {
     /* Create the button */
     plugin = std::make_unique <Gtk::Button> ();
