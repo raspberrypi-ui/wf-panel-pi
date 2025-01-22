@@ -1,5 +1,5 @@
-/*
-Copyright (c) 2018 Raspberry Pi (Trading) Ltd.
+/*============================================================================
+Copyright (c) 2018-2025 Raspberry Pi Holdings Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -23,18 +23,29 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+============================================================================*/
 
-#include <stdio.h>
-#include <string.h>
-#include <sys/time.h>
-#include <time.h>
-#include <sys/sysinfo.h>
-#include <stdlib.h>
 #include <glib/gi18n.h>
+
+#include "lxutils.h"
 
 #include "gpu.h"
 
+/*----------------------------------------------------------------------------*/
+/* Typedefs and macros                                                        */
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/* Plug-in global data                                                        */
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/* Prototypes                                                                 */
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/* Function definitions                                                       */
+/*----------------------------------------------------------------------------*/
 
 float get_gpu_usage (GPUPlugin *g)
 {
@@ -114,19 +125,15 @@ static gboolean gpu_update (GPUPlugin *g)
     return TRUE;
 }
 
+/*----------------------------------------------------------------------------*/
+/* wf-panel plugin functions                                                  */
+/*----------------------------------------------------------------------------*/
+
+/* Handler for system config changed message from panel */
 void gpu_update_display (GPUPlugin *g)
 {
     GdkRGBA none = {0, 0, 0, 0};
     graph_reload (&(g->graph), g->icon_size, g->background_colour, g->foreground_colour, none, none);
-}
-
-void gpu_destructor (gpointer user_data)
-{
-    GPUPlugin *g = (GPUPlugin *) user_data;
-    graph_free (&(g->graph));
-    if (g->timer) g_source_remove (g->timer);
-    if (g->gesture) g_object_unref (g->gesture);
-    g_free (g);
 }
 
 void gpu_init (GPUPlugin *g)
@@ -147,3 +154,14 @@ void gpu_init (GPUPlugin *g)
     gtk_widget_show_all (g->plugin);
 }
 
+void gpu_destructor (gpointer user_data)
+{
+    GPUPlugin *g = (GPUPlugin *) user_data;
+    graph_free (&(g->graph));
+    if (g->timer) g_source_remove (g->timer);
+    if (g->gesture) g_object_unref (g->gesture);
+    g_free (g);
+}
+
+/* End of file */
+/*----------------------------------------------------------------------------*/

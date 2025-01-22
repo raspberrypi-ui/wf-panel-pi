@@ -1,13 +1,5 @@
-/*
- * CPU temperature plugin for LXPanel
- *
- * Based on 'cpu' and 'thermal' plugin code from LXPanel
- * Copyright for relevant code as for LXPanel
- *
- */
-
-/*
-Copyright (c) 2018 Raspberry Pi (Trading) Ltd.
+/*============================================================================
+Copyright (c) 2018-2025 Raspberry Pi Holdings Ltd.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -31,22 +23,35 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+============================================================================*/
 
-#include <string.h>
-#include <sys/time.h>
-#include <time.h>
-#include <sys/sysinfo.h>
-#include <stdlib.h>
 #include <glib/gi18n.h>
 
+#include "lxutils.h"
+
 #include "cpu.h"
+
+/*----------------------------------------------------------------------------*/
+/* Typedefs and macros                                                        */
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/* Plug-in global data                                                        */
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/* Prototypes                                                                 */
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/* Function definitions                                                       */
+/*----------------------------------------------------------------------------*/
 
 /* Periodic timer callback */
 
 static gboolean cpu_update (CPUPlugin *c)
 {
-    struct cpu_stat cpu, cpu_delta;
+    cpu_stat cpu, cpu_delta;
     char buffer[256];
     FILE *stat;
     float cpu_uns;
@@ -68,7 +73,7 @@ static gboolean cpu_update (CPUPlugin *c)
         cpu_delta.i = cpu.i - c->previous_cpu_stat.i;
 
         /* Copy current to previous */
-        memcpy (&c->previous_cpu_stat, &cpu, sizeof (struct cpu_stat));
+        memcpy (&c->previous_cpu_stat, &cpu, sizeof (cpu_stat));
 
         /* Compute user + nice + system as a fraction of total */
         cpu_uns = cpu_delta.u + cpu_delta.n + cpu_delta.s;
@@ -82,19 +87,15 @@ static gboolean cpu_update (CPUPlugin *c)
     return TRUE;
 }
 
+/*----------------------------------------------------------------------------*/
+/* wf-panel plugin functions                                                  */
+/*----------------------------------------------------------------------------*/
+
+/* Handler for system config changed message from panel */
 void cpu_update_display (CPUPlugin *c)
 {
     GdkRGBA none = {0, 0, 0, 0};
     graph_reload (&(c->graph), c->icon_size, c->background_colour, c->foreground_colour, none, none);
-}
-
-void cpu_destructor (gpointer user_data)
-{
-    CPUPlugin *c = (CPUPlugin *) user_data;
-    graph_free (&(c->graph));
-    if (c->timer) g_source_remove (c->timer);
-    if (c->gesture) g_object_unref (c->gesture);
-    g_free (c);
 }
 
 void cpu_init (CPUPlugin *c)
@@ -115,3 +116,14 @@ void cpu_init (CPUPlugin *c)
     gtk_widget_show_all (c->plugin);
 }
 
+void cpu_destructor (gpointer user_data)
+{
+    CPUPlugin *c = (CPUPlugin *) user_data;
+    graph_free (&(c->graph));
+    if (c->timer) g_source_remove (c->timer);
+    if (c->gesture) g_object_unref (c->gesture);
+    g_free (c);
+}
+
+/* End of file */
+/*----------------------------------------------------------------------------*/
