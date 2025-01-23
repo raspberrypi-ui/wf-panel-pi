@@ -254,8 +254,7 @@ class WayfirePanel::impl
         window->signal_button_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_press_event));
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
 
-        GtkGestureLongPress *ggest = (GtkGestureLongPress *) add_long_press (GTK_WIDGET (window->gobj()), NULL, NULL);
-        gesture = Glib::wrap (ggest);
+        gesture = add_longpress_default (*window);
 
         if (wizard || !real)
         {

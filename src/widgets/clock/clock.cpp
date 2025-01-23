@@ -27,6 +27,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <glibmm.h>
 #include <iostream>
+#include "gtk-utils.hpp"
+
 #include "clock.hpp"
 
 extern "C" {
@@ -129,9 +131,7 @@ void WayfireClock::init (Gtk::HBox *container)
     /* Setup button and gesture handlers */
     plugin->signal_button_press_event().connect(sigc::mem_fun(this, &WayfireClock::on_pressed), false);
     plugin->signal_clicked().connect(sigc::mem_fun(this, &WayfireClock::on_clicked));
-
-    GtkGestureLongPress *ggest = (GtkGestureLongPress *) add_long_press (GTK_WIDGET (plugin->gobj()), NULL, NULL);
-    gesture = Glib::wrap (ggest);
+    gesture = add_longpress_default (*plugin);
 }
 
 WayfireClock::~WayfireClock()

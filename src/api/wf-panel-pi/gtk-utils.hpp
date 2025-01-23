@@ -32,5 +32,6 @@ void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
 void invert_pixbuf(Glib::RefPtr<Gdk::Pixbuf>& pbuff);
 
 Glib::RefPtr<Gtk::GestureLongPress> detect_long_press (Gtk::Widget& target);
+Glib::RefPtr<Gtk::GestureLongPress> add_longpress_default (Gtk::Widget& target);
 
 #endif /* end of include guard: WF_GTK_UTILS */
