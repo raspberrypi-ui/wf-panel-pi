@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 09:19+0000\n"
-"PO-Revision-Date: 2020-11-28 22:06+0100\n"
+"PO-Revision-Date: 2025-01-31 22:27+0100\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak\n"
 "Language: sk\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.5\n"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1283
-#, fuzzy, c-format
+#, c-format
 msgid "Pairing request sent to '%s' - waiting for response..."
-msgstr "Požiadavka na párovanie bola odoslaná zariadeniu - čakám na odpoveď..."
+msgstr "Požiadavka na párovanie bola odoslaná zariadeniu „%s“ - čakám na odpoveď..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1291
 #, c-format
@@ -29,12 +29,12 @@ msgid "Pairing failed - %s"
 msgstr "Chyba počas párovania - %s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1299
-#, fuzzy, c-format
+#, c-format
 msgid "Pairing successful - connecting..."
-msgstr "Párovanie bolo úspešné - vytváram spojenie..."
+msgstr "Párovanie bolo úspešné - pripájam sa..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1307
-#, fuzzy, c-format
+#, c-format
 msgid "Connection successful"
 msgstr "Úspešne pripojené"
 
@@ -42,77 +42,76 @@ msgstr "Úspešne pripojené"
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1573
 #, c-format
 msgid "Connection failed - %s"
-msgstr "Chyba pri pripájaní - %s"
+msgstr "Chyba pripojenia - %s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1323
-#, fuzzy, c-format
+#, c-format
 msgid "Please enter code '%s' on '%s'"
-msgstr "Prosím, zadajte kód '%s' na zariadení '%s'"
+msgstr "Prosím, zadajte kód „%s“ na zariadení „%s“"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1331
-#, fuzzy, c-format
+#, c-format
 msgid "Please confirm that '%s' is showing the code '%s' to pair"
-msgstr "Prosím, potvrďte, že zariadenie '%s' zobrazuje kód '%s' pre spojenie"
+msgstr "Ak chcete potvrdiť párovanie, potvrďte, že zariadenie „%s“ zobrazuje kód „%s“"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1339
-#, fuzzy, c-format
+#, c-format
 msgid "Please enter PIN code shown on '%s'"
-msgstr "Prosím, zadajte kód PIN pre zariadenie '%s'"
+msgstr "Prosím, zadajte kód PIN pre zariadenie „%s“"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1347
-#, fuzzy, c-format
+#, c-format
 msgid "Please enter passcode shown on '%s'"
-msgstr "Prosím, zadajte kód '%s' na zariadení '%s'"
+msgstr "Prosím, zadajte kód „zobrazený na zariadení „%s“"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1355
-#, fuzzy, c-format
+#, c-format
 msgid "Waiting for response from Bluetooth device..."
-msgstr "Čaká sa na odpoveď od zariadenia..."
+msgstr "Čakám na odpoveď od Bluetooth zariadenia..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1363
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' has requested a pairing. Do you accept the request?"
-msgstr "Zariadenie '%s' poslalo požiadavku na párovanie. Chcete ho prijať?"
+msgstr "Zariadenie „%s“ poslalo požiadavku na párovanie. Chcete ho prijať?"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1371
-#, fuzzy, c-format
-msgid ""
-"Pairing successful - right-click the volume icon to connect as audio device"
-msgstr "Párovanie bolo úspešné. Výstupné zariadenie nastavíte v ponuke zvuku."
+#, c-format
+msgid "Pairing successful - right-click the volume icon to connect as audio device"
+msgstr ""
+"Párovanie bolo úspešné - kliknite pravým tlačidlom na ikonu hlasitosti, ak ho chcete použiť "
+"pre výstup zvuku"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1379
-#, fuzzy, c-format
-msgid ""
-"Pairing successful - this device has no services which can be used with "
-"Raspberry Pi"
+#, c-format
+msgid "Pairing successful - this device has no services which can be used with Raspberry Pi"
 msgstr ""
-"Párovanie bolo úspešné, ale toto zariadenie neposkytuje žiadne služby, ktoré "
-"by vedelo Raspberry Pi využiť."
+"Párovanie bolo úspešné - toto zariadenie však neposkytuje žiadne služby, ktoré by vedelo "
+"Raspberry Pi využiť"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1558
-#, fuzzy, c-format
+#, c-format
 msgid "Do you want to unpair '%s'?"
-msgstr "Chcete prijať požiadavku na párovanie od zariadenia '%s'?"
+msgstr "Chcete zrušiť párovanie zariadenia „%s“?"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1561
-#, fuzzy, c-format
+#, c-format
 msgid "Removing pairing with '%s'..."
-msgstr "Odstraňovanie spárovaného zariadenia '%s'..."
+msgstr "Ruším párovanie zariadenia „%s“..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1564
 #, c-format
 msgid "Removal failed - %s"
-msgstr "Odstránenie zlyhalo - %s"
+msgstr "Rušenie párovania zlyhalo - %s"
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to '%s'..."
-msgstr "Prebieha pripájanie k zariadeniu '%s'..."
+msgstr "Pripájam sa k zariadeniu „%s“..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnecting from '%s'..."
-msgstr "Prebieha rušenie pripojenia k zariadeniu '%s'..."
+msgstr "Ruším pripojenie k zariadeniu „%s“..."
 
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1577
 #, c-format
@@ -137,9 +136,8 @@ msgstr "Pripojiť..."
 
 #. add the remove option to the submenu
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1777
-#, fuzzy
 msgid "Remove..."
-msgstr "_Odstrániť"
+msgstr "Odstrániť..."
 
 #. warn if no BT hardware detected
 #: ../src/panel/widgets/bluetooth/bluetooth.c:1973
@@ -187,7 +185,7 @@ msgid ""
 "Please use menu to eject before removal"
 msgstr ""
 "Zariadenie bolo odstránené bez odpojenia\n"
-"Použite, prosím, ponuku na odpojenie pred odstránením"
+"Použite, prosím, ponuku na odpojenie pred jeho odstránením"
 
 #: ../src/panel/widgets/ejecter/ejecter.c:199
 #, c-format
@@ -211,8 +209,7 @@ msgstr ""
 msgid "Select a drive in menu to eject safely"
 msgstr "Vyberte zariadenie, ktoré chcete bezpečne odpojiť"
 
-#: ../src/panel/widgets/ejecter/ejecter.c:451
-#: ../src/panel/widgets/ejecter/ejecter.c:461
+#: ../src/panel/widgets/ejecter/ejecter.c:451 ../src/panel/widgets/ejecter/ejecter.c:461
 msgid "Ejecter"
 msgstr "Bezpečné odpojenie"
 
@@ -237,17 +234,14 @@ msgstr "zabezpečenie."
 msgid "Failed to activate connection"
 msgstr "Zlyhala aktivácia pripojenia"
 
-#: ../src/panel/widgets/netman/applet.c:75
-#: ../src/panel/widgets/netman/applet.c:783
-#: ../src/panel/widgets/netman/applet.c:837
-#: ../src/panel/widgets/netman/applet.c:872
+#: ../src/panel/widgets/netman/applet.c:75 ../src/panel/widgets/netman/applet.c:783
+#: ../src/panel/widgets/netman/applet.c:837 ../src/panel/widgets/netman/applet.c:872
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1527
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1550
 msgid "Unknown error"
 msgstr "Neznáma chyba"
 
-#: ../src/panel/widgets/netman/applet.c:78
-#: ../src/panel/widgets/netman/applet.c:786
+#: ../src/panel/widgets/netman/applet.c:78 ../src/panel/widgets/netman/applet.c:786
 #: ../src/panel/widgets/netman/applet.c:875
 #: ../src/panel/widgets/netman/applet-device-wifi.c:570
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1530
@@ -257,16 +251,16 @@ msgstr "Pripojenie zlyhalo"
 
 #: ../src/panel/widgets/netman/applet.c:186
 msgid "_Turn Off Wireless LAN"
-msgstr ""
+msgstr "_Vypnúť bezdrôtovú sieť"
 
 #: ../src/panel/widgets/netman/applet.c:186
 msgid "_Turn On Wireless LAN"
-msgstr ""
+msgstr "_Zapnúť bezdrôtovú sieť"
 
 #: ../src/panel/widgets/netman/applet.c:227
 #, c-format
 msgid "IP : %s"
-msgstr ""
+msgstr "IP adresa: %s"
 
 #: ../src/panel/widgets/netman/applet.c:781
 msgid "Failed to add/activate connection"
@@ -293,22 +287,19 @@ msgstr "Túto správu viac nezobrazovať"
 #, c-format
 msgid ""
 "\n"
-"The VPN connection “%s” disconnected because the network connection was "
-"interrupted."
+"The VPN connection “%s” disconnected because the network connection was interrupted."
 msgstr ""
 "\n"
-"Pripojenie k VPN „%s“ bolo odpojené, pretože sieťové pripojenie bolo "
-"prerušené."
+"Pripojenie k VPN „%s“ bolo odpojené, pretože došlo k prerušeniu sieťového pripojenia."
 
 #: ../src/panel/widgets/netman/applet.c:1312
 #, c-format
 msgid ""
 "\n"
-"The VPN connection “%s” failed because the network connection was "
-"interrupted."
+"The VPN connection “%s” failed because the network connection was interrupted."
 msgstr ""
 "\n"
-"Pripojenie k VPN „%s“ zlyhalo, pretože sieťové pripojenie bolo prerušené."
+"Pripojenie k VPN „%s“ zlyhalo, pretože došlo k prerušeniu sieťového pripojenia."
 
 #: ../src/panel/widgets/netman/applet.c:1314
 #, c-format
@@ -323,12 +314,10 @@ msgstr ""
 #, c-format
 msgid ""
 "\n"
-"The VPN connection “%s” failed because the VPN service returned invalid "
-"configuration."
+"The VPN connection “%s” failed because the VPN service returned invalid configuration."
 msgstr ""
 "\n"
-"Pripojenie k VPN „%s“ zlyhalo, pretože služba VPN vrátila neplatnú "
-"konfiguráciu."
+"Pripojenie k VPN „%s“ zlyhalo, pretože služba VPN vrátila neplatnú konfiguráciu."
 
 #: ../src/panel/widgets/netman/applet.c:1318
 #, c-format
@@ -373,7 +362,7 @@ msgid ""
 "The VPN connection “%s” failed because of invalid VPN secrets."
 msgstr ""
 "\n"
-"Pripojenie k VPN „%s“ zlyhalo pre neplatné VPN heslá."
+"Pripojenie k VPN „%s“ zlyhalo kvôli neplatným heslám pre VPN."
 
 #: ../src/panel/widgets/netman/applet.c:1331
 #, c-format
@@ -403,10 +392,9 @@ msgstr "Pripojenie k VPN bolo úspešne nadviazané.\n"
 msgid "VPN Login Message"
 msgstr "Správa o prihlásení k VPN"
 
-#: ../src/panel/widgets/netman/applet.c:1370
-#: ../src/panel/widgets/netman/applet.c:1410
+#: ../src/panel/widgets/netman/applet.c:1370 ../src/panel/widgets/netman/applet.c:1410
 msgid "VPN Connection Failed"
-msgstr "Zlyhanie pripojenia k VPN"
+msgstr "Pripojenie k VPN zlyhalo"
 
 #: ../src/panel/widgets/netman/applet.c:1414
 #, c-format
@@ -436,11 +424,11 @@ msgstr ""
 
 #: ../src/panel/widgets/netman/applet.c:1741
 msgid "device not ready (firmware missing)"
-msgstr "zariadenie nepripravené (chýba firmvér)"
+msgstr "zariadenie nie je pripravené (chýba firmvér)"
 
 #: ../src/panel/widgets/netman/applet.c:1743
 msgid "device not ready"
-msgstr "zariadenie nepripravené"
+msgstr "zariadenie nie je pripravené"
 
 #. Notify user of unmanaged or unavailable device
 #: ../src/panel/widgets/netman/applet.c:1753
@@ -454,16 +442,15 @@ msgstr "Odpojiť"
 
 #: ../src/panel/widgets/netman/applet.c:1783
 msgid "device not managed"
-msgstr "zariadenie nespravované"
+msgstr "zariadenie nie je spravované"
 
 #: ../src/panel/widgets/netman/applet.c:1864
 msgid "No network devices available"
 msgstr "Neboli nájdené sieťové zariadenia"
 
 #: ../src/panel/widgets/netman/applet.c:1917
-#, fuzzy
 msgid "_Advanced Options"
-msgstr "Rozšírené tímové voľby"
+msgstr "_Rozšírené voľby"
 
 #: ../src/panel/widgets/netman/applet.c:1919
 msgid "_VPN Connections"
@@ -478,14 +465,12 @@ msgid "_Add a VPN connection…"
 msgstr "_Pridať pripojenie k VPN…"
 
 #. 'Connection Information' item
-#: ../src/panel/widgets/netman/applet.c:1989
-#: ../src/panel/widgets/netman/applet.c:2393
+#: ../src/panel/widgets/netman/applet.c:1989 ../src/panel/widgets/netman/applet.c:2393
 msgid "Connection _Information"
 msgstr "_Informácie o pripojení"
 
 #. 'Edit Connections...' item
-#: ../src/panel/widgets/netman/applet.c:1997
-#: ../src/panel/widgets/netman/applet.c:2401
+#: ../src/panel/widgets/netman/applet.c:1997 ../src/panel/widgets/netman/applet.c:2401
 msgid "Edit Connections…"
 msgstr "Upraviť pripojenia…"
 
@@ -494,18 +479,16 @@ msgid "NetworkManager is not running…"
 msgstr "Správca siete nie je spustený…"
 
 #: ../src/panel/widgets/netman/applet.c:2118
-#, fuzzy
 msgid "Wi-Fi country is not set"
-msgstr "Moja krajina nie je uvedená"
+msgstr "Krajina pre bezdrôtové pripojenie nie je nastavená"
 
 #: ../src/panel/widgets/netman/applet.c:2119
 msgid "Click here to set Wi-Fi country"
-msgstr ""
+msgstr "Kliknutím nastavíte krajinu pre bezdrôtové pripojenie"
 
-#: ../src/panel/widgets/netman/applet.c:2127
-#: ../src/panel/widgets/netman/applet.c:3222
+#: ../src/panel/widgets/netman/applet.c:2127 ../src/panel/widgets/netman/applet.c:3222
 msgid "Networking disabled"
-msgstr "Sieť deaktivovaná"
+msgstr "Sieť je deaktivovaná"
 
 #. 'Enable Networking' item
 #: ../src/panel/widgets/netman/applet.c:2351
@@ -591,8 +574,7 @@ msgid "No network connection"
 msgstr "Bez sieťového pripojenia"
 
 # desktop entry name
-#: ../src/panel/widgets/netman/applet.c:3781
-#: ../src/panel/widgets/netman/applet-dialogs.c:735
+#: ../src/panel/widgets/netman/applet.c:3781 ../src/panel/widgets/netman/applet-dialogs.c:735
 msgid "Network"
 msgstr "Sieť"
 
@@ -611,7 +593,7 @@ msgstr "Nesprávny kód PIN; prosím kontaktuje vášho poskytovateľa."
 #. Start the spinner to show the progress of the unlock
 #: ../src/panel/widgets/netman/applet-device-broadband.c:240
 msgid "Sending unlock code…"
-msgstr "Odosiela sa kód odomknutia…"
+msgstr "Odosielam kód pre odomknutie…"
 
 # PM: nepáči sa mi že podstatné meno prekladáš prídavným, mobile broadband sa zvykne prekladať ako mobilá širokopásmová sieť, takže aspoň Mobilná sieť
 # PK: tu ide o pripojenie
@@ -652,7 +634,7 @@ msgstr "Teraz ste pripojený k mobilnej sieti."
 #: ../src/panel/widgets/netman/applet-device-broadband.c:950
 #: ../src/panel/widgets/netman/applet-device-broadband.c:956
 msgid "Mobile Broadband network."
-msgstr "Mobilná sieť"
+msgstr "Mobilná sieť."
 
 #: ../src/panel/widgets/netman/applet-device-broadband.c:951
 msgid "You are now registered on the home network."
@@ -731,13 +713,12 @@ msgstr "Nastavuje sa sieťové pripojenie ethernet „%s“…"
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:159
 #, c-format
 msgid "User authentication required for ethernet network connection “%s”…"
-msgstr ""
-"Pripojenie k sieti ethernet „%s“ vyžaduje overenie totožnosti používateľa…"
+msgstr "Pripojenie k sieti ethernet „%s“ vyžaduje overenie totožnosti používateľa…"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:162
 #, c-format
 msgid "Requesting an ethernet network address for “%s”…"
-msgstr "Žiada sa sieťová adresa pre sieť ethernet „%s“…"
+msgstr "Žiadam sieťovú adresu pre sieť ethernet „%s“…"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:166
 #, c-format
@@ -750,37 +731,34 @@ msgstr "Overenie totožnosti k DSL"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:341
 #: ../src/panel/widgets/netman/applet-dialogs.c:1190
-#: ../src/panel/widgets/netman/mobile-helpers.c:455
-#: ../src/panel/widgets/smenu/gtk-run.c:395 ../data/lxpanel-modal.ui.h:2
-#: ../data/lxplug-bluetooth.ui.h:2 ../src/panel/widgets/netman/8021x.ui.h:2
-#: ../src/panel/widgets/netman/gsm-unlock.ui.h:1
+#: ../src/panel/widgets/netman/mobile-helpers.c:455 ../src/panel/widgets/smenu/gtk-run.c:395
+#: ../data/lxpanel-modal.ui.h:2 ../data/lxplug-bluetooth.ui.h:2
+#: ../src/panel/widgets/netman/8021x.ui.h:2 ../src/panel/widgets/netman/gsm-unlock.ui.h:1
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
 #: ../src/panel/widgets/netman/applet-device-ethernet.c:342
 #: ../src/panel/widgets/netman/applet-dialogs.c:1191
-#: ../src/panel/widgets/netman/mobile-helpers.c:456
-#: ../src/panel/widgets/smenu/gtk-run.c:396
-#: ../src/panel/widgets/volumepulse/volumepulse.c:247
-#: ../data/lxpanel-modal.ui.h:3 ../data/lxplug-bluetooth.ui.h:6
+#: ../src/panel/widgets/netman/mobile-helpers.c:456 ../src/panel/widgets/smenu/gtk-run.c:396
+#: ../src/panel/widgets/volumepulse/volumepulse.c:247 ../data/lxpanel-modal.ui.h:3
+#: ../data/lxplug-bluetooth.ui.h:6
 msgid "_OK"
 msgstr "_OK"
 
 # dialog title
 #: ../src/panel/widgets/netman/applet-device-wifi.c:208
 msgid "_Connect to Hidden Wi-Fi Network…"
-msgstr "_Pripojiť k skrytej sieti Wi-Fi…"
+msgstr "_Pripojiť k skrytej sieti bezdrôtovej sieti…"
 
 #  window title
 #: ../src/panel/widgets/netman/applet-device-wifi.c:264
 msgid "Create _New Wi-Fi Network…"
-msgstr "Vytvoriť _novú sieť Wi-Fi…"
+msgstr "Vytvoriť _novú bezdrôtovú sieť…"
 
 #  window title
 #: ../src/panel/widgets/netman/applet-device-wifi.c:305
-#, fuzzy
 msgid "Create Wi-Fi _Hotspot…"
-msgstr "Vytvoriť _novú sieť Wi-Fi…"
+msgstr "Vytvoriť _aktívny bod (hotspot) bezdrôtovej siete…"
 
 # ssid
 #: ../src/panel/widgets/netman/applet-device-wifi.c:389
@@ -797,34 +775,33 @@ msgid "Insufficient privileges."
 msgstr "Nedostatočné oprávnenia."
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:621
-#, fuzzy, c-format
+#, c-format
 msgid "Do you want to disconnect from the wireless network '%s'?"
-msgstr "Teraz ste pripojený k tímovej sieti."
+msgstr "Chcete sa odpojiť od bezdrôtovej siete „%s“?"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:926
 #, c-format
 msgid "Wi-Fi Networks (%s)"
-msgstr "Siete Wi-Fi (%s)"
+msgstr "Bezdrôtové siete (%s)"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:928
 #, c-format
 msgid "Wi-Fi Network (%s)"
-msgstr "Sieť Wi-Fi (%s)"
+msgstr "Bezdrôtová sieť (%s)"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:931
 msgid "Wi-Fi Network"
 msgid_plural "Wi-Fi Networks"
-msgstr[0] "Siete Wi-Fi"
-msgstr[1] "Sieť Wi-Fi"
-msgstr[2] "Siete Wi-Fi"
+msgstr[0] "Bezdrôtové siete"
+msgstr[1] "Bezdrôtová sieť"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:983
 msgid "Wi-Fi is disabled"
-msgstr "Sieť Wi-Fi je zakázaná"
+msgstr "Bezdrôtová sieť je zakázaná"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:984
 msgid "Wi-Fi is disabled by hardware switch"
-msgstr "Sieť Wi-Fi je zakázaná hardvérovým vypínačom"
+msgstr "Bezdrôtová sieť je zakázaná hardvérovým vypínačom"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1050
 msgid "More networks"
@@ -832,51 +809,51 @@ msgstr "Ďalšie siete"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1257
 msgid "Wi-Fi Networks Available"
-msgstr "Dostupné siete Wi-Fi"
+msgstr "Dostupné bezdrôtové siete"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1258
 msgid "Use the network menu to connect to a Wi-Fi network"
-msgstr "Na pripojenie k sieti Wi-Fi použite ponuku sietí"
+msgstr "Na pripojenie k bezdrôtovej sieti  použite ponuku sietí"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1442
 #, c-format
 msgid "You are now connected to the Wi-Fi network “%s”."
-msgstr "Teraz ste pripojený k sieti Wi-Fi „%s“."
+msgstr "Teraz ste pripojený k bezdrôtovej sieti „%s“."
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1477
 #, c-format
 msgid "Preparing Wi-Fi network connection “%s”…"
-msgstr "Pripravuje sa sieťové pripojenie k Wi-Fi „%s“…"
+msgstr "Pripravujem pripojenie k bezdrôtovej sieti „%s“…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1480
 #, c-format
 msgid "Configuring Wi-Fi network connection “%s”…"
-msgstr "Nastavuje sa sieťové pripojenie k Wi-Fi „%s“…"
+msgstr "Nastavujem pripojenie k bezdrôtovej sieti „%s“…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1483
 #, c-format
 msgid "User authentication required for Wi-Fi network “%s”…"
-msgstr "Sieť Wi-Fi „%s“ vyžaduje overenie totožnosti používateľa…"
+msgstr "Bezdrôtová sieť „%s“ vyžaduje overenie totožnosti používateľa…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1486
 #, c-format
 msgid "Requesting a Wi-Fi network address for “%s”…"
-msgstr "Žiada sa sieťová adresa Wi-Fi pre „%s“…"
+msgstr "Žiadam o adresu pre bezdrôtovú sieť „%s“…"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1499
-#, fuzzy, c-format
+#, c-format
 msgid "Wi-Fi network connection “%s” active: %s (hotspot)"
-msgstr "Sieťové pripojenie k Wi-Fi „%s“ je aktívne: %s (%d %%)"
+msgstr "Bezdrôtové sieťové pripojenie „%s“ je aktívne: %s (hotspot)"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1502
 #, c-format
 msgid "Wi-Fi network connection “%s” active: %s (%d%%)"
-msgstr "Sieťové pripojenie k Wi-Fi „%s“ je aktívne: %s (%d %%)"
+msgstr "Bezdrôtové sieťové pripojenie „%s“ je aktívne: %s (%d %%)"
 
 #: ../src/panel/widgets/netman/applet-device-wifi.c:1506
 #, c-format
 msgid "Wi-Fi network connection “%s” active"
-msgstr "Pripojenie k sieti Wi-Fi „%s“ je aktívne"
+msgstr "Bezdrôtové sieťové pripojenie „%s“ je aktívne"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:29
 msgid "Error displaying connection information:"
@@ -1031,7 +1008,7 @@ msgstr "IPv6"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:728
 msgid "Hotspot"
-msgstr "Aktívny bod"
+msgstr "Aktívny bod (hotspot)"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:746
 msgid "Password"
@@ -1079,10 +1056,8 @@ msgstr ""
 "a veľa ďalších prispievateľov a prekladateľov z komunity"
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1142
-msgid ""
-"Notification area applet for managing your network devices and connections."
-msgstr ""
-"Aplet do oblasti upozornení pre správu sieťových zariadení a pripojení."
+msgid "Notification area applet for managing your network devices and connections."
+msgstr "Aplet pre oblasť upozornení na správu sieťových zariadení a pripojení."
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1144
 msgid "NetworkManager Website"
@@ -1094,16 +1069,16 @@ msgstr ""
 "Marcel Telka <marcel@telka.sk>\n"
 "Pavol Šimo <palo.simo@gmail.com>\n"
 "Pavol Klačanský <pavol@klacansky.com>\n"
-"Dušan Kazik <prescott66@gmail.com>"
+"Dušan Kazik <prescott66@gmail.com>\n"
+"Jose Riha <jose1711@gmail.com>"
 
 # warning dialog
 #: ../src/panel/widgets/netman/applet-dialogs.c:1158
 msgid ""
-"The NetworkManager Applet could not find some required resources (the .ui "
-"file was not found)."
+"The NetworkManager Applet could not find some required resources (the .ui file was not "
+"found)."
 msgstr ""
-"Aplet Správca siete nemohol nájsť niektoré vyžadované zdroje (súbor .ui "
-"nebol nájdený)."
+"Aplet Správca siete nemohol nájsť niektoré vyžadované zdroje (súbor .ui nebol nájdený)."
 
 #: ../src/panel/widgets/netman/applet-dialogs.c:1163
 msgid "Missing resources"
@@ -1135,12 +1110,10 @@ msgstr "Vyžaduje sa kód PIN na odomknutie SIM"
 #. FIXME: some warning about # of times you can enter incorrect PIN
 #: ../src/panel/widgets/netman/applet-dialogs.c:1505
 #, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PIN code before it can be "
-"used."
+msgid "The mobile broadband device “%s” requires a SIM PIN code before it can be used."
 msgstr ""
-"Zariadenie mobilného pripojenia „%s“ vyžaduje kód PIN od SIM predtým, ako sa "
-"bude dať použiť."
+"Zariadenie mobilného pripojenia „%s“ vyžaduje kód PIN pre SIM kartu predtým, ako sa bude "
+"dať použiť."
 
 #. Translators: PIN code entry label
 #: ../src/panel/widgets/netman/applet-dialogs.c:1507
@@ -1155,22 +1128,20 @@ msgstr "Zobraziť kód PIN"
 # window title
 #: ../src/panel/widgets/netman/applet-dialogs.c:1513
 msgid "SIM PUK unlock required"
-msgstr "Žiadosť o kód PUK na odomknutie SIM"
+msgstr "Žiadosť o kód PUK na odomknutie SIM karty"
 
 # desc
 #: ../src/panel/widgets/netman/applet-dialogs.c:1514
 msgid "SIM PUK Unlock Required"
-msgstr "Vyžaduje sa kód PUK na odomknutie SIM"
+msgstr "Vyžaduje sa kód PUK na odomknutie SIM karty"
 
 #. FIXME: some warning about # of times you can enter incorrect PUK
 #: ../src/panel/widgets/netman/applet-dialogs.c:1516
 #, c-format
-msgid ""
-"The mobile broadband device “%s” requires a SIM PUK code before it can be "
-"used."
+msgid "The mobile broadband device “%s” requires a SIM PUK code before it can be used."
 msgstr ""
-"Zariadenie mobilného pripojenia „%s“ vyžaduje kód PUK od SIM predtým, ako sa "
-"bude dať použiť."
+"Zariadenie mobilného pripojenia „%s“ vyžaduje kód PUK pre SIM kartu predtým, ako sa bude "
+"dať použiť."
 
 #. Translators: PUK code entry label
 #: ../src/panel/widgets/netman/applet-dialogs.c:1518
@@ -1193,22 +1164,20 @@ msgid "Show PIN/PUK codes"
 msgstr "Zobraziť kódy PIN/PUK"
 
 #: ../src/panel/widgets/netman/applet-vpn-request.c:427
-#, fuzzy
 msgid "Connection had no VPN setting"
-msgstr "Informácie o pripojení"
+msgstr "Pripojenie nemalo žiadne nastavenia VPN"
 
 #: ../src/panel/widgets/netman/applet-vpn-request.c:477
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write connection to VPN UI: %s (%d)"
-msgstr "Zlyhalo vytvorenie pripojenia k DUN: %s"
+msgstr "Chyba pri zapisovaní spojenia do VPN rozhrania: %s (%d)"
 
 #: ../src/panel/widgets/netman/applet-vpn-request.c:485
 msgid "Failed to write connection to VPN UI: incomplete write"
-msgstr ""
+msgstr "Chyba pri zapisovaní spojenia do VPN rozhrania: neúplný zápis"
 
 # GtkDialog title
-#: ../src/panel/widgets/netman/ethernet-dialog.c:87
-#: ../src/panel/widgets/netman/8021x.ui.h:1
+#: ../src/panel/widgets/netman/ethernet-dialog.c:87 ../src/panel/widgets/netman/8021x.ui.h:1
 msgid "802.1X authentication"
 msgstr "Overenie totožnosti protokolom 802.1X"
 
@@ -1312,7 +1281,7 @@ msgstr "Roamingová sieť"
 #: ../src/panel/widgets/netman/mobile-helpers.c:320
 #, c-format
 msgid "PIN code for SIM card “%s” on “%s”"
-msgstr "Kód PIN „%s“ pre kartu SIM v zariadení „%s“"
+msgstr "Kód PIN „%s“ pre SIM kartu v zariadení „%s“"
 
 #: ../src/panel/widgets/netman/mobile-helpers.c:453
 msgid "PIN code required"
@@ -1333,47 +1302,44 @@ msgid "roaming"
 msgstr "roaming"
 
 #: ../src/panel/widgets/netman/netman.c:139
-#, fuzzy
 msgid "Network Manager"
-msgstr "NetworkManager"
+msgstr "Network Manager"
 
 #: ../src/panel/widgets/netman/netman.c:140
-#, fuzzy
 msgid "Controller for Network Manager"
-msgstr "NetworkManager"
+msgstr "Správca pre Network Manager"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:793
 #, c-format
 msgid "object class '%s' has no property named '%s'"
-msgstr ""
+msgstr "trieda objektov „%s“ nemá žiadnu vlastnosť s názvom „%s“"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:800
 #, c-format
 msgid "property '%s' of object class '%s' is not writable"
-msgstr ""
+msgstr "vlastnosť „%s“ triedy objektov „%s“ je určená iba na čítanie"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:807
 #, c-format
-msgid ""
-"construct property \"%s\" for object '%s' can't be set after construction"
-msgstr ""
+msgid "construct property \"%s\" for object '%s' can't be set after construction"
+msgstr "vlastnosť konštruktora „%s“ objektu „%s“ nie je možné nastaviť po zostavení objektu"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:815
 #, c-format
 msgid "'%s::%s' is not a valid property name; '%s' is not a GObject subtype"
-msgstr ""
+msgstr "„%s::%s“ nie je platné meno vlastnosti; „%s“ nie je podtypom GObjectu"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:824
 #, c-format
 msgid "unable to set property '%s' of type '%s' from value of type '%s'"
-msgstr ""
+msgstr "nepodarilo sa nastaviť vlastnosť „%s“ typu „%s“ na hodnotu typu „%s“"
 
 #: ../src/panel/widgets/netman/nm-shared-utils.c:835
 #, c-format
-msgid ""
-"value \"%s\" of type '%s' is invalid or out of range for property '%s' of "
-"type '%s'"
+msgid "value \"%s\" of type '%s' is invalid or out of range for property '%s' of type '%s'"
 msgstr ""
+"hodnota „%s“ typu „%s“ je neplatná alebo mimo povoleného rozsahu pre vlastnosť „%s“ typu "
+"„%s“"
 
 #. The %s is a mobile provider name, eg "T-Mobile"
 #: ../src/panel/widgets/netman/utils.c:160
@@ -1460,18 +1426,17 @@ msgstr "Napájanie a batéria"
 msgid "Monitors voltage and laptop battery"
 msgstr "Sleduje napätie a batériu notebooku"
 
-#: ../src/panel/widgets/smenu/gtk-run.c:391
-#: ../src/panel/widgets/smenu/menu.c:121
+#: ../src/panel/widgets/smenu/gtk-run.c:391 ../src/panel/widgets/smenu/menu.c:121
 msgid "Run"
 msgstr "Spustiť"
 
 #: ../src/panel/widgets/smenu/gtk-run.c:412
 msgid "Enter the command you want to execute:"
-msgstr ""
+msgstr "Zadajte príkaz, ktorý chcete spustiť:"
 
 #: ../src/panel/widgets/smenu/menu.c:116
 msgid "Logout command is not set"
-msgstr ""
+msgstr "Nie je nastavený príkaz pre odhlásenie"
 
 #: ../src/panel/widgets/smenu/menu.c:122
 msgid "Restart"
@@ -1483,7 +1448,7 @@ msgstr "Odhlásiť"
 
 #: ../src/panel/widgets/smenu/menu.c:140
 msgid "No file manager is configured."
-msgstr ""
+msgstr "Nie je nastavený žiaden správca súborov."
 
 #: ../src/panel/widgets/smenu/menu.c:489
 msgid "Add to desktop"
@@ -1511,61 +1476,61 @@ msgstr "Výplň"
 
 #: ../src/panel/widgets/smenu/menu.c:1050
 msgid "Fixed Size"
-msgstr ""
+msgstr "Pevná veľkosť"
 
 #: ../src/panel/widgets/smenu/menu.c:1058
 msgid "Menu with Search"
-msgstr ""
+msgstr "Ponuka s vyhľadávaním"
 
 #: ../src/panel/widgets/smenu/menu.c:1059
-#, fuzzy
 msgid "Searchable Application Menu"
-msgstr "Aplikačné menu"
+msgstr "Prehľadávateľná ponuka aplikácie"
 
 #: ../src/panel/widgets/updater/updater.c:189
 msgid ""
 "Updates are available\n"
 "Click the update icon to install"
 msgstr ""
+"Sú dostupné aktualizácie\n"
+"Nainštalujete ich kliknutím na ikonu"
 
 #: ../src/panel/widgets/updater/updater.c:211
-#, fuzzy
 msgid "No network connection - cannot install updates."
-msgstr "Bez sieťového pripojenia"
+msgstr "Bez sieťového pripojenia - aktualizácie nie je možné nainštalovať."
 
 #: ../src/panel/widgets/updater/updater.c:217
-msgid ""
-"Clock not synchronised - cannot install updates. Try again in a few minutes."
+msgid "Clock not synchronised - cannot install updates. Try again in a few minutes."
 msgstr ""
+"Hodiny nie sú synchronizované - aktualizácie nie je možné nainštalovať. Skúste to opäť o "
+"pár minút."
 
 #: ../src/panel/widgets/updater/updater.c:320
 msgid "Show Updates..."
-msgstr ""
+msgstr "Zobraziť aktualizácie..."
 
 #: ../src/panel/widgets/updater/updater.c:324
 msgid "Install Updates"
-msgstr ""
+msgstr "Inštalovať aktualizácie"
 
 #: ../src/panel/widgets/updater/updater.c:470
 msgid "Updates are available - click to install"
-msgstr ""
+msgstr "Sú dostupné aktualizácie - kliknutím ich nainštalujete"
 
-#: ../src/panel/widgets/updater/updater.c:529
-#: ../src/panel/widgets/updater/updater.c:561
+#: ../src/panel/widgets/updater/updater.c:529 ../src/panel/widgets/updater/updater.c:561
 msgid "Updater"
-msgstr ""
+msgstr "Aktualizácie"
 
 #: ../src/panel/widgets/updater/updater.c:531
 msgid "Hours between checks for updates"
-msgstr ""
+msgstr "Hodiny medzi kontrolou aktualizácií"
 
 #: ../src/panel/widgets/updater/updater.c:562
 msgid "Checks for updates"
-msgstr ""
+msgstr "Kontroly aktualizácií"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:231
 msgid "Reconnecting Bluetooth devices..."
-msgstr "Pripájanie sa k zariadeniam Bluetooth..."
+msgstr "Znovu sa pripájam k zariadeniam Bluetooth..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:333
 #, c-format
@@ -1578,9 +1543,9 @@ msgid "Device not found by PulseAudio"
 msgstr "PulseAudio nenašiel zariadenie"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:417
-#, fuzzy, c-format
+#, c-format
 msgid "Could not set profile for device : %s"
-msgstr "Chcete prijať požiadavku na párovanie od zariadenia '%s'?"
+msgstr "Nepodarilo sa nastaviť profil pre zariadenie: %s"
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:588
 #, c-format
@@ -1590,12 +1555,12 @@ msgstr "Nepodarilo sa pripojiť k Bluetooth zariadeniu - %s"
 #: ../src/panel/widgets/volumepulse/bluetooth.c:656
 #, c-format
 msgid "Connecting Bluetooth device '%s' as output..."
-msgstr "Pripájanie Bluetooth zariadenia '%s' ako výstup..."
+msgstr "Pripájanie Bluetooth zariadenia „%s“ ako výstup..."
 
 #: ../src/panel/widgets/volumepulse/bluetooth.c:712
 #, c-format
 msgid "Connecting Bluetooth device '%s' as input..."
-msgstr "Pripájanie Bluetooth zariadenia '%s' ako vstup..."
+msgstr "Pripájanie Bluetooth zariadenia „%s“ ako vstup..."
 
 #. if the current default source and sink are both the same device, disconnect it and reconnect to
 #. put it into A2DP rather than HSP
@@ -1623,17 +1588,15 @@ msgstr "V aktuálnom profile zariadenia nie je dostupný zvukový vstup"
 #. update tooltip
 #: ../src/panel/widgets/volumepulse/micpulse.c:144
 msgid "Mic volume"
-msgstr ""
+msgstr "Hlasitosť mikrofónu"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:216
-#, fuzzy
 msgid "Microphone Control (PulseAudio)"
-msgstr "Ovládanie hlasitosti (PulseAudio)"
+msgstr "Ovládanie mikrofónu (PulseAudio)"
 
 #: ../src/panel/widgets/volumepulse/micpulse.c:217
-#, fuzzy
 msgid "Display and control microphones for PulseAudio"
-msgstr "Zobraziť a ovládať hlasitosť pomocou PulseAudio"
+msgstr "Zobraziť a ovládať mikrofóny pomocou PulseAudio"
 
 #: ../src/panel/widgets/volumepulse/volumepulse.c:103
 msgid "HDMI"
@@ -1674,26 +1637,24 @@ msgstr "Zobraziť a ovládať hlasitosť pomocou PulseAudio"
 
 #: ../data/lxpanel-modal.ui.h:1 ../data/lxplug-bluetooth.ui.h:5
 msgid "label"
-msgstr ""
+msgstr "menovka"
 
 # to je o sieťach
 #: ../data/lxplug-updater.ui.h:1
-#, fuzzy
 msgid "Available Updates"
-msgstr "Dostupné"
+msgstr "Dostupné aktualizácie"
 
 #: ../data/lxplug-updater.ui.h:2
-#, fuzzy
 msgid "Close"
-msgstr "_Zavrieť"
+msgstr "Zavrieť"
 
 #: ../data/lxplug-updater.ui.h:3
 msgid "Install"
-msgstr ""
+msgstr "Inštalovať"
 
 #: ../data/lxplug-updater.ui.h:4
 msgid "The following packages can be updated :"
-msgstr ""
+msgstr "Nasledujúce balíčky budú aktualizované: "
 
 #: ../data/lxplug-bluetooth.ui.h:1
 msgid "Add New Device"
@@ -1729,7 +1690,6 @@ msgid "Connection Information"
 msgstr "Informácie o pripojení"
 
 #: ../src/panel/widgets/netman/info.ui.h:2
-#, fuzzy
 msgid "_Close"
 msgstr "_Zavrieť"
 
@@ -1753,8 +1713,7 @@ msgstr "_Zavrieť"
 
 #, c-format
 #~ msgid "Removal of pairing failed - %s. Remove the device manually."
-#~ msgstr ""
-#~ "Chyba pri odstraňovaní párovania - %s. Odstráňte zariadenie manuálne."
+#~ msgstr "Chyba pri odstraňovaní párovania - %s. Odstráňte zariadenie manuálne."
 
 #, c-format
 #~ msgid "Remove Device"
@@ -1848,19 +1807,18 @@ msgstr "_Zavrieť"
 #~ msgstr "Editor pripojení správcu siete NetworkManager"
 
 #~ msgid ""
-#~ "NetworkManager is a system service for managing and configuring your "
-#~ "network connections and devices."
+#~ "NetworkManager is a system service for managing and configuring your network connections "
+#~ "and devices."
 #~ msgstr ""
-#~ "NetworkManager je systémová služba na správu a nastavenie vašich "
-#~ "sieťových pripojení a zariadení."
+#~ "NetworkManager je systémová služba na správu a nastavenie vašich sieťových pripojení a "
+#~ "zariadení."
 
 #~ msgid ""
-#~ "The nm-connection-editor program works with NetworkManager to create and "
-#~ "edit existing connection profiles for NetworkManager."
+#~ "The nm-connection-editor program works with NetworkManager to create and edit existing "
+#~ "connection profiles for NetworkManager."
 #~ msgstr ""
-#~ "Program nm-connection-editor spolupracuje so správcom siete "
-#~ "NetworkManager na vytváranie a úpravu sieťových profilov pre "
-#~ "NetworkManager."
+#~ "Program nm-connection-editor spolupracuje so správcom siete NetworkManager na vytváranie "
+#~ "a úpravu sieťových profilov pre NetworkManager."
 
 #~ msgid "The NetworkManager Developers"
 #~ msgstr "Vývojári správcu siete NetworkManager"
@@ -1873,11 +1831,11 @@ msgstr "_Zavrieť"
 #~ msgstr "Spravuje a mení nastavenia vášho sieťového pripojenia"
 
 #~ msgid ""
-#~ "IP addresses identify your computer on the network. Click the “Add” "
-#~ "button to add an IP address."
+#~ "IP addresses identify your computer on the network. Click the “Add” button to add an IP "
+#~ "address."
 #~ msgstr ""
-#~ "Adresy IP identifikujú váš počítač v sieti. Kliknite na tlačidlo „Pridať“ "
-#~ "na pridanie adresy IP."
+#~ "Adresy IP identifikujú váš počítač v sieti. Kliknite na tlačidlo „Pridať“ na pridanie "
+#~ "adresy IP."
 
 #~ msgid "_Add"
 #~ msgstr "_Pridať"
@@ -1891,12 +1849,9 @@ msgstr "_Zavrieť"
 #~ msgid "_Use this connection only for resources on its network"
 #~ msgstr "Použiť toto prip_ojenie len pre zdroje na jeho vlastnej sieti"
 
-#~ msgid ""
-#~ "If enabled, this connection will never be used as the default network "
-#~ "connection."
+#~ msgid "If enabled, this connection will never be used as the default network connection."
 #~ msgstr ""
-#~ "Ak je povolené, toto pripojenie nebude nikdy použité ako predvolené "
-#~ "sieťové pripojenie."
+#~ "Ak je povolené, toto pripojenie nebude nikdy použité ako predvolené sieťové pripojenie."
 
 #~ msgid "C_reate…"
 #~ msgstr "Vytvo_riť…"
@@ -1907,14 +1862,13 @@ msgstr "_Zavrieť"
 #~ msgid ""
 #~ "Select the type of connection you wish to create.\n"
 #~ "\n"
-#~ "If you are creating a VPN, and the VPN connection you wish to create does "
-#~ "not appear in the list, you may not have the correct VPN plugin installed."
+#~ "If you are creating a VPN, and the VPN connection you wish to create does not appear in "
+#~ "the list, you may not have the correct VPN plugin installed."
 #~ msgstr ""
 #~ "Vyberte typ pripojenia, ktoré chcete vytvoriť.\n"
 #~ "\n"
-#~ "Ak chcete vytvoriť pripojenie k VPN, ktoré sa nenachádza v zozname, tak "
-#~ "by ste mali skontrolovať, či máte nainštalovaný správny zásuvný modul pre "
-#~ "VPN."
+#~ "Ak chcete vytvoriť pripojenie k VPN, ktoré sa nenachádza v zozname, tak by ste mali "
+#~ "skontrolovať, či máte nainštalovaný správny zásuvný modul pre VPN."
 
 #~ msgid "_Device"
 #~ msgstr "_Zariadenie"
@@ -1976,11 +1930,11 @@ msgstr "_Zavrieť"
 #~ msgstr "ARP _ciele"
 
 #~ msgid ""
-#~ "An IP address, or a comma-separated list of IP addresses, to look for "
-#~ "when checking the link status."
+#~ "An IP address, or a comma-separated list of IP addresses, to look for when checking the "
+#~ "link status."
 #~ msgstr ""
-#~ "Adresa IP alebo zoznam adries IP oddelených čiarkou, ktoré skontrolovať "
-#~ "pri kontrole stavu spojenia"
+#~ "Adresa IP alebo zoznam adries IP oddelených čiarkou, ktoré skontrolovať pri kontrole "
+#~ "stavu spojenia"
 
 #~ msgid "Link _up delay"
 #~ msgstr "Oneskorenie _pripojenia"
@@ -1993,11 +1947,11 @@ msgstr "_Zavrieť"
 #~ msgstr "_Primárne:"
 
 #~ msgid ""
-#~ "The interface name of the primary device. If set, this device will always "
-#~ "be the active slave when it is available."
+#~ "The interface name of the primary device. If set, this device will always be the active "
+#~ "slave when it is available."
 #~ msgstr ""
-#~ "Názov rozhrania primárneho zariadenia. Ak je nastavené, bude toto "
-#~ "zariadenie pri dostupnosti vždy aktívnym podriadeným rozhraním."
+#~ "Názov rozhrania primárneho zariadenia. Ak je nastavené, bude toto zariadenie pri "
+#~ "dostupnosti vždy aktívnym podriadeným rozhraním."
 
 #~ msgid "_MTU"
 #~ msgstr "_MTU"
@@ -2081,11 +2035,9 @@ msgstr "_Zavrieť"
 #~ msgid "Priority Flow Control"
 #~ msgstr "Riadenie toku dát priority"
 
-#~ msgid ""
-#~ "Enable or disable priority pause transmission for each User Priority."
+#~ msgid "Enable or disable priority pause transmission for each User Priority."
 #~ msgstr ""
-#~ "Povoľte alebo zakážte prioritné pozastavenie vysielania pre každú "
-#~ "používateľskú prioritu."
+#~ "Povoľte alebo zakážte prioritné pozastavenie vysielania pre každú používateľskú prioritu."
 
 #~ msgid "0"
 #~ msgstr "0"
@@ -2127,27 +2079,21 @@ msgstr "_Zavrieť"
 #~ msgstr "Identifikátor skupiny"
 
 #~ msgid "Enter the priority group ID for each User Priority."
-#~ msgstr ""
-#~ "Zadajte identifikátor skupiny priorít pre každú používateľskú prioritu."
+#~ msgstr "Zadajte identifikátor skupiny priorít pre každú používateľskú prioritu."
 
 #, fuzzy
 #~ msgid ""
-#~ "Enter the allowed link bandwidth percent each Priority Group may use. The "
-#~ "sum of all groups must total 100%."
+#~ "Enter the allowed link bandwidth percent each Priority Group may use. The sum of all "
+#~ "groups must total 100%."
 #~ msgstr ""
-#~ "Zadajte povolenú šírku pásma v percentách, ktorú môže využiť každá "
-#~ "skupina priorít. Súčet všetkých skupín musí byť 100%."
+#~ "Zadajte povolenú šírku pásma v percentách, ktorú môže využiť každá skupina priorít. "
+#~ "Súčet všetkých skupín musí byť 100%."
 
-#~ msgid ""
-#~ "Enter the percentage of priority group bandwidth each user priority may "
-#~ "use."
-#~ msgstr ""
-#~ "Zadajte percento šírky pásma, ktoré môže využiť každá skupina priorít."
+#~ msgid "Enter the percentage of priority group bandwidth each user priority may use."
+#~ msgstr "Zadajte percento šírky pásma, ktoré môže využiť každá skupina priorít."
 
 #~ msgid "Enable or disable strict bandwidth for each user priority."
-#~ msgstr ""
-#~ "Povoľte alebo zakážte striktnú šírku pásma pre každú používateľskú "
-#~ "prioritu."
+#~ msgstr "Povoľte alebo zakážte striktnú šírku pásma pre každú používateľskú prioritu."
 
 #~ msgid "Enter the traffic class for each user priority."
 #~ msgstr "Zadajte triedu sieťovej prevádzky pre každú používateľskú prioritu."
@@ -2246,12 +2192,10 @@ msgstr "_Zavrieť"
 #~ msgid "_Wake on LAN password"
 #~ msgstr "Heslo _pri prebudení pomocou LAN"
 
-#~ msgid ""
-#~ "Wake-on-LAN password (an Ethernet MAC). It is only valid for magic "
-#~ "packets."
+#~ msgid "Wake-on-LAN password (an Ethernet MAC). It is only valid for magic packets."
 #~ msgstr ""
-#~ "Heslo technológie Wake-on-LAN (MAC adresa ethernetu). Heslo je platné iba "
-#~ "pre balíky Magic Packet."
+#~ "Heslo technológie Wake-on-LAN (MAC adresa ethernetu). Heslo je platné iba pre balíky "
+#~ "Magic Packet."
 
 #~ msgid "_Speed"
 #~ msgstr "_Rýchlosť"
@@ -2354,20 +2298,16 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "The DHCP client identifier allows the network administrator to customize "
-#~ "your computer’s configuration. If you wish to use a DHCP client "
-#~ "identifier, enter it here."
+#~ "The DHCP client identifier allows the network administrator to customize your computer’s "
+#~ "configuration. If you wish to use a DHCP client identifier, enter it here."
 #~ msgstr ""
-#~ "Identifikátor klienta DHCP umožňuje správcovi siete prispôsobiť "
-#~ "nastavenia vášho počítača. Ak si želáte použiť identifikátor klienta "
-#~ "DHCP, zadajte ho tu."
+#~ "Identifikátor klienta DHCP umožňuje správcovi siete prispôsobiť nastavenia vášho "
+#~ "počítača. Ak si želáte použiť identifikátor klienta DHCP, zadajte ho tu."
 
-#~ msgid ""
-#~ "Domains used when resolving host names. Use commas to separate multiple "
-#~ "domains."
+#~ msgid "Domains used when resolving host names. Use commas to separate multiple domains."
 #~ msgstr ""
-#~ "Domény používané pri dekódovaní názvov počítačov. Na oddelenie viacerých "
-#~ "domén použite čiarky."
+#~ "Domény používané pri dekódovaní názvov počítačov. Na oddelenie viacerých domén použite "
+#~ "čiarky."
 
 #~ msgid "D_HCP client ID"
 #~ msgstr "Identifikátor klienta D_HCP"
@@ -2379,12 +2319,11 @@ msgstr "_Zavrieť"
 #~ msgstr "Servery _DNS"
 
 #~ msgid ""
-#~ "IP addresses of domain name servers used to resolve host names. Use "
-#~ "commas to separate multiple domain name server addresses."
+#~ "IP addresses of domain name servers used to resolve host names. Use commas to separate "
+#~ "multiple domain name server addresses."
 #~ msgstr ""
-#~ "Adresy IP doménových menných serverov používaných na dekódovanie názvov "
-#~ "počítačov. Na oddelenie viacerých doménových menných serverov použite "
-#~ "čiarky."
+#~ "Adresy IP doménových menných serverov používaných na dekódovanie názvov počítačov. Na "
+#~ "oddelenie viacerých doménových menných serverov použite čiarky."
 
 #~ msgid "Require IPv_4 addressing for this connection to complete"
 #~ msgstr "Na dokončenie tohto pripojenia je vyžadované adresovanie IPv_4"
@@ -2395,11 +2334,10 @@ msgstr "_Zavrieť"
 # PK: tu ide o to, ze proste zaskrtnes vyzadovanie IPv4, ak to nefacha, tak sa pouzije IPv6
 # tooltip
 #~ msgid ""
-#~ "When connecting to IPv6-capable networks, allows the connection to "
-#~ "complete if IPv4 configuration fails but IPv6 configuration succeeds."
+#~ "When connecting to IPv6-capable networks, allows the connection to complete if IPv4 "
+#~ "configuration fails but IPv6 configuration succeeds."
 #~ msgstr ""
-#~ "Pri zlyhavaní nastavení IPv4 pri pripájaní k IPv6 sieťam sa použijú "
-#~ "nastavenia IPv6."
+#~ "Pri zlyhavaní nastavení IPv4 pri pripájaní k IPv6 sieťam sa použijú nastavenia IPv6."
 
 #~ msgid "_Routes…"
 #~ msgstr "_Smerovania…"
@@ -2421,14 +2359,13 @@ msgstr "_Zavrieť"
 #~ msgstr "Povoliť"
 
 #~ msgid ""
-#~ "IP addresses of domain name servers used to resolve host names. Use "
-#~ "commas to separate multiple domain name server addresses. Link-local "
-#~ "addresses will be automatically scoped to the connecting interface."
+#~ "IP addresses of domain name servers used to resolve host names. Use commas to separate "
+#~ "multiple domain name server addresses. Link-local addresses will be automatically scoped "
+#~ "to the connecting interface."
 #~ msgstr ""
-#~ "Adresy IP doménových menných serverov používaných na dekódovanie názvov "
-#~ "počítačov. Na oddelenie viacerých doménových menných serverov použite "
-#~ "čiarky. Lokálne adresy pre linku budú automaticky pôsobiť pre pripájané "
-#~ "rozhranie."
+#~ "Adresy IP doménových menných serverov používaných na dekódovanie názvov počítačov. Na "
+#~ "oddelenie viacerých doménových menných serverov použite čiarky. Lokálne adresy pre linku "
+#~ "budú automaticky pôsobiť pre pripájané rozhranie."
 
 #, fuzzy
 #~ msgid "IPv6 _privacy extensions"
@@ -2440,11 +2377,10 @@ msgstr "_Zavrieť"
 # MČ: Tu by som formuláciu, následne prispôsobil tej čo bude použitá vyššie.
 # tooltip
 #~ msgid ""
-#~ "When connecting to IPv4-capable networks, allows the connection to "
-#~ "complete if IPv6 configuration fails but IPv4 configuration succeeds."
+#~ "When connecting to IPv4-capable networks, allows the connection to complete if IPv6 "
+#~ "configuration fails but IPv4 configuration succeeds."
 #~ msgstr ""
-#~ "Pri zlyhavaní nastavení IPv6 pri pripájaní k IPv4 sieťam sa použijú "
-#~ "nastavenia IPv4."
+#~ "Pri zlyhavaní nastavení IPv6 pri pripájaní k IPv4 sieťam sa použijú nastavenia IPv4."
 
 #~ msgid "EAP"
 #~ msgstr "EAP"
@@ -2548,8 +2484,8 @@ msgstr "_Zavrieť"
 
 #~ msgid "Use this proxy configuration for only browser clients/schemes."
 #~ msgstr ""
-#~ "Použite túto konfiguráciu sprostredkovateľa proxy iba pre klientov alebo "
-#~ "schémy prehliadačov."
+#~ "Použite túto konfiguráciu sprostredkovateľa proxy iba pre klientov alebo schémy "
+#~ "prehliadačov."
 
 #~ msgid "PAC URL"
 #~ msgstr "URL PAC"
@@ -2606,12 +2542,8 @@ msgstr "_Zavrieť"
 #~ msgid "LACP port _key"
 #~ msgstr "_Kľúč portu LACP"
 
-#~ msgid ""
-#~ "Port priority according to LACP standard. The lower number means higher "
-#~ "priority."
-#~ msgstr ""
-#~ "Priorita portu zodpovedajúca štandardu LACP. Nižšie číslo znamená vyššiu "
-#~ "prioritu."
+#~ msgid "Port priority according to LACP standard. The lower number means higher priority."
+#~ msgstr "Priorita portu zodpovedajúca štandardu LACP. Nižšie číslo znamená vyššiu prioritu."
 
 #~ msgid "_Link watcher"
 #~ msgstr "S_ledovač linky"
@@ -2638,11 +2570,10 @@ msgstr "_Zavrieť"
 #~ msgstr "_Cieľový hostiteľ"
 
 #~ msgid ""
-#~ "Maximum number of missed replies. If this number is exceeded, link is "
-#~ "reported as down."
+#~ "Maximum number of missed replies. If this number is exceeded, link is reported as down."
 #~ msgstr ""
-#~ "Maximálny počet zmeškaných odpovedí. Ak sa prekročí tento počet, linka je "
-#~ "ohlásená ako odpojená."
+#~ "Maximálny počet zmeškaných odpovedí. Ak sa prekročí tento počet, linka je ohlásená ako "
+#~ "odpojená."
 
 #~ msgid "Ignore invalid packets from _active ports"
 #~ msgstr "Ignorovať neplatné pakety z _aktívnych portov"
@@ -2656,12 +2587,8 @@ msgstr "_Zavrieť"
 #~ msgid "The interval between requests being sent."
 #~ msgstr "Interval medzi odosielaním požiadaviek."
 
-#~ msgid ""
-#~ "The delay between link watch initialization and the first request being "
-#~ "sent."
-#~ msgstr ""
-#~ "Oneskorenie medzi inicializáciou sledovania linky a prvým odoslaním "
-#~ "požiadavky."
+#~ msgid "The delay between link watch initialization and the first request being sent."
+#~ msgstr "Oneskorenie medzi inicializáciou sledovania linky a prvým odoslaním požiadavky."
 
 #~ msgid "The link watcher to be used."
 #~ msgstr "Sledovač linky, ktorý sa má použiť."
@@ -2741,12 +2668,10 @@ msgstr "_Zavrieť"
 #~ msgid "_Hardware Address"
 #~ msgstr "_Hardvérová adresa"
 
-#~ msgid ""
-#~ "Desired hardware address of new team device. Usual MAC address format is "
-#~ "accepted."
+#~ msgid "Desired hardware address of new team device. Usual MAC address format is accepted."
 #~ msgstr ""
-#~ "Požadovaná hardvérová adresa nového tímového zariadenia. Obvyklý formát "
-#~ "adresy MAC je prijateľný."
+#~ "Požadovaná hardvérová adresa nového tímového zariadenia. Obvyklý formát adresy MAC je "
+#~ "prijateľný."
 
 #~ msgid "_Runner"
 #~ msgstr "_Spúšťač"
@@ -2781,11 +2706,10 @@ msgstr "_Zavrieť"
 #~ msgid "In tenths of a second. Periodic interval between rebalancing."
 #~ msgstr "V desatinách sekúnd. Pravidelný interval medzi znovu vyvážením."
 
-#~ msgid ""
-#~ "Name of active Tx balancer. Active Tx balancing is disabled by default."
+#~ msgid "Name of active Tx balancer. Active Tx balancing is disabled by default."
 #~ msgstr ""
-#~ "Názov aktívneho vyvažovača vysielania. Aktívne vyvažovanie vysielania je "
-#~ "predvolene zakázané."
+#~ "Názov aktívneho vyvažovača vysielania. Aktívne vyvažovanie vysielania je predvolene "
+#~ "zakázané."
 
 #~ msgid "Transmission _balancing interval"
 #~ msgstr "Interval vyvažov_ania vysielania"
@@ -2908,13 +2832,13 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "The MAC address entered here will be used as hardware address for the "
-#~ "network device this connection is activated on. This feature is known as "
-#~ "MAC cloning or spoofing. Example: 00:11:22:33:44:55"
+#~ "The MAC address entered here will be used as hardware address for the network device "
+#~ "this connection is activated on. This feature is known as MAC cloning or spoofing. "
+#~ "Example: 00:11:22:33:44:55"
 #~ msgstr ""
-#~ "Tu zadaná MAC adresa bude použitá ako hardvérová adresa pre sieťové "
-#~ "zariadenie s týmto pripojením. Táto funkcia je známa ako klonovanie alebo "
-#~ "podstrkovanie. Príklad: 00:11:22:33:44:55"
+#~ "Tu zadaná MAC adresa bude použitá ako hardvérová adresa pre sieťové zariadenie s týmto "
+#~ "pripojením. Táto funkcia je známa ako klonovanie alebo podstrkovanie. Príklad: "
+#~ "00:11:22:33:44:55"
 
 #~ msgid "MAC address"
 #~ msgstr "MAC adresa"
@@ -2950,24 +2874,21 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "IP addresses identify your computer on the network. Click the “Add” "
-#~ "button to add static IP address to be configured in addition to the "
-#~ "automatic ones."
+#~ "IP addresses identify your computer on the network. Click the “Add” button to add static "
+#~ "IP address to be configured in addition to the automatic ones."
 #~ msgstr ""
-#~ "Adresy IP identifikujú váš počítač v sieti. Kliknite na tlačidlo „Pridať“ "
-#~ "na pridanie statickej adresy IP."
+#~ "Adresy IP identifikujú váš počítač v sieti. Kliknite na tlačidlo „Pridať“ na pridanie "
+#~ "statickej adresy IP."
 
 #, fuzzy
 #~ msgid ""
-#~ "The IP address identify your computer on the network and determines the "
-#~ "address range distributed to other computers. Click the “Add” button to "
-#~ "add an IP address. If no address is provided, range will be determined "
-#~ "automatically."
+#~ "The IP address identify your computer on the network and determines the address range "
+#~ "distributed to other computers. Click the “Add” button to add an IP address. If no "
+#~ "address is provided, range will be determined automatically."
 #~ msgstr ""
-#~ "Adresa IP identifikuje váš počítač v sieti a určuje rozsah adries "
-#~ "šírených iným počítačom. Kliknite na tlačidlo „Pridať“ na pridanie adresy "
-#~ "IP. Ak nie je poskytnutá žiadna adresa, použije sa jedna z rozsahu 10.42."
-#~ "x.x."
+#~ "Adresa IP identifikuje váš počítač v sieti a určuje rozsah adries šírených iným "
+#~ "počítačom. Kliknite na tlačidlo „Pridať“ na pridanie adresy IP. Ak nie je poskytnutá "
+#~ "žiadna adresa, použije sa jedna z rozsahu 10.42.x.x."
 
 #~ msgid "Additional static addresses"
 #~ msgstr "Dodatočné statické adresy"
@@ -2979,8 +2900,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Adresa (voliteľné)"
 
 #~ msgid "No polkit authorization to perform the action"
-#~ msgstr ""
-#~ "Neexistuje overenie totožnosti nástroja polkit na vykonanie tejto činnosti"
+#~ msgstr "Neexistuje overenie totožnosti nástroja polkit na vykonanie tejto činnosti"
 
 #~ msgid "Allowed Authentication Methods"
 #~ msgstr "Povolené metódy overenia totožnosti"
@@ -3016,12 +2936,11 @@ msgstr "_Zavrieť"
 #~ msgstr "Protokol vzájomného overenia totožnosti, od Microsoftu, verzia 2"
 
 #~ msgid ""
-#~ "In most cases, the provider’s PPP servers will support all authentication "
-#~ "methods. If connections fail, try disabling support for some methods."
+#~ "In most cases, the provider’s PPP servers will support all authentication methods. If "
+#~ "connections fail, try disabling support for some methods."
 #~ msgstr ""
-#~ "Servery PPP poskytovateľa väčšinou podporujú všetky metódy overenia "
-#~ "totožnosti. Ak pripojenia zlyhávajú, skúste podporu pre niektoré metódy "
-#~ "zakázať."
+#~ "Servery PPP poskytovateľa väčšinou podporujú všetky metódy overenia totožnosti. Ak "
+#~ "pripojenia zlyhávajú, skúste podporu pre niektoré metódy zakázať."
 
 #~ msgid "Wi-Fi"
 #~ msgstr "Wi-Fi"
@@ -3073,12 +2992,8 @@ msgstr "_Zavrieť"
 #~ msgid "Import a saved VPN configuration…"
 #~ msgstr "Importovať uloženú konfiguráciu VPN…"
 
-#~ msgid ""
-#~ "The connection editor dialog could not be initialized due to an unknown "
-#~ "error."
-#~ msgstr ""
-#~ "Dialógové okno úpravy pripojenia sa nepodarilo inicializovať pre neznámu "
-#~ "chybu."
+#~ msgid "The connection editor dialog could not be initialized due to an unknown error."
+#~ msgstr "Dialógové okno úpravy pripojenia sa nepodarilo inicializovať pre neznámu chybu."
 
 #~ msgid "Could not create new connection"
 #~ msgstr "Nepodarilo sa vytvoriť nové pripojenie"
@@ -3133,11 +3048,10 @@ msgstr "_Zavrieť"
 #~ msgstr "Neplatné nastavenie %s: %s"
 
 #~ msgid ""
-#~ "The connection editor could not find some required resources (the .ui "
-#~ "file was not found)."
+#~ "The connection editor could not find some required resources (the .ui file was not "
+#~ "found)."
 #~ msgstr ""
-#~ "Editor pripojení nemohol nájsť niektoré vyžadované zdroje (súbor .ui "
-#~ "nebol nájdený)."
+#~ "Editor pripojení nemohol nájsť niektoré vyžadované zdroje (súbor .ui nebol nájdený)."
 
 #~ msgid "_Save"
 #~ msgstr "_Uložiť"
@@ -3148,8 +3062,8 @@ msgstr "_Zavrieť"
 
 #~ msgid "Authenticate to save this connection for all users of this machine."
 #~ msgstr ""
-#~ "Keď chcete uložiť toto pripojenie pre všetkých používateľov tohto "
-#~ "počítača, tak overte totožnosť."
+#~ "Keď chcete uložiť toto pripojenie pre všetkých používateľov tohto počítača, tak overte "
+#~ "totožnosť."
 
 #~ msgid "Could not create connection"
 #~ msgstr "Nepodarilo sa vytvoriť pripojenie"
@@ -3169,11 +3083,10 @@ msgstr "_Zavrieť"
 # gsettings description
 #, fuzzy
 #~ msgid ""
-#~ "Security labels may prevent some files from being used with certificate "
-#~ "authentication."
+#~ "Security labels may prevent some files from being used with certificate authentication."
 #~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať upozornenia o certifikátoch "
-#~ "certifikačnej autority pri overovaní totožnosti protokolom EAP."
+#~ "Nastavte na true, keď chcete zakázať upozornenia o certifikátoch certifikačnej autority "
+#~ "pri overovaní totožnosti protokolom EAP."
 
 # GtkLabel label
 #~ msgid "Connection _name"
@@ -3299,9 +3212,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Zabezpečenie protokolu 802.1X"
 
 #~ msgid "Could not load 802.1X Security user interface."
-#~ msgstr ""
-#~ "Nepodarilo sa načítať používateľské rozhranie pre zabezpečenie protokolu "
-#~ "802.1X."
+#~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre zabezpečenie protokolu 802.1X."
 
 #~ msgid "Use 802.1_X security for this connection"
 #~ msgstr "Použiť zabezpečenie protokolu 802.1_X pre toto pripojenie"
@@ -3333,8 +3244,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Vy_táčaná sieť"
 
 #~ msgid "Could not load bond user interface."
-#~ msgstr ""
-#~ "Nepodarilo sa načítať používateľské rozhranie pre previazané pripojenie."
+#~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre previazané pripojenie."
 
 #~ msgid "primary"
 #~ msgstr "primárne"
@@ -3350,8 +3260,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre port premostenia."
 
 #~ msgid "Could not load bridge user interface."
-#~ msgstr ""
-#~ "Nepodarilo sa načítať používateľské rozhranie pre premostené pripojenie."
+#~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre premostené pripojenie."
 
 #, c-format
 #~ msgid "Bridge connection %d"
@@ -3376,13 +3285,13 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "This option locks this connection to the network device specified either "
-#~ "by its interface name or permanent MAC or both. Examples: “em1”, "
-#~ "“3C:97:0E:42:1A:19”, “em1 (3C:97:0E:42:1A:19)”"
+#~ "This option locks this connection to the network device specified either by its "
+#~ "interface name or permanent MAC or both. Examples: “em1”, “3C:97:0E:42:1A:19”, “em1 "
+#~ "(3C:97:0E:42:1A:19)”"
 #~ msgstr ""
-#~ "Táto voľba uzamkne toto pripojenie so sieťovým zariadením, buď na základe "
-#~ "jeho názvu rozhrania, alebo trvalej MAC adresy, alebo na základe oboch. "
-#~ "Príklady: „em1“, „3C:97:0E:42:1A:19“, „em1 (3C:97:0E:42:1A:19)“"
+#~ "Táto voľba uzamkne toto pripojenie so sieťovým zariadením, buď na základe jeho názvu "
+#~ "rozhrania, alebo trvalej MAC adresy, alebo na základe oboch. Príklady: „em1“, "
+#~ "„3C:97:0E:42:1A:19“, „em1 (3C:97:0E:42:1A:19)“"
 
 #, fuzzy
 #~ msgid "ignored"
@@ -3405,29 +3314,27 @@ msgstr "_Zavrieť"
 #~ msgstr "Pripojenie k ethernetu č. %d"
 
 #~ msgid ""
-#~ "The zone defines the trust level of the connection. Default is not a "
-#~ "regular zone, selecting it results in the use of the default zone set in "
-#~ "the firewall. Only usable if firewalld is active."
+#~ "The zone defines the trust level of the connection. Default is not a regular zone, "
+#~ "selecting it results in the use of the default zone set in the firewall. Only usable if "
+#~ "firewalld is active."
 #~ msgstr ""
-#~ "Zóna definuje úroveň dôvery tohto pripojenia. Predvolená nie je obyčajná "
-#~ "zóna, ale jej vybratím ju nastavíte vo firewalle. Užitočné len v prípade "
-#~ "keď je firewall aktívny."
+#~ "Zóna definuje úroveň dôvery tohto pripojenia. Predvolená nie je obyčajná zóna, ale jej "
+#~ "vybratím ju nastavíte vo firewalle. Užitočné len v prípade keď je firewall aktívny."
 
 #~ msgid "Could not load General user interface."
 #~ msgstr "Nepodarilo sa načítať všeobecné používateľské rozhranie."
 
 #, fuzzy
 #~ msgid ""
-#~ "This option locks this connection to the network device specified either "
-#~ "by its interface name or permanent MAC or both. Examples: “ib0”, "
+#~ "This option locks this connection to the network device specified either by its "
+#~ "interface name or permanent MAC or both. Examples: “ib0”, "
 #~ "“80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65”, “ib0 "
 #~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)”"
 #~ msgstr ""
-#~ "Táto voľba uzamkne toto pripojenie k sieťovému zariadeniu, buď na základe "
-#~ "jeho názvu rozhrania, alebo trvalej MAC adresy, alebo na základe oboch. "
-#~ "Príklady: „ib0“, „80:00:00:48:fe:80:00:00:00:00:00:00:00:02:"
-#~ "c9:03:00:00:0f:65“, „ib0 (80:00:00:48:fe:80:00:00:00:00:00:00:00:02:"
-#~ "c9:03:00:00:0f:65)“"
+#~ "Táto voľba uzamkne toto pripojenie k sieťovému zariadeniu, buď na základe jeho názvu "
+#~ "rozhrania, alebo trvalej MAC adresy, alebo na základe oboch. Príklady: „ib0“, "
+#~ "„80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65“, „ib0 "
+#~ "(80:00:00:48:fe:80:00:00:00:00:00:00:00:02:c9:03:00:00:0f:65)“"
 
 #~ msgid "Could not load InfiniBand user interface."
 #~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre InfiniBand."
@@ -3544,24 +3451,22 @@ msgstr "_Zavrieť"
 
 #, c-format
 #~ msgid "Slaves “%s” and “%s” both apply to device “%s”"
-#~ msgstr ""
-#~ "Obidve podriadené rozhrania „%s“ a „%s“ sú aplikované na zariadení „%s“"
+#~ msgstr "Obidve podriadené rozhrania „%s“ a „%s“ sú aplikované na zariadení „%s“"
 
 #, c-format
 #~ msgid ""
-#~ "Slaves “%s” and “%s” apply to different virtual ports (“%s” and “%s”) of "
-#~ "the same physical device."
+#~ "Slaves “%s” and “%s” apply to different virtual ports (“%s” and “%s”) of the same "
+#~ "physical device."
 #~ msgstr ""
-#~ "Podriadené zariadenia „%s“ a „%s“ sú aplikované na rozdielne virtuálne "
-#~ "porty („%s“ a „%s“) toho istého fyzického zariadenia."
+#~ "Podriadené zariadenia „%s“ a „%s“ sú aplikované na rozdielne virtuálne porty („%s“ a "
+#~ "„%s“) toho istého fyzického zariadenia."
 
 #, c-format
 #~ msgid "%s slave %d"
 #~ msgstr "Podriadené rozhranie %s č. %d"
 
 #~ msgid "Could not load mobile broadband user interface."
-#~ msgstr ""
-#~ "Nepodarilo sa načítať používateľské rozhranie pre mobilné pripojenie."
+#~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre mobilné pripojenie."
 
 #~ msgid "Unsupported mobile broadband connection type."
 #~ msgstr "Nepodporovaný typ mobilného pripojenia."
@@ -3571,21 +3476,18 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "Select the technology your mobile broadband provider uses. If you are "
-#~ "unsure, ask your provider."
+#~ "Select the technology your mobile broadband provider uses. If you are unsure, ask your "
+#~ "provider."
 #~ msgstr ""
-#~ "Zvoľte si, ktorú technológiu používa váš poskytovateľ mobilného "
-#~ "pripojenia. Ak nie ste si istý, spýtajte sa vášho poskytovateľa."
+#~ "Zvoľte si, ktorú technológiu používa váš poskytovateľ mobilného pripojenia. Ak nie ste "
+#~ "si istý, spýtajte sa vášho poskytovateľa."
 
-#~ msgid ""
-#~ "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
+#~ msgid "My provider uses _GSM-based technology (i.e. GPRS, EDGE, UMTS, HSDPA)"
 #~ msgstr ""
-#~ "Môj poskytovateľ používa technológiu založenú na _GSM (napr. GPRS, EDGE, "
-#~ "UMTS, HSDPA)"
+#~ "Môj poskytovateľ používa technológiu založenú na _GSM (napr. GPRS, EDGE, UMTS, HSDPA)"
 
 #~ msgid "My provider uses C_DMA-based technology (i.e. 1xRTT, EVDO)"
-#~ msgstr ""
-#~ "Môj poskytovateľ používa technológiu založenú na _CDMA (napr. 1xRTT, EVDO)"
+#~ msgstr "Môj poskytovateľ používa technológiu založenú na _CDMA (napr. 1xRTT, EVDO)"
 
 #~ msgid "PAP"
 #~ msgstr "PAP"
@@ -3616,8 +3518,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Proxy"
 
 #~ msgid "Could not load proxy user interface."
-#~ msgstr ""
-#~ "Nepodarilo sa načítať používateľské rozhranie pre sprostredkovateľa proxy."
+#~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre sprostredkovateľa proxy."
 
 #~ msgid "Error: file doesn’t contain a valid JSON configuration"
 #~ msgstr "Chyba: súbor neobsahuje platnú konfiguráciu JSON"
@@ -3672,13 +3573,12 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "Select the type of VPN you wish to use for the new connection. If the "
-#~ "type of VPN connection you wish to create does not appear in the list, "
-#~ "you may not have the correct VPN plugin installed."
+#~ "Select the type of VPN you wish to use for the new connection. If the type of VPN "
+#~ "connection you wish to create does not appear in the list, you may not have the correct "
+#~ "VPN plugin installed."
 #~ msgstr ""
-#~ "Zvoľte si typ VPN, ktorý chcete použiť pre nové pripojenie. Ak sa "
-#~ "požadovaný typ VPN pripojenia v zozname nenachádza, asi nemáte "
-#~ "nainštalovaný správny VPN zásuvný modul."
+#~ "Zvoľte si typ VPN, ktorý chcete použiť pre nové pripojenie. Ak sa požadovaný typ VPN "
+#~ "pripojenia v zozname nenachádza, asi nemáte nainštalovaný správny VPN zásuvný modul."
 
 #~ msgid "WEP 40/128-bit Key (Hex or ASCII)"
 #~ msgstr "Kľúč pre WEP 40/128-bitový (šestnástkovo alebo ASCII)"
@@ -3700,15 +3600,14 @@ msgstr "_Zavrieť"
 
 #~ msgid "Could not load Wi-Fi security user interface; missing Wi-Fi setting."
 #~ msgstr ""
-#~ "Nepodarilo sa načítať používateľské rozhranie pre zabezpečenie Wi-Fi; "
-#~ "nastavenie Wi-Fi chýba."
+#~ "Nepodarilo sa načítať používateľské rozhranie pre zabezpečenie Wi-Fi; nastavenie Wi-Fi "
+#~ "chýba."
 
 #~ msgid "Wi-Fi Security"
 #~ msgstr "Zabezpečenie Wi-Fi"
 
 #~ msgid "Could not load Wi-Fi security user interface."
-#~ msgstr ""
-#~ "Nepodarilo sa načítať používateľské rozhranie pre zabezpečenie Wi-Fi."
+#~ msgstr "Nepodarilo sa načítať používateľské rozhranie pre zabezpečenie Wi-Fi."
 
 #~ msgid "missing SSID"
 #~ msgstr "chýbajúce SSID"
@@ -3718,21 +3617,21 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "This option locks this connection to the Wi-Fi access point (AP) "
-#~ "specified by the BSSID entered here. Example: 00:11:22:33:44:55"
+#~ "This option locks this connection to the Wi-Fi access point (AP) specified by the BSSID "
+#~ "entered here. Example: 00:11:22:33:44:55"
 #~ msgstr ""
-#~ "Táto voľba uzamkne toto pripojenie s prípojným bodom (AP) Wi-Fi zadaným v "
-#~ "poli BSSID. Príklad: 00:11:22:33:44:55"
+#~ "Táto voľba uzamkne toto pripojenie s prípojným bodom (AP) Wi-Fi zadaným v poli BSSID. "
+#~ "Príklad: 00:11:22:33:44:55"
 
 #, fuzzy
 #~ msgid ""
-#~ "This option locks this connection to the network device specified either "
-#~ "by its interface name or permanent MAC or both. Examples: “wlan0”, "
-#~ "“3C:97:0E:42:1A:19”, “wlan0 (3C:97:0E:42:1A:19)”"
+#~ "This option locks this connection to the network device specified either by its "
+#~ "interface name or permanent MAC or both. Examples: “wlan0”, “3C:97:0E:42:1A:19”, “wlan0 "
+#~ "(3C:97:0E:42:1A:19)”"
 #~ msgstr ""
-#~ "Táto voľba uzamkne toto pripojenie so sieťovým zariadením, buď na základe "
-#~ "jeho názvu rozhrania, alebo trvalej MAC adresy, alebo na základe oboch. "
-#~ "Príklady: „wlan0“, „3C:97:0E:42:1A:19“, „wlan0 (3C:97:0E:42:1A:19)“"
+#~ "Táto voľba uzamkne toto pripojenie so sieťovým zariadením, buď na základe jeho názvu "
+#~ "rozhrania, alebo trvalej MAC adresy, alebo na základe oboch. Príklady: „wlan0“, "
+#~ "„3C:97:0E:42:1A:19“, „wlan0 (3C:97:0E:42:1A:19)“"
 
 #, c-format
 #~ msgid "%u (%u MHz)"
@@ -3794,18 +3693,18 @@ msgstr "_Zavrieť"
 #~ msgstr "Použitie:"
 
 #~ msgid ""
-#~ "This program is a component of NetworkManager (https://wiki.gnome.org/"
-#~ "Projects/NetworkManager/)."
+#~ "This program is a component of NetworkManager (https://wiki.gnome.org/Projects/"
+#~ "NetworkManager/)."
 #~ msgstr ""
-#~ "Tento program je súčasťou programu Správca siete (https://wiki.gnome.org/"
-#~ "Projects/NetworkManager/)."
+#~ "Tento program je súčasťou programu Správca siete (https://wiki.gnome.org/Projects/"
+#~ "NetworkManager/)."
 
 #~ msgid ""
-#~ "It is not intended for command-line interaction but instead runs in the "
-#~ "GNOME desktop environment."
+#~ "It is not intended for command-line interaction but instead runs in the GNOME desktop "
+#~ "environment."
 #~ msgstr ""
-#~ "Nie je určený na ovládanie pomocou príkazového riadka, ale je spustený v "
-#~ "pracovnom prostredí GNOME."
+#~ "Nie je určený na ovládanie pomocou príkazového riadka, ale je spustený v pracovnom "
+#~ "prostredí GNOME."
 
 #~ msgid "missing EAP-FAST PAC file"
 #~ msgstr "chýba súbor PAC protokolu EAP-FAST"
@@ -3946,34 +3845,29 @@ msgstr "_Zavrieť"
 #~ msgstr "chýba kľúč zabezpečenia wep"
 
 #, c-format
-#~ msgid ""
-#~ "invalid wep-key: key with a length of %zu must contain only hex-digits"
+#~ msgid "invalid wep-key: key with a length of %zu must contain only hex-digits"
 #~ msgstr ""
-#~ "neplatný kľúč zabezpečenia wep: kľúč o dĺžke %zu musí obsahovať iba "
-#~ "hexadecimálne čísla"
+#~ "neplatný kľúč zabezpečenia wep: kľúč o dĺžke %zu musí obsahovať iba hexadecimálne čísla"
+
+#, c-format
+#~ msgid "invalid wep-key: key with a length of %zu must contain only ascii characters"
+#~ msgstr ""
+#~ "neplatný kľúč zabezpečenia wep: kľúč o dĺžke %zu musí obsahovať iba znaky v kódovaní "
+#~ "ascii"
 
 #, c-format
 #~ msgid ""
-#~ "invalid wep-key: key with a length of %zu must contain only ascii "
-#~ "characters"
+#~ "invalid wep-key: wrong key length %zu. A key must be either of length 5/13 (ascii) or "
+#~ "10/26 (hex)"
 #~ msgstr ""
-#~ "neplatný kľúč zabezpečenia wep: kľúč o dĺžke %zu musí obsahovať iba znaky "
-#~ "v kódovaní ascii"
-
-#, c-format
-#~ msgid ""
-#~ "invalid wep-key: wrong key length %zu. A key must be either of length "
-#~ "5/13 (ascii) or 10/26 (hex)"
-#~ msgstr ""
-#~ "neplatný kľúč zabezpečenia wep: nesprávna dĺžka kľúča %zu. Kľúč musí byť "
-#~ "o dĺžke buď 5/13 (ascii) alebo 10/26 (hexadecimálne)"
+#~ "neplatný kľúč zabezpečenia wep: nesprávna dĺžka kľúča %zu. Kľúč musí byť o dĺžke buď "
+#~ "5/13 (ascii) alebo 10/26 (hexadecimálne)"
 
 #~ msgid "invalid wep-key: passphrase must be non-empty"
 #~ msgstr "neplatný kľúč zabezpečenia wep: heslo nemôže byť prázdne"
 
 #~ msgid "invalid wep-key: passphrase must be shorter than 64 characters"
-#~ msgstr ""
-#~ "neplatný kľúč zabezpečenia wep: heslo musí byť kratšie ako 64 znakov"
+#~ msgstr "neplatný kľúč zabezpečenia wep: heslo musí byť kratšie ako 64 znakov"
 
 #~ msgid "Open System"
 #~ msgstr "Otvorený systém"
@@ -3988,38 +3882,30 @@ msgstr "_Zavrieť"
 #~ msgstr "Inde_x kľúča WEP"
 
 #, c-format
-#~ msgid ""
-#~ "invalid wpa-psk: invalid key-length %zu. Must be [8,63] bytes or 64 hex "
-#~ "digits"
+#~ msgid "invalid wpa-psk: invalid key-length %zu. Must be [8,63] bytes or 64 hex digits"
 #~ msgstr ""
-#~ "neplatné zabezpečenie wpa-psk: neplatná dĺžka kľúča %zu. Musí byť o dĺžke "
-#~ "[8,63] bajtov alebo 64 hexadecimálnych čísel"
+#~ "neplatné zabezpečenie wpa-psk: neplatná dĺžka kľúča %zu. Musí byť o dĺžke [8,63] bajtov "
+#~ "alebo 64 hexadecimálnych čísel"
 
 #~ msgid "invalid wpa-psk: cannot interpret key with 64 bytes as hex"
 #~ msgstr ""
-#~ "neplatné zabezpečenie wpa-psk: nedá sa interpretovať 64 bajtový kľúč ako "
-#~ "hexadecimálny"
+#~ "neplatné zabezpečenie wpa-psk: nedá sa interpretovať 64 bajtový kľúč ako hexadecimálny"
 
 # gsettings summary
 #~ msgid "Disable connected notifications"
 #~ msgstr "Zakázať oznámenia o pripojení"
 
 # gsettings description
-#~ msgid ""
-#~ "Set this to true to disable notifications when connecting to a network."
-#~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať oznámenia počas pripájania k sieti."
+#~ msgid "Set this to true to disable notifications when connecting to a network."
+#~ msgstr "Nastavte na true, keď chcete zakázať oznámenia počas pripájania k sieti."
 
 # gsettings summary
 #~ msgid "Disable disconnected notifications"
 #~ msgstr "Zakázať oznámenia o odpojení"
 
 # gsettings description
-#~ msgid ""
-#~ "Set this to true to disable notifications when disconnecting from a "
-#~ "network."
-#~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať oznámenia počas odpájania zo siete."
+#~ msgid "Set this to true to disable notifications when disconnecting from a network."
+#~ msgstr "Nastavte na true, keď chcete zakázať oznámenia počas odpájania zo siete."
 
 # gsettings summary
 #~ msgid "Disable VPN notifications"
@@ -4027,72 +3913,57 @@ msgstr "_Zavrieť"
 
 # gsettings description
 #~ msgid ""
-#~ "Set this to true to disable notifications when connecting to or "
-#~ "disconnecting from a VPN."
+#~ "Set this to true to disable notifications when connecting to or disconnecting from a VPN."
 #~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať oznámenia počas pripájania alebo "
-#~ "odpájania z VPN."
+#~ "Nastavte na true, keď chcete zakázať oznámenia počas pripájania alebo odpájania z VPN."
 
 # gsettings summary
 #~ msgid "Suppress networks available notifications"
 #~ msgstr "Potlačiť oznámenia dostupných sietí"
 
 # gsettings description
-#~ msgid ""
-#~ "Set this to true to disable notifications when Wi-Fi networks are "
-#~ "available."
-#~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať oznámenia na dostupné Wi-Fi siete."
+#~ msgid "Set this to true to disable notifications when Wi-Fi networks are available."
+#~ msgstr "Nastavte na true, keď chcete zakázať oznámenia na dostupné Wi-Fi siete."
 
 # gsettings summary
 #~ msgid "Stamp"
 #~ msgstr "Známka"
 
 # gsettings description
-#~ msgid ""
-#~ "Used to determine whether settings should be migrated to a new version."
-#~ msgstr ""
-#~ "Použité na zistenie, či majú byť nastavenia migrované na novú verziu."
+#~ msgid "Used to determine whether settings should be migrated to a new version."
+#~ msgstr "Použité na zistenie, či majú byť nastavenia migrované na novú verziu."
 
 # gsettings summary
 #~ msgid "Disable WiFi Create"
 #~ msgstr "Zakázať vytváranie WiFi"
 
 # gsettings description
-#~ msgid ""
-#~ "Set to true to disable creation of adhoc networks when using the applet."
-#~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať vytváranie ad-hoc sietí pri "
-#~ "používaní apletu."
+#~ msgid "Set to true to disable creation of adhoc networks when using the applet."
+#~ msgstr "Nastavte na true, keď chcete zakázať vytváranie ad-hoc sietí pri používaní apletu."
 
 #~ msgid "Show the applet in notification area"
 #~ msgstr "Zobraziť aplet v oblasti oznámení"
 
-#~ msgid ""
-#~ "Set to FALSE to disable displaying the applet in the notification area."
-#~ msgstr ""
-#~ "Nastavte na false, keď nechcete aby sa zobrazoval aplet v oblasti "
-#~ "oznámení."
+#~ msgid "Set to FALSE to disable displaying the applet in the notification area."
+#~ msgstr "Nastavte na false, keď nechcete aby sa zobrazoval aplet v oblasti oznámení."
 
 # gsettings summary
 #~ msgid "Ignore CA certificate"
 #~ msgstr "Ignorovať certifikát CA"
 
 # gsettings description
-#~ msgid ""
-#~ "Set this to true to disable warnings about CA certificates in EAP "
-#~ "authentication."
+#~ msgid "Set this to true to disable warnings about CA certificates in EAP authentication."
 #~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať upozornenia o certifikátoch "
-#~ "certifikačnej autority pri overovaní totožnosti protokolom EAP."
+#~ "Nastavte na true, keď chcete zakázať upozornenia o certifikátoch certifikačnej autority "
+#~ "pri overovaní totožnosti protokolom EAP."
 
 # gsettings description
 #~ msgid ""
-#~ "Set this to true to disable warnings about CA certificates in phase 2 of "
-#~ "EAP authentication."
+#~ "Set this to true to disable warnings about CA certificates in phase 2 of EAP "
+#~ "authentication."
 #~ msgstr ""
-#~ "Nastavte na true, keď chcete zakázať upozornenia o certifikátoch "
-#~ "certifikačnej autority v 2. fáze pri overovaní totožnosti protokolom EAP."
+#~ "Nastavte na true, keď chcete zakázať upozornenia o certifikátoch certifikačnej autority "
+#~ "v 2. fáze pri overovaní totožnosti protokolom EAP."
 
 #~ msgid "No certificate set"
 #~ msgstr "Nie je nastavený žiadny certifikát"
@@ -4135,11 +4006,10 @@ msgstr "_Zavrieť"
 #~ msgstr "Nové mobilné pripojenie"
 
 #~ msgid ""
-#~ "This assistant helps you easily set up a mobile broadband connection to a "
-#~ "cellular (3G) network."
+#~ "This assistant helps you easily set up a mobile broadband connection to a cellular (3G) "
+#~ "network."
 #~ msgstr ""
-#~ "Tento asistent vám pomôže poľahky nastaviť mobilné pripojenie do bunkovej "
-#~ "(3G) siete."
+#~ "Tento asistent vám pomôže poľahky nastaviť mobilné pripojenie do bunkovej (3G) siete."
 
 #~ msgid "You will need the following information:"
 #~ msgstr "Budete potrebovať nasledovné informácie:"
@@ -4152,8 +4022,8 @@ msgstr "_Zavrieť"
 
 #~ msgid "(in some cases) Your broadband billing plan APN (Access Point Name)"
 #~ msgstr ""
-#~ "(v niektorých prípadoch) APN (názov prípojného bodu) programu fakturácie "
-#~ "vášho mobilného pripojenia"
+#~ "(v niektorých prípadoch) APN (názov prípojného bodu) programu fakturácie vášho mobilného "
+#~ "pripojenia"
 
 #~ msgid "Create a connection for _this mobile broadband device:"
 #~ msgstr "Vytvoriť pripojenie pre _toto mobilné zariadenie:"
@@ -4171,8 +4041,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Zvoľte si poskytovateľa zo z_oznamu:"
 
 #, fuzzy
-#~ msgid ""
-#~ "I can’t find my provider and I wish to set up the connection _manually:"
+#~ msgid "I can’t find my provider and I wish to set up the connection _manually:"
 #~ msgstr "Nenašiel som môjho poskytovateľa, chcem ho zadať _ručne:"
 
 #~ msgid "My provider uses GSM technology (GPRS, EDGE, UMTS, HSPA)"
@@ -4191,26 +4060,22 @@ msgstr "_Zavrieť"
 #~ msgstr "_APN (názov prípojného bodu) zvoleného programu:"
 
 #~ msgid ""
-#~ "Warning: Selecting an incorrect plan may result in billing issues for "
-#~ "your broadband account or may prevent connectivity.\n"
+#~ "Warning: Selecting an incorrect plan may result in billing issues for your broadband "
+#~ "account or may prevent connectivity.\n"
 #~ "\n"
-#~ "If you are unsure of your plan please ask your provider for your plan’s "
-#~ "APN."
+#~ "If you are unsure of your plan please ask your provider for your plan’s APN."
 #~ msgstr ""
-#~ "Upozornenie: Zvolenie nesprávneho programu môže spôsobiť problémy pri "
-#~ "fakturácii za váš mobilný účet, alebo znemožniť pripojenie.\n"
+#~ "Upozornenie: Zvolenie nesprávneho programu môže spôsobiť problémy pri fakturácii za váš "
+#~ "mobilný účet, alebo znemožniť pripojenie.\n"
 #~ "\n"
-#~ "Ak si nie ste istý vaším programom, zistite si, prosím, APN vášho "
-#~ "programu u vášho poskytovateľa."
+#~ "Ak si nie ste istý vaším programom, zistite si, prosím, APN vášho programu u vášho "
+#~ "poskytovateľa."
 
 #~ msgid "Choose your Billing Plan"
 #~ msgstr "Zvoľte si program fakturácie"
 
-#~ msgid ""
-#~ "Your mobile broadband connection is configured with the following "
-#~ "settings:"
-#~ msgstr ""
-#~ "Vaše mobilné pripojenie je nakonfigurované pomocou nasledovných nastavení:"
+#~ msgid "Your mobile broadband connection is configured with the following settings:"
+#~ msgstr "Vaše mobilné pripojenie je nakonfigurované pomocou nasledovných nastavení:"
 
 #~ msgid "Your Device:"
 #~ msgstr "Vaše zariadenie:"
@@ -4225,17 +4090,15 @@ msgstr "_Zavrieť"
 
 #, fuzzy
 #~ msgid ""
-#~ "A connection will now be made to your mobile broadband provider using the "
-#~ "settings you selected. If the connection fails or you cannot access "
-#~ "network resources, double-check your settings. To modify your mobile "
-#~ "broadband connection settings, choose “Network Connections” from the "
-#~ "System → Preferences menu."
+#~ "A connection will now be made to your mobile broadband provider using the settings you "
+#~ "selected. If the connection fails or you cannot access network resources, double-check "
+#~ "your settings. To modify your mobile broadband connection settings, choose “Network "
+#~ "Connections” from the System → Preferences menu."
 #~ msgstr ""
-#~ "Teraz bude vytvorené pripojenie k vášmu poskytovateľovi mobilného "
-#~ "pripojenia pomocou nastavení, ktoré ste si zvolili.  Ak pripojenie zlyhá, "
-#~ "alebo sa nebudete môcť dostať k sieťovým prostriedkom, preverte vaše "
-#~ "nastavenia. Keď chcete zmeniť nastavenia vášho mobilného pripojenia, tak "
-#~ "zvoľte „Sieťové pripojenia“ z ponuky Systém >> Nastavenia."
+#~ "Teraz bude vytvorené pripojenie k vášmu poskytovateľovi mobilného pripojenia pomocou "
+#~ "nastavení, ktoré ste si zvolili.  Ak pripojenie zlyhá, alebo sa nebudete môcť dostať k "
+#~ "sieťovým prostriedkom, preverte vaše nastavenia. Keď chcete zmeniť nastavenia vášho "
+#~ "mobilného pripojenia, tak zvoľte „Sieťové pripojenia“ z ponuky Systém >> Nastavenia."
 
 #~ msgid "Confirm Mobile Broadband Settings"
 #~ msgstr "Potvrďte nastavenia mobilného pripojenia"
@@ -4323,11 +4186,8 @@ msgstr "_Zavrieť"
 #~ msgid "C_reate"
 #~ msgstr "Vy_tvoriť"
 
-#~ msgid ""
-#~ "Passwords or encryption keys are required to access the Wi-Fi network "
-#~ "“%s”."
-#~ msgstr ""
-#~ "Na prístup do siete Wi-Fi „%s“ je vyžadované heslo alebo šifrovací kľúč."
+#~ msgid "Passwords or encryption keys are required to access the Wi-Fi network “%s”."
+#~ msgstr "Na prístup do siete Wi-Fi „%s“ je vyžadované heslo alebo šifrovací kľúč."
 
 # window title
 #~ msgid "Wi-Fi Network Authentication Required"
@@ -4355,11 +4215,10 @@ msgstr "_Zavrieť"
 #~ msgstr "Skrytá sieť Wi-Fi"
 
 #~ msgid ""
-#~ "Enter the name and security details of the hidden Wi-Fi network you wish "
-#~ "to connect to."
+#~ "Enter the name and security details of the hidden Wi-Fi network you wish to connect to."
 #~ msgstr ""
-#~ "Zadajte názov a podrobnosti o zabezpečení skrytej siete W-Fi, ku ktorej "
-#~ "sa chcete pripojiť."
+#~ "Zadajte názov a podrobnosti o zabezpečení skrytej siete W-Fi, ku ktorej sa chcete "
+#~ "pripojiť."
 
 # GtkLabel label
 #~ msgid "Wi-Fi _security"
@@ -4403,11 +4262,11 @@ msgstr "_Zavrieť"
 #~ msgstr "%s %s"
 
 #~ msgid ""
-#~ "Either a password is missing or the connection is invalid. In the latter "
-#~ "case, you have to edit the connection with nm-connection-editor first"
+#~ "Either a password is missing or the connection is invalid. In the latter case, you have "
+#~ "to edit the connection with nm-connection-editor first"
 #~ msgstr ""
-#~ "Buď chýba heslo, alebo je pripojenie neplatné. V poslednom rade budete "
-#~ "musieť najskôr upraviť pripojenie pomocou editora nm-connection-editor"
+#~ "Buď chýba heslo, alebo je pripojenie neplatné. V poslednom rade budete musieť najskôr "
+#~ "upraviť pripojenie pomocou editora nm-connection-editor"
 
 # GtkLabel label
 #~ msgid "Wi-Fi _security:"
@@ -4438,9 +4297,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Ignorované"
 
 #~ msgid "Failed to update connection secrets due to an unknown error."
-#~ msgstr ""
-#~ "Kvôli neznámej chybe sa nepodarilo aktualizovať utajované údaje "
-#~ "pripojenia."
+#~ msgstr "Kvôli neznámej chybe sa nepodarilo aktualizovať utajované údaje pripojenia."
 
 #~ msgid "Priority:"
 #~ msgstr "Priorita:"
@@ -4482,13 +4339,12 @@ msgstr "_Zavrieť"
 #~ msgstr "Nedá sa importovať pripojenie k VPN"
 
 #~ msgid ""
-#~ "The file “%s” could not be read or does not contain recognized VPN "
-#~ "connection information\n"
+#~ "The file “%s” could not be read or does not contain recognized VPN connection "
+#~ "information\n"
 #~ "\n"
 #~ "Error: %s."
 #~ msgstr ""
-#~ "Súbor „%s“ sa nepodarilo čítať alebo neobsahuje známe informácie o "
-#~ "pripojení k VPN.\n"
+#~ "Súbor „%s“ sa nepodarilo čítať alebo neobsahuje známe informácie o pripojení k VPN.\n"
 #~ "\n"
 #~ "Chyba: %s."
 
@@ -4559,15 +4415,14 @@ msgstr "_Zavrieť"
 #~ msgstr "Nešifrované súkromné kľúče nie sú bezpečné"
 
 #~ msgid ""
-#~ "The selected private key does not appear to be protected by a password. "
-#~ "This could allow your security credentials to be compromised. Please "
-#~ "select a password-protected private key.\n"
+#~ "The selected private key does not appear to be protected by a password. This could allow "
+#~ "your security credentials to be compromised. Please select a password-protected private "
+#~ "key.\n"
 #~ "\n"
 #~ "(You can password-protect your private key with openssl)"
 #~ msgstr ""
-#~ "Zvolený súkromný kľúč sa nezdá byť zabezpečený heslom. Môže to spôsobiť "
-#~ "kompromitáciu vašich bezpečnostných údajov. Zvoľte, prosím, heslom "
-#~ "chránený súkromný kľúč.\n"
+#~ "Zvolený súkromný kľúč sa nezdá byť zabezpečený heslom. Môže to spôsobiť kompromitáciu "
+#~ "vašich bezpečnostných údajov. Zvoľte, prosím, heslom chránený súkromný kľúč.\n"
 #~ "\n"
 #~ "(Súkromný kľúč si môžete zabezpečiť heslom pomocou openssl)"
 
@@ -4632,8 +4487,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Nastavuje sa previazané pripojenie „%s“…"
 
 #~ msgid "User authentication required for bond connection '%s'..."
-#~ msgstr ""
-#~ "Previazané pripojenie „%s“ vyžaduje overenie totožnosti používateľa…"
+#~ msgstr "Previazané pripojenie „%s“ vyžaduje overenie totožnosti používateľa…"
 
 #~ msgid "Requesting address for '%s'..."
 #~ msgstr "Žiada sa adresa pre „%s“…"
@@ -4651,8 +4505,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Nastavuje sa premostené pripojenie „%s“…"
 
 #~ msgid "User authentication required for bridge connection '%s'..."
-#~ msgstr ""
-#~ "Premostené pripojenie „%s“ vyžaduje overenie totožnosti používateľa…"
+#~ msgstr "Premostené pripojenie „%s“ vyžaduje overenie totožnosti používateľa…"
 
 #~ msgid "Bridge connection '%s' active"
 #~ msgstr "Premostené pripojenie „%s“ je aktívne"
@@ -4701,8 +4554,7 @@ msgstr "_Zavrieť"
 #~ msgstr "Nastavuje sa pripojenie k InfiniBand „%s“…"
 
 #~ msgid "User authentication required for InfiniBand connection '%s'..."
-#~ msgstr ""
-#~ "Pripojenie k InfiniBand „%s“ vyžaduje overenie totožnosti používateľa…"
+#~ msgstr "Pripojenie k InfiniBand „%s“ vyžaduje overenie totožnosti používateľa…"
 
 #~ msgid "InfiniBand connection '%s' active"
 #~ msgstr "Pripojenie k InfiniBand „%s“ je aktívne"
@@ -4788,19 +4640,13 @@ msgstr "_Zavrieť"
 #~ msgid "The property '%s' / '%s' is invalid: %d"
 #~ msgstr "Vlastnosť „%s“ / „%s“ je neplatná: %d"
 
-#~ msgid ""
-#~ "Bluetooth configuration not possible (failed to connect to D-Bus: (%s) "
-#~ "%s)."
-#~ msgstr ""
-#~ "Nastavenie bluetooth nie je možné (zlyhalo pripojenie k D-Bus: (%s) %s)."
+#~ msgid "Bluetooth configuration not possible (failed to connect to D-Bus: (%s) %s)."
+#~ msgstr "Nastavenie bluetooth nie je možné (zlyhalo pripojenie k D-Bus: (%s) %s)."
 
 # NetworkManager is service
-#~ msgid ""
-#~ "Bluetooth configuration not possible (error finding NetworkManager: (%s) "
-#~ "%s)."
+#~ msgid "Bluetooth configuration not possible (error finding NetworkManager: (%s) %s)."
 #~ msgstr ""
-#~ "Nastavenie BLuetooth nie je možné (chyba pri hľadaní služby "
-#~ "NetworkManager: (%s) %s)."
+#~ "Nastavenie BLuetooth nie je možné (chyba pri hľadaní služby NetworkManager: (%s) %s)."
 
 #~ msgid "Use your mobile phone as a network device (PAN/NAP)"
 #~ msgstr "Použite svoj mobilný telefón ako sieťové zariadenie (PAN/NAP)"
@@ -4836,11 +4682,11 @@ msgstr "_Zavrieť"
 #~ msgstr "Zisťuje sa konfigurácia telefónu…"
 
 #~ msgid ""
-#~ "The default Bluetooth adapter must be enabled before setting up a Dial-Up-"
-#~ "Networking connection."
+#~ "The default Bluetooth adapter must be enabled before setting up a Dial-Up-Networking "
+#~ "connection."
 #~ msgstr ""
-#~ "Predvolený Bluetooth adaptér musí byť povolený pred nastavovaním "
-#~ "vytáčaného sieťového pripojenia."
+#~ "Predvolený Bluetooth adaptér musí byť povolený pred nastavovaním vytáčaného sieťového "
+#~ "pripojenia."
 
 #~ msgid "Failed to create PAN connection: %s"
 #~ msgstr "Zlyhalo vytvorenie pripojenia k PAN: %s"
@@ -4893,13 +4739,13 @@ msgstr "_Zavrieť"
 
 # PM: sieťam wi-fi
 #~ msgid ""
-#~ "Not using a Certificate Authority (CA) certificate can result in "
-#~ "connections to insecure, rogue Wi-Fi networks.  Would you like to choose "
-#~ "a Certificate Authority certificate?"
+#~ "Not using a Certificate Authority (CA) certificate can result in connections to "
+#~ "insecure, rogue Wi-Fi networks.  Would you like to choose a Certificate Authority "
+#~ "certificate?"
 #~ msgstr ""
-#~ "Nepoužitie certifikátu certifikačnej autority (CA) môže spôsobiť "
-#~ "pripojenie k nezabezpečeným, nebezpečným sieťam Wi-Fi. Chcete si zvoliť "
-#~ "certifikát certifikačnej autority?"
+#~ "Nepoužitie certifikátu certifikačnej autority (CA) môže spôsobiť pripojenie k "
+#~ "nezabezpečeným, nebezpečným sieťam Wi-Fi. Chcete si zvoliť certifikát certifikačnej "
+#~ "autority?"
 
 #~ msgid "Audio Outputs"
 #~ msgstr "Zvukové výstupy"
