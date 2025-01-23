@@ -8,8 +8,8 @@
 #include "config/file.hpp"
 
 #include <unistd.h>
-#include <libfm/fm-gtk.h>
 #include <sys/time.h>
+
 extern "C" {
 #include "launcher.h"
 }
