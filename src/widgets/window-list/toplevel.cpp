@@ -76,7 +76,7 @@ class WayfireToplevel::impl
         button.property_scale_factor().signal_changed()
             .connect(sigc::mem_fun(this, &WayfireToplevel::impl::on_scale_update));
         button.signal_button_release_event().connect(
-            sigc::mem_fun(this, &WayfireToplevel::impl::on_button_press_event));
+            sigc::mem_fun(this, &WayfireToplevel::impl::on_release));
 
         icon_size.set_callback (sigc::mem_fun (*this, &WayfireToplevel::impl::on_scale_update));
 
@@ -193,7 +193,7 @@ class WayfireToplevel::impl
         }
     }
 
-    bool on_button_press_event(GdkEventButton *event)
+    bool on_release (GdkEventButton *event)
     {
         switch (event->button)
         {
