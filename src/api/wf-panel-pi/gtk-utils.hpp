@@ -4,6 +4,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/cssprovider.h>
+#include <gtkmm/gesturelongpress.h>
 #include <string>
 
 /* Loads a pixbuf with the given size from the given file, returns null if unsuccessful */
@@ -29,5 +30,7 @@ void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
     = Gtk::IconTheme::get_default());
 
 void invert_pixbuf(Glib::RefPtr<Gdk::Pixbuf>& pbuff);
+
+Glib::RefPtr<Gtk::GestureLongPress> detect_long_press (Gtk::Widget& target);
 
 #endif /* end of include guard: WF_GTK_UTILS */

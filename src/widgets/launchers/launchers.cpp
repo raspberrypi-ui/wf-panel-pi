@@ -177,10 +177,7 @@ bool WfLauncherButton::initialize(std::string name, std::string icon, std::strin
     evbox.signal_button_release_event().connect(sigc::mem_fun(this, &WfLauncherButton::on_release));
     evbox.set_relief (Gtk::RELIEF_NONE);
 
-    gesture = Gtk::GestureLongPress::create(evbox);
-    gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
-    gesture->signal_pressed().connect(sigc::mem_fun(*this, &WfLauncherButton::on_gesture_pressed));
-    gesture->set_touch_only(touch_only);
+    gesture = detect_long_press (evbox);
 
     evbox.signal_map().connect([=] ()
     {
@@ -221,11 +218,6 @@ bool WfLauncherButton::on_release(GdkEventButton *ev)
 
     pressed = PRESS_NONE;
     return true;
-}
-
-void WfLauncherButton::on_gesture_pressed (double x, double y)
-{
-    pressed = PRESS_LONG;
 }
 
 void WfLauncherButton::on_remove ()

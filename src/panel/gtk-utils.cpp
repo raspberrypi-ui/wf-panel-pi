@@ -4,6 +4,10 @@
 #include <gdk/gdkcairo.h>
 #include <iostream>
 
+extern "C" {
+#include "lxutils.h"
+}
+
 Glib::RefPtr<Gdk::Pixbuf> load_icon_pixbuf_safe(std::string icon_path, int size)
 {
     try {
@@ -96,4 +100,13 @@ void set_image_icon(Gtk::Image& image, std::string icon_name, int size,
             set_image_pixbuf (image, pbuff, scale);
         }
     }
+}
+
+Glib::RefPtr<Gtk::GestureLongPress> detect_long_press (Gtk::Widget& target)
+{
+    Glib::RefPtr<Gtk::GestureLongPress> gesture = Gtk::GestureLongPress::create (target);
+    gesture->set_propagation_phase (Gtk::PHASE_BUBBLE);
+    gesture->signal_pressed ().connect ([=] (double x, double y) {pressed = PRESS_LONG;});
+    gesture->set_touch_only (touch_only);
+    return gesture;
 }

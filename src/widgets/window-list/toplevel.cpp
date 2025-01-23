@@ -103,10 +103,7 @@ class WayfireToplevel::impl
         drag_gesture->signal_drag_end().connect_notify(
             sigc::mem_fun(this, &WayfireToplevel::impl::on_drag_end));
 
-        gesture = Gtk::GestureLongPress::create(button);
-        gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
-        gesture->signal_pressed().connect(sigc::mem_fun(this, &WayfireToplevel::impl::on_gesture_pressed));
-        gesture->set_touch_only(touch_only);
+        gesture = detect_long_press (button);
 
         this->window_list = window_list;
     }
@@ -212,11 +209,6 @@ class WayfireToplevel::impl
 
         pressed = PRESS_NONE;
         return true;
-    }
-
-    void on_gesture_pressed (double x, double y)
-    {
-        pressed = PRESS_LONG;
     }
 
     void on_menu_minimize()

@@ -65,10 +65,7 @@ StatusNotifierItem::StatusNotifierItem(const Glib::ustring & service)
         init_widget();
     });
 
-    gesture = Gtk::GestureLongPress::create(*this);
-    gesture->set_propagation_phase(Gtk::PHASE_BUBBLE);
-    gesture->signal_pressed().connect(sigc::mem_fun(*this, &StatusNotifierItem::on_gesture_pressed));
-    gesture->set_touch_only(touch_only);
+    gesture = detect_long_press (*this);
 }
 
 void StatusNotifierItem::init_widget()
@@ -172,11 +169,6 @@ void StatusNotifierItem::init_widget()
 
         return true;
     });
-}
-
-void StatusNotifierItem::on_gesture_pressed (double x, double y)
-{
-    pressed = PRESS_LONG;
 }
 
 void StatusNotifierItem::setup_tooltip()

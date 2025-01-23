@@ -47,7 +47,6 @@ class StatusNotifierItem : public Gtk::EventBox
     void init_menu();
 
     void handle_signal(const Glib::ustring & signal, const Glib::VariantContainerBase & params);
-    void on_gesture_pressed (double x, double y);
 
     void update_icon();
     void setup_tooltip();

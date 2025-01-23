@@ -61,7 +61,6 @@ struct WfLauncherButton
     bool initialize(std::string name, std::string icon = "none", std::string label = "");
 
     bool on_release(GdkEventButton *ev);
-    void on_gesture_pressed(double, double);
 
     void on_scale_update();
     void on_remove();
