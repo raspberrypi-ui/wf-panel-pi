@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-17 10:28+0000\n"
+"POT-Creation-Date: 2025-01-23 11:39+0000\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  <simon@raspberrypi.org>\n"
 "Language-Team: English (British)\n"
@@ -23,7 +23,7 @@ msgid "Spacer"
 msgstr "Spacer"
 
 #: ../src/panel/configure.c:116 ../src/panel/configure.c:255
-#: ../src/panel/configure.c:580
+#: ../src/panel/configure.c:589
 #, c-format
 msgid "Spacer (%d)"
 msgstr "Spacer (%d)"
@@ -47,15 +47,15 @@ msgstr "OK"
 msgid "Configure %s"
 msgstr "Configure %s"
 
-#: ../src/panel/configure.c:814
+#: ../src/panel/configure.c:823
 msgid "Left Side"
 msgstr "Left Side"
 
-#: ../src/panel/configure.c:815
+#: ../src/panel/configure.c:824
 msgid "Available"
 msgstr "Available"
 
-#: ../src/panel/configure.c:816
+#: ../src/panel/configure.c:825
 msgid "Right Side"
 msgstr "Right Side"
 
@@ -75,37 +75,17 @@ msgstr "Notifications..."
 msgid "Taskbar Preferences..."
 msgstr "Taskbar Preferences..."
 
-#: ../src/widgets/clock/clock.cpp:10
+#: ../src/widgets/clock/clock.cpp:39
 msgid "Display format"
 msgstr "Display format"
 
-#: ../src/widgets/clock/clock.cpp:11
+#: ../src/widgets/clock/clock.cpp:40
 msgid "Display font"
 msgstr "Display font"
 
-#: ../src/widgets/clock/clock.cpp:15
+#: ../src/widgets/clock/clock.cpp:44
 msgid "Clock"
 msgstr "Clock"
-
-#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
-msgid "Show usage as percentage"
-msgstr "Show usage as percentage"
-
-#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
-msgid "Foreground colour"
-msgstr "Foreground colour"
-
-#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
-msgid "Background colour"
-msgstr "Background colour"
-
-#: ../src/widgets/cpu/cpu.cpp:15
-msgid "CPU"
-msgstr "CPU"
-
-#: ../src/widgets/gpu/gpu.cpp:15
-msgid "GPU"
-msgstr "GPU"
 
 #: ../src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
@@ -130,66 +110,6 @@ msgstr "Time before notifications close"
 #: ../src/widgets/notify/notify.cpp:10
 msgid "Notifications"
 msgstr "Notifications"
-
-#: ../src/widgets/power/power.c:86
-msgid ""
-"This power supply is not capable of supplying 5A\n"
-"Power to peripherals will be restricted"
-msgstr ""
-"This power supply is not capable of supplying 5V at 5A\n"
-"Power to peripherals will be restricted"
-
-#: ../src/widgets/power/power.c:102
-msgid ""
-"Reset due to low power event\n"
-"Please check your power supply"
-msgstr ""
-"Reset due to low power event\n"
-"Please check your power supply"
-
-#: ../src/widgets/power/power.c:163
-msgid ""
-"High display resolution is using large amounts of memory.\n"
-"Consider reducing screen resolution."
-msgstr ""
-
-#: ../src/widgets/power/power.c:218
-msgid ""
-"USB overcurrent\n"
-"Please check your connected USB devices"
-msgstr ""
-"USB overcurrent\n"
-"Please check your connected USB devices"
-
-#: ../src/widgets/power/power.c:269
-msgid ""
-"Low voltage warning\n"
-"Please check your power supply"
-msgstr ""
-"Low voltage warning\n"
-"Please check your power supply"
-
-#: ../src/widgets/power/power.c:288
-msgid "PSU low voltage detected\n"
-msgstr "PSU low voltage detected\n"
-
-#: ../src/widgets/power/power.c:289
-msgid "USB over current detected\n"
-msgstr "USB over current detected\n"
-
-#: ../src/widgets/power/power.c:290
-msgid "Low power reset has occurred\n"
-msgstr "Low power reset has occurred\n"
-
-#: ../src/widgets/power/power.c:341
-msgid "Power Information..."
-msgstr "Power Information..."
-
-#
-#: ../src/widgets/power/power.cpp:12
-#, fuzzy
-msgid "System Monitor"
-msgstr "System Tray"
 
 #: ../src/widgets/spacing/spacing.cpp:5
 #, fuzzy
@@ -290,16 +210,4 @@ msgstr "Configure..."
 #: ../data/config.ui.h:13
 msgid "Configure selected plugin"
 msgstr "Configure selected plugin"
-
-#: ../data/lxpanel-modal.ui.h:1
-msgid "label"
-msgstr "label"
-
-#: ../data/lxpanel-modal.ui.h:2
-msgid "_Cancel"
-msgstr "_Cancel"
-
-#: ../data/lxpanel-modal.ui.h:3
-msgid "_OK"
-msgstr "_OK"
 

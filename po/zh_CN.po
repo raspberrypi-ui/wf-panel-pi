@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel 0.3.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-17 10:28+0000\n"
+"POT-Creation-Date: 2025-01-23 11:39+0000\n"
 "PO-Revision-Date: 2024-07-14 17:34+0800\n"
 "Last-Translator: ykla <yklaxds@gmail.com>\n"
 "Language-Team: ykla <yklaxds@gmail.com>\n"
@@ -28,7 +28,7 @@ msgid "Spacer"
 msgstr ""
 
 #: ../src/panel/configure.c:116 ../src/panel/configure.c:255
-#: ../src/panel/configure.c:580
+#: ../src/panel/configure.c:589
 #, c-format
 msgid "Spacer (%d)"
 msgstr ""
@@ -53,15 +53,15 @@ msgstr "_确认"
 msgid "Configure %s"
 msgstr "_配置 VPN……"
 
-#: ../src/panel/configure.c:814
+#: ../src/panel/configure.c:823
 msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/configure.c:815
+#: ../src/panel/configure.c:824
 msgid "Available"
 msgstr "可用"
 
-#: ../src/panel/configure.c:816
+#: ../src/panel/configure.c:825
 msgid "Right Side"
 msgstr ""
 
@@ -83,39 +83,18 @@ msgstr "启用 _通知"
 msgid "Taskbar Preferences..."
 msgstr ""
 
-#: ../src/widgets/clock/clock.cpp:10
+#: ../src/widgets/clock/clock.cpp:39
 msgid "Display format"
 msgstr ""
 
-#: ../src/widgets/clock/clock.cpp:11
+#: ../src/widgets/clock/clock.cpp:40
 msgid "Display font"
 msgstr ""
 
-#: ../src/widgets/clock/clock.cpp:15
+#: ../src/widgets/clock/clock.cpp:44
 #, fuzzy
 msgid "Clock"
 msgstr "_解锁"
-
-#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
-msgid "Show usage as percentage"
-msgstr ""
-
-#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
-msgid "Foreground colour"
-msgstr ""
-
-#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
-msgid "Background colour"
-msgstr ""
-
-#: ../src/widgets/cpu/cpu.cpp:15
-#, fuzzy
-msgid "CPU"
-msgstr "TCP"
-
-#: ../src/widgets/gpu/gpu.cpp:15
-msgid "GPU"
-msgstr ""
 
 #: ../src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
@@ -144,63 +123,6 @@ msgstr "对等通知计数(_P)"
 #, fuzzy
 msgid "Notifications"
 msgstr "启用 _通知"
-
-#: ../src/widgets/power/power.c:86
-msgid ""
-"This power supply is not capable of supplying 5A\n"
-"Power to peripherals will be restricted"
-msgstr ""
-
-#: ../src/widgets/power/power.c:102
-#, fuzzy
-msgid ""
-"Reset due to low power event\n"
-"Please check your power supply"
-msgstr ""
-"低电压警告\n"
-"请检查您的电源适配器"
-
-#: ../src/widgets/power/power.c:163
-msgid ""
-"High display resolution is using large amounts of memory.\n"
-"Consider reducing screen resolution."
-msgstr ""
-
-#: ../src/widgets/power/power.c:218
-msgid ""
-"USB overcurrent\n"
-"Please check your connected USB devices"
-msgstr ""
-
-#: ../src/widgets/power/power.c:269
-msgid ""
-"Low voltage warning\n"
-"Please check your power supply"
-msgstr ""
-"低电压警告\n"
-"请检查您的电源适配器"
-
-#: ../src/widgets/power/power.c:288
-msgid "PSU low voltage detected\n"
-msgstr ""
-
-#: ../src/widgets/power/power.c:289
-msgid "USB over current detected\n"
-msgstr ""
-
-#: ../src/widgets/power/power.c:290
-msgid "Low power reset has occurred\n"
-msgstr ""
-
-#: ../src/widgets/power/power.c:341
-#, fuzzy
-msgid "Power Information..."
-msgstr "连接信息"
-
-#: ../src/widgets/power/power.cpp:12
-#, fuzzy
-msgid "System Monitor"
-msgstr "系统优先级(_S)"
 
 #: ../src/widgets/spacing/spacing.cpp:5
 msgid "Width in pixels"
@@ -306,16 +228,4 @@ msgstr "_配置 VPN……"
 msgid "Configure selected plugin"
 msgstr ""
 
-#: ../data/lxpanel-modal.ui.h:1
-msgid "label"
-msgstr "标签"
-
-#: ../data/lxpanel-modal.ui.h:2
-msgid "_Cancel"
-msgstr "_取消"
-
-#: ../data/lxpanel-modal.ui.h:3
-msgid "_OK"
-msgstr "_确认"
-
-#, c-format
+#, fuzzy

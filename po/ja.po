@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-17 10:28+0000\n"
+"POT-Creation-Date: 2025-01-23 11:39+0000\n"
 "PO-Revision-Date: 2017-03-06 14:18+0000\n"
 "Last-Translator:  Akira Ouchi <akkiesoft@marokun.net>\n"
 "Language-Team: Japanese\n"
@@ -23,7 +23,7 @@ msgid "Spacer"
 msgstr "空白"
 
 #: ../src/panel/configure.c:116 ../src/panel/configure.c:255
-#: ../src/panel/configure.c:580
+#: ../src/panel/configure.c:589
 #, c-format
 msgid "Spacer (%d)"
 msgstr "空白 (%d)"
@@ -47,15 +47,15 @@ msgstr "OK"
 msgid "Configure %s"
 msgstr "%s の設定"
 
-#: ../src/panel/configure.c:814
+#: ../src/panel/configure.c:823
 msgid "Left Side"
 msgstr "左側"
 
-#: ../src/panel/configure.c:815
+#: ../src/panel/configure.c:824
 msgid "Available"
 msgstr "利用可能"
 
-#: ../src/panel/configure.c:816
+#: ../src/panel/configure.c:825
 msgid "Right Side"
 msgstr "右側"
 
@@ -75,37 +75,17 @@ msgstr "通知..."
 msgid "Taskbar Preferences..."
 msgstr "タスクバーの設定..."
 
-#: ../src/widgets/clock/clock.cpp:10
+#: ../src/widgets/clock/clock.cpp:39
 msgid "Display format"
 msgstr "表示形式"
 
-#: ../src/widgets/clock/clock.cpp:11
+#: ../src/widgets/clock/clock.cpp:40
 msgid "Display font"
 msgstr "表示フォント"
 
-#: ../src/widgets/clock/clock.cpp:15
+#: ../src/widgets/clock/clock.cpp:44
 msgid "Clock"
 msgstr "時計"
-
-#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
-msgid "Show usage as percentage"
-msgstr "パーセンテージでの使用率を表示する"
-
-#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
-msgid "Foreground colour"
-msgstr "前景色"
-
-#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
-msgid "Background colour"
-msgstr "背景色"
-
-#: ../src/widgets/cpu/cpu.cpp:15
-msgid "CPU"
-msgstr "CPU"
-
-#: ../src/widgets/gpu/gpu.cpp:15
-msgid "GPU"
-msgstr "GPU"
 
 #: ../src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
@@ -130,65 +110,6 @@ msgstr "通知を閉じるまでの時間"
 #: ../src/widgets/notify/notify.cpp:10
 msgid "Notifications"
 msgstr "通知"
-
-#: ../src/widgets/power/power.c:86
-msgid ""
-"This power supply is not capable of supplying 5A\n"
-"Power to peripherals will be restricted"
-msgstr ""
-"この電源は5Aを供給できません\n"
-"周辺機器への電力供給は制限されます"
-
-#: ../src/widgets/power/power.c:102
-msgid ""
-"Reset due to low power event\n"
-"Please check your power supply"
-msgstr ""
-"低電力イベントによるリセット\n"
-"電源を確認してください"
-
-#: ../src/widgets/power/power.c:163
-msgid ""
-"High display resolution is using large amounts of memory.\n"
-"Consider reducing screen resolution."
-msgstr ""
-
-#: ../src/widgets/power/power.c:218
-msgid ""
-"USB overcurrent\n"
-"Please check your connected USB devices"
-msgstr ""
-"USBの過電流\n"
-"接続しているUSBデバイスを確認してください"
-
-#: ../src/widgets/power/power.c:269
-msgid ""
-"Low voltage warning\n"
-"Please check your power supply"
-msgstr ""
-"電圧低下の警告\n"
-"電源を確認してください"
-
-#: ../src/widgets/power/power.c:288
-msgid "PSU low voltage detected\n"
-msgstr "PSUの電圧低下を検出しました\n"
-
-#: ../src/widgets/power/power.c:289
-msgid "USB over current detected\n"
-msgstr "USBの過電流を検出しました\n"
-
-#: ../src/widgets/power/power.c:290
-msgid "Low power reset has occurred\n"
-msgstr "低電力リセットが発生しました\n"
-
-#: ../src/widgets/power/power.c:341
-msgid "Power Information..."
-msgstr "電源の情報..."
-
-#: ../src/widgets/power/power.cpp:12
-#, fuzzy
-msgid "System Monitor"
-msgstr "システムトレイ"
 
 #: ../src/widgets/spacing/spacing.cpp:5
 #, fuzzy
@@ -288,16 +209,4 @@ msgstr "設定..."
 #: ../data/config.ui.h:13
 msgid "Configure selected plugin"
 msgstr "選択したプラグインの設定をします"
-
-#: ../data/lxpanel-modal.ui.h:1
-msgid "label"
-msgstr "ラベル"
-
-#: ../data/lxpanel-modal.ui.h:2
-msgid "_Cancel"
-msgstr "キャンセル(_C)"
-
-#: ../data/lxpanel-modal.ui.h:3
-msgid "_OK"
-msgstr "OK(_O)"
 

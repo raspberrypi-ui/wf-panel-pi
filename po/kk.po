@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-17 10:28+0000\n"
+"POT-Creation-Date: 2025-01-23 11:39+0000\n"
 "PO-Revision-Date: 2017-05-25 16:59+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -26,7 +26,7 @@ msgid "Spacer"
 msgstr ""
 
 #: ../src/panel/configure.c:116 ../src/panel/configure.c:255
-#: ../src/panel/configure.c:580
+#: ../src/panel/configure.c:589
 #, c-format
 msgid "Spacer (%d)"
 msgstr ""
@@ -51,15 +51,15 @@ msgstr "_ОК"
 msgid "Configure %s"
 msgstr "VPN ба_птау…"
 
-#: ../src/panel/configure.c:814
+#: ../src/panel/configure.c:823
 msgid "Left Side"
 msgstr ""
 
-#: ../src/panel/configure.c:815
+#: ../src/panel/configure.c:824
 msgid "Available"
 msgstr "Қолжетерлік"
 
-#: ../src/panel/configure.c:816
+#: ../src/panel/configure.c:825
 msgid "Right Side"
 msgstr ""
 
@@ -81,39 +81,18 @@ msgstr "_Хабарламаларды іске қосу"
 msgid "Taskbar Preferences..."
 msgstr ""
 
-#: ../src/widgets/clock/clock.cpp:10
+#: ../src/widgets/clock/clock.cpp:39
 msgid "Display format"
 msgstr ""
 
-#: ../src/widgets/clock/clock.cpp:11
+#: ../src/widgets/clock/clock.cpp:40
 msgid "Display font"
 msgstr ""
 
-#: ../src/widgets/clock/clock.cpp:15
+#: ../src/widgets/clock/clock.cpp:44
 #, fuzzy
 msgid "Clock"
 msgstr "Бо_сату"
-
-#: ../src/widgets/cpu/cpu.cpp:9 ../src/widgets/gpu/gpu.cpp:9
-msgid "Show usage as percentage"
-msgstr ""
-
-#: ../src/widgets/cpu/cpu.cpp:10 ../src/widgets/gpu/gpu.cpp:10
-msgid "Foreground colour"
-msgstr ""
-
-#: ../src/widgets/cpu/cpu.cpp:11 ../src/widgets/gpu/gpu.cpp:11
-msgid "Background colour"
-msgstr ""
-
-#: ../src/widgets/cpu/cpu.cpp:15
-#, fuzzy
-msgid "CPU"
-msgstr "TCP"
-
-#: ../src/widgets/gpu/gpu.cpp:15
-msgid "GPU"
-msgstr ""
 
 #: ../src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
@@ -141,58 +120,6 @@ msgstr "Байланысты орнату хабарламаларын сөнд�
 #, fuzzy
 msgid "Notifications"
 msgstr "_Хабарламаларды іске қосу"
-
-#: ../src/widgets/power/power.c:86
-msgid ""
-"This power supply is not capable of supplying 5A\n"
-"Power to peripherals will be restricted"
-msgstr ""
-
-#: ../src/widgets/power/power.c:102
-msgid ""
-"Reset due to low power event\n"
-"Please check your power supply"
-msgstr ""
-
-#: ../src/widgets/power/power.c:163
-msgid ""
-"High display resolution is using large amounts of memory.\n"
-"Consider reducing screen resolution."
-msgstr ""
-
-#: ../src/widgets/power/power.c:218
-msgid ""
-"USB overcurrent\n"
-"Please check your connected USB devices"
-msgstr ""
-
-#: ../src/widgets/power/power.c:269
-msgid ""
-"Low voltage warning\n"
-"Please check your power supply"
-msgstr ""
-
-#: ../src/widgets/power/power.c:288
-msgid "PSU low voltage detected\n"
-msgstr ""
-
-#: ../src/widgets/power/power.c:289
-msgid "USB over current detected\n"
-msgstr ""
-
-#: ../src/widgets/power/power.c:290
-msgid "Low power reset has occurred\n"
-msgstr ""
-
-#: ../src/widgets/power/power.c:341
-#, fuzzy
-msgid "Power Information..."
-msgstr "Байланыс ақпараты"
-
-#: ../src/widgets/power/power.cpp:12
-#, fuzzy
-msgid "System Monitor"
-msgstr "_Жүйе приоритеті"
 
 #: ../src/widgets/spacing/spacing.cpp:5
 msgid "Width in pixels"
@@ -300,16 +227,4 @@ msgstr "VPN ба_птау…"
 msgid "Configure selected plugin"
 msgstr "ешбір файл таңдалмады"
 
-#: ../data/lxpanel-modal.ui.h:1
-msgid "label"
-msgstr ""
-
-#: ../data/lxpanel-modal.ui.h:2
-msgid "_Cancel"
-msgstr "Ба_с тарту"
-
-#: ../data/lxpanel-modal.ui.h:3
-msgid "_OK"
-msgstr "_ОК"
-
-#, fuzzy, c-format
+#, fuzzy
