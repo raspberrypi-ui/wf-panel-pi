@@ -79,17 +79,35 @@ void add_to_launcher (const char *name)
         if (sscanf (keys[i], "launcher_%d", &ind) == 1)
             if (ind > max) max = ind;
     }
+
+    // loop down from max, incrementing each launcher index by 1
+    for (ind = max; ind > 0; ind--)
+    {
+        lname = g_strdup_printf ("launcher_%06d", ind);
+        str = g_key_file_get_string (kf, "panel", lname, NULL);
+        if (str)
+        {
+            g_key_file_remove_key (kf, "panel", lname, NULL);
+            if (g_strcmp0 (str, name))
+            {
+                g_free (lname);
+                lname = g_strdup_printf ("launcher_%06d", ind + 1);
+                g_key_file_set_string (kf, "panel", lname, str);
+            }
+            g_free (str);
+        }
+        g_free (lname);
+    }
+
     g_strfreev (keys);
 
-    // use that index to calculate the name of the new key
-    lname = g_strdup_printf ("launcher_%06d", max + 1);
-    g_key_file_set_string (kf, "panel", lname, name);
+    // always add new key as 000001
+    g_key_file_set_string (kf, "panel", "launcher_000001", name);
 
     // write the modified key file out
     str = g_key_file_to_data (kf, &len, NULL);
     g_file_set_contents (user_file, str, len, NULL);
 
-    g_free (lname);
     g_free (str);
     g_key_file_free (kf);
     g_free (user_file);
