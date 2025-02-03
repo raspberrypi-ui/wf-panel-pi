@@ -59,6 +59,40 @@ void init_launchers (void)
     g_free (user_file);
 }
 
+static void collate_launchers (GKeyFile *kf)
+{
+    char *str, *lname;
+    gsize len, i;
+    int ind, max = 0, out = 1;
+    gchar **keys = g_key_file_get_keys (kf, "panel", &len, NULL);
+
+    // find the largest index for a launcher currently in use
+    for (i = 0; i < len; i++)
+    {
+        if (sscanf (keys[i], "launcher_%d", &ind) == 1)
+            if (ind > max) max = ind;
+    }
+
+    // loop through keys, shuffling each down if needed
+    for (ind = 0; ind <= max; ind++)
+    {
+        lname = g_strdup_printf ("launcher_%06d", ind);
+        str = g_key_file_get_string (kf, "panel", lname, NULL);
+        if (str)
+        {
+            g_key_file_remove_key (kf, "panel", lname, NULL);
+            g_free (lname);
+            lname = g_strdup_printf ("launcher_%06d", out);
+            g_key_file_set_string (kf, "panel", lname, str);
+            g_free (str);
+            out++;
+        }
+        g_free (lname);
+    }
+
+    g_strfreev (keys);
+}
+
 void add_to_launcher (const char *name)
 {
     char *str, *lname;
@@ -104,6 +138,8 @@ void add_to_launcher (const char *name)
     // always add new key as 000001
     g_key_file_set_string (kf, "panel", "launcher_000001", name);
 
+    collate_launchers (kf);
+
     // write the modified key file out
     str = g_key_file_to_data (kf, &len, NULL);
     g_file_set_contents (user_file, str, len, NULL);
@@ -115,7 +151,7 @@ void add_to_launcher (const char *name)
 
 void remove_from_launcher (const char *name)
 {
-    char *str = NULL;
+    char *str;
     gsize len, i;
     int ind;
 
@@ -132,25 +168,26 @@ void remove_from_launcher (const char *name)
     {
         if (sscanf (keys[i], "launcher_%d", &ind) == 1)
         {
-            gchar *val = g_key_file_get_string (kf, "panel", keys[i], NULL);
-            if (!g_strcmp0 (name, val))
+            str = g_key_file_get_string (kf, "panel", keys[i], NULL);
+            if (!g_strcmp0 (str, name))
             {
                 g_key_file_remove_key (kf, "panel", keys[i], NULL);
-
-                // write the modified key file out
-                str = g_key_file_to_data (kf, &len, NULL);
-                g_file_set_contents (user_file, str, len, NULL);
-                break;
             }
+            g_free (str);
         }
     }
     g_strfreev (keys);
 
-    if (str) g_free (str);
+    collate_launchers (kf);
+
+    // write the modified key file out
+    str = g_key_file_to_data (kf, &len, NULL);
+    g_file_set_contents (user_file, str, len, NULL);
+
+    g_free (str);
     g_key_file_free (kf);
     g_free (user_file);
 }
-
 
 /* End of file */
 /*----------------------------------------------------------------------------*/
