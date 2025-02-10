@@ -705,6 +705,8 @@ Icon get_from_desktop_app_info(std::string app_id)
         while (1)
         {
             dir = dirs.substr (start, end - start);
+            size_t ind = dir.find ('~');
+            if (ind != std::string::npos) dir.replace (ind, 1, std::getenv ("HOME"));
 
             app_info = Gio::DesktopAppInfo::create_from_filename (dir + "/applications/" + app_id + ".desktop");
             if (app_info) return app_info->get_icon();
@@ -731,6 +733,8 @@ Icon get_from_desktop_app_info(std::string app_id)
         while (1)
         {
             dir = dirs.substr (start, end - start);
+            size_t ind = dir.find ('~');
+            if (ind != std::string::npos) dir.replace (ind, 1, std::getenv ("HOME"));
 
             // loop through all files in the applications subdirectory
             for (const auto & entry : std::filesystem::directory_iterator (dir + "/applications/", ec))

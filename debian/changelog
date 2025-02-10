@@ -1,3 +1,9 @@
+wf-panel-pi (0.93) bookworm; urgency=medium
+
+  * Handle tilde paths in icon searches
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 10 Feb 2025 11:48:19 +0000
+
 wf-panel-pi (0.92) bookworm; urgency=medium
 
   * Add support for hybrid package projects
