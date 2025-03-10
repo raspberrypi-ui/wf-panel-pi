@@ -1,14 +1,14 @@
 # Slovak translations for PACKAGE package.
 # Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Jose Riha <jose1711 gmail com>, 2020.
+# Jose Riha <jose1711 gmail com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-23 11:39+0000\n"
-"PO-Revision-Date: 2020-11-28 22:06+0100\n"
+"PO-Revision-Date: 2025-03-06 15:33+0100\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak\n"
 "Language: sk\n"
@@ -21,38 +21,37 @@ msgstr ""
 #: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
 msgid "Spacer"
-msgstr ""
+msgstr "Oddeľovač"
 
 #: ../src/panel/configure.c:116 ../src/panel/configure.c:255
 #: ../src/panel/configure.c:589
 #, c-format
 msgid "Spacer (%d)"
-msgstr ""
+msgstr "Oddeľovač (%d)"
 
 # base connection, device type
 #: ../src/panel/configure.c:137 ../src/panel/configure.c:158
 #: ../src/panel/configure.c:447
-#, fuzzy, c-format
+#, c-format
 msgid "<Unknown>"
-msgstr "Neznáme"
+msgstr "<Neznáme>"
 
 #: ../src/panel/configure.c:424
 msgid "Cancel"
 msgstr "Zrušiť"
 
 #: ../src/panel/configure.c:424
-#, fuzzy
 msgid "OK"
-msgstr "_OK"
+msgstr "OK"
 
 #: ../src/panel/configure.c:445 ../src/panel/configure.c:447
-#, fuzzy, c-format
+#, c-format
 msgid "Configure %s"
-msgstr "_Konfigurovať VPN…"
+msgstr "Konfigurovať %s"
 
 #: ../src/panel/configure.c:823
 msgid "Left Side"
-msgstr ""
+msgstr "Ľavá strana"
 
 # to je o sieťach
 #: ../src/panel/configure.c:824
@@ -61,170 +60,154 @@ msgstr "Dostupné"
 
 #: ../src/panel/configure.c:825
 msgid "Right Side"
-msgstr ""
+msgstr "Pravá strana"
 
 #: ../src/panel/panel.cpp:235
 msgid "Add / Remove Plugins..."
-msgstr ""
+msgstr "Pridať/odstrániť pluginy..."
 
 #: ../src/panel/panel.cpp:239
-#, fuzzy
 msgid "Configure Plugin..."
-msgstr "_Konfigurovať VPN…"
+msgstr "Konfigurovať plugin..."
 
 #: ../src/panel/panel.cpp:243
-#, fuzzy
 msgid "Notifications..."
-msgstr "Povoliť o_známenia"
+msgstr "Oznámenia..."
 
 #: ../src/panel/panel.cpp:247
 msgid "Taskbar Preferences..."
-msgstr ""
+msgstr "Nastavenia panelu úloh..."
 
 #: ../src/widgets/clock/clock.cpp:39
 msgid "Display format"
-msgstr ""
+msgstr "Formát zobrazenia"
 
 #: ../src/widgets/clock/clock.cpp:40
 msgid "Display font"
-msgstr ""
+msgstr "Písmo zobrazenia"
 
 #: ../src/widgets/clock/clock.cpp:44
-#, fuzzy
 msgid "Clock"
-msgstr "_Odomknúť"
+msgstr "Hodiny"
 
 #: ../src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
-msgstr ""
+msgstr "Rozstup ikon"
 
 #: ../src/widgets/launchers/launchers.cpp:24
-#, fuzzy
 msgid "Launcher"
-msgstr "Sledovač linky"
+msgstr "Spúšťač"
 
 #: ../src/widgets/launchers/launchers.cpp:196
 msgid "Remove from Launcher"
-msgstr ""
+msgstr "Odstrániť zo Spúšťača"
 
 #: ../src/widgets/notify/notify.cpp:5
-#, fuzzy
 msgid "Show notifications"
-msgstr "Povoliť o_známenia"
+msgstr "Zobrazovať oznámenia"
 
 #: ../src/widgets/notify/notify.cpp:6
-#, fuzzy
 msgid "Time before notifications close"
-msgstr "Počet oznámení účas_tníkom"
+msgstr "Čas pred zatvorením oznámenia"
 
 #: ../src/widgets/notify/notify.cpp:10
-#, fuzzy
 msgid "Notifications"
-msgstr "Povoliť o_známenia"
+msgstr "Oznámenia"
 
 #: ../src/widgets/spacing/spacing.cpp:5
 msgid "Width in pixels"
-msgstr ""
+msgstr "Šírka v pixeloch"
 
 #: ../src/widgets/tray/tray.cpp:8
 msgid "Smooth scrolling threshold"
-msgstr ""
+msgstr "Prah jemného rolovania"
 
 #: ../src/widgets/tray/tray.cpp:9
-#, fuzzy
 msgid "Middle button activates menu"
-msgstr "Zlyhala aktivácia pripojenia"
+msgstr "Stredné tlačidlo aktivuje ponuku"
 
 #: ../src/widgets/tray/tray.cpp:13
-#, fuzzy
 msgid "System Tray"
-msgstr "Priorita _systému"
+msgstr "Systémová oblasť"
 
 #: ../src/widgets/window-list/toplevel.cpp:83
 #: ../src/widgets/window-list/toplevel.cpp:449
 msgid "Minimize"
-msgstr ""
+msgstr "Minimalizovať"
 
 #: ../src/widgets/window-list/toplevel.cpp:84
 #: ../src/widgets/window-list/toplevel.cpp:457
 msgid "Maximize"
-msgstr ""
+msgstr "Maximalizovať"
 
 #: ../src/widgets/window-list/toplevel.cpp:85
-#, fuzzy
 msgid "Close"
 msgstr "Zavrieť"
 
 #: ../src/widgets/window-list/toplevel.cpp:446
 msgid "Unminimize"
-msgstr ""
+msgstr "Zrušiť minimalizáciu"
 
 #: ../src/widgets/window-list/toplevel.cpp:454
 msgid "Unmaximize"
-msgstr ""
+msgstr "Zrušiť maximalizáciu"
 
 #: ../src/widgets/window-list/window-list.cpp:14
 msgid "Maximum width of task button"
-msgstr ""
+msgstr "Maximálna šírka tlačidla úlohy"
 
 #: ../src/widgets/window-list/window-list.cpp:18
 msgid "Window List"
-msgstr ""
+msgstr "Zoznam okien"
 
 #: ../data/config.ui.h:1
 msgid "Add / Remove Plugins"
-msgstr ""
+msgstr "Pridať/odstrániť pluginy"
 
 #: ../data/config.ui.h:2
-#, fuzzy
 msgid "Add to left"
-msgstr "Pridať na plochu"
+msgstr "Pridať doľava"
 
 #: ../data/config.ui.h:3
 msgid "Add plugin to left side of taskbar"
-msgstr ""
+msgstr "Pridať plugin na ľavú stranu lišty úloh"
 
 #: ../data/config.ui.h:4
-#, fuzzy
 msgid "Add to right"
-msgstr "Pridať na plochu"
+msgstr "Pridať doprava"
 
 #: ../data/config.ui.h:5
 msgid "Add plugin to right side of taskbar"
-msgstr ""
+msgstr "Pridať plugin na pravú stranu lišty úloh"
 
 #: ../data/config.ui.h:6
-#, fuzzy
 msgid "Remove"
-msgstr "_Odstrániť"
+msgstr "Odstrániť"
 
 #: ../data/config.ui.h:7
 msgid "Remove plugin from taskbar"
-msgstr ""
+msgstr "Odstrániť plugin z lišty úloh"
 
 #: ../data/config.ui.h:8
 msgid "Move left"
-msgstr ""
+msgstr "Posunúť doľava"
 
 #: ../data/config.ui.h:9
 msgid "Move plugin towards left of taskbar"
-msgstr ""
+msgstr "Posunúť plugin na lište úloh smerom doľava"
 
 #: ../data/config.ui.h:10
-#, fuzzy
 msgid "Move right"
-msgstr "Výška"
+msgstr "Posunúť doprava"
 
 #: ../data/config.ui.h:11
 msgid "Move plugin towards right of taskbar"
-msgstr ""
+msgstr "Posunúť plugin na lište úloh smerom doprava"
 
 #: ../data/config.ui.h:12
-#, fuzzy
 msgid "Configure..."
-msgstr "_Konfigurovať VPN…"
+msgstr "Konfigurovať..."
 
 #: ../data/config.ui.h:13
-#, fuzzy
 msgid "Configure selected plugin"
-msgstr "nie je vybraný žiadny súbor"
+msgstr "Konfigurovať vybraný plugin"
