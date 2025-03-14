@@ -344,7 +344,7 @@ class WayfirePanel::impl
 
     void do_appearance_set()
     {
-        system ("pipanel -3 &");
+        system ("pipanel taskbar &");
     }
 
     bool on_delete(GdkEventAny *ev)
