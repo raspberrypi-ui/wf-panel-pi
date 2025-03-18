@@ -1,3 +1,9 @@
+wf-panel-pi (0.94) bookworm; urgency=medium
+
+  * Update pipanel argument
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 18 Mar 2025 07:28:36 +0000
+
 wf-panel-pi (0.93) bookworm; urgency=medium
 
   * Handle tilde paths in icon searches
