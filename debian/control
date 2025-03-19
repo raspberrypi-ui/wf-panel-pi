@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Simon Long <simon@raspberrypi.com>
 Build-Depends: debhelper-compat (= 13), meson, wayland-protocols, libgtkmm-3.0-dev (>= 3.24),
  libgtk-layer-shell-dev (>= 0.6.0), libglib2.0-dev (>= 2.74.0), libgtk-3-dev (>= 3.24),
- libwlroots-dev | libwlroots12-dev, libglm-dev, libudev-dev, libdbusmenu-gtk3-dev,
+ libwlroots-0.18-dev, libglm-dev, libudev-dev, libdbusmenu-gtk3-dev,
  libevdev-dev, libxml2-dev
 Standards-Version: 4.5.1
 Homepage: <insert the upstream URL, if relevant>
