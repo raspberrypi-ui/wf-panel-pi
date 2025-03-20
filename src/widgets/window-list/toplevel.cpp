@@ -770,8 +770,8 @@ Icon get_from_desktop_app_info(std::string app_id)
                 stem = entry.path().stem().string();
                 id = tolower (stem.substr (stem.find_last_of (".") + 1));
 
-                if (id.find (cmp_id1) != std::string::npos || cmp_id1.find (id) != std::string::npos
-                    || id.find (cmp_id2) != std::string::npos || cmp_id2.find (id) != std::string::npos)
+                if (cmp_id1.length() > 1 && (id.find (cmp_id1) != std::string::npos || cmp_id1.find (id) != std::string::npos)
+                    || cmp_id2.length () > 1 && (id.find (cmp_id2) != std::string::npos || cmp_id2.find (id) != std::string::npos))
                 {
                     app_info = Gio::DesktopAppInfo::create_from_filename (entry.path().string());
                     if (app_info) return app_info->get_icon();
