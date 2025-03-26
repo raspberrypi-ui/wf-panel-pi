@@ -1,3 +1,9 @@
+wf-panel-pi (0.96) bookworm; urgency=medium
+
+  * Add generic is_pi function for plugins
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 26 Mar 2025 13:50:16 +0000
+
 wf-panel-pi (0.95) bookworm; urgency=medium
 
   * Update build dependency for wlroots 0.18
