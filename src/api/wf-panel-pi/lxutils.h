@@ -46,6 +46,7 @@ extern press_t pressed;
 extern double press_x, press_y;
 
 extern gboolean touch_only;
+extern gboolean is_pi_var;
 
 typedef struct {
     GtkWidget *da;                          /* Drawing area */
@@ -84,6 +85,8 @@ extern void popup_window_at_button (GtkWidget *window, GtkWidget *button);
 extern void close_popup (void);
 extern void pass_right_click (GtkWidget *wid, double x, double y);
 extern GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpointer data);
+
+extern gboolean is_pi (void);
 
 #define lxpanel_notify(panel,msg) wfpanel_notify(msg)
 #define lxpanel_notify_clear(seq) wfpanel_notify_clear(seq)

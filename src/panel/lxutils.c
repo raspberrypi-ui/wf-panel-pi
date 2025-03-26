@@ -59,6 +59,8 @@ double press_x, press_y;
 
 gboolean touch_only;
 
+gboolean is_pi_var;
+
 static GtkWindow *panel, *popwindow;
 static GtkLayerShellLayer orig_layer;
 static struct libinput *li;
@@ -665,6 +667,11 @@ GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpointer data
     else g_signal_connect (gesture, "end", G_CALLBACK (gesture_end_default), target);
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture), GTK_PHASE_BUBBLE);
     return gesture;
+}
+
+gboolean is_pi (void)
+{
+    return is_pi_var;
 }
 
 /* End of file */

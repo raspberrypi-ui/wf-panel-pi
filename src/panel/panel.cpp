@@ -188,6 +188,8 @@ class WayfirePanel::impl
     void create_window()
     {
         touch_only = gestures_touch_only;
+        if (!access ("/boot/firmware/config.txt", R_OK)) is_pi_var = TRUE;
+        else is_pi_var = FALSE;
 
         window = std::make_unique<WayfireAutohidingWindow>(output, "panel");
         window->set_size_request(1, real ? minimal_panel_height : 1);
