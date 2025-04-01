@@ -1,3 +1,9 @@
+wf-panel-pi (0.97) bookworm; urgency=medium
+
+  * Remove hotplug delay at startup
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 01 Apr 2025 08:20:06 +0100
+
 wf-panel-pi (0.96) bookworm; urgency=medium
 
   * Add generic is_pi function for plugins
