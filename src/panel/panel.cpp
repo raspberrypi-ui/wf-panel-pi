@@ -650,7 +650,7 @@ void WayfirePanelApp::handle_new_output(WayfireOutput *output)
 {
     priv->outputs.push_back (output);
     if (!priv->panel)
-        priv->panel = std::unique_ptr<WayfirePanel> (new WayfirePanel (output, true));
+        priv->panel = std::make_unique<WayfirePanel> (output, true);
 
     update_panels ();
 }
@@ -665,7 +665,7 @@ void WayfirePanelApp::update_panels ()
     for (auto& p : priv->outputs)
     {
         if (p->monitor != mon)
-            priv->dummies.push_back (std::unique_ptr<WayfirePanel> (new WayfirePanel(p, false)));
+            priv->dummies.push_back (std::make_unique<WayfirePanel> (p, false));
     }
 }
 
