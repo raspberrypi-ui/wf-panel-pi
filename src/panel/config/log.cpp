@@ -32,7 +32,7 @@ struct log_global_t
 {
     std::reference_wrapper<std::ostream> out = std::ref(std::cout);
 
-    wf::log::log_level_t level = wf::log::LOG_LEVEL_INFO;
+    wf::log::log_level_t level = wf::log::LOG_LEVEL_WARN;
     wf::log::color_mode_t color_mode = wf::log::LOG_COLOR_MODE_OFF;
     std::string strip_path = "";
 
