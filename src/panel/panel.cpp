@@ -378,7 +378,7 @@ class WayfirePanel::impl
             auto pixel_str = name.substr(spacing.size());
             int pixel = std::atoi(pixel_str.c_str());
 
-            if (pixel <= 0)
+            if (pixel < 0)
             {
                 std::cerr << "Invalid spacing, " << pixel << std::endl;
                 return nullptr;
