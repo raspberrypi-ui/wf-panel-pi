@@ -112,7 +112,7 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
     *config = FALSE;
     if (sscanf (type, "spacing%d", &space) == 1)
     {
-        if (!space) *name = g_strdup_printf (_("Spacer"));
+        if (!space) *name = g_strdup_printf (_("Separator"));
         else *name = g_strdup_printf (_("Spacer (%d)"), space);
         *config = TRUE;
         return TRUE;
@@ -586,7 +586,8 @@ static void configure_plugin (GtkButton *, gpointer)
                 // update both the widget type and the displayed name
                 g_free (type);
                 type = g_strdup_printf ("spacing%d", index);
-                name = g_strdup_printf (_("Spacer (%d)"), index);
+                if (!index) name = g_strdup_printf (_("Separator"));
+                else name = g_strdup_printf (_("Spacer (%d)"), index);
                 gtk_list_store_set (widgets, &citer,
                     COL_NAME, name,
                     COL_ID, type,
