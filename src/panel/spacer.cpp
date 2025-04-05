@@ -1,3 +1,4 @@
+#include "panel.hpp"
 #include "spacer.hpp"
 
 WayfireSpacing::WayfireSpacing(int pixels)
@@ -24,7 +25,11 @@ bool WayfireSpacing::draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
 #define ENDS 8
 
-    cr->set_source_rgb (0.5, 0.5, 0.5);
+    Gtk::Window& win = WayfirePanelApp::get().get_panel()->get_window();
+    Glib::RefPtr <Gtk::StyleContext> sc = win.get_style_context ();
+    Gdk::RGBA fg = sc->get_color ();
+
+    cr->set_source_rgb (fg.get_red(), fg.get_green(), fg.get_blue());
     cr->rectangle (0, 0 + ENDS, 1, da.get_allocated_height () - 2 * ENDS);
     cr->fill();
 
