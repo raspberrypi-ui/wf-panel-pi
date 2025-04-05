@@ -23,14 +23,13 @@ void WayfireSpacing::init(Gtk::HBox *container)
 
 bool WayfireSpacing::draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
-#define ENDS 8
-
     Gtk::Window& win = WayfirePanelApp::get().get_panel()->get_window();
     Glib::RefPtr <Gtk::StyleContext> sc = win.get_style_context ();
     Gdk::RGBA fg = sc->get_color ();
+    int height = da.get_allocated_height ();
 
     cr->set_source_rgb (fg.get_red(), fg.get_green(), fg.get_blue());
-    cr->rectangle (0, 0 + ENDS, 1, da.get_allocated_height () - 2 * ENDS);
+    cr->rectangle (0, 0 + height >> 2, 1, height >> 1);
     cr->fill();
 
     return true;
