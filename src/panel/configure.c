@@ -405,7 +405,7 @@ int plugin_config_dialog (const char *type)
     GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
     GKeyFile *kf;
-    GList *children, *elem;
+    GList *children, *elem, *bchildren;
     gsize len;
     int space = -1;
     conf_table_t *(*func_config_params) (void);
@@ -456,7 +456,10 @@ int plugin_config_dialog (const char *type)
             {
                 control = NULL;
                 hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-                strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
+                if (cptr->type == CONF_LABEL)
+                    strval = g_strdup_printf ("%s", dgettext (package, cptr->label));
+                else
+                    strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
                 label = gtk_label_new (strval);
                 g_free (strval);
                 gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
@@ -487,12 +490,16 @@ int plugin_config_dialog (const char *type)
                                         gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
                                         break;
 
-                    case CONF_NONE :    break;
+                    default :           break;
                 }
                 if (control)
                 {
                     gtk_widget_set_name (control, key);
                     gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
+                    gtk_container_add (GTK_CONTAINER (box), hbox);
+                }
+                else if (cptr->type == CONF_LABEL)
+                {
                     gtk_container_add (GTK_CONTAINER (box), hbox);
                 }
                 else
@@ -526,27 +533,30 @@ int plugin_config_dialog (const char *type)
         while (elem)
         {
             hbox = GTK_WIDGET (elem->data);
-            control = GTK_WIDGET (gtk_container_get_children (GTK_CONTAINER (hbox))->next->data);
-
-            if (GTK_IS_SWITCH (control))
-                g_key_file_set_boolean (kf, "panel", gtk_widget_get_name (control), gtk_switch_get_active (GTK_SWITCH (control)));
-            else if (GTK_IS_SPIN_BUTTON (control))
+            bchildren = gtk_container_get_children (GTK_CONTAINER (hbox));
+            if (bchildren->next)
             {
-                if (space != -1)
-                    space = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
-                else
-                    g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
-            }
-            else if (GTK_IS_ENTRY (control))
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), gtk_entry_get_text (GTK_ENTRY (control)));
-            else if (GTK_IS_COLOR_BUTTON (control))
-            {
-                gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (control), &col);
-                strval = gdk_rgba_to_string (&col);
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
-                g_free (strval);
-            }
+                control = GTK_WIDGET (bchildren->next->data);
 
+                if (GTK_IS_SWITCH (control))
+                    g_key_file_set_boolean (kf, "panel", gtk_widget_get_name (control), gtk_switch_get_active (GTK_SWITCH (control)));
+                else if (GTK_IS_SPIN_BUTTON (control))
+                {
+                    if (space != -1)
+                        space = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
+                    else
+                        g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
+                }
+                else if (GTK_IS_ENTRY (control))
+                    g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), gtk_entry_get_text (GTK_ENTRY (control)));
+                else if (GTK_IS_COLOR_BUTTON (control))
+                {
+                    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (control), &col);
+                    strval = gdk_rgba_to_string (&col);
+                    g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
+                    g_free (strval);
+                }
+            }
             elem = elem->next;
         }
 

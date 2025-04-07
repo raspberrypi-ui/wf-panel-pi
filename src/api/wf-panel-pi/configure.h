@@ -33,7 +33,8 @@ typedef enum {
     CONF_BOOL,
     CONF_INT,
     CONF_STRING,
-    CONF_COLOUR
+    CONF_COLOUR,
+    CONF_LABEL
 } CONF_TYPE;
 
 typedef struct {
