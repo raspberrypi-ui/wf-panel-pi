@@ -363,11 +363,14 @@ class WayfirePanel::impl
         if (!center_box.get_children().empty())
         {
             content_box.set_center_widget(center_box);
+            center_box.show();
         }
 
-        center_box.show_all();
         window->add(content_box);
-        window->show_all();
+        left_box.show();
+        right_box.show();
+        content_box.show();
+        window->show();
     }
 
     Widget widget_from_name(std::string name)

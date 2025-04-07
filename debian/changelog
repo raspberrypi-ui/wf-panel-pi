@@ -1,3 +1,9 @@
+wf-panel-pi (0.98) bookworm; urgency=medium
+
+  * Add separator; set initial state of plugin icons correctly
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 07 Apr 2025 14:40:03 +0100
+
 wf-panel-pi (0.97) bookworm; urgency=medium
 
   * Remove hotplug delay at startup

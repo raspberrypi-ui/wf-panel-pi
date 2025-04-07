@@ -3,7 +3,7 @@ Upstream-Name: wf-panel-pi
 Source: https://github.com/raspberrypi-ui/wf-panel-pi/
 
 Files: *
-Copyright: 2022 Raspberry Pi Holdings Ltd.
+Copyright: 2022 Raspberry Pi
            2018 Ilia Bozhinov
 License: MIT
 
@@ -27,7 +27,7 @@ License: MIT
  SOFTWARE.
 
 Files: debian/*
-Copyright: 2022 Raspberry Pi Holdings Ltd.
+Copyright: 2022 Raspberry Pi
 License: BSD-3-Clause
 
 License: BSD-3-Clause
