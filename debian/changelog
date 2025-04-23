@@ -1,4 +1,4 @@
-wf-panel-pi (0.99) UNRELEASED; urgency=medium
+wf-panel-pi (0.99) bookworm; urgency=medium
 
   * Modify wfpanelctl to work correctly under PackageKit
 
