@@ -1,7 +1,11 @@
 #!/bin/sh
 
-if [ -z $SUDO_UID ] ; then
-  dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:"$2"
-else
+if [ ! -z $SUDO_UID ] ; then
   sudo -u "#$SUDO_UID" DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$SUDO_UID/bus dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:"$2"
+elif [ ! -z $PACKAGEKIT_CALLER_UID ] ; then
+  sudo -u "#$PACKAGEKIT_CALLER_UID" DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$PACKAGEKIT_CALLER_UID/bus dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:"$2"
+else
+  dbus-send --session --dest=org.wayfire.wfpanel --type=method_call /org/wayfire/wfpanel org.wayfire.wfpanel.command string:$1 string:"$2"
 fi
+
+

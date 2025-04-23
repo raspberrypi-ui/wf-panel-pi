@@ -1,3 +1,9 @@
+wf-panel-pi (0.99) UNRELEASED; urgency=medium
+
+  * Modify wfpanelctl to work correctly under PackageKit
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 23 Apr 2025 09:34:01 +0100
+
 wf-panel-pi (0.98) bookworm; urgency=medium
 
   * Add separator; set initial state of plugin icons correctly
