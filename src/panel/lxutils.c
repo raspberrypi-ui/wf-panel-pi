@@ -348,12 +348,29 @@ static void menu_hidden (GtkWidget *, kb_menu_t *data)
     g_free (data);
 }
 
+static int get_menu_padding (void)
+{
+    GtkWidget *men = gtk_menu_new ();
+    GtkStyleContext *sc = gtk_widget_get_style_context (men);
+    GtkBorder pad;
+    gtk_style_context_get_padding (sc, gtk_style_context_get_state (sc), &pad);
+    gtk_widget_destroy (men);
+    return pad.left;
+}
+
 static void committed (GdkWindow *win, kb_menu_t *data)
 {
     // spoof event just to suppress warnings...
     GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
     ev->send_event = TRUE;
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
+
+    gboolean bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
+    int pad = get_menu_padding ();
+    GValue val = G_VALUE_INIT;
+    g_value_init (&val, G_TYPE_INT);
+    g_value_set_int (&val, bottom ? -pad : pad);
+    g_object_set_property ((GObject *) data->menu, "rect-anchor-dy", &val);
 
     g_signal_handler_disconnect (win, data->chandle);
     data->mhandle = g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
@@ -594,6 +611,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 
     gtk_layer_set_layer (popwindow, GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_margin (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding ());
     gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
     gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
     gtk_layer_set_monitor (popwindow, mon);
