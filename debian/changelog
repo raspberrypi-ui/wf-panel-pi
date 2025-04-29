@@ -1,3 +1,9 @@
+wf-panel-pi (0.100) bookworm; urgency=medium
+
+  * Consider menu padding when positioning menus
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 29 Apr 2025 13:32:23 +0100
+
 wf-panel-pi (0.99) bookworm; urgency=medium
 
   * Modify wfpanelctl to work correctly under PackageKit
