@@ -554,7 +554,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     GdkDisplay *disp;
     GdkMonitor *mon;
     GdkRectangle rect;
-    int i, pw, ph;
+    int i, pw, ph, wiz;
     gboolean bottom;
     FILE *fp;
     char *cmd, *mname;
@@ -573,6 +573,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
     px = rect.width;
     py = rect.height;
+    wiz = px;
 
     // get the dimensions of the popup itself and ensure the popup fits on the screen
     gtk_widget_get_allocation (window, &rect);
@@ -589,6 +590,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gdk_monitor_get_geometry (mon, &rect);
     mh = rect.height;
     mw = rect.width;
+    wiz -= mw;
     if (bottom) py = mh - py - ph;
 
     orient = 0;
@@ -610,10 +612,22 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     }
 
     gtk_layer_set_layer (popwindow, GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-    gtk_layer_set_margin (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding ());
-    gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-    gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
+
+    if (wiz < 0)
+    {
+        // special case if in wizard, where panel is at top right of screen
+        gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding () + py);
+        gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, 0);
+    }
+    else
+    {
+        gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+        gtk_layer_set_margin (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding ());
+        gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
+    }
     gtk_layer_set_monitor (popwindow, mon);
     gtk_layer_set_keyboard_interactivity (popwindow, TRUE);
 
