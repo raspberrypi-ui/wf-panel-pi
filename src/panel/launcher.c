@@ -45,9 +45,9 @@ void init_launchers (void)
     if (!g_key_file_has_group (kf, "panel"))
     {
         // write the default launcher config
-        g_key_file_set_string (kf, "panel", "launcher_000001", "lxde-x-www-browser.desktop");
+        g_key_file_set_string (kf, "panel", "launcher_000001", "x-www-browser.desktop");
         g_key_file_set_string (kf, "panel", "launcher_000002", "pcmanfm.desktop");
-        g_key_file_set_string (kf, "panel", "launcher_000003", "lxterminal.desktop");
+        g_key_file_set_string (kf, "panel", "launcher_000003", "x-terminal-emulator.desktop");
 
         // write the modified key file out
         str = g_key_file_to_data (kf, &len, NULL);

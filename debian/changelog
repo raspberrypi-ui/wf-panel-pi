@@ -1,3 +1,9 @@
+wf-panel-pi (0.102) bookworm; urgency=medium
+
+  * Rename launcher desktop items
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 12 May 2025 10:30:13 +0100
+
 wf-panel-pi (0.101) bookworm; urgency=medium
 
   * Fix location of volume popup in wizard
