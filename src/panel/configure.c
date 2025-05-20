@@ -89,7 +89,7 @@ int can_configure (const char *type)
         if (!dlerror ())
         {
             cptr = func_config_params ();
-            if (cptr->type != CONF_NONE) can_conf = TRUE;
+            if (cptr->type != CONF_TYPE_NONE) can_conf = TRUE;
         }
         dlclose (wid_lib);
     }
@@ -141,7 +141,7 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
         if (!dlerror ())
         {
             cptr = func_config_params ();
-            if (cptr->type != CONF_NONE) *config = TRUE;
+            if (cptr->type != CONF_TYPE_NONE) *config = TRUE;
         }
 
         /*
@@ -452,11 +452,11 @@ int plugin_config_dialog (const char *type)
         if (!dlerror ())
         {
             cptr = func_config_params ();
-            while (cptr->type != CONF_NONE)
+            while (cptr->type != CONF_TYPE_NONE)
             {
                 control = NULL;
                 hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-                if (cptr->type == CONF_LABEL)
+                if (cptr->type == CONF_TYPE_LABEL)
                     strval = g_strdup_printf ("%s", dgettext (package, cptr->label));
                 else
                     strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
@@ -466,28 +466,39 @@ int plugin_config_dialog (const char *type)
                 key = g_strdup_printf ("%s_%s", type, cptr->name);
                 switch (cptr->type)
                 {
-                    case CONF_BOOL :    control = gtk_switch_new ();
+                    case CONF_TYPE_BOOL :
+                                        control = gtk_switch_new ();
                                         gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (key));
                                         break;
 
-                    case CONF_INT :     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
+                    case CONF_TYPE_INT :
+                                        control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
                                         if (space == -1)
                                             gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
                                         else
                                             gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
                                         break;
 
-                    case CONF_STRING :  control = gtk_entry_new ();
+                    case CONF_TYPE_STRING :
+                                        control = gtk_entry_new ();
                                         get_config_string (key, &strval);
                                         gtk_entry_set_text (GTK_ENTRY (control), strval);
                                         g_free (strval);
                                         break;
 
-                    case CONF_COLOUR :  control = gtk_color_button_new ();
+                    case CONF_TYPE_COLOUR :
+                                        control = gtk_color_button_new ();
                                         get_config_string (key, &strval);
                                         gdk_rgba_parse (&col, strval);
                                         g_free (strval);
                                         gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
+                                        break;
+
+                    case CONF_TYPE_FONT :
+                                        control = gtk_font_button_new ();
+                                        get_config_string (key, &strval);
+                                        gtk_font_chooser_set_font (GTK_FONT_CHOOSER (control), strval);
+                                        g_free (strval);
                                         break;
 
                     default :           break;
@@ -498,7 +509,7 @@ int plugin_config_dialog (const char *type)
                     gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
                     gtk_container_add (GTK_CONTAINER (box), hbox);
                 }
-                else if (cptr->type == CONF_LABEL)
+                else if (cptr->type == CONF_TYPE_LABEL)
                 {
                     gtk_container_add (GTK_CONTAINER (box), hbox);
                 }
@@ -553,6 +564,12 @@ int plugin_config_dialog (const char *type)
                 {
                     gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (control), &col);
                     strval = gdk_rgba_to_string (&col);
+                    g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
+                    g_free (strval);
+                }
+                else if (GTK_IS_FONT_BUTTON (control))
+                {
+                    strval = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (control));
                     g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
                     g_free (strval);
                 }

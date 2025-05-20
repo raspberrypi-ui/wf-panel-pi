@@ -29,18 +29,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define CONFIGURE_H
 
 typedef enum {
-    CONF_NONE,
-    CONF_BOOL,
-    CONF_INT,
-    CONF_STRING,
-    CONF_COLOUR,
-    CONF_LABEL
+    CONF_TYPE_NONE,
+    CONF_TYPE_BOOL,
+    CONF_TYPE_INT,
+    CONF_TYPE_STRING,
+    CONF_TYPE_COLOUR,
+    CONF_TYPE_FONT,
+    CONF_TYPE_LABEL
 } CONF_TYPE;
 
 typedef struct {
     CONF_TYPE type;
     const char *name;
     const char *label;
+    void *value;
 } conf_table_t;
 
 extern void open_config_dialog (void);

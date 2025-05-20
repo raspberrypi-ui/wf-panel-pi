@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib.h>
 #include <locale.h>
 #include <gtk-layer-shell/gtk-layer-shell.h>
+#include "configure.h"
 #include "notification.h"
 
 #define MENU_ICON_SPACE 6

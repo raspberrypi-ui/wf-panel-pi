@@ -1,4 +1,3 @@
-subdir('clock')
 subdir('launchers')
 subdir('notify')
 subdir('spacing')
