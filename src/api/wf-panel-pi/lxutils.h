@@ -64,6 +64,7 @@ typedef struct {
 extern char **environ;
 
 extern GtkWindow *find_panel (GtkWidget *btn);
+extern gboolean panel_at_bottom (GtkWidget *btn);
 extern void store_layer (GtkLayerShellLayer layer);
 extern void set_taskbar_icon (GtkWidget *image, const char *icon, int size);
 extern void set_menu_icon (GtkWidget *image, const char *icon, int size);
@@ -99,7 +100,7 @@ extern gboolean is_pi (void);
 #define wrap_get_menu_label(item) get_menu_label(item)
 #define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu)
 #define wrap_icon_size(plugin) (plugin->icon_size)
-#define wrap_is_at_bottom(plugin) (plugin->bottom)
+#define wrap_is_at_bottom(plug) (panel_at_bottom(plug->plugin))
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
 #define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed = PRESS_NONE;return;}pressed = PRESS_NONE;
 

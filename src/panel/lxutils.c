@@ -80,6 +80,12 @@ GtkWindow *find_panel (GtkWidget *btn)
     return GTK_WINDOW (wid);
 }
 
+gboolean panel_at_bottom (GtkWidget *btn)
+{
+    GtkWindow *panel = find_panel (btn);
+    return gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
+}
+
 void store_layer (GtkLayerShellLayer layer)
 {
     orig_layer = layer;

@@ -2,9 +2,7 @@ project(
     'wf-panel-pi',
     'c',
     'cpp',
-    version: '0.8.0',
-    license: 'MIT',
-    meson_version: '>=0.51.0',
+    meson_version: '>=0.60.0',
     default_options: [
         'cpp_std=c++17',
         'c_std=c11',
@@ -45,15 +43,8 @@ subdir('po')
 
 pkgconfig = import('pkgconfig')
 pkgconfig.generate(
-    version:      meson.project_version(),
     filebase:     meson.project_name(),
     name:         meson.project_name(),
     description: 'Panel for Raspberry Pi Wayland desktop',
-    requires:     gtkmm,
-    subdirs:     'wf-panel-pi',
-    variables:    ['metadatadir=' + metadata_dir,
-                   'uidir=' + ui_dir,
-                   'sysconfdir=' + sysconf_dir,
-                   'resourcedir=' + resource_dir,
-                   'plugindir=${libdir}/wf-panel-pi']
-    )
+    subdirs:     'wf-panel-pi'
+)
