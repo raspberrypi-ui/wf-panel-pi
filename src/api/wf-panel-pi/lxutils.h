@@ -92,8 +92,9 @@ extern GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpoint
 
 extern gboolean is_pi (void);
 
-#define lxpanel_notify(panel,msg) wfpanel_notify(msg)
-#define lxpanel_notify_clear(seq) wfpanel_notify_clear(seq)
+#define wrap_notify(panel,msg) wfpanel_notify(msg)
+#define wrap_critical(panel,msg) wfpanel_critical(msg)
+#define wrap_notify_clear(seq) wfpanel_notify_clear(seq)
 #define lxpanel_plugin_update_menu_icon(item,icon) update_menu_icon(item,icon)
 #define lxpanel_plugin_append_menu_icon(item,icon) append_menu_icon(item,icon)
 #define wrap_new_menu_item(plugin,text,maxlen,icon) new_menu_item(text,maxlen,icon,get_icon_size())
