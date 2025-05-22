@@ -42,6 +42,7 @@ class WayfirePanelApp : public WayfireShellApp
     void on_config_reload() override;
     void on_command (const char *plugin, const char *command) override;
     void update_panels ();
+    void update_widget_icons ();
 
   private:
     WayfirePanelApp(int argc, char **argv);

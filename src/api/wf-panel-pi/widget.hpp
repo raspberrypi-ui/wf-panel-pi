@@ -25,6 +25,8 @@ class WayfireWidget
     }
     virtual void handle_config_reload()
     {}
+    virtual bool set_icon ()
+    { return false; }
     virtual ~WayfireWidget()
     {}
 };

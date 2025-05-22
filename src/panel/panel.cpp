@@ -187,6 +187,7 @@ class WayfirePanel::impl
 
     void create_window()
     {
+        widget_icon_size = icon_size;
         touch_only = gestures_touch_only;
         if (!access ("/boot/firmware/config.txt", R_OK)) is_pi_var = TRUE;
         else is_pi_var = FALSE;
@@ -255,6 +256,8 @@ class WayfirePanel::impl
 
         window->signal_button_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_press_event));
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
+
+        icon_size.set_callback (update_widget_icons);
 
         gesture = add_longpress_default (*window);
 
@@ -606,6 +609,17 @@ class WayfirePanel::impl
     std::function<void()> update_panels = [=] ()
     {
         WayfirePanelApp::get().update_panels ();
+    };
+
+    std::function<void()> update_widget_icons = [=] ()
+    {
+        widget_icon_size = icon_size;
+        for (auto& w : left_widgets)
+            w->set_icon ();
+        for (auto& w : right_widgets)
+            w->set_icon ();
+        for (auto& w : center_widgets)
+            w->set_icon ();
     };
 };
 

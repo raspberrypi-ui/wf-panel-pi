@@ -58,7 +58,7 @@ press_t pressed;
 double press_x, press_y;
 
 gboolean touch_only;
-
+int widget_icon_size;
 gboolean is_pi_var;
 
 static GtkWindow *panel, *popwindow;
@@ -84,6 +84,11 @@ gboolean panel_at_bottom (GtkWidget *btn)
 {
     GtkWindow *panel = find_panel (btn);
     return gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
+}
+
+int get_icon_size (void)
+{
+    return widget_icon_size;
 }
 
 void store_layer (GtkLayerShellLayer layer)

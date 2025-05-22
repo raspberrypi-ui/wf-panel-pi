@@ -48,6 +48,7 @@ extern double press_x, press_y;
 
 extern gboolean touch_only;
 extern gboolean is_pi_var;
+extern int widget_icon_size;
 
 typedef struct {
     GtkWidget *da;                          /* Drawing area */
@@ -65,6 +66,7 @@ extern char **environ;
 
 extern GtkWindow *find_panel (GtkWidget *btn);
 extern gboolean panel_at_bottom (GtkWidget *btn);
+extern int get_icon_size (void);
 extern void store_layer (GtkLayerShellLayer layer);
 extern void set_taskbar_icon (GtkWidget *image, const char *icon, int size);
 extern void set_menu_icon (GtkWidget *image, const char *icon, int size);
@@ -94,12 +96,12 @@ extern gboolean is_pi (void);
 #define lxpanel_notify_clear(seq) wfpanel_notify_clear(seq)
 #define lxpanel_plugin_update_menu_icon(item,icon) update_menu_icon(item,icon)
 #define lxpanel_plugin_append_menu_icon(item,icon) append_menu_icon(item,icon)
-#define wrap_new_menu_item(plugin,text,maxlen,icon) new_menu_item(text,maxlen,icon,plugin->icon_size)
-#define wrap_set_menu_icon(plugin,image,icon) set_menu_icon(image,icon,plugin->icon_size)
-#define wrap_set_taskbar_icon(plugin,image,icon) set_taskbar_icon(image,icon,plugin->icon_size)
+#define wrap_new_menu_item(plugin,text,maxlen,icon) new_menu_item(text,maxlen,icon,get_icon_size())
+#define wrap_set_menu_icon(plugin,image,icon) set_menu_icon(image,icon,get_icon_size())
+#define wrap_set_taskbar_icon(plugin,image,icon) set_taskbar_icon(image,icon,get_icon_size())
 #define wrap_get_menu_label(item) get_menu_label(item)
 #define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu)
-#define wrap_icon_size(plugin) (plugin->icon_size)
+#define wrap_icon_size(plugin) (get_icon_size())
 #define wrap_is_at_bottom(plug) (panel_at_bottom(plug->plugin))
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
 #define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed = PRESS_NONE;return;}pressed = PRESS_NONE;
