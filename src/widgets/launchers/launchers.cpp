@@ -50,7 +50,13 @@ struct DesktopLauncherInfo : public LauncherInfo
 
     Glib::RefPtr<Gdk::Pixbuf> get_pixbuf(int32_t size)
     {
-        auto icon  = app_info->get_icon()->to_string();
+        auto iconp = app_info->get_icon();
+        if (!iconp)
+        {
+            std::cerr << "No icon defined for launcher" << std::endl;
+            return Glib::RefPtr<Gdk::Pixbuf>();
+        }
+        auto icon = iconp->to_string();
         auto theme = Gtk::IconTheme::get_default();
 
         // look up explicit paths
