@@ -10,7 +10,7 @@
 	</option>
 	<option name="widgets_left" type="string">
 		<_short>Widgets Left</_short>
-		<default>smenu spacing4 launchers spacing8 window-list</default>
+		<default>smenu spacing0 spacing4 launchers spacing8 window-list</default>
 	</option>
 	<option name="widgets_center" type="string">
 		<_short>Widgets Center</_short>
