@@ -349,7 +349,7 @@ class WayfirePanel::impl
 
     void do_appearance_set()
     {
-        system ("pipanel taskbar &");
+        system ("rpcc taskbar &");
     }
 
     bool on_delete(GdkEventAny *ev)
