@@ -36,7 +36,7 @@ void init_launchers (void)
     gsize len;
 
     // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "panel.ini", NULL);
 
     // read in data from file to a key file
     GKeyFile *kf = g_key_file_new ();
@@ -100,7 +100,7 @@ void add_to_launcher (const char *name)
     int ind, max = 0;
 
     // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "panel.ini", NULL);
 
     // read in data from file to a key file
     GKeyFile *kf = g_key_file_new ();
@@ -156,7 +156,7 @@ void remove_from_launcher (const char *name)
     int ind;
 
     // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "panel.ini", NULL);
 
     // read in data from file to a key file
     GKeyFile *kf = g_key_file_new ();

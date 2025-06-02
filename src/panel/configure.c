@@ -535,7 +535,7 @@ int plugin_config_dialog (const char *type)
 
     if (gtk_dialog_run (GTK_DIALOG (cdlg)) == GTK_RESPONSE_OK)
     {
-        user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+        user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "panel.ini", NULL);
         kf = g_key_file_new ();
         g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
@@ -720,7 +720,7 @@ static void write_config (void)
     gsize len;
 
     // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi.ini", NULL);
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "panel.ini", NULL);
 
     // read in data from file to a key file
     GKeyFile *kf = g_key_file_new ();
