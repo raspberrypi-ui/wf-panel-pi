@@ -267,6 +267,36 @@ static bool begins_with(const std::string& string, const std::string& prefix)
            string.substr(0, prefix.size()) == prefix;
 }
 
+launcher_container WayfireLaunchers::get_launchers_from_names()
+{
+    launcher_container launchers;
+    auto try_push_launcher = [&launchers] (
+        const std::string cmd, const std::string icon, const std::string label = "")
+    {
+        auto launcher = new WfLauncherButton();
+        if (launcher->initialize(cmd, icon, label))
+        {
+            launchers.push_back(std::unique_ptr<WfLauncherButton>(launcher));
+        } else
+        {
+            delete launcher;
+        }
+    };
+
+    std::string token;
+    std::istringstream stream(launcher_names);
+
+    while (stream >> token)
+    {
+        if (token.size())
+        {
+            try_push_launcher(token + ".desktop", "none");
+        }
+    }
+
+    return launchers;
+}
+
 launcher_container WayfireLaunchers::get_launchers_from_config()
 {
     auto section = WayfireShellApp::get().config.get_section("panel");
@@ -341,7 +371,7 @@ void WayfireLaunchers::handle_config_reload()
 {
     box.set_spacing(WfOption<int>{"panel/launchers_spacing"});
 
-    launchers = get_launchers_from_config();
+    launchers = get_launchers_from_names();
     for (auto& l : launchers)
     {
         box.pack_start(l->evbox, false, false);

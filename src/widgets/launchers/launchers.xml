@@ -4,6 +4,10 @@
 	<_short>Panel</_short>
 	<group>
 	<_short>Launchers</_short>
+	<option name="launchers" type="string">
+		<_short>Launchers</_short>
+		<default></default>
+	</option>
 	<option name="launchers_spacing" type="int">
 		<_short>Launchers Spacing</_short>
 		<default>0</default>

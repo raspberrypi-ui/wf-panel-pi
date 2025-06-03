@@ -71,9 +71,12 @@ struct WfLauncherButton
 using launcher_container = std::vector<std::unique_ptr<WfLauncherButton>>;
 class WayfireLaunchers : public WayfireWidget
 {
+    WfOption <std::string> launcher_names {"panel/launchers"};
+
     Gtk::HBox box;
     launcher_container launchers;
     launcher_container get_launchers_from_config();
+    launcher_container get_launchers_from_names();
 
   public:
     virtual void init(Gtk::HBox *container);
