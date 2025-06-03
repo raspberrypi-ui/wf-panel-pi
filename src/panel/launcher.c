@@ -42,11 +42,14 @@ void add_to_launcher (const char *name)
 
     // read in data from file to a key file
     kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-    list = g_key_file_get_string (kf, "panel", "launchers", &err);
+    list = NULL;
+    if (g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL))
+    {
+        list = g_key_file_get_string (kf, "panel", "launchers", &err);
+    }
 
     // no launchers entry in user file - try loading from system file
-    if (err && err->code == G_KEY_FILE_ERROR_KEY_NOT_FOUND)
+    if (!list || (err && err->code == G_KEY_FILE_ERROR_KEY_NOT_FOUND))
     {
         kfs = g_key_file_new ();
         g_key_file_load_from_file (kfs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
@@ -78,17 +81,30 @@ void add_to_launcher (const char *name)
 
 void remove_from_launcher (const char *name)
 {
-    GKeyFile *kf;
+    GKeyFile *kf, *kfs;
     char *str, *list, *new_list, *tok, *tmp;
     gsize len;
+    GError *err = NULL;
 
     // construct the file path
     char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
 
     // read in data from file to a key file
     kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-    list = g_key_file_get_string (kf, "panel", "launchers", NULL);
+    list = NULL;
+    if (g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL))
+    {
+        list = g_key_file_get_string (kf, "panel", "launchers", &err);
+    }
+
+    // no launchers entry in user file - try loading from system file
+    if (!list || (err && err->code == G_KEY_FILE_ERROR_KEY_NOT_FOUND))
+    {
+        kfs = g_key_file_new ();
+        g_key_file_load_from_file (kfs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+        list = g_key_file_get_string (kfs, "panel", "launchers", NULL);
+        g_key_file_free (kfs);
+    }
 
     // strip .desktop suffix
     str = g_strdup (name);
