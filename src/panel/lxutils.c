@@ -346,7 +346,7 @@ void graph_free (PluginGraph *graph)
 
 static gboolean hide_prelight (GtkWidget *btn)
 {
-    gtk_widget_unset_state_flags (btn, GTK_STATE_FLAG_PRELIGHT);
+    if (btn && GTK_IS_WIDGET (btn)) gtk_widget_unset_state_flags (btn, GTK_STATE_FLAG_PRELIGHT);
     return FALSE;
 }
 
