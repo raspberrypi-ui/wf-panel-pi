@@ -116,6 +116,9 @@ void WayfireShellApp::on_activate()
     std::vector<std::string> xmldirs(1, METADATA_DIR);
 
     // setup config
+    char *dir = g_path_get_dirname (get_config_file ().c_str());
+    g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
+    g_free (dir);
     close (open (get_config_file ().c_str(), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
 
     this->config = wf::config::build_configuration(
