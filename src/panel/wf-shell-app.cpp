@@ -32,7 +32,7 @@ std::string WayfireShellApp::get_config_file()
         config_dir = std::string(config_home);
     }
 
-    return config_dir + "/wf-panel-pi.ini";
+    return config_dir + "/wf-panel-pi/wf-panel-pi.ini";
 }
 
 bool WayfireShellApp::parse_cfgfile(const Glib::ustring & option_name,
@@ -120,7 +120,7 @@ void WayfireShellApp::on_activate()
     init_launchers ();
 
     this->config = wf::config::build_configuration(
-        xmldirs, PACKAGE_DATA_DIR "/defaults.ini",
+        xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini",
         get_config_file());
 
     inotify_fd = inotify_init();

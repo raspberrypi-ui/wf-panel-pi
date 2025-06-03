@@ -34,5 +34,5 @@ To install the application and all required data files, change to the
 Configuration
 -------------
 
-wf-panel-pi uses a config file located (by default) in `~/.config/wf-panel-pi/panel.ini`
+wf-panel-pi uses a config file located (by default) in `~/.config/wf-panel-pi/wf-panel-pi.ini`
 
