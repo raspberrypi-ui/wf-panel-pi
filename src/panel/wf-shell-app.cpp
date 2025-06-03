@@ -117,7 +117,6 @@ void WayfireShellApp::on_activate()
 
     // setup config
     close (open (get_config_file ().c_str(), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
-    init_launchers ();
 
     this->config = wf::config::build_configuration(
         xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini",
