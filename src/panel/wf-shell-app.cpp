@@ -58,7 +58,7 @@ static void do_reload_config(WayfireShellApp *app)
     wf::config::load_configuration_options_from_file(
         app->config, app->get_config_file());
     app->on_config_reload();
-    inotify_add_watch(app->inotify_fd, app->get_config_file().c_str(), IN_MODIFY);
+    inotify_add_watch(app->inotify_fd, app->get_config_file().c_str(), IN_MODIFY | IN_CREATE | IN_DELETE);
 }
 
 /* Handle inotify event */

@@ -490,6 +490,7 @@ bool wf::config::load_configuration_options_from_file(config_manager_t& manager,
     if (flock(fd, LOCK_SH | LOCK_NB))
     {
         close(fd);
+        load_configuration_options_from_string(manager, "", file);
         return false;
     }
 
