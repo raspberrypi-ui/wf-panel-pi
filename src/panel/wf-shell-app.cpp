@@ -55,10 +55,13 @@ char buf[INOT_BUF_SIZE];
 /* Reload file and add next inotify watch */
 static void do_reload_config(WayfireShellApp *app)
 {
+    char *dir = g_path_get_dirname (app->get_config_file().c_str());
     wf::config::load_configuration_options_from_file(
         app->config, app->get_config_file());
     app->on_config_reload();
-    inotify_add_watch(app->inotify_fd, app->get_config_file().c_str(), IN_MODIFY | IN_CREATE | IN_DELETE);
+    inotify_add_watch(app->inotify_fd, app->get_config_file().c_str(), IN_MODIFY);
+    inotify_add_watch(app->inotify_fd, dir, IN_CREATE | IN_DELETE);
+    g_free (dir);
 }
 
 /* Handle inotify event */
