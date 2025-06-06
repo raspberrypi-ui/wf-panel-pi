@@ -18,6 +18,8 @@ extern "C" {
 #include <sstream>
 #include <sys/time.h>
 #include <dlfcn.h>
+#include <cstdlib>
+#include <cstring>
 
 #include <map>
 
@@ -106,6 +108,7 @@ class WayfirePanel::impl
     Gtk::MenuItem appset;
     std::string conf_plugin;
     Glib::RefPtr<Gtk::GestureLongPress> gesture;
+    sigc::connection draw_connection;
 
     using Widget = std::unique_ptr<WayfireWidget>;
     using WidgetContainer = std::vector<Widget>;
@@ -199,6 +202,30 @@ class WayfirePanel::impl
             panel_layer.set_callback(set_panel_layer);
             set_panel_layer(); // initial setting
             wfpanel_notify_init (notifications, notify_timeout, window->gobj ());
+        }
+
+        // Connect to draw signal to log first draw event using journald only if RPI_LOG_FIRST_DRAW is set
+        const char *rpi_log_env = std::getenv("RPI_LOG_FIRST_DRAW");
+        if (rpi_log_env && (std::strcmp(rpi_log_env, "1") == 0 ||
+                            std::strcmp(rpi_log_env, "true") == 0 ||
+                            std::strcmp(rpi_log_env, "yes") == 0 ||
+                            std::strcmp(rpi_log_env, "on") == 0))
+        {
+            draw_connection = window->signal_draw().connect(
+                [this](const Cairo::RefPtr<Cairo::Context> &cr) -> bool
+                {
+                    // Log first draw event directly to journald with minimal information
+                    GLogField fields[] = {
+                        {"MESSAGE", "Panel first draw event", -1},
+                        {"PRIORITY", "5", -1}, // Notice level
+                        {"SYSLOG_IDENTIFIER", "wf-panel-pi", -1}};
+                    g_log_writer_journald(G_LOG_LEVEL_MESSAGE, fields, 3, NULL);
+
+                    // Disconnect after first draw
+                    draw_connection.disconnect();
+                    // Return false to propagate the event further
+                    return false;
+                });
         }
 
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, wizard ? false : true);
