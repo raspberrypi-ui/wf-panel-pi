@@ -1,3 +1,9 @@
+wf-panel-pi (0.102) bookworm; urgency=medium
+
+  * Fix memory leak in graph drawing code
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 13 Jun 2025 10:37:17 +0100
+
 wf-panel-pi (0.101) bookworm; urgency=medium
 
   * Fix location of volume popup in wizard
