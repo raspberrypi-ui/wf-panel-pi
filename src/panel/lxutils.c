@@ -2,6 +2,21 @@
 Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
 All rights reserved.
 
+Some code taken from the lxpanel project
+
+Copyright (c) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+            2006-2008 Jim Huang <jserv.tw@gmail.com>
+            2008 Fred Chien <fred@lxde.org>
+            2009 Ying-Chun Liu (PaulLiu) <grandpaul@gmail.com>
+            2009-2010 Marty Jack <martyj19@comcast.net>
+            2010 Jürgen Hötzel <juergen@archlinux.org>
+            2010-2011 Julien Lavergne <julien.lavergne@gmail.com>
+            2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
+            2012 Michael Rawson <michaelrawson76@gmail.com>
+            2014 Max Krummenacher <max.oss.09@gmail.com>
+            2014 SHiNE CsyFeK <csyfek@users.sourceforge.net>
+            2014 Andriy Grytsenko <andrej@rep.kiev.ua>
+
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
     * Redistributions of source code must retain the above copyright
@@ -232,6 +247,7 @@ static void graph_redraw (PluginGraph *graph, char *label)
     pixbuf = gdk_pixbuf_new_from_data (cairo_image_surface_get_data (graph->pixmap), GDK_COLORSPACE_RGB, TRUE, 8, 
         graph->pixmap_width, graph->pixmap_height, graph->pixmap_width * 4, NULL, NULL);
     gtk_image_set_from_pixbuf (GTK_IMAGE (graph->da), pixbuf);
+    g_object_unref (pixbuf);
 }
 
 /* Initialise graph for a particular size */
