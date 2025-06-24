@@ -1,3 +1,9 @@
+wf-panel-pi (1.1) trixie; urgency=medium
+
+  * Correct plugin name
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 24 Jun 2025 10:08:15 +0100
+
 wf-panel-pi (1.0) trixie; urgency=medium
 
   * Rename launcher desktop items

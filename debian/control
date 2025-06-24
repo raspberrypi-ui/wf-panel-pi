@@ -15,8 +15,8 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libwayland-client0
 Recommends: pulseaudio, pipewire, pipewire-pulse, pi-bluetooth, pulseaudio-module-bluetooth,
  libspa-0.2-bluetooth, lp-connection-editor, wfplug-squeek, wfplug-connect, wfplug-menu,
- wfplug-bluetooth, wfplug-cputemp, wfplug-ejecter, wfplug-netman, wfplug-updater, wfplug-ptbatt,
- wfplug-volumepulse, wfplug-cpu, wfplug-gpu, wfplug-power
+ wfplug-bluetooth, wfplug-cputemp, wfplug-ejecter, wfplug-netman, wfplug-updater, wfplug-batt,
+ wfplug-volumepulse, wfplug-cpu, wfplug-gpu, wfplug-power, wfplug-clock
 Description: Desktop panel for Raspberry Pi Wayland environments
  Raspberry Pi desktop panel based on wf-shell
 
