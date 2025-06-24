@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 Package: wf-panel-pi
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libwayland-client0
-Recommends: pulseaudio, pipewire, pipewire-pulse, pi-bluetooth, pulseaudio-module-bluetooth,
+Recommends: pulseaudio, pipewire, pipewire-pulse, pulseaudio-module-bluetooth,
  libspa-0.2-bluetooth, lp-connection-editor, wfplug-squeek, wfplug-connect, wfplug-menu,
  wfplug-bluetooth, wfplug-cputemp, wfplug-ejecter, wfplug-netman, wfplug-updater, wfplug-batt,
  wfplug-volumepulse, wfplug-cpu, wfplug-gpu, wfplug-power, wfplug-clock
