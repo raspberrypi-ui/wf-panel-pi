@@ -1,3 +1,9 @@
+wf-panel-pi (1.3) trixie; urgency=medium
+
+  * Add Chinese translation
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 02 Sep 2025 09:14:48 +0100
+
 wf-panel-pi (1.2) trixie; urgency=medium
 
   * Remove pi-bluetooth dependency
