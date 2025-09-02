@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: lxpanel 0.3.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-23 11:39+0000\n"
-"PO-Revision-Date: 2024-07-14 17:34+0800\n"
+"PO-Revision-Date: 2025-08-23 14:11+0800\n"
 "Last-Translator: ykla <yklaxds@gmail.com>\n"
 "Language-Team: ykla <yklaxds@gmail.com>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.7\n"
 "X-Pootle-Revision: 0\n"
 "X-Pootle-Path: /zh_CN/lxpanel/po/zh_CN.po\n"
 "X-POOTLE-MTIME: 1417570650.000000\n"
@@ -25,37 +25,36 @@ msgstr ""
 #: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
 #, c-format
 msgid "Spacer"
-msgstr ""
+msgstr "间距"
 
 #: ../src/panel/configure.c:116 ../src/panel/configure.c:255
 #: ../src/panel/configure.c:589
 #, c-format
 msgid "Spacer (%d)"
-msgstr ""
+msgstr "间距  (%d)"
 
 #: ../src/panel/configure.c:137 ../src/panel/configure.c:158
 #: ../src/panel/configure.c:447
-#, fuzzy, c-format
+#, c-format
 msgid "<Unknown>"
-msgstr "未知"
+msgstr "<未知>"
 
 #: ../src/panel/configure.c:424
 msgid "Cancel"
 msgstr "取消"
 
 #: ../src/panel/configure.c:424
-#, fuzzy
 msgid "OK"
-msgstr "_确认"
+msgstr "确认"
 
 #: ../src/panel/configure.c:445 ../src/panel/configure.c:447
-#, fuzzy, c-format
+#, c-format
 msgid "Configure %s"
-msgstr "_配置 VPN……"
+msgstr "配置 %s"
 
 #: ../src/panel/configure.c:823
 msgid "Left Side"
-msgstr ""
+msgstr "左侧"
 
 #: ../src/panel/configure.c:824
 msgid "Available"
@@ -63,94 +62,85 @@ msgstr "可用"
 
 #: ../src/panel/configure.c:825
 msgid "Right Side"
-msgstr ""
+msgstr "右侧"
 
 #: ../src/panel/panel.cpp:235
 msgid "Add / Remove Plugins..."
-msgstr ""
+msgstr "添加/删除插件……"
 
 #: ../src/panel/panel.cpp:239
-#, fuzzy
 msgid "Configure Plugin..."
-msgstr "_配置 VPN……"
+msgstr "配置插件……"
 
 #: ../src/panel/panel.cpp:243
-#, fuzzy
 msgid "Notifications..."
-msgstr "启用 _通知"
+msgstr "通知……"
 
 #: ../src/panel/panel.cpp:247
 msgid "Taskbar Preferences..."
-msgstr ""
+msgstr "任务栏偏好……"
 
 #: ../src/widgets/clock/clock.cpp:39
 msgid "Display format"
-msgstr ""
+msgstr "显示格式"
 
 #: ../src/widgets/clock/clock.cpp:40
 msgid "Display font"
-msgstr ""
+msgstr "显示字体"
 
 #: ../src/widgets/clock/clock.cpp:44
-#, fuzzy
 msgid "Clock"
-msgstr "_解锁"
+msgstr "时钟"
 
 #: ../src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
-msgstr ""
+msgstr "图标间距"
 
 #: ../src/widgets/launchers/launchers.cpp:24
-#, fuzzy
 msgid "Launcher"
-msgstr "链路监视器"
+msgstr "启动器"
 
 #: ../src/widgets/launchers/launchers.cpp:196
 msgid "Remove from Launcher"
-msgstr ""
+msgstr "从启动器移除"
 
 #: ../src/widgets/notify/notify.cpp:5
-#, fuzzy
 msgid "Show notifications"
-msgstr "启用 _通知"
+msgstr "显示通知"
 
 #: ../src/widgets/notify/notify.cpp:6
-#, fuzzy
 msgid "Time before notifications close"
-msgstr "对等通知计数(_P)"
+msgstr "通知显示时长"
 
 #: ../src/widgets/notify/notify.cpp:10
-#, fuzzy
 msgid "Notifications"
-msgstr "启用 _通知"
+msgstr "通知"
 
 #: ../src/widgets/spacing/spacing.cpp:5
 msgid "Width in pixels"
-msgstr ""
+msgstr "宽度（像素）"
 
 #: ../src/widgets/tray/tray.cpp:8
 msgid "Smooth scrolling threshold"
-msgstr ""
+msgstr "平滑滚动阈值"
 
 #: ../src/widgets/tray/tray.cpp:9
-#, fuzzy
 msgid "Middle button activates menu"
-msgstr "无法启用连接"
+msgstr "鼠标中键激活菜单"
 
 #: ../src/widgets/tray/tray.cpp:13
-#, fuzzy
 msgid "System Tray"
-msgstr "系统优先级(_S)"
+msgstr "系统托盘"
 
 #: ../src/widgets/window-list/toplevel.cpp:83
 #: ../src/widgets/window-list/toplevel.cpp:449
 msgid "Minimize"
-msgstr ""
+msgstr "最小化"
 
 #: ../src/widgets/window-list/toplevel.cpp:84
 #: ../src/widgets/window-list/toplevel.cpp:457
 msgid "Maximize"
-msgstr ""
+msgstr "最大化"
 
 #: ../src/widgets/window-list/toplevel.cpp:85
 msgid "Close"
@@ -158,74 +148,68 @@ msgstr "退出"
 
 #: ../src/widgets/window-list/toplevel.cpp:446
 msgid "Unminimize"
-msgstr ""
+msgstr "取消最小化"
 
 #: ../src/widgets/window-list/toplevel.cpp:454
 msgid "Unmaximize"
-msgstr ""
+msgstr "取消最大化"
 
 #: ../src/widgets/window-list/window-list.cpp:14
 msgid "Maximum width of task button"
-msgstr ""
+msgstr "任务按钮的最大宽度"
 
 #: ../src/widgets/window-list/window-list.cpp:18
 msgid "Window List"
-msgstr ""
+msgstr "窗口列表"
 
 #: ../data/config.ui.h:1
 msgid "Add / Remove Plugins"
-msgstr ""
+msgstr "添加/删除插件"
 
 #: ../data/config.ui.h:2
-#, fuzzy
 msgid "Add to left"
-msgstr "添加到菜单"
+msgstr "添加到左侧"
 
 #: ../data/config.ui.h:3
 msgid "Add plugin to left side of taskbar"
-msgstr ""
+msgstr "将插件添加到任务栏左侧"
 
 #: ../data/config.ui.h:4
-#, fuzzy
 msgid "Add to right"
-msgstr "添加到菜单"
+msgstr "添加到右侧"
 
 #: ../data/config.ui.h:5
 msgid "Add plugin to right side of taskbar"
-msgstr ""
+msgstr "将插件添加到任务栏右侧"
 
 #: ../data/config.ui.h:6
-#, fuzzy
 msgid "Remove"
-msgstr "移除……"
+msgstr "移除"
 
 #: ../data/config.ui.h:7
 msgid "Remove plugin from taskbar"
-msgstr ""
+msgstr "从任务栏移除插件"
 
 #: ../data/config.ui.h:8
 msgid "Move left"
-msgstr ""
+msgstr "向左移动"
 
 #: ../data/config.ui.h:9
 msgid "Move plugin towards left of taskbar"
-msgstr ""
+msgstr "将插件向任务栏左侧移动"
 
 #: ../data/config.ui.h:10
 msgid "Move right"
-msgstr ""
+msgstr "向右移动"
 
 #: ../data/config.ui.h:11
 msgid "Move plugin towards right of taskbar"
-msgstr ""
+msgstr "将插件向任务栏右侧移动"
 
 #: ../data/config.ui.h:12
-#, fuzzy
 msgid "Configure..."
-msgstr "_配置 VPN……"
+msgstr "配置……"
 
 #: ../data/config.ui.h:13
 msgid "Configure selected plugin"
-msgstr ""
-
-#, fuzzy
+msgstr "配置已选择插件"
