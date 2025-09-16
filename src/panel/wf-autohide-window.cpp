@@ -27,6 +27,8 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     gtk_layer_set_monitor(this->gobj(), output->monitor->gobj());
     gtk_layer_set_namespace(this->gobj(), "$unfocus panel");
 
+    g_object_set (gtk_widget_get_settings (GTK_WIDGET (this->gobj())), "gtk-visible-focus", GTK_POLICY_AUTOMATIC, NULL);
+
     this->position.set_callback([=] () { this->update_position(); });
     this->update_position();
 
