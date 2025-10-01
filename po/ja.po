@@ -5,208 +5,215 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-23 11:39+0000\n"
-"PO-Revision-Date: 2017-03-06 14:18+0000\n"
-"Last-Translator:  Akira Ouchi <akkiesoft@marokun.net>\n"
+"POT-Creation-Date: 2025-09-27 23:03+0900\n"
+"PO-Revision-Date: 2025-09-27 23:21+0900\n"
+"Last-Translator: Akira Ouchi <akkiesoft@marokun.net>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#: ../src/panel/configure.c:115 ../src/widgets/spacing/spacing.cpp:9
+#: src/panel/configure.c:115 src/panel/configure.c:599
 #, c-format
-msgid "Spacer"
-msgstr "空白"
+msgid "Separator"
+msgstr "セパレーター"
 
-#: ../src/panel/configure.c:116 ../src/panel/configure.c:255
-#: ../src/panel/configure.c:589
+#: src/panel/configure.c:116 src/panel/configure.c:255
+#: src/panel/configure.c:600
 #, c-format
 msgid "Spacer (%d)"
 msgstr "空白 (%d)"
 
-#: ../src/panel/configure.c:137 ../src/panel/configure.c:158
-#: ../src/panel/configure.c:447
-#, fuzzy, c-format
+#: src/panel/configure.c:137 src/panel/configure.c:158
+#: src/panel/configure.c:447
+#, c-format
 msgid "<Unknown>"
 msgstr "不明"
 
-#: ../src/panel/configure.c:424
+#: src/panel/configure.c:424
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../src/panel/configure.c:424
+#: src/panel/configure.c:424
 msgid "OK"
 msgstr "OK"
 
-#: ../src/panel/configure.c:445 ../src/panel/configure.c:447
+#: src/panel/configure.c:445 src/panel/configure.c:447
 #, c-format
 msgid "Configure %s"
 msgstr "%s の設定"
 
-#: ../src/panel/configure.c:823
+#: src/panel/configure.c:834
 msgid "Left Side"
 msgstr "左側"
 
-#: ../src/panel/configure.c:824
+#: src/panel/configure.c:835
 msgid "Available"
 msgstr "利用可能"
 
-#: ../src/panel/configure.c:825
+#: src/panel/configure.c:836
 msgid "Right Side"
 msgstr "右側"
 
-#: ../src/panel/panel.cpp:235
+#: src/panel/panel.cpp:264
 msgid "Add / Remove Plugins..."
 msgstr "プラグインを追加/削除..."
 
-#: ../src/panel/panel.cpp:239
+#: src/panel/panel.cpp:268
 msgid "Configure Plugin..."
 msgstr "プラグインを設定..."
 
-#: ../src/panel/panel.cpp:243
+#: src/panel/panel.cpp:272
 msgid "Notifications..."
 msgstr "通知..."
 
-#: ../src/panel/panel.cpp:247
+#: src/panel/panel.cpp:276
 msgid "Taskbar Preferences..."
 msgstr "タスクバーの設定..."
 
-#: ../src/widgets/clock/clock.cpp:39
+#: src/widgets/clock/clock.cpp:41
 msgid "Display format"
 msgstr "表示形式"
 
-#: ../src/widgets/clock/clock.cpp:40
+#: src/widgets/clock/clock.cpp:42
 msgid "Display font"
 msgstr "表示フォント"
 
-#: ../src/widgets/clock/clock.cpp:44
+#: src/widgets/clock/clock.cpp:46
 msgid "Clock"
 msgstr "時計"
 
-#: ../src/widgets/launchers/launchers.cpp:20
+#: src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
 msgstr "アイコンの間隔"
 
-#: ../src/widgets/launchers/launchers.cpp:24
+#: src/widgets/launchers/launchers.cpp:24
 msgid "Launcher"
 msgstr "ランチャー"
 
-#: ../src/widgets/launchers/launchers.cpp:196
+#: src/widgets/launchers/launchers.cpp:193
 msgid "Remove from Launcher"
 msgstr "ランチャーから取り除く"
 
-#: ../src/widgets/notify/notify.cpp:5
+#: src/widgets/notify/notify.cpp:5
 msgid "Show notifications"
 msgstr "通知を表示する"
 
-#: ../src/widgets/notify/notify.cpp:6
+#: src/widgets/notify/notify.cpp:6
 msgid "Time before notifications close"
 msgstr "通知を閉じるまでの時間"
 
-#: ../src/widgets/notify/notify.cpp:10
+#: src/widgets/notify/notify.cpp:10
 msgid "Notifications"
 msgstr "通知"
 
-#: ../src/widgets/spacing/spacing.cpp:5
-#, fuzzy
+#: src/widgets/spacing/spacing.cpp:5
 msgid "Width in pixels"
-msgstr "幅のピクセル数:"
+msgstr "幅のピクセル数"
 
-#: ../src/widgets/tray/tray.cpp:8
+#: src/widgets/spacing/spacing.cpp:6
+msgid "Set width to 0 to create a separator"
+msgstr "セパレーターを作成するには、幅を0にします"
+
+#: src/widgets/spacing/spacing.cpp:10
+msgid "Spacer"
+msgstr "空白"
+
+#: src/widgets/tray/tray.cpp:8
 msgid "Smooth scrolling threshold"
 msgstr "滑らかなスクロールのしきい値"
 
-#: ../src/widgets/tray/tray.cpp:9
+#: src/widgets/tray/tray.cpp:9
 msgid "Middle button activates menu"
 msgstr "中央ボタンでメニューをアクティベート"
 
-#: ../src/widgets/tray/tray.cpp:13
+#: src/widgets/tray/tray.cpp:13
 msgid "System Tray"
 msgstr "システムトレイ"
 
-#: ../src/widgets/window-list/toplevel.cpp:83
-#: ../src/widgets/window-list/toplevel.cpp:449
+#: src/widgets/window-list/toplevel.cpp:83
+#: src/widgets/window-list/toplevel.cpp:441
 msgid "Minimize"
-msgstr ""
+msgstr "最小化"
 
-#: ../src/widgets/window-list/toplevel.cpp:84
-#: ../src/widgets/window-list/toplevel.cpp:457
+#: src/widgets/window-list/toplevel.cpp:84
+#: src/widgets/window-list/toplevel.cpp:449
 msgid "Maximize"
-msgstr ""
+msgstr "最大化"
 
-#: ../src/widgets/window-list/toplevel.cpp:85
+#: src/widgets/window-list/toplevel.cpp:85
 msgid "Close"
 msgstr "閉じる"
 
-#: ../src/widgets/window-list/toplevel.cpp:446
+#: src/widgets/window-list/toplevel.cpp:438
 msgid "Unminimize"
-msgstr ""
+msgstr "最小化を解除"
 
-#: ../src/widgets/window-list/toplevel.cpp:454
+#: src/widgets/window-list/toplevel.cpp:446
 msgid "Unmaximize"
-msgstr ""
+msgstr "最大化を解除"
 
-#: ../src/widgets/window-list/window-list.cpp:14
+#: src/widgets/window-list/window-list.cpp:14
 msgid "Maximum width of task button"
 msgstr "タスクボタンの最大幅"
 
-#: ../src/widgets/window-list/window-list.cpp:18
+#: src/widgets/window-list/window-list.cpp:18
 msgid "Window List"
 msgstr "ウィンドウ リスト"
 
-#: ../data/config.ui.h:1
+#: data/config.ui:7
 msgid "Add / Remove Plugins"
 msgstr "プラグインの追加/削除"
 
-#: ../data/config.ui.h:2
+#: data/config.ui:118
 msgid "Add to left"
 msgstr "左側に追加"
 
-#: ../data/config.ui.h:3
+#: data/config.ui:122
 msgid "Add plugin to left side of taskbar"
 msgstr "プラグインをタスクバーの左側に追加します"
 
-#: ../data/config.ui.h:4
+#: data/config.ui:132
 msgid "Add to right"
 msgstr "右側に追加"
 
-#: ../data/config.ui.h:5
+#: data/config.ui:136
 msgid "Add plugin to right side of taskbar"
 msgstr "プラグインをタスクバーの右側に追加します"
 
-#: ../data/config.ui.h:6
+#: data/config.ui:146
 msgid "Remove"
 msgstr "取り除く"
 
-#: ../data/config.ui.h:7
+#: data/config.ui:150
 msgid "Remove plugin from taskbar"
 msgstr "タスクバーからプラグインを取り除きます"
 
-#: ../data/config.ui.h:8
+#: data/config.ui:160
 msgid "Move left"
 msgstr "左に移動"
 
-#: ../data/config.ui.h:9
+#: data/config.ui:164
 msgid "Move plugin towards left of taskbar"
 msgstr "プラグインをタスクバーの左方向に移動します"
 
-#: ../data/config.ui.h:10
+#: data/config.ui:174
 msgid "Move right"
 msgstr "右に移動"
 
-#: ../data/config.ui.h:11
+#: data/config.ui:178
 msgid "Move plugin towards right of taskbar"
 msgstr "プラグインをタスクバーの右方向に移動します"
 
-#: ../data/config.ui.h:12
+#: data/config.ui:188
 msgid "Configure..."
 msgstr "設定..."
 
-#: ../data/config.ui.h:13
+#: data/config.ui:192
 msgid "Configure selected plugin"
 msgstr "選択したプラグインの設定をします"
-
