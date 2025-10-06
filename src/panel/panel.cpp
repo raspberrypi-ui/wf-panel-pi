@@ -119,7 +119,6 @@ class WayfirePanel::impl
     bool real;
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
-    bool dlg_open;
 
 #if 0
     WfOption<std::string> bg_color{"panel/background_color"};
@@ -362,23 +361,23 @@ class WayfirePanel::impl
 
     void do_configure()
     {
-        this->dlg_open = true;
+        this->get_window ().set_sensitive (false);
         open_config_dialog ();
-        this->dlg_open = false;
+        this->get_window ().set_sensitive (true);
     }
 
     void do_plugin_configure()
     {
-        this->dlg_open = true;
+        this->get_window ().set_sensitive (false);
         plugin_config_dialog (conf_plugin.c_str());
-        this->dlg_open = false;
+        this->get_window ().set_sensitive (true);
     }
 
     void do_notify_configure()
     {
-        this->dlg_open = true;
+        this->get_window ().set_sensitive (false);
         plugin_config_dialog ("notify");
-        this->dlg_open = false;
+        this->get_window ().set_sensitive (true);
     }
 
     void do_appearance_set()
@@ -543,7 +542,6 @@ class WayfirePanel::impl
     impl(WayfireOutput *output, bool real) : output(output)
     {
         this->real = real;
-        this->dlg_open = false;
         create_window();
     }
 
@@ -590,7 +588,7 @@ class WayfirePanel::impl
             return;
         }
 
-        if (dlg_open) return;
+        if (!this->get_window().is_sensitive()) return;
 
         for (auto& w : left_widgets)
             if (name == w->widget_name) w->command (cmd);
