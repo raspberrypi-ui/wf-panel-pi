@@ -338,7 +338,7 @@ class WayfirePanel::impl
                                 // check if the x position of the mouse is within the plugin
                                 Gtk::Allocation alloc = plugin->get_allocation ();
 
-                                if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width())
+                                if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
                                 {
                                     conf_plugin = plugin->get_name();
                                     if (conf_plugin == "spacing") cplug.hide ();
