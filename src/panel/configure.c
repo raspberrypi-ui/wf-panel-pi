@@ -531,6 +531,7 @@ int plugin_config_dialog (const char *type)
         return space;
     }
 
+    gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
     gtk_widget_show_all (cdlg);
 
     if (gtk_dialog_run (GTK_DIALOG (cdlg)) == GTK_RESPONSE_OK)
