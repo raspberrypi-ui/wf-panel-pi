@@ -1,3 +1,9 @@
+wf-panel-pi (1.6) trixie; urgency=medium
+
+  * Make panel insensitive when modal dialogs are open
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 08 Oct 2025 09:45:37 +0100
+
 wf-panel-pi (1.5) trixie; urgency=medium
 
   * Update Japanese translation
