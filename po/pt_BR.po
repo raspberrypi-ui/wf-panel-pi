@@ -5,6 +5,7 @@
 # Henrique P. Machado <zehrique@ubuntu.com>, 2008-2009.
 # Og Maciel <ogmaciel@gnome.org>, 2009.
 # Sérgio Cipolla <secipolla@gmail.com>, 2010-2011.
+# Eduardo Addad de Oliveira <eduardo@addadtech.com.br>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: lxpanel\n"
@@ -43,21 +44,21 @@ msgstr "Desconhecido"
 #: ../src/panel/configure.c:424
 #, fuzzy
 msgid "Cancel"
-msgstr "_Cancelar"
+msgstr "Cancelar"
 
 #: ../src/panel/configure.c:424
 #, fuzzy
 msgid "OK"
-msgstr "_OK"
+msgstr "OK"
 
 #: ../src/panel/configure.c:445 ../src/panel/configure.c:447
-#, fuzzy, c-format
+#, c-format
 msgid "Configure %s"
-msgstr "_Configurar VPN…"
+msgstr "Configurar %s"
 
 #: ../src/panel/configure.c:823
 msgid "Left Side"
-msgstr ""
+msgstr "Lado esquerdo"
 
 #: ../src/panel/configure.c:824
 msgid "Available"
@@ -65,56 +66,54 @@ msgstr "Disponível"
 
 #: ../src/panel/configure.c:825
 msgid "Right Side"
-msgstr ""
+msgstr "Lado direito"
 
 #: ../src/panel/panel.cpp:235
 msgid "Add / Remove Plugins..."
-msgstr ""
+msgstr "Adicionar / Remover Plugins..."
 
 #: ../src/panel/panel.cpp:239
-#, fuzzy
 msgid "Configure Plugin..."
-msgstr "_Configurar VPN…"
+msgstr "Configurar Plugin…"
 
 #: ../src/panel/panel.cpp:243
-#, fuzzy
 msgid "Notifications..."
-msgstr "Habilitar n_otificações"
+msgstr "Notificações..."
 
 #: ../src/panel/panel.cpp:247
 msgid "Taskbar Preferences..."
-msgstr ""
+msgstr "Preferências da barra de tarefas..."
 
 #: ../src/widgets/clock/clock.cpp:39
 msgid "Display format"
-msgstr ""
+msgstr "Formato de exibição"
 
 #: ../src/widgets/clock/clock.cpp:40
 msgid "Display font"
-msgstr ""
+msgstr "Fonte de exibição"
 
 #: ../src/widgets/clock/clock.cpp:44
 #, fuzzy
 msgid "Clock"
-msgstr "_Desbloquear"
+msgstr "Relógio"
 
 #: ../src/widgets/launchers/launchers.cpp:20
 msgid "Icon spacing"
-msgstr ""
+msgstr "Espaçamento entre ícones"
 
 #: ../src/widgets/launchers/launchers.cpp:24
 #, fuzzy
 msgid "Launcher"
-msgstr "Monitorador de link"
+msgstr "Iniciador"
 
 #: ../src/widgets/launchers/launchers.cpp:196
 msgid "Remove from Launcher"
-msgstr ""
+msgstr "Remover do iniciador"
 
 #: ../src/widgets/notify/notify.cpp:5
 #, fuzzy
 msgid "Show notifications"
-msgstr "Habilitar n_otificações"
+msgstr "Mostrar notificações"
 
 #: ../src/widgets/notify/notify.cpp:6
 #, fuzzy
@@ -124,15 +123,16 @@ msgstr "Contador de notificação da _ponta"
 #: ../src/widgets/notify/notify.cpp:10
 #, fuzzy
 msgid "Notifications"
-msgstr "Habilitar n_otificações"
+msgstr "Notificações"
 
 #: ../src/widgets/spacing/spacing.cpp:5
+#, fuzzy
 msgid "Width in pixels"
-msgstr ""
+msgstr "Largura em pixels"
 
 #: ../src/widgets/tray/tray.cpp:8
 msgid "Smooth scrolling threshold"
-msgstr ""
+msgstr "Limite de rolagem suave"
 
 #: ../src/widgets/tray/tray.cpp:9
 #, fuzzy
@@ -140,95 +140,89 @@ msgid "Middle button activates menu"
 msgstr "Falha ao ativar conexão"
 
 #: ../src/widgets/tray/tray.cpp:13
-#, fuzzy
 msgid "System Tray"
-msgstr "Prioridade do _sistema"
+msgstr "Bandeja do sistema"
 
 #: ../src/widgets/window-list/toplevel.cpp:83
 #: ../src/widgets/window-list/toplevel.cpp:449
 msgid "Minimize"
-msgstr ""
+msgstr "Minimizar"
 
 #: ../src/widgets/window-list/toplevel.cpp:84
 #: ../src/widgets/window-list/toplevel.cpp:457
 msgid "Maximize"
-msgstr ""
+msgstr "Maximizar"
 
 #: ../src/widgets/window-list/toplevel.cpp:85
-#, fuzzy
 msgid "Close"
-msgstr "_Fechar"
+msgstr "Fechar"
 
 #: ../src/widgets/window-list/toplevel.cpp:446
 msgid "Unminimize"
-msgstr ""
+msgstr "Desminimizar"
 
 #: ../src/widgets/window-list/toplevel.cpp:454
 msgid "Unmaximize"
-msgstr ""
+msgstr "Desmaximizar"
 
 #: ../src/widgets/window-list/window-list.cpp:14
 msgid "Maximum width of task button"
-msgstr ""
+msgstr "Largura máxima do botão de tarefa"
 
 #: ../src/widgets/window-list/window-list.cpp:18
 msgid "Window List"
-msgstr ""
+msgstr "Lista de janelas"
 
 #: ../data/config.ui.h:1
 msgid "Add / Remove Plugins"
-msgstr ""
+msgstr "Adicionar / Remover Plugins"
 
 #: ../data/config.ui.h:2
-#, fuzzy
 msgid "Add to left"
-msgstr "Adicionar à área de trabalho"
+msgstr "Adicionar à esquerda"
 
 #: ../data/config.ui.h:3
 msgid "Add plugin to left side of taskbar"
-msgstr ""
+msgstr "Adicionar plugin ao lado esquerdo da barra de tarefas"
 
 #: ../data/config.ui.h:4
-#, fuzzy
 msgid "Add to right"
-msgstr "Adicionar à área de trabalho"
+msgstr "Adicionar à direita"
 
 #: ../data/config.ui.h:5
 msgid "Add plugin to right side of taskbar"
-msgstr ""
+msgstr "Adicionar plugin ao lado direito da barra de tarefas"
 
 #: ../data/config.ui.h:6
-#, fuzzy
 msgid "Remove"
-msgstr "IP remoto"
+msgstr "Remover"
 
 #: ../data/config.ui.h:7
 msgid "Remove plugin from taskbar"
-msgstr ""
+msgstr "Remover o plugin da barra de tarefas"
 
 #: ../data/config.ui.h:8
 msgid "Move left"
-msgstr ""
+msgstr "Mover para a esquerda"
 
 #: ../data/config.ui.h:9
 msgid "Move plugin towards left of taskbar"
-msgstr ""
+msgstr "Mover o plugin para a esquerda da barra de tarefas"
 
 #: ../data/config.ui.h:10
 msgid "Move right"
-msgstr ""
+msgstr "Mover para a direita"
 
 #: ../data/config.ui.h:11
 msgid "Move plugin towards right of taskbar"
-msgstr ""
+msgstr "Mover o plugin para a direita da barra de tarefas"
 
 #: ../data/config.ui.h:12
-#, fuzzy
 msgid "Configure..."
-msgstr "_Configurar VPN…"
+msgstr "Configurar…"
 
 #: ../data/config.ui.h:13
 msgid "Configure selected plugin"
-msgstr ""
+msgstr "Configurar plugin selecionado"
 
 #, fuzzy
