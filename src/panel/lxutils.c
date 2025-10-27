@@ -114,11 +114,18 @@ void store_layer (GtkLayerShellLayer layer)
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
 {
     if (!icon) return;
-    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon,
-        size, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+    int scale = gtk_widget_get_scale_factor (image);
+    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), icon,
+        size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)
     {
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+        if (scale == 1) gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+        else
+        {
+            cairo_surface_t *cr = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, NULL);
+            gtk_image_set_from_surface (GTK_IMAGE (image), cr);
+            cairo_surface_destroy (cr);
+        }
         g_object_unref (pixbuf);
     }
 }
@@ -126,11 +133,18 @@ void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
 void set_menu_icon (GtkWidget *image, const char *icon, int size)
 {
     if (!icon) return;
-    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), icon,
-        size >= 32 ? 24 : 16, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+    int scale = gtk_widget_get_scale_factor (image);
+    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), icon,
+        (size >= 32 ? 24 : 16), scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)
     {
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+        if (scale == 1) gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+        else
+        {
+            cairo_surface_t *cr = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, NULL);
+            gtk_image_set_from_surface (GTK_IMAGE (image), cr);
+            cairo_surface_destroy (cr);
+        }
         g_object_unref (pixbuf);
     }
 }
