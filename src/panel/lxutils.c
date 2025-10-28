@@ -265,7 +265,9 @@ static void graph_redraw (PluginGraph *graph, char *label)
     cairo_select_font_face (cr, "monospace", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size (cr, fontsize);
     cairo_set_source_rgb (cr, 0, 0, 0);
-    cairo_move_to (cr, (graph->pixmap_width >> 1) - ((fontsize * 5) / 4), ((graph->pixmap_height + fontsize) >> 1) - 1);
+    cairo_text_extents_t extents;
+    cairo_text_extents (cr, label, &extents);
+    cairo_move_to (cr, (graph->pixmap_width - extents.width) / 2, (graph->pixmap_height + extents.height) / 2);
     cairo_show_text (cr, label);
 
     cairo_destroy (cr);
