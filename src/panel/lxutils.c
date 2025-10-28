@@ -111,6 +111,18 @@ void store_layer (GtkLayerShellLayer layer)
     orig_layer = layer;
 }
 
+void set_image_from_pixbuf (GtkWidget *image, GdkPixbuf *pixbuf)
+{
+    int scale = gtk_widget_get_scale_factor (image);
+    if (scale == 1) gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+    else
+    {
+        cairo_surface_t *cr = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, NULL);
+        gtk_image_set_from_surface (GTK_IMAGE (image), cr);
+        cairo_surface_destroy (cr);
+    }
+}
+
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
 {
     if (!icon) return;
@@ -119,13 +131,7 @@ void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
         size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)
     {
-        if (scale == 1) gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
-        else
-        {
-            cairo_surface_t *cr = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, NULL);
-            gtk_image_set_from_surface (GTK_IMAGE (image), cr);
-            cairo_surface_destroy (cr);
-        }
+        set_image_from_pixbuf (image, pixbuf);
         g_object_unref (pixbuf);
     }
 }
@@ -138,13 +144,7 @@ void set_menu_icon (GtkWidget *image, const char *icon, int size)
         (size >= 32 ? 24 : 16), scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
     if (pixbuf)
     {
-        if (scale == 1) gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
-        else
-        {
-            cairo_surface_t *cr = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, NULL);
-            gtk_image_set_from_surface (GTK_IMAGE (image), cr);
-            cairo_surface_destroy (cr);
-        }
+        set_image_from_pixbuf (image, pixbuf);
         g_object_unref (pixbuf);
     }
 }
@@ -400,7 +400,7 @@ static void menu_hidden (GtkWidget *, kb_menu_t *data)
 {
     g_signal_handler_disconnect (data->menu, data->mhandle);
     gtk_layer_set_layer (panel, orig_layer);
-    gtk_layer_set_keyboard_interactivity (panel, FALSE);
+    gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
     g_free (data);
 }
@@ -475,7 +475,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
     data->y = -1.0;
 
     gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (panel, TRUE);
+    gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
     data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
 }
 
@@ -493,7 +493,7 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
     data->y = y;
 
     gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_interactivity (panel, TRUE);
+    gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
     data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
 }
 
@@ -686,7 +686,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
         gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
     }
     gtk_layer_set_monitor (popwindow, mon);
-    gtk_layer_set_keyboard_interactivity (popwindow, TRUE);
+    gtk_layer_set_keyboard_mode (popwindow, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
 
     gtk_window_present (popwindow);
 
