@@ -219,8 +219,10 @@ static void graph_redraw (PluginGraph *graph, char *label)
     unsigned int fontsize, drawing_cursor, i;
     GdkPixbuf *pixbuf;
 
+    int scale = gtk_widget_get_scale_factor (graph->da);
+
     cairo_t *cr = cairo_create (graph->pixmap);
-    cairo_set_line_width (cr, 1.0);
+    cairo_set_line_width (cr, scale);
     
     /* Erase pixmap */
     cairo_rectangle (cr, 0, 0, graph->pixmap_width, graph->pixmap_height);
@@ -229,7 +231,7 @@ static void graph_redraw (PluginGraph *graph, char *label)
 
     /* Recompute pixmap */
     drawing_cursor = graph->ring_cursor;
-    for (i = 0; i < graph->pixmap_width; i++)
+    for (i = 0; i < graph->pixmap_width / scale; i++)
     {
         /* Draw one bar of the graph. */
         if (graph->samples[drawing_cursor] != 0.0)
@@ -237,29 +239,29 @@ static void graph_redraw (PluginGraph *graph, char *label)
             cairo_set_source_rgba (cr, graph->colours[graph->samp_states[drawing_cursor]].blue, graph->colours[graph->samp_states[drawing_cursor]].green,
                 graph->colours[graph->samp_states[drawing_cursor]].red, graph->colours[graph->samp_states[drawing_cursor]].alpha);
 
-            cairo_move_to (cr, i + 0.5, graph->pixmap_height);
-            cairo_line_to (cr, i + 0.5, graph->pixmap_height - graph->samples[drawing_cursor] * graph->pixmap_height);
+            cairo_move_to (cr, i * scale + 0.5, graph->pixmap_height - scale);
+            cairo_line_to (cr, i * scale + 0.5, graph->pixmap_height - scale - graph->samples[drawing_cursor] * (graph->pixmap_height - 2 * scale));
             cairo_stroke (cr);
         }
 
         /* Increment and wrap drawing cursor */
         drawing_cursor += 1;
-        if (drawing_cursor >= graph->pixmap_width) drawing_cursor = 0;
+        if (drawing_cursor >= graph->pixmap_width / scale) drawing_cursor = 0;
     }
 
     /* Draw border in black */
     cairo_set_source_rgb (cr, 0, 0, 0);
-    cairo_set_line_width (cr, 1);
-    cairo_move_to (cr, 0, 0);
-    cairo_line_to (cr, 0, graph->pixmap_height);
-    cairo_line_to (cr, graph->pixmap_width, graph->pixmap_height);
-    cairo_line_to (cr, graph->pixmap_width, 0);
-    cairo_line_to (cr, 0, 0);
+    cairo_set_line_width (cr, scale);
+    cairo_move_to (cr, scale - 1, scale - 1);
+    cairo_line_to (cr, scale - 1, graph->pixmap_height - scale + 1);
+    cairo_line_to (cr, graph->pixmap_width - scale + 1, graph->pixmap_height - scale + 1);
+    cairo_line_to (cr, graph->pixmap_width - scale + 1, scale - 1);
+    cairo_line_to (cr, scale - 1, scale - 1);
     cairo_stroke (cr);
 
     /* Apply label */
-    fontsize = 12;
-    if (graph->pixmap_width > 50) fontsize = graph->pixmap_height / 3;
+    fontsize = 12 * scale;
+    if (graph->pixmap_width > 50 * scale) fontsize = graph->pixmap_height / 3;
     cairo_select_font_face (cr, "monospace", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size (cr, fontsize);
     cairo_set_source_rgb (cr, 0, 0, 0);
@@ -271,7 +273,14 @@ static void graph_redraw (PluginGraph *graph, char *label)
     /* Update image */
     pixbuf = gdk_pixbuf_new_from_data (cairo_image_surface_get_data (graph->pixmap), GDK_COLORSPACE_RGB, TRUE, 8, 
         graph->pixmap_width, graph->pixmap_height, graph->pixmap_width * 4, NULL, NULL);
-    gtk_image_set_from_pixbuf (GTK_IMAGE (graph->da), pixbuf);
+
+    if (scale == 1) gtk_image_set_from_pixbuf (GTK_IMAGE (graph->da), pixbuf);
+    else
+    {
+        cairo_surface_t *cr = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, NULL);
+        gtk_image_set_from_surface (GTK_IMAGE (graph->da), cr);
+        cairo_surface_destroy (cr);
+    }
     g_object_unref (pixbuf);
 }
 
@@ -279,6 +288,8 @@ static void graph_redraw (PluginGraph *graph, char *label)
 
 void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGBA foreground, GdkRGBA throttle1, GdkRGBA throttle2)
 {
+    int scale = gtk_widget_get_scale_factor (graph->da);
+
     /* Load colours */
     graph->background = background;
     graph->colours[0] = foreground;
@@ -289,6 +300,9 @@ void graph_reload (PluginGraph *graph, int icon_size, GdkRGBA background, GdkRGB
     guint new_pixmap_height = icon_size - (BORDER_SIZE << 1);
     guint new_pixmap_width = (new_pixmap_height * 3) >> 1;
     if (new_pixmap_width < 50) new_pixmap_width = 50;
+
+    new_pixmap_width *= scale;
+    new_pixmap_height *= scale;
 
     if ((new_pixmap_width > 0) && (new_pixmap_height > 0))
     {
