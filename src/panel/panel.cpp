@@ -119,6 +119,7 @@ class WayfirePanel::impl
     bool real;
     WfOption <int> icon_size {"panel/icon_size"};
     WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
+    int scaling;
 
 #if 0
     WfOption<std::string> bg_color{"panel/background_color"};
@@ -228,9 +229,23 @@ class WayfirePanel::impl
                 });
         }
 
+        // hang on the draw signal to detect changes in scaling and reload icons if detected
+        scaling = window->get_scale_factor ();
+        window->signal_draw().connect(
+            [this](const Cairo::RefPtr<Cairo::Context> &cr) -> bool
+            {
+                int scale_now = window->get_scale_factor ();
+                if (scaling != scale_now)
+                {
+                    scaling = scale_now;
+                    update_widget_icons ();
+                }
+                return false;
+            });
+
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, wizard ? false : true);
         gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
-        gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
+        gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_NONE);
 
         if (!real)
         {
