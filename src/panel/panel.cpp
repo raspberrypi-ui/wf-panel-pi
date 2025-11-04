@@ -539,7 +539,7 @@ class WayfirePanel::impl
         if (wizard)
         {
             reload_widgets((std::string) "", left_widgets, left_box);
-            reload_widgets((std::string) "bluetooth volumepulse", right_widgets, right_box);
+            reload_widgets((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
             reload_widgets((std::string) "", center_widgets, center_box);
         }
         else
