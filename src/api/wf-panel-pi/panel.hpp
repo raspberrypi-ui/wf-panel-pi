@@ -11,7 +11,7 @@
 class WayfirePanel
 {
   public:
-    WayfirePanel(WayfireOutput *output, bool real);
+    WayfirePanel(WayfireOutput *output, bool real, bool dock);
 
     wl_surface *get_wl_surface();
     Gtk::Window& get_window();

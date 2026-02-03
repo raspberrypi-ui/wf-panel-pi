@@ -85,6 +85,14 @@
 		<_short>Gestures Touch Only</_short>
 		<default>false</default>
 	</option>
+	<option name="dock_widgets" type="string">
+		<_short>Dock Widgets</_short>
+		<default>nmenu spacing0 launchers</default>
+	</option>
+	<option name="dock_icon_size" type="int">
+		<_short>Dock Icon Size</_short>
+		<default>48</default>
+	</option>
 	</group>
 	</plugin>
 </wf-panel-pi>

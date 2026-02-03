@@ -259,6 +259,7 @@ int wfpanel_notify (const char *message)
 {
     NotifyWindow *nw;
     GList *item;
+    return 0;
 
     // check for notifications being disabled
     if (!notifications) return 0;

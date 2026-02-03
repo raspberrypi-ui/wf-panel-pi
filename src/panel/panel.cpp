@@ -117,46 +117,23 @@ class WayfirePanel::impl
     WayfireOutput *output;
     bool wizard = WayfireShellApp::get().wizard;
     bool real;
-    WfOption <int> icon_size {"panel/icon_size"};
-    WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
+    bool dock;
     int scaling;
 
-#if 0
-    WfOption<std::string> bg_color{"panel/background_color"};
-    std::function<void()> on_window_color_updated = [=] ()
-    {
-        if ((std::string)bg_color == "gtk_default")
-        {
-            return window->unset_background_color();
-        }
+    WfOption <int> panel_icon_size {"panel/icon_size"};
+    WfOption <int> dock_icon_size {"panel/dock_icon_size"};
+    WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
+    WfOption <std::string> panel_layer {"panel/layer"};
+    WfOption <int> minimal_panel_height {"panel/minimal_height"};
+    WfOption <std::string> css_path {"panel/css_path"};
+    WfOption <std::string> monitor_num {"panel/monitor"};
+    WfOption <std::string> left_widgets_opt {"panel/widgets_left"};
+    WfOption <std::string> right_widgets_opt {"panel/widgets_right"};
+    WfOption <std::string> center_widgets_opt {"panel/widgets_center"};
+    WfOption <std::string> dock_widgets_opt {"panel/dock_widgets"};
+    WfOption <int> notify_timeout {"panel/notify_timeout"};
+    WfOption <bool> notifications {"panel/notify_enable"};
 
-        Gdk::RGBA rgba;
-        if ((std::string)bg_color == "gtk_headerbar")
-        {
-            Gtk::HeaderBar headerbar;
-            rgba = headerbar.get_style_context()->get_background_color();
-        } else
-        {
-            auto color = wf::option_type::from_string<wf::color_t>(
-                ((wf::option_sptr_t<std::string>)bg_color)->get_value_str());
-            if (!color)
-            {
-                std::cerr << "Invalid panel background color in"
-                             " config file" << std::endl;
-                return;
-            }
-
-            rgba.set_red(color.value().r);
-            rgba.set_green(color.value().g);
-            rgba.set_blue(color.value().b);
-            rgba.set_alpha(color.value().a);
-        }
-
-        window->override_background_color(rgba);
-    };
-#endif
-
-    WfOption<std::string> panel_layer{"panel/layer"};
     std::function<void()> set_panel_layer = [=] ()
     {
         if ((std::string)panel_layer == "overlay")
@@ -184,19 +161,15 @@ class WayfirePanel::impl
         }
     };
 
-    WfOption<int> minimal_panel_height{"panel/minimal_height"};
-    WfOption<std::string> css_path{"panel/css_path"};
-
-    WfOption<std::string> monitor_num{"panel/monitor"};
-
     void create_window()
     {
-        widget_icon_size = icon_size;
+        p_icon_size = panel_icon_size;
+        d_icon_size = dock_icon_size;
         touch_only = gestures_touch_only;
         if (!access ("/boot/firmware/config.txt", R_OK)) is_pi_var = TRUE;
         else is_pi_var = FALSE;
 
-        window = std::make_unique<WayfireAutohidingWindow>(output, "panel");
+        window = std::make_unique<WayfireAutohidingWindow>(output, "panel", dock);
         window->set_size_request(1, real ? minimal_panel_height : 1);
         if (real)
         {
@@ -243,8 +216,8 @@ class WayfirePanel::impl
                 return false;
             });
 
-        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, wizard ? false : true);
-        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
+        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, left_widgets.size () && !dock ? true : false);
+        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, right_widgets.size () ? true : false);
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 
         if (!real)
@@ -260,10 +233,6 @@ class WayfirePanel::impl
         monitor_num.set_callback (update_panels);
 
         window->set_name ("PanelToplevel");
-#if 0
-        bg_color.set_callback(on_window_color_updated);
-        on_window_color_updated(); // set initial color
-#endif
 
         if ((std::string)css_path != "")
         {
@@ -299,11 +268,12 @@ class WayfirePanel::impl
         window->signal_button_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_press_event));
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
 
-        icon_size.set_callback (update_widget_icons);
+        panel_icon_size.set_callback (update_widget_icons);
+        dock_icon_size.set_callback (update_widget_icons);
 
         gesture = add_longpress_default (*window);
 
-        if (wizard || !real)
+        //if (wizard || !real)
         {
             window->set_auto_exclusive_zone (false);
             window->lock_autohide();
@@ -507,11 +477,10 @@ class WayfirePanel::impl
             // a badly-written widget could reset the textdomain to a local value - reset back to the system value after each load
             textdomain (GETTEXT_PACKAGE);
         }
+        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, left_widgets.size () && !dock ? true : false);
+        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, right_widgets.size () ? true : false);
     }
 
-    WfOption<std::string> left_widgets_opt{"panel/widgets_left"};
-    WfOption<std::string> right_widgets_opt{"panel/widgets_right"};
-    WfOption<std::string> center_widgets_opt{"panel/widgets_center"};
     void init_widgets()
     {
         if (!real) return;
@@ -535,12 +504,21 @@ class WayfirePanel::impl
                 content_box.set_center_widget(center_box);
             }
         });
+        dock_widgets_opt.set_callback([=] ()
+        {
+            reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
+        });
 
         if (wizard)
         {
             reload_widgets((std::string) "", left_widgets, left_box);
             reload_widgets((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
             reload_widgets((std::string) "", center_widgets, center_box);
+        }
+        else if (dock)
+        {
+            gtk_widget_set_name (GTK_WIDGET (left_box.gobj ()), "dock");
+            reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
         }
         else
         {
@@ -550,13 +528,11 @@ class WayfirePanel::impl
         }
     }
 
-    WfOption <int> notify_timeout {"panel/notify_timeout"};
-    WfOption <bool> notifications {"panel/notify_enable"};
-
   public:
-    impl(WayfireOutput *output, bool real) : output(output)
+    impl(WayfireOutput *output, bool real, bool dock) : output(output)
     {
         this->real = real;
+        this->dock = dock;
         create_window();
     }
 
@@ -663,7 +639,8 @@ class WayfirePanel::impl
 
     std::function<void()> update_widget_icons = [=] ()
     {
-        widget_icon_size = icon_size;
+        p_icon_size = panel_icon_size;
+        d_icon_size = dock_icon_size;
         for (auto& w : left_widgets)
             w->set_icon ();
         for (auto& w : right_widgets)
@@ -673,7 +650,7 @@ class WayfirePanel::impl
     };
 };
 
-WayfirePanel::WayfirePanel(WayfireOutput *output, bool real) : pimpl(new impl(output, real))
+WayfirePanel::WayfirePanel(WayfireOutput *output, bool real, bool dock) : pimpl(new impl(output, real, dock))
 {}
 wl_surface*WayfirePanel::get_wl_surface()
 {
@@ -697,6 +674,7 @@ class WayfirePanelApp::impl
 {
   public:
     std::unique_ptr<WayfirePanel> panel = NULL;
+    std::unique_ptr<WayfirePanel> dock = NULL;
     std::vector<std::unique_ptr<WayfirePanel>> dummies;
     std::vector<WayfireOutput*> outputs;
 };
@@ -705,20 +683,26 @@ void WayfirePanelApp::on_config_reload()
 {
     if (priv->panel)
         priv->panel->handle_config_reload();
+    if (priv->dock)
+        priv->dock->handle_config_reload();
 }
 
 void WayfirePanelApp::on_command (const char *plugin, const char *command)
 {
     if (priv->panel)
         priv->panel->handle_command_message (plugin, command);
+    if (priv->dock)
+        priv->dock->handle_command_message (plugin, command);
 }
 
 void WayfirePanelApp::handle_new_output(WayfireOutput *output)
 {
     priv->outputs.push_back (output);
     if (!priv->panel)
-        priv->panel = std::make_unique<WayfirePanel> (output, true);
-
+    {
+        priv->panel = std::make_unique<WayfirePanel> (output, true, false);
+        priv->dock = std::make_unique<WayfirePanel> (output, true, true);
+    }
     update_panels ();
 }
 
@@ -732,7 +716,7 @@ void WayfirePanelApp::update_panels ()
     for (auto& p : priv->outputs)
     {
         if (p->monitor != mon)
-            priv->dummies.push_back (std::make_unique<WayfirePanel> (p, false));
+            priv->dummies.push_back (std::make_unique<WayfirePanel> (p, false, false));
     }
 }
 

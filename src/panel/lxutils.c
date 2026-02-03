@@ -73,7 +73,8 @@ press_t pressed;
 double press_x, press_y;
 
 gboolean touch_only;
-int widget_icon_size;
+int p_icon_size;
+int d_icon_size;
 gboolean is_pi_var;
 
 static GtkWindow *panel, *popwindow;
@@ -91,7 +92,11 @@ GtkWindow *find_panel (GtkWidget *btn)
 {
     GtkWidget *wid = btn;
     while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
+    {
+        if (!GTK_IS_WIDGET (wid))
+            return NULL;
         wid = gtk_widget_get_parent (wid);
+    }
     return GTK_WINDOW (wid);
 }
 
@@ -101,9 +106,11 @@ gboolean panel_at_bottom (GtkWidget *btn)
     return gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
 }
 
-int get_icon_size (void)
+int get_icon_size (GtkWidget *widget)
 {
-    return widget_icon_size;
+    widget = gtk_widget_get_parent (widget);
+    if (!g_strcmp0 (gtk_widget_get_name (GTK_WIDGET (widget)), "dock")) return d_icon_size;
+    else return p_icon_size;
 }
 
 void store_layer (GtkLayerShellLayer layer)

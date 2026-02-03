@@ -32,7 +32,7 @@ class WayfireAutohidingWindow : public Gtk::Window
      * 3. section/edge_offset
      * 4. section/autohide
      */
-    WayfireAutohidingWindow(WayfireOutput *output, const std::string& section);
+    WayfireAutohidingWindow(WayfireOutput *output, const std::string& section, bool dock);
     WayfireAutohidingWindow(WayfireAutohidingWindow&&) = delete;
     WayfireAutohidingWindow(const WayfireAutohidingWindow&) = delete;
     WayfireAutohidingWindow& operator =(const WayfireAutohidingWindow&) = delete;
@@ -82,6 +82,7 @@ class WayfireAutohidingWindow : public Gtk::Window
   private:
     WayfireOutput *output;
     GtkLayerShellLayer old_layer;
+    bool dock;
 
     WfOption<std::string> position;
     std::string last_position;

@@ -13,7 +13,7 @@
 #define AUTOHIDE_HIDE_DELAY 500
 
 WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
-    const std::string& section) :
+    const std::string& section, bool dock) :
     position{section + "/position"},
     y_position{WfOption<int>{section + "/autohide_duration"}},
     edge_offset{section + "/edge_offset"},
@@ -22,6 +22,10 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->output = output;
     this->set_decorated(false);
     this->set_resizable(false);
+    this->dock = dock;
+    
+    if (this->dock) this->set_name ("dock");
+    else this->set_name ("panel");
 
     gtk_layer_init_for_window(this->gobj());
     gtk_layer_set_monitor(this->gobj(), output->monitor->gobj());
@@ -108,17 +112,17 @@ static std::string check_position(std::string position)
     return WF_WINDOW_POSITION_TOP;
 }
 
-static GtkLayerShellEdge get_anchor_edge(std::string position)
+static GtkLayerShellEdge get_anchor_edge(std::string position, bool dock)
 {
     position = check_position(position);
     if (position == WF_WINDOW_POSITION_TOP)
     {
-        return GTK_LAYER_SHELL_EDGE_TOP;
+        return dock ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP;
     }
 
     if (position == WF_WINDOW_POSITION_BOTTOM)
     {
-        return GTK_LAYER_SHELL_EDGE_BOTTOM;
+        return dock ? GTK_LAYER_SHELL_EDGE_TOP : GTK_LAYER_SHELL_EDGE_BOTTOM;
     }
 
     assert(false); // not reached because check_position()
@@ -145,7 +149,7 @@ void WayfireAutohidingWindow::update_position()
     gtk_layer_set_anchor(this->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, false);
 
     /* Set new anchor */
-    GtkLayerShellEdge anchor = WayfireShellApp::get().wizard ? GTK_LAYER_SHELL_EDGE_TOP : get_anchor_edge(position);
+    GtkLayerShellEdge anchor = WayfireShellApp::get().wizard ? GTK_LAYER_SHELL_EDGE_TOP : get_anchor_edge(position, dock);
     gtk_layer_set_anchor(this->gobj(), anchor, true);
 
     /* When the position changes, show an animation from the new edge. */
@@ -353,7 +357,7 @@ bool WayfireAutohidingWindow::update_margin()
     if (y_position.running())
     {
         gtk_layer_set_margin(this->gobj(),
-            WayfireShellApp::get().wizard ? GTK_LAYER_SHELL_EDGE_TOP : get_anchor_edge(position), y_position);
+            WayfireShellApp::get().wizard ? GTK_LAYER_SHELL_EDGE_TOP : get_anchor_edge(position, dock), y_position);
 
         // queue_draw does not work when the panel is hidden
         // so calling wl_surface_commit to make WM show the panel back
