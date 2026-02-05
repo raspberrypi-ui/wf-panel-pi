@@ -232,7 +232,7 @@ class WayfirePanel::impl
         }
         monitor_num.set_callback (update_panels);
 
-        window->set_name ("PanelToplevel");
+        window->set_name (dock ? "DockToplevel" : "PanelToplevel");
 
         if ((std::string)css_path != "")
         {
@@ -280,8 +280,8 @@ class WayfirePanel::impl
         }
 
         window->show_all();
-        init_widgets();
         init_layout();
+        init_widgets();
 
         window->signal_delete_event().connect(
             sigc::mem_fun(this, &WayfirePanel::impl::on_delete));
@@ -517,7 +517,6 @@ class WayfirePanel::impl
         }
         else if (dock)
         {
-            gtk_widget_set_name (GTK_WIDGET (left_box.gobj ()), "dock");
             reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
         }
         else
