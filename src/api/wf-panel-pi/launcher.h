@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 extern void init_launchers (void);
 extern void add_to_launcher (const char *name);
 extern void remove_from_launcher (const char *name);
+extern void replace_launchers (const char *launchers);
 
 /* End of file */
 /*----------------------------------------------------------------------------*/
