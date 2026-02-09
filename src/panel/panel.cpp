@@ -487,7 +487,7 @@ class WayfirePanel::impl
 
         left_widgets_opt.set_callback([=] ()
         {
-            reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
+            if (!dock) reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
         });
         right_widgets_opt.set_callback([=] ()
         {
