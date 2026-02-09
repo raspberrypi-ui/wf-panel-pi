@@ -618,7 +618,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     GdkDisplay *disp;
     GdkMonitor *mon;
     GdkRectangle rect;
-    int i, pw, ph, wiz;
+    int i, pw, panw;
     gboolean bottom;
     FILE *fp;
     char *cmd, *mname;
@@ -637,12 +637,11 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
     px = rect.width;
     py = rect.height;
-    wiz = px;
+    panw = px;
 
     // get the dimensions of the popup itself and ensure the popup fits on the screen
     gtk_widget_get_allocation (window, &rect);
     pw = rect.width;
-    ph = rect.height;
     px -= pw;
 
     // get the dimensions of the button - align left edge of popup with left edge of button
@@ -654,8 +653,6 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gdk_monitor_get_geometry (mon, &rect);
     mh = rect.height;
     mw = rect.width;
-    wiz -= mw;
-    if (bottom) py = mh - py - ph;
 
     orient = 0;
     for (i = 0; i < gdk_display_get_n_monitors (disp); i++)
@@ -677,21 +674,26 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 
     gtk_layer_set_layer (popwindow, GTK_LAYER_SHELL_LAYER_TOP);
 
-    if (wiz < 0)
+    gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_margin (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding () + py);
+
+    if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_LEFT))
     {
-        // special case if in wizard, where panel is at top right of screen
-        gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding () + py);
-        gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, 0);
-    }
-    else
-    {
-        gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-        gtk_layer_set_margin (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding ());
         gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
         gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
     }
+    else if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_RIGHT))
+    {
+        gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, px);
+    }
+    else
+    {
+        // no anchor - panel in centre of screen...
+        gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, (mw / 2)  - (panw / 2) + px);
+    }
+
     gtk_layer_set_monitor (popwindow, mon);
     gtk_layer_set_keyboard_mode (popwindow, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
 
