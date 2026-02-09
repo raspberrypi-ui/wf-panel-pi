@@ -143,5 +143,30 @@ void remove_from_launcher (const char *name)
     g_free (user_file);
 }
 
+void replace_launchers (const char *launchers)
+{
+    GKeyFile *kf;
+    char *str;
+    gsize len;
+
+    // construct the file path
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+
+    // read in data from file to a key file
+    kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+    g_key_file_set_string (kf, "panel", "launchers", launchers);
+
+    // write the modified key file out
+    str = g_key_file_to_data (kf, &len, NULL);
+    g_file_set_contents (user_file, str, len, NULL);
+
+    g_free (str);
+    g_key_file_free (kf);
+    g_free (user_file);
+}
+
+
 /* End of file */
 /*----------------------------------------------------------------------------*/
