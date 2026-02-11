@@ -93,6 +93,26 @@
 		<_short>Dock Icon Size</_short>
 		<default>48</default>
 	</option>
+	<option name="dock_layer" type="string">
+		<_short>Layer</_short>
+		<default>top</default>
+		<desc>
+			<value>top</value>
+			<_name>Top</_name>
+		</desc>
+		<desc>
+			<value>bottom</value>
+			<_name>Bottom</_name>
+		</desc>
+		<desc>
+			<value>overlay</value>
+			<_name>Overlay</_name>
+		</desc>
+		<desc>
+			<value>background</value>
+			<_name>Background</_name>
+		</desc>
+	</option>
 	</group>
 	</plugin>
 </wf-panel-pi>

@@ -126,6 +126,7 @@ class WayfirePanel::impl
     WfOption <int> dock_icon_size {"panel/dock_icon_size"};
     WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
     WfOption <std::string> panel_layer {"panel/layer"};
+    WfOption <std::string> dock_layer {"panel/dock_layer"};
     WfOption <int> minimal_panel_height {"panel/minimal_height"};
     WfOption <std::string> css_path {"panel/css_path"};
     WfOption <std::string> monitor_num {"panel/monitor"};
@@ -138,25 +139,25 @@ class WayfirePanel::impl
 
     std::function<void()> set_panel_layer = [=] ()
     {
-        if ((std::string)panel_layer == "overlay")
+        if ((std::string) (dock ? dock_layer : panel_layer) == "overlay")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_OVERLAY);
             store_layer (GTK_LAYER_SHELL_LAYER_OVERLAY);
         }
 
-        if ((std::string)panel_layer == "top")
+        if ((std::string) (dock ? dock_layer : panel_layer) == "top")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
             store_layer (GTK_LAYER_SHELL_LAYER_TOP);
         }
 
-        if ((std::string)panel_layer == "bottom")
+        if ((std::string) (dock ? dock_layer : panel_layer) == "bottom")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BOTTOM);
             store_layer (GTK_LAYER_SHELL_LAYER_BOTTOM);
         }
 
-        if ((std::string)panel_layer == "background")
+        if ((std::string) (dock ? dock_layer : panel_layer) == "background")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BACKGROUND);
             store_layer (GTK_LAYER_SHELL_LAYER_BACKGROUND);
