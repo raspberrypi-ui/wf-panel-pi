@@ -23,7 +23,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->set_decorated(false);
     this->set_resizable(false);
     this->dock = dock;
-    
+
     if (this->dock) this->set_name ("dock");
     else this->set_name ("panel");
 

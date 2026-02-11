@@ -30,6 +30,8 @@ extern "C" {
 
 extern "C" {
 #include "lxutils.h"
+
+GtkWidget *wpanel, *wdock;
 }
 
 
@@ -170,6 +172,8 @@ class WayfirePanel::impl
         else is_pi_var = FALSE;
 
         window = std::make_unique<WayfireAutohidingWindow>(output, "panel", dock);
+        if (dock) wdock = (GtkWidget *) window->gobj ();
+        else wpanel = (GtkWidget *) window->gobj ();
         window->set_size_request(1, real ? minimal_panel_height : 1);
         if (real)
         {

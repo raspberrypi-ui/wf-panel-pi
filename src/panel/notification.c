@@ -27,7 +27,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gtk/gtk.h>
 #include <gtk-layer-shell/gtk-layer-shell.h>
+#include "lxutils.h"
 #include "notification.h"
+
+extern GtkWidget *wpanel, *wdock;
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
@@ -128,7 +131,10 @@ static void show_message (NotifyWindow *nw, char *str)
     g_free (fmt);
 
     // calculate vertical offset for new window - if critical, at top, else immediately below any criticals
-    offset = SPACING;
+    if (panel_at_bottom (wpanel)) offset = get_icon_size (wdock);
+    else offset = get_icon_size (wpanel);
+
+    offset += SPACING;
     if (!nw->critical)
     {
         for (item = nwins; item != NULL; item = item->next)
@@ -259,7 +265,6 @@ int wfpanel_notify (const char *message)
 {
     NotifyWindow *nw;
     GList *item;
-    return 0;
 
     // check for notifications being disabled
     if (!notifications) return 0;
