@@ -125,10 +125,30 @@ void set_image_from_pixbuf (GtkWidget *image, GdkPixbuf *pixbuf)
 
 void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
 {
-    if (!icon) return;
+    GdkPixbuf *pixbuf = NULL;
+    char *fname;
+
     int scale = gtk_widget_get_scale_factor (image);
-    GdkPixbuf *pixbuf = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), icon,
-        size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+
+    if (icon)
+    {
+        if (strstr (icon, "/")) pixbuf = gdk_pixbuf_new_from_file_at_size (icon, size * scale, size * scale, NULL);
+        else
+        {
+            pixbuf = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), icon, size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+
+            // fallback for packages using obsolete icon location
+            if (!pixbuf)
+            {
+                fname = g_strdup_printf ("/usr/share/pixmaps/%s", icon);
+                pixbuf = gdk_pixbuf_new_from_file_at_size (fname, size * scale, size * scale, NULL);
+                g_free (fname);
+            }
+        }
+    }
+    if (!pixbuf)
+        pixbuf = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), "application-x-executable", size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+
     if (pixbuf)
     {
         set_image_from_pixbuf (image, pixbuf);
