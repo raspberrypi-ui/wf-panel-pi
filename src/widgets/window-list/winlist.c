@@ -65,6 +65,7 @@ static void minimise_app (GtkWidget *, gpointer userdata);
 static void unminimise_app (GtkWidget *, gpointer userdata);
 static void create_button (WinlistPlugin *wl, WindowItem *item);
 static void destroy_button (WindowItem *item);
+static void update_button_state (WindowItem *item);
 static void free_list_item (gpointer data);
 static float score_match (const char *str1, const char *str2);
 static char *get_exe (const char *cmdline);
@@ -183,14 +184,7 @@ static void handle_toplevel_state (void *data, HANDLE_PTR handle, struct wl_arra
     while (list)
     {
         item = (WindowItem *) list->data;
-        if (item->btn)
-        {
-            g_signal_handlers_block_by_func (item->btn, G_CALLBACK (handle_button_pressed), item);
-            g_signal_handlers_block_by_func (item->btn, G_CALLBACK (handle_button_release), item);
-            gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (item->btn), item->state & STATE_ACTIVATED);
-            g_signal_handlers_unblock_by_func (item->btn, G_CALLBACK (handle_button_pressed), item);
-            g_signal_handlers_unblock_by_func (item->btn, G_CALLBACK (handle_button_release), item);
-        }
+        if (item->btn) update_button_state (item);
         list = g_list_next (list);
     }
 }
@@ -240,7 +234,11 @@ static void handle_toplevel_done (void *data, HANDLE_PTR handle)
         WindowItem *item = (WindowItem *) list->data;
         if (item->handle == (void *) handle)
         {
-            if (!item->btn && item->title && item->app_id && !item->parent) create_button (wl, item);
+            if (!item->btn && item->title && item->app_id && !item->parent)
+            {
+                create_button (wl, item);
+                update_button_state (item);
+            }
             break;
         }
         list = g_list_next (list);
@@ -383,6 +381,15 @@ static void destroy_button (WindowItem *item)
     item->btn = NULL;
     item->gesture = NULL;
     item->dgesture = NULL;
+}
+
+static void update_button_state (WindowItem *item)
+{
+    g_signal_handlers_block_by_func (item->btn, G_CALLBACK (handle_button_pressed), item);
+    g_signal_handlers_block_by_func (item->btn, G_CALLBACK (handle_button_release), item);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (item->btn), item->state & STATE_ACTIVATED);
+    g_signal_handlers_unblock_by_func (item->btn, G_CALLBACK (handle_button_pressed), item);
+    g_signal_handlers_unblock_by_func (item->btn, G_CALLBACK (handle_button_release), item);
 }
 
 static void free_list_item (gpointer data)
