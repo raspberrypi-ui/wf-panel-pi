@@ -1,6 +1,7 @@
 name = 'launchers'
 
 sources = files(
+  'launchers.c',
   'launchers.cpp'
 )
 

@@ -1,5 +1,5 @@
 /*============================================================================
-Copyright (c) 2026 Raspberry Pi
+Copyright (c) 2021-2025 Raspberry Pi
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -25,68 +25,35 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
-#include <glibmm.h>
-#include "gtk-utils.hpp"
-#include "launchers.hpp"
+/*----------------------------------------------------------------------------*/
+/* Typedefs and macros                                                        */
+/*----------------------------------------------------------------------------*/
 
-extern "C" {
-    WayfireWidget *create () { return new WayfireLauncher; }
-    void destroy (WayfireWidget *w) { delete w; }
+#define PLUGIN_TITLE N_("Launcher")
 
-    const conf_table_t *config_params (void) { return conf_table; };
-    const char *display_name (void) { return PLUGIN_TITLE; };
-    const char *package_name (void) { return GETTEXT_PACKAGE; };
-}
-
-void WayfireLauncher::command (const char *cmd)
+typedef struct 
 {
-    launcher_control_msg (lch, cmd);
-}
+    GtkWidget *plugin;
 
-bool WayfireLauncher::set_icon (void)
-{
-    launcher_update_display (lch);
-    return false;
-}
+    int spacing;                    /* Box icon spacing */
+    char *launchers;                /* List of launchers */
 
-void WayfireLauncher::read_settings (void)
-{
-    lch->spacing = spacing;
-    lch->launchers = g_strdup (((std::string) launchers).c_str());
-}
+    GtkWidget *dragbtn;
+    float drag_start;
+    GdkCursor *drag;
+    gboolean dragon;
+} LauncherPlugin;
 
-void WayfireLauncher::settings_changed_cb (void)
-{
-    read_settings ();
-    launcher_update_display (lch);
-}
+extern conf_table_t conf_table[2];
 
-void WayfireLauncher::init (Gtk::HBox *container)
-{
-    /* Create the button */
-    plugin = std::make_unique <Gtk::HBox> ();
-    plugin->set_name (PLUGIN_NAME);
-    container->pack_start (*plugin, false, false);
+/*----------------------------------------------------------------------------*/
+/* Prototypes                                                                 */
+/*----------------------------------------------------------------------------*/
 
-    /* Setup structure */
-    lch = g_new0 (LauncherPlugin, 1);
-    lch->plugin = (GtkWidget *)((*plugin).gobj());
-    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireLauncher::set_icon));
-
-    /* Initialise the plugin */
-    read_settings ();
-    launcher_init (lch);
-
-    /* Setup callbacks */
-    spacing.set_callback (sigc::mem_fun (*this, &WayfireLauncher::settings_changed_cb));
-    launchers.set_callback (sigc::mem_fun (*this, &WayfireLauncher::settings_changed_cb));
-}
-
-WayfireLauncher::~WayfireLauncher()
-{
-    icon_timer.disconnect ();
-    launcher_destructor (lch);
-}
+extern void launcher_init (LauncherPlugin *lch);
+extern void launcher_update_display (LauncherPlugin *lch);
+extern gboolean launcher_control_msg (LauncherPlugin *lch, const char *cmd);
+extern void launcher_destructor (gpointer user_data);
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

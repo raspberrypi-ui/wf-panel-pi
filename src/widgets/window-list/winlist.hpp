@@ -25,68 +25,43 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
-#include <glibmm.h>
-#include "gtk-utils.hpp"
-#include "launchers.hpp"
+#ifndef WIDGETS_WINLIST_HPP
+#define WIDGETS_WINLIST_HPP
+
+#include <widget.hpp>
+#include <gtkmm/scrolledwindow.h>
+#include <gtkmm/gesturelongpress.h>
 
 extern "C" {
-    WayfireWidget *create () { return new WayfireLauncher; }
-    void destroy (WayfireWidget *w) { delete w; }
-
-    const conf_table_t *config_params (void) { return conf_table; };
-    const char *display_name (void) { return PLUGIN_TITLE; };
-    const char *package_name (void) { return GETTEXT_PACKAGE; };
+#include <menu-cache.h>
+#include "lxutils.h"
+#include "winlist.h"
 }
 
-void WayfireLauncher::command (const char *cmd)
+class WayfireWinlist : public WayfireWidget
 {
-    launcher_control_msg (lch, cmd);
-}
+    std::unique_ptr <Gtk::ScrolledWindow> plugin;
 
-bool WayfireLauncher::set_icon (void)
-{
-    launcher_update_display (lch);
-    return false;
-}
+    sigc::connection icon_timer;
 
-void WayfireLauncher::read_settings (void)
-{
-    lch->spacing = spacing;
-    lch->launchers = g_strdup (((std::string) launchers).c_str());
-}
+    WfOption <int> spacing {"panel/window-list_spacing"};
+    WfOption <int> max_width {"panel/window-list_max_width"};
+    WfOption <bool> icons_only {"panel/window-list_icons_only"};
 
-void WayfireLauncher::settings_changed_cb (void)
-{
-    read_settings ();
-    launcher_update_display (lch);
-}
+    /* plugin */
+    WinlistPlugin *wl;
 
-void WayfireLauncher::init (Gtk::HBox *container)
-{
-    /* Create the button */
-    plugin = std::make_unique <Gtk::HBox> ();
-    plugin->set_name (PLUGIN_NAME);
-    container->pack_start (*plugin, false, false);
+  public:
 
-    /* Setup structure */
-    lch = g_new0 (LauncherPlugin, 1);
-    lch->plugin = (GtkWidget *)((*plugin).gobj());
-    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireLauncher::set_icon));
+    void init (Gtk::HBox *container) override;
+    void command (const char *cmd) override;
+    virtual ~WayfireWinlist ();
+    bool set_icon (void);
+    void read_settings (void);
+    void settings_changed_cb (void);
+};
 
-    /* Initialise the plugin */
-    read_settings ();
-    launcher_init (lch);
-
-    /* Setup callbacks */
-    spacing.set_callback (sigc::mem_fun (*this, &WayfireLauncher::settings_changed_cb));
-    launchers.set_callback (sigc::mem_fun (*this, &WayfireLauncher::settings_changed_cb));
-}
-
-WayfireLauncher::~WayfireLauncher()
-{
-    icon_timer.disconnect ();
-    launcher_destructor (lch);
-}
+#endif /* end of include guard: WIDGETS_WINLIST_HPP */
 
 /* End of file */
 /*----------------------------------------------------------------------------*/
