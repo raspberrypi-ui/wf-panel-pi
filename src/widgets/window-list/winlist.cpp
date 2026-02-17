@@ -68,7 +68,7 @@ void WayfireWinlist::init (Gtk::HBox *container)
     plugin = std::make_unique <Gtk::ScrolledWindow> ();
     plugin->set_name (PLUGIN_NAME);
     plugin->set_propagate_natural_width (true);
-    plugin->set_policy (Gtk::POLICY_EXTERNAL, Gtk::POLICY_EXTERNAL);
+    plugin->set_policy (Gtk::POLICY_EXTERNAL, Gtk::POLICY_NEVER);
 
     container->pack_start (*plugin, false, false);
 
