@@ -219,6 +219,7 @@ static void handle_drag_update (GtkGestureDrag *, gdouble x, gdouble, gpointer u
     if (!lch->dragon && x < DRAG_THRESH && x > -DRAG_THRESH) return;
 
     lch->dragon = TRUE;
+    pressed = PRESS_NONE;
     gdk_window_set_cursor (gtk_widget_get_window (lch->plugin), lch->drag);
     sc = gtk_widget_get_style_context (lch->dragbtn);
     gtk_style_context_add_class (sc, "drag");

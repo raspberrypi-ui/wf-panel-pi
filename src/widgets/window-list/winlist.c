@@ -65,7 +65,7 @@ static void minimise_app (GtkWidget *, gpointer userdata);
 static void unminimise_app (GtkWidget *, gpointer userdata);
 static void create_button (WinlistPlugin *wl, WindowItem *item);
 static void destroy_button (WindowItem *item);
-static void update_button_state (WindowItem *item);
+static gboolean update_button_state (WindowItem *item);
 static void free_list_item (gpointer data);
 static float score_match (const char *str1, const char *str2);
 static char *get_exe (const char *cmdline);
@@ -383,13 +383,14 @@ static void destroy_button (WindowItem *item)
     item->dgesture = NULL;
 }
 
-static void update_button_state (WindowItem *item)
+static gboolean update_button_state (WindowItem *item)
 {
     g_signal_handlers_block_by_func (item->btn, G_CALLBACK (handle_button_pressed), item);
     g_signal_handlers_block_by_func (item->btn, G_CALLBACK (handle_button_release), item);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (item->btn), item->state & STATE_ACTIVATED);
     g_signal_handlers_unblock_by_func (item->btn, G_CALLBACK (handle_button_pressed), item);
     g_signal_handlers_unblock_by_func (item->btn, G_CALLBACK (handle_button_release), item);
+    return FALSE;
 }
 
 static void free_list_item (gpointer data)
@@ -788,6 +789,7 @@ static gboolean handle_button_release (GtkWidget *widget, GdkEventButton *event,
     if (win->plugin->dragon)
     {
         win->plugin->dragon = FALSE;
+        g_idle_add ((GSourceFunc) update_button_state, win);
         return FALSE;
     }
 
@@ -833,6 +835,7 @@ static void handle_drag_update (GtkGestureDrag *, gdouble x, gdouble, gpointer u
     if (!wl->dragon && x < DRAG_THRESH && x > -DRAG_THRESH) return;
 
     wl->dragon = TRUE;
+    pressed = PRESS_NONE;
     gdk_window_set_cursor (gtk_widget_get_window (wl->plugin), wl->drag);
     sc = gtk_widget_get_style_context (wl->dragbtn);
     gtk_style_context_add_class (sc, "drag");
