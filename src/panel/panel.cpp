@@ -511,7 +511,7 @@ class WayfirePanel::impl
         });
         dock_widgets_opt.set_callback([=] ()
         {
-            reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
+            if (dock) reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
         });
 
         if (wizard)
