@@ -1,88 +1,65 @@
-#ifndef LAUNCHERS_HPP
-#define LAUNCHERS_HPP
+/*============================================================================
+Copyright (c) 2026 Raspberry Pi
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the copyright holder nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+============================================================================*/
+
+#ifndef WIDGETS_LAUNCHER_HPP
+#define WIDGETS_LAUNCHER_HPP
 
 #include <widget.hpp>
-#include <vector>
-#include <giomm/desktopappinfo.h>
-#include <gdkmm/pixbuf.h>
-#include <gtkmm/image.h>
 #include <gtkmm/hvbox.h>
-#include <gtkmm/eventbox.h>
-#include <gtkmm/button.h>
-#include <gtkmm/menu.h>
-#include <gtkmm/menuitem.h>
 #include <gtkmm/gesturelongpress.h>
-#include "config/duration.hpp"
 
-#define LAUNCHERS_ICON_SCALE 1.0
+extern "C" {
+#include "lxutils.h"
+#include "launchers.h"
+}
 
-struct LauncherInfo
+class WayfireLauncher : public WayfireWidget
 {
-    virtual Glib::RefPtr<Gdk::Pixbuf> get_pixbuf(int32_t size) = 0;
-    virtual std::string get_text() = 0;
-    virtual std::string get_filename() = 0;
-    virtual void execute() = 0;
-    virtual ~LauncherInfo()
-    {}
-};
+    std::unique_ptr <Gtk::HBox> plugin;
 
-class LauncherAnimation :
-    public wf::animation::duration_t,
-    public wf::animation::timed_transition_t
-{
-  public:
-    LauncherAnimation(wf::option_sptr_t<int> length, int start, int end) :
-        duration_t(length, wf::animation::smoothing::linear),
-        timed_transition_t((duration_t&)*this)
-    {
-        this->set(start, end);
-        this->duration_t::start();
-    }
-};
+    sigc::connection icon_timer;
 
-struct WfLauncherButton
-{
-    std::string launcher_name;
-    int32_t base_size;
+    WfOption <int> spacing {"panel/launchers_spacing"};
+    WfOption <std::string> launchers {"panel/launchers"};
 
-    Gtk::Image image;
-    Gtk::Button evbox;
-    Gtk::Menu menu;
-    Gtk::MenuItem remove;
-    Glib::RefPtr<Gtk::GestureLongPress> gesture;
-    LauncherInfo *info = NULL;
-    LauncherAnimation current_size{wf::create_option(1000), 0, 0};
-
-    WfLauncherButton();
-    WfLauncherButton(const WfLauncherButton& other) = delete;
-    WfLauncherButton& operator =(const WfLauncherButton&) = delete;
-    ~WfLauncherButton();
-
-    bool initialize(std::string name, std::string icon = "none", std::string label = "");
-
-    bool on_release(GdkEventButton *ev);
-
-    void on_scale_update();
-    void on_remove();
-
-    void set_size(int size);
-};
-
-using launcher_container = std::vector<std::unique_ptr<WfLauncherButton>>;
-class WayfireLaunchers : public WayfireWidget
-{
-    WfOption <std::string> launcher_names {"panel/launchers"};
-
-    Gtk::HBox box;
-    launcher_container launchers;
-    launcher_container get_launchers_from_config();
-    launcher_container get_launchers_from_names();
+    /* plugin */
+    LauncherPlugin *lch;
 
   public:
-    virtual void init(Gtk::HBox *container);
-    virtual void handle_config_reload();
-    virtual ~WayfireLaunchers()
-    {}
+
+    void init (Gtk::HBox *container) override;
+    void command (const char *cmd) override;
+    virtual ~WayfireLauncher ();
+    bool set_icon (void);
+    void read_settings (void);
+    void settings_changed_cb (void);
 };
 
-#endif /* end of include guard: LAUNCHERS_HPP */
+#endif /* end of include guard: WIDGETS_LAUNCHER_HPP */
+
+/* End of file */
+/*----------------------------------------------------------------------------*/

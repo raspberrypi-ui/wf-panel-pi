@@ -4,9 +4,18 @@
 	<_short>Panel</_short>
 	<group>
 	<_short>Window List</_short>
+	<_short>Window List</_short>
 	<option name="window-list_max_width" type="int">
 		<_short>Window List Maximum Task Width</_short>
 		<default>200</default>
+	</option>
+	<option name="window-list_spacing" type="int">
+		<_short>Window List Spacing</_short>
+		<default>0</default>
+	</option>
+	<option name="window-list_icons_only" type="bool">
+		<_short>Window List Icons Only</_short>
+		<default>false</default>
 	</option>
 	</group>
 	</plugin>

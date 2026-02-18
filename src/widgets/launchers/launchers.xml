@@ -9,17 +9,8 @@
 		<default></default>
 	</option>
 	<option name="launchers_spacing" type="int">
-		<_short>Launchers Spacing</_short>
+		<_short>Launcher Spacing</_short>
 		<default>0</default>
-	</option>
-	<option name="launchers_size" type="int">
-		<_short>Launchers Size</_short>
-		<default>48</default>
-	</option>
-	<option name="launchers_animation_duration" type="int">
-		<_short>Animation Duration</_short>
-		<_long>High values may cause jittery animations</_long>
-		<default>200</default>
 	</option>
 	</group>
 	</plugin>
