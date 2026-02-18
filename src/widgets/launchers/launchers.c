@@ -226,7 +226,7 @@ static void handle_drag_update (GtkGestureDrag *, gdouble x, gdouble, gpointer u
 
     moveby = 0;
     if (lch->drag_start + x < -DRAG_THRESH) moveby = -1;
-    if (lch->drag_start + x > get_icon_size () + DRAG_THRESH) moveby = 1;
+    if (lch->drag_start + x > get_icon_size (lch->plugin) + DRAG_THRESH) moveby = 1;
     if (!moveby) return;
 
     children = gtk_container_get_children (GTK_CONTAINER (lch->plugin));

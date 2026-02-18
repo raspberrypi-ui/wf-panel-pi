@@ -840,7 +840,7 @@ static void handle_drag_update (GtkGestureDrag *, gdouble x, gdouble, gpointer u
     sc = gtk_widget_get_style_context (wl->dragbtn);
     gtk_style_context_add_class (sc, "drag");
 
-    width = wl->icons_only ? get_icon_size () : wl->item_width;
+    width = wl->icons_only ? get_icon_size (wl->plugin) : wl->item_width;
 
     moveby = 0;
     if (wl->drag_start + x < -DRAG_THRESH) moveby = -1;
