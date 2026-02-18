@@ -496,11 +496,11 @@ class WayfirePanel::impl
         });
         right_widgets_opt.set_callback([=] ()
         {
-            reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
+            if (!dock) reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
         });
         center_widgets_opt.set_callback([=] ()
         {
-            reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
+            if (!dock) reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
             if (center_box.get_children().empty())
             {
                 content_box.unset_center_widget();
@@ -715,6 +715,7 @@ void WayfirePanelApp::update_panels ()
     priv->dummies.clear ();
 
     int mon_num = priv->panel->set_monitor ();
+    priv->dock->set_monitor ();
 
     auto mon = Gdk::Display::get_default()->get_monitor (mon_num);
     for (auto& p : priv->outputs)
