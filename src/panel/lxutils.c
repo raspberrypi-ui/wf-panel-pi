@@ -118,12 +118,12 @@ void store_layer (GtkLayerShellLayer layer)
     orig_layer = layer;
 }
 
-GdkPixbuf *load_taskbar_pixbuf (GtkWidget *plugin, const char *icon_name)
+GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name)
 {
     char *fname;
     GdkPixbuf *icon = NULL;
-    int scale = gtk_widget_get_scale_factor (plugin);
-    int size = get_icon_size (plugin);
+    int scale = gtk_widget_get_scale_factor (image);
+    int size = get_icon_size (image);
 
     if (icon_name)
     {
@@ -161,7 +161,7 @@ void set_image_from_pixbuf (GtkWidget *image, GdkPixbuf *pixbuf)
     }
 }
 
-void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
+void set_taskbar_icon (GtkWidget *image, const char *icon)
 {
     GdkPixbuf *pixbuf = load_taskbar_pixbuf (image, icon);
     if (pixbuf)

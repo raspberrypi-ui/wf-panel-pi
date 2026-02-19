@@ -71,9 +71,9 @@ extern GtkWindow *find_panel (GtkWidget *btn);
 extern gboolean panel_at_bottom (GtkWidget *btn);
 extern int get_icon_size (GtkWidget *widget);
 extern void store_layer (GtkLayerShellLayer layer);
-extern GdkPixbuf *load_taskbar_pixbuf (GtkWidget *plugin, const char *icon_name);
+extern GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name);
 extern void set_image_from_pixbuf (GtkWidget *image, GdkPixbuf *pixbuf);
-extern void set_taskbar_icon (GtkWidget *image, const char *icon, int size);
+extern void set_taskbar_icon (GtkWidget *image, const char *icon);
 extern void set_menu_icon (GtkWidget *image, const char *icon, int size);
 extern GtkWidget *new_menu_item (const char *text, int maxlen, const char *iconname, int icon_size);
 extern void update_menu_icon (GtkWidget *item, GtkWidget *image);
@@ -104,7 +104,8 @@ extern gboolean is_pi (void);
 #define lxpanel_plugin_append_menu_icon(item,icon) append_menu_icon(item,icon)
 #define wrap_new_menu_item(plug,text,maxlen,icon) new_menu_item(text,maxlen,icon,get_icon_size(plug->plugin))
 #define wrap_set_menu_icon(plug,image,icon) set_menu_icon(image,icon,get_icon_size(plug->plugin))
-#define wrap_set_taskbar_icon(plug,image,icon) set_taskbar_icon(image,icon,get_icon_size(plug->plugin))
+#define wrap_set_taskbar_icon(plug,image,icon) set_taskbar_icon(image,icon)
+#define wrap_load_taskbar_pixbuf(plug,image,icon) load_taskbar_pixbuf(image,icon)
 #define wrap_get_menu_label(item) get_menu_label(item)
 #define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu)
 #define wrap_icon_size(plug) (get_icon_size(plug->plugin))
