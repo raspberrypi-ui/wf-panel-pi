@@ -361,7 +361,7 @@ bool WayfireAutohidingWindow::update_margin()
 
         // queue_draw does not work when the panel is hidden
         // so calling wl_surface_commit to make WM show the panel back
-        if (get_window())
+        if (get_window() && this->is_visible ())
         {
             wl_surface_commit(get_wl_surface());
         }

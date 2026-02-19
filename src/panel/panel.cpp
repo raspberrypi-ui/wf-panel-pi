@@ -512,6 +512,8 @@ class WayfirePanel::impl
         dock_widgets_opt.set_callback([=] ()
         {
             if (dock) reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
+            if (((std::string) dock_widgets_opt).empty ()) window->hide ();
+            else window->show ();
         });
 
         if (wizard)
@@ -523,6 +525,8 @@ class WayfirePanel::impl
         else if (dock)
         {
             reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
+            if (((std::string) dock_widgets_opt).empty ()) window->hide ();
+            else window->show ();
         }
         else
         {

@@ -87,7 +87,7 @@
 	</option>
 	<option name="dock_widgets" type="string">
 		<_short>Dock Widgets</_short>
-		<default>nmenu spacing0 launchers</default>
+		<default></default>
 	</option>
 	<option name="dock_icon_size" type="int">
 		<_short>Dock Icon Size</_short>
