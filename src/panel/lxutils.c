@@ -91,7 +91,11 @@ GtkWindow *find_panel (GtkWidget *btn)
 {
     GtkWidget *wid = btn;
     while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
+    {
+        if (!GTK_IS_WIDGET (wid))
+            return NULL;
         wid = gtk_widget_get_parent (wid);
+    }
     return GTK_WINDOW (wid);
 }
 
@@ -101,7 +105,7 @@ gboolean panel_at_bottom (GtkWidget *btn)
     return gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
 }
 
-int get_icon_size (void)
+int get_icon_size (GtkWidget *widget)
 {
     return widget_icon_size;
 }
@@ -109,6 +113,37 @@ int get_icon_size (void)
 void store_layer (GtkLayerShellLayer layer)
 {
     orig_layer = layer;
+}
+
+GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name)
+{
+    char *fname;
+    GdkPixbuf *icon = NULL;
+    int scale = gtk_widget_get_scale_factor (image);
+    int size = get_icon_size (image);
+
+    if (icon_name)
+    {
+        if (strstr (icon_name, "/"))
+            icon = gdk_pixbuf_new_from_file_at_size (icon_name, size * scale, size * scale, NULL);
+        else
+        {
+            icon = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), icon_name,
+                size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+
+            // fallback for packages using obsolete icon location
+            if (!icon)
+            {
+                fname = g_strdup_printf ("/usr/share/pixmaps/%s", icon_name);
+                icon = gdk_pixbuf_new_from_file_at_size (fname, size * scale, size * scale, NULL);
+                g_free (fname);
+            }
+        }
+    }
+    if (!icon)
+        icon = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), "application-x-executable",
+            size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+    return icon;
 }
 
 void set_image_from_pixbuf (GtkWidget *image, GdkPixbuf *pixbuf)
@@ -123,32 +158,9 @@ void set_image_from_pixbuf (GtkWidget *image, GdkPixbuf *pixbuf)
     }
 }
 
-void set_taskbar_icon (GtkWidget *image, const char *icon, int size)
+void set_taskbar_icon (GtkWidget *image, const char *icon)
 {
-    GdkPixbuf *pixbuf = NULL;
-    char *fname;
-
-    int scale = gtk_widget_get_scale_factor (image);
-
-    if (icon)
-    {
-        if (strstr (icon, "/")) pixbuf = gdk_pixbuf_new_from_file_at_size (icon, size * scale, size * scale, NULL);
-        else
-        {
-            pixbuf = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), icon, size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
-
-            // fallback for packages using obsolete icon location
-            if (!pixbuf)
-            {
-                fname = g_strdup_printf ("/usr/share/pixmaps/%s", icon);
-                pixbuf = gdk_pixbuf_new_from_file_at_size (fname, size * scale, size * scale, NULL);
-                g_free (fname);
-            }
-        }
-    }
-    if (!pixbuf)
-        pixbuf = gtk_icon_theme_load_icon_for_scale (gtk_icon_theme_get_default (), "application-x-executable", size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
-
+    GdkPixbuf *pixbuf = load_taskbar_pixbuf (image, icon);
     if (pixbuf)
     {
         set_image_from_pixbuf (image, pixbuf);

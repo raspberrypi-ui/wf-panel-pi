@@ -353,17 +353,19 @@ static void unminimise_app (GtkWidget *, gpointer userdata)
 static void create_button (WinlistPlugin *wl, WindowItem *item)
 {
     item->btn = gtk_toggle_button_new ();
-    item->gesture = add_long_press (item->btn, G_CALLBACK (handle_gesture_end), item);
+
     g_signal_connect (item->btn, "button-press-event", G_CALLBACK (handle_button_pressed), wl);
     g_signal_connect (item->btn, "button-release-event", G_CALLBACK (handle_button_release), item);
+
+    item->gesture = add_long_press (item->btn, G_CALLBACK (handle_gesture_end), item);
 
     item->dgesture = gtk_gesture_drag_new (item->btn);
     g_signal_connect (item->dgesture, "drag-begin", G_CALLBACK (handle_drag_begin), wl);
     g_signal_connect (item->dgesture, "drag-update", G_CALLBACK (handle_drag_update), wl);
     g_signal_connect (item->dgesture, "drag-end", G_CALLBACK (handle_drag_end), wl);
 
-    set_icon_and_title (wl, item);
     gtk_container_add (GTK_CONTAINER (wl->box), item->btn);
+    set_icon_and_title (wl, item);
     gtk_widget_show_all (wl->plugin);
 
     g_idle_add (idle_resize, wl);
@@ -594,30 +596,34 @@ static void set_icon_and_title (WinlistPlugin *wl, WindowItem *item)
         else str = NULL;
     }
 
-    item->icon = gtk_image_new ();
-    wrap_set_taskbar_icon (wl, item->icon, str);
-    g_free (str);
-
     if (wl->icons_only)
     {
+        item->icon = gtk_image_new ();
         gtk_container_add (GTK_CONTAINER (item->btn), item->icon);
+        wrap_set_taskbar_icon (wl, item->icon, str);
+
         gtk_widget_set_size_request (item->btn, -1, -1);
     }
     else
     {
+        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+        gtk_container_add (GTK_CONTAINER (item->btn), box);
+
+        item->icon = gtk_image_new ();
+        gtk_container_add (GTK_CONTAINER (box), item->icon);
+        wrap_set_taskbar_icon (wl, item->icon, str);
+
         item->label = gtk_label_new (item->title);
         gtk_label_set_xalign (GTK_LABEL (item->label), 0.0);
-
-        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
-        gtk_container_add (GTK_CONTAINER (box), item->icon);
         gtk_container_add (GTK_CONTAINER (box), item->label);
-        gtk_container_add (GTK_CONTAINER (item->btn), box);
 
         gtk_widget_show_all (box);
 
         update_item_width (wl, item);
     }
     gtk_widget_show_all (item->btn);
+
+    g_free (str);
 
     if (item->title) gtk_widget_set_tooltip_text (item->btn, item->title);
 }
@@ -840,7 +846,7 @@ static void handle_drag_update (GtkGestureDrag *, gdouble x, gdouble, gpointer u
     sc = gtk_widget_get_style_context (wl->dragbtn);
     gtk_style_context_add_class (sc, "drag");
 
-    width = wl->icons_only ? get_icon_size () : wl->item_width;
+    width = wl->icons_only ? get_icon_size (wl->plugin) : wl->item_width;
 
     moveby = 0;
     if (wl->drag_start + x < -DRAG_THRESH) moveby = -1;

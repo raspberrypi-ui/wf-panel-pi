@@ -103,13 +103,16 @@ static void add_launcher (LauncherPlugin *lch, char *id)
 
     str = g_strdup_printf ("%s.desktop", id);
     info = (GAppInfo *) g_desktop_app_info_new (str);
+    ic = g_app_info_get_icon (info);
 
     btn = gtk_button_new ();
     gtk_widget_set_tooltip_text (btn, g_app_info_get_name (info));
     gtk_widget_set_name (btn, str);
+    g_free (str);
+    g_free (info);
+
     g_signal_connect (btn, "button-press-event", G_CALLBACK (handle_button_pressed), lch);
     g_signal_connect (btn, "button-release-event", G_CALLBACK (handle_button_release), lch);
-    g_free (str);
     
     add_long_press (btn, G_CALLBACK (handle_gesture_end), lch);
 
@@ -118,17 +121,14 @@ static void add_launcher (LauncherPlugin *lch, char *id)
     g_signal_connect (drag, "drag-update", G_CALLBACK (handle_drag_update), lch);
     g_signal_connect (drag, "drag-end", G_CALLBACK (handle_drag_end), lch);
 
-    ic = g_app_info_get_icon (info);
+    gtk_container_add (GTK_CONTAINER (lch->plugin), btn);
 
     str = g_icon_to_string (ic);
     icon = gtk_image_new ();
+    gtk_container_add (GTK_CONTAINER (btn), icon);
     wrap_set_taskbar_icon (lch, icon, str);
     g_free (str);
 
-    g_free (info);
-
-    gtk_container_add (GTK_CONTAINER (btn), icon);
-    gtk_container_add (GTK_CONTAINER (lch->plugin), btn);
     gtk_widget_show_all (lch->plugin);
 }
 
@@ -226,7 +226,7 @@ static void handle_drag_update (GtkGestureDrag *, gdouble x, gdouble, gpointer u
 
     moveby = 0;
     if (lch->drag_start + x < -DRAG_THRESH) moveby = -1;
-    if (lch->drag_start + x > get_icon_size () + DRAG_THRESH) moveby = 1;
+    if (lch->drag_start + x > get_icon_size (lch->plugin) + DRAG_THRESH) moveby = 1;
     if (!moveby) return;
 
     children = gtk_container_get_children (GTK_CONTAINER (lch->plugin));
