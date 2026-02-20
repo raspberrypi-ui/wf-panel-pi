@@ -171,11 +171,7 @@ static gboolean handle_button_release (GtkWidget *btn, GdkEventButton *event, gp
 {
     LauncherPlugin *lch = (LauncherPlugin *) userdata;
 
-    if (lch->dragon)
-    {
-        lch->dragon = FALSE;
-        return FALSE;
-    }
+    if (lch->dragon) return FALSE;
 
     if (pressed == PRESS_LONG) return FALSE;
 
@@ -250,6 +246,8 @@ static void handle_drag_end (GtkGestureDrag *, gdouble, gdouble, gpointer userda
     GtkStyleContext *sc;
     GList *children, *index;
     char *launchers = NULL, *name, *tmp;
+
+    if (!lch->dragon) return;
 
     children = gtk_container_get_children (GTK_CONTAINER (lch->plugin));
     index = children;

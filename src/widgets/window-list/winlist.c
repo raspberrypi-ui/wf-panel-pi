@@ -794,7 +794,6 @@ static gboolean handle_button_release (GtkWidget *widget, GdkEventButton *event,
 
     if (win->plugin->dragon)
     {
-        win->plugin->dragon = FALSE;
         g_idle_add ((GSourceFunc) update_button_state, win);
         return FALSE;
     }
@@ -872,6 +871,8 @@ static void handle_drag_end (GtkGestureDrag *, gdouble, gdouble, gpointer userda
 {
     WinlistPlugin *wl = (WinlistPlugin *) userdata;
     GtkStyleContext *sc;
+
+    if (!wl->dragon) return;
 
     wl->dragon = FALSE;
     gdk_window_set_cursor (gtk_widget_get_window (wl->plugin), NULL);
