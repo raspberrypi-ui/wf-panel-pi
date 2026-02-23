@@ -103,13 +103,11 @@ static void add_launcher (LauncherPlugin *lch, char *id)
 
     str = g_strdup_printf ("%s.desktop", id);
     info = (GAppInfo *) g_desktop_app_info_new (str);
-    ic = g_app_info_get_icon (info);
 
     btn = gtk_button_new ();
     gtk_widget_set_tooltip_text (btn, g_app_info_get_name (info));
     gtk_widget_set_name (btn, str);
     g_free (str);
-    g_free (info);
 
     g_signal_connect (btn, "button-press-event", G_CALLBACK (handle_button_pressed), lch);
     g_signal_connect (btn, "button-release-event", G_CALLBACK (handle_button_release), lch);
@@ -123,7 +121,10 @@ static void add_launcher (LauncherPlugin *lch, char *id)
 
     gtk_container_add (GTK_CONTAINER (lch->plugin), btn);
 
+    ic = g_app_info_get_icon (info);
     str = g_icon_to_string (ic);
+    g_object_unref (info);
+
     icon = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (btn), icon);
     wrap_set_taskbar_icon (lch, icon, str);

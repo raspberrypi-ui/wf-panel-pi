@@ -504,7 +504,7 @@ static char *menu_cache_id (WinlistPlugin *wl, const char *app_id)
             iter = iter->next;
             continue;
         }
-        else g_free (info);
+        else g_object_unref (info);
 
         // strip the .desktop from the end for matching purposes
         *strrchr (id, '.') = 0;
@@ -577,7 +577,7 @@ static void set_icon_and_title (WinlistPlugin *wl, WindowItem *item)
         // the desktop file name is valid, so just get the icon from it
         ic = g_app_info_get_icon (info);
         str = g_icon_to_string (ic);
-        g_free (info);
+        g_object_unref (info);
     }
     else
     {
