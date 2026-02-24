@@ -105,6 +105,7 @@ static void handle_toplevel_title (void *data, HANDLE_PTR handle, const char *ti
                 g_free (item->title);
                 item->title = g_strdup (title);
                 update_item_width (wl, item);
+                gtk_widget_set_tooltip_text (item->btn, item->title);
             }
             break;
         }
