@@ -30,56 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Helper functions for modifying launchers in panel config */
 
-void add_to_launcher (const char *name)
-{
-    GKeyFile *kf, *kfs;
-    char *str, *list, *new_list;
-    gsize len;
-    GError *err = NULL;
-
-    // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
-
-    // read in data from file to a key file
-    kf = g_key_file_new ();
-    list = NULL;
-    if (g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL))
-    {
-        list = g_key_file_get_string (kf, "panel", "launchers", &err);
-    }
-
-    // no launchers entry in user file - try loading from system file
-    if (!list || (err && err->code == G_KEY_FILE_ERROR_KEY_NOT_FOUND))
-    {
-        kfs = g_key_file_new ();
-        g_key_file_load_from_file (kfs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-        list = g_key_file_get_string (kfs, "panel", "launchers", NULL);
-        g_key_file_free (kfs);
-    }
-
-    // strip .desktop suffix
-    str = g_strdup (name);
-    *strrchr (str, '.') = 0;
-
-    // prepend new item to list
-    new_list = g_strdup_printf ("%s%s%s", str, list ? " " : "", list ? list : "");
-
-    g_key_file_set_string (kf, "panel", "launchers", new_list);
-
-    g_free (new_list);
-    g_free (list);
-    g_free (str);
-
-    // write the modified key file out
-    str = g_key_file_to_data (kf, &len, NULL);
-    g_file_set_contents (user_file, str, len, NULL);
-
-    g_free (str);
-    g_key_file_free (kf);
-    g_free (user_file);
-}
-
-void remove_from_launcher (const char *name)
+static void edit_launchers (const char *name, gboolean add)
 {
     GKeyFile *kf, *kfs;
     char *str, *list, *new_list, *tok, *tmp;
@@ -110,8 +61,11 @@ void remove_from_launcher (const char *name)
     str = g_strdup (name);
     *strrchr (str, '.') = 0;
 
-    // loop through list, creating new list from non-matching elements
-    new_list = NULL;
+    // prepend to list if adding
+    if (add) new_list = g_strdup (str);
+    else new_list = NULL;
+
+    // remove item from elsewhere in list
     tok = strtok (list, " ");
     while (tok)
     {
@@ -141,6 +95,16 @@ void remove_from_launcher (const char *name)
     g_free (str);
     g_key_file_free (kf);
     g_free (user_file);
+}
+
+void add_to_launcher (const char *name)
+{
+    edit_launchers (name, TRUE);
+}
+
+void remove_from_launcher (const char *name)
+{
+    edit_launchers (name, FALSE);
 }
 
 void replace_launchers (const char *launchers)
