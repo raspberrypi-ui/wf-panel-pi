@@ -91,12 +91,13 @@ static void handle_drag_end (GtkGestureDrag *, gdouble, gdouble, gpointer userda
 static void handle_toplevel_title (void *data, HANDLE_PTR handle, const char *title)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
+    WindowItem *item;
     GList *list;
 
     list = wl->windows;
     while (list)
     {
-        WindowItem *item = (WindowItem *) list->data;
+        item = (WindowItem *) list->data;
         if (item->handle == (void *) handle)
         {
             if (!item->title) item->title = g_strdup (title);
@@ -114,12 +115,13 @@ static void handle_toplevel_title (void *data, HANDLE_PTR handle, const char *ti
 static void handle_toplevel_app_id (void *data, HANDLE_PTR handle, const char *app_id)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
+    WindowItem *item;
     GList *list;
 
     list = wl->windows;
     while (list)
     {
-        WindowItem *item = (WindowItem *) list->data;
+        item = (WindowItem *) list->data;
         if (item->handle == (void *) handle)
         {
             item->app_id = g_strdup (app_id);
@@ -132,12 +134,13 @@ static void handle_toplevel_app_id (void *data, HANDLE_PTR handle, const char *a
 static void handle_toplevel_parent (void *data, HANDLE_PTR handle, HANDLE_PTR parent)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
+    WindowItem *item;
     GList *list;
 
     list = wl->windows;
     while (list)
     {
-        WindowItem *item = (WindowItem *) list->data;
+        item = (WindowItem *) list->data;
         if (item->handle == (void *) handle)
         {
             item->parent = (void *) parent;
@@ -150,10 +153,10 @@ static void handle_toplevel_parent (void *data, HANDLE_PTR handle, HANDLE_PTR pa
 static void handle_toplevel_state (void *data, HANDLE_PTR handle, struct wl_array *state)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
-    int flags = 0;
-    uint32_t *arr;
     WindowItem *item;
     GList *list;
+    int flags = 0;
+    uint32_t *arr;
 
     wl_array_for_each (arr, state)
     {
