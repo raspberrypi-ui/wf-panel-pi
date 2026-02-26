@@ -908,7 +908,7 @@ void open_config_dialog (void)
 
     g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 
-    gtk_window_set_default_size (GTK_WINDOW (dlg), 500, 300);
+    gtk_window_set_default_size (GTK_WINDOW (dlg), 600, 400);
 
     // run the dialog
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
