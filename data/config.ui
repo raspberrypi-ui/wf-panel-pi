@@ -168,6 +168,7 @@
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Add plugin to dock</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
