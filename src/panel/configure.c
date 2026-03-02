@@ -114,7 +114,7 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
     {
         if (!space) *name = g_strdup_printf (_("Separator"));
         else *name = g_strdup_printf (_("Spacer (%d)"), space);
-        *config = TRUE;
+        *config = space > 0 ? TRUE : FALSE;
         return TRUE;
     }
 
@@ -253,9 +253,18 @@ static void add_widget (GtkButton *, gpointer data)
         index = gtk_tree_model_iter_n_children (filt[lorr == 100 ? 3 : 1 - lorr], NULL);
 
         // change index for anything other than a space; space needs to be created
-        if (strncmp (type, "spacing", 7))
-            gtk_list_store_set (widgets, &citer, COL_INDEX, lorr == 100 ? lorr + index : lorr * (index + 1), -1);
-        else
+        if (!strcmp (type, "separator"))
+        {
+            name = g_strdup (_("Separator"));
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, "spacing0",
+                COL_INDEX, lorr == 100 ? lorr + index : lorr * (index + 1),
+                COL_CONFIG, FALSE,
+                -1);
+            g_free (name);
+        }
+        else if (!strncmp (type, "spacing", 7))
         {
             name = g_strdup_printf (_("Spacer (%d)"), 4);
             gtk_list_store_insert_with_values (widgets, NULL, -1,
@@ -266,6 +275,9 @@ static void add_widget (GtkButton *, gpointer data)
                 -1);
             g_free (name);
         }
+        else
+            gtk_list_store_set (widgets, &citer, COL_INDEX, lorr == 100 ? lorr + index : lorr * (index + 1), -1);
+
         g_free (type);
 
         // select the added item
@@ -412,7 +424,7 @@ int plugin_config_dialog (const char *type)
     GKeyFile *kf;
     GList *children, *elem, *bchildren;
     gsize len;
-    int space = -1;
+    int val, space = -1;
     conf_table_t *(*func_config_params) (void);
     char * (*func_package_name)(void);
     char * (*func_display_name)(void);
@@ -560,7 +572,10 @@ int plugin_config_dialog (const char *type)
                 else if (GTK_IS_SPIN_BUTTON (control))
                 {
                     if (space != -1)
-                        space = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
+                    {
+                        val = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
+                        if (val) space = val;
+                    }
                     else
                         g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
                 }
