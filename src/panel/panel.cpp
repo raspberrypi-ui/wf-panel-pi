@@ -263,7 +263,7 @@ class WayfirePanel::impl
         notif.signal_activate().connect(sigc::mem_fun(this, &WayfirePanel::impl::do_notify_configure));
         menu.attach (notif, 0, 1, 2, 3);
 
-        appset.set_label (_("Taskbar Preferences..."));
+        appset.set_label (dock ? _("Dock Preferences...") : _("Taskbar Preferences..."));
         appset.signal_activate().connect(sigc::mem_fun(this, &WayfirePanel::impl::do_appearance_set));
         menu.attach (appset, 0, 1, 3, 4);
 
@@ -372,7 +372,8 @@ class WayfirePanel::impl
 
     void do_appearance_set()
     {
-        system ("rpcc taskbar &");
+        if (dock) system ("rpcc dock &");
+        else system ("rpcc taskbar &");
     }
 
     bool on_delete(GdkEventAny *ev)
