@@ -685,10 +685,13 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     orient = 0;
     for (i = 0; i < gdk_display_get_n_monitors (disp); i++)
     {
-        // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
         if (mon == gdk_display_get_monitor (disp, i))
         {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+            // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
             mname = gdk_screen_get_monitor_plug_name (gdk_display_get_default_screen (disp), i);
+#pragma GCC diagnostic pop
             cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '", mname);
             if ((fp = popen (cmd, "r")) != NULL)
             {
