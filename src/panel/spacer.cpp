@@ -23,8 +23,7 @@ void WayfireSpacing::init(Gtk::HBox *container)
 
 bool WayfireSpacing::draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
-    Gtk::Window& win = WayfirePanelApp::get().get_panel()->get_window();
-    Glib::RefPtr <Gtk::StyleContext> sc = win.get_style_context ();
+    Glib::RefPtr <Gtk::StyleContext> sc = da.get_style_context ();
     Gdk::RGBA fg = sc->get_color ();
     int height = da.get_allocated_height ();
 
