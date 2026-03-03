@@ -112,9 +112,16 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
     *config = FALSE;
     if (sscanf (type, "spacing%d", &space) == 1)
     {
-        if (!space) *name = g_strdup_printf (_("Separator"));
-        else *name = g_strdup_printf (_("Spacer (%d)"), space);
-        *config = space > 0 ? TRUE : FALSE;
+        if (space > 0)
+        {
+            *name = g_strdup_printf (_("Spacer (%d)"), space);
+            *config = TRUE;
+        }
+        else
+        {
+            *name = g_strdup (_("Separator"));
+            *config = FALSE;
+        }
         return TRUE;
     }
 
