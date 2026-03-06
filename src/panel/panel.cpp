@@ -102,7 +102,7 @@ class WayfirePanel::impl
     std::unique_ptr<WayfireAutohidingWindow> window;
 
     Gtk::HBox content_box;
-    Gtk::HBox left_box, center_box, right_box;
+    Gtk::HBox left_box, right_box;
     Gtk::Menu menu;
     Gtk::MenuItem conf;
     Gtk::MenuItem cplug;
@@ -114,7 +114,7 @@ class WayfirePanel::impl
 
     using Widget = std::unique_ptr<WayfireWidget>;
     using WidgetContainer = std::vector<Widget>;
-    WidgetContainer left_widgets, center_widgets, right_widgets;
+    WidgetContainer left_widgets, right_widgets;
 
     WayfireOutput *output;
     bool wizard = WayfireShellApp::get().wizard;
@@ -132,7 +132,6 @@ class WayfirePanel::impl
     WfOption <std::string> monitor_num {"panel/monitor"};
     WfOption <std::string> left_widgets_opt {"panel/widgets_left"};
     WfOption <std::string> right_widgets_opt {"panel/widgets_right"};
-    WfOption <std::string> center_widgets_opt {"panel/widgets_center"};
     WfOption <std::string> dock_widgets_opt {"panel/dock_widgets"};
     WfOption <int> notify_timeout {"panel/notify_timeout"};
     WfOption <bool> notifications {"panel/notify_enable"};
@@ -387,12 +386,6 @@ class WayfirePanel::impl
     {
         content_box.pack_start(left_box, false, false);
         content_box.pack_end(right_box, false, false);
-        if (!center_box.get_children().empty())
-        {
-            content_box.set_center_widget(center_box);
-            center_box.show();
-        }
-
         window->add(content_box);
         left_box.show();
         right_box.show();
@@ -493,30 +486,22 @@ class WayfirePanel::impl
 
         left_widgets_opt.set_callback([=] ()
         {
-            if (!dock) reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
+            if (dock) return;
+            reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
         });
         right_widgets_opt.set_callback([=] ()
         {
-            if (!dock) reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
+            if (dock) return;
+            reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
         });
-        center_widgets_opt.set_callback([=] ()
-        {
-            if (!dock) reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
-            if (center_box.get_children().empty())
-            {
-                content_box.unset_center_widget();
-            } else
-            {
-                content_box.set_center_widget(center_box);
-            }
-        });
         dock_widgets_opt.set_callback([=] ()
         {
-            if (dock) reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
+            if (!dock) return;
+            reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
             if (((std::string) dock_widgets_opt).empty ()) window->hide ();
             else window->show ();
         });
@@ -525,7 +510,6 @@ class WayfirePanel::impl
         {
             reload_widgets((std::string) "", left_widgets, left_box);
             reload_widgets((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
-            reload_widgets((std::string) "", center_widgets, center_box);
         }
         else if (dock)
         {
@@ -537,7 +521,6 @@ class WayfirePanel::impl
         {
             reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
             reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
-            reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
         }
@@ -573,11 +556,6 @@ class WayfirePanel::impl
         {
             w->handle_config_reload();
         }
-
-        for (auto& w : center_widgets)
-        {
-            w->handle_config_reload();
-        }
     }
 
     void message_widget (const char *name, const char *cmd)
@@ -599,8 +577,6 @@ class WayfirePanel::impl
         for (auto& w : left_widgets)
             if (name == w->widget_name) w->command (cmd);
         for (auto& w : right_widgets)
-            if (name == w->widget_name) w->command (cmd);
-        for (auto& w : center_widgets)
             if (name == w->widget_name) w->command (cmd);
     }
 
@@ -662,8 +638,6 @@ class WayfirePanel::impl
         for (auto& w : left_widgets)
             w->set_icon ();
         for (auto& w : right_widgets)
-            w->set_icon ();
-        for (auto& w : center_widgets)
             w->set_icon ();
     };
 };
