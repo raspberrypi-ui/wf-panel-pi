@@ -494,10 +494,14 @@ class WayfirePanel::impl
         left_widgets_opt.set_callback([=] ()
         {
             if (!dock) reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
+            if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+            else window->show ();
         });
         right_widgets_opt.set_callback([=] ()
         {
             if (!dock) reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
+            if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+            else window->show ();
         });
         center_widgets_opt.set_callback([=] ()
         {
@@ -534,6 +538,8 @@ class WayfirePanel::impl
             reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
             reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
             reload_widgets((std::string)center_widgets_opt, center_widgets, center_box);
+            if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+            else window->show ();
         }
     }
 
