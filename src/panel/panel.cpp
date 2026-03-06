@@ -490,6 +490,9 @@ class WayfirePanel::impl
             reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
+            if (((std::string) left_widgets_opt).empty () || ((std::string) right_widgets_opt).empty ()) window->set_auto_exclusive_zone (false);
+            else window->set_auto_exclusive_zone (true);
+
         });
         right_widgets_opt.set_callback([=] ()
         {
@@ -497,6 +500,8 @@ class WayfirePanel::impl
             reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
+            if (((std::string) left_widgets_opt).empty () || ((std::string) right_widgets_opt).empty ()) window->set_auto_exclusive_zone (false);
+            else window->set_auto_exclusive_zone (true);
         });
         dock_widgets_opt.set_callback([=] ()
         {
@@ -523,6 +528,8 @@ class WayfirePanel::impl
             reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
+            if (((std::string) left_widgets_opt).empty () || ((std::string) right_widgets_opt).empty ()) window->set_auto_exclusive_zone (false);
+            else window->set_auto_exclusive_zone (true);
         }
     }
 
