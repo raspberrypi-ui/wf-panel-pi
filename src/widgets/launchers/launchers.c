@@ -72,7 +72,7 @@ static void launch_id (GtkWidget *widget)
 {
     GAppInfo *info = (GAppInfo *) g_desktop_app_info_new (gtk_widget_get_name (widget));
     g_app_info_launch (info, NULL, NULL, NULL);
-    g_free (info);
+    g_object_unref (info);
 }
 
 static void remove_launcher (GtkWidget *widget, gpointer)
