@@ -512,7 +512,7 @@ int plugin_config_dialog (const char *type)
 
                     case CONF_TYPE_COLOUR :
                                         control = gtk_color_button_new ();
-                                        gtk_color_button_set_use_alpha (GTK_COLOR_BUTTON (control), TRUE);
+                                        gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (control), TRUE);
                                         get_config_string (key, &strval);
                                         gdk_rgba_parse (&col, strval);
                                         g_free (strval);
