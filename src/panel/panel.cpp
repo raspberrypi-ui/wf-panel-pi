@@ -300,8 +300,6 @@ class WayfirePanel::impl
             if (w->widget_name == "smenu") w->command (str);
         for (auto& w : right_widgets)
             if (w->widget_name == "smenu") w->command (str);
-        for (auto& w : center_widgets)
-            if (w->widget_name == "smenu") w->command (str);
         g_free (str);
         return false;
     }
