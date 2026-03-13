@@ -90,7 +90,7 @@ static void popup_menu (GtkWidget *widget)
     g_signal_connect (item, "activate", G_CALLBACK (remove_launcher), NULL);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
     gtk_widget_show_all (menu);
-    gtk_menu_popup_at_widget (GTK_MENU (menu), widget, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+    wrap_show_menu (widget, menu);
 }
 
 static void add_launcher (LauncherPlugin *lch, char *id)

@@ -78,7 +78,7 @@ int d_icon_size;
 gboolean is_pi_var;
 
 static GtkWindow *panel, *popwindow;
-static GtkLayerShellLayer orig_layer;
+static GtkLayerShellLayer orig_layer_panel, orig_layer_dock;
 static struct libinput *li;
 static guint idle_id;
 static double tx, ty;
@@ -113,9 +113,18 @@ int get_icon_size (GtkWidget *widget)
     else return p_icon_size;
 }
 
-void store_layer (GtkLayerShellLayer layer)
+void store_layer (GtkLayerShellLayer layer, gboolean dock)
 {
-    orig_layer = layer;
+    if (dock) orig_layer_dock = layer;
+    else orig_layer_panel = layer;
+}
+
+static void restore_layer (void)
+{
+    if (!g_strcmp0 (gtk_widget_get_name (GTK_WIDGET (panel)), "DockToplevel"))
+        gtk_layer_set_layer (panel, orig_layer_dock);
+    else
+        gtk_layer_set_layer (panel, orig_layer_panel);
 }
 
 GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name)
@@ -434,7 +443,7 @@ static gboolean hide_prelight (GtkWidget *btn)
 static void menu_hidden (GtkWidget *, kb_menu_t *data)
 {
     g_signal_handler_disconnect (data->menu, data->mhandle);
-    gtk_layer_set_layer (panel, orig_layer);
+    restore_layer ();
     gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
     g_free (data);

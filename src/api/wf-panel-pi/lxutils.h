@@ -70,7 +70,7 @@ extern char **environ;
 extern GtkWindow *find_panel (GtkWidget *btn);
 extern gboolean panel_at_bottom (GtkWidget *btn);
 extern int get_icon_size (GtkWidget *widget);
-extern void store_layer (GtkLayerShellLayer layer);
+extern void store_layer (GtkLayerShellLayer layer, gboolean dock);
 extern GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name);
 extern void set_image_from_pixbuf (GtkWidget *image, GdkPixbuf *pixbuf);
 extern void set_taskbar_icon (GtkWidget *image, const char *icon);

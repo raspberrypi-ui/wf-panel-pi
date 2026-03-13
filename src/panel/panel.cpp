@@ -141,25 +141,25 @@ class WayfirePanel::impl
         if ((std::string) (dock ? dock_layer : panel_layer) == "overlay")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_OVERLAY);
-            store_layer (GTK_LAYER_SHELL_LAYER_OVERLAY);
+            store_layer (GTK_LAYER_SHELL_LAYER_OVERLAY, dock);
         }
 
         if ((std::string) (dock ? dock_layer : panel_layer) == "top")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
-            store_layer (GTK_LAYER_SHELL_LAYER_TOP);
+            store_layer (GTK_LAYER_SHELL_LAYER_TOP, dock);
         }
 
         if ((std::string) (dock ? dock_layer : panel_layer) == "bottom")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BOTTOM);
-            store_layer (GTK_LAYER_SHELL_LAYER_BOTTOM);
+            store_layer (GTK_LAYER_SHELL_LAYER_BOTTOM, dock);
         }
 
         if ((std::string) (dock ? dock_layer : panel_layer) == "background")
         {
             gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BACKGROUND);
-            store_layer (GTK_LAYER_SHELL_LAYER_BACKGROUND);
+            store_layer (GTK_LAYER_SHELL_LAYER_BACKGROUND, dock);
         }
     };
 
