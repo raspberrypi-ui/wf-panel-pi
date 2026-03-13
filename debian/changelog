@@ -1,3 +1,9 @@
+wf-panel-pi (1.11) trixie; urgency=medium
+
+  * Fix for missing keystrokes in menu plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 13 Mar 2026 13:53:26 +0000
+
 wf-panel-pi (1.10) trixie; urgency=medium
 
   * New icon handling functions

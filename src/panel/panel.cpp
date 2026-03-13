@@ -272,6 +272,8 @@ class WayfirePanel::impl
         window->signal_button_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_press_event));
         window->signal_button_release_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_button_release_event));
 
+        window->signal_key_press_event().connect(sigc::mem_fun(this, &WayfirePanel::impl::on_keypress_event));
+
         panel_icon_size.set_callback (update_widget_icons);
         dock_icon_size.set_callback (update_widget_icons);
 
@@ -289,6 +291,19 @@ class WayfirePanel::impl
 
         window->signal_delete_event().connect(
             sigc::mem_fun(this, &WayfirePanel::impl::on_delete));
+    }
+
+    bool on_keypress_event (GdkEventKey* event)
+    {
+        char *str = g_strdup_printf ("key_%c", event->keyval);
+        for (auto& w : left_widgets)
+            if (w->widget_name == "smenu") w->command (str);
+        for (auto& w : right_widgets)
+            if (w->widget_name == "smenu") w->command (str);
+        for (auto& w : center_widgets)
+            if (w->widget_name == "smenu") w->command (str);
+        g_free (str);
+        return false;
     }
 
     bool on_button_press_event(GdkEventButton* event)
