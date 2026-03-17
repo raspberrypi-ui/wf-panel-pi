@@ -78,10 +78,8 @@ int d_icon_size;
 gboolean is_pi_var;
 
 static GtkWindow *panel, *popwindow;
+static GtkWidget *clicksink;
 static GtkLayerShellLayer orig_layer_panel, orig_layer_dock;
-static struct libinput *li;
-static guint idle_id;
-static double tx, ty;
 static int px, py, mw, mh, orient;
 
 /*----------------------------------------------------------------------------*/
@@ -106,7 +104,7 @@ gboolean panel_at_bottom (GtkWidget *btn)
     return gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
 }
 
-int get_icon_size (GtkWidget *widget)
+int get_icon_size (GtkWidget *)
 {
     GtkWindow *panel = find_panel (widget);
     if (!g_strcmp0 (gtk_widget_get_name (GTK_WIDGET (panel)), "DockToplevel")) return d_icon_size;
@@ -541,113 +539,22 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
     data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
 }
 
-
-
 /*----------------------------------------------------------------------------*/
 /* Window popup with close on click-away */
 /*----------------------------------------------------------------------------*/
 
-static int open_restricted (const char *path, int flags, void *)
-{
-    int fd = open (path, flags);
-    return fd < 0 ? -errno : fd;
-}
-
-static void close_restricted (int fd, void *)
-{
-    close (fd);
-}
-
-static const struct libinput_interface interface = {
-    .open_restricted = open_restricted,
-    .close_restricted = close_restricted,
-};
-
-static gboolean check_libinput_events (gpointer)
-{
-    GdkWindow *win, *wwin;
-    gboolean match;
-    struct libinput_event *ev;
-
-    libinput_dispatch (li);
-    if ((ev = libinput_get_event (li)) != 0)
-    {
-        enum libinput_event_type type = libinput_event_get_type (ev);
-
-        if (type == LIBINPUT_EVENT_POINTER_BUTTON)
-        {
-            if (libinput_event_pointer_get_button_state (libinput_event_get_pointer_event (ev)) == LIBINPUT_BUTTON_STATE_RELEASED)
-            {
-                win = gdk_device_get_window_at_position (gdk_seat_get_pointer (
-                    gdk_display_get_default_seat (gdk_display_get_default ())), NULL, NULL);
-                if (!win) close_popup ();
-                else
-                {
-                    // is the popup a parent of the window under the pointer?
-                    match = FALSE;
-                    wwin = gtk_widget_get_window (GTK_WIDGET (popwindow));
-                    while ((win = gdk_window_get_parent (win)) != NULL)
-                        if (win == wwin)
-                            match = TRUE;
-                    if (!match) close_popup ();
-                }
-            }
-            libinput_event_destroy (ev);
-        }
-
-        if (type == LIBINPUT_EVENT_KEYBOARD_KEY)
-        {
-            if (libinput_event_keyboard_get_key (libinput_event_get_keyboard_event (ev)) == KEY_ESC)
-                close_popup ();
-            libinput_event_destroy (ev);
-        }
-
-        if (type == LIBINPUT_EVENT_TOUCH_UP)
-        {
-            GtkAllocation alloc;
-            gtk_widget_get_allocation (GTK_WIDGET (popwindow), &alloc);
-
-            // was the touch inside the co-ords of the popup?
-            if (tx < px || tx > px + alloc.width || ty < py || ty > py + alloc.height)
-                close_popup ();
-            libinput_event_destroy (ev);
-        }
-
-        if (type == LIBINPUT_EVENT_TOUCH_DOWN)
-        {
-            struct libinput_event_touch *tev = libinput_event_get_touch_event (ev);
-            tx = libinput_event_touch_get_x_transformed (tev, (orient == 90 || orient == 270) ? mh : mw);
-            ty = libinput_event_touch_get_y_transformed (tev, (orient == 90 || orient == 270) ? mw : mh);
-
-            // remap touch point for rotated displays
-            double d;
-            switch (orient)
-            {
-                case 90 :   d = tx;
-                            tx = mw - ty;
-                            ty = d;
-                            break;
-
-                case 180 :  tx = mw - tx;
-                            ty = mh - ty;
-                            break;
-
-                case 270 :  d = tx;
-                            tx = ty;
-                            ty = mh - d;
-                            break;
-            }
-            libinput_event_destroy (ev);
-        }
-    }
-    return TRUE;
-}
-
 static void popup_hidden (GtkWidget *popup, kb_menu_t *data)
 {
+    gtk_widget_destroy (clicksink);
     g_signal_handler_disconnect (popup, data->mhandle);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
     g_free (data);
+}
+
+static gboolean handle_clickaway (GtkWidget *, GdkEventButton *, gpointer)
+{
+    close_popup ();
+    return FALSE;
 }
 
 void popup_window_at_button (GtkWidget *window, GtkWidget *button)
@@ -655,10 +562,33 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     GdkDisplay *disp;
     GdkMonitor *mon;
     GdkRectangle rect;
+    GtkCssProvider *prov;
     int i, pw, panw;
     gboolean bottom;
     FILE *fp;
     char *cmd, *mname;
+
+    panel = find_panel (button);
+    mon = gtk_layer_get_monitor (panel);
+
+    clicksink = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    gtk_layer_init_for_window (GTK_WINDOW (clicksink));
+    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_BOTTOM, TRUE);
+    gtk_layer_set_monitor (GTK_WINDOW (clicksink), mon);
+    gtk_widget_set_name (clicksink, "clicksink");
+
+    prov = gtk_css_provider_new ();
+    gtk_css_provider_load_from_data (prov, "#clicksink { background-color: transparent; }", -1, NULL);
+    gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+        GTK_STYLE_PROVIDER (prov), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    g_object_unref (prov);
+
+    gtk_widget_show (clicksink);
+    gtk_window_present (GTK_WINDOW (clicksink));
+    g_signal_connect (clicksink, "button-release-event", G_CALLBACK (handle_clickaway), NULL);
 
     close_popup ();
 
@@ -686,7 +616,6 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     if (rect.x <= px) px = rect.x;
 
     // get the dimensions of the monitor - correct the y-coord of the plugin if at bottom
-    mon = gtk_layer_get_monitor (panel);
     gdk_monitor_get_geometry (mon, &rect);
     mh = rect.height;
     mw = rect.width;
@@ -742,19 +671,12 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     kb_menu_t *data = g_new (kb_menu_t, 1);
     data->button = button;
     data->mhandle = g_signal_connect (popwindow, "hide", G_CALLBACK (popup_hidden), data);
-
-    li = libinput_udev_create_context (&interface, NULL, udev_new ());
-    libinput_udev_assign_seat (li, "seat0");
-    libinput_dispatch (li);
-    idle_id = g_idle_add ((GSourceFunc) check_libinput_events, NULL);
 }
 
 void close_popup (void)
 {
     if (popwindow) gtk_widget_destroy (GTK_WIDGET (popwindow));
     popwindow = NULL;
-    if (idle_id) g_source_remove (idle_id);
-    idle_id = 0;
 }
 
 /*----------------------------------------------------------------------------*/
