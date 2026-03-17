@@ -104,7 +104,7 @@ gboolean panel_at_bottom (GtkWidget *btn)
     return gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
 }
 
-int get_icon_size (GtkWidget *)
+int get_icon_size (GtkWidget *widget)
 {
     GtkWindow *panel = find_panel (widget);
     if (!g_strcmp0 (gtk_widget_get_name (GTK_WIDGET (panel)), "DockToplevel")) return d_icon_size;
