@@ -65,6 +65,39 @@ static GList *nwins = NULL;         /* List of current notifications */
 static int nseq = 0;                /* Sequence number for notifications */
 static gint interval_timer = 0;     /* Used to show windows one at a time */
 
+static guint owner_id;
+
+static GDBusNodeInfo *introspection_data = NULL;
+
+static const gchar introspection_xml[] =
+  "<node>"
+  "  <interface name='org.freedesktop.Notifications'>"
+  "  <method name='Notify'>"
+  "    <arg type='s' name='app_name' direction='in' />"
+  "    <arg type='u' name='id' direction='in' />"
+  "    <arg type='s' name='icon' direction='in' />"
+  "    <arg type='s' name='summary' direction='in' />"
+  "    <arg type='s' name='body' direction='in' />"
+  "    <arg type='as' name='actions' direction='in' />"
+  "    <arg type='a{sv}' name='hints' direction='in' />"
+  "    <arg type='i' name='timeout' direction='in' />"
+  "    <arg type='u' name='return_id' direction='out' />"
+  "  </method>"
+  "  <method name='CloseNotification'>"
+  "    <arg type='u' name='id' direction='in' />"
+  "  </method>"
+  "  <method name='GetCapabilities'>"
+  "    <arg type='as' name='return_caps' direction='out'/>"
+  "  </method>"
+  "  <method name='GetServerInformation'>"
+  "    <arg type='s' name='return_name' direction='out'/>"
+  "    <arg type='s' name='return_vendor' direction='out'/>"
+  "    <arg type='s' name='return_version' direction='out'/>"
+  "    <arg type='s' name='return_spec_version' direction='out'/>"
+  "  </method>"
+  "  </interface>"
+  "</node>";
+
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
 /*----------------------------------------------------------------------------*/
@@ -73,6 +106,85 @@ static void show_message (NotifyWindow *nw, char *str);
 static gboolean hide_message (NotifyWindow *nw);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
+
+/*----------------------------------------------------------------------------*/
+/* FreeDesktop notification DBus interface */
+/*----------------------------------------------------------------------------*/
+
+static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
+{
+    if (g_strcmp0 (method_name, "GetServerInformation") == 0)
+    {
+        GVariant *reply;
+
+        reply = g_variant_new ("(ssss)", "wf-panel-pi", "RaspberryPi", "1.0", "1.2");
+        g_dbus_method_invocation_return_value (invocation, reply);
+        g_dbus_connection_flush (connection, NULL, NULL, NULL);
+        g_variant_unref (reply);
+    }
+
+    if (g_strcmp0 (method_name, "Notify") == 0)
+    {
+        GVariant *reply;
+        GVariantIter i;
+        char *appname, *iconname, *summary, *body, *message;
+        gint id;
+
+        g_variant_iter_init (&i, parameters);
+        g_variant_iter_next (&i, "s", &appname);
+        g_variant_iter_next (&i, "u", &id);
+        g_variant_iter_next (&i, "s", &iconname);
+        g_variant_iter_next (&i, "s", &summary);
+        g_variant_iter_next (&i, "s", &body);
+        //g_variant_iter_next (&i, "^a&s", &actions);
+        //g_variant_iter_next (&i, "@a{?*}", &hints);
+        //g_variant_iter_next (&i, "i", &timeout);
+
+        message = g_strdup_printf ("%s%s%s", summary, body ? "\n" : "", body);
+        id = wfpanel_notify (message);
+        g_free (message);
+
+        reply = g_variant_new ("(u)", id);
+        g_dbus_method_invocation_return_value (invocation, reply);
+        g_dbus_connection_flush (connection, NULL, NULL, NULL);
+        g_variant_unref (reply);
+    }
+}
+
+static GVariant *handle_get_property (GDBusConnection *, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *property_name, GError **error, gpointer user_data)
+{
+    return NULL;
+}
+
+static gboolean handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
+    const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
+{
+    return TRUE;
+}
+
+static const GDBusInterfaceVTable interface_vtable =
+{
+    handle_method_call,
+    handle_get_property,
+    handle_set_property,
+    NULL
+};
+
+static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+    g_dbus_connection_register_object (connection, "/org/freedesktop/Notifications", introspection_data->interfaces[0],
+        &interface_vtable, user_data, NULL, NULL);
+}
+
+static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+}
+
+static void on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+}
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -258,6 +370,11 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
     notify_timeout = timeout;
     panel = win;
 
+    // watch DBus for libnotify events
+    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
+    owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.freedesktop.Notifications", G_BUS_NAME_OWNER_FLAGS_NONE,
+        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+
     // set timer for initial display of notifications
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
@@ -372,6 +489,11 @@ void wfpanel_notify_clear (int seq)
     }
 }
 
+void wfpanel_notify_close (void)
+{
+    g_bus_unown_name (owner_id);
+    g_dbus_node_info_unref (introspection_data);
+}
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

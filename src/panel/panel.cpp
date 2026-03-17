@@ -392,6 +392,7 @@ class WayfirePanel::impl
     {
         /* We ignore close events, because the panel's lifetime is bound to
          * the lifetime of the output */
+        if (real) wfpanel_notify_close ();
         return true;
     }
 

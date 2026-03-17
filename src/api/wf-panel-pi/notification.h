@@ -32,6 +32,7 @@ extern void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win);
 extern int wfpanel_notify (const char *message);
 extern int wfpanel_critical (const char *message);
 extern void wfpanel_notify_clear (int seq);
+extern void wfpanel_notify_close (void);
 
 #endif
 
