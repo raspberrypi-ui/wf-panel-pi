@@ -47,6 +47,8 @@ typedef struct {
     char *message;
     gboolean shown;
     gboolean critical;
+    gchar *sender;                  /* DBus only */
+    gchar **actions;                /* DBus only */
 } NotifyWindow;
 
 
@@ -63,6 +65,8 @@ static int nseq = 0;                /* Sequence number for notifications */
 static gint interval_timer = 0;     /* Used to show windows one at a time */
 
 static guint owner_id;
+
+static GDBusConnection *dbusconn;
 
 static GDBusNodeInfo *introspection_data = NULL;
 
@@ -103,6 +107,7 @@ static void show_message (NotifyWindow *nw, char *str);
 static gboolean hide_message (NotifyWindow *nw);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions);
 
 /*----------------------------------------------------------------------------*/
 /* FreeDesktop notification DBus interface */
@@ -121,12 +126,28 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_variant_unref (reply);
     }
 
+    if (g_strcmp0 (method_name, "GetCapabilities") == 0)
+    {
+        GVariantBuilder *builder;
+        GVariant *value;
+
+        builder = g_variant_builder_new (G_VARIANT_TYPE("as"));
+        g_variant_builder_add (builder, "s", "actions");
+        g_variant_builder_add (builder, "s", "body");
+
+        value = g_variant_new ("(as)", builder);
+        g_clear_pointer (&builder, g_variant_builder_unref);
+        g_dbus_method_invocation_return_value (invocation, value);
+        g_dbus_connection_flush (connection, NULL, NULL, NULL);
+    }
+
     if (g_strcmp0 (method_name, "Notify") == 0)
     {
         GVariant *reply;
         GVariantIter i;
         char *appname, *iconname, *summary, *body, *message;
         gint id;
+        gchar **actions;
 
         g_variant_iter_init (&i, parameters);
         g_variant_iter_next (&i, "s", &appname);
@@ -134,12 +155,12 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_variant_iter_next (&i, "s", &iconname);
         g_variant_iter_next (&i, "s", &summary);
         g_variant_iter_next (&i, "s", &body);
-        //g_variant_iter_next (&i, "^a&s", &actions);
+        g_variant_iter_next (&i, "^a&s", &actions);
         //g_variant_iter_next (&i, "@a{?*}", &hints);
         //g_variant_iter_next (&i, "i", &timeout);
 
         message = g_strdup_printf ("%s%s%s", summary, body ? "\n" : "", body);
-        id = wfpanel_notify (message);
+        id = wfpanel_notify_int (message, sender, actions);
         g_free (message);
 
         reply = g_variant_new ("(u)", id);
@@ -173,6 +194,7 @@ static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpo
 {
     g_dbus_connection_register_object (connection, "/org/freedesktop/Notifications", introspection_data->interfaces[0],
         &interface_vtable, user_data, NULL, NULL);
+    dbusconn = connection;
 }
 
 static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
@@ -187,11 +209,18 @@ static void on_name_lost (GDBusConnection *connection, const gchar *name, gpoint
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
+static void action_button (GtkWidget *wid, NotifyWindow *nw)
+{
+    GVariant *body = g_variant_new ("(us)", nw->seq, gtk_widget_get_name (wid));
+    g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
+    g_variant_unref (body);
+}
+
 /* Create a notification window and position appropriately */
 
 static void show_message (NotifyWindow *nw, char *str)
 {
-    GtkWidget *box, *lbl;
+    GtkWidget *box, *lbl, *bbox, *btn;
     int dim, offset;
     char *fmt, *cptr;
     GList *item;
@@ -238,6 +267,22 @@ static void show_message (NotifyWindow *nw, char *str)
     gtk_label_set_justify (GTK_LABEL (lbl), GTK_JUSTIFY_CENTER);
     gtk_box_pack_start (GTK_BOX (box), lbl, FALSE, FALSE, 0);
     g_free (fmt);
+
+    if (nw->actions)
+    {
+        int nbtn = 0;
+        bbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+        gtk_box_pack_start (GTK_BOX (box), bbox, FALSE, FALSE, 0);
+        while (1)
+        {
+            btn = gtk_button_new_with_label (nw->actions[nbtn * 2 + 1]);
+            g_signal_connect (btn, "clicked", G_CALLBACK (action_button), nw);
+            gtk_widget_set_name (btn, nw->actions[nbtn * 2]);
+            gtk_box_pack_start (GTK_BOX (bbox), btn, FALSE, FALSE, 0);
+            nbtn++;
+            if (!nw->actions[nbtn * 2]) break;
+        }
+    }
 
     // calculate vertical offset for new window - if critical, at top, else immediately below any criticals
     offset = SPACING;
@@ -288,6 +333,12 @@ static gboolean hide_message (NotifyWindow *nw)
 
     if (nw->hide_timer) g_source_remove (nw->hide_timer);
 
+    if (nw->sender)
+    {
+        GVariant *body = g_variant_new("(uu)", nw->seq, 1); // set reason properly
+        g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
+        g_variant_unref (body);
+    }
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
     g_free (nw);
@@ -372,7 +423,7 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
 
-int wfpanel_notify (const char *message)
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions)
 {
     NotifyWindow *nw;
     GList *item;
@@ -413,6 +464,23 @@ int wfpanel_notify (const char *message)
     nw->message = g_strdup (message);
     nw->shown = FALSE;
     nw->critical = FALSE;
+    nw->sender = sender ? g_strdup (sender) : NULL;
+    if (!actions) nw->actions = NULL;
+    else
+    {
+        int count = 0;
+        nw->actions = malloc (sizeof (gchar *));
+        nw->actions[count] = NULL;
+        while (actions[count])
+        {
+            nw->actions = realloc (nw->actions, ((count + 1) * 2 + 1) * sizeof (gchar *));
+            nw->actions[count] = g_strdup (actions[count]);
+            count++;
+            nw->actions[count] = g_strdup (actions[count]);
+            count++;
+            nw->actions[count] = NULL;
+        }
+    }
 
     // if the timer isn't running, show the notification immediately and start the timer
     if (interval_timer == 0)
@@ -422,6 +490,11 @@ int wfpanel_notify (const char *message)
     }
 
     return nseq;
+}
+
+int wfpanel_notify (const char *message)
+{
+    wfpanel_notify_int (message, NULL, NULL);
 }
 
 int wfpanel_critical (const char *message)
