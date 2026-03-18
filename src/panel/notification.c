@@ -112,7 +112,8 @@ static const gchar introspection_xml[] =
 /*----------------------------------------------------------------------------*/
 
 static void show_message (NotifyWindow *nw, char *str);
-static gboolean hide_message (NotifyWindow *nw);
+static gboolean hide_message_timeout (NotifyWindow *nw);
+static void hide_message (NotifyWindow *nw, int reason);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
 static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions);
@@ -124,7 +125,7 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
 static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
     const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
 {
-    if (g_strcmp0 (method_name, "GetServerInformation") == 0)
+    if (!g_strcmp0 (method_name, "GetServerInformation"))
     {
         GVariant *reply;
 
@@ -134,7 +135,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_variant_unref (reply);
     }
 
-    if (g_strcmp0 (method_name, "GetCapabilities") == 0)
+    if (!g_strcmp0 (method_name, "GetCapabilities"))
     {
         GVariantBuilder *builder;
         GVariant *value;
@@ -149,7 +150,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
     }
 
-    if (g_strcmp0 (method_name, "Notify") == 0)
+    if (!g_strcmp0 (method_name, "Notify"))
     {
         GVariant *reply;
         GVariantIter i;
@@ -176,6 +177,15 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
         g_variant_unref (reply);
     }
+
+    if (!g_strcmp0 (method_name, "CloseNotification"))
+    {
+        guint32 id;
+        g_variant_get (parameters, "(u)", &id);
+        wfpanel_notify_clear (id);
+        g_dbus_method_invocation_return_value (invocation, NULL);
+        g_dbus_connection_flush (connection, NULL, NULL, NULL);
+	}
 }
 
 static GVariant *handle_get_property (GDBusConnection *, const gchar *sender, const gchar *object_path, const gchar *interface_name,
@@ -320,12 +330,18 @@ static void show_message (NotifyWindow *nw, char *str)
 
     g_signal_connect (G_OBJECT (nw->popup), "button-press-event", G_CALLBACK (window_click), nw);
     gtk_widget_show_all (nw->popup);
-    if (!nw->critical && notify_timeout > 0) nw->hide_timer = g_timeout_add (notify_timeout * 1000, (GSourceFunc) hide_message, nw);
+    if (!nw->critical && notify_timeout > 0) nw->hide_timer = g_timeout_add (notify_timeout * 1000, (GSourceFunc) hide_message_timeout, nw);
 }
 
 /* Destroy a notification window and remove from list */
 
-static gboolean hide_message (NotifyWindow *nw)
+static gboolean hide_message_timeout (NotifyWindow *nw)
+{
+	hide_message (nw, 1);
+	return FALSE;
+}
+
+static void hide_message (NotifyWindow *nw, int reason)
 {
     GList *item;
     int w, h;
@@ -341,16 +357,15 @@ static gboolean hide_message (NotifyWindow *nw)
 
     if (nw->hide_timer) g_source_remove (nw->hide_timer);
 
-    if (nw->sender)
+    if (nw->sender && reason != -1)
     {
-        GVariant *body = g_variant_new("(uu)", nw->seq, 1); // set reason properly
+        GVariant *body = g_variant_new ("(uu)", nw->seq, reason);
         g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
         g_variant_unref (body);
     }
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
     g_free (nw);
-    return FALSE;
 }
 
 /* Relocate notifications below the supplied item by the supplied vertical offset */
@@ -371,7 +386,7 @@ static void update_positions (GList *item, int offset)
 
 static gboolean window_click (GtkWidget *, GdkEventButton *, NotifyWindow *nw)
 {
-    hide_message (nw);
+    hide_message (nw, 2);
     return FALSE;
 }
 
@@ -450,7 +465,7 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
         {
             // if hash matches a critical, do nothing with the new notification, otherwise hide the window
             if (nw->critical) return -1;
-            else hide_message (nw);
+            else hide_message (nw, -1);
         }
     }
 
@@ -518,7 +533,7 @@ int wfpanel_critical (const char *message)
     {
         // if hash matches, hide the window
         nw = (NotifyWindow *) item->data;
-        if (nw->hash == hash) hide_message (nw);
+        if (nw->hash == hash) hide_message (nw, -1);
     }
 
     // create a new notification window and add it to the front of the list
@@ -557,7 +572,7 @@ void wfpanel_notify_clear (int seq)
         nw = (NotifyWindow *) item->data;
         if (nw->seq == seq)
         {
-            hide_message (nw);
+            hide_message (nw, 3);
             return;
         }
     }
