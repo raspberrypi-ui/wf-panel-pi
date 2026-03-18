@@ -167,7 +167,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         //g_variant_iter_next (&i, "@a{?*}", &hints);
         //g_variant_iter_next (&i, "i", &timeout);
 
-        message = g_strdup_printf ("%s%s%s", summary, body ? "\n" : "", body);
+        message = g_strdup_printf ("%s%s%s", summary, strlen (body) ? "\n" : "", body);
         id = wfpanel_notify_int (message, sender, actions);
         g_free (message);
 
