@@ -137,15 +137,15 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
     if (!g_strcmp0 (method_name, "GetCapabilities"))
     {
         GVariantBuilder *builder;
-        GVariant *value;
+        GVariant *reply;
 
         builder = g_variant_builder_new (G_VARIANT_TYPE("as"));
         g_variant_builder_add (builder, "s", "actions");
         g_variant_builder_add (builder, "s", "body");
 
-        value = g_variant_new ("(as)", builder);
+        reply = g_variant_new ("(as)", builder);
         g_clear_pointer (&builder, g_variant_builder_unref);
-        g_dbus_method_invocation_return_value (invocation, value);
+        g_dbus_method_invocation_return_value (invocation, reply);
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
     }
 
@@ -229,6 +229,7 @@ static void action_button (GtkWidget *wid, NotifyWindow *nw)
 {
     GVariant *body = g_variant_new ("(us)", nw->seq, gtk_widget_get_name (wid));
     g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
+    hide_message (nw, 2);
 }
 
 /* Create a notification window and position appropriately */
@@ -357,7 +358,7 @@ static void hide_message (NotifyWindow *nw, int reason)
     if (nw->sender && reason != -1)
     {
         GVariant *body = g_variant_new ("(uu)", nw->seq, reason);
-        g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
+        g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "NotificationClosed", body, NULL);
     }
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
