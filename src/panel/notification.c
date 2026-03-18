@@ -96,6 +96,14 @@ static const gchar introspection_xml[] =
   "    <arg type='s' name='return_version' direction='out'/>"
   "    <arg type='s' name='return_spec_version' direction='out'/>"
   "  </method>"
+  "  <signal name='NotificationClosed'>"
+  "    <arg name='id' type='u'/>"
+  "    <arg name='reason' type='u'/>"
+  "  </signal>"
+  "  <signal name='ActionInvoked'>"
+  "    <arg name='id' type='u'/>"
+  "    <arg name='action_key' type='s'/>"
+  "  </signal>"
   "  </interface>"
   "</node>";
 
