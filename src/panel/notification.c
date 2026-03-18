@@ -132,7 +132,6 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         reply = g_variant_new ("(ssss)", "wf-panel-pi", "RaspberryPi", "1.0", "1.2");
         g_dbus_method_invocation_return_value (invocation, reply);
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
-        g_variant_unref (reply);
     }
 
     if (!g_strcmp0 (method_name, "GetCapabilities"))
@@ -175,7 +174,6 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         reply = g_variant_new ("(u)", id);
         g_dbus_method_invocation_return_value (invocation, reply);
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
-        g_variant_unref (reply);
     }
 
     if (!g_strcmp0 (method_name, "CloseNotification"))
@@ -231,7 +229,6 @@ static void action_button (GtkWidget *wid, NotifyWindow *nw)
 {
     GVariant *body = g_variant_new ("(us)", nw->seq, gtk_widget_get_name (wid));
     g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
-    g_variant_unref (body);
 }
 
 /* Create a notification window and position appropriately */
@@ -286,7 +283,7 @@ static void show_message (NotifyWindow *nw, char *str)
     gtk_box_pack_start (GTK_BOX (box), lbl, FALSE, FALSE, 0);
     g_free (fmt);
 
-    if (nw->actions)
+    if (nw->actions != NULL && nw->actions[0] != NULL)
     {
         int nbtn = 0;
         bbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
@@ -361,7 +358,6 @@ static void hide_message (NotifyWindow *nw, int reason)
     {
         GVariant *body = g_variant_new ("(uu)", nw->seq, reason);
         g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
-        g_variant_unref (body);
     }
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
@@ -517,7 +513,7 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
 
 int wfpanel_notify (const char *message)
 {
-    wfpanel_notify_int (message, NULL, NULL);
+    return wfpanel_notify_int (message, NULL, NULL);
 }
 
 int wfpanel_critical (const char *message)
