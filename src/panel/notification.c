@@ -194,7 +194,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
     }
 }
-
+#if 0
 static GVariant *handle_get_property (GDBusConnection *, const gchar *sender, const gchar *object_path, const gchar *interface_name,
     const gchar *property_name, GError **error, gpointer user_data)
 {
@@ -206,27 +206,27 @@ static gboolean handle_set_property (GDBusConnection *connection, const gchar *s
 {
     return TRUE;
 }
-
+#endif
 static const GDBusInterfaceVTable interface_vtable =
 {
     handle_method_call,
-    handle_get_property,
-    handle_set_property,
-    NULL
+    NULL, //handle_get_property,
+    NULL, //handle_set_property,
+    {0}
 };
 
-static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+static void on_bus_acquired (GDBusConnection *connection, const gchar *, gpointer user_data)
 {
     g_dbus_connection_register_object (connection, "/org/freedesktop/Notifications", introspection_data->interfaces[0],
         &interface_vtable, user_data, NULL, NULL);
     dbusconn = connection;
 }
 
-static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+static void on_name_acquired (GDBusConnection *, const gchar *, gpointer)
 {
 }
 
-static void on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
+static void on_name_lost (GDBusConnection *, const gchar *, gpointer)
 {
 }
 
