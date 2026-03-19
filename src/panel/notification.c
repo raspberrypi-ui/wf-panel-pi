@@ -390,7 +390,7 @@ static void replace_message (int id, const char *message)
 {
     NotifyWindow *nw;
     GtkWidget *wid;
-    GList *children, *item;
+    GList *children, *item, *wchild;
 
     // loop through windows in the list, looking for the hash
     for (item = nwins; item != NULL; item = item->next)
@@ -403,15 +403,15 @@ static void replace_message (int id, const char *message)
 
             wid = gtk_bin_get_child (GTK_BIN (nw->popup));
             children = gtk_container_get_children (GTK_CONTAINER (wid));
-            item = children;
-            while (item)
+            wchild = children;
+            while (wchild)
             {
-                if (GTK_IS_LABEL (item->data))
+                if (GTK_IS_LABEL (wchild->data))
                 {
-                    gtk_label_set_text (GTK_LABEL (item->data), message);
+                    gtk_label_set_text (GTK_LABEL (wchild->data), message);
                     break;
                 }
-                item = item->next;
+                wchild = wchild->next;
             }
             g_list_free (children);
         }
