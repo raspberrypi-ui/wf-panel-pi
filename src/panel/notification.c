@@ -52,6 +52,9 @@ typedef struct {
     char **actions;                /* DBus only */
 } NotifyWindow;
 
+#define DBUS_BUS_NAME       "org.freedesktop.Notifications"
+#define DBUS_OBJECT_PATH    "/org/freedesktop/Notifications"
+#define DBUS_INTERFACE_NAME "org.freedesktop.Notifications"
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -217,7 +220,7 @@ static const GDBusInterfaceVTable interface_vtable =
 
 static void on_bus_acquired (GDBusConnection *connection, const gchar *, gpointer user_data)
 {
-    g_dbus_connection_register_object (connection, "/org/freedesktop/Notifications", introspection_data->interfaces[0],
+    g_dbus_connection_register_object (connection, DBUS_OBJECT_PATH, introspection_data->interfaces[0],
         &interface_vtable, user_data, NULL, NULL);
     dbusconn = connection;
 }
@@ -230,16 +233,22 @@ static void on_name_lost (GDBusConnection *, const gchar *, gpointer)
 {
 }
 
-/*----------------------------------------------------------------------------*/
-/* Private functions */
-/*----------------------------------------------------------------------------*/
-
 static void action_button (GtkWidget *wid, NotifyWindow *nw)
 {
     GVariant *body = g_variant_new ("(us)", nw->seq, gtk_widget_get_name (wid));
-    g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "ActionInvoked", body, NULL);
+    g_dbus_connection_emit_signal (dbusconn, nw->sender, DBUS_OBJECT_PATH, DBUS_INTERFACE_NAME, "ActionInvoked", body, NULL);
     hide_message (nw, 2);
 }
+
+static void closed_response (NotifyWindow *nw, int reason)
+{
+    GVariant *body = g_variant_new ("(uu)", nw->seq, reason);
+    g_dbus_connection_emit_signal (dbusconn, nw->sender, DBUS_OBJECT_PATH, DBUS_INTERFACE_NAME, "NotificationClosed", body, NULL);
+}
+
+/*----------------------------------------------------------------------------*/
+/* Private functions */
+/*----------------------------------------------------------------------------*/
 
 /* Create a notification window and position appropriately */
 
@@ -364,25 +373,21 @@ static void hide_message (NotifyWindow *nw, int reason)
 
     if (nw->hide_timer) g_source_remove (nw->hide_timer);
 
-    if (nw->sender && reason != -1)
-    {
-        GVariant *body = g_variant_new ("(uu)", nw->seq, reason);
-        g_dbus_connection_emit_signal (dbusconn, nw->sender, "/org/freedesktop/Notifications", "org.freedesktop.Notifications", "NotificationClosed", body, NULL);
-    }
+    if (nw->sender && reason != -1) closed_response (nw, reason);
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
     if (nw->sender) g_free (nw->sender);
     if (nw->actions)
     {
-		w = 0;
-		while (1)
-		{
-			if (nw->actions[w]) g_free (nw->actions[w]);
-			else break;
-			w++;
-		}
-		g_free (nw->actions);
-	}
+        w = 0;
+        while (1)
+        {
+            if (nw->actions[w]) g_free (nw->actions[w]);
+            else break;
+            w++;
+        }
+        g_free (nw->actions);
+    }
     g_free (nw);
 }
 
@@ -489,7 +494,7 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
 
     // watch DBus for libnotify events
     introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.freedesktop.Notifications", G_BUS_NAME_OWNER_FLAGS_NONE,
+    owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
         on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
 
     // set timer for initial display of notifications
