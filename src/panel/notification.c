@@ -47,6 +47,7 @@ typedef struct {
     char *message;
     gboolean shown;
     gboolean critical;
+    int timeout;
     gchar *sender;                  /* DBus only */
     gchar **actions;                /* DBus only */
 } NotifyWindow;
@@ -116,7 +117,7 @@ static gboolean hide_message_timeout (NotifyWindow *nw);
 static void hide_message (NotifyWindow *nw, int reason);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions);
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout);
 
 /*----------------------------------------------------------------------------*/
 /* FreeDesktop notification DBus interface */
@@ -142,6 +143,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         builder = g_variant_builder_new (G_VARIANT_TYPE("as"));
         g_variant_builder_add (builder, "s", "actions");
         g_variant_builder_add (builder, "s", "body");
+        g_variant_builder_add (builder, "s", "persistence");
 
         reply = g_variant_new ("(as)", builder);
         g_clear_pointer (&builder, g_variant_builder_unref);
@@ -154,21 +156,22 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         GVariant *reply;
         GVariantIter i;
         char *appname, *iconname, *summary, *body, *message;
-        gint id;
+        int repl_id, id, timeout;
         gchar **actions;
+        GVariant *hints;
 
         g_variant_iter_init (&i, parameters);
         g_variant_iter_next (&i, "s", &appname);
-        g_variant_iter_next (&i, "u", &id);
+        g_variant_iter_next (&i, "u", &repl_id);
         g_variant_iter_next (&i, "s", &iconname);
         g_variant_iter_next (&i, "s", &summary);
         g_variant_iter_next (&i, "s", &body);
         g_variant_iter_next (&i, "^a&s", &actions);
-        //g_variant_iter_next (&i, "@a{?*}", &hints);
-        //g_variant_iter_next (&i, "i", &timeout);
+        g_variant_iter_next (&i, "@a{?*}", &hints);
+        g_variant_iter_next (&i, "i", &timeout);
 
         message = g_strdup_printf ("%s%s%s", summary, strlen (body) ? "\n" : "", body);
-        id = wfpanel_notify_int (message, sender, actions);
+        id = wfpanel_notify_int (message, sender, actions, timeout);
         g_free (message);
 
         reply = g_variant_new ("(u)", id);
@@ -328,7 +331,7 @@ static void show_message (NotifyWindow *nw, char *str)
 
     g_signal_connect (G_OBJECT (nw->popup), "button-press-event", G_CALLBACK (window_click), nw);
     gtk_widget_show_all (nw->popup);
-    if (!nw->critical && notify_timeout > 0) nw->hide_timer = g_timeout_add (notify_timeout * 1000, (GSourceFunc) hide_message_timeout, nw);
+    if (!nw->critical && nw->timeout > 0) nw->hide_timer = g_timeout_add (nw->timeout, (GSourceFunc) hide_message_timeout, nw);
 }
 
 /* Destroy a notification window and remove from list */
@@ -443,10 +446,11 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
 
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions)
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout)
 {
     NotifyWindow *nw;
     GList *item;
+    int tmax;
 
     // check for notifications being disabled
     if (!notifications) return 0;
@@ -483,7 +487,10 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
     nw->popup = NULL;
     nw->message = g_strdup (message);
     nw->shown = FALSE;
-    nw->critical = FALSE;
+    nw->critical = (timeout == 0) ? TRUE : FALSE;
+    tmax = notify_timeout * 1000;
+    if (timeout > -1 && timeout < tmax) tmax = timeout;
+    nw->timeout = tmax;
     nw->sender = sender ? g_strdup (sender) : NULL;
     if (!actions) nw->actions = NULL;
     else
@@ -514,7 +521,7 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
 
 int wfpanel_notify (const char *message)
 {
-    return wfpanel_notify_int (message, NULL, NULL);
+    return wfpanel_notify_int (message, NULL, NULL, -1);
 }
 
 int wfpanel_critical (const char *message)
