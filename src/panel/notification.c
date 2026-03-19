@@ -115,6 +115,7 @@ static const gchar introspection_xml[] =
 static void show_message (NotifyWindow *nw, char *str);
 static gboolean hide_message_timeout (NotifyWindow *nw);
 static void hide_message (NotifyWindow *nw, int reason);
+static void replace_message (int id, const char *message);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
 static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout);
@@ -171,7 +172,12 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_variant_iter_next (&i, "i", &timeout);
 
         message = g_strdup_printf ("%s%s%s", summary, strlen (body) ? "\n" : "", body);
-        id = wfpanel_notify_int (message, sender, actions, timeout);
+        if (repl_id)
+        {
+            replace_message (repl_id, message);
+            id = repl_id;
+        }
+        else id = wfpanel_notify_int (message, sender, actions, timeout);
         g_free (message);
 
         reply = g_variant_new ("(u)", id);
@@ -186,7 +192,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         wfpanel_notify_clear (id);
         g_dbus_method_invocation_return_value (invocation, NULL);
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
-	}
+    }
 }
 
 static GVariant *handle_get_property (GDBusConnection *, const gchar *sender, const gchar *object_path, const gchar *interface_name,
@@ -338,8 +344,8 @@ static void show_message (NotifyWindow *nw, char *str)
 
 static gboolean hide_message_timeout (NotifyWindow *nw)
 {
-	hide_message (nw, 1);
-	return FALSE;
+    hide_message (nw, 1);
+    return FALSE;
 }
 
 static void hide_message (NotifyWindow *nw, int reason)
@@ -366,6 +372,38 @@ static void hide_message (NotifyWindow *nw, int reason)
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
     g_free (nw);
+}
+
+static void replace_message (int id, const char *message)
+{
+    NotifyWindow *nw;
+    GtkWidget *wid;
+    GList *children, *item;
+
+    // loop through windows in the list, looking for the hash
+    for (item = nwins; item != NULL; item = item->next)
+    {
+        nw = (NotifyWindow *) item->data;
+        if (nw->seq == id)
+        {
+            g_free (nw->message);
+            nw->message = g_strdup (message);
+
+            wid = gtk_bin_get_child (GTK_BIN (nw->popup));
+            children = gtk_container_get_children (GTK_CONTAINER (wid));
+            item = children;
+            while (item)
+            {
+                if (GTK_IS_LABEL (item->data))
+                {
+                    gtk_label_set_text (GTK_LABEL (item->data), message);
+                    break;
+                }
+                item = item->next;
+            }
+            g_list_free (children);
+        }
+    }
 }
 
 /* Relocate notifications below the supplied item by the supplied vertical offset */
