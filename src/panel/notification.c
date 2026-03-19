@@ -303,7 +303,7 @@ static void show_message (NotifyWindow *nw, char *str)
             btn = gtk_button_new_with_label (nw->actions[nbtn * 2 + 1]);
             g_signal_connect (btn, "clicked", G_CALLBACK (action_button), nw);
             gtk_widget_set_name (btn, nw->actions[nbtn * 2]);
-            gtk_box_pack_start (GTK_BOX (bbox), btn, FALSE, FALSE, 0);
+            gtk_box_pack_end (GTK_BOX (bbox), btn, FALSE, FALSE, 0);
             nbtn++;
             if (!nw->actions[nbtn * 2]) break;
         }
