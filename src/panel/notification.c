@@ -48,8 +48,8 @@ typedef struct {
     gboolean shown;
     gboolean critical;
     int timeout;
-    gchar *sender;                  /* DBus only */
-    gchar **actions;                /* DBus only */
+    char *sender;                  /* DBus only */
+    char **actions;                /* DBus only */
 } NotifyWindow;
 
 
@@ -371,6 +371,18 @@ static void hide_message (NotifyWindow *nw, int reason)
     }
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
+    if (nw->sender) g_free (nw->sender);
+    if (nw->actions)
+    {
+		w = 0;
+		while (1)
+		{
+			if (nw->actions[w]) g_free (nw->actions[w]);
+			else break;
+			w++;
+		}
+		g_free (nw->actions);
+	}
     g_free (nw);
 }
 
