@@ -124,7 +124,7 @@ static void hide_message (NotifyWindow *nw, int reason);
 static void replace_message (int id, const char *message);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, const char *icon_name, GdkPixbuf *icon);
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon);
 
 /*----------------------------------------------------------------------------*/
 /* FreeDesktop notification DBus interface */
@@ -227,7 +227,6 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_free (message);
 
         g_free (app_name);
-        g_free (icon_name);
         g_free (summary);
         g_free (body);
         if (actions) g_free (actions);
@@ -456,6 +455,8 @@ static void hide_message (NotifyWindow *nw, int reason)
         }
         g_free (nw->actions);
     }
+    if (nw->icon_name) g_free (nw->icon_name);
+    if (nw->icon) g_object_unref (nw->icon);
     g_free (nw);
 }
 
@@ -569,7 +570,7 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
 
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, const char *icon_name, GdkPixbuf *icon)
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon)
 {
     NotifyWindow *nw;
     GList *item;
@@ -632,10 +633,8 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
         }
     }
 
-    nw->icon = NULL;
-    nw->icon_name = NULL;
-    if (icon) nw->icon = icon;
-    else if (icon_name) nw->icon_name = g_strdup (icon_name);
+    nw->icon = icon;
+    nw->icon_name = icon_name;
 
     // if the timer isn't running, show the notification immediately and start the timer
     if (interval_timer == 0)
