@@ -137,7 +137,7 @@ static void icon_free (guchar *data, gpointer)
 
 static GdkPixbuf *load_pixbuf_from_data (GVariant *value)
 {
-    GdkPixbuf *pixbuf = NULL;
+    GdkPixbuf *pixbuf = NULL, *pixbuf_s = NULL;
     GVariant *pix_v = NULL;
     int w, h, str, alpha, bps, ch;
     unsigned char *pixels;
@@ -149,8 +149,9 @@ static GdkPixbuf *load_pixbuf_from_data (GVariant *value)
     g_variant_unref (pix_v);
 
     pixbuf = gdk_pixbuf_new_from_data (pixels, GDK_COLORSPACE_RGB, alpha, bps, w, h, str, icon_free, NULL);
+    pixbuf_s = gdk_pixbuf_scale_simple (pixbuf, 48, 48, GDK_INTERP_BILINEAR);
 
-    return pixbuf;
+    return pixbuf_s;
 }
 
 static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
@@ -231,18 +232,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_free (icon_name);
         g_free (summary);
         g_free (body);
-
-        if (actions)
-        {
-            count = 0;
-            while (1)
-            {
-                if (actions[count]) g_free (actions[count]);
-                else break;
-                count++;
-            }
-            g_free (actions);
-        }
+        if (actions) g_free (actions);
 
         reply = g_variant_new ("(u)", id);
         g_dbus_method_invocation_return_value (invocation, reply);
@@ -346,6 +336,9 @@ static void show_message (NotifyWindow *nw, char *str)
     }
     else if (nw->icon)
     {
+        GtkWidget *image = gtk_image_new ();
+        set_image_from_pixbuf (image, nw->icon);
+        gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
     }
     else if (nw->icon_name)
     {
