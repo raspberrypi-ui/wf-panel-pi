@@ -65,7 +65,7 @@ static gint notify_timeout;
 static GtkWindow *panel;
 
 static GList *nwins = NULL;         /* List of current notifications */
-static int nseq = 0;                /* Sequence number for notifications */
+static int nseq = 1;                /* Sequence number for notifications */
 static gint interval_timer = 0;     /* Used to show windows one at a time */
 
 static guint owner_id;
@@ -544,7 +544,7 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
     nw->popup = NULL;
     nw->message = g_strdup (message);
     nw->shown = FALSE;
-    nw->critical = (timeout == 0) ? TRUE : FALSE;
+    nw->critical = FALSE;
     tmax = notify_timeout * 1000;
     if (timeout > -1 && timeout < tmax) tmax = timeout;
     nw->timeout = tmax;
@@ -610,6 +610,8 @@ int wfpanel_critical (const char *message)
     nw->message = g_strdup (message);
     nw->shown = FALSE;
     nw->critical = TRUE;
+    nw->timeout = 0;
+    nw->sender = NULL;
 
     // if the timer isn't running, show the notification immediately and start the timer
     if (interval_timer == 0)
