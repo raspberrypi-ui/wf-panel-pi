@@ -137,7 +137,7 @@ static void icon_free (guchar *data, gpointer)
 
 static GdkPixbuf *load_pixbuf_from_data (GVariant *value)
 {
-    GdkPixbuf *pixbuf = NULL, *pixbuf_s = NULL;
+    GdkPixbuf *pixbuf = NULL;
     GVariant *pix_v = NULL;
     int w, h, str, alpha, bps, ch;
     unsigned char *pixels;
@@ -149,9 +149,7 @@ static GdkPixbuf *load_pixbuf_from_data (GVariant *value)
     g_variant_unref (pix_v);
 
     pixbuf = gdk_pixbuf_new_from_data (pixels, GDK_COLORSPACE_RGB, alpha, bps, w, h, str, icon_free, NULL);
-    pixbuf_s = gdk_pixbuf_scale_simple (pixbuf, 48, 48, GDK_INTERP_BILINEAR);
-
-    return pixbuf_s;
+    return pixbuf;
 }
 
 static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
@@ -187,7 +185,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         GVariant *reply;
         GVariantIter i;
         char *app_name, *icon_name, *summary, *body, *message;
-        int repl_id, id, timeout, count;
+        int repl_id, id, timeout;
         gchar **actions;
         GVariant *hints, *value;
         GdkPixbuf *icon_pb = NULL;
@@ -305,11 +303,12 @@ static void closed_response (NotifyWindow *nw, int reason)
 
 static void show_message (NotifyWindow *nw, char *str)
 {
-    GtkWidget *box, *lbl, *bbox, *btn;
+    GtkWidget *box, *lbl, *bbox, *btn, *image;
     int dim, offset;
     char *fmt, *cptr;
     GList *item;
     NotifyWindow *nwl;
+    GdkPixbuf *pixbuf;
 
     /*
      * In order to get a window which looks exactly like a system tooltip, client-side decoration
@@ -331,18 +330,22 @@ static void show_message (NotifyWindow *nw, char *str)
 
     if (nw->critical)
     {
-        GtkWidget *image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DND);
+        image = gtk_image_new ();
+        set_taskbar_icon (image, "dialog-warning");
         gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
     }
     else if (nw->icon)
     {
-        GtkWidget *image = gtk_image_new ();
-        set_image_from_pixbuf (image, nw->icon);
+        image = gtk_image_new ();
+        dim = get_icon_size (image) * gtk_widget_get_scale_factor (image);
+		pixbuf = gdk_pixbuf_scale_simple (nw->icon, dim, dim, GDK_INTERP_BILINEAR);
+        set_image_from_pixbuf (image, pixbuf);
+        g_object_unref (pixbuf);
         gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
     }
     else if (nw->icon_name)
     {
-        GtkWidget *image = gtk_image_new ();
+        image = gtk_image_new ();
         set_taskbar_icon (image, nw->icon_name);
         gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
     }
@@ -680,6 +683,7 @@ int wfpanel_critical (const char *message)
     nw->critical = TRUE;
     nw->timeout = 0;
     nw->sender = NULL;
+    nw->actions = NULL;
     nw->icon = NULL;
     nw->icon_name = NULL;
 
