@@ -335,6 +335,7 @@ static int create_notification (const char *message, gboolean critical, const ch
 			// if hash matches a critical, do nothing with the new notification, otherwise hide the window
 			if (!critical && nw->critical) return 0;
 			hide_message (nw, CLOSE_REASON_UNDEFINED);
+			break;
         }
     }
 
