@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk/gtk.h>
 #include <gtk-layer-shell/gtk-layer-shell.h>
 #include "notification.h"
+#include "lxutils.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
@@ -50,6 +51,8 @@ typedef struct {
     int timeout;
     char *sender;                  /* DBus only */
     char **actions;                /* DBus only */
+    char *icon_name;
+    GdkPixbuf *icon;
 } NotifyWindow;
 
 #define DBUS_BUS_NAME       "org.freedesktop.Notifications"
@@ -121,11 +124,34 @@ static void hide_message (NotifyWindow *nw, int reason);
 static void replace_message (int id, const char *message);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout);
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, const char *icon_name, GdkPixbuf *icon);
 
 /*----------------------------------------------------------------------------*/
 /* FreeDesktop notification DBus interface */
 /*----------------------------------------------------------------------------*/
+
+static void icon_free (guchar *data, gpointer)
+{
+    g_free (data);
+}
+
+static GdkPixbuf *load_pixbuf_from_data (GVariant *value)
+{
+    GdkPixbuf *pixbuf = NULL;
+    GVariant *pix_v = NULL;
+    int w, h, str, alpha, bps, ch;
+    unsigned char *pixels;
+
+    if (g_strcmp0 (g_variant_get_type_string (value), "(iiibiiay)")) return NULL;
+
+    g_variant_get (value, "(iiibii@ay)", &w, &h, &str, &alpha, &bps, &ch, &pix_v);
+    pixels = (unsigned char *) g_memdup2 (g_variant_get_data (pix_v), g_variant_get_size (pix_v));
+    g_variant_unref (pix_v);
+
+    pixbuf = gdk_pixbuf_new_from_data (pixels, GDK_COLORSPACE_RGB, alpha, bps, w, h, str, icon_free, NULL);
+
+    return pixbuf;
+}
 
 static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
     const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
@@ -159,20 +185,38 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
     {
         GVariant *reply;
         GVariantIter i;
-        char *appname, *iconname, *summary, *body, *message;
-        int repl_id, id, timeout;
+        char *app_name, *icon_name, *summary, *body, *message;
+        int repl_id, id, timeout, count;
         gchar **actions;
-        GVariant *hints;
+        GVariant *hints, *value;
+        GdkPixbuf *icon_pb = NULL;
 
         g_variant_iter_init (&i, parameters);
-        g_variant_iter_next (&i, "s", &appname);
+        g_variant_iter_next (&i, "s", &app_name);
         g_variant_iter_next (&i, "u", &repl_id);
-        g_variant_iter_next (&i, "s", &iconname);
+        g_variant_iter_next (&i, "s", &icon_name);
         g_variant_iter_next (&i, "s", &summary);
         g_variant_iter_next (&i, "s", &body);
         g_variant_iter_next (&i, "^a&s", &actions);
         g_variant_iter_next (&i, "@a{?*}", &hints);
         g_variant_iter_next (&i, "i", &timeout);
+
+        // image-path hint overrides icon name
+        value = g_variant_lookup_value (hints, "image-path", G_VARIANT_TYPE_STRING);
+        if (value)
+        {
+            g_free (icon_name);
+            icon_name = g_variant_dup_string (value, NULL);
+            g_variant_unref (value);
+        }
+
+        // icon as raw data?
+        value = g_variant_lookup_value (hints, "image-data", G_VARIANT_TYPE ("(iiibiiay)"));
+        if (value)
+        {
+            icon_pb = load_pixbuf_from_data (value);
+            g_variant_unref (value);
+        }
 
         message = g_strdup_printf ("%s%s%s", summary, strlen (body) ? "\n" : "", body);
         if (repl_id)
@@ -180,8 +224,25 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
             replace_message (repl_id, message);
             id = repl_id;
         }
-        else id = wfpanel_notify_int (message, sender, actions, timeout);
+        else id = wfpanel_notify_int (message, sender, actions, timeout, icon_name, icon_pb);
         g_free (message);
+
+        g_free (app_name);
+        g_free (icon_name);
+        g_free (summary);
+        g_free (body);
+
+        if (actions)
+        {
+            count = 0;
+            while (1)
+            {
+                if (actions[count]) g_free (actions[count]);
+                else break;
+                count++;
+            }
+            g_free (actions);
+        }
 
         reply = g_variant_new ("(u)", id);
         g_dbus_method_invocation_return_value (invocation, reply);
@@ -281,6 +342,15 @@ static void show_message (NotifyWindow *nw, char *str)
     if (nw->critical)
     {
         GtkWidget *image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DND);
+        gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+    }
+    else if (nw->icon)
+    {
+    }
+    else if (nw->icon_name)
+    {
+        GtkWidget *image = gtk_image_new ();
+        set_taskbar_icon (image, nw->icon_name);
         gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
     }
 
@@ -503,7 +573,7 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
 
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout)
+static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, const char *icon_name, GdkPixbuf *icon)
 {
     NotifyWindow *nw;
     GList *item;
@@ -566,6 +636,11 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
         }
     }
 
+    nw->icon = NULL;
+    nw->icon_name = NULL;
+    if (icon) nw->icon = icon;
+    else if (icon_name) nw->icon_name = g_strdup (icon_name);
+
     // if the timer isn't running, show the notification immediately and start the timer
     if (interval_timer == 0)
     {
@@ -578,7 +653,7 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
 
 int wfpanel_notify (const char *message)
 {
-    return wfpanel_notify_int (message, NULL, NULL, -1);
+    return wfpanel_notify_int (message, NULL, NULL, -1, NULL, NULL);
 }
 
 int wfpanel_critical (const char *message)
@@ -612,6 +687,8 @@ int wfpanel_critical (const char *message)
     nw->critical = TRUE;
     nw->timeout = 0;
     nw->sender = NULL;
+    nw->icon = NULL;
+    nw->icon_name = NULL;
 
     // if the timer isn't running, show the notification immediately and start the timer
     if (interval_timer == 0)
