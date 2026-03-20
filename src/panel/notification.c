@@ -49,15 +49,20 @@ typedef struct {
     gboolean shown;
     gboolean critical;
     int timeout;
-    char *sender;                  /* DBus only */
-    char **actions;                /* DBus only */
-    char *icon_name;
-    GdkPixbuf *icon;
+    char *sender;                   /* DBus only - application which sent the notification */
+    char **actions;                 /* DBus only - button actions to be displayed */
+    char *icon_name;                /* DBus only - icon supplied as name or file */
+    GdkPixbuf *icon;                /* DBus only - icon supplied as serialised data */
 } NotifyWindow;
 
 #define DBUS_BUS_NAME       "org.freedesktop.Notifications"
 #define DBUS_OBJECT_PATH    "/org/freedesktop/Notifications"
 #define DBUS_INTERFACE_NAME "org.freedesktop.Notifications"
+
+#define CLOSE_REASON_EXPIRED    1
+#define CLOSE_REASON_DISMISSED  2
+#define CLOSE_REASON_CLOSED     3
+#define CLOSE_REASON_UNDEFINED  4
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -71,12 +76,10 @@ static GList *nwins = NULL;         /* List of current notifications */
 static int nseq = 1;                /* Sequence number for notifications */
 static gint interval_timer = 0;     /* Used to show windows one at a time */
 
-static guint owner_id;
-
-static GDBusConnection *dbusconn;
+static guint dbus_owner_id;
+static GDBusConnection *dbus_connection;
 
 static GDBusNodeInfo *introspection_data = NULL;
-
 static const gchar introspection_xml[] =
   "<node>"
   "  <interface name='org.freedesktop.Notifications'>"
@@ -118,39 +121,19 @@ static const gchar introspection_xml[] =
 /* Function prototypes */
 /*----------------------------------------------------------------------------*/
 
+static GdkPixbuf *load_pixbuf_from_data (GVariant *value);
+static void icon_free (guchar *data, gpointer);
 static void show_message (NotifyWindow *nw, char *str);
 static gboolean hide_message_timeout (NotifyWindow *nw);
 static void hide_message (NotifyWindow *nw, int reason);
 static void replace_message (int id, const char *message);
 static void update_positions (GList *item, int offset);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon);
+static int create_notification (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon);
 
 /*----------------------------------------------------------------------------*/
 /* FreeDesktop notification DBus interface */
 /*----------------------------------------------------------------------------*/
-
-static void icon_free (guchar *data, gpointer)
-{
-    g_free (data);
-}
-
-static GdkPixbuf *load_pixbuf_from_data (GVariant *value)
-{
-    GdkPixbuf *pixbuf = NULL;
-    GVariant *pix_v = NULL;
-    int w, h, str, alpha, bps, ch;
-    unsigned char *pixels;
-
-    if (g_strcmp0 (g_variant_get_type_string (value), "(iiibiiay)")) return NULL;
-
-    g_variant_get (value, "(iiibii@ay)", &w, &h, &str, &alpha, &bps, &ch, &pix_v);
-    pixels = (unsigned char *) g_memdup2 (g_variant_get_data (pix_v), g_variant_get_size (pix_v));
-    g_variant_unref (pix_v);
-
-    pixbuf = gdk_pixbuf_new_from_data (pixels, GDK_COLORSPACE_RGB, alpha, bps, w, h, str, icon_free, NULL);
-    return pixbuf;
-}
 
 static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
     const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
@@ -166,8 +149,8 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
 
     if (!g_strcmp0 (method_name, "GetCapabilities"))
     {
-        GVariantBuilder *builder;
         GVariant *reply;
+        GVariantBuilder *builder;
 
         builder = g_variant_builder_new (G_VARIANT_TYPE("as"));
         g_variant_builder_add (builder, "s", "actions");
@@ -200,7 +183,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_variant_iter_next (&i, "@a{?*}", &hints);
         g_variant_iter_next (&i, "i", &timeout);
 
-        // image-path hint overrides icon name
+        // image-path hint overrides icon name if both supplied
         value = g_variant_lookup_value (hints, "image-path", G_VARIANT_TYPE_STRING);
         if (value)
         {
@@ -223,7 +206,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
             replace_message (repl_id, message);
             id = repl_id;
         }
-        else id = wfpanel_notify_int (message, sender, actions, timeout, icon_name, icon_pb);
+        else id = create_notification (message, sender, actions, timeout, icon_name, icon_pb);
         g_free (message);
 
         g_free (app_name);
@@ -239,6 +222,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
     if (!g_strcmp0 (method_name, "CloseNotification"))
     {
         guint32 id;
+
         g_variant_get (parameters, "(u)", &id);
         wfpanel_notify_clear (id);
         g_dbus_method_invocation_return_value (invocation, NULL);
@@ -270,7 +254,7 @@ static void on_bus_acquired (GDBusConnection *connection, const gchar *, gpointe
 {
     g_dbus_connection_register_object (connection, DBUS_OBJECT_PATH, introspection_data->interfaces[0],
         &interface_vtable, user_data, NULL, NULL);
-    dbusconn = connection;
+    dbus_connection = connection;
 }
 
 static void on_name_acquired (GDBusConnection *, const gchar *, gpointer)
@@ -284,14 +268,34 @@ static void on_name_lost (GDBusConnection *, const gchar *, gpointer)
 static void action_button (GtkWidget *wid, NotifyWindow *nw)
 {
     GVariant *body = g_variant_new ("(us)", nw->seq, gtk_widget_get_name (wid));
-    g_dbus_connection_emit_signal (dbusconn, nw->sender, DBUS_OBJECT_PATH, DBUS_INTERFACE_NAME, "ActionInvoked", body, NULL);
-    hide_message (nw, 2);
+    g_dbus_connection_emit_signal (dbus_connection, nw->sender, DBUS_OBJECT_PATH, DBUS_INTERFACE_NAME, "ActionInvoked", body, NULL);
+    hide_message (nw, CLOSE_REASON_DISMISSED);
 }
 
 static void closed_response (NotifyWindow *nw, int reason)
 {
     GVariant *body = g_variant_new ("(uu)", nw->seq, reason);
-    g_dbus_connection_emit_signal (dbusconn, nw->sender, DBUS_OBJECT_PATH, DBUS_INTERFACE_NAME, "NotificationClosed", body, NULL);
+    g_dbus_connection_emit_signal (dbus_connection, nw->sender, DBUS_OBJECT_PATH, DBUS_INTERFACE_NAME, "NotificationClosed", body, NULL);
+}
+
+static GdkPixbuf *load_pixbuf_from_data (GVariant *value)
+{
+    GVariant *pix_v = NULL;
+    int w, h, str, alpha, bps, ch;
+    unsigned char *pixels;
+
+    if (g_strcmp0 (g_variant_get_type_string (value), "(iiibiiay)")) return NULL;
+
+    g_variant_get (value, "(iiibii@ay)", &w, &h, &str, &alpha, &bps, &ch, &pix_v);
+    pixels = (unsigned char *) g_memdup2 (g_variant_get_data (pix_v), g_variant_get_size (pix_v));
+    g_variant_unref (pix_v);
+
+    return gdk_pixbuf_new_from_data (pixels, GDK_COLORSPACE_RGB, alpha, bps, w, h, str, icon_free, NULL);
+}
+
+static void icon_free (guchar *data, gpointer)
+{
+    g_free (data);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -337,7 +341,7 @@ static void show_message (NotifyWindow *nw, char *str)
     {
         image = gtk_image_new ();
         dim = get_icon_size (image) * gtk_widget_get_scale_factor (image);
-		pixbuf = gdk_pixbuf_scale_simple (nw->icon, dim, dim, GDK_INTERP_BILINEAR);
+        pixbuf = gdk_pixbuf_scale_simple (nw->icon, dim, dim, GDK_INTERP_BILINEAR);
         set_image_from_pixbuf (image, pixbuf);
         g_object_unref (pixbuf);
         gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
@@ -420,7 +424,7 @@ static void show_message (NotifyWindow *nw, char *str)
 
 static gboolean hide_message_timeout (NotifyWindow *nw)
 {
-    hide_message (nw, 1);
+    hide_message (nw, CLOSE_REASON_EXPIRED);
     return FALSE;
 }
 
@@ -440,10 +444,13 @@ static void hide_message (NotifyWindow *nw, int reason)
 
     if (nw->hide_timer) g_source_remove (nw->hide_timer);
 
-    if (nw->sender && reason != -1) closed_response (nw, reason);
     nwins = g_list_remove (nwins, nw);
     g_free (nw->message);
-    if (nw->sender) g_free (nw->sender);
+    if (nw->sender)
+    {
+        if (reason != CLOSE_REASON_UNDEFINED) closed_response (nw, reason);
+        g_free (nw->sender);
+    }
     if (nw->actions)
     {
         w = 0;
@@ -510,7 +517,7 @@ static void update_positions (GList *item, int offset)
 
 static gboolean window_click (GtkWidget *, GdkEventButton *, NotifyWindow *nw)
 {
-    hide_message (nw, 2);
+    hide_message (nw, CLOSE_REASON_DISMISSED);
     return FALSE;
 }
 
@@ -563,18 +570,23 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
 
     // watch DBus for libnotify events
     introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
+    dbus_owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
         on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
 
     // set timer for initial display of notifications
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
 }
 
-static int wfpanel_notify_int (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon)
+int wfpanel_notify (const char *message)
+{
+    return create_notification (message, NULL, NULL, -1, NULL, NULL);
+}
+
+static int create_notification (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon)
 {
     NotifyWindow *nw;
     GList *item;
-    int tmax;
+    int tmax, count;
 
     // check for notifications being disabled
     if (!notifications) return 0;
@@ -590,7 +602,7 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
         {
             // if hash matches a critical, do nothing with the new notification, otherwise hide the window
             if (nw->critical) return -1;
-            else hide_message (nw, -1);
+            else hide_message (nw, CLOSE_REASON_UNDEFINED);
         }
     }
 
@@ -619,12 +631,12 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
     if (!actions) nw->actions = NULL;
     else
     {
-        int count = 0;
-        nw->actions = malloc (sizeof (gchar *));
+        count = 0;
+        nw->actions = malloc (sizeof (char *));
         nw->actions[count] = NULL;
         while (actions[count])
         {
-            nw->actions = realloc (nw->actions, ((count + 1) * 2 + 1) * sizeof (gchar *));
+            nw->actions = realloc (nw->actions, ((count + 1) * 2 + 1) * sizeof (char *));
             nw->actions[count] = g_strdup (actions[count]);
             count++;
             nw->actions[count] = g_strdup (actions[count]);
@@ -646,11 +658,6 @@ static int wfpanel_notify_int (const char *message, const char *sender, gchar **
     return nseq;
 }
 
-int wfpanel_notify (const char *message)
-{
-    return wfpanel_notify_int (message, NULL, NULL, -1, NULL, NULL);
-}
-
 int wfpanel_critical (const char *message)
 {
     NotifyWindow *nw;
@@ -664,7 +671,7 @@ int wfpanel_critical (const char *message)
     {
         // if hash matches, hide the window
         nw = (NotifyWindow *) item->data;
-        if (nw->hash == hash) hide_message (nw, -1);
+        if (nw->hash == hash) hide_message (nw, CLOSE_REASON_UNDEFINED);
     }
 
     // create a new notification window and add it to the front of the list
@@ -708,7 +715,7 @@ void wfpanel_notify_clear (int seq)
         nw = (NotifyWindow *) item->data;
         if (nw->seq == seq)
         {
-            hide_message (nw, 3);
+            hide_message (nw, CLOSE_REASON_CLOSED);
             return;
         }
     }
@@ -716,7 +723,7 @@ void wfpanel_notify_clear (int seq)
 
 void wfpanel_notify_close (void)
 {
-    g_bus_unown_name (owner_id);
+    g_bus_unown_name (dbus_owner_id);
     g_dbus_node_info_unref (introspection_data);
 }
 
