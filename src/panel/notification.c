@@ -75,7 +75,7 @@ static GtkWindow *panel;
 static GList *nwins = NULL;         /* List of current notifications */
 static unsigned int nseq = 1;       /* Sequence number for notifications */
 static gint interval_timer = 0;     /* Used to show windows one at a time */
-static int old_height;				/* Used when updating text in a live window */
+static int old_height;              /* Used when updating text in a live window */
 
 static guint dbus_owner_id;
 static GDBusConnection *dbus_connection;
@@ -199,13 +199,13 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
 
     if (!g_strcmp0 (method_name, "Notify"))
     {
-        GVariant *reply;
+        GVariant *reply, *hints, *value;
         GVariantIter i;
         char *app_name, *icon_name, *summary, *body, *message;
         unsigned int repl_id, id; 
         int timeout;
+        gboolean critical = FALSE;
         gchar **actions;
-        GVariant *hints, *value;
         GdkPixbuf *icon_pb = NULL;
 
         g_variant_iter_init (&i, parameters);
@@ -235,13 +235,20 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
             g_variant_unref (value);
         }
 
+        value = g_variant_lookup_value (hints, "urgency", G_VARIANT_TYPE_BYTE);
+        if (value)
+        {
+            if (g_variant_get_byte (value) == 2) critical = TRUE;
+            g_variant_unref (value);
+        }
+
         message = g_strdup_printf ("%s%s%s", summary, strlen (body) ? "\n" : "", body);
         if (repl_id)
         {
             replace_message (repl_id, message);
             id = repl_id;
         }
-        else id = create_notification (message, FALSE, sender, actions, timeout, icon_name, icon_pb);
+        else id = create_notification (message, critical, sender, actions, timeout, icon_name, icon_pb);
         g_free (message);
 
         g_free (app_name);
@@ -332,16 +339,16 @@ static int create_notification (const char *message, gboolean critical, const ch
         nw = (NotifyWindow *) item->data;
         if (nw->hash == hash)
         {
-			// if hash matches a critical, do nothing with the new notification, otherwise hide the window
-			if (!critical && nw->critical) return 0;
-			hide_message (nw, CLOSE_REASON_UNDEFINED);
-			break;
+            // if hash matches a critical, do nothing with the new notification, otherwise hide the window
+            if (!critical && nw->critical) return 0;
+            hide_message (nw, CLOSE_REASON_UNDEFINED);
+            break;
         }
     }
 
     // create a new notification window and add it to the front of the list, but after any criticals
     if (critical) item = nwins;
-	else for (item = nwins; item != NULL; item = item->next)
+    else for (item = nwins; item != NULL; item = item->next)
     {
         nw = (NotifyWindow *) item->data;
         if (!nw->critical) break;
@@ -361,10 +368,10 @@ static int create_notification (const char *message, gboolean critical, const ch
     if (critical) nw->timeout = 0;
     else
     {
-		tmax = notify_timeout * 1000;
-		if (timeout > -1 && timeout < tmax) tmax = timeout;
-		nw->timeout = tmax;
-	}
+        tmax = notify_timeout * 1000;
+        if (timeout > -1 && timeout < tmax) tmax = timeout;
+        nw->timeout = tmax;
+    }
     nw->sender = sender ? g_strdup (sender) : NULL;
     if (!actions) nw->actions = NULL;
     else
@@ -612,11 +619,11 @@ static void update_positions (GList *item, int offset)
 
 static gboolean update_on_replace (GList *item)
 {
-	int w, h;
+    int w, h;
     NotifyWindow *nw = (NotifyWindow *) item->data;
     gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
-	update_positions (item->next, h - old_height);
-	return FALSE;
+    update_positions (item->next, h - old_height);
+    return FALSE;
 }
 
 /* Handler for mouse click in notification window - closes window */
