@@ -73,8 +73,9 @@ static gint notify_timeout;
 static GtkWindow *panel;
 
 static GList *nwins = NULL;         /* List of current notifications */
-static int nseq = 1;                /* Sequence number for notifications */
+static unsigned int nseq = 1;       /* Sequence number for notifications */
 static gint interval_timer = 0;     /* Used to show windows one at a time */
+static int old_height;				/* Used when updating text in a live window */
 
 static guint dbus_owner_id;
 static GDBusConnection *dbus_connection;
@@ -121,22 +122,55 @@ static const gchar introspection_xml[] =
 /* Function prototypes */
 /*----------------------------------------------------------------------------*/
 
+static void on_bus_acquired (GDBusConnection *, const gchar *, gpointer);
+static void on_name_acquired (GDBusConnection *, const gchar *, gpointer);
+static void on_name_lost (GDBusConnection *, const gchar *, gpointer);
+static void handle_method_call (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GDBusMethodInvocation *, gpointer);
+static GVariant *handle_get_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GError **, gpointer);
+static gboolean handle_set_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GError **, gpointer);
+static void action_button (GtkWidget *wid, NotifyWindow *nw);
+static void closed_response (NotifyWindow *nw, int reason);
 static GdkPixbuf *load_pixbuf_from_data (GVariant *value);
 static void icon_free (guchar *data, gpointer);
+static int create_notification (const char *message, gboolean critical, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon);
 static void show_message (NotifyWindow *nw, char *str);
-static gboolean hide_message_timeout (NotifyWindow *nw);
 static void hide_message (NotifyWindow *nw, int reason);
 static void replace_message (int id, const char *message);
 static void update_positions (GList *item, int offset);
+static gboolean update_on_replace (GList *item);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
-static int create_notification (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon);
+static gboolean show_next (gpointer);
+static gboolean hide_message_timeout (NotifyWindow *nw);
 
 /*----------------------------------------------------------------------------*/
 /* FreeDesktop notification DBus interface */
 /*----------------------------------------------------------------------------*/
 
-static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
+static const GDBusInterfaceVTable interface_vtable =
+{
+    handle_method_call,
+    handle_get_property,
+    handle_set_property,
+    {0}
+};
+
+static void on_bus_acquired (GDBusConnection *connection, const gchar *, gpointer user_data)
+{
+    g_dbus_connection_register_object (connection, DBUS_OBJECT_PATH, introspection_data->interfaces[0],
+        &interface_vtable, user_data, NULL, NULL);
+    dbus_connection = connection;
+}
+
+static void on_name_acquired (GDBusConnection *, const gchar *, gpointer)
+{
+}
+
+static void on_name_lost (GDBusConnection *, const gchar *, gpointer)
+{
+}
+
+static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *, const gchar *,
+    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer)
 {
     if (!g_strcmp0 (method_name, "GetServerInformation"))
     {
@@ -168,7 +202,8 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         GVariant *reply;
         GVariantIter i;
         char *app_name, *icon_name, *summary, *body, *message;
-        int repl_id, id, timeout;
+        unsigned int repl_id, id; 
+        int timeout;
         gchar **actions;
         GVariant *hints, *value;
         GdkPixbuf *icon_pb = NULL;
@@ -206,7 +241,7 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
             replace_message (repl_id, message);
             id = repl_id;
         }
-        else id = create_notification (message, sender, actions, timeout, icon_name, icon_pb);
+        else id = create_notification (message, FALSE, sender, actions, timeout, icon_name, icon_pb);
         g_free (message);
 
         g_free (app_name);
@@ -229,40 +264,15 @@ static void handle_method_call (GDBusConnection *connection, const gchar *sender
         g_dbus_connection_flush (connection, NULL, NULL, NULL);
     }
 }
-#if 0
-static GVariant *handle_get_property (GDBusConnection *, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GError **error, gpointer user_data)
+
+static GVariant *handle_get_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GError **, gpointer )
 {
     return NULL;
 }
 
-static gboolean handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
+static gboolean handle_set_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GError **, gpointer )
 {
     return TRUE;
-}
-#endif
-static const GDBusInterfaceVTable interface_vtable =
-{
-    handle_method_call,
-    NULL, //handle_get_property,
-    NULL, //handle_set_property,
-    {0}
-};
-
-static void on_bus_acquired (GDBusConnection *connection, const gchar *, gpointer user_data)
-{
-    g_dbus_connection_register_object (connection, DBUS_OBJECT_PATH, introspection_data->interfaces[0],
-        &interface_vtable, user_data, NULL, NULL);
-    dbus_connection = connection;
-}
-
-static void on_name_acquired (GDBusConnection *, const gchar *, gpointer)
-{
-}
-
-static void on_name_lost (GDBusConnection *, const gchar *, gpointer)
-{
 }
 
 static void action_button (GtkWidget *wid, NotifyWindow *nw)
@@ -301,6 +311,89 @@ static void icon_free (guchar *data, gpointer)
 /*----------------------------------------------------------------------------*/
 /* Private functions */
 /*----------------------------------------------------------------------------*/
+
+/* Create a new notification data structure and add it to the list */
+
+static int create_notification (const char *message, gboolean critical, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon)
+{
+    NotifyWindow *nw;
+    GList *item;
+    int tmax, count;
+
+    // check for notifications being disabled - only allow criticals
+    if (!notifications && !critical) return 0;
+
+    // check to see if this notification is already in the list - just bump it to the top if so...
+    guint hash = g_str_hash (message);
+
+    // loop through windows in the list, looking for the hash
+    for (item = nwins; item != NULL; item = item->next)
+    {
+        nw = (NotifyWindow *) item->data;
+        if (nw->hash == hash)
+        {
+			// if hash matches a critical, do nothing with the new notification, otherwise hide the window
+			if (!critical && nw->critical) return 0;
+			hide_message (nw, CLOSE_REASON_UNDEFINED);
+        }
+    }
+
+    // create a new notification window and add it to the front of the list, but after any criticals
+    if (critical) item = nwins;
+	else for (item = nwins; item != NULL; item = item->next)
+    {
+        nw = (NotifyWindow *) item->data;
+        if (!nw->critical) break;
+    }
+    nw = g_new (NotifyWindow, 1);
+    nwins = g_list_insert_before (nwins, item, nw);
+
+    // set the sequence number for this notification
+    nseq++;
+    if (nseq == 0) nseq++;     // use 0 for invalid sequence code
+    nw->seq = nseq;
+    nw->hash = hash;
+    nw->popup = NULL;
+    nw->message = g_strdup (message);
+    nw->shown = FALSE;
+    nw->critical = critical;
+    if (critical) nw->timeout = 0;
+    else
+    {
+		tmax = notify_timeout * 1000;
+		if (timeout > -1 && timeout < tmax) tmax = timeout;
+		nw->timeout = tmax;
+	}
+    nw->sender = sender ? g_strdup (sender) : NULL;
+    if (!actions) nw->actions = NULL;
+    else
+    {
+        count = 0;
+        nw->actions = malloc (sizeof (char *));
+        nw->actions[count] = NULL;
+        while (actions[count])
+        {
+            nw->actions = realloc (nw->actions, ((count + 1) * 2 + 1) * sizeof (char *));
+            nw->actions[count] = g_strdup (actions[count]);
+            count++;
+            nw->actions[count] = g_strdup (actions[count]);
+            count++;
+            nw->actions[count] = NULL;
+        }
+    }
+
+    nw->icon = icon;
+    nw->icon_name = icon_name;
+
+    // if the timer isn't running, show the notification immediately and start the timer
+    if (interval_timer == 0)
+    {
+        show_next (NULL);
+        interval_timer = g_timeout_add (INTERVAL_MS, (GSourceFunc) show_next, NULL);
+    }
+
+    return nseq;
+}
 
 /* Create a notification window and position appropriately */
 
@@ -346,7 +439,7 @@ static void show_message (NotifyWindow *nw, char *str)
         g_object_unref (pixbuf);
         gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
     }
-    else if (nw->icon_name)
+    else if (nw->icon_name && strlen (nw->icon_name))
     {
         image = gtk_image_new ();
         set_taskbar_icon (image, nw->icon_name);
@@ -422,12 +515,6 @@ static void show_message (NotifyWindow *nw, char *str)
 
 /* Destroy a notification window and remove from list */
 
-static gboolean hide_message_timeout (NotifyWindow *nw)
-{
-    hide_message (nw, CLOSE_REASON_EXPIRED);
-    return FALSE;
-}
-
 static void hide_message (NotifyWindow *nw, int reason)
 {
     GList *item;
@@ -467,18 +554,24 @@ static void hide_message (NotifyWindow *nw, int reason)
     g_free (nw);
 }
 
+/* Replace the text of a displayed message - used by DBus only */
+
 static void replace_message (int id, const char *message)
 {
     NotifyWindow *nw;
     GtkWidget *wid;
     GList *children, *item, *wchild;
+    int w, h;
 
-    // loop through windows in the list, looking for the hash
+    // loop through windows in the list, looking for the sequence ID
     for (item = nwins; item != NULL; item = item->next)
     {
         nw = (NotifyWindow *) item->data;
         if (nw->seq == id)
         {
+            gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
+            old_height = h;
+
             g_free (nw->message);
             nw->message = g_strdup (message);
 
@@ -490,6 +583,7 @@ static void replace_message (int id, const char *message)
                 if (GTK_IS_LABEL (wchild->data))
                 {
                     gtk_label_set_text (GTK_LABEL (wchild->data), message);
+                    g_idle_add ((GSourceFunc) update_on_replace, item);
                     break;
                 }
                 wchild = wchild->next;
@@ -511,6 +605,17 @@ static void update_positions (GList *item, int offset)
         gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP,
             gtk_layer_get_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP) + offset);
     }
+}
+
+/* Idle handler called to update window positions after a replace message */
+
+static gboolean update_on_replace (GList *item)
+{
+	int w, h;
+    NotifyWindow *nw = (NotifyWindow *) item->data;
+    gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
+	update_positions (item->next, h - old_height);
+	return FALSE;
 }
 
 /* Handler for mouse click in notification window - closes window */
@@ -558,6 +663,14 @@ static gboolean show_next (gpointer)
     return FALSE;
 }
 
+/* Timer handler to hide window */
+
+static gboolean hide_message_timeout (NotifyWindow *nw)
+{
+    hide_message (nw, CLOSE_REASON_EXPIRED);
+    return FALSE;
+}
+
 /*----------------------------------------------------------------------------*/
 /* Public API */
 /*----------------------------------------------------------------------------*/
@@ -579,128 +692,12 @@ void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
 
 int wfpanel_notify (const char *message)
 {
-    return create_notification (message, NULL, NULL, -1, NULL, NULL);
-}
-
-static int create_notification (const char *message, const char *sender, gchar **actions, int timeout, char *icon_name, GdkPixbuf *icon)
-{
-    NotifyWindow *nw;
-    GList *item;
-    int tmax, count;
-
-    // check for notifications being disabled
-    if (!notifications) return 0;
-
-    // check to see if this notification is already in the list - just bump it to the top if so...
-    guint hash = g_str_hash (message);
-
-    // loop through windows in the list, looking for the hash
-    for (item = nwins; item != NULL; item = item->next)
-    {
-        nw = (NotifyWindow *) item->data;
-        if (nw->hash == hash)
-        {
-            // if hash matches a critical, do nothing with the new notification, otherwise hide the window
-            if (nw->critical) return -1;
-            else hide_message (nw, CLOSE_REASON_UNDEFINED);
-        }
-    }
-
-    // create a new notification window and add it to the front of the list, but after any criticals
-    for (item = nwins; item != NULL; item = item->next)
-    {
-        nw = (NotifyWindow *) item->data;
-        if (!nw->critical) break;
-    }
-    nw = g_new (NotifyWindow, 1);
-    nwins = g_list_insert_before (nwins, item, nw);
-
-    // set the sequence number for this notification
-    nseq++;
-    if (nseq == -1) nseq++;     // use -1 for invalid sequence code
-    nw->seq = nseq;
-    nw->hash = hash;
-    nw->popup = NULL;
-    nw->message = g_strdup (message);
-    nw->shown = FALSE;
-    nw->critical = FALSE;
-    tmax = notify_timeout * 1000;
-    if (timeout > -1 && timeout < tmax) tmax = timeout;
-    nw->timeout = tmax;
-    nw->sender = sender ? g_strdup (sender) : NULL;
-    if (!actions) nw->actions = NULL;
-    else
-    {
-        count = 0;
-        nw->actions = malloc (sizeof (char *));
-        nw->actions[count] = NULL;
-        while (actions[count])
-        {
-            nw->actions = realloc (nw->actions, ((count + 1) * 2 + 1) * sizeof (char *));
-            nw->actions[count] = g_strdup (actions[count]);
-            count++;
-            nw->actions[count] = g_strdup (actions[count]);
-            count++;
-            nw->actions[count] = NULL;
-        }
-    }
-
-    nw->icon = icon;
-    nw->icon_name = icon_name;
-
-    // if the timer isn't running, show the notification immediately and start the timer
-    if (interval_timer == 0)
-    {
-        show_next (NULL);
-        interval_timer = g_timeout_add (INTERVAL_MS, (GSourceFunc) show_next, NULL);
-    }
-
-    return nseq;
+    return create_notification (message, FALSE, NULL, NULL, -1, NULL, NULL);
 }
 
 int wfpanel_critical (const char *message)
 {
-    NotifyWindow *nw;
-    GList *item;
-
-    // check to see if this notification is already in the list - just bump it to the top if so...
-    guint hash = g_str_hash (message);
-
-    // loop through windows in the list, looking for the hash
-    for (item = nwins; item != NULL; item = item->next)
-    {
-        // if hash matches, hide the window
-        nw = (NotifyWindow *) item->data;
-        if (nw->hash == hash) hide_message (nw, CLOSE_REASON_UNDEFINED);
-    }
-
-    // create a new notification window and add it to the front of the list
-    nw = g_new (NotifyWindow, 1);
-    nwins = g_list_prepend (nwins, nw);
-
-    // set the sequence number for this notification
-    nseq++;
-    if (nseq == -1) nseq++;     // use -1 for invalid sequence code
-    nw->seq = nseq;
-    nw->hash = hash;
-    nw->popup = NULL;
-    nw->message = g_strdup (message);
-    nw->shown = FALSE;
-    nw->critical = TRUE;
-    nw->timeout = 0;
-    nw->sender = NULL;
-    nw->actions = NULL;
-    nw->icon = NULL;
-    nw->icon_name = NULL;
-
-    // if the timer isn't running, show the notification immediately and start the timer
-    if (interval_timer == 0)
-    {
-        show_next (NULL);
-        interval_timer = g_timeout_add (INTERVAL_MS, (GSourceFunc) show_next, NULL);
-    }
-
-    return nseq;
+    return create_notification (message, TRUE, NULL, NULL, -1, NULL, NULL);
 }
 
 void wfpanel_notify_clear (int seq)
