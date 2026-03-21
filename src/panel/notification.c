@@ -69,6 +69,7 @@ typedef struct {
 /*----------------------------------------------------------------------------*/
 
 static gboolean notifications;
+static gboolean libnotify;
 static gint notify_timeout;
 static GtkWindow *panel;
 
@@ -683,16 +684,21 @@ static gboolean hide_message_timeout (NotifyWindow *nw)
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win)
+void wfpanel_notify_init (gboolean enable, gboolean libn, gint timeout, GtkWindow *win)
 {
     notifications = enable;
+    libnotify = libn;
     notify_timeout = timeout;
     panel = win;
 
     // watch DBus for libnotify events
-    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    dbus_owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
-        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+    if (libnotify)
+    {
+        introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
+        dbus_owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
+            on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+    }
+    else wfpanel_notify_close ();
 
     // set timer for initial display of notifications
     interval_timer = g_timeout_add (INIT_MUTE, (GSourceFunc) show_next, NULL);
@@ -728,8 +734,10 @@ void wfpanel_notify_clear (int seq)
 
 void wfpanel_notify_close (void)
 {
-    g_bus_unown_name (dbus_owner_id);
-    g_dbus_node_info_unref (introspection_data);
+    if (dbus_owner_id) g_bus_unown_name (dbus_owner_id);
+    if (introspection_data) g_dbus_node_info_unref (introspection_data);
+    dbus_owner_id = 0;
+    introspection_data = NULL;
 }
 
 /* End of file */

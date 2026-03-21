@@ -12,6 +12,10 @@
 		<_short>Notification Timeout</_short>
 		<default>15</default>
 	</option>
+	<option name="notify_libnotify" type="bool">
+		<_short>Enable Libnotify Notifications</_short>
+		<default>true</default>
+	</option>
 	</group>
 	</plugin>
 </wf-panel-pi>

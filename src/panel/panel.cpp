@@ -202,7 +202,7 @@ class WayfirePanel::impl
         {
             panel_layer.set_callback(set_panel_layer);
             set_panel_layer(); // initial setting
-            wfpanel_notify_init (notifications, notify_timeout, window->gobj ());
+            wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
         }
 
         // Connect to draw signal to log first draw event using journald only if RPI_LOG_FIRST_DRAW is set
@@ -568,6 +568,7 @@ class WayfirePanel::impl
 
     WfOption <int> notify_timeout {"panel/notify_timeout"};
     WfOption <bool> notifications {"panel/notify_enable"};
+    WfOption <bool> libnotify {"panel/notify_libnotify"};
 
   public:
     impl(WayfireOutput *output, bool real) : output(output)
@@ -588,7 +589,7 @@ class WayfirePanel::impl
 
     void handle_config_reload()
     {
-        if (real) wfpanel_notify_init (notifications, notify_timeout, window->gobj ());
+        if (real) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
         for (auto& w : left_widgets)
         {
             w->handle_config_reload();

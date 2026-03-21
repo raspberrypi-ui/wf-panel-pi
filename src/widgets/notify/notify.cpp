@@ -1,8 +1,9 @@
 #include <widget.hpp>
 
 extern "C" {
-    static constexpr conf_table_t conf_table[3] = {
+    static constexpr conf_table_t conf_table[4] = {
         {CONF_TYPE_BOOL,    "enable",   N_("Show notifications"),               NULL},
+        {CONF_TYPE_BOOL,    "libnotify",N_("Show libnotify notifications"),     NULL},
         {CONF_TYPE_INT,     "timeout",  N_("Time before notifications close"),  NULL},
         {CONF_TYPE_NONE,    NULL,       NULL,                                   NULL}
     };
