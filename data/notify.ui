@@ -38,6 +38,7 @@
                   <object class="GtkSwitch" id="sw_notify">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Enable notification messages from the system</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -73,6 +74,7 @@
                   <object class="GtkSwitch" id="sw_libnotify">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Enable notification messages from applications</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -108,6 +110,7 @@
                   <object class="GtkSpinButton" id="spin_timeout">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Set how long a notification is displayed for in seconds</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
