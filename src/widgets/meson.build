@@ -1,5 +1,4 @@
 subdir('launchers')
-subdir('notify')
 subdir('spacing')
 subdir('tray')
 subdir('window-list')

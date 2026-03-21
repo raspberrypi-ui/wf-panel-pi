@@ -148,6 +148,18 @@ static void save_wfpanel_settings (void)
     g_free (user_config_file);
 }
 
+static void on_notify_toggle (GtkSwitch *btn, gpointer, gpointer user_data)
+{
+    notify = gtk_switch_get_active (btn);
+    save_wfpanel_settings ();
+}
+
+static void on_libnotify_toggle (GtkSwitch *btn, gpointer, gpointer user_data)
+{
+    libnotify = gtk_switch_get_active (btn);
+    save_wfpanel_settings ();
+}
+
 static void init_main_window (void)
 {
     GtkAdjustment *adj;
@@ -157,8 +169,12 @@ static void init_main_window (void)
     spin_timeout = (GtkWidget *) gtk_builder_get_object (builder, "spin_timeout");
 
     load_wfpanel_settings ();
+
     gtk_switch_set_active (GTK_SWITCH (sw_notify), notify);
+    g_signal_connect (sw_notify, "notify::active", G_CALLBACK (on_notify_toggle), NULL);
+
     gtk_switch_set_active (GTK_SWITCH (sw_libnotify), libnotify);
+    g_signal_connect (sw_libnotify, "notify::active", G_CALLBACK (on_libnotify_toggle), NULL);
 
     adj = gtk_adjustment_new (timeout, 0, 60, 5, 0, 0);
     gtk_spin_button_set_adjustment (GTK_SPIN_BUTTON (spin_timeout), adj);
