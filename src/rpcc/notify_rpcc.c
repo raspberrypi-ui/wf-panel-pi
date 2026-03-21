@@ -215,7 +215,7 @@ void init_plugin (GtkWidget *parent)
     textdomain (GETTEXT_PACKAGE);
 
     main_dlg = parent;
-    builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/notify.ui");
+    builder = gtk_builder_new_from_file (RPCC_DATA_DIR "/ui/notify.ui");
 
     init_main_window ();
 }
