@@ -405,9 +405,7 @@ class WayfirePanel::impl
 
     void do_notify_configure()
     {
-        this->get_window ().set_sensitive (false);
-        plugin_config_dialog ("notify");
-        this->get_window ().set_sensitive (true);
+        system ("rpcc notifications &");
     }
 
     void do_appearance_set()
