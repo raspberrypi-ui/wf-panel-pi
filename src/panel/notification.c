@@ -694,9 +694,12 @@ void wfpanel_notify_init (gboolean enable, gboolean libn, gint timeout, GtkWindo
     // watch DBus for libnotify events
     if (notifications && libnotify)
     {
-        introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-        dbus_owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
-            on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+        if (!dbus_owner_id)
+        {
+            introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
+            dbus_owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
+                on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+        }
     }
     else wfpanel_notify_close ();
 
