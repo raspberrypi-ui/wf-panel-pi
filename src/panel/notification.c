@@ -692,7 +692,7 @@ void wfpanel_notify_init (gboolean enable, gboolean libn, gint timeout, GtkWindo
     panel = win;
 
     // watch DBus for libnotify events
-    if (libnotify)
+    if (notifications && libnotify)
     {
         introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
         dbus_owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, DBUS_BUS_NAME, G_BUS_NAME_OWNER_FLAGS_NONE,
