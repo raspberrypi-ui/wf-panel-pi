@@ -657,7 +657,11 @@ class WayfirePanel::impl
             for (try_mon = gdk_display_get_n_monitors (dpy) - 1; try_mon >= 0; try_mon--)
             {
                 mon = gdk_display_get_monitor (dpy, try_mon);
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
                 char *mname = gdk_screen_get_monitor_plug_name (scr, try_mon);
+#pragma GCC diagnostic pop
                 if (!g_strcmp0 (mname, mnumstr) && mon)
                 {
                     g_free (mname);
