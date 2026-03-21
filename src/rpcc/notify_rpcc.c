@@ -37,6 +37,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Macros                                                                     */
 /*----------------------------------------------------------------------------*/
 
+#define TIMEOUT_MS 500
+
 /*----------------------------------------------------------------------------*/
 /* Globals                                                                    */
 /*----------------------------------------------------------------------------*/
@@ -48,6 +50,7 @@ GtkWidget *main_dlg;
 static GtkWidget *sw_notify, *sw_libnotify, *spin_timeout;
 static gboolean notify, libnotify;
 static int timeout;
+static int write_timer;
 
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */
@@ -165,6 +168,20 @@ static void on_libnotify_toggle (GtkSwitch *btn, gpointer, gpointer)
     save_wfpanel_settings ();
 }
 
+static gboolean timeout_handler (gpointer data)
+{
+    timeout = gtk_spin_button_get_value (GTK_SPIN_BUTTON (data));
+    save_wfpanel_settings ();
+    write_timer = 0;
+    return FALSE;
+}
+
+static void on_timeout_changed (GtkSpinButton *spin, gpointer)
+{
+    if (write_timer) g_source_remove (write_timer);
+    write_timer = g_timeout_add (TIMEOUT_MS, timeout_handler, spin);
+}
+
 static void init_main_window (void)
 {
     GtkAdjustment *adj;
@@ -183,6 +200,7 @@ static void init_main_window (void)
 
     adj = gtk_adjustment_new (timeout, 0, 60, 5, 0, 0);
     gtk_spin_button_set_adjustment (GTK_SPIN_BUTTON (spin_timeout), adj);
+    g_signal_connect (spin_timeout, "value-changed", G_CALLBACK (on_timeout_changed), NULL);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -204,7 +222,8 @@ void init_plugin (GtkWidget *parent)
 
 int plugin_tabs (void)
 {
-    return 1;
+    if (getenv ("WAYLAND_DISPLAY")) return 1;
+    else return 0;
 }
 
 const char *tab_name (int tab)
