@@ -148,13 +148,18 @@ static void save_wfpanel_settings (void)
     g_free (user_config_file);
 }
 
-static void on_notify_toggle (GtkSwitch *btn, gpointer, gpointer user_data)
+static void on_notify_toggle (GtkSwitch *btn, gpointer, gpointer)
 {
     notify = gtk_switch_get_active (btn);
-    save_wfpanel_settings ();
+    if (!notify && libnotify)
+    {
+        libnotify = FALSE;
+        gtk_switch_set_active (GTK_SWITCH (sw_libnotify), libnotify);
+    }
+    else save_wfpanel_settings ();
 }
 
-static void on_libnotify_toggle (GtkSwitch *btn, gpointer, gpointer user_data)
+static void on_libnotify_toggle (GtkSwitch *btn, gpointer, gpointer)
 {
     libnotify = gtk_switch_get_active (btn);
     save_wfpanel_settings ();
