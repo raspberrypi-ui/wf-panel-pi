@@ -11,8 +11,6 @@ project(
     ],
 )
 
-add_global_arguments('-Wno-unused-result', language : 'c')
-
 add_project_arguments(['-Wno-pedantic', '-Wno-unused-parameter', '-Wno-parentheses'], language: 'cpp')
 add_project_arguments('-D_GNU_SOURCE', language : [ 'c', 'cpp' ])
 
@@ -22,8 +20,6 @@ applications_dir = join_paths(share_dir, 'applications')
 metadata_dir = join_paths(resource_dir, 'metadata')
 ui_dir = join_paths(resource_dir, 'ui')
 sysconf_dir = join_paths(get_option('prefix'), get_option('sysconfdir'))
-presource_dir = join_paths(share_dir, 'rpcc')
-pui_dir = join_paths(presource_dir, 'ui')
 
 gettext_package = meson.project_name()
 
