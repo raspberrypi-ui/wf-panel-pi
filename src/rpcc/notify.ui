@@ -110,7 +110,7 @@
                   <object class="GtkSpinButton" id="spin_timeout">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="tooltip-text" translatable="yes">Set how long a notification is displayed for in seconds</property>
+                    <property name="tooltip-text" translatable="yes">Set how long a notification is displayed for in seconds - set to zero to persist until clicked</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
