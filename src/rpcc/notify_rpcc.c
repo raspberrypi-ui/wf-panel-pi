@@ -228,7 +228,7 @@ const char *tab_name (int tab)
 {
     switch (tab)
     {
-        case 0 : return C_("tab", "Notifications");
+        case 0 : return _("Notifications");
         default : return _("No such tab");
     }
 }

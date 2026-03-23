@@ -1,4 +1,4 @@
-plugin_name = 'rpcc_notify'
+plugin_name = 'rpcc_wpnotify'
 
 sources = files (
     'notify_rpcc.c'
