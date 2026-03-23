@@ -4,3 +4,4 @@ incdir = include_directories('api/wf-panel-pi')
 
 subdir('panel')
 subdir('widgets')
+subdir('rpcc')

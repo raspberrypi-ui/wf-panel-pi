@@ -796,7 +796,8 @@ static gboolean handle_button_release (GtkWidget *widget, GdkEventButton *event,
 
     switch (event->button)
     {
-        case 1:     activate_app (widget, win->handle);
+        case 1:     if (win->state & STATE_ACTIVATED) minimise_app (widget, win->handle);
+                    else activate_app (widget, win->handle);
                     return FALSE;
 
         case 3:     popup_menu (widget, userdata);

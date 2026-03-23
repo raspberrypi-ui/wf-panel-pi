@@ -28,7 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
 
-extern void wfpanel_notify_init (gboolean enable, gint timeout, GtkWindow *win);
+extern void wfpanel_notify_init (gboolean enable, gboolean libn, gint timeout, GtkWindow *win);
 extern int wfpanel_notify (const char *message);
 extern int wfpanel_critical (const char *message);
 extern void wfpanel_notify_clear (int seq);

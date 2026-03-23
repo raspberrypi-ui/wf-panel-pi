@@ -92,11 +92,14 @@ msgstr "Launcher"
 
 #: ../src/widgets/notify/notify.cpp:5
 msgid "Show notifications"
-msgstr "Show Notifications"
+msgstr "Show Notifications:"
+
+msgid "Show application notifications"
+msgstr "Show Application Notifications:"
 
 #: ../src/widgets/notify/notify.cpp:6
 msgid "Time before notifications close"
-msgstr "Time before Notifications Close"
+msgstr "Notification Timeout:"
 
 #: ../src/widgets/notify/notify.cpp:10
 msgid "Notifications"
