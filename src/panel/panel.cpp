@@ -133,8 +133,6 @@ class WayfirePanel::impl
     WfOption <std::string> left_widgets_opt {"panel/widgets_left"};
     WfOption <std::string> right_widgets_opt {"panel/widgets_right"};
     WfOption <std::string> dock_widgets_opt {"panel/dock_widgets"};
-    WfOption <int> notify_timeout {"panel/notify_timeout"};
-    WfOption <bool> notifications {"panel/notify_enable"};
 
     std::function<void()> set_panel_layer = [=] ()
     {
