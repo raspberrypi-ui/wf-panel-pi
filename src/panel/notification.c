@@ -408,7 +408,7 @@ static int create_notification (const char *message, gboolean critical, const ch
 
 static void show_message (NotifyWindow *nw, char *str)
 {
-    GtkWidget *box, *lbl, *bbox, *btn, *image;
+    GtkWidget *box, *lbl, *bbox, *btn, *image, *hbox, *ibox;
     int dim, offset;
     char *fmt, *cptr;
     GList *item;
@@ -432,29 +432,26 @@ static void show_message (NotifyWindow *nw, char *str)
 
     box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     gtk_container_add (GTK_CONTAINER (nw->popup), box);
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+    gtk_container_add (GTK_CONTAINER (box), hbox);
 
-    if (nw->critical)
+    if (nw->critical || nw->icon || (nw->icon_name && strlen (nw->icon_name)))
     {
         image = gtk_image_new ();
-        set_taskbar_icon (image, "dialog-warning");
-        gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
-    }
-    else if (nw->icon)
-    {
-        image = gtk_image_new ();
-        dim = get_icon_size (image) * gtk_widget_get_scale_factor (image);
-        pixbuf = gdk_pixbuf_scale_simple (nw->icon, dim, dim, GDK_INTERP_BILINEAR);
-        set_image_from_pixbuf (image, pixbuf);
-        g_object_unref (pixbuf);
-        gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
-    }
-    else if (nw->icon_name && strlen (nw->icon_name))
-    {
-        image = gtk_image_new ();
-        set_taskbar_icon (image, nw->icon_name);
-        gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
-    }
+        ibox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
+        gtk_box_pack_start (GTK_BOX (ibox), image, FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (hbox), ibox, FALSE, FALSE, 0);
 
+        if (nw->critical) set_taskbar_icon (image, "dialog-warning");
+        else if (nw->icon)
+        {
+            dim = get_icon_size (image) * gtk_widget_get_scale_factor (image);
+            pixbuf = gdk_pixbuf_scale_simple (nw->icon, dim, dim, GDK_INTERP_BILINEAR);
+            set_image_from_pixbuf (image, pixbuf);
+            g_object_unref (pixbuf);
+        }
+        else if (nw->icon_name && strlen (nw->icon_name)) set_taskbar_icon (image, nw->icon_name);
+    }
     fmt = g_strcompress (str);
 
     // setting gtk_label_set_max_width_chars looks awful, so we have to do this...
@@ -470,7 +467,7 @@ static void show_message (NotifyWindow *nw, char *str)
 
     lbl = gtk_label_new (fmt);
     gtk_label_set_justify (GTK_LABEL (lbl), GTK_JUSTIFY_CENTER);
-    gtk_box_pack_start (GTK_BOX (box), lbl, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), lbl, FALSE, FALSE, 0);
     g_free (fmt);
 
     if (nw->actions != NULL && nw->actions[0] != NULL)
@@ -585,7 +582,10 @@ static void replace_message (int id, const char *message)
             nw->message = g_strdup (message);
 
             wid = gtk_bin_get_child (GTK_BIN (nw->popup));
-            children = gtk_container_get_children (GTK_CONTAINER (wid));
+            wchild = gtk_container_get_children (GTK_CONTAINER (wid));
+            children = gtk_container_get_children (GTK_CONTAINER (wchild->data));
+            g_list_free (wchild);
+
             wchild = children;
             while (wchild)
             {
