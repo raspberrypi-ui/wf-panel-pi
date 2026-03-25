@@ -505,16 +505,17 @@ static void show_message (NotifyWindow *nw, char *str)
     }
 
     // layer shell setup
-    gtk_layer_init_for_window (GTK_WINDOW(nw->popup));
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_BOTTOM, FALSE);
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_LEFT, FALSE);
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
-    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, offset);
-    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
-    gtk_layer_set_monitor (GTK_WINDOW(nw->popup), gtk_layer_get_monitor (panel));
-
-    g_signal_connect (G_OBJECT (nw->popup), "button-press-event", G_CALLBACK (window_click), nw);
+    gtk_layer_init_for_window (GTK_WINDOW (nw->popup));
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_BOTTOM, FALSE);
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_LEFT, FALSE);
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
+    gtk_layer_set_margin (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_TOP, offset);
+    gtk_layer_set_margin (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
+    gtk_layer_set_monitor (GTK_WINDOW (nw->popup), gtk_layer_get_monitor (panel));
+    gtk_layer_set_layer (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_namespace (GTK_WINDOW (nw->popup), "notification");
+    g_signal_connect (G_OBJECT (nw->popup), "button-release-event", G_CALLBACK (window_click), nw);
     gtk_widget_show_all (nw->popup);
     if (!nw->critical && nw->timeout > 0) nw->hide_timer = g_timeout_add (nw->timeout, (GSourceFunc) hide_message_timeout, nw);
 }
