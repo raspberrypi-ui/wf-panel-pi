@@ -427,7 +427,7 @@ static void show_message (NotifyWindow *nw, char *str)
      */
     nw->popup = gtk_window_new (GTK_WINDOW_POPUP + 1);
     if (!nw->popup) nw->popup = gtk_window_new (GTK_WINDOW_POPUP);
-    gtk_window_set_type_hint (GTK_WINDOW (nw->popup), GDK_WINDOW_TYPE_HINT_TOOLTIP);
+    gtk_window_set_type_hint (GTK_WINDOW (nw->popup), GDK_WINDOW_TYPE_HINT_NOTIFICATION);
     gtk_window_set_resizable (GTK_WINDOW (nw->popup), FALSE);
 
     GtkStyleContext *context = gtk_widget_get_style_context (nw->popup);
