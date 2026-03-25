@@ -59,7 +59,7 @@ static void edit_launchers (const char *name, gboolean add)
 
     // strip .desktop suffix
     str = g_strdup (name);
-    *strrchr (str, '.') = 0;
+    if (strstr (str, ".desktop")) *strrchr (str, '.') = 0;
 
     // prepend to list if adding
     if (add) new_list = g_strdup (str);
