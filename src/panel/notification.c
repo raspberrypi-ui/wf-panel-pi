@@ -132,7 +132,7 @@ static void on_name_lost (GDBusConnection *, const gchar *, gpointer);
 static void handle_method_call (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GDBusMethodInvocation *, gpointer);
 static GVariant *handle_get_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GError **, gpointer);
 static gboolean handle_set_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GError **, gpointer);
-static void action_button (GtkWidget *wid, NotifyWindow *nw);
+static gboolean action_button (GtkWidget *wid, GdkEventButton *, NotifyWindow *nw);
 static void closed_response (NotifyWindow *nw, int reason);
 static GdkPixbuf *load_pixbuf_from_data (GVariant *value);
 static void icon_free (guchar *data, gpointer);
@@ -286,11 +286,12 @@ static gboolean handle_set_property (GDBusConnection *, const gchar *, const gch
     return TRUE;
 }
 
-static void action_button (GtkWidget *wid, NotifyWindow *nw)
+static gboolean action_button (GtkWidget *wid, GdkEventButton *, NotifyWindow *nw)
 {
     GVariant *body = g_variant_new ("(us)", nw->seq, gtk_widget_get_name (wid));
     g_dbus_connection_emit_signal (dbus_connection, nw->sender, DBUS_OBJECT_PATH, DBUS_INTERFACE_NAME, "ActionInvoked", body, NULL);
     hide_message (nw, CLOSE_REASON_DISMISSED);
+    return FALSE;
 }
 
 static void closed_response (NotifyWindow *nw, int reason)
@@ -483,7 +484,7 @@ static void show_message (NotifyWindow *nw, char *str)
         while (1)
         {
             btn = gtk_button_new_with_label (nw->actions[nbtn * 2 + 1]);
-            g_signal_connect (btn, "clicked", G_CALLBACK (action_button), nw);
+            g_signal_connect (btn, "button-release-event", G_CALLBACK (action_button), nw);
             gtk_widget_set_name (btn, nw->actions[nbtn * 2]);
             gtk_box_pack_start (GTK_BOX (bbox), btn, FALSE, FALSE, 0);
             nbtn++;
@@ -512,16 +513,17 @@ static void show_message (NotifyWindow *nw, char *str)
     }
 
     // layer shell setup
-    gtk_layer_init_for_window (GTK_WINDOW(nw->popup));
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_BOTTOM, FALSE);
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_LEFT, FALSE);
-    gtk_layer_set_anchor (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
-    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP, offset);
-    gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
-    gtk_layer_set_monitor (GTK_WINDOW(nw->popup), gtk_layer_get_monitor (panel));
-
-    g_signal_connect (G_OBJECT (nw->popup), "button-press-event", G_CALLBACK (window_click), nw);
+    gtk_layer_init_for_window (GTK_WINDOW (nw->popup));
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_BOTTOM, FALSE);
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_LEFT, FALSE);
+    gtk_layer_set_anchor (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
+    gtk_layer_set_margin (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_TOP, offset);
+    gtk_layer_set_margin (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_RIGHT, SPACING);
+    gtk_layer_set_monitor (GTK_WINDOW (nw->popup), gtk_layer_get_monitor (panel));
+    gtk_layer_set_layer (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_LAYER_TOP);
+    gtk_layer_set_namespace (GTK_WINDOW (nw->popup), "notification");
+    g_signal_connect (G_OBJECT (nw->popup), "button-release-event", G_CALLBACK (window_click), nw);
     gtk_widget_show_all (nw->popup);
     if (!nw->critical && nw->timeout > 0) nw->hide_timer = g_timeout_add (nw->timeout, (GSourceFunc) hide_message_timeout, nw);
 }
