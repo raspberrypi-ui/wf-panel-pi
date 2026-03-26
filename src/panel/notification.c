@@ -141,6 +141,7 @@ static void show_message (NotifyWindow *nw, char *str);
 static void hide_message (NotifyWindow *nw, int reason);
 static void replace_message (int id, const char *message);
 static void update_positions (GList *item, int offset);
+static gboolean set_width (gpointer);
 static gboolean update_on_replace (GList *item);
 static gboolean window_click (GtkWidget *widget, GdkEventButton *event, NotifyWindow *nw);
 static gboolean show_next (gpointer);
@@ -471,7 +472,7 @@ static void show_message (NotifyWindow *nw, char *str)
 
     lbl = gtk_label_new (fmt);
     gtk_label_set_justify (GTK_LABEL (lbl), GTK_JUSTIFY_CENTER);
-    gtk_box_pack_start (GTK_BOX (hbox), lbl, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), lbl, TRUE, TRUE, 0);
     g_free (fmt);
 
     if (nw->actions != NULL && nw->actions[0] != NULL)
@@ -620,9 +621,41 @@ static void update_positions (GList *item, int offset)
     for (; item != NULL; item = item->next)
     {
         nw = (NotifyWindow *) item->data;
-        gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP,
-            gtk_layer_get_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP) + offset);
+        if (nw->popup && GTK_IS_WINDOW (nw->popup))
+        {
+            gtk_layer_set_margin (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_TOP,
+                gtk_layer_get_margin (GTK_WINDOW (nw->popup), GTK_LAYER_SHELL_EDGE_TOP) + offset);
+        }
     }
+}
+
+/* Set the width of all displayed notification windows to the maximum required by any */
+
+static gboolean set_width (gpointer)
+{
+    NotifyWindow *nw;
+    GList *item;
+    int w, h, max = 0;
+
+    for (item = nwins; item != NULL; item = item->next)
+    {
+        nw = (NotifyWindow *) item->data;
+        if (nw->popup && GTK_IS_WINDOW (nw->popup))
+        {
+            gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
+            if (w > max) max = w;
+        }
+    }
+
+    for (item = nwins; item != NULL; item = item->next)
+    {
+        nw = (NotifyWindow *) item->data;
+        if (nw->popup && GTK_IS_WINDOW (nw->popup))
+        {
+            gtk_window_set_default_size (GTK_WINDOW (nw->popup), max, -1);
+        }
+    }
+    return FALSE;
 }
 
 /* Idle handler called to update window positions after a replace message */
@@ -669,6 +702,7 @@ static gboolean show_next (gpointer)
             // shuffle existing notifications down
             gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
             update_positions (item->next, h + SPACING);
+            g_idle_add ((GSourceFunc) set_width, NULL);
 
             // if there is a newer notification, re-call the timer else stop
             if (item->prev) interval_timer = g_timeout_add (INTERVAL_MS, (GSourceFunc) show_next, NULL);
