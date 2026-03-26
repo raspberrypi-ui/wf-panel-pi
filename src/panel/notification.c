@@ -659,6 +659,7 @@ static gboolean update_on_replace (GList *item)
     NotifyWindow *nw = (NotifyWindow *) item->data;
     gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
     update_positions (item->next, h - old_height);
+    set_width (NULL);
     return FALSE;
 }
 
