@@ -61,9 +61,7 @@ static void edit_launchers (const char *name, gboolean add)
     str = g_strdup (name);
     if (strstr (str, ".desktop")) *strrchr (str, '.') = 0;
 
-    // prepend to list if adding
-    if (add) new_list = g_strdup (str);
-    else new_list = NULL;
+    new_list = NULL;
 
     // remove item from elsewhere in list
     tok = strtok (list, " ");
@@ -80,6 +78,18 @@ static void edit_launchers (const char *name, gboolean add)
             else new_list = g_strdup_printf ("%s", tok);
         }
         tok = strtok (NULL, " ");
+    }
+
+    // append to list if adding
+    if (add)
+    {
+        if (new_list)
+        {
+                tmp = g_strdup_printf ("%s %s", new_list, str);
+                g_free (new_list);
+                new_list = tmp;
+        }
+        else new_list = g_strdup_printf ("%s", str);
     }
 
     g_key_file_set_string (kf, "panel", "launchers", new_list ? new_list : "");
