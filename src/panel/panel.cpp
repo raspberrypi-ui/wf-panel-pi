@@ -233,8 +233,8 @@ class WayfirePanel::impl
             gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 1);
             gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
         }
-        monitor_num.set_callback (update_panels);
-        dock_monitor_num.set_callback (update_panels);
+        if (!dock) monitor_num.set_callback (update_panels);
+        else dock_monitor_num.set_callback (update_panels);
 
         window->set_name (dock ? "DockToplevel" : "PanelToplevel");
 
@@ -633,7 +633,7 @@ class WayfirePanel::impl
         GdkScreen *scr = gdk_display_get_default_screen (dpy);
         GdkMonitor *mon = NULL;
         int try_mon;
-        const char *mnumstr = ((std::string) monitor_num).c_str();
+        const char *mnumstr = dock ? ((std::string) dock_monitor_num).c_str() : ((std::string) monitor_num).c_str();
 
         if (strlen (mnumstr) == 1 && sscanf (mnumstr, "%d", &try_mon) == 1)
         {
@@ -745,12 +745,13 @@ void WayfirePanelApp::update_panels ()
     priv->dummies.clear ();
 
     int mon_num = priv->panel->set_monitor ();
-    priv->dock->set_monitor ();
+    int dmon_num = priv->dock->set_monitor ();
 
     auto mon = Gdk::Display::get_default()->get_monitor (mon_num);
+    auto dmon = Gdk::Display::get_default()->get_monitor (dmon_num);
     for (auto& p : priv->outputs)
     {
-        if (p->monitor != mon)
+        if (p->monitor != mon && p->monitor != dmon)
             priv->dummies.push_back (std::make_unique<WayfirePanel> (p, false, false));
     }
 }
