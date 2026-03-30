@@ -130,6 +130,7 @@ class WayfirePanel::impl
     WfOption <int> minimal_panel_height {"panel/minimal_height"};
     WfOption <std::string> css_path {"panel/css_path"};
     WfOption <std::string> monitor_num {"panel/monitor"};
+    WfOption <std::string> dock_monitor_num {"panel/dock_monitor"};
     WfOption <std::string> left_widgets_opt {"panel/widgets_left"};
     WfOption <std::string> right_widgets_opt {"panel/widgets_right"};
     WfOption <std::string> dock_widgets_opt {"panel/dock_widgets"};
@@ -233,6 +234,7 @@ class WayfirePanel::impl
             gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
         }
         monitor_num.set_callback (update_panels);
+        dock_monitor_num.set_callback (update_panels);
 
         window->set_name (dock ? "DockToplevel" : "PanelToplevel");
 

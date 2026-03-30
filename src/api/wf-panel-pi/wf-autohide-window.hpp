@@ -85,6 +85,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     bool dock;
 
     WfOption<std::string> position;
+    WfOption<std::string> dposition;
     std::string last_position;
     void update_position();
 

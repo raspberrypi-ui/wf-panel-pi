@@ -113,6 +113,22 @@
 			<_name>Background</_name>
 		</desc>
 	</option>
+	<option name="dock_monitor" type="string">
+		<_short>Monitor for Dock</_short>
+		<default>0</default>
+	</option>
+	<option name="dock_position" type="string">
+		<_short>Dock Position</_short>
+		<default>bottom</default>
+		<desc>
+			<value>top</value>
+			<_name>Top</_name>
+		</desc>
+		<desc>
+			<value>bottom</value>
+			<_name>Bottom</_name>
+		</desc>
+	</option>
 	</group>
 	<group>
 	<_short>Notifications</_short>
