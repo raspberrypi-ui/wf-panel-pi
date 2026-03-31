@@ -152,6 +152,7 @@ static void save_wfpanel_settings (void)
 static void on_notify_toggle (GtkSwitch *btn, gpointer, gpointer)
 {
     notify = gtk_switch_get_active (btn);
+    gtk_widget_set_sensitive (sw_libnotify, notify);
     if (!notify && libnotify)
     {
         libnotify = FALSE;
@@ -194,6 +195,7 @@ static void init_main_window (void)
     g_signal_connect (sw_notify, "notify::active", G_CALLBACK (on_notify_toggle), NULL);
 
     gtk_switch_set_active (GTK_SWITCH (sw_libnotify), libnotify);
+    gtk_widget_set_sensitive (sw_libnotify, notify);
     g_signal_connect (sw_libnotify, "notify::active", G_CALLBACK (on_libnotify_toggle), NULL);
 
     adj = gtk_adjustment_new (timeout, 0, 60, 5, 0, 0);
