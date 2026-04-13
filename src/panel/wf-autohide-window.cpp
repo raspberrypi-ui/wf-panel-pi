@@ -37,6 +37,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
 
     this->position.set_callback([=] () { this->update_position(); });
     this->dposition.set_callback([=] () { this->update_position(); });
+    this->doffset.set_callback([=] () { this->update_position(); });
     this->update_position();
 
     this->edge_offset.set_callback([=] () { });
