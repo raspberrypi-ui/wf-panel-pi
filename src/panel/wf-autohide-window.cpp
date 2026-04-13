@@ -38,7 +38,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->dposition.set_callback([=] () { this->update_position(); });
     this->update_position();
 
-    this->edge_offset.set_callback([=] () { this->setup_hotspot(); });
+    this->edge_offset.set_callback([=] () { });
 
     this->autohide_opt.set_callback([=] { update_autohide(); });
     set_auto_exclusive_zone(!autohide_opt);
@@ -50,12 +50,29 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
         [=] (Gtk::Allocation&)
     {
         this->set_auto_exclusive_zone(this->has_auto_exclusive_zone);
-        this->setup_hotspot();
     });
 
-    this->signal_focus_out_event().connect_notify(
-        [=] (const GdkEventFocus*)
+    this->signal_enter_notify_event().connect_notify(
+        [=] (GdkEventCrossing *)
     {
+        if (pending_hide.connected())
+        {
+            pending_hide.disconnect();
+        }
+        input_inside_panel = true;
+
+        schedule_show(0);
+    });
+
+    this->signal_leave_notify_event().connect_notify(
+        [=] (GdkEventCrossing *ev)
+    {
+        if (ev->detail == GDK_NOTIFY_INFERIOR) return;
+        input_inside_panel = false;
+        if (should_autohide())
+        {
+            schedule_hide(AUTOHIDE_HIDE_DELAY);
+        }
     });
 
     if (output->output)
@@ -76,15 +93,6 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
 
 WayfireAutohidingWindow::~WayfireAutohidingWindow()
 {
-    if (this->edge_hotspot)
-    {
-        zwf_hotspot_v2_destroy(this->edge_hotspot);
-    }
-
-    if (this->panel_hotspot)
-    {
-        zwf_hotspot_v2_destroy(this->panel_hotspot);
-    }
 }
 
 wl_surface*WayfireAutohidingWindow::get_wl_surface() const
@@ -152,121 +160,7 @@ void WayfireAutohidingWindow::update_position()
 
     /* When the position changes, show an animation from the new edge. */
     y_position.animate(-this->get_allocated_height(), -this->get_allocated_height());
-    setup_hotspot();
     m_show_uncertain();
-}
-
-struct WayfireAutohidingWindowHotspotCallbacks
-{
-    std::function<void()> on_enter;
-    std::function<void()> on_leave;
-};
-
-static void handle_hotspot_enter(void *data, zwf_hotspot_v2*)
-{
-    auto cb = (WayfireAutohidingWindowHotspotCallbacks*)data;
-    cb->on_enter();
-}
-
-static void handle_hotspot_leave(void *data, zwf_hotspot_v2*)
-{
-    auto cb = (WayfireAutohidingWindowHotspotCallbacks*)data;
-    cb->on_leave();
-}
-
-static zwf_hotspot_v2_listener hotspot_listener = {
-    .enter = handle_hotspot_enter,
-    .leave = handle_hotspot_leave,
-};
-
-/**
- * An autohide window needs 2 hotspots.
- * One of them is used to trigger autohide and is generally a tiny strip on the
- * edge of the output.
- *
- * The other hotspot covers the whole window. It is used primarily to know when
- * the input leaves the window, in which case we need to hide the window again.
- */
-
-void WayfireAutohidingWindow::setup_hotspot()
-{
-    if (!this->autohide_opt) return;
-
-    if (!this->output->output)
-    {
-        return;
-    }
-
-    /* No need to recreate hotspots if the height didn't change */
-    auto position = check_position(this->position);
-    if (this->get_allocated_height() == last_hotspot_height && edge_offset == last_edge_offset && position == last_position)
-    {
-        return;
-    }
-
-    this->last_hotspot_height = get_allocated_height();
-    this->last_edge_offset    = edge_offset;
-    last_position = position;
-
-    if (this->edge_hotspot)
-    {
-        zwf_hotspot_v2_destroy(edge_hotspot);
-    }
-
-    if (this->panel_hotspot)
-    {
-        zwf_hotspot_v2_destroy(panel_hotspot);
-    }
-
-    uint32_t edge = (position == WF_WINDOW_POSITION_TOP) ?
-        ZWF_OUTPUT_V2_HOTSPOT_EDGE_TOP : ZWF_OUTPUT_V2_HOTSPOT_EDGE_BOTTOM;
-
-    // create_hotspot sometimes segfaults due to a bad (but non-NULL) output parameter...
-    this->edge_hotspot = zwf_output_v2_create_hotspot(output->output,
-        edge, edge_offset, AUTOHIDE_SHOW_DELAY);
-
-    this->panel_hotspot = zwf_output_v2_create_hotspot(output->output,
-        edge, this->get_allocated_height(), 0); // immediate
-
-    this->edge_callbacks =
-        std::make_unique<WayfireAutohidingWindowHotspotCallbacks>();
-    this->panel_callbacks =
-        std::make_unique<WayfireAutohidingWindowHotspotCallbacks>();
-
-    edge_callbacks->on_enter = [=] ()
-    {
-        schedule_show(0);
-    };
-
-    edge_callbacks->on_leave = [=] ()
-    {
-        // nothing
-    };
-
-    this->input_inside_panel  = false;
-    panel_callbacks->on_enter = [=] ()
-    {
-        if (this->pending_hide.connected())
-        {
-            this->pending_hide.disconnect();
-        }
-
-        this->input_inside_panel = true;
-    };
-
-    panel_callbacks->on_leave = [=] ()
-    {
-        this->input_inside_panel = false;
-        if (this->should_autohide())
-        {
-            this->schedule_hide(AUTOHIDE_HIDE_DELAY);
-        }
-    };
-
-    zwf_hotspot_v2_add_listener(edge_hotspot, &hotspot_listener,
-        edge_callbacks.get());
-    zwf_hotspot_v2_add_listener(panel_hotspot, &hotspot_listener,
-        panel_callbacks.get());
 }
 
 void WayfireAutohidingWindow::set_auto_exclusive_zone(bool has_zone)
@@ -306,7 +200,7 @@ bool WayfireAutohidingWindow::should_autohide() const
 
 bool WayfireAutohidingWindow::m_do_hide()
 {
-    y_position.animate(-get_allocated_height());
+    y_position.animate(-get_allocated_height() + edge_offset);
     update_margin();
     return false; // disconnect
 }
