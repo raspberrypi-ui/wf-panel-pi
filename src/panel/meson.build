@@ -7,7 +7,6 @@ util_sources = files(
   'gtk-utils.cpp',
   'wf-shell-app.cpp',
   'wf-autohide-window.cpp',
-  'wf-popover.cpp',
   'conf-utils.cpp',
   'configure.c',
   'notification.c',

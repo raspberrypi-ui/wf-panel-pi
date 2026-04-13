@@ -56,10 +56,6 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_focus_out_event().connect_notify(
         [=] (const GdkEventFocus*)
     {
-        if (this->active_button)
-        {
-            unset_active_popover(*this->active_button);
-        }
     });
 
     if (output->output)
@@ -305,7 +301,7 @@ void WayfireAutohidingWindow::decrease_autohide()
 
 bool WayfireAutohidingWindow::should_autohide() const
 {
-    return autohide_counter && !this->active_button && !this->input_inside_panel;
+    return autohide_counter && !this->input_inside_panel;
 }
 
 bool WayfireAutohidingWindow::m_do_hide()
@@ -372,59 +368,6 @@ bool WayfireAutohidingWindow::update_margin()
         return true;
     }
 
-    return false;
-}
-
-void WayfireAutohidingWindow::set_active_popover(WayfireMenuButton& button)
-{
-    if (&button != this->active_button)
-    {
-        if (this->active_button)
-        {
-            this->popover_hide.disconnect();
-            this->active_button->set_active(false);
-            this->active_button->get_popover()->popdown();
-        }
-
-        this->active_button = &button;
-        this->popover_hide  =
-            this->active_button->m_popover.signal_hide().connect_notify(
-                [this, &button] () { unset_active_popover(button); });
-    }
-
-    bool should_grab_focus = this->active_button->is_keyboard_interactive();
-    gtk_layer_set_keyboard_interactivity(this->gobj(), should_grab_focus);
-    this->old_layer = gtk_layer_get_layer (this->gobj());
-    gtk_layer_set_layer(this->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
-    this->active_button->set_has_focus(should_grab_focus);
-    schedule_show(0);
-}
-
-void WayfireAutohidingWindow::unset_active_popover(WayfireMenuButton& button)
-{
-    if (!this->active_button || (&button != this->active_button))
-    {
-        return;
-    }
-
-    this->active_button->set_has_focus(false);
-    this->active_button->set_active(false);
-    this->active_button->get_popover()->popdown();
-    this->active_button = nullptr;
-    this->popover_hide.disconnect();
-
-    gtk_layer_set_keyboard_interactivity(this->gobj(), false);
-    gtk_layer_set_layer(this->gobj(), this->old_layer);
-
-    if (should_autohide())
-    {
-        schedule_hide(AUTOHIDE_HIDE_DELAY);
-    }
-}
-
-bool WayfireAutohidingWindow::has_popover(void)
-{
-    if (this->active_button) return true;
     return false;
 }
 

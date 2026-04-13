@@ -4,6 +4,7 @@ extern "C" {
 
 #include <glibmm/main.h>
 #include <gtkmm/window.h>
+#include <gtkmm/menu.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/application.h>
@@ -315,7 +316,7 @@ class WayfirePanel::impl
     {
         if (pressed == PRESS_NONE) return false;
         pressed = PRESS_NONE;
-        if (!window->has_popover() && event->button == 3)
+        if (event->button == 3)
         {
             conf_plugin = "gtkmm";
             cplug.set_sensitive (false);
