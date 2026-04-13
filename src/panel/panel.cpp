@@ -283,7 +283,6 @@ class WayfirePanel::impl
         //if (wizard || !real)
         {
             window->set_auto_exclusive_zone (false);
-            window->lock_autohide();
         }
 
         window->show_all();

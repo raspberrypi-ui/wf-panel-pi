@@ -129,6 +129,10 @@
 			<_name>Bottom</_name>
 		</desc>
 	</option>
+	<option name="dock_offset" type="int">
+		<_short>Dock Offset</_short>
+		<default>5</default>
+	</option>
 	</group>
 	<group>
 	<_short>Notifications</_short>

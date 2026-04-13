@@ -16,6 +16,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     const std::string& section, bool dock) :
     position{section + "/position"},
     dposition{section + "/dock_position"},
+    doffset{section + "/dock_offset"},
     y_position{WfOption<int>{section + "/autohide_duration"}},
     edge_offset{section + "/edge_offset"},
     autohide_opt{section + "/autohide"}
@@ -55,6 +56,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_enter_notify_event().connect_notify(
         [=] (GdkEventCrossing *)
     {
+        if (!autohide_opt) return;
         if (pending_hide.connected())
         {
             pending_hide.disconnect();
@@ -67,6 +69,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_leave_notify_event().connect_notify(
         [=] (GdkEventCrossing *ev)
     {
+        if (!autohide_opt) return;
         if (ev->detail == GDK_NOTIFY_INFERIOR) return;
         input_inside_panel = false;
         if (should_autohide())
@@ -223,7 +226,7 @@ void WayfireAutohidingWindow::schedule_hide(int delay)
 
 bool WayfireAutohidingWindow::m_do_show()
 {
-    y_position.animate(std::fmin(0, y_position + 1), 0);
+    y_position.animate(std::fmin(0, y_position + 1), dock ? doffset : 0);
     update_margin();
     return false; // disconnect
 }
@@ -267,12 +270,6 @@ bool WayfireAutohidingWindow::update_margin()
 
 void WayfireAutohidingWindow::update_autohide()
 {
-    if (autohide_locked)
-    {
-        set_auto_exclusive_zone (false);
-        return;
-    }
-
     if (autohide_opt == last_autohide_value)
     {
         return;
@@ -288,9 +285,4 @@ void WayfireAutohidingWindow::update_autohide()
 
     last_autohide_value = autohide_opt;
     set_auto_exclusive_zone(!autohide_opt);
-}
-
-void WayfireAutohidingWindow::lock_autohide()
-{
-    autohide_locked = true;
 }
