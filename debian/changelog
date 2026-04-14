@@ -1,3 +1,9 @@
+wf-panel-pi (1.14) trixie; urgency=medium
+
+  * Test package for dock features
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 14 Apr 2026 13:43:14 +0100
+
 wf-panel-pi (1.13) trixie; urgency=medium
 
   * Add toggling of minimised to window list
