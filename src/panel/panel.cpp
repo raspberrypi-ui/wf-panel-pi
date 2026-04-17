@@ -527,6 +527,22 @@ class WayfirePanel::impl
     {
         if (!real) return;
 
+        if (wizard)
+        {
+            if (dock)
+            {
+                reload_widgets((std::string) "", left_widgets, left_box);
+                window->hide ();
+            }
+            else
+            {
+                reload_widgets((std::string) "", left_widgets, left_box);
+                reload_widgets((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
+                window->show ();
+            }
+            return;
+        }
+
         left_widgets_opt.set_callback([=] ()
         {
             if (dock) return;
@@ -535,6 +551,7 @@ class WayfirePanel::impl
             else window->show ();
 
         });
+
         right_widgets_opt.set_callback([=] ()
         {
             if (dock) return;
@@ -542,6 +559,7 @@ class WayfirePanel::impl
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
         });
+
         dock_widgets_opt.set_callback([=] ()
         {
             if (!dock) return;
@@ -550,22 +568,7 @@ class WayfirePanel::impl
             else window->show ();
         });
 
-        if (wizard)
-        {
-            if (!dock)
-            {
-                reload_widgets((std::string) "", left_widgets, left_box);
-                reload_widgets((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
-                window->show ();
-            }
-            else
-            {
-                reload_widgets((std::string) "", left_widgets, left_box);
-                reload_widgets((std::string) "", right_widgets, right_box);
-                window->hide ();
-            }
-        }
-        else if (dock)
+        if (dock)
         {
             reload_widgets((std::string)dock_widgets_opt, left_widgets, left_box);
             if (((std::string) dock_widgets_opt).empty ()) window->hide ();
