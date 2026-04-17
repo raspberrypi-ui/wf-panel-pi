@@ -135,6 +135,11 @@ class WayfirePanel::impl
     WfOption <std::string> left_widgets_opt {"panel/widgets_left"};
     WfOption <std::string> right_widgets_opt {"panel/widgets_right"};
     WfOption <std::string> dock_widgets_opt {"panel/dock_widgets"};
+    WfOption <bool> panel_exclusive {"panel/exclusive"};
+    WfOption <bool> dock_exclusive {"panel/dock_exclusive"};
+    WfOption <int> notify_timeout {"panel/notify_timeout"};
+    WfOption <bool> notifications {"panel/notify_enable"};
+    WfOption <bool> libnotify {"panel/notify_libnotify"};
 
     std::function<void()> set_panel_layer = [=] ()
     {
@@ -163,6 +168,42 @@ class WayfirePanel::impl
         }
     };
 
+    std::function<void()> set_exclusive = [=] ()
+    {
+        if (!real)
+        {
+            gtk_layer_set_layer (window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
+            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
+            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, false);
+            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_TOP, true);
+            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, false);
+            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 1);
+            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
+            window->set_auto_exclusive_zone (false);
+        }
+        else if (dock)
+        {
+            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, false);
+            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, false);
+            window->set_auto_exclusive_zone (dock_exclusive);
+        }
+        else
+        {
+            if (panel_exclusive && !wizard)
+            {
+                gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
+                gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, true);
+                window->set_auto_exclusive_zone (true);
+            }
+            else
+            {
+                gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, left_widgets.size () ? true : false);
+                gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, right_widgets.size () ? true : false);
+                window->set_auto_exclusive_zone (false);
+            }
+        }
+    };
+
     void create_window()
     {
         p_icon_size = panel_icon_size;
@@ -179,7 +220,7 @@ class WayfirePanel::impl
         {
             panel_layer.set_callback(set_panel_layer);
             set_panel_layer(); // initial setting
-            wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+            if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
         }
 
         // Connect to draw signal to log first draw event using journald only if RPI_LOG_FIRST_DRAW is set
@@ -217,23 +258,12 @@ class WayfirePanel::impl
                     scaling = scale_now;
                     update_widget_icons ();
                 }
+                set_exclusive ();
                 return false;
             });
 
-        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, left_widgets.size () && !dock ? true : false);
-        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, right_widgets.size () ? true : false);
         gtk_layer_set_keyboard_mode (window->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 
-        if (!real)
-        {
-            gtk_layer_set_layer (window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
-            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, true);
-            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, false);
-            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_TOP, true);
-            gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, false);
-            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 1);
-            gtk_layer_set_margin(window->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
-        }
         if (!dock) monitor_num.set_callback (update_panels);
         else dock_monitor_num.set_callback (update_panels);
 
@@ -280,15 +310,15 @@ class WayfirePanel::impl
 
         gesture = add_longpress_default (*window);
 
-        //if (wizard || !real)
-        {
-            window->set_auto_exclusive_zone (false);
-        }
+        set_exclusive ();
+        panel_exclusive.set_callback(set_exclusive);
+        dock_exclusive.set_callback(set_exclusive);
 
         window->show_all();
         init_layout();
         init_widgets();
         init_notify();
+        set_exclusive ();
 
         window->signal_delete_event().connect(
             sigc::mem_fun(this, &WayfirePanel::impl::on_delete));
@@ -404,6 +434,7 @@ class WayfirePanel::impl
         right_box.show();
         content_box.show();
         window->show();
+        set_exclusive ();
     }
 
     Widget widget_from_name(std::string name)
@@ -489,8 +520,7 @@ class WayfirePanel::impl
             // a badly-written widget could reset the textdomain to a local value - reset back to the system value after each load
             textdomain (GETTEXT_PACKAGE);
         }
-        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, left_widgets.size () && !dock ? true : false);
-        gtk_layer_set_anchor(window->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, right_widgets.size () ? true : false);
+        set_exclusive ();
     }
 
     void init_widgets()
@@ -503,8 +533,6 @@ class WayfirePanel::impl
             reload_widgets((std::string)left_widgets_opt, left_widgets, left_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
-            if (((std::string) left_widgets_opt).empty () || ((std::string) right_widgets_opt).empty ()) window->set_auto_exclusive_zone (false);
-            else window->set_auto_exclusive_zone (true);
 
         });
         right_widgets_opt.set_callback([=] ()
@@ -513,8 +541,6 @@ class WayfirePanel::impl
             reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
-            if (((std::string) left_widgets_opt).empty () || ((std::string) right_widgets_opt).empty ()) window->set_auto_exclusive_zone (false);
-            else window->set_auto_exclusive_zone (true);
         });
         dock_widgets_opt.set_callback([=] ()
         {
@@ -526,8 +552,18 @@ class WayfirePanel::impl
 
         if (wizard)
         {
-            reload_widgets((std::string) "", left_widgets, left_box);
-            reload_widgets((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
+            if (!dock)
+            {
+                reload_widgets((std::string) "", left_widgets, left_box);
+                reload_widgets((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
+                window->show ();
+            }
+            else
+            {
+                reload_widgets((std::string) "", left_widgets, left_box);
+                reload_widgets((std::string) "", right_widgets, right_box);
+                window->hide ();
+            }
         }
         else if (dock)
         {
@@ -541,14 +577,9 @@ class WayfirePanel::impl
             reload_widgets((std::string)right_widgets_opt, right_widgets, right_box);
             if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
             else window->show ();
-            if (((std::string) left_widgets_opt).empty () || ((std::string) right_widgets_opt).empty ()) window->set_auto_exclusive_zone (false);
-            else window->set_auto_exclusive_zone (true);
         }
     }
 
-    WfOption <int> notify_timeout {"panel/notify_timeout"};
-    WfOption <bool> notifications {"panel/notify_enable"};
-    WfOption <bool> libnotify {"panel/notify_libnotify"};
     void init_notify ()
     {
         if (real) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
