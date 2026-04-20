@@ -603,7 +603,8 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
     gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
     px = rect.width;
-    py = rect.height;
+    if (bottom) py = gtk_layer_get_margin (panel, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP);
+    if (gtk_layer_get_exclusive_zone (panel) <= 0) py += rect.height;
     panw = px;
 
     // get the dimensions of the popup itself and ensure the popup fits on the screen
