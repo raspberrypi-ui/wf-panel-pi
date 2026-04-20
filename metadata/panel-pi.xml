@@ -26,7 +26,7 @@
 	</option>
 	<option name="minimal_height" type="int">
 		<_short>Minimal Height</_short>
-		<default>24</default>
+		<default>16</default>
 	</option>
 	<option name="exclusive" type="bool">
 		<_short>Panel Exclusive</_short>
