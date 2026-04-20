@@ -139,7 +139,7 @@
 	</option>
 	<option name="dock_exclusive" type="bool">
 		<_short>Dock Exclusive</_short>
-		<default>true</default>
+		<default>false</default>
 	</option>
 	</group>
 	<group>
