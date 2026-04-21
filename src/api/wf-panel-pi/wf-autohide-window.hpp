@@ -76,7 +76,8 @@ class WayfireAutohidingWindow : public Gtk::Window
     int last_edge_offset = -1;
 
     WfOption<bool> autohide_opt;
-    bool last_autohide_value = autohide_opt;
+    WfOption<bool> dock_autohide_opt;
+    bool last_autohide_value;
     void update_autohide();
 
     bool has_auto_exclusive_zone = false;

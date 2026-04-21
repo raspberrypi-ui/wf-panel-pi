@@ -141,6 +141,10 @@
 		<_short>Dock Exclusive</_short>
 		<default>false</default>
 	</option>
+	<option name="dock_autohide" type="bool">
+		<_short>Dock Autohide</_short>
+		<default>false</default>
+	</option>
 	</group>
 	<group>
 	<_short>Notifications</_short>

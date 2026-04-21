@@ -11,7 +11,7 @@
 
 #define AUTOHIDE_SHOW_DELAY 300
 #define AUTOHIDE_HIDE_DELAY 500
-#define MARGIN 10
+#define MARGIN 5
 
 WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     const std::string& section, bool dock) :
@@ -20,7 +20,8 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     doffset{section + "/dock_offset"},
     y_position{WfOption<int>{section + "/autohide_duration"}},
     edge_offset{section + "/edge_offset"},
-    autohide_opt{section + "/autohide"}
+    autohide_opt{section + "/autohide"},
+    dock_autohide_opt{section + "/dock_autohide"}
 {
     this->output = output;
     this->set_decorated(false);
@@ -43,8 +44,18 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
 
     this->edge_offset.set_callback([=] () { });
 
-    this->autohide_opt.set_callback([=] { update_autohide(); });
-    set_auto_exclusive_zone(!autohide_opt);
+    if (dock)
+    {
+        this->last_autohide_value = dock_autohide_opt;
+        this->dock_autohide_opt.set_callback([=] { update_autohide(); });
+        set_auto_exclusive_zone(!dock_autohide_opt);
+    }
+    else
+    {
+        this->last_autohide_value = autohide_opt;
+        this->autohide_opt.set_callback([=] { update_autohide(); });
+        set_auto_exclusive_zone(!autohide_opt);
+    }
 
     this->signal_draw().connect_notify(
         [=] (const Cairo::RefPtr<Cairo::Context>&) { update_margin(); });
@@ -58,7 +69,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_enter_notify_event().connect_notify(
         [=] (GdkEventCrossing *)
     {
-        if (!autohide_opt) return;
+        if (!(dock ? dock_autohide_opt : autohide_opt)) return;
         if (pending_hide.connected())
         {
             pending_hide.disconnect();
@@ -71,7 +82,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     this->signal_leave_notify_event().connect_notify(
         [=] (GdkEventCrossing *ev)
     {
-        if (!autohide_opt) return;
+        if (!(dock ? dock_autohide_opt : autohide_opt)) return;
         if (ev->detail == GDK_NOTIFY_INFERIOR) return;
 
         // don't hide if leaving a window towards the closest edge
@@ -80,11 +91,11 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
             std::string pos = dock ? dposition : position;
             if (pos == WF_WINDOW_POSITION_TOP)
             {
-                if (ev->y < this->get_allocated_height() / 2)  return;
+                if (ev->y < MARGIN)  return;
             }
             else
             {
-                if (ev->y > this->get_allocated_height() / 2)  return;
+                if (ev->y > this->get_allocated_height() - MARGIN)  return;
             }
         }
 
@@ -287,12 +298,12 @@ bool WayfireAutohidingWindow::update_margin()
 
 void WayfireAutohidingWindow::update_autohide()
 {
-    if (autohide_opt == last_autohide_value)
+    if ((dock ? dock_autohide_opt : autohide_opt) == last_autohide_value)
     {
         return;
     }
 
-    if (autohide_opt)
+    if (dock ? dock_autohide_opt : autohide_opt)
     {
         increase_autohide();
     } else
@@ -300,6 +311,6 @@ void WayfireAutohidingWindow::update_autohide()
         decrease_autohide();
     }
 
-    last_autohide_value = autohide_opt;
-    set_auto_exclusive_zone(!autohide_opt);
+    last_autohide_value = dock ? dock_autohide_opt : autohide_opt;
+    set_auto_exclusive_zone(!(dock ? dock_autohide_opt : autohide_opt));
 }
