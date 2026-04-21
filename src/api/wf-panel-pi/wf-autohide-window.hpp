@@ -86,7 +86,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     sigc::connection pending_show, pending_hide;
     bool m_do_show();
     bool m_do_hide();
-    int autohide_counter = static_cast<int>(autohide_opt);
+    int autohide_counter;
 
     /** Show the window but hide if no pointer input */
     void m_show_uncertain();

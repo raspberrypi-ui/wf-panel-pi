@@ -37,25 +37,26 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
 
     g_object_set (gtk_widget_get_settings (GTK_WIDGET (this->gobj())), "gtk-visible-focus", GTK_POLICY_AUTOMATIC, NULL);
 
-    this->position.set_callback([=] () { this->update_position(); });
-    this->dposition.set_callback([=] () { this->update_position(); });
-    this->doffset.set_callback([=] () { this->update_position(); });
-    this->update_position();
-
     this->edge_offset.set_callback([=] () { });
 
     if (dock)
     {
         this->last_autohide_value = dock_autohide_opt;
+        this->autohide_counter = static_cast<int>(dock_autohide_opt);
+        this->dposition.set_callback([=] () { this->update_position(); });
+        this->doffset.set_callback([=] () { this->update_position(); });
         this->dock_autohide_opt.set_callback([=] { update_autohide(); });
         set_auto_exclusive_zone(!dock_autohide_opt);
     }
     else
     {
         this->last_autohide_value = autohide_opt;
+        this->autohide_counter = static_cast<int>(autohide_opt);
+        this->position.set_callback([=] () { this->update_position(); });
         this->autohide_opt.set_callback([=] { update_autohide(); });
         set_auto_exclusive_zone(!autohide_opt);
     }
+    this->update_position();
 
     this->signal_draw().connect_notify(
         [=] (const Cairo::RefPtr<Cairo::Context>&) { update_margin(); });
