@@ -11,6 +11,7 @@
 
 #define AUTOHIDE_SHOW_DELAY 300
 #define AUTOHIDE_HIDE_DELAY 500
+#define MARGIN 10
 
 WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     const std::string& section, bool dock) :
@@ -72,6 +73,21 @@ WayfireAutohidingWindow::WayfireAutohidingWindow(WayfireOutput *output,
     {
         if (!autohide_opt) return;
         if (ev->detail == GDK_NOTIFY_INFERIOR) return;
+
+        // don't hide if leaving a window towards the closest edge
+        if (ev->x > MARGIN && ev->x < this->get_allocated_width() - MARGIN)
+        {
+            std::string pos = dock ? dposition : position;
+            if (pos == WF_WINDOW_POSITION_TOP)
+            {
+                if (ev->y < this->get_allocated_height() / 2)  return;
+            }
+            else
+            {
+                if (ev->y > this->get_allocated_height() / 2)  return;
+            }
+        }
+
         input_inside_panel = false;
         if (should_autohide())
         {
@@ -227,7 +243,7 @@ void WayfireAutohidingWindow::schedule_hide(int delay)
 
 bool WayfireAutohidingWindow::m_do_show()
 {
-    y_position.animate(std::fmin(0, y_position + 1), dock ? doffset : 0);
+    y_position.animate(dock ? doffset : 0);
     update_margin();
     return false; // disconnect
 }
