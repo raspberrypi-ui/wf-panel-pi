@@ -8,8 +8,6 @@
 #include <gtkmm/application.h>
 #include <gdkmm/monitor.h>
 
-#include "wayfire-shell-unstable-v2-client-protocol.h"
-
 using GMonitor = Glib::RefPtr<Gdk::Monitor>;
 /**
  * Represents a single output
@@ -17,10 +15,9 @@ using GMonitor = Glib::RefPtr<Gdk::Monitor>;
 struct WayfireOutput
 {
     GMonitor monitor;
-    wl_output *wo;
-    zwf_output_v2 *output;
+    struct wl_output *wo;
 
-    WayfireOutput(const GMonitor& monitor, zwf_shell_manager_v2 *zwf_manager);
+    WayfireOutput(const GMonitor& monitor);
     ~WayfireOutput();
 };
 
@@ -62,7 +59,6 @@ class WayfireShellApp
   public:
     int inotify_fd;
     wf::config::config_manager_t config;
-    zwf_shell_manager_v2 *wf_shell_manager = nullptr;
     bool wizard;
 
     WayfireShellApp(int argc, char **argv);

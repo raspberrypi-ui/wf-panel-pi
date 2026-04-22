@@ -74,27 +74,6 @@ static bool handle_inotify_event(WayfireShellApp *app, Glib::IOCondition cond)
     return true;
 }
 
-static void registry_add_object(void *data, struct wl_registry *registry,
-    uint32_t name, const char *interface, uint32_t version)
-{
-    auto app = static_cast<WayfireShellApp*>(data);
-    if (strcmp(interface, zwf_shell_manager_v2_interface.name) == 0)
-    {
-        app->wf_shell_manager = (zwf_shell_manager_v2*)wl_registry_bind(registry, name,
-            &zwf_shell_manager_v2_interface, std::min(version, 1u));
-    }
-}
-
-static void registry_remove_object(void *data, struct wl_registry *registry,
-    uint32_t name)
-{}
-
-static struct wl_registry_listener registry_listener =
-{
-    &registry_add_object,
-    &registry_remove_object
-};
-
 void WayfireShellApp::on_activate()
 {
     app->hold();
@@ -111,10 +90,6 @@ void WayfireShellApp::on_activate()
             " Are you sure you are running a wayland compositor?" << std::endl;
         std::exit(-1);
     }
-
-    wl_registry *registry = wl_display_get_registry(wl_display);
-    wl_registry_add_listener(registry, &registry_listener, this);
-    wl_display_roundtrip(wl_display);
 
     std::vector<std::string> xmldirs(1, METADATA_DIR);
 
@@ -158,7 +133,7 @@ bool WayfireShellApp::update_monitors ()
     int num_monitors = display->get_n_monitors ();
     for (int i = 0; i < num_monitors; i++)
     {
-        monitors.push_back (std::make_unique<WayfireOutput> (display->get_monitor (i), this->wf_shell_manager));
+        monitors.push_back (std::make_unique<WayfireOutput> (display->get_monitor (i)));
         handle_new_output (monitors.back().get());
     }
 
@@ -175,8 +150,7 @@ void WayfireShellApp::monitors_changed ()
 
 void WayfireShellApp::add_output(GMonitor monitor)
 {
-    monitors.push_back(
-        std::make_unique<WayfireOutput>(monitor, this->wf_shell_manager));
+    monitors.push_back(std::make_unique<WayfireOutput>(monitor));
     handle_new_output(monitors.back().get());
 }
 
@@ -230,26 +204,12 @@ void WayfireShellApp::run()
 }
 
 /* -------------------------- WayfireOutput --------------------------------- */
-WayfireOutput::WayfireOutput(const GMonitor& monitor,
-    zwf_shell_manager_v2 *zwf_manager)
+WayfireOutput::WayfireOutput(const GMonitor& monitor)
 {
     this->monitor = monitor;
     this->wo = gdk_wayland_monitor_get_wl_output(monitor->gobj());
-
-    if (zwf_manager)
-    {
-        this->output =
-            zwf_shell_manager_v2_get_wf_output(zwf_manager, this->wo);
-    } else
-    {
-        this->output = nullptr;
-    }
 }
 
 WayfireOutput::~WayfireOutput()
 {
-    if (this->output)
-    {
-        zwf_output_v2_destroy(this->output);
-    }
 }
