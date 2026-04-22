@@ -87,21 +87,6 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, const s
         input_inside_panel = false;
         if (should_autohide ()) schedule_hide (AUTOHIDE_HIDE_DELAY);
     });
-
-    if (output->output)
-    {
-        static const zwf_output_v2_listener listener = {
-            .enter_fullscreen = [] (void *data, zwf_output_v2*)
-            {
-                ((WayfireAutohidingWindow*) data)->increase_autohide ();
-            },
-            .leave_fullscreen = [] (void *data, zwf_output_v2*)
-            {
-                ((WayfireAutohidingWindow*) data)->decrease_autohide ();
-            }
-        };
-        zwf_output_v2_add_listener (output->output, &listener, this);
-    }
 }
 
 WayfireAutohidingWindow::~WayfireAutohidingWindow ()
