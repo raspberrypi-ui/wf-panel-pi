@@ -4,10 +4,6 @@
 	<_short>Panel</_short>	
 	<group>
 	<_short>General</_short>
-	<option name="css_path" type="string">
-		<_short>CSS Path</_short>
-		<default></default>
-	</option>
 	<option name="widgets_left" type="string">
 		<_short>Widgets Left</_short>
 		<default>smenu spacing0 spacing4 launchers spacing8 window-list</default>

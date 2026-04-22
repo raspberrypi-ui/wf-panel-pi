@@ -51,13 +51,12 @@ class WayfirePanel
     bool real;
     bool dock;
     int scaling;
-    int icon_size;
+    int isize;
 
-    WfOption <int> panel_icon_size;
+    WfOption <int> icon_size;
     WfOption <bool> gestures_touch_only;
-    WfOption <std::string> panel_layer;
+    WfOption <std::string> layer;
     WfOption <int> minimal_panel_height;
-    WfOption <std::string> css_path;
     WfOption <std::string> monitor_num;
     WfOption <std::string> left_widgets_opt;
     WfOption <std::string> right_widgets_opt;
