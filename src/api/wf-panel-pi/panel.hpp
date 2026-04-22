@@ -3,7 +3,6 @@
 
 #include <memory>
 #include <wayland-client.h>
-#include <gtkmm/window.h>
 
 #include <gtkmm/window.h>
 #include <gtkmm/menu.h>
@@ -66,7 +65,7 @@ class WayfirePanel
     WfOption <bool> libnotify;
 
     void create_window ();
-    void set_panel_layer();
+    void set_layer();
     void set_exclusive();
     bool on_keypress_event (GdkEventKey* event);
     bool on_button_press_event(GdkEventButton* event);

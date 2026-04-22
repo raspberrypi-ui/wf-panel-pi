@@ -1,35 +1,22 @@
+#include <stdio.h>
+#include <dlfcn.h>
+#include <sys/time.h>
+
+#include <iostream>
+#include <sstream>
+#include <cstdlib>
+#include <cstring>
+#include <map>
+
+#include <gtk-layer-shell.h>
+
 extern "C" {
 #include "configure.h"
 }
 
-#include <glibmm/main.h>
-#include <gtkmm/window.h>
-#include <gtkmm/menu.h>
-#include <gtkmm/headerbar.h>
-#include <gtkmm/hvbox.h>
-#include <gtkmm/application.h>
-#include <gtkmm/gesturelongpress.h>
-#include <gdkmm/display.h>
-#include <gdkmm/seat.h>
-#include <gdk/gdkwayland.h>
-#include <gtk-layer-shell.h>
-
-#include <stdio.h>
-#include <iostream>
-#include <sstream>
-#include <sys/time.h>
-#include <dlfcn.h>
-#include <cstdlib>
-#include <cstring>
-
-#include <map>
-
-#include "widget.hpp"
-
 #include "panel.hpp"
 #include "gtk-utils.hpp"
 #include "spacer.hpp"
-#include "wf-autohide-window.hpp"
 
 extern "C" {
 #include "lxutils.h"
@@ -71,8 +58,8 @@ void WayfirePanel::create_window()
     window->set_size_request(1, real ? minimal_panel_height : 1);
     if (real)
     {
-        layer.set_callback([=] { set_panel_layer (); });
-        set_panel_layer(); // initial setting
+        layer.set_callback([=] { set_layer (); });
+        set_layer();
         if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     }
 
@@ -156,11 +143,10 @@ void WayfirePanel::create_window()
     init_widgets();
     init_notify();
 
-    window->signal_delete_event().connect(
-        sigc::mem_fun(this, &WayfirePanel::on_delete));
+    window->signal_delete_event().connect(sigc::mem_fun(this, &WayfirePanel::on_delete));
 }
 
-void WayfirePanel::set_panel_layer()
+void WayfirePanel::set_layer()
 {
     if ((std::string) (layer) == "overlay")
     {
@@ -398,8 +384,7 @@ std::vector<std::string> WayfirePanel::tokenize(std::string list)
     return result;
 }
 
-void WayfirePanel::reload_widgets(std::string list, std::vector<std::unique_ptr<WayfireWidget>>& container,
-    Gtk::HBox& box)
+void WayfirePanel::reload_widgets(std::string list, std::vector<std::unique_ptr<WayfireWidget>>& container, Gtk::HBox& box)
 {
     WayfirePanelApp::get().rescan_xml_directory ();
     container.clear();
