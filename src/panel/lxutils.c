@@ -73,8 +73,6 @@ press_t pressed;
 double press_x, press_y;
 
 gboolean touch_only;
-int p_icon_size;
-int d_icon_size;
 gboolean is_pi_var;
 
 static GtkWindow *panel, *popwindow;
@@ -107,8 +105,7 @@ gboolean panel_at_bottom (GtkWidget *btn)
 int get_icon_size (GtkWidget *widget)
 {
     GtkWindow *panel = find_panel (widget);
-    if (panel && GTK_IS_WIDGET (panel) && !g_strcmp0 (gtk_widget_get_name (GTK_WIDGET (panel)), "DockToplevel")) return d_icon_size;
-    else return p_icon_size;
+    return * (int *) g_object_get_data ((GObject *) panel, "icon-size");
 }
 
 void store_layer (GtkLayerShellLayer layer, gboolean dock)

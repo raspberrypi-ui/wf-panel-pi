@@ -5,8 +5,18 @@
 #include <wayland-client.h>
 #include <gtkmm/window.h>
 
+#include <gtkmm/window.h>
+#include <gtkmm/menu.h>
+#include <gtkmm/headerbar.h>
+#include <gtkmm/hvbox.h>
+#include <gtkmm/application.h>
+#include <gtkmm/gesturelongpress.h>
+#include <gdkmm/display.h>
+#include <gdkmm/seat.h>
+
 #include "widget.hpp"
 #include "wf-shell-app.hpp"
+#include "wf-autohide-window.hpp"
 
 class WayfirePanel
 {
@@ -21,8 +31,61 @@ class WayfirePanel
     WayfireOutput *get_output();
 
   private:
-    class impl;
-    std::unique_ptr<impl> pimpl;
+    std::unique_ptr<WayfireAutohidingWindow> window;
+
+    Gtk::HBox content_box;
+    Gtk::HBox left_box, right_box;
+    Gtk::Menu menu;
+    Gtk::MenuItem conf;
+    Gtk::MenuItem cplug;
+    Gtk::MenuItem notif;
+    Gtk::MenuItem appset;
+    std::string conf_plugin;
+    Glib::RefPtr<Gtk::GestureLongPress> gesture;
+    sigc::connection draw_connection;
+
+    std::vector<std::unique_ptr<WayfireWidget>> left_widgets, right_widgets;
+
+    WayfireOutput *output;
+    bool wizard = WayfireShellApp::get().wizard;
+    bool real;
+    bool dock;
+    int scaling;
+    int icon_size;
+
+    WfOption <int> panel_icon_size;
+    WfOption <bool> gestures_touch_only;
+    WfOption <std::string> panel_layer;
+    WfOption <int> minimal_panel_height;
+    WfOption <std::string> css_path;
+    WfOption <std::string> monitor_num;
+    WfOption <std::string> left_widgets_opt;
+    WfOption <std::string> right_widgets_opt;
+    WfOption <bool> exclusive;
+    WfOption <int> notify_timeout;
+    WfOption <bool> notifications;
+    WfOption <bool> libnotify;
+
+    void create_window ();
+    void set_panel_layer();
+    void set_exclusive();
+    bool on_keypress_event (GdkEventKey* event);
+    bool on_button_press_event(GdkEventButton* event);
+    bool on_button_release_event(GdkEventButton* event);
+    void do_configure();
+    void do_plugin_configure();
+    void do_notify_configure();
+    void do_appearance_set();
+    bool on_delete(GdkEventAny *ev);
+    void init_layout();
+    std::unique_ptr<WayfireWidget> widget_from_name(std::string name);
+    static std::vector<std::string> tokenize(std::string list);
+    void reload_widgets(std::string list, std::vector<std::unique_ptr<WayfireWidget>>& container, Gtk::HBox& box);
+    void init_widgets();
+    void init_notify ();
+    void update_panels ();
+    void update_widget_icons ();
+    void message_widget (const char *name, const char *cmd);
 };
 
 class WayfirePanelApp : public WayfireShellApp
