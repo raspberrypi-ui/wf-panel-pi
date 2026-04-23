@@ -698,21 +698,6 @@ void WayfirePanelApp::update_panels ()
     }
 }
 
-WayfirePanel* WayfirePanelApp::panel_for_wl_output(wl_output *output)
-{
-    for (auto& p : priv->dummies)
-    {
-        if (p.get()->get_output()->wo == output)
-            return p.get();
-    }
-    return priv->panel.get();
-}
-
-WayfirePanel* WayfirePanelApp::get_panel(void)
-{
-    return priv->panel.get();
-}
-
 void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
 {
     priv->outputs.erase (std::remove(priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end());
