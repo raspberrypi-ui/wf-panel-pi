@@ -251,7 +251,6 @@ bool WayfirePanel::on_button_release_event (GdkEventButton* event)
         conf_plugin = "gtkmm";
         cplug.set_sensitive (false);
 
-        // content box has two hboxes as children - loop through both
         int i;
         for (i = 0; i < 2; i++)
         {
