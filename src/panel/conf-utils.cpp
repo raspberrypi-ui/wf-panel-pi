@@ -27,7 +27,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "wf-option-wrap.hpp"
 #include "panel.hpp"
+extern "C" {
 #include "configure.h"
+}
 
 /*----------------------------------------------------------------------------*/
 /* C++ utility functions required by configure.c */
