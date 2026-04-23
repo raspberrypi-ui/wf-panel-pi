@@ -293,20 +293,29 @@ bool WayfirePanel::on_button_release_event (GdkEventButton* event)
     return false;
 }
 
+// Window close handler
+
+bool WayfirePanel::on_delete (GdkEventAny *ev)
+{
+    if (real && !dock) wfpanel_notify_close ();
+
+    return true;
+}
+
 // Menu event handlers
 
 void WayfirePanel::do_configure ()
 {
-    this->get_window ().set_sensitive (false);
+    window->set_sensitive (false);
     open_config_dialog ();
-    this->get_window ().set_sensitive (true);
+    window->set_sensitive (true);
 }
 
 void WayfirePanel::do_plugin_configure ()
 {
-    this->get_window ().set_sensitive (false);
+    window->set_sensitive (false);
     plugin_config_dialog (conf_plugin.c_str());
-    this->get_window ().set_sensitive (true);
+    window->set_sensitive (true);
 }
 
 void WayfirePanel::do_notify_configure ()
@@ -320,31 +329,20 @@ void WayfirePanel::do_appearance_set ()
     else system ("rpcc taskbar &");
 }
 
-// Window close handler
-
-bool WayfirePanel::on_delete (GdkEventAny *ev)
-{
-    if (real && !dock) wfpanel_notify_close ();
-
-    return true;
-}
-
 // Widget loading
 
-std::unique_ptr <WayfireWidget> WayfirePanel::widget_from_name (std::string name)
+std::unique_ptr <WayfireWidget> WayfirePanel::widget_from_name (const char *name)
 {
-    if (name.find ("spacing") == 0)
+    if (strstr (name, "spacing"))
     {
-        auto pixel_str = name.substr (spacing.size ());
-        int pixel = std::atoi (pixel_str.c_str ());
-
-        if (pixel < 0) return nullptr;
-        else return std::unique_ptr <WayfireWidget> (new WayfireSpacing (pixel));
+        int width;
+        if (sscanf (name + 7, "%d", &width) != 1 || width < 0) return nullptr;
+        else return std::unique_ptr <WayfireWidget> (new WayfireSpacing (width));
     }
 
-    if (name != "none")
+    if (g_strcmp0 (name, "none"))
     {
-        char *libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", name.c_str ());
+        char *libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", name);
         void *wid = dlopen (libname, RTLD_LAZY);
         g_free (libname);
         if (wid)
@@ -356,31 +354,17 @@ std::unique_ptr <WayfireWidget> WayfirePanel::widget_from_name (std::string name
     return nullptr;
 }
 
-std::vector <std::string> WayfirePanel::tokenize (std::string list)
-{
-    std::string token;
-    std::istringstream stream (list);
-    std::vector <std::string> result;
-
-    while (stream >> token)
-    {
-        if (token.size ())
-        {
-            result.push_back (token);
-        }
-    }
-
-    return result;
-}
-
 void WayfirePanel::reload_widgets (std::string list, std::vector <std::unique_ptr <WayfireWidget>>& container, Gtk::HBox& box)
 {
     WayfirePanelApp::get ().rescan_xml_directory ();
+
     container.clear ();
-    auto widgets = tokenize (list);
-    for (auto widget_name : widgets)
+
+    std::string widget_name;
+    std::istringstream stream (list);
+    while (stream >> widget_name)
     {
-        auto widget = widget_from_name (widget_name);
+        auto widget = widget_from_name (widget_name.c_str ());
         if (!widget) continue;
 
         widget->widget_name = widget_name;
@@ -393,23 +377,8 @@ void WayfirePanel::reload_widgets (std::string list, std::vector <std::unique_pt
     set_exclusive ();
 }
 
-void WayfirePanel::init_widgets()
+void WayfirePanel::init_widgets ()
 {
-    left_widgets_opt.set_callback ([=] ()
-    {
-        reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
-        if (((std::string) left_widgets_opt).empty () && (dock || ((std::string) right_widgets_opt).empty ())) window->hide ();
-        else window->show ();
-    });
-
-    right_widgets_opt.set_callback ([=] ()
-    {
-        if (dock) return;
-        reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
-        else window->show ();
-    });
-
     if (!real) return;
 
     if (wizard)
@@ -437,7 +406,24 @@ void WayfirePanel::init_widgets()
         if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
         else window->show ();
     }
+
+    left_widgets_opt.set_callback ([=] ()
+    {
+        reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
+        if (((std::string) left_widgets_opt).empty () && (dock || ((std::string) right_widgets_opt).empty ())) window->hide ();
+        else window->show ();
+    });
+
+    right_widgets_opt.set_callback ([=] ()
+    {
+        if (dock) return;
+        reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+        else window->show ();
+    });
 }
+
+// Set up notifications and callbacks
 
 void WayfirePanel::init_notify ()
 {
@@ -459,15 +445,24 @@ void WayfirePanel::init_notify ()
     });
 }
 
-wl_surface *WayfirePanel::get_wl_surface ()
+// Update all displayed icons
+
+void WayfirePanel::update_widget_icons ()
 {
-    return window->get_wl_surface ();
+    isize = icon_size;
+
+    for (auto& w : left_widgets)
+    {
+        w->set_icon ();
+    }
+
+    for (auto& w : right_widgets)
+    {
+        w->set_icon ();
+    }
 }
 
-Gtk::Window& WayfirePanel::get_window ()
-{
-    return *window;
-}
+// Public functions used by WayfirePanelApp
 
 void WayfirePanel::handle_config_reload ()
 {
@@ -482,7 +477,7 @@ void WayfirePanel::handle_config_reload ()
     }
 }
 
-void WayfirePanel::message_widget (const char *name, const char *cmd)
+void WayfirePanel::handle_command_message (const char *name, const char *cmd)
 {
     if (!g_strcmp0 (name, "notify"))
     {
@@ -496,17 +491,17 @@ void WayfirePanel::message_widget (const char *name, const char *cmd)
         return;
     }
 
-    if (!this->get_window ().is_sensitive ()) return;
+    if (!window->is_sensitive ()) return;
 
     for (auto& w : left_widgets)
+    {
         if (name == w->widget_name) w->command (cmd);
-    for (auto& w : right_widgets)
-        if (name == w->widget_name) w->command (cmd);
-}
+    }
 
-WayfireOutput *WayfirePanel::get_output ()
-{
-    return this->output;
+    for (auto& w : right_widgets)
+    {
+        if (name == w->widget_name) w->command (cmd);
+    }
 }
 
 int WayfirePanel::set_monitor ()
@@ -550,26 +545,6 @@ int WayfirePanel::set_monitor ()
     return try_mon >= 0 ? try_mon : 0;
 }
 
-void WayfirePanel::update_panels ()
-{
-    WayfirePanelApp::get().update_panels ();
-}
-
-void WayfirePanel::update_widget_icons ()
-{
-    isize = icon_size;
-    for (auto& w : left_widgets)
-        w->set_icon ();
-    for (auto& w : right_widgets)
-        w->set_icon ();
-}
-
-void WayfirePanel::handle_command_message (const char *plugin, const char *cmd)
-{
-    message_widget (plugin, cmd);
-}
-
-
 
 class WayfirePanelApp::impl
 {
@@ -611,7 +586,7 @@ void WayfirePanelApp::handle_method_call (GDBusConnection *connection, const gch
     {
         const gchar *plugin, *command;
         g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        get().on_command (plugin, command);
+        get ().on_command (plugin, command);
     }
 }
 
@@ -641,29 +616,31 @@ void WayfirePanelApp::on_name_lost (GDBusConnection *connection, const gchar *na
 {
 }
 
-void WayfirePanelApp::on_config_reload()
+void WayfirePanelApp::on_config_reload ()
 {
     if (priv->panel)
-        priv->panel->handle_config_reload();
+        priv->panel->handle_config_reload ();
+
     if (priv->dock)
-        priv->dock->handle_config_reload();
+        priv->dock->handle_config_reload ();
 }
 
 void WayfirePanelApp::on_command (const char *plugin, const char *command)
 {
     if (priv->panel)
         priv->panel->handle_command_message (plugin, command);
+
     if (priv->dock)
         priv->dock->handle_command_message (plugin, command);
 }
 
-void WayfirePanelApp::handle_new_output(WayfireOutput *output)
+void WayfirePanelApp::handle_new_output (WayfireOutput *output)
 {
     priv->outputs.push_back (output);
     if (!priv->panel)
     {
-        priv->panel = std::make_unique<WayfirePanel> (output, true, false);
-        priv->dock = std::make_unique<WayfirePanel> (output, true, true);
+        priv->panel = std::make_unique <WayfirePanel> (output, true, false);
+        priv->dock = std::make_unique <WayfirePanel> (output, true, true);
     }
     update_panels ();
 }
@@ -675,60 +652,60 @@ void WayfirePanelApp::update_panels ()
     int mon_num = priv->panel->set_monitor ();
     int dmon_num = priv->dock->set_monitor ();
 
-    auto mon = Gdk::Display::get_default()->get_monitor (mon_num);
-    auto dmon = Gdk::Display::get_default()->get_monitor (dmon_num);
+    auto mon = Gdk::Display::get_default ()->get_monitor (mon_num);
+    auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
     for (auto& p : priv->outputs)
     {
         if (p->monitor != mon && p->monitor != dmon)
-            priv->dummies.push_back (std::make_unique<WayfirePanel> (p, false, false));
+            priv->dummies.push_back (std::make_unique <WayfirePanel> (p, false, false));
     }
 }
 
 void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
 {
-    priv->outputs.erase (std::remove(priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end());
+    priv->outputs.erase (std::remove (priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end ());
 }
 
 WayfirePanelApp& WayfirePanelApp::get()
 {
     if (!instance)
     {
-        throw std::logic_error("Calling WayfirePanelApp::get() before starting app!");
+        throw std::logic_error ("Calling WayfirePanelApp::get() before starting app!");
     }
 
-    return dynamic_cast<WayfirePanelApp&>(*instance.get());
+    return dynamic_cast <WayfirePanelApp&> (*instance.get ());
 }
 
 void WayfirePanelApp::create(int argc, char **argv)
 {
     if (instance)
     {
-        throw std::logic_error("Running WayfirePanelApp twice!");
+        throw std::logic_error ("Running WayfirePanelApp twice!");
     }
 
     introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
     guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
         on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
 
-    instance = std::unique_ptr<WayfireShellApp>(new WayfirePanelApp{argc, argv});
-    instance->run();
+    instance = std::unique_ptr <WayfireShellApp> (new WayfirePanelApp{argc, argv});
+    instance->run ();
 
     g_bus_unown_name (owner_id);
     g_dbus_node_info_unref (introspection_data);
 }
 
-WayfirePanelApp::~WayfirePanelApp() = default;
-WayfirePanelApp::WayfirePanelApp(int argc, char **argv) :
-    WayfireShellApp(argc, argv), priv(new impl())
+WayfirePanelApp::~WayfirePanelApp () = default;
+WayfirePanelApp::WayfirePanelApp (int argc, char **argv) :
+    WayfireShellApp (argc, argv), priv (new impl ())
 {}
 
-int main(int argc, char **argv)
+int main (int argc, char **argv)
 {
     setlocale (LC_ALL, "");
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 
-    WayfirePanelApp::create(argc, argv);
+    WayfirePanelApp::create (argc, argv);
     return 0;
 }

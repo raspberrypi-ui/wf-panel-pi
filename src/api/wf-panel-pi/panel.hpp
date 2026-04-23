@@ -21,13 +21,9 @@ class WayfirePanel
 {
   public:
     WayfirePanel(WayfireOutput *output, bool real, bool dock);
-
-    wl_surface *get_wl_surface();
-    Gtk::Window& get_window();
-    void handle_config_reload();
+    void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
-    int set_monitor();
-    WayfireOutput *get_output();
+    int set_monitor ();
 
   private:
     std::unique_ptr<WayfireAutohidingWindow> window;
@@ -64,24 +60,22 @@ class WayfirePanel
     WfOption <bool> notifications;
     WfOption <bool> libnotify;
 
-    void set_layer();
-    void set_exclusive();
+    void set_layer ();
+    void set_exclusive ();
     bool on_keypress_event (GdkEventKey* event);
-    bool on_button_press_event(GdkEventButton* event);
-    bool on_button_release_event(GdkEventButton* event);
-    void do_configure();
-    void do_plugin_configure();
-    void do_notify_configure();
-    void do_appearance_set();
-    bool on_delete(GdkEventAny *ev);
-    std::unique_ptr<WayfireWidget> widget_from_name(std::string name);
-    static std::vector<std::string> tokenize(std::string list);
-    void reload_widgets(std::string list, std::vector<std::unique_ptr<WayfireWidget>>& container, Gtk::HBox& box);
-    void init_widgets();
+    bool on_button_press_event (GdkEventButton* event);
+    bool on_button_release_event (GdkEventButton* event);
+    bool on_delete (GdkEventAny *ev);
+    void do_configure ();
+    void do_plugin_configure ();
+    void do_notify_configure ();
+    void do_appearance_set ();
+    std::unique_ptr<WayfireWidget> widget_from_name (const char *name);
+    void reload_widgets (std::string list, std::vector <std::unique_ptr <WayfireWidget>>& container, Gtk::HBox& box);
+    void init_widgets ();
     void init_notify ();
-    void update_panels ();
     void update_widget_icons ();
-    void message_widget (const char *name, const char *cmd);
+    void update_panels ();
 };
 
 class WayfirePanelApp : public WayfireShellApp
