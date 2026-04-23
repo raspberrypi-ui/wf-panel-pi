@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<wf-panel-pi>
+	<plugin name="dock">
+	<_short>Dock</_short>	
+	<group>
+	<_short>General</_short>
+	<option name="widgets_left" type="string">
+		<_short>Dock Widgets</_short>
+		<default></default>
+	</option>
+	<option name="icon_size" type="int">
+		<_short>Dock Icon Size</_short>
+		<default>48</default>
+	</option>
+	<option name="layer" type="string">
+		<_short>Layer</_short>
+		<default>top</default>
+		<desc>
+			<value>top</value>
+			<_name>Top</_name>
+		</desc>
+		<desc>
+			<value>bottom</value>
+			<_name>Bottom</_name>
+		</desc>
+		<desc>
+			<value>overlay</value>
+			<_name>Overlay</_name>
+		</desc>
+		<desc>
+			<value>background</value>
+			<_name>Background</_name>
+		</desc>
+	</option>
+	<option name="monitor" type="string">
+		<_short>Monitor for Dock</_short>
+		<default>0</default>
+	</option>
+	<option name="position" type="string">
+		<_short>Dock Position</_short>
+		<default>bottom</default>
+		<desc>
+			<value>top</value>
+			<_name>Top</_name>
+		</desc>
+		<desc>
+			<value>bottom</value>
+			<_name>Bottom</_name>
+		</desc>
+	</option>
+	<option name="dock_offset" type="int">
+		<_short>Dock Offset</_short>
+		<default>5</default>
+	</option>
+	<option name="exclusive" type="bool">
+		<_short>Dock Exclusive</_short>
+		<default>false</default>
+	</option>
+	<option name="autohide" type="bool">
+		<_short>Dock Autohide</_short>
+		<default>false</default>
+	</option>
+	</group>
+	</plugin>
+</wf-panel-pi>

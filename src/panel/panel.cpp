@@ -20,12 +20,12 @@ extern "C" {
 }
 
 WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
-    icon_size {dock ? "panel/dock_icon_size" : "panel/icon_size"},
-    layer {dock ? "panel/dock_layer" : "panel/layer"},
-    monitor_num {dock ? "panel/dock_monitor" : "panel/monitor"},
-    left_widgets_opt {dock ? "panel/dock_widgets" : "panel/widgets_left"},
+    icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
+    layer {dock ? "dock/layer" : "panel/layer"},
+    monitor_num {dock ? "dock/monitor" : "panel/monitor"},
+    left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {"panel/widgets_right"},
-    exclusive {dock ? "panel/dock_exclusive" : "panel/exclusive"},
+    exclusive {dock ? "dock/exclusive" : "panel/exclusive"},
     minimal_panel_height {"panel/minimal_height"},
     gestures_touch_only {"panel/gestures_touch_only"},
     notify_timeout {"panel/notify_timeout"},

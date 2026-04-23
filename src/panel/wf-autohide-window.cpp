@@ -14,11 +14,11 @@
 /* Public methods */
 
 WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, bool dock) :
-    position {dock ? "panel/dock_position" : "panel/position"},
-    doffset {"panel/dock_offset"},
+    position {dock ? "dock/position" : "panel/position"},
+    doffset {"dock/dock_offset"},
     y_position {WfOption <int> {"panel/autohide_duration"}},
     edge_offset {"panel/edge_offset"},
-    autohide {dock ? "panel/dock_autohide" : "panel/autohide"}
+    autohide {dock ? "dock/autohide" : "panel/autohide"}
 {
     this->output = output;
     this->dock = dock;

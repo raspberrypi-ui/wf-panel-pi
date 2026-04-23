@@ -813,7 +813,7 @@ static void write_config (void)
         }
         while (gtk_tree_model_iter_next (sort[3], &iter));
     }
-    g_key_file_set_string (kf, "panel", "dock_widgets", config);
+    g_key_file_set_string (kf, "dock", "widgets_left", config);
 
     // write the modified key file out
     str = g_key_file_to_data (kf, &len, NULL);
