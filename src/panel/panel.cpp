@@ -252,29 +252,25 @@ bool WayfirePanel::on_button_release_event (GdkEventButton* event)
         cplug.set_sensitive (false);
 
         // content box has two hboxes as children - loop through both
-        std::vector <Gtk::Widget*> hboxes = content_box.get_children ();
-        for (auto &hbox : hboxes)
+        int i;
+        for (i = 0; i < 2; i++)
         {
-            if (auto chbox = dynamic_cast <Gtk::Container*> (hbox))
+            // loop through plugins in each hbox
+            for (auto &plugin : (i == 0 ? left_box : right_box).get_children ())
             {
-                // loop through plugins in each hbox
-                std::vector <Gtk::Widget*> plugins = chbox->get_children ();
-                for (auto &plugin : plugins)
+                if (!plugin->is_visible ()) continue;
+
+                // check if the x position of the mouse is within the plugin
+                Gtk::Allocation alloc = plugin->get_allocation ();
+
+                if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
                 {
-                    if (!plugin->is_visible ()) continue;
-
-                    // check if the x position of the mouse is within the plugin
-                    Gtk::Allocation alloc = plugin->get_allocation ();
-
-                    if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
-                    {
-                        conf_plugin = plugin->get_name ();
-                        if (conf_plugin == "spacing") cplug.hide ();
-                        else cplug.show ();
-                        if (can_configure (conf_plugin.c_str ())) cplug.set_sensitive (true);
-                        show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
-                        return false;
-                    }
+                    conf_plugin = plugin->get_name ();
+                    if (conf_plugin == "spacing") cplug.hide ();
+                    else cplug.show ();
+                    if (can_configure (conf_plugin.c_str ())) cplug.set_sensitive (true);
+                    show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
+                    return false;
                 }
             }
         }
