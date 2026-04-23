@@ -25,11 +25,11 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, bool do
 
     set_decorated (false);
     set_resizable (false);
-    set_name (dock ? "dock" : "panel");
 
     gtk_layer_init_for_window (this->gobj ());
     gtk_layer_set_monitor (this->gobj (), output->monitor->gobj ());
     gtk_layer_set_namespace (this->gobj (), "$unfocus panel");
+    gtk_layer_set_keyboard_mode (this->gobj (), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 
     g_object_set (gtk_widget_get_settings (GTK_WIDGET (this->gobj ())), "gtk-visible-focus", GTK_POLICY_AUTOMATIC, NULL);
 

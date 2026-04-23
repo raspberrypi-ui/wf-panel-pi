@@ -39,26 +39,26 @@ extern "C" {
 
 #include "conf-utils.h"
 
-gboolean get_config_bool (const char *key)
+gboolean get_config_bool (const char *section, const char *key)
 {
-    char *cname = g_strdup_printf ("panel/%s", key);
+    char *cname = g_strdup_printf ("%s/%s", section, key);
     WfOption <bool> bool_option {cname};
     g_free (cname);
     if (bool_option) return TRUE;
     else return FALSE;
 }
 
-int get_config_int (const char *key)
+int get_config_int (const char *section, const char *key)
 {
-    char *cname = g_strdup_printf ("panel/%s", key);
+    char *cname = g_strdup_printf ("%s/%s", section, key);
     WfOption <int> int_option {cname};
     g_free (cname);
     return int_option;
 }
 
-void get_config_string (const char *key, char **dest)
+void get_config_string (const char *section, const char *key, char **dest)
 {
-    char *cname = g_strdup_printf ("panel/%s", key);
+    char *cname = g_strdup_printf ("%s/%s", section, key);
     WfOption <std::string> string_option {cname};
     g_free (cname);
     *dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());

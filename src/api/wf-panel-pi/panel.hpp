@@ -74,7 +74,6 @@ class WayfirePanel
     void do_notify_configure();
     void do_appearance_set();
     bool on_delete(GdkEventAny *ev);
-    void init_layout();
     std::unique_ptr<WayfireWidget> widget_from_name(std::string name);
     static std::vector<std::string> tokenize(std::string list);
     void reload_widgets(std::string list, std::vector<std::unique_ptr<WayfireWidget>>& container, Gtk::HBox& box);

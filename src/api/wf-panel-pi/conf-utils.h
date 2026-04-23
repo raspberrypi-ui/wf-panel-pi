@@ -25,9 +25,9 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-extern gboolean get_config_bool (const char *key);
-extern int get_config_int (const char *key);
-extern void get_config_string (const char *key, char **dest);
+extern gboolean get_config_bool (const char *section, const char *key);
+extern int get_config_int (const char *section, const char *key);
+extern void get_config_string (const char *section, const char *key, char **dest);
 extern const char *get_plugin_label (const char *type);
 extern const conf_table_t *get_config_table (const char *type);
 

@@ -492,20 +492,20 @@ int plugin_config_dialog (const char *type)
                 {
                     case CONF_TYPE_BOOL :
                                         control = gtk_switch_new ();
-                                        gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (key));
+                                        gtk_switch_set_active (GTK_SWITCH (control), get_config_bool ("panel", key));
                                         break;
 
                     case CONF_TYPE_INT :
                                         control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
                                         if (space == -1)
-                                            gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (key));
+                                            gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int ("panel", key));
                                         else
                                             gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
                                         break;
 
                     case CONF_TYPE_STRING :
                                         control = gtk_entry_new ();
-                                        get_config_string (key, &strval);
+                                        get_config_string ("panel", key, &strval);
                                         gtk_entry_set_text (GTK_ENTRY (control), strval);
                                         g_free (strval);
                                         break;
@@ -513,7 +513,7 @@ int plugin_config_dialog (const char *type)
                     case CONF_TYPE_COLOUR :
                                         control = gtk_color_button_new ();
                                         gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (control), TRUE);
-                                        get_config_string (key, &strval);
+                                        get_config_string ("panel", key, &strval);
                                         gdk_rgba_parse (&col, strval);
                                         g_free (strval);
                                         gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
@@ -521,7 +521,7 @@ int plugin_config_dialog (const char *type)
 
                     case CONF_TYPE_FONT :
                                         control = gtk_font_button_new ();
-                                        get_config_string (key, &strval);
+                                        get_config_string ("panel", key, &strval);
                                         gtk_font_chooser_set_font (GTK_FONT_CHOOSER (control), strval);
                                         g_free (strval);
                                         break;
@@ -666,7 +666,7 @@ static void read_config (void)
     gboolean config;
 
     // add each space-separated widget from the metadata variables to the list store
-    get_config_string ("widgets_left", &strval);
+    get_config_string ("panel", "widgets_left", &strval);
     pos = 1;
     token = strtok (strval, " ");
     while (token)
@@ -683,7 +683,7 @@ static void read_config (void)
     }
     g_free (strval);
 
-    get_config_string ("widgets_right", &strval);
+    get_config_string ("panel", "widgets_right", &strval);
     pos = -1;
     token = strtok (strval, " ");
     while (token)
@@ -700,7 +700,7 @@ static void read_config (void)
     }
     g_free (strval);
 
-    get_config_string ("dock_widgets", &strval);
+    get_config_string ("dock", "widgets_left", &strval);
     pos = 100;
     token = strtok (strval, " ");
     while (token)
