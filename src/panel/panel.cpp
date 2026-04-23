@@ -21,13 +21,13 @@ extern "C" {
 
 WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
     icon_size {dock ? "panel/dock_icon_size" : "panel/icon_size"},
-    gestures_touch_only {"panel/gestures_touch_only"},
     layer {dock ? "panel/dock_layer" : "panel/layer"},
-    minimal_panel_height {"panel/minimal_height"},
     monitor_num {dock ? "panel/dock_monitor" : "panel/monitor"},
     left_widgets_opt {dock ? "panel/dock_widgets" : "panel/widgets_left"},
     right_widgets_opt {"panel/widgets_right"},
     exclusive {dock ? "panel/dock_exclusive" : "panel/exclusive"},
+    minimal_panel_height {"panel/minimal_height"},
+    gestures_touch_only {"panel/gestures_touch_only"},
     notify_timeout {"panel/notify_timeout"},
     notifications {"panel/notify_enable"},
     libnotify {"panel/notify_libnotify"}
@@ -40,7 +40,7 @@ WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
     if (!access ("/boot/firmware/config.txt", R_OK)) is_pi_var = TRUE;
     else is_pi_var = FALSE;
 
-    window = std::make_unique<WayfireAutohidingWindow>(output, "panel", dock);
+    window = std::make_unique<WayfireAutohidingWindow>(output, dock);
     isize = icon_size;
     g_object_set_data ((GObject *) window->gobj(), "icon-size", &isize);
     window->set_size_request(1, real ? minimal_panel_height : 1);

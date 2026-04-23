@@ -13,12 +13,12 @@
 
 /* Public methods */
 
-WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, const std::string& section, bool dock) :
-    position {dock ? section + "/dock_position" : section + "/position"},
-    doffset {section + "/dock_offset"},
-    y_position {WfOption<int>{section + "/autohide_duration"}},
-    edge_offset {section + "/edge_offset"},
-    autohide_opt {dock ? section + "/dock_autohide" : section + "/autohide"}
+WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, bool dock) :
+    position {dock ? "panel/dock_position" : "panel/position"},
+    doffset {"panel/dock_offset"},
+    y_position {WfOption <int> {"panel/autohide_duration"}},
+    edge_offset {"panel/edge_offset"},
+    autohide {dock ? "panel/dock_autohide" : "panel/autohide"}
 {
     this->output = output;
     this->dock = dock;
@@ -33,14 +33,14 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, const s
 
     g_object_set (gtk_widget_get_settings (GTK_WIDGET (this->gobj ())), "gtk-visible-focus", GTK_POLICY_AUTOMATIC, NULL);
 
-    last_autohide_value = autohide_opt;
-    autohide_counter = static_cast <int> (autohide_opt);
-    autohide_opt.set_callback([=] { update_autohide (); });
+    last_autohide_value = autohide;
+    autohide_counter = static_cast <int> (autohide);
+    autohide.set_callback([=] { update_autohide (); });
     position.set_callback([=] () { update_position (); });
     edge_offset.set_callback([=] () { update_position (); });
     if (dock) doffset.set_callback([=] () { update_position (); });
 
-    set_auto_exclusive_zone (!autohide_opt);
+    set_auto_exclusive_zone (!autohide);
     update_position ();
 
     this->signal_draw().connect_notify (
@@ -58,7 +58,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, const s
     this->signal_enter_notify_event().connect_notify (
         [=] (GdkEventCrossing *)
     {
-        if (!autohide_opt) return;
+        if (!autohide) return;
         if (pending_hide.connected ()) pending_hide.disconnect ();
         input_inside_panel = true;
 
@@ -68,7 +68,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, const s
     this->signal_leave_notify_event().connect_notify (
         [=] (GdkEventCrossing *ev)
     {
-        if (!autohide_opt) return;
+        if (!autohide) return;
         if (ev->detail == GDK_NOTIFY_INFERIOR) return;
 
         // don't hide if leaving a window towards the closest edge
@@ -207,11 +207,11 @@ void WayfireAutohidingWindow::update_margin ()
 
 void WayfireAutohidingWindow::update_autohide ()
 {
-    if (autohide_opt == last_autohide_value) return;
+    if (autohide == last_autohide_value) return;
 
-    if (autohide_opt) increase_autohide ();
+    if (autohide) increase_autohide ();
     else decrease_autohide ();
 
-    last_autohide_value = autohide_opt;
-    set_auto_exclusive_zone (!autohide_opt);
+    last_autohide_value = autohide;
+    set_auto_exclusive_zone (!autohide);
 }

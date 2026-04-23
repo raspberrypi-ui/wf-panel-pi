@@ -53,13 +53,13 @@ class WayfirePanel
     int isize;
 
     WfOption <int> icon_size;
-    WfOption <bool> gestures_touch_only;
     WfOption <std::string> layer;
-    WfOption <int> minimal_panel_height;
     WfOption <std::string> monitor_num;
     WfOption <std::string> left_widgets_opt;
     WfOption <std::string> right_widgets_opt;
     WfOption <bool> exclusive;
+    WfOption <int> minimal_panel_height;
+    WfOption <bool> gestures_touch_only;
     WfOption <int> notify_timeout;
     WfOption <bool> notifications;
     WfOption <bool> libnotify;
