@@ -251,44 +251,37 @@ bool WayfirePanel::on_button_release_event (GdkEventButton* event)
         conf_plugin = "gtkmm";
         cplug.set_sensitive (false);
 
-        // child of window is first hbox
-        std::vector <Gtk::Widget*> winch = window->get_children ();
-        for (auto &tophbox : winch)
+        // content box has two hboxes as children - loop through both
+        std::vector <Gtk::Widget*> hboxes = content_box.get_children ();
+        for (auto &hbox : hboxes)
         {
-            if (auto ctophbox = dynamic_cast <Gtk::Container*> (tophbox))
+            if (auto chbox = dynamic_cast <Gtk::Container*> (hbox))
             {
-                // top hbox has two hboxes as children - loop through both
-                std::vector <Gtk::Widget*> hboxes = ctophbox->get_children ();
-                for (auto &hbox : hboxes)
+                // loop through plugins in each hbox
+                std::vector <Gtk::Widget*> plugins = chbox->get_children ();
+                for (auto &plugin : plugins)
                 {
-                    if (auto chbox = dynamic_cast <Gtk::Container*> (hbox))
+                    if (!plugin->is_visible ()) continue;
+
+                    // check if the x position of the mouse is within the plugin
+                    Gtk::Allocation alloc = plugin->get_allocation ();
+
+                    if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
                     {
-                        // loop through plugins in each hbox
-                        std::vector <Gtk::Widget*> plugins = chbox->get_children ();
-                        for (auto &plugin : plugins)
-                        {
-                            if (!plugin->is_visible ()) continue;
-
-                            // check if the x position of the mouse is within the plugin
-                            Gtk::Allocation alloc = plugin->get_allocation ();
-
-                            if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
-                            {
-                                conf_plugin = plugin->get_name ();
-                                if (conf_plugin == "spacing") cplug.hide ();
-                                else cplug.show ();
-                                if (can_configure (conf_plugin.c_str())) cplug.set_sensitive (true);
-                                show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
-                                return false;
-                            }
-                        }
+                        conf_plugin = plugin->get_name ();
+                        if (conf_plugin == "spacing") cplug.hide ();
+                        else cplug.show ();
+                        if (can_configure (conf_plugin.c_str ())) cplug.set_sensitive (true);
+                        show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
+                        return false;
                     }
                 }
-                // not matched any widgets - on the empty area of the bar...
-                cplug.hide ();
-                show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj ()), GTK_WIDGET (menu.gobj ()), event->x_root, event->y_root);
             }
         }
+
+        // not matched any widgets - on the empty area of the bar...
+        cplug.hide ();
+        show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj ()), GTK_WIDGET (menu.gobj ()), event->x_root, event->y_root);
     }
     return false;
 }
@@ -314,7 +307,7 @@ void WayfirePanel::do_configure ()
 void WayfirePanel::do_plugin_configure ()
 {
     window->set_sensitive (false);
-    plugin_config_dialog (conf_plugin.c_str());
+    plugin_config_dialog (conf_plugin.c_str ());
     window->set_sensitive (true);
 }
 
