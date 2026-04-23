@@ -542,10 +542,10 @@ int WayfirePanel::set_monitor ()
 class WayfirePanelApp::impl
 {
   public:
-    std::unique_ptr<WayfirePanel> panel = NULL;
-    std::unique_ptr<WayfirePanel> dock = NULL;
-    std::vector<std::unique_ptr<WayfirePanel>> dummies;
-    std::vector<WayfireOutput*> outputs;
+    std::unique_ptr <WayfirePanel> panel = NULL;
+    std::unique_ptr <WayfirePanel> dock = NULL;
+    std::vector <std::unique_ptr <WayfirePanel>> dummies;
+    std::vector <WayfireOutput*> outputs;
 };
 
 /* Minimal DBus interface for commands to plugins */
@@ -572,6 +572,20 @@ const GDBusInterfaceVTable WayfirePanelApp::interface_vtable =
   NULL
 };
 
+void WayfirePanelApp::on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+    g_dbus_connection_register_object (connection, "/org/wayfire/wfpanel", introspection_data->interfaces[0],
+        &interface_vtable, user_data, NULL, NULL);
+}
+
+void WayfirePanelApp::on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+}
+
+void WayfirePanelApp::on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
+{
+}
+
 void WayfirePanelApp::handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
     const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
 {
@@ -595,18 +609,20 @@ gboolean WayfirePanelApp::handle_set_property (GDBusConnection *connection, cons
     return TRUE;
 }
 
-void WayfirePanelApp::on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+void WayfirePanelApp::handle_new_output (WayfireOutput *output)
 {
-    g_dbus_connection_register_object (connection, "/org/wayfire/wfpanel", introspection_data->interfaces[0],
-        &interface_vtable, user_data, NULL, NULL);
+    priv->outputs.push_back (output);
+    if (!priv->panel)
+    {
+        priv->panel = std::make_unique <WayfirePanel> (output, true, false);
+        priv->dock = std::make_unique <WayfirePanel> (output, true, true);
+    }
+    update_panels ();
 }
 
-void WayfirePanelApp::on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+void WayfirePanelApp::handle_output_removed (WayfireOutput *output)
 {
-}
-
-void WayfirePanelApp::on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
-{
+    priv->outputs.erase (std::remove (priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end ());
 }
 
 void WayfirePanelApp::on_config_reload ()
@@ -627,17 +643,6 @@ void WayfirePanelApp::on_command (const char *plugin, const char *command)
         priv->dock->handle_command_message (plugin, command);
 }
 
-void WayfirePanelApp::handle_new_output (WayfireOutput *output)
-{
-    priv->outputs.push_back (output);
-    if (!priv->panel)
-    {
-        priv->panel = std::make_unique <WayfirePanel> (output, true, false);
-        priv->dock = std::make_unique <WayfirePanel> (output, true, true);
-    }
-    update_panels ();
-}
-
 void WayfirePanelApp::update_panels ()
 {
     priv->dummies.clear ();
@@ -654,22 +659,7 @@ void WayfirePanelApp::update_panels ()
     }
 }
 
-void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
-{
-    priv->outputs.erase (std::remove (priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end ());
-}
-
-WayfirePanelApp& WayfirePanelApp::get()
-{
-    if (!instance)
-    {
-        throw std::logic_error ("Calling WayfirePanelApp::get() before starting app!");
-    }
-
-    return dynamic_cast <WayfirePanelApp&> (*instance.get ());
-}
-
-void WayfirePanelApp::create(int argc, char **argv)
+void WayfirePanelApp::create (int argc, char **argv)
 {
     if (instance)
     {
@@ -687,10 +677,21 @@ void WayfirePanelApp::create(int argc, char **argv)
     g_dbus_node_info_unref (introspection_data);
 }
 
-WayfirePanelApp::~WayfirePanelApp () = default;
+WayfirePanelApp& WayfirePanelApp::get ()
+{
+    if (!instance)
+    {
+        throw std::logic_error ("Calling WayfirePanelApp::get() before starting app!");
+    }
+
+    return dynamic_cast <WayfirePanelApp&> (*instance.get ());
+}
+
 WayfirePanelApp::WayfirePanelApp (int argc, char **argv) :
     WayfireShellApp (argc, argv), priv (new impl ())
 {}
+
+WayfirePanelApp::~WayfirePanelApp () = default;
 
 int main (int argc, char **argv)
 {

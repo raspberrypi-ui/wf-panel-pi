@@ -20,7 +20,7 @@
 class WayfirePanel
 {
   public:
-    WayfirePanel(WayfireOutput *output, bool real, bool dock);
+    WayfirePanel (WayfireOutput *output, bool real, bool dock);
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
     int set_monitor ();
@@ -36,10 +36,10 @@ class WayfirePanel
     Gtk::MenuItem notif;
     Gtk::MenuItem appset;
     std::string conf_plugin;
-    Glib::RefPtr<Gtk::GestureLongPress> gesture;
+    Glib::RefPtr <Gtk::GestureLongPress> gesture;
     sigc::connection draw_connection;
 
-    std::vector<std::unique_ptr<WayfireWidget>> left_widgets, right_widgets;
+    std::vector <std::unique_ptr <WayfireWidget>> left_widgets, right_widgets;
 
     WayfireOutput *output;
     bool wizard = WayfireShellApp::get().wizard;
@@ -81,25 +81,23 @@ class WayfirePanel
 class WayfirePanelApp : public WayfireShellApp
 {
   public:
-    static WayfirePanelApp& get();
-
     /* Starts the program. get() is valid afterward the first (and the only)
      * call to create() */
-    static void create(int argc, char **argv);
-    ~WayfirePanelApp();
+    static void create (int argc, char **argv);
+    static WayfirePanelApp& get ();
+    ~WayfirePanelApp ();
 
-    void handle_new_output(WayfireOutput *output) override;
-    void handle_output_removed(WayfireOutput *output) override;
-    void on_config_reload() override;
+    void handle_new_output (WayfireOutput *output) override;
+    void handle_output_removed (WayfireOutput *output) override;
+    void on_config_reload () override;
     void on_command (const char *plugin, const char *command) override;
     void update_panels ();
-    void update_widget_icons ();
 
   private:
-    WayfirePanelApp(int argc, char **argv);
+    WayfirePanelApp (int argc, char **argv);
 
     class impl;
-    std::unique_ptr<impl> priv;
+    std::unique_ptr <impl> priv;
 
     static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
     static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
