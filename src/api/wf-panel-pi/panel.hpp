@@ -64,7 +64,6 @@ class WayfirePanel
     WfOption <bool> notifications;
     WfOption <bool> libnotify;
 
-    void create_window ();
     void set_layer();
     void set_exclusive();
     bool on_keypress_event (GdkEventKey* event);

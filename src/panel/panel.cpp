@@ -20,8 +20,6 @@ extern "C" {
 
 extern "C" {
 #include "lxutils.h"
-
-GtkWidget *wpanel, *wdock;
 }
 
 WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
@@ -41,11 +39,6 @@ WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
     this->real = real;
     this->dock = dock;
 
-    this->create_window();
-}
-
-void WayfirePanel::create_window()
-{
     touch_only = gestures_touch_only;
     if (!access ("/boot/firmware/config.txt", R_OK)) is_pi_var = TRUE;
     else is_pi_var = FALSE;
@@ -53,14 +46,11 @@ void WayfirePanel::create_window()
     window = std::make_unique<WayfireAutohidingWindow>(output, "panel", dock);
     isize = icon_size;
     g_object_set_data ((GObject *) window->gobj(), "icon-size", &isize);
-    if (dock) wdock = (GtkWidget *) window->gobj ();
-    else wpanel = (GtkWidget *) window->gobj ();
     window->set_size_request(1, real ? minimal_panel_height : 1);
     if (real)
     {
         layer.set_callback([=] { set_layer (); });
         set_layer();
-        if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     }
 
     // Connect to draw signal to log first draw event using journald only if RPI_LOG_FIRST_DRAW is set
@@ -455,21 +445,21 @@ void WayfirePanel::init_widgets()
 
 void WayfirePanel::init_notify ()
 {
-    if (real) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+    if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
 
     notifications.set_callback([=] ()
     {
-        if (real) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+        if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     });
 
     libnotify.set_callback([=] ()
     {
-        if (real) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+        if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     });
 
     notify_timeout.set_callback([=] ()
     {
-        if (real) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+        if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     });
 }
 
