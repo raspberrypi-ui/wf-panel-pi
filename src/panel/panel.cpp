@@ -138,25 +138,25 @@ WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
 
 void WayfirePanel::set_layer()
 {
-    if ((std::string) (layer) == "overlay")
+    if ((std::string) layer == "overlay")
     {
         gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_OVERLAY);
         store_layer (GTK_LAYER_SHELL_LAYER_OVERLAY, dock);
     }
 
-    if ((std::string) (layer) == "top")
+    if ((std::string) layer == "top")
     {
         gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_TOP);
         store_layer (GTK_LAYER_SHELL_LAYER_TOP, dock);
     }
 
-    if ((std::string) (layer) == "bottom")
+    if ((std::string) layer == "bottom")
     {
         gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BOTTOM);
         store_layer (GTK_LAYER_SHELL_LAYER_BOTTOM, dock);
     }
 
-    if ((std::string) (layer) == "background")
+    if ((std::string) layer == "background")
     {
         gtk_layer_set_layer(window->gobj(), GTK_LAYER_SHELL_LAYER_BACKGROUND);
         store_layer (GTK_LAYER_SHELL_LAYER_BACKGROUND, dock);
