@@ -10,15 +10,12 @@
 
 #include <gtk-layer-shell.h>
 
-extern "C" {
-#include "configure.h"
-}
-
 #include "panel.hpp"
 #include "gtk-utils.hpp"
 #include "spacer.hpp"
 
 extern "C" {
+#include "configure.h"
 #include "lxutils.h"
 }
 

@@ -5,7 +5,10 @@
 #include <gtkmm/hvbox.h>
 #include <wf-option-wrap.hpp>
 #include "config/types.hpp"
+
+extern "C" {
 #include "configure.h"
+}
 
 #define DEFAULT_PANEL_HEIGHT "48"
 #define DEFAULT_ICON_SIZE 32
