@@ -58,12 +58,9 @@ std::unique_ptr<PanelApp> PanelApp::instance;
 
 PanelApp::PanelApp (int argc, char **argv)
 {
-    app = Gtk::Application::create (argc, argv, "", Gio::APPLICATION_HANDLES_COMMAND_LINE);
+    app = Gtk::Application::create (argc, argv, "", Gio::APPLICATION_FLAGS_NONE);
     app->signal_activate ().connect_notify (sigc::mem_fun (this, &PanelApp::on_activate));
-    app->add_main_option_entry (sigc::mem_fun (this, &PanelApp::parse_cfgfile), "config", 'c', "config file to use", "file");
-
-    // Activate app after parsing command line
-    app->signal_command_line ().connect_notify ([=] (auto&) { app->activate (); });
+    app->activate ();
 }
 
 PanelApp::~PanelApp ()
@@ -141,21 +138,12 @@ std::string PanelApp::get_config_file ()
 {
     std::string config_dir;
 
-    if (cmdline_config.has_value ()) return cmdline_config.value ();
-
     char *config_home = getenv ("XDG_CONFIG_HOME");
 
     if (config_home == NULL) config_dir = std::string (getenv ("HOME")) + "/.config";
     else config_dir = std::string (config_home);
 
     return config_dir + "/wf-panel-pi/wf-panel-pi.ini";
-}
-
-bool PanelApp::parse_cfgfile (const Glib::ustring & option_name, const Glib::ustring & value, bool has_value)
-{
-    std::cout << "Using custom config file " << value << std::endl;
-    cmdline_config = value;
-    return true;
 }
 
 void PanelApp::do_reload_config ()

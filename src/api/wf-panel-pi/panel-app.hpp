@@ -45,7 +45,6 @@ class PanelApp
     std::vector <std::unique_ptr <Panel>> dummies;
     std::vector <WayfireOutput*> outputs;
 
-    std::optional <std::string> cmdline_config;
     std::vector <std::unique_ptr <WayfireOutput>> monitors;
     sigc::connection hotplug_timer;
     static const GDBusInterfaceVTable interface_vtable;
@@ -56,7 +55,6 @@ class PanelApp
     void on_activate ();
 
     std::string get_config_file ();
-    bool parse_cfgfile (const Glib::ustring & option_name, const Glib::ustring & value, bool has_value);
     void do_reload_config ();
     bool handle_inotify_event (Glib::IOCondition cond);
 
