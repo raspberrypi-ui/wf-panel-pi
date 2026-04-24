@@ -278,7 +278,8 @@ void PanelApp::handle_method_call (GDBusConnection *connection, const gchar *sen
     {
         const gchar *plugin, *command;
         g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        get().on_command (plugin, command);
+        if (get().priv->panel) get().priv->panel->handle_command_message (plugin, command);
+        if (get().priv->dock) get().priv->dock->handle_command_message (plugin, command);
     }
 }
 
@@ -292,15 +293,6 @@ gboolean PanelApp::handle_set_property (GDBusConnection *connection, const gchar
     const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
 {
     return TRUE;
-}
-
-void PanelApp::on_command (const char *plugin, const char *command)
-{
-    if (priv->panel)
-        priv->panel->handle_command_message (plugin, command);
-
-    if (priv->dock)
-        priv->dock->handle_command_message (plugin, command);
 }
 
 

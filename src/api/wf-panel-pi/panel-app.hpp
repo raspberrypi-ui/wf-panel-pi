@@ -3,15 +3,13 @@
 
 #include <set>
 #include <string>
-#include "config/config-manager.hpp"
 
 #include <gtkmm/application.h>
 #include <gdkmm/monitor.h>
 
+#include "config/config-manager.hpp"
+
 using GMonitor = Glib::RefPtr<Gdk::Monitor>;
-/**
- * Represents a single output
- */
 struct WayfireOutput
 {
     GMonitor monitor;
@@ -21,14 +19,20 @@ struct WayfireOutput
     ~WayfireOutput ();
 };
 
-/**
- * A basic shell application.
- *
- * It is suitable for applications that need to show one or more windows
- * per monitor.
- */
 class PanelApp
 {
+  public:
+    PanelApp (int argc, char **argv);
+    ~PanelApp ();
+
+    wf::config::config_manager_t config;
+    bool wizard;
+
+    static PanelApp& get();
+    static void create (int argc, char **argv);
+
+    void rescan_xml_directory (void);
+
   private:
     class impl;
     std::unique_ptr <impl> priv;
@@ -42,6 +46,9 @@ class PanelApp
     int inotify_fd;
     guint owner_id;
 
+    void run ();
+    void on_activate ();
+
     std::string get_config_file ();
     bool parse_cfgfile (const Glib::ustring & option_name, const Glib::ustring & value, bool has_value);
     void do_reload_config ();
@@ -53,39 +60,12 @@ class PanelApp
     void handle_output_removed (WayfireOutput *);
     void update_panels ();
 
-
-
-    static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
-    static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
-    static void on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data);
-
-    static void handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-        const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data);
-    static GVariant *handle_get_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-        const gchar *property_name, GError **error, gpointer user_data);
-    static gboolean handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-        const gchar *property_name, GVariant *value, GError **error, gpointer user_data);
-
-
-    void on_activate ();
-
-    virtual void run();
-    void on_command (const char *, const char *);
-    
-
-
-
-  public:
-    PanelApp (int argc, char **argv);
-    ~PanelApp ();
-
-    static PanelApp& get();
-    static void create (int argc, char **argv);
-
-    void rescan_xml_directory (void);
-
-    wf::config::config_manager_t config;
-    bool wizard;
+    static void on_bus_acquired (GDBusConnection *, const gchar *, gpointer);
+    static void on_name_acquired (GDBusConnection *, const gchar *, gpointer);
+    static void on_name_lost (GDBusConnection *, const gchar *, gpointer);
+    static void handle_method_call (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GDBusMethodInvocation *, gpointer);
+    static GVariant *handle_get_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GError **, gpointer);
+    static gboolean handle_set_property (GDBusConnection *connection, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GError **, gpointer);
 };
 
 #endif /* end of include guard: PANEL_APP_HPP */
