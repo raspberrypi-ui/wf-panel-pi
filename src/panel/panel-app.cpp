@@ -1,220 +1,24 @@
-#include "panel-app.hpp"
 #include <fcntl.h>
-#include <glibmm/main.h>
+#include <unistd.h>
 #include <sys/inotify.h>
+#include <sys/time.h>
+#include <glibmm/main.h>
 #include <gdk/gdkwayland.h>
+
 #include <iostream>
 #include <memory>
-#include "config/file.hpp"
-
-#include <unistd.h>
-#include <sys/time.h>
 
 extern "C" {
 #include "launcher.h"
 }
 
+#include "config/file.hpp"
 #include "panel.hpp"
+#include "panel-app.hpp"
 
-class PanelApp::impl
-{
-  public:
-    std::unique_ptr <Panel> panel = NULL;
-    std::unique_ptr <Panel> dock = NULL;
-    std::vector <std::unique_ptr <Panel>> dummies;
-    std::vector <WayfireOutput*> outputs;
-};
+#define INOT_BUF_SIZE (1024 * sizeof (inotify_event))
 
-
-
-
-std::string PanelApp::get_config_file()
-{
-    if (cmdline_config.has_value())
-    {
-        return cmdline_config.value();
-    }
-
-    std::string config_dir;
-
-    char *config_home = getenv("XDG_CONFIG_HOME");
-    if (config_home == NULL)
-    {
-        config_dir = std::string(getenv("HOME")) + "/.config";
-    } else
-    {
-        config_dir = std::string(config_home);
-    }
-
-    return config_dir + "/wf-panel-pi/wf-panel-pi.ini";
-}
-
-bool PanelApp::parse_cfgfile(const Glib::ustring & option_name,
-    const Glib::ustring & value, bool has_value)
-{
-    std::cout << "Using custom config file " << value << std::endl;
-    cmdline_config = value;
-    return true;
-}
-
-void PanelApp::rescan_xml_directory(void)
-{
-    std::vector<std::string> xmldirs(1, METADATA_DIR);
-    wf::config::reload_xml_files (this->config, xmldirs);
-}
-
-#define INOT_BUF_SIZE (1024 * sizeof(inotify_event))
 char buf[INOT_BUF_SIZE];
-
-/* Reload file and add next inotify watch */
-static void do_reload_config(PanelApp *app)
-{
-    char *dir = g_path_get_dirname (app->get_config_file().c_str());
-    wf::config::load_configuration_options_from_file(
-        app->config, app->get_config_file());
-    app->on_config_reload();
-    inotify_add_watch(app->inotify_fd, app->get_config_file().c_str(), IN_MODIFY);
-    inotify_add_watch(app->inotify_fd, dir, IN_CREATE | IN_DELETE);
-    g_free (dir);
-}
-
-/* Handle inotify event */
-static bool handle_inotify_event(PanelApp *app, Glib::IOCondition cond)
-{
-    /* read, but don't use */
-    read(app->inotify_fd, buf, INOT_BUF_SIZE);
-    do_reload_config(app);
-
-    return true;
-}
-
-void PanelApp::on_activate()
-{
-    app->hold();
-
-    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
-    else wizard = false;
-
-    // load wf-shell if available
-    auto gdk_display = gdk_display_get_default();
-    auto wl_display  = gdk_wayland_display_get_wl_display(gdk_display);
-    if (!wl_display)
-    {
-        std::cerr << "Failed to connect to wayland display!" <<
-            " Are you sure you are running a wayland compositor?" << std::endl;
-        std::exit(-1);
-    }
-
-    std::vector<std::string> xmldirs(1, METADATA_DIR);
-
-    // setup config
-    char *dir = g_path_get_dirname (get_config_file ().c_str());
-    g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
-    g_free (dir);
-    close (open (get_config_file ().c_str(), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
-
-    this->config = wf::config::build_configuration(
-        xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini",
-        get_config_file());
-
-    inotify_fd = inotify_init();
-    do_reload_config(this);
-
-    Glib::signal_io().connect(
-        sigc::bind<0>(&handle_inotify_event, this),
-        inotify_fd, Glib::IO_IN | Glib::IO_HUP);
-
-    // Hook up monitor tracking
-    auto display = Gdk::Display::get_default();
-    display->signal_monitor_added().connect_notify(
-        [=] (const GMonitor& monitor) { this->monitors_changed(); });
-    display->signal_monitor_removed().connect_notify(
-        [=] (const GMonitor& monitor) { this->monitors_changed(); });
-
-    // initial monitors
-    this->update_monitors ();
-}
-
-bool PanelApp::update_monitors ()
-{
-    // clear the existing monitors
-    for (auto &mon : monitors)
-        handle_output_removed (mon.get ());
-    monitors.clear ();
-
-    // find the new list of monitors
-    auto display = Gdk::Display::get_default ();
-    int num_monitors = display->get_n_monitors ();
-    for (int i = 0; i < num_monitors; i++)
-    {
-        monitors.push_back (std::make_unique<WayfireOutput> (display->get_monitor (i)));
-        handle_new_output (monitors.back().get());
-    }
-
-    return false;
-}
-
-void PanelApp::monitors_changed ()
-{
-    if (hotplug_timer.connected ()) hotplug_timer.disconnect ();
-
-    hotplug_timer = Glib::signal_timeout().connect(
-        sigc::mem_fun(this, &PanelApp::update_monitors), 500);
-}
-
-void PanelApp::add_output(GMonitor monitor)
-{
-    monitors.push_back(std::make_unique<WayfireOutput>(monitor));
-    handle_new_output(monitors.back().get());
-}
-
-void PanelApp::rem_output(GMonitor monitor)
-{
-    auto it = std::find_if(monitors.begin(), monitors.end(),
-        [monitor] (auto& output) { return output->monitor == monitor; });
-
-    if (it != monitors.end())
-    {
-        handle_output_removed(it->get());
-    }
-
-    auto itr = std::remove_if(monitors.begin(), monitors.end(),
-        [monitor] (auto& output) { return output->monitor == monitor; });
-    if (itr != monitors.end())
-    {
-        monitors.erase(itr, monitors.end());
-    }
-}
-
-PanelApp::PanelApp(int argc, char **argv) : priv (new impl ())
-{
-    app = Gtk::Application::create(argc, argv, "",
-        Gio::APPLICATION_HANDLES_COMMAND_LINE);
-    app->signal_activate().connect_notify(
-        sigc::mem_fun(this, &PanelApp::on_activate));
-    app->add_main_option_entry(
-        sigc::mem_fun(this, &PanelApp::parse_cfgfile),
-        "config", 'c', "config file to use", "file");
-
-    // Activate app after parsing command line
-    app->signal_command_line().connect_notify([=] (auto&)
-    {
-        app->activate();
-    });
-}
-
-/* -------------------------- WayfireOutput --------------------------------- */
-WayfireOutput::WayfireOutput(const GMonitor& monitor)
-{
-    this->monitor = monitor;
-    this->wo = gdk_wayland_monitor_get_wl_output(monitor->gobj());
-}
-
-WayfireOutput::~WayfireOutput()
-{
-}
-
-/* Minimal DBus interface for commands to plugins */
 
 static GDBusNodeInfo *introspection_data = NULL;
 
@@ -229,6 +33,247 @@ static const gchar introspection_xml[] =
   "    </method>"
   "  </interface>"
   "</node>";
+
+static void do_reload_config (PanelApp *app)
+{
+    char *dir = g_path_get_dirname (app->get_config_file ().c_str ());
+    wf::config::load_configuration_options_from_file (app->config, app->get_config_file ());
+    app->on_config_reload ();
+    inotify_add_watch (app->inotify_fd, app->get_config_file ().c_str (), IN_MODIFY);
+    inotify_add_watch (app->inotify_fd, dir, IN_CREATE | IN_DELETE);
+    g_free (dir);
+}
+
+static bool handle_inotify_event (PanelApp *app, Glib::IOCondition cond)
+{
+    /* read, but don't use */
+    read (app->inotify_fd, buf, INOT_BUF_SIZE);
+    do_reload_config (app);
+    return true;
+}
+
+
+WayfireOutput::WayfireOutput (const GMonitor& monitor)
+{
+    this->monitor = monitor;
+    this->wo = gdk_wayland_monitor_get_wl_output (monitor->gobj ());
+}
+
+WayfireOutput::~WayfireOutput ()
+{
+}
+
+
+class PanelApp::impl
+{
+  public:
+    std::unique_ptr <Panel> panel = NULL;
+    std::unique_ptr <Panel> dock = NULL;
+    std::vector <std::unique_ptr <Panel>> dummies;
+    std::vector <WayfireOutput*> outputs;
+};
+
+std::unique_ptr<PanelApp> PanelApp::instance;
+
+PanelApp::PanelApp (int argc, char **argv) : priv (new impl ())
+{
+    app = Gtk::Application::create (argc, argv, "", Gio::APPLICATION_HANDLES_COMMAND_LINE);
+    app->signal_activate ().connect_notify (sigc::mem_fun (this, &PanelApp::on_activate));
+    app->add_main_option_entry (sigc::mem_fun (this, &PanelApp::parse_cfgfile), "config", 'c', "config file to use", "file");
+
+    // Activate app after parsing command line
+    app->signal_command_line ().connect_notify ([=] (auto&) { app->activate (); });
+}
+
+PanelApp::~PanelApp ()
+{
+}
+
+void PanelApp::run ()
+{
+    app->run ();
+}
+
+PanelApp& PanelApp::get ()
+{
+    return *instance;
+}
+
+void PanelApp::create (int argc, char **argv)
+{
+    if (instance)
+    {
+        throw std::logic_error ("Running PanelApp twice!");
+    }
+
+    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
+    guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
+        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+
+    instance = std::unique_ptr <PanelApp> (new PanelApp {argc, argv});
+    instance->run ();
+
+    g_bus_unown_name (owner_id);
+    g_dbus_node_info_unref (introspection_data);
+}
+
+void PanelApp::on_activate ()
+{
+    app->hold ();
+
+    auto gdk_display = gdk_display_get_default ();
+    auto wl_display  = gdk_wayland_display_get_wl_display (gdk_display);
+    if (!wl_display)
+    {
+        std::cerr << "No Wayland display found" << std::endl;
+        std::exit (-1);
+    }
+
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
+    else wizard = false;
+
+    std::vector <std::string> xmldirs (1, METADATA_DIR);
+
+    // setup config
+    char *dir = g_path_get_dirname (get_config_file ().c_str ());
+    g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
+    g_free (dir);
+
+    close (open (get_config_file ().c_str (), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
+
+    this->config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
+
+    inotify_fd = inotify_init ();
+    do_reload_config (this);
+
+    Glib::signal_io ().connect (sigc::bind <0> (&handle_inotify_event, this), inotify_fd, Glib::IO_IN | Glib::IO_HUP);
+
+    // connect monitor tracking
+    auto display = Gdk::Display::get_default ();
+    display->signal_monitor_added ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
+    display->signal_monitor_removed ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
+
+    // initial monitors
+    update_monitors ();
+}
+
+/* Config file tracking */
+
+std::string PanelApp::get_config_file ()
+{
+    std::string config_dir;
+
+    if (cmdline_config.has_value ()) return cmdline_config.value ();
+
+    char *config_home = getenv ("XDG_CONFIG_HOME");
+
+    if (config_home == NULL) config_dir = std::string (getenv ("HOME")) + "/.config";
+    else config_dir = std::string (config_home);
+
+    return config_dir + "/wf-panel-pi/wf-panel-pi.ini";
+}
+
+bool PanelApp::parse_cfgfile (const Glib::ustring & option_name, const Glib::ustring & value, bool has_value)
+{
+    std::cout << "Using custom config file " << value << std::endl;
+    cmdline_config = value;
+    return true;
+}
+
+void PanelApp::rescan_xml_directory (void)
+{
+    std::vector <std::string> xmldirs (1, METADATA_DIR);
+    wf::config::reload_xml_files (this->config, xmldirs);
+}
+
+void PanelApp::on_config_reload ()
+{
+    if (priv->panel)
+        priv->panel->handle_config_reload ();
+
+    if (priv->dock)
+        priv->dock->handle_config_reload ();
+}
+
+/* Monitor (output) tracking */
+
+bool PanelApp::update_monitors ()
+{
+    // clear the existing monitors
+    for (auto &mon : monitors) handle_output_removed (mon.get ());
+    monitors.clear ();
+
+    // find the new list of monitors
+    auto display = Gdk::Display::get_default ();
+    int num_monitors = display->get_n_monitors ();
+    for (int i = 0; i < num_monitors; i++)
+    {
+        monitors.push_back (std::make_unique <WayfireOutput> (display->get_monitor (i)));
+        handle_new_output (monitors.back ().get ());
+    }
+
+    return false;
+}
+
+void PanelApp::monitors_changed ()
+{
+    if (hotplug_timer.connected ()) hotplug_timer.disconnect ();
+
+    hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun(this, &PanelApp::update_monitors), 500);
+}
+
+void PanelApp::add_output (GMonitor monitor)
+{
+    monitors.push_back(std::make_unique <WayfireOutput> (monitor));
+    handle_new_output (monitors.back ().get ());
+}
+
+void PanelApp::rem_output (GMonitor monitor)
+{
+    auto it = std::find_if (monitors.begin (), monitors.end (),
+        [monitor] (auto& output) { return output->monitor == monitor; });
+
+    if (it != monitors.end ()) handle_output_removed (it->get ());
+
+    auto itr = std::remove_if (monitors.begin (), monitors.end (),
+        [monitor] (auto& output) { return output->monitor == monitor; });
+
+    if (itr != monitors.end ()) monitors.erase (itr, monitors.end ());
+}
+
+void PanelApp::handle_new_output (WayfireOutput *output)
+{
+    priv->outputs.push_back (output);
+    if (!priv->panel)
+    {
+        priv->panel = std::make_unique <Panel> (output, true, false);
+        priv->dock = std::make_unique <Panel> (output, true, true);
+    }
+    update_panels ();
+}
+
+void PanelApp::handle_output_removed (WayfireOutput *output)
+{
+    priv->outputs.erase (std::remove (priv->outputs.begin (), priv->outputs.end (), output), priv->outputs.end ());
+}
+
+void PanelApp::update_panels ()
+{
+    priv->dummies.clear ();
+
+    int mon_num = priv->panel->set_monitor ();
+    int dmon_num = priv->dock->set_monitor ();
+
+    auto mon = Gdk::Display::get_default ()->get_monitor (mon_num);
+    auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
+    for (auto& p : priv->outputs)
+    {
+        if (p->monitor != mon && p->monitor != dmon)
+            priv->dummies.push_back (std::make_unique <Panel> (p, false, false));
+    }
+}
+
+/* DBus interface for commands to plugins */
 
 const GDBusInterfaceVTable PanelApp::interface_vtable =
 {
@@ -275,31 +320,6 @@ gboolean PanelApp::handle_set_property (GDBusConnection *connection, const gchar
     return TRUE;
 }
 
-void PanelApp::handle_new_output (WayfireOutput *output)
-{
-    priv->outputs.push_back (output);
-    if (!priv->panel)
-    {
-        priv->panel = std::make_unique <Panel> (output, true, false);
-        priv->dock = std::make_unique <Panel> (output, true, true);
-    }
-    update_panels ();
-}
-
-void PanelApp::handle_output_removed (WayfireOutput *output)
-{
-    priv->outputs.erase (std::remove (priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end ());
-}
-
-void PanelApp::on_config_reload ()
-{
-    if (priv->panel)
-        priv->panel->handle_config_reload ();
-
-    if (priv->dock)
-        priv->dock->handle_config_reload ();
-}
-
 void PanelApp::on_command (const char *plugin, const char *command)
 {
     if (priv->panel)
@@ -309,54 +329,6 @@ void PanelApp::on_command (const char *plugin, const char *command)
         priv->dock->handle_command_message (plugin, command);
 }
 
-void PanelApp::update_panels ()
-{
-    priv->dummies.clear ();
-
-    int mon_num = priv->panel->set_monitor ();
-    int dmon_num = priv->dock->set_monitor ();
-
-    auto mon = Gdk::Display::get_default ()->get_monitor (mon_num);
-    auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
-    for (auto& p : priv->outputs)
-    {
-        if (p->monitor != mon && p->monitor != dmon)
-            priv->dummies.push_back (std::make_unique <Panel> (p, false, false));
-    }
-}
-
-void PanelApp::create (int argc, char **argv)
-{
-    if (instance)
-    {
-        throw std::logic_error ("Running PanelApp twice!");
-    }
-
-    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
-        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
-
-    instance = std::unique_ptr <PanelApp> (new PanelApp{argc, argv});
-    instance->run ();
-
-    g_bus_unown_name (owner_id);
-    g_dbus_node_info_unref (introspection_data);
-}
-
-PanelApp::~PanelApp()
-{}
-
-void PanelApp::run()
-{
-    app->run();
-}
-
-std::unique_ptr<PanelApp> PanelApp::instance;
-
-PanelApp& PanelApp::get()
-{
-    return *instance;
-}
 
 int main (int argc, char **argv)
 {
