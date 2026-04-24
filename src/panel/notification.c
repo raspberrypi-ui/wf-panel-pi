@@ -445,15 +445,31 @@ static void show_message (NotifyWindow *nw, char *str)
         gtk_box_pack_start (GTK_BOX (ibox), image, FALSE, FALSE, 0);
         gtk_box_pack_start (GTK_BOX (hbox), ibox, FALSE, FALSE, 0);
 
-        if (nw->critical) set_taskbar_icon (image, "dialog-warning");
+        if (nw->critical)
+        {
+            pixbuf = load_taskbar_pixbuf (GTK_WIDGET (panel), "dialog-warning");
+            if (pixbuf)
+            {
+                set_image_from_pixbuf (image, pixbuf);
+                g_object_unref (pixbuf);
+            }
+        }
         else if (nw->icon)
         {
-            dim = get_icon_size (image) * gtk_widget_get_scale_factor (image);
+            dim = get_icon_size (GTK_WIDGET (panel)) * gtk_widget_get_scale_factor (image);
             pixbuf = gdk_pixbuf_scale_simple (nw->icon, dim, dim, GDK_INTERP_BILINEAR);
             set_image_from_pixbuf (image, pixbuf);
             g_object_unref (pixbuf);
         }
-        else if (nw->icon_name && strlen (nw->icon_name)) set_taskbar_icon (image, nw->icon_name);
+        else if (nw->icon_name && strlen (nw->icon_name))
+        {
+            pixbuf = load_taskbar_pixbuf (GTK_WIDGET (panel), nw->icon_name);
+            if (pixbuf)
+            {
+                set_image_from_pixbuf (image, pixbuf);
+                g_object_unref (pixbuf);
+            }
+        }
     }
     fmt = g_strcompress (str);
 
