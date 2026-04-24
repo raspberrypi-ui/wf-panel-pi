@@ -19,7 +19,7 @@ extern "C" {
 #include "lxutils.h"
 }
 
-WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
+Panel::Panel (WayfireOutput *output, bool real, bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     layer {dock ? "dock/layer" : "panel/layer"},
     monitor_num {dock ? "dock/monitor" : "panel/monitor"},
@@ -95,29 +95,29 @@ WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
 
     // Create window menu
     conf.set_label (_("Add / Remove Plugins..."));
-    conf.signal_activate ().connect (sigc::mem_fun (this, &WayfirePanel::do_configure));
+    conf.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_configure));
     menu.attach (conf, 0, 1, 0, 1);
 
     cplug.set_label (_("Configure Plugin..."));
-    cplug.signal_activate ().connect (sigc::mem_fun (this, &WayfirePanel::do_plugin_configure));
+    cplug.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_plugin_configure));
     menu.attach (cplug, 0, 1, 1, 2);
 
     notif.set_label (_("Notifications..."));
-    notif.signal_activate ().connect (sigc::mem_fun (this, &WayfirePanel::do_notify_configure));
+    notif.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_notify_configure));
     menu.attach (notif, 0, 1, 2, 3);
 
     appset.set_label (dock ? _("Dock Preferences...") : _("Taskbar Preferences..."));
-    appset.signal_activate ().connect (sigc::mem_fun (this, &WayfirePanel::do_appearance_set));
+    appset.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_appearance_set));
     menu.attach (appset, 0, 1, 3, 4);
 
     menu.attach_to_widget (*window);
     menu.show_all ();
 
     // Setup window event handlers
-    window->signal_button_press_event ().connect (sigc::mem_fun (this, &WayfirePanel::on_button_press_event));
-    window->signal_button_release_event ().connect (sigc::mem_fun (this, &WayfirePanel::on_button_release_event));
-    window->signal_key_press_event ().connect (sigc::mem_fun (this, &WayfirePanel::on_keypress_event));
-    window->signal_delete_event ().connect (sigc::mem_fun (this, &WayfirePanel::on_delete));
+    window->signal_button_press_event ().connect (sigc::mem_fun (this, &Panel::on_button_press_event));
+    window->signal_button_release_event ().connect (sigc::mem_fun (this, &Panel::on_button_release_event));
+    window->signal_key_press_event ().connect (sigc::mem_fun (this, &Panel::on_keypress_event));
+    window->signal_delete_event ().connect (sigc::mem_fun (this, &Panel::on_delete));
     gesture = add_longpress_default (*window);
 
     // Set up parameter callbacks
@@ -152,7 +152,7 @@ WayfirePanel::WayfirePanel (WayfireOutput *output, bool real, bool dock) :
 
 // Set the window layer from the parameter value
 
-void WayfirePanel::set_layer ()
+void Panel::set_layer ()
 {
     if (!real) return;
 
@@ -183,7 +183,7 @@ void WayfirePanel::set_layer ()
 
 // Set exclusive zone from the parameter value
 
-void WayfirePanel::set_exclusive ()
+void Panel::set_exclusive ()
 {
     if (!real)
     {
@@ -221,7 +221,7 @@ void WayfirePanel::set_exclusive ()
 
 // Keyboard and mouse event handlers
 
-bool WayfirePanel::on_keypress_event (GdkEventKey* event)
+bool Panel::on_keypress_event (GdkEventKey* event)
 {
     char *str = g_strdup_printf ("key_%c", event->keyval);
 
@@ -234,14 +234,14 @@ bool WayfirePanel::on_keypress_event (GdkEventKey* event)
     return false;
 }
 
-bool WayfirePanel::on_button_press_event (GdkEventButton* event)
+bool Panel::on_button_press_event (GdkEventButton* event)
 {
     pressed = PRESS_SHORT;
 
     return false;
 }
 
-bool WayfirePanel::on_button_release_event (GdkEventButton* event)
+bool Panel::on_button_release_event (GdkEventButton* event)
 {
     if (pressed == PRESS_NONE) return false;
     pressed = PRESS_NONE;
@@ -283,7 +283,7 @@ bool WayfirePanel::on_button_release_event (GdkEventButton* event)
 
 // Window close handler
 
-bool WayfirePanel::on_delete (GdkEventAny *ev)
+bool Panel::on_delete (GdkEventAny *ev)
 {
     if (real && !dock) wfpanel_notify_close ();
 
@@ -292,26 +292,26 @@ bool WayfirePanel::on_delete (GdkEventAny *ev)
 
 // Menu event handlers
 
-void WayfirePanel::do_configure ()
+void Panel::do_configure ()
 {
     window->set_sensitive (false);
     open_config_dialog ();
     window->set_sensitive (true);
 }
 
-void WayfirePanel::do_plugin_configure ()
+void Panel::do_plugin_configure ()
 {
     window->set_sensitive (false);
     plugin_config_dialog (conf_plugin.c_str ());
     window->set_sensitive (true);
 }
 
-void WayfirePanel::do_notify_configure ()
+void Panel::do_notify_configure ()
 {
     system ("rpcc notifications &");
 }
 
-void WayfirePanel::do_appearance_set ()
+void Panel::do_appearance_set ()
 {
     if (dock) system ("rpcc dock &");
     else system ("rpcc taskbar &");
@@ -319,7 +319,7 @@ void WayfirePanel::do_appearance_set ()
 
 // Widget loading
 
-std::unique_ptr <WayfireWidget> WayfirePanel::widget_from_name (const char *name)
+std::unique_ptr <WayfireWidget> Panel::widget_from_name (const char *name)
 {
     if (strstr (name, "spacing"))
     {
@@ -342,9 +342,9 @@ std::unique_ptr <WayfireWidget> WayfirePanel::widget_from_name (const char *name
     return nullptr;
 }
 
-void WayfirePanel::reload_widgets (std::string list, std::vector <std::unique_ptr <WayfireWidget>>& container, Gtk::HBox& box)
+void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <WayfireWidget>>& container, Gtk::HBox& box)
 {
-    WayfirePanelApp::get ().rescan_xml_directory ();
+    PanelApp::get ().rescan_xml_directory ();
 
     container.clear ();
 
@@ -365,7 +365,7 @@ void WayfirePanel::reload_widgets (std::string list, std::vector <std::unique_pt
     set_exclusive ();
 }
 
-void WayfirePanel::init_widgets ()
+void Panel::init_widgets ()
 {
     if (!real) return;
 
@@ -413,7 +413,7 @@ void WayfirePanel::init_widgets ()
 
 // Set up notifications and callbacks
 
-void WayfirePanel::init_notify ()
+void Panel::init_notify ()
 {
     if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
 
@@ -435,7 +435,7 @@ void WayfirePanel::init_notify ()
 
 // Update all displayed icons
 
-void WayfirePanel::update_widget_icons ()
+void Panel::update_widget_icons ()
 {
     isize = icon_size;
 
@@ -450,9 +450,9 @@ void WayfirePanel::update_widget_icons ()
     }
 }
 
-// Public functions used by WayfirePanelApp
+// Public functions used by PanelApp
 
-void WayfirePanel::handle_config_reload ()
+void Panel::handle_config_reload ()
 {
     for (auto& w : left_widgets)
     {
@@ -465,7 +465,7 @@ void WayfirePanel::handle_config_reload ()
     }
 }
 
-void WayfirePanel::handle_command_message (const char *name, const char *cmd)
+void Panel::handle_command_message (const char *name, const char *cmd)
 {
     if (!g_strcmp0 (name, "notify"))
     {
@@ -492,7 +492,7 @@ void WayfirePanel::handle_command_message (const char *name, const char *cmd)
     }
 }
 
-int WayfirePanel::set_monitor ()
+int Panel::set_monitor ()
 {
     GdkDisplay *dpy = gdk_display_get_default ();
     GdkScreen *scr = gdk_display_get_default_screen (dpy);
@@ -533,168 +533,3 @@ int WayfirePanel::set_monitor ()
     return try_mon >= 0 ? try_mon : 0;
 }
 
-
-class WayfirePanelApp::impl
-{
-  public:
-    std::unique_ptr <WayfirePanel> panel = NULL;
-    std::unique_ptr <WayfirePanel> dock = NULL;
-    std::vector <std::unique_ptr <WayfirePanel>> dummies;
-    std::vector <WayfireOutput*> outputs;
-};
-
-/* Minimal DBus interface for commands to plugins */
-
-static GDBusNodeInfo *introspection_data = NULL;
-
-static const gchar introspection_xml[] =
-  "<node>"
-  "  <interface name='org.wayfire.wfpanel'>"
-  "    <annotation name='org.wayfire.wfpanel.Annotation' value='OnInterface'/>"
-  "    <method name='command'>"
-  "      <annotation name='org.wayfire.wfpanel.Annotation' value='OnMethod'/>"
-  "      <arg type='s' name='plugin' direction='in'/>"
-  "      <arg type='s' name='command' direction='in'/>"
-  "    </method>"
-  "  </interface>"
-  "</node>";
-
-const GDBusInterfaceVTable WayfirePanelApp::interface_vtable =
-{
-  handle_method_call,
-  handle_get_property,
-  handle_set_property,
-  NULL
-};
-
-void WayfirePanelApp::on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
-{
-    g_dbus_connection_register_object (connection, "/org/wayfire/wfpanel", introspection_data->interfaces[0],
-        &interface_vtable, user_data, NULL, NULL);
-}
-
-void WayfirePanelApp::on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
-{
-}
-
-void WayfirePanelApp::on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
-{
-}
-
-void WayfirePanelApp::handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
-{
-    if (g_strcmp0 (method_name, "command") == 0)
-    {
-        const gchar *plugin, *command;
-        g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        get ().on_command (plugin, command);
-    }
-}
-
-GVariant *WayfirePanelApp::handle_get_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GError **error, gpointer user_data)
-{
-    return NULL;
-}
-
-gboolean WayfirePanelApp::handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
-{
-    return TRUE;
-}
-
-void WayfirePanelApp::handle_new_output (WayfireOutput *output)
-{
-    priv->outputs.push_back (output);
-    if (!priv->panel)
-    {
-        priv->panel = std::make_unique <WayfirePanel> (output, true, false);
-        priv->dock = std::make_unique <WayfirePanel> (output, true, true);
-    }
-    update_panels ();
-}
-
-void WayfirePanelApp::handle_output_removed (WayfireOutput *output)
-{
-    priv->outputs.erase (std::remove (priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end ());
-}
-
-void WayfirePanelApp::on_config_reload ()
-{
-    if (priv->panel)
-        priv->panel->handle_config_reload ();
-
-    if (priv->dock)
-        priv->dock->handle_config_reload ();
-}
-
-void WayfirePanelApp::on_command (const char *plugin, const char *command)
-{
-    if (priv->panel)
-        priv->panel->handle_command_message (plugin, command);
-
-    if (priv->dock)
-        priv->dock->handle_command_message (plugin, command);
-}
-
-void WayfirePanelApp::update_panels ()
-{
-    priv->dummies.clear ();
-
-    int mon_num = priv->panel->set_monitor ();
-    int dmon_num = priv->dock->set_monitor ();
-
-    auto mon = Gdk::Display::get_default ()->get_monitor (mon_num);
-    auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
-    for (auto& p : priv->outputs)
-    {
-        if (p->monitor != mon && p->monitor != dmon)
-            priv->dummies.push_back (std::make_unique <WayfirePanel> (p, false, false));
-    }
-}
-
-void WayfirePanelApp::create (int argc, char **argv)
-{
-    if (instance)
-    {
-        throw std::logic_error ("Running WayfirePanelApp twice!");
-    }
-
-    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
-        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
-
-    instance = std::unique_ptr <WayfireShellApp> (new WayfirePanelApp{argc, argv});
-    instance->run ();
-
-    g_bus_unown_name (owner_id);
-    g_dbus_node_info_unref (introspection_data);
-}
-
-WayfirePanelApp& WayfirePanelApp::get ()
-{
-    if (!instance)
-    {
-        throw std::logic_error ("Calling WayfirePanelApp::get() before starting app!");
-    }
-
-    return dynamic_cast <WayfirePanelApp&> (*instance.get ());
-}
-
-WayfirePanelApp::WayfirePanelApp (int argc, char **argv) :
-    WayfireShellApp (argc, argv), priv (new impl ())
-{}
-
-WayfirePanelApp::~WayfirePanelApp () = default;
-
-int main (int argc, char **argv)
-{
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
-    WayfirePanelApp::create (argc, argv);
-    return 0;
-}

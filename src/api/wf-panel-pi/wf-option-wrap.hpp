@@ -1,7 +1,7 @@
 #pragma once
 
 #include "config/option-wrapper.hpp"
-#include "wf-shell-app.hpp"
+#include "panel-app.hpp"
 
 /**
  * An implementation of wf::base_option_wrapper_t for wf-shell-app based
@@ -19,6 +19,6 @@ class WfOption : public wf::base_option_wrapper_t<Type>
   protected:
     std::shared_ptr<wf::config::option_base_t> load_raw_option(const std::string& name) override
     {
-        return WayfireShellApp::get().config.get_option(name);
+        return PanelApp::get().config.get_option(name);
     }
 };

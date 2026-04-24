@@ -1,7 +1,7 @@
 #include <glib/gi18n.h>
 #include "wf-autohide-window.hpp"
 
-#include <wf-shell-app.hpp>
+#include "panel-app.hpp"
 #include <gdk/gdkwayland.h>
 
 #include <glibmm.h>
@@ -115,7 +115,7 @@ void WayfireAutohidingWindow::set_auto_exclusive_zone (bool has_zone)
 
 GtkLayerShellEdge WayfireAutohidingWindow::get_anchor_edge ()
 {
-    if (WayfireShellApp::get().wizard) return GTK_LAYER_SHELL_EDGE_TOP;
+    if (PanelApp::get().wizard) return GTK_LAYER_SHELL_EDGE_TOP;
     if ((std::string) position == "bottom") return GTK_LAYER_SHELL_EDGE_BOTTOM;
     return GTK_LAYER_SHELL_EDGE_TOP;
 }

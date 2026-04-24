@@ -5,7 +5,7 @@ panel_sources = files(
 
 util_sources = files(
   'gtk-utils.cpp',
-  'wf-shell-app.cpp',
+  'panel-app.cpp',
   'wf-autohide-window.cpp',
   'conf-utils.cpp',
   'configure.c',
