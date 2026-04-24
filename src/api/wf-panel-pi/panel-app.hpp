@@ -58,7 +58,6 @@ class PanelApp
     bool update_monitors ();
     void handle_output_added (WayfireOutput *);
     void handle_output_removed (WayfireOutput *);
-    void update_panels ();
 
     static void on_bus_acquired (GDBusConnection *, const gchar *, gpointer);
     static void on_name_acquired (GDBusConnection *, const gchar *, gpointer);

@@ -231,16 +231,7 @@ void PanelApp::handle_output_added (WayfireOutput *output)
         priv->panel = std::make_unique <Panel> (output, true, false);
         priv->dock = std::make_unique <Panel> (output, true, true);
     }
-    update_panels ();
-}
 
-void PanelApp::handle_output_removed (WayfireOutput *output)
-{
-    priv->outputs.erase (std::remove (priv->outputs.begin (), priv->outputs.end (), output), priv->outputs.end ());
-}
-
-void PanelApp::update_panels ()
-{
     priv->dummies.clear ();
 
     int mon_num = priv->panel->set_monitor ();
@@ -253,6 +244,11 @@ void PanelApp::update_panels ()
         if (p->monitor != mon && p->monitor != dmon)
             priv->dummies.push_back (std::make_unique <Panel> (p, false, false));
     }
+}
+
+void PanelApp::handle_output_removed (WayfireOutput *output)
+{
+    priv->outputs.erase (std::remove (priv->outputs.begin (), priv->outputs.end (), output), priv->outputs.end ());
 }
 
 /* DBus interface for commands to plugins */
