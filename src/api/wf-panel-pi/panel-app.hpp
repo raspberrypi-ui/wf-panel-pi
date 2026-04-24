@@ -9,6 +9,8 @@
 
 #include "config/config-manager.hpp"
 
+class Panel;
+
 using GMonitor = Glib::RefPtr<Gdk::Monitor>;
 struct WayfireOutput
 {
@@ -34,10 +36,14 @@ class PanelApp
     void rescan_xml_directory (void);
 
   private:
-    class impl;
-    std::unique_ptr <impl> priv;
     static std::unique_ptr <PanelApp> instance;
     Glib::RefPtr <Gtk::Application> app;
+
+    std::unique_ptr <Panel> panel;
+    std::unique_ptr <Panel> dock;
+
+    std::vector <std::unique_ptr <Panel>> dummies;
+    std::vector <WayfireOutput*> outputs;
 
     std::optional <std::string> cmdline_config;
     std::vector <std::unique_ptr <WayfireOutput>> monitors;

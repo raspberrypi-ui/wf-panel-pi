@@ -26,7 +26,7 @@ class Panel
     int set_monitor ();
 
   private:
-    std::unique_ptr<WayfireAutohidingWindow> window;
+    std::unique_ptr <WayfireAutohidingWindow> window;
 
     Gtk::HBox content_box;
     Gtk::HBox left_box, right_box;

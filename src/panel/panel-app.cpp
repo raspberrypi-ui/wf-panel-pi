@@ -54,18 +54,9 @@ WayfireOutput::~WayfireOutput ()
 }
 
 
-class PanelApp::impl
-{
-  public:
-    std::unique_ptr <Panel> panel = NULL;
-    std::unique_ptr <Panel> dock = NULL;
-    std::vector <std::unique_ptr <Panel>> dummies;
-    std::vector <WayfireOutput*> outputs;
-};
-
 std::unique_ptr<PanelApp> PanelApp::instance;
 
-PanelApp::PanelApp (int argc, char **argv) : priv (new impl ())
+PanelApp::PanelApp (int argc, char **argv)
 {
     app = Gtk::Application::create (argc, argv, "", Gio::APPLICATION_HANDLES_COMMAND_LINE);
     app->signal_activate ().connect_notify (sigc::mem_fun (this, &PanelApp::on_activate));
@@ -174,8 +165,8 @@ void PanelApp::do_reload_config ()
     
     wf::config::load_configuration_options_from_file (get().config, get().get_config_file ());
 
-    if (priv->panel) priv->panel->handle_config_reload ();
-    if (priv->dock) priv->dock->handle_config_reload ();
+    if (panel) panel->handle_config_reload ();
+    if (dock) dock->handle_config_reload ();
 
     inotify_add_watch (get().inotify_fd, get().get_config_file ().c_str (), IN_MODIFY);
     dir = g_path_get_dirname (get().get_config_file ().c_str ());
@@ -225,30 +216,31 @@ bool PanelApp::update_monitors ()
 
 void PanelApp::handle_output_added (WayfireOutput *output)
 {
-    priv->outputs.push_back (output);
-    if (!priv->panel)
+    outputs.push_back (output);
+
+    if (!panel)
     {
-        priv->panel = std::make_unique <Panel> (output, true, false);
-        priv->dock = std::make_unique <Panel> (output, true, true);
+        panel = std::make_unique <Panel> (output, true, false);
+        dock = std::make_unique <Panel> (output, true, true);
     }
 
-    priv->dummies.clear ();
+    dummies.clear ();
 
-    int mon_num = priv->panel->set_monitor ();
-    int dmon_num = priv->dock->set_monitor ();
+    int mon_num = panel->set_monitor ();
+    int dmon_num = dock->set_monitor ();
 
     auto mon = Gdk::Display::get_default ()->get_monitor (mon_num);
     auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
-    for (auto& p : priv->outputs)
+    for (auto& p : outputs)
     {
         if (p->monitor != mon && p->monitor != dmon)
-            priv->dummies.push_back (std::make_unique <Panel> (p, false, false));
+            dummies.push_back (std::make_unique <Panel> (p, false, false));
     }
 }
 
 void PanelApp::handle_output_removed (WayfireOutput *output)
 {
-    priv->outputs.erase (std::remove (priv->outputs.begin (), priv->outputs.end (), output), priv->outputs.end ());
+    outputs.erase (std::remove (outputs.begin (), outputs.end (), output), outputs.end ());
 }
 
 /* DBus interface for commands to plugins */
@@ -274,8 +266,8 @@ void PanelApp::handle_method_call (GDBusConnection *connection, const gchar *sen
     {
         const gchar *plugin, *command;
         g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        if (get().priv->panel) get().priv->panel->handle_command_message (plugin, command);
-        if (get().priv->dock) get().priv->dock->handle_command_message (plugin, command);
+        if (get().panel) get().panel->handle_command_message (plugin, command);
+        if (get().dock) get().dock->handle_command_message (plugin, command);
     }
 }
 
