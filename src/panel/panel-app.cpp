@@ -34,25 +34,6 @@ static const gchar introspection_xml[] =
   "  </interface>"
   "</node>";
 
-static void do_reload_config (PanelApp *app)
-{
-    char *dir = g_path_get_dirname (app->get_config_file ().c_str ());
-    wf::config::load_configuration_options_from_file (app->config, app->get_config_file ());
-    app->on_config_reload ();
-    inotify_add_watch (app->inotify_fd, app->get_config_file ().c_str (), IN_MODIFY);
-    inotify_add_watch (app->inotify_fd, dir, IN_CREATE | IN_DELETE);
-    g_free (dir);
-}
-
-static bool handle_inotify_event (PanelApp *app, Glib::IOCondition cond)
-{
-    /* read, but don't use */
-    read (app->inotify_fd, buf, INOT_BUF_SIZE);
-    do_reload_config (app);
-    return true;
-}
-
-
 WayfireOutput::WayfireOutput (const GMonitor& monitor)
 {
     this->monitor = monitor;
@@ -87,6 +68,8 @@ PanelApp::PanelApp (int argc, char **argv) : priv (new impl ())
 
 PanelApp::~PanelApp ()
 {
+    g_bus_unown_name (owner_id);
+    g_dbus_node_info_unref (introspection_data);
 }
 
 void PanelApp::run ()
@@ -106,15 +89,8 @@ void PanelApp::create (int argc, char **argv)
         throw std::logic_error ("Running PanelApp twice!");
     }
 
-    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    guint owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
-        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
-
     instance = std::unique_ptr <PanelApp> (new PanelApp {argc, argv});
     instance->run ();
-
-    g_bus_unown_name (owner_id);
-    g_dbus_node_info_unref (introspection_data);
 }
 
 void PanelApp::on_activate ()
@@ -132,29 +108,32 @@ void PanelApp::on_activate ()
     if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
     else wizard = false;
 
-    std::vector <std::string> xmldirs (1, METADATA_DIR);
-
-    // setup config
+    // setup config file tracking
     char *dir = g_path_get_dirname (get_config_file ().c_str ());
     g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
     g_free (dir);
 
     close (open (get_config_file ().c_str (), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
 
-    this->config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
-
     inotify_fd = inotify_init ();
-    do_reload_config (this);
+    Glib::signal_io ().connect (sigc::mem_fun (this, &PanelApp::handle_inotify_event), inotify_fd, Glib::IO_IN | Glib::IO_HUP);
 
-    Glib::signal_io ().connect (sigc::bind <0> (&handle_inotify_event, this), inotify_fd, Glib::IO_IN | Glib::IO_HUP);
+    std::vector <std::string> xmldirs (1, METADATA_DIR);
+    config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
+    do_reload_config ();
 
-    // connect monitor tracking
+    // setup monitor tracking
     auto display = Gdk::Display::get_default ();
     display->signal_monitor_added ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
     display->signal_monitor_removed ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
 
     // initial monitors
     update_monitors ();
+    
+    // own on DBus
+    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
+    owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
+        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
 }
 
 /* Config file tracking */
@@ -179,6 +158,25 @@ bool PanelApp::parse_cfgfile (const Glib::ustring & option_name, const Glib::ust
     cmdline_config = value;
     return true;
 }
+
+void PanelApp::do_reload_config ()
+{
+    char *dir = g_path_get_dirname (get ().get_config_file ().c_str ());
+    wf::config::load_configuration_options_from_file (get ().config, get ().get_config_file ());
+    get ().on_config_reload ();
+    inotify_add_watch (get ().inotify_fd, get ().get_config_file ().c_str (), IN_MODIFY);
+    inotify_add_watch (get ().inotify_fd, dir, IN_CREATE | IN_DELETE);
+    g_free (dir);
+}
+
+bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
+{
+    /* read, but don't use */
+    read (get ().inotify_fd, buf, INOT_BUF_SIZE);
+    do_reload_config ();
+    return true;
+}
+
 
 void PanelApp::rescan_xml_directory (void)
 {

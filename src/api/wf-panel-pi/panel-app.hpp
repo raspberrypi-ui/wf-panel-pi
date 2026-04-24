@@ -32,11 +32,16 @@ class PanelApp
   private:
     class impl;
     std::unique_ptr <impl> priv;
+    static std::unique_ptr <PanelApp> instance;
+    Glib::RefPtr <Gtk::Application> app;
+
+    std::optional <std::string> cmdline_config;
     std::vector <std::unique_ptr <WayfireOutput>> monitors;
     sigc::connection hotplug_timer;
     static const GDBusInterfaceVTable interface_vtable;
+    int inotify_fd;
+    guint owner_id;
 
-    
     static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
     static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
     static void on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data);
@@ -48,8 +53,8 @@ class PanelApp
     static gboolean handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
         const gchar *property_name, GVariant *value, GError **error, gpointer user_data);
 
-    void add_output(GMonitor monitor);
-    void rem_output(GMonitor monitor);
+    void add_output (GMonitor monitor);
+    void rem_output (GMonitor monitor);
     void monitors_changed ();
     bool update_monitors ();
 
@@ -58,13 +63,16 @@ class PanelApp
     void handle_new_output (WayfireOutput *);
     void handle_output_removed (WayfireOutput *);
 
-    static std::unique_ptr <PanelApp> instance;
-    std::optional<std::string> cmdline_config;
-
-    Glib::RefPtr<Gtk::Application> app;
     virtual void run();
     void on_command (const char *, const char *);
     void update_panels ();
+    
+    void on_config_reload ();
+    void do_reload_config ();
+    bool handle_inotify_event (Glib::IOCondition cond);
+    std::string get_config_file ();
+
+
 
 
   public:
@@ -76,10 +84,6 @@ class PanelApp
 
     void rescan_xml_directory (void);
 
-    virtual std::string get_config_file ();
-    void on_config_reload ();
-
-    int inotify_fd;
     wf::config::config_manager_t config;
     bool wizard;
 };
