@@ -43,9 +43,9 @@ class PanelApp
     std::unique_ptr <Panel> dock;
 
     std::vector <std::unique_ptr <Panel>> dummies;
-    std::vector <WayfireOutput*> outputs;
 
     std::vector <std::unique_ptr <WayfireOutput>> monitors;
+
     sigc::connection hotplug_timer;
     static const GDBusInterfaceVTable interface_vtable;
     int inotify_fd;
@@ -60,8 +60,6 @@ class PanelApp
 
     void monitors_changed ();
     bool update_monitors ();
-    void handle_output_added (WayfireOutput *);
-    void handle_output_removed (WayfireOutput *);
 
     static void on_bus_acquired (GDBusConnection *, const gchar *, gpointer);
     static void on_name_acquired (GDBusConnection *, const gchar *, gpointer);

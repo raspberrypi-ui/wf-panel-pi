@@ -174,7 +174,7 @@ void PanelApp::rescan_xml_directory (void)
     wf::config::reload_xml_files (config, xmldirs);
 }
 
-/* Monitor (output) tracking */
+/* Monitor tracking */
 
 void PanelApp::monitors_changed ()
 {
@@ -186,7 +186,6 @@ void PanelApp::monitors_changed ()
 bool PanelApp::update_monitors ()
 {
     // clear the existing monitors
-    for (auto &mon : monitors) handle_output_removed (mon.get ());
     monitors.clear ();
 
     // find the new list of monitors
@@ -195,39 +194,30 @@ bool PanelApp::update_monitors ()
     for (int i = 0; i < num_monitors; i++)
     {
         monitors.push_back (std::make_unique <WayfireOutput> (display->get_monitor (i)));
-        handle_output_added (monitors.back ().get ());
+
+        if (!panel)
+        {
+            panel = std::make_unique <Panel> (monitors.back ().get (), true, false);
+            dock = std::make_unique <Panel> (monitors.back ().get (), true, true);
+        }
+    }
+
+    // update the dummy panels
+    dummies.clear ();
+
+    int pmon_num = panel->set_monitor ();
+    int dmon_num = dock->set_monitor ();
+
+    auto pmon = Gdk::Display::get_default ()->get_monitor (pmon_num);
+    auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
+
+    for (auto &mon : monitors)
+    {
+        if (mon.get()->monitor != pmon && mon.get()->monitor != dmon)
+            dummies.push_back (std::make_unique <Panel> (mon.get (), false, false));
     }
 
     return false;
-}
-
-void PanelApp::handle_output_added (WayfireOutput *output)
-{
-    outputs.push_back (output);
-
-    if (!panel)
-    {
-        panel = std::make_unique <Panel> (output, true, false);
-        dock = std::make_unique <Panel> (output, true, true);
-    }
-
-    dummies.clear ();
-
-    int mon_num = panel->set_monitor ();
-    int dmon_num = dock->set_monitor ();
-
-    auto mon = Gdk::Display::get_default ()->get_monitor (mon_num);
-    auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
-    for (auto& p : outputs)
-    {
-        if (p->monitor != mon && p->monitor != dmon)
-            dummies.push_back (std::make_unique <Panel> (p, false, false));
-    }
-}
-
-void PanelApp::handle_output_removed (WayfireOutput *output)
-{
-    outputs.erase (std::remove (outputs.begin (), outputs.end (), output), outputs.end ());
 }
 
 /* DBus interface for commands to plugins */
