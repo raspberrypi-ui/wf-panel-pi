@@ -42,6 +42,19 @@ class PanelApp
     int inotify_fd;
     guint owner_id;
 
+    std::string get_config_file ();
+    bool parse_cfgfile (const Glib::ustring & option_name, const Glib::ustring & value, bool has_value);
+    void do_reload_config ();
+    bool handle_inotify_event (Glib::IOCondition cond);
+
+    void monitors_changed ();
+    bool update_monitors ();
+    void handle_output_added (WayfireOutput *);
+    void handle_output_removed (WayfireOutput *);
+    void update_panels ();
+
+
+
     static void on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
     static void on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data);
     static void on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data);
@@ -53,25 +66,12 @@ class PanelApp
     static gboolean handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
         const gchar *property_name, GVariant *value, GError **error, gpointer user_data);
 
-    void add_output (GMonitor monitor);
-    void rem_output (GMonitor monitor);
-    void monitors_changed ();
-    bool update_monitors ();
 
     void on_activate ();
-    bool parse_cfgfile (const Glib::ustring & option_name, const Glib::ustring & value, bool has_value);
-    void handle_new_output (WayfireOutput *);
-    void handle_output_removed (WayfireOutput *);
 
     virtual void run();
     void on_command (const char *, const char *);
-    void update_panels ();
     
-    void on_config_reload ();
-    void do_reload_config ();
-    bool handle_inotify_event (Glib::IOCondition cond);
-    std::string get_config_file ();
-
 
 
 

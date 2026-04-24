@@ -34,6 +34,15 @@ static const gchar introspection_xml[] =
   "  </interface>"
   "</node>";
 
+const GDBusInterfaceVTable PanelApp::interface_vtable =
+{
+  handle_method_call,
+  handle_get_property,
+  handle_set_property,
+  NULL
+};
+
+
 WayfireOutput::WayfireOutput (const GMonitor& monitor)
 {
     this->monitor = monitor;
@@ -112,12 +121,12 @@ void PanelApp::on_activate ()
     char *dir = g_path_get_dirname (get_config_file ().c_str ());
     g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
     g_free (dir);
-
     close (open (get_config_file ().c_str (), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
 
     inotify_fd = inotify_init ();
     Glib::signal_io ().connect (sigc::mem_fun (this, &PanelApp::handle_inotify_event), inotify_fd, Glib::IO_IN | Glib::IO_HUP);
 
+    // load initial config
     std::vector <std::string> xmldirs (1, METADATA_DIR);
     config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
     do_reload_config ();
@@ -127,7 +136,7 @@ void PanelApp::on_activate ()
     display->signal_monitor_added ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
     display->signal_monitor_removed ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
 
-    // initial monitors
+    // load initial monitors
     update_monitors ();
     
     // own on DBus
@@ -136,7 +145,7 @@ void PanelApp::on_activate ()
         on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
 }
 
-/* Config file tracking */
+/* Config file */
 
 std::string PanelApp::get_config_file ()
 {
@@ -161,39 +170,40 @@ bool PanelApp::parse_cfgfile (const Glib::ustring & option_name, const Glib::ust
 
 void PanelApp::do_reload_config ()
 {
-    char *dir = g_path_get_dirname (get ().get_config_file ().c_str ());
-    wf::config::load_configuration_options_from_file (get ().config, get ().get_config_file ());
-    get ().on_config_reload ();
-    inotify_add_watch (get ().inotify_fd, get ().get_config_file ().c_str (), IN_MODIFY);
-    inotify_add_watch (get ().inotify_fd, dir, IN_CREATE | IN_DELETE);
+    char *dir;
+    
+    wf::config::load_configuration_options_from_file (get().config, get().get_config_file ());
+
+    if (priv->panel) priv->panel->handle_config_reload ();
+    if (priv->dock) priv->dock->handle_config_reload ();
+
+    inotify_add_watch (get().inotify_fd, get().get_config_file ().c_str (), IN_MODIFY);
+    dir = g_path_get_dirname (get().get_config_file ().c_str ());
+    inotify_add_watch (get().inotify_fd, dir, IN_CREATE | IN_DELETE);
     g_free (dir);
 }
 
 bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
 {
-    /* read, but don't use */
-    read (get ().inotify_fd, buf, INOT_BUF_SIZE);
+    read (get().inotify_fd, buf, INOT_BUF_SIZE);
     do_reload_config ();
     return true;
 }
 
-
 void PanelApp::rescan_xml_directory (void)
 {
     std::vector <std::string> xmldirs (1, METADATA_DIR);
-    wf::config::reload_xml_files (this->config, xmldirs);
-}
-
-void PanelApp::on_config_reload ()
-{
-    if (priv->panel)
-        priv->panel->handle_config_reload ();
-
-    if (priv->dock)
-        priv->dock->handle_config_reload ();
+    wf::config::reload_xml_files (config, xmldirs);
 }
 
 /* Monitor (output) tracking */
+
+void PanelApp::monitors_changed ()
+{
+    if (hotplug_timer.connected ()) hotplug_timer.disconnect ();
+
+    hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun(this, &PanelApp::update_monitors), 500);
+}
 
 bool PanelApp::update_monitors ()
 {
@@ -207,39 +217,13 @@ bool PanelApp::update_monitors ()
     for (int i = 0; i < num_monitors; i++)
     {
         monitors.push_back (std::make_unique <WayfireOutput> (display->get_monitor (i)));
-        handle_new_output (monitors.back ().get ());
+        handle_output_added (monitors.back ().get ());
     }
 
     return false;
 }
 
-void PanelApp::monitors_changed ()
-{
-    if (hotplug_timer.connected ()) hotplug_timer.disconnect ();
-
-    hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun(this, &PanelApp::update_monitors), 500);
-}
-
-void PanelApp::add_output (GMonitor monitor)
-{
-    monitors.push_back(std::make_unique <WayfireOutput> (monitor));
-    handle_new_output (monitors.back ().get ());
-}
-
-void PanelApp::rem_output (GMonitor monitor)
-{
-    auto it = std::find_if (monitors.begin (), monitors.end (),
-        [monitor] (auto& output) { return output->monitor == monitor; });
-
-    if (it != monitors.end ()) handle_output_removed (it->get ());
-
-    auto itr = std::remove_if (monitors.begin (), monitors.end (),
-        [monitor] (auto& output) { return output->monitor == monitor; });
-
-    if (itr != monitors.end ()) monitors.erase (itr, monitors.end ());
-}
-
-void PanelApp::handle_new_output (WayfireOutput *output)
+void PanelApp::handle_output_added (WayfireOutput *output)
 {
     priv->outputs.push_back (output);
     if (!priv->panel)
@@ -273,14 +257,6 @@ void PanelApp::update_panels ()
 
 /* DBus interface for commands to plugins */
 
-const GDBusInterfaceVTable PanelApp::interface_vtable =
-{
-  handle_method_call,
-  handle_get_property,
-  handle_set_property,
-  NULL
-};
-
 void PanelApp::on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
 {
     g_dbus_connection_register_object (connection, "/org/wayfire/wfpanel", introspection_data->interfaces[0],
@@ -302,7 +278,7 @@ void PanelApp::handle_method_call (GDBusConnection *connection, const gchar *sen
     {
         const gchar *plugin, *command;
         g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        get ().on_command (plugin, command);
+        get().on_command (plugin, command);
     }
 }
 
