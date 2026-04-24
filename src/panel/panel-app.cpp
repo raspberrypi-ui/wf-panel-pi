@@ -97,8 +97,8 @@ void PanelApp::on_activate ()
 {
     app->hold ();
 
-    auto gdk_display = gdk_display_get_default ();
-    auto wl_display  = gdk_wayland_display_get_wl_display (gdk_display);
+    auto display = Gdk::Display::get_default ();
+    auto wl_display = gdk_wayland_display_get_wl_display (display->gobj ());
     if (!wl_display)
     {
         std::cerr << "No Wayland display found" << std::endl;
@@ -123,7 +123,6 @@ void PanelApp::on_activate ()
     do_reload_config ();
 
     // setup monitor tracking
-    auto display = Gdk::Display::get_default ();
     display->signal_monitor_added ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
     display->signal_monitor_removed ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
 
