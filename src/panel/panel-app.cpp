@@ -81,11 +81,6 @@ PanelApp::~PanelApp ()
     g_dbus_node_info_unref (introspection_data);
 }
 
-void PanelApp::run ()
-{
-    app->run ();
-}
-
 PanelApp& PanelApp::get ()
 {
     return *instance;
@@ -100,6 +95,11 @@ void PanelApp::create (int argc, char **argv)
 
     instance = std::unique_ptr <PanelApp> (new PanelApp {argc, argv});
     instance->run ();
+}
+
+void PanelApp::run ()
+{
+    app->run ();
 }
 
 void PanelApp::on_activate ()
