@@ -168,7 +168,7 @@ bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
     return true;
 }
 
-void PanelApp::rescan_xml_directory (void)
+void PanelApp::rescan_xml_directory ()
 {
     std::vector <std::string> xmldirs (1, METADATA_DIR);
     wf::config::reload_xml_files (config, xmldirs);
@@ -202,6 +202,13 @@ bool PanelApp::update_monitors ()
         }
     }
 
+    update_panels ();
+
+    return false;
+}
+
+void PanelApp::update_panels ()
+{
     // update the dummy panels
     dummies.clear ();
 
@@ -216,8 +223,6 @@ bool PanelApp::update_monitors ()
         if (mon.get()->monitor != pmon && mon.get()->monitor != dmon)
             dummies.push_back (std::make_unique <Panel> (mon.get (), false, false));
     }
-
-    return false;
 }
 
 /* DBus interface for commands to plugins */

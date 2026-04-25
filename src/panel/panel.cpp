@@ -126,6 +126,7 @@ Panel::Panel (WayfireOutput *output, bool real, bool dock) :
         icon_size.set_callback ([=] { update_widget_icons (); });
         exclusive.set_callback ([=] { set_exclusive (); });
         layer.set_callback ([=] { set_layer (); });
+        monitor_num.set_callback ([=] { update_panels (); });
     }
 
     // Create the window
@@ -448,6 +449,13 @@ void Panel::update_widget_icons ()
     {
         w->set_icon ();
     }
+}
+
+// Update monitor assignments
+
+void Panel::update_panels ()
+{
+    PanelApp::get ().update_panels ();
 }
 
 // Public functions used by PanelApp

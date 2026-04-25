@@ -33,7 +33,8 @@ class PanelApp
     static PanelApp& get();
     static void create (int argc, char **argv);
 
-    void rescan_xml_directory (void);
+    void rescan_xml_directory ();
+    void update_panels ();
 
   private:
     static std::unique_ptr <PanelApp> instance;
