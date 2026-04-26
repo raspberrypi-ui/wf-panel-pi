@@ -237,16 +237,19 @@ void PanelApp::on_name_lost (const Glib::RefPtr<Gio::DBus::Connection>& connecti
 
 void PanelApp::handle_method_call (const Glib::RefPtr< Gio::DBus::Connection > &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &method_name, const Glib::VariantContainerBase &parameters, const Glib::RefPtr< Gio::DBus::MethodInvocation > &)
 {
+    Glib::Variant <Glib::ustring> params;
+    std::string plugin, command;
 
     if (method_name == "command")
     {
-    printf ("command\n");
-#if 0
-        const gchar *plugin, *command;
-        g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        if (instance->panel) instance->panel->handle_command_message (plugin, command);
-        if (instance->dock) instance->dock->handle_command_message (plugin, command);
-#endif
+        parameters.get_child (params, 0);
+        plugin = (std::string) params.get ();
+
+        parameters.get_child (params, 1);
+        command = params.get ();
+
+        if (panel) panel->handle_command_message (plugin.c_str (), command.c_str ());
+        if (dock) dock->handle_command_message (plugin.c_str (), command.c_str ());
     }
 }
 
