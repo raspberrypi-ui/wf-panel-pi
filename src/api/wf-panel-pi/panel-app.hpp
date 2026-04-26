@@ -50,9 +50,9 @@ class PanelApp
 
     Glib::RefPtr <Gio::DBus::NodeInfo> introspection_data;
     Gio::DBus::InterfaceVTable *interface_vtable;
+    guint owner_id;
 
     int inotify_fd;
-    guint owner_id;
 
     void run ();
     void on_activate ();
@@ -68,8 +68,6 @@ class PanelApp
     void on_name_acquired (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
     void on_name_lost (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
     void handle_method_call (const Glib::RefPtr <Gio::DBus::Connection> &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::VariantContainerBase &, const Glib::RefPtr< Gio::DBus::MethodInvocation > &);
-    void handle_get_property (Glib::VariantBase &, const Glib::RefPtr< Gio::DBus::Connection > &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &);
-    void handle_set_property (const Glib::RefPtr< Gio::DBus::Connection > &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::VariantBase &);
 };
 
 #endif /* end of include guard: PANEL_APP_HPP */
