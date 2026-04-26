@@ -47,7 +47,10 @@ class PanelApp
     std::vector <std::unique_ptr <WayfireOutput>> monitors;
 
     sigc::connection hotplug_timer;
-    static const GDBusInterfaceVTable interface_vtable;
+
+    Glib::RefPtr <Gio::DBus::NodeInfo> introspection_data;
+    Gio::DBus::InterfaceVTable *interface_vtable;
+
     int inotify_fd;
     guint owner_id;
 
@@ -61,12 +64,12 @@ class PanelApp
     void monitors_changed ();
     bool update_monitors ();
 
-    static void on_bus_acquired (GDBusConnection *, const gchar *, gpointer);
-    static void on_name_acquired (GDBusConnection *, const gchar *, gpointer);
-    static void on_name_lost (GDBusConnection *, const gchar *, gpointer);
-    static void handle_method_call (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GDBusMethodInvocation *, gpointer);
-    static GVariant *handle_get_property (GDBusConnection *, const gchar *, const gchar *, const gchar *, const gchar *, GError **, gpointer);
-    static gboolean handle_set_property (GDBusConnection *connection, const gchar *, const gchar *, const gchar *, const gchar *, GVariant *, GError **, gpointer);
+    void on_bus_acquired (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
+    void on_name_acquired (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
+    void on_name_lost (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
+    void handle_method_call (const Glib::RefPtr <Gio::DBus::Connection> &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::VariantContainerBase &, const Glib::RefPtr< Gio::DBus::MethodInvocation > &);
+    void handle_get_property (Glib::VariantBase &, const Glib::RefPtr< Gio::DBus::Connection > &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &);
+    void handle_set_property (const Glib::RefPtr< Gio::DBus::Connection > &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::VariantBase &);
 };
 
 #endif /* end of include guard: PANEL_APP_HPP */

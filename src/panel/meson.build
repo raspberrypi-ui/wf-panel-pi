@@ -33,7 +33,8 @@ udev = dependency('libudev')
 input = dependency('libinput')
 evdev = dependency('libevdev')
 libxml2 = dependency('libxml-2.0')
-panel_deps = [ gtklayershell, udev, input, evdev, libxml2 ]
+giomm = dependency('giomm-2.4')
+panel_deps = [ gtklayershell, udev, input, evdev, libxml2, giomm ]
 
 executable('wf-panel-pi', panel_sources + util_sources + config_sources,
         dependencies: deps + panel_deps,

@@ -3,6 +3,8 @@
 #include <sys/inotify.h>
 #include <sys/time.h>
 #include <glibmm/main.h>
+#include <giomm/dbusownname.h>
+#include <giomm/dbusconnection.h>
 #include <gdk/gdkwayland.h>
 
 #include <iostream>
@@ -20,7 +22,7 @@ extern "C" {
 
 char buf[INOT_BUF_SIZE];
 
-static GDBusNodeInfo *introspection_data = NULL;
+// https://github.com/GNOME/glibmm/blob/master/examples/dbus/session_bus_service.cc
 
 static const gchar introspection_xml[] =
   "<node>"
@@ -33,15 +35,6 @@ static const gchar introspection_xml[] =
   "    </method>"
   "  </interface>"
   "</node>";
-
-const GDBusInterfaceVTable PanelApp::interface_vtable =
-{
-  handle_method_call,
-  handle_get_property,
-  handle_set_property,
-  NULL
-};
-
 
 WayfireOutput::WayfireOutput (const GMonitor& monitor)
 {
@@ -64,8 +57,7 @@ PanelApp::PanelApp (int argc, char **argv)
 
 PanelApp::~PanelApp ()
 {
-    g_bus_unown_name (owner_id);
-    g_dbus_node_info_unref (introspection_data);
+    Gio::DBus::unown_name (owner_id);
 }
 
 PanelApp& PanelApp::get ()
@@ -126,9 +118,9 @@ void PanelApp::on_activate ()
     update_monitors ();
     
     // own on DBus
-    introspection_data = g_dbus_node_info_new_for_xml (introspection_xml, NULL);
-    owner_id = g_bus_own_name (G_BUS_TYPE_SESSION, "org.wayfire.wfpanel", G_BUS_NAME_OWNER_FLAGS_NONE,
-        on_bus_acquired, on_name_acquired, on_name_lost, NULL, NULL);
+    introspection_data = Gio::DBus::NodeInfo::create_for_xml (introspection_xml);
+    owner_id = Gio::DBus::own_name (Gio::DBus::BusType::BUS_TYPE_SESSION, "org.wayfire.wfpanel",
+        sigc::mem_fun(this, &PanelApp::on_bus_acquired), sigc::mem_fun(this, &PanelApp::on_name_acquired), sigc::mem_fun(this, &PanelApp::on_name_lost));
 }
 
 /* Config file */
@@ -229,44 +221,34 @@ void PanelApp::update_panels ()
 
 /* DBus interface for commands to plugins */
 
-void PanelApp::on_bus_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
+void PanelApp::on_bus_acquired (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
 {
-    g_dbus_connection_register_object (connection, "/org/wayfire/wfpanel", introspection_data->interfaces[0],
-        &interface_vtable, user_data, NULL, NULL);
+    interface_vtable = new Gio::DBus::InterfaceVTable (sigc::mem_fun (this, &PanelApp::handle_method_call));
+    connection->register_object ("/org/wayfire/wfpanel", introspection_data->lookup_interface(), *interface_vtable);
 }
 
-void PanelApp::on_name_acquired (GDBusConnection *connection, const gchar *name, gpointer user_data)
-{
-}
-
-void PanelApp::on_name_lost (GDBusConnection *connection, const gchar *name, gpointer user_data)
+void PanelApp::on_name_acquired (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
 {
 }
 
-void PanelApp::handle_method_call (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *method_name, GVariant *parameters, GDBusMethodInvocation *invocation, gpointer user_data)
+void PanelApp::on_name_lost (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
 {
-    if (g_strcmp0 (method_name, "command") == 0)
+}
+
+void PanelApp::handle_method_call (const Glib::RefPtr< Gio::DBus::Connection > &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &method_name, const Glib::VariantContainerBase &parameters, const Glib::RefPtr< Gio::DBus::MethodInvocation > &)
+{
+
+    if (method_name == "command")
     {
+    printf ("command\n");
+#if 0
         const gchar *plugin, *command;
         g_variant_get (parameters, "(&s&s)", &plugin, &command);
         if (instance->panel) instance->panel->handle_command_message (plugin, command);
         if (instance->dock) instance->dock->handle_command_message (plugin, command);
+#endif
     }
 }
-
-GVariant *PanelApp::handle_get_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GError **error, gpointer user_data)
-{
-    return NULL;
-}
-
-gboolean PanelApp::handle_set_property (GDBusConnection *connection, const gchar *sender, const gchar *object_path, const gchar *interface_name,
-    const gchar *property_name, GVariant *value, GError **error, gpointer user_data)
-{
-    return TRUE;
-}
-
 
 int main (int argc, char **argv)
 {
