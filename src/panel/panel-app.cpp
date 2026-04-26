@@ -58,9 +58,8 @@ std::unique_ptr<PanelApp> PanelApp::instance;
 
 PanelApp::PanelApp (int argc, char **argv)
 {
-    app = Gtk::Application::create (argc, argv, "", Gio::APPLICATION_FLAGS_NONE);
+    app = Gtk::Application::create (argc, argv, "com.raspberrypi.wf-panel-pi", Gio::APPLICATION_FLAGS_NONE);
     app->signal_activate ().connect_notify (sigc::mem_fun (this, &PanelApp::on_activate));
-    app->activate ();
 }
 
 PanelApp::~PanelApp ()
