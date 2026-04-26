@@ -246,7 +246,7 @@ void PanelApp::handle_method_call (const Glib::RefPtr< Gio::DBus::Connection > &
         plugin = (std::string) params.get ();
 
         parameters.get_child (params, 1);
-        command = params.get ();
+        command = (std::string) params.get ();
 
         if (panel) panel->handle_command_message (plugin.c_str (), command.c_str ());
         if (dock) dock->handle_command_message (plugin.c_str (), command.c_str ());
