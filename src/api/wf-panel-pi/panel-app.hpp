@@ -28,7 +28,6 @@ class PanelApp
     ~PanelApp ();
 
     wf::config::config_manager_t config;
-    bool wizard;
 
     static PanelApp& get();
     static void create (int argc, char **argv);

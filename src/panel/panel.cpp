@@ -205,7 +205,7 @@ void Panel::set_exclusive ()
     }
     else
     {
-        if (exclusive && !wizard)
+        if (exclusive)
         {
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, true);
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, true);
@@ -369,18 +369,6 @@ void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <Wayf
 void Panel::init_widgets ()
 {
     if (!real) return;
-
-    if (wizard)
-    {
-        if (dock) window->hide ();
-        else
-        {
-            reload_widgets ((std::string) "", left_widgets, left_box);
-            reload_widgets ((std::string) "bluetooth volumepulse squeek", right_widgets, right_box);
-            window->show ();
-        }
-        return;
-    }
 
     if (dock)
     {

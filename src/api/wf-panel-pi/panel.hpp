@@ -42,7 +42,6 @@ class Panel
     std::vector <std::unique_ptr <WayfireWidget>> left_widgets, right_widgets;
 
     WayfireOutput *output;
-    bool wizard = PanelApp::get().wizard;
     bool real;
     bool dock;
     int scaling;

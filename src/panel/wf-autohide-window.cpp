@@ -115,7 +115,6 @@ void WayfireAutohidingWindow::set_auto_exclusive_zone (bool has_zone)
 
 GtkLayerShellEdge WayfireAutohidingWindow::get_anchor_edge ()
 {
-    if (PanelApp::get().wizard) return GTK_LAYER_SHELL_EDGE_TOP;
     if ((std::string) position == "bottom") return GTK_LAYER_SHELL_EDGE_BOTTOM;
     return GTK_LAYER_SHELL_EDGE_TOP;
 }

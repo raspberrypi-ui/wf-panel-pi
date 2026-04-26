@@ -102,9 +102,6 @@ void PanelApp::on_activate ()
         std::exit (-1);
     }
 
-    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
-    else wizard = false;
-
     // setup config file tracking
     char *dir = g_path_get_dirname (get_config_file ().c_str ());
     g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
@@ -116,7 +113,10 @@ void PanelApp::on_activate ()
 
     // load initial config
     std::vector <std::string> xmldirs (1, METADATA_DIR);
-    config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard"))
+        config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wizard.ini", get_config_file ());
+    else
+        config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
     do_reload_config ();
 
     // setup monitor tracking
@@ -143,7 +143,10 @@ std::string PanelApp::get_config_file ()
     if (config_home == NULL) config_dir = std::string (getenv ("HOME")) + "/.config";
     else config_dir = std::string (config_home);
 
-    return config_dir + "/wf-panel-pi/wf-panel-pi.ini";
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard"))
+        return config_dir + "/wf-panel-pi/wizard.ini";
+    else
+        return config_dir + "/wf-panel-pi/wf-panel-pi.ini";
 }
 
 void PanelApp::do_reload_config ()
