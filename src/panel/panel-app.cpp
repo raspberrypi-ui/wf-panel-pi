@@ -153,20 +153,20 @@ void PanelApp::do_reload_config ()
 {
     char *dir;
     
-    wf::config::load_configuration_options_from_file (get().config, get().get_config_file ());
+    wf::config::load_configuration_options_from_file (config, get_config_file ());
 
     if (panel) panel->handle_config_reload ();
     if (dock) dock->handle_config_reload ();
 
-    inotify_add_watch (get().inotify_fd, get().get_config_file ().c_str (), IN_MODIFY);
-    dir = g_path_get_dirname (get().get_config_file ().c_str ());
-    inotify_add_watch (get().inotify_fd, dir, IN_CREATE | IN_DELETE);
+    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
+    dir = g_path_get_dirname (get_config_file ().c_str ());
+    inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
     g_free (dir);
 }
 
 bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
 {
-    read (get().inotify_fd, buf, INOT_BUF_SIZE);
+    read (inotify_fd, buf, INOT_BUF_SIZE);
     do_reload_config ();
     return true;
 }
@@ -183,7 +183,7 @@ void PanelApp::monitors_changed ()
 {
     if (hotplug_timer.connected ()) hotplug_timer.disconnect ();
 
-    hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun(this, &PanelApp::update_monitors), 500);
+    hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun (this, &PanelApp::update_monitors), 500);
 }
 
 bool PanelApp::update_monitors ()
@@ -223,7 +223,7 @@ void PanelApp::update_panels ()
 
     for (auto &mon : monitors)
     {
-        if (mon.get()->monitor != pmon && mon.get()->monitor != dmon)
+        if (mon.get ()->monitor != pmon && mon.get ()->monitor != dmon)
             dummies.push_back (std::make_unique <Panel> (mon.get (), false, false));
     }
 }
@@ -251,8 +251,8 @@ void PanelApp::handle_method_call (GDBusConnection *connection, const gchar *sen
     {
         const gchar *plugin, *command;
         g_variant_get (parameters, "(&s&s)", &plugin, &command);
-        if (get().panel) get().panel->handle_command_message (plugin, command);
-        if (get().dock) get().dock->handle_command_message (plugin, command);
+        if (instance->panel) instance->panel->handle_command_message (plugin, command);
+        if (instance->dock) instance->dock->handle_command_message (plugin, command);
     }
 }
 
