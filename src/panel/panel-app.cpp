@@ -119,8 +119,8 @@ void PanelApp::on_activate ()
     
     // own on DBus
     introspection_data = Gio::DBus::NodeInfo::create_for_xml (introspection_xml);
-    owner_id = Gio::DBus::own_name (Gio::DBus::BusType::BUS_TYPE_SESSION, "org.wayfire.wfpanel",
-        sigc::mem_fun(this, &PanelApp::on_bus_acquired), sigc::mem_fun(this, &PanelApp::on_name_acquired), sigc::mem_fun(this, &PanelApp::on_name_lost));
+    owner_id = Gio::DBus::own_name (Gio::DBus::BusType::BUS_TYPE_SESSION, "org.wayfire.wfpanel", sigc::mem_fun (this, &PanelApp::on_bus_acquired),
+        sigc::mem_fun (this, &PanelApp::on_name_acquired), sigc::mem_fun (this, &PanelApp::on_name_lost));
 }
 
 /* Config file */
