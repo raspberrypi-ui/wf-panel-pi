@@ -59,9 +59,9 @@ class Panel
 
     void set_layer ();
     void set_exclusive ();
-    bool on_keypress_event (GdkEventKey* event);
-    bool on_button_press_event (GdkEventButton* event);
-    bool on_button_release_event (GdkEventButton* event);
+    bool on_keypress_event (GdkEventKey *event);
+    bool on_button_press_event (GdkEventButton *event);
+    bool on_button_release_event (GdkEventButton *event);
     bool on_delete (GdkEventAny *ev);
     void do_configure ();
     void do_plugin_configure ();

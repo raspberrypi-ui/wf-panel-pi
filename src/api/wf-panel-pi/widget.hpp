@@ -10,27 +10,23 @@ extern "C" {
 #include "configure.h"
 }
 
-#define DEFAULT_PANEL_HEIGHT "48"
-#define DEFAULT_ICON_SIZE 32
-
-#define PANEL_POSITION_BOTTOM "bottom"
-#define PANEL_POSITION_TOP "top"
-
 class WayfireWidget
 {
   public:
     std::string widget_name; // for WayfirePanel use, widgets shouldn't change it
 
-    virtual void init(Gtk::HBox *container) = 0;
+    virtual void init (Gtk::HBox *container) = 0;
+
     virtual void command (const char *cmd)
-    {
-        printf ("command : %s %s\n", widget_name.c_str(), cmd);
-    }
-    virtual void handle_config_reload()
+    { printf ("command : %s %s\n", widget_name.c_str(), cmd); }
+
+    virtual void handle_config_reload ()
     {}
+
     virtual bool set_icon ()
     { return false; }
-    virtual ~WayfireWidget()
+
+    virtual ~WayfireWidget ()
     {}
 };
 

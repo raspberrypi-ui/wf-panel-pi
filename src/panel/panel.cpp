@@ -205,7 +205,7 @@ void Panel::set_exclusive ()
 
 // Keyboard and mouse event handlers
 
-bool Panel::on_keypress_event (GdkEventKey* event)
+bool Panel::on_keypress_event (GdkEventKey *event)
 {
     char *str = g_strdup_printf ("key_%c", event->keyval);
 
@@ -220,14 +220,14 @@ bool Panel::on_keypress_event (GdkEventKey* event)
     return false;
 }
 
-bool Panel::on_button_press_event (GdkEventButton* event)
+bool Panel::on_button_press_event (GdkEventButton *event)
 {
     pressed = PRESS_SHORT;
 
     return false;
 }
 
-bool Panel::on_button_release_event (GdkEventButton* event)
+bool Panel::on_button_release_event (GdkEventButton *event)
 {
     int i;
     std::string pname;
@@ -251,7 +251,6 @@ bool Panel::on_button_release_event (GdkEventButton* event)
 
                 // check if the x position of the mouse is within the plugin
                 alloc = plugin->get_allocation ();
-
                 if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
                 {
                     pname = plugin->get_name ();
