@@ -89,7 +89,6 @@ class Panel
     void init_widgets ();
     void init_notify ();
     void update_widget_icons ();
-    void update_panels ();
 };
 
 #endif /* end of include guard: PANEL_HPP */

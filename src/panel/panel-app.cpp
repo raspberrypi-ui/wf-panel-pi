@@ -185,15 +185,10 @@ bool PanelApp::update_monitors ()
         dock = std::make_unique <Panel> (true);
     }
 
-    update_panels ();
-
-    return false;
-}
-
-void PanelApp::update_panels ()
-{
     panel->set_monitor ();
     dock->set_monitor ();
+
+    return false;
 }
 
 /* DBus interface for commands to plugins */

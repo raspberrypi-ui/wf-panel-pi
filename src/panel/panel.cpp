@@ -139,7 +139,7 @@ Panel::Panel (bool dock) :
     // Set up parameter callbacks
     icon_size.set_callback ([=] { update_widget_icons (); });
     exclusive.set_callback ([=] { set_exclusive (); });
-    monitor_num.set_callback ([=] { update_panels (); });
+    monitor_num.set_callback ([=] { set_monitor (); });
 
     // Create the window
     content_box.pack_start (left_box, false, false);
@@ -407,13 +407,6 @@ void Panel::update_widget_icons ()
 
     for (auto &w : right_widgets)
         w->set_icon ();
-}
-
-// Update monitor assignments
-
-void Panel::update_panels ()
-{
-    PanelApp::get ().update_panels ();
 }
 
 // Public functions used by PanelApp
