@@ -209,10 +209,12 @@ bool Panel::on_keypress_event (GdkEventKey* event)
 {
     char *str = g_strdup_printf ("key_%c", event->keyval);
 
-    for (auto& w : left_widgets)
+    for (auto &w : left_widgets)
         if (w->widget_name == "smenu") w->command (str);
-    for (auto& w : right_widgets)
+
+    for (auto &w : right_widgets)
         if (w->widget_name == "smenu") w->command (str);
+
     g_free (str);
 
     return false;
@@ -227,6 +229,9 @@ bool Panel::on_button_press_event (GdkEventButton* event)
 
 bool Panel::on_button_release_event (GdkEventButton* event)
 {
+    int i;
+    Gtk::Allocation alloc;
+
     if (pressed == PRESS_NONE) return false;
     pressed = PRESS_NONE;
 
@@ -235,7 +240,6 @@ bool Panel::on_button_release_event (GdkEventButton* event)
         conf_plugin = "gtkmm";
         cplug.set_sensitive (false);
 
-        int i;
         for (i = 0; i < 2; i++)
         {
             // loop through plugins in each hbox
@@ -244,7 +248,7 @@ bool Panel::on_button_release_event (GdkEventButton* event)
                 if (!plugin->is_visible ()) continue;
 
                 // check if the x position of the mouse is within the plugin
-                Gtk::Allocation alloc = plugin->get_allocation ();
+                alloc = plugin->get_allocation ();
 
                 if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
                 {
@@ -409,15 +413,11 @@ void Panel::update_widget_icons ()
 {
     isize = icon_size;
 
-    for (auto& w : left_widgets)
-    {
+    for (auto &w : left_widgets)
         w->set_icon ();
-    }
 
-    for (auto& w : right_widgets)
-    {
+    for (auto &w : right_widgets)
         w->set_icon ();
-    }
 }
 
 // Update monitor assignments
@@ -431,15 +431,11 @@ void Panel::update_panels ()
 
 void Panel::handle_config_reload ()
 {
-    for (auto& w : left_widgets)
-    {
+    for (auto &w : left_widgets)
         w->handle_config_reload ();
-    }
 
-    for (auto& w : right_widgets)
-    {
+    for (auto &w : right_widgets)
         w->handle_config_reload ();
-    }
 }
 
 void Panel::handle_command_message (const char *name, const char *cmd)
@@ -458,15 +454,11 @@ void Panel::handle_command_message (const char *name, const char *cmd)
 
     if (!window->is_sensitive ()) return;
 
-    for (auto& w : left_widgets)
-    {
+    for (auto &w : left_widgets)
         if (name == w->widget_name) w->command (cmd);
-    }
 
-    for (auto& w : right_widgets)
-    {
+    for (auto &w : right_widgets)
         if (name == w->widget_name) w->command (cmd);
-    }
 }
 
 int Panel::set_monitor ()
