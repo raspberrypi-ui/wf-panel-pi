@@ -191,8 +191,8 @@ bool PanelApp::update_monitors ()
 
         if (!panel)
         {
-            panel = std::make_unique <Panel> (monitors.back ().get (), true, false);
-            dock = std::make_unique <Panel> (monitors.back ().get (), true, true);
+            panel = std::make_unique <Panel> (monitors.back ().get (), false);
+            dock = std::make_unique <Panel> (monitors.back ().get (), true);
         }
     }
 
@@ -203,20 +203,11 @@ bool PanelApp::update_monitors ()
 
 void PanelApp::update_panels ()
 {
-    // update the dummy panels
-    dummies.clear ();
-
     int pmon_num = panel->set_monitor ();
     int dmon_num = dock->set_monitor ();
 
     auto pmon = Gdk::Display::get_default ()->get_monitor (pmon_num);
     auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
-
-    for (auto &mon : monitors)
-    {
-        if (mon.get ()->monitor != pmon && mon.get ()->monitor != dmon)
-            dummies.push_back (std::make_unique <Panel> (mon.get (), false, false));
-    }
 }
 
 /* DBus interface for commands to plugins */

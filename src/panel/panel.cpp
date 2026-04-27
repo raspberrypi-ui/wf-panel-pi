@@ -19,7 +19,7 @@ extern "C" {
 #include "lxutils.h"
 }
 
-Panel::Panel (WayfireOutput *output, bool real, bool dock) :
+Panel::Panel (WayfireOutput *output, bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     layer {dock ? "dock/layer" : "panel/layer"},
     monitor_num {dock ? "dock/monitor" : "panel/monitor"},
@@ -33,7 +33,6 @@ Panel::Panel (WayfireOutput *output, bool real, bool dock) :
     libnotify {"panel/notify_libnotify"}
 {
     this->output = output;
-    this->real = real;
     this->dock = dock;
 
     // Set C variables from parameters
@@ -48,7 +47,7 @@ Panel::Panel (WayfireOutput *output, bool real, bool dock) :
     window = std::make_unique <WayfireAutohidingWindow> (output, dock);
 
     // GTK settings for window
-    window->set_size_request (1, real ? minimal_panel_height : 1);
+    window->set_size_request (1, minimal_panel_height);
     window->set_name (dock ? "DockToplevel" : "PanelToplevel");
 
     // Set the icon size data pointer
@@ -121,13 +120,10 @@ Panel::Panel (WayfireOutput *output, bool real, bool dock) :
     gesture = add_longpress_default (*window);
 
     // Set up parameter callbacks
-    if (real)
-    {
-        icon_size.set_callback ([=] { update_widget_icons (); });
-        exclusive.set_callback ([=] { set_exclusive (); });
-        layer.set_callback ([=] { set_layer (); });
-        monitor_num.set_callback ([=] { update_panels (); });
-    }
+    icon_size.set_callback ([=] { update_widget_icons (); });
+    exclusive.set_callback ([=] { set_exclusive (); });
+    layer.set_callback ([=] { set_layer (); });
+    monitor_num.set_callback ([=] { update_panels (); });
 
     // Create the window
     content_box.pack_start (left_box, false, false);
@@ -155,8 +151,6 @@ Panel::Panel (WayfireOutput *output, bool real, bool dock) :
 
 void Panel::set_layer ()
 {
-    if (!real) return;
-
     if ((std::string) layer == "overlay")
     {
         gtk_layer_set_layer (window->gobj (), GTK_LAYER_SHELL_LAYER_OVERLAY);
@@ -186,18 +180,7 @@ void Panel::set_layer ()
 
 void Panel::set_exclusive ()
 {
-    if (!real)
-    {
-        gtk_layer_set_layer (window->gobj (), GTK_LAYER_SHELL_LAYER_TOP);
-        gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, true);
-        gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, false);
-        gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_TOP, true);
-        gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_BOTTOM, false);
-        gtk_layer_set_margin (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, 1);
-        gtk_layer_set_margin (window->gobj (), GTK_LAYER_SHELL_EDGE_BOTTOM, 1);
-        window->set_auto_exclusive_zone (false);
-    }
-    else if (dock)
+    if (dock)
     {
         gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, false);
         gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, false);
@@ -286,7 +269,7 @@ bool Panel::on_button_release_event (GdkEventButton* event)
 
 bool Panel::on_delete (GdkEventAny *ev)
 {
-    if (real && !dock) wfpanel_notify_close ();
+    if (!dock) wfpanel_notify_close ();
 
     return true;
 }
@@ -368,8 +351,6 @@ void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <Wayf
 
 void Panel::init_widgets ()
 {
-    if (!real) return;
-
     if (dock)
     {
         reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
@@ -404,21 +385,21 @@ void Panel::init_widgets ()
 
 void Panel::init_notify ()
 {
-    if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+    if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
 
     notifications.set_callback([=] ()
     {
-        if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+        if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     });
 
     libnotify.set_callback([=] ()
     {
-        if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+        if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     });
 
     notify_timeout.set_callback([=] ()
     {
-        if (real && !dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
+        if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
     });
 }
 
