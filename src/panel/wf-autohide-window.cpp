@@ -29,8 +29,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <glibmm.h>
 
-#include "panel-app.hpp"
-
 #include "wf-autohide-window.hpp"
 
 #define AUTOHIDE_HIDE_DELAY 500

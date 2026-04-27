@@ -26,11 +26,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
 #include <glibmm.h>
-#include "gtk-utils.hpp"
 
 extern "C" {
 #include "lxutils.h"
 }
+
+#include "gtk-utils.hpp"
 
 Glib::RefPtr<Gtk::GestureLongPress> detect_long_press (Gtk::Widget& target)
 {

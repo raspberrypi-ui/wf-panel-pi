@@ -47,6 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <linux/input.h>
 #include <gtk/gtk.h>
 #include <gtk-layer-shell.h>
+
 #include "lxutils.h"
 
 /*----------------------------------------------------------------------------*/

@@ -29,16 +29,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "panel.hpp"
 
 extern "C" {
+
 #include "configure.h"
-}
+
+#include "conf-utils.h"
 
 /*----------------------------------------------------------------------------*/
 /* C++ utility functions required by configure.c */
 /*----------------------------------------------------------------------------*/
-
-extern "C" {
-
-#include "conf-utils.h"
 
 gboolean get_config_bool (const char *section, const char *key)
 {

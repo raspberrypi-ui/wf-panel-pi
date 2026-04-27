@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
 #include "panel.hpp"
+
 #include "spacer.hpp"
 
 WayfireSpacing::WayfireSpacing(int pixels)
