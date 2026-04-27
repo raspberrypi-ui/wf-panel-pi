@@ -22,14 +22,12 @@ extern "C" {
 
 char buf[INOT_BUF_SIZE];
 
-// https://github.com/GNOME/glibmm/blob/master/examples/dbus/session_bus_service.cc
-
 static const gchar introspection_xml[] =
   "<node>"
-  "  <interface name='org.wayfire.wfpanel'>"
-  "    <annotation name='org.wayfire.wfpanel.Annotation' value='OnInterface'/>"
+  "  <interface name='com.raspberrypi.wfpanelpi'>"
+  "    <annotation name='com.raspberrypi.wfpanelpi.Annotation' value='OnInterface'/>"
   "    <method name='command'>"
-  "      <annotation name='org.wayfire.wfpanel.Annotation' value='OnMethod'/>"
+  "      <annotation name='com.raspberrypi.wfpanelpi.Annotation' value='OnMethod'/>"
   "      <arg type='s' name='plugin' direction='in'/>"
   "      <arg type='s' name='command' direction='in'/>"
   "    </method>"
@@ -51,7 +49,7 @@ std::unique_ptr<PanelApp> PanelApp::instance;
 
 PanelApp::PanelApp (int argc, char **argv)
 {
-    app = Gtk::Application::create (argc, argv, "com.raspberrypi.wf-panel-pi", Gio::APPLICATION_FLAGS_NONE);
+    app = Gtk::Application::create (argc, argv, "com.raspberrypi.wfpanelpi", Gio::APPLICATION_FLAGS_NONE);
     app->signal_activate ().connect_notify (sigc::mem_fun (this, &PanelApp::on_activate));
 }
 
@@ -119,7 +117,7 @@ void PanelApp::on_activate ()
     
     // own on DBus
     introspection_data = Gio::DBus::NodeInfo::create_for_xml (introspection_xml);
-    owner_id = Gio::DBus::own_name (Gio::DBus::BusType::BUS_TYPE_SESSION, "org.wayfire.wfpanel", sigc::mem_fun (this, &PanelApp::on_bus_acquired),
+    owner_id = Gio::DBus::own_name (Gio::DBus::BusType::BUS_TYPE_SESSION, "com.raspberrypi.wfpanelpi", sigc::mem_fun (this, &PanelApp::on_bus_acquired),
         sigc::mem_fun (this, &PanelApp::on_name_acquired), sigc::mem_fun (this, &PanelApp::on_name_lost));
 }
 
@@ -215,7 +213,7 @@ void PanelApp::update_panels ()
 void PanelApp::on_bus_acquired (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
 {
     interface_vtable = new Gio::DBus::InterfaceVTable (sigc::mem_fun (this, &PanelApp::handle_method_call));
-    connection->register_object ("/org/wayfire/wfpanel", introspection_data->lookup_interface(), *interface_vtable);
+    connection->register_object ("/com/raspberrypi/wfpanelpi", introspection_data->lookup_interface(), *interface_vtable);
 }
 
 void PanelApp::on_name_acquired (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
