@@ -16,15 +16,14 @@ class WayfireAutohidingWindow : public Gtk::Window
     WayfireAutohidingWindow& operator = (const WayfireAutohidingWindow&) = delete;
     WayfireAutohidingWindow& operator = (WayfireAutohidingWindow&&) = delete;
     ~WayfireAutohidingWindow ();
-    wl_surface *get_wl_surface () const;
     void set_auto_exclusive_zone (bool has_zone = false);
 
   private:
     WfOption <std::string> position;
     WfOption <int> offset;
-    wf::animation::simple_animation_t y_position;
     WfOption <int> remainder;
     WfOption <bool> autohide;
+    wf::animation::simple_animation_t y_position;
 
     int autohide_counter;
     bool has_auto_exclusive_zone = false;
@@ -44,6 +43,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     void schedule_hide (int delay);
     void schedule_show (int delay);
     void update_position ();
+    wl_surface *get_wl_surface () const;
     void update_margin ();
     void update_autohide ();
 };

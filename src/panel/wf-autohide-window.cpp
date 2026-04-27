@@ -16,9 +16,9 @@
 WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     position {dock ? "dock/position" : "panel/position"},
     offset {dock ? "dock/offset" : "panel/offset"},
-    y_position {WfOption <int> {"panel/autohide_duration"}},
     remainder {dock ? "dock/remainder" : "panel/remainder"},
-    autohide {dock ? "dock/autohide" : "panel/autohide"}
+    autohide {dock ? "dock/autohide" : "panel/autohide"},
+    y_position {WfOption <int> {"panel/autohide_duration"}}
 {
     set_decorated (false);
     set_resizable (false);
@@ -40,20 +40,17 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     set_auto_exclusive_zone (!autohide);
     update_position ();
 
-    this->signal_draw().connect_notify (
-        [=] (const Cairo::RefPtr<Cairo::Context>&)
+    signal_draw().connect_notify ([=] (const Cairo::RefPtr<Cairo::Context>&)
     {
         update_margin ();
     });
 
-    this->signal_size_allocate().connect_notify (
-        [=] (Gtk::Allocation&)
+    signal_size_allocate().connect_notify ([=] (Gtk::Allocation&)
     {
         set_auto_exclusive_zone (has_auto_exclusive_zone);
     });
 
-    this->signal_enter_notify_event().connect_notify (
-        [=] (GdkEventCrossing *)
+    signal_enter_notify_event().connect_notify ([=] (GdkEventCrossing *)
     {
         if (!autohide) return;
         if (pending_hide.connected ()) pending_hide.disconnect ();
@@ -62,8 +59,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
         schedule_show (0);
     });
 
-    this->signal_leave_notify_event().connect_notify (
-        [=] (GdkEventCrossing *ev)
+    signal_leave_notify_event().connect_notify ([=] (GdkEventCrossing *ev)
     {
         if (!autohide) return;
         if (ev->detail == GDK_NOTIFY_INFERIOR) return;
@@ -88,12 +84,6 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
 
 WayfireAutohidingWindow::~WayfireAutohidingWindow ()
 {
-}
-
-wl_surface *WayfireAutohidingWindow::get_wl_surface () const
-{
-    auto gdk_window = const_cast <GdkWindow *> (get_window ()->gobj ());
-    return gdk_wayland_window_get_wl_surface (gdk_window);
 }
 
 void WayfireAutohidingWindow::set_auto_exclusive_zone (bool has_zone)
@@ -185,6 +175,12 @@ void WayfireAutohidingWindow::update_position ()
 
     /* Hide the window afterwards if autohide is enabled */
     if (should_autohide ()) schedule_hide (AUTOHIDE_HIDE_DELAY);
+}
+
+wl_surface *WayfireAutohidingWindow::get_wl_surface () const
+{
+    auto gdk_window = const_cast <GdkWindow *> (get_window ()->gobj ());
+    return gdk_wayland_window_get_wl_surface (gdk_window);
 }
 
 void WayfireAutohidingWindow::update_margin ()
