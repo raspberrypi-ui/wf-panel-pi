@@ -222,8 +222,9 @@ void StatusNotifierItem::update_icon()
     const auto pixmap_data = extract_pixbuf(get_item_property<IconData>(icon_type_name + "Pixmap"));
     if (icon_theme->lookup_icon(icon_name, icon_size))
     {
-        set_image_icon(icon, icon_name, icon_size, {}, icon_theme);
-    } else if (pixmap_data)
+        set_taskbar_icon (GTK_WIDGET (icon.gobj()), icon_name.c_str());
+    }
+    else if (pixmap_data)
     {
         icon.set(pixmap_data->scale_simple(icon_size, icon_size, Gdk::INTERP_BILINEAR));
     }
