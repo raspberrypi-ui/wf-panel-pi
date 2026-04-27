@@ -1,33 +1,19 @@
 #include <fcntl.h>
-#include <unistd.h>
 #include <sys/inotify.h>
-#include <sys/time.h>
 #include <glibmm/main.h>
 #include <giomm/dbusownname.h>
 #include <giomm/dbusconnection.h>
-#include <gdk/gdkwayland.h>
 
 #include <iostream>
-#include <memory>
-
-extern "C" {
-#include "launcher.h"
-}
 
 #include "config/file.hpp"
 #include "panel.hpp"
 #include "panel-app.hpp"
 
-#define INOT_BUF_SIZE (1024 * sizeof (inotify_event))
-
-char buf[INOT_BUF_SIZE];
-
 static const gchar introspection_xml[] =
   "<node>"
   "  <interface name='com.raspberrypi.wfpanelpi'>"
-  "    <annotation name='com.raspberrypi.wfpanelpi.Annotation' value='OnInterface'/>"
   "    <method name='command'>"
-  "      <annotation name='com.raspberrypi.wfpanelpi.Annotation' value='OnMethod'/>"
   "      <arg type='s' name='plugin' direction='in'/>"
   "      <arg type='s' name='command' direction='in'/>"
   "    </method>"
@@ -86,12 +72,13 @@ void PanelApp::on_activate ()
         std::exit (-1);
     }
 
-    // setup config file tracking
+    // create a config file to track if it doesn't exist
     char *dir = g_path_get_dirname (get_config_file ().c_str ());
     g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
     g_free (dir);
     close (open (get_config_file ().c_str (), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
 
+    // setup config file tracking
     inotify_fd = inotify_init ();
     Glib::signal_io ().connect (sigc::mem_fun (this, &PanelApp::handle_inotify_event), inotify_fd, Glib::IO_IN | Glib::IO_HUP);
 
@@ -150,7 +137,8 @@ void PanelApp::do_reload_config ()
 
 bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
 {
-    read (inotify_fd, buf, INOT_BUF_SIZE);
+    char buf[1024 * sizeof (inotify_event)];
+    read (inotify_fd, buf, 1024 * sizeof (inotify_event));
     do_reload_config ();
     return true;
 }
@@ -199,27 +187,30 @@ void PanelApp::update_panels ()
     int pmon_num = panel->set_monitor ();
     int dmon_num = dock->set_monitor ();
 
-    auto pmon = Gdk::Display::get_default ()->get_monitor (pmon_num);
-    auto dmon = Gdk::Display::get_default ()->get_monitor (dmon_num);
+    auto display = Gdk::Display::get_default ();
+    auto pmon = display->get_monitor (pmon_num);
+    auto dmon = display->get_monitor (dmon_num);
 }
 
 /* DBus interface for commands to plugins */
 
-void PanelApp::on_bus_acquired (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
+void PanelApp::on_bus_acquired (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&)
 {
     interface_vtable = new Gio::DBus::InterfaceVTable (sigc::mem_fun (this, &PanelApp::handle_method_call));
     connection->register_object ("/com/raspberrypi/wfpanelpi", introspection_data->lookup_interface(), *interface_vtable);
 }
 
-void PanelApp::on_name_acquired (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
+void PanelApp::on_name_acquired (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&)
 {
 }
 
-void PanelApp::on_name_lost (const Glib::RefPtr<Gio::DBus::Connection>& connection, const Glib::ustring&)
+void PanelApp::on_name_lost (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&)
 {
 }
 
-void PanelApp::handle_method_call (const Glib::RefPtr< Gio::DBus::Connection > &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &method_name, const Glib::VariantContainerBase &parameters, const Glib::RefPtr< Gio::DBus::MethodInvocation > &)
+void PanelApp::handle_method_call (const Glib::RefPtr < Gio::DBus::Connection >&, const Glib::ustring&, const Glib::ustring&,
+    const Glib::ustring&, const Glib::ustring& method_name, const Glib::VariantContainerBase& parameters,
+    const Glib::RefPtr <Gio::DBus::MethodInvocation>&)
 {
     Glib::Variant <Glib::ustring> params;
     std::string plugin, command;
