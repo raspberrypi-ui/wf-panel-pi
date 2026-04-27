@@ -443,7 +443,7 @@ void Panel::handle_command_message (const char *name, const char *cmd)
         if (name == w->widget_name) w->command (cmd);
 }
 
-int Panel::set_monitor ()
+void Panel::set_monitor ()
 {
     GdkDisplay *dpy = gdk_display_get_default ();
     GdkScreen *scr = gdk_display_get_default_screen (dpy);
@@ -481,7 +481,6 @@ int Panel::set_monitor ()
     }
 
     if (mon) gtk_layer_set_monitor (window->gobj(), mon);
-    return try_mon >= 0 ? try_mon : 0;
 }
 
 /* End of file */

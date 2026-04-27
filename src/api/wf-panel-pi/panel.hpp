@@ -44,7 +44,7 @@ class Panel
     ~Panel ();
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
-    int set_monitor ();
+    void set_monitor ();
 
   private:
     std::unique_ptr <WayfireAutohidingWindow> window;
