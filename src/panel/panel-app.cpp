@@ -55,7 +55,7 @@ PanelApp::PanelApp (int argc, char **argv)
 
 PanelApp::~PanelApp ()
 {
-    Gio::DBus::unown_name (owner_id);
+    if (owner_id) Gio::DBus::unown_name (owner_id);
 }
 
 PanelApp& PanelApp::get ()
@@ -65,11 +65,6 @@ PanelApp& PanelApp::get ()
 
 void PanelApp::create (int argc, char **argv)
 {
-    if (instance)
-    {
-        throw std::logic_error ("Running PanelApp twice!");
-    }
-
     instance = std::unique_ptr <PanelApp> (new PanelApp {argc, argv});
     instance->run ();
 }
