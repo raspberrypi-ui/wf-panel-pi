@@ -529,6 +529,7 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
     data->x = x;
     data->y = y;
 
+    store_layer ();
     gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
     data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
