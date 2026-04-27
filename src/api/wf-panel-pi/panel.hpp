@@ -1,20 +1,11 @@
-#ifndef WF_PANEL_HPP
-#define WF_PANEL_HPP
+#ifndef PANEL_HPP
+#define PANEL_HPP
 
-#include <memory>
-#include <wayland-client.h>
-
-#include <gtkmm/window.h>
 #include <gtkmm/menu.h>
-#include <gtkmm/headerbar.h>
 #include <gtkmm/hvbox.h>
-#include <gtkmm/application.h>
 #include <gtkmm/gesturelongpress.h>
-#include <gdkmm/display.h>
-#include <gdkmm/seat.h>
 
 #include "widget.hpp"
-#include "panel-app.hpp"
 #include "wf-autohide-window.hpp"
 
 class Panel
@@ -73,4 +64,4 @@ class Panel
     void update_panels ();
 };
 
-#endif /* end of include guard: WF_PANEL_HPP */
+#endif /* end of include guard: PANEL_HPP */

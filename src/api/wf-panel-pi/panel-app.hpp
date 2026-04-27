@@ -1,11 +1,7 @@
 #ifndef PANEL_APP_HPP
 #define PANEL_APP_HPP
 
-#include <set>
-#include <string>
-
 #include <gtkmm/application.h>
-#include <gdkmm/monitor.h>
 
 #include "config/config-manager.hpp"
 
@@ -50,10 +46,11 @@ class PanelApp
     void monitors_changed ();
     bool update_monitors ();
 
-    void on_bus_acquired (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
-    void on_name_acquired (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
-    void on_name_lost (const Glib::RefPtr <Gio::DBus::Connection>& connection, const Glib::ustring&);
-    void handle_method_call (const Glib::RefPtr <Gio::DBus::Connection> &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::ustring &, const Glib::VariantContainerBase &, const Glib::RefPtr< Gio::DBus::MethodInvocation > &);
+    void on_bus_acquired (const Glib::RefPtr <Gio::DBus::Connection>&, const Glib::ustring&);
+    void on_name_acquired (const Glib::RefPtr <Gio::DBus::Connection>&, const Glib::ustring&);
+    void on_name_lost (const Glib::RefPtr <Gio::DBus::Connection>&, const Glib::ustring&);
+    void handle_method_call (const Glib::RefPtr <Gio::DBus::Connection>&, const Glib::ustring&, const Glib::ustring&,
+        const Glib::ustring&, const Glib::ustring&, const Glib::VariantContainerBase&, const Glib::RefPtr <Gio::DBus::MethodInvocation>&);
 };
 
 #endif /* end of include guard: PANEL_APP_HPP */
