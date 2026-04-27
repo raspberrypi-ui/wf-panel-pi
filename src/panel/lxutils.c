@@ -78,7 +78,7 @@ gboolean is_pi_var;
 
 static GtkWindow *panel, *popwindow;
 static GtkWidget *clicksink;
-static GtkLayerShellLayer orig_layer_panel, orig_layer_dock;
+static GtkLayerShellLayer orig_layer;
 static int px, py, mw, mh, orient;
 
 /*----------------------------------------------------------------------------*/
@@ -109,18 +109,14 @@ int get_icon_size (GtkWidget *widget)
     return * (int *) g_object_get_data ((GObject *) panel, "icon-size");
 }
 
-void store_layer (GtkLayerShellLayer layer, gboolean dock)
+static void store_layer (void)
 {
-    if (dock) orig_layer_dock = layer;
-    else orig_layer_panel = layer;
+    orig_layer = gtk_layer_get_layer (panel);
 }
 
 static void restore_layer (void)
 {
-    if (!g_strcmp0 (gtk_widget_get_name (GTK_WIDGET (panel)), "DockToplevel"))
-        gtk_layer_set_layer (panel, orig_layer_dock);
-    else
-        gtk_layer_set_layer (panel, orig_layer_panel);
+    gtk_layer_set_layer (panel, orig_layer);
 }
 
 GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name)
@@ -514,6 +510,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
     data->x = -1.0;
     data->y = -1.0;
 
+    store_layer ();
     gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
     gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
     data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);

@@ -38,6 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     position {dock ? "dock/position" : "panel/position"},
+    layer {dock ? "dock/layer" : "panel/layer"},
     offset {dock ? "dock/offset" : "panel/offset"},
     remainder {dock ? "dock/remainder" : "panel/remainder"},
     autohide {dock ? "dock/autohide" : "panel/autohide"},
@@ -59,9 +60,11 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     position.set_callback([=] { update_position (); });
     remainder.set_callback([=] { update_position (); });
     offset.set_callback([=] { update_position (); });
+    layer.set_callback ([=] { set_layer (); });
 
     set_auto_exclusive_zone (!autohide);
     update_position ();
+    set_layer ();
 
     signal_draw().connect_notify ([=] (const Cairo::RefPtr <Cairo::Context>&)
     {
@@ -227,6 +230,14 @@ void WayfireAutohidingWindow::update_autohide ()
 
     last_autohide_value = autohide;
     set_auto_exclusive_zone (!autohide);
+}
+
+void WayfireAutohidingWindow::set_layer ()
+{
+    if ((std::string) layer == "overlay") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_OVERLAY);
+    if ((std::string) layer == "top") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_TOP);
+    if ((std::string) layer == "bottom") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_BOTTOM);
+    if ((std::string) layer == "background") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_BACKGROUND);
 }
 
 /* End of file */

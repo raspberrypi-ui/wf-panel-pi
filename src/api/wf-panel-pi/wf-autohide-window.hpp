@@ -49,6 +49,7 @@ class WayfireAutohidingWindow : public Gtk::Window
 
   private:
     WfOption <std::string> position;
+    WfOption <std::string> layer;
     WfOption <int> offset;
     WfOption <int> remainder;
     WfOption <bool> autohide;
@@ -74,6 +75,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     void update_position ();
     void update_margin ();
     void update_autohide ();
+    void set_layer ();
 };
 
 #endif /* end of include guard: WF_AUTOHIDE_WINDOW_HPP */

@@ -46,7 +46,6 @@ extern "C" {
 
 Panel::Panel (bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
-    layer {dock ? "dock/layer" : "panel/layer"},
     monitor_num {dock ? "dock/monitor" : "panel/monitor"},
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {"panel/widgets_right"},
@@ -140,7 +139,6 @@ Panel::Panel (bool dock) :
     // Set up parameter callbacks
     icon_size.set_callback ([=] { update_widget_icons (); });
     exclusive.set_callback ([=] { set_exclusive (); });
-    layer.set_callback ([=] { set_layer (); });
     monitor_num.set_callback ([=] { update_panels (); });
 
     // Create the window
@@ -152,7 +150,6 @@ Panel::Panel (bool dock) :
     content_box.show ();
 
     // Set the window display options
-    set_layer ();
     set_exclusive ();
 
     // Setup notifications
@@ -168,24 +165,6 @@ Panel::Panel (bool dock) :
 Panel::~Panel ()
 {
     if (!dock) wfpanel_notify_close ();
-}
-
-// Set the window layer from the parameter value
-
-void Panel::set_layer ()
-{
-    GtkLayerShellLayer sl = GTK_LAYER_SHELL_LAYER_ENTRY_NUMBER;
-
-    if ((std::string) layer == "overlay") sl = GTK_LAYER_SHELL_LAYER_OVERLAY;
-    if ((std::string) layer == "top") sl = GTK_LAYER_SHELL_LAYER_TOP;
-    if ((std::string) layer == "bottom") sl = GTK_LAYER_SHELL_LAYER_BOTTOM;
-    if ((std::string) layer == "background") sl = GTK_LAYER_SHELL_LAYER_BACKGROUND;
-
-    if (sl != GTK_LAYER_SHELL_LAYER_ENTRY_NUMBER)
-    {
-        gtk_layer_set_layer (window->gobj (), sl);
-        store_layer (sl, dock);
-    }
 }
 
 // Set exclusive zone from the parameter value

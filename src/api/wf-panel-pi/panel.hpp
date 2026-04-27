@@ -66,7 +66,6 @@ class Panel
     int isize;
 
     WfOption <int> icon_size;
-    WfOption <std::string> layer;
     WfOption <std::string> monitor_num;
     WfOption <std::string> left_widgets_opt;
     WfOption <std::string> right_widgets_opt;
@@ -76,7 +75,6 @@ class Panel
     WfOption <bool> notifications;
     WfOption <bool> libnotify;
 
-    void set_layer ();
     void set_exclusive ();
     bool on_keypress_event (GdkEventKey *event);
     bool on_button_press_event (GdkEventButton *event);
