@@ -50,7 +50,7 @@ static const gchar introspection_xml[] =
   "  </interface>"
   "</node>";
 
-std::unique_ptr<PanelApp> PanelApp::instance;
+std::unique_ptr <PanelApp> PanelApp::instance;
 
 PanelApp::PanelApp (int argc, char **argv)
 {
@@ -61,11 +61,6 @@ PanelApp::PanelApp (int argc, char **argv)
 PanelApp::~PanelApp ()
 {
     if (owner_id) Gio::DBus::unown_name (owner_id);
-}
-
-PanelApp& PanelApp::get ()
-{
-    return *instance;
 }
 
 void PanelApp::create (int argc, char **argv)
@@ -162,15 +157,17 @@ bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
     return true;
 }
 
+/* Static functions which use instance */
+
 void PanelApp::rescan_xml_directory ()
 {
     std::vector <std::string> xmldirs (1, METADATA_DIR);
-    wf::config::reload_xml_files (config, xmldirs);
+    wf::config::reload_xml_files (instance->config, xmldirs);
 }
 
 std::shared_ptr <wf::config::option_base_t> PanelApp::get_config_option (const std::string& name)
 {
-    return config.get_option (name);
+    return instance->config.get_option (name);
 }
 
 /* Monitor tracking */

@@ -19,6 +19,6 @@ class WfOption : public wf::base_option_wrapper_t<Type>
   protected:
     std::shared_ptr<wf::config::option_base_t> load_raw_option(const std::string& name) override
     {
-        return PanelApp::get ().get_config_option (name);
+        return PanelApp::get_config_option (name);
     }
 };

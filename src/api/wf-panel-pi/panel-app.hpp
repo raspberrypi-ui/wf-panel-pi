@@ -44,9 +44,8 @@ class PanelApp
 
     static void create (int argc, char **argv);
 
-    static PanelApp& get();
-    void rescan_xml_directory ();
-    std::shared_ptr <wf::config::option_base_t> get_config_option (const std::string& name);
+    static void rescan_xml_directory ();
+    static std::shared_ptr <wf::config::option_base_t> get_config_option (const std::string& name);
 
   private:
     static std::unique_ptr <PanelApp> instance;

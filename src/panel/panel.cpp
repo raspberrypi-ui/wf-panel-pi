@@ -321,7 +321,7 @@ std::unique_ptr <WayfireWidget> Panel::widget_from_name (const char *name)
 
 void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <WayfireWidget>>& container, Gtk::HBox& box)
 {
-    PanelApp::get ().rescan_xml_directory ();
+    PanelApp::rescan_xml_directory ();
 
     container.clear ();
 
