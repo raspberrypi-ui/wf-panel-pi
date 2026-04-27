@@ -20,17 +20,6 @@ static const gchar introspection_xml[] =
   "  </interface>"
   "</node>";
 
-WayfireOutput::WayfireOutput (const GMonitor& monitor)
-{
-    this->monitor = monitor;
-    this->wo = gdk_wayland_monitor_get_wl_output (monitor->gobj ());
-}
-
-WayfireOutput::~WayfireOutput ()
-{
-}
-
-
 std::unique_ptr<PanelApp> PanelApp::instance;
 
 PanelApp::PanelApp (int argc, char **argv)
@@ -91,8 +80,8 @@ void PanelApp::on_activate ()
     do_reload_config ();
 
     // setup monitor tracking
-    display->signal_monitor_added ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
-    display->signal_monitor_removed ().connect_notify ([=] (const GMonitor& monitor) { monitors_changed (); });
+    display->signal_monitor_added ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
+    display->signal_monitor_removed ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
 
     // load initial monitors
     update_monitors ();
@@ -160,22 +149,10 @@ void PanelApp::monitors_changed ()
 
 bool PanelApp::update_monitors ()
 {
-    int i;
-
-    // clear the existing monitors
-    monitors.clear ();
-
-    // find the new list of monitors
-    auto display = Gdk::Display::get_default ();
-    for (i = 0; i < display->get_n_monitors (); i++)
+    if (!panel)
     {
-        monitors.push_back (std::make_unique <WayfireOutput> (display->get_monitor (i)));
-
-        if (!panel)
-        {
-            panel = std::make_unique <Panel> (monitors.back ().get (), false);
-            dock = std::make_unique <Panel> (monitors.back ().get (), true);
-        }
+        panel = std::make_unique <Panel> (false);
+        dock = std::make_unique <Panel> (true);
     }
 
     update_panels ();

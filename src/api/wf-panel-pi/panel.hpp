@@ -20,7 +20,7 @@
 class Panel
 {
   public:
-    Panel (WayfireOutput *output, bool dock);
+    Panel (bool dock);
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
     int set_monitor ();
@@ -40,7 +40,6 @@ class Panel
 
     std::vector <std::unique_ptr <WayfireWidget>> left_widgets, right_widgets;
 
-    WayfireOutput *output;
     bool dock;
     int scaling;
     int isize;

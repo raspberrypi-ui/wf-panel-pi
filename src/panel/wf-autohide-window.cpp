@@ -13,21 +13,20 @@
 
 /* Public methods */
 
-WayfireAutohidingWindow::WayfireAutohidingWindow (WayfireOutput *output, bool dock) :
+WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     position {dock ? "dock/position" : "panel/position"},
     doffset {"dock/dock_offset"},
     y_position {WfOption <int> {"panel/autohide_duration"}},
     edge_offset {"panel/edge_offset"},
     autohide {dock ? "dock/autohide" : "panel/autohide"}
 {
-    this->output = output;
     this->dock = dock;
 
     set_decorated (false);
     set_resizable (false);
 
     gtk_layer_init_for_window (this->gobj ());
-    gtk_layer_set_monitor (this->gobj (), output->monitor->gobj ());
+    gtk_layer_set_monitor (this->gobj (), gdk_display_get_monitor (gdk_display_get_default (), 0));
     gtk_layer_set_namespace (this->gobj (), "$unfocus panel");
     gtk_layer_set_keyboard_mode (this->gobj (), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 

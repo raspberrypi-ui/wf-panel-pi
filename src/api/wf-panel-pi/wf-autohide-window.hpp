@@ -10,7 +10,7 @@
 class WayfireAutohidingWindow : public Gtk::Window
 {
   public:
-    WayfireAutohidingWindow (WayfireOutput *output, bool dock);
+    WayfireAutohidingWindow (bool dock);
     WayfireAutohidingWindow (WayfireAutohidingWindow&&) = delete;
     WayfireAutohidingWindow (const WayfireAutohidingWindow&) = delete;
     WayfireAutohidingWindow& operator = (const WayfireAutohidingWindow&) = delete;
@@ -20,7 +20,6 @@ class WayfireAutohidingWindow : public Gtk::Window
     void set_auto_exclusive_zone (bool has_zone = false);
 
   private:
-    struct WayfireOutput *output;
     bool dock;
 
     WfOption<std::string> position;

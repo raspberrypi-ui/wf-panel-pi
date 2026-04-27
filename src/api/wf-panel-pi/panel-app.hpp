@@ -11,16 +11,6 @@
 
 class Panel;
 
-using GMonitor = Glib::RefPtr<Gdk::Monitor>;
-struct WayfireOutput
-{
-    GMonitor monitor;
-    struct wl_output *wo;
-
-    WayfireOutput (const GMonitor& monitor);
-    ~WayfireOutput ();
-};
-
 class PanelApp
 {
   public:
@@ -41,8 +31,6 @@ class PanelApp
 
     std::unique_ptr <Panel> panel;
     std::unique_ptr <Panel> dock;
-
-    std::vector <std::unique_ptr <WayfireOutput>> monitors;
 
     sigc::connection hotplug_timer;
 

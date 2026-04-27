@@ -19,7 +19,7 @@ extern "C" {
 #include "lxutils.h"
 }
 
-Panel::Panel (WayfireOutput *output, bool dock) :
+Panel::Panel (bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     layer {dock ? "dock/layer" : "panel/layer"},
     monitor_num {dock ? "dock/monitor" : "panel/monitor"},
@@ -31,7 +31,6 @@ Panel::Panel (WayfireOutput *output, bool dock) :
     notifications {"panel/notify_enable"},
     libnotify {"panel/notify_libnotify"}
 {
-    this->output = output;
     this->dock = dock;
 
     // Set C variables from parameters
@@ -43,7 +42,7 @@ Panel::Panel (WayfireOutput *output, bool dock) :
     else is_pi_var = FALSE;
 
     // Create the window
-    window = std::make_unique <WayfireAutohidingWindow> (output, dock);
+    window = std::make_unique <WayfireAutohidingWindow> (dock);
 
     // GTK settings for window
     window->set_name (dock ? "DockToplevel" : "PanelToplevel");
