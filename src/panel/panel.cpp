@@ -1,16 +1,10 @@
-#include <stdio.h>
 #include <dlfcn.h>
-#include <sys/time.h>
 
-#include <iostream>
-#include <sstream>
 #include <cstdlib>
 #include <cstring>
-#include <map>
 
 #include <gtk-layer-shell.h>
 
-#include "panel.hpp"
 #include "gtk-utils.hpp"
 #include "spacer.hpp"
 
@@ -18,6 +12,8 @@ extern "C" {
 #include "configure.h"
 #include "lxutils.h"
 }
+
+#include "panel.hpp"
 
 Panel::Panel (bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},

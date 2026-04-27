@@ -1,12 +1,8 @@
-#include <glib/gi18n.h>
-#include "wf-autohide-window.hpp"
+#include <glibmm.h>
 
 #include "panel-app.hpp"
-#include <gdk/gdkwayland.h>
 
-#include <glibmm.h>
-#include <iostream>
-#include <assert.h>
+#include "wf-autohide-window.hpp"
 
 #define AUTOHIDE_HIDE_DELAY 500
 #define MARGIN 5

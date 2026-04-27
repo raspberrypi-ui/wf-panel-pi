@@ -8,6 +8,7 @@
 
 #include "config/file.hpp"
 #include "panel.hpp"
+
 #include "panel-app.hpp"
 
 static const gchar introspection_xml[] =
