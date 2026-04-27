@@ -56,7 +56,11 @@
 		<_short>Dock Autohide</_short>
 		<default>false</default>
 	</option>
-	<option name="dock_offset" type="int">
+	<option name="remainder" type="int">
+		<_short>Dock Autohide Remainder</_short>
+		<default>5</default>
+	</option>
+	<option name="offset" type="int">
 		<_short>Dock Offset</_short>
 		<default>5</default>
 	</option>

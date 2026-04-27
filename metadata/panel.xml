@@ -60,6 +60,14 @@
 		<_short>Panel Autohide</_short>
 		<default>false</default>
 	</option>
+	<option name="remainder" type="int">
+		<_short>Panel Autohide Remainder</_short>
+		<default>5</default>
+	</option>
+	<option name="offset" type="int">
+		<_short>Panel Offset</_short>
+		<default>0</default>
+	</option>
 	</group>
 	<group>
 	<_short>Notifications</_short>
@@ -81,10 +89,6 @@
 	<option name="autohide_duration" type="int">
 		<_short>Autohide Duration</_short>
 		<default>300</default>
-	</option>
-	<option name="edge_offset" type="int">
-		<_short>Edge Offset</_short>
-		<default>5</default>
 	</option>
 	<option name="gestures_touch_only" type="bool">
 		<_short>Gestures Touch Only</_short>

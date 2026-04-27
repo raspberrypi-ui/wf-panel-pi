@@ -15,13 +15,11 @@
 
 WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     position {dock ? "dock/position" : "panel/position"},
-    doffset {"dock/dock_offset"},
+    offset {dock ? "dock/offset" : "panel/offset"},
     y_position {WfOption <int> {"panel/autohide_duration"}},
-    edge_offset {"panel/edge_offset"},
+    remainder {dock ? "dock/remainder" : "panel/remainder"},
     autohide {dock ? "dock/autohide" : "panel/autohide"}
 {
-    this->dock = dock;
-
     set_decorated (false);
     set_resizable (false);
 
@@ -36,8 +34,8 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     autohide_counter = static_cast <int> (autohide);
     autohide.set_callback([=] { update_autohide (); });
     position.set_callback([=] () { update_position (); });
-    edge_offset.set_callback([=] () { update_position (); });
-    if (dock) doffset.set_callback([=] () { update_position (); });
+    remainder.set_callback([=] () { update_position (); });
+    offset.set_callback([=] () { update_position (); });
 
     set_auto_exclusive_zone (!autohide);
     update_position ();
@@ -138,14 +136,14 @@ bool WayfireAutohidingWindow::should_autohide () const
 
 bool WayfireAutohidingWindow::do_hide ()
 {
-    y_position.animate (edge_offset - get_allocated_height ());
+    y_position.animate (remainder - get_allocated_height ());
     update_margin ();
     return false;
 }
 
 bool WayfireAutohidingWindow::do_show ()
 {
-    y_position.animate (dock ? doffset : 0);
+    y_position.animate (offset);
     update_margin ();
     return false;
 }

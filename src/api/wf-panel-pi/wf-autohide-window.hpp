@@ -20,13 +20,11 @@ class WayfireAutohidingWindow : public Gtk::Window
     void set_auto_exclusive_zone (bool has_zone = false);
 
   private:
-    bool dock;
-
-    WfOption<std::string> position;
-    WfOption<int> doffset;
+    WfOption <std::string> position;
+    WfOption <int> offset;
     wf::animation::simple_animation_t y_position;
-    WfOption<int> edge_offset;
-    WfOption<bool> autohide;
+    WfOption <int> remainder;
+    WfOption <bool> autohide;
 
     int autohide_counter;
     bool has_auto_exclusive_zone = false;
