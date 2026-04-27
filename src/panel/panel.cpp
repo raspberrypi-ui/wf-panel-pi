@@ -155,14 +155,14 @@ Panel::Panel (bool dock) :
     set_layer ();
     set_exclusive ();
 
-    // Load widgets
-    init_widgets ();
-
     // Setup notifications
     init_notify ();
 
     // Show the window
     window->show_all ();
+
+    // Load widgets
+    init_widgets ();
 }
 
 Panel::~Panel ()
