@@ -43,7 +43,6 @@ class WayfireAutohidingWindow : public Gtk::Window
     void schedule_hide (int delay);
     void schedule_show (int delay);
     void update_position ();
-    wl_surface *get_wl_surface () const;
     void update_margin ();
     void update_autohide ();
 };

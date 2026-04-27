@@ -177,12 +177,6 @@ void WayfireAutohidingWindow::update_position ()
     if (should_autohide ()) schedule_hide (AUTOHIDE_HIDE_DELAY);
 }
 
-wl_surface *WayfireAutohidingWindow::get_wl_surface () const
-{
-    auto gdk_window = const_cast <GdkWindow *> (get_window ()->gobj ());
-    return gdk_wayland_window_get_wl_surface (gdk_window);
-}
-
 void WayfireAutohidingWindow::update_margin ()
 {
     if (y_position.running ())
@@ -191,7 +185,11 @@ void WayfireAutohidingWindow::update_margin ()
 
         // queue_draw does not work when the panel is hidden
         // so calling wl_surface_commit to make WM show the panel back
-        if (get_window () && is_visible ()) wl_surface_commit (get_wl_surface ());
+        if (get_window () && is_visible ())
+        {
+            GdkWindow *gdk_window = get_window ()->gobj ();
+            wl_surface_commit (gdk_wayland_window_get_wl_surface (gdk_window));
+        }
 
         queue_draw ();
     }
