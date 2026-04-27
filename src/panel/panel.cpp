@@ -52,42 +52,38 @@ Panel::Panel (bool dock) :
 
     // Connect to draw signal to log first draw event using journald only if RPI_LOG_FIRST_DRAW is set
     const char *rpi_log_env = std::getenv("RPI_LOG_FIRST_DRAW");
-    if (rpi_log_env && (std::strcmp(rpi_log_env, "1") == 0 ||
-                        std::strcmp(rpi_log_env, "true") == 0 ||
-                        std::strcmp(rpi_log_env, "yes") == 0 ||
-                        std::strcmp(rpi_log_env, "on") == 0))
+    if (rpi_log_env && (std::strcmp(rpi_log_env, "1") == 0 || std::strcmp(rpi_log_env, "true") == 0 ||
+        std::strcmp(rpi_log_env, "yes") == 0 || std::strcmp(rpi_log_env, "on") == 0))
     {
-        draw_connection = window->signal_draw ().connect (
-            [this](const Cairo::RefPtr<Cairo::Context> &cr) -> bool
-            {
-                // Log first draw event directly to journald with minimal information
-                GLogField fields[] = {
-                    {"MESSAGE", "Panel first draw event", -1},
-                    {"PRIORITY", "5", -1}, // Notice level
-                    {"SYSLOG_IDENTIFIER", "wf-panel-pi", -1}};
-                g_log_writer_journald (G_LOG_LEVEL_MESSAGE, fields, 3, NULL);
+        draw_connection = window->signal_draw ().connect ([=] (const Cairo::RefPtr<Cairo::Context> &cr) -> bool
+        {
+            // Log first draw event directly to journald with minimal information
+            GLogField fields[] = {
+                {"MESSAGE", "Panel first draw event", -1},
+                {"PRIORITY", "5", -1}, // Notice level
+                {"SYSLOG_IDENTIFIER", "wf-panel-pi", -1}};
+            g_log_writer_journald (G_LOG_LEVEL_MESSAGE, fields, 3, NULL);
 
-                // Disconnect after first draw
-                draw_connection.disconnect ();
-                // Return false to propagate the event further
-                return false;
-            });
+            // Disconnect after first draw
+            draw_connection.disconnect ();
+            // Return false to propagate the event further
+            return false;
+        });
     }
 
     // Monitor the draw signal to detect changes in scaling and reload icons if detected
     scaling = window->get_scale_factor ();
-    window->signal_draw ().connect (
-        [this](const Cairo::RefPtr<Cairo::Context> &cr) -> bool
+    window->signal_draw ().connect ([=] (const Cairo::RefPtr<Cairo::Context> &cr) -> bool
+    {
+        int scale_now = window->get_scale_factor ();
+        if (scaling != scale_now)
         {
-            int scale_now = window->get_scale_factor ();
-            if (scaling != scale_now)
-            {
-                scaling = scale_now;
-                update_widget_icons ();
-            }
-            set_exclusive ();
-            return false;
-        });
+            scaling = scale_now;
+            update_widget_icons ();
+        }
+        set_exclusive ();
+        return false;
+    });
 
     // Create window menu
     conf.set_label (_("Add / Remove Plugins..."));
@@ -148,28 +144,17 @@ Panel::Panel (bool dock) :
 
 void Panel::set_layer ()
 {
-    if ((std::string) layer == "overlay")
-    {
-        gtk_layer_set_layer (window->gobj (), GTK_LAYER_SHELL_LAYER_OVERLAY);
-        store_layer (GTK_LAYER_SHELL_LAYER_OVERLAY, dock);
-    }
+    GtkLayerShellLayer sl = GTK_LAYER_SHELL_LAYER_ENTRY_NUMBER;
 
-    if ((std::string) layer == "top")
-    {
-        gtk_layer_set_layer (window->gobj (), GTK_LAYER_SHELL_LAYER_TOP);
-        store_layer (GTK_LAYER_SHELL_LAYER_TOP, dock);
-    }
+    if ((std::string) layer == "overlay") sl = GTK_LAYER_SHELL_LAYER_OVERLAY;
+    if ((std::string) layer == "top") sl = GTK_LAYER_SHELL_LAYER_TOP;
+    if ((std::string) layer == "bottom") sl = GTK_LAYER_SHELL_LAYER_BOTTOM;
+    if ((std::string) layer == "background") sl = GTK_LAYER_SHELL_LAYER_BACKGROUND;
 
-    if ((std::string) layer == "bottom")
+    if (sl != GTK_LAYER_SHELL_LAYER_ENTRY_NUMBER)
     {
-        gtk_layer_set_layer (window->gobj (), GTK_LAYER_SHELL_LAYER_BOTTOM);
-        store_layer (GTK_LAYER_SHELL_LAYER_BOTTOM, dock);
-    }
-
-    if ((std::string) layer == "background")
-    {
-        gtk_layer_set_layer (window->gobj (), GTK_LAYER_SHELL_LAYER_BACKGROUND);
-        store_layer (GTK_LAYER_SHELL_LAYER_BACKGROUND, dock);
+        gtk_layer_set_layer (window->gobj (), sl);
+        store_layer (sl, dock);
     }
 }
 

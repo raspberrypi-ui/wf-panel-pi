@@ -33,14 +33,14 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (bool dock) :
     last_autohide_value = autohide;
     autohide_counter = static_cast <int> (autohide);
     autohide.set_callback([=] { update_autohide (); });
-    position.set_callback([=] () { update_position (); });
-    remainder.set_callback([=] () { update_position (); });
-    offset.set_callback([=] () { update_position (); });
+    position.set_callback([=] { update_position (); });
+    remainder.set_callback([=] { update_position (); });
+    offset.set_callback([=] { update_position (); });
 
     set_auto_exclusive_zone (!autohide);
     update_position ();
 
-    signal_draw().connect_notify ([=] (const Cairo::RefPtr<Cairo::Context>&)
+    signal_draw().connect_notify ([=] (const Cairo::RefPtr <Cairo::Context>&)
     {
         update_margin ();
     });
