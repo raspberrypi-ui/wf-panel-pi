@@ -160,13 +160,14 @@ void PanelApp::monitors_changed ()
 
 bool PanelApp::update_monitors ()
 {
+    int i;
+
     // clear the existing monitors
     monitors.clear ();
 
     // find the new list of monitors
     auto display = Gdk::Display::get_default ();
-    int num_monitors = display->get_n_monitors ();
-    for (int i = 0; i < num_monitors; i++)
+    for (i = 0; i < display->get_n_monitors (); i++)
     {
         monitors.push_back (std::make_unique <WayfireOutput> (display->get_monitor (i)));
 
@@ -184,12 +185,8 @@ bool PanelApp::update_monitors ()
 
 void PanelApp::update_panels ()
 {
-    int pmon_num = panel->set_monitor ();
-    int dmon_num = dock->set_monitor ();
-
-    auto display = Gdk::Display::get_default ();
-    auto pmon = display->get_monitor (pmon_num);
-    auto dmon = display->get_monitor (dmon_num);
+    panel->set_monitor ();
+    dock->set_monitor ();
 }
 
 /* DBus interface for commands to plugins */
