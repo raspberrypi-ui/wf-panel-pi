@@ -168,6 +168,11 @@ void PanelApp::rescan_xml_directory ()
     wf::config::reload_xml_files (config, xmldirs);
 }
 
+std::shared_ptr <wf::config::option_base_t> PanelApp::get_config_option (const std::string& name)
+{
+    return config.get_option (name);
+}
+
 /* Monitor tracking */
 
 void PanelApp::monitors_changed ()

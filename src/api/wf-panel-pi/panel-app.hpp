@@ -42,12 +42,11 @@ class PanelApp
     PanelApp (int argc, char **argv);
     ~PanelApp ();
 
-    wf::config::config_manager_t config;
-
-    static PanelApp& get();
     static void create (int argc, char **argv);
 
+    static PanelApp& get();
     void rescan_xml_directory ();
+    std::shared_ptr <wf::config::option_base_t> get_config_option (const std::string& name);
 
   private:
     static std::unique_ptr <PanelApp> instance;
@@ -62,6 +61,7 @@ class PanelApp
     Gio::DBus::InterfaceVTable *interface_vtable;
     guint owner_id;
 
+    wf::config::config_manager_t config;
     int inotify_fd;
 
     void run ();
