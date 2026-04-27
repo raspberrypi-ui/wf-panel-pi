@@ -35,7 +35,6 @@ class Panel
     Gtk::MenuItem cplug;
     Gtk::MenuItem notif;
     Gtk::MenuItem appset;
-    std::string conf_plugin;
     Glib::RefPtr <Gtk::GestureLongPress> gesture;
     sigc::connection draw_connection;
 

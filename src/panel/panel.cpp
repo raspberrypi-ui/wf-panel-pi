@@ -230,6 +230,7 @@ bool Panel::on_button_press_event (GdkEventButton* event)
 bool Panel::on_button_release_event (GdkEventButton* event)
 {
     int i;
+    std::string pname;
     Gtk::Allocation alloc;
 
     if (pressed == PRESS_NONE) return false;
@@ -237,8 +238,9 @@ bool Panel::on_button_release_event (GdkEventButton* event)
 
     if (event->button == 3)
     {
-        conf_plugin = "gtkmm";
+        cplug.set_name ("gtkmm");
         cplug.set_sensitive (false);
+        cplug.hide ();
 
         for (i = 0; i < 2; i++)
         {
@@ -252,10 +254,10 @@ bool Panel::on_button_release_event (GdkEventButton* event)
 
                 if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
                 {
-                    conf_plugin = plugin->get_name ();
-                    if (conf_plugin == "spacing") cplug.hide ();
-                    else cplug.show ();
-                    if (can_configure (conf_plugin.c_str ())) cplug.set_sensitive (true);
+                    pname = plugin->get_name ();
+                    cplug.set_name (pname);
+                    if (can_configure (pname.c_str ())) cplug.set_sensitive (true);
+                    if (pname != "spacing") cplug.show ();
                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
                     return false;
                 }
@@ -263,7 +265,6 @@ bool Panel::on_button_release_event (GdkEventButton* event)
         }
 
         // not matched any widgets - on the empty area of the bar...
-        cplug.hide ();
         show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj ()), GTK_WIDGET (menu.gobj ()), event->x_root, event->y_root);
     }
     return false;
@@ -290,7 +291,7 @@ void Panel::do_configure ()
 void Panel::do_plugin_configure ()
 {
     window->set_sensitive (false);
-    plugin_config_dialog (conf_plugin.c_str ());
+    plugin_config_dialog (cplug.get_name ().c_str ());
     window->set_sensitive (true);
 }
 
