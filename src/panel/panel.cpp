@@ -26,7 +26,6 @@ Panel::Panel (WayfireOutput *output, bool dock) :
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {"panel/widgets_right"},
     exclusive {dock ? "dock/exclusive" : "panel/exclusive"},
-    minimal_panel_height {"panel/minimal_height"},
     gestures_touch_only {"panel/gestures_touch_only"},
     notify_timeout {"panel/notify_timeout"},
     notifications {"panel/notify_enable"},
@@ -47,7 +46,6 @@ Panel::Panel (WayfireOutput *output, bool dock) :
     window = std::make_unique <WayfireAutohidingWindow> (output, dock);
 
     // GTK settings for window
-    window->set_size_request (1, minimal_panel_height);
     window->set_name (dock ? "DockToplevel" : "PanelToplevel");
 
     // Set the icon size data pointer
