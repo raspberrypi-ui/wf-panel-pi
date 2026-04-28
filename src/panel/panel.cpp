@@ -137,6 +137,7 @@ Panel::Panel (bool dock) :
 
     // Set up parameter callbacks
     icon_size.set_callback ([=] { update_widget_icons (); });
+    gestures_touch_only.set_callback ([=] { update_gestures (); });
     exclusive.set_callback ([=] { set_exclusive (); });
 
     // Create the window
@@ -405,6 +406,11 @@ void Panel::update_widget_icons ()
 
     for (auto &w : right_widgets)
         w->set_icon ();
+}
+
+void Panel::update_gestures ()
+{
+    touch_only = gestures_touch_only;
 }
 
 // Public functions used by PanelApp
