@@ -144,18 +144,13 @@ Panel::Panel (bool dock) :
     content_box.pack_start (left_box, false, false);
     content_box.pack_end (right_box, false, false);
     window->add (content_box);
-    left_box.show ();
-    right_box.show ();
-    content_box.show ();
+    window->show_all ();
 
     // Set the window display options
     set_exclusive ();
 
     // Setup notifications
     init_notify ();
-
-    // Show the window
-    window->show_all ();
 
     // Load widgets
     init_widgets ();
