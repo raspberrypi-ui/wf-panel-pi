@@ -57,15 +57,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MENU_ICON_SPACE 6
 #define BORDER_SIZE 1
 
-typedef struct {
-    GtkWidget *button;
-    GtkMenu *menu;
-    gulong chandle;
-    gulong mhandle;
-    double x;
-    double y;
-} kb_menu_t;
-
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
@@ -76,8 +67,7 @@ double press_x, press_y;
 gboolean touch_only;
 gboolean is_pi_var;
 
-static GtkWindow *popwindow;
-static GtkWidget *clicksink;
+static GtkWindow *popwindow, *clicksink;
 static int px, py, mw, mh, orient;
 
 /*----------------------------------------------------------------------------*/
@@ -491,14 +481,6 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
 /* Window popup with close on click-away */
 /*----------------------------------------------------------------------------*/
 
-static void popup_hidden (GtkWidget *popup, kb_menu_t *data)
-{
-    gtk_widget_destroy (clicksink);
-    g_signal_handler_disconnect (popup, data->mhandle);
-    if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
-    g_free (data);
-}
-
 static gboolean handle_clickaway (GtkWidget *, GdkEventButton *, gpointer)
 {
     close_popup ();
@@ -519,14 +501,16 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     GtkWindow *panel = find_panel (button);
     mon = gtk_layer_get_monitor (panel);
 
-    clicksink = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    gtk_layer_init_for_window (GTK_WINDOW (clicksink));
-    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
-    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_TOP, TRUE);
-    gtk_layer_set_anchor (GTK_WINDOW (clicksink), GTK_LAYER_SHELL_EDGE_BOTTOM, TRUE);
-    gtk_layer_set_monitor (GTK_WINDOW (clicksink), mon);
-    gtk_widget_set_name (clicksink, "clicksink");
+    close_popup ();
+
+    clicksink = GTK_WINDOW (gtk_window_new (GTK_WINDOW_TOPLEVEL));
+    gtk_layer_init_for_window (clicksink);
+    gtk_layer_set_anchor (clicksink, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
+    gtk_layer_set_anchor (clicksink, GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
+    gtk_layer_set_anchor (clicksink, GTK_LAYER_SHELL_EDGE_TOP, TRUE);
+    gtk_layer_set_anchor (clicksink, GTK_LAYER_SHELL_EDGE_BOTTOM, TRUE);
+    gtk_layer_set_monitor (clicksink, mon);
+    gtk_widget_set_name (GTK_WIDGET (clicksink), "clicksink");
 
     prov = gtk_css_provider_new ();
     gtk_css_provider_load_from_data (prov, "#clicksink { background-color: transparent; }", -1, NULL);
@@ -534,11 +518,9 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
         GTK_STYLE_PROVIDER (prov), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     g_object_unref (prov);
 
-    gtk_widget_show (clicksink);
-    gtk_window_present (GTK_WINDOW (clicksink));
+    gtk_widget_show (GTK_WIDGET (clicksink));
+    gtk_window_present (clicksink);
     g_signal_connect (clicksink, "button-release-event", G_CALLBACK (handle_clickaway), NULL);
-
-    close_popup ();
 
     popwindow = GTK_WINDOW (window);
 
@@ -616,16 +598,15 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_layer_set_keyboard_mode (popwindow, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
 
     gtk_window_present (popwindow);
-
-    kb_menu_t *data = g_new (kb_menu_t, 1);
-    data->button = button;
-    data->mhandle = g_signal_connect (popwindow, "hide", G_CALLBACK (popup_hidden), data);
+    g_idle_add ((GSourceFunc) hide_prelight, button);
 }
 
 void close_popup (void)
 {
     if (popwindow) gtk_widget_destroy (GTK_WIDGET (popwindow));
+    if (clicksink) gtk_widget_destroy (GTK_WIDGET (clicksink));
     popwindow = NULL;
+    clicksink = NULL;
 }
 
 /*----------------------------------------------------------------------------*/
