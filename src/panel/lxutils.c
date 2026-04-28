@@ -76,9 +76,8 @@ double press_x, press_y;
 gboolean touch_only;
 gboolean is_pi_var;
 
-static GtkWindow *panel, *popwindow;
+static GtkWindow *popwindow;
 static GtkWidget *clicksink;
-static GtkLayerShellLayer orig_layer;
 static int px, py, mw, mh, orient;
 
 /*----------------------------------------------------------------------------*/
@@ -107,16 +106,6 @@ int get_icon_size (GtkWidget *widget)
 {
     GtkWindow *panel = find_panel (widget);
     return * (int *) g_object_get_data ((GObject *) panel, "icon-size");
-}
-
-static void store_layer (void)
-{
-    orig_layer = gtk_layer_get_layer (panel);
-}
-
-static void restore_layer (void)
-{
-    gtk_layer_set_layer (panel, orig_layer);
 }
 
 GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name)
@@ -423,22 +412,13 @@ void graph_free (PluginGraph *graph)
 }
 
 /*----------------------------------------------------------------------------*/
-/* Menu popup with keyboard handling */
+/* Menu popup */
 /*----------------------------------------------------------------------------*/
 
 static gboolean hide_prelight (GtkWidget *btn)
 {
     if (btn && GTK_IS_WIDGET (btn)) gtk_widget_unset_state_flags (btn, GTK_STATE_FLAG_PRELIGHT);
     return FALSE;
-}
-
-static void menu_hidden (GtkWidget *, kb_menu_t *data)
-{
-    g_signal_handler_disconnect (data->menu, data->mhandle);
-    restore_layer ();
-    gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
-    if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
-    g_free (data);
 }
 
 static int get_menu_padding (void)
@@ -449,37 +429,6 @@ static int get_menu_padding (void)
     gtk_style_context_get_padding (sc, gtk_style_context_get_state (sc), &pad);
     gtk_widget_destroy (men);
     return pad.left;
-}
-
-static void committed (GdkWindow *win, kb_menu_t *data)
-{
-    // spoof event just to suppress warnings...
-    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
-    ev->send_event = TRUE;
-    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
-
-    gboolean bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
-    int pad = get_menu_padding ();
-    GValue val = G_VALUE_INIT;
-    g_value_init (&val, G_TYPE_INT);
-    g_value_set_int (&val, bottom ? -pad : pad);
-    g_object_set_property ((GObject *) data->menu, "rect-anchor-dy", &val);
-
-    g_signal_handler_disconnect (win, data->chandle);
-    data->mhandle = g_signal_connect (data->menu, "hide", G_CALLBACK (menu_hidden), data);
-    if (data->button)
-    {
-        gtk_menu_popup_at_widget (data->menu, data->button, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    }
-    else
-    {
-        GdkRectangle rect;
-        gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
-        rect.x = data->x;
-        rect.y = 0;
-        rect.width = 0;
-        gtk_menu_popup_at_rect (data->menu, gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    }
 }
 
 static void count_item (GtkWidget *, gpointer data)
@@ -500,39 +449,42 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
 {
     close_popup ();
 
-    kb_menu_t *data = g_new (kb_menu_t, 1);
+    // spoof event just to suppress warnings...
+    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
+    ev->send_event = TRUE;
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
 
-    panel = find_panel (widget);
+    int pad = get_menu_padding ();
+    GValue val = G_VALUE_INIT;
+    g_value_init (&val, G_TYPE_INT);
+    g_value_set_int (&val, panel_at_bottom (widget) ? -pad : pad);
+    g_object_set_property ((GObject *) menu, "rect-anchor-dy", &val);
 
-    if (GTK_IS_BUTTON (widget) || GTK_IS_EVENT_BOX (widget) || GTK_IS_BOX (widget)) data->button = widget;
-    else data->button = NULL;
-    data->menu = GTK_MENU (menu);
-    data->x = -1.0;
-    data->y = -1.0;
-
-    store_layer ();
-    gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
-    data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
+    gtk_menu_popup_at_widget (GTK_MENU (menu), widget, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
+    g_idle_add ((GSourceFunc) hide_prelight, widget);
 }
 
-void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, double y)
+void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, double)
 {
     close_popup ();
 
-    kb_menu_t *data = g_new (kb_menu_t, 1);
+    // spoof event just to suppress warnings...
+    GdkEventButton *ev = (GdkEventButton *) gdk_event_new (GDK_NOTHING);
+    ev->send_event = TRUE;
+    gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
 
-    panel = find_panel (widget);
+    int pad = get_menu_padding ();
+    GValue val = G_VALUE_INIT;
+    g_value_init (&val, G_TYPE_INT);
+    g_value_set_int (&val, panel_at_bottom (widget) ? -pad : pad);
+    g_object_set_property ((GObject *) menu, "rect-anchor-dy", &val);
 
-    data->button = NULL;
-    data->menu = GTK_MENU (menu);
-    data->x = x;
-    data->y = y;
-
-    store_layer ();
-    gtk_layer_set_layer (panel, GTK_LAYER_SHELL_LAYER_TOP);
-    gtk_layer_set_keyboard_mode (panel, GTK_LAYER_SHELL_KEYBOARD_MODE_EXCLUSIVE);
-    data->chandle = g_signal_connect (gtk_widget_get_window (GTK_WIDGET (panel)), "committed", G_CALLBACK (committed), data);
+    GdkRectangle rect;
+    GtkWindow *panel = find_panel (widget);
+    gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
+    rect.x = x;
+    rect.y = 0;
+    gtk_menu_popup_at_rect (GTK_MENU (menu), gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -564,7 +516,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     FILE *fp;
     char *cmd, *mname;
 
-    panel = find_panel (button);
+    GtkWindow *panel = find_panel (button);
     mon = gtk_layer_get_monitor (panel);
 
     clicksink = gtk_window_new (GTK_WINDOW_TOPLEVEL);
