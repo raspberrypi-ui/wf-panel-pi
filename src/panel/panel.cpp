@@ -169,7 +169,6 @@ void Panel::set_exclusive ()
     {
         gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, false);
         gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, false);
-        window->set_auto_exclusive_zone (exclusive);
     }
     else
     {
@@ -177,15 +176,14 @@ void Panel::set_exclusive ()
         {
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, true);
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, true);
-            window->set_auto_exclusive_zone (true);
         }
         else
         {
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, left_widgets.size () ? true : false);
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, right_widgets.size () ? true : false);
-            window->set_auto_exclusive_zone (false);
         }
     }
+    window->set_auto_exclusive_zone (exclusive);
 }
 
 // Keyboard and mouse event handlers
