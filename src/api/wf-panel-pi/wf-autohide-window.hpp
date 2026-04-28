@@ -46,10 +46,12 @@ class WayfireAutohidingWindow : public Gtk::Window
     WayfireAutohidingWindow& operator = (WayfireAutohidingWindow&&) = delete;
     ~WayfireAutohidingWindow ();
     void set_auto_exclusive_zone (bool has_zone = false);
+    void set_monitor ();
 
   private:
     WfOption <std::string> position;
     WfOption <std::string> layer;
+    WfOption <std::string> monitor;
     WfOption <int> offset;
     WfOption <int> remainder;
     WfOption <bool> autohide;

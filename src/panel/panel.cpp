@@ -46,7 +46,6 @@ extern "C" {
 
 Panel::Panel (bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
-    monitor_num {dock ? "dock/monitor" : "panel/monitor"},
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {"panel/widgets_right"},
     exclusive {dock ? "dock/exclusive" : "panel/exclusive"},
@@ -139,7 +138,6 @@ Panel::Panel (bool dock) :
     // Set up parameter callbacks
     icon_size.set_callback ([=] { update_widget_icons (); });
     exclusive.set_callback ([=] { set_exclusive (); });
-    monitor_num.set_callback ([=] { set_monitor (); });
 
     // Create the window
     content_box.pack_start (left_box, false, false);
@@ -441,46 +439,6 @@ void Panel::handle_command_message (const char *name, const char *cmd)
 
     for (auto &w : right_widgets)
         if (name == w->widget_name) w->command (cmd);
-}
-
-void Panel::set_monitor ()
-{
-    GdkDisplay *dpy = gdk_display_get_default ();
-    GdkScreen *scr = gdk_display_get_default_screen (dpy);
-    GdkMonitor *mon = NULL;
-    int try_mon;
-    const char *mnumstr = ((std::string) monitor_num).c_str();
-
-    if (strlen (mnumstr) == 1 && sscanf (mnumstr, "%d", &try_mon) == 1)
-    {
-        // single digit - interpret as monitor number
-        while (try_mon >= 0)
-        {
-            mon = gdk_display_get_monitor (dpy, try_mon);
-            if (mon) break;
-            try_mon--;
-        }
-    }
-    else
-    {
-        // output name - try to match it to a connected monitor
-        for (try_mon = gdk_display_get_n_monitors (dpy) - 1; try_mon >= 0; try_mon--)
-        {
-            mon = gdk_display_get_monitor (dpy, try_mon);
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-            char *mname = gdk_screen_get_monitor_plug_name (scr, try_mon);
-#pragma GCC diagnostic pop
-            if (!g_strcmp0 (mname, mnumstr) && mon)
-            {
-                g_free (mname);
-                break;
-            }
-            g_free (mname);
-        }
-    }
-
-    if (mon) gtk_layer_set_monitor (window->gobj(), mon);
 }
 
 /* End of file */

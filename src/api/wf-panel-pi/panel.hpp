@@ -44,11 +44,10 @@ class Panel
     ~Panel ();
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
-    void set_monitor ();
 
-  private:
     std::unique_ptr <WayfireAutohidingWindow> window;
 
+  private:
     Gtk::HBox content_box;
     Gtk::HBox left_box, right_box;
     Gtk::Menu menu;
@@ -66,7 +65,6 @@ class Panel
     int isize;
 
     WfOption <int> icon_size;
-    WfOption <std::string> monitor_num;
     WfOption <std::string> left_widgets_opt;
     WfOption <std::string> right_widgets_opt;
     WfOption <bool> exclusive;
