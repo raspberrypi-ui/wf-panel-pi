@@ -51,6 +51,7 @@ static const gchar introspection_xml[] =
   "</node>";
 
 std::unique_ptr <PanelApp> PanelApp::instance;
+gboolean activated = FALSE;
 
 PanelApp::PanelApp (int argc, char **argv)
 {
@@ -76,6 +77,9 @@ void PanelApp::run ()
 
 void PanelApp::on_activate ()
 {
+    if (activated) return;
+    activated = TRUE;
+
     app->hold ();
 
     auto display = Gdk::Display::get_default ();
