@@ -57,6 +57,8 @@ typedef struct
 
     struct zwlr_foreign_toplevel_manager_v1 *manager;
     MenuCache* menu_cache;
+
+    guint idle_timer;
 } WinlistPlugin;
 
 typedef struct

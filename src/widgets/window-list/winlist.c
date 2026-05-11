@@ -53,6 +53,8 @@ conf_table_t conf_table[4] = {
     {CONF_TYPE_NONE,    NULL,           NULL,                               NULL}
 };
 
+gboolean stopping;
+
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */
 /*----------------------------------------------------------------------------*/
@@ -76,6 +78,7 @@ static void popup_menu (GtkWidget *widget, gpointer userdata);
 static void update_widths (WinlistPlugin *wl, int width);
 static void update_icons (WinlistPlugin *wl);
 static void update_size (GtkWidget *, GtkAllocation *alloc, gpointer userdata);
+static void resize_on_idle (WinlistPlugin *wl);
 static gboolean idle_resize (gpointer userdata);
 static gboolean handle_button_pressed (GtkWidget *widget, GdkEventButton *event, gpointer userdata);
 static gboolean handle_button_release (GtkWidget *widget, GdkEventButton *event, gpointer userdata);
@@ -186,6 +189,7 @@ static void handle_toplevel_state (void *data, HANDLE_PTR handle, struct wl_arra
 static void handle_toplevel_done (void *data, HANDLE_PTR handle)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
+    if (stopping) return;
     GList *list;
 
     list = wl->windows;
@@ -238,7 +242,7 @@ static void handle_toplevel_closed (void *data, HANDLE_PTR handle)
         }
     }
 
-    g_idle_add (idle_resize, wl);
+    resize_on_idle (wl);
 }
 
 static void handle_toplevel_output_enter (void *, HANDLE_PTR, struct wl_output *)
@@ -264,6 +268,7 @@ struct zwlr_foreign_toplevel_handle_v1_listener toplevel_handle_v1 =
 static void handle_manager_toplevel (void *data, MANAGER_PTR, HANDLE_PTR toplevel)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
+    if (stopping) return;
     WindowItem *item = g_new0 (WindowItem, 1);
 
     item->plugin = wl;
@@ -364,7 +369,7 @@ static void create_button (WinlistPlugin *wl, WindowItem *item)
     set_icon_and_title (wl, item);
     gtk_widget_show_all (wl->plugin);
 
-    g_idle_add (idle_resize, wl);
+    resize_on_idle (wl);
 }
 
 static void destroy_button (WindowItem *item)
@@ -728,7 +733,7 @@ static void update_widths (WinlistPlugin *wl, int width)
         list = g_list_next (list);
     }
 
-    if (oldwidth != wl->item_width) g_idle_add (idle_resize, wl);
+    if (oldwidth != wl->item_width) resize_on_idle (wl);
 }
 
 static void update_icons (WinlistPlugin *wl)
@@ -763,10 +768,17 @@ static void update_size (GtkWidget *, GtkAllocation *alloc, gpointer userdata)
     if (alloc->width > 1) update_widths (wl, alloc->width);
 }
 
+static void resize_on_idle (WinlistPlugin *wl)
+{
+    if (wl->idle_timer) g_source_remove (wl->idle_timer);
+    wl->idle_timer = g_idle_add (idle_resize, wl);
+}
+
 static gboolean idle_resize (gpointer userdata)
 {
     WinlistPlugin *wl = (WinlistPlugin *) userdata;
     gtk_widget_queue_resize (wl->plugin);
+    wl->idle_timer = 0;
     return FALSE;
 }
 
@@ -897,6 +909,8 @@ void wlist_init (WinlistPlugin *wl)
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
+    stopping = FALSE;
+
     /* Set up variables */
     wl->item_width = wl->max_width;
     wl->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, wl->spacing);
@@ -934,9 +948,12 @@ void wlist_destructor (gpointer user_data)
 {
     WinlistPlugin *wl = (WinlistPlugin *) user_data;
 
-    // stop the window manager
+    if (wl->idle_timer) g_source_remove (wl->idle_timer);
+
+    /* Stop the window manager */
     g_list_foreach (wl->windows, (GFunc) close_handle, wl);
     if (wl->manager) zwlr_foreign_toplevel_manager_v1_stop (wl->manager);
+    stopping = TRUE;
 
     /* Deallocate memory */
     if (wl->windows) g_list_free_full (wl->windows, (GDestroyNotify) free_list_item);
