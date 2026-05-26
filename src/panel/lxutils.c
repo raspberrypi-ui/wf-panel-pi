@@ -533,7 +533,13 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
 
 static void popup_hidden (GtkWidget *popup, kb_menu_t *data)
 {
-    gtk_widget_destroy (clicksink);
+    if (clicksink)
+    {
+        GtkWidget *old_clicksink = clicksink;
+        clicksink = NULL;
+        gtk_widget_destroy (old_clicksink);
+    }
+    if (popwindow == GTK_WINDOW (popup)) popwindow = NULL;
     g_signal_handler_disconnect (popup, data->mhandle);
     if (data->button) g_idle_add ((GSourceFunc) hide_prelight, data->button);
     g_free (data);
@@ -556,6 +562,8 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     FILE *fp;
     char *cmd, *mname;
 
+    close_popup ();
+
     panel = find_panel (button);
     mon = gtk_layer_get_monitor (panel);
 
@@ -577,8 +585,6 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_widget_show (clicksink);
     gtk_window_present (GTK_WINDOW (clicksink));
     g_signal_connect (clicksink, "button-release-event", G_CALLBACK (handle_clickaway), NULL);
-
-    close_popup ();
 
     popwindow = GTK_WINDOW (window);
 
@@ -661,8 +667,18 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 
 void close_popup (void)
 {
-    if (popwindow) gtk_widget_destroy (GTK_WIDGET (popwindow));
-    popwindow = NULL;
+    if (popwindow)
+    {
+        GtkWidget *old_popwindow = GTK_WIDGET (popwindow);
+        popwindow = NULL;
+        gtk_widget_destroy (old_popwindow);
+    }
+    else if (clicksink)
+    {
+        GtkWidget *old_clicksink = clicksink;
+        clicksink = NULL;
+        gtk_widget_destroy (old_clicksink);
+    }
 }
 
 /*----------------------------------------------------------------------------*/
