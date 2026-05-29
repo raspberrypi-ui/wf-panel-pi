@@ -517,6 +517,10 @@ int plugin_config_dialog (const char *type)
                                         gdk_rgba_parse (&col, strval);
                                         g_free (strval);
                                         gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
+                                        GValue gvb = G_VALUE_INIT;
+                                        g_value_init (&gvb, G_TYPE_BOOLEAN);
+                                        g_value_set_boolean (&gvb, TRUE);
+                                        g_object_set_property (G_OBJECT (control), "show-editor", &gvb);
                                         break;
 
                     case CONF_TYPE_FONT :
