@@ -86,6 +86,17 @@ GtkWindow *find_panel (GtkWidget *btn)
     return GTK_WINDOW (wid);
 }
 
+gboolean in_grid (GtkWidget *btn)
+{
+    GtkWidget *wid = btn;
+    while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
+    {
+        if (!g_strcmp0 (gtk_widget_get_name (wid), "grid")) return TRUE;
+        wid = gtk_widget_get_parent (wid);
+    }
+    return FALSE;
+}
+
 gboolean panel_at_bottom (GtkWidget *btn)
 {
     GtkWindow *panel = find_panel (btn);
@@ -95,7 +106,9 @@ gboolean panel_at_bottom (GtkWidget *btn)
 int get_icon_size (GtkWidget *widget)
 {
     GtkWindow *panel = find_panel (widget);
-    return * (int *) g_object_get_data ((GObject *) panel, "icon-size");
+    int siz = * (int *) g_object_get_data ((GObject *) panel, "icon-size");
+    if (in_grid (widget)) return siz / 2;
+    return siz;
 }
 
 GdkPixbuf *load_taskbar_pixbuf (GtkWidget *image, const char *icon_name)

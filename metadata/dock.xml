@@ -8,6 +8,14 @@
 		<_short>Dock Widgets</_short>
 		<default></default>
 	</option>
+	<option name="widgets_right" type="string">
+		<_short>Right Widgets</_short>
+		<default>bluetooth netman volumepulse</default>
+	</option>
+	<option name="widgets_right2" type="string">
+		<_short>Right Lower Widgets</_short>
+		<default>connect updater ejecter power</default>
+	</option>
 	<option name="icon_size" type="int">
 		<_short>Dock Icon Size</_short>
 		<default>48</default>

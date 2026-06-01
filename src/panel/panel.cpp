@@ -47,7 +47,8 @@ extern "C" {
 Panel::Panel (bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
-    right_widgets_opt {"panel/widgets_right"},
+    right_widgets_opt {dock ? "dock/widgets_right" : "panel/widgets_right"},
+    right2_widgets_opt {"dock/widgets_right2"},
     exclusive {dock ? "dock/exclusive" : "panel/exclusive"},
     gestures_touch_only {"panel/gestures_touch_only"},
     notify_timeout {"panel/notify_timeout"},
@@ -69,6 +70,7 @@ Panel::Panel (bool dock) :
 
     // GTK settings for window
     window->set_name (dock ? "DockToplevel" : "PanelToplevel");
+    grid.set_name ("grid");
 
     // Set the icon size data pointer
     g_object_set_data ((GObject *) window->gobj (), "icon-size", &isize);
@@ -142,7 +144,13 @@ Panel::Panel (bool dock) :
 
     // Create the window
     content_box.pack_start (left_box, false, false);
-    content_box.pack_end (right_box, false, false);
+    if (dock)
+    {
+        content_box.pack_end (grid, false, false);
+        grid.pack_start (right_box, false, false);
+        grid.pack_end (right2_box, false, false);
+    }
+    else content_box.pack_end (right_box, false, false);
     window->add (content_box);
     window->show_all ();
 
@@ -212,7 +220,7 @@ bool Panel::on_button_press_event (GdkEventButton *event)
 
 bool Panel::on_button_release_event (GdkEventButton *event)
 {
-    int i;
+    bool found = false;
     std::string pname;
     Gtk::Allocation alloc;
 
@@ -225,29 +233,36 @@ bool Panel::on_button_release_event (GdkEventButton *event)
         cplug.set_sensitive (false);
         cplug.hide ();
 
-        for (i = 0; i < 2; i++)
+        auto show_menu = [&] (Gtk::Widget *plugin)
         {
-            // loop through plugins in each hbox
-            for (auto &plugin : (i == 0 ? left_box : right_box).get_children ())
+            if (plugin->is_visible ())
             {
-                if (!plugin->is_visible ()) continue;
-
-                // check if the x position of the mouse is within the plugin
+                // check if the position of the mouse is within the plugin
                 alloc = plugin->get_allocation ();
-                if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width ())
+                if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width () &&
+                    event->y_root >= alloc.get_y () && event->y_root <= alloc.get_y () + alloc.get_height ())
                 {
                     pname = plugin->get_name ();
                     cplug.set_name (pname);
                     if (can_configure (pname.c_str ())) cplug.set_sensitive (true);
                     if (pname != "spacing") cplug.show ();
                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
-                    return false;
+                    found = true;
                 }
             }
-        }
+        };
+
+        for (auto &plugin : left_box.get_children ())
+            show_menu (plugin);
+
+        for (auto &plugin : right_box.get_children ())
+            show_menu (plugin);
+
+        for (auto &plugin : right2_box.get_children ())
+            show_menu (plugin);
 
         // not matched any widgets - on the empty area of the bar...
-        show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj ()), GTK_WIDGET (menu.gobj ()), event->x_root, event->y_root);
+        if (!found) show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj ()), GTK_WIDGET (menu.gobj ()), event->x_root, event->y_root);
     }
     return false;
 }
@@ -339,6 +354,8 @@ void Panel::init_widgets ()
     if (dock)
     {
         reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
+        reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
+        reload_widgets ((std::string) right2_widgets_opt, right2_widgets, right2_box);
         if (((std::string) left_widgets_opt).empty ()) window->hide ();
         else window->show ();
     }
