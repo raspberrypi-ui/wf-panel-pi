@@ -273,10 +273,18 @@ void WayfireAutohidingWindow::update_autohide ()
 
     last_autohide_value = autohide;
     set_auto_exclusive_zone (!autohide);
+    set_layer ();
 }
 
 void WayfireAutohidingWindow::set_layer ()
 {
+    if (autohide)
+    {
+        // if autohide is enabled, keep on top
+        gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_TOP);
+        return;
+    }
+
     if ((std::string) layer == "overlay") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_OVERLAY);
     if ((std::string) layer == "top") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_TOP);
     if ((std::string) layer == "bottom") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_BOTTOM);
