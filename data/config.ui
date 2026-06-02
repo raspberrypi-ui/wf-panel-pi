@@ -60,68 +60,308 @@
             <property name="margin-bottom">10</property>
             <property name="spacing">10</property>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="GtkNotebook" id="notebook1">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="shadow-type">in</property>
                 <child>
-                  <object class="GtkTreeView" id="left_tv">
+                  <object class="GtkBox" id="panelbox">
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="enable-search">False</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="border-width">10</property>
+                    <property name="spacing">5</property>
+                    <child>
+                      <object class="GtkBox" id="box1">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <object class="GtkScrolledWindow" id="scrolledwindow1">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="hscrollbar-policy">never</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTreeView" id="left_tv">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="enable-search">False</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection"/>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="add_l_btn">
+                            <property name="label" translatable="yes">Add</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to left side of taskbar</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="box2">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <object class="GtkScrolledWindow" id="scrolledwindow2">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="hscrollbar-policy">never</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTreeView" id="right_tv">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="enable-search">False</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection"/>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="add_r_btn">
+                            <property name="label" translatable="yes">Add</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to right side of taskbar</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                   </object>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel" id="tablabel1">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Panel</property>
+                  </object>
+                  <packing>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="dockbox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="border-width">10</property>
+                    <property name="spacing">5</property>
+                    <child>
+                      <object class="GtkBox" id="box3">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <object class="GtkScrolledWindow" id="scrolledwindow3">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="hscrollbar-policy">never</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTreeView" id="dock_tv">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection"/>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="add_d_btn">
+                            <property name="label" translatable="yes">Add</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to dock</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="box4">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <object class="GtkScrolledWindow" id="scrolledwindow4">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="hscrollbar-policy">never</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTreeView" id="dock_tt_tv">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection"/>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="add_dtt_btn">
+                            <property name="label" translatable="yes">Add</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to dock</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="box5">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <object class="GtkScrolledWindow" id="scrolledwindow5">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="hscrollbar-policy">never</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTreeView" id="dock_tb_tv">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection"/>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="add_dtb_btn">
+                            <property name="label" translatable="yes">Add</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to dock</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel" id="tablabel2">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Dock</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                    <property name="tab-fill">False</property>
+                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="shadow-type">in</property>
-                <child>
-                  <object class="GtkTreeView" id="right_tv">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="enable-search">False</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="shadow-type">in</property>
-                <child>
-                  <object class="GtkTreeView" id="dock_tv">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -135,48 +375,6 @@
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkButton" id="add_l_btn">
-                        <property name="label" translatable="yes">Add to left</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Add plugin to left side of taskbar</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="add_r_btn">
-                        <property name="label" translatable="yes">Add to right</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Add plugin to right side of taskbar</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="add_d_btn">
-                        <property name="label" translatable="yes">Add to dock</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="tooltip-text" translatable="yes">Add plugin to dock</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkButton" id="rem_btn">
                         <property name="label" translatable="yes">Remove</property>
                         <property name="visible">True</property>
@@ -187,7 +385,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">3</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -201,7 +399,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">4</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                     <child>
@@ -215,7 +413,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">5</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                     <child>
@@ -229,7 +427,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">6</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                   </object>
@@ -247,9 +445,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="GtkScrolledWindow" id="scrolledwindow6">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
+                <property name="halign">end</property>
+                <property name="hscrollbar-policy">never</property>
                 <property name="shadow-type">in</property>
                 <child>
                   <object class="GtkTreeView" id="cent_tv">
@@ -281,5 +481,20 @@
       <action-widget response="-6">button1</action-widget>
       <action-widget response="-5">button2</action-widget>
     </action-widgets>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="scrolledwindow1"/>
+      <widget name="add_l_btn"/>
+      <widget name="scrolledwindow2"/>
+      <widget name="add_r_btn"/>
+      <widget name="scrolledwindow3"/>
+      <widget name="add_d_btn"/>
+      <widget name="scrolledwindow4"/>
+      <widget name="add_dtt_btn"/>
+      <widget name="scrolledwindow5"/>
+      <widget name="add_dtb_btn"/>
+      <widget name="scrolledwindow6"/>
+    </widgets>
   </object>
 </interface>

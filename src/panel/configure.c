@@ -43,16 +43,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COL_INDEX   2
 #define COL_CONFIG  3
 
+#define AVAIL 0
+#define PAN_L 1
+#define PAN_R 2
+#define DOCK  3
+#define DOCKT 4
+#define DOCKB 5
+
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
 static GtkListStore *widgets;
-static GtkTreeModel *filt[4], *sort[4];
+static GtkTreeModel *filt[6], *sort[6];
 static GtkWidget *dlg;
-static GtkWidget *tv[4];
-static GtkWidget *ladd, *radd, *dadd, *rem, *wup, *wdn, *cpl;
-static int hand[4];
+static GtkWidget *tv[6];
+static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl;
+static int hand[6];
 static gboolean found;
 
 /*----------------------------------------------------------------------------*/
@@ -172,17 +179,15 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
 static int selection (void)
 {
     GtkTreeSelection *sel;
+    int i;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[0]));
-    if (gtk_tree_selection_get_selected (sel, &sort[0], NULL)) return 1;
+    for (i = 0; i < 6; i++)
+    {
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[i]));
+        if (gtk_tree_selection_get_selected (sel, &sort[i], NULL)) return i;
+    }
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[2]));
-    if (gtk_tree_selection_get_selected (sel, &sort[2], NULL)) return -1;
-
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[3]));
-    if (gtk_tree_selection_get_selected (sel, &sort[3], NULL)) return 100;
-
-    return 0;
+    return -1;
 }
 
 /* Enable or disable buttons according to current highlight */
@@ -197,24 +202,30 @@ static void update_buttons (void)
     char *type = NULL;
     gboolean conf;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr == 100 ? 3 : 1 - lorr]));
-    if (lorr == 0)
+    gtk_widget_set_sensitive (ladd, FALSE);
+    gtk_widget_set_sensitive (radd, FALSE);
+    gtk_widget_set_sensitive (dadd, FALSE);
+    gtk_widget_set_sensitive (dttadd, FALSE);
+    gtk_widget_set_sensitive (dtbadd, FALSE);
+    gtk_widget_set_sensitive (rem, FALSE);
+    gtk_widget_set_sensitive (wup, FALSE);
+    gtk_widget_set_sensitive (wdn, FALSE);
+    gtk_widget_set_sensitive (cpl, FALSE);
+
+    if (lorr == -1) return;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
+    if (lorr == AVAIL)
     {
         gtk_widget_set_sensitive (ladd, gtk_tree_selection_get_selected (sel, NULL, NULL));
         gtk_widget_set_sensitive (radd, gtk_tree_selection_get_selected (sel, NULL, NULL));
         gtk_widget_set_sensitive (dadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
-        gtk_widget_set_sensitive (rem, FALSE);
-        gtk_widget_set_sensitive (wup, FALSE);
-        gtk_widget_set_sensitive (wdn, FALSE);
-        gtk_widget_set_sensitive (cpl, FALSE);
+        gtk_widget_set_sensitive (dttadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        gtk_widget_set_sensitive (dtbadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
     }
     else
     {
-        gtk_widget_set_sensitive (ladd, FALSE);
-        gtk_widget_set_sensitive (radd, FALSE);
-        gtk_widget_set_sensitive (dadd, FALSE);
-
-        nitems = gtk_tree_model_iter_n_children (filt[lorr == 100 ? 3 : 1 - lorr], NULL);
+        nitems = gtk_tree_model_iter_n_children (filt[lorr], NULL);
 
         gtk_widget_set_sensitive (rem, nitems > 0);
         path = gtk_tree_path_new_from_indices (0, -1);
@@ -228,7 +239,7 @@ static void update_buttons (void)
 
             // scroll the tree view to show the highlighted item
             path = gtk_tree_model_get_path (mod, &iter);
-            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[lorr == 100 ? 3 : 1 - lorr]), path, NULL, FALSE, 0.0, 0.0);
+            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[lorr]), path, NULL, FALSE, 0.0, 0.0);
 
             // can this type be configured?
             gtk_widget_set_sensitive (cpl, conf);
@@ -248,16 +259,16 @@ static void add_widget (GtkButton *, gpointer data)
     int index, lorr = (long) data;
     char *type, *name;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[1]));
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[AVAIL]));
 
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, COL_ID, &type, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[1]), &citer, &siter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[AVAIL]), &citer, &siter);
 
         // just add to the bottom of the list
-        index = gtk_tree_model_iter_n_children (filt[lorr == 100 ? 3 : 1 - lorr], NULL);
+        index = gtk_tree_model_iter_n_children (filt[lorr], NULL);
 
         // change index for anything other than a space; space needs to be created
         if (!strcmp (type, "separator"))
@@ -266,7 +277,7 @@ static void add_widget (GtkButton *, gpointer data)
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, "spacing0",
-                COL_INDEX, lorr == 100 ? lorr + index : lorr * (index + 1),
+                COL_INDEX, lorr * 100 + index,
                 COL_CONFIG, FALSE,
                 -1);
             g_free (name);
@@ -277,19 +288,19 @@ static void add_widget (GtkButton *, gpointer data)
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, "spacing4",
-                COL_INDEX, lorr == 100 ? lorr + index : lorr * (index + 1),
+                COL_INDEX, lorr * 100 + index,
                 COL_CONFIG, TRUE,
                 -1);
             g_free (name);
         }
         else
-            gtk_list_store_set (widgets, &citer, COL_INDEX, lorr == 100 ? lorr + index : lorr * (index + 1), -1);
+            gtk_list_store_set (widgets, &citer, COL_INDEX, lorr * 100 + index, -1);
 
         g_free (type);
 
         // select the added item
         gtk_tree_selection_unselect_all (sel);
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr == 100 ? 3 : 1 - lorr]));
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
         path = gtk_tree_path_new_from_indices (index, -1);
         gtk_tree_selection_select_path (sel, path);
 
@@ -307,12 +318,14 @@ static void remove_widget (GtkButton *, gpointer)
     int index, lorr = selection ();
     char *type;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr == 100 ? 3 : 1 - lorr]));
+    if (lorr == -1) return;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, COL_ID, &type, COL_INDEX, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr == 100 ? 3 : 1 - lorr]), &citer, &siter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr]), &citer, &siter);
 
         // change index for anything other than a space; space needs to be deleted
         if (strncmp (type, "spacing", 7))
@@ -325,7 +338,7 @@ static void remove_widget (GtkButton *, gpointer)
     }
 
     // re-number the widgets in the list below the one removed
-    gtk_tree_model_foreach (filt[lorr == 100 ? 3 : 1 - lorr], renumber, (void *)((long) index));
+    gtk_tree_model_foreach (filt[lorr], renumber, (void *)((long) index));
 }
 
 static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
@@ -357,12 +370,12 @@ static void move_widget (GtkButton *, gpointer data)
     GtkTreeIter iter, siter, citer;
     int index, lorr = selection (), dir = (long) data == 1 ? 1 : -1;
 
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr == 100 ? 3 : 1 - lorr]));
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
     if (gtk_tree_selection_get_selected (sel, &mod, &iter))
     {
         gtk_tree_model_get (mod, &iter, COL_INDEX, &index, -1);
         gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr == 100 ? 3 : 1 - lorr]), &citer, &siter);
+        gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr]), &citer, &siter);
 
         // check not trying to move past end of list
         if (dir == 1)
@@ -371,18 +384,18 @@ static void move_widget (GtkButton *, gpointer data)
         }
         else
         {
-            if (index == lorr * gtk_tree_model_iter_n_children (filt[lorr == 100 ? 3 : 1 - lorr], NULL)) return;
+            if (index == lorr * gtk_tree_model_iter_n_children (filt[lorr], NULL)) return;
         }
 
         // to move, swap the index of the widget moved with that of the adjacent widget
         if (dir * lorr > 0)
         {
-            gtk_tree_model_foreach (filt[lorr == 100 ? 3 : 1 - lorr], up, (void *)((long) index));
+            gtk_tree_model_foreach (filt[lorr], up, (void *)((long) index));
             gtk_list_store_set (widgets, &citer, COL_INDEX, index - 1, -1);
         }
         else
         {
-            gtk_tree_model_foreach (filt[lorr == 100 ? 3 : 1 - lorr], down, (void *)((long) index));
+            gtk_tree_model_foreach (filt[lorr], down, (void *)((long) index));
             gtk_list_store_set (widgets, &citer, COL_INDEX, index + 1, -1);
         }
 
@@ -630,9 +643,9 @@ static void configure_plugin (GtkButton *, gpointer)
     int index, lorr = selection ();
     char *type, *name;
 
-    if (lorr)
+    if (lorr != -1 && lorr != AVAIL)
     {
-        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr == 100 ? 3 : 1 - lorr]));
+        sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
         if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
             gtk_tree_model_get (mod, &iter, COL_ID, &type, -1);
@@ -641,7 +654,7 @@ static void configure_plugin (GtkButton *, gpointer)
             {
                 // spacing is a special case...
                 gtk_tree_model_sort_convert_iter_to_child_iter (GTK_TREE_MODEL_SORT (mod), &siter, &iter);
-                gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr == 100 ? 3 : 1 - lorr]), &citer, &siter);
+                gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr]), &citer, &siter);
 
                 // update both the widget type and the displayed name
                 g_free (type);
@@ -671,7 +684,7 @@ static void read_config (void)
 
     // add each space-separated widget from the metadata variables to the list store
     get_config_string ("panel", "widgets_left", &strval);
-    pos = 1;
+    pos = PAN_L * 100;
     token = strtok (strval, " ");
     while (token)
     {
@@ -688,7 +701,7 @@ static void read_config (void)
     g_free (strval);
 
     get_config_string ("panel", "widgets_right", &strval);
-    pos = -1;
+    pos = PAN_R * 100;
     token = strtok (strval, " ");
     while (token)
     {
@@ -696,7 +709,7 @@ static void read_config (void)
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, token,
-                COL_INDEX, pos--,
+                COL_INDEX, pos++,
                 COL_CONFIG, config,
                 -1);
         g_free (name);
@@ -705,7 +718,41 @@ static void read_config (void)
     g_free (strval);
 
     get_config_string ("dock", "widgets_left", &strval);
-    pos = 100;
+    pos = DOCK * 100;
+    token = strtok (strval, " ");
+    while (token)
+    {
+        if (read_lib (token, &name, &config))
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, token,
+                COL_INDEX, pos++,
+                COL_CONFIG, config,
+                -1);
+        g_free (name);
+        token = strtok (NULL, " ");
+    }
+    g_free (strval);
+
+    get_config_string ("dock", "widgets_right", &strval);
+    pos = DOCKT * 100;
+    token = strtok (strval, " ");
+    while (token)
+    {
+        if (read_lib (token, &name, &config))
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, token,
+                COL_INDEX, pos++,
+                COL_CONFIG, config,
+                -1);
+        g_free (name);
+        token = strtok (NULL, " ");
+    }
+    g_free (strval);
+
+    get_config_string ("dock", "widgets_right2", &strval);
+    pos = DOCKB * 100;
     token = strtok (strval, " ");
     while (token)
     {
@@ -776,46 +823,46 @@ static void write_config (void)
     GKeyFile *kf = g_key_file_new ();
     g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
-    // iterate through the two tree models, concatenating widget names to a space-separated string
+    // iterate through the tree models, concatenating widget names to a space-separated string
     config[0] = 0;
-    if (gtk_tree_model_get_iter_first (sort[0], &iter))
+    if (gtk_tree_model_get_iter_first (sort[PAN_L], &iter))
     {
         do
         {
-            gtk_tree_model_get (sort[0], &iter, COL_ID, &str, -1);
+            gtk_tree_model_get (sort[PAN_L], &iter, COL_ID, &str, -1);
             strcat (config, str);
             strcat (config, " ");
             g_free (str);
         }
-        while (gtk_tree_model_iter_next (sort[0], &iter));
+        while (gtk_tree_model_iter_next (sort[PAN_L], &iter));
     }
     g_key_file_set_string (kf, "panel", "widgets_left", config);
 
     config[0] = 0;
-    if (gtk_tree_model_get_iter_first (sort[2], &iter))
+    if (gtk_tree_model_get_iter_first (sort[PAN_R], &iter))
     {
         do
         {
-            gtk_tree_model_get (sort[2], &iter, COL_ID, &str, -1);
+            gtk_tree_model_get (sort[PAN_R], &iter, COL_ID, &str, -1);
             strcat (config, str);
             strcat (config, " ");
             g_free (str);
         }
-        while (gtk_tree_model_iter_next (sort[2], &iter));
+        while (gtk_tree_model_iter_next (sort[PAN_R], &iter));
     }
     g_key_file_set_string (kf, "panel", "widgets_right", config);
 
     config[0] = 0;
-    if (gtk_tree_model_get_iter_first (sort[3], &iter))
+    if (gtk_tree_model_get_iter_first (sort[DOCK], &iter))
     {
         do
         {
-            gtk_tree_model_get (sort[3], &iter, COL_ID, &str, -1);
+            gtk_tree_model_get (sort[DOCK], &iter, COL_ID, &str, -1);
             strcat (config, str);
             strcat (config, " ");
             g_free (str);
         }
-        while (gtk_tree_model_iter_next (sort[3], &iter));
+        while (gtk_tree_model_iter_next (sort[DOCK], &iter));
     }
     g_key_file_set_string (kf, "dock", "widgets_left", config);
 
@@ -836,10 +883,7 @@ static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer
 
     gtk_tree_model_get (model, iter, COL_INDEX, &index, -1);
 
-    if ((long) data == 100 && index >= 100) return TRUE;
-    if ((long) data == 1 && index > 0 && index < 100) return TRUE;
-    if ((long) data == -1 && index < 0) return TRUE;
-    if ((long) data == 0 && index == 0) return TRUE;
+    if (index >= (long) data && index < (long) data + 100) return TRUE;
 
     return FALSE;
 }
@@ -850,9 +894,9 @@ static void unselect (GtkTreeView *, gpointer data)
 {
     int count;
 
-    for (count = 0; count < 4; count++)
+    for (count = 0; count < 6; count++)
     {
-        if ((long) data + count == 1) continue;
+        if ((long) data == count) continue;
 
         g_signal_handler_block (tv[count], hand[count]);
         gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[count])));
@@ -878,13 +922,17 @@ void open_config_dialog (void)
     // build the dialog
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
     dlg = (GtkWidget *) gtk_builder_get_object (builder, "config_dlg");
-    tv[0] = (GtkWidget *) gtk_builder_get_object (builder, "left_tv");
-    tv[1] = (GtkWidget *) gtk_builder_get_object (builder, "cent_tv");
-    tv[2] = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
-    tv[3] = (GtkWidget *) gtk_builder_get_object (builder, "dock_tv");
+    tv[AVAIL] = (GtkWidget *) gtk_builder_get_object (builder, "cent_tv");
+    tv[PAN_L] = (GtkWidget *) gtk_builder_get_object (builder, "left_tv");
+    tv[PAN_R] = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
+    tv[DOCK] = (GtkWidget *) gtk_builder_get_object (builder, "dock_tv");
+    tv[DOCKT] = (GtkWidget *) gtk_builder_get_object (builder, "dock_tt_tv");
+    tv[DOCKB] = (GtkWidget *) gtk_builder_get_object (builder, "dock_tb_tv");
     ladd = (GtkWidget *) gtk_builder_get_object (builder, "add_l_btn");
     radd = (GtkWidget *) gtk_builder_get_object (builder, "add_r_btn");
     dadd = (GtkWidget *) gtk_builder_get_object (builder, "add_d_btn");
+    dttadd = (GtkWidget *) gtk_builder_get_object (builder, "add_dtt_btn");
+    dtbadd = (GtkWidget *) gtk_builder_get_object (builder, "add_dtb_btn");
     rem = (GtkWidget *) gtk_builder_get_object (builder, "rem_btn");
     wup = (GtkWidget *) gtk_builder_get_object (builder, "up_btn");
     wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
@@ -894,39 +942,31 @@ void open_config_dialog (void)
     read_config ();
 
     // set up filtering and sorting for the tree views
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 6; i++)
     {
         filt[i] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
         sort[i] = gtk_tree_model_sort_new_with_model (filt[i]);
-    }
 
-    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[0]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 1, NULL);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[0]), 2, GTK_SORT_ASCENDING);
+        gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[i]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *)((long) (i * 100)), NULL);
+        gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[i]), i == AVAIL ? COL_NAME : COL_INDEX, GTK_SORT_ASCENDING);
 
-    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[1]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 0, NULL);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[1]), 0, GTK_SORT_ASCENDING);
-
-    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[2]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) -1, NULL);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[2]), 2, GTK_SORT_DESCENDING);
-
-    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filt[3]), (GtkTreeModelFilterVisibleFunc) filter_widgets, (void *) 100, NULL);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[3]), 2, GTK_SORT_ASCENDING);
-
-    for (i = 0; i < 4; i++)
-    {
         gtk_tree_view_set_model (GTK_TREE_VIEW (tv[i]), sort[i]);
-        hand[i] = g_signal_connect (tv[i], "cursor-changed", G_CALLBACK (unselect), (void *)((long)(1 - i)));
+        hand[i] = g_signal_connect (tv[i], "cursor-changed", G_CALLBACK (unselect), (void *)((long) i));
     }
 
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[0]), -1, _("Left Side"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[1]), -1, _("Available"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[2]), -1, _("Right Side"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[3]), -1, _("Dock"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[AVAIL]), -1, _("Available"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_L]), -1, _("Panel Left"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_R]), -1, _("Panel Right"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCK]), -1, _("Dock"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCKT]), -1, _("Tray Top"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCKB]), -1, _("Tray Bottom"), trend, "text", 0, NULL);
 
     // connect buttton handlers
-    g_signal_connect (ladd, "clicked", G_CALLBACK (add_widget), (void *) 1);
-    g_signal_connect (radd, "clicked", G_CALLBACK (add_widget), (void *) -1);
-    g_signal_connect (dadd, "clicked", G_CALLBACK (add_widget), (void *) 100);
+    g_signal_connect (ladd, "clicked", G_CALLBACK (add_widget), (void *) PAN_L);
+    g_signal_connect (radd, "clicked", G_CALLBACK (add_widget), (void *) PAN_R);
+    g_signal_connect (dadd, "clicked", G_CALLBACK (add_widget), (void *) DOCK);
+    g_signal_connect (dttadd, "clicked", G_CALLBACK (add_widget), (void *) DOCKT);
+    g_signal_connect (dtbadd, "clicked", G_CALLBACK (add_widget), (void *) DOCKB);
 
     g_signal_connect (rem, "clicked", G_CALLBACK (remove_widget), NULL);
 
@@ -935,7 +975,9 @@ void open_config_dialog (void)
 
     g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 
-    gtk_window_set_default_size (GTK_WINDOW (dlg), 600, 400);
+    update_buttons ();
+
+    gtk_window_set_default_size (GTK_WINDOW (dlg), 640, 400);
 
     // run the dialog
     if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
