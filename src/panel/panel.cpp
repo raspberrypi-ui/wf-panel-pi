@@ -206,6 +206,9 @@ bool Panel::on_keypress_event (GdkEventKey *event)
     for (auto &w : right_widgets)
         if (w->widget_name == "smenu") w->command (str);
 
+    if (dock) for (auto &w : right2_widgets)
+        if (w->widget_name == "smenu") w->command (str);
+
     g_free (str);
 
     return false;
@@ -258,7 +261,7 @@ bool Panel::on_button_release_event (GdkEventButton *event)
         for (auto &plugin : right_box.get_children ())
             show_menu (plugin);
 
-        for (auto &plugin : right2_box.get_children ())
+        if (dock) for (auto &plugin : right2_box.get_children ())
             show_menu (plugin);
 
         // not matched any widgets - on the empty area of the bar...
@@ -356,7 +359,7 @@ void Panel::init_widgets ()
         reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
         reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
         reload_widgets ((std::string) right2_widgets_opt, right2_widgets, right2_box);
-        if (((std::string) left_widgets_opt).empty ()) window->hide ();
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && ((std::string) right2_widgets_opt).empty ()) window->hide ();
         else window->show ();
     }
     else
@@ -370,14 +373,14 @@ void Panel::init_widgets ()
     left_widgets_opt.set_callback ([=] ()
     {
         reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
-        if (((std::string) left_widgets_opt).empty () && (dock || ((std::string) right_widgets_opt).empty ())) window->hide ();
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && (!dock || ((std::string) right_widgets_opt).empty ())) window->hide ();
         else window->show ();
     });
 
     right_widgets_opt.set_callback ([=] ()
     {
         reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && (!dock || ((std::string) right_widgets_opt).empty ())) window->hide ();
         else window->show ();
     });
 
@@ -385,7 +388,7 @@ void Panel::init_widgets ()
     {
         if (!dock) return;
         reload_widgets ((std::string) right2_widgets_opt, right2_widgets, right2_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && ((std::string) right2_widgets_opt).empty ()) window->hide ();
         else window->show ();
     });
 }
@@ -423,6 +426,9 @@ void Panel::update_widget_icons ()
 
     for (auto &w : right_widgets)
         w->set_icon ();
+
+    if (dock) for (auto &w : right2_widgets)
+        w->set_icon ();
 }
 
 void Panel::update_gestures ()
@@ -438,6 +444,9 @@ void Panel::handle_config_reload ()
         w->handle_config_reload ();
 
     for (auto &w : right_widgets)
+        w->handle_config_reload ();
+
+   if (dock) for (auto &w : right2_widgets)
         w->handle_config_reload ();
 }
 
@@ -461,6 +470,9 @@ void Panel::handle_command_message (const char *name, const char *cmd)
         if (name == w->widget_name) w->command (cmd);
 
     for (auto &w : right_widgets)
+        if (name == w->widget_name) w->command (cmd);
+
+    if (dock) for (auto &w : right2_widgets)
         if (name == w->widget_name) w->command (cmd);
 }
 
