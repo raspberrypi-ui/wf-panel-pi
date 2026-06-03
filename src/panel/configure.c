@@ -834,6 +834,12 @@ static void unselect (GtkTreeView *, gpointer data)
     update_buttons ();
 }
 
+static void close_window (GtkButton *, gpointer data)
+{
+    if (data) write_config ();
+    gtk_widget_destroy (dlg);
+}
+
 /*----------------------------------------------------------------------------*/
 /* Public API */
 /*----------------------------------------------------------------------------*/
@@ -903,16 +909,16 @@ void open_config_dialog (void)
 
     g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 
+    g_signal_connect (gtk_builder_get_object (builder, "cancel_btn"), "clicked", G_CALLBACK (close_window), NULL);
+    g_signal_connect (gtk_builder_get_object (builder, "ok_btn"), "clicked", G_CALLBACK (close_window), (void *) 1);
+
+    g_object_unref (builder);
+
     update_buttons ();
 
     gtk_window_set_default_size (GTK_WINDOW (dlg), 640, 400);
 
-    // run the dialog
-    if (gtk_dialog_run (GTK_DIALOG (dlg)) == GTK_RESPONSE_OK)
-    {
-        write_config ();
-    }
-    gtk_widget_destroy (dlg);
+    gtk_window_present (GTK_WINDOW (dlg));
 }
 
 /* End of file */
