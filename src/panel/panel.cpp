@@ -636,7 +636,6 @@ class WayfirePanel::impl
     int set_monitor ()
     {
         GdkDisplay *dpy = gdk_display_get_default ();
-        GdkScreen *scr = gdk_display_get_default_screen (dpy);
         GdkMonitor *mon = NULL;
         int try_mon;
         const char *mnumstr = ((std::string) monitor_num).c_str();
@@ -657,8 +656,14 @@ class WayfirePanel::impl
             for (try_mon = gdk_display_get_n_monitors (dpy) - 1; try_mon >= 0; try_mon--)
             {
                 mon = gdk_display_get_monitor (dpy, try_mon);
-                char *mname = gdk_screen_get_monitor_plug_name (scr, try_mon);
-                if (!g_strcmp0 (mname, mnumstr) && mon)
+                const char *model = gdk_monitor_get_model (mon);
+                const char *manuf = gdk_monitor_get_manufacturer (mon);
+                char *mname = NULL;
+                if (model && manuf) mname = g_strdup_printf ("%s %s", manuf, model);
+                else if (model) mname = g_strdup (model);
+                else if (manuf) mname = g_strdup (manuf);
+
+                if (mname && !g_strcmp0 (mname, mnumstr) && mon)
                 {
                     g_free (mname);
                     break;
@@ -768,6 +773,9 @@ WayfirePanel* WayfirePanelApp::get_panel(void)
 
 void WayfirePanelApp::handle_output_removed(WayfireOutput *output)
 {
+    if (priv->panel && priv->panel->get_output() == output)
+        priv->panel.reset();
+
     priv->outputs.erase (std::remove(priv->outputs.begin(), priv->outputs.end(), output), priv->outputs.end());
 }
 
