@@ -92,8 +92,8 @@ static void show_message (NotifyWindow *nw, char *str)
      * The code below is compatible with a hacked GTK+3 library which uses GTK_WINDOW_POPUP + 1 as the type
      * for a window with CSD requested. It should also not fall over with the standard library...
      */
-    nw->popup = gtk_window_new (GTK_WINDOW_POPUP + 1);
-    if (!nw->popup) nw->popup = gtk_window_new (GTK_WINDOW_POPUP);
+    nw->popup = gtk_window_new (GTK_WINDOW_POPUP);
+    if (!nw->popup) return;
     gtk_window_set_type_hint (GTK_WINDOW (nw->popup), GDK_WINDOW_TYPE_HINT_TOOLTIP);
     gtk_window_set_resizable (GTK_WINDOW (nw->popup), FALSE);
 
@@ -191,8 +191,11 @@ static void update_positions (GList *item, int offset)
     for (; item != NULL; item = item->next)
     {
         nw = (NotifyWindow *) item->data;
-        gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP,
-            gtk_layer_get_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP) + offset);
+        if (nw->popup)
+        {
+            gtk_layer_set_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP,
+                gtk_layer_get_margin (GTK_WINDOW(nw->popup), GTK_LAYER_SHELL_EDGE_TOP) + offset);
+        }
     }
 }
 
@@ -284,7 +287,7 @@ int wfpanel_notify (const char *message)
         nw = (NotifyWindow *) item->data;
         if (!nw->critical) break;
     }
-    nw = g_new (NotifyWindow, 1);
+    nw = g_new0 (NotifyWindow, 1);
     nwins = g_list_insert_before (nwins, item, nw);
 
     // set the sequence number for this notification
@@ -324,7 +327,7 @@ int wfpanel_critical (const char *message)
     }
 
     // create a new notification window and add it to the front of the list
-    nw = g_new (NotifyWindow, 1);
+    nw = g_new0 (NotifyWindow, 1);
     nwins = g_list_prepend (nwins, nw);
 
     // set the sequence number for this notification
