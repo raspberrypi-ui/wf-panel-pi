@@ -503,7 +503,8 @@ static char *menu_cache_id (WinlistPlugin *wl, const char *app_id)
         else g_object_unref (info);
 
         // strip the .desktop from the end for matching purposes
-        *strrchr (id, '.') = 0;
+        char *dot = strrchr (id, '.');
+        if (dot) *dot = 0;
 
         // if there is a caseless match with the app-id, this is correct - return it
         if (!g_ascii_strncasecmp (app_id, id, 1000))
@@ -611,7 +612,8 @@ static void set_icon_and_title (WinlistPlugin *wl, WindowItem *item)
 
         item->label = gtk_label_new (item->title);
         gtk_label_set_xalign (GTK_LABEL (item->label), 0.0);
-        gtk_container_add (GTK_CONTAINER (box), item->label);
+        gtk_label_set_ellipsize (GTK_LABEL (item->label), PANGO_ELLIPSIZE_END);
+        gtk_box_pack_start (GTK_BOX (box), item->label, TRUE, TRUE, 0);
 
         gtk_widget_show_all (box);
 
@@ -624,9 +626,6 @@ static void set_icon_and_title (WinlistPlugin *wl, WindowItem *item)
 
 static void update_item_width (WinlistPlugin *wl, WindowItem *item)
 {
-    char *str;
-    int pref, min, tlen;
-
     if (wl->icons_only)
     {
         gtk_widget_set_size_request (item->btn, -1, -1);
@@ -634,25 +633,6 @@ static void update_item_width (WinlistPlugin *wl, WindowItem *item)
     }
 
     gtk_widget_set_size_request (item->btn, wl->item_width, -1);
-
-    if (item->title)
-    {
-        str = g_strdup (item->title);
-        for (tlen = strlen (str); tlen >= 0; tlen--)
-        {
-            if (tlen < (int) strlen (item->title))
-            {
-                if (tlen > 2) str[tlen - 3] = '.';
-                if (tlen > 1) str[tlen - 2] = '.';
-                if (tlen > 0) str[tlen - 1] = '.';
-            }
-            str[tlen] = 0;
-            gtk_label_set_text (GTK_LABEL (item->label), str);
-            gtk_widget_get_preferred_width (item->btn, &min, &pref);
-            if (pref <= wl->item_width) break;
-        }
-        g_free (str);
-    }
 }
 
 static void popup_menu (GtkWidget *widget, gpointer userdata)
