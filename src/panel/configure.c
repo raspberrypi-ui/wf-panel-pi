@@ -674,99 +674,43 @@ static void configure_plugin (GtkButton *, gpointer)
 
 /* Read in config from local configuration file, or use default */
 
-static void read_config (void)
+static void read_one_config (int index, const char *section, const char *item)
 {
     char *strval, *token, *name;
     int pos;
+    gboolean config;
+
+    get_config_string (section, item, &strval);
+    pos = index * 100;
+    token = strtok (strval, " ");
+    while (token)
+    {
+        if (read_lib (token, &name, &config))
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, token,
+                COL_INDEX, pos++,
+                COL_CONFIG, config,
+                -1);
+        g_free (name);
+        token = strtok (NULL, " ");
+    }
+    g_free (strval);
+}
+
+static void read_config (void)
+{
+    char *token, *name;
     struct dirent *dir;
     DIR *plugind;
     gboolean config;
 
     // add each space-separated widget from the metadata variables to the list store
-    get_config_string ("panel", "widgets_left", &strval);
-    pos = PAN_L * 100;
-    token = strtok (strval, " ");
-    while (token)
-    {
-        if (read_lib (token, &name, &config))
-            gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, name,
-                COL_ID, token,
-                COL_INDEX, pos++,
-                COL_CONFIG, config,
-                -1);
-        g_free (name);
-        token = strtok (NULL, " ");
-    }
-    g_free (strval);
-
-    get_config_string ("panel", "widgets_right", &strval);
-    pos = PAN_R * 100;
-    token = strtok (strval, " ");
-    while (token)
-    {
-        if (read_lib (token, &name, &config))
-            gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, name,
-                COL_ID, token,
-                COL_INDEX, pos++,
-                COL_CONFIG, config,
-                -1);
-        g_free (name);
-        token = strtok (NULL, " ");
-    }
-    g_free (strval);
-
-    get_config_string ("dock", "widgets_left", &strval);
-    pos = DOCK * 100;
-    token = strtok (strval, " ");
-    while (token)
-    {
-        if (read_lib (token, &name, &config))
-            gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, name,
-                COL_ID, token,
-                COL_INDEX, pos++,
-                COL_CONFIG, config,
-                -1);
-        g_free (name);
-        token = strtok (NULL, " ");
-    }
-    g_free (strval);
-
-    get_config_string ("dock", "widgets_right", &strval);
-    pos = DOCKT * 100;
-    token = strtok (strval, " ");
-    while (token)
-    {
-        if (read_lib (token, &name, &config))
-            gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, name,
-                COL_ID, token,
-                COL_INDEX, pos++,
-                COL_CONFIG, config,
-                -1);
-        g_free (name);
-        token = strtok (NULL, " ");
-    }
-    g_free (strval);
-
-    get_config_string ("dock", "widgets_right2", &strval);
-    pos = DOCKB * 100;
-    token = strtok (strval, " ");
-    while (token)
-    {
-        if (read_lib (token, &name, &config))
-            gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, name,
-                COL_ID, token,
-                COL_INDEX, pos++,
-                COL_CONFIG, config,
-                -1);
-        g_free (name);
-        token = strtok (NULL, " ");
-    }
-    g_free (strval);
+    read_one_config (PAN_L, "panel", "widgets_left");
+    read_one_config (PAN_R, "panel", "widgets_right");
+    read_one_config (DOCK, "dock", "widgets_left");
+    read_one_config (DOCKT, "dock", "widgets_right");
+    read_one_config (DOCKB, "dock", "widgets_right2");
 
     // add any unused widgets to the list store so they can be added by the user
     plugind = opendir (PLUGIN_PATH);
@@ -809,11 +753,31 @@ static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter,
 
 /* Write config to local configuration file */
 
-static void write_config (void)
+static void write_one_config (GKeyFile *kf, int index, const char *section, const char *item)
 {
     GtkTreeIter iter;
     char *str;
     char config[1000];
+
+    // concatenate widget names from model to a space-separated string
+    config[0] = 0;
+    if (gtk_tree_model_get_iter_first (sort[index], &iter))
+    {
+        do
+        {
+            gtk_tree_model_get (sort[index], &iter, COL_ID, &str, -1);
+            strcat (config, str);
+            strcat (config, " ");
+            g_free (str);
+        }
+        while (gtk_tree_model_iter_next (sort[index], &iter));
+    }
+    g_key_file_set_string (kf, section, item, config);
+}
+
+static void write_config (void)
+{
+    char *str;
     gsize len;
 
     // construct the file path
@@ -823,48 +787,12 @@ static void write_config (void)
     GKeyFile *kf = g_key_file_new ();
     g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
-    // iterate through the tree models, concatenating widget names to a space-separated string
-    config[0] = 0;
-    if (gtk_tree_model_get_iter_first (sort[PAN_L], &iter))
-    {
-        do
-        {
-            gtk_tree_model_get (sort[PAN_L], &iter, COL_ID, &str, -1);
-            strcat (config, str);
-            strcat (config, " ");
-            g_free (str);
-        }
-        while (gtk_tree_model_iter_next (sort[PAN_L], &iter));
-    }
-    g_key_file_set_string (kf, "panel", "widgets_left", config);
-
-    config[0] = 0;
-    if (gtk_tree_model_get_iter_first (sort[PAN_R], &iter))
-    {
-        do
-        {
-            gtk_tree_model_get (sort[PAN_R], &iter, COL_ID, &str, -1);
-            strcat (config, str);
-            strcat (config, " ");
-            g_free (str);
-        }
-        while (gtk_tree_model_iter_next (sort[PAN_R], &iter));
-    }
-    g_key_file_set_string (kf, "panel", "widgets_right", config);
-
-    config[0] = 0;
-    if (gtk_tree_model_get_iter_first (sort[DOCK], &iter))
-    {
-        do
-        {
-            gtk_tree_model_get (sort[DOCK], &iter, COL_ID, &str, -1);
-            strcat (config, str);
-            strcat (config, " ");
-            g_free (str);
-        }
-        while (gtk_tree_model_iter_next (sort[DOCK], &iter));
-    }
-    g_key_file_set_string (kf, "dock", "widgets_left", config);
+    // iterate through the tree models
+    write_one_config (kf, PAN_L, "panel", "widgets_left");
+    write_one_config (kf, PAN_R, "panel", "widgets_right");
+    write_one_config (kf, DOCK, "dock", "widgets_left");
+    write_one_config (kf, DOCKT, "dock", "widgets_right");
+    write_one_config (kf, DOCKB, "dock", "widgets_right2");
 
     // write the modified key file out
     str = g_key_file_to_data (kf, &len, NULL);

@@ -376,8 +376,15 @@ void Panel::init_widgets ()
 
     right_widgets_opt.set_callback ([=] ()
     {
-        if (dock) return;
         reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+        else window->show ();
+    });
+
+    right2_widgets_opt.set_callback ([=] ()
+    {
+        if (!dock) return;
+        reload_widgets ((std::string) right2_widgets_opt, right2_widgets, right2_box);
         if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
         else window->show ();
     });
