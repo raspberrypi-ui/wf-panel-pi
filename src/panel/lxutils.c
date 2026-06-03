@@ -497,6 +497,11 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
     kb_menu_t *data = g_new (kb_menu_t, 1);
 
     panel = find_panel (widget);
+    if (!panel)
+    {
+        g_free (data);
+        return;
+    }
 
     if (GTK_IS_BUTTON (widget) || GTK_IS_EVENT_BOX (widget) || GTK_IS_BOX (widget)) data->button = widget;
     else data->button = NULL;
@@ -516,6 +521,11 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
     kb_menu_t *data = g_new (kb_menu_t, 1);
 
     panel = find_panel (widget);
+    if (!panel)
+    {
+        g_free (data);
+        return;
+    }
 
     data->button = NULL;
     data->menu = GTK_MENU (menu);
@@ -556,7 +566,10 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     FILE *fp;
     char *cmd, *mname;
 
+    if (!window) return;
+
     panel = find_panel (button);
+    if (!panel) return;
     mon = gtk_layer_get_monitor (panel);
 
     clicksink = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -616,13 +629,15 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     {
         if (mon == gdk_display_get_monitor (disp, i))
         {
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-            // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
-            mname = gdk_screen_get_monitor_plug_name (gdk_display_get_default_screen (disp), i);
-#pragma GCC diagnostic pop
-            cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '", mname);
-            if ((fp = popen (cmd, "r")) != NULL)
+            const char *model = gdk_monitor_get_model (mon);
+            const char *manuf = gdk_monitor_get_manufacturer (mon);
+            if (model && manuf) mname = g_strdup_printf ("%s %s", manuf, model);
+            else if (model) mname = g_strdup (model);
+            else if (manuf) mname = g_strdup (manuf);
+            else mname = NULL;
+
+            cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '", mname ? mname : "");
+            if (mname && (fp = popen (cmd, "r")) != NULL)
             {
                 if (fscanf (fp, "%d", &orient) != 1) orient = 0;
                 pclose (fp);
