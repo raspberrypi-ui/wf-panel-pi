@@ -255,7 +255,8 @@ static void handle_drag_end (GtkGestureDrag *, gdouble, gdouble, gpointer userda
     while (index)
     {
         name = g_strdup (gtk_widget_get_name (GTK_WIDGET (index->data)));
-        *strrchr (name, '.') = 0;
+        char *dot = strrchr (name, '.');
+        if (dot) *dot = 0;
         tmp = g_strdup_printf ("%s%s ", launchers ? launchers : "", name);
         g_free (name);
         g_free (launchers);
