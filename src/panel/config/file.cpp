@@ -579,21 +579,21 @@ static wf::config::config_manager_t load_xml_files(
         struct dirent *entry;
         while ((entry = readdir(xmld)) != NULL)
         {
-            if ((entry->d_type != DT_LNK) && (entry->d_type != DT_REG))
-            {
-                continue;
-            }
+            if (entry->d_name[0] == '.') continue;
 
             std::string filename = xmldir + '/' + entry->d_name;
             if ((filename.length() > 4) &&
                 (filename.rfind(".xml") == filename.length() - 4))
             {
-                LOGI("Reading XML configuration options from file ", filename);
                 auto node = find_section_start_node(filename);
                 if (node)
                 {
                     manager.merge_section(
                         wf::config::xml::create_section_from_xml_node(node));
+                }
+                else
+                {
+                    LOGE("Could not find section start in XML file: ", filename);
                 }
             }
         }

@@ -103,14 +103,15 @@ bounds_error_t set_bounds(
 }
 
 #define GET_XML_PROP_OR_BAIL(node, name, str) \
-    const char *name ## _ptr = (const char*)xmlGetProp(node, (const xmlChar*)(str)); \
+    xmlChar *name ## _ptr = xmlGetProp(node, (const xmlChar*)(str)); \
     if (!name ## _ptr) \
     { \
         LOGE("Could not parse ", (node)->doc->URL, \
     ": XML node at line ", node->line, " is missing \"" #name "\" attribute."); \
         return nullptr; \
     } \
-    std::string name = name ## _ptr;
+    std::string name = (const char*)name ## _ptr; \
+    xmlFree(name ## _ptr);
 
 template<class T>
 using entry_t = wf::config::compound_option_entry_t<T>;
