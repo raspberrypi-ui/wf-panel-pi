@@ -510,6 +510,7 @@ static void show_message (NotifyWindow *nw, char *str)
     // calculate vertical offset for new window - if critical, at top, else immediately below any criticals
     if (gtk_layer_get_exclusive_zone (panel)) offset = 0;
     else if (panel_at_bottom (GTK_WIDGET (panel))) offset = 0;
+    else if (!gtk_widget_get_visible (GTK_WIDGET (panel))) offset = 0;
     else offset = get_icon_size (GTK_WIDGET (panel));
 
     offset += SPACING;
