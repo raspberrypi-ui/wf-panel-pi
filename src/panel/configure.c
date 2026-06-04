@@ -58,7 +58,7 @@ static GtkListStore *widgets;
 static GtkTreeModel *filt[6], *sort[6];
 static GtkWidget *dlg;
 static GtkWidget *tv[6];
-static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl, *box;
+static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl;
 static int hand[6];
 static gboolean found;
 static GtkTreeIter sp_iter;
@@ -70,8 +70,8 @@ static GtkTreeIter sp_iter;
 static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
-static void update_plugin_config (void);
-static void update_plugin_spacing (void);
+static void update_plugin_config (GtkWidget *box);
+static void update_plugin_spacing (GtkWidget *box);
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static void write_config (void);
 
@@ -440,25 +440,25 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 
 static void update_config (GtkButton *, gpointer data)
 {
-    update_plugin_config ();
-    gtk_widget_destroy (GTK_WIDGET (data));
+    update_plugin_config (GTK_WIDGET (data));
+    gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
 }
 
 static void update_spacing (GtkButton *, gpointer data)
 {
-    update_plugin_spacing ();
-    gtk_widget_destroy (GTK_WIDGET (data));
+    update_plugin_spacing (GTK_WIDGET (data));
+    gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
 }
 
 static void close_dialog (GtkButton *, gpointer data)
 {
-    gtk_widget_destroy (GTK_WIDGET (data));
+    gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
 }
 
 void plugin_config_dialog (const char *type)
 {
     GtkBuilder *builder;
-    GtkWidget *cdlg, *hbox, *label, *control;
+    GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
     char *strval, *key, *name, *package;
     const conf_table_t *cptr;
@@ -559,21 +559,13 @@ void plugin_config_dialog (const char *type)
 
                 default :           break;
             }
+
             if (control)
             {
                 gtk_widget_set_name (control, key);
                 gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
-                gtk_container_add (GTK_CONTAINER (box), hbox);
             }
-            else if (cptr->type == CONF_TYPE_LABEL)
-            {
-                gtk_container_add (GTK_CONTAINER (box), hbox);
-            }
-            else
-            {
-                gtk_widget_destroy (label);
-                gtk_widget_destroy (hbox);
-            }
+            gtk_container_add (GTK_CONTAINER (box), hbox);
             g_free (key);
             cptr++;
         }
@@ -581,8 +573,8 @@ void plugin_config_dialog (const char *type)
     dlclose (wid_lib);
     if (package) g_free (package);
 
-    g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), cdlg);
-    g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), cdlg);
+    g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), box);
+    g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), box);
 
     g_object_unref (builder);
 
@@ -592,7 +584,7 @@ void plugin_config_dialog (const char *type)
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 
-static void update_plugin_config (void)
+static void update_plugin_config (GtkWidget *box)
 {
     GtkWidget *hbox, *control;
     GdkRGBA col;
@@ -648,7 +640,7 @@ static void update_plugin_config (void)
     g_free (user_file);
 }
 
-static void update_plugin_spacing (void)
+static void update_plugin_spacing (GtkWidget *box)
 {
     GtkWidget *hbox, *control;
     GList *children, *elem, *bchildren;
