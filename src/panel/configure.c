@@ -644,7 +644,7 @@ static void update_plugin_spacing (GtkWidget *box)
 {
     GtkWidget *hbox, *control;
     GList *children, *elem, *bchildren;
-    int val, space = -1;
+    int val;
     char *type, *name;
 
     children = gtk_container_get_children (GTK_CONTAINER (box));
@@ -662,8 +662,8 @@ static void update_plugin_spacing (GtkWidget *box)
                 if (val)
                 {
                     // update both the widget type and the displayed name
-                    type = g_strdup_printf ("spacing%d", space);
-                    name = g_strdup_printf (_("Spacer (%d)"), space);
+                    type = g_strdup_printf ("spacing%d", val);
+                    name = g_strdup_printf (_("Spacer (%d)"), val);
                     gtk_list_store_set (widgets, &sp_iter,
                         COL_NAME, name,
                         COL_ID, type,
