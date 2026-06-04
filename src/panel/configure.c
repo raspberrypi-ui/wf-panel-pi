@@ -59,6 +59,7 @@ static GtkTreeModel *filt[6], *sort[6];
 static GtkWidget *dlg;
 static GtkWidget *tv[6];
 static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl;
+static GtkWidget *spc = NULL;
 static int hand[6];
 static gboolean found;
 static GtkTreeIter sp_iter;
@@ -455,6 +456,11 @@ static void close_dialog (GtkButton *, gpointer data)
     gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
 }
 
+static void clear_spc (GtkButton *, gpointer)
+{
+    spc = NULL;
+}
+
 void plugin_config_dialog (const char *type)
 {
     GtkBuilder *builder;
@@ -473,6 +479,11 @@ void plugin_config_dialog (const char *type)
         // read the current spacing
         sscanf (type, "spacing%d", &space);
         type = "spacing";
+        if (spc)
+        {
+            gtk_spin_button_set_value (GTK_SPIN_BUTTON (spc), space);
+            return;
+        }
     }
 
     /* load the information from the shared library */
@@ -527,7 +538,10 @@ void plugin_config_dialog (const char *type)
                                     if (space == -1)
                                         gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int ("panel", key));
                                     else
+                                    {
                                         gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
+                                        spc = control;
+                                    }
                                     break;
 
                 case CONF_TYPE_STRING :
@@ -575,6 +589,7 @@ void plugin_config_dialog (const char *type)
 
     g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), box);
     g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), box);
+    if (spc) g_signal_connect (cdlg, "destroy", G_CALLBACK (clear_spc), NULL);
 
     g_object_unref (builder);
 
