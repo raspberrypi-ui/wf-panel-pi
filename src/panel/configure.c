@@ -58,10 +58,9 @@ static GtkListStore *widgets;
 static GtkTreeModel *filt[6], *sort[6];
 static GtkWidget *dlg;
 static GtkWidget *tv[6];
-static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl;
+static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl, *box;
 static int hand[6];
 static gboolean found;
-
 static GtkTreeIter sp_iter;
 
 /*----------------------------------------------------------------------------*/
@@ -71,10 +70,10 @@ static GtkTreeIter sp_iter;
 static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+static void update_plugin_config (void);
+static void update_plugin_spacing (void);
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static void write_config (void);
-static void update_plugin_config (GtkWidget *cdlg);
-static void update_plugin_spacing (GtkWidget *cdlg);
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -441,13 +440,13 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
 
 static void update_config (GtkButton *, gpointer data)
 {
-    update_plugin_config (GTK_WIDGET (data));
+    update_plugin_config ();
     gtk_widget_destroy (GTK_WIDGET (data));
 }
 
 static void update_spacing (GtkButton *, gpointer data)
 {
-    update_plugin_spacing (GTK_WIDGET (data));
+    update_plugin_spacing ();
     gtk_widget_destroy (GTK_WIDGET (data));
 }
 
@@ -459,7 +458,7 @@ static void close_dialog (GtkButton *, gpointer data)
 void plugin_config_dialog (const char *type)
 {
     GtkBuilder *builder;
-    GtkWidget *cdlg, *box, *hbox, *label, *control;
+    GtkWidget *cdlg, *hbox, *label, *control;
     GdkRGBA col;
     char *strval, *key, *name, *package;
     const conf_table_t *cptr;
@@ -593,9 +592,9 @@ void plugin_config_dialog (const char *type)
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 
-static void update_plugin_config (GtkWidget *cdlg)
+static void update_plugin_config (void)
 {
-    GtkWidget *box, *hbox, *control;
+    GtkWidget *hbox, *control;
     GdkRGBA col;
     GKeyFile *kf;
     GList *children, *elem, *bchildren;
@@ -606,9 +605,6 @@ static void update_plugin_config (GtkWidget *cdlg)
     kf = g_key_file_new ();
     g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
-    elem = gtk_container_get_children (GTK_CONTAINER (cdlg));
-    elem = gtk_container_get_children (GTK_CONTAINER (elem->data));
-    box = GTK_WIDGET (elem->data);
     children = gtk_container_get_children (GTK_CONTAINER (box));
     elem = children;
     while (elem)
@@ -639,8 +635,10 @@ static void update_plugin_config (GtkWidget *cdlg)
                 g_free (strval);
             }
         }
+        g_list_free (bchildren);
         elem = elem->next;
     }
+    g_list_free (children);
 
     strval = g_key_file_to_data (kf, &len, NULL);
     g_file_set_contents (user_file, strval, len, NULL);
@@ -650,16 +648,13 @@ static void update_plugin_config (GtkWidget *cdlg)
     g_free (user_file);
 }
 
-static void update_plugin_spacing (GtkWidget *cdlg)
+static void update_plugin_spacing (void)
 {
-    GtkWidget *box, *hbox, *control;
+    GtkWidget *hbox, *control;
     GList *children, *elem, *bchildren;
     int val, space = -1;
     char *type, *name;
 
-    elem = gtk_container_get_children (GTK_CONTAINER (cdlg));
-    elem = gtk_container_get_children (GTK_CONTAINER (elem->data));
-    box = GTK_WIDGET (elem->data);
     children = gtk_container_get_children (GTK_CONTAINER (box));
     elem = children;
     while (elem)
@@ -669,31 +664,27 @@ static void update_plugin_spacing (GtkWidget *cdlg)
         if (bchildren->next)
         {
             control = GTK_WIDGET (bchildren->next->data);
-
-            if (GTK_IS_SPIN_BUTTON (control))
+            if (!g_strcmp0 (gtk_widget_get_name (control), "spacing_width"))
             {
-                if (!g_strcmp0 (gtk_widget_get_name (control), "spacing_width"))
+                val = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
+                if (val)
                 {
-                    val = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
-                    if (val) space = val;
+                    // update both the widget type and the displayed name
+                    type = g_strdup_printf ("spacing%d", space);
+                    name = g_strdup_printf (_("Spacer (%d)"), space);
+                    gtk_list_store_set (widgets, &sp_iter,
+                        COL_NAME, name,
+                        COL_ID, type,
+                        -1);
+                    g_free (type);
+                    g_free (name);
                 }
             }
         }
+        g_list_free (bchildren);
         elem = elem->next;
     }
-
-    if (space != -1)
-    {
-        // update both the widget type and the displayed name
-        type = g_strdup_printf ("spacing%d", space);
-        if (!space) name = g_strdup_printf (_("Separator"));
-        else name = g_strdup_printf (_("Spacer (%d)"), space);
-        gtk_list_store_set (widgets, &sp_iter,
-            COL_NAME, name,
-            COL_ID, type,
-            -1);
-        g_free (name);
-    }
+    g_list_free (children);
 }
 
 static void configure_plugin (GtkButton *, gpointer)
