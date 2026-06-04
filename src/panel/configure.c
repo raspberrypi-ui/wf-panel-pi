@@ -885,7 +885,7 @@ static void close_window (GtkButton *, gpointer data)
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void open_config_dialog (void)
+void open_config_dialog (gboolean dock)
 {
     GtkBuilder *builder;
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
@@ -953,9 +953,10 @@ void open_config_dialog (void)
     g_signal_connect (gtk_builder_get_object (builder, "cancel_btn"), "clicked", G_CALLBACK (close_window), NULL);
     g_signal_connect (gtk_builder_get_object (builder, "ok_btn"), "clicked", G_CALLBACK (close_window), (void *) 1);
 
-    g_object_unref (builder);
-
+    gtk_notebook_set_current_page (GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1")), dock ? 1 : 0);
     update_buttons ();
+
+    g_object_unref (builder);
 
     gtk_window_set_default_size (GTK_WINDOW (dlg), 640, 400);
 

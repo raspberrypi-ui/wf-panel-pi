@@ -281,7 +281,7 @@ bool Panel::on_delete (GdkEventAny *ev)
 
 void Panel::do_configure ()
 {
-    open_config_dialog ();
+    open_config_dialog (dock);
 }
 
 void Panel::do_plugin_configure ()
