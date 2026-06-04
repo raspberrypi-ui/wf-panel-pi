@@ -80,7 +80,6 @@
                           <object class="GtkScrolledWindow" id="scrolledwindow1">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
                             <property name="hscrollbar-policy">never</property>
                             <property name="shadow-type">in</property>
                             <child>
@@ -131,7 +130,6 @@
                           <object class="GtkScrolledWindow" id="scrolledwindow2">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
                             <property name="hscrollbar-policy">never</property>
                             <property name="shadow-type">in</property>
                             <child>
@@ -188,7 +186,6 @@
                   <object class="GtkBox" id="dockbox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="halign">start</property>
                     <property name="border-width">10</property>
                     <property name="spacing">5</property>
                     <child>
@@ -201,7 +198,6 @@
                           <object class="GtkScrolledWindow" id="scrolledwindow3">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
                             <property name="hscrollbar-policy">never</property>
                             <property name="shadow-type">in</property>
                             <child>
@@ -251,7 +247,6 @@
                           <object class="GtkScrolledWindow" id="scrolledwindow4">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
                             <property name="hscrollbar-policy">never</property>
                             <property name="shadow-type">in</property>
                             <child>
@@ -276,7 +271,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
-                            <property name="tooltip-text" translatable="yes">Add plugin to dock</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to dock tray top row</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -301,7 +296,6 @@
                           <object class="GtkScrolledWindow" id="scrolledwindow5">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
                             <property name="hscrollbar-policy">never</property>
                             <property name="shadow-type">in</property>
                             <child>
@@ -326,7 +320,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
-                            <property name="tooltip-text" translatable="yes">Add plugin to dock</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to dock tray bottom row</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -369,7 +363,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
-                <child type="center">
+                <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -441,14 +435,13 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkScrolledWindow" id="scrolledwindow6">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="halign">end</property>
                 <property name="hscrollbar-policy">never</property>
                 <property name="shadow-type">in</property>
                 <child>
@@ -465,7 +458,7 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">4</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
@@ -544,11 +537,11 @@
           <object class="GtkBox" id="box">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
             <property name="margin-left">10</property>
             <property name="margin-right">10</property>
             <property name="margin-top">10</property>
             <property name="margin-bottom">10</property>
+            <property name="orientation">vertical</property>
             <property name="spacing">10</property>
           </object>
           <packing>
