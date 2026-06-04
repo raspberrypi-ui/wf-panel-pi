@@ -281,16 +281,12 @@ bool Panel::on_delete (GdkEventAny *ev)
 
 void Panel::do_configure ()
 {
-    window->set_sensitive (false);
     open_config_dialog ();
-    window->set_sensitive (true);
 }
 
 void Panel::do_plugin_configure ()
 {
-    window->set_sensitive (false);
     plugin_config_dialog (cplug.get_name ().c_str ());
-    window->set_sensitive (true);
 }
 
 void Panel::do_notify_configure ()
