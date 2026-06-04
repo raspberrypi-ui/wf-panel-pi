@@ -458,6 +458,7 @@ static void close_dialog (GtkButton *, gpointer data)
 
 void plugin_config_dialog (const char *type)
 {
+    GtkBuilder *builder;
     GtkWidget *cdlg, *box, *hbox, *label, *control;
     GdkRGBA col;
     char *strval, *key, *name, *package;
@@ -475,123 +476,121 @@ void plugin_config_dialog (const char *type)
         type = "spacing";
     }
 
-    cdlg = gtk_dialog_new_with_buttons (NULL, NULL, 0, _("Cancel"), GTK_RESPONSE_CANCEL, _("OK"), GTK_RESPONSE_OK, NULL);
-    box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
-    gtk_widget_set_margin_top (box, 10);
-    gtk_widget_set_margin_bottom (box, 10);
-    gtk_widget_set_margin_start (box, 10);
-    gtk_widget_set_margin_end (box, 10);
-    gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (cdlg))), box);
-
     /* load the information from the shared library */
     name = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (name, RTLD_LAZY);
     g_free (name);
 
-    if (wid_lib)
+    if (!wid_lib) return;
+
+    // build the dialog
+    builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
+    cdlg = (GtkWidget *) gtk_builder_get_object (builder, "plugin_dlg");
+    box = (GtkWidget *) gtk_builder_get_object (builder, "box");
+
+    func_package_name = (char * (*) (void)) dlsym (wid_lib, "package_name");
+    if (!dlerror ()) package = g_strdup (func_package_name());
+    else package = NULL;
+
+    func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
+    if (!dlerror ())
+        strval = g_strdup_printf (_("Configure %s"), dgettext (package, func_display_name ()));
+    else
+        strval = g_strdup_printf (_("Configure %s"), _("<Unknown>"));
+    gtk_window_set_title (GTK_WINDOW (cdlg), strval);
+    g_free (strval);
+
+    func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
+    if (!dlerror ())
     {
-        func_package_name = (char * (*) (void)) dlsym (wid_lib, "package_name");
-        if (!dlerror ()) package = g_strdup (func_package_name());
-        else package = NULL;
-
-        func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
-        if (!dlerror ())
-            strval = g_strdup_printf (_("Configure %s"), dgettext (package, func_display_name ()));
-        else
-            strval = g_strdup_printf (_("Configure %s"), _("<Unknown>"));
-        gtk_window_set_title (GTK_WINDOW (cdlg), strval);
-        g_free (strval);
-
-        func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
-        if (!dlerror ())
+        cptr = func_config_params ();
+        while (cptr->type != CONF_TYPE_NONE)
         {
-            cptr = func_config_params ();
-            while (cptr->type != CONF_TYPE_NONE)
+            control = NULL;
+            hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+            if (cptr->type == CONF_TYPE_LABEL)
+                strval = g_strdup_printf ("%s", dgettext (package, cptr->label));
+            else
+                strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
+            label = gtk_label_new (strval);
+            g_free (strval);
+            gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+            key = g_strdup_printf ("%s_%s", type, cptr->name);
+            switch (cptr->type)
             {
-                control = NULL;
-                hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-                if (cptr->type == CONF_TYPE_LABEL)
-                    strval = g_strdup_printf ("%s", dgettext (package, cptr->label));
-                else
-                    strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
-                label = gtk_label_new (strval);
-                g_free (strval);
-                gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-                key = g_strdup_printf ("%s_%s", type, cptr->name);
-                switch (cptr->type)
-                {
-                    case CONF_TYPE_BOOL :
-                                        control = gtk_switch_new ();
-                                        gtk_switch_set_active (GTK_SWITCH (control), get_config_bool ("panel", key));
-                                        break;
+                case CONF_TYPE_BOOL :
+                                    control = gtk_switch_new ();
+                                    gtk_switch_set_active (GTK_SWITCH (control), get_config_bool ("panel", key));
+                                    break;
 
-                    case CONF_TYPE_INT :
-                                        control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
-                                        if (space == -1)
-                                            gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int ("panel", key));
-                                        else
-                                            gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
-                                        break;
+                case CONF_TYPE_INT :
+                                    control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
+                                    if (space == -1)
+                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int ("panel", key));
+                                    else
+                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
+                                    break;
 
-                    case CONF_TYPE_STRING :
-                                        control = gtk_entry_new ();
-                                        get_config_string ("panel", key, &strval);
-                                        gtk_entry_set_text (GTK_ENTRY (control), strval);
-                                        g_free (strval);
-                                        break;
+                case CONF_TYPE_STRING :
+                                    control = gtk_entry_new ();
+                                    get_config_string ("panel", key, &strval);
+                                    gtk_entry_set_text (GTK_ENTRY (control), strval);
+                                    g_free (strval);
+                                    break;
 
-                    case CONF_TYPE_COLOUR :
-                                        control = gtk_color_button_new ();
-                                        gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (control), TRUE);
-                                        get_config_string ("panel", key, &strval);
-                                        gdk_rgba_parse (&col, strval);
-                                        g_free (strval);
-                                        gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
-                                        GValue gvb = G_VALUE_INIT;
-                                        g_value_init (&gvb, G_TYPE_BOOLEAN);
-                                        g_value_set_boolean (&gvb, TRUE);
-                                        g_object_set_property (G_OBJECT (control), "show-editor", &gvb);
-                                        break;
+                case CONF_TYPE_COLOUR :
+                                    control = gtk_color_button_new ();
+                                    gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (control), TRUE);
+                                    get_config_string ("panel", key, &strval);
+                                    gdk_rgba_parse (&col, strval);
+                                    g_free (strval);
+                                    gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
+                                    GValue gvb = G_VALUE_INIT;
+                                    g_value_init (&gvb, G_TYPE_BOOLEAN);
+                                    g_value_set_boolean (&gvb, TRUE);
+                                    g_object_set_property (G_OBJECT (control), "show-editor", &gvb);
+                                    break;
 
-                    case CONF_TYPE_FONT :
-                                        control = gtk_font_button_new ();
-                                        get_config_string ("panel", key, &strval);
-                                        gtk_font_chooser_set_font (GTK_FONT_CHOOSER (control), strval);
-                                        g_free (strval);
-                                        break;
+                case CONF_TYPE_FONT :
+                                    control = gtk_font_button_new ();
+                                    get_config_string ("panel", key, &strval);
+                                    gtk_font_chooser_set_font (GTK_FONT_CHOOSER (control), strval);
+                                    g_free (strval);
+                                    break;
 
-                    default :           break;
-                }
-                if (control)
-                {
-                    gtk_widget_set_name (control, key);
-                    gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
-                    gtk_container_add (GTK_CONTAINER (box), hbox);
-                }
-                else if (cptr->type == CONF_TYPE_LABEL)
-                {
-                    gtk_container_add (GTK_CONTAINER (box), hbox);
-                }
-                else
-                {
-                    gtk_widget_destroy (label);
-                    gtk_widget_destroy (hbox);
-                }
-                g_free (key);
-                cptr++;
+                default :           break;
             }
+            if (control)
+            {
+                gtk_widget_set_name (control, key);
+                gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
+                gtk_container_add (GTK_CONTAINER (box), hbox);
+            }
+            else if (cptr->type == CONF_TYPE_LABEL)
+            {
+                gtk_container_add (GTK_CONTAINER (box), hbox);
+            }
+            else
+            {
+                gtk_widget_destroy (label);
+                gtk_widget_destroy (hbox);
+            }
+            g_free (key);
+            cptr++;
         }
-        dlclose (wid_lib);
-        if (package) g_free (package);
-
-        g_signal_connect (gtk_dialog_get_widget_for_response (GTK_DIALOG (cdlg), GTK_RESPONSE_OK), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), cdlg);
-        g_signal_connect (gtk_dialog_get_widget_for_response (GTK_DIALOG (cdlg), GTK_RESPONSE_CANCEL), "clicked", G_CALLBACK (close_dialog), cdlg);
-
-        gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
-        gtk_widget_show_all (cdlg);
-        gtk_window_present (GTK_WINDOW (cdlg));
     }
-    else gtk_widget_destroy (cdlg);
+    dlclose (wid_lib);
+    if (package) g_free (package);
+
+    g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), cdlg);
+    g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), cdlg);
+
+    g_object_unref (builder);
+
+    gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
+
+    gtk_widget_show_all (cdlg);
+    gtk_window_present (GTK_WINDOW (cdlg));
 }
 
 static void update_plugin_config (GtkWidget *cdlg)
