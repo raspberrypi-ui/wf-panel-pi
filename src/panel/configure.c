@@ -109,6 +109,11 @@ int can_configure (const char *type)
     return can_conf;
 }
 
+int can_add (void)
+{
+    return !conf;
+}
+
 /* Helper function to read the name and configurability of a library */
 
 static gboolean read_lib (const char *type, char **name, gboolean *config)
@@ -592,6 +597,7 @@ void plugin_config_dialog (const char *type)
 
     gtk_widget_show_all (cdlg);
     pconf = TRUE;
+    if (conf) update_buttons ();
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 

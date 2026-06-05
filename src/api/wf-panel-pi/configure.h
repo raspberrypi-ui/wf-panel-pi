@@ -48,6 +48,7 @@ typedef struct {
 extern void open_config_dialog (gboolean dock);
 extern void plugin_config_dialog (const char *type);
 extern int can_configure (const char *type);
+extern int can_add (void);
 
 #endif
 
