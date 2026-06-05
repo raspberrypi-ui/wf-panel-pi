@@ -56,13 +56,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static GtkListStore *widgets;
 static GtkTreeModel *filt[6], *sort[6];
-static GtkWidget *dlg;
+static GtkWidget *dlg, *cdlg;
 static GtkWidget *tv[6];
 static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl;
 static int hand[6];
 static gboolean found;
 static GtkTreeIter sp_iter;
-static gboolean conf, pconf;
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -90,7 +89,7 @@ int can_configure (const char *type)
     conf_table_t * (*func_config_params)(void);
     const conf_table_t *cptr;
 
-    if (pconf) return FALSE;
+    if (cdlg) return FALSE;
 
     libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (libname, RTLD_LAZY);
@@ -111,7 +110,8 @@ int can_configure (const char *type)
 
 int can_add (void)
 {
-    return !conf;
+    if (dlg) return FALSE;
+    return TRUE;
 }
 
 /* Helper function to read the name and configurability of a library */
@@ -223,7 +223,7 @@ static void update_buttons (void)
     gtk_widget_set_sensitive (wdn, FALSE);
     gtk_widget_set_sensitive (cpl, FALSE);
 
-    if (lorr == -1 || pconf) return;
+    if (lorr == -1 || cdlg) return;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
     if (lorr == AVAIL)
@@ -465,14 +465,14 @@ static void close_dialog (GtkButton *, gpointer data)
 
 static void plugin_closed (GtkButton *, gpointer)
 {
-    pconf = FALSE;
-    if (conf) update_buttons ();
+    cdlg = NULL;
+    if (dlg) update_buttons ();
 }
 
 void plugin_config_dialog (const char *type)
 {
     GtkBuilder *builder;
-    GtkWidget *cdlg, *box, *hbox, *label, *control;
+    GtkWidget *box, *hbox, *label, *control;
     GdkRGBA col;
     char *strval, *key, *name, *package;
     const conf_table_t *cptr;
@@ -596,8 +596,11 @@ void plugin_config_dialog (const char *type)
     gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
 
     gtk_widget_show_all (cdlg);
-    pconf = TRUE;
-    if (conf) update_buttons ();
+    if (dlg)
+    {
+        update_buttons ();
+        gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (dlg));
+    }
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 
@@ -894,7 +897,7 @@ static void close_window (GtkButton *, gpointer data)
 
 static void conf_closed (GtkButton *, gpointer)
 {
-    conf = FALSE;
+    dlg = NULL;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -977,7 +980,6 @@ void open_config_dialog (gboolean dock)
 
     gtk_window_set_default_size (GTK_WINDOW (dlg), 640, 400);
 
-    conf = TRUE;
     gtk_window_present (GTK_WINDOW (dlg));
 }
 
