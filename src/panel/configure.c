@@ -59,10 +59,10 @@ static GtkTreeModel *filt[6], *sort[6];
 static GtkWidget *dlg;
 static GtkWidget *tv[6];
 static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl;
-static GtkWidget *spc = NULL;
 static int hand[6];
 static gboolean found;
 static GtkTreeIter sp_iter;
+static gboolean conf, pconf;
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -89,6 +89,8 @@ int can_configure (const char *type)
     gboolean can_conf = FALSE;
     conf_table_t * (*func_config_params)(void);
     const conf_table_t *cptr;
+
+    if (pconf) return FALSE;
 
     libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (libname, RTLD_LAZY);
@@ -216,7 +218,7 @@ static void update_buttons (void)
     gtk_widget_set_sensitive (wdn, FALSE);
     gtk_widget_set_sensitive (cpl, FALSE);
 
-    if (lorr == -1) return;
+    if (lorr == -1 || pconf) return;
 
     sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
     if (lorr == AVAIL)
@@ -456,9 +458,10 @@ static void close_dialog (GtkButton *, gpointer data)
     gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
 }
 
-static void clear_spc (GtkButton *, gpointer)
+static void plugin_closed (GtkButton *, gpointer)
 {
-    spc = NULL;
+    pconf = FALSE;
+    if (conf) update_buttons ();
 }
 
 void plugin_config_dialog (const char *type)
@@ -479,11 +482,6 @@ void plugin_config_dialog (const char *type)
         // read the current spacing
         sscanf (type, "spacing%d", &space);
         type = "spacing";
-        if (spc)
-        {
-            gtk_spin_button_set_value (GTK_SPIN_BUTTON (spc), space);
-            return;
-        }
     }
 
     /* load the information from the shared library */
@@ -538,10 +536,7 @@ void plugin_config_dialog (const char *type)
                                     if (space == -1)
                                         gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int ("panel", key));
                                     else
-                                    {
                                         gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
-                                        spc = control;
-                                    }
                                     break;
 
                 case CONF_TYPE_STRING :
@@ -589,13 +584,14 @@ void plugin_config_dialog (const char *type)
 
     g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), box);
     g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), box);
-    if (spc) g_signal_connect (cdlg, "destroy", G_CALLBACK (clear_spc), NULL);
+    g_signal_connect (cdlg, "destroy", G_CALLBACK (plugin_closed), NULL);
 
     g_object_unref (builder);
 
     gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
 
     gtk_widget_show_all (cdlg);
+    pconf = TRUE;
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 
@@ -718,6 +714,8 @@ static void configure_plugin (GtkButton *, gpointer)
             g_free (type);
         }
     }
+
+    update_buttons ();
 }
 
 /* Read in config from local configuration file, or use default */
@@ -888,6 +886,11 @@ static void close_window (GtkButton *, gpointer data)
     gtk_widget_destroy (dlg);
 }
 
+static void conf_closed (GtkButton *, gpointer)
+{
+    conf = FALSE;
+}
+
 /*----------------------------------------------------------------------------*/
 /* Public API */
 /*----------------------------------------------------------------------------*/
@@ -959,6 +962,7 @@ void open_config_dialog (gboolean dock)
 
     g_signal_connect (gtk_builder_get_object (builder, "cancel_btn"), "clicked", G_CALLBACK (close_window), NULL);
     g_signal_connect (gtk_builder_get_object (builder, "ok_btn"), "clicked", G_CALLBACK (close_window), (void *) 1);
+    g_signal_connect (dlg, "destroy", G_CALLBACK (conf_closed), NULL);
 
     gtk_notebook_set_current_page (GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1")), dock ? 1 : 0);
     update_buttons ();
@@ -967,6 +971,7 @@ void open_config_dialog (gboolean dock)
 
     gtk_window_set_default_size (GTK_WINDOW (dlg), 640, 400);
 
+    conf = TRUE;
     gtk_window_present (GTK_WINDOW (dlg));
 }
 
