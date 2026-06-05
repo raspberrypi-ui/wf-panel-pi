@@ -236,8 +236,7 @@ bool Panel::on_button_release_event (GdkEventButton *event)
         cplug.set_sensitive (false);
         cplug.hide ();
 
-        if (!can_add ()) conf.set_sensitive (false);
-        else conf.set_sensitive (true);
+        conf.set_sensitive (can_add ());
 
         auto show_menu = [&] (Gtk::Widget *plugin)
         {
