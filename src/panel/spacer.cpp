@@ -47,7 +47,7 @@ WayfireSpacing::WayfireSpacing(int pixels)
 void WayfireSpacing::init(Gtk::HBox *container)
 {
     box.set_name ("spacing");
-    container->pack_start(box);
+    container->pack_start(box, false, false);
     box.show_all();
 }
 
