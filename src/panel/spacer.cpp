@@ -31,10 +31,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "spacer.hpp"
 
-WayfireSpacing::WayfireSpacing(int pixels)
+WayfireSpacing::WayfireSpacing (int pixels)
 {
     if (pixels)
-        box.set_size_request(pixels, 1);
+        box.set_size_request (pixels, 1);
     else
     {
         box.set_size_request (1, -1);
@@ -44,14 +44,14 @@ WayfireSpacing::WayfireSpacing(int pixels)
     }
 }
 
-void WayfireSpacing::init(Gtk::HBox *container)
+void WayfireSpacing::init (Gtk::HBox *container)
 {
     box.set_name ("spacing");
-    container->pack_start(box, false, false);
-    box.show_all();
+    container->pack_start (box, false, false);
+    box.show_all ();
 }
 
-bool WayfireSpacing::draw(const Cairo::RefPtr<Cairo::Context>& cr)
+bool WayfireSpacing::draw (const Cairo::RefPtr<Cairo::Context>& cr)
 {
     Gtk::Allocation palloc, alloc = box.get_allocation ();
     Gtk::Widget *w = dynamic_cast<Gtk::Widget*> (&box);
@@ -67,9 +67,9 @@ bool WayfireSpacing::draw(const Cairo::RefPtr<Cairo::Context>& cr)
     Gdk::RGBA fg = sc->get_color ();
     int height = da.get_allocated_height ();
 
-    cr->set_source_rgb (fg.get_red(), fg.get_green(), fg.get_blue());
+    cr->set_source_rgb (fg.get_re d(), fg.get_green (), fg.get_blue ());
     cr->rectangle (0, 0 + height >> 2, 1, height >> 1);
-    cr->fill();
+    cr->fill ();
 
     return true;
 }
