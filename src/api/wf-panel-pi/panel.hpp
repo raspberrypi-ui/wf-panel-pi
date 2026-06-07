@@ -59,7 +59,7 @@ class Panel
     Glib::RefPtr <Gtk::GestureLongPress> gesture;
     sigc::connection draw_connection;
 
-    std::vector <std::unique_ptr <WayfireWidget>> left_widgets, right_widgets, right2_widgets;
+    std::vector <std::unique_ptr <WayfireWidget>> left_widgets, right_widgets;
 
     bool dock;
     int scaling;
@@ -68,7 +68,6 @@ class Panel
     WfOption <int> icon_size;
     WfOption <std::string> left_widgets_opt;
     WfOption <std::string> right_widgets_opt;
-    WfOption <std::string> right2_widgets_opt;
     WfOption <bool> exclusive;
     WfOption <bool> gestures_touch_only;
     WfOption <int> notify_timeout;

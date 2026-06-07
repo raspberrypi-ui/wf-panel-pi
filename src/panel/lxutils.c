@@ -106,6 +106,7 @@ gboolean panel_at_bottom (GtkWidget *btn)
 int get_icon_size (GtkWidget *widget)
 {
     GtkWindow *panel = find_panel (widget);
+    if (!panel) return 0;
     int siz = * (int *) g_object_get_data ((GObject *) panel, "icon-size");
     if (in_grid (widget)) return siz / 2;
     return siz;

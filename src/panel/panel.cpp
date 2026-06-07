@@ -48,7 +48,6 @@ Panel::Panel (bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {dock ? "dock/widgets_right" : "panel/widgets_right"},
-    right2_widgets_opt {"dock/widgets_right2"},
     exclusive {dock ? "dock/exclusive" : "panel/exclusive"},
     gestures_touch_only {"panel/gestures_touch_only"},
     notify_timeout {"panel/notify_timeout"},
@@ -107,6 +106,44 @@ Panel::Panel (bool dock) :
             update_widget_icons ();
         }
         set_exclusive ();
+
+        if (dock)
+        {
+            Gtk::Allocation alloc;
+            Gtk::Widget *plugin;
+            int top = 0, last = 0, btm = 0;
+
+            for (auto &w : right_box.get_children ())
+            {
+                alloc = w->get_allocation ();
+                last = alloc.get_width ();
+                top += alloc.get_width ();
+            }
+            for (auto &w : right2_box.get_children ())
+            {
+                alloc = w->get_allocation ();
+                btm += alloc.get_width ();
+            }
+
+            if (btm > top)
+            {
+                // move up
+                plugin = right2_box.get_children ().front();
+                right2_box.remove (*plugin);
+                right_box.pack_end (*plugin, false, false);
+                right_box.reorder_child (*plugin, 0);
+            }
+
+            if (top - last > btm + last)
+            {
+                // move down
+                plugin = right_box.get_children ().back();
+                right_box.remove (*plugin);
+                right2_box.pack_start (*plugin, false, false);
+                right2_box.reorder_child (*plugin, 0);
+            }
+        }
+
         return false;
     });
 
@@ -204,9 +241,6 @@ bool Panel::on_keypress_event (GdkEventKey *event)
         if (w->widget_name == "smenu") w->command (str);
 
     for (auto &w : right_widgets)
-        if (w->widget_name == "smenu") w->command (str);
-
-    if (dock) for (auto &w : right2_widgets)
         if (w->widget_name == "smenu") w->command (str);
 
     g_free (str);
@@ -352,41 +386,22 @@ void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <Wayf
 
 void Panel::init_widgets ()
 {
-    if (dock)
-    {
-        reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
-        reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
-        reload_widgets ((std::string) right2_widgets_opt, right2_widgets, right2_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && ((std::string) right2_widgets_opt).empty ()) window->hide ();
-        else window->show ();
-    }
-    else
-    {
-        reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
-        reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
-        else window->show ();
-    }
+    reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
+    reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
+    if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
+    else window->show ();
 
     left_widgets_opt.set_callback ([=] ()
     {
         reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && (!dock || ((std::string) right_widgets_opt).empty ())) window->hide ();
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
         else window->show ();
     });
 
     right_widgets_opt.set_callback ([=] ()
     {
         reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && (!dock || ((std::string) right_widgets_opt).empty ())) window->hide ();
-        else window->show ();
-    });
-
-    right2_widgets_opt.set_callback ([=] ()
-    {
-        if (!dock) return;
-        reload_widgets ((std::string) right2_widgets_opt, right2_widgets, right2_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty () && ((std::string) right2_widgets_opt).empty ()) window->hide ();
+        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
         else window->show ();
     });
 }
@@ -424,9 +439,6 @@ void Panel::update_widget_icons ()
 
     for (auto &w : right_widgets)
         w->set_icon ();
-
-    if (dock) for (auto &w : right2_widgets)
-        w->set_icon ();
 }
 
 void Panel::update_gestures ()
@@ -442,9 +454,6 @@ void Panel::handle_config_reload ()
         w->handle_config_reload ();
 
     for (auto &w : right_widgets)
-        w->handle_config_reload ();
-
-   if (dock) for (auto &w : right2_widgets)
         w->handle_config_reload ();
 }
 
@@ -468,9 +477,6 @@ void Panel::handle_command_message (const char *name, const char *cmd)
         if (name == w->widget_name) w->command (cmd);
 
     for (auto &w : right_widgets)
-        if (name == w->widget_name) w->command (cmd);
-
-    if (dock) for (auto &w : right2_widgets)
         if (name == w->widget_name) w->command (cmd);
 }
 
