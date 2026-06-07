@@ -67,7 +67,7 @@ bool WayfireSpacing::draw (const Cairo::RefPtr<Cairo::Context>& cr)
     Gdk::RGBA fg = sc->get_color ();
     int height = da.get_allocated_height ();
 
-    cr->set_source_rgb (fg.get_re d(), fg.get_green (), fg.get_blue ());
+    cr->set_source_rgb (fg.get_red (), fg.get_green (), fg.get_blue ());
     cr->rectangle (0, 0 + height >> 2, 1, height >> 1);
     cr->fill ();
 
