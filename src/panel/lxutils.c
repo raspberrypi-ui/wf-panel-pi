@@ -91,6 +91,8 @@ gboolean in_grid (GtkWidget *btn)
     GtkWidget *wid = btn;
     while (!GTK_IS_WINDOW (wid) || !gtk_layer_is_layer_window (GTK_WINDOW (wid)))
     {
+        if (!GTK_IS_WIDGET (wid))
+            return FALSE;
         if (!g_strcmp0 (gtk_widget_get_name (wid), "grid")) return TRUE;
         wid = gtk_widget_get_parent (wid);
     }
@@ -100,6 +102,7 @@ gboolean in_grid (GtkWidget *btn)
 gboolean panel_at_bottom (GtkWidget *btn)
 {
     GtkWindow *panel = find_panel (btn);
+    if (!panel) return FALSE;
     return gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
 }
 
@@ -485,6 +488,7 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
 
     GdkRectangle rect;
     GtkWindow *panel = find_panel (widget);
+    if (!panel) return;
     gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
     rect.x = x;
     rect.y = 0;
@@ -513,6 +517,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     char *cmd, *mname;
 
     GtkWindow *panel = find_panel (button);
+    if (!panel) return;
     mon = gtk_layer_get_monitor (panel);
 
     close_popup ();
@@ -543,7 +548,6 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_widget_show_all (window);
 
     // get the dimensions of the panel
-    panel = find_panel (button);
     bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
     gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
     px = rect.width;
