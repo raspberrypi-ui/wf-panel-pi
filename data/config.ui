@@ -67,7 +67,6 @@
                   <object class="GtkBox" id="panelbox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="halign">start</property>
                     <property name="border-width">10</property>
                     <property name="spacing">5</property>
                     <child>
@@ -266,61 +265,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="add_dtt_btn">
+                          <object class="GtkButton" id="add_t_btn">
                             <property name="label" translatable="yes">Add</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
-                            <property name="tooltip-text" translatable="yes">Add plugin to dock tray top row</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox" id="box5">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">5</property>
-                        <child>
-                          <object class="GtkScrolledWindow" id="scrolledwindow5">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="hscrollbar-policy">never</property>
-                            <property name="shadow-type">in</property>
-                            <child>
-                              <object class="GtkTreeView" id="dock_tb_tv">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <child internal-child="selection">
-                                  <object class="GtkTreeSelection"/>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="add_dtb_btn">
-                            <property name="label" translatable="yes">Add</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="tooltip-text" translatable="yes">Add plugin to dock tray bottom row</property>
+                            <property name="tooltip-text" translatable="yes">Add plugin to dock tray</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -480,9 +430,7 @@
       <widget name="scrolledwindow3"/>
       <widget name="add_d_btn"/>
       <widget name="scrolledwindow4"/>
-      <widget name="add_dtt_btn"/>
-      <widget name="scrolledwindow5"/>
-      <widget name="add_dtb_btn"/>
+      <widget name="add_t_btn"/>
       <widget name="scrolledwindow6"/>
     </widgets>
   </object>

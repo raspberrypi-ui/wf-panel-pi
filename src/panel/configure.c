@@ -48,18 +48,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define PAN_R 2
 #define DOCK  3
 #define DOCKT 4
-#define DOCKB 5
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
 static GtkListStore *widgets;
-static GtkTreeModel *filt[6], *sort[6];
+static GtkTreeModel *filt[5], *sort[5];
 static GtkWidget *dlg, *cdlg;
-static GtkWidget *tv[6];
-static GtkWidget *ladd, *radd, *dadd, *dttadd, *dtbadd, *rem, *wup, *wdn, *cpl;
-static int hand[6];
+static GtkWidget *tv[5];
+static GtkWidget *ladd, *radd, *dadd, *tadd, *rem, *wup, *wdn, *cpl;
+static int hand[5];
 static gboolean found;
 static GtkTreeIter sp_iter;
 
@@ -192,7 +191,7 @@ static int selection (void)
     GtkTreeSelection *sel;
     int i;
 
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < 5; i++)
     {
         sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[i]));
         if (gtk_tree_selection_get_selected (sel, &sort[i], NULL)) return i;
@@ -216,8 +215,7 @@ static void update_buttons (void)
     gtk_widget_set_sensitive (ladd, FALSE);
     gtk_widget_set_sensitive (radd, FALSE);
     gtk_widget_set_sensitive (dadd, FALSE);
-    gtk_widget_set_sensitive (dttadd, FALSE);
-    gtk_widget_set_sensitive (dtbadd, FALSE);
+    gtk_widget_set_sensitive (tadd, FALSE);
     gtk_widget_set_sensitive (rem, FALSE);
     gtk_widget_set_sensitive (wup, FALSE);
     gtk_widget_set_sensitive (wdn, FALSE);
@@ -231,8 +229,7 @@ static void update_buttons (void)
         gtk_widget_set_sensitive (ladd, gtk_tree_selection_get_selected (sel, NULL, NULL));
         gtk_widget_set_sensitive (radd, gtk_tree_selection_get_selected (sel, NULL, NULL));
         gtk_widget_set_sensitive (dadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
-        gtk_widget_set_sensitive (dttadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
-        gtk_widget_set_sensitive (dtbadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        gtk_widget_set_sensitive (tadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
     }
     else
     {
@@ -875,7 +872,7 @@ static void unselect (GtkTreeView *, gpointer data)
 {
     int count;
 
-    for (count = 0; count < 6; count++)
+    for (count = 0; count < 5; count++)
     {
         if ((long) data == count) continue;
 
@@ -919,12 +916,10 @@ void open_config_dialog (gboolean dock)
     tv[PAN_R] = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
     tv[DOCK] = (GtkWidget *) gtk_builder_get_object (builder, "dock_tv");
     tv[DOCKT] = (GtkWidget *) gtk_builder_get_object (builder, "dock_tt_tv");
-    tv[DOCKB] = (GtkWidget *) gtk_builder_get_object (builder, "dock_tb_tv");
     ladd = (GtkWidget *) gtk_builder_get_object (builder, "add_l_btn");
     radd = (GtkWidget *) gtk_builder_get_object (builder, "add_r_btn");
     dadd = (GtkWidget *) gtk_builder_get_object (builder, "add_d_btn");
-    dttadd = (GtkWidget *) gtk_builder_get_object (builder, "add_dtt_btn");
-    dtbadd = (GtkWidget *) gtk_builder_get_object (builder, "add_dtb_btn");
+    tadd = (GtkWidget *) gtk_builder_get_object (builder, "add_t_btn");
     rem = (GtkWidget *) gtk_builder_get_object (builder, "rem_btn");
     wup = (GtkWidget *) gtk_builder_get_object (builder, "up_btn");
     wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
@@ -934,7 +929,7 @@ void open_config_dialog (gboolean dock)
     read_config ();
 
     // set up filtering and sorting for the tree views
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < 5; i++)
     {
         filt[i] = gtk_tree_model_filter_new (GTK_TREE_MODEL (widgets), NULL);
         sort[i] = gtk_tree_model_sort_new_with_model (filt[i]);
@@ -950,15 +945,13 @@ void open_config_dialog (gboolean dock)
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_L]), -1, _("Panel Left"), trend, "text", 0, NULL);
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_R]), -1, _("Panel Right"), trend, "text", 0, NULL);
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCK]), -1, _("Dock"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCKT]), -1, _("Tray Top"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCKB]), -1, _("Tray Bottom"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCKT]), -1, _("Tray"), trend, "text", 0, NULL);
 
     // connect buttton handlers
     g_signal_connect (ladd, "clicked", G_CALLBACK (add_widget), (void *) PAN_L);
     g_signal_connect (radd, "clicked", G_CALLBACK (add_widget), (void *) PAN_R);
     g_signal_connect (dadd, "clicked", G_CALLBACK (add_widget), (void *) DOCK);
-    g_signal_connect (dttadd, "clicked", G_CALLBACK (add_widget), (void *) DOCKT);
-    g_signal_connect (dtbadd, "clicked", G_CALLBACK (add_widget), (void *) DOCKB);
+    g_signal_connect (tadd, "clicked", G_CALLBACK (add_widget), (void *) DOCKT);
 
     g_signal_connect (rem, "clicked", G_CALLBACK (remove_widget), NULL);
 
