@@ -765,7 +765,6 @@ static void read_config (void)
     read_one_config (PAN_R, "panel", "widgets_right");
     read_one_config (DOCK, "dock", "widgets_left");
     read_one_config (DOCKT, "dock", "widgets_right");
-    read_one_config (DOCKB, "dock", "widgets_right2");
 
     // add any unused widgets to the list store so they can be added by the user
     plugind = opendir (PLUGIN_PATH);
@@ -847,7 +846,6 @@ static void write_config (void)
     write_one_config (kf, PAN_R, "panel", "widgets_right");
     write_one_config (kf, DOCK, "dock", "widgets_left");
     write_one_config (kf, DOCKT, "dock", "widgets_right");
-    write_one_config (kf, DOCKB, "dock", "widgets_right2");
 
     // write the modified key file out
     str = g_key_file_to_data (kf, &len, NULL);

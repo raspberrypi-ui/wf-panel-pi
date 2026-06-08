@@ -111,18 +111,20 @@ Panel::Panel (bool dock) :
         {
             Gtk::Allocation alloc;
             Gtk::Widget *plugin;
-            int top = 0, last = 0, btm = 0;
+            int vw, top = 0, last = 0, btm = 0;
 
             for (auto &w : right_box.get_children ())
             {
                 alloc = w->get_allocation ();
-                last = alloc.get_width ();
-                top += alloc.get_width ();
+                vw = alloc.get_width () * w->get_visible ();
+                last = vw;
+                top += vw;
             }
             for (auto &w : right2_box.get_children ())
             {
                 alloc = w->get_allocation ();
-                btm += alloc.get_width ();
+                vw = alloc.get_width () * w->get_visible ();
+                btm += vw;
             }
 
             if (btm > top)
@@ -134,7 +136,7 @@ Panel::Panel (bool dock) :
                 right_box.reorder_child (*plugin, 0);
             }
 
-            if (top - last > btm + last)
+            if (top - last >= btm + last)
             {
                 // move down
                 plugin = right_box.get_children ().back();
