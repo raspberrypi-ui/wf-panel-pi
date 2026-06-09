@@ -36,4 +36,5 @@ void WayfireStatusNotifier::add_item(const Glib::ustring & service)
 void WayfireStatusNotifier::remove_item(const Glib::ustring & service)
 {
     items.erase(service);
+    if (items.count(service) == 0) icons_hbox.hide();
 }
