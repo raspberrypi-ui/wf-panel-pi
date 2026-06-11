@@ -109,6 +109,7 @@ Panel::Panel (bool dock) :
 
         if (dock)
         {
+            // organise the dock tray widgets so the bottom is never wider than the top, but the top is as wide as possible...
             Gtk::Allocation alloc;
             Gtk::Widget *plugin;
             int vw, top, last, btm;
@@ -136,7 +137,7 @@ Panel::Panel (bool dock) :
                 if (btm > top)
                 {
                     // move up
-                    plugin = right2_box.get_children ().front();
+                    plugin = right2_box.get_children ().front ();
                     right2_box.remove (*plugin);
                     right_box.pack_end (*plugin, false, false);
                     right_box.reorder_child (*plugin, 0);
@@ -144,7 +145,7 @@ Panel::Panel (bool dock) :
                 else if (top - last >= btm + last)
                 {
                     // move down
-                    plugin = right_box.get_children ().back();
+                    plugin = right_box.get_children ().back ();
                     right_box.remove (*plugin);
                     right2_box.pack_start (*plugin, false, false);
                     right2_box.reorder_child (*plugin, 0);
