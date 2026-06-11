@@ -141,7 +141,6 @@ Panel::Panel (bool dock) :
                     right_box.pack_end (*plugin, false, false);
                     right_box.reorder_child (*plugin, 0);
                 }
-
                 else if (top - last >= btm + last)
                 {
                     // move down
