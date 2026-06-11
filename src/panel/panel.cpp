@@ -109,7 +109,7 @@ Panel::Panel (bool dock) :
 
         if (dock)
         {
-            // organise the dock tray widgets so the bottom is never wider than the top, but the top is as wide as possible...
+            // organise the dock tray widgets so the bottom is never wider than the top, and the overall width is as narrow as possible...
             Gtk::Allocation alloc;
             Gtk::Widget *plugin;
             int vw, top, last, btm;
