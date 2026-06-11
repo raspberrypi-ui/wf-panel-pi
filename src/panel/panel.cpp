@@ -111,38 +111,46 @@ Panel::Panel (bool dock) :
         {
             Gtk::Allocation alloc;
             Gtk::Widget *plugin;
-            int vw, top = 0, last = 0, btm = 0;
+            int vw, top, last, btm;
 
-            for (auto &w : right_box.get_children ())
+            while (1)
             {
-                alloc = w->get_allocation ();
-                vw = alloc.get_width () * w->get_visible ();
-                last = vw;
-                top += vw;
-            }
-            for (auto &w : right2_box.get_children ())
-            {
-                alloc = w->get_allocation ();
-                vw = alloc.get_width () * w->get_visible ();
-                btm += vw;
-            }
+                top = 0;
+                btm = 0;
+                last = 0;
 
-            if (btm > top)
-            {
-                // move up
-                plugin = right2_box.get_children ().front();
-                right2_box.remove (*plugin);
-                right_box.pack_end (*plugin, false, false);
-                right_box.reorder_child (*plugin, 0);
-            }
+                for (auto &w : right_box.get_children ())
+                {
+                    alloc = w->get_allocation ();
+                    vw = alloc.get_width () * w->get_visible ();
+                    last = vw;
+                    top += vw;
+                }
+                for (auto &w : right2_box.get_children ())
+                {
+                    alloc = w->get_allocation ();
+                    vw = alloc.get_width () * w->get_visible ();
+                    btm += vw;
+                }
 
-            if (top - last >= btm + last)
-            {
-                // move down
-                plugin = right_box.get_children ().back();
-                right_box.remove (*plugin);
-                right2_box.pack_start (*plugin, false, false);
-                right2_box.reorder_child (*plugin, 0);
+                if (btm > top)
+                {
+                    // move up
+                    plugin = right2_box.get_children ().front();
+                    right2_box.remove (*plugin);
+                    right_box.pack_end (*plugin, false, false);
+                    right_box.reorder_child (*plugin, 0);
+                }
+
+                else if (top - last >= btm + last)
+                {
+                    // move down
+                    plugin = right_box.get_children ().back();
+                    right_box.remove (*plugin);
+                    right2_box.pack_start (*plugin, false, false);
+                    right2_box.reorder_child (*plugin, 0);
+                }
+                else break;
             }
         }
 
