@@ -496,10 +496,10 @@ static char *menu_cache_id (WinlistPlugin *wl, const char *app_id)
     {
         item = (MenuCacheItem *) iter->data;
 
-        // first check that the cache item is a valid desktop info, i.e. has an associated exec and is not hidden
+        // first check that the cache item is a valid desktop info, i.e. has an associated exec
         id = g_strdup (menu_cache_item_get_id (item));
         info = (GAppInfo *) g_desktop_app_info_new (id);
-        if (!info || !menu_cache_app_get_is_visible ((MenuCacheApp *) item, 0))
+        if (!info)
         {
             g_free (id);
             iter = iter->next;
