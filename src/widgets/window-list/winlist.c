@@ -484,9 +484,9 @@ static char *menu_cache_id (WinlistPlugin *wl, const char *app_id)
     MenuCacheItem *item;
     GSList *list, *iter;
     GAppInfo *info;
-    char *id, *exec, *best = NULL;
+    char *id, *exec, *s2, *best = NULL;
     float res, score;
-    const char *ex;
+    const char *ex, *s1;
 
     // loop through the cache to find the best match
     score = 0.0;
@@ -513,12 +513,43 @@ static char *menu_cache_id (WinlistPlugin *wl, const char *app_id)
         // if there is a caseless match with the app-id, this is correct - return it
         if (!g_ascii_strncasecmp (app_id, id, 1000))
         {
-            if (best) g_free (best);
             g_slist_free_full (list, (GDestroyNotify) ((void *) menu_cache_item_unref));
             return id;
         }
 
-        // didn't match - get the executable name
+        // try matching the part of the id after a final .
+        s1 = strrchr (app_id, '.') ? strrchr (app_id, '.') + 1 : app_id;
+        s2 = strrchr (id, '.') ? strrchr (id, '.') + 1 : id;
+        if (!g_ascii_strncasecmp (s1, s2, 1000))
+        {
+            g_slist_free_full (list, (GDestroyNotify) ((void *) menu_cache_item_unref));
+            return id;
+        }
+
+        iter = iter->next;
+    }
+
+    // no joy - try matching executable names
+    iter = list;
+    while (iter)
+    {
+        item = (MenuCacheItem *) iter->data;
+
+        // first check that the cache item is a valid desktop info, i.e. has an associated exec
+        id = g_strdup (menu_cache_item_get_id (item));
+        info = (GAppInfo *) g_desktop_app_info_new (id);
+        if (!info)
+        {
+            g_free (id);
+            iter = iter->next;
+            continue;
+        }
+        else g_object_unref (info);
+
+        // strip the .desktop from the end for matching purposes
+        *strrchr (id, '.') = 0;
+
+        // get the executable name
         ex = menu_cache_app_get_exec ((MenuCacheApp *) item);
         if (ex) exec = get_exe (ex);
         else exec = NULL;
