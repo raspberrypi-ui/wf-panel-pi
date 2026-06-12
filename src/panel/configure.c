@@ -230,6 +230,17 @@ static void update_buttons (void)
         gtk_widget_set_sensitive (radd, gtk_tree_selection_get_selected (sel, NULL, NULL));
         gtk_widget_set_sensitive (dadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
         gtk_widget_set_sensitive (tadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        if (gtk_tree_selection_get_selected (sel, &mod, &iter))
+        {
+            gtk_tree_model_get (mod, &iter, COL_ID, &type, -1);
+            if (!g_strcmp0 (type, "split"))
+            {
+                gtk_widget_set_sensitive (ladd, FALSE);
+                gtk_widget_set_sensitive (radd, FALSE);
+                gtk_widget_set_sensitive (dadd, FALSE);
+            }
+            g_free (type);
+        }
     }
     else
     {

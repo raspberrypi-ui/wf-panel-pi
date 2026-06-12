@@ -74,5 +74,16 @@ bool WayfireSpacing::draw (const Cairo::RefPtr<Cairo::Context>& cr)
     return true;
 }
 
+WayfireSplit::WayfireSplit (void)
+{
+}
+
+void WayfireSplit::init (Gtk::HBox *container)
+{
+    box.set_name ("split");
+    container->pack_start (box, false, false);
+    box.show_all ();
+}
+
 /* End of file */
 /*----------------------------------------------------------------------------*/

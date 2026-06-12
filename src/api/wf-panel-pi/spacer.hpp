@@ -19,5 +19,16 @@ class WayfireSpacing : public WayfireWidget
     {}
 };
 
+class WayfireSplit : public WayfireWidget
+{
+    Gtk::HBox box;
+
+  public:
+    WayfireSplit(void);
+
+    virtual void init(Gtk::HBox *container);
+    virtual ~WayfireSplit()
+    {}
+};
 
 #endif /* end of include guard: WIDGET_SPACER_HPP */

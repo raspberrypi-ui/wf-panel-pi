@@ -113,20 +113,37 @@ Panel::Panel (bool dock) :
             Gtk::Allocation alloc;
             Gtk::Widget *plugin;
             int vw, top, last, btm;
+            gboolean split;
 
             while (1)
             {
                 top = 0;
                 btm = 0;
                 last = 0;
+                split = FALSE;
 
                 for (auto &w : right_box.get_children ())
                 {
+                    if (!g_strcmp0 (w->get_name ().c_str(), "split")) split = TRUE;
                     alloc = w->get_allocation ();
                     vw = alloc.get_width () * w->get_visible ();
                     last = vw;
                     top += vw;
                 }
+
+                if (split)
+                {
+                    while (1)
+                    {
+                        plugin = right_box.get_children ().back ();
+                        if (!g_strcmp0 (plugin->get_name ().c_str (), "split")) break;
+                        right_box.remove (*plugin);
+                        right2_box.pack_start (*plugin, false, false);
+                        right2_box.reorder_child (*plugin, 0);
+                    }
+                    break;
+                }
+
                 for (auto &w : right2_box.get_children ())
                 {
                     alloc = w->get_allocation ();
@@ -348,6 +365,9 @@ std::unique_ptr <WayfireWidget> Panel::widget_from_name (const char *name)
         if (sscanf (name + 7, "%d", &width) != 1 || width < 0) return nullptr;
         else return std::unique_ptr <WayfireWidget> (new WayfireSpacing (width));
     }
+
+    if (!g_strcmp0 (name, "split"))
+        return std::unique_ptr <WayfireWidget> (new WayfireSplit ());
 
     if (g_strcmp0 (name, "none"))
     {
