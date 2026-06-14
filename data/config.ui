@@ -175,7 +175,7 @@
                   <object class="GtkLabel" id="tablabel1">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Panel</property>
+                    <property name="label" translatable="yes">Taskbar</property>
                   </object>
                   <packing>
                     <property name="tab-fill">False</property>

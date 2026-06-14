@@ -953,8 +953,8 @@ void open_config_dialog (gboolean dock)
     }
 
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[AVAIL]), -1, _("Available"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_L]), -1, _("Panel Left"), trend, "text", 0, NULL);
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_R]), -1, _("Panel Right"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_L]), -1, _("Left"), trend, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[PAN_R]), -1, _("Right"), trend, "text", 0, NULL);
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCK]), -1, _("Dock"), trend, "text", 0, NULL);
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tv[DOCKT]), -1, _("Tray"), trend, "text", 0, NULL);
 
