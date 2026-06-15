@@ -151,6 +151,8 @@ Panel::Panel (bool dock) :
                     btm += vw;
                 }
 
+                if (btm == 0 && top == 0) break;
+
                 if (btm > top)
                 {
                     // move up
