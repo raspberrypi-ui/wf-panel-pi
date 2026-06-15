@@ -107,7 +107,7 @@ Panel::Panel (bool dock) :
         }
         set_exclusive ();
 
-        if (dock)
+        if (dock && right_widgets.size ())
         {
             // organise the dock tray widgets so the bottom is never wider than the top, and the overall width is as narrow as possible...
             Gtk::Allocation alloc;
