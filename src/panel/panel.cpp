@@ -110,9 +110,9 @@ Panel::Panel (bool dock) :
         if (dock && right_widgets.size ())
         {
             // organise the dock tray widgets so the bottom is never wider than the top, and the overall width is as narrow as possible...
-            Gtk::Allocation alloc;
+            Gtk::Requisition min, pref;
             Gtk::Widget *plugin;
-            int vw, top, last, btm;
+            int top, last, btm;
             gboolean split;
 
             while (1)
@@ -125,10 +125,9 @@ Panel::Panel (bool dock) :
                 for (auto &w : right_box.get_children ())
                 {
                     if (!g_strcmp0 (w->get_name ().c_str(), "split")) split = TRUE;
-                    alloc = w->get_allocation ();
-                    vw = alloc.get_width () * w->get_visible ();
-                    last = vw;
-                    top += vw;
+                    w->get_preferred_size (min, pref);
+                    last = pref.width;
+                    top += pref.width;
                 }
 
                 if (split)
@@ -146,9 +145,8 @@ Panel::Panel (bool dock) :
 
                 for (auto &w : right2_box.get_children ())
                 {
-                    alloc = w->get_allocation ();
-                    vw = alloc.get_width () * w->get_visible ();
-                    btm += vw;
+                    w->get_preferred_size (min, pref);
+                    btm += pref.width;
                 }
 
                 if (btm == 0 && top == 0) break;
