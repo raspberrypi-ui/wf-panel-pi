@@ -39,7 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class WayfireAutohidingWindow : public Gtk::Window
 {
   public:
-    WayfireAutohidingWindow (Output *output, bool dock);
+    WayfireAutohidingWindow (GdkMonitor *mon, bool dock);
     WayfireAutohidingWindow (WayfireAutohidingWindow&&) = delete;
     WayfireAutohidingWindow (const WayfireAutohidingWindow&) = delete;
     WayfireAutohidingWindow& operator = (const WayfireAutohidingWindow&) = delete;
@@ -49,7 +49,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     void set_monitor ();
 
   private:
-    struct Output *output;
+    GdkMonitor *mon;
 
     WfOption <std::string> position;
     WfOption <std::string> layer;

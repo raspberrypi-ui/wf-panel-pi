@@ -40,7 +40,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Panel
 {
   public:
-    Panel (Output *output, bool dock);
+    Panel (GdkMonitor *mon, bool dock);
     ~Panel ();
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
@@ -61,7 +61,7 @@ class Panel
 
     std::vector <std::unique_ptr <WayfireWidget>> left_widgets, right_widgets;
 
-    Output *output;
+    GdkMonitor *mon;
 
     bool dock;
     int scaling;

@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Public methods */
 
-WayfireAutohidingWindow::WayfireAutohidingWindow (Output *output, bool dock) :
+WayfireAutohidingWindow::WayfireAutohidingWindow (GdkMonitor *mon, bool dock) :
     position {dock ? "dock/position" : "panel/position"},
     layer {dock ? "dock/layer" : "panel/layer"},
     monitor {dock ? "dock/monitor" : "panel/monitor"},
@@ -45,13 +45,13 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (Output *output, bool dock) :
     autohide {dock ? "dock/autohide" : "panel/autohide"},
     y_position {WfOption <int> {"panel/autohide_duration"}}
 {
-    this->output = output;
+    this->mon = mon;
 
     set_decorated (false);
     set_resizable (false);
 
     gtk_layer_init_for_window (this->gobj ());
-    gtk_layer_set_monitor (this->gobj (), output->monitor->gobj ());
+    gtk_layer_set_monitor (this->gobj (), mon);
     gtk_layer_set_namespace (this->gobj (), "$unfocus panel");
     gtk_layer_set_keyboard_mode (this->gobj (), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 

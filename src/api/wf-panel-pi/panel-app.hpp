@@ -37,15 +37,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class Panel;
 
-struct Output
-{
-    Glib::RefPtr<Gdk::Monitor> monitor;
-    struct wl_output *wo;
-
-    Output (const Glib::RefPtr<Gdk::Monitor>& monitor);
-    ~Output ();
-};
-
 class PanelApp
 {
   public:
@@ -64,7 +55,7 @@ class PanelApp
     std::unique_ptr <Panel> panel;
     std::unique_ptr <Panel> dock;
 
-    std::vector <std::unique_ptr <Output>> monitors;
+    std::vector <Glib::RefPtr <Gdk::Monitor>> monitors;
 
     sigc::connection hotplug_timer;
 

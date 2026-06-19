@@ -44,7 +44,7 @@ extern "C" {
 
 #include "panel.hpp"
 
-Panel::Panel (Output *output, bool dock) :
+Panel::Panel (GdkMonitor *mon, bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {dock ? "dock/widgets_right" : "panel/widgets_right"},
@@ -54,7 +54,7 @@ Panel::Panel (Output *output, bool dock) :
     notifications {"panel/notify_enable"},
     libnotify {"panel/notify_libnotify"}
 {
-    this->output = output;
+    this->mon = mon;
     this->dock = dock;
 
     // Set C variables from parameters
@@ -66,7 +66,7 @@ Panel::Panel (Output *output, bool dock) :
     else is_pi_var = FALSE;
 
     // Create the window
-    window = std::make_unique <WayfireAutohidingWindow> (output, dock);
+    window = std::make_unique <WayfireAutohidingWindow> (mon, dock);
 
     // GTK settings for window
     window->set_name (dock ? "DockToplevel" : "PanelToplevel");
