@@ -31,10 +31,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define PANEL_APP_HPP
 
 #include <gtkmm/application.h>
+#include <gdkmm/monitor.h>
 
 #include "config/config-manager.hpp"
 
 class Panel;
+
+struct Output
+{
+    Glib::RefPtr<Gdk::Monitor> monitor;
+    struct wl_output *wo;
+
+    Output (const Glib::RefPtr<Gdk::Monitor>& monitor);
+    ~Output ();
+};
 
 class PanelApp
 {
@@ -53,6 +63,8 @@ class PanelApp
 
     std::unique_ptr <Panel> panel;
     std::unique_ptr <Panel> dock;
+
+    std::vector <std::unique_ptr <Output>> monitors;
 
     sigc::connection hotplug_timer;
 

@@ -50,6 +50,16 @@ static const gchar introspection_xml[] =
   "  </interface>"
   "</node>";
 
+Output::Output (const Glib::RefPtr<Gdk::Monitor>& monitor)
+{
+    this->monitor = monitor;
+    this->wo = gdk_wayland_monitor_get_wl_output (monitor->gobj ());
+}
+
+Output::~Output ()
+{
+}
+
 std::unique_ptr <PanelApp> PanelApp::instance;
 gboolean activated = FALSE;
 
@@ -185,10 +195,19 @@ void PanelApp::monitors_changed ()
 
 bool PanelApp::update_monitors ()
 {
-    if (!panel)
+    int i;
+
+    monitors.clear ();
+
+    auto display = Gdk::Display::get_default ();
+    for (i = 0; i < display->get_n_monitors (); i++)
     {
-        panel = std::make_unique <Panel> (false);
-        dock = std::make_unique <Panel> (true);
+        monitors.push_back (std::make_unique <Output> (display->get_monitor (i)));
+        if (!panel)
+        {
+            panel = std::make_unique <Panel> (monitors.back ().get (), false);
+            dock = std::make_unique <Panel> (monitors.back ().get (), true);
+        }
     }
 
     panel->window->set_monitor ();
