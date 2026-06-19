@@ -1,3 +1,9 @@
+wf-panel-pi (1.16) trixie; urgency=medium
+
+  * Fix hotplug code; use preferred sizes instead of allocations to lay out tray
+
+ -- Simon Long <simon@raspberrypi.com>  Fri, 19 Jun 2026 15:13:59 +0100
+
 wf-panel-pi (1.15) trixie; urgency=medium
 
   * Test package for dock features
