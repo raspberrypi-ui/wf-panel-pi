@@ -1,3 +1,9 @@
+wf-panel-pi (1.17) trixie; urgency=medium
+
+  * Force taskbar to be exclusive if set
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 22 Jun 2026 07:44:25 +0100
+
 wf-panel-pi (1.16) trixie; urgency=medium
 
   * Fix hotplug code; use preferred sizes instead of allocations to lay out tray
