@@ -47,6 +47,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     ~WayfireAutohidingWindow ();
     void set_auto_exclusive_zone (bool has_zone = false);
     void set_monitor ();
+    void update_position ();
 
   private:
     GdkMonitor *mon;
@@ -76,7 +77,6 @@ class WayfireAutohidingWindow : public Gtk::Window
     bool do_hide ();
     void schedule_hide (int delay);
     void schedule_show (int delay);
-    void update_position ();
     void update_margin ();
     void update_autohide ();
     void set_layer ();
