@@ -20,6 +20,7 @@ config_sources = files(
    '../panel/config/file.cpp',
    '../panel/config/duration.cpp',
    '../panel/config/compound-option.cpp',
+   '../panel/lxutils.c'
 )
 
 
@@ -29,6 +30,7 @@ gtkmm = dependency('gtkmm-3.0', version: '>=3.24')
 deps = [ gtk ]
 evdev = dependency('libevdev')
 libxml2 = dependency('libxml-2.0')
+gtklayershell = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
 
 presource_dir = join_paths(share_dir, 'rpcc')
 pui_dir = join_paths(presource_dir, 'ui')
@@ -42,7 +44,7 @@ shared_module(plugin_name, sources, dependencies: deps, install: true,
     c_args : [ '-DRPCC_DATA_DIR="' + presource_dir + '"', '-DPLUGIN_NAME="' + plugin_name + '"' ]
 )
 
-shared_module(cplugin_name, csources, dependencies: [ gtk, gtkmm, evdev, libxml2 ], install: true,
+shared_module(cplugin_name, csources + config_sources, dependencies: [ gtk, gtkmm, evdev, libxml2, gtklayershell ], install: true,
     install_dir: get_option('libdir') / 'rpcc',
     c_args : [ proj_args, '-DRPCC_DATA_DIR="' + presource_dir + '"', '-DPLUGIN_NAME="' + cplugin_name + '"' ],
     cpp_args : proj_args,

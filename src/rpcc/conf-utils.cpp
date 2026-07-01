@@ -40,6 +40,7 @@ extern "C" {
 
 gboolean get_config_bool (const char *section, const char *key)
 {
+	return TRUE;
     char *cname = g_strdup_printf ("%s/%s", section, key);
     WfOption <bool> bool_option {cname};
     g_free (cname);
@@ -49,6 +50,7 @@ gboolean get_config_bool (const char *section, const char *key)
 
 int get_config_int (const char *section, const char *key)
 {
+	return 0;
     char *cname = g_strdup_printf ("%s/%s", section, key);
     WfOption <int> int_option {cname};
     g_free (cname);
@@ -57,6 +59,8 @@ int get_config_int (const char *section, const char *key)
 
 void get_config_string (const char *section, const char *key, char **dest)
 {
+	*dest = g_strdup ("a string");
+	return;
     char *cname = g_strdup_printf ("%s/%s", section, key);
     WfOption <std::string> string_option {cname};
     g_free (cname);

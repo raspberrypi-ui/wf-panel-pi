@@ -80,6 +80,44 @@ static void write_config (void);
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
+
+/*
+cat /usr/share/wf-panel-pi/metadata/*.xml | sed -n '/option name="window-list_icons_only"/,/\/option/{/default/p}'
+
+cat /usr/share/wf-panel-pi/metadata/*.xml | sed -n '/option name="window-list_icons_only"/,/\/option/{s/<default>\(.*\)<\/default>/\1/p}'
+
+*/
+
+
+gboolean get_config_bool (const char *section, const char *key)
+{
+	return TRUE;
+    //char *cname = g_strdup_printf ("%s/%s", section, key);
+    //WfOption <bool> bool_option {cname};
+    //g_free (cname);
+    //if (bool_option) return TRUE;
+    //else return FALSE;
+}
+
+int get_config_int (const char *section, const char *key)
+{
+	return 0;
+    //char *cname = g_strdup_printf ("%s/%s", section, key);
+    //WfOption <int> int_option {cname};
+    //g_free (cname);
+    //return int_option;
+}
+
+void get_config_string (const char *section, const char *key, char **dest)
+{
+	*dest = g_strdup ("a string");
+	return;
+    //char *cname = g_strdup_printf ("%s/%s", section, key);
+    //WfOption <std::string> string_option {cname};
+    //g_free (cname);
+    //*dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
+}
+
 /* Helper function to determine whether a particular widget has a config table*/
 
 int can_configure (const char *type)
@@ -493,7 +531,10 @@ void plugin_config_dialog (const char *type)
     char * (*func_package_name)(void);
     char * (*func_display_name)(void);
     void *wid_lib;
-#if 0
+
+	printf ("pcd\n");
+    
+#if 1
     if (!strncmp (type, "spacing", 7))
     {
         // read the current spacing
@@ -507,6 +548,8 @@ void plugin_config_dialog (const char *type)
     g_free (name);
 
     if (!wid_lib) return;
+
+	printf ("loaded\n");
 
     // build the dialog
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
@@ -790,7 +833,7 @@ static void read_one_config (int index, const char *section, const char *item)
     token = strtok (strval, " ");
     while (token)
     {
-        if (1)//read_lib (token, &name, &config))
+        if (read_lib (token, &name, &config))
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, token,
@@ -1009,7 +1052,7 @@ void open_config_dialog (gboolean dock)
     g_signal_connect (wup, "clicked", G_CALLBACK (move_widget), (void *) 1);
     g_signal_connect (wdn, "clicked", G_CALLBACK (move_widget), (void *) -1);
 
-    //g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
+    g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 
     g_signal_connect (gtk_builder_get_object (builder, "cancel_btn"), "clicked", G_CALLBACK (close_window), NULL);
     g_signal_connect (gtk_builder_get_object (builder, "ok_btn"), "clicked", G_CALLBACK (close_window), (void *) 1);
