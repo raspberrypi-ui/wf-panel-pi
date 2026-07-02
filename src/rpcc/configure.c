@@ -58,15 +58,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static GtkListStore *widgets;
 static GtkTreeModel *filt[5], *sort[5];
-static GtkWidget *dlg, *cdlg;
+static GtkWidget *cdlg;
 static GtkWidget *tv[5];
-static GtkWidget *ladd, *radd, *dadd, *tadd, *rem, *wup, *wdn, *cpl;
+static GtkWidget *ladd, *radd, *dadd, *tadd, *rem, *wup, *wdn, *cpl, *ok;
 static int hand[5];
 static gboolean found;
 static GtkTreeIter sp_iter;
+
 extern GtkWidget *main_dlg;
 extern GtkBuilder *builder;
-
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -222,12 +222,6 @@ int can_configure (const char *type)
     return can_conf;
 }
 
-int can_add (void)
-{
-    if (dlg) return FALSE;
-    return TRUE;
-}
-
 /* Helper function to read the name and configurability of a library */
 
 static gboolean read_lib (const char *type, char **name, gboolean *config)
@@ -335,6 +329,8 @@ static void update_buttons (void)
     gtk_widget_set_sensitive (wup, FALSE);
     gtk_widget_set_sensitive (wdn, FALSE);
     gtk_widget_set_sensitive (cpl, FALSE);
+
+    gtk_widget_set_sensitive (ok, cdlg ? FALSE : TRUE);
 
     if (lorr == -1 || cdlg) return;
 
@@ -589,7 +585,7 @@ static void close_dialog (GtkButton *, gpointer data)
 static void plugin_closed (GtkButton *, gpointer)
 {
     cdlg = NULL;
-    if (dlg) update_buttons ();
+    update_buttons ();
 }
 
 void plugin_config_dialog (const char *type)
@@ -719,11 +715,10 @@ void plugin_config_dialog (const char *type)
     gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
 
     gtk_widget_show_all (cdlg);
-    if (dlg)
-    {
-        update_buttons ();
-        if (space != -1) gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (dlg));
-    }
+
+    update_buttons ();
+    if (space != -1) gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
+
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 
@@ -1013,19 +1008,13 @@ static void unselect (GtkTreeView *, gpointer data)
 static void close_window (GtkButton *, gpointer)
 {
     write_config ();
-    gtk_widget_destroy (dlg);
-}
-
-static void conf_closed (GtkButton *, gpointer)
-{
-    dlg = NULL;
 }
 
 /*----------------------------------------------------------------------------*/
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void open_config_dialog (void)
+void init_config (void)
 {
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
     int i;
@@ -1034,7 +1023,6 @@ void open_config_dialog (void)
     widgets = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN);
 
     // build the dialog
-    dlg = (GtkWidget *) gtk_builder_get_object (builder, "config_dlg");
     tv[AVAIL] = (GtkWidget *) gtk_builder_get_object (builder, "cent_tv");
     tv[PAN_L] = (GtkWidget *) gtk_builder_get_object (builder, "left_tv");
     tv[PAN_R] = (GtkWidget *) gtk_builder_get_object (builder, "right_tv");
@@ -1048,6 +1036,7 @@ void open_config_dialog (void)
     wup = (GtkWidget *) gtk_builder_get_object (builder, "up_btn");
     wdn = (GtkWidget *) gtk_builder_get_object (builder, "dn_btn");
     cpl = (GtkWidget *) gtk_builder_get_object (builder, "conf_btn");
+    ok = (GtkWidget *) gtk_builder_get_object (builder, "ok_btn");
 
     // read in the current configuration
     read_config ();
@@ -1084,8 +1073,7 @@ void open_config_dialog (void)
 
     g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 
-    g_signal_connect (gtk_builder_get_object (builder, "ok_btn"), "clicked", G_CALLBACK (close_window), (void *) 1);
-    g_signal_connect (dlg, "destroy", G_CALLBACK (conf_closed), NULL);
+    g_signal_connect (ok, "clicked", G_CALLBACK (close_window), NULL);
 
     update_buttons ();
 }

@@ -298,8 +298,6 @@ bool Panel::on_button_release_event (GdkEventButton *event)
         cplug.set_sensitive (false);
         cplug.hide ();
 
-        conf.set_sensitive (can_add ());
-
         auto show_menu = [&] (Gtk::Widget *plugin)
         {
             if (plugin->is_visible ())

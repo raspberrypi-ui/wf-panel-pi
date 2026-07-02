@@ -31,8 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib/gi18n.h>
 #include <locale.h>
 
-extern void init_main_window (void);
-extern void open_config_dialog (void);
+extern void init_notify (void);
+extern void init_config (void);
 
 GtkWidget *main_dlg;
 GtkBuilder *builder;
@@ -51,8 +51,8 @@ void init_plugin (GtkWidget *parent)
     main_dlg = parent;
     builder = gtk_builder_new_from_file (RPCC_DATA_DIR "/ui/wf-panel-pi.ui");
 
-    init_main_window ();
-    open_config_dialog ();
+    init_notify ();
+    init_config ();
 }
 
 int plugin_tabs (void)

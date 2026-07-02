@@ -51,7 +51,6 @@ static int write_timer;
 extern GtkWidget *main_dlg;
 extern GtkBuilder *builder;
 
-
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */
 /*----------------------------------------------------------------------------*/
@@ -183,7 +182,7 @@ static void on_timeout_changed (GtkSpinButton *spin, gpointer)
     write_timer = g_timeout_add (TIMEOUT_MS, timeout_handler, spin);
 }
 
-void init_main_window (void)
+void init_notify (void)
 {
     GtkAdjustment *adj;
 
