@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <dlfcn.h>
 #include <dirent.h>
 #include <libxml/xpathInternals.h>
+
 #include "configure.h"
 
 /*----------------------------------------------------------------------------*/
@@ -89,7 +90,7 @@ static char *get_config_default (const char *key)
     xmlXPathObjectPtr xpathObj;
     xmlXPathContextPtr xpathCtx;
     xmlChar *cont;
-	
+
 	str = g_strdup (key);
 	*(strchr (str, '_')) = 0;
 	file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", str);
@@ -111,7 +112,7 @@ static char *get_config_default (const char *key)
 	str = g_strdup_printf ("/wf-panel-pi/plugin/group/option[@name='%s']/default", key);
     xpathObj = xmlXPathEvalExpression (XC (str), xpathCtx);
 	g_free (str);
-	
+
     if (!xmlXPathNodeSetIsEmpty (xpathObj->nodesetval))
     {
         cont = xmlNodeGetContent (xpathObj->nodesetval->nodeTab[0]);
@@ -129,27 +130,27 @@ static char *get_config_default (const char *key)
 	return str;
 }
 
-static void get_config_string_rpcc (const char *section, const char *key, char **dest)
+static void get_config_string (const char *section, const char *key, char **dest)
 {
     GError *err;
     char *ret;
-    
+
     char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
 
     // read in data from file to a key file
     GKeyFile *kf = g_key_file_new ();
     g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+    g_free (user_file);
 
     err = NULL;
     ret = g_key_file_get_string (kf, section, key, &err);
     if (err == NULL && ret)
     {
         *dest = g_strdup (ret);
+        g_key_file_free (kf);
         return;
     }
-    
     g_key_file_free (kf);
-    g_free (user_file);
     
     kf = g_key_file_new ();
     g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
@@ -159,37 +160,36 @@ static void get_config_string_rpcc (const char *section, const char *key, char *
     if (err == NULL && ret)
     {
 		*dest = g_strdup (ret);
+		g_key_file_free (kf);
 		return;
 	}
-
     g_key_file_free (kf);
 
 	*dest = get_config_default (key);
 }
 
-gboolean get_config_bool (const char *section, const char *key)
+static gboolean get_config_bool (const char *section, const char *key)
 {
-	gboolean res = FALSE;
 	char *dest;
-	get_config_string_rpcc (section, key, &dest);
+	gboolean res = FALSE;
+
+	get_config_string (section, key, &dest);
 	if (!g_strcmp0 (dest, "true") || !g_strcmp0 (dest, "1") || !g_strcmp0 (dest, "yes")) res = TRUE;
 	g_free (dest);
+
 	return res;
 }
 
-int get_config_int (const char *section, const char *key)
+static int get_config_int (const char *section, const char *key)
 {
-	int i;
 	char *dest;
-	get_config_string_rpcc (section, key, &dest);
+	int i;
+
+	get_config_string (section, key, &dest);
 	sscanf (dest, "%d", &i);
 	g_free (dest);
-	return i;
-}
 
-void get_config_string (const char *section, const char *key, char **dest)
-{
-	get_config_string_rpcc (section, key, dest); //g_strdup ("a string");
+	return i;
 }
 
 /* Helper function to determine whether a particular widget has a config table*/
