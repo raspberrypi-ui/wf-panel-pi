@@ -31,12 +31,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <locale.h>
 #include <dlfcn.h>
 #include <dirent.h>
+#include <libxml/xpathInternals.h>
+
 #include "configure.h"
-#include "conf-utils.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
+
+#define XC(str) ((xmlChar *) str)
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -53,6 +56,115 @@ static void update_plugin_config (GtkWidget *box);
 /*----------------------------------------------------------------------------*/
 /* Private functions */
 /*----------------------------------------------------------------------------*/
+
+static char *get_config_default (const char *key)
+{
+    char *file, *str;
+    xmlDocPtr xDoc;
+    xmlXPathObjectPtr xpathObj;
+    xmlXPathContextPtr xpathCtx;
+    xmlChar *cont;
+
+    str = g_strdup (key);
+    *(strchr (str, '_')) = 0;
+    file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", str);
+    g_free (str);
+
+    // read in data from XML file
+    xmlInitParser ();
+    LIBXML_TEST_VERSION
+    xDoc = xmlReadFile (file, NULL, XML_PARSE_NOBLANKS);
+    g_free (file);
+    if (xDoc == NULL)
+    {
+        xmlCleanupParser ();
+        return NULL;
+    }
+
+    xpathCtx = xmlXPathNewContext (xDoc);
+
+    str = g_strdup_printf ("/wf-panel-pi/plugin/group/option[@name='%s']/default", key);
+    xpathObj = xmlXPathEvalExpression (XC (str), xpathCtx);
+    g_free (str);
+
+    if (!xmlXPathNodeSetIsEmpty (xpathObj->nodesetval))
+    {
+        cont = xmlNodeGetContent (xpathObj->nodesetval->nodeTab[0]);
+        str = g_strdup ((char *) cont);
+        xmlFree (cont);
+    }
+    else str = NULL;
+    xmlXPathFreeObject (xpathObj);
+
+    // cleanup XML
+    xmlXPathFreeContext (xpathCtx);
+    xmlFreeDoc (xDoc);
+    xmlCleanupParser ();
+
+    return str;
+}
+
+static void get_config_string (const char *section, const char *key, char **dest)
+{
+    char *str;
+    GKeyFile *kf;
+    GError *err;
+
+    // read in data from file to a key file
+    str = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+    kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, str, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+    g_free (str);
+
+    err = NULL;
+    str = g_key_file_get_string (kf, section, key, &err);
+    if (err == NULL && str)
+    {
+        *dest = str;
+        g_key_file_free (kf);
+        return;
+    }
+    g_key_file_free (kf);
+    
+    kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+    err = NULL;
+    str = g_key_file_get_string (kf, section, key, &err);
+    if (err == NULL && str)
+    {
+        *dest = str;
+        g_key_file_free (kf);
+        return;
+    }
+    g_key_file_free (kf);
+
+    *dest = get_config_default (key);
+}
+
+static gboolean get_config_bool (const char *section, const char *key)
+{
+    char *dest;
+    gboolean res = FALSE;
+
+    get_config_string (section, key, &dest);
+    if (!g_strcmp0 (dest, "true") || !g_strcmp0 (dest, "1") || !g_strcmp0 (dest, "yes")) res = TRUE;
+    g_free (dest);
+
+    return res;
+}
+
+static int get_config_int (const char *section, const char *key)
+{
+    char *dest;
+    int i = 0;
+
+    get_config_string (section, key, &dest);
+    sscanf (dest, "%d", &i);
+    g_free (dest);
+
+    return i;
+}
 
 /* Helper function to determine whether a particular widget has a config table */
 

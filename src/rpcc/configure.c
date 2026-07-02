@@ -193,7 +193,7 @@ static int get_config_int (const char *section, const char *key)
     return i;
 }
 
-/* Helper function to determine whether a particular widget has a config table*/
+/* Helper function to determine whether a particular widget has a config table */
 
 int can_configure (const char *type)
 {
