@@ -64,11 +64,11 @@ msgstr "Dock"
 
 #: ../src/panel/panel.cpp:254
 msgid "Add / Remove Plugins..."
-msgstr "Add / Remove Plugins..."
+msgstr "Add / Remove Widgets..."
 
 #: ../src/panel/panel.cpp:258
 msgid "Configure Plugin..."
-msgstr "Configure Plugin..."
+msgstr "Configure Widget..."
 
 #: ../src/panel/panel.cpp:262
 msgid "Notifications..."
