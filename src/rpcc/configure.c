@@ -56,7 +56,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
-static GtkBuilder *builder;
 static GtkListStore *widgets;
 static GtkTreeModel *filt[5], *sort[5];
 static GtkWidget *dlg, *cdlg;
@@ -65,7 +64,9 @@ static GtkWidget *ladd, *radd, *dadd, *tadd, *rem, *wup, *wdn, *cpl;
 static int hand[5];
 static gboolean found;
 static GtkTreeIter sp_iter;
-GtkWidget *main_dlg;
+extern GtkWidget *main_dlg;
+extern GtkBuilder *builder;
+
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -85,16 +86,16 @@ static void write_config (void);
 
 static char *get_config_default (const char *key)
 {
-	char *file, *str;
+    char *file, *str;
     xmlDocPtr xDoc;
     xmlXPathObjectPtr xpathObj;
     xmlXPathContextPtr xpathCtx;
     xmlChar *cont;
 
-	str = g_strdup (key);
-	*(strchr (str, '_')) = 0;
-	file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", str);
-	g_free (str);
+    str = g_strdup (key);
+    *(strchr (str, '_')) = 0;
+    file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", str);
+    g_free (str);
 
     // read in data from XML file
     xmlInitParser ();
@@ -109,14 +110,14 @@ static char *get_config_default (const char *key)
 
     xpathCtx = xmlXPathNewContext (xDoc);
 
-	str = g_strdup_printf ("/wf-panel-pi/plugin/group/option[@name='%s']/default", key);
+    str = g_strdup_printf ("/wf-panel-pi/plugin/group/option[@name='%s']/default", key);
     xpathObj = xmlXPathEvalExpression (XC (str), xpathCtx);
-	g_free (str);
+    g_free (str);
 
     if (!xmlXPathNodeSetIsEmpty (xpathObj->nodesetval))
     {
         cont = xmlNodeGetContent (xpathObj->nodesetval->nodeTab[0]);
-		str = g_strdup ((char *) cont);
+        str = g_strdup ((char *) cont);
         xmlFree (cont);
     }
     else str = NULL;
@@ -127,26 +128,26 @@ static char *get_config_default (const char *key)
     xmlFreeDoc (xDoc);
     xmlCleanupParser ();
 
-	return str;
+    return str;
 }
 
 static void get_config_string (const char *section, const char *key, char **dest)
 {
+    char *str;
+    GKeyFile *kf;
     GError *err;
-    char *ret;
-
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
 
     // read in data from file to a key file
-    GKeyFile *kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-    g_free (user_file);
+    str = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+    kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, str, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+    g_free (str);
 
     err = NULL;
-    ret = g_key_file_get_string (kf, section, key, &err);
-    if (err == NULL && ret)
+    str = g_key_file_get_string (kf, section, key, &err);
+    if (err == NULL && str)
     {
-        *dest = g_strdup (ret);
+        *dest = str;
         g_key_file_free (kf);
         return;
     }
@@ -156,40 +157,40 @@ static void get_config_string (const char *section, const char *key, char **dest
     g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
     err = NULL;
-    ret = g_key_file_get_string (kf, section, key, &err);
-    if (err == NULL && ret)
+    str = g_key_file_get_string (kf, section, key, &err);
+    if (err == NULL && str)
     {
-		*dest = g_strdup (ret);
-		g_key_file_free (kf);
-		return;
-	}
+        *dest = str;
+        g_key_file_free (kf);
+        return;
+    }
     g_key_file_free (kf);
 
-	*dest = get_config_default (key);
+    *dest = get_config_default (key);
 }
 
 static gboolean get_config_bool (const char *section, const char *key)
 {
-	char *dest;
-	gboolean res = FALSE;
+    char *dest;
+    gboolean res = FALSE;
 
-	get_config_string (section, key, &dest);
-	if (!g_strcmp0 (dest, "true") || !g_strcmp0 (dest, "1") || !g_strcmp0 (dest, "yes")) res = TRUE;
-	g_free (dest);
+    get_config_string (section, key, &dest);
+    if (!g_strcmp0 (dest, "true") || !g_strcmp0 (dest, "1") || !g_strcmp0 (dest, "yes")) res = TRUE;
+    g_free (dest);
 
-	return res;
+    return res;
 }
 
 static int get_config_int (const char *section, const char *key)
 {
-	char *dest;
-	int i;
+    char *dest;
+    int i = 0;
 
-	get_config_string (section, key, &dest);
-	sscanf (dest, "%d", &i);
-	g_free (dest);
+    get_config_string (section, key, &dest);
+    sscanf (dest, "%d", &i);
+    g_free (dest);
 
-	return i;
+    return i;
 }
 
 /* Helper function to determine whether a particular widget has a config table*/
@@ -1089,94 +1090,6 @@ void open_config_dialog (gboolean dock)
 
     gtk_notebook_set_current_page (GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1")), dock ? 1 : 0);
     update_buttons ();
-
-    //g_object_unref (builder);
-
-    //gtk_window_set_default_size (GTK_WINDOW (dlg), 640, 400);
-
-    //gtk_window_present (GTK_WINDOW (dlg));
-}
-
-/*----------------------------------------------------------------------------*/
-/* Plugin interface */
-/*----------------------------------------------------------------------------*/
-
-void init_plugin (GtkWidget *parent)
-{
-    printf ("init plugin\n");
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
-    main_dlg = parent;
-    builder = gtk_builder_new_from_file (RPCC_DATA_DIR "/ui/config.ui");
-
-    open_config_dialog (FALSE);
-}
-
-int plugin_tabs (void)
-{
-    if (getenv ("WAYLAND_DISPLAY")) return 1;
-    else return 0;
-}
-
-const char *tab_name (int tab)
-{
-    switch (tab)
-    {
-        case 0 : return _("Plugins");
-        default : return _("No such tab");
-    }
-}
-
-const char *icon_name (int tab)
-{
-    switch (tab)
-    {
-        case 0 : return "dialog-warning";
-        default : return NULL;
-    }
-}
-
-const char *tab_id (int tab)
-{
-    switch (tab)
-    {
-        case 0 : return ("plugins");
-        default : return NULL;
-    }
-}
-
-GtkWidget *get_tab (int tab)
-{
-    GtkWidget *window, *plugin;
-    
-    printf ("requesting tab %d\n", tab);
-
-    window = (GtkWidget *) gtk_builder_get_object (builder, "config_dlg");
-    switch (tab)
-    {
-        case 0 :
-            plugin = (GtkWidget *) gtk_builder_get_object (builder, "conf_box");
-            break;
-        default :
-            plugin = NULL;
-    }
-
-    gtk_container_remove (GTK_CONTAINER (window), plugin);
-
-    return plugin;
-}
-
-gboolean reboot_needed (void)
-{
-    return FALSE;
-}
-
-void free_plugin (void)
-{
-    g_object_unref (builder);
 }
 
 /* End of file */

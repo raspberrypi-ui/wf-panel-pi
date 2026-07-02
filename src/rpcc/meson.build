@@ -1,13 +1,9 @@
-plugin_name = 'rpcc_wpnotify'
+plugin_name = 'rpcc_wf-panel-pi'
 
 sources = files (
-    'notify_rpcc.c'
-)
-
-cplugin_name = 'rpcc_wpplugins'
-
-csources = files (
-    'configure.c'
+    'notify_rpcc.c',
+    'configure.c',
+    'plugin.c'
 )
 
 config_sources = files(
@@ -23,8 +19,6 @@ config_sources = files(
    '../panel/lxutils.c'
 )
 
-
-
 gtk = dependency ('gtk+-3.0')
 gtkmm = dependency('gtkmm-3.0', version: '>=3.24')
 deps = [ gtk ]
@@ -39,17 +33,11 @@ incdir = include_directories('../api/wf-panel-pi')
 
 proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"'
 
-shared_module(plugin_name, sources, dependencies: deps, install: true,
+shared_module(plugin_name, sources + config_sources, dependencies: [ gtk, gtkmm, evdev, libxml2, gtklayershell ], install: true,
     install_dir: get_option('libdir') / 'rpcc',
-    c_args : [ '-DRPCC_DATA_DIR="' + presource_dir + '"', '-DPLUGIN_NAME="' + plugin_name + '"' ]
-)
-
-shared_module(cplugin_name, csources + config_sources, dependencies: [ gtk, gtkmm, evdev, libxml2, gtklayershell ], install: true,
-    install_dir: get_option('libdir') / 'rpcc',
-    c_args : [ proj_args, '-DRPCC_DATA_DIR="' + presource_dir + '"', '-DPLUGIN_NAME="' + cplugin_name + '"' ],
+    c_args : [ proj_args, '-DRPCC_DATA_DIR="' + presource_dir + '"', '-DPLUGIN_NAME="' + plugin_name + '"' ],
     cpp_args : proj_args,
     include_directories : incdir
 )
 
-install_data('notify.ui', install_dir: pui_dir)
-install_data('config.ui', install_dir: pui_dir)
+install_data('wf-panel-pi.ui', install_dir: pui_dir)

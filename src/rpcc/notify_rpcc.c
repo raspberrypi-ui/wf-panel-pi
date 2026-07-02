@@ -43,12 +43,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Controls */
 
-static GtkBuilder *builder;
-GtkWidget *main_dlg;
 static GtkWidget *sw_notify, *sw_libnotify, *spin_timeout;
 static gboolean notify, libnotify;
 static int timeout;
 static int write_timer;
+
+extern GtkWidget *main_dlg;
+extern GtkBuilder *builder;
+
 
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */
@@ -181,7 +183,7 @@ static void on_timeout_changed (GtkSpinButton *spin, gpointer)
     write_timer = g_timeout_add (TIMEOUT_MS, timeout_handler, spin);
 }
 
-static void init_main_window (void)
+void init_main_window (void)
 {
     GtkAdjustment *adj;
 
@@ -201,85 +203,6 @@ static void init_main_window (void)
     adj = gtk_adjustment_new (timeout, 0, 60, 5, 0, 0);
     gtk_spin_button_set_adjustment (GTK_SPIN_BUTTON (spin_timeout), adj);
     g_signal_connect (spin_timeout, "value-changed", G_CALLBACK (on_timeout_changed), NULL);
-}
-
-/*----------------------------------------------------------------------------*/
-/* Plugin interface */
-/*----------------------------------------------------------------------------*/
-
-void init_plugin (GtkWidget *parent)
-{
-    setlocale (LC_ALL, "");
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-
-    main_dlg = parent;
-    builder = gtk_builder_new_from_file (RPCC_DATA_DIR "/ui/notify.ui");
-
-    init_main_window ();
-}
-
-int plugin_tabs (void)
-{
-    if (getenv ("WAYLAND_DISPLAY")) return 1;
-    else return 0;
-}
-
-const char *tab_name (int tab)
-{
-    switch (tab)
-    {
-        case 0 : return _("Notifications");
-        default : return _("No such tab");
-    }
-}
-
-const char *icon_name (int tab)
-{
-    switch (tab)
-    {
-        case 0 : return "dialog-warning";
-        default : return NULL;
-    }
-}
-
-const char *tab_id (int tab)
-{
-    switch (tab)
-    {
-        case 0 : return ("notifications");
-        default : return NULL;
-    }
-}
-
-GtkWidget *get_tab (int tab)
-{
-    GtkWidget *window, *plugin;
-
-    window = (GtkWidget *) gtk_builder_get_object (builder, "vbox1");
-    switch (tab)
-    {
-        case 0 :
-            plugin = (GtkWidget *) gtk_builder_get_object (builder, "vbox_notif");
-            break;
-        default :
-            plugin = NULL;
-    }
-
-    gtk_container_remove (GTK_CONTAINER (window), plugin);
-
-    return plugin;
-}
-
-gboolean reboot_needed (void)
-{
-    return FALSE;
-}
-
-void free_plugin (void)
-{
-    g_object_unref (builder);
 }
 
 /* End of file                                                                */
