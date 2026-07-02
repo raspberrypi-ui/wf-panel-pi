@@ -35,6 +35,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "configure.h"
 
+extern GtkWidget *cdlg;
+extern void get_config_string (const char *section, const char *key, char **dest);
+
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
@@ -58,7 +61,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static GtkListStore *widgets;
 static GtkTreeModel *filt[5], *sort[5];
-static GtkWidget *cdlg;
 static GtkWidget *tv[5];
 static GtkWidget *ladd, *radd, *dadd, *tadd, *rem, *wup, *wdn, *cpl, *ok;
 static int hand[5];
@@ -75,7 +77,6 @@ extern GtkBuilder *builder;
 static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
-static void update_plugin_config (GtkWidget *box);
 static void update_plugin_spacing (GtkWidget *box);
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static void write_config (void);
@@ -83,144 +84,6 @@ static void write_config (void);
 /*----------------------------------------------------------------------------*/
 /* Private functions */
 /*----------------------------------------------------------------------------*/
-
-static char *get_config_default (const char *key)
-{
-    char *file, *str;
-    xmlDocPtr xDoc;
-    xmlXPathObjectPtr xpathObj;
-    xmlXPathContextPtr xpathCtx;
-    xmlChar *cont;
-
-    str = g_strdup (key);
-    *(strchr (str, '_')) = 0;
-    file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", str);
-    g_free (str);
-
-    // read in data from XML file
-    xmlInitParser ();
-    LIBXML_TEST_VERSION
-    xDoc = xmlReadFile (file, NULL, XML_PARSE_NOBLANKS);
-    g_free (file);
-    if (xDoc == NULL)
-    {
-        xmlCleanupParser ();
-        return NULL;
-    }
-
-    xpathCtx = xmlXPathNewContext (xDoc);
-
-    str = g_strdup_printf ("/wf-panel-pi/plugin/group/option[@name='%s']/default", key);
-    xpathObj = xmlXPathEvalExpression (XC (str), xpathCtx);
-    g_free (str);
-
-    if (!xmlXPathNodeSetIsEmpty (xpathObj->nodesetval))
-    {
-        cont = xmlNodeGetContent (xpathObj->nodesetval->nodeTab[0]);
-        str = g_strdup ((char *) cont);
-        xmlFree (cont);
-    }
-    else str = NULL;
-    xmlXPathFreeObject (xpathObj);
-
-    // cleanup XML
-    xmlXPathFreeContext (xpathCtx);
-    xmlFreeDoc (xDoc);
-    xmlCleanupParser ();
-
-    return str;
-}
-
-static void get_config_string (const char *section, const char *key, char **dest)
-{
-    char *str;
-    GKeyFile *kf;
-    GError *err;
-
-    // read in data from file to a key file
-    str = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
-    kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, str, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-    g_free (str);
-
-    err = NULL;
-    str = g_key_file_get_string (kf, section, key, &err);
-    if (err == NULL && str)
-    {
-        *dest = str;
-        g_key_file_free (kf);
-        return;
-    }
-    g_key_file_free (kf);
-    
-    kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-
-    err = NULL;
-    str = g_key_file_get_string (kf, section, key, &err);
-    if (err == NULL && str)
-    {
-        *dest = str;
-        g_key_file_free (kf);
-        return;
-    }
-    g_key_file_free (kf);
-
-    *dest = get_config_default (key);
-}
-
-static gboolean get_config_bool (const char *section, const char *key)
-{
-    char *dest;
-    gboolean res = FALSE;
-
-    get_config_string (section, key, &dest);
-    if (!g_strcmp0 (dest, "true") || !g_strcmp0 (dest, "1") || !g_strcmp0 (dest, "yes")) res = TRUE;
-    g_free (dest);
-
-    return res;
-}
-
-static int get_config_int (const char *section, const char *key)
-{
-    char *dest;
-    int i = 0;
-
-    get_config_string (section, key, &dest);
-    sscanf (dest, "%d", &i);
-    g_free (dest);
-
-    return i;
-}
-
-/* Helper function to determine whether a particular widget has a config table */
-
-int can_configure (const char *type)
-{
-    char *libname;
-    void *wid_lib;
-    gboolean can_conf = FALSE;
-    conf_table_t * (*func_config_params)(void);
-    const conf_table_t *cptr;
-
-    if (cdlg) return FALSE;
-
-    libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
-    wid_lib = dlopen (libname, RTLD_LAZY);
-    g_free (libname);
-
-    if (wid_lib)
-    {
-        func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
-        if (!dlerror ())
-        {
-            cptr = func_config_params ();
-            if (cptr->type != CONF_TYPE_NONE) can_conf = TRUE;
-        }
-        dlclose (wid_lib);
-    }
-    return can_conf;
-}
 
 /* Helper function to read the name and configurability of a library */
 
@@ -311,7 +174,7 @@ static int selection (void)
 
 /* Enable or disable buttons according to current highlight */
 
-static void update_buttons (void)
+void update_buttons (void)
 {
     GtkTreeSelection *sel;
     GtkTreePath *path;
@@ -563,219 +426,10 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
     return FALSE;
 }
 
-/* Customise dialog for plugin-specific options */
-
-static void update_config (GtkButton *, gpointer data)
-{
-    update_plugin_config (GTK_WIDGET (data));
-    gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
-}
-
-static void update_spacing (GtkButton *, gpointer data)
+void update_spacing (GtkButton *, gpointer data)
 {
     update_plugin_spacing (GTK_WIDGET (data));
     gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
-}
-
-static void close_dialog (GtkButton *, gpointer data)
-{
-    gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
-}
-
-static void plugin_closed (GtkButton *, gpointer)
-{
-    cdlg = NULL;
-    update_buttons ();
-}
-
-void plugin_config_dialog (const char *type)
-{
-    GtkBuilder *builder;
-    GtkWidget *box, *hbox, *label, *control;
-    GdkRGBA col;
-    char *strval, *key, *name, *package;
-    const conf_table_t *cptr;
-    int space = -1;
-    conf_table_t *(*func_config_params) (void);
-    char * (*func_package_name)(void);
-    char * (*func_display_name)(void);
-    void *wid_lib;
-
-    if (!strncmp (type, "spacing", 7))
-    {
-        // read the current spacing
-        sscanf (type, "spacing%d", &space);
-        type = "spacing";
-    }
-
-    /* load the information from the shared library */
-    name = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
-    wid_lib = dlopen (name, RTLD_LAZY);
-    g_free (name);
-
-    if (!wid_lib) return;
-
-    // build the dialog
-    builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
-    cdlg = (GtkWidget *) gtk_builder_get_object (builder, "plugin_dlg");
-    box = (GtkWidget *) gtk_builder_get_object (builder, "box");
-
-    func_package_name = (char * (*) (void)) dlsym (wid_lib, "package_name");
-    if (!dlerror ()) package = g_strdup (func_package_name());
-    else package = NULL;
-
-    func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
-    if (!dlerror ())
-        strval = g_strdup_printf (_("Configure %s"), dgettext (package, func_display_name ()));
-    else
-        strval = g_strdup_printf (_("Configure %s"), _("<Unknown>"));
-    gtk_window_set_title (GTK_WINDOW (cdlg), strval);
-    g_free (strval);
-
-    func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
-    if (!dlerror ())
-    {
-        cptr = func_config_params ();
-        while (cptr->type != CONF_TYPE_NONE)
-        {
-            control = NULL;
-            hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-            if (cptr->type == CONF_TYPE_LABEL)
-                strval = g_strdup_printf ("%s", dgettext (package, cptr->label));
-            else
-                strval = g_strdup_printf ("%s:", dgettext (package, cptr->label));
-            label = gtk_label_new (strval);
-            g_free (strval);
-            gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-            key = g_strdup_printf ("%s_%s", type, cptr->name);
-            switch (cptr->type)
-            {
-                case CONF_TYPE_BOOL :
-                                    control = gtk_switch_new ();
-                                    gtk_switch_set_active (GTK_SWITCH (control), get_config_bool ("panel", key));
-                                    break;
-
-                case CONF_TYPE_INT :
-                                    control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
-                                    if (space == -1)
-                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int ("panel", key));
-                                    else
-                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
-                                    break;
-
-                case CONF_TYPE_STRING :
-                                    control = gtk_entry_new ();
-                                    get_config_string ("panel", key, &strval);
-                                    gtk_entry_set_text (GTK_ENTRY (control), strval);
-                                    g_free (strval);
-                                    break;
-
-                case CONF_TYPE_COLOUR :
-                                    control = gtk_color_button_new ();
-                                    gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (control), TRUE);
-                                    get_config_string ("panel", key, &strval);
-                                    gdk_rgba_parse (&col, strval);
-                                    g_free (strval);
-                                    gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
-                                    GValue gvb = G_VALUE_INIT;
-                                    g_value_init (&gvb, G_TYPE_BOOLEAN);
-                                    g_value_set_boolean (&gvb, TRUE);
-                                    g_object_set_property (G_OBJECT (control), "show-editor", &gvb);
-                                    break;
-
-                case CONF_TYPE_FONT :
-                                    control = gtk_font_button_new ();
-                                    get_config_string ("panel", key, &strval);
-                                    gtk_font_chooser_set_font (GTK_FONT_CHOOSER (control), strval);
-                                    g_free (strval);
-                                    break;
-
-                default :           break;
-            }
-
-            if (control)
-            {
-                gtk_widget_set_name (control, key);
-                gtk_box_pack_end (GTK_BOX (hbox), control, FALSE, FALSE, 0);
-            }
-            gtk_container_add (GTK_CONTAINER (box), hbox);
-            g_free (key);
-            cptr++;
-        }
-    }
-    dlclose (wid_lib);
-    if (package) g_free (package);
-
-    g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), box);
-    g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), box);
-    g_signal_connect (cdlg, "destroy", G_CALLBACK (plugin_closed), NULL);
-
-    g_object_unref (builder);
-
-    gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
-
-    gtk_widget_show_all (cdlg);
-
-    update_buttons ();
-    if (space != -1) gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
-
-    gtk_window_present (GTK_WINDOW (cdlg));
-}
-
-static void update_plugin_config (GtkWidget *box)
-{
-    GtkWidget *hbox, *control;
-    GdkRGBA col;
-    GKeyFile *kf;
-    GList *children, *elem, *bchildren;
-    gsize len;
-    char *strval, *user_file;
-
-    user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
-    kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-
-    children = gtk_container_get_children (GTK_CONTAINER (box));
-    elem = children;
-    while (elem)
-    {
-        hbox = GTK_WIDGET (elem->data);
-        bchildren = gtk_container_get_children (GTK_CONTAINER (hbox));
-        if (bchildren->next)
-        {
-            control = GTK_WIDGET (bchildren->next->data);
-
-            if (GTK_IS_SWITCH (control))
-                g_key_file_set_boolean (kf, "panel", gtk_widget_get_name (control), gtk_switch_get_active (GTK_SWITCH (control)));
-            else if (GTK_IS_SPIN_BUTTON (control))
-                g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
-            else if (GTK_IS_ENTRY (control))
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), gtk_entry_get_text (GTK_ENTRY (control)));
-            else if (GTK_IS_COLOR_BUTTON (control))
-            {
-                gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (control), &col);
-                strval = gdk_rgba_to_string (&col);
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
-                g_free (strval);
-            }
-            else if (GTK_IS_FONT_BUTTON (control))
-            {
-                strval = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (control));
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
-                g_free (strval);
-            }
-        }
-        g_list_free (bchildren);
-        elem = elem->next;
-    }
-    g_list_free (children);
-
-    strval = g_key_file_to_data (kf, &len, NULL);
-    g_file_set_contents (user_file, strval, len, NULL);
-
-    g_free (strval);
-    g_key_file_free (kf);
-    g_free (user_file);
 }
 
 static void update_plugin_spacing (GtkWidget *box)

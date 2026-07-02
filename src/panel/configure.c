@@ -35,6 +35,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "configure.h"
 
+#ifdef PLUGIN_NAME
+extern void update_buttons (void);
+extern void update_spacing (GtkButton *, gpointer data);
+extern GtkWidget *main_dlg;
+#endif
+
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
@@ -45,7 +51,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Global data */
 /*----------------------------------------------------------------------------*/
 
-static GtkWidget *cdlg;
+GtkWidget *cdlg;
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -104,7 +110,7 @@ static char *get_config_default (const char *key)
     return str;
 }
 
-static void get_config_string (const char *section, const char *key, char **dest)
+void get_config_string (const char *section, const char *key, char **dest)
 {
     char *str;
     GKeyFile *kf;
@@ -211,6 +217,9 @@ static void close_dialog (GtkButton *, gpointer data)
 static void plugin_closed (GtkButton *, gpointer)
 {
     cdlg = NULL;
+#ifdef PLUGIN_NAME
+    update_buttons ();
+#endif
 }
 
 void plugin_config_dialog (const char *type)
@@ -330,8 +339,11 @@ void plugin_config_dialog (const char *type)
     }
     dlclose (wid_lib);
     if (package) g_free (package);
-
+#ifdef PLUGIN_NAME
+    g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), box);
+#else
     g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", G_CALLBACK (update_config), box);
+#endif
     g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), box);
     g_signal_connect (cdlg, "destroy", G_CALLBACK (plugin_closed), NULL);
 
@@ -340,6 +352,10 @@ void plugin_config_dialog (const char *type)
     gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
 
     gtk_widget_show_all (cdlg);
+#ifdef PLUGIN_NAME
+    update_buttons ();
+    if (space != -1) gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
+#endif
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 

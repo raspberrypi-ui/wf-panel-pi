@@ -3,7 +3,9 @@ plugin_name = 'rpcc_wf-panel-pi'
 sources = files (
     'notify_rpcc.c',
     'configure.c',
-    'plugin.c'
+    'plugin.c',
+   '../panel/configure.c',
+   '../panel/lxutils.c'
 )
 
 config_sources = files(
@@ -15,8 +17,7 @@ config_sources = files(
    '../panel/config/config-manager.cpp',
    '../panel/config/file.cpp',
    '../panel/config/duration.cpp',
-   '../panel/config/compound-option.cpp',
-   '../panel/lxutils.c'
+   '../panel/config/compound-option.cpp'
 )
 
 gtk = dependency ('gtk+-3.0')
