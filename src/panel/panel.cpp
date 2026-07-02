@@ -345,7 +345,8 @@ bool Panel::on_delete (GdkEventAny *ev)
 
 void Panel::do_configure ()
 {
-    open_config_dialog (dock);
+    system ("rpcc widgets &");
+   // open_config_dialog (dock);
 }
 
 void Panel::do_plugin_configure ()

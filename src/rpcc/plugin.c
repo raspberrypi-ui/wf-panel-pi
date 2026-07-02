@@ -71,12 +71,12 @@ GtkWidget *get_tab (int tab)
     switch (tab)
     {
         case 0 :
-			window = (GtkWidget *) gtk_builder_get_object (builder, "vbox1");
-            plugin = (GtkWidget *) gtk_builder_get_object (builder, "vbox_notif");
+            window = (GtkWidget *) gtk_builder_get_object (builder, "notify_dlg");
+            plugin = (GtkWidget *) gtk_builder_get_object (builder, "notif_box");
             break;
 
         case 1 :
-			window = (GtkWidget *) gtk_builder_get_object (builder, "config_dlg");
+            window = (GtkWidget *) gtk_builder_get_object (builder, "config_dlg");
             plugin = (GtkWidget *) gtk_builder_get_object (builder, "conf_box");
             break;
 
