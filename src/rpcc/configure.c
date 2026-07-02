@@ -31,8 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <locale.h>
 #include <dlfcn.h>
 #include <dirent.h>
+#include <libxml/xpathInternals.h>
 #include "configure.h"
-#include "conf-utils.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
@@ -48,6 +48,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define PAN_R 2
 #define DOCK  3
 #define DOCKT 4
+
+#define XC(str) ((xmlChar *) str)
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -80,42 +82,114 @@ static void write_config (void);
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
+static char *get_config_default (const char *key)
+{
+	char *file, *str;
+    xmlDocPtr xDoc;
+    xmlXPathObjectPtr xpathObj;
+    xmlXPathContextPtr xpathCtx;
+    xmlChar *cont;
+	
+	str = g_strdup (key);
+	*(strchr (str, '_')) = 0;
+	file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", str);
+	g_free (str);
 
-/*
-cat /usr/share/wf-panel-pi/metadata/*.xml | sed -n '/option name="window-list_icons_only"/,/\/option/{/default/p}'
+    // read in data from XML file
+    xmlInitParser ();
+    LIBXML_TEST_VERSION
+    xDoc = xmlReadFile (file, NULL, XML_PARSE_NOBLANKS);
+    g_free (file);
+    if (xDoc == NULL)
+    {
+        xmlCleanupParser ();
+        return NULL;
+    }
 
-cat /usr/share/wf-panel-pi/metadata/*.xml | sed -n '/option name="window-list_icons_only"/,/\/option/{s/<default>\(.*\)<\/default>/\1/p}'
+    xpathCtx = xmlXPathNewContext (xDoc);
 
-*/
+	str = g_strdup_printf ("/wf-panel-pi/plugin/group/option[@name='%s']/default", key);
+    xpathObj = xmlXPathEvalExpression (XC (str), xpathCtx);
+	g_free (str);
+	
+    if (!xmlXPathNodeSetIsEmpty (xpathObj->nodesetval))
+    {
+        cont = xmlNodeGetContent (xpathObj->nodesetval->nodeTab[0]);
+		str = g_strdup ((char *) cont);
+        xmlFree (cont);
+    }
+    else str = NULL;
+    xmlXPathFreeObject (xpathObj);
 
+    // cleanup XML
+    xmlXPathFreeContext (xpathCtx);
+    xmlFreeDoc (xDoc);
+    xmlCleanupParser ();
+
+	return str;
+}
+
+static void get_config_string_rpcc (const char *section, const char *key, char **dest)
+{
+    GError *err;
+    char *ret;
+    
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+
+    // read in data from file to a key file
+    GKeyFile *kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+    err = NULL;
+    ret = g_key_file_get_string (kf, section, key, &err);
+    if (err == NULL && ret)
+    {
+        *dest = g_strdup (ret);
+        return;
+    }
+    
+    g_key_file_free (kf);
+    g_free (user_file);
+    
+    kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+    err = NULL;
+    ret = g_key_file_get_string (kf, section, key, &err);
+    if (err == NULL && ret)
+    {
+		*dest = g_strdup (ret);
+		return;
+	}
+
+    g_key_file_free (kf);
+
+	*dest = get_config_default (key);
+}
 
 gboolean get_config_bool (const char *section, const char *key)
 {
-	return TRUE;
-    //char *cname = g_strdup_printf ("%s/%s", section, key);
-    //WfOption <bool> bool_option {cname};
-    //g_free (cname);
-    //if (bool_option) return TRUE;
-    //else return FALSE;
+	gboolean res = FALSE;
+	char *dest;
+	get_config_string_rpcc (section, key, &dest);
+	if (!g_strcmp0 (dest, "true") || !g_strcmp0 (dest, "1") || !g_strcmp0 (dest, "yes")) res = TRUE;
+	g_free (dest);
+	return res;
 }
 
 int get_config_int (const char *section, const char *key)
 {
-	return 0;
-    //char *cname = g_strdup_printf ("%s/%s", section, key);
-    //WfOption <int> int_option {cname};
-    //g_free (cname);
-    //return int_option;
+	int i;
+	char *dest;
+	get_config_string_rpcc (section, key, &dest);
+	sscanf (dest, "%d", &i);
+	g_free (dest);
+	return i;
 }
 
 void get_config_string (const char *section, const char *key, char **dest)
 {
-	*dest = g_strdup ("a string");
-	return;
-    //char *cname = g_strdup_printf ("%s/%s", section, key);
-    //WfOption <std::string> string_option {cname};
-    //g_free (cname);
-    //*dest = g_strdup_printf ("%s", ((std::string) string_option).c_str());
+	get_config_string_rpcc (section, key, dest); //g_strdup ("a string");
 }
 
 /* Helper function to determine whether a particular widget has a config table*/
@@ -184,9 +258,7 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
 
     libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (libname, RTLD_LAZY);
-    if (!wid_lib) printf ("Error %s - %s\n", libname, dlerror ()); 
     g_free (libname);
-    
 
     if (wid_lib)
     {
@@ -532,9 +604,6 @@ void plugin_config_dialog (const char *type)
     char * (*func_display_name)(void);
     void *wid_lib;
 
-	printf ("pcd\n");
-    
-#if 1
     if (!strncmp (type, "spacing", 7))
     {
         // read the current spacing
@@ -548,8 +617,6 @@ void plugin_config_dialog (const char *type)
     g_free (name);
 
     if (!wid_lib) return;
-
-	printf ("loaded\n");
 
     // build the dialog
     builder = gtk_builder_new_from_file (PACKAGE_DATA_DIR "/ui/config.ui");
@@ -657,7 +724,6 @@ void plugin_config_dialog (const char *type)
         if (space != -1) gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (dlg));
     }
     gtk_window_present (GTK_WINDOW (cdlg));
-#endif
 }
 
 static void update_plugin_config (GtkWidget *box)
@@ -785,50 +851,13 @@ static void configure_plugin (GtkButton *, gpointer)
 
 /* Read in config from local configuration file, or use default */
 
-void get_config_string_rpcc (const char *section, const char *key, char **dest)
-{
-    GError *err;
-    char *ret;
-    
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
-
-    // read in data from file to a key file
-    GKeyFile *kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-
-    err = NULL;
-    ret = g_key_file_get_string (kf, section, key, &err);
-    if (err == NULL && ret)
-    {
-        *dest = g_strdup (ret);
-        return;
-    }
-    
-    g_key_file_free (kf);
-    g_free (user_file);
-    
-    kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
-
-    err = NULL;
-    ret = g_key_file_get_string (kf, section, key, &err);
-    if (err == NULL && ret) *dest = g_strdup (ret);
-
-    g_key_file_free (kf);
-
-}
-
-
-
-
 static void read_one_config (int index, const char *section, const char *item)
 {
     char *strval, *token, *name;
     int pos;
     gboolean config;
 
-    get_config_string_rpcc (section, item, &strval);
-    printf ("strval %s %s %s\n", section, item, strval);
+    get_config_string (section, item, &strval);
     pos = index * 100;
     token = strtok (strval, " ");
     while (token)
