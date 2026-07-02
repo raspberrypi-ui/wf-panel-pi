@@ -1025,7 +1025,7 @@ static void conf_closed (GtkButton *, gpointer)
 /* Public API */
 /*----------------------------------------------------------------------------*/
 
-void open_config_dialog (gboolean dock)
+void open_config_dialog (void)
 {
     GtkCellRenderer *trend = gtk_cell_renderer_text_new ();
     int i;
@@ -1087,8 +1087,17 @@ void open_config_dialog (gboolean dock)
     g_signal_connect (gtk_builder_get_object (builder, "ok_btn"), "clicked", G_CALLBACK (close_window), (void *) 1);
     g_signal_connect (dlg, "destroy", G_CALLBACK (conf_closed), NULL);
 
-    gtk_notebook_set_current_page (GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1")), dock ? 1 : 0);
     update_buttons ();
+}
+
+void set_bar (void)
+{
+    gtk_notebook_set_current_page (GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1")), 0);
+}
+
+void set_dock (void)
+{
+    gtk_notebook_set_current_page (GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1")), 1);
 }
 
 /* End of file */

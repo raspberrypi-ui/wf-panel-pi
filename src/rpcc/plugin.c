@@ -5,7 +5,7 @@
 #include <locale.h>
 
 extern void init_main_window (void);
-extern void open_config_dialog (gboolean dock);
+extern void open_config_dialog (void);
 
 GtkWidget *main_dlg;
 GtkBuilder *builder;
@@ -25,7 +25,7 @@ void init_plugin (GtkWidget *parent)
     builder = gtk_builder_new_from_file (RPCC_DATA_DIR "/ui/wf-panel-pi.ui");
 
     init_main_window ();
-    open_config_dialog (FALSE);
+    open_config_dialog ();
 }
 
 int plugin_tabs (void)
@@ -49,7 +49,7 @@ const char *icon_name (int tab)
     switch (tab)
     {
         case 0 : return "dialog-warning";
-        case 1 : return "dialog-warning";
+        case 1 : return "applications-accessories";
         default : return NULL;
     }
 }
