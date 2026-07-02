@@ -268,7 +268,7 @@ void get_config_string (const char *section, const char *key, char **dest)
 
 /* Helper function to determine whether a particular widget has a config table */
 
-int can_configure (const char *type)
+gboolean can_configure (const char *type)
 {
     char *libname;
     void *wid_lib;
