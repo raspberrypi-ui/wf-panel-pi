@@ -429,7 +429,7 @@ void plugin_config_dialog (const char *type)
     gtk_widget_show_all (cdlg);
 #ifdef PLUGIN_NAME
     update_buttons ();
-    if (space != -1) gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
+    gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
 #endif
     gtk_window_present (GTK_WINDOW (cdlg));
 }
