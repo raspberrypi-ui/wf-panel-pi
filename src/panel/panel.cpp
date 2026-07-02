@@ -176,13 +176,13 @@ Panel::Panel (GdkMonitor *mon, bool dock) :
     });
 
     // Create window menu
-    conf.set_label (_("Add / Remove Plugins..."));
-    conf.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_configure));
-    menu.attach (conf, 0, 1, 0, 1);
-
     cplug.set_label (_("Configure Plugin..."));
     cplug.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_plugin_configure));
     menu.attach (cplug, 0, 1, 1, 2);
+
+    conf.set_label (_("Add / Remove Plugins..."));
+    conf.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_configure));
+    menu.attach (conf, 0, 1, 0, 1);
 
     notif.set_label (_("Notifications..."));
     notif.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_notify_configure));
@@ -341,15 +341,15 @@ bool Panel::on_delete (GdkEventAny *ev)
 
 // Menu event handlers
 
+void Panel::do_plugin_configure ()
+{
+    plugin_config_dialog (cplug.get_name ().c_str ());
+}
+
 void Panel::do_configure ()
 {
     if (dock) system ("rpcc widgets set_dock &");
     else system ("rpcc widgets set_bar &");
-}
-
-void Panel::do_plugin_configure ()
-{
-    plugin_config_dialog (cplug.get_name ().c_str ());
 }
 
 void Panel::do_notify_configure ()
