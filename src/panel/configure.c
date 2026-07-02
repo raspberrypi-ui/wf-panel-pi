@@ -38,17 +38,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
 
-#define COL_NAME    0
-#define COL_ID      1
-#define COL_INDEX   2
-#define COL_CONFIG  3
-
-#define AVAIL 0
-#define PAN_L 1
-#define PAN_R 2
-#define DOCK  3
-#define DOCKT 4
-
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
@@ -65,7 +54,7 @@ static void update_plugin_config (GtkWidget *box);
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
-/* Helper function to determine whether a particular widget has a config table*/
+/* Helper function to determine whether a particular widget has a config table */
 
 int can_configure (const char *type)
 {
