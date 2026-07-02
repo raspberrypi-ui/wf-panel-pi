@@ -7,7 +7,7 @@
 #include "config/types.hpp"
 
 extern "C" {
-#include "configure.h"
+#include "plug_conf.h"
 }
 
 class WayfireWidget

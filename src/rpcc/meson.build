@@ -2,9 +2,9 @@ plugin_name = 'rpcc_wf-panel-pi'
 
 sources = files (
     'notify_rpcc.c',
-    'configure.c',
+    'config_rpcc.c',
     'plugin.c',
-   '../panel/configure.c',
+   '../panel/plug_conf.c',
    '../panel/lxutils.c'
 )
 

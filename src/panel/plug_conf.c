@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <dirent.h>
 #include <libxml/xpathInternals.h>
 
-#include "configure.h"
+#include "plug_conf.h"
 
 #ifdef PLUGIN_NAME
 extern void update_buttons (void);

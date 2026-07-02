@@ -38,7 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "spacer.hpp"
 
 extern "C" {
-#include "configure.h"
+#include "plug_conf.h"
 #include "lxutils.h"
 }
 

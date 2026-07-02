@@ -25,8 +25,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
-#ifndef CONFIGURE_H
-#define CONFIGURE_H
+#ifndef PLUG_CONF_H
+#define PLUG_CONF_H
 
 typedef enum {
     CONF_TYPE_NONE,
@@ -45,10 +45,11 @@ typedef struct {
     void *value;
 } conf_table_t;
 
-extern void open_config_dialog (void);
-extern void plugin_config_dialog (const char *type);
+extern GtkWidget *cdlg;
+
+extern void get_config_string (const char *section, const char *key, char **dest);
 extern int can_configure (const char *type);
-extern int can_add (void);
+extern void plugin_config_dialog (const char *type);
 
 #endif
 

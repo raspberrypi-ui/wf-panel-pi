@@ -7,7 +7,7 @@ util_sources = files(
   'gtk-utils.cpp',
   'panel-app.cpp',
   'wf-autohide-window.cpp',
-  'configure.c',
+  'plug_conf.c',
   'notification.c',
   'lxutils.c',
   'launcher.c'

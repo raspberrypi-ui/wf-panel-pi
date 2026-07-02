@@ -31,12 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <locale.h>
 #include <dlfcn.h>
 #include <dirent.h>
-#include <libxml/xpathInternals.h>
 
-#include "configure.h"
-
-extern GtkWidget *cdlg;
-extern void get_config_string (const char *section, const char *key, char **dest);
+#include "plug_conf.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
@@ -52,8 +48,6 @@ extern void get_config_string (const char *section, const char *key, char **dest
 #define PAN_R 2
 #define DOCK  3
 #define DOCKT 4
-
-#define XC(str) ((xmlChar *) str)
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
