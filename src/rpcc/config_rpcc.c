@@ -65,16 +65,101 @@ static GtkTreeIter sp_iter;
 /* Function prototypes */
 /*----------------------------------------------------------------------------*/
 
+static void read_config (void);
+static void read_one_config (int index, const char *section, const char *item);
+static gboolean read_lib (const char *type, char **name, gboolean *config);
+static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+static void write_config (void);
+static void write_one_config (GKeyFile *kf, int index, const char *section, const char *item);
+static int selection (void);
+static void add_widget (GtkButton *, gpointer data);
+static void remove_widget (GtkButton *, gpointer);
 static gboolean renumber (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
+static void move_widget (GtkButton *, gpointer data);
 static gboolean up (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static void update_plugin_spacing (GtkWidget *box);
-static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
-static void write_config (void);
+static void configure_plugin (GtkButton *, gpointer);
+static void plugin_closed (GtkButton *, gpointer);
+static void update_buttons (void);
+static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer data);
+static void unselect (GtkTreeView *, gpointer data);
+static void close_window (GtkButton *, gpointer);
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
 /*----------------------------------------------------------------------------*/
+
+/* Read in current configuration */
+
+static void read_config (void)
+{
+    char *token, *name;
+    struct dirent *dir;
+    DIR *plugind;
+    gboolean config;
+
+    // add each space-separated widget from the metadata variables to the list store
+    read_one_config (PAN_L, "panel", "widgets_left");
+    read_one_config (PAN_R, "panel", "widgets_right");
+    read_one_config (DOCK, "dock", "widgets_left");
+    read_one_config (DOCKT, "dock", "widgets_right");
+
+    // add any unused widgets to the list store so they can be added by the user
+    plugind = opendir (PLUGIN_PATH);
+    if (plugind)
+    {
+        while ((dir = readdir (plugind)) != NULL)
+        {
+            if (strncmp (dir->d_name, "lib", 3) || strncmp (dir->d_name + strlen (dir->d_name) - 3, ".so", 3)) continue;
+            if (!strcmp (dir->d_name, "libnotify.so")) continue;
+            token = g_strdup (dir->d_name + 3);
+            *(token + strlen (token) - 3) = 0;
+
+            found = FALSE;
+            gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
+            if (!found)
+            {
+                read_lib (token, &name, &config);
+                gtk_list_store_insert_with_values (widgets, NULL, -1,
+                    COL_NAME, name,
+                    COL_ID, token,
+                    COL_INDEX, 0,
+                    COL_CONFIG, config,
+                    -1);
+                g_free (name);
+            }
+            g_free (token);
+        }
+        closedir (plugind);
+    }
+}
+
+/* Read in config from local configuration file, or use default */
+
+static void read_one_config (int index, const char *section, const char *item)
+{
+    char *strval, *token, *name;
+    int pos;
+    gboolean config;
+
+    get_config_string (section, item, &strval);
+    pos = index * 100;
+    token = strtok (strval, " ");
+    while (token)
+    {
+        if (read_lib (token, &name, &config))
+            gtk_list_store_insert_with_values (widgets, NULL, -1,
+                COL_NAME, name,
+                COL_ID, token,
+                COL_INDEX, pos++,
+                COL_CONFIG, config,
+                -1);
+        g_free (name);
+        token = strtok (NULL, " ");
+    }
+    g_free (strval);
+}
 
 /* Helper function to read the name and configurability of a library */
 
@@ -147,6 +232,70 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
     return res;
 }
 
+/* Function to check if a widget is currently installed in panel or dock */
+
+static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
+{
+    char *type;
+    gtk_tree_model_get (mod, iter, COL_ID, &type, -1);
+    if (!g_strcmp0 (data, type)) found = TRUE;
+    g_free (type);
+    return found;
+}
+
+/* Write out current configuration */
+
+static void write_config (void)
+{
+    char *str;
+    gsize len;
+
+    // construct the file path
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+
+    // read in data from file to a key file
+    GKeyFile *kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+    // iterate through the tree models
+    write_one_config (kf, PAN_L, "panel", "widgets_left");
+    write_one_config (kf, PAN_R, "panel", "widgets_right");
+    write_one_config (kf, DOCK, "dock", "widgets_left");
+    write_one_config (kf, DOCKT, "dock", "widgets_right");
+
+    // write the modified key file out
+    str = g_key_file_to_data (kf, &len, NULL);
+    g_file_set_contents (user_file, str, len, NULL);
+
+    g_free (str);
+    g_key_file_free (kf);
+    g_free (user_file);
+}
+
+/* Write config to local configuration file */
+
+static void write_one_config (GKeyFile *kf, int index, const char *section, const char *item)
+{
+    GtkTreeIter iter;
+    char *str;
+    char config[1000];
+
+    // concatenate widget names from model to a space-separated string
+    config[0] = 0;
+    if (gtk_tree_model_get_iter_first (sort[index], &iter))
+    {
+        do
+        {
+            gtk_tree_model_get (sort[index], &iter, COL_ID, &str, -1);
+            strcat (config, str);
+            strcat (config, " ");
+            g_free (str);
+        }
+        while (gtk_tree_model_iter_next (sort[index], &iter));
+    }
+    g_key_file_set_string (kf, section, item, config);
+}
+
 /* Helper function to locate the currently-highlighted widget */
 
 static int selection (void)
@@ -161,75 +310,6 @@ static int selection (void)
     }
 
     return -1;
-}
-
-/* Enable or disable buttons according to current highlight */
-
-void update_buttons (void)
-{
-    GtkTreeSelection *sel;
-    GtkTreePath *path;
-    GtkTreeModel *mod;
-    GtkTreeIter iter;
-    int nitems, lorr = selection ();
-    char *type = NULL;
-    gboolean conf;
-
-    gtk_widget_set_sensitive (ladd, FALSE);
-    gtk_widget_set_sensitive (radd, FALSE);
-    gtk_widget_set_sensitive (dadd, FALSE);
-    gtk_widget_set_sensitive (tadd, FALSE);
-    gtk_widget_set_sensitive (rem, FALSE);
-    gtk_widget_set_sensitive (wup, FALSE);
-    gtk_widget_set_sensitive (wdn, FALSE);
-    gtk_widget_set_sensitive (cpl, FALSE);
-
-    gtk_widget_set_sensitive (ok, cdlg ? FALSE : TRUE);
-
-    if (lorr == -1 || cdlg) return;
-
-    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
-    if (lorr == AVAIL)
-    {
-        gtk_widget_set_sensitive (ladd, gtk_tree_selection_get_selected (sel, NULL, NULL));
-        gtk_widget_set_sensitive (radd, gtk_tree_selection_get_selected (sel, NULL, NULL));
-        gtk_widget_set_sensitive (dadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
-        gtk_widget_set_sensitive (tadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
-        if (gtk_tree_selection_get_selected (sel, &mod, &iter))
-        {
-            gtk_tree_model_get (mod, &iter, COL_ID, &type, -1);
-            if (!g_strcmp0 (type, "split"))
-            {
-                gtk_widget_set_sensitive (ladd, FALSE);
-                gtk_widget_set_sensitive (radd, FALSE);
-                gtk_widget_set_sensitive (dadd, FALSE);
-            }
-            g_free (type);
-        }
-    }
-    else
-    {
-        nitems = gtk_tree_model_iter_n_children (filt[lorr], NULL);
-
-        gtk_widget_set_sensitive (rem, nitems > 0);
-        path = gtk_tree_path_new_from_indices (0, -1);
-        gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, path));
-        path = gtk_tree_path_new_from_indices (nitems ? nitems - 1 : nitems, -1);
-        gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, path));
-
-        if (gtk_tree_selection_get_selected (sel, &mod, &iter))
-        {
-            gtk_tree_model_get (mod, &iter, COL_ID, &type, COL_CONFIG, &conf, -1);
-
-            // scroll the tree view to show the highlighted item
-            path = gtk_tree_model_get_path (mod, &iter);
-            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[lorr]), path, NULL, FALSE, 0.0, 0.0);
-
-            // can this type be configured?
-            gtk_widget_set_sensitive (cpl, conf);
-        }
-        if (type) g_free (type);
-    }
 }
 
 /* Add the currently-highlighted widget to the left or right side, depending on the value of data */
@@ -417,11 +497,7 @@ static gboolean down (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpoin
     return FALSE;
 }
 
-void update_spacing (GtkButton *, gpointer data)
-{
-    update_plugin_spacing (GTK_WIDGET (data));
-    gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
-}
+/* Adjust the spacing width for a spacer plugin */
 
 static void update_plugin_spacing (GtkWidget *box)
 {
@@ -462,6 +538,8 @@ static void update_plugin_spacing (GtkWidget *box)
     g_list_free (children);
 }
 
+/* Launch the plugin configuration dialog */
+
 static void configure_plugin (GtkButton *, gpointer)
 {
     GtkTreeSelection *sel;
@@ -483,6 +561,7 @@ static void configure_plugin (GtkButton *, gpointer)
                 gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr]), &sp_iter, &siter);
             }
             plugin_config_dialog (type);
+            g_signal_connect (cdlg, "destroy", G_CALLBACK (plugin_closed), NULL);
             g_free (type);
         }
     }
@@ -490,133 +569,78 @@ static void configure_plugin (GtkButton *, gpointer)
     update_buttons ();
 }
 
-/* Read in config from local configuration file, or use default */
-
-static void read_one_config (int index, const char *section, const char *item)
+static void plugin_closed (GtkButton *, gpointer)
 {
-    char *strval, *token, *name;
-    int pos;
-    gboolean config;
-
-    get_config_string (section, item, &strval);
-    pos = index * 100;
-    token = strtok (strval, " ");
-    while (token)
-    {
-        if (read_lib (token, &name, &config))
-            gtk_list_store_insert_with_values (widgets, NULL, -1,
-                COL_NAME, name,
-                COL_ID, token,
-                COL_INDEX, pos++,
-                COL_CONFIG, config,
-                -1);
-        g_free (name);
-        token = strtok (NULL, " ");
-    }
-    g_free (strval);
+    update_buttons ();
 }
 
-static void read_config (void)
+/* Enable or disable buttons according to current highlight */
+
+static void update_buttons (void)
 {
-    char *token, *name;
-    struct dirent *dir;
-    DIR *plugind;
-    gboolean config;
-
-    // add each space-separated widget from the metadata variables to the list store
-    read_one_config (PAN_L, "panel", "widgets_left");
-    read_one_config (PAN_R, "panel", "widgets_right");
-    read_one_config (DOCK, "dock", "widgets_left");
-    read_one_config (DOCKT, "dock", "widgets_right");
-
-    // add any unused widgets to the list store so they can be added by the user
-    plugind = opendir (PLUGIN_PATH);
-    if (plugind)
-    {
-        while ((dir = readdir (plugind)) != NULL)
-        {
-            if (strncmp (dir->d_name, "lib", 3) || strncmp (dir->d_name + strlen (dir->d_name) - 3, ".so", 3)) continue;
-            if (!strcmp (dir->d_name, "libnotify.so")) continue;
-            token = g_strdup (dir->d_name + 3);
-            *(token + strlen (token) - 3) = 0;
-
-            found = FALSE;
-            gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
-            if (!found)
-            {
-                read_lib (token, &name, &config);
-                gtk_list_store_insert_with_values (widgets, NULL, -1,
-                    COL_NAME, name,
-                    COL_ID, token,
-                    COL_INDEX, 0,
-                    COL_CONFIG, config,
-                    -1);
-                g_free (name);
-            }
-            g_free (token);
-        }
-        closedir (plugind);
-    }
-}
-
-static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data)
-{
-    char *type;
-    gtk_tree_model_get (mod, iter, COL_ID, &type, -1);
-    if (!g_strcmp0 (data, type)) found = TRUE;
-    g_free (type);
-    return found;
-}
-
-/* Write config to local configuration file */
-
-static void write_one_config (GKeyFile *kf, int index, const char *section, const char *item)
-{
+    GtkTreeSelection *sel;
+    GtkTreePath *path;
+    GtkTreeModel *mod;
     GtkTreeIter iter;
-    char *str;
-    char config[1000];
+    int nitems, lorr = selection ();
+    char *type = NULL;
+    gboolean conf;
 
-    // concatenate widget names from model to a space-separated string
-    config[0] = 0;
-    if (gtk_tree_model_get_iter_first (sort[index], &iter))
+    gtk_widget_set_sensitive (ladd, FALSE);
+    gtk_widget_set_sensitive (radd, FALSE);
+    gtk_widget_set_sensitive (dadd, FALSE);
+    gtk_widget_set_sensitive (tadd, FALSE);
+    gtk_widget_set_sensitive (rem, FALSE);
+    gtk_widget_set_sensitive (wup, FALSE);
+    gtk_widget_set_sensitive (wdn, FALSE);
+    gtk_widget_set_sensitive (cpl, FALSE);
+
+    gtk_widget_set_sensitive (ok, cdlg ? FALSE : TRUE);
+
+    if (lorr == -1 || cdlg) return;
+
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (tv[lorr]));
+    if (lorr == AVAIL)
     {
-        do
+        gtk_widget_set_sensitive (ladd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        gtk_widget_set_sensitive (radd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        gtk_widget_set_sensitive (dadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        gtk_widget_set_sensitive (tadd, gtk_tree_selection_get_selected (sel, NULL, NULL));
+        if (gtk_tree_selection_get_selected (sel, &mod, &iter))
         {
-            gtk_tree_model_get (sort[index], &iter, COL_ID, &str, -1);
-            strcat (config, str);
-            strcat (config, " ");
-            g_free (str);
+            gtk_tree_model_get (mod, &iter, COL_ID, &type, -1);
+            if (!g_strcmp0 (type, "split"))
+            {
+                gtk_widget_set_sensitive (ladd, FALSE);
+                gtk_widget_set_sensitive (radd, FALSE);
+                gtk_widget_set_sensitive (dadd, FALSE);
+            }
+            g_free (type);
         }
-        while (gtk_tree_model_iter_next (sort[index], &iter));
     }
-    g_key_file_set_string (kf, section, item, config);
-}
+    else
+    {
+        nitems = gtk_tree_model_iter_n_children (filt[lorr], NULL);
 
-static void write_config (void)
-{
-    char *str;
-    gsize len;
+        gtk_widget_set_sensitive (rem, nitems > 0);
+        path = gtk_tree_path_new_from_indices (0, -1);
+        gtk_widget_set_sensitive (wup, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, path));
+        path = gtk_tree_path_new_from_indices (nitems ? nitems - 1 : nitems, -1);
+        gtk_widget_set_sensitive (wdn, nitems > 0 && !gtk_tree_selection_path_is_selected (sel, path));
 
-    // construct the file path
-    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+        if (gtk_tree_selection_get_selected (sel, &mod, &iter))
+        {
+            gtk_tree_model_get (mod, &iter, COL_ID, &type, COL_CONFIG, &conf, -1);
 
-    // read in data from file to a key file
-    GKeyFile *kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+            // scroll the tree view to show the highlighted item
+            path = gtk_tree_model_get_path (mod, &iter);
+            gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tv[lorr]), path, NULL, FALSE, 0.0, 0.0);
 
-    // iterate through the tree models
-    write_one_config (kf, PAN_L, "panel", "widgets_left");
-    write_one_config (kf, PAN_R, "panel", "widgets_right");
-    write_one_config (kf, DOCK, "dock", "widgets_left");
-    write_one_config (kf, DOCKT, "dock", "widgets_right");
-
-    // write the modified key file out
-    str = g_key_file_to_data (kf, &len, NULL);
-    g_file_set_contents (user_file, str, len, NULL);
-
-    g_free (str);
-    g_key_file_free (kf);
-    g_free (user_file);
+            // can this type be configured?
+            gtk_widget_set_sensitive (cpl, conf);
+        }
+        if (type) g_free (type);
+    }
 }
 
 /* Filter function used by tree models to display widgets in correct places */
@@ -731,6 +755,12 @@ void set_bar (void)
 void set_dock (void)
 {
     gtk_notebook_set_current_page (GTK_NOTEBOOK (gtk_builder_get_object (builder, "notebook1")), 1);
+}
+
+void update_spacing (GtkButton *, gpointer data)
+{
+    update_plugin_spacing (GTK_WIDGET (data));
+    gtk_widget_destroy (gtk_widget_get_parent (gtk_widget_get_parent (GTK_WIDGET (data))));
 }
 
 /* End of file */

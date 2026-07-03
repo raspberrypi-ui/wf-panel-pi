@@ -32,12 +32,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <dlfcn.h>
 #include <libxml/xpathInternals.h>
 
+#include "plugin.h"
 #include "plug_conf.h"
 
 #ifdef PLUGIN_NAME
-extern void update_buttons (void);
 extern void update_spacing (GtkButton *, gpointer data);
-extern GtkWidget *main_dlg;
 #endif
 
 /*----------------------------------------------------------------------------*/
@@ -159,9 +158,6 @@ static void close_dialog (GtkButton *, gpointer data)
 static void plugin_closed (GtkButton *, gpointer)
 {
     cdlg = NULL;
-#ifdef PLUGIN_NAME
-    update_buttons ();
-#endif
 }
 
 /* Write out plugin configuration */
@@ -428,7 +424,6 @@ void plugin_config_dialog (const char *type)
 
     gtk_widget_show_all (cdlg);
 #ifdef PLUGIN_NAME
-    update_buttons ();
     gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
 #endif
     gtk_window_present (GTK_WINDOW (cdlg));
