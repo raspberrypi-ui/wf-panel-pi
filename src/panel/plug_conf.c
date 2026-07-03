@@ -246,7 +246,7 @@ void get_config_string (const char *section, const char *key, char **dest)
         return;
     }
     g_key_file_free (kf);
-    
+
     kf = g_key_file_new ();
     g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
