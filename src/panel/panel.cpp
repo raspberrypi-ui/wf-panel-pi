@@ -469,6 +469,8 @@ void Panel::update_widget_icons ()
 
     for (auto &w : right_widgets)
         w->set_icon ();
+
+    window->update_position ();
 }
 
 void Panel::update_gestures ()
