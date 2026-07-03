@@ -288,6 +288,7 @@ bool Panel::on_button_release_event (GdkEventButton *event)
     bool found = false;
     std::string pname;
     Gtk::Allocation alloc;
+    char *title;
 
     if (pressed == PRESS_NONE) return false;
     pressed = PRESS_NONE;
@@ -309,7 +310,9 @@ bool Panel::on_button_release_event (GdkEventButton *event)
                 {
                     pname = plugin->get_name ();
                     cplug.set_name (pname);
-                    if (can_configure (pname.c_str ())) cplug.set_sensitive (true);
+                    if (can_configure (pname.c_str (), &title)) cplug.set_sensitive (true);
+                    cplug.set_label (title);
+                    g_free (title);
                     if (pname != "spacing") cplug.show ();
                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
                     found = true;

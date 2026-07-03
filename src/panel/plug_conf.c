@@ -265,12 +265,14 @@ void get_config_string (const char *section, const char *key, char **dest)
 
 /* Helper function to determine whether a particular widget has a config table */
 
-gboolean can_configure (const char *type)
+gboolean can_configure (const char *type, char **name)
 {
-    char *libname;
+    char *libname, *package;
     void *wid_lib;
     gboolean can_conf = FALSE;
     conf_table_t * (*func_config_params)(void);
+    char * (*func_package_name)(void);
+    char * (*func_display_name)(void);
     const conf_table_t *cptr;
 
     if (cdlg) return FALSE;
@@ -287,6 +289,17 @@ gboolean can_configure (const char *type)
             cptr = func_config_params ();
             if (cptr->type != CONF_TYPE_NONE) can_conf = TRUE;
         }
+
+        *name = NULL;
+        func_package_name = (char * (*) (void)) dlsym (wid_lib, "package_name");
+        if (!dlerror ())
+        {
+            package = g_strdup (func_package_name());
+            func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
+            if (!dlerror ()) *name = g_strdup_printf (_("Configure %s..."), dgettext (package, func_display_name ()));
+            g_free (package);
+        }
+        if (*name == NULL) *name = g_strdup (_("Configure Plugin..."));
         dlclose (wid_lib);
     }
     return can_conf;
