@@ -296,7 +296,7 @@ gboolean can_configure (const char *type, char **name)
         {
             package = g_strdup (func_package_name());
             func_display_name = (char * (*) (void)) dlsym (wid_lib, "display_name");
-            if (!dlerror ()) *name = g_strdup_printf (_("Configure %s..."), dgettext (package, func_display_name ()));
+            if (!dlerror ()) *name = g_strdup_printf (_("Configure %s Widget..."), dgettext (package, func_display_name ()));
             g_free (package);
         }
         if (*name == NULL) *name = g_strdup (_("Configure Plugin..."));

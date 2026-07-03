@@ -223,4 +223,4 @@ msgstr "Configure..."
 
 #: ../data/config.ui.h:15
 msgid "Configure selected plugin"
-msgstr "Configure selected plugin"
+msgstr "Configure selected widget"
