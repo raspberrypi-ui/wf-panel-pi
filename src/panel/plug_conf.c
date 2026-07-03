@@ -32,7 +32,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <dlfcn.h>
 #include <libxml/xpathInternals.h>
 
-#include "plugin.h"
 #include "plug_conf.h"
 
 #ifdef PLUGIN_NAME
@@ -423,9 +422,6 @@ void plugin_config_dialog (const char *type)
     gtk_window_set_default_size (GTK_WINDOW (cdlg), 300, -1);
 
     gtk_widget_show_all (cdlg);
-#ifdef PLUGIN_NAME
-    gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
-#endif
     gtk_window_present (GTK_WINDOW (cdlg));
 }
 

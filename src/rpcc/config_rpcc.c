@@ -561,6 +561,7 @@ static void configure_plugin (GtkButton *, gpointer)
                 gtk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (filt[lorr]), &sp_iter, &siter);
             }
             plugin_config_dialog (type);
+            gtk_window_set_transient_for (GTK_WINDOW (cdlg), GTK_WINDOW (main_dlg));
             g_signal_connect (cdlg, "destroy", G_CALLBACK (plugin_closed), NULL);
             g_free (type);
         }
