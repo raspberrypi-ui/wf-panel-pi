@@ -1,7 +1,5 @@
 #include "item.hpp"
 
-#include <gtk-utils.hpp>
-
 #include <gtkmm/icontheme.h>
 #include <gtkmm/tooltip.h>
 
@@ -46,6 +44,15 @@ static Glib::RefPtr<Gdk::Pixbuf> extract_pixbuf(IconData && pixbuf_data)
     return Gdk::Pixbuf::create_from_data(
         data_ptr->data(), Gdk::Colorspace::COLORSPACE_RGB, true, 8, width, height,
         4 * width, [data_ptr] (auto*) { delete data_ptr; });
+}
+
+static Glib::RefPtr<Gtk::GestureLongPress> detect_long_press (Gtk::Widget& target)
+{
+    Glib::RefPtr<Gtk::GestureLongPress> gesture = Gtk::GestureLongPress::create (target);
+    gesture->set_propagation_phase (Gtk::PHASE_BUBBLE);
+    gesture->signal_pressed ().connect ([=] (double x, double y) {pressed = PRESS_LONG;});
+    gesture->set_touch_only (touch_only);
+    return gesture;
 }
 
 StatusNotifierItem::StatusNotifierItem(const Glib::ustring & service)
