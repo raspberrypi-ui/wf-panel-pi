@@ -34,12 +34,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "plug_conf.h"
 
-#ifdef PLUGIN_NAME
-extern void update_spacing (GtkButton *, gpointer data);
-#else
-static void update_spacing (GtkButton *, gpointer) {}
-#endif
-
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */
 /*----------------------------------------------------------------------------*/
@@ -63,6 +57,12 @@ static void update_config (GtkButton *, gpointer data);
 static void close_dialog (GtkButton *, gpointer data);
 static void plugin_closed (GtkButton *, gpointer);
 static void update_plugin_config (GtkWidget *box);
+
+#ifdef PLUGIN_NAME
+extern void update_spacing (GtkButton *, gpointer data);
+#else
+static void update_spacing (GtkButton *, gpointer) {}
+#endif
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
