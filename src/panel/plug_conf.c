@@ -36,6 +36,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #ifdef PLUGIN_NAME
 extern void update_spacing (GtkButton *, gpointer data);
+#else
+static void update_spacing (GtkButton *, gpointer) {}
 #endif
 
 /*----------------------------------------------------------------------------*/
@@ -409,11 +411,7 @@ void plugin_config_dialog (const char *type)
     }
     dlclose (wid_lib);
     if (package) g_free (package);
-#ifdef PLUGIN_NAME
     g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", space == -1 ? G_CALLBACK (update_config) : G_CALLBACK (update_spacing), box);
-#else
-    g_signal_connect (gtk_builder_get_object (builder, "pok_btn"), "clicked", G_CALLBACK (update_config), box);
-#endif
     g_signal_connect (gtk_builder_get_object (builder, "pcancel_btn"), "clicked", G_CALLBACK (close_dialog), box);
     g_signal_connect (cdlg, "destroy", G_CALLBACK (plugin_closed), NULL);
 
