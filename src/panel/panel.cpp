@@ -180,17 +180,19 @@ Panel::Panel (GdkMonitor *mon, bool dock) :
     cplug.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_plugin_configure));
     menu.attach (cplug, 0, 1, 0, 1);
 
+    menu.attach (sep, 0, 1, 1, 2);
+
     conf.set_label (_("Add / Remove Plugins..."));
     conf.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_configure));
-    menu.attach (conf, 0, 1, 1, 2);
+    menu.attach (conf, 0, 1, 2, 3);
 
     notif.set_label (_("Notifications..."));
     notif.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_notify_configure));
-    menu.attach (notif, 0, 1, 2, 3);
+    menu.attach (notif, 0, 1, 3, 4);
 
     appset.set_label (dock ? _("Dock Preferences...") : _("Taskbar Preferences..."));
     appset.signal_activate ().connect (sigc::mem_fun (this, &Panel::do_appearance_set));
-    menu.attach (appset, 0, 1, 3, 4);
+    menu.attach (appset, 0, 1, 4, 5);
 
     menu.attach_to_widget (*window);
     menu.show_all ();

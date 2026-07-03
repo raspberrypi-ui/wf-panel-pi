@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define PANEL_HPP
 
 #include <gtkmm/menu.h>
+#include <gtkmm/separatormenuitem.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/gesturelongpress.h>
 
@@ -56,6 +57,7 @@ class Panel
     Gtk::MenuItem cplug;
     Gtk::MenuItem notif;
     Gtk::MenuItem appset;
+    Gtk::SeparatorMenuItem sep;
     Glib::RefPtr <Gtk::GestureLongPress> gesture;
     sigc::connection draw_connection;
 
