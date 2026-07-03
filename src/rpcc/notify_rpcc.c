@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib/gi18n.h>
 #include <locale.h>
 
+#include "plugin.h"
+
 /*----------------------------------------------------------------------------*/
 /* Macros                                                                     */
 /*----------------------------------------------------------------------------*/
@@ -47,9 +49,6 @@ static GtkWidget *sw_notify, *sw_libnotify, *spin_timeout;
 static gboolean notify, libnotify;
 static int timeout;
 static int write_timer;
-
-extern GtkWidget *main_dlg;
-extern GtkBuilder *builder;
 
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */

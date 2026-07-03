@@ -31,6 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <locale.h>
 #include <dlfcn.h>
 
+#include "plugin.h"
 #include "plug_conf.h"
 
 /*----------------------------------------------------------------------------*/
@@ -59,9 +60,6 @@ static GtkWidget *ladd, *radd, *dadd, *tadd, *rem, *wup, *wdn, *cpl, *ok;
 static int hand[5];
 static gboolean found;
 static GtkTreeIter sp_iter;
-
-extern GtkWidget *main_dlg;
-extern GtkBuilder *builder;
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */

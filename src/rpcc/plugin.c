@@ -25,14 +25,16 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
-#include <fcntl.h>
-
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <locale.h>
 
 extern void init_notify (void);
 extern void init_config (void);
+
+/*----------------------------------------------------------------------------*/
+/* Global data */
+/*----------------------------------------------------------------------------*/
 
 GtkWidget *main_dlg;
 GtkBuilder *builder;
