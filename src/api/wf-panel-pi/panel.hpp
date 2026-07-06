@@ -73,10 +73,10 @@ class Panel
     WfOption <std::string> left_widgets_opt;
     WfOption <std::string> right_widgets_opt;
     WfOption <bool> exclusive;
-    WfOption <bool> gestures_touch_only;
-    WfOption <int> notify_timeout;
-    WfOption <bool> notifications;
-    WfOption <bool> libnotify;
+    WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
+    WfOption <int> notify_timeout {"notify/timeout"};
+    WfOption <bool> notifications {"notify/enable"};
+    WfOption <bool> libnotify {"notify/libnotify"};
 
     void set_exclusive ();
     bool on_keypress_event (GdkEventKey *event);

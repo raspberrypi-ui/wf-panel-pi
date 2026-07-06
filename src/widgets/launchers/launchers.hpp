@@ -43,7 +43,7 @@ class WayfireLauncher : public WayfireWidget
 
     sigc::connection icon_timer;
 
-    WfOption <int> spacing {"panel/launchers_spacing"};
+    WfOption <int> spacing {"launchers/spacing"};
     WfOption <std::string> launchers {"panel/launchers"};
 
     /* plugin */

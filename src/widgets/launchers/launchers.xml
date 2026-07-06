@@ -1,17 +1,10 @@
 <?xml version="1.0"?>
 <wf-panel-pi>
-	<plugin name="panel">
-	<_short>Panel</_short>
+  <plugin name="launchers">
 	<group>
-	<_short>Launchers</_short>
-	<option name="launchers" type="string">
-		<_short>Launchers</_short>
-		<default></default>
-	</option>
-	<option name="launchers_spacing" type="int">
-		<_short>Launcher Spacing</_short>
+	  <option name="spacing" type="int">
 		<default>0</default>
-	</option>
+	  </option>
 	</group>
-	</plugin>
+  </plugin>
 </wf-panel-pi>

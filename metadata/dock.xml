@@ -1,73 +1,37 @@
 <?xml version="1.0"?>
 <wf-panel-pi>
-	<plugin name="dock">
-	<_short>Dock</_short>	
+  <plugin name="dock">
 	<group>
-	<_short>General</_short>
-	<option name="widgets_left" type="string">
-		<_short>Dock Widgets</_short>
+	  <option name="widgets_left" type="string">
 		<default></default>
-	</option>
-	<option name="widgets_right" type="string">
-		<_short>Right Widgets</_short>
+	  </option>
+	  <option name="widgets_right" type="string">
 		<default></default>
-	</option>
-	<option name="icon_size" type="int">
-		<_short>Dock Icon Size</_short>
+	  </option>
+	  <option name="icon_size" type="int">
 		<default>48</default>
-	</option>
-	<option name="layer" type="string">
-		<_short>Dock Layer</_short>
+	  </option>
+	  <option name="layer" type="string">
 		<default>top</default>
-		<desc>
-			<value>top</value>
-			<_name>Top</_name>
-		</desc>
-		<desc>
-			<value>bottom</value>
-			<_name>Bottom</_name>
-		</desc>
-		<desc>
-			<value>overlay</value>
-			<_name>Overlay</_name>
-		</desc>
-		<desc>
-			<value>background</value>
-			<_name>Background</_name>
-		</desc>
-	</option>
-	<option name="monitor" type="string">
-		<_short>Monitor for Dock</_short>
+	  </option>
+	  <option name="monitor" type="string">
 		<default>0</default>
-	</option>
-	<option name="position" type="string">
-		<_short>Dock Position</_short>
+	  </option>
+	  <option name="position" type="string">
 		<default>bottom</default>
-		<desc>
-			<value>top</value>
-			<_name>Top</_name>
-		</desc>
-		<desc>
-			<value>bottom</value>
-			<_name>Bottom</_name>
-		</desc>
-	</option>
-	<option name="exclusive" type="bool">
-		<_short>Dock Exclusive</_short>
+	  </option>
+	  <option name="exclusive" type="bool">
 		<default>false</default>
-	</option>
-	<option name="autohide" type="bool">
-		<_short>Dock Autohide</_short>
+	  </option>
+	  <option name="autohide" type="bool">
 		<default>false</default>
-	</option>
-	<option name="remainder" type="int">
-		<_short>Dock Autohide Remainder</_short>
+	  </option>
+	  <option name="remainder" type="int">
 		<default>5</default>
-	</option>
-	<option name="offset" type="int">
-		<_short>Dock Offset</_short>
+	  </option>
+	  <option name="offset" type="int">
 		<default>5</default>
-	</option>
+	  </option>
 	</group>
-	</plugin>
+  </plugin>
 </wf-panel-pi>

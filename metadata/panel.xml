@@ -1,99 +1,46 @@
 <?xml version="1.0"?>
 <wf-panel-pi>
-	<plugin name="panel">
-	<_short>Panel</_short>	
+  <plugin name="panel">
 	<group>
-	<_short>General</_short>
-	<option name="widgets_left" type="string">
-		<_short>Left Widgets</_short>
+	  <option name="widgets_left" type="string">
 		<default>smenu spacing0 spacing4 launchers spacing8 window-list</default>
-	</option>
-	<option name="widgets_right" type="string">
-		<_short>Right Widgets</_short>
+	  </option>
+	  <option name="widgets_right" type="string">
 		<default>tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek</default>
-	</option>
-	<option name="icon_size" type="int">
-		<_short>Panel Icon Size</_short>
+	  </option>
+	  <option name="icon_size" type="int">
 		<default>32</default>
-	</option>
-	<option name="layer" type="string">
-		<_short>Panel Layer</_short>
+	  </option>
+	  <option name="layer" type="string">
 		<default>bottom</default>
-		<desc>
-			<value>top</value>
-			<_name>Top</_name>
-		</desc>
-		<desc>
-			<value>bottom</value>
-			<_name>Bottom</_name>
-		</desc>
-		<desc>
-			<value>overlay</value>
-			<_name>Overlay</_name>
-		</desc>
-		<desc>
-			<value>background</value>
-			<_name>Background</_name>
-		</desc>
-	</option>
-	<option name="monitor" type="string">
-		<_short>Monitor for Panel</_short>
+	  </option>
+	  <option name="monitor" type="string">
 		<default>0</default>
-	</option>
-	<option name="position" type="string">
-		<_short>Panel Position</_short>
+	  </option>
+	  <option name="position" type="string">
 		<default>top</default>
-		<desc>
-			<value>top</value>
-			<_name>Top</_name>
-		</desc>
-		<desc>
-			<value>bottom</value>
-			<_name>Bottom</_name>
-		</desc>
-	</option>
-	<option name="exclusive" type="bool">
-		<_short>Panel Exclusive</_short>
+	  </option>
+	  <option name="exclusive" type="bool">
 		<default>true</default>
-	</option>
-	<option name="autohide" type="bool">
-		<_short>Panel Autohide</_short>
+	  </option>
+	  <option name="autohide" type="bool">
 		<default>false</default>
-	</option>
-	<option name="remainder" type="int">
-		<_short>Panel Autohide Remainder</_short>
+	  </option>
+	  <option name="remainder" type="int">
 		<default>5</default>
-	</option>
-	<option name="offset" type="int">
-		<_short>Panel Offset</_short>
+	  </option>
+	  <option name="offset" type="int">
 		<default>0</default>
-	</option>
-	</group>
-	<group>
-	<_short>Notifications</_short>
-	<option name="notify_enable" type="bool">
-		<_short>Enable Notifications</_short>
-		<default>true</default>
-	</option>
-	<option name="notify_timeout" type="int">
-		<_short>Notification Timeout</_short>
-		<default>15</default>
-	</option>
-	<option name="notify_libnotify" type="bool">
-		<_short>Enable Libnotify Notifications</_short>
-		<default>true</default>
-	</option>
-	</group>
-	<group>
-	<_short>Misc</_short>
-	<option name="autohide_duration" type="int">
-		<_short>Autohide Duration</_short>
+	  </option>
+	  <option name="autohide_duration" type="int">
 		<default>300</default>
-	</option>
-	<option name="gestures_touch_only" type="bool">
-		<_short>Gestures Touch Only</_short>
+	  </option>
+	  <option name="gestures_touch_only" type="bool">
 		<default>false</default>
-	</option>
+	  </option>
+	  <option name="launchers" type="string">
+		<default></default>
+	  </option>
 	</group>
-	</plugin>
+  </plugin>
 </wf-panel-pi>

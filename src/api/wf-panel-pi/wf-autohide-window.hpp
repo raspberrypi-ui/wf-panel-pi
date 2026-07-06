@@ -58,6 +58,8 @@ class WayfireAutohidingWindow : public Gtk::Window
     WfOption <int> offset;
     WfOption <int> remainder;
     WfOption <bool> autohide;
+    WfOption <int> duration {"panel/autohide_duration"};
+
     wf::animation::simple_animation_t y_position;
 
     int autohide_counter;

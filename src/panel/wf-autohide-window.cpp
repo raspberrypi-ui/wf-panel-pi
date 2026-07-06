@@ -43,7 +43,7 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (GdkMonitor *mon, bool dock) :
     offset {dock ? "dock/offset" : "panel/offset"},
     remainder {dock ? "dock/remainder" : "panel/remainder"},
     autohide {dock ? "dock/autohide" : "panel/autohide"},
-    y_position {WfOption <int> {"panel/autohide_duration"}}
+    y_position {duration}
 {
     this->mon = mon;
 

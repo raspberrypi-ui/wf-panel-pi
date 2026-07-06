@@ -1,22 +1,16 @@
 <?xml version="1.0"?>
 <wf-panel-pi>
-	<plugin name="panel">
-	<_short>Panel</_short>
+  <plugin name="window-list">
 	<group>
-	<_short>Window List</_short>
-	<_short>Window List</_short>
-	<option name="window-list_max_width" type="int">
-		<_short>Window List Maximum Task Width</_short>
+	  <option name="max_width" type="int">
 		<default>200</default>
-	</option>
-	<option name="window-list_spacing" type="int">
-		<_short>Window List Spacing</_short>
+	  </option>
+	  <option name="spacing" type="int">
 		<default>0</default>
-	</option>
-	<option name="window-list_icons_only" type="bool">
-		<_short>Window List Icons Only</_short>
+	  </option>
+	  <option name="icons_only" type="bool">
 		<default>false</default>
-	</option>
+	  </option>
 	</group>
-	</plugin>
+  </plugin>
 </wf-panel-pi>

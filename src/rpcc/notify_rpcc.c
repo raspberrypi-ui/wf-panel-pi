@@ -89,15 +89,15 @@ static void load_wfpanel_settings (void)
     {
         // get data from the key file
         err = NULL;
-        res = g_key_file_get_boolean (kf, "panel", "notify_enable", &err);
+        res = g_key_file_get_boolean (kf, "notify", "enable", &err);
         if (!err) notify = res;
 
         err = NULL;
-        res = g_key_file_get_boolean (kf, "panel", "notify_libnotify", &err);
+        res = g_key_file_get_boolean (kf, "notify", "libnotify", &err);
         if (!err) libnotify = res;
 
         err = NULL;
-        val = g_key_file_get_integer (kf, "panel", "notify_timeout", &err);
+        val = g_key_file_get_integer (kf, "notify", "timeout", &err);
         if (err == NULL && val >= 0 && val <= 60) timeout = val;
     }
     g_key_file_free (kf);
@@ -109,15 +109,15 @@ static void load_wfpanel_settings (void)
     {
         // get data from the key file
         err = NULL;
-        res = g_key_file_get_boolean (kf, "panel", "notify_enable", &err);
+        res = g_key_file_get_boolean (kf, "notify", "enable", &err);
         if (!err) notify = res;
 
         err = NULL;
-        res = g_key_file_get_boolean (kf, "panel", "notify_libnotify", &err);
+        res = g_key_file_get_boolean (kf, "notify", "libnotify", &err);
         if (!err) libnotify = res;
 
         err = NULL;
-        val = g_key_file_get_integer (kf, "panel", "notify_timeout", &err);
+        val = g_key_file_get_integer (kf, "notify", "timeout", &err);
         if (err == NULL && val >= 0 && val <= 60) timeout = val;
     }
     g_key_file_free (kf);
@@ -137,9 +137,9 @@ static void save_wfpanel_settings (void)
     kf = g_key_file_new ();
     g_key_file_load_from_file (kf, user_config_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
-    g_key_file_set_boolean (kf, "panel", "notify_enable", notify);
-    g_key_file_set_boolean (kf, "panel", "notify_libnotify", libnotify);
-    g_key_file_set_integer (kf, "panel", "notify_timeout", timeout);
+    g_key_file_set_boolean (kf, "notify", "enable", notify);
+    g_key_file_set_boolean (kf, "notify", "libnotify", libnotify);
+    g_key_file_set_integer (kf, "notify", "timeout", timeout);
 
     str = g_key_file_to_data (kf, &len, NULL);
     g_file_set_contents (user_config_file, str, len, NULL);

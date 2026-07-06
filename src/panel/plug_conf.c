@@ -50,7 +50,7 @@ GtkWidget *cdlg;
 /* Function prototypes */
 /*----------------------------------------------------------------------------*/
 
-static char *get_config_default (const char *key);
+static char *get_config_default (const char *section, const char *key);
 static gboolean get_config_bool (const char *section, const char *key);
 static int get_config_int (const char *section, const char *key);
 static void update_config (GtkButton *, gpointer data);
@@ -70,7 +70,7 @@ static void update_spacing (GtkButton *, gpointer) {}
 
 /* Read default value for config parameter from XML file */
 
-static char *get_config_default (const char *key)
+static char *get_config_default (const char *section, const char *key)
 {
     char *file, *str;
     xmlDocPtr xDoc;
@@ -78,10 +78,7 @@ static char *get_config_default (const char *key)
     xmlXPathContextPtr xpathCtx;
     xmlChar *cont;
 
-    str = g_strdup (key);
-    *(strchr (str, '_')) = 0;
-    file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", str);
-    g_free (str);
+    file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", section);
 
     // read in data from XML file
     xmlInitParser ();
@@ -170,7 +167,7 @@ static void update_plugin_config (GtkWidget *box)
     GKeyFile *kf;
     GList *children, *elem, *bchildren;
     gsize len;
-    char *strval, *user_file;
+    char *strval, *user_file, *sec, *param;
 
     user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
     kf = g_key_file_new ();
@@ -185,26 +182,31 @@ static void update_plugin_config (GtkWidget *box)
         if (bchildren->next)
         {
             control = GTK_WIDGET (bchildren->next->data);
+            sec = g_strdup (gtk_widget_get_name (control));
+            param = strchr (sec, '/');
+            *param++ = 0;
 
             if (GTK_IS_SWITCH (control))
-                g_key_file_set_boolean (kf, "panel", gtk_widget_get_name (control), gtk_switch_get_active (GTK_SWITCH (control)));
+                g_key_file_set_boolean (kf, sec, param, gtk_switch_get_active (GTK_SWITCH (control)));
             else if (GTK_IS_SPIN_BUTTON (control))
-                g_key_file_set_integer (kf, "panel", gtk_widget_get_name (control), gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
+                g_key_file_set_integer (kf, sec, param, gtk_spin_button_get_value (GTK_SPIN_BUTTON (control)));
             else if (GTK_IS_ENTRY (control))
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), gtk_entry_get_text (GTK_ENTRY (control)));
+                g_key_file_set_string (kf, sec, param, gtk_entry_get_text (GTK_ENTRY (control)));
             else if (GTK_IS_COLOR_BUTTON (control))
             {
                 gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (control), &col);
                 strval = gdk_rgba_to_string (&col);
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
+                g_key_file_set_string (kf, sec, param, strval);
                 g_free (strval);
             }
             else if (GTK_IS_FONT_BUTTON (control))
             {
                 strval = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (control));
-                g_key_file_set_string (kf, "panel", gtk_widget_get_name (control), strval);
+                g_key_file_set_string (kf, sec, param, strval);
                 g_free (strval);
             }
+
+            g_free (sec);
         }
         g_list_free (bchildren);
         elem = elem->next;
@@ -260,7 +262,7 @@ void get_config_string (const char *section, const char *key, char **dest)
     }
     g_key_file_free (kf);
 
-    *dest = get_config_default (key);
+    *dest = get_config_default (section, key);
 }
 
 /* Helper function to determine whether a particular widget has a config table */
@@ -366,25 +368,25 @@ void plugin_config_dialog (const char *type)
             label = gtk_label_new (strval);
             g_free (strval);
             gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-            key = g_strdup_printf ("%s_%s", type, cptr->name);
+            key = g_strdup_printf ("%s/%s", type, cptr->name);
             switch (cptr->type)
             {
                 case CONF_TYPE_BOOL :
                                     control = gtk_switch_new ();
-                                    gtk_switch_set_active (GTK_SWITCH (control), get_config_bool ("panel", key));
+                                    gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (type, cptr->name));
                                     break;
 
                 case CONF_TYPE_INT :
                                     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
                                     if (space == -1)
-                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int ("panel", key));
+                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (type, cptr->name));
                                     else
                                         gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
                                     break;
 
                 case CONF_TYPE_STRING :
                                     control = gtk_entry_new ();
-                                    get_config_string ("panel", key, &strval);
+                                    get_config_string (type, cptr->name, &strval);
                                     gtk_entry_set_text (GTK_ENTRY (control), strval);
                                     g_free (strval);
                                     break;
@@ -392,7 +394,7 @@ void plugin_config_dialog (const char *type)
                 case CONF_TYPE_COLOUR :
                                     control = gtk_color_button_new ();
                                     gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (control), TRUE);
-                                    get_config_string ("panel", key, &strval);
+                                    get_config_string (type, cptr->name, &strval);
                                     gdk_rgba_parse (&col, strval);
                                     g_free (strval);
                                     gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
@@ -404,7 +406,7 @@ void plugin_config_dialog (const char *type)
 
                 case CONF_TYPE_FONT :
                                     control = gtk_font_button_new ();
-                                    get_config_string ("panel", key, &strval);
+                                    get_config_string (type, cptr->name, &strval);
                                     gtk_font_chooser_set_font (GTK_FONT_CHOOSER (control), strval);
                                     g_free (strval);
                                     break;

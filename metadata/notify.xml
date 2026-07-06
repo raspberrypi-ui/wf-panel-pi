@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<wf-panel-pi>
+  <plugin name="notify">
+	<group>  
+	  <option name="enable" type="bool">
+		<default>true</default>
+	  </option>
+	  <option name="timeout" type="int">
+		<default>15</default>
+	  </option>
+	  <option name="libnotify" type="bool">
+		<default>true</default>
+	  </option>
+	</group>
+  </plugin>
+</wf-panel-pi>

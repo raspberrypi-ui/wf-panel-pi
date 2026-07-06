@@ -48,11 +48,7 @@ Panel::Panel (GdkMonitor *mon, bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {dock ? "dock/widgets_right" : "panel/widgets_right"},
-    exclusive {dock ? "dock/exclusive" : "panel/exclusive"},
-    gestures_touch_only {"panel/gestures_touch_only"},
-    notify_timeout {"panel/notify_timeout"},
-    notifications {"panel/notify_enable"},
-    libnotify {"panel/notify_libnotify"}
+    exclusive {dock ? "dock/exclusive" : "panel/exclusive"}
 {
     this->mon = mon;
     this->dock = dock;

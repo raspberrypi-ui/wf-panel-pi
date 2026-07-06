@@ -44,9 +44,9 @@ class WayfireWinlist : public WayfireWidget
 
     sigc::connection icon_timer;
 
-    WfOption <int> spacing {"panel/window-list_spacing"};
-    WfOption <int> max_width {"panel/window-list_max_width"};
-    WfOption <bool> icons_only {"panel/window-list_icons_only"};
+    WfOption <int> spacing {"window-list/spacing"};
+    WfOption <int> max_width {"window-list/max_width"};
+    WfOption <bool> icons_only {"window-list/icons_only"};
 
     /* plugin */
     WinlistPlugin *wl;
