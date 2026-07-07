@@ -301,6 +301,7 @@ bool Panel::on_button_release_event (GdkEventButton *event)
         cplug.set_name ("gtkmm");
         cplug.set_sensitive (false);
         cplug.hide ();
+        sep.hide ();
 
         auto show_menu = [&] (Gtk::Widget *plugin)
         {
@@ -316,7 +317,11 @@ bool Panel::on_button_release_event (GdkEventButton *event)
                     if (can_configure (pname.c_str (), &title)) cplug.set_sensitive (true);
                     cplug.set_label (title);
                     g_free (title);
-                    if (pname != "spacing") cplug.show ();
+                    if (pname != "spacing")
+                    {
+                        cplug.show ();
+                        sep.show ();
+                    }
                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
                     found = true;
                 }
