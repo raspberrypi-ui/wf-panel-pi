@@ -34,7 +34,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gtk-layer-shell.h>
 
-#include "gtk-utils.hpp"
 #include "spacer.hpp"
 
 extern "C" {
@@ -193,12 +192,18 @@ Panel::Panel (GdkMonitor *mon, bool dock) :
     menu.attach_to_widget (*window);
     menu.show_all ();
 
-    // Setup window event handlers
+    // Set up window event handlers
     window->signal_button_press_event ().connect (sigc::mem_fun (this, &Panel::on_button_press_event));
     window->signal_button_release_event ().connect (sigc::mem_fun (this, &Panel::on_button_release_event));
     window->signal_key_press_event ().connect (sigc::mem_fun (this, &Panel::on_keypress_event));
     window->signal_delete_event ().connect (sigc::mem_fun (this, &Panel::on_delete));
-    gesture = add_longpress_default (*window);
+
+    // Set up long press handler
+    gesture = Gtk::GestureLongPress::create (*window);
+    gesture->set_propagation_phase (Gtk::PHASE_BUBBLE);
+    gesture->signal_pressed ().connect ([=] (double x, double y) {pressed = PRESS_LONG; press_x = x; press_y = y;});
+    gesture->signal_end ().connect ([=] (GdkEventSequence *) {if (pressed == PRESS_LONG) pass_right_click (GTK_WIDGET (window->gobj ()), press_x, press_y);});
+    gesture->set_touch_only (touch_only);
 
     // Set up parameter callbacks
     icon_size.set_callback ([=] { update_widget_icons (); });

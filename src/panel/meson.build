@@ -1,10 +1,6 @@
 panel_sources = files(
   'panel.cpp',
-  'spacer.cpp'
-)
-
-util_sources = files(
-  'gtk-utils.cpp',
+  'spacer.cpp',
   'panel-app.cpp',
   'wf-autohide-window.cpp',
   'plug_conf.c',
@@ -35,7 +31,7 @@ libxml2 = dependency('libxml-2.0')
 giomm = dependency('giomm-2.4')
 panel_deps = [ gtklayershell, udev, input, evdev, libxml2, giomm ]
 
-executable('wf-panel-pi', panel_sources + util_sources + config_sources,
+executable('wf-panel-pi', panel_sources + config_sources,
         dependencies: deps + panel_deps,
         install: true,
         export_dynamic: true,
