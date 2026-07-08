@@ -1,3 +1,9 @@
+wf-panel-pi (1.18) trixie; urgency=medium
+
+  * Move add/remove widgets to Control Centre, new XML, remove gtk-utils
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 08 Jul 2026 14:19:00 +0100
+
 wf-panel-pi (1.17) trixie; urgency=medium
 
   * Force taskbar to be exclusive if set

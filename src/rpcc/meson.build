@@ -30,8 +30,6 @@ deps = [ gtk, gtkmm, evdev, libxml2, gtklayershell ]
 presource_dir = join_paths(share_dir, 'rpcc')
 pui_dir = join_paths(presource_dir, 'ui')
 
-incdir = include_directories('../api/wf-panel-pi')
-
 proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"'
 
 shared_module(plugin_name, sources + config_sources, dependencies: deps, install: true,
