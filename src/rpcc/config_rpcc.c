@@ -60,6 +60,9 @@ static GtkWidget *ladd, *radd, *dadd, *tadd, *rem, *wup, *wdn, *cpl, *ok, *nb;
 static int hand[5];
 static gboolean found;
 static GtkTreeIter sp_iter;
+static GtkGesture *gesture[5];
+static gboolean pressed;
+static double press_x, press_y;
 
 /*----------------------------------------------------------------------------*/
 /* Function prototypes */
@@ -85,6 +88,11 @@ static void update_buttons (void);
 static gboolean filter_widgets (GtkTreeModel *model, GtkTreeIter *iter, gpointer data);
 static void unselect (GtkTreeView *, gpointer data);
 static void close_window (GtkButton *, gpointer);
+static GtkWidget *avail_menu (int ref, gdouble x, gdouble y);
+static GtkWidget *panel_menu (int ref, gdouble x, gdouble y);
+static gboolean popup_button (GtkWidget *, GdkEventButton event, int ref);
+static void gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, gpointer);
+static void gesture_end (GtkGestureLongPress *, GdkEventSequence *, int ref);
 
 /*----------------------------------------------------------------------------*/
 /* Private functions */
@@ -680,9 +688,9 @@ static void close_window (GtkButton *, gpointer)
     write_config ();
 }
 
-/* Popup menu handlers */
+/* Popup menus */
 
-static gboolean avail_button (GtkWidget *tv, GdkEventButton event, int ref)
+static GtkWidget *avail_menu (int ref, gdouble x, gdouble y)
 {
     GtkWidget *menu, *item;
     GtkTreePath *path;
@@ -691,38 +699,32 @@ static gboolean avail_button (GtkWidget *tv, GdkEventButton event, int ref)
     gboolean split = FALSE;
     int page = gtk_notebook_get_current_page (GTK_NOTEBOOK (nb));
 
-    if (event.type == GDK_BUTTON_PRESS && event.button == 3)
+    menu = gtk_menu_new ();
+
+    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tv[ref]), x, y, &path, NULL, NULL, NULL))
     {
-        menu = gtk_menu_new ();
-
-        if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tv), event.x, event.y, &path, NULL, NULL, NULL))
-        {
-            gtk_tree_model_get_iter (sort[ref], &iter, path);
-            gtk_tree_path_free (path);
-            gtk_tree_model_get (sort[ref], &iter, COL_ID, &type, -1);
-            if (!g_strcmp0 (type, "split")) split = TRUE;
-            g_free (type);
-        }
-
-        item = gtk_menu_item_new_with_label (page ? _("Add to Dock") : _("Add to Left"));
-        g_signal_connect (item, "activate", G_CALLBACK (add_widget), page ? (void *) DOCK : (void *) PAN_L);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        if (split) gtk_widget_set_sensitive (item, FALSE);
-
-        item = gtk_menu_item_new_with_label (page ? _("Add to Tray") : _("Add to Right"));
-        g_signal_connect (item, "activate", G_CALLBACK (add_widget), page ? (void *) DOCKT : (void *) PAN_R);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        if (split && !page) gtk_widget_set_sensitive (item, FALSE);
-
-        gtk_widget_show_all (menu);
-        gtk_menu_popup_at_pointer (GTK_MENU (menu), gtk_get_current_event ());
-
-        return FALSE;
+        gtk_tree_model_get_iter (sort[ref], &iter, path);
+        gtk_tree_path_free (path);
+        gtk_tree_model_get (sort[ref], &iter, COL_ID, &type, -1);
+        if (!g_strcmp0 (type, "split")) split = TRUE;
+        g_free (type);
     }
-    return FALSE;
+
+    item = gtk_menu_item_new_with_label (page ? _("Add to Dock") : _("Add to Left"));
+    g_signal_connect (item, "activate", G_CALLBACK (add_widget), page ? (void *) DOCK : (void *) PAN_L);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    if (split) gtk_widget_set_sensitive (item, FALSE);
+
+    item = gtk_menu_item_new_with_label (page ? _("Add to Tray") : _("Add to Right"));
+    g_signal_connect (item, "activate", G_CALLBACK (add_widget), page ? (void *) DOCKT : (void *) PAN_R);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    if (split && !page) gtk_widget_set_sensitive (item, FALSE);
+
+    gtk_widget_show_all (menu);
+    return menu;
 }
 
-static gboolean panel_button (GtkWidget *tv, GdkEventButton event, int ref)
+static GtkWidget *panel_menu (int ref, gdouble x, gdouble y)
 {
     GtkWidget *menu, *item;
     GtkTreePath *path;
@@ -730,47 +732,75 @@ static gboolean panel_button (GtkWidget *tv, GdkEventButton event, int ref)
     int nitems, pos;
     gboolean conf = FALSE;
 
+    menu = gtk_menu_new ();
+
+    if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tv[ref]), x, y, &path, NULL, NULL, NULL))
+    {
+        gtk_tree_model_get_iter (sort[ref], &iter, path);
+        pos = *(gtk_tree_path_get_indices (path));
+        gtk_tree_path_free (path);
+        gtk_tree_model_get (sort[ref], &iter, COL_CONFIG, &conf, -1);
+    }
+
+    nitems = gtk_tree_model_iter_n_children (filt[ref], NULL);
+
+    item = gtk_menu_item_new_with_label (_("Remove"));
+    g_signal_connect (item, "activate", G_CALLBACK (remove_widget), NULL);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+
+    item = gtk_menu_item_new_with_label (_("Move Left"));
+    g_signal_connect (item, "activate", G_CALLBACK (move_widget), (void *) 1);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    if (pos == 0) gtk_widget_set_sensitive (item, FALSE);
+
+    item = gtk_menu_item_new_with_label (_("Move Right"));
+    g_signal_connect (item, "activate", G_CALLBACK (move_widget), (void *) -1);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    if (pos >= nitems - 1) gtk_widget_set_sensitive (item, FALSE);
+
+    item = gtk_menu_item_new_with_label (_("Configure..."));
+    g_signal_connect (item, "activate", G_CALLBACK (configure_plugin), NULL);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    if (!conf) gtk_widget_set_sensitive (item, FALSE);
+
+    gtk_widget_show_all (menu);
+
+    return menu;
+}
+
+static gboolean popup_button (GtkWidget *, GdkEventButton event, int ref)
+{
+    GtkWidget *menu;
     if (event.type == GDK_BUTTON_PRESS && event.button == 3)
     {
-        menu = gtk_menu_new ();
-
-        if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tv), event.x, event.y, &path, NULL, NULL, NULL))
-        {
-            gtk_tree_model_get_iter (sort[ref], &iter, path);
-            pos = *(gtk_tree_path_get_indices (path));
-            gtk_tree_path_free (path);
-            gtk_tree_model_get (sort[ref], &iter, COL_CONFIG, &conf, -1);
-        }
-
-        nitems = gtk_tree_model_iter_n_children (filt[ref], NULL);
-
-        item = gtk_menu_item_new_with_label (_("Remove"));
-        g_signal_connect (item, "activate", G_CALLBACK (remove_widget), NULL);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-
-        item = gtk_menu_item_new_with_label (_("Move Left"));
-        g_signal_connect (item, "activate", G_CALLBACK (move_widget), (void *) 1);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        if (pos == 0) gtk_widget_set_sensitive (item, FALSE);
-
-        item = gtk_menu_item_new_with_label (_("Move Right"));
-        g_signal_connect (item, "activate", G_CALLBACK (move_widget), (void *) -1);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        if (pos >= nitems - 1) gtk_widget_set_sensitive (item, FALSE);
-
-        item = gtk_menu_item_new_with_label (_("Configure..."));
-        g_signal_connect (item, "activate", G_CALLBACK (configure_plugin), NULL);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        if (!conf) gtk_widget_set_sensitive (item, FALSE);
-
-        gtk_widget_show_all (menu);
+        menu = ref == AVAIL ? avail_menu (ref, event.x, event.y) : panel_menu (ref, event.x, event.y);
         gtk_menu_popup_at_pointer (GTK_MENU (menu), gtk_get_current_event ());
-
         return FALSE;
     }
     return FALSE;
 }
 
+static void gesture_pressed (GtkGestureLongPress *, gdouble x, gdouble y, gpointer)
+{
+    pressed = TRUE;
+    press_x = x;
+    press_y = y;
+}
+
+static void gesture_end (GtkGestureLongPress *, GdkEventSequence *, int ref)
+{
+    GtkWidget *menu;
+    int x, y;
+
+    if (pressed)
+    {
+        gtk_tree_view_convert_widget_to_bin_window_coords (GTK_TREE_VIEW (tv[ref]), press_x, press_y, &x, &y);
+        menu = ref == AVAIL ? avail_menu (ref, x, y) : panel_menu (ref, x, y);
+        GdkRectangle rect = {press_x, press_y, 0, 0};
+        gtk_menu_popup_at_rect (GTK_MENU (menu), gtk_widget_get_window (tv[ref]), &rect, GDK_GRAVITY_CENTER, GDK_GRAVITY_NORTH_WEST, NULL);
+    }
+    pressed = FALSE;
+}
 
 /*----------------------------------------------------------------------------*/
 /* Public API */
@@ -836,13 +866,20 @@ void init_config (void)
 
     g_signal_connect (cpl, "clicked", G_CALLBACK (configure_plugin), NULL);
 
-    g_signal_connect (tv[AVAIL], "button-press-event", G_CALLBACK (avail_button), (void *) AVAIL);
-    g_signal_connect (tv[PAN_L], "button-press-event", G_CALLBACK (panel_button), (void *) PAN_L);
-    g_signal_connect (tv[PAN_R], "button-press-event", G_CALLBACK (panel_button), (void *) PAN_R);
-    g_signal_connect (tv[DOCK], "button-press-event", G_CALLBACK (panel_button), (void *) DOCK);
-    g_signal_connect (tv[DOCKT], "button-press-event", G_CALLBACK (panel_button), (void *) DOCKT);
-
     g_signal_connect (ok, "clicked", G_CALLBACK (close_window), NULL);
+
+    /* set up right-click and long press */
+    for (i = 0; i < 5; i++)
+    {
+        g_signal_connect (tv[i], "button-press-event", G_CALLBACK (popup_button), (void *) (long) i);
+
+        gesture[i] = gtk_gesture_long_press_new (tv[i]);
+        gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture[i]), FALSE);
+        g_signal_connect (gesture[i], "pressed", G_CALLBACK (gesture_pressed), NULL);
+        g_signal_connect (gesture[i], "end", G_CALLBACK (gesture_end), (void *) (long) i);
+        gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture[i]), GTK_PHASE_TARGET);
+    }
+    pressed = FALSE;
 
     update_buttons ();
 }
