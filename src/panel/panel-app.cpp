@@ -148,8 +148,8 @@ void PanelApp::do_reload_config ()
     if (panel) panel->handle_config_reload ();
     if (dock) dock->handle_config_reload ();
 
-    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
     dir = g_path_get_dirname (get_config_file ().c_str ());
+    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
     inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
     g_free (dir);
 }
