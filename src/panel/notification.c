@@ -418,15 +418,7 @@ static void show_message (NotifyWindow *nw, char *str)
     NotifyWindow *nwl;
     GdkPixbuf *pixbuf;
 
-    /*
-     * In order to get a window which looks exactly like a system tooltip, client-side decoration
-     * must be requested for it. This cannot be done by any public API call in GTK+3.24, but there is an
-     * internal call _gtk_window_request_csd which sets the csd_requested flag in the class' private data.
-     * The code below is compatible with a hacked GTK+3 library which uses GTK_WINDOW_POPUP + 1 as the type
-     * for a window with CSD requested. It should also not fall over with the standard library...
-     */
-    nw->popup = gtk_window_new (GTK_WINDOW_POPUP + 1);
-    if (!nw->popup) nw->popup = gtk_window_new (GTK_WINDOW_POPUP);
+    nw->popup = gtk_window_new (GTK_WINDOW_POPUP);
     gtk_window_set_type_hint (GTK_WINDOW (nw->popup), GDK_WINDOW_TYPE_HINT_NOTIFICATION);
     gtk_window_set_resizable (GTK_WINDOW (nw->popup), FALSE);
 
