@@ -229,7 +229,7 @@ static void update_plugin_config (GtkWidget *box)
 
 void get_config_string (const char *section, const char *key, char **dest)
 {
-    char *str;
+    char *str, *leg;
     GKeyFile *kf;
     GError *err;
 
@@ -247,6 +247,19 @@ void get_config_string (const char *section, const char *key, char **dest)
         g_key_file_free (kf);
         return;
     }
+
+    // read old style XML in case this is a legacy file
+    err = NULL;
+    leg = g_strdup_printf ("%s_%s", section, key);
+    str = g_key_file_get_string (kf, "panel", leg, &err);
+    g_free (leg);
+    if (err == NULL && str)
+    {
+        *dest = str;
+        g_key_file_free (kf);
+        return;
+    }
+
     g_key_file_free (kf);
 
     kf = g_key_file_new ();
