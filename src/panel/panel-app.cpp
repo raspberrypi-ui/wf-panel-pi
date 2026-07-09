@@ -93,12 +93,14 @@ void PanelApp::on_activate ()
     // create a config file to track if it doesn't exist
     char *dir = g_path_get_dirname (get_config_file ().c_str ());
     g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
-    g_free (dir);
     close (open (get_config_file ().c_str (), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
 
     // setup config file tracking
     inotify_fd = inotify_init ();
     Glib::signal_io ().connect (sigc::mem_fun (this, &PanelApp::handle_inotify_event), inotify_fd, Glib::IO_IN | Glib::IO_HUP);
+    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
+    inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
+    g_free (dir);
 
     // load initial config
     std::vector <std::string> xmldirs (1, METADATA_DIR);
@@ -106,7 +108,6 @@ void PanelApp::on_activate ()
         config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wizard.ini", get_config_file ());
     else
         config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
-    do_reload_config ();
 
     // setup monitor tracking
     display->signal_monitor_added ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
@@ -141,7 +142,7 @@ std::string PanelApp::get_config_file ()
 void PanelApp::do_reload_config ()
 {
     char *dir;
-    
+
     wf::config::load_configuration_options_from_file (config, get_config_file ());
 
     if (panel) panel->handle_config_reload ();
