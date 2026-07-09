@@ -213,6 +213,9 @@ enum option_parsing_result
     OPTION_PARSED_INVALID_CONTENTS,
 };
 
+static std::shared_ptr<wf::config::section_t> check_section(
+    wf::config::config_manager_t& config, const line_t& line);
+
 /**
  * Try to parse an option line.
  * If the option line is valid, the corresponding option is modified or added
@@ -221,7 +224,7 @@ enum option_parsing_result
  * @return The parse status of the line.
  */
 static option_parsing_result parse_option_line(
-    wf::config::section_t& current_section, const line_t& line,
+    wf::config::config_manager_t& config, wf::config::section_t& current_section, const line_t& line,
     std::set<std::shared_ptr<wf::config::option_base_t>>& reloaded)
 {
     size_t equal_sign = line.find_first_of("=");
@@ -234,6 +237,20 @@ static option_parsing_result parse_option_line(
     auto value = ignore_leading_trailing_whitespace(line.substr(equal_sign + 1));
 
     auto option = current_section.get_option_or(name);
+
+    // if not found, check to see if it exists as the new format version
+    if (!option)
+    {
+        size_t splitter = name.find_first_of("_");
+        if (splitter != std::string::npos)
+        {
+            auto sect = "[" + name.substr(0, splitter) + "]";
+            auto param = name.substr(splitter + 1);
+            auto newsec = check_section (config, sect);
+            if (newsec) option = newsec->get_option_or (param);
+        }
+    }
+
     if (!option)
     {
         using namespace wf;
@@ -328,7 +345,7 @@ void wf::config::load_configuration_options_from_string(
             continue;
         }
 
-        auto status = parse_option_line(*current_section, line, reloaded);
+        auto status = parse_option_line(config, *current_section, line, reloaded);
         switch (status)
         {
           case OPTION_PARSED_WRONG_FORMAT:
