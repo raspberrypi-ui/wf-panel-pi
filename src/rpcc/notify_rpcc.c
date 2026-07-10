@@ -107,7 +107,19 @@ static void load_wfpanel_settings (void)
     kf = g_key_file_new ();
     if (g_key_file_load_from_file (kf, user_config_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL))
     {
-        // get data from the key file
+        // get data from the key file - try the old values first and then override with the new ones if present
+        err = NULL;
+        res = g_key_file_get_boolean (kf, "panel", "notify_enable", &err);
+        if (!err) notify = res;
+
+        err = NULL;
+        res = g_key_file_get_boolean (kf, "panel", "notify_libnotify", &err);
+        if (!err) libnotify = res;
+
+        err = NULL;
+        val = g_key_file_get_integer (kf, "panel", "notify_timeout", &err);
+        if (err == NULL && val >= 0 && val <= 60) timeout = val;
+
         err = NULL;
         res = g_key_file_get_boolean (kf, "notify", "enable", &err);
         if (!err) notify = res;
@@ -137,6 +149,12 @@ static void save_wfpanel_settings (void)
     kf = g_key_file_new ();
     g_key_file_load_from_file (kf, user_config_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
 
+    // remove legacy values
+    g_key_file_remove_key (kf, "panel", "notify_enable", NULL);
+    g_key_file_remove_key (kf, "panel", "notify_libnotify", NULL);
+    g_key_file_remove_key (kf, "panel", "notify_timeout", NULL);
+
+    // set new values
     g_key_file_set_boolean (kf, "notify", "enable", notify);
     g_key_file_set_boolean (kf, "notify", "libnotify", libnotify);
     g_key_file_set_integer (kf, "notify", "timeout", timeout);
