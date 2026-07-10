@@ -167,7 +167,7 @@ static void update_plugin_config (GtkWidget *box)
     GKeyFile *kf;
     GList *children, *elem, *bchildren;
     gsize len;
-    char *strval, *user_file, *sec, *param;
+    char *strval, *user_file, *sec, *param, *leg;
 
     user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
     kf = g_key_file_new ();
@@ -204,6 +204,14 @@ static void update_plugin_config (GtkWidget *box)
                 strval = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (control));
                 g_key_file_set_string (kf, sec, param, strval);
                 g_free (strval);
+            }
+
+            // delete any parameters from old XML
+            if (g_strcmp0 (sec, "panel"))
+            {
+                leg = g_strdup_printf ("%s_%s", sec, param);
+                g_key_file_remove_key (kf, "panel", leg, NULL);
+                g_free (leg);
             }
 
             g_free (sec);
@@ -249,17 +257,19 @@ void get_config_string (const char *section, const char *key, char **dest)
     }
 
     // read old style XML in case this is a legacy file
-    err = NULL;
-    leg = g_strdup_printf ("%s_%s", section, key);
-    str = g_key_file_get_string (kf, "panel", leg, &err);
-    g_free (leg);
-    if (err == NULL && str)
+    if (g_strcmp0 (section, "panel"))
     {
-        *dest = str;
-        g_key_file_free (kf);
-        return;
+        err = NULL;
+        leg = g_strdup_printf ("%s_%s", section, key);
+        str = g_key_file_get_string (kf, "panel", leg, &err);
+        g_free (leg);
+        if (err == NULL && str)
+        {
+            *dest = str;
+            g_key_file_free (kf);
+            return;
+        }
     }
-
     g_key_file_free (kf);
 
     kf = g_key_file_new ();
