@@ -376,17 +376,17 @@ void Panel::do_appearance_set ()
 
 // Widget loading
 
-std::unique_ptr <WayfireWidget> Panel::widget_from_name (const char *name)
+std::unique_ptr <PanelWidget> Panel::widget_from_name (const char *name)
 {
     if (strstr (name, "spacing"))
     {
         int width;
         if (sscanf (name + 7, "%d", &width) != 1 || width < 0) return nullptr;
-        else return std::unique_ptr <WayfireWidget> (new WayfireSpacing (width));
+        else return std::unique_ptr <PanelWidget> (new WidgetSpacing (width));
     }
 
     if (!g_strcmp0 (name, "split"))
-        return std::unique_ptr <WayfireWidget> (new WayfireSplit ());
+        return std::unique_ptr <PanelWidget> (new WidgetSplit ());
 
     if (g_strcmp0 (name, "none"))
     {
@@ -396,13 +396,13 @@ std::unique_ptr <WayfireWidget> Panel::widget_from_name (const char *name)
         if (wid)
         {
             create_t *create_widget = (create_t *) dlsym (wid, "create");
-            return std::unique_ptr <WayfireWidget> (create_widget ());
+            return std::unique_ptr <PanelWidget> (create_widget ());
         }
     }
     return nullptr;
 }
 
-void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <WayfireWidget>>& container, Gtk::HBox& box)
+void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <PanelWidget>>& container, Gtk::HBox& box)
 {
     PanelApp::rescan_xml_directory ();
 

@@ -5,7 +5,7 @@
 
 #include <giomm.h>
 
-class WayfireStatusNotifier;
+class WidgetStatusNotifier;
 
 class StatusNotifierHost
 {
@@ -18,13 +18,13 @@ class StatusNotifierHost
     guint watcher_id;
     Glib::RefPtr<Gio::DBus::Proxy> watcher_proxy;
 
-    WayfireStatusNotifier *tray;
+    WidgetStatusNotifier *tray;
 
     void on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & connection, const Glib::ustring & name);
     void register_host(const Glib::RefPtr<Gio::AsyncResult> & result);
 
   public:
-    explicit StatusNotifierHost(WayfireStatusNotifier *tray);
+    explicit StatusNotifierHost(WidgetStatusNotifier *tray);
     ~StatusNotifierHost();
 };
 

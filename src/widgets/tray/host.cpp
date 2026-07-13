@@ -2,7 +2,7 @@
 #include "tray.hpp"
 #include "watcher.hpp"
 
-StatusNotifierHost::StatusNotifierHost(WayfireStatusNotifier *tray) :
+StatusNotifierHost::StatusNotifierHost(WidgetStatusNotifier *tray) :
     dbus_name_id(Gio::DBus::own_name(Gio::DBus::BUS_TYPE_SESSION,
         "org.kde.StatusNotifierHost-" + std::to_string(getpid()) + "-" +
         std::to_string(++hosts_counter),

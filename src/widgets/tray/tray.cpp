@@ -1,8 +1,8 @@
 #include "tray.hpp"
 
 extern "C" {
-    WayfireWidget *create () { return new WayfireStatusNotifier; }
-    void destroy (WayfireWidget *w) { delete w; }
+    PanelWidget *create () { return new WidgetStatusNotifier; }
+    void destroy (PanelWidget *w) { delete w; }
 
     static constexpr conf_table_t conf_table[3] = {
         {CONF_TYPE_INT,     "smooth_scrolling_threshold",   N_("Smooth scrolling threshold"),   NULL},
@@ -14,14 +14,14 @@ extern "C" {
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 
-void WayfireStatusNotifier::init(Gtk::HBox *container)
+void WidgetStatusNotifier::init(Gtk::HBox *container)
 {
     icons_hbox.set_name (PLUGIN_NAME);
     icons_hbox.set_spacing(5);
     container->add(icons_hbox);
 }
 
-void WayfireStatusNotifier::add_item(const Glib::ustring & service)
+void WidgetStatusNotifier::add_item(const Glib::ustring & service)
 {
     if (items.count(service) != 0)
     {
@@ -33,7 +33,7 @@ void WayfireStatusNotifier::add_item(const Glib::ustring & service)
     icons_hbox.show_all();
 }
 
-void WayfireStatusNotifier::remove_item(const Glib::ustring & service)
+void WidgetStatusNotifier::remove_item(const Glib::ustring & service)
 {
     items.erase(service);
     if (items.count(service) == 0) icons_hbox.hide();

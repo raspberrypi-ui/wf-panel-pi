@@ -5,29 +5,29 @@
 #include <gtkmm/drawingarea.h>
 
 
-class WayfireSpacing : public WayfireWidget
+class WidgetSpacing : public PanelWidget
 {
     Gtk::HBox box;
     Gtk::DrawingArea da;
 
   public:
-    WayfireSpacing(int pixels);
+    WidgetSpacing(int pixels);
     bool draw(const Cairo::RefPtr<Cairo::Context>& cr);
 
     virtual void init(Gtk::HBox *container);
-    virtual ~WayfireSpacing()
+    virtual ~WidgetSpacing()
     {}
 };
 
-class WayfireSplit : public WayfireWidget
+class WidgetSplit : public PanelWidget
 {
     Gtk::HBox box;
 
   public:
-    WayfireSplit(void);
+    WidgetSplit(void);
 
     virtual void init(Gtk::HBox *container);
-    virtual ~WayfireSplit()
+    virtual ~WidgetSplit()
     {}
 };
 

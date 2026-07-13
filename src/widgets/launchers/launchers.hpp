@@ -37,7 +37,7 @@ extern "C" {
 #include "launchers.h"
 }
 
-class WayfireLauncher : public WayfireWidget
+class WidgetLauncher : public PanelWidget
 {
     std::unique_ptr <Gtk::HBox> plugin;
 
@@ -53,7 +53,7 @@ class WayfireLauncher : public WayfireWidget
 
     void init (Gtk::HBox *container) override;
     void command (const char *cmd) override;
-    virtual ~WayfireLauncher ();
+    virtual ~WidgetLauncher ();
     bool set_icon (void);
     void read_settings (void);
     void settings_changed_cb (void);

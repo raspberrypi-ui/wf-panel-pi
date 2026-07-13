@@ -10,10 +10,10 @@ extern "C" {
 #include "plug_conf.h"
 }
 
-class WayfireWidget
+class PanelWidget
 {
   public:
-    std::string widget_name; // for WayfirePanel use, widgets shouldn't change it
+    std::string widget_name;
 
     virtual void init (Gtk::HBox *container) = 0;
 
@@ -26,11 +26,11 @@ class WayfireWidget
     virtual bool set_icon ()
     { return false; }
 
-    virtual ~WayfireWidget ()
+    virtual ~PanelWidget ()
     {}
 };
 
-typedef WayfireWidget *create_t ();
-typedef void destroy_t (WayfireWidget *);
+typedef PanelWidget *create_t ();
+typedef void destroy_t (PanelWidget *);
 
 #endif /* end of include guard: WIDGET_HPP */

@@ -29,38 +29,38 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "launchers.hpp"
 
 extern "C" {
-    WayfireWidget *create () { return new WayfireLauncher; }
-    void destroy (WayfireWidget *w) { delete w; }
+    PanelWidget *create () { return new WidgetLauncher; }
+    void destroy (PanelWidget *w) { delete w; }
 
     const conf_table_t *config_params (void) { return conf_table; };
     const char *display_name (void) { return PLUGIN_TITLE; };
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 
-void WayfireLauncher::command (const char *cmd)
+void WidgetLauncher::command (const char *cmd)
 {
     launcher_control_msg (lch, cmd);
 }
 
-bool WayfireLauncher::set_icon (void)
+bool WidgetLauncher::set_icon (void)
 {
     launcher_update_display (lch);
     return false;
 }
 
-void WayfireLauncher::read_settings (void)
+void WidgetLauncher::read_settings (void)
 {
     lch->spacing = spacing;
     lch->launchers = g_strdup (((std::string) launchers).c_str());
 }
 
-void WayfireLauncher::settings_changed_cb (void)
+void WidgetLauncher::settings_changed_cb (void)
 {
     read_settings ();
     launcher_update_display (lch);
 }
 
-void WayfireLauncher::init (Gtk::HBox *container)
+void WidgetLauncher::init (Gtk::HBox *container)
 {
     /* Create the button */
     plugin = std::make_unique <Gtk::HBox> ();
@@ -70,18 +70,18 @@ void WayfireLauncher::init (Gtk::HBox *container)
     /* Setup structure */
     lch = g_new0 (LauncherPlugin, 1);
     lch->plugin = (GtkWidget *)((*plugin).gobj());
-    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WayfireLauncher::set_icon));
+    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WidgetLauncher::set_icon));
 
     /* Initialise the plugin */
     read_settings ();
     launcher_init (lch);
 
     /* Setup callbacks */
-    spacing.set_callback (sigc::mem_fun (*this, &WayfireLauncher::settings_changed_cb));
-    launchers.set_callback (sigc::mem_fun (*this, &WayfireLauncher::settings_changed_cb));
+    spacing.set_callback (sigc::mem_fun (*this, &WidgetLauncher::settings_changed_cb));
+    launchers.set_callback (sigc::mem_fun (*this, &WidgetLauncher::settings_changed_cb));
 }
 
-WayfireLauncher::~WayfireLauncher()
+WidgetLauncher::~WidgetLauncher()
 {
     icon_timer.disconnect ();
     launcher_destructor (lch);

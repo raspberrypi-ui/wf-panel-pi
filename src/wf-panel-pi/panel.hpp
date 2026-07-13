@@ -61,7 +61,7 @@ class Panel
     Glib::RefPtr <Gtk::GestureLongPress> gesture;
     sigc::connection draw_connection;
 
-    std::vector <std::unique_ptr <WayfireWidget>> left_widgets, right_widgets;
+    std::vector <std::unique_ptr <PanelWidget>> left_widgets, right_widgets;
 
     GdkMonitor *mon;
 
@@ -87,8 +87,8 @@ class Panel
     void do_plugin_configure ();
     void do_notify_configure ();
     void do_appearance_set ();
-    std::unique_ptr<WayfireWidget> widget_from_name (const char *name);
-    void reload_widgets (std::string list, std::vector <std::unique_ptr <WayfireWidget>>& container, Gtk::HBox& box);
+    std::unique_ptr<PanelWidget> widget_from_name (const char *name);
+    void reload_widgets (std::string list, std::vector <std::unique_ptr <PanelWidget>>& container, Gtk::HBox& box);
     void init_widgets ();
     void init_notify ();
     void update_widget_icons ();

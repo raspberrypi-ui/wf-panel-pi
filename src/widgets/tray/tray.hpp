@@ -6,7 +6,7 @@
 
 #include <widget.hpp>
 
-class WayfireStatusNotifier : public WayfireWidget
+class WidgetStatusNotifier : public PanelWidget
 {
   private:
     StatusNotifierHost host = StatusNotifierHost(this);

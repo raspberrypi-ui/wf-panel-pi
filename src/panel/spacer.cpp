@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "spacer.hpp"
 
-WayfireSpacing::WayfireSpacing (int pixels)
+WidgetSpacing::WidgetSpacing (int pixels)
 {
     if (pixels)
         box.set_size_request (pixels, 1);
@@ -40,18 +40,18 @@ WayfireSpacing::WayfireSpacing (int pixels)
         box.set_size_request (1, -1);
         box.pack_start (da);
 
-        da.signal_draw ().connect (sigc::mem_fun (*this, &WayfireSpacing::draw));
+        da.signal_draw ().connect (sigc::mem_fun (*this, &WidgetSpacing::draw));
     }
 }
 
-void WayfireSpacing::init (Gtk::HBox *container)
+void WidgetSpacing::init (Gtk::HBox *container)
 {
     box.set_name ("spacing");
     container->pack_start (box, false, false);
     box.show_all ();
 }
 
-bool WayfireSpacing::draw (const Cairo::RefPtr<Cairo::Context>& cr)
+bool WidgetSpacing::draw (const Cairo::RefPtr<Cairo::Context>& cr)
 {
     Gtk::Allocation palloc, alloc = box.get_allocation ();
     Gtk::Widget *w = dynamic_cast<Gtk::Widget*> (&box);
@@ -74,11 +74,11 @@ bool WayfireSpacing::draw (const Cairo::RefPtr<Cairo::Context>& cr)
     return true;
 }
 
-WayfireSplit::WayfireSplit (void)
+WidgetSplit::WidgetSplit (void)
 {
 }
 
-void WayfireSplit::init (Gtk::HBox *container)
+void WidgetSplit::init (Gtk::HBox *container)
 {
     box.set_name ("split");
     container->pack_start (box, false, false);
