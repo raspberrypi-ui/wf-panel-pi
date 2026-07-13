@@ -61,7 +61,7 @@ Panel::Panel (GdkMonitor *mon, bool dock) :
     else is_pi_var = FALSE;
 
     // Create the window
-    window = std::make_unique <WayfireAutohidingWindow> (mon, dock);
+    window = std::make_unique <AutohidingWindow> (mon, dock);
 
     // GTK settings for window
     window->set_name (dock ? "DockToplevel" : "PanelToplevel");

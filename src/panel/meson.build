@@ -2,7 +2,7 @@ cpp_sources = files(
   'panel.cpp',
   'spacer.cpp',
   'panel-app.cpp',
-  'wf-autohide-window.cpp'
+  'autohide-window.cpp'
 )
 
 c_sources = files(

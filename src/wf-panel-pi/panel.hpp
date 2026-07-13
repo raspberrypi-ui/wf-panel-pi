@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtkmm/gesturelongpress.h>
 
 #include "widget.hpp"
-#include "wf-autohide-window.hpp"
+#include "autohide-window.hpp"
 
 class Panel
 {
@@ -46,7 +46,7 @@ class Panel
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
 
-    std::unique_ptr <WayfireAutohidingWindow> window;
+    std::unique_ptr <AutohidingWindow> window;
 
   private:
     Gtk::HBox content_box;

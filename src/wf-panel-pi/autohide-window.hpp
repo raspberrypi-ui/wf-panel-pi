@@ -27,8 +27,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
-#ifndef WF_AUTOHIDE_WINDOW_HPP
-#define WF_AUTOHIDE_WINDOW_HPP
+#ifndef AUTOHIDE_WINDOW_HPP
+#define AUTOHIDE_WINDOW_HPP
 
 #include <gtkmm/window.h>
 #include <gdk/gdkwayland.h>
@@ -36,15 +36,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wf-option-wrap.hpp>
 #include "config/duration.hpp"
 
-class WayfireAutohidingWindow : public Gtk::Window
+class AutohidingWindow : public Gtk::Window
 {
   public:
-    WayfireAutohidingWindow (GdkMonitor *mon, bool dock);
-    WayfireAutohidingWindow (WayfireAutohidingWindow&&) = delete;
-    WayfireAutohidingWindow (const WayfireAutohidingWindow&) = delete;
-    WayfireAutohidingWindow& operator = (const WayfireAutohidingWindow&) = delete;
-    WayfireAutohidingWindow& operator = (WayfireAutohidingWindow&&) = delete;
-    ~WayfireAutohidingWindow ();
+    AutohidingWindow (GdkMonitor *mon, bool dock);
+    AutohidingWindow (AutohidingWindow&&) = delete;
+    AutohidingWindow (const AutohidingWindow&) = delete;
+    AutohidingWindow& operator = (const AutohidingWindow&) = delete;
+    AutohidingWindow& operator = (AutohidingWindow&&) = delete;
+    ~AutohidingWindow ();
     void set_auto_exclusive_zone (bool has_zone = false);
     void set_monitor ();
     void update_position ();
@@ -84,7 +84,7 @@ class WayfireAutohidingWindow : public Gtk::Window
     void set_layer ();
 };
 
-#endif /* end of include guard: WF_AUTOHIDE_WINDOW_HPP */
+#endif /* end of include guard: AUTOHIDE_WINDOW_HPP */
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

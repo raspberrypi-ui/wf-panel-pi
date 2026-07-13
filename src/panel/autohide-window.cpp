@@ -29,14 +29,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <glibmm.h>
 
-#include "wf-autohide-window.hpp"
+#include "autohide-window.hpp"
 
 #define AUTOHIDE_HIDE_DELAY 500
 #define MARGIN 5
 
 /* Public methods */
 
-WayfireAutohidingWindow::WayfireAutohidingWindow (GdkMonitor *mon, bool dock) :
+AutohidingWindow::AutohidingWindow (GdkMonitor *mon, bool dock) :
     position {dock ? "dock/position" : "panel/position"},
     layer {dock ? "dock/layer" : "panel/layer"},
     monitor {dock ? "dock/monitor" : "panel/monitor"},
@@ -112,11 +112,11 @@ WayfireAutohidingWindow::WayfireAutohidingWindow (GdkMonitor *mon, bool dock) :
     });
 }
 
-WayfireAutohidingWindow::~WayfireAutohidingWindow ()
+AutohidingWindow::~AutohidingWindow ()
 {
 }
 
-void WayfireAutohidingWindow::set_auto_exclusive_zone (bool has_zone)
+void AutohidingWindow::set_auto_exclusive_zone (bool has_zone)
 {
     int target_zone = has_zone ? get_allocated_height () : 0;
     has_auto_exclusive_zone = has_zone;
@@ -128,7 +128,7 @@ void WayfireAutohidingWindow::set_auto_exclusive_zone (bool has_zone)
     }
 }
 
-void WayfireAutohidingWindow::set_monitor ()
+void AutohidingWindow::set_monitor ()
 {
     GdkDisplay *display = gdk_display_get_default ();
     GdkScreen *screen = gdk_display_get_default_screen (display);
@@ -171,65 +171,65 @@ void WayfireAutohidingWindow::set_monitor ()
 
 /* Private methods */
 
-GtkLayerShellEdge WayfireAutohidingWindow::get_anchor_edge ()
+GtkLayerShellEdge AutohidingWindow::get_anchor_edge ()
 {
     if ((std::string) position == "bottom") return GTK_LAYER_SHELL_EDGE_BOTTOM;
     return GTK_LAYER_SHELL_EDGE_TOP;
 }
 
-void WayfireAutohidingWindow::increase_autohide ()
+void AutohidingWindow::increase_autohide ()
 {
     autohide_counter++;
     if (should_autohide ()) schedule_hide (0);
 }
 
-void WayfireAutohidingWindow::decrease_autohide ()
+void AutohidingWindow::decrease_autohide ()
 {
     autohide_counter--;
     if (autohide_counter < 0) autohide_counter = 0;
     if (!should_autohide ()) schedule_show (0);
 }
 
-bool WayfireAutohidingWindow::should_autohide () const
+bool AutohidingWindow::should_autohide () const
 {
     return autohide_counter && !input_inside_panel;
 }
 
-bool WayfireAutohidingWindow::do_hide ()
+bool AutohidingWindow::do_hide ()
 {
     y_position.animate (remainder - get_allocated_height ());
     update_margin ();
     return false;
 }
 
-bool WayfireAutohidingWindow::do_show ()
+bool AutohidingWindow::do_show ()
 {
     y_position.animate (offset);
     update_margin ();
     return false;
 }
 
-void WayfireAutohidingWindow::schedule_hide (int delay)
+void AutohidingWindow::schedule_hide (int delay)
 {
     pending_show.disconnect ();
     if (delay == 0) do_hide ();
     else if (!pending_hide.connected ())
     {
-        pending_hide = Glib::signal_timeout ().connect (sigc::mem_fun (this, &WayfireAutohidingWindow::do_hide), delay);
+        pending_hide = Glib::signal_timeout ().connect (sigc::mem_fun (this, &AutohidingWindow::do_hide), delay);
     }
 }
 
-void WayfireAutohidingWindow::schedule_show (int delay)
+void AutohidingWindow::schedule_show (int delay)
 {
     pending_hide.disconnect ();
     if (delay == 0) do_show ();
     else if (!pending_show.connected ())
     {
-        pending_show = Glib::signal_timeout ().connect (sigc::mem_fun (this, &WayfireAutohidingWindow::do_show), delay);
+        pending_show = Glib::signal_timeout ().connect (sigc::mem_fun (this, &AutohidingWindow::do_show), delay);
     }
 }
 
-void WayfireAutohidingWindow::update_position ()
+void AutohidingWindow::update_position ()
 {
     /* Reset old anchors */
     gtk_layer_set_anchor (this->gobj (), GTK_LAYER_SHELL_EDGE_TOP, false);
@@ -248,7 +248,7 @@ void WayfireAutohidingWindow::update_position ()
     if (should_autohide ()) schedule_hide (AUTOHIDE_HIDE_DELAY);
 }
 
-void WayfireAutohidingWindow::update_margin ()
+void AutohidingWindow::update_margin ()
 {
     if (y_position.running ())
     {
@@ -266,7 +266,7 @@ void WayfireAutohidingWindow::update_margin ()
     }
 }
 
-void WayfireAutohidingWindow::update_autohide ()
+void AutohidingWindow::update_autohide ()
 {
     if (autohide == last_autohide_value) return;
 
@@ -278,7 +278,7 @@ void WayfireAutohidingWindow::update_autohide ()
     set_layer ();
 }
 
-void WayfireAutohidingWindow::set_layer ()
+void AutohidingWindow::set_layer ()
 {
     if (autohide)
     {
