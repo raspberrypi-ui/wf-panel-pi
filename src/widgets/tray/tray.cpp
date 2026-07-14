@@ -38,3 +38,9 @@ void WidgetStatusNotifier::remove_item(const Glib::ustring & service)
     items.erase(service);
     if (items.count(service) == 0) icons_hbox.hide();
 }
+
+bool WidgetStatusNotifier::set_icon (void)
+{
+    for (auto &p : items) p.second.update_icon ();
+    return false;
+}

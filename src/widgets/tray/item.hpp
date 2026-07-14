@@ -16,7 +16,6 @@
 class StatusNotifierItem : public Gtk::EventBox
 {
     WfOption <int> smooth_scolling_threshold {"tray/smooth_scrolling_threshold"};
-    WfOption <int> icon_size {"panel/icon_size"};
     WfOption <bool> menu_on_middle_click {"tray/menu_on_middle_click"};
 
     Glib::ustring dbus_name;
@@ -48,13 +47,13 @@ class StatusNotifierItem : public Gtk::EventBox
 
     void handle_signal(const Glib::ustring & signal, const Glib::VariantContainerBase & params);
 
-    void update_icon();
     void setup_tooltip();
 
     void fetch_property(const Glib::ustring & property_name, const sigc::slot<void> & callback = {});
 
   public:
     explicit StatusNotifierItem(const Glib::ustring & service);
+    void update_icon();
 };
 
 #endif

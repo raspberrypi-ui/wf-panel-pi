@@ -78,7 +78,6 @@ StatusNotifierItem::StatusNotifierItem(const Glib::ustring & service)
 void StatusNotifierItem::init_widget()
 {
     update_icon();
-    icon_size.set_callback([this] { update_icon(); });
     setup_tooltip();
     init_menu();
 
@@ -227,13 +226,15 @@ void StatusNotifierItem::update_icon()
         get_item_property<Glib::ustring>("Status") == "NeedsAttention" ? "AttentionIcon" : "Icon";
     const auto icon_name   = get_item_property<Glib::ustring>(icon_type_name + "Name");
     const auto pixmap_data = extract_pixbuf(get_item_property<IconData>(icon_type_name + "Pixmap"));
-    if (icon_theme->lookup_icon(icon_name, icon_size))
+    int size = get_icon_size (GTK_WIDGET (icon.gobj()));
+    if (icon_theme->lookup_icon(icon_name, size))
     {
         set_taskbar_icon (GTK_WIDGET (icon.gobj()), icon_name.c_str());
     }
     else if (pixmap_data)
     {
-        icon.set(pixmap_data->scale_simple(icon_size, icon_size, Gdk::INTERP_BILINEAR));
+        int scale = gtk_widget_get_scale_factor (GTK_WIDGET (icon.gobj()));
+        icon.set(pixmap_data->scale_simple(scale * size, scale * size, Gdk::INTERP_BILINEAR));
     }
 }
 

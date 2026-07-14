@@ -19,6 +19,7 @@ class WidgetStatusNotifier : public PanelWidget
 
     void add_item(const Glib::ustring & service);
     void remove_item(const Glib::ustring & service);
+    bool set_icon (void);
 };
 
 #endif
