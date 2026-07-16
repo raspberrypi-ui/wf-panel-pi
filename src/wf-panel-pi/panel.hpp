@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Panel
 {
   public:
-    Panel (GdkMonitor *mon, bool dock);
+    Panel (bool dock);
     ~Panel ();
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
@@ -62,8 +62,6 @@ class Panel
     sigc::connection draw_connection;
 
     std::vector <std::unique_ptr <PanelWidget>> left_widgets, right_widgets;
-
-    GdkMonitor *mon;
 
     bool dock;
     int scaling;

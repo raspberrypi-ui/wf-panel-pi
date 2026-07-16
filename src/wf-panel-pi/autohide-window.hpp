@@ -39,7 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class AutohidingWindow : public Gtk::Window
 {
   public:
-    AutohidingWindow (GdkMonitor *mon, bool dock);
+    AutohidingWindow (bool dock);
     AutohidingWindow (AutohidingWindow&&) = delete;
     AutohidingWindow (const AutohidingWindow&) = delete;
     AutohidingWindow& operator = (const AutohidingWindow&) = delete;
@@ -50,8 +50,6 @@ class AutohidingWindow : public Gtk::Window
     void update_position ();
 
   private:
-    GdkMonitor *mon;
-
     WfOption <std::string> position;
     WfOption <std::string> layer;
     WfOption <std::string> monitor;

@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* Public methods */
 
-AutohidingWindow::AutohidingWindow (GdkMonitor *mon, bool dock) :
+AutohidingWindow::AutohidingWindow (bool dock) :
     position {dock ? "dock/position" : "panel/position"},
     layer {dock ? "dock/layer" : "panel/layer"},
     monitor {dock ? "dock/monitor" : "panel/monitor"},
@@ -45,13 +45,10 @@ AutohidingWindow::AutohidingWindow (GdkMonitor *mon, bool dock) :
     autohide {dock ? "dock/autohide" : "panel/autohide"},
     y_position {duration}
 {
-    this->mon = mon;
-
     set_decorated (false);
     set_resizable (false);
 
     gtk_layer_init_for_window (this->gobj ());
-    gtk_layer_set_monitor (this->gobj (), mon);
     gtk_layer_set_namespace (this->gobj (), "$unfocus panel");
     gtk_layer_set_keyboard_mode (this->gobj (), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
 
@@ -66,6 +63,7 @@ AutohidingWindow::AutohidingWindow (GdkMonitor *mon, bool dock) :
     layer.set_callback ([=] { set_layer (); });
     monitor.set_callback ([=] { set_monitor (); });
 
+    set_monitor ();
     set_auto_exclusive_zone (!autohide);
     update_position ();
     set_layer ();
@@ -253,15 +251,6 @@ void AutohidingWindow::update_margin ()
     if (y_position.running ())
     {
         gtk_layer_set_margin (this->gobj (), get_anchor_edge (), y_position);
-
-        // queue_draw does not work when the panel is hidden
-        // so calling wl_surface_commit to make WM show the panel back
-        if (get_window () && is_visible ())
-        {
-            GdkWindow *gdk_window = get_window ()->gobj ();
-            wl_surface_commit (gdk_wayland_window_get_wl_surface (gdk_window));
-        }
-
         queue_draw ();
     }
 }

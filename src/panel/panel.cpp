@@ -43,13 +43,12 @@ extern "C" {
 
 #include "panel.hpp"
 
-Panel::Panel (GdkMonitor *mon, bool dock) :
+Panel::Panel (bool dock) :
     icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
     left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
     right_widgets_opt {dock ? "dock/widgets_right" : "panel/widgets_right"},
     exclusive {dock ? "dock/exclusive" : "panel/exclusive"}
 {
-    this->mon = mon;
     this->dock = dock;
 
     // Set C variables from parameters
@@ -61,7 +60,7 @@ Panel::Panel (GdkMonitor *mon, bool dock) :
     else is_pi_var = FALSE;
 
     // Create the window
-    window = std::make_unique <AutohidingWindow> (mon, dock);
+    window = std::make_unique <AutohidingWindow> (dock);
 
     // GTK settings for window
     window->set_name (dock ? "DockToplevel" : "PanelToplevel");

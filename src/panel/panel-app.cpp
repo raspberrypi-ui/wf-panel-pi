@@ -186,23 +186,10 @@ void PanelApp::monitors_changed ()
 
 bool PanelApp::update_monitors ()
 {
-    int i;
-
-    monitors.clear ();
-
-    auto display = Gdk::Display::get_default ();
-    for (i = 0; i < display->get_n_monitors (); i++)
-    {
-        monitors.push_back (display->get_monitor (i));
-        if (!panel)
-        {
-            panel = std::make_unique <Panel> (monitors.back ().get ()->gobj (), false);
-            dock = std::make_unique <Panel> (monitors.back ().get ()->gobj (), true);
-        }
-    }
-
-    panel->window->set_monitor ();
-    dock->window->set_monitor ();
+    if (panel) panel->window->set_monitor ();
+    else panel = std::make_unique <Panel> (false);
+    if (dock) dock->window->set_monitor ();
+    else dock = std::make_unique <Panel> (true);
 
     return false;
 }
