@@ -135,6 +135,13 @@ void AutohidingWindow::set_monitor ()
     char *mname;
     static Glib::RefPtr <Gdk::Monitor> mon;
 
+    // gtk_layer_set_monitor does not take a reference on the GdkMonitor
+    // it is given and does not use it immediately - it only reads it
+    // later, when the window is mapped. By making mon static, a reference
+    // is retained on the monitor object, ensuring it is still valid when
+    // the window is actually mapped; otherwise an invalid monitor can be
+    // set immediately after a hotplug event.
+
     if (strlen (mnumstr) == 1 && sscanf (mnumstr, "%d", &try_mon) == 1)
     {
         // single digit - interpret as monitor number
