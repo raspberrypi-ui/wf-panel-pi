@@ -91,9 +91,11 @@ Panel::Panel (bool dock) :
     }
 
     // Monitor the draw signal to detect changes in scaling and reload icons if detected
+    pending_update = false;
     scaling = window->get_scale_factor ();
     window->signal_draw ().connect ([=] (const Cairo::RefPtr<Cairo::Context> &cr) -> bool
     {
+        if (pending_update) return false;
         int scale_now = window->get_scale_factor ();
         if (scaling != scale_now)
         {
@@ -520,6 +522,11 @@ void Panel::handle_command_message (const char *name, const char *cmd)
 
     for (auto &w : right_widgets)
         if (name == w->widget_name) w->command (cmd);
+}
+
+void Panel::monitor_update_pending (bool pend)
+{
+    pending_update = pend;
 }
 
 /* End of file */

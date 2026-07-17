@@ -45,6 +45,7 @@ class Panel
     ~Panel ();
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
+    void monitor_update_pending (bool pend);
 
     std::unique_ptr <AutohidingWindow> window;
 
@@ -66,6 +67,8 @@ class Panel
     bool dock;
     int scaling;
     int isize;
+
+    bool pending_update;
 
     WfOption <int> icon_size;
     WfOption <std::string> left_widgets_opt;

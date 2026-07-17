@@ -181,15 +181,33 @@ void PanelApp::monitors_changed ()
 {
     if (hotplug_timer.connected ()) hotplug_timer.disconnect ();
 
+    panel->monitor_update_pending (true);
+    dock->monitor_update_pending (true);
+
     hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun (this, &PanelApp::update_monitors), 500);
 }
 
 bool PanelApp::update_monitors ()
 {
+    // This code is apparently completely pointless, but it
+    // forces the GDK Wayland backend to update its list of monitors,
+    // which doesn't happen fast enough otherwise and as a result
+    // set_monitor tries to put the panel on a monitor which no longer exists.
+    // There is probably a better way to force this to happen...
+    monitors.clear ();
+    auto display = Gdk::Display::get_default ();
+    for (int i = 0; i < display->get_n_monitors (); i++)
+    {
+        monitors.push_back (display->get_monitor (i));
+    }
+
     if (panel) panel->window->set_monitor ();
     else panel = std::make_unique <Panel> (false);
     if (dock) dock->window->set_monitor ();
     else dock = std::make_unique <Panel> (true);
+
+    panel->monitor_update_pending (false);
+    dock->monitor_update_pending (false);
 
     return false;
 }
