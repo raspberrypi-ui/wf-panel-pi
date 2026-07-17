@@ -189,17 +189,6 @@ void PanelApp::monitors_changed ()
 
 bool PanelApp::update_monitors ()
 {
-    // This code is apparently completely pointless, but it
-    // forces the GDK Wayland backend to update its list of monitors,
-    // which doesn't happen fast enough otherwise and as a result
-    // set_monitor tries to put the panel on a monitor which no longer exists.
-    // There is probably a better way to force this to happen...
-    auto display = Gdk::Display::get_default ();
-    for (int i = 0; i < display->get_n_monitors (); i++)
-    {
-        monitor = display->get_monitor (i);
-    }
-
     if (panel) panel->window->set_monitor ();
     else panel = std::make_unique <Panel> (false);
     if (dock) dock->window->set_monitor ();

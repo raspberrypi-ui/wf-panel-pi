@@ -55,8 +55,6 @@ class PanelApp
     std::unique_ptr <Panel> panel;
     std::unique_ptr <Panel> dock;
 
-    Glib::RefPtr <Gdk::Monitor> monitor;
-
     sigc::connection hotplug_timer;
 
     Glib::RefPtr <Gio::DBus::NodeInfo> introspection_data;

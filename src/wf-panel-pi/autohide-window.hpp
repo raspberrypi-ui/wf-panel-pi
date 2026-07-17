@@ -67,6 +67,7 @@ class AutohidingWindow : public Gtk::Window
     bool last_autohide_value;
     int last_zone = 0;
 
+    Glib::RefPtr <Gdk::Monitor> mon;
     sigc::connection pending_show, pending_hide;
 
     GtkLayerShellEdge get_anchor_edge ();
