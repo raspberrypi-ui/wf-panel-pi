@@ -194,11 +194,10 @@ bool PanelApp::update_monitors ()
     // which doesn't happen fast enough otherwise and as a result
     // set_monitor tries to put the panel on a monitor which no longer exists.
     // There is probably a better way to force this to happen...
-    monitors.clear ();
     auto display = Gdk::Display::get_default ();
     for (int i = 0; i < display->get_n_monitors (); i++)
     {
-        monitors.push_back (display->get_monitor (i));
+        monitor = display->get_monitor (i);
     }
 
     if (panel) panel->window->set_monitor ();
