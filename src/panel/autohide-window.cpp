@@ -128,12 +128,12 @@ void AutohidingWindow::set_auto_exclusive_zone (bool has_zone)
 
 void AutohidingWindow::set_monitor ()
 {
-    GdkScreen *screen = gdk_display_get_default_screen (gdk_display_get_default ());
+    auto disp = Gdk::Display::get_default ();
+    GdkScreen *screen = gdk_display_get_default_screen (disp->gobj ());
     int try_mon;
     const char *mnumstr = ((std::string) monitor).c_str();
     char *mname;
-
-    auto disp = Gdk::Display::get_default ();
+    static Glib::RefPtr <Gdk::Monitor> mon;
 
     if (strlen (mnumstr) == 1 && sscanf (mnumstr, "%d", &try_mon) == 1)
     {
@@ -141,7 +141,7 @@ void AutohidingWindow::set_monitor ()
         while (try_mon >= 0)
         {
             mon = disp->get_monitor (try_mon);
-            if (mon) break;
+            if (mon->gobj()) break;
             try_mon--;
         }
     }
@@ -155,7 +155,7 @@ void AutohidingWindow::set_monitor ()
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
             mname = gdk_screen_get_monitor_plug_name (screen, try_mon);
 #pragma GCC diagnostic pop
-            if (!g_strcmp0 (mname, mnumstr) && mon)
+            if (!g_strcmp0 (mname, mnumstr) && mon->gobj())
             {
                 g_free (mname);
                 break;
@@ -164,7 +164,7 @@ void AutohidingWindow::set_monitor ()
         }
     }
 
-    if (mon) gtk_layer_set_monitor (this->gobj(), mon->gobj());
+    if (mon->gobj()) gtk_layer_set_monitor (this->gobj(), mon->gobj());
 }
 
 /* Private methods */
