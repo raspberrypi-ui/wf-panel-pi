@@ -67,6 +67,17 @@ class AutohidingWindow : public Gtk::Window
     bool last_autohide_value;
     int last_zone = 0;
 
+    // Retains a reference on the monitor last passed to gtk_layer_set_monitor.
+    // gtk_layer_set_monitor stores the raw GdkMonitor pointer it is given
+    // without taking a reference on it, and GDK drops its own reference as
+    // soon as a monitor is unplugged. Without this, the GdkMonitor could be
+    // freed while gtk-layer-shell still holds the dangling pointer, causing
+    // a crash or (if the freed memory is reused for a newly plugged monitor)
+    // fooling gtk-layer-shell's pointer-equality check into thinking the
+    // monitor hasn't changed. This is a member rather than a static so each
+    // window keeps its own monitor alive, independent of any other window.
+    Glib::RefPtr <Gdk::Monitor> mon;
+
     sigc::connection pending_show, pending_hide;
 
     GtkLayerShellEdge get_anchor_edge ();
