@@ -68,15 +68,15 @@ class AutohidingWindow : public Gtk::Window
     bool last_autohide_value;
     int last_zone = 0;
 
-    // Retains a reference on the monitor last passed to gtk_layer_set_monitor.
-    // gtk_layer_set_monitor stores the raw GdkMonitor pointer it is given
-    // without taking a reference on it, and GDK drops its own reference as
-    // soon as a monitor is unplugged. Without this, the GdkMonitor could be
-    // freed while gtk-layer-shell still holds the dangling pointer, causing
-    // a crash or (if the freed memory is reused for a newly plugged monitor)
-    // fooling gtk-layer-shell's pointer-equality check into thinking the
-    // monitor hasn't changed. This is a member rather than a static so each
-    // window keeps its own monitor alive, independent of any other window.
+    /* Retains a reference on the monitor last passed to gtk_layer_set_monitor.
+     * During a hotplug, GDK frees the monitor structs for any monitors
+     * which are no longer used, and the pointers can be reused for new monitors.
+     * gtk-layer-shell checks to see if the monitor pointer for a layer has
+     * changed, and if not, it does not update the layer - if the monitor has
+     * changed but the pointer has not, this results in the layer not being moved
+     * to the new pointer. By making mon a global, the pointer is retained even
+     * when freed by GDK, preventing an old pointer being reused for a new monitor.
+     */
     Glib::RefPtr <Gdk::Monitor> mon;
 
     sigc::connection pending_show, pending_hide;

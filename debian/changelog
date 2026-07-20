@@ -1,3 +1,9 @@
+wf-panel-pi (1.20) trixie; urgency=medium
+
+  * Make autohide behaviour consitent when menus and popups are displayed
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 20 Jul 2026 13:53:48 +0100
+
 wf-panel-pi (1.19) trixie; urgency=medium
 
   * Fix hotplug behaviour again
