@@ -34,6 +34,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define AUTOHIDE_HIDE_DELAY 500
 #define MARGIN 5
 
+extern GtkWindow *popwindow;
+
 /* Public methods */
 
 AutohidingWindow::AutohidingWindow (bool dock) :
@@ -78,11 +80,20 @@ AutohidingWindow::AutohidingWindow (bool dock) :
         set_auto_exclusive_zone (has_auto_exclusive_zone);
     });
 
-    signal_enter_notify_event().connect_notify ([=] (GdkEventCrossing *)
+    signal_enter_notify_event().connect_notify ([=] (GdkEventCrossing *ev)
     {
         if (!autohide) return;
         if (pending_hide.connected ()) pending_hide.disconnect ();
         input_inside_panel = true;
+
+        /*
+         * If the button which opened a menu is clicked again to close it, an
+         * enter event is generated in which the root coords are the values of the
+         * standard coords rounded down to the nearest int. This condition is
+         * detected as a special case and used to ignore the next program-generated
+         * leave event, which would otherwise cause an autohide.
+         */
+        if (int (ev->x) == ev->x_root && int (ev->y) == ev->y_root) noleave = true;
 
         schedule_show (0);
     });
@@ -91,6 +102,13 @@ AutohidingWindow::AutohidingWindow (bool dock) :
     {
         if (!autohide) return;
         if (ev->detail == GDK_NOTIFY_INFERIOR) return;
+
+        // see explanation above!
+        if (ev->x == 0.0 && ev->y == 0.0 && noleave == true)
+        {
+            noleave = false;
+            return;
+        }
 
         // don't hide if leaving a window towards the closest edge
         if (ev->x > MARGIN && ev->x < get_allocated_width() - MARGIN)
@@ -106,7 +124,7 @@ AutohidingWindow::AutohidingWindow (bool dock) :
         }
 
         input_inside_panel = false;
-        if (should_autohide ()) schedule_hide (AUTOHIDE_HIDE_DELAY);
+        if (should_autohide () && !popwindow) schedule_hide (AUTOHIDE_HIDE_DELAY);
     });
 }
 

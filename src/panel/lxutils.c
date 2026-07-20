@@ -67,8 +67,9 @@ double press_x, press_y;
 gboolean touch_only;
 gboolean is_pi_var;
 
-static GtkWindow *popwindow, *clicksink;
-static int px, py, mw, mh, orient;
+GtkWindow *popwindow;
+static GtkWindow *clicksink;
+static int px, py, mw, mh, orient, mch;
 
 /*----------------------------------------------------------------------------*/
 /* General public API - replaces functions from lxpanel */
@@ -452,7 +453,7 @@ gboolean check_menu (GtkWidget *menu)
     return TRUE;
 }
 
-static void menu_closed (GtkWidget *, GtkWidget *wid)
+static void generate_leave_event (GtkWidget *wid)
 {
     GtkWindow *panel = find_panel (wid);
     GdkEventCrossing *ev = (GdkEventCrossing *) gdk_event_new (GDK_LEAVE_NOTIFY);
@@ -463,6 +464,12 @@ static void menu_closed (GtkWidget *, GtkWidget *wid)
     ev->detail = GDK_NOTIFY_NONLINEAR_VIRTUAL;
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
     gdk_event_put ((GdkEvent *) ev);
+}
+
+static void menu_closed (GtkWidget *men, GtkWidget *wid)
+{
+    g_signal_handler_disconnect (men, mch);
+    generate_leave_event (wid);
 }
 
 void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
@@ -481,7 +488,7 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu)
     g_object_set_property ((GObject *) menu, "rect-anchor-dy", &val);
 
     gtk_menu_popup_at_widget (GTK_MENU (menu), widget, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    g_signal_connect (menu, "deactivate", G_CALLBACK (menu_closed), widget);
+    mch = g_signal_connect (menu, "deactivate", G_CALLBACK (menu_closed), widget);
     g_idle_add ((GSourceFunc) hide_prelight, widget);
 }
 
@@ -507,16 +514,17 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, dou
     rect.x = x;
     rect.y = 0;
     gtk_menu_popup_at_rect (GTK_MENU (menu), gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) ev);
-    g_signal_connect (menu, "deactivate", G_CALLBACK (menu_closed), widget);
+    mch = g_signal_connect (menu, "deactivate", G_CALLBACK (menu_closed), widget);
 }
 
 /*----------------------------------------------------------------------------*/
 /* Window popup with close on click-away */
 /*----------------------------------------------------------------------------*/
 
-static gboolean handle_clickaway (GtkWidget *, GdkEventButton *, gpointer)
+static gboolean handle_clickaway (GtkWidget *, GdkEventButton *, GtkWidget *button)
 {
     close_popup ();
+    generate_leave_event (button);
     return FALSE;
 }
 
@@ -554,7 +562,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 
     gtk_widget_show (GTK_WIDGET (clicksink));
     gtk_window_present (clicksink);
-    g_signal_connect (clicksink, "button-release-event", G_CALLBACK (handle_clickaway), NULL);
+    g_signal_connect (clicksink, "button-release-event", G_CALLBACK (handle_clickaway), button);
 
     popwindow = GTK_WINDOW (window);
 

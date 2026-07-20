@@ -63,6 +63,7 @@ class AutohidingWindow : public Gtk::Window
     int autohide_counter;
     bool has_auto_exclusive_zone = false;
     bool input_inside_panel = false;
+    bool noleave = false;
 
     bool last_autohide_value;
     int last_zone = 0;
