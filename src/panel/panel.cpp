@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
 #include <dlfcn.h>
+#include <fnmatch.h>
 
 #include <cstdlib>
 #include <cstring>
@@ -518,10 +519,10 @@ void Panel::handle_command_message (const char *name, const char *cmd)
     if (!window->is_sensitive ()) return;
 
     for (auto &w : left_widgets)
-        if (name == w->widget_name) w->command (cmd);
+        if (!fnmatch (name, w->widget_name.c_str (), 0)) w->command (cmd);
 
     for (auto &w : right_widgets)
-        if (name == w->widget_name) w->command (cmd);
+        if (!fnmatch (name, w->widget_name.c_str (), 0)) w->command (cmd);
 }
 
 void Panel::monitor_update_pending (bool pend)
