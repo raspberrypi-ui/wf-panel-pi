@@ -48,14 +48,18 @@ class AutohidingWindow : public Gtk::Window
     void set_auto_exclusive_zone (bool has_zone = false);
     void set_monitor ();
     void update_position ();
+    void handle_config_reload ();
 
   private:
-    WfOption <std::string> position;
-    WfOption <std::string> layer;
-    WfOption <std::string> monitor;
-    WfOption <int> offset;
-    WfOption <int> remainder;
-    WfOption <bool> autohide;
+    bool is_dock;
+
+    std::string position;
+    std::string layer;
+    std::string monitor;
+    int offset;
+    int remainder;
+    bool autohide;
+
     WfOption <int> duration {"panel/autohide_duration"};
 
     wf::animation::simple_animation_t y_position;

@@ -27,7 +27,12 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
+#include <gtk/gtk.h>
 #include <glibmm.h>
+
+extern "C" {
+#include "plug_conf.h"
+}
 
 #include "autohide-window.hpp"
 
@@ -39,14 +44,28 @@ extern GtkWindow *popwindow;
 /* Public methods */
 
 AutohidingWindow::AutohidingWindow (bool dock) :
-    position {dock ? "dock/position" : "panel/position"},
-    layer {dock ? "dock/layer" : "panel/layer"},
-    monitor {dock ? "dock/monitor" : "panel/monitor"},
-    offset {dock ? "dock/offset" : "panel/offset"},
-    remainder {dock ? "dock/remainder" : "panel/remainder"},
-    autohide {dock ? "dock/autohide" : "panel/autohide"},
     y_position {duration}
 {
+    is_dock = dock;
+
+    char *tmp;
+
+    get_config_string (is_dock ? "dock" : "panel", "position", &tmp);
+    position = tmp;
+    g_free (tmp);
+
+    get_config_string (is_dock ? "dock" : "panel", "layer", &tmp);
+    layer = tmp;
+    g_free (tmp);
+
+    get_config_string (is_dock ? "dock" : "panel", "monitor", &tmp);
+    monitor = tmp;
+    g_free (tmp);
+
+    offset = get_config_int (is_dock ? "dock" : "panel", "offset");
+    remainder = get_config_int (is_dock ? "dock" : "panel", "remainder");
+    autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide");
+
     set_decorated (false);
     set_resizable (false);
 
@@ -58,12 +77,6 @@ AutohidingWindow::AutohidingWindow (bool dock) :
 
     last_autohide_value = autohide;
     autohide_counter = static_cast <int> (autohide);
-    autohide.set_callback([=] { update_autohide (); });
-    position.set_callback([=] { update_position (); });
-    remainder.set_callback([=] { update_position (); });
-    offset.set_callback([=] { update_position (); });
-    layer.set_callback ([=] { set_layer (); });
-    monitor.set_callback ([=] { set_monitor (); });
 
     set_monitor ();
     set_auto_exclusive_zone (!autohide);
@@ -297,6 +310,32 @@ void AutohidingWindow::set_layer ()
     if ((std::string) layer == "top") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_TOP);
     if ((std::string) layer == "bottom") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_BOTTOM);
     if ((std::string) layer == "background") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_BACKGROUND);
+}
+
+void AutohidingWindow::handle_config_reload ()
+{
+    char *tmp;
+
+    get_config_string (is_dock ? "dock" : "panel", "position", &tmp);
+    position = tmp;
+    g_free (tmp);
+
+    get_config_string (is_dock ? "dock" : "panel", "layer", &tmp);
+    layer = tmp;
+    g_free (tmp);
+
+    get_config_string (is_dock ? "dock" : "panel", "monitor", &tmp);
+    monitor = tmp;
+    g_free (tmp);
+
+    offset = get_config_int (is_dock ? "dock" : "panel", "offset");
+    remainder = get_config_int (is_dock ? "dock" : "panel", "remainder");
+    autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide");
+
+    set_layer ();
+    set_monitor ();
+    update_position ();
+    update_autohide ();
 }
 
 /* End of file */

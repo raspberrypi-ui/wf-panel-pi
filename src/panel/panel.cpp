@@ -495,6 +495,8 @@ void Panel::update_gestures ()
 
 void Panel::handle_config_reload ()
 {
+    window->handle_config_reload ();
+
     for (auto &w : left_widgets)
         w->handle_config_reload ();
 
