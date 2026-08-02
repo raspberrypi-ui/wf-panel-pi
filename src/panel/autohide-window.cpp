@@ -43,8 +43,7 @@ extern GtkWindow *popwindow;
 
 /* Public methods */
 
-AutohidingWindow::AutohidingWindow (bool dock) :
-    y_position {duration}
+AutohidingWindow::AutohidingWindow (bool dock)
 {
     is_dock = dock;
 
@@ -65,6 +64,7 @@ AutohidingWindow::AutohidingWindow (bool dock) :
     offset = get_config_int (is_dock ? "dock" : "panel", "offset");
     remainder = get_config_int (is_dock ? "dock" : "panel", "remainder");
     autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide");
+    duration = get_config_int ("panel", "autohide_duration");
 
     set_decorated (false);
     set_resizable (false);
@@ -223,16 +223,23 @@ bool AutohidingWindow::should_autohide () const
     return autohide_counter && !input_inside_panel;
 }
 
+void AutohidingWindow::start_animation (int target)
+{
+    start_marg = gtk_layer_get_margin (this->gobj (), get_anchor_edge ());
+    targ_marg = target;
+    gettimeofday (&anim_start, NULL);
+}
+
 bool AutohidingWindow::do_hide ()
 {
-    y_position.animate (remainder - get_allocated_height ());
+    start_animation (remainder - get_allocated_height ());
     update_margin ();
     return false;
 }
 
 bool AutohidingWindow::do_show ()
 {
-    y_position.animate (offset);
+    start_animation (offset);
     update_margin ();
     return false;
 }
@@ -267,7 +274,7 @@ void AutohidingWindow::update_position ()
     gtk_layer_set_anchor (this->gobj (), get_anchor_edge (), true);
 
     /* When the position changes, show an animation from the new edge. */
-    y_position.animate (-get_allocated_height ());
+    start_animation (-get_allocated_height ());
 
     /* Show the window */
     schedule_show (0);
@@ -278,9 +285,20 @@ void AutohidingWindow::update_position ()
 
 void AutohidingWindow::update_margin ()
 {
-    if (y_position.running ())
+    int pos = gtk_layer_get_margin (this->gobj (), get_anchor_edge ());
+    if (pos != targ_marg)
     {
-        gtk_layer_set_margin (this->gobj (), get_anchor_edge (), y_position);
+        struct timeval now;
+        gettimeofday (&now, NULL);
+        int elapsed = (now.tv_sec - anim_start.tv_sec) * 1000 + (now.tv_usec - anim_start.tv_usec) / 1000;
+        if (elapsed > duration) pos = targ_marg;
+        else
+        {
+            pos = (targ_marg - start_marg) * elapsed;
+            pos /= duration;
+            pos += start_marg;
+        }
+        gtk_layer_set_margin (this->gobj (), get_anchor_edge (), pos);
         queue_draw ();
     }
 }
@@ -331,6 +349,7 @@ void AutohidingWindow::handle_config_reload ()
     offset = get_config_int (is_dock ? "dock" : "panel", "offset");
     remainder = get_config_int (is_dock ? "dock" : "panel", "remainder");
     autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide");
+    duration = get_config_int ("panel", "autohide_duration");
 
     set_layer ();
     set_monitor ();

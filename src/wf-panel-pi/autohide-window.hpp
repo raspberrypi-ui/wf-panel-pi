@@ -59,8 +59,7 @@ class AutohidingWindow : public Gtk::Window
     int offset;
     int remainder;
     bool autohide;
-
-    WfOption <int> duration {"panel/autohide_duration"};
+    int duration;
 
     wf::animation::simple_animation_t y_position;
 
@@ -71,6 +70,10 @@ class AutohidingWindow : public Gtk::Window
 
     bool last_autohide_value;
     int last_zone = 0;
+
+    struct timeval anim_start;
+    int start_marg;
+    int targ_marg;
 
     /* Retains a reference on the monitor last passed to gtk_layer_set_monitor.
      * During a hotplug, GDK frees the monitor structs for any monitors
@@ -96,6 +99,7 @@ class AutohidingWindow : public Gtk::Window
     void update_margin ();
     void update_autohide ();
     void set_layer ();
+    void start_animation (int target);
 };
 
 #endif /* end of include guard: AUTOHIDE_WINDOW_HPP */
