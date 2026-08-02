@@ -147,13 +147,13 @@ void StatusNotifierItem::init_widget()
           case GDK_SCROLL_SMOOTH:
             distance_scrolled_x += ev->delta_x;
             distance_scrolled_y += ev->delta_y;
-            if (std::abs(distance_scrolled_x) >= smooth_scolling_threshold)
+            if (std::abs(distance_scrolled_x) >= smooth_scrolling_threshold)
             {
                 dx = std::lround(distance_scrolled_x);
                 distance_scrolled_x = 0;
             }
 
-            if (std::abs(distance_scrolled_y) >= smooth_scolling_threshold)
+            if (std::abs(distance_scrolled_y) >= smooth_scrolling_threshold)
             {
                 dy = std::lround(distance_scrolled_y);
                 distance_scrolled_y = 0;
@@ -236,6 +236,12 @@ void StatusNotifierItem::update_icon()
         int scale = gtk_widget_get_scale_factor (GTK_WIDGET (icon.gobj()));
         icon.set(pixmap_data->scale_simple(scale * size, scale * size, Gdk::INTERP_BILINEAR));
     }
+}
+
+void StatusNotifierItem::set_params (bool momc, int sst)
+{
+    menu_on_middle_click = momc;
+    smooth_scrolling_threshold = sst;
 }
 
 void StatusNotifierItem::init_menu()

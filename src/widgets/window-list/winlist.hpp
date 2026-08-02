@@ -44,10 +44,6 @@ class WidgetWinlist : public PanelWidget
 
     sigc::connection icon_timer;
 
-    WfOption <int> spacing {"window-list/spacing"};
-    WfOption <int> max_width {"window-list/max_width"};
-    WfOption <bool> icons_only {"window-list/icons_only"};
-
     /* plugin */
     WinlistPlugin *wl;
 
@@ -58,7 +54,7 @@ class WidgetWinlist : public PanelWidget
     virtual ~WidgetWinlist ();
     bool set_icon (void);
     void read_settings (void);
-    void settings_changed_cb (void);
+    void handle_config_reload (void);
 };
 
 #endif /* end of include guard: WIDGETS_WINLIST_HPP */

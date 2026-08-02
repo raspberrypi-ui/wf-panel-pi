@@ -48,6 +48,8 @@ typedef struct {
 extern GtkWidget *cdlg;
 
 extern void get_config_string (const char *section, const char *key, char **dest);
+extern gboolean get_config_bool (const char *section, const char *key);
+extern int get_config_int (const char *section, const char *key);
 extern gboolean can_configure (const char *type, char **name);
 extern void plugin_config_dialog (const char *type);
 

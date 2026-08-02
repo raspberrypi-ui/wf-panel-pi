@@ -50,13 +50,20 @@ bool WidgetLauncher::set_icon (void)
 
 void WidgetLauncher::read_settings (void)
 {
-    lch->spacing = spacing;
-    lch->launchers = g_strdup (((std::string) launchers).c_str());
+    conf_table[0].value = (void *) &lch->spacing;
+
+    load_configuration_data (PLUGIN_NAME, conf_table);
+
+    get_config_string ("panel", "launchers", &lch->launchers);
 }
 
-void WidgetLauncher::settings_changed_cb (void)
+void WidgetLauncher::handle_config_reload (void)
 {
-    read_settings ();
+    load_configuration_data (PLUGIN_NAME, conf_table);
+
+    g_free (lch->launchers);
+    get_config_string ("panel", "launchers", &lch->launchers);
+
     launcher_update_display (lch);
 }
 
@@ -75,10 +82,6 @@ void WidgetLauncher::init (Gtk::HBox *container)
     /* Initialise the plugin */
     read_settings ();
     launcher_init (lch);
-
-    /* Setup callbacks */
-    spacing.set_callback (sigc::mem_fun (*this, &WidgetLauncher::settings_changed_cb));
-    launchers.set_callback (sigc::mem_fun (*this, &WidgetLauncher::settings_changed_cb));
 }
 
 WidgetLauncher::~WidgetLauncher()

@@ -8,6 +8,9 @@
 
 class WidgetStatusNotifier : public PanelWidget
 {
+    bool momc;
+    int sst;
+
   private:
     StatusNotifierHost host = StatusNotifierHost(this);
 
@@ -15,11 +18,13 @@ class WidgetStatusNotifier : public PanelWidget
     std::map<Glib::ustring, StatusNotifierItem> items;
 
   public:
-    void init(Gtk::HBox *container) override;
+    void init (Gtk::HBox *container) override;
 
-    void add_item(const Glib::ustring & service);
-    void remove_item(const Glib::ustring & service);
+    void add_item (const Glib::ustring & service);
+    void remove_item (const Glib::ustring & service);
     bool set_icon (void);
+    void read_settings (void);
+    void handle_config_reload (void);
 };
 
 #endif

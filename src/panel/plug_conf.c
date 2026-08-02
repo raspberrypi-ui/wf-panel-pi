@@ -51,8 +51,6 @@ GtkWidget *cdlg;
 /*----------------------------------------------------------------------------*/
 
 static char *get_config_default (const char *section, const char *key);
-static gboolean get_config_bool (const char *section, const char *key);
-static int get_config_int (const char *section, const char *key);
 static void update_config (GtkButton *, gpointer data);
 static void close_dialog (GtkButton *, gpointer data);
 static void plugin_closed (GtkButton *, gpointer);
@@ -116,7 +114,7 @@ static char *get_config_default (const char *section, const char *key)
 
 /* Get bools and ints by parsing config strings */
 
-static gboolean get_config_bool (const char *section, const char *key)
+gboolean get_config_bool (const char *section, const char *key)
 {
     char *dest;
     gboolean res = FALSE;
@@ -128,7 +126,7 @@ static gboolean get_config_bool (const char *section, const char *key)
     return res;
 }
 
-static int get_config_int (const char *section, const char *key)
+int get_config_int (const char *section, const char *key)
 {
     char *dest;
     int i = 0;

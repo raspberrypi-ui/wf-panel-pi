@@ -43,9 +43,6 @@ class WidgetLauncher : public PanelWidget
 
     sigc::connection icon_timer;
 
-    WfOption <int> spacing {"launchers/spacing"};
-    WfOption <std::string> launchers {"panel/launchers"};
-
     /* plugin */
     LauncherPlugin *lch;
 
@@ -56,7 +53,7 @@ class WidgetLauncher : public PanelWidget
     virtual ~WidgetLauncher ();
     bool set_icon (void);
     void read_settings (void);
-    void settings_changed_cb (void);
+    void handle_config_reload (void);
 };
 
 #endif /* end of include guard: WIDGETS_LAUNCHER_HPP */

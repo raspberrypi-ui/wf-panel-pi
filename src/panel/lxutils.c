@@ -705,5 +705,46 @@ gboolean is_pi (void)
     return is_pi_var;
 }
 
+/*----------------------------------------------------------------------------*/
+/* Reading config from key files */
+/*----------------------------------------------------------------------------*/
+
+void load_configuration_data (const char *type, conf_table_t *conf_table)
+{
+    conf_table_t *cptr = &conf_table[0];
+    char *str;
+
+    // need to handle defaults?
+
+    while (cptr->type != CONF_TYPE_NONE)
+    {
+        switch (cptr->type)
+        {
+            case CONF_TYPE_BOOL :
+                *((gboolean *) cptr->value) = get_config_bool (type, cptr->name);
+                break;
+
+            case CONF_TYPE_INT :
+                *((int *) cptr->value) = get_config_int (type, cptr->name);
+                break;
+
+            case CONF_TYPE_STRING :
+            case CONF_TYPE_FONT :
+                get_config_string (type, cptr->name, cptr->value);
+                break;
+
+            case CONF_TYPE_COLOUR :
+                get_config_string (type, cptr->name, &str);
+                gdk_rgba_parse ((GdkRGBA *) cptr->value, str);
+                g_free (str);
+                break;
+
+            default: break;
+        }
+        cptr++;
+    }
+}
+
+
 /* End of file */
 /*----------------------------------------------------------------------------*/
