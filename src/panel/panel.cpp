@@ -98,7 +98,6 @@ Panel::Panel (bool dock)
             scaling = scale_now;
             update_widget_icons ();
         }
-        set_exclusive ();
 
         if (dock && right_widgets.size ())
         {
@@ -231,28 +230,71 @@ Panel::~Panel ()
 
 // Load panel configuration or use defaults
 
-void Panel::load_config ()
+#define CFG_WIDGETS 0x01
+#define CFG_NOTIFY  0x02
+#define CFG_ICONS   0x04
+#define CFG_EXCL    0x08
+
+unsigned char Panel::load_config ()
 {
+    unsigned char changes = 0;
     char *tmp;
+    int val;
     bool wiz = false;
     if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wiz = true;
     
     get_config_string (dock ? "dock" : "panel", "widgets_left", &tmp, dock ? "" : (wiz ? "" : "smenu spacing0 spacing4 launchers spacing8 window-list"));
-    left_widgets_opt = tmp;
+    if (g_strcmp0 (tmp, left_widgets_opt.c_str ()))
+    {
+        left_widgets_opt = tmp;
+        changes |= CFG_WIDGETS | CFG_EXCL;
+    }
     g_free (tmp);
 
     get_config_string (dock ? "dock" : "panel", "widgets_right", &tmp, dock ? "" : (wiz ? "bluetooth volumepulse squeek" : "tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek"));
-    right_widgets_opt = tmp;
+    if (g_strcmp0 (tmp, right_widgets_opt.c_str ()))
+    {
+        right_widgets_opt = tmp;
+        changes |= CFG_WIDGETS | CFG_EXCL;
+    }
     g_free (tmp);
 
-    icon_size = get_config_int (dock ? "dock" : "panel", "icon_size", dock ? "48" : "32");
-    exclusive = get_config_bool (dock ? "dock" : "panel", "exclusive", dock || wiz ? "false" : "true");
+    val = get_config_int (dock ? "dock" : "panel", "icon_size", dock ? "48" : "32");
+    if (icon_size != val)
+    {
+        icon_size = val;
+        changes |= CFG_ICONS;
+    }
+
+    val = get_config_bool (dock ? "dock" : "panel", "exclusive", dock || wiz ? "false" : "true");
+    if (exclusive != val)
+    {
+        exclusive = val;
+        changes |= CFG_EXCL;
+    }
+
+    val = get_config_int ("notify", "timeout", "15");
+    if (notify_timeout != val)
+    {
+        notify_timeout = val;
+        changes |= CFG_NOTIFY;
+    }
+    val = get_config_bool ("notify", "enable", "true");
+    if (notifications != val)
+    {
+        notifications = val;
+        changes |= CFG_NOTIFY;
+    }
+    val = get_config_bool ("notify", "libnotify", "true");
+    if (libnotify != val)
+    {
+        libnotify = val;
+        changes |= CFG_NOTIFY;
+    }
 
     gestures_touch_only = get_config_bool ("panel", "gestures_touch_only", "false");
 
-    notify_timeout = get_config_int ("notify", "timeout", "15");
-    notifications = get_config_bool ("notify", "enable", "true");
-    libnotify = get_config_bool ("notify", "libnotify", "true");
+    return changes;
 }
 
 // Set exclusive zone from the parameter value
@@ -438,7 +480,6 @@ void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <Pane
         // a badly-written widget could reset the textdomain to a local value - reset back to the system value after each load
         textdomain (GETTEXT_PACKAGE);
     }
-    set_exclusive ();
 }
 
 void Panel::init_widgets ()
@@ -473,16 +514,14 @@ void Panel::update_widget_icons ()
 
 void Panel::handle_config_reload ()
 {
-    printf ("config reload\n");
-    load_config ();
+    unsigned char changes = load_config ();
 
-    set_exclusive ();
-    init_notify ();
-    init_widgets ();
+    if (changes & CFG_EXCL) set_exclusive ();
+    if (changes & CFG_NOTIFY) init_notify ();
+    if (changes & CFG_WIDGETS) init_widgets ();
+    if (changes & CFG_ICONS) update_widget_icons ();
 
     window->handle_config_reload ();
-
-    update_widget_icons ();
 
     for (auto &w : left_widgets)
         w->handle_config_reload ();

@@ -78,7 +78,7 @@ class Panel
     bool notifications;
     bool libnotify;
 
-    void load_config ();
+    unsigned char load_config ();
     void set_exclusive ();
     bool on_keypress_event (GdkEventKey *event);
     bool on_button_press_event (GdkEventButton *event);
