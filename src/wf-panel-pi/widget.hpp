@@ -3,8 +3,6 @@
 
 #include <glib/gi18n.h>
 #include <gtkmm/hvbox.h>
-#include <wf-option-wrap.hpp>
-#include "config/types.hpp"
 
 extern "C" {
 #include "plug_conf.h"

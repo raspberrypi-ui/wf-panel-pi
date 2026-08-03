@@ -66,19 +66,19 @@ class Panel
 
     bool dock;
     int scaling;
-    int isize;
 
     bool pending_update;
 
-    WfOption <int> icon_size;
-    WfOption <std::string> left_widgets_opt;
-    WfOption <std::string> right_widgets_opt;
-    WfOption <bool> exclusive;
-    WfOption <bool> gestures_touch_only {"panel/gestures_touch_only"};
-    WfOption <int> notify_timeout {"notify/timeout"};
-    WfOption <bool> notifications {"notify/enable"};
-    WfOption <bool> libnotify {"notify/libnotify"};
+    int icon_size;
+    std::string left_widgets_opt;
+    std::string right_widgets_opt;
+    bool exclusive;
 
+    int notify_timeout;
+    bool notifications;
+    bool libnotify;
+
+    void load_config ();
     void set_exclusive ();
     bool on_keypress_event (GdkEventKey *event);
     bool on_button_press_event (GdkEventButton *event);

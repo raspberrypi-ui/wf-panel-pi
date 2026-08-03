@@ -69,7 +69,7 @@ static double press_x, press_y;
 /*----------------------------------------------------------------------------*/
 
 static void read_config (void);
-static void read_one_config (int index, const char *section, const char *item);
+static void read_one_config (int index, const char *section, const char *item, const char *def);
 static gboolean read_lib (const char *type, char **name, gboolean *config);
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static void write_config (void);
@@ -108,10 +108,10 @@ static void read_config (void)
     gboolean config;
 
     // add each space-separated widget from the metadata variables to the list store
-    read_one_config (PAN_L, "panel", "widgets_left");
-    read_one_config (PAN_R, "panel", "widgets_right");
-    read_one_config (DOCK, "dock", "widgets_left");
-    read_one_config (DOCKT, "dock", "widgets_right");
+    read_one_config (PAN_L, "panel", "widgets_left", "smenu spacing0 spacing4 launchers spacing8 window-list");
+    read_one_config (PAN_R, "panel", "widgets_right", "tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek");
+    read_one_config (DOCK, "dock", "widgets_left", "");
+    read_one_config (DOCKT, "dock", "widgets_right", "");
 
     // add any unused widgets to the list store so they can be added by the user
     plugind = opendir (PLUGIN_PATH);
@@ -145,13 +145,13 @@ static void read_config (void)
 
 /* Read in config from local configuration file, or use default */
 
-static void read_one_config (int index, const char *section, const char *item)
+static void read_one_config (int index, const char *section, const char *item, const char *def)
 {
     char *strval, *token, *name;
     int pos;
     gboolean config;
 
-    get_config_string (section, item, &strval);
+    get_config_string (section, item, &strval, def);
     pos = index * 100;
     token = strtok (strval, " ");
     while (token)

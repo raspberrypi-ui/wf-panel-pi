@@ -64,7 +64,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 press_t pressed;
 double press_x, press_y;
 
-gboolean touch_only;
+gboolean gestures_touch_only;
 gboolean is_pi_var;
 
 GtkWindow *popwindow;
@@ -692,7 +692,7 @@ static void gesture_end_default (GtkGestureLongPress *, GdkEventSequence *, GtkW
 GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpointer data)
 {
     GtkGesture *gesture = gtk_gesture_long_press_new (target);
-    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), touch_only);
+    gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), gestures_touch_only);
     g_signal_connect (gesture, "pressed", G_CALLBACK (gesture_pressed), NULL);
     if (callback) g_signal_connect (gesture, "end", G_CALLBACK (callback), data);
     else g_signal_connect (gesture, "end", G_CALLBACK (gesture_end_default), target);
@@ -721,20 +721,20 @@ void load_configuration_data (const char *type, conf_table_t *conf_table)
         switch (cptr->type)
         {
             case CONF_TYPE_BOOL :
-                *((gboolean *) cptr->value) = get_config_bool (type, cptr->name);
+                *((gboolean *) cptr->value) = get_config_bool (type, cptr->name, cptr->def_val);
                 break;
 
             case CONF_TYPE_INT :
-                *((int *) cptr->value) = get_config_int (type, cptr->name);
+                *((int *) cptr->value) = get_config_int (type, cptr->name, cptr->def_val);
                 break;
 
             case CONF_TYPE_STRING :
             case CONF_TYPE_FONT :
-                get_config_string (type, cptr->name, cptr->value);
+                get_config_string (type, cptr->name, cptr->value, cptr->def_val);
                 break;
 
             case CONF_TYPE_COLOUR :
-                get_config_string (type, cptr->name, &str);
+                get_config_string (type, cptr->name, &str, cptr->def_val);
                 gdk_rgba_parse ((GdkRGBA *) cptr->value, str);
                 g_free (str);
                 break;

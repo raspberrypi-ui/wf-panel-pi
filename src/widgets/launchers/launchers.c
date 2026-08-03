@@ -43,8 +43,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*----------------------------------------------------------------------------*/
 
 conf_table_t conf_table[2] = {
-    {CONF_TYPE_INT,     "spacing",  N_("Icon spacing"), NULL},
-    {CONF_TYPE_NONE,    NULL,       NULL,               NULL}
+    {CONF_TYPE_INT,     "spacing",  N_("Icon spacing"), NULL,   "0" },
+    {CONF_TYPE_NONE,    NULL,       NULL,               NULL,   NULL}
 };
 
 /*----------------------------------------------------------------------------*/

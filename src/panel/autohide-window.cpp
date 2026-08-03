@@ -29,6 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gtk/gtk.h>
 #include <glibmm.h>
+#include <gdkmm/monitor.h>
 
 extern "C" {
 #include "plug_conf.h"
@@ -47,24 +48,7 @@ AutohidingWindow::AutohidingWindow (bool dock)
 {
     is_dock = dock;
 
-    char *tmp;
-
-    get_config_string (is_dock ? "dock" : "panel", "position", &tmp);
-    position = tmp;
-    g_free (tmp);
-
-    get_config_string (is_dock ? "dock" : "panel", "layer", &tmp);
-    layer = tmp;
-    g_free (tmp);
-
-    get_config_string (is_dock ? "dock" : "panel", "monitor", &tmp);
-    monitor = tmp;
-    g_free (tmp);
-
-    offset = get_config_int (is_dock ? "dock" : "panel", "offset");
-    remainder = get_config_int (is_dock ? "dock" : "panel", "remainder");
-    autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide");
-    duration = get_config_int ("panel", "autohide_duration");
+    load_config ();
 
     set_decorated (false);
     set_resizable (false);
@@ -330,27 +314,31 @@ void AutohidingWindow::set_layer ()
     if ((std::string) layer == "background") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_BACKGROUND);
 }
 
-void AutohidingWindow::handle_config_reload ()
+void AutohidingWindow::load_config ()
 {
     char *tmp;
 
-    get_config_string (is_dock ? "dock" : "panel", "position", &tmp);
+    get_config_string (is_dock ? "dock" : "panel", "position", &tmp, is_dock ? "bottom" : "top");
     position = tmp;
     g_free (tmp);
 
-    get_config_string (is_dock ? "dock" : "panel", "layer", &tmp);
+    get_config_string (is_dock ? "dock" : "panel", "layer", &tmp, is_dock ? "top" : "bottom");
     layer = tmp;
     g_free (tmp);
 
-    get_config_string (is_dock ? "dock" : "panel", "monitor", &tmp);
+    get_config_string (is_dock ? "dock" : "panel", "monitor", &tmp, "0");
     monitor = tmp;
     g_free (tmp);
 
-    offset = get_config_int (is_dock ? "dock" : "panel", "offset");
-    remainder = get_config_int (is_dock ? "dock" : "panel", "remainder");
-    autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide");
-    duration = get_config_int ("panel", "autohide_duration");
+    offset = get_config_int (is_dock ? "dock" : "panel", "offset", is_dock ? "5" : "0");
+    remainder = get_config_int (is_dock ? "dock" : "panel", "remainder", "5");
+    autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide", "false");
+    duration = get_config_int ("panel", "autohide_duration", "300");
+}
 
+void AutohidingWindow::handle_config_reload ()
+{
+    load_config ();
     set_layer ();
     set_monitor ();
     update_position ();

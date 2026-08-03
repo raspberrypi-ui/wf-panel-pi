@@ -35,7 +35,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 
-#include "config/file.hpp"
 #include "panel.hpp"
 
 #include "panel-app.hpp"
@@ -102,13 +101,6 @@ void PanelApp::on_activate ()
     inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
     g_free (dir);
 
-    // load initial config
-    std::vector <std::string> xmldirs (1, METADATA_DIR);
-    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard"))
-        config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wizard.ini", get_config_file ());
-    else
-        config = wf::config::build_configuration (xmldirs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", get_config_file ());
-
     // setup monitor tracking
     display->signal_monitor_added ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
     display->signal_monitor_removed ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
@@ -143,8 +135,6 @@ void PanelApp::do_reload_config ()
 {
     char *dir;
 
-    wf::config::load_configuration_options_from_file (config, get_config_file ());
-
     if (panel) panel->handle_config_reload ();
     if (dock) dock->handle_config_reload ();
 
@@ -161,21 +151,6 @@ bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
     do_reload_config ();
     return true;
 }
-
-/* Static functions which use instance */
-
-void PanelApp::rescan_xml_directory ()
-{
-    std::vector <std::string> xmldirs (1, METADATA_DIR);
-    wf::config::reload_xml_files (instance->config, xmldirs);
-}
-
-std::shared_ptr <wf::config::option_base_t> PanelApp::get_config_option (const std::string& name)
-{
-    return instance->config.get_option (name);
-}
-
-/* Monitor tracking */
 
 void PanelApp::monitors_changed ()
 {

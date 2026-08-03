@@ -9,8 +9,6 @@
 #include <gtkmm/menu.h>
 #include <gtkmm/gesturelongpress.h>
 
-#include <wf-option-wrap.hpp>
-
 #include <optional>
 
 class StatusNotifierItem : public Gtk::EventBox

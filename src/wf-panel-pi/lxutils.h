@@ -63,7 +63,7 @@ typedef enum {
 extern press_t pressed;
 extern double press_x, press_y;
 
-extern gboolean touch_only;
+extern gboolean gestures_touch_only;
 extern gboolean is_pi_var;
 extern int p_icon_size;
 extern int d_icon_size;

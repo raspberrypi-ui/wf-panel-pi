@@ -44,17 +44,12 @@ extern "C" {
 
 #include "panel.hpp"
 
-Panel::Panel (bool dock) :
-    icon_size {dock ? "dock/icon_size" : "panel/icon_size"},
-    left_widgets_opt {dock ? "dock/widgets_left" : "panel/widgets_left"},
-    right_widgets_opt {dock ? "dock/widgets_right" : "panel/widgets_right"},
-    exclusive {dock ? "dock/exclusive" : "panel/exclusive"}
+Panel::Panel (bool dock)
 {
     this->dock = dock;
 
-    // Set C variables from parameters
-    touch_only = gestures_touch_only;
-    isize = icon_size;
+    // Load configuration files
+    load_config ();
 
     // Check for running on a Pi
     if (!access ("/boot/firmware/config.txt", R_OK)) is_pi_var = TRUE;
@@ -68,7 +63,7 @@ Panel::Panel (bool dock) :
     grid.set_name ("grid");
 
     // Set the icon size data pointer
-    g_object_set_data ((GObject *) window->gobj (), "icon-size", &isize);
+    g_object_set_data ((GObject *) window->gobj (), "icon-size", &icon_size);
 
     // Connect to draw signal to log first draw event using journald only if RPI_LOG_FIRST_DRAW is set
     const char *rpi_log_env = std::getenv("RPI_LOG_FIRST_DRAW");
@@ -205,12 +200,7 @@ Panel::Panel (bool dock) :
     gesture->set_propagation_phase (Gtk::PHASE_BUBBLE);
     gesture->signal_pressed ().connect ([=] (double x, double y) {pressed = PRESS_LONG; press_x = x; press_y = y;});
     gesture->signal_end ().connect ([=] (GdkEventSequence *) {if (pressed == PRESS_LONG) pass_right_click (GTK_WIDGET (window->gobj ()), press_x, press_y);});
-    gesture->set_touch_only (touch_only);
-
-    // Set up parameter callbacks
-    icon_size.set_callback ([=] { update_widget_icons (); });
-    gestures_touch_only.set_callback ([=] { update_gestures (); });
-    exclusive.set_callback ([=] { set_exclusive (); });
+    gesture->set_touch_only (gestures_touch_only);
 
     // Create the window
     content_box.pack_start (left_box, false, false);
@@ -237,6 +227,32 @@ Panel::Panel (bool dock) :
 Panel::~Panel ()
 {
     if (!dock) wfpanel_notify_close ();
+}
+
+// Load panel configuration or use defaults
+
+void Panel::load_config ()
+{
+    char *tmp;
+    bool wiz = false;
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wiz = true;
+    
+    get_config_string (dock ? "dock" : "panel", "widgets_left", &tmp, dock ? "" : (wiz ? "" : "smenu spacing0 spacing4 launchers spacing8 window-list"));
+    left_widgets_opt = tmp;
+    g_free (tmp);
+
+    get_config_string (dock ? "dock" : "panel", "widgets_right", &tmp, dock ? "" : (wiz ? "bluetooth volumepulse squeek" : "tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek"));
+    right_widgets_opt = tmp;
+    g_free (tmp);
+
+    icon_size = get_config_int (dock ? "dock" : "panel", "icon_size", dock ? "48" : "32");
+    exclusive = get_config_bool (dock ? "dock" : "panel", "exclusive", dock || wiz ? "false" : "true");
+
+    gestures_touch_only = get_config_bool ("panel", "gestures_touch_only", "false");
+
+    notify_timeout = get_config_int ("notify", "timeout", "15");
+    notifications = get_config_bool ("notify", "enable", "true");
+    libnotify = get_config_bool ("notify", "libnotify", "true");
 }
 
 // Set exclusive zone from the parameter value
@@ -406,8 +422,6 @@ std::unique_ptr <PanelWidget> Panel::widget_from_name (const char *name)
 
 void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <PanelWidget>>& container, Gtk::HBox& box)
 {
-    PanelApp::rescan_xml_directory ();
-
     container.clear ();
 
     std::string widget_name;
@@ -433,20 +447,6 @@ void Panel::init_widgets ()
     reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
     if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
     else window->show ();
-
-    left_widgets_opt.set_callback ([=] ()
-    {
-        reload_widgets ((std::string) left_widgets_opt, left_widgets, left_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
-        else window->show ();
-    });
-
-    right_widgets_opt.set_callback ([=] ()
-    {
-        reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
-        if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
-        else window->show ();
-    });
 }
 
 // Set up notifications and callbacks
@@ -454,29 +454,12 @@ void Panel::init_widgets ()
 void Panel::init_notify ()
 {
     if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
-
-    notifications.set_callback([=] ()
-    {
-        if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
-    });
-
-    libnotify.set_callback([=] ()
-    {
-        if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
-    });
-
-    notify_timeout.set_callback([=] ()
-    {
-        if (!dock) wfpanel_notify_init (notifications, libnotify, notify_timeout, window->gobj ());
-    });
 }
 
 // Update all displayed icons
 
 void Panel::update_widget_icons ()
 {
-    isize = icon_size;
-
     for (auto &w : left_widgets)
         w->set_icon ();
 
@@ -486,16 +469,20 @@ void Panel::update_widget_icons ()
     window->update_position ();
 }
 
-void Panel::update_gestures ()
-{
-    touch_only = gestures_touch_only;
-}
-
 // Public functions used by PanelApp
 
 void Panel::handle_config_reload ()
 {
+    printf ("config reload\n");
+    load_config ();
+
+    set_exclusive ();
+    init_notify ();
+    init_widgets ();
+
     window->handle_config_reload ();
+
+    update_widget_icons ();
 
     for (auto &w : left_widgets)
         w->handle_config_reload ();

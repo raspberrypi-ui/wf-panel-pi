@@ -8,18 +8,6 @@ sources = files (
    '../panel/lxutils.c'
 )
 
-config_sources = files(
-   '../panel/config/types.cpp',
-   '../panel/config/option.cpp',
-   '../panel/config/section.cpp',
-   '../panel/config/log.cpp',
-   '../panel/config/xml.cpp',
-   '../panel/config/config-manager.cpp',
-   '../panel/config/file.cpp',
-   '../panel/config/duration.cpp',
-   '../panel/config/compound-option.cpp'
-)
-
 gtk = dependency ('gtk+-3.0')
 gtkmm = dependency('gtkmm-3.0', version: '>=3.24')
 evdev = dependency('libevdev')
@@ -32,7 +20,7 @@ pui_dir = join_paths(presource_dir, 'ui')
 
 proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"'
 
-shared_module(plugin_name, sources + config_sources, dependencies: deps, install: true,
+shared_module(plugin_name, sources, dependencies: deps, install: true,
     install_dir: get_option('libdir') / 'rpcc',
     c_args : [ proj_args, '-DRPCC_DATA_DIR="' + presource_dir + '"', '-DPLUGIN_NAME="' + plugin_name + '"' ],
     cpp_args : proj_args,

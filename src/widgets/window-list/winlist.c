@@ -47,10 +47,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*----------------------------------------------------------------------------*/
 
 conf_table_t conf_table[4] = {
-    {CONF_TYPE_INT,     "max_width",    N_("Maximum width of task button"), NULL},
-    {CONF_TYPE_BOOL,    "icons_only",   N_("Show only icons"),              NULL},
-    {CONF_TYPE_INT,     "spacing",      N_("Item spacing"),                 NULL},
-    {CONF_TYPE_NONE,    NULL,           NULL,                               NULL}
+    {CONF_TYPE_INT,     "max_width",    N_("Maximum width of task button"), NULL,   "200"   },
+    {CONF_TYPE_BOOL,    "icons_only",   N_("Show only icons"),              NULL,   "false" },
+    {CONF_TYPE_INT,     "spacing",      N_("Item spacing"),                 NULL,   "0"     },
+    {CONF_TYPE_NONE,    NULL,           NULL,                               NULL,   NULL    }
 };
 
 gboolean stopping;

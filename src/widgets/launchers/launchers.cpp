@@ -54,7 +54,7 @@ void WidgetLauncher::read_settings (void)
 
     load_configuration_data (PLUGIN_NAME, conf_table);
 
-    get_config_string ("panel", "launchers", &lch->launchers);
+    get_config_string ("panel", "launchers", &lch->launchers, "");
 }
 
 void WidgetLauncher::handle_config_reload (void)
@@ -62,7 +62,7 @@ void WidgetLauncher::handle_config_reload (void)
     load_configuration_data (PLUGIN_NAME, conf_table);
 
     g_free (lch->launchers);
-    get_config_string ("panel", "launchers", &lch->launchers);
+    get_config_string ("panel", "launchers", &lch->launchers, "");
 
     launcher_update_display (lch);
 }

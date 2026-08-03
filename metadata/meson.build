@@ -1,3 +1,0 @@
-install_data('panel.xml', install_dir: metadata_dir)
-install_data('dock.xml', install_dir: metadata_dir)
-install_data('notify.xml', install_dir: metadata_dir)

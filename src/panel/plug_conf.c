@@ -50,7 +50,6 @@ GtkWidget *cdlg;
 /* Function prototypes */
 /*----------------------------------------------------------------------------*/
 
-static char *get_config_default (const char *section, const char *key);
 static void update_config (GtkButton *, gpointer data);
 static void close_dialog (GtkButton *, gpointer data);
 static void plugin_closed (GtkButton *, gpointer);
@@ -66,72 +65,26 @@ static void update_spacing (GtkButton *, gpointer) {}
 /* Private functions */
 /*----------------------------------------------------------------------------*/
 
-/* Read default value for config parameter from XML file */
-
-static char *get_config_default (const char *section, const char *key)
-{
-    char *file, *str;
-    xmlDocPtr xDoc;
-    xmlXPathObjectPtr xpathObj;
-    xmlXPathContextPtr xpathCtx;
-    xmlChar *cont;
-
-    file = g_strdup_printf ("/usr/share/wf-panel-pi/metadata/%s.xml", section);
-
-    // read in data from XML file
-    xmlInitParser ();
-    LIBXML_TEST_VERSION
-    xDoc = xmlReadFile (file, NULL, XML_PARSE_NOBLANKS);
-    g_free (file);
-    if (xDoc == NULL)
-    {
-        xmlCleanupParser ();
-        return NULL;
-    }
-
-    xpathCtx = xmlXPathNewContext (xDoc);
-
-    str = g_strdup_printf ("/wf-panel-pi/plugin/group/option[@name='%s']/default", key);
-    xpathObj = xmlXPathEvalExpression (XC (str), xpathCtx);
-    g_free (str);
-
-    if (!xmlXPathNodeSetIsEmpty (xpathObj->nodesetval))
-    {
-        cont = xmlNodeGetContent (xpathObj->nodesetval->nodeTab[0]);
-        str = g_strdup ((char *) cont);
-        xmlFree (cont);
-    }
-    else str = NULL;
-    xmlXPathFreeObject (xpathObj);
-
-    // cleanup XML
-    xmlXPathFreeContext (xpathCtx);
-    xmlFreeDoc (xDoc);
-    xmlCleanupParser ();
-
-    return str;
-}
-
 /* Get bools and ints by parsing config strings */
 
-gboolean get_config_bool (const char *section, const char *key)
+gboolean get_config_bool (const char *section, const char *key, const char *def)
 {
     char *dest;
     gboolean res = FALSE;
 
-    get_config_string (section, key, &dest);
+    get_config_string (section, key, &dest, def);
     if (!g_strcmp0 (dest, "true") || !g_strcmp0 (dest, "1") || !g_strcmp0 (dest, "yes")) res = TRUE;
     g_free (dest);
 
     return res;
 }
 
-int get_config_int (const char *section, const char *key)
+int get_config_int (const char *section, const char *key, const char *def)
 {
     char *dest;
     int i = 0;
 
-    get_config_string (section, key, &dest);
+    get_config_string (section, key, &dest, def);
     sscanf (dest, "%d", &i);
     g_free (dest);
 
@@ -233,14 +186,17 @@ static void update_plugin_config (GtkWidget *box)
 
 /* Read in a config string from user and system files, or get XML default */
 
-void get_config_string (const char *section, const char *key, char **dest)
+void get_config_string (const char *section, const char *key, char **dest, const char *def)
 {
     char *str, *leg;
     GKeyFile *kf;
     GError *err;
+    gboolean wiz = FALSE;
 
-    // read in data from file to a key file
-    str = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wiz = TRUE;
+
+    // read user data from file to a key file
+    str = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", wiz ? "wizard.ini" : "wf-panel-pi.ini", NULL);
     kf = g_key_file_new ();
     g_key_file_load_from_file (kf, str, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
     g_free (str);
@@ -270,8 +226,11 @@ void get_config_string (const char *section, const char *key, char **dest)
     }
     g_key_file_free (kf);
 
+    // read system default
+    str = g_build_filename ("/etc/xdg/wf-panel-pi", wiz ? "wizard.ini" : "wf-panel-pi.ini", NULL);
     kf = g_key_file_new ();
-    g_key_file_load_from_file (kf, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+    g_key_file_load_from_file (kf, str, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+    g_free (str);
 
     err = NULL;
     str = g_key_file_get_string (kf, section, key, &err);
@@ -283,7 +242,7 @@ void get_config_string (const char *section, const char *key, char **dest)
     }
     g_key_file_free (kf);
 
-    *dest = get_config_default (section, key);
+    *dest = g_strdup (def);
 }
 
 /* Helper function to determine whether a particular widget has a config table */
@@ -394,20 +353,20 @@ void plugin_config_dialog (const char *type)
             {
                 case CONF_TYPE_BOOL :
                                     control = gtk_switch_new ();
-                                    gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (type, cptr->name));
+                                    gtk_switch_set_active (GTK_SWITCH (control), get_config_bool (type, cptr->name, cptr->def_val));
                                     break;
 
                 case CONF_TYPE_INT :
                                     control = gtk_spin_button_new_with_range (0, 1000, 1); //!!!!!
                                     if (space == -1)
-                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (type, cptr->name));
+                                        gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), get_config_int (type, cptr->name, cptr->def_val));
                                     else
                                         gtk_spin_button_set_value (GTK_SPIN_BUTTON (control), space);
                                     break;
 
                 case CONF_TYPE_STRING :
                                     control = gtk_entry_new ();
-                                    get_config_string (type, cptr->name, &strval);
+                                    get_config_string (type, cptr->name, &strval, cptr->def_val);
                                     gtk_entry_set_text (GTK_ENTRY (control), strval);
                                     g_free (strval);
                                     break;
@@ -415,7 +374,7 @@ void plugin_config_dialog (const char *type)
                 case CONF_TYPE_COLOUR :
                                     control = gtk_color_button_new ();
                                     gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (control), TRUE);
-                                    get_config_string (type, cptr->name, &strval);
+                                    get_config_string (type, cptr->name, &strval, cptr->def_val);
                                     gdk_rgba_parse (&col, strval);
                                     g_free (strval);
                                     gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (control), &col);
@@ -427,7 +386,7 @@ void plugin_config_dialog (const char *type)
 
                 case CONF_TYPE_FONT :
                                     control = gtk_font_button_new ();
-                                    get_config_string (type, cptr->name, &strval);
+                                    get_config_string (type, cptr->name, &strval, cptr->def_val);
                                     gtk_font_chooser_set_font (GTK_FONT_CHOOSER (control), strval);
                                     g_free (strval);
                                     break;

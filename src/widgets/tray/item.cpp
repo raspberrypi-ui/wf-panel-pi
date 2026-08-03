@@ -51,7 +51,7 @@ static Glib::RefPtr<Gtk::GestureLongPress> detect_long_press (Gtk::Widget& targe
     Glib::RefPtr<Gtk::GestureLongPress> gesture = Gtk::GestureLongPress::create (target);
     gesture->set_propagation_phase (Gtk::PHASE_BUBBLE);
     gesture->signal_pressed ().connect ([=] (double x, double y) {pressed = PRESS_LONG;});
-    gesture->set_touch_only (touch_only);
+    gesture->set_touch_only (gestures_touch_only);
     return gesture;
 }
 

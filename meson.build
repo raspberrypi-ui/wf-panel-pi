@@ -36,7 +36,6 @@ subdir('proto')
 gtkmm = dependency('gtkmm-3.0', version: '>=3.24')
 deps = [ wf_protos, gtkmm ]
 
-subdir('metadata')
 subdir('data')
 subdir('src')
 subdir('po')

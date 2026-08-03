@@ -33,8 +33,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtkmm/window.h>
 #include <gdk/gdkwayland.h>
 #include <gtk-layer-shell/gtk-layer-shell.h>
-#include <wf-option-wrap.hpp>
-#include "config/duration.hpp"
 
 class AutohidingWindow : public Gtk::Window
 {
@@ -60,8 +58,6 @@ class AutohidingWindow : public Gtk::Window
     int remainder;
     bool autohide;
     int duration;
-
-    wf::animation::simple_animation_t y_position;
 
     int autohide_counter;
     bool has_auto_exclusive_zone = false;
@@ -100,6 +96,7 @@ class AutohidingWindow : public Gtk::Window
     void update_autohide ();
     void set_layer ();
     void start_animation (int target);
+    void load_config ();
 };
 
 #endif /* end of include guard: AUTOHIDE_WINDOW_HPP */

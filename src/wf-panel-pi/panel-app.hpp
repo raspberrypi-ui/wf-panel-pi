@@ -33,8 +33,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtkmm/application.h>
 #include <gdkmm/monitor.h>
 
-#include "config/config-manager.hpp"
-
 class Panel;
 
 class PanelApp
@@ -44,9 +42,6 @@ class PanelApp
     ~PanelApp ();
 
     static void create (int argc, char **argv);
-
-    static void rescan_xml_directory ();
-    static std::shared_ptr <wf::config::option_base_t> get_config_option (const std::string& name);
 
   private:
     static std::unique_ptr <PanelApp> instance;
@@ -61,7 +56,6 @@ class PanelApp
     Gio::DBus::InterfaceVTable *interface_vtable;
     guint owner_id;
 
-    wf::config::config_manager_t config;
     int inotify_fd;
 
     void run ();

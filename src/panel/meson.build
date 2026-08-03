@@ -12,18 +12,6 @@ c_sources = files(
   'launcher.c'
 )
 
-config_sources = files(
-   'config/types.cpp',
-   'config/option.cpp',
-   'config/section.cpp',
-   'config/log.cpp',
-   'config/xml.cpp',
-   'config/config-manager.cpp',
-   'config/file.cpp',
-   'config/duration.cpp',
-   'config/compound-option.cpp',
-)
-
 proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"'
 
 gtklayershell = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
@@ -34,7 +22,7 @@ libxml2 = dependency('libxml-2.0')
 giomm = dependency('giomm-2.4')
 panel_deps = [ gtklayershell, udev, input, evdev, libxml2, giomm ]
 
-executable('wf-panel-pi', cpp_sources + c_sources + config_sources,
+executable('wf-panel-pi', cpp_sources + c_sources,
         dependencies: deps + panel_deps,
         install: true,
         export_dynamic: true,

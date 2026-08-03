@@ -7,9 +7,9 @@ extern "C" {
     void destroy (PanelWidget *w) { delete w; }
 
     static conf_table_t conf_table[3] = {
-        {CONF_TYPE_INT,     "smooth_scrolling_threshold",   N_("Smooth scrolling threshold"),   NULL},
-        {CONF_TYPE_BOOL,    "menu_on_middle_click",         N_("Middle button activates menu"), NULL},
-        {CONF_TYPE_NONE,    NULL,                           NULL,                               NULL}
+        {CONF_TYPE_INT,     "smooth_scrolling_threshold",   N_("Smooth scrolling threshold"),   NULL,   "5"     },
+        {CONF_TYPE_BOOL,    "menu_on_middle_click",         N_("Middle button activates menu"), NULL,   "false" },
+        {CONF_TYPE_NONE,    NULL,                           NULL,                               NULL,   NULL    }
     };
     const conf_table_t *config_params (void) { return conf_table; };
     const char *display_name (void) { return N_("System Tray"); };
