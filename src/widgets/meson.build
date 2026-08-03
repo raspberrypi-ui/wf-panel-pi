@@ -1,6 +1,4 @@
 subdir('launchers')
-subdir('separator')
-subdir('spacing')
-subdir('tray')
 subdir('window-list')
-subdir('split')
+subdir('tray')
+subdir('misc')
