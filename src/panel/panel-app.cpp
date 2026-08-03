@@ -133,22 +133,26 @@ std::string PanelApp::get_config_file ()
 
 void PanelApp::do_reload_config ()
 {
-    char *dir;
-
     if (panel) panel->handle_config_reload ();
     if (dock) dock->handle_config_reload ();
-
-    dir = g_path_get_dirname (get_config_file ().c_str ());
-    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
-    inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
-    g_free (dir);
 }
 
 bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
 {
+    char *dir;
     char buf[1024 * sizeof (inotify_event)];
     read (inotify_fd, buf, 1024 * sizeof (inotify_event));
+    //struct inotify_event *ev = (struct inotify_event *) buf;
+    //if (!g_strcmp0 (ev->name, "wf-panel-pi.ini"))
+
     do_reload_config ();
+
+    // reset the watch
+    dir = g_path_get_dirname (get_config_file ().c_str ());
+    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
+    inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
+    g_free (dir);
+
     return true;
 }
 

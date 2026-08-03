@@ -60,6 +60,7 @@ void WidgetWinlist::read_settings (void)
 void WidgetWinlist::handle_config_reload (void)
 {
     load_configuration_data (PLUGIN_NAME, conf_table);
+
     wlist_update_display (wl);
 }
 
