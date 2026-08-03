@@ -314,35 +314,74 @@ void AutohidingWindow::set_layer ()
     if ((std::string) layer == "background") gtk_layer_set_layer (this->gobj (), GTK_LAYER_SHELL_LAYER_BACKGROUND);
 }
 
-void AutohidingWindow::load_config ()
+#define CFG_POSITION    0x01
+#define CFG_MONITOR     0x02
+#define CFG_LAYER       0x04
+#define CFG_AHIDE       0x08
+
+unsigned char AutohidingWindow::load_config ()
 {
+    unsigned char changes = 0;
     char *tmp;
+    int val;
 
     get_config_string (is_dock ? "dock" : "panel", "position", &tmp, is_dock ? "bottom" : "top");
-    position = tmp;
+    if (g_strcmp0 (tmp, position.c_str ()))
+    {
+        position = tmp;
+        changes |= CFG_POSITION;
+    }
     g_free (tmp);
 
     get_config_string (is_dock ? "dock" : "panel", "layer", &tmp, is_dock ? "top" : "bottom");
-    layer = tmp;
+    if (g_strcmp0 (tmp, layer.c_str ()))
+    {
+        layer = tmp;
+        changes |= CFG_LAYER;
+    }
     g_free (tmp);
 
     get_config_string (is_dock ? "dock" : "panel", "monitor", &tmp, "0");
-    monitor = tmp;
+    if (g_strcmp0 (tmp, monitor.c_str ()))
+    {
+        monitor = tmp;
+        changes |= CFG_MONITOR;
+    }
     g_free (tmp);
 
-    offset = get_config_int (is_dock ? "dock" : "panel", "offset", is_dock ? "5" : "0");
-    remainder = get_config_int (is_dock ? "dock" : "panel", "remainder", "5");
-    autohide = get_config_bool (is_dock ? "dock" : "panel", "autohide", "false");
+    val = get_config_int (is_dock ? "dock" : "panel", "offset", is_dock ? "5" : "0");
+    if (offset != val)
+    {
+        offset = val;
+        changes |= CFG_POSITION;
+    }
+
+    val = get_config_int (is_dock ? "dock" : "panel", "remainder", "5");
+    if (remainder != val)
+    {
+        remainder = val;
+        changes |= CFG_POSITION;
+    }
+
+    val = get_config_bool (is_dock ? "dock" : "panel", "autohide", "false");
+    if (autohide != val)
+    {
+        autohide = val;
+        changes |= CFG_AHIDE;
+    }
+
     duration = get_config_int ("panel", "autohide_duration", "300");
+
+    return changes;
 }
 
 void AutohidingWindow::handle_config_reload ()
 {
-    load_config ();
-    set_layer ();
-    set_monitor ();
-    update_position ();
-    update_autohide ();
+    unsigned char changes = load_config ();
+    if (changes & CFG_LAYER) set_layer ();
+    if (changes & CFG_MONITOR) set_monitor ();
+    if (changes & CFG_POSITION) update_position ();
+    if (changes & CFG_AHIDE) update_autohide ();
 }
 
 /* End of file */

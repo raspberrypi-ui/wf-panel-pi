@@ -96,7 +96,7 @@ class AutohidingWindow : public Gtk::Window
     void update_autohide ();
     void set_layer ();
     void start_animation (int target);
-    void load_config ();
+    unsigned char load_config ();
 };
 
 #endif /* end of include guard: AUTOHIDE_WINDOW_HPP */
