@@ -39,11 +39,10 @@ extern "C" {
 
 class WidgetLauncher : public PanelWidget
 {
-    std::unique_ptr <Gtk::HBox> plugin;
-
-    sigc::connection icon_timer;
-
     LauncherPlugin *lch;
+
+    std::unique_ptr <Gtk::HBox> plugin;
+    sigc::connection icon_timer;
 
   public:
 

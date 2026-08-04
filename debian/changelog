@@ -1,3 +1,9 @@
+wf-panel-pi (1.22) trixie; urgency=medium
+
+  * Remove WfOptions
+
+ -- Simon Long <simon@raspberrypi.com>  Tue, 04 Aug 2026 11:47:44 +0100
+
 wf-panel-pi (1.21) trixie; urgency=medium
 
   * Add wildcard handling for command widget names

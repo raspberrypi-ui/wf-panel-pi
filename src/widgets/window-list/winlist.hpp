@@ -40,12 +40,10 @@ extern "C" {
 
 class WidgetWinlist : public PanelWidget
 {
-    std::unique_ptr <Gtk::ScrolledWindow> plugin;
-
-    sigc::connection icon_timer;
-
-    /* plugin */
     WinlistPlugin *wl;
+
+    std::unique_ptr <Gtk::ScrolledWindow> plugin;
+    sigc::connection icon_timer;
 
   public:
 
