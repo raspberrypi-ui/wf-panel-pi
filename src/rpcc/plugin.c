@@ -110,6 +110,7 @@ GtkWidget *get_tab (int tab)
             break;
 
         default :
+            window = NULL;
             plugin = NULL;
     }
 

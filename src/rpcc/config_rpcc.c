@@ -729,7 +729,7 @@ static GtkWidget *panel_menu (int ref, gdouble x, gdouble y)
     GtkWidget *menu, *item;
     GtkTreePath *path;
     GtkTreeIter iter;
-    int nitems, pos;
+    int nitems, pos = -1;
     gboolean conf = FALSE;
 
     menu = gtk_menu_new ();
@@ -747,16 +747,17 @@ static GtkWidget *panel_menu (int ref, gdouble x, gdouble y)
     item = gtk_menu_item_new_with_label (_("Remove"));
     g_signal_connect (item, "activate", G_CALLBACK (remove_widget), NULL);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    if (pos == -1) gtk_widget_set_sensitive (item, FALSE);
 
     item = gtk_menu_item_new_with_label (_("Move Left"));
     g_signal_connect (item, "activate", G_CALLBACK (move_widget), (void *) 1);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-    if (pos == 0) gtk_widget_set_sensitive (item, FALSE);
+    if (pos == -1 || pos == 0) gtk_widget_set_sensitive (item, FALSE);
 
     item = gtk_menu_item_new_with_label (_("Move Right"));
     g_signal_connect (item, "activate", G_CALLBACK (move_widget), (void *) -1);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-    if (pos >= nitems - 1) gtk_widget_set_sensitive (item, FALSE);
+    if (pos == -1 || pos >= nitems - 1) gtk_widget_set_sensitive (item, FALSE);
 
     item = gtk_menu_item_new_with_label (_("Configure..."));
     g_signal_connect (item, "activate", G_CALLBACK (configure_plugin), NULL);
