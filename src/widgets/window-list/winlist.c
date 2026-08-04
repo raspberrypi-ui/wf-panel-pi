@@ -980,6 +980,7 @@ void wlist_destructor (gpointer user_data)
     WinlistPlugin *wl = (WinlistPlugin *) user_data;
 
     if (wl->idle_timer) g_source_remove (wl->idle_timer);
+    g_signal_handlers_disconnect_by_data (wl->plugin, wl);
 
     /* Stop the window manager */
     g_list_foreach (wl->windows, (GFunc) close_handle, wl);
