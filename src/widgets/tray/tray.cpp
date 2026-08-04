@@ -60,6 +60,6 @@ void WidgetStatusNotifier::read_settings (void)
 
 void WidgetStatusNotifier::handle_config_reload (void)
 {
-    load_configuration_data (PLUGIN_NAME, conf_table);
-    for (auto &p : items) p.second.set_params (momc, sst);
+    if (load_configuration_data (PLUGIN_NAME, conf_table))
+        for (auto &p : items) p.second.set_params (momc, sst);
 }

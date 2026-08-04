@@ -50,8 +50,7 @@ bool WidgetWinlist::set_icon (void)
 
 void WidgetWinlist::handle_config_reload (void)
 {
-    load_configuration_data (PLUGIN_NAME, conf_table);
-    wlist_update_display (wl);
+    if (load_configuration_data (PLUGIN_NAME, conf_table)) wlist_update_display (wl);
 }
 
 void WidgetWinlist::init (Gtk::HBox *container)

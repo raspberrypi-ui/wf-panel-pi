@@ -50,12 +50,15 @@ bool WidgetLauncher::set_icon (void)
 
 void WidgetLauncher::handle_config_reload (void)
 {
-    load_configuration_data (PLUGIN_NAME, conf_table);
+    gboolean changed = load_configuration_data (PLUGIN_NAME, conf_table);
 
+    char *ostr = g_strdup (lch->launchers);
     g_free (lch->launchers);
     get_config_string ("panel", "launchers", &lch->launchers, "");
+    if (g_strcmp0 (lch->launchers, ostr)) changed = TRUE;
+    g_free (ostr);
 
-    launcher_update_display (lch);
+    if (changed) launcher_update_display (lch);
 }
 
 void WidgetLauncher::init (Gtk::HBox *container)
