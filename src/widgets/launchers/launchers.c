@@ -283,6 +283,11 @@ void launcher_update_display (LauncherPlugin *lch)
     update_icons (lch);
 }
 
+void launcher_set_values (LauncherPlugin *lch)
+{
+    conf_table[0].value = (void *) &lch->spacing;
+}
+
 /* Handler for control message */
 gboolean launcher_control_msg (LauncherPlugin *, const char *)
 {

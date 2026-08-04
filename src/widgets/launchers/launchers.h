@@ -51,6 +51,7 @@ extern conf_table_t conf_table[2];
 /*----------------------------------------------------------------------------*/
 
 extern void launcher_init (LauncherPlugin *lch);
+extern void launcher_set_values (LauncherPlugin *lch);
 extern void launcher_update_display (LauncherPlugin *lch);
 extern gboolean launcher_control_msg (LauncherPlugin *lch, const char *cmd);
 extern void launcher_destructor (gpointer user_data);

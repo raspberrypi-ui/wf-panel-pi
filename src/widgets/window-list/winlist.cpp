@@ -48,19 +48,9 @@ bool WidgetWinlist::set_icon (void)
     return false;
 }
 
-void WidgetWinlist::read_settings (void)
-{
-    conf_table[0].value = (void *) &wl->max_width;
-    conf_table[1].value = (void *) &wl->icons_only;
-    conf_table[2].value = (void *) &wl->spacing;
-
-    load_configuration_data (PLUGIN_NAME, conf_table);
-}
-
 void WidgetWinlist::handle_config_reload (void)
 {
     load_configuration_data (PLUGIN_NAME, conf_table);
-
     wlist_update_display (wl);
 }
 
@@ -80,7 +70,8 @@ void WidgetWinlist::init (Gtk::HBox *container)
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WidgetWinlist::set_icon));
 
     /* Initialise the plugin */
-    read_settings ();
+    wlist_set_values (wl);
+    load_configuration_data (PLUGIN_NAME, conf_table);
     wlist_init (wl);
 }
 

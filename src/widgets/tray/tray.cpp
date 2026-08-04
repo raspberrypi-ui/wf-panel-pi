@@ -52,8 +52,8 @@ bool WidgetStatusNotifier::set_icon (void)
 
 void WidgetStatusNotifier::read_settings (void)
 {
-    conf_table[0].value = (void *) &sst;
-    conf_table[1].value = (void *) &momc;
+    conf_table[0].value = (void **) &sst;
+    conf_table[1].value = (void **) &momc;
 
     load_configuration_data (PLUGIN_NAME, conf_table);
 }

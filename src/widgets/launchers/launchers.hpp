@@ -43,16 +43,14 @@ class WidgetLauncher : public PanelWidget
 
     sigc::connection icon_timer;
 
-    /* plugin */
     LauncherPlugin *lch;
 
   public:
 
     void init (Gtk::HBox *container) override;
-    void command (const char *cmd) override;
     virtual ~WidgetLauncher ();
+    void command (const char *cmd) override;
     bool set_icon (void);
-    void read_settings (void);
     void handle_config_reload (void);
 };
 

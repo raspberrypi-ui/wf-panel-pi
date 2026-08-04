@@ -83,6 +83,7 @@ extern conf_table_t conf_table[4];
 /*----------------------------------------------------------------------------*/
 
 extern void wlist_init (WinlistPlugin *wl);
+extern void wlist_set_values (WinlistPlugin *wl);
 extern void wlist_update_display (WinlistPlugin *wl);
 extern gboolean wlist_control_msg (WinlistPlugin *wl, const char *cmd);
 extern void wlist_destructor (gpointer user_data);

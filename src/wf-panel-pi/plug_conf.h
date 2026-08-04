@@ -42,7 +42,7 @@ typedef struct {
     CONF_TYPE type;
     const char *name;
     const char *label;
-    void *value;
+    void **value;
     const char *def_val;
 } conf_table_t;
 

@@ -709,42 +709,53 @@ gboolean is_pi (void)
 /* Reading config from key files */
 /*----------------------------------------------------------------------------*/
 
-void load_configuration_data (const char *type, conf_table_t *conf_table)
+gboolean load_configuration_data (const char *type, conf_table_t *conf_table)
 {
     conf_table_t *cptr = &conf_table[0];
-    char *str;
-
-    // need to handle defaults?
+    char *str, *ostr;
+    GdkRGBA *ocol;
+    int orig;
+    gboolean changed = FALSE;
 
     while (cptr->type != CONF_TYPE_NONE)
     {
         switch (cptr->type)
         {
             case CONF_TYPE_BOOL :
+                orig = *((gboolean *) cptr->value);
                 *((gboolean *) cptr->value) = get_config_bool (type, cptr->name, cptr->def_val);
+                if (*((gboolean *) cptr->value) != orig) changed = TRUE;
                 break;
 
             case CONF_TYPE_INT :
+                orig = *((int *) cptr->value);
                 *((int *) cptr->value) = get_config_int (type, cptr->name, cptr->def_val);
+                if (*((int *) cptr->value) != orig) changed = TRUE;
                 break;
 
             case CONF_TYPE_STRING :
             case CONF_TYPE_FONT :
-                get_config_string (type, cptr->name, cptr->value, cptr->def_val);
+                ostr = g_strdup (((char *) *cptr->value));
+                get_config_string (type, cptr->name, (char **) cptr->value, cptr->def_val);
+                if (g_strcmp0 ((char *) *cptr->value, ostr)) changed = TRUE;
+                g_free (ostr);
                 break;
 
             case CONF_TYPE_COLOUR :
+                ocol = gdk_rgba_copy ((GdkRGBA *) cptr->value);
                 get_config_string (type, cptr->name, &str, cptr->def_val);
                 gdk_rgba_parse ((GdkRGBA *) cptr->value, str);
+                if (!gdk_rgba_equal ((GdkRGBA *) cptr->value, ocol)) changed = TRUE;
                 g_free (str);
+                gdk_rgba_free (ocol);
                 break;
 
             default: break;
         }
         cptr++;
     }
+    return changed;
 }
-
 
 /* End of file */
 /*----------------------------------------------------------------------------*/

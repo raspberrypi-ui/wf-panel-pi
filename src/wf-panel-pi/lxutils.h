@@ -111,7 +111,7 @@ extern GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpoint
 
 extern gboolean is_pi (void);
 
-extern void load_configuration_data (const char *type, conf_table_t *conf_table);
+extern gboolean load_configuration_data (const char *type, conf_table_t *conf_table);
 
 #define wrap_notify(panel,msg) wfpanel_notify(msg)
 #define wrap_critical(panel,msg) wfpanel_critical(msg)

@@ -48,15 +48,6 @@ bool WidgetLauncher::set_icon (void)
     return false;
 }
 
-void WidgetLauncher::read_settings (void)
-{
-    conf_table[0].value = (void *) &lch->spacing;
-
-    load_configuration_data (PLUGIN_NAME, conf_table);
-
-    get_config_string ("panel", "launchers", &lch->launchers, "");
-}
-
 void WidgetLauncher::handle_config_reload (void)
 {
     load_configuration_data (PLUGIN_NAME, conf_table);
@@ -80,7 +71,9 @@ void WidgetLauncher::init (Gtk::HBox *container)
     icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WidgetLauncher::set_icon));
 
     /* Initialise the plugin */
-    read_settings ();
+    launcher_set_values (lch);
+    load_configuration_data (PLUGIN_NAME, conf_table);
+    get_config_string ("panel", "launchers", &lch->launchers, "");
     launcher_init (lch);
 }
 

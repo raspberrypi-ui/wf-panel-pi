@@ -928,6 +928,13 @@ void wlist_update_display (WinlistPlugin *wl)
     update_icons (wl);
 }
 
+void wlist_set_values (WinlistPlugin *wl)
+{
+    conf_table[0].value = (void *) &wl->max_width;
+    conf_table[1].value = (void *) &wl->icons_only;
+    conf_table[2].value = (void *) &wl->spacing;
+}
+
 /* Handler for control message */
 gboolean wlist_control_msg (WinlistPlugin *, const char *)
 {
