@@ -44,9 +44,9 @@ extern "C" {
 
 #include "panel.hpp"
 
-Panel::Panel (bool dock)
+Panel::Panel (bool isdock)
 {
-    this->dock = dock;
+    dock = isdock;
 
     // Load configuration files
     load_config ();
@@ -54,6 +54,10 @@ Panel::Panel (bool dock)
     // Check for running on a Pi
     if (!access ("/boot/firmware/config.txt", R_OK)) is_pi_var = TRUE;
     else is_pi_var = FALSE;
+
+    // Check for running under wizard
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wizard = true;
+    else wizard = false;
 
     // Create the window
     window = std::make_unique <AutohidingWindow> (dock);
@@ -240,10 +244,8 @@ unsigned char Panel::load_config ()
     unsigned char changes = 0;
     char *tmp;
     int val;
-    bool wiz = false;
-    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard")) wiz = true;
     
-    get_config_string (dock ? "dock" : "panel", "widgets_left", &tmp, dock ? "" : (wiz ? "" : "smenu spacing0 spacing4 launchers spacing8 window-list"));
+    get_config_string (dock ? "dock" : "panel", "widgets_left", &tmp, dock ? "" : (wizard ? "" : "smenu spacing0 spacing4 launchers spacing8 window-list"));
     if (g_strcmp0 (tmp, left_widgets_opt.c_str ()))
     {
         left_widgets_opt = tmp;
@@ -251,7 +253,7 @@ unsigned char Panel::load_config ()
     }
     g_free (tmp);
 
-    get_config_string (dock ? "dock" : "panel", "widgets_right", &tmp, dock ? "" : (wiz ? "bluetooth volumepulse squeek" : "tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek"));
+    get_config_string (dock ? "dock" : "panel", "widgets_right", &tmp, dock ? "" : (wizard ? "bluetooth volumepulse squeek" : "tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek"));
     if (g_strcmp0 (tmp, right_widgets_opt.c_str ()))
     {
         right_widgets_opt = tmp;
@@ -266,7 +268,7 @@ unsigned char Panel::load_config ()
         changes |= CFG_ICONS;
     }
 
-    val = get_config_bool (dock ? "dock" : "panel", "exclusive", dock || wiz ? "false" : "true");
+    val = get_config_bool (dock ? "dock" : "panel", "exclusive", dock ? "false" : "true");
     if (exclusive != val)
     {
         exclusive = val;
@@ -308,7 +310,12 @@ void Panel::set_exclusive ()
     }
     else
     {
-        if (exclusive)
+        if (wizard)
+        {
+            gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, false);
+            gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, true);
+        }
+        else if (exclusive)
         {
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_LEFT, true);
             gtk_layer_set_anchor (window->gobj (), GTK_LAYER_SHELL_EDGE_RIGHT, true);

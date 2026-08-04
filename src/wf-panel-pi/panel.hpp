@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Panel
 {
   public:
-    Panel (bool dock);
+    Panel (bool isdock);
     ~Panel ();
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);
@@ -65,6 +65,7 @@ class Panel
     std::vector <std::unique_ptr <PanelWidget>> left_widgets, right_widgets;
 
     bool dock;
+    bool wizard;
     int scaling;
 
     bool pending_update;
