@@ -17,7 +17,6 @@ add_project_arguments('-D_GNU_SOURCE', language : [ 'c', 'cpp' ])
 share_dir = join_paths(get_option('prefix'), 'share')
 resource_dir = join_paths(share_dir, 'wf-panel-pi')
 applications_dir = join_paths(share_dir, 'applications')
-metadata_dir = join_paths(resource_dir, 'metadata')
 ui_dir = join_paths(resource_dir, 'ui')
 sysconf_dir = join_paths(get_option('prefix'), get_option('sysconfdir'))
 
