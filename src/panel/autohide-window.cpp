@@ -146,7 +146,7 @@ void AutohidingWindow::set_monitor ()
     auto disp = Gdk::Display::get_default ();
     GdkScreen *screen = gdk_display_get_default_screen (disp->gobj ());
     int try_mon;
-    const char *mnumstr = ((std::string) monitor).c_str();
+    const char *mnumstr = monitor.c_str();
     char *mname;
 
     if (strlen (mnumstr) == 1 && sscanf (mnumstr, "%d", &try_mon) == 1)
