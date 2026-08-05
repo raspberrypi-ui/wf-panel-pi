@@ -29,5 +29,3 @@ executable('wf-panel-pi', cpp_sources + c_sources,
         cpp_args : proj_args,
         include_directories : incdir
 )
-
-install_data('wfpanelctl', install_dir : '/usr/bin')

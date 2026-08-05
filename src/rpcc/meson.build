@@ -15,9 +15,6 @@ libxml2 = dependency('libxml-2.0')
 gtklayershell = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
 deps = [ gtk, gtkmm, evdev, libxml2, gtklayershell ]
 
-presource_dir = join_paths(share_dir, 'rpcc')
-pui_dir = join_paths(presource_dir, 'ui')
-
 proj_args = '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"'
 
 shared_module(plugin_name, sources, dependencies: deps, install: true,
@@ -26,5 +23,3 @@ shared_module(plugin_name, sources, dependencies: deps, install: true,
     cpp_args : proj_args,
     include_directories : incdir
 )
-
-install_data('wf-panel-pi.ui', install_dir: pui_dir)
