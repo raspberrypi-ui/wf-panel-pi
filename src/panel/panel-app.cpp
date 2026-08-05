@@ -51,6 +51,7 @@ static const gchar introspection_xml[] =
 
 std::unique_ptr <PanelApp> PanelApp::instance;
 gboolean activated = FALSE;
+char *confdir, *conffile;
 
 PanelApp::PanelApp (int argc, char **argv)
 {
@@ -90,16 +91,20 @@ void PanelApp::on_activate ()
     }
 
     // create a config file to track if it doesn't exist
-    char *dir = g_path_get_dirname (get_config_file ().c_str ());
-    g_mkdir_with_parents (dir, S_IRUSR | S_IWUSR | S_IXUSR);
-    close (open (get_config_file ().c_str (), O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
+    confdir = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", NULL);
+    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard"))
+        conffile = g_build_filename (confdir, "wizard.ini", NULL);
+    else
+        conffile = g_build_filename (confdir, "wf-panel-pi.ini", NULL);
+
+    g_mkdir_with_parents (confdir, S_IRUSR | S_IWUSR | S_IXUSR);
+    close (open (conffile, O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
 
     // setup config file tracking
     inotify_fd = inotify_init ();
     Glib::signal_io ().connect (sigc::mem_fun (this, &PanelApp::handle_inotify_event), inotify_fd, Glib::IO_IN | Glib::IO_HUP);
-    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
-    inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
-    g_free (dir);
+    inotify_add_watch (inotify_fd, conffile, IN_MODIFY);
+    inotify_add_watch (inotify_fd, confdir, IN_CREATE | IN_DELETE);
 
     // setup monitor tracking
     display->signal_monitor_added ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
@@ -114,47 +119,23 @@ void PanelApp::on_activate ()
         sigc::mem_fun (this, &PanelApp::on_name_acquired), sigc::mem_fun (this, &PanelApp::on_name_lost));
 }
 
-/* Config file */
-
-std::string PanelApp::get_config_file ()
-{
-    std::string config_dir;
-
-    char *config_home = getenv ("XDG_CONFIG_HOME");
-
-    if (config_home == NULL) config_dir = std::string (getenv ("HOME")) + "/.config";
-    else config_dir = std::string (config_home);
-
-    if (!g_strcmp0 (getenv ("USER"), "rpi-first-boot-wizard"))
-        return config_dir + "/wf-panel-pi/wizard.ini";
-    else
-        return config_dir + "/wf-panel-pi/wf-panel-pi.ini";
-}
-
-void PanelApp::do_reload_config ()
-{
-    if (panel) panel->handle_config_reload ();
-    if (dock) dock->handle_config_reload ();
-}
+/* Config file change tracking */
 
 bool PanelApp::handle_inotify_event (Glib::IOCondition cond)
 {
-    char *dir;
     char buf[1024 * sizeof (inotify_event)];
     read (inotify_fd, buf, 1024 * sizeof (inotify_event));
-    //struct inotify_event *ev = (struct inotify_event *) buf;
-    //if (!g_strcmp0 (ev->name, "wf-panel-pi.ini"))
 
-    do_reload_config ();
+    if (panel) panel->handle_config_reload ();
+    if (dock) dock->handle_config_reload ();
 
-    // reset the watch
-    dir = g_path_get_dirname (get_config_file ().c_str ());
-    inotify_add_watch (inotify_fd, get_config_file ().c_str (), IN_MODIFY);
-    inotify_add_watch (inotify_fd, dir, IN_CREATE | IN_DELETE);
-    g_free (dir);
+    inotify_add_watch (inotify_fd, conffile, IN_MODIFY);
+    inotify_add_watch (inotify_fd, confdir, IN_CREATE | IN_DELETE);
 
     return true;
 }
+
+/* Monitor tracking */
 
 void PanelApp::monitors_changed ()
 {

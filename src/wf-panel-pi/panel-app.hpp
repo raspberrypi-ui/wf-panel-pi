@@ -61,8 +61,6 @@ class PanelApp
     void run ();
     void on_activate ();
 
-    std::string get_config_file ();
-    void do_reload_config ();
     bool handle_inotify_event (Glib::IOCondition cond);
 
     void monitors_changed ();
