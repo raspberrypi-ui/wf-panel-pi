@@ -2,6 +2,7 @@ project(
     'wf-panel-pi',
     'c',
     'cpp',
+    version: run_command(['dpkg-parsechangelog', '--show-field', 'Version']).stdout().strip(),
     meson_version: '>=0.60.0',
     default_options: [
         'cpp_std=c++17',
