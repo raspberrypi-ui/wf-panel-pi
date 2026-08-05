@@ -4,6 +4,7 @@
 #include "watcher.hpp"
 
 #include <giomm.h>
+#include <memory>
 
 class WidgetStatusNotifier;
 
@@ -19,6 +20,8 @@ class StatusNotifierHost
     Glib::RefPtr<Gio::DBus::Proxy> watcher_proxy;
 
     WidgetStatusNotifier *tray;
+
+    std::shared_ptr<bool> destroyed = std::make_shared<bool>(false);
 
     void on_bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> & connection, const Glib::ustring & name);
     void register_host(const Glib::RefPtr<Gio::AsyncResult> & result);
