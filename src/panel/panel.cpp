@@ -245,7 +245,7 @@ unsigned char Panel::load_config ()
     char *tmp;
     int val;
     
-    get_config_string (dock ? "dock" : "panel", "widgets_left", &tmp, dock ? "" : (wizard ? "" : "smenu spacing0 spacing4 launchers spacing8 window-list"));
+    get_config_string (dock ? "dock" : "panel", "widgets_left", &tmp, dock ? WIDGETS_LEFT_DOCK : (wizard ? WIDGETS_LEFT_WIZARD : WIDGETS_LEFT_PANEL));
     if (g_strcmp0 (tmp, left_widgets_opt.c_str ()))
     {
         left_widgets_opt = tmp;
@@ -253,7 +253,7 @@ unsigned char Panel::load_config ()
     }
     g_free (tmp);
 
-    get_config_string (dock ? "dock" : "panel", "widgets_right", &tmp, dock ? "" : (wizard ? "bluetooth volumepulse squeek" : "tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek"));
+    get_config_string (dock ? "dock" : "panel", "widgets_right", &tmp, dock ? WIDGETS_RIGHT_DOCK : (wizard ? WIDGETS_RIGHT_WIZARD : WIDGETS_RIGHT_PANEL));
     if (g_strcmp0 (tmp, right_widgets_opt.c_str ()))
     {
         right_widgets_opt = tmp;

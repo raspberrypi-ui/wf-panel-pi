@@ -108,10 +108,10 @@ static void read_config (void)
     gboolean config;
 
     // add each space-separated widget from the metadata variables to the list store
-    read_one_config (PAN_L, "panel", "widgets_left", "smenu spacing0 spacing4 launchers spacing8 window-list");
-    read_one_config (PAN_R, "panel", "widgets_right", "tray power ejecter updater spacing2 connect spacing2 bluetooth spacing2 netman spacing2 volumepulse spacing2 clock spacing2 batt spacing2 squeek");
-    read_one_config (DOCK, "dock", "widgets_left", "");
-    read_one_config (DOCKT, "dock", "widgets_right", "");
+    read_one_config (PAN_L, "panel", "widgets_left", WIDGETS_LEFT_PANEL);
+    read_one_config (PAN_R, "panel", "widgets_right", WIDGETS_RIGHT_PANEL);
+    read_one_config (DOCK, "dock", "widgets_left", WIDGETS_LEFT_DOCK);
+    read_one_config (DOCKT, "dock", "widgets_right", WIDGETS_RIGHT_DOCK);
 
     // add any unused widgets to the list store so they can be added by the user
     plugind = opendir (PLUGIN_PATH);
