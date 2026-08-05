@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class AutohidingWindow : public Gtk::Window
 {
   public:
-    AutohidingWindow (bool dock);
+    AutohidingWindow (bool is_dock);
     AutohidingWindow (AutohidingWindow&&) = delete;
     AutohidingWindow (const AutohidingWindow&) = delete;
     AutohidingWindow& operator = (const AutohidingWindow&) = delete;
@@ -49,7 +49,7 @@ class AutohidingWindow : public Gtk::Window
     void handle_config_reload ();
 
   private:
-    bool is_dock;
+    bool dock;
 
     std::string position;
     std::string layer;

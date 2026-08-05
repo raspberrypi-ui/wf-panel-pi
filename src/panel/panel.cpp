@@ -44,9 +44,9 @@ extern "C" {
 
 #include "panel.hpp"
 
-Panel::Panel (bool isdock)
+Panel::Panel (bool is_dock)
 {
-    dock = isdock;
+    dock = is_dock;
 
     // Load configuration files
     load_config ();

@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Panel
 {
   public:
-    Panel (bool isdock);
+    Panel (bool is_dock);
     ~Panel ();
     void handle_config_reload ();
     void handle_command_message (const char *plugin, const char *cmd);

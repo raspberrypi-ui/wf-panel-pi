@@ -44,9 +44,9 @@ extern GtkWindow *popwindow;
 
 /* Public methods */
 
-AutohidingWindow::AutohidingWindow (bool dock)
+AutohidingWindow::AutohidingWindow (bool is_dock)
 {
-    is_dock = dock;
+    dock = is_dock;
 
     load_config ();
 
@@ -325,7 +325,7 @@ unsigned char AutohidingWindow::load_config ()
     char *tmp;
     int val;
 
-    get_config_string (is_dock ? "dock" : "panel", "position", &tmp, is_dock ? "bottom" : "top");
+    get_config_string (dock ? "dock" : "panel", "position", &tmp, dock ? "bottom" : "top");
     if (g_strcmp0 (tmp, position.c_str ()))
     {
         position = tmp;
@@ -333,7 +333,7 @@ unsigned char AutohidingWindow::load_config ()
     }
     g_free (tmp);
 
-    get_config_string (is_dock ? "dock" : "panel", "layer", &tmp, is_dock ? "top" : "bottom");
+    get_config_string (dock ? "dock" : "panel", "layer", &tmp, dock ? "top" : "bottom");
     if (g_strcmp0 (tmp, layer.c_str ()))
     {
         layer = tmp;
@@ -341,7 +341,7 @@ unsigned char AutohidingWindow::load_config ()
     }
     g_free (tmp);
 
-    get_config_string (is_dock ? "dock" : "panel", "monitor", &tmp, "0");
+    get_config_string (dock ? "dock" : "panel", "monitor", &tmp, "0");
     if (g_strcmp0 (tmp, monitor.c_str ()))
     {
         monitor = tmp;
@@ -349,21 +349,21 @@ unsigned char AutohidingWindow::load_config ()
     }
     g_free (tmp);
 
-    val = get_config_int (is_dock ? "dock" : "panel", "offset", is_dock ? "5" : "0");
+    val = get_config_int (dock ? "dock" : "panel", "offset", dock ? "5" : "0");
     if (offset != val)
     {
         offset = val;
         changes |= CFG_POSITION;
     }
 
-    val = get_config_int (is_dock ? "dock" : "panel", "remainder", "5");
+    val = get_config_int (dock ? "dock" : "panel", "remainder", "5");
     if (remainder != val)
     {
         remainder = val;
         changes |= CFG_POSITION;
     }
 
-    val = get_config_bool (is_dock ? "dock" : "panel", "autohide", "false");
+    val = get_config_bool (dock ? "dock" : "panel", "autohide", "false");
     if (autohide != val)
     {
         autohide = val;
