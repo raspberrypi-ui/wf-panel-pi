@@ -537,7 +537,11 @@ void Panel::handle_config_reload ()
 
     if (changes & CFG_EXCL) set_exclusive ();
     if (changes & CFG_NOTIFY) init_notify ();
-    if (changes & CFG_WIDGETS) init_widgets ();
+    if (changes & CFG_WIDGETS)
+    {
+        close_popup ();
+        init_widgets ();
+    }
     if (changes & CFG_ICONS) update_widget_icons ();
 
     window->handle_config_reload ();
