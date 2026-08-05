@@ -53,8 +53,6 @@ conf_table_t conf_table[4] = {
     {CONF_TYPE_NONE,    NULL,           NULL,                               NULL,   NULL    }
 };
 
-gboolean stopping;
-
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */
 /*----------------------------------------------------------------------------*/
@@ -189,7 +187,6 @@ static void handle_toplevel_state (void *data, HANDLE_PTR handle, struct wl_arra
 static void handle_toplevel_done (void *data, HANDLE_PTR handle)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
-    if (stopping) return;
     GList *list;
 
     list = wl->windows;
@@ -268,7 +265,6 @@ struct zwlr_foreign_toplevel_handle_v1_listener toplevel_handle_v1 =
 static void handle_manager_toplevel (void *data, MANAGER_PTR, HANDLE_PTR toplevel)
 {
     WinlistPlugin *wl = (WinlistPlugin*) data;
-    if (stopping) return;
     WindowItem *item = g_new0 (WindowItem, 1);
 
     item->plugin = wl;
@@ -947,8 +943,6 @@ void wlist_init (WinlistPlugin *wl)
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
-    stopping = FALSE;
-
     /* Set up variables */
     wl->item_width = wl->max_width;
     wl->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, wl->spacing);
@@ -989,10 +983,10 @@ void wlist_destructor (gpointer user_data)
     if (wl->idle_timer) g_source_remove (wl->idle_timer);
     g_signal_handlers_disconnect_by_data (wl->plugin, wl);
 
-    /* Stop the window manager */
+    /* Destroy the window manager */
     g_list_foreach (wl->windows, (GFunc) close_handle, wl);
-    if (wl->manager) zwlr_foreign_toplevel_manager_v1_stop (wl->manager);
-    stopping = TRUE;
+    if (wl->manager) zwlr_foreign_toplevel_manager_v1_destroy (wl->manager);
+    wl->manager = NULL;
 
     /* Deallocate memory */
     if (wl->windows) g_list_free_full (wl->windows, (GDestroyNotify) free_list_item);
