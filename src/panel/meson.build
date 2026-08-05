@@ -1,6 +1,5 @@
 cpp_sources = files(
   'panel.cpp',
-  'spacer.cpp',
   'panel-app.cpp',
   'autohide-window.cpp'
 )

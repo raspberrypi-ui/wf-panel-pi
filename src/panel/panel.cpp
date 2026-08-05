@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gtk-layer-shell.h>
 
-#include "spacer.hpp"
+#include "widget.hpp"
 
 extern "C" {
 #include "plug_conf.h"
@@ -449,11 +449,23 @@ std::unique_ptr <PanelWidget> Panel::widget_from_name (const char *name)
     {
         int width;
         if (sscanf (name + 7, "%d", &width) != 1 || width < 0) return nullptr;
-        else return std::unique_ptr <PanelWidget> (new WidgetSpacing (width));
+        char *libname = g_strdup_printf (width ? PLUGIN_PATH "libspacing.so" : PLUGIN_PATH "libseparator.so");
+        void *wid = dlopen (libname, RTLD_LAZY);
+        g_free (libname);
+        if (wid)
+        {
+            if (width)
+            {
+                PanelWidget *(*create_widget) (int) = (PanelWidget *(*) (int)) dlsym (wid, "create");
+                return std::unique_ptr <PanelWidget> (create_widget (width));
+            }
+            else
+            {
+                PanelWidget *(*create_widget) () = (PanelWidget *(*) ()) dlsym (wid, "create");
+                return std::unique_ptr <PanelWidget> (create_widget ());
+            }
+        }
     }
-
-    if (!g_strcmp0 (name, "split"))
-        return std::unique_ptr <PanelWidget> (new WidgetSplit ());
 
     if (g_strcmp0 (name, "none"))
     {
@@ -462,7 +474,7 @@ std::unique_ptr <PanelWidget> Panel::widget_from_name (const char *name)
         g_free (libname);
         if (wid)
         {
-            create_t *create_widget = (create_t *) dlsym (wid, "create");
+            PanelWidget *(*create_widget) () = (PanelWidget *(*) ()) dlsym (wid, "create");
             return std::unique_ptr <PanelWidget> (create_widget ());
         }
     }

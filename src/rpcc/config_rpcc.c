@@ -523,7 +523,7 @@ static void update_plugin_spacing (GtkWidget *box)
         if (bchildren->next)
         {
             control = GTK_WIDGET (bchildren->next->data);
-            if (!g_strcmp0 (gtk_widget_get_name (control), "spacing_width"))
+            if (!g_strcmp0 (gtk_widget_get_name (control), "spacing/width"))
             {
                 val = gtk_spin_button_get_value (GTK_SPIN_BUTTON (control));
                 if (val)

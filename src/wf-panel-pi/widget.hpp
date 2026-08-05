@@ -28,7 +28,4 @@ class PanelWidget
     {}
 };
 
-typedef PanelWidget *create_t ();
-typedef void destroy_t (PanelWidget *);
-
 #endif /* end of include guard: WIDGET_HPP */
