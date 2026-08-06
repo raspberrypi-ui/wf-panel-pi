@@ -366,7 +366,6 @@ bool Panel::on_button_release_event (GdkEventButton *event)
     if (event->button == 3)
     {
         cplug.set_name ("gtkmm");
-        cplug.set_sensitive (false);
         cplug.hide ();
         sep.hide ();
 
@@ -376,19 +375,18 @@ bool Panel::on_button_release_event (GdkEventButton *event)
             {
                 // check if the position of the mouse is within the plugin
                 alloc = plugin->get_allocation ();
-                if (event->x_root >= alloc.get_x () && event->x_root <= alloc.get_x () + alloc.get_width () &&
-                    event->y_root >= alloc.get_y () && event->y_root <= alloc.get_y () + alloc.get_height ())
+                if (event->x_root >= alloc.get_x () && event->x_root < alloc.get_x () + alloc.get_width () &&
+                    event->y_root >= alloc.get_y () && event->y_root < alloc.get_y () + alloc.get_height ())
                 {
                     pname = plugin->get_name ();
                     cplug.set_name (pname);
-                    if (can_configure (pname.c_str (), &title)) cplug.set_sensitive (true);
-                    cplug.set_label (title);
-                    g_free (title);
-                    if (pname != "spacing")
+                    if (can_configure (pname.c_str (), &title) && pname != "spacing" && pname != "separator")
                     {
                         cplug.show ();
                         sep.show ();
                     }
+                    cplug.set_label (title);
+                    g_free (title);
                     show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
                     found = true;
                 }
