@@ -885,6 +885,12 @@ void init_config (void)
     update_buttons ();
 }
 
+void reload_widget_lists (void)
+{
+    gtk_list_store_clear (widgets);
+    read_config ();
+}
+
 void set_bar (void)
 {
     gtk_notebook_set_current_page (GTK_NOTEBOOK (nb), 0);
