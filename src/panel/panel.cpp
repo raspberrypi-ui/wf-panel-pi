@@ -33,6 +33,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cstdlib>
 #include <cstring>
 
+#include <glibmm/main.h>
+
 #include <gtk-layer-shell.h>
 
 #include "widget.hpp"
@@ -424,7 +426,8 @@ bool Panel::on_delete (GdkEventAny *ev)
 
 void Panel::do_plugin_configure ()
 {
-    plugin_config_dialog (cplug.get_name ().c_str ());
+    // defer opening the config dialog until the menu grab has released...
+    Glib::signal_idle ().connect_once ([name = cplug.get_name ()] () { plugin_config_dialog (name.c_str ()); });
 }
 
 void Panel::do_configure ()
