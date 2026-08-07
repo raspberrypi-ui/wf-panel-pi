@@ -67,9 +67,10 @@ class AutohidingWindow : public Gtk::Window
     bool last_autohide_value;
     int last_zone = 0;
 
-    struct timeval anim_start;
     int start_marg;
     int targ_marg;
+    GTimeZone *tz;
+    GDateTime *anim_start;
 
     /* Retains a reference on the monitor last passed to gtk_layer_set_monitor.
      * During a hotplug, GDK frees the monitor structs for any monitors

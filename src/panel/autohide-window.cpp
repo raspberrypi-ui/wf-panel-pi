@@ -27,8 +27,6 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ============================================================================*/
 
-#define _GNU_SOURCE
-#include <sys/time.h>
 #include <gtk/gtk.h>
 #include <glibmm.h>
 #include <gdkmm/monitor.h>
@@ -49,6 +47,8 @@ extern GtkWindow *popwindow;
 AutohidingWindow::AutohidingWindow (bool is_dock)
 {
     dock = is_dock;
+
+    tz = g_time_zone_new_local ();
 
     load_config ();
 
@@ -129,6 +129,7 @@ AutohidingWindow::AutohidingWindow (bool is_dock)
 
 AutohidingWindow::~AutohidingWindow ()
 {
+    g_time_zone_unref (tz);
 }
 
 void AutohidingWindow::set_auto_exclusive_zone (bool has_zone)
@@ -213,7 +214,7 @@ void AutohidingWindow::start_animation (int target)
 {
     start_marg = gtk_layer_get_margin (this->gobj (), get_anchor_edge ());
     targ_marg = target;
-    gettimeofday (&anim_start, NULL);
+    anim_start = g_date_time_new_now (tz);
 }
 
 bool AutohidingWindow::do_hide ()
@@ -274,10 +275,14 @@ void AutohidingWindow::update_margin ()
     int pos = gtk_layer_get_margin (this->gobj (), get_anchor_edge ());
     if (pos != targ_marg)
     {
-        struct timeval now;
-        gettimeofday (&now, NULL);
-        int elapsed = (now.tv_sec - anim_start.tv_sec) * 1000 + (now.tv_usec - anim_start.tv_usec) / 1000;
-        if (elapsed > duration) pos = targ_marg;
+        GDateTime *now = g_date_time_new_now (tz);
+        int elapsed = g_date_time_difference (now, anim_start) / 1000;
+        g_date_time_unref (now);
+        if (elapsed > duration)
+        {
+            pos = targ_marg;
+            g_date_time_unref (anim_start);
+        }
         else
         {
             pos = (targ_marg - start_marg) * elapsed;
