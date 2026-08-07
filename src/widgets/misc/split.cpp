@@ -6,7 +6,7 @@ class WidgetSplit : public PanelWidget
 
   public:
     WidgetSplit (void);
-    virtual void init (Gtk::HBox *container);
+    virtual void widget_init (Gtk::HBox *container);
     virtual ~WidgetSplit () {}
 };
 
@@ -28,7 +28,7 @@ WidgetSplit::WidgetSplit (void)
 {
 }
 
-void WidgetSplit::init (Gtk::HBox *container)
+void WidgetSplit::widget_init (Gtk::HBox *container)
 {
     box.set_name ("split");
     container->pack_start (box, false, false);

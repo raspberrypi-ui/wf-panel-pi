@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <widget.hpp>
 #include <gtkmm/scrolledwindow.h>
-#include <gtkmm/gesturelongpress.h>
 
 extern "C" {
 #include <menu-cache.h>
@@ -43,15 +42,14 @@ class WidgetWinlist : public PanelWidget
     WinlistPlugin *wl;
 
     std::unique_ptr <Gtk::ScrolledWindow> plugin;
-    sigc::connection icon_timer;
 
   public:
 
-    void init (Gtk::HBox *container) override;
+    void widget_init (Gtk::HBox *container) override;
     virtual ~WidgetWinlist ();
-    void command (const char *cmd) override;
-    bool set_icon (void);
-    void handle_config_reload (void);
+    void widget_command (const char *cmd) override;
+    void widget_set_icon (void);
+    void widget_config_reload (void);
 };
 
 #endif /* end of include guard: WIDGETS_WINLIST_HPP */

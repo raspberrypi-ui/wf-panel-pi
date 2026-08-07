@@ -225,6 +225,7 @@ Panel::Panel (bool is_dock)
 
     // Load widgets
     init_widgets ();
+    update_widget_icons ();
 }
 
 Panel::~Panel ()
@@ -336,10 +337,10 @@ bool Panel::on_keypress_event (GdkEventKey *event)
     char *str = g_strdup_printf ("key_%c", event->keyval);
 
     for (auto &w : left_widgets)
-        if (w->widget_name == "smenu") w->command (str);
+        if (w->widget_name == "smenu") w->widget_command (str);
 
     for (auto &w : right_widgets)
-        if (w->widget_name == "smenu") w->command (str);
+        if (w->widget_name == "smenu") w->widget_command (str);
 
     g_free (str);
 
@@ -491,7 +492,7 @@ void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <Pane
         if (!widget) continue;
 
         widget->widget_name = widget_name;
-        widget->init (&box);
+        widget->widget_init (&box);
         container.push_back (std::move (widget));
 
         // a badly-written widget could reset the textdomain to a local value - reset back to the system value after each load
@@ -519,10 +520,10 @@ void Panel::init_notify ()
 void Panel::update_widget_icons ()
 {
     for (auto &w : left_widgets)
-        w->set_icon ();
+        w->widget_set_icon ();
 
     for (auto &w : right_widgets)
-        w->set_icon ();
+        w->widget_set_icon ();
 
     window->update_position ();
 }
@@ -540,15 +541,15 @@ void Panel::handle_config_reload ()
         close_popup ();
         init_widgets ();
     }
-    if (changes & CFG_ICONS) update_widget_icons ();
+    if (changes & CFG_ICONS || changes & CFG_WIDGETS) update_widget_icons ();
 
     window->handle_config_reload ();
 
     for (auto &w : left_widgets)
-        w->handle_config_reload ();
+        w->widget_config_reload ();
 
     for (auto &w : right_widgets)
-        w->handle_config_reload ();
+        w->widget_config_reload ();
 }
 
 void Panel::handle_command_message (const char *name, const char *cmd)
@@ -568,10 +569,10 @@ void Panel::handle_command_message (const char *name, const char *cmd)
     if (!window->is_sensitive ()) return;
 
     for (auto &w : left_widgets)
-        if (!fnmatch (name, w->widget_name.c_str (), 0)) w->command (cmd);
+        if (!fnmatch (name, w->widget_name.c_str (), 0)) w->widget_command (cmd);
 
     for (auto &w : right_widgets)
-        if (!fnmatch (name, w->widget_name.c_str (), 0)) w->command (cmd);
+        if (!fnmatch (name, w->widget_name.c_str (), 0)) w->widget_command (cmd);
 }
 
 void Panel::monitor_update_pending (bool pend)

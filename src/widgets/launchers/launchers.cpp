@@ -37,18 +37,17 @@ extern "C" {
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 
-void WidgetLauncher::command (const char *cmd)
+void WidgetLauncher::widget_command (const char *cmd)
 {
     launcher_control_msg (lch, cmd);
 }
 
-bool WidgetLauncher::set_icon (void)
+void WidgetLauncher::widget_set_icon (void)
 {
     launcher_update_display (lch);
-    return false;
 }
 
-void WidgetLauncher::handle_config_reload (void)
+void WidgetLauncher::widget_config_reload (void)
 {
     gboolean changed = load_configuration_data (PLUGIN_NAME, conf_table);
 
@@ -61,7 +60,7 @@ void WidgetLauncher::handle_config_reload (void)
     if (changed) launcher_update_display (lch);
 }
 
-void WidgetLauncher::init (Gtk::HBox *container)
+void WidgetLauncher::widget_init (Gtk::HBox *container)
 {
     /* Create the button */
     plugin = std::make_unique <Gtk::HBox> ();
@@ -71,7 +70,6 @@ void WidgetLauncher::init (Gtk::HBox *container)
     /* Setup structure */
     lch = g_new0 (LauncherPlugin, 1);
     lch->plugin = (GtkWidget *)((*plugin).gobj());
-    icon_timer = Glib::signal_idle().connect (sigc::mem_fun (*this, &WidgetLauncher::set_icon));
 
     /* Initialise the plugin */
     launcher_set_values (lch);
@@ -82,7 +80,6 @@ void WidgetLauncher::init (Gtk::HBox *container)
 
 WidgetLauncher::~WidgetLauncher()
 {
-    icon_timer.disconnect ();
     launcher_destructor (lch);
 }
 

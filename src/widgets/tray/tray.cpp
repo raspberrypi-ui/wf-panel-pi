@@ -16,15 +16,6 @@ extern "C" {
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 
-void WidgetStatusNotifier::init (Gtk::HBox *container)
-{
-    icons_hbox.set_name (PLUGIN_NAME);
-    icons_hbox.set_spacing(5);
-    container->add(icons_hbox);
-
-    read_settings ();
-}
-
 void WidgetStatusNotifier::add_item (const Glib::ustring & service)
 {
     if (items.count(service) != 0)
@@ -44,22 +35,25 @@ void WidgetStatusNotifier::remove_item (const Glib::ustring & service)
     if (items.count(service) == 0) icons_hbox.hide();
 }
 
-bool WidgetStatusNotifier::set_icon (void)
+void WidgetStatusNotifier::widget_set_icon (void)
 {
     for (auto &p : items) p.second.update_icon ();
-    return false;
 }
 
-void WidgetStatusNotifier::read_settings (void)
+void WidgetStatusNotifier::widget_config_reload (void)
 {
+    if (load_configuration_data (PLUGIN_NAME, conf_table))
+        for (auto &p : items) p.second.set_params (momc, sst);
+}
+
+void WidgetStatusNotifier::widget_init (Gtk::HBox *container)
+{
+    icons_hbox.set_name (PLUGIN_NAME);
+    icons_hbox.set_spacing (5);
+    container->add (icons_hbox);
+
     conf_table[0].value = (void **) &sst;
     conf_table[1].value = (void **) &momc;
 
     load_configuration_data (PLUGIN_NAME, conf_table);
-}
-
-void WidgetStatusNotifier::handle_config_reload (void)
-{
-    if (load_configuration_data (PLUGIN_NAME, conf_table))
-        for (auto &p : items) p.second.set_params (momc, sst);
 }

@@ -8,7 +8,7 @@ class WidgetSeparator : public PanelWidget
 
   public:
     WidgetSeparator (void);
-    virtual void init (Gtk::HBox *container);
+    virtual void widget_init (Gtk::HBox *container);
     virtual ~WidgetSeparator () {}
     bool draw (const Cairo::RefPtr<Cairo::Context>& cr);
 };
@@ -34,7 +34,7 @@ WidgetSeparator::WidgetSeparator (void)
     da.signal_draw ().connect (sigc::mem_fun (*this, &WidgetSeparator::draw));
 }
 
-void WidgetSeparator::init (Gtk::HBox *container)
+void WidgetSeparator::widget_init (Gtk::HBox *container)
 {
     box.set_name ("separator");
     container->pack_start (box, false, false);

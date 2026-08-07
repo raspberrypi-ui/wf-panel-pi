@@ -6,7 +6,7 @@ class WidgetSpacing : public PanelWidget
 
   public:
     WidgetSpacing (int val);
-    virtual void init (Gtk::HBox *container);
+    virtual void widget_init (Gtk::HBox *container);
     virtual ~WidgetSpacing () {}
 };
 
@@ -29,7 +29,7 @@ WidgetSpacing::WidgetSpacing (int val)
     box.set_size_request (val, 1);
 }
 
-void WidgetSpacing::init (Gtk::HBox *container)
+void WidgetSpacing::widget_init (Gtk::HBox *container)
 {
     box.set_name ("spacing");
     container->pack_start (box, false, false);

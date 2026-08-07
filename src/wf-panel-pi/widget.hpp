@@ -13,18 +13,19 @@ class PanelWidget
   public:
     std::string widget_name;
 
-    virtual void init (Gtk::HBox *container) = 0;
-
-    virtual void command (const char *cmd)
-    { printf ("command : %s %s\n", widget_name.c_str(), cmd); }
-
-    virtual void handle_config_reload ()
+    virtual void widget_init (Gtk::HBox *)
     {}
 
-    virtual bool set_icon ()
-    { return false; }
-
     virtual ~PanelWidget ()
+    {}
+
+    virtual void widget_command (const char *)
+    {}
+
+    virtual void widget_config_reload ()
+    {}
+
+    virtual void widget_set_icon ()
     {}
 };
 
