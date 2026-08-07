@@ -257,8 +257,7 @@ gboolean can_configure (const char *type, char **name)
     char * (*func_display_name)(void);
     const conf_table_t *cptr;
 
-    if (cdlg) return FALSE;
-
+    *name = NULL;
     libname = g_strdup_printf (PLUGIN_PATH "lib%s.so", type);
     wid_lib = dlopen (libname, RTLD_LAZY);
     g_free (libname);
@@ -301,6 +300,12 @@ void plugin_config_dialog (const char *type)
     char * (*func_package_name)(void);
     char * (*func_display_name)(void);
     void *wid_lib;
+
+    if (cdlg)
+    {
+        gtk_window_present (GTK_WINDOW (cdlg));
+        return;
+    }
 
     if (!strncmp (type, "spacing", 7))
     {

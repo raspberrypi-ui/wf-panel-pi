@@ -359,7 +359,7 @@ bool Panel::on_button_release_event (GdkEventButton *event)
     bool found = false;
     std::string pname;
     Gtk::Allocation alloc;
-    char *title;
+    char *title = NULL;
 
     if (pressed == PRESS_NONE) return false;
     pressed = PRESS_NONE;
@@ -386,9 +386,13 @@ bool Panel::on_button_release_event (GdkEventButton *event)
                         cplug.show ();
                         sep.show ();
                     }
-                    cplug.set_label (title);
-                    g_free (title);
-                    show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()));
+                    cplug.set_sensitive (cdlg ? false : true);
+                    if (title)
+                    {
+                        cplug.set_label (title);
+                        g_free (title);
+                    }
+                    show_menu_with_kbd (GTK_WIDGET (plugin->gobj ()), GTK_WIDGET (menu.gobj ()), event);
                     found = true;
                 }
             }
@@ -404,7 +408,7 @@ bool Panel::on_button_release_event (GdkEventButton *event)
             show_menu (plugin);
 
         // not matched any widgets - on the empty area of the bar...
-        if (!found) show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj ()), GTK_WIDGET (menu.gobj ()), event->x_root, event->y_root);
+        if (!found) show_menu_with_kbd_at_xy (GTK_WIDGET (window->gobj ()), GTK_WIDGET (menu.gobj ()), event);
     }
     return false;
 }
@@ -539,6 +543,7 @@ void Panel::handle_config_reload ()
     if (changes & CFG_WIDGETS)
     {
         close_popup ();
+        menu.popdown ();
         init_widgets ();
     }
     if (changes & CFG_ICONS || changes & CFG_WIDGETS) update_widget_icons ();

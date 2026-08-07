@@ -101,8 +101,8 @@ extern void graph_new_point (PluginGraph *graph, float value, int state, char *l
 extern void graph_free (PluginGraph *graph);
 
 extern gboolean check_menu (GtkWidget *menu);
-extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu);
-extern void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, double x, double y);
+extern void show_menu_with_kbd (GtkWidget *button, GtkWidget *menu, GdkEventButton *event);
+extern void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, GdkEventButton *event);
 
 extern void popup_window_at_button (GtkWidget *window, GtkWidget *button);
 extern void close_popup (void);
@@ -123,7 +123,7 @@ extern gboolean load_configuration_data (const char *type, conf_table_t *conf_ta
 #define wrap_set_taskbar_icon(plug,image,icon) set_taskbar_icon(image,icon)
 #define wrap_load_taskbar_pixbuf(plug,image,icon) load_taskbar_pixbuf(image,icon)
 #define wrap_get_menu_label(item) get_menu_label(item)
-#define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu)
+#define wrap_show_menu(plugin,menu) show_menu_with_kbd(plugin,menu,NULL)
 #define wrap_icon_size(plug) (get_icon_size(plug->plugin))
 #define wrap_is_at_bottom(plug) (panel_at_bottom(plug->plugin))
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)

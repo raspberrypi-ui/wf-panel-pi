@@ -102,7 +102,7 @@ void StatusNotifierItem::init_widget()
                 if (pressed != PRESS_NONE)
                 {
                     if (check_menu (GTK_WIDGET (menu->gobj())))
-                        show_menu_with_kbd_at_xy (GTK_WIDGET (this->gobj()), GTK_WIDGET (menu->gobj()), ev->x_root, ev->y_root);
+                        show_menu_with_kbd_at_xy (GTK_WIDGET (this->gobj()), GTK_WIDGET (menu->gobj()), ev);
                 }
             } else
             {
