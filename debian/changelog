@@ -1,4 +1,4 @@
-wf-panel-pi (1.23) UNRELEASED; urgency=medium
+wf-panel-pi (1.23) trixie; urgency=medium
 
   * Replace widget icon timers; rationalise widget interface; use GDateTime for autohide
 
