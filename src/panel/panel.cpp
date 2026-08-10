@@ -426,8 +426,7 @@ bool Panel::on_delete (GdkEventAny *ev)
 
 void Panel::do_plugin_configure ()
 {
-    // defer opening the config dialog until the menu grab has released...
-    Glib::signal_idle ().connect_once ([name = cplug.get_name ()] () { plugin_config_dialog (name.c_str ()); });
+    plugin_config_dialog (cplug.get_name ().c_str ());
 }
 
 void Panel::do_configure ()

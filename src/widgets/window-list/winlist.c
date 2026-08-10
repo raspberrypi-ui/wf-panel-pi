@@ -53,6 +53,19 @@ conf_table_t conf_table[4] = {
     {CONF_TYPE_NONE,    NULL,           NULL,                               NULL,   NULL    }
 };
 
+/* The toplevel manager, its registry binding, and the list of tracked
+ * windows all live for the lifetime of the process, not the lifetime of
+ * any one widget instance - see the comment in wlist_init() for why
+ * destroying/recreating them on every reload is unsafe. active_plugin
+ * points at whichever WinlistPlugin instance is currently showing the UI,
+ * or NULL in the brief window between one instance being destroyed and
+ * the next being created during a reload. */
+static struct wl_registry *global_registry = NULL;
+static struct zwlr_foreign_toplevel_manager_v1 *global_manager = NULL;
+static GList *global_windows = NULL;
+static WinlistPlugin *active_plugin = NULL;
+static MenuCache *global_menu_cache = NULL;
+
 /*----------------------------------------------------------------------------*/
 /* Prototypes                                                                 */
 /*----------------------------------------------------------------------------*/
@@ -89,13 +102,12 @@ static void handle_drag_end (GtkGestureDrag *, gdouble, gdouble, gpointer userda
 /* Wayland protocol interface                                                 */
 /*----------------------------------------------------------------------------*/
 
-static void handle_toplevel_title (void *data, HANDLE_PTR handle, const char *title)
+static void handle_toplevel_title (void *, HANDLE_PTR handle, const char *title)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
     WindowItem *item;
     GList *list;
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
@@ -113,13 +125,12 @@ static void handle_toplevel_title (void *data, HANDLE_PTR handle, const char *ti
     }
 }
 
-static void handle_toplevel_app_id (void *data, HANDLE_PTR handle, const char *app_id)
+static void handle_toplevel_app_id (void *, HANDLE_PTR handle, const char *app_id)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
     WindowItem *item;
     GList *list;
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
@@ -132,13 +143,12 @@ static void handle_toplevel_app_id (void *data, HANDLE_PTR handle, const char *a
     }
 }
 
-static void handle_toplevel_parent (void *data, HANDLE_PTR handle, HANDLE_PTR parent)
+static void handle_toplevel_parent (void *, HANDLE_PTR handle, HANDLE_PTR parent)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
     WindowItem *item;
     GList *list;
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
@@ -151,9 +161,8 @@ static void handle_toplevel_parent (void *data, HANDLE_PTR handle, HANDLE_PTR pa
     }
 }
 
-static void handle_toplevel_state (void *data, HANDLE_PTR handle, struct wl_array *state)
+static void handle_toplevel_state (void *, HANDLE_PTR handle, struct wl_array *state)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
     WindowItem *item;
     GList *list;
     int flags = 0;
@@ -171,7 +180,7 @@ static void handle_toplevel_state (void *data, HANDLE_PTR handle, struct wl_arra
             flags |= STATE_MINIMISED;
     }
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
@@ -184,21 +193,20 @@ static void handle_toplevel_state (void *data, HANDLE_PTR handle, struct wl_arra
     }
 }
 
-static void handle_toplevel_done (void *data, HANDLE_PTR handle)
+static void handle_toplevel_done (void *, HANDLE_PTR handle)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
     GList *list;
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         WindowItem *item = (WindowItem *) list->data;
         if (item->handle == (void *) handle)
         {
-            if (item->title && item->app_id && !item->parent)
+            if (item->title && item->app_id && !item->parent && active_plugin)
             {
-                if (!item->btn) create_button (wl, item);
-                update_item_width (wl, item);
+                if (!item->btn) create_button (active_plugin, item);
+                update_item_width (active_plugin, item);
                 gtk_widget_set_tooltip_text (item->btn, item->title);
                 update_button_state (item);
             }
@@ -208,38 +216,40 @@ static void handle_toplevel_done (void *data, HANDLE_PTR handle)
     }
 }
 
-static void handle_toplevel_closed (void *data, HANDLE_PTR handle)
+static void handle_toplevel_closed (void *, HANDLE_PTR handle)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
     WindowItem *item;
     GList *list;
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
         if (item->handle == (void *) handle)
         {
+            zwlr_foreign_toplevel_handle_v1_destroy ((HANDLE_PTR) item->handle);
             free_list_item (item);
-            wl->windows = g_list_delete_link (wl->windows, list);
+            global_windows = g_list_delete_link (global_windows, list);
             break;
         }
         list = g_list_next (list);
     }
 
+    if (!active_plugin) return;
+
     // force resize so buttons grow now there is more free space
-    if (!wl->icons_only)
+    if (!active_plugin->icons_only)
     {
-        list = wl->windows;
+        list = global_windows;
         while (list)
         {
             item = (WindowItem *) list->data;
-            if (item->btn) gtk_widget_set_size_request (item->btn, wl->max_width, -1);
+            if (item->btn) gtk_widget_set_size_request (item->btn, active_plugin->max_width, -1);
             list = g_list_next (list);
         }
     }
 
-    resize_on_idle (wl);
+    resize_on_idle (active_plugin);
 }
 
 static void handle_toplevel_output_enter (void *, HANDLE_PTR, struct wl_output *)
@@ -262,36 +272,33 @@ struct zwlr_foreign_toplevel_handle_v1_listener toplevel_handle_v1 =
     .output_leave = handle_toplevel_output_leave
 };
 
-static void handle_manager_toplevel (void *data, MANAGER_PTR, HANDLE_PTR toplevel)
+static void handle_manager_toplevel (void *, MANAGER_PTR, HANDLE_PTR toplevel)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
     WindowItem *item = g_new0 (WindowItem, 1);
 
-    item->plugin = wl;
+    item->plugin = active_plugin;
     item->handle = (void *) toplevel;
-    wl->windows = g_list_prepend (wl->windows, item);
-    zwlr_foreign_toplevel_handle_v1_add_listener (toplevel, &toplevel_handle_v1, data);
+    global_windows = g_list_prepend (global_windows, item);
+    zwlr_foreign_toplevel_handle_v1_add_listener (toplevel, &toplevel_handle_v1, NULL);
 }
 
-static void handle_manager_finished (void *data, MANAGER_PTR)
+static void handle_manager_finished (void *, MANAGER_PTR)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
-    wl->manager = NULL;
+    global_manager = NULL;
 }
 
-struct zwlr_foreign_toplevel_manager_v1_listener toplevel_manager_v1 = 
+struct zwlr_foreign_toplevel_manager_v1_listener toplevel_manager_v1 =
 {
     .toplevel = handle_manager_toplevel,
     .finished = handle_manager_finished,
 };
 
-static void registry_add_object (void *data, struct wl_registry *registry, uint32_t name, const char *interface, uint32_t version)
+static void registry_add_object (void *, struct wl_registry *registry, uint32_t name, const char *interface, uint32_t version)
 {
-    WinlistPlugin *wl = (WinlistPlugin*) data;
-
-    if (!g_strcmp0 (interface, zwlr_foreign_toplevel_manager_v1_interface.name))
+    if (!g_strcmp0 (interface, zwlr_foreign_toplevel_manager_v1_interface.name) && !global_manager)
     {
-        wl->manager = (MANAGER_PTR) wl_registry_bind (registry, name, &zwlr_foreign_toplevel_manager_v1_interface, version < 3 ? version : 3);
+        global_manager = (MANAGER_PTR) wl_registry_bind (registry, name, &zwlr_foreign_toplevel_manager_v1_interface, version < 3 ? version : 3);
+        zwlr_foreign_toplevel_manager_v1_add_listener (global_manager, &toplevel_manager_v1, NULL);
     }
 }
 
@@ -349,6 +356,9 @@ static void unminimise_app (GtkWidget *, gpointer userdata)
 
 static void create_button (WinlistPlugin *wl, WindowItem *item)
 {
+    /* item may have been created by an earlier, now-destroyed instance -
+     * refresh the back-pointer so its button handlers see the live one */
+    item->plugin = wl;
     item->btn = gtk_toggle_button_new ();
 
     g_signal_connect (item->btn, "button-press-event", G_CALLBACK (handle_button_pressed), wl);
@@ -477,6 +487,10 @@ static char *get_exe (const char *cmdline)
 
 static char *menu_cache_id (WinlistPlugin *wl, const char *app_id)
 {
+    // DIAGNOSTIC: menu_cache lookup is disabled below in wlist_init(), so
+    // wl->menu_cache is NULL - guard against dereferencing it.
+    if (!wl->menu_cache) return NULL;
+
     MenuCacheItem *item;
     GSList *list, *iter;
     GAppInfo *info;
@@ -610,18 +624,22 @@ static void set_icon_and_title (WinlistPlugin *wl, WindowItem *item)
     else
     {
         // the desktop file name isn't valid, so search the menu cache for something similar
+        str = NULL;
         id = menu_cache_id (wl, item->app_id);
-        str = g_strdup_printf ("%s.desktop", id);
-        g_free (id);
-        mitem = menu_cache_find_item_by_id (wl->menu_cache, str);
-        g_free (str);
-
-        if (mitem)
+        if (id)
         {
-            str = g_strdup (menu_cache_item_get_icon (mitem));
-            menu_cache_item_unref (mitem);
+            str = g_strdup_printf ("%s.desktop", id);
+            g_free (id);
+            mitem = menu_cache_find_item_by_id (wl->menu_cache, str);
+            g_free (str);
+            str = NULL;
+
+            if (mitem)
+            {
+                str = g_strdup (menu_cache_item_get_icon (mitem));
+                menu_cache_item_unref (mitem);
+            }
         }
-        else str = NULL;
     }
 
     if (wl->icons_only)
@@ -737,7 +755,7 @@ static void update_widths (WinlistPlugin *wl, int width)
     int target, count, oldwidth;
 
     count = 0;
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
@@ -752,7 +770,7 @@ static void update_widths (WinlistPlugin *wl, int width)
     if (target >= wl->max_width) wl->item_width = wl->max_width;
     else wl->item_width = target;
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
@@ -768,7 +786,7 @@ static void update_icons (WinlistPlugin *wl)
     WindowItem *item;
     GList *list, *children;
 
-    list = wl->windows;
+    list = global_windows;
     while (list)
     {
         item = (WindowItem *) list->data;
@@ -953,44 +971,89 @@ void wlist_init (WinlistPlugin *wl)
     wl->drag = gdk_cursor_new_for_display (gdk_display_get_default (), GDK_HAND1);
 
     wl->dragon = FALSE;
-    wl->windows = NULL;
 
-    gboolean need_prefix = (g_getenv ("XDG_MENU_PREFIX") == NULL);
-    wl->menu_cache = menu_cache_lookup (need_prefix ? "lxde-applications.menu+hidden" : "applications.menu+hidden");
-    menu_cache_add_reload_notify (wl->menu_cache, NULL, NULL);
+    // menu_cache_lookup() returns the same process-wide, refcounted cache
+    // object every time it's called for the same name - looking it up
+    // again on every reload just leaks a ref and a reload-notify callback
+    // (unreffing it is known to segfault because its io thread isn't
+    // closed down, so it's never released - see tlist.c), so only do it
+    // once for the life of the process.
+    if (!global_menu_cache)
+    {
+        gboolean need_prefix = (g_getenv ("XDG_MENU_PREFIX") == NULL);
+        global_menu_cache = menu_cache_lookup (need_prefix ? "lxde-applications.menu+hidden" : "applications.menu+hidden");
+        menu_cache_add_reload_notify (global_menu_cache, NULL, NULL);
+    }
+    wl->menu_cache = global_menu_cache;
 
-    GdkDisplay *gdk_display = gdk_display_get_default ();
-    struct wl_display *display = gdk_wayland_display_get_wl_display (gdk_display);
-    struct wl_registry *registry = wl_display_get_registry (display);
+    active_plugin = wl;
 
-    wl_registry_add_listener (registry, &registry_listener, wl);
-    wl_display_roundtrip (display);
-    wl_registry_destroy (registry);
+    // The toplevel manager (and the registry binding that finds it) are
+    // bound once for the life of the process, not per widget instance.
+    // Destroying and recreating zwlr_foreign_toplevel_manager_v1 (and its
+    // handles) on every reload is unsafe: if the compositor sends one more
+    // .toplevel() event for a manager we've just destroyed - e.g. because
+    // a new window opens in that exact instant - libwayland silently
+    // discards the whole event, since the proxy is already a zombie. That
+    // discard includes the new_id the event carries, which never gets
+    // reserved in the client's object map. The compositor doesn't know or
+    // care that we dropped it, and keeps allocating IDs past it regardless
+    // of protocol, so this leaves a permanent gap. The next completely
+    // unrelated server-created object - on any protocol, not just this one
+    // - that needs the map to grow past that gap crashes the whole process
+    // with a bare "Error reading events from display: Invalid argument".
+    // This was the root cause of the "reload, then open a config dialog
+    // twice" crash. See also tlist.c in wfplug-wlist, which shares this
+    // fix.
+    if (!global_registry)
+    {
+        GdkDisplay *gdk_display = gdk_display_get_default ();
+        struct wl_display *display = gdk_wayland_display_get_wl_display (gdk_display);
+        global_registry = wl_display_get_registry (display);
+        wl_registry_add_listener (global_registry, &registry_listener, NULL);
+    }
 
-    if (wl->manager) zwlr_foreign_toplevel_manager_v1_add_listener (wl->manager, &toplevel_manager_v1, wl);
-}
-
-static void close_handle (gpointer data, gpointer)
-{
-    WindowItem *item = (WindowItem *) data;
-    zwlr_foreign_toplevel_handle_v1_destroy (item->handle);
+    // Re-create UI buttons for any window we already know about. Its
+    // title/app_id/done sequence won't be resent by the compositor for a
+    // pre-existing window, since the manager that originally received it
+    // is never destroyed any more.
+    GList *list = global_windows;
+    while (list)
+    {
+        WindowItem *item = (WindowItem *) list->data;
+        if (item->title && item->app_id && !item->parent && !item->btn)
+        {
+            create_button (wl, item);
+            update_item_width (wl, item);
+            gtk_widget_set_tooltip_text (item->btn, item->title);
+            update_button_state (item);
+        }
+        list = g_list_next (list);
+    }
 }
 
 void wlist_destructor (gpointer user_data)
 {
     WinlistPlugin *wl = (WinlistPlugin *) user_data;
+    GList *list;
 
     if (wl->idle_timer) g_source_remove (wl->idle_timer);
     g_signal_handlers_disconnect_by_data (wl->plugin, wl);
 
-    /* Destroy the window manager */
-    g_list_foreach (wl->windows, (GFunc) close_handle, wl);
-    if (wl->manager) zwlr_foreign_toplevel_manager_v1_destroy (wl->manager);
-    wl->manager = NULL;
+    if (active_plugin == wl) active_plugin = NULL;
+
+    /* Tear down this instance's UI only. The toplevel manager, its
+     * handles, and the tracked window data in global_windows all persist
+     * across reloads - see the comment in wlist_init() for why destroying
+     * and recreating them here used to be able to crash the process. */
+    list = global_windows;
+    while (list)
+    {
+        destroy_button ((WindowItem *) list->data);
+        list = g_list_next (list);
+    }
 
     /* Deallocate memory */
-    if (wl->windows) g_list_free_full (wl->windows, (GDestroyNotify) free_list_item);
-    wl->windows = NULL;
     if (wl->box) gtk_widget_destroy (wl->box);
     wl->box = NULL;
     if (wl->drag) g_object_unref (wl->drag);
