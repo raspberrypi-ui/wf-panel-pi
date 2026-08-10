@@ -43,6 +43,8 @@ typedef struct
     GtkWidget *plugin;
     GtkWidget *box;
 
+    GList *windows;
+
     int spacing;
     int max_width;
     int item_width;
@@ -53,6 +55,8 @@ typedef struct
     GdkCursor *drag;
     gboolean dragon;
 
+    struct wl_registry *registry;
+    struct zwlr_foreign_toplevel_manager_v1 *manager;
     MenuCache* menu_cache;
 
     guint idle_timer;
