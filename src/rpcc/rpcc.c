@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <locale.h>
+#include <menu-cache.h>
 
 extern void init_notify (void);
 extern void init_config (void);
@@ -35,6 +36,8 @@ extern void init_config (void);
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
+
+MenuCache *mcache, *mcache_h;
 
 GtkWidget *main_dlg;
 GtkBuilder *builder;
