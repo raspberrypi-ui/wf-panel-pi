@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib/gi18n.h>
 #include <locale.h>
 
-#include "plugin.h"
+#include "rpcc.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros                                                                     */

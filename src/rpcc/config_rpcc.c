@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <locale.h>
 #include <dlfcn.h>
 
-#include "plugin.h"
+#include "rpcc.h"
 #include "plug_conf.h"
 
 /*----------------------------------------------------------------------------*/
