@@ -136,7 +136,13 @@ extern gboolean load_configuration_data (const char *type, conf_table_t *conf_ta
 #define wrap_icon_size(plug) (get_icon_size(plug->plugin))
 #define wrap_is_at_bottom(plug) (panel_at_bottom(plug->plugin))
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
-#define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed = PRESS_NONE;return;}pressed = PRESS_NONE;
+#define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed=PRESS_NONE;return;}pressed=PRESS_NONE;
+#define NOTLONG_EXIT if(pressed!=PRESS_LONG)return;
+#define wrap_add_longpress(gesture,plugin,cb,ptr) gesture=add_long_press(plugin,cb,ptr)
+#define wrap_free_gesture(gesture) if(gesture)g_object_unref(gesture);
+#define HDMI_NUM_DEVICES "wlr-randr | grep -c ^[^[:space:]]"
+#define HDMI_DEVICE_0 "wlr-randr | grep  ^[^[:space:]] | sort | head -n 1 | cut -d ' ' -f 1"
+#define HDMI_DEVICE_1 "wlr-randr | grep  ^[^[:space:]] | sort | tail -n 1 | cut -d ' ' -f 1"
 
 #undef _
 #define _(a) dgettext(GETTEXT_PACKAGE,a)
