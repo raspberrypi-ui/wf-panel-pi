@@ -33,8 +33,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cstdlib>
 #include <cstring>
 
-#include <glibmm/main.h>
-
 #include <gtk-layer-shell.h>
 
 #include "widget.hpp"
