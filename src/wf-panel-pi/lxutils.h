@@ -49,6 +49,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk-layer-shell/gtk-layer-shell.h>
 #include "plug_conf.h"
 #include "notification.h"
+#ifdef USES_MENUCACHE
+#include <menu-cache.h>
+#endif
 
 #define MENU_ICON_SPACE 6
 
@@ -81,6 +84,12 @@ typedef struct {
 } PluginGraph;
 
 extern char **environ;
+
+#ifdef USES_MENUCACHE
+extern MenuCache *mcache;
+extern char *menu_cache_id (const char *app_id);
+extern MenuCacheItem *get_cache_item (const char *app_id);
+#endif
 
 extern GtkWindow *find_panel (GtkWidget *btn);
 extern gboolean panel_at_bottom (GtkWidget *btn);
