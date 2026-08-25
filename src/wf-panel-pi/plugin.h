@@ -121,6 +121,7 @@ extern GtkGesture *add_long_press (GtkWidget *target, GCallback callback, gpoint
 extern gboolean is_pi (void);
 
 extern gboolean load_configuration_data (const char *type, conf_table_t *conf_table);
+extern void save_configuration_data (const char *type, conf_table_t *conf_table);
 
 #define wrap_notify(panel,msg) wfpanel_notify(msg)
 #define wrap_critical(panel,msg) wfpanel_critical(msg)
@@ -136,6 +137,7 @@ extern gboolean load_configuration_data (const char *type, conf_table_t *conf_ta
 #define wrap_icon_size(plug) (get_icon_size(plug->plugin))
 #define wrap_is_at_bottom(plug) (panel_at_bottom(plug->plugin))
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
+#define wrap_save_config(plugin,name,table) save_configuration_data(name,table)
 #define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed=PRESS_NONE;return;}pressed=PRESS_NONE;
 #define NOTLONG_EXIT if(pressed!=PRESS_LONG)return;
 #define wrap_add_longpress(gesture,plugin,cb,ptr) gesture=add_long_press(plugin,cb,ptr)

@@ -754,6 +754,53 @@ gboolean load_configuration_data (const char *type, conf_table_t *conf_table)
     return changed;
 }
 
+void save_configuration_data (const char *type, conf_table_t *conf_table)
+{
+    conf_table_t *cptr = &conf_table[0];
+    char *strval, *user_file;
+    GKeyFile *kf;
+    gsize len;
+
+    user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+    kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+    while (cptr->type != CONF_TYPE_NONE)
+    {
+        switch (cptr->type)
+        {
+            case CONF_TYPE_BOOL :
+                g_key_file_set_boolean (kf, type, cptr->name, *((gboolean *) cptr->value));
+                break;
+
+            case CONF_TYPE_INT :
+                g_key_file_set_integer (kf, type, cptr->name, *((int *) cptr->value));
+                break;
+
+            case CONF_TYPE_STRING :
+            case CONF_TYPE_FONT :
+                g_key_file_set_string (kf, type, cptr->name, (char *) cptr->value);
+                break;
+
+            case CONF_TYPE_COLOUR :
+                strval = gdk_rgba_to_string ((GdkRGBA *) cptr->value);
+                g_key_file_set_string (kf, type, cptr->name, strval);
+                g_free (strval);
+                break;
+
+            default: break;
+        }
+        cptr++;
+    }
+
+    strval = g_key_file_to_data (kf, &len, NULL);
+    g_file_set_contents (user_file, strval, len, NULL);
+
+    g_free (strval);
+    g_key_file_free (kf);
+    g_free (user_file);
+}
+
 /*----------------------------------------------------------------------------*/
 /* Menu cache search                                                          */
 /*----------------------------------------------------------------------------*/

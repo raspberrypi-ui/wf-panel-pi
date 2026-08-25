@@ -11,7 +11,7 @@ c_sources = files(
   'launcher.c'
 )
 
-proj_args = [ '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"', '-DUSES_MENUCACHE']
+proj_args = [ '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"', '-DUSES_MENUCACHE' ]
 
 gtklayershell = dependency('gtk-layer-shell-0', version: '>= 0.1', fallback: ['gtk-layer-shell', 'gtk_layer_shell_dep'])
 udev = dependency('libudev')
