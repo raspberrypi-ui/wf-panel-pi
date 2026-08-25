@@ -32,8 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtkmm/scrolledwindow.h>
 
 extern "C" {
-#include <menu-cache.h>
-#include "lxutils.h"
+#include "plugin.h"
 #include "winlist.h"
 }
 
