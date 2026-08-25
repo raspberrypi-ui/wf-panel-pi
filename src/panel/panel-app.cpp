@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glibmm/main.h>
 #include <giomm/dbusownname.h>
 #include <giomm/dbusconnection.h>
+#include <menu-cache.h>
 
 #include <iostream>
 
@@ -52,6 +53,7 @@ static const gchar introspection_xml[] =
 std::unique_ptr <PanelApp> PanelApp::instance;
 gboolean activated = FALSE;
 char *confdir, *conffile;
+MenuCache *mcache, *mcache_h;
 
 PanelApp::PanelApp (int argc, char **argv)
 {
@@ -106,13 +108,18 @@ void PanelApp::on_activate ()
     inotify_add_watch (inotify_fd, conffile, IN_MODIFY);
     inotify_add_watch (inotify_fd, confdir, IN_CREATE | IN_DELETE);
 
+    // create menu caches
+    gboolean need_prefix = (g_getenv ("XDG_MENU_PREFIX") == NULL);
+    mcache = menu_cache_lookup_sync (need_prefix ? "lxde-applications.menu" : "applications.menu");
+    mcache_h = menu_cache_lookup_sync (need_prefix ? "lxde-applications.menu+hidden" : "applications.menu+hidden");
+
     // setup monitor tracking
     display->signal_monitor_added ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
     display->signal_monitor_removed ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
 
     // load initial monitors
     update_monitors ();
-    
+
     // own on DBus
     introspection_data = Gio::DBus::NodeInfo::create_for_xml (introspection_xml);
     owner_id = Gio::DBus::own_name (Gio::DBus::BusType::BUS_TYPE_SESSION, "com.raspberrypi.wfpanelpi", sigc::mem_fun (this, &PanelApp::on_bus_acquired),
