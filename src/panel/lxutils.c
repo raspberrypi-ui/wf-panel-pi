@@ -542,6 +542,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_layer_set_anchor (clicksink, GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
     gtk_layer_set_anchor (clicksink, GTK_LAYER_SHELL_EDGE_TOP, TRUE);
     gtk_layer_set_anchor (clicksink, GTK_LAYER_SHELL_EDGE_BOTTOM, TRUE);
+    gtk_layer_set_exclusive_zone (clicksink, -1);
     gtk_layer_set_monitor (clicksink, mon);
     gtk_widget_set_name (GTK_WIDGET (clicksink), "clicksink");
 
