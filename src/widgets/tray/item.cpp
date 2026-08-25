@@ -5,7 +5,7 @@
 
 #include <libdbusmenu-gtk/dbusmenu-gtk.h>
 extern "C" {
-#include "lxutils.h"
+#include "plugin.h"
 }
 
 static std::pair<Glib::ustring, Glib::ustring> name_and_obj_path(const Glib::ustring & service)

@@ -27,7 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gtk/gtk.h>
 #include <gtk-layer-shell.h>
-#include "lxutils.h"
+#include "plugin.h"
 
 #include "notification.h"
 

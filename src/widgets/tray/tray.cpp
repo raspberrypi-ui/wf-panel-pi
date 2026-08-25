@@ -1,7 +1,7 @@
 #include "tray.hpp"
 
 extern "C" {
-#include "lxutils.h"
+#include "plugin.h"
 
     PanelWidget *create () { return new WidgetStatusNotifier; }
     void destroy (PanelWidget *w) { delete w; }

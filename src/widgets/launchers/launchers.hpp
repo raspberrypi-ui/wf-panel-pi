@@ -32,7 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtkmm/hvbox.h>
 
 extern "C" {
-#include "lxutils.h"
+#include "plugin.h"
 #include "launchers.h"
 }
 

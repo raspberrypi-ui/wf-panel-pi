@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtk-layer-shell.h>
 #include <gio/gdesktopappinfo.h>
 
-#include "lxutils.h"
+#include "plugin.h"
 
 /*----------------------------------------------------------------------------*/
 /* Macros and typedefs */

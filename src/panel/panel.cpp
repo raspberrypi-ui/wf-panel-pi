@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 extern "C" {
 #include "plug_conf.h"
-#include "lxutils.h"
+#include "plugin.h"
 }
 
 #include "panel.hpp"

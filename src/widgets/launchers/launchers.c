@@ -29,7 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <glib/gi18n.h>
 #include <gio/gdesktopappinfo.h>
 
-#include "lxutils.h"
+#include "plugin.h"
 #include "launcher.h"
 
 #include "launchers.h"
