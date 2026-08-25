@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gio/gdesktopappinfo.h>
 
 #include "plugin.h"
-#include "launcher.h"
 
 #include "launchers.h"
 

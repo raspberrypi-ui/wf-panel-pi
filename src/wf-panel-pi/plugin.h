@@ -123,6 +123,10 @@ extern gboolean is_pi (void);
 extern gboolean load_configuration_data (const char *type, conf_table_t *conf_table);
 extern void save_configuration_data (const char *type, conf_table_t *conf_table);
 
+extern void add_to_launcher (const char *name);
+extern void remove_from_launcher (const char *name);
+extern void replace_launchers (const char *launchers);
+
 #define wrap_notify(panel,msg) wfpanel_notify(msg)
 #define wrap_critical(panel,msg) wfpanel_critical(msg)
 #define wrap_notify_clear(seq) wfpanel_notify_clear(seq)
