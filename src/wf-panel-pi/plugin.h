@@ -143,7 +143,8 @@ extern void replace_launchers (const char *launchers);
 #define wrap_popup_at_button(plugin,window,button) popup_window_at_button(window,button)
 #define wrap_save_config(plugin,name,table) save_configuration_data(name,table)
 #define CHECK_LONGPRESS if(pressed==PRESS_LONG){pressed=PRESS_NONE;return;}pressed=PRESS_NONE;
-#define NOTLONG_EXIT if(pressed!=PRESS_LONG)return;
+#define CLEAR_PRESS pressed=PRESS_NONE;
+#define LONGPRESS (pressed==PRESS_LONG)
 #define wrap_add_longpress(gesture,plugin,cb,ptr) gesture=add_long_press(plugin,cb,ptr)
 #define wrap_free_gesture(gesture) if(gesture)g_object_unref(gesture);
 #define HDMI_NUM_DEVICES "wlr-randr | grep -c ^[^[:space:]]"
