@@ -1011,5 +1011,120 @@ MenuCacheItem *get_cache_item (const char *app_id)
 
 #endif
 
+/*----------------------------------------------------------------------------*/
+/* Launcher management                                                        */
+/*----------------------------------------------------------------------------*/
+
+static void edit_launchers (const char *name, gboolean add)
+{
+    GKeyFile *kf, *kfs;
+    char *str, *list, *new_list, *tok, *tmp;
+    gsize len;
+    GError *err = NULL;
+
+    // construct the file path
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+
+    // read in data from file to a key file
+    kf = g_key_file_new ();
+    list = NULL;
+    if (g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL))
+    {
+        list = g_key_file_get_string (kf, "panel", "launchers", &err);
+    }
+
+    // no launchers entry in user file - try loading from system file
+    if (!list || (err && err->code == G_KEY_FILE_ERROR_KEY_NOT_FOUND))
+    {
+        kfs = g_key_file_new ();
+        g_key_file_load_from_file (kfs, "/etc/xdg/wf-panel-pi/wf-panel-pi.ini", G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+        list = g_key_file_get_string (kfs, "panel", "launchers", NULL);
+        g_key_file_free (kfs);
+    }
+
+    // strip .desktop suffix
+    str = g_strdup (name);
+    if (strstr (str, ".desktop")) *strrchr (str, '.') = 0;
+
+    new_list = NULL;
+
+    // remove item from elsewhere in list
+    tok = strtok (list, " ");
+    while (tok)
+    {
+        if (strcmp (str, tok))
+        {
+            if (new_list)
+            {
+                tmp = g_strdup_printf ("%s %s", new_list, tok);
+                g_free (new_list);
+                new_list = tmp;
+            }
+            else new_list = g_strdup_printf ("%s", tok);
+        }
+        tok = strtok (NULL, " ");
+    }
+
+    // append to list if adding
+    if (add)
+    {
+        if (new_list)
+        {
+                tmp = g_strdup_printf ("%s %s", new_list, str);
+                g_free (new_list);
+                new_list = tmp;
+        }
+        else new_list = g_strdup_printf ("%s", str);
+    }
+
+    g_key_file_set_string (kf, "panel", "launchers", new_list ? new_list : "");
+
+    g_free (new_list);
+    g_free (list);
+    g_free (str);
+
+    // write the modified key file out
+    str = g_key_file_to_data (kf, &len, NULL);
+    g_file_set_contents (user_file, str, len, NULL);
+
+    g_free (str);
+    g_key_file_free (kf);
+    g_free (user_file);
+}
+
+void add_to_launcher (const char *name)
+{
+    edit_launchers (name, TRUE);
+}
+
+void remove_from_launcher (const char *name)
+{
+    edit_launchers (name, FALSE);
+}
+
+void replace_launchers (const char *launchers)
+{
+    GKeyFile *kf;
+    char *str;
+    gsize len;
+
+    // construct the file path
+    char *user_file = g_build_filename (g_get_user_config_dir (), "wf-panel-pi", "wf-panel-pi.ini", NULL);
+
+    // read in data from file to a key file
+    kf = g_key_file_new ();
+    g_key_file_load_from_file (kf, user_file, G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+
+    g_key_file_set_string (kf, "panel", "launchers", launchers);
+
+    // write the modified key file out
+    str = g_key_file_to_data (kf, &len, NULL);
+    g_file_set_contents (user_file, str, len, NULL);
+
+    g_free (str);
+    g_key_file_free (kf);
+    g_free (user_file);
+}
+
 /* End of file */
 /*----------------------------------------------------------------------------*/
