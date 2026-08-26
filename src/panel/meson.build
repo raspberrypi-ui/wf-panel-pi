@@ -7,8 +7,7 @@ cpp_sources = files(
 c_sources = files(
   'plug_conf.c',
   'notification.c',
-  'plugin.c',
-  'launcher.c'
+  'plugin.c'
 )
 
 proj_args = [ '-DPLUGIN_PATH="' + get_option ('prefix') + '/' + get_option('libdir') + '/wf-panel-pi/"', '-DUSES_MENUCACHE' ]
