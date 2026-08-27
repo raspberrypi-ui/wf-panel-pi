@@ -223,9 +223,6 @@ Panel::Panel (bool is_dock)
     // Load widgets
     init_widgets ();
     update_widget_icons ();
-
-    // Set the window display options
-    set_exclusive ();
 }
 
 Panel::~Panel ()
@@ -514,6 +511,7 @@ void Panel::init_widgets ()
     reload_widgets ((std::string) right_widgets_opt, right_widgets, right_box);
     if (((std::string) left_widgets_opt).empty () && ((std::string) right_widgets_opt).empty ()) window->hide ();
     else window->show ();
+    set_exclusive ();
 }
 
 // Set up notifications and callbacks
