@@ -76,6 +76,8 @@ GtkWindow *popwindow;
 static GtkWindow *clicksink;
 static int px, py, mw, mh, orient, mch;
 
+gboolean reload;
+
 /*----------------------------------------------------------------------------*/
 /* General public API - replaces functions from lxpanel */
 /*----------------------------------------------------------------------------*/

@@ -70,6 +70,7 @@ extern gboolean gestures_touch_only;
 extern gboolean is_pi_var;
 extern int p_icon_size;
 extern int d_icon_size;
+extern gboolean reload;
 
 typedef struct {
     GtkWidget *da;                          /* Drawing area */

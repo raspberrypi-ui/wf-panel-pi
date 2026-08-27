@@ -221,6 +221,7 @@ Panel::Panel (bool is_dock)
     init_notify ();
 
     // Load widgets
+    reload = FALSE;
     init_widgets ();
     update_widget_icons ();
 }
@@ -543,7 +544,9 @@ void Panel::handle_config_reload ()
     {
         close_popup ();
         menu.popdown ();
+        reload = TRUE;
         init_widgets ();
+        reload = FALSE;
     }
     if (changes & CFG_ICONS || changes & CFG_WIDGETS) update_widget_icons ();
 
