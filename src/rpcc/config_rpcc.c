@@ -235,7 +235,11 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
          */
         if (strcmp (type, "netman")) dlclose (wid_lib);
     }
-    else *name = g_strdup_printf (_("<Unknown>"));
+    else
+    {
+        *name = g_strdup_printf (_("<Unknown>"));
+        printf ("error loading widget %s : %s\n", type, dlerror ());
+    }
 
     return res;
 }

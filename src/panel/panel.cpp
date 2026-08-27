@@ -477,6 +477,7 @@ std::unique_ptr <PanelWidget> Panel::widget_from_name (const char *name)
             PanelWidget *(*create_widget) () = (PanelWidget *(*) ()) dlsym (wid, "create");
             return std::unique_ptr <PanelWidget> (create_widget ());
         }
+        else printf ("error loading widget %s : %s\n", name, dlerror ());
     }
     return nullptr;
 }
@@ -490,11 +491,7 @@ void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <Pane
     while (stream >> widget_name)
     {
         auto widget = widget_from_name (widget_name.c_str ());
-        if (!widget)
-        {
-            printf ("widget failed to load : %s\n", widget_name.c_str ());
-            continue;
-        }
+        if (!widget) continue;
 
         widget->widget_name = widget_name;
         widget->widget_init (&box);
