@@ -217,15 +217,15 @@ Panel::Panel (bool is_dock)
     window->add (content_box);
     window->show_all ();
 
-    // Set the window display options
-    set_exclusive ();
-
     // Setup notifications
     init_notify ();
 
     // Load widgets
     init_widgets ();
     update_widget_icons ();
+
+    // Set the window display options
+    set_exclusive ();
 }
 
 Panel::~Panel ()
@@ -493,7 +493,11 @@ void Panel::reload_widgets (std::string list, std::vector <std::unique_ptr <Pane
     while (stream >> widget_name)
     {
         auto widget = widget_from_name (widget_name.c_str ());
-        if (!widget) continue;
+        if (!widget)
+        {
+            printf ("widget failed to load : %s\n", widget_name.c_str ());
+            continue;
+        }
 
         widget->widget_name = widget_name;
         widget->widget_init (&box);
