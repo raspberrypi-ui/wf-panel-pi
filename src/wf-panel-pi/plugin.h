@@ -151,6 +151,7 @@ extern void replace_launchers (const char *launchers);
 #define HDMI_NUM_DEVICES "wlr-randr | grep -c ^[^[:space:]]"
 #define HDMI_DEVICE_0 "wlr-randr | grep  ^[^[:space:]] | sort | head -n 1 | cut -d ' ' -f 1"
 #define HDMI_DEVICE_1 "wlr-randr | grep  ^[^[:space:]] | sort | tail -n 1 | cut -d ' ' -f 1"
+#define LXPLUG_VARS
 
 #undef _
 #define _(a) dgettext(GETTEXT_PACKAGE,a)
