@@ -1,0 +1,211 @@
+# Georgian translation for wf-panel-pi.
+# Copyright (C) 2026 wf-panel-pi's authors.
+# This file is distributed under the same license as the wf-panel-pi package.
+# Ekaterine Papava <papava.e@gtu.ge>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wf-panel-pi\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-22 13:01+0200\n"
+"PO-Revision-Date: 2026-08-30 05:34+0200\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
+"Language-Team: Georgian <(nothing)>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: src/panel/configure.c:115 src/panel/configure.c:617
+#, c-format
+msgid "Separator"
+msgstr "გამყოფი"
+
+#: src/panel/configure.c:116 src/panel/configure.c:255
+#: src/panel/configure.c:618
+#, c-format
+msgid "Spacer (%d)"
+msgstr "გამყოფი (%d)"
+
+#: src/panel/configure.c:137 src/panel/configure.c:158
+#: src/panel/configure.c:447
+#, c-format
+msgid "<Unknown>"
+msgstr "<უცნობი>"
+
+#: src/panel/configure.c:424
+msgid "Cancel"
+msgstr "გაუქმება"
+
+#: src/panel/configure.c:424
+msgid "OK"
+msgstr "დიახ"
+
+#: src/panel/configure.c:445 src/panel/configure.c:447
+#, c-format
+msgid "Configure %s"
+msgstr "'%s'-ის მორგება"
+
+#: src/panel/configure.c:852
+msgid "Left Side"
+msgstr "მარცხენა მხარე"
+
+#: src/panel/configure.c:853
+msgid "Available"
+msgstr "ხელმისაწვდომია"
+
+#: src/panel/configure.c:854
+msgid "Right Side"
+msgstr "მარჯვენა მხარე"
+
+#: src/panel/panel.cpp:280
+msgid "Add / Remove Plugins..."
+msgstr "დამატებების დამატება / წაშლა"
+
+#: src/panel/panel.cpp:284
+msgid "Configure Plugin..."
+msgstr "დამატების მორგება..."
+
+#: src/panel/panel.cpp:288
+msgid "Notifications..."
+msgstr "გაფრთხილებები..."
+
+#: src/panel/panel.cpp:292
+msgid "Taskbar Preferences..."
+msgstr "ამოცანების ზოლის მორგება..."
+
+#: src/widgets/launchers/launchers.c:46
+msgid "Icon spacing"
+msgstr "ადგილი ხატულებს შორის"
+
+#: src/widgets/launchers/launchers.c:88
+msgid "Remove from Launcher"
+msgstr "წაშლა გამშვებიდან"
+
+#: src/widgets/notify/notify.cpp:5
+msgid "Show notifications"
+msgstr "გაფრთხილებების ჩვენება"
+
+#: src/widgets/notify/notify.cpp:6
+msgid "Time before notifications close"
+msgstr "დრო გაფრთხილების დახურვამდე"
+
+#: src/widgets/notify/notify.cpp:10
+msgid "Notifications"
+msgstr "გაფრთხილებები"
+
+#: src/widgets/spacing/spacing.cpp:5
+msgid "Width in pixels"
+msgstr "სიგანე პიქსელებში"
+
+#: src/widgets/spacing/spacing.cpp:6
+msgid "Set width to 0 to create a separator"
+msgstr "დააყენეთ სიგანე 0-ზე გამყოფის შესაქმნელად"
+
+#: src/widgets/spacing/spacing.cpp:10
+msgid "Spacer"
+msgstr "გამომყოფი"
+
+#: src/widgets/tray/tray.cpp:8
+msgid "Smooth scrolling threshold"
+msgstr "გლუვი გადახვევის ზღვარი"
+
+#: src/widgets/tray/tray.cpp:9
+msgid "Middle button activates menu"
+msgstr "შუა ღილაკი მენიუს გასააქტიურებლად"
+
+#: src/widgets/tray/tray.cpp:13
+msgid "System Tray"
+msgstr "სისტემს კუთხე"
+
+#: src/widgets/window-list/winlist.c:50
+msgid "Maximum width of task button"
+msgstr "ამოცანის ღილაკის მაქსიმალური სიგანე"
+
+#: src/widgets/window-list/winlist.c:51
+msgid "Show only icons"
+msgstr "მხოლოდ ხატულების ჩვენება"
+
+#: src/widgets/window-list/winlist.c:52
+msgid "Item spacing"
+msgstr "ელემენტების დაშორება"
+
+#: src/widgets/window-list/winlist.c:667
+msgid "Unminimise"
+msgstr "ჩაკეცვის გაუქმება"
+
+#: src/widgets/window-list/winlist.c:672
+msgid "Minimise"
+msgstr "ჩაკეცვა"
+
+#: src/widgets/window-list/winlist.c:679
+msgid "Unmaximise"
+msgstr "მთელ ეკრანზე გაშლის გაუქმება"
+
+#: src/widgets/window-list/winlist.c:684
+msgid "Maximise"
+msgstr "მთელ ეკრანზე გაშლა"
+
+#: src/widgets/window-list/winlist.c:689
+msgid "Close"
+msgstr "დახურვა"
+
+#. ----------------------------------------------------------------------------
+#. Typedefs and macros
+#. ----------------------------------------------------------------------------
+#: src/widgets/window-list/winlist.h:35
+msgid "Window List"
+msgstr "ფანჯრების სია"
+
+#: data/config.ui:7
+msgid "Add / Remove Plugins"
+msgstr "დამატებების დამატება / წაშლა"
+
+#: data/config.ui:118
+msgid "Add to left"
+msgstr "დამატება მარცხნივ"
+
+#: data/config.ui:122
+msgid "Add plugin to left side of taskbar"
+msgstr "დამატების დამატება ამოცანების ზოლის მარცხენა მხარეს"
+
+#: data/config.ui:132
+msgid "Add to right"
+msgstr "მარჯვნივ დამატება"
+
+#: data/config.ui:136
+msgid "Add plugin to right side of taskbar"
+msgstr "დამატების დამატება ამოცანების ზოლის მარჯვენა მხარეს"
+
+#: data/config.ui:146
+msgid "Remove"
+msgstr "წაშლა"
+
+#: data/config.ui:150
+msgid "Remove plugin from taskbar"
+msgstr "დამატების წაშლა ამოცანების პანელიდან"
+
+#: data/config.ui:160
+msgid "Move left"
+msgstr "მარცხნივ გაწევა"
+
+#: data/config.ui:164
+msgid "Move plugin towards left of taskbar"
+msgstr "დამატების გადატანა ამოცანების პანელის მარცხნივ"
+
+#: data/config.ui:174
+msgid "Move right"
+msgstr "მარჯვნივ გაწევა"
+
+#: data/config.ui:178
+msgid "Move plugin towards right of taskbar"
+msgstr "დამატების გადატანა ამოცანების პანელის მარჯვნივ"
+
+#: data/config.ui:188
+msgid "Configure..."
+msgstr "მორგება..."
+
+#: data/config.ui:192
+msgid "Configure selected plugin"
+msgstr "მონიშნული დამატების მორგება"
