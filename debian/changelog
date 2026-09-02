@@ -1,3 +1,9 @@
+wf-panel-pi (1.27) trixie; urgency=medium
+
+  * Version bump for build
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 02 Sep 2026 13:25:31 +0100
+
 wf-panel-pi (1.26) trixie; urgency=medium
 
   * Add Georgian translation
