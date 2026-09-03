@@ -473,6 +473,7 @@ static void generate_leave_event (GtkWidget *wid)
     ev->detail = GDK_NOTIFY_NONLINEAR_VIRTUAL;
     gdk_event_set_device ((GdkEvent *) ev, gdk_seat_get_pointer (gdk_display_get_default_seat (gdk_display_get_default ())));
     gdk_event_put ((GdkEvent *) ev);
+    gtk_window_set_focus (panel, NULL);     // otherwise the widget retains focus and hitting enter reopens the menu
 }
 
 static void menu_closed (GtkWidget *men, GtkWidget *wid)

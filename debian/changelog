@@ -1,3 +1,9 @@
+wf-panel-pi (1.28) trixie; urgency=medium
+
+  * Fix for panel buttons retaining focus once menus have closed
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 03 Sep 2026 18:39:55 +0100
+
 wf-panel-pi (1.27) trixie; urgency=medium
 
   * Version bump for build
