@@ -164,6 +164,8 @@ bool PanelApp::update_monitors ()
     panel->monitor_update_pending (false);
     dock->monitor_update_pending (false);
 
+    system ("if pgrep swaybg > /dev/null ; then pkill swaybg ; fi");
+
     return false;
 }
 

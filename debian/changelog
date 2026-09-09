@@ -1,3 +1,9 @@
+wf-panel-pi (1.29) trixie; urgency=medium
+
+  * Restart swaybg on monitor hotplug to update desktop
+
+ -- Simon Long <simon@raspberrypi.com>  Wed, 09 Sep 2026 10:32:47 +0100
+
 wf-panel-pi (1.28) trixie; urgency=medium
 
   * Fix for panel buttons retaining focus once menus have closed
