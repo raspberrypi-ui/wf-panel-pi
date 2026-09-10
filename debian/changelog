@@ -1,3 +1,9 @@
+wf-panel-pi (1.30) trixie; urgency=medium
+
+  * Fix menu cache failure to update when new applications installed
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 10 Sep 2026 14:13:23 +0100
+
 wf-panel-pi (1.29) trixie; urgency=medium
 
   * Restart swaybg on monitor hotplug to update desktop

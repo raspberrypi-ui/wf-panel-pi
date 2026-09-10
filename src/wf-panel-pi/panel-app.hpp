@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <gtkmm/application.h>
 #include <gdkmm/monitor.h>
+#include <menu-cache.h>
 
 class Panel;
 
@@ -60,6 +61,8 @@ class PanelApp
 
     void run ();
     void on_activate ();
+
+    static void on_menu_cache_reload (MenuCache *cache, gpointer user_data);
 
     bool handle_inotify_event (Glib::IOCondition cond);
 

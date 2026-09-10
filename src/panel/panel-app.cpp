@@ -113,6 +113,10 @@ void PanelApp::on_activate ()
     mcache = menu_cache_lookup_sync (need_prefix ? "lxde-applications.menu" : "applications.menu");
     mcache_h = menu_cache_lookup_sync (need_prefix ? "lxde-applications.menu+hidden" : "applications.menu+hidden");
 
+    // unless there is a notify defined for the menu cache, it never updates...
+    menu_cache_add_reload_notify (mcache, PanelApp::on_menu_cache_reload, NULL);
+    menu_cache_add_reload_notify (mcache_h, PanelApp::on_menu_cache_reload, NULL);
+
     // setup monitor tracking
     display->signal_monitor_added ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
     display->signal_monitor_removed ().connect_notify ([=] (const Glib::RefPtr <Gdk::Monitor>& monitor) { monitors_changed (); });
@@ -124,6 +128,13 @@ void PanelApp::on_activate ()
     introspection_data = Gio::DBus::NodeInfo::create_for_xml (introspection_xml);
     owner_id = Gio::DBus::own_name (Gio::DBus::BusType::BUS_TYPE_SESSION, "com.raspberrypi.wfpanelpi", sigc::mem_fun (this, &PanelApp::on_bus_acquired),
         sigc::mem_fun (this, &PanelApp::on_name_acquired), sigc::mem_fun (this, &PanelApp::on_name_lost));
+}
+
+/* Menu cache reload tracking */
+
+void PanelApp::on_menu_cache_reload (MenuCache *cache, gpointer user_data)
+{
+    /* this space intentionally blank... */
 }
 
 /* Config file change tracking */
