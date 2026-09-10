@@ -67,7 +67,8 @@ class PanelApp
     bool handle_inotify_event (Glib::IOCondition cond);
 
     void monitors_changed ();
-    bool update_monitors ();
+    void update_monitors ();
+    bool handle_hotplug ();
 
     void on_bus_acquired (const Glib::RefPtr <Gio::DBus::Connection>&, const Glib::ustring&);
     void on_name_acquired (const Glib::RefPtr <Gio::DBus::Connection>&, const Glib::ustring&);

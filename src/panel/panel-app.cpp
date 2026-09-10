@@ -162,10 +162,10 @@ void PanelApp::monitors_changed ()
     panel->monitor_update_pending (true);
     dock->monitor_update_pending (true);
 
-    hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun (this, &PanelApp::update_monitors), 500);
+    hotplug_timer = Glib::signal_timeout ().connect (sigc::mem_fun (this, &PanelApp::handle_hotplug), 500);
 }
 
-bool PanelApp::update_monitors ()
+void PanelApp::update_monitors ()
 {
     if (panel) panel->window->set_monitor ();
     else panel = std::make_unique <Panel> (false);
@@ -174,7 +174,11 @@ bool PanelApp::update_monitors ()
 
     panel->monitor_update_pending (false);
     dock->monitor_update_pending (false);
+}
 
+bool PanelApp::handle_hotplug ()
+{
+    update_monitors ();
     system ("if pgrep swaybg > /dev/null ; then pkill swaybg ; fi");
 
     return false;

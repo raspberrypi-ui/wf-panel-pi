@@ -1,3 +1,9 @@
+wf-panel-pi (1.31) trixie; urgency=medium
+
+  * Prevent initial restart of swaybg at startup
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 10 Sep 2026 16:54:35 +0100
+
 wf-panel-pi (1.30) trixie; urgency=medium
 
   * Fix menu cache failure to update when new applications installed
