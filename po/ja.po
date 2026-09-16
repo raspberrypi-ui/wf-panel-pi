@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-27 23:03+0900\n"
-"PO-Revision-Date: 2025-09-27 23:21+0900\n"
+"POT-Creation-Date: 2026-09-17 00:14+0900\n"
+"PO-Revision-Date: 2026-09-17 00:41+0900\n"
 "Last-Translator: Akira Ouchi <akkiesoft@marokun.net>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,204 +16,316 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
-#: src/panel/configure.c:115 src/panel/configure.c:599
-#, c-format
-msgid "Separator"
-msgstr "セパレーター"
+#. Create window menu
+#: src/panel/panel.cpp:174
+msgid "Configure Plugin..."
+msgstr "プラグインを設定..."
 
-#: src/panel/configure.c:116 src/panel/configure.c:255
-#: src/panel/configure.c:600
+#: src/panel/panel.cpp:180
+msgid "Add / Remove Plugins..."
+msgstr "プラグインを追加/削除..."
+
+#: src/panel/panel.cpp:184
+msgid "Notifications..."
+msgstr "通知..."
+
+#: src/panel/panel.cpp:188
+msgid "Dock Preferences..."
+msgstr "Dockの設定..."
+
+#: src/panel/panel.cpp:188
+msgid "Taskbar Preferences..."
+msgstr "タスクバーの設定..."
+
+#: src/rpcc/config_rpcc.c:190 src/rpcc/config_rpcc.c:363
+#: src/rpcc/config_rpcc.c:537
 #, c-format
 msgid "Spacer (%d)"
 msgstr "空白 (%d)"
 
-#: src/panel/configure.c:137 src/panel/configure.c:158
-#: src/panel/configure.c:447
+#: src/rpcc/config_rpcc.c:195 src/rpcc/config_rpcc.c:352
+#: src/widgets/misc/separator.cpp:25
+msgid "Separator"
+msgstr "セパレーター"
+
+#: src/rpcc/config_rpcc.c:217 src/rpcc/config_rpcc.c:240
 #, c-format
 msgid "<Unknown>"
 msgstr "不明"
 
-#: src/panel/configure.c:424
-msgid "Cancel"
-msgstr "キャンセル"
+#: src/rpcc/config_rpcc.c:717
+msgid "Add to Dock"
+msgstr "Dockに追加"
 
-#: src/panel/configure.c:424
-msgid "OK"
-msgstr "OK"
-
-#: src/panel/configure.c:445 src/panel/configure.c:447
-#, c-format
-msgid "Configure %s"
-msgstr "%s の設定"
-
-#: src/panel/configure.c:834
-msgid "Left Side"
-msgstr "左側"
-
-#: src/panel/configure.c:835
-msgid "Available"
-msgstr "利用可能"
-
-#: src/panel/configure.c:836
-msgid "Right Side"
-msgstr "右側"
-
-#: src/panel/panel.cpp:264
-msgid "Add / Remove Plugins..."
-msgstr "プラグインを追加/削除..."
-
-#: src/panel/panel.cpp:268
-msgid "Configure Plugin..."
-msgstr "プラグインを設定..."
-
-#: src/panel/panel.cpp:272
-msgid "Notifications..."
-msgstr "通知..."
-
-#: src/panel/panel.cpp:276
-msgid "Taskbar Preferences..."
-msgstr "タスクバーの設定..."
-
-#: src/widgets/clock/clock.cpp:41
-msgid "Display format"
-msgstr "表示形式"
-
-#: src/widgets/clock/clock.cpp:42
-msgid "Display font"
-msgstr "表示フォント"
-
-#: src/widgets/clock/clock.cpp:46
-msgid "Clock"
-msgstr "時計"
-
-#: src/widgets/launchers/launchers.cpp:20
-msgid "Icon spacing"
-msgstr "アイコンの間隔"
-
-#: src/widgets/launchers/launchers.cpp:24
-msgid "Launcher"
-msgstr "ランチャー"
-
-#: src/widgets/launchers/launchers.cpp:193
-msgid "Remove from Launcher"
-msgstr "ランチャーから取り除く"
-
-#: src/widgets/notify/notify.cpp:5
-msgid "Show notifications"
-msgstr "通知を表示する"
-
-#: src/widgets/notify/notify.cpp:6
-msgid "Time before notifications close"
-msgstr "通知を閉じるまでの時間"
-
-#: src/widgets/notify/notify.cpp:10
-msgid "Notifications"
-msgstr "通知"
-
-#: src/widgets/spacing/spacing.cpp:5
-msgid "Width in pixels"
-msgstr "幅のピクセル数"
-
-#: src/widgets/spacing/spacing.cpp:6
-msgid "Set width to 0 to create a separator"
-msgstr "セパレーターを作成するには、幅を0にします"
-
-#: src/widgets/spacing/spacing.cpp:10
-msgid "Spacer"
-msgstr "空白"
-
-#: src/widgets/tray/tray.cpp:8
-msgid "Smooth scrolling threshold"
-msgstr "滑らかなスクロールのしきい値"
-
-#: src/widgets/tray/tray.cpp:9
-msgid "Middle button activates menu"
-msgstr "中央ボタンでメニューをアクティベート"
-
-#: src/widgets/tray/tray.cpp:13
-msgid "System Tray"
-msgstr "システムトレイ"
-
-#: src/widgets/window-list/toplevel.cpp:83
-#: src/widgets/window-list/toplevel.cpp:441
-msgid "Minimize"
-msgstr "最小化"
-
-#: src/widgets/window-list/toplevel.cpp:84
-#: src/widgets/window-list/toplevel.cpp:449
-msgid "Maximize"
-msgstr "最大化"
-
-#: src/widgets/window-list/toplevel.cpp:85
-msgid "Close"
-msgstr "閉じる"
-
-#: src/widgets/window-list/toplevel.cpp:438
-msgid "Unminimize"
-msgstr "最小化を解除"
-
-#: src/widgets/window-list/toplevel.cpp:446
-msgid "Unmaximize"
-msgstr "最大化を解除"
-
-#: src/widgets/window-list/window-list.cpp:14
-msgid "Maximum width of task button"
-msgstr "タスクボタンの最大幅"
-
-#: src/widgets/window-list/window-list.cpp:18
-msgid "Window List"
-msgstr "ウィンドウ リスト"
-
-#: data/config.ui:7
-msgid "Add / Remove Plugins"
-msgstr "プラグインの追加/削除"
-
-#: data/config.ui:118
-msgid "Add to left"
+#: src/rpcc/config_rpcc.c:717
+msgid "Add to Left"
 msgstr "左側に追加"
 
-#: data/config.ui:122
-msgid "Add plugin to left side of taskbar"
-msgstr "プラグインをタスクバーの左側に追加します"
+#: src/rpcc/config_rpcc.c:722
+msgid "Add to Tray"
+msgstr "トレイに追加"
 
-#: data/config.ui:132
-msgid "Add to right"
+#: src/rpcc/config_rpcc.c:722
+msgid "Add to Right"
 msgstr "右側に追加"
 
-#: data/config.ui:136
-msgid "Add plugin to right side of taskbar"
-msgstr "プラグインをタスクバーの右側に追加します"
-
-#: data/config.ui:146
+#: src/rpcc/config_rpcc.c:751 data/wf-panel-pi.ui:306
 msgid "Remove"
 msgstr "取り除く"
 
-#: data/config.ui:150
-msgid "Remove plugin from taskbar"
-msgstr "タスクバーからプラグインを取り除きます"
-
-#: data/config.ui:160
-msgid "Move left"
+#: src/rpcc/config_rpcc.c:756
+msgid "Move Left"
 msgstr "左に移動"
 
-#: data/config.ui:164
-msgid "Move plugin towards left of taskbar"
-msgstr "プラグインをタスクバーの左方向に移動します"
-
-#: data/config.ui:174
-msgid "Move right"
+#: src/rpcc/config_rpcc.c:761
+msgid "Move Right"
 msgstr "右に移動"
 
-#: data/config.ui:178
-msgid "Move plugin towards right of taskbar"
-msgstr "プラグインをタスクバーの右方向に移動します"
-
-#: data/config.ui:188
+#: src/rpcc/config_rpcc.c:766 data/wf-panel-pi.ui:348
 msgid "Configure..."
 msgstr "設定..."
 
-#: data/config.ui:192
+#: src/rpcc/config_rpcc.c:855
+msgid "Available"
+msgstr "利用可能"
+
+#: src/rpcc/config_rpcc.c:856
+msgid "Left"
+msgstr "左"
+
+#: src/rpcc/config_rpcc.c:857
+msgid "Right"
+msgstr "右"
+
+#: src/rpcc/config_rpcc.c:858 data/wf-panel-pi.ui:280
+msgid "Dock"
+msgstr "Dock"
+
+#: src/rpcc/config_rpcc.c:859
+msgid "Tray"
+msgstr "トレイ"
+
+#: src/rpcc/rpcc.c:73
+msgctxt "tab"
+msgid "Notifications"
+msgstr "通知"
+
+#: src/rpcc/rpcc.c:74
+msgctxt "tab"
+msgid "Widgets"
+msgstr "ウィジット"
+
+#: src/rpcc/rpcc.c:75
+msgid "No such tab"
+msgstr "そのようなタブはありません"
+
+#: src/widgets/launchers/launchers.c:45
+msgid "Icon spacing"
+msgstr "アイコンの間隔"
+
+#: src/widgets/launchers/launchers.c:87
+msgid "Remove from Launcher"
+msgstr "ランチャーから取り除く"
+
+#. End of file
+#. ----------------------------------------------------------------------------
+#. ============================================================================
+#. Copyright (c) 2021-2025 Raspberry Pi
+#. All rights reserved.
+#.
+#. Redistribution and use in source and binary forms, with or without
+#. modification, are permitted provided that the following conditions are met:
+#. * Redistributions of source code must retain the above copyright
+#. notice, this list of conditions and the following disclaimer.
+#. * Redistributions in binary form must reproduce the above copyright
+#. notice, this list of conditions and the following disclaimer in the
+#. documentation and/or other materials provided with the distribution.
+#. * Neither the name of the copyright holder nor the
+#. names of its contributors may be used to endorse or promote products
+#. derived from this software without specific prior written permission.
+#.
+#. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+#. ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+#. WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#. DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY
+#. DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+#. (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+#. LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+#. ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#. (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+#. SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#. ============================================================================
+#. ----------------------------------------------------------------------------
+#. Typedefs and macros
+#. ----------------------------------------------------------------------------
+#: src/widgets/launchers/launchers.h:32
+msgid "Launcher"
+msgstr "ランチャー"
+
+#: src/widgets/misc/spacing.cpp:18
+msgid "Width in pixels"
+msgstr "幅のピクセル数"
+
+#: src/widgets/misc/spacing.cpp:23
+msgid "Spacer"
+msgstr "空白"
+
+#: src/widgets/misc/split.cpp:22
+msgid "Tray Split"
+msgstr "トレイの区切り"
+
+#: src/widgets/tray/tray.cpp:10
+msgid "Smooth scrolling threshold"
+msgstr "滑らかなスクロールのしきい値"
+
+#: src/widgets/tray/tray.cpp:11
+msgid "Middle button activates menu"
+msgstr "中央ボタンでメニューをアクティベート"
+
+#: src/widgets/tray/tray.cpp:15
+msgid "System Tray"
+msgstr "システムトレイ"
+
+#: src/widgets/window-list/winlist.c:49
+msgid "Maximum width of task button"
+msgstr "タスクボタンの最大幅"
+
+#: src/widgets/window-list/winlist.c:50
+msgid "Show only icons"
+msgstr "アイコンのみ表示する"
+
+#: src/widgets/window-list/winlist.c:51
+msgid "Item spacing"
+msgstr "アイテムの間隔"
+
+#: src/widgets/window-list/winlist.c:518
+msgid "Unminimise"
+msgstr "最小化を解除"
+
+#: src/widgets/window-list/winlist.c:523
+msgid "Minimise"
+msgstr "最小化"
+
+#: src/widgets/window-list/winlist.c:530
+msgid "Unmaximise"
+msgstr "最大化を解除"
+
+#: src/widgets/window-list/winlist.c:535
+msgid "Maximise"
+msgstr "最大化"
+
+#: src/widgets/window-list/winlist.c:540
+msgid "Close"
+msgstr "閉じる"
+
+#. ----------------------------------------------------------------------------
+#. Typedefs and macros
+#. ----------------------------------------------------------------------------
+#: src/widgets/window-list/winlist.h:35
+msgid "Window List"
+msgstr "ウィンドウ リスト"
+
+#: data/wf-panel-pi.ui:7
+msgid "Add / Remove Plugins"
+msgstr "プラグインの追加/削除"
+
+#: data/wf-panel-pi.ui:86 data/wf-panel-pi.ui:136 data/wf-panel-pi.ui:203
+#: data/wf-panel-pi.ui:252
+msgid "Add"
+msgstr "追加"
+
+#: data/wf-panel-pi.ui:90
+msgid "Add plugin to left side of taskbar"
+msgstr "プラグインをタスクバーの左側に追加します"
+
+#: data/wf-panel-pi.ui:140
+msgid "Add plugin to right side of taskbar"
+msgstr "プラグインをタスクバーの右側に追加します"
+
+#: data/wf-panel-pi.ui:161
+msgid "Taskbar"
+msgstr "タスクバー"
+
+#: data/wf-panel-pi.ui:207
+msgid "Add plugin to dock"
+msgstr "プラグインをDockに追加します"
+
+#: data/wf-panel-pi.ui:256
+msgid "Add plugin to dock tray"
+msgstr "プラグインをDockのトレイに追加します"
+
+#: data/wf-panel-pi.ui:310
+msgid "Remove plugin from taskbar"
+msgstr "タスクバーからプラグインを取り除きます"
+
+#: data/wf-panel-pi.ui:320
+msgid "Move left"
+msgstr "左に移動"
+
+#: data/wf-panel-pi.ui:324
+msgid "Move plugin towards left of taskbar"
+msgstr "プラグインをタスクバーの左方向に移動します"
+
+#: data/wf-panel-pi.ui:334
+msgid "Move right"
+msgstr "右に移動"
+
+#: data/wf-panel-pi.ui:338
+msgid "Move plugin towards right of taskbar"
+msgstr "プラグインをタスクバーの右方向に移動します"
+
+#: data/wf-panel-pi.ui:352
 msgid "Configure selected plugin"
 msgstr "選択したプラグインの設定をします"
+
+#: data/wf-panel-pi.ui:443
+msgid "Show notifications"
+msgstr "通知を表示する"
+
+#: data/wf-panel-pi.ui:462
+msgid "Enable notification messages from the system"
+msgstr "システムからのメッセージ通知を有効化します"
+
+#: data/wf-panel-pi.ui:492
+msgid "Show application notifications"
+msgstr "アプリケーションの通知を表示する"
+
+#: data/wf-panel-pi.ui:510
+msgid "Enable notification messages from applications"
+msgstr "アプリケーションからのからのメッセージ通知を有効化します"
+
+#: data/wf-panel-pi.ui:540
+msgid "Time before notifications close"
+msgstr "通知を閉じるまでの時間"
+
+#: data/wf-panel-pi.ui:553
+msgid ""
+"Set how long a notification is displayed for in seconds - set to zero to "
+"persist until clicked"
+msgstr ""
+"通知を何秒間表示するか設定します。クリックするまで表示したままにするには0"
+"をセットします"
+
+#~ msgid "Cancel"
+#~ msgstr "キャンセル"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#, c-format
+#~ msgid "Configure %s"
+#~ msgstr "%s の設定"
+
+#~ msgid "Display format"
+#~ msgstr "表示形式"
+
+#~ msgid "Display font"
+#~ msgstr "表示フォント"
+
+#~ msgid "Clock"
+#~ msgstr "時計"
+
+#~ msgid "Set width to 0 to create a separator"
+#~ msgstr "セパレーターを作成するには、幅を0にします"
