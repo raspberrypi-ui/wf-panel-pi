@@ -221,7 +221,7 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
         if (!dlerror ())
         {
             cptr = func_config_params ();
-            if (cptr->type != CONF_TYPE_NONE) *config = TRUE;
+            if (cptr && cptr->type != CONF_TYPE_NONE) *config = TRUE;
         }
 
         /*
@@ -299,8 +299,8 @@ static void write_one_config (GKeyFile *kf, int index, const char *section, cons
         do
         {
             gtk_tree_model_get (sort[index], &iter, COL_ID, &str, -1);
-            strcat (config, str);
-            strcat (config, " ");
+            g_strlcat (config, str, sizeof (config));
+            g_strlcat (config, " ", sizeof (config));
             g_free (str);
         }
         while (gtk_tree_model_iter_next (sort[index], &iter));

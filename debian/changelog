@@ -1,3 +1,9 @@
+wf-panel-pi (1.32) trixie; urgency=medium
+
+  * Minor robustness fixes for control panel init
+
+ -- Simon Long <simon@raspberrypi.com>  Thu, 17 Sep 2026 16:09:53 +0100
+
 wf-panel-pi (1.31) trixie; urgency=medium
 
   * Prevent initial restart of swaybg at startup
