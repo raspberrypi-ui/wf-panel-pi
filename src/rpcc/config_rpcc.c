@@ -189,6 +189,7 @@ static gboolean read_lib (const char *type, char **name, char **desc, gboolean *
     const conf_table_t *cptr;
 
     *config = FALSE;
+    *desc = NULL;
     if (sscanf (type, "spacing%d", &space) == 1)
     {
         if (space > 0)
