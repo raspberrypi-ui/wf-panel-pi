@@ -42,6 +42,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COL_ID      1
 #define COL_INDEX   2
 #define COL_CONFIG  3
+#define COL_TOOLTIP 4
 
 #define AVAIL 0
 #define PAN_L 1
@@ -70,7 +71,7 @@ static double press_x, press_y;
 
 static void read_config (void);
 static void read_one_config (int index, const char *section, const char *item, const char *def);
-static gboolean read_lib (const char *type, char **name, gboolean *config);
+static gboolean read_lib (const char *type, char **name, char **desc, gboolean *config);
 static gboolean add_unused (GtkTreeModel *mod, GtkTreePath *, GtkTreeIter *iter, gpointer data);
 static void write_config (void);
 static void write_one_config (GKeyFile *kf, int index, const char *section, const char *item);
@@ -102,7 +103,7 @@ static void gesture_end (GtkGestureLongPress *, GdkEventSequence *, int ref);
 
 static void read_config (void)
 {
-    char *token, *name;
+    char *token, *name, *desc;
     struct dirent *dir;
     DIR *plugind;
     gboolean config;
@@ -128,14 +129,16 @@ static void read_config (void)
             gtk_tree_model_foreach (GTK_TREE_MODEL (widgets), add_unused, (void *) token);
             if (!found)
             {
-                read_lib (token, &name, &config);
+                read_lib (token, &name, &desc, &config);
                 gtk_list_store_insert_with_values (widgets, NULL, -1,
                     COL_NAME, name,
                     COL_ID, token,
                     COL_INDEX, 0,
                     COL_CONFIG, config,
+                    COL_TOOLTIP, desc,
                     -1);
                 g_free (name);
+                g_free (desc);
             }
             g_free (token);
         }
@@ -147,7 +150,7 @@ static void read_config (void)
 
 static void read_one_config (int index, const char *section, const char *item, const char *def)
 {
-    char *strval, *token, *name;
+    char *strval, *token, *name, *desc;
     int pos;
     gboolean config;
 
@@ -156,14 +159,16 @@ static void read_one_config (int index, const char *section, const char *item, c
     token = strtok (strval, " ");
     while (token)
     {
-        if (read_lib (token, &name, &config))
+        if (read_lib (token, &name, &desc, &config))
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, token,
                 COL_INDEX, pos++,
                 COL_CONFIG, config,
+                COL_TOOLTIP, desc,
                 -1);
         g_free (name);
+        g_free (desc);
         token = strtok (NULL, " ");
     }
     g_free (strval);
@@ -171,7 +176,7 @@ static void read_one_config (int index, const char *section, const char *item, c
 
 /* Helper function to read the name and configurability of a library */
 
-static gboolean read_lib (const char *type, char **name, gboolean *config)
+static gboolean read_lib (const char *type, char **name, char **desc, gboolean *config)
 {
     char *libname, *package;
     void *wid_lib;
@@ -179,6 +184,7 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
     gboolean res = FALSE;
     char * (*func_package_name)(void);
     char * (*func_display_name)(void);
+    char * (*func_display_desc)(void);
     conf_table_t * (*func_config_params)(void);
     const conf_table_t *cptr;
 
@@ -215,6 +221,11 @@ static gboolean read_lib (const char *type, char **name, gboolean *config)
             res = TRUE;
         }
         else *name = g_strdup_printf (_("<Unknown>"));
+
+        func_display_desc = (char * (*) (void)) dlsym (wid_lib, "display_desc");
+        if (!dlerror ()) *desc = g_strdup (dgettext (package, func_display_desc ()));
+        else *desc = NULL;
+
         if (package) g_free (package);
 
         func_config_params = (conf_table_t * (*) (void)) dlsym (wid_lib, "config_params");
@@ -817,7 +828,7 @@ void init_config (void)
     int i;
 
     // create the list store for widgets
-    widgets = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN);
+    widgets = gtk_list_store_new (5, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_BOOLEAN, G_TYPE_STRING);
 
     // build the dialog
     tv[AVAIL] = (GtkWidget *) gtk_builder_get_object (builder, "cent_tv");
@@ -849,6 +860,7 @@ void init_config (void)
         gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort[i]), i == AVAIL ? COL_NAME : COL_INDEX, GTK_SORT_ASCENDING);
 
         gtk_tree_view_set_model (GTK_TREE_VIEW (tv[i]), sort[i]);
+        gtk_tree_view_set_tooltip_column (GTK_TREE_VIEW (tv[i]), COL_TOOLTIP);
         hand[i] = g_signal_connect (tv[i], "cursor-changed", G_CALLBACK (unselect), (void *)((long) i));
     }
 

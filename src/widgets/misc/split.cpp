@@ -20,6 +20,7 @@ extern "C" {
 
     const conf_table_t *config_params (void) { return conf_table; };
     const char *display_name (void) { return N_("Tray Split"); };
+    const char *display_desc (void) { return N_("Fixed break between rows in tray"); };
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 

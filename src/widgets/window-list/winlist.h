@@ -33,6 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*----------------------------------------------------------------------------*/
 
 #define PLUGIN_TITLE N_("Window List")
+#define PLUGIN_DESC N_("Lists running applications")
 
 #define STATE_ACTIVATED 0x01
 #define STATE_MAXIMISED 0x02

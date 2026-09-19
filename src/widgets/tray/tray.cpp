@@ -13,6 +13,7 @@ extern "C" {
     };
     const conf_table_t *config_params (void) { return conf_table; };
     const char *display_name (void) { return N_("System Tray"); };
+    const char *display_desc (void) { return N_("Holder for widgets provided by third-party applications"); };
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 
