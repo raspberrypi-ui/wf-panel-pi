@@ -195,11 +195,13 @@ static gboolean read_lib (const char *type, char **name, char **desc, gboolean *
         if (space > 0)
         {
             *name = g_strdup_printf (_("Spacer (%d)"), space);
+            *desc = g_strdup (_("Variable width space"));
             *config = TRUE;
         }
         else
         {
             *name = g_strdup (_("Separator"));
+            *desc = g_strdup (_("Vertical separator line"));
             *config = FALSE;
         }
         return TRUE;
@@ -366,6 +368,7 @@ static void add_widget (GtkButton *, gpointer data)
                 COL_ID, "spacing0",
                 COL_INDEX, lorr * 100 + index,
                 COL_CONFIG, FALSE,
+                COL_TOOLTIP, _("Vertical separator line"),
                 -1);
             g_free (name);
         }
@@ -377,6 +380,7 @@ static void add_widget (GtkButton *, gpointer data)
                 COL_ID, "spacing4",
                 COL_INDEX, lorr * 100 + index,
                 COL_CONFIG, TRUE,
+                COL_TOOLTIP, _("Variable width space"),
                 -1);
             g_free (name);
         }
