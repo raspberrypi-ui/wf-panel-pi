@@ -225,7 +225,6 @@ static gboolean read_lib (const char *type, char **name, char **desc, gboolean *
 
         func_display_desc = (char * (*) (void)) dlsym (wid_lib, "display_desc");
         if (!dlerror ()) *desc = g_strdup (dgettext (package, func_display_desc ()));
-        else *desc = NULL;
 
         if (package) g_free (package);
 
