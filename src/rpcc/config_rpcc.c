@@ -194,7 +194,7 @@ static gboolean read_lib (const char *type, char **name, char **desc, gboolean *
     {
         if (space > 0)
         {
-            *name = g_strdup_printf (_("Spacer (%d)"), space);
+            *name = g_strdup_printf ("%s %dpx", _("Spacer"), space);
             *desc = g_strdup (_("Variable width space"));
             *config = TRUE;
         }
@@ -374,7 +374,7 @@ static void add_widget (GtkButton *, gpointer data)
         }
         else if (!strncmp (type, "spacing", 7))
         {
-            name = g_strdup_printf (_("Spacer (%d)"), 4);
+            name = g_strdup_printf ("%s 4px", _("Spacer"));
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, "spacing4",
@@ -549,7 +549,7 @@ static void update_plugin_spacing (GtkWidget *box)
                 {
                     // update both the widget type and the displayed name
                     type = g_strdup_printf ("spacing%d", val);
-                    name = g_strdup_printf (_("Spacer (%d)"), val);
+                    name = g_strdup_printf ("%s %dpx", _("Spacer"), val);
                     gtk_list_store_set (widgets, &sp_iter,
                         COL_NAME, name,
                         COL_ID, type,
