@@ -50,6 +50,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define DOCK  3
 #define DOCKT 4
 
+#define SPACER_NAME     _("Spacer")
+#define SPACER_DESC     _("Variable width space")
+#define SEPARATOR_NAME  _("Separator")
+#define SEPARATOR_DESC  _("Vertical separator bar")
+
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/
@@ -194,14 +199,14 @@ static gboolean read_lib (const char *type, char **name, char **desc, gboolean *
     {
         if (space > 0)
         {
-            *name = g_strdup_printf ("%s %dpx", _("Spacer"), space);
-            *desc = g_strdup (_("Variable width space"));
+            *name = g_strdup_printf ("%s %dpx", SPACER_NAME, space);
+            *desc = g_strdup (SPACER_DESC);
             *config = TRUE;
         }
         else
         {
-            *name = g_strdup (_("Separator"));
-            *desc = g_strdup (_("Vertical separator line"));
+            *name = g_strdup (SEPARATOR_NAME);
+            *desc = g_strdup (SEPARATOR_DESC);
             *config = FALSE;
         }
         return TRUE;
@@ -362,25 +367,25 @@ static void add_widget (GtkButton *, gpointer data)
         // change index for anything other than a space; space needs to be created
         if (!strcmp (type, "separator"))
         {
-            name = g_strdup (_("Separator"));
+            name = g_strdup (SEPARATOR_NAME);
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, "spacing0",
                 COL_INDEX, lorr * 100 + index,
                 COL_CONFIG, FALSE,
-                COL_TOOLTIP, _("Vertical separator line"),
+                COL_TOOLTIP, SEPARATOR_DESC,
                 -1);
             g_free (name);
         }
         else if (!strncmp (type, "spacing", 7))
         {
-            name = g_strdup_printf ("%s 4px", _("Spacer"));
+            name = g_strdup_printf ("%s 4px", SPACER_NAME);
             gtk_list_store_insert_with_values (widgets, NULL, -1,
                 COL_NAME, name,
                 COL_ID, "spacing4",
                 COL_INDEX, lorr * 100 + index,
                 COL_CONFIG, TRUE,
-                COL_TOOLTIP, _("Variable width space"),
+                COL_TOOLTIP, SPACER_DESC,
                 -1);
             g_free (name);
         }
@@ -549,7 +554,7 @@ static void update_plugin_spacing (GtkWidget *box)
                 {
                     // update both the widget type and the displayed name
                     type = g_strdup_printf ("spacing%d", val);
-                    name = g_strdup_printf ("%s %dpx", _("Spacer"), val);
+                    name = g_strdup_printf ("%s %dpx", SPACER_NAME, val);
                     gtk_list_store_set (widgets, &sp_iter,
                         COL_NAME, name,
                         COL_ID, type,
