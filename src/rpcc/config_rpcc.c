@@ -50,11 +50,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define DOCK  3
 #define DOCKT 4
 
-#define SPACER_NAME     _("Spacer")
-#define SPACER_DESC     _("Variable width space")
-#define SEPARATOR_NAME  _("Separator")
-#define SEPARATOR_DESC  _("Vertical separator bar")
-
 /*----------------------------------------------------------------------------*/
 /* Global data */
 /*----------------------------------------------------------------------------*/

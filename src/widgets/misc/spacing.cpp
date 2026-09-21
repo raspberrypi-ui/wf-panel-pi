@@ -1,5 +1,8 @@
 #include <widget.hpp>
 
+#undef _
+#define _(a) (a)
+
 class WidgetSpacing : public PanelWidget
 {
     Gtk::HBox box;
@@ -20,8 +23,8 @@ extern "C" {
     };
 
     const conf_table_t *config_params (void) { return conf_table; };
-    const char *display_name (void) { return N_("Spacer"); };
-    const char *display_desc (void) { return N_("Variable width space"); };
+    const char *display_name (void) { return SPACER_NAME; };
+    const char *display_desc (void) { return SPACER_DESC; };
     const char *package_name (void) { return GETTEXT_PACKAGE; };
 }
 

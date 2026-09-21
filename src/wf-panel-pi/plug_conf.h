@@ -53,6 +53,11 @@ typedef struct {
 #define WIDGETS_RIGHT_DOCK      ""
 #define WIDGETS_RIGHT_WIZARD    "bluetooth volumepulse squeek"
 
+#define SPACER_NAME     _("Spacer")
+#define SPACER_DESC     _("Variable width space")
+#define SEPARATOR_NAME  _("Separator")
+#define SEPARATOR_DESC  _("Vertical separator bar")
+
 extern GtkWidget *cdlg;
 
 extern void get_config_string (const char *section, const char *key, char **dest, const char *def);
