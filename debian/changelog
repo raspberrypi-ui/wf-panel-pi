@@ -1,3 +1,9 @@
+wf-panel-pi (1.33) trixie; urgency=medium
+
+  * Add tooltips to widget browser
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 21 Sep 2026 09:50:32 +0100
+
 wf-panel-pi (1.32) trixie; urgency=medium
 
   * Minor robustness fixes for control panel init
