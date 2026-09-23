@@ -487,12 +487,14 @@ void show_menu_with_kbd (GtkWidget *widget, GtkWidget *menu, GdkEventButton *eve
     close_popup ();
 
     int pad = get_menu_padding ();
+    gboolean btm = panel_at_bottom (widget);
     GValue val = G_VALUE_INIT;
     g_value_init (&val, G_TYPE_INT);
-    g_value_set_int (&val, panel_at_bottom (widget) ? -pad : pad);
+    g_value_set_int (&val, btm ? -pad : pad);
     g_object_set_property ((GObject *) menu, "rect-anchor-dy", &val);
 
-    gtk_menu_popup_at_widget (GTK_MENU (menu), widget, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
+    gtk_menu_popup_at_widget (GTK_MENU (menu), widget, btm ? GDK_GRAVITY_NORTH_WEST : GDK_GRAVITY_SOUTH_WEST,
+        btm ? GDK_GRAVITY_SOUTH_WEST : GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
     mch = g_signal_connect (menu, "deactivate", G_CALLBACK (menu_closed), widget);
     g_idle_add ((GSourceFunc) hide_prelight, widget);
 }
@@ -502,9 +504,10 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, GdkEventButto
     close_popup ();
 
     int pad = get_menu_padding ();
+    gboolean btm = panel_at_bottom (widget);
     GValue val = G_VALUE_INIT;
     g_value_init (&val, G_TYPE_INT);
-    g_value_set_int (&val, panel_at_bottom (widget) ? -pad : pad);
+    g_value_set_int (&val, btm ? -pad : pad);
     g_object_set_property ((GObject *) menu, "rect-anchor-dy", &val);
 
     GdkRectangle rect;
@@ -513,7 +516,8 @@ void show_menu_with_kbd_at_xy (GtkWidget *widget, GtkWidget *menu, GdkEventButto
     gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
     rect.x = event->x_root;
     rect.y = 0;
-    gtk_menu_popup_at_rect (GTK_MENU (menu), gtk_widget_get_window (GTK_WIDGET (panel)), &rect, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
+    gtk_menu_popup_at_rect (GTK_MENU (menu), gtk_widget_get_window (GTK_WIDGET (panel)), &rect,
+        btm ? GDK_GRAVITY_NORTH_WEST : GDK_GRAVITY_SOUTH_WEST, btm ? GDK_GRAVITY_SOUTH_WEST : GDK_GRAVITY_NORTH_WEST, (GdkEvent *) event);
     mch = g_signal_connect (menu, "deactivate", G_CALLBACK (menu_closed), widget);
 }
 
