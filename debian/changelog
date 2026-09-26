@@ -1,3 +1,9 @@
+wf-panel-pi (1.35) UNRELEASED; urgency=medium
+
+  * Fixes for system tray - correctly scale icons; don't hide all icons when one is closed
+
+ -- Simon Long <simon@raspberrypi.com>  Sat, 26 Sep 2026 20:36:10 +0100
+
 wf-panel-pi (1.34) trixie; urgency=medium
 
   * Force menu alignment when panel at bottom of screen
