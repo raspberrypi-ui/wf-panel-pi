@@ -1,4 +1,4 @@
-wf-panel-pi (1.35) UNRELEASED; urgency=medium
+wf-panel-pi (1.35) trixie; urgency=medium
 
   * Fixes for system tray - correctly scale icons; don't hide all icons when one is closed
 
