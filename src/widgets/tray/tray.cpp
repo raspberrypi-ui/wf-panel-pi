@@ -33,7 +33,7 @@ void WidgetStatusNotifier::add_item (const Glib::ustring & service)
 void WidgetStatusNotifier::remove_item (const Glib::ustring & service)
 {
     items.erase(service);
-    if (items.count(service) == 0) icons_hbox.hide();
+    if (items.empty()) icons_hbox.hide();
 }
 
 void WidgetStatusNotifier::widget_set_icon (void)
