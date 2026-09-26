@@ -234,7 +234,8 @@ void StatusNotifierItem::update_icon()
     else if (pixmap_data)
     {
         int scale = gtk_widget_get_scale_factor (GTK_WIDGET (icon.gobj()));
-        icon.set(pixmap_data->scale_simple(scale * size, scale * size, Gdk::INTERP_BILINEAR));
+        set_image_from_pixbuf (GTK_WIDGET (icon.gobj()),
+            pixmap_data->scale_simple(scale * size, scale * size, Gdk::INTERP_BILINEAR)->gobj());
     }
 }
 
