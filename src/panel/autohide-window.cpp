@@ -158,7 +158,7 @@ void AutohidingWindow::set_monitor ()
         while (try_mon >= 0)
         {
             mon = disp->get_monitor (try_mon);
-            if (mon->gobj()) break;
+            if (mon) break;
             try_mon--;
         }
     }
@@ -172,7 +172,7 @@ void AutohidingWindow::set_monitor ()
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
             mname = gdk_screen_get_monitor_plug_name (screen, try_mon);
 #pragma GCC diagnostic pop
-            if (!g_strcmp0 (mname, mnumstr) && mon->gobj())
+            if (!g_strcmp0 (mname, mnumstr) && mon)
             {
                 g_free (mname);
                 break;
@@ -181,7 +181,7 @@ void AutohidingWindow::set_monitor ()
         }
     }
 
-    if (mon->gobj()) gtk_layer_set_monitor (this->gobj(), mon->gobj());
+    if (mon) gtk_layer_set_monitor (this->gobj(), mon->gobj());
 }
 
 /* Private methods */

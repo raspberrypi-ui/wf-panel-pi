@@ -1,3 +1,9 @@
+wf-panel-pi (1.36) trixie; urgency=medium
+
+  * Fix for crash when no monitors found - can only occur due to upstream labwc bug
+
+ -- Simon Long <simon@raspberrypi.com>  Sun, 27 Sep 2026 14:32:30 +0100
+
 wf-panel-pi (1.35) trixie; urgency=medium
 
   * Fixes for system tray - correctly scale icons; don't hide all icons when one is closed
