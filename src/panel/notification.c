@@ -593,11 +593,16 @@ static void replace_message (int id, const char *message)
         nw = (NotifyWindow *) item->data;
         if (nw->seq == id)
         {
-            gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
-            old_height = h;
-
             g_free (nw->message);
             nw->message = g_strdup (message);
+
+            // The window does not exist yet while the notification is queued
+            // (start-up mute or interval timer); the stored message is shown
+            // when show_next () creates it, so there is nothing to update now.
+            if (!nw->popup || !GTK_IS_WINDOW (nw->popup)) return;
+
+            gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);
+            old_height = h;
 
             wid = gtk_bin_get_child (GTK_BIN (nw->popup));
             wchild = gtk_container_get_children (GTK_CONTAINER (wid));
