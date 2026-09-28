@@ -596,9 +596,7 @@ static void replace_message (int id, const char *message)
             g_free (nw->message);
             nw->message = g_strdup (message);
 
-            // The window does not exist yet while the notification is queued
-            // (start-up mute or interval timer); the stored message is shown
-            // when show_next () creates it, so there is nothing to update now.
+            // fall out if message not yet displayed
             if (!nw->popup || !GTK_IS_WINDOW (nw->popup)) return;
 
             gtk_window_get_size (GTK_WINDOW (nw->popup), &w, &h);

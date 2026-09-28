@@ -1,3 +1,9 @@
+wf-panel-pi (1.37) trixie; urgency=medium
+
+  * Fix for crash when notification is replaced before display
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 28 Sep 2026 07:34:48 +0100
+
 wf-panel-pi (1.36) trixie; urgency=medium
 
   * Fix for crash when no monitors found - can only occur due to upstream labwc bug
