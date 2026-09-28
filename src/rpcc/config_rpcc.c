@@ -295,6 +295,8 @@ static void write_config (void)
     g_free (str);
     g_key_file_free (kf);
     g_free (user_file);
+
+    system ("rpcc none reset_desktop_margins &");
 }
 
 /* Write config to local configuration file */
