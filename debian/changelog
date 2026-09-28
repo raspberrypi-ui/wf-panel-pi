@@ -1,3 +1,9 @@
+wf-panel-pi (1.38) trixie; urgency=medium
+
+  * Add call to reload desktop margins when reconfiguring widgets
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 28 Sep 2026 11:56:57 +0100
+
 wf-panel-pi (1.37) trixie; urgency=medium
 
   * Fix for crash when notification is replaced before display
