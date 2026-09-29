@@ -74,7 +74,7 @@ gboolean is_pi_var;
 
 GtkWindow *popwindow;
 static GtkWindow *clicksink;
-static int px, py, mw, mh, orient, mch;
+static int mch;
 
 gboolean reload;
 
@@ -534,14 +534,11 @@ static gboolean handle_clickaway (GtkWidget *, GdkEventButton *, GtkWidget *butt
 
 void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 {
-    GdkDisplay *disp;
     GdkMonitor *mon;
     GdkRectangle rect;
     GtkCssProvider *prov;
-    int i, pw, panw;
+    int popw, panw, btnx, py;
     gboolean bottom;
-    FILE *fp;
-    char *cmd, *mname;
 
     GtkWindow *panel = find_panel (button);
     if (!panel) return;
@@ -571,73 +568,47 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
 
     popwindow = GTK_WINDOW (window);
 
-    disp = gdk_display_get_default ();
     gtk_layer_init_for_window (popwindow);
     gtk_widget_show_all (window);
 
     // get the dimensions of the panel
-    bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
     gtk_widget_get_allocation (GTK_WIDGET (panel), &rect);
-    px = rect.width;
+    panw = rect.width;
+
+    bottom = gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_BOTTOM);
     py = gtk_layer_get_margin (panel, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP);
     if (gtk_layer_get_exclusive_zone (panel) <= 0) py += rect.height;
-    panw = px;
 
-    // get the dimensions of the popup itself and ensure the popup fits on the screen
+    // get the dimensions of the popup
     gtk_widget_get_allocation (window, &rect);
-    pw = rect.width;
-    px -= pw;
+    popw = rect.width;
 
-    // get the dimensions of the button - align left edge of popup with left edge of button
+    // get the dimensions of the button - left edge of popup aligns with left edge of button unless it would then overflow screen
     gtk_widget_get_allocation (button, &rect);
-    if (rect.x <= px) px = rect.x;
-
-    // get the dimensions of the monitor - correct the y-coord of the plugin if at bottom
-    gdk_monitor_get_geometry (mon, &rect);
-    mh = rect.height;
-    mw = rect.width;
-
-    orient = 0;
-    for (i = 0; i < gdk_display_get_n_monitors (disp); i++)
-    {
-        if (mon == gdk_display_get_monitor (disp, i))
-        {
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-            // yes, I know get_monitor_plug_name is deprecated, but the recommended replacement doesn't actually do the same thing...
-            mname = gdk_screen_get_monitor_plug_name (gdk_display_get_default_screen (disp), i);
-#pragma GCC diagnostic pop
-            cmd = g_strdup_printf ("wlr-randr | sed -nr '/%s/,/^~ /{s/Transform:\\s*(.*)/\\1/p}' | tr -d ' '", mname);
-            if ((fp = popen (cmd, "r")) != NULL)
-            {
-                if (fscanf (fp, "%d", &orient) != 1) orient = 0;
-                pclose (fp);
-            }
-            g_free (cmd);
-            g_free (mname);
-        }
-    }
+    btnx = rect.x;
 
     gtk_layer_set_layer (popwindow, GTK_LAYER_SHELL_LAYER_TOP);
 
     gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
     gtk_layer_set_margin (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding () + py);
 
+    // in all cases, assume panel margin == 0
     if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_LEFT))
     {
         gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, px);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, btnx);
     }
     else if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_RIGHT))
     {
         gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, panw - pw - px);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_RIGHT, (panw - btnx - popw) < 0 ? 0 : (panw - btnx - popw));
     }
     else
     {
         // no anchor - panel in centre of screen...
+        gdk_monitor_get_geometry (mon, &rect);
         gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, (mw / 2)  - (panw / 2) + px);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, (rect.width / 2) - (panw / 2) + btnx);
     }
 
     gtk_layer_set_monitor (popwindow, mon);
