@@ -596,7 +596,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_LEFT))
     {
         gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, btnx);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, (popw + btnx - panw) < 0 ? btnx : (panw - popw));
     }
     else if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_RIGHT))
     {

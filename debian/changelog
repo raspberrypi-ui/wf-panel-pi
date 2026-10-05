@@ -1,3 +1,9 @@
+wf-panel-pi (1.39) trixie; urgency=medium
+
+  * Correct positioning of popup windows
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 05 Oct 2026 07:52:04 +0100
+
 wf-panel-pi (1.38) trixie; urgency=medium
 
   * Add call to reload desktop margins when reconfiguring widgets
