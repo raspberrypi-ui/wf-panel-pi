@@ -57,6 +57,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define MENU_ICON_SPACE 6
 #define BORDER_SIZE 1
+#define MATCH_THRESH 0.3
 
 /*----------------------------------------------------------------------------*/
 /* Global data */
@@ -827,6 +828,7 @@ static float score_match (const char *str1, const char *str2)
     g_free (str1l);
     g_free (str2l);
 
+    if (result < MATCH_THRESH) result = 0.0;
     return result;
 }
 
