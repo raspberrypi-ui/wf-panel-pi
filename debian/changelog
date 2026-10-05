@@ -1,3 +1,9 @@
+wf-panel-pi (1.40) trixie; urgency=medium
+
+  * Yet another attempt at getting all the positions correct
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 05 Oct 2026 18:22:31 +0100
+
 wf-panel-pi (1.39) trixie; urgency=medium
 
   * Correct positioning of popup windows

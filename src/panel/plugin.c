@@ -538,7 +538,7 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     GdkMonitor *mon;
     GdkRectangle rect;
     GtkCssProvider *prov;
-    int popw, panw, btnx, py;
+    int popw, panw, btnx, py, monw;
     gboolean bottom;
 
     GtkWindow *panel = find_panel (button);
@@ -593,11 +593,14 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     gtk_layer_set_anchor (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, TRUE);
     gtk_layer_set_margin (popwindow, bottom ? GTK_LAYER_SHELL_EDGE_BOTTOM : GTK_LAYER_SHELL_EDGE_TOP, get_menu_padding () + py);
 
+    gdk_monitor_get_geometry (mon, &rect);
+    monw = rect.width;
+
     // in all cases, assume panel margin == 0
     if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_LEFT))
     {
         gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, (popw + btnx - panw) < 0 ? btnx : (panw - popw));
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, btnx < monw - popw ? btnx : monw - popw);
     }
     else if (gtk_layer_get_anchor (panel, GTK_LAYER_SHELL_EDGE_RIGHT))
     {
@@ -607,9 +610,8 @@ void popup_window_at_button (GtkWidget *window, GtkWidget *button)
     else
     {
         // no anchor - panel in centre of screen...
-        gdk_monitor_get_geometry (mon, &rect);
         gtk_layer_set_anchor (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
-        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, (rect.width / 2) - (panw / 2) + btnx);
+        gtk_layer_set_margin (popwindow, GTK_LAYER_SHELL_EDGE_LEFT, (monw / 2) - (panw / 2) + btnx);
     }
 
     gtk_layer_set_monitor (popwindow, mon);
