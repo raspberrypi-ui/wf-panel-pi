@@ -84,14 +84,18 @@ void Watcher::register_status_notifier_item(const Glib::RefPtr<Gio::DBus::Connec
     const Glib::ustring & sender, const Glib::ustring & path)
 {
     const auto full_obj_path = sender + path;
+    if (sn_items_id.count(full_obj_path)) return;
+
     emit_signal("StatusNotifierItemRegistered", full_obj_path);
     sn_items_id.emplace(full_obj_path, Gio::DBus::watch_name(
         Gio::DBus::BUS_TYPE_SESSION, sender, {},
         [this, full_obj_path] (const Glib::RefPtr<Gio::DBus::Connection> & connection,
                                const Glib::ustring & name)
     {
-        Gio::DBus::unwatch_name(sn_items_id.at(full_obj_path));
-        sn_items_id.erase(full_obj_path);
+        auto it = sn_items_id.find(full_obj_path);
+        if (it == sn_items_id.end()) return;
+        Gio::DBus::unwatch_name(it->second);
+        sn_items_id.erase(it);
         emit_signal("StatusNotifierItemUnregistered", full_obj_path);
     }));
 }
@@ -99,6 +103,8 @@ void Watcher::register_status_notifier_item(const Glib::RefPtr<Gio::DBus::Connec
 void Watcher::register_status_notifier_host(const Glib::RefPtr<Gio::DBus::Connection> & connection,
     const Glib::ustring & service)
 {
+    if (sn_hosts_id.count(service)) return;
+
     sn_hosts_id.emplace(
         service, Gio::DBus::watch_name(
             connection, service,
@@ -119,8 +125,10 @@ void Watcher::register_status_notifier_host(const Glib::RefPtr<Gio::DBus::Connec
     },
             [this] (const Glib::RefPtr<Gio::DBus::Connection> & connection, const Glib::ustring & name)
     {
-        Gio::DBus::unwatch_name(sn_hosts_id[name]);
-        sn_hosts_id.erase(name);
+        auto it = sn_hosts_id.find(name);
+        if (it == sn_hosts_id.end()) return;
+        Gio::DBus::unwatch_name(it->second);
+        sn_hosts_id.erase(it);
     }));
 }
 
