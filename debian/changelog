@@ -1,3 +1,9 @@
+wf-panel-pi (1.41) trixie; urgency=medium
+
+  * Fix for system tray icons which attempt multiple registration
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 12 Oct 2026 11:47:11 +0100
+
 wf-panel-pi (1.40) trixie; urgency=medium
 
   * Yet another attempt at getting all the positions correct
