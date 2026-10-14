@@ -202,7 +202,7 @@ void PanelApp::on_name_lost (const Glib::RefPtr <Gio::DBus::Connection>& connect
 
 void PanelApp::handle_method_call (const Glib::RefPtr < Gio::DBus::Connection >&, const Glib::ustring&, const Glib::ustring&,
     const Glib::ustring&, const Glib::ustring& method_name, const Glib::VariantContainerBase& parameters,
-    const Glib::RefPtr <Gio::DBus::MethodInvocation>&)
+    const Glib::RefPtr <Gio::DBus::MethodInvocation>& invocation)
 {
     Glib::Variant <Glib::ustring> params;
     std::string plugin, command;
@@ -218,6 +218,8 @@ void PanelApp::handle_method_call (const Glib::RefPtr < Gio::DBus::Connection >&
         if (panel) panel->handle_command_message (plugin.c_str (), command.c_str ());
         if (dock) dock->handle_command_message (plugin.c_str (), command.c_str ());
     }
+
+    invocation->return_value (Glib::VariantContainerBase ());
 }
 
 int main (int argc, char **argv)
