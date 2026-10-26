@@ -227,6 +227,21 @@ void StatusNotifierItem::update_icon()
     const auto icon_name   = get_item_property<Glib::ustring>(icon_type_name + "Name");
     const auto pixmap_data = extract_pixbuf(get_item_property<IconData>(icon_type_name + "Pixmap"));
     int size = get_icon_size (GTK_WIDGET (icon.gobj()));
+    // Some applications provide an absolute image filename instead of a theme icon name.
+    if (!icon_name.empty() && g_path_is_absolute(icon_name.c_str()))
+    {
+        try
+        {
+            int scale = gtk_widget_get_scale_factor(GTK_WIDGET(icon.gobj()));
+            auto image = Gdk::Pixbuf::create_from_file(icon_name, scale * size, scale * size, true);
+            set_image_from_pixbuf(GTK_WIDGET(icon.gobj()), image->gobj());
+            return;
+        }
+        catch (const Glib::Error &error)
+        {
+            g_warning("Tray icon file load failed: %s", error.what().c_str());
+        }
+    }
     if (icon_theme->lookup_icon(icon_name, size))
     {
         set_taskbar_icon (GTK_WIDGET (icon.gobj()), icon_name.c_str());
