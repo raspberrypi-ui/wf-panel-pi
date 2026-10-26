@@ -1,3 +1,9 @@
+wf-panel-pi (1.43) trixie; urgency=medium
+
+  * Fix icon search path for tray plugin
+
+ -- Simon Long <simon@raspberrypi.com>  Mon, 26 Oct 2026 09:24:28 +0000
+
 wf-panel-pi (1.42) trixie; urgency=medium
 
   * Return a null value from DBus method handler

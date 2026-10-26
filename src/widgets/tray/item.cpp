@@ -216,7 +216,7 @@ void StatusNotifierItem::update_icon()
         "IconThemePath");!icon_theme_path.empty())
     {
         icon_theme = Gtk::IconTheme::create();
-        icon_theme->add_resource_path(icon_theme_path);
+        icon_theme->append_search_path(icon_theme_path);
     } else
     {
         icon_theme = Gtk::IconTheme::get_default();
