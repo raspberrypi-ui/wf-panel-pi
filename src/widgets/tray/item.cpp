@@ -227,11 +227,29 @@ void StatusNotifierItem::update_icon()
     const auto icon_name   = get_item_property<Glib::ustring>(icon_type_name + "Name");
     const auto pixmap_data = extract_pixbuf(get_item_property<IconData>(icon_type_name + "Pixmap"));
     int size = get_icon_size (GTK_WIDGET (icon.gobj()));
-    if (icon_theme->lookup_icon(icon_name, size))
+    bool loaded = false;
+
+    if (!icon_name.empty())
     {
-        set_taskbar_icon (GTK_WIDGET (icon.gobj()), icon_name.c_str());
+        GError *error = nullptr;
+        int scale = gtk_widget_get_scale_factor(GTK_WIDGET(icon.gobj()));
+
+        GdkPixbuf *raw = gtk_icon_theme_load_icon_for_scale(
+            icon_theme->gobj(), icon_name.c_str(),
+            size, scale, GTK_ICON_LOOKUP_FORCE_SIZE, &error);
+
+        if (raw)
+        {
+            set_image_from_pixbuf(GTK_WIDGET(icon.gobj()), raw);
+            g_object_unref(raw);
+            loaded = true;
+        }
+
+        if (error)
+            g_error_free(error);
     }
-    else if (pixmap_data)
+
+    if (!loaded && pixmap_data)
     {
         int scale = gtk_widget_get_scale_factor (GTK_WIDGET (icon.gobj()));
         set_image_from_pixbuf (GTK_WIDGET (icon.gobj()),
